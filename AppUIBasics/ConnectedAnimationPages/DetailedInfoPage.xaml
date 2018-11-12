@@ -12,10 +12,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="headerBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlAcrylicElementBrush}" />
-
-        <Grid Height="32" VerticalAlignment="Top">
-            <Button x:Name="BackButton" Content="Go Back" Background="{ThemeResource SystemAccentColor}" HorizontalAlignment="Left" Click="BackButton_Click"/>
+        <Grid x:Name="headerBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Button Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Click="BackButton_Click" />
         </Grid>
 
         <Grid x:Name="headerContent" Margin="20,52,20,20">
@@ -38,9 +36,7 @@
                     <TextBlock Text="Likes: " Style="{ThemeResource SubtitleTextBlockStyle}" FontWeight="Bold" />
                     <TextBlock Text="{x:Bind DetailedObject.Likes}" Style="{ThemeResource SubtitleTextBlockStyle}"  Margin="5,0,0,0"/>
                 </StackPanel>
-
             </StackPanel>
-
         </Grid>
 
         <!-- Panel containing more info, to be shown after the connected animation. -->
