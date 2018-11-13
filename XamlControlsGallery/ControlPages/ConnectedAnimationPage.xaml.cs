@@ -93,7 +93,7 @@ namespace AppUIBasics.ControlPages
                 objects.Add(new CustomDataObject()
                 {
                     Title = $"Item {i + 1}",
-                    ImageLocation = $"/Assets/ConnectedAnimationImages/LandscapeImage{i + 1}.jpg",
+                    ImageLocation = $"/Assets/SampleMedia/LandscapeImage{i + 1}.jpg",
                     Views = rand.Next(100, 999).ToString(),
                     Likes = rand.Next(10, 99).ToString(),
                     Description = dummyTexts[i % dummyTexts.Length],

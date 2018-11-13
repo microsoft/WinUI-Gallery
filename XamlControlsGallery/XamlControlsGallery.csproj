@@ -93,54 +93,22 @@
     <Content Include="..\SharedContent\cs\Default.rd.xml">
       <Link>Properties\Default.rd.xml</Link>
     </Content>
-    <Content Include="..\SharedContent\media\Samples\cliff.jpg">
-      <Link>Assets\cliff.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\fishes.wmv">
-      <Link>Assets\fishes.wmv</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\grapes.jpg">
-      <Link>Assets\grapes.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\ladybug.wmv">
-      <Link>Assets\ladybug.wmv</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage1.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage1.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage7.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage2.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage12.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage3.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage13.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage4.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage14.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage5.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage17.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage6.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage18.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage7.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\LandscapeImage19.jpg">
-      <Link>Assets\ConnectedAnimationImages\LandscapeImage8.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\rainier.jpg">
-      <Link>Assets\rainier.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\sunset.jpg">
-      <Link>Assets\sunset.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\treetops.jpg">
-      <Link>Assets\treetops.jpg</Link>
-    </Content>
-    <Content Include="..\SharedContent\media\Samples\valley.jpg">
-      <Link>Assets\valley.jpg</Link>
-    </Content>
+    <Content Include="Assets\SampleMedia\cliff.jpg" />
+    <Content Include="Assets\SampleMedia\fishes.wmv" />
+    <Content Include="Assets\SampleMedia\grapes.jpg" />
+    <Content Include="Assets\SampleMedia\ladybug.wmv" />
+    <Content Include="Assets\SampleMedia\LandscapeImage1.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage2.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage3.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage4.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage5.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage6.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage7.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage8.jpg" />
+    <Content Include="Assets\SampleMedia\rainier.jpg" />
+    <Content Include="Assets\SampleMedia\sunset.jpg" />
+    <Content Include="Assets\SampleMedia\treetops.jpg" />
+    <Content Include="Assets\SampleMedia\valley.jpg" />
     <Content Include="Assets\AcrylicBrush.png" />
     <Content Include="Assets\Animations.png" />
     <Content Include="Assets\CalenderDatePicker.png" />
