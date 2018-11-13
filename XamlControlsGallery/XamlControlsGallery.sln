@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppUIBasics", "AppUIBasics.csproj", "{3F68773A-31A5-59FE-926C-0569E415C9D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlControlsGallery", "XamlControlsGallery.csproj", "{3F68773A-31A5-59FE-926C-0569E415C9D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
