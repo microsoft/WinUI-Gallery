@@ -11,5 +11,5 @@
 </Page.Resources>
 
 <Border x:Name="myImageBorder" BorderBrush="Transparent" BorderThickness="2">
-    <Image x:Name="Image1" Width="200" Height="200" Source="/Assets/rainier.jpg" PointerPressed="onMyPointerPressed" PointerReleased="OnMyPointerReleased" ContextFlyout="{x:Bind CommandBarFlyout1}"/>
+    <Image x:Name="Image1" Width="200" Height="200" Source="/Assets/SampleMedia/rainier.jpg" PointerPressed="onMyPointerPressed" PointerReleased="OnMyPointerReleased" ContextFlyout="{x:Bind CommandBarFlyout1}"/>
 </Border>

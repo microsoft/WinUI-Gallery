@@ -10,7 +10,7 @@
                 <Grid>
                     <ParallaxView x:Name="parallaxView" Source="{Binding ElementName=listView}"
                             VerticalAlignment="Top" HorizontalAlignment="Left" VerticalShift="500">
-                        <Image Source="ms-appx:///Assets/cliff.jpg" />
+                        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
                     </ParallaxView>
                     <ListView ItemsSource="{x:Bind Items}" x:Name="listView"
                               HorizontalAlignment="Stretch" VerticalAlignment="Top"
@@ -32,7 +32,7 @@
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
                     <Paragraph>&lt;Grid&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;ParallaxView Source="{Binding ElementName=listView}" VerticalShift="500"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Image Source="ms-appx:///Assets/cliff.jpg" /&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" /&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;/ParallaxView&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;ListView x:Name="listView" ItemsSource="{x:Bind Items}"&gt;</Paragraph>
                     <Paragraph TextIndent="24">&lt;ListView.Header&gt;</Paragraph>
@@ -40,7 +40,7 @@
                     <Paragraph TextIndent="48">&lt;ParallaxView Source="{x:Bind listView}" VerticalShift="100"</Paragraph>
                     <Paragraph TextIndent="72">VerticalSourceOffsetKind="Absolute" VerticalSourceStartOffset="-50"</Paragraph>
                     <Paragraph TextIndent="72">VerticalSourceEndOffset="250"&gt;</Paragraph>
-                    <Paragraph TextIndent="80">&lt;Image Source="ms-appx:///Assets/cliff.jpg" /&gt;</Paragraph>
+                    <Paragraph TextIndent="80">&lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" /&gt;</Paragraph>
                     <Paragraph TextIndent="60">&lt;/ParallaxView&gt;</Paragraph>
                     <Paragraph TextIndent="60">&lt;TextBlock Text="Scroll the list to see parallaxing of images" /&gt;</Paragraph>
                     <Paragraph TextIndent="36">&lt;/Grid&gt;</Paragraph>

@@ -21,7 +21,7 @@
             <ScrollViewer x:Name="Control1" Height="270" ZoomMode="Disabled" IsVerticalScrollChainingEnabled="True"
                     ManipulationCompleted="Control1_ManipulationCompleted" VerticalAlignment="Top"
                     HorizontalAlignment="Left">
-                <Image Source="ms-appx:///Assets/cliff.jpg" Stretch="None" HorizontalAlignment="Left"
+                <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="None" HorizontalAlignment="Left"
                         VerticalAlignment="Top" AutomationProperties.Name="cliff"/>
             </ScrollViewer>
 
@@ -115,7 +115,7 @@
                         VerticalScrollBarVisibility="
                         <Run Text="{x:Bind vsbvCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" /> " &gt;
                     </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Image Source="ms-appx:///Assets/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"</Paragraph>
+                    <Paragraph TextIndent="12">&lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"</Paragraph>
                     <Paragraph TextIndent="48">HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;</Paragraph>
                     <Paragraph>&lt;/ScrollViewer&gt;</Paragraph>
                 </RichTextBlock>
