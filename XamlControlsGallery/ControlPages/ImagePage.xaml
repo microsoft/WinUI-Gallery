@@ -5,11 +5,11 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A basic image from a local file.">
 
-            <Image Source="/Assets/treetops.jpg" Height="100" />
+            <Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" />
 
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Image Source="/Assets/treetops.jpg" Height="100" /&gt;</Paragraph>
+                    <Paragraph>&lt;Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" /&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -18,7 +18,7 @@
 
             <Image Height="100">
                 <Image.Source>
-                    <BitmapImage UriSource="/Assets/treetops.jpg" DecodePixelHeight="100" />
+                    <BitmapImage UriSource="/Assets/SampleMedia/treetops.jpg" DecodePixelHeight="100" />
                 </Image.Source>
             </Image>
 
@@ -27,11 +27,11 @@
                     <Paragraph>
                         <Run Text="&lt;Image Stretch=&quot;" />
                         <Run>None</Run>
-                        <Run Text="&quot; Height=&quot;100&quot; Width=&quot;100&quot; Source=&quot;/Assets/valley.jpg&quot; /&gt;" />
+                        <Run Text="&quot; Height=&quot;100&quot; Width=&quot;100&quot; Source=&quot;/Assets/SampleMedia/treetops.jpg&quot; /&gt;" />
                     </Paragraph>
                     <Paragraph>&lt;Image Height="100"&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;Image.Source&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;BitmapImage UriSource="/Assets/treetops.jpg"</Paragraph>
+                    <Paragraph TextIndent="24">&lt;BitmapImage UriSource="/Assets/SampleMedia/treetops.jpg"</Paragraph>
                     <Paragraph TextIndent="36">DecodePixelHeight="100" /&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;/Image.Source&gt;</Paragraph>
                     <Paragraph>&lt;/Image&gt;</Paragraph>
@@ -41,7 +41,7 @@
 
         <local:ControlExample x:Name="Example3" HeaderText="Image stretching.">
 
-            <Image x:Name="StretchImage" Stretch="None" Height="100" Width="100" Source="/Assets/valley.jpg" />
+            <Image x:Name="StretchImage" Stretch="None" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" />
 
             <local:ControlExample.Options>
                 <StackPanel>
@@ -57,7 +57,7 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph x:Name="StretchXaml">&lt;Image Stretch="<Run x:Name="StretchLabel">None</Run>" Height="100" Width="100" Source="/Assets/valley.jpg" /&gt;
+                    <Paragraph x:Name="StretchXaml">&lt;Image Stretch="<Run x:Name="StretchLabel">None</Run>" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" /&gt;
                     </Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>

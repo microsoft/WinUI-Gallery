@@ -6,12 +6,12 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A MediaPlayerElement with transport controls.">
             <local:ControlExample.Example>
-                <MediaPlayerElement Source="ms-appx:///Assets/ladybug.wmv" MaxWidth="400" AutoPlay="False"
+                <MediaPlayerElement Source="ms-appx:///Assets/SampleMedia/ladybug.wmv" MaxWidth="400" AutoPlay="False"
                         AreTransportControlsEnabled="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;MediaPlayerElement Source="/Assets/ladybug.wmv"</Paragraph>
+                    <Paragraph>&lt;MediaPlayerElement Source="/Assets/SampleMedia/ladybug.wmv"</Paragraph>
                     <Paragraph TextIndent="78">MaxWidth="400"</Paragraph>
                     <Paragraph TextIndent="78">AutoPlay="False"</Paragraph>
                     <Paragraph TextIndent="78">AreTransportControlsEnabled="True" /&gt;</Paragraph>
@@ -20,11 +20,11 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
             <local:ControlExample.Example>
-                <MediaElement Source="ms-appx:///Assets/fishes.wmv" MaxWidth="400" AutoPlay="True" />
+                <MediaElement Source="ms-appx:///Assets/SampleMedia/fishes.wmv" MaxWidth="400" AutoPlay="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;MediaPlayerElement Source="Assets/fishes.wmv"</Paragraph>
+                    <Paragraph>&lt;MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"</Paragraph>
                     <Paragraph TextIndent="78">MaxWidth="400"</Paragraph>
                     <Paragraph TextIndent="78">AutoPlay="True" /&gt;</Paragraph>
                 </RichTextBlock>
