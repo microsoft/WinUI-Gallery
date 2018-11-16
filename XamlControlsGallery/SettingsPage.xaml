@@ -65,15 +65,15 @@
                         This app is the interactive companion to the
                         <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>.
                         The source code to this app is available on
-                        <Hyperlink NavigateUri="https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics">
-                            https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics
+                        <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">
+                            https://github.com/Microsoft/Xaml-Controls-Gallery
                         </Hyperlink>.
                     </Paragraph>
                     <Paragraph Margin="0,10,0,0">
                         To clone the source repository:
                     </Paragraph>
                     <Paragraph Margin="20,10,0,10">
-                        git clone https://github.com/Microsoft/Windows-universal-samples -b dev
+                        git clone https://github.com/Microsoft/Xaml-Controls-Gallery
                     </Paragraph>
                     <Paragraph>
                         To contact the authors,
