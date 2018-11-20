@@ -100,8 +100,8 @@
         </local:ControlExample>
 
         <TextBlock Margin="0,16,0,0" TextWrapping="WrapWholeWords">
-            Note: Turning on <Bold>Reveal</Bold> focus will change the focus visuals that "UseSystemFocusVisuals" in the entire app.
-            Reveal focus should be used on Xbox only. Apps should use high visibility focus rectangles across other form factors.
+            <Bold>NOTE:</Bold> Choosing the <Bold>Reveal Focus</Bold> radio button will change the focus visuals that "UseSystemFocusVisuals" in the entire XAML Controls Gallery app.
+            Reveal focus should be used on Xbox only. Apps should use high visibility focus rectangles across all other form factors.
         </TextBlock>
 
         <local:ControlExample x:Name="Example2" HeaderText="Change the size of the focus rectangle." ActualThemeChanged="Example2_ActualThemeChanged">
@@ -173,13 +173,11 @@
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Slider x:Name="primarySlider" Header="Primary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="2"
-                            ValueChanged="Slider_ValueChanged"/>
-                    <Slider x:Name="secondarySlider" Header="Secondary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="1"
-                            ValueChanged="Slider_ValueChanged"/>
-                    <Slider x:Name="marginSlider" Header="Margin" MinWidth="50" Minimum="-20"  Maximum="20" Value="-3"
-                            ValueChanged="Slider_ValueChanged"/>
-                    <Button Content="Set margin" Click="Button_Click" Margin="0,10"/>
+                    <Slider x:Name="primarySlider" Header="Primary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="2"/>
+                    <Slider x:Name="secondarySlider" Header="Secondary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="1"/>
+                    <Slider x:Name="marginSlider" Header="Margin" MinWidth="50" Minimum="-20"  Maximum="20" Value="-3"/>
+                    <Button Content="Reset margin" Click="Button_Click" Margin="0,10"/>
+                    <Button Content="Move keyboard focus" Margin="0,24" Click="MoveFocusBtn_Click"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
