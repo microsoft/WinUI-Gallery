@@ -41,7 +41,6 @@ namespace AppUIBasics.ControlPages
                 primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
                 secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);
             }
-
         }
 
         // DEMO ONLY: Change focus visual mode to high visibility
@@ -62,7 +61,6 @@ namespace AppUIBasics.ControlPages
             primaryBrushRun.Text = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
             primaryColorRun.Text = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
-            exampleButton.Focus(FocusState.Keyboard);
         }
 
         // DEMO ONLY: Change focus visual mode to reveal focus
@@ -76,23 +74,13 @@ namespace AppUIBasics.ControlPages
                 primaryColorRun.Text = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
             }
-            exampleButton.Focus(FocusState.Keyboard);
         }
 
-        // DEMO ONLY: Set focus to button for better preview/demo of customization
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            exampleButton.Focus(FocusState.Keyboard);
-
             // Draw the focus visuals at the edge of the control
             // A negative FocusVisualMargin outsets the focus visual. A positive one insets the focus visual
             marginSlider.Value = -1 * (primarySlider.Value + secondarySlider.Value);
-        }
-
-        // DEMO ONLY: Set focus to button for better preview/demo of customization
-        private void Slider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-        {
-            exampleButton.Focus(FocusState.Keyboard);
         }
 
         private void confirmColor_Click(object sender, RoutedEventArgs e)
@@ -104,9 +92,6 @@ namespace AppUIBasics.ControlPages
             // DEMO ONLY: Close the Flyout.
             primaryColorPickerButton.Flyout.Hide();
             secondaryColorPickerButton.Flyout.Hide();
-
-            // DEMO ONLY: Set focus to button for better preview/demo of customization
-            exampleButton.Focus(FocusState.Keyboard);
         }
 
         /// <summary>
@@ -132,6 +117,12 @@ namespace AppUIBasics.ControlPages
                 myPrimaryColorPicker.Color = Colors.White;
                 mySecondaryColorPicker.Color = Colors.Black;
             }
+        }
+
+        private void MoveFocusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Set focus to button for better preview/demo of customization
+            exampleButton.Focus(FocusState.Keyboard);
         }
     }
 
