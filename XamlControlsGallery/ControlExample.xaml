@@ -82,7 +82,8 @@
                 x:Name="ExampleContainer"
                 x:FieldModifier="Public"
                 BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
-                BorderThickness="1">
+                BorderThickness="1"
+                Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
