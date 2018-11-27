@@ -35,5 +35,23 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private void RichTextBlock_IsTextTrimmedChanged(RichTextBlock sender, IsTextTrimmedChangedEventArgs args)
+        {
+            //this event fires as expected (which is to say always because this is the first column of a multi-column example
+            if (sender.IsTextTrimmed)
+            {
+                //do something
+            }
+        }
+
+        private void firstOverflowContainer_IsTextTrimmedChanged(RichTextBlockOverflow sender, IsTextTrimmedChangedEventArgs args)
+        {
+            //this event never fires for me
+            if (sender.IsTextTrimmed)
+            {
+                ColumnGrid.Height += 100;
+            }
+        }
     }
 }
