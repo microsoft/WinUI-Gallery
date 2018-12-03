@@ -100,7 +100,6 @@
             <Grid MinWidth="550" Height="400">
                 <ListView
                     x:Name="Control2"
-                    ItemsSource="{x:Bind ContactsCVS.View, Mode=OneWay}"
                     CanDragItems="True"
                     CanReorderItems="True"
                     AllowDrop="True"
@@ -110,7 +109,8 @@
 
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListView ItemsSource="{x:Bind Contacts}" SelectionMode="
+                    <Paragraph>&lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"</Paragraph>
+                    <Paragraph TextIndent="12">SelectionMode="
                         <Run Text="{x:Bind Control2.SelectionMode, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"/> "/&gt;
                     </Paragraph>
                 </RichTextBlock>
