@@ -29,6 +29,7 @@ namespace AppUIBasics.ControlPages
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            Control2.ItemsSource = await Contact.GetContactsAsync();
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
         }
@@ -37,8 +38,8 @@ namespace AppUIBasics.ControlPages
         {
             if (Control2 != null)
             {
-                string colorName = e.AddedItems[0].ToString();
-                switch (colorName)
+                string selectionMode = e.AddedItems[0].ToString();
+                switch (selectionMode)
                 {
                     case "None":
                         Control2.SelectionMode = ListViewSelectionMode.None;
