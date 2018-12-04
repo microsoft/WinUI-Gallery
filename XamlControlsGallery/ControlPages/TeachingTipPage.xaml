@@ -18,40 +18,62 @@
     <StackPanel HorizontalAlignment="Left">
         <local:ControlExample HeaderText="A button that shows a targeted TeachingTip">
             <local:ControlExample.Example>
-                <Button x:Name="Control1" Content="Empty cart">
-
-                    <!-- Code Sample -->
-                    
+                <Button x:Name="Control1" Content="Enable AutoSave">
+                    <!-- <muxc:TeachingTip.Attach>
+                        <muxc:TeachingTip 
+                            Title="We've Added Auto Saving!" 
+                            Subtitle="Documents will now automatically save to OneDrive.">
+                            <muxc:TeachingTip.Content>
+                                <Image Source="/Assets/AutoSave.jpg"">
+                            </muxc:TeachingTip.Content>
+                        </muxc:TeachingTip>
+                   </muxc:TeachingTip.Attach> -->
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Empty cart"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Button.TeachingTip&gt;</Paragraph>
-
-                        <!-- Code Sample -->
-
-                    <Paragraph TextIndent="12">&lt;/Button.TeachingTip&gt;</Paragraph>
+                    <Paragraph>&lt;Button Content="Enable AutoSave"&gt;</Paragraph>                 
+                    <Paragraph TextIndent="12">&lt;muxc:TeachingTip.Attach&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;muxc:TeachingTip</Paragraph>
+                    <Paragraph TextIndent="36">Title="We've Added Auto Saving!"</Paragraph>
+                    <Paragraph TextIndent="36">Subtitle="Documents will now automatically save to OneDrive."&gt;</Paragraph>
+                    <Paragraph TextIndent="36">&lt;muxc:TeachingTip.Content&gt;</Paragraph>
+                    <Paragraph TextIndent="48">&lt;Image Source="/Assets/AutoSave.jpg"&gt;</Paragraph>
+                    <Paragraph TextIndent="36">&lt;/muxc:TeachingTip.Content&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;/muxc:TeachingTip&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;/muxc:TeachingTip.Attach&gt;</Paragraph>
                     <Paragraph>&lt;/Button&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample HeaderText="A button that shows an untargeted light-dismiss TeachingTip">
             <local:ControlExample.Example>
-                <Button x:Name="Control2" Content="Empty cart">
-
-                    <!-- Code Sample -->
-                    
+                <Button x:Name="Control2" Content="Enable AutoSave">
+                   <!-- <muxc:TeachingTip.Attach>
+                      <muxc:TeachingTip 
+                         Title="We've Added Auto Saving!" 
+                         Subtitle="Documents will now automatically save to OneDrive."
+                         IsLightDismissEnabled="True">
+                         <muxc:TeachingTip.BleedingContent>
+                            <Image Source="/Assets/AutoSave.jpg"">
+                         </muxc:TeachingTip.BleedingContent>
+                      </muxc:TeachingTip>
+                   </muxc:TeachingTip.Attach> -->
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Empty cart"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Button.TeachingTip&gt;</Paragraph>
-
-                            <!-- Code Sample -->
-
-                    <Paragraph TextIndent="12">&lt;/Button.TeachingTip&gt;</Paragraph>
+                    <Paragraph>&lt;Button Content="Enable AutoSave"&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;muxc:TeachingTip.Attach&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;muxc:TeachingTip</Paragraph>
+                    <Paragraph TextIndent="36">Title="We've Added Auto Saving!"</Paragraph>
+                    <Paragraph TextIndent="36">Subtitle="Documents will now automatically save to OneDrive."</Paragraph>
+                    <Paragraph TextIndent="36">IsLightDismissEnabled="True”&gt;</Paragraph>
+                    <Paragraph TextIndent="36">&lt;muxc:TeachingTip.BleedingContent&gt;</Paragraph>
+                    <Paragraph TextIndent="48">&lt;Image Source="/Assets/AutoSave.jpg"&gt;</Paragraph>
+                    <Paragraph TextIndent="36">&lt;/muxc:TeachingTip.BleedingContent&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;/muxc:TeachingTip&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;/muxc:TeachingTip.Attach&gt;</Paragraph>
                     <Paragraph>&lt;/Button&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
