@@ -1,12 +1,15 @@
 # XAML Controls Gallery
 
-Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/en-us/windows/uwp/design/basics/).
+![Xaml Gallery Screenshot](README_Images/XamlGalleryLanding.png)
+
+Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/en-us/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Toolkit](https://docs.microsoft.com/en-us/uwp/toolkits/winui/) APIs. 
 
 This sample shows how to:
 
 - **Specify XAML controls in markup:** Each control page shows the markup used to create each example
 - **Basic layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
+- **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
 **Note** The Windows universal samples require Visual Studio 2017 to build and Windows 10 to execute.
  
@@ -31,44 +34,4 @@ Each control page in the application has links to the relevant MSDN documentatio
 [RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
 [Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
 [Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)  
-
-## System requirements
-
-**Client:** Windows 10
-
-**Server:** Windows Server 2016 Technical Preview
-
-**Phone:**  Windows 10
-
-## Build the sample
-
-1. If you download the samples ZIP, be sure to unzip the entire archive, not just the folder with the sample you want to build. 
-2. Start Microsoft Visual Studio 2017 and select **File** \> **Open** \> **Project/Solution**.
-3. Starting in the folder where you unzipped the samples, go to the Samples subfolder, then the subfolder for this specific sample, then the subfolder for your preferred language (C++, C#, or JavaScript). Double-click the Visual Studio Solution (.sln) file.
-4. Press Ctrl+Shift+B, or select **Build** \> **Build Solution**.
-
-## Run the sample
-
-The next steps depend on whether you just want to deploy the sample or you want to both deploy and run it.
-
-### Deploying the sample
-
-- Select Build > Deploy Solution. 
-
-### Deploying and running the sample
-
-- To debug the sample and then run it, press F5 or select Debug >  Start Debugging. To run the sample without debugging, press Ctrl+F5 or selectDebug > Start Without Debugging. 
-
-# Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
-
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+[Universal Windows Platform (UWP) Samples](https://github.com/Microsoft/Windows-universal-samples/tree/dev)
