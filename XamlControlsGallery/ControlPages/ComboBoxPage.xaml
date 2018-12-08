@@ -31,10 +31,10 @@
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
                     <Paragraph>&lt;ComboBox SelectionChanged="ColorComboBox_SelectionChanged" Header="Colors" PlaceholderText="Pick a color" Width="200"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Blue&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Green&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Red&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Yellow&lt;x:String&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;x:String&gt;Blue&lt;/x:String&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;x:String&gt;Green&lt;/x:String&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;x:String&gt;Red&lt;/x:String&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;x:String&gt;Yellow&lt;/x:String&gt;</Paragraph>
                     <Paragraph>&lt;/ComboBox&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
