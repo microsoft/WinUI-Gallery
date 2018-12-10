@@ -36,7 +36,7 @@
                               XamlSource="Text\RichEditBox\RichEditBoxSample2_xaml.txt"
                               HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <StackPanel>
-                <TextBlock Margin="0,0,0,10" Text="Prefix an entry with an at-sign (@) symbol to see a list of people and place suggestions that matches the entry."/>
+                <TextBlock Margin="0,0,0,10" Text="Prefix an entry with an at-sign (@) symbol to see a list of people and place suggestions that matches the entry." TextWrapping="WrapWholeWords"/>
                 <RichEditBox Height="200">
                     <contract6Present:RichEditBox.ContentLinkProviders>
                         <contract6Present:ContentLinkProviderCollection>
