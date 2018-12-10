@@ -261,8 +261,8 @@
                     <CheckBox x:Name="paneFooterCheck" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
                     <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton Content="Left" IsChecked="True" Click="panePositionLeft_Click"/>
-                    <RadioButton Content="Top" Click="panePositionTop_Click" Margin="0,0,0,12"/>
+                    <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
+                    <RadioButton Content="Top" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
 
                     <CheckBox x:Name="sffCheck" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>
                     <CheckBox x:Name="suppressselectionCheck_Checked" Content="Selection of Menu Item2 suppressed" IsChecked="False" Click="suppressselectionCheck_Checked_Click"/>

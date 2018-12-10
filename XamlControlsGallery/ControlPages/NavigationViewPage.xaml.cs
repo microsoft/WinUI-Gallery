@@ -262,18 +262,25 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void panePositionLeft_Click(object sender, RoutedEventArgs e)
+        private void panePositionLeft_Checked(object sender, RoutedEventArgs e)
         {
-            nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
-            nvSample.IsPaneOpen = true;
-            FooterStackPanel.Orientation = Orientation.Vertical;
+            if ((sender as RadioButton).IsChecked == true && nvSample != null)
+            {
+                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample.IsPaneOpen = true;
+                FooterStackPanel.Orientation = Orientation.Vertical;
+            }
         }
 
-        private void panePositionTop_Click(object sender, RoutedEventArgs e)
+
+        private void panePositionTop_Checked(object sender, RoutedEventArgs e)
         {
-            nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
-            nvSample.IsPaneOpen = false;
-            FooterStackPanel.Orientation = Orientation.Horizontal;
+            if ((sender as RadioButton).IsChecked == true && nvSample != null)
+            {
+                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample.IsPaneOpen = false;
+                FooterStackPanel.Orientation = Orientation.Horizontal;
+            }
         }
 
         private void sffCheck_Click(object sender, RoutedEventArgs e)
