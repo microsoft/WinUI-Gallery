@@ -225,6 +225,7 @@
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
