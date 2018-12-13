@@ -1,3 +1,12 @@
+---
+topic: sample
+languages:
+- csharp
+products:
+- windows
+- uwp
+---
+
 # XAML Controls Gallery
 
 ![Xaml Gallery Screenshot](README_Images/XamlGalleryLanding.PNG)
