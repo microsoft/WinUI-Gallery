@@ -16,6 +16,7 @@ using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using AppUIBasics.Data;
+using Windows.UI.Xaml.Automation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -230,7 +231,9 @@ namespace AppUIBasics.ControlPages
         {
             if ((sender as CheckBox).IsChecked == true)
             {
-                nvSample.AutoSuggestBox = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
+                AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
+                asb.SetValue(AutomationProperties.NameProperty, "search");
+                nvSample.AutoSuggestBox = asb;
             }
             else
             {
