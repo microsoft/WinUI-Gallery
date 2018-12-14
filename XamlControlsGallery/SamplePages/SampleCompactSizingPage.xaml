@@ -32,7 +32,7 @@
             <TextBox Header="Last Name:" x:Name="txtLastName"  />
             <PasswordBox Header="Password:" />
             <PasswordBox Header="Confirm Password:" />
-            <ComboBox Header="State:">
+            <ComboBox Header="State:" AutomationProperties.Name="State">
                 <ComboBoxItem Content="Alabama" />
                 <ComboBoxItem Content="Alaska" />
                 <ComboBoxItem Content="Arizona" />
