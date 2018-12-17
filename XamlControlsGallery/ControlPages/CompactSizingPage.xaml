@@ -35,10 +35,10 @@
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
                     <Paragraph>&lt;Application.Resources&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ResourceDictionary/&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;ResourceDictionary&gt;</Paragraph>
                     <Paragraph TextIndent="24">&lt;ResourceDictionary.MergedDictionaries&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;ResourceDictionary Source="CompactSize.xaml"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ResourceDictionary.MergedDictionaries/&gt;</Paragraph>
+                    <Paragraph TextIndent="36">&lt;ResourceDictionary Source="CompactSize.xaml"/&gt;</Paragraph>
+                    <Paragraph TextIndent="24">&lt;/ResourceDictionary.MergedDictionaries&gt;</Paragraph>
                     <Paragraph TextIndent="12">&lt;/ResourceDictionary&gt;</Paragraph>
                     <Paragraph>&lt;/Application.Resources&gt;</Paragraph>
                 </RichTextBlock>
