@@ -20,19 +20,16 @@
                 <VisualState x:Name="Red">
                     <VisualState.Setters>
                         <Setter Target="splitView.PaneBackground" Value="Red" />
-                        <Setter Target="PaneBackgroundRun.Text" Value="Red" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Blue">
                     <VisualState.Setters>
                         <Setter Target="splitView.PaneBackground" Value="Blue" />
-                        <Setter Target="PaneBackgroundRun.Text" Value="Blue" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Green">
                     <VisualState.Setters>
                         <Setter Target="splitView.PaneBackground" Value="Green" />
-                        <Setter Target="PaneBackgroundRun.Text" Value="Green" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -95,10 +92,10 @@
 
                     <ComboBox x:Name="paneBackgroundCombobox" Width="196" SelectedIndex="0" VerticalAlignment="Center"
                         Header="PaneBackground" Margin="0,12,0,0" SelectionChanged="paneBackgroundCombobox_SelectionChanged">
-                        <ComboBoxItem>SystemControlBackgroundChromeMediumLowBrush</ComboBoxItem>
-                        <ComboBoxItem>Red</ComboBoxItem>
-                        <ComboBoxItem>Blue</ComboBoxItem>
-                        <ComboBoxItem>Green</ComboBoxItem>
+                        <ComboBoxItem Tag="{}{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">SystemControlBackgroundChromeMediumLowBrush</ComboBoxItem>
+                        <ComboBoxItem Tag="Red">Red</ComboBoxItem>
+                        <ComboBoxItem Tag="Blue">Blue</ComboBoxItem>
+                        <ComboBoxItem Tag="Green">Green</ComboBoxItem>
                     </ComboBox>
 
                     <Slider x:Name="openPaneLengthSlider" Header="OpenPaneLength" Value="256" Minimum="128" Maximum="500"
@@ -110,42 +107,47 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;SplitView x:Name="splitView" PaneBackground="<Run x:Name="PaneBackgroundRun" Text="{}{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />"
-                        IsPaneOpen="<Run Text="{x:Bind splitView.IsPaneOpen, Mode=OneWay, Converter={StaticResource valueToStringConverter}}" />"
-                        OpenPaneLength="<Run Text="{x:Bind openPaneLengthSlider.Value, Mode=OneWay, Converter={StaticResource valueToStringConverter}}" />"
-                        CompactPaneLength="<Run Text="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay, Converter={StaticResource valueToStringConverter}}" />"
-                        DisplayMode="<Run Text="{x:Bind splitView.DisplayMode, Mode=OneWay, Converter={StaticResource valueToStringConverter}}" />"&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;SplitView.Pane&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Grid&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;RowDefinition Height="Auto"/&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;RowDefinition Height="*"/&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;RowDefinition Height="Auto"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;/Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;TextBlock Text="PANE CONTENT" x:Name="PaneHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;ListView x:Name="NavLinksList" Margin="0,12,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"</Paragraph>
-                    <Paragraph TextIndent="60">ItemClick="NavLinksList_ItemClick" IsItemClickEnabled="True"</Paragraph>
-                    <Paragraph TextIndent="60">ItemsSource="{x:Bind NavLinks}" ItemTemplate="{StaticResource NavLinkItemTemplate}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;StackPanel Orientation="Horizontal" Grid.Row="2" Margin="14,24,0,24" &gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;SymbolIcon Symbol="Setting" /&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;TextBlock Text="Settings" Margin="24,0,0,0" VerticalAlignment="Center"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/Grid&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/SplitView.Pane&gt;</Paragraph>
-                    <Paragraph TextIndent="3"></Paragraph>
-                    <Paragraph TextIndent="12">&lt;Grid&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;RowDefinition Height="Auto"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;RowDefinition Height="*"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Grid&gt;</Paragraph>
-                    <Paragraph>&lt;/SplitView&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;SplitView x:Name="splitView" PaneBackground="$(PaneBackground)"
+           IsPaneOpen="$(IsPaneOpen)" OpenPaneLength="$(OpenPaneLength)" CompactPaneLength="$(CompactPaneLength)" DisplayMode="$(DisplayMode)"&gt;
+    &lt;SplitView.Pane&gt;
+        &lt;Grid&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height="Auto"/&gt;
+                &lt;RowDefinition Height="*"/&gt;
+                &lt;RowDefinition Height="Auto"/&gt;
+            &lt;/Grid.RowDefinitions&gt;
+            &lt;TextBlock Text="PANE CONTENT" x:Name="PaneHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;
+            &lt;ListView x:Name="NavLinksList" Margin="0,12,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
+                    ItemClick="NavLinksList_ItemClick" IsItemClickEnabled="True"
+                    ItemsSource="{x:Bind NavLinks}" ItemTemplate="{StaticResource NavLinkItemTemplate}"/&gt;
+            &lt;StackPanel Orientation="Horizontal" Grid.Row="2" Margin="14,24,0,24" &gt;
+                &lt;SymbolIcon Symbol="Setting" /&gt;
+                &lt;TextBlock Text="Settings" Margin="24,0,0,0" VerticalAlignment="Center"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Grid&gt;
+    &lt;/SplitView.Pane&gt;
+ 
+    &lt;Grid&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height="Auto"/&gt;
+            &lt;RowDefinition Height="*"/&gt;
+        &lt;/Grid.RowDefinitions&gt;
+        &lt;TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;
+        &lt;TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" /&gt;
+    &lt;/Grid&gt;
+&lt;/SplitView&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="PaneBackground" Value="{x:Bind paneBackgroundCombobox.SelectedItem.(ComboBoxItem.Tag), Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="IsPaneOpen" Value="{x:Bind splitView.IsPaneOpen, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="OpenPaneLength" Value="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="CompactPaneLength" Value="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="DisplayMode" Value="{x:Bind splitView.DisplayMode, Mode=OneWay}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

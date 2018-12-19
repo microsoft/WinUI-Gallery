@@ -10,18 +10,64 @@
 using ColorCode;
 using ColorCode.Common;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 
 namespace AppUIBasics
 {
-    [ContentProperty(Name="Example")]
+    /// <summary>
+    /// Describes a textual substitution in sample content.
+    /// All appearances of $(Key) are replaced with ValueAsString().
+    /// </summary>
+    public sealed class ControlExampleSubstitution : DependencyObject
+    {
+        public event TypedEventHandler<ControlExampleSubstitution, object> ValueChanged;
+
+        public string Key { get; set; }
+
+        private object _value = null;
+        public object Value
+        {
+            get { return _value; }
+            set
+            {
+                _value = value;
+                ValueChanged?.Invoke(this, null);
+            }
+        }
+
+        public string ValueAsString()
+        {
+            object value = Value;
+
+            // For solid color brushes, use the underlying color.
+            if (value is SolidColorBrush)
+            {
+                value = ((SolidColorBrush)value).Color;
+            }
+
+            if (value == null)
+            {
+                return string.Empty;
+            }
+            
+            return value.ToString();
+        }
+    }
+
+    public sealed class ControlExampleSubstitutionCollection : List<ControlExampleSubstitution>
+    {
+    }
+
+    [ContentProperty(Name = "Example")]
     public sealed partial class ControlExample : UserControl
     {
         public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
@@ -45,10 +91,10 @@ namespace AppUIBasics
             set { SetValue(OptionsProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public object Xaml
+        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public string Xaml
         {
-            get { return GetValue(XamlProperty); }
+            get { return (string)GetValue(XamlProperty); }
             set { SetValue(XamlProperty, value); }
         }
 
@@ -59,11 +105,27 @@ namespace AppUIBasics
             set { SetValue(XamlSourceProperty, value); }
         }
 
+        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public string CSharp
+        {
+            get { return (string)GetValue(CSharpProperty); }
+            set { SetValue(CSharpProperty, value); }
+        }
+
         public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
         public Uri CSharpSource
         {
             get { return (Uri)GetValue(CSharpSourceProperty); }
             set { SetValue(CSharpSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty SubstitutionsProperty =
+            DependencyProperty.Register("Substitutions", typeof(ControlExampleSubstitutionCollection), typeof(ControlExample),
+                PropertyMetadata.Create(() => new ControlExampleSubstitutionCollection()));
+        public ControlExampleSubstitutionCollection Substitutions
+        {
+            get { return (ControlExampleSubstitutionCollection)GetValue(SubstitutionsProperty); }
+            set { SetValue(SubstitutionsProperty, value); }
         }
 
         public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength(1, GridUnitType.Star)));
@@ -108,8 +170,12 @@ namespace AppUIBasics
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            if ((ushort)MinimumUniversalAPIContract == 0) return;
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", (ushort)MinimumUniversalAPIContract)))
+            foreach (var substitution in Substitutions)
+            {
+                substitution.ValueChanged += OnValueChanged;
+            }
+
+            if (MinimumUniversalAPIContract != 0 && !(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", (ushort)MinimumUniversalAPIContract)))
             {
                 ErrorTextBlock.Visibility = Visibility.Visible;
             }
@@ -134,33 +200,39 @@ namespace AppUIBasics
 
         private void XamlPresenter_Loaded(object sender, RoutedEventArgs e)
         {
-            // Convert existing samples that use the Xaml property
-            if (Xaml != null && (Xaml as RichTextBlock) != null)
-            {
-                var sampleString = GetStringFromRichTextBlock((Xaml as RichTextBlock));
-
-                FormatAndRenderSampleFromString(sampleString, (sender as ContentPresenter), SyntaxHighlightLanguage.Xml);
-            }
-            else
-            {
-                FormatAndRenderSampleFromFile(XamlSource, (sender as ContentPresenter), SyntaxHighlightLanguage.Xml);
-            }
+            GenerateSyntaxHighlightedContent(sender as ContentPresenter, Xaml as string, XamlSource, Languages.Xml);
         }
 
         private void CSharpPresenter_Loaded(object sender, RoutedEventArgs e)
         {
-            FormatAndRenderSampleFromFile(CSharpSource, (sender as ContentPresenter), SyntaxHighlightLanguage.CSharp);
+            GenerateSyntaxHighlightedContent(sender as ContentPresenter, CSharp, CSharpSource, Languages.CSharp);
         }
 
-        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, SyntaxHighlightLanguage highlightLanguage)
+        private void GenerateAllSyntaxHighlightedContent()
+        {
+            GenerateSyntaxHighlightedContent(XamlPresenter, Xaml as string, XamlSource, Languages.Xml);
+            GenerateSyntaxHighlightedContent(CSharpPresenter, CSharp, CSharpSource, Languages.CSharp);
+        }
+
+        private void GenerateSyntaxHighlightedContent(ContentPresenter presenter, string sampleString, Uri sampleUri, ILanguage highlightLanguage)
+        {
+            if (!String.IsNullOrEmpty(sampleString))
+            {
+                FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
+            }
+            else
+            {
+                FormatAndRenderSampleFromFile(sampleUri, presenter, highlightLanguage);
+            }
+        }
+
+        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, ILanguage highlightLanguage)
         {
             if (source != null && source.AbsolutePath.EndsWith("txt"))
             {
-                string sampleString = "";
-
                 Uri derivedSource = GetDerivedSource(source);
                 var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
-                sampleString = await FileIO.ReadTextAsync(file);
+                string sampleString = await FileIO.ReadTextAsync(file);
 
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
@@ -170,15 +242,30 @@ namespace AppUIBasics
             }
         }
 
-        private void FormatAndRenderSampleFromString(String sampleString, ContentPresenter presenter, SyntaxHighlightLanguage HighlightLanguage)
+        private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+        private void FormatAndRenderSampleFromString(String sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
         {
-            var language = (HighlightLanguage == SyntaxHighlightLanguage.CSharp) ? Languages.CSharp : Languages.Xml;
+            // Trim out stray blank lines at start and end.
+            sampleString = sampleString.TrimStart('\n').TrimEnd();
+
+            // Perform any applicable substitutions.
+            sampleString = SubstitutionPattern.Replace(sampleString, match =>
+            {
+                foreach (var substitution in Substitutions)
+                {
+                    if (substitution.Key == match.Groups[1].Value)
+                    {
+                        return substitution.ValueAsString();
+                    }
+                }
+                throw new KeyNotFoundException(match.Groups[1].Value);
+            });
 
             var sampleCodeRTB = new RichTextBlock();
             sampleCodeRTB.FontFamily = new FontFamily("Consolas");
 
             var formatter = GenerateRichTextFormatter();
-            formatter.FormatRichTextBlock(sampleString, language, sampleCodeRTB);
+            formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
             presenter.Content = sampleCodeRTB;
         }
 
@@ -241,44 +328,12 @@ namespace AppUIBasics
             // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
             // Therefore we need to re-format the REB to use the correct colors. 
 
-            XamlPresenter_Loaded(null, null);
+            GenerateAllSyntaxHighlightedContent();
         }
 
-        private string GetStringFromRichTextBlock(RichTextBlock RTB)
+        private void OnValueChanged(ControlExampleSubstitution sender, object e)
         {
-            var text = "";
-            var blocks = RTB.Blocks;
-            foreach (Block b in blocks)
-            {
-                var inlines = (b as Paragraph).Inlines;
-
-                // Convert each TextIndent into a series of spaces.
-                for (int i = 0; i < (b as Paragraph).TextIndent / 4; i++)
-                {
-                    text += " ";
-                }
-
-                foreach (Inline i in inlines)
-                {
-                    if (i as Run != null)
-                    {
-                        text += (i as Run).Text;
-                    }
-                    else
-                    {
-                        foreach (Inline i2 in (i as Span).Inlines)
-                        {
-                            if (i2 as Run != null)
-                            {
-                                text += (i2 as Run).Text;
-                            }
-                        }
-                    }
-                }
-
-                text += "\r\n";
-            }
-            return text;
+            GenerateAllSyntaxHighlightedContent();
         }
     }
 }

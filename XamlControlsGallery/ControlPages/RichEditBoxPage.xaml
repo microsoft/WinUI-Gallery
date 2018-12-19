@@ -25,9 +25,9 @@
         <local:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <RichEditBox />
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RichEditBox x:Name="editor" Height="200"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;RichEditBox x:Name="editor" Height="200"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 

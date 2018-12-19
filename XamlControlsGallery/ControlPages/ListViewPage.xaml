@@ -108,13 +108,16 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"</Paragraph>
-                    <Paragraph TextIndent="12">SelectionMode="
-                        <Run Text="{x:Bind Control2.SelectionMode, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"/> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"
+    SelectionMode="$(SelectionMode)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A ListView with Grouped Headers">
@@ -156,6 +159,7 @@
                 </ListView>
             </Grid>
 
+            <!--
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
                     <Paragraph>&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;</Paragraph>
@@ -169,6 +173,7 @@
                     <Paragraph>&lt;ListView/&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
+            -->
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A ListView with Grouped Sticky Headers">
@@ -205,17 +210,17 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;</Paragraph>
-                    <Paragraph />
-                    <Paragraph>&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemsPanel/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ItemsPanelTemplate/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;ItemsStackPanel AreStickyGroupHeadersEnabled="True"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ItemsPanelTemplate /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemsPanel/&gt;</Paragraph>
-                    <Paragraph>&lt;ListView/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
+
+&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;
+    &lt;ListView.ItemsPanel/&gt;
+        &lt;ItemsPanelTemplate/&gt;
+            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="True"/&gt;
+        &lt;ItemsPanelTemplate /&gt;
+    &lt;ListView.ItemsPanel/&gt;
+&lt;ListView/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -261,12 +266,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap">
+                    Refer to the DataTemplate on the ListViewPage.xaml page to get this visual of Images in a list.
+                </TextBlock>
             </Grid>
-            <local:ControlExample.Xaml>
-                <RichTextBlock TextWrapping="WrapWholeWords">
-                    <Paragraph>Refer to the DataTemplate on the ListViewPage.xaml page to get this visual of Images in a list</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>

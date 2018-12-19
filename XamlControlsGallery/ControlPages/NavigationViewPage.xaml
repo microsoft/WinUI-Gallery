@@ -9,8 +9,6 @@
         mc:Ignorable="d">
     <Page.Resources>
         <converters:BooleanNegationConverter x:Key="NotConverter"/>
-        <converters:BooleanNegationToBackButtonVisibilityConverter x:Key="BooleanNegationToBackVisibilityConverter" />
-        <converters:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
 
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>

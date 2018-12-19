@@ -23,11 +23,11 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CheckBox Content="Two-state CheckBox"</Paragraph>
-                    <Paragraph TextIndent="24">Checked="Control1_Checked"</Paragraph>
-                    <Paragraph TextIndent="24">Unchecked="Control1_Unchecked" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;CheckBox Content="Two-state CheckBox"
+          Checked="Control1_Checked"
+          Unchecked="Control1_Unchecked" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A 3-state CheckBox." RelativePanel.Below="Example1">
@@ -39,13 +39,13 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CheckBox Content="Two-state CheckBox"</Paragraph>
-                    <Paragraph TextIndent="24">IsThreeState="True"</Paragraph>
-                    <Paragraph TextIndent="24">Checked="Control2_Checked"</Paragraph>
-                    <Paragraph TextIndent="24">Unchecked="Control2_Unchecked"</Paragraph>
-                    <Paragraph TextIndent="24">Indeterminate="Control2_Indeterminate" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;CheckBox Content="Two-state CheckBox"
+          IsThreeState="True"
+          Checked="Control2_Checked"
+          Unchecked="Control2_Unchecked"
+          Indeterminate="Control2_Indeterminate" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Using a 3-state CheckBox." RelativePanel.Below="Example2">
@@ -63,15 +63,16 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
-                              Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked" Indeterminate="SelectAll_Indeterminate" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" IsChecked="True" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;</Paragraph>
-                    <Paragraph>&lt;/StackPanel&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
+              Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked"
+              Indeterminate="SelectAll_Indeterminate" /&gt;
+    &lt;CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
+    &lt;CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" IsChecked="True" /&gt;
+    &lt;CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

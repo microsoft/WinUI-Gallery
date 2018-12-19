@@ -46,18 +46,22 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Canvas Width="120" Height="120" Background="Gray"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Red" Canvas.Left="<Run Text="{x:Bind LeftSlider.Value, Mode=OneWay}" />"
-                                Canvas.Top="<Run Text="{x:Bind TopSlider.Value, Mode=OneWay}" />"
-                                Canvas.ZIndex="<Run Text="{x:Bind ZSlider.Value, Mode=OneWay}" />" /&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Blue" Canvas.Left="20" Canvas.Top="20" Canvas.ZIndex="1" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Green" Canvas.Left="40" Canvas.Top="40" Canvas.ZIndex="2" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" /&gt;</Paragraph>
-                    <Paragraph>&lt;/Canvas&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Canvas Width="120" Height="120" Background="Gray"&gt;
+    &lt;Rectangle Fill="Red" Canvas.Left="$(Left)" Canvas.Top="$(Top)" Canvas.ZIndex="$(Z)" /&gt;
+    &lt;Rectangle Fill="Blue" Canvas.Left="20" Canvas.Top="20" Canvas.ZIndex="1" /&gt;
+    &lt;Rectangle Fill="Green" Canvas.Left="40" Canvas.Top="40" Canvas.ZIndex="2" /&gt;
+    &lt;Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" /&gt;
+&lt;/Canvas&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

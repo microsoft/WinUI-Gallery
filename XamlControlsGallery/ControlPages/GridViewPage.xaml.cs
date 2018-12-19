@@ -38,7 +38,7 @@ namespace AppUIBasics.ControlPages
         {
             var template = (sender as FrameworkElement).Tag.ToString();
             Control1.ItemTemplate = (DataTemplate)this.Resources[template];
-            itemTemplate.Text = template;
+            itemTemplate.Value = template;
         }
 
         private void Control1_SelectionChanged(object sender, SelectionChangedEventArgs e)

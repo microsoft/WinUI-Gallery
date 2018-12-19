@@ -242,15 +242,12 @@
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
-    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\Category.cs" />
-    <Compile Include="Common\ColorStringConverter.cs" />
     <Compile Include="Common\ColorToBrushConverter.cs" />
     <Compile Include="Common\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\DoubleToIntConverter.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
-    <Compile Include="Common\ShowAcrylicBehindHeaderConverter.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />

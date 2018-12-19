@@ -58,8 +58,8 @@ namespace AppUIBasics.ControlPages
             }
 
             primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-            primaryBrushRun.Text = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
-            primaryColorRun.Text = "SystemControlFocusVisualPrimaryBrush";
+            primaryBrushText.Value = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
+            primaryColorKeyText.Value = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
         }
 
@@ -70,8 +70,8 @@ namespace AppUIBasics.ControlPages
             {
                 myPrimaryColorPicker.Color = (this.Resources["SystemControlRevealFocusVisualBrush"] as SolidColorBrush).Color;
                 primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-                primaryBrushRun.Text = "{StaticResource SystemControlRevealFocusVisualBrush}";
-                primaryColorRun.Text = "SystemControlRevealFocusVisualBrush";
+                primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
+                primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
             }
         }

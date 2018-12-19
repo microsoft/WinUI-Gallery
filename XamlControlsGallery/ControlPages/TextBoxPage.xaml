@@ -17,9 +17,9 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple TextBox.">
             <TextBox AutomationProperties.Name="simple TextBox"/>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBox AutomationProperties.Name="simple TextBox"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;TextBox AutomationProperties.Name="simple TextBox"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A TextBox with a header and placeholder text.">
@@ -27,11 +27,9 @@
                 <TextBox Header="Enter your name:" PlaceholderText="Name" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBlock
-                        <Bold>Header="Enter your name:" PlaceholderText="Name"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;TextBlock Header="Enter your name:" PlaceholderText="Name" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A read-only TextBox with various properties set.">
@@ -39,30 +37,22 @@
                      FontStyle="Italic" CharacterSpacing="200" Foreground="CornflowerBlue" 
                      AutomationProperties.Name="customized TextBox"/>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBox Text="I am super excited to be here!"</Paragraph>
-                    <Paragraph TextIndent="12"> AutomationProperties.Name="customized TextBox"
-                        <Bold>IsReadOnly="True"</Bold>
-                    </Paragraph>
-                    <Paragraph TextIndent="12">
-                        <Bold>FontFamily="Arial" FontSize="24" FontStyle="Italic"</Bold>
-                    </Paragraph>
-                    <Paragraph TextIndent="12">
-                        <Bold>CharacterSpacing="200" Foreground="CornflowerBlue"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;TextBox Text="I am super excited to be here!"
+    AutomationProperties.Name="customized TextBox" IsReadOnly="True"
+    FontFamily="Arial" FontSize="24" FontStyle="Italic"
+    CharacterSpacing="200" Foreground="CornflowerBlue" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="A multi-line TextBox with spell checking and custom selection highlight color.">
             <TextBox TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" SelectionHighlightColor="Green" 
                      AutomationProperties.Name="multi-line TextBox"/>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBox AutomationProperties.Name="multi-line TextBox"</Paragraph>
-                    <Paragraph TextIndent="12">
-                        <Bold>TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" SelectionHighlightColor="Green"</Bold> &gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;TextBox AutomationProperties.Name="multi-line TextBox"
+    TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" SelectionHighlightColor="Green" &gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

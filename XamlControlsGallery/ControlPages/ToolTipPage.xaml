@@ -24,9 +24,9 @@
                 <Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -39,13 +39,13 @@
                 </TextBlock>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBlock Text="TextBlock with an offset ToolTip."/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ToolTipService.ToolTip/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ToolTip Content="Offset ToolTip." HorizontalOffset="100" VerticalOffset="-80"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ToolTipService.ToolTip/&gt;</Paragraph>
-                    <Paragraph>&lt;/TextBlock&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;TextBlock Text="TextBlock with an offset ToolTip."/&gt;
+    &lt;ToolTipService.ToolTip/&gt;
+        &lt;ToolTip Content="Offset ToolTip." HorizontalOffset="100" VerticalOffset="-80"/&gt;
+    &lt;/ToolTipService.ToolTip/&gt;
+&lt;/TextBlock&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

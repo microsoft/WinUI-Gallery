@@ -39,16 +39,16 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Storyboard x:Name="Storyboard1"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="36" FontWeight="Bold">&lt;CircleEase EasingMode="EaseInOut" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/DoubleAnimation&gt;</Paragraph>
-                    <Paragraph>&lt;/Storyboard&gt;</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Storyboard x:Name="Storyboard1"&gt;
+    &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
+        &lt;DoubleAnimation.EasingFunction&gt;
+            &lt;CircleEase EasingMode="EaseInOut" /&gt;
+        &lt;/DoubleAnimation.EasingFunction&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+                </x:String>
+</local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="Accelerate Easing Function">
@@ -75,15 +75,15 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Storyboard x:Name="Storyboard2"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="36" FontWeight="Bold">&lt;ExponentialEase Exponent="4.5" EasingMode="EaseIn" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/DoubleAnimation&gt;</Paragraph>
-                    <Paragraph>&lt;/Storyboard&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Storyboard x:Name="Storyboard2"&gt;
+    &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
+        &lt;DoubleAnimation.EasingFunction&gt;
+            &lt;ExponentialEase Exponent="4.5" EasingMode="EaseIn" /&gt;
+        &lt;/DoubleAnimation.EasingFunction&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -111,15 +111,15 @@
                 </Rectangle>
             </Grid>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}" >
-                    <Paragraph>&lt;Storyboard x:Name="Storyboard3"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="36" FontWeight="Bold">&lt;ExponentialEase Exponent="7" EasingMode="EaseOut" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/DoubleAnimation&gt;</Paragraph>
-                    <Paragraph>&lt;/Storyboard&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Storyboard x:Name="Storyboard3"&gt;
+    &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
+        &lt;DoubleAnimation.EasingFunction&gt;
+            &lt;ExponentialEase Exponent="7" EasingMode="EaseOut" /&gt;
+        &lt;/DoubleAnimation.EasingFunction&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -154,17 +154,21 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Storyboard x:Name="Storyboard3"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="36" FontWeight="Bold">&lt;
-                        <Run Text="{x:Bind EasingComboBox.SelectedItem, Mode=OneWay, Converter={StaticResource comboBoxItemToStringConverter}}" /> /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DoubleAnimation.EasingFunction&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/DoubleAnimation&gt;</Paragraph>
-                    <Paragraph>&lt;/Storyboard&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Storyboard x:Name="Storyboard3"&gt;
+    &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
+        &lt;DoubleAnimation.EasingFunction&gt;
+            &lt;$(EasingFunction)/&gt;
+        &lt;/DoubleAnimation.EasingFunction&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="EasingFunction" Value="{x:Bind EasingComboBox.SelectedItem, Mode=OneWay, Converter={StaticResource comboBoxItemToStringConverter}}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

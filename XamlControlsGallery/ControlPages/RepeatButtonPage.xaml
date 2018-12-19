@@ -30,9 +30,9 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RepeatButton Content="Click and hold" Click="RepeatButton_Click" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;RepeatButton Content="Click and hold" Click="RepeatButton_Click" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

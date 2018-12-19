@@ -83,8 +83,8 @@ namespace AppUIBasics.ControlPages
             repeater.ViewGenerator = Resources[elementGeneratorKey] as Microsoft.UI.Xaml.Controls.ViewGenerator;
             repeater.ItemsSource = BarItems;
 
-            layout.Text = layoutKey;
-            elementGenerator.Text = itemTemplateKey;
+            layout.Value = layoutKey;
+            elementGenerator.Value = itemTemplateKey;
 
             isHorizontal = !isHorizontal;
         }
@@ -105,7 +105,7 @@ namespace AppUIBasics.ControlPages
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 elementGeneratorKey = "HorizontalElementGenerator";
                 itemTemplateKey = "HorizontalBarTemplate";
 
@@ -113,7 +113,7 @@ namespace AppUIBasics.ControlPages
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 elementGeneratorKey = "VerticalElementGenerator";
                 itemTemplateKey = "VerticalBarTemplate";
 
@@ -121,7 +121,7 @@ namespace AppUIBasics.ControlPages
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 elementGeneratorKey = "CircularElementGenerator";
                 itemTemplateKey = "CircularTemplate";
 
@@ -132,7 +132,7 @@ namespace AppUIBasics.ControlPages
             repeater.ViewGenerator = Resources[elementGeneratorKey] as Microsoft.UI.Xaml.Controls.ViewGenerator;
             repeater.ItemsSource = BarItems;
 
-            elementGenerator.Text = itemTemplateKey;
+            elementGenerator.Value = itemTemplateKey;
         }
 
         private void GridViewGenerator_SelectTemplateKey(Microsoft.UI.Xaml.Controls.RecyclingViewGenerator sender, Microsoft.UI.Xaml.Controls.SelectTemplateEventArgs args)

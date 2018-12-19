@@ -37,22 +37,26 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ColorPicker</Paragraph>
-                    <Paragraph TextIndent="24">IsColorSliderVisible="<Run Text="{x:Bind colorSlider.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">IsColorChannelTextInputVisible="<Run Text="{x:Bind colorChannelInput.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">IsHexInputVisible="<Run Text="{x:Bind hexInput.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">IsAlphaEnabled="<Run Text="{x:Bind alpha.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">IsAlphaSliderVisible="<Run Text="{x:Bind alphaSlider.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">IsAlphaTextInputVisible="<Run Text="{x:Bind alphaTextInput.IsChecked, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"></Run>" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ColorPicker
+      IsColorSliderVisible="$(IsColorSliderVisible)"
+      IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
+      IsHexInputVisible="$(IsHexInputVisible)"
+      IsAlphaEnabled="$(IsAlphaEnabled)"
+      IsAlphaSliderVisible="$(IsAlphaSliderVisible)"
+      IsAlphaTextInputVisible="$(IsAlphaTextInputVisible)" /&gt;
+</x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="IsColorSliderVisible" Value="{x:Bind colorSlider.IsChecked, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="IsColorChannelTextInputVisible" Value="{x:Bind colorChannelInput.IsChecked, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="IsHexInputVisible" Value="{x:Bind hexInput.IsChecked, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="IsAlphaEnabled" Value="{x:Bind alpha.IsChecked, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="IsAlphaSliderVisible" Value="{x:Bind alphaSlider.IsChecked, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="IsAlphaTextInputVisible" Value="{x:Bind alphaTextInput.IsChecked, Mode=OneWay}"/>
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

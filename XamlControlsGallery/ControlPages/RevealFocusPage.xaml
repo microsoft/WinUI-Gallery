@@ -92,10 +92,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Application FocusVisualKind="Reveal"/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Application FocusVisualKind="Reveal"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -217,35 +216,30 @@
 
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid.Resources&gt;</Paragraph>
-                    <Paragraph TextIndent="32">&lt;SolidColorBrush x:Key="
-                        <Run x:Name="primaryColorRun"/> " Color="
-                        <Run Text="{x:Bind myPrimaryColorPicker.Color.ToString(), Mode=OneWay}" /> "/&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="32">&lt;SolidColorBrush x:Key="SystemControlFocusVisualSecondaryBrush" Color="
-                        <Run Text="{x:Bind mySecondaryColorPicker.Color.ToString(), Mode=OneWay}" /> "/&gt;
-                    </Paragraph>
-                    <Paragraph>&lt;/Grid.Resources&gt;</Paragraph>
-
-                    <Paragraph>&lt;Button Width="100" Height="100"</Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualPrimaryThickness="
-                        <Run Text="{x:Bind primarySlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualSecondaryThickness="
-                        <Run Text="{x:Bind secondarySlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualMargin="
-                        <Run Text="{x:Bind marginSlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualPrimaryBrush="
-                        <Run x:Name="primaryBrushRun"/> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualSecondaryBrush="
-                        <Run Text="{}{StaticResource SystemControlFocusVisualSecondaryBrush}"/> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid.Resources&gt;
+          &lt;SolidColorBrush x:Key="$(PrimaryColorKey)" Color="$(PrimaryColor)" /&gt;
+          &lt;SolidColorBrush x:Key="SystemControlFocusVisualSecondaryBrush" Color="$(SecondaryColor)" /&gt;
+&lt;/Grid.Resources&gt;
+&lt;Button Width="100" Height="100"
+          FocusVisualPrimaryThickness="$(PrimaryThickness)"
+          FocusVisualSecondaryThickness="$(SecondaryThickness)"
+          FocusVisualMargin="$(Margin)"
+          FocusVisualPrimaryBrush="$(PrimaryBrush)"
+          FocusVisualSecondaryBrush="{StaticResource SystemControlFocusVisualSecondaryBrush}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution x:Name="primaryColorKeyText" Key="PrimaryColorKey" />
+                    <local:ControlExampleSubstitution Key="PrimaryColor" Value="{x:Bind myPrimaryColorPicker.Color, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="SecondaryColor" Value="{x:Bind mySecondaryColorPicker.Color, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="PrimaryThickness" Value="{x:Bind primarySlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="SecondaryThickness" Value="{x:Bind secondarySlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="Margin" Value="{x:Bind marginSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution x:Name="primaryBrushText" Key="PrimaryBrush" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <TextBlock Margin="0,16,0,0">
             <Run>Notes:</Run>

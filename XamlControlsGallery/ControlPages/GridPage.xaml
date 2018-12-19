@@ -13,9 +13,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:common="using:AppUIBasics.Common" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
-    <Page.Resources>
-        <common:ColorStringConverter x:Key="colorStringConverter" />
-    </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A 3x3 Grid control.">
             <Grid x:Name="Control1" Width="240" Height="160" Background="Gray">
@@ -58,29 +55,31 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid Width="240" Height="120" Background="Gray"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Grid.ColumnDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition Width="50" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition Width="Auto" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Grid.ColumnDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RowDefinition Height="50" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RowDefinition Height="Auto" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RowDefinition /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Grid.RowDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Red" Grid.Column="<Run FontSize="16" FontWeight="Bold"
-                                Text="{x:Bind ColumnSlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />"
-                        Grid.Row="<Run FontSize="16" FontWeight="Bold"
-                                Text="{x:Bind RowSlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />" /&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Blue" Grid.Row="1" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Green" Grid.Column="1" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Yellow" Grid.Row="1" Grid.Column="1" /&gt;</Paragraph>
-                    <Paragraph>&lt;/Grid&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid Width="240" Height="120" Background="Gray"&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition Width="50" /&gt;
+        &lt;ColumnDefinition Width="Auto" /&gt;
+        &lt;ColumnDefinition /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height="50" /&gt;
+        &lt;RowDefinition Height="Auto" /&gt;
+        &lt;RowDefinition /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;Rectangle Fill="Red" Grid.Column="$(Column)" Grid.Row="$(Row)" /&gt;
+    &lt;Rectangle Fill="Blue" Grid.Row="1" /&gt;
+    &lt;Rectangle Fill="Green" Grid.Column="1" /&gt;
+    &lt;Rectangle Fill="Yellow" Grid.Row="1" Grid.Column="1" /&gt;
+&lt;/Grid&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="Column" Value="{x:Bind ColumnSlider.Value, Mode=OneWay}" />
+                    <local:ControlExampleSubstitution Key="Row" Value="{x:Bind RowSlider.Value, Mode=OneWay}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

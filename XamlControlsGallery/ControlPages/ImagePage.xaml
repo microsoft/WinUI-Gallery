@@ -8,9 +8,9 @@
             <Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" />
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -23,19 +23,14 @@
             </Image>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>
-                        <Run Text="&lt;Image Stretch=&quot;" />
-                        <Run>None</Run>
-                        <Run Text="&quot; Height=&quot;100&quot; Width=&quot;100&quot; Source=&quot;/Assets/SampleMedia/treetops.jpg&quot; /&gt;" />
-                    </Paragraph>
-                    <Paragraph>&lt;Image Height="100"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Image.Source&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;BitmapImage UriSource="/Assets/SampleMedia/treetops.jpg"</Paragraph>
-                    <Paragraph TextIndent="36">DecodePixelHeight="100" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Image.Source&gt;</Paragraph>
-                    <Paragraph>&lt;/Image&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Image Height="100"&gt;
+    &lt;Image.Source&gt;
+        &lt;BitmapImage UriSource="/Assets/SampleMedia/treetops.jpg"
+            DecodePixelHeight="100" /&gt;
+    &lt;/Image.Source&gt;
+&lt;/Image&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -56,11 +51,15 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph x:Name="StretchXaml">&lt;Image Stretch="<Run x:Name="StretchLabel">None</Run>" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Image Stretch="$(Stretch)" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind StretchImage.Stretch, Mode=OneWay}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example4" HeaderText="Nine grid images.">
@@ -75,11 +74,11 @@
             </StackPanel>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Image Source="/Assets/ninegrid.gif" Height="82" /&gt;</Paragraph>
-                    <Paragraph TextIndent="84">&lt;Image Source="/Assets/ninegrid.gif" NineGrid="3,3,3,3" Height="164" /&gt;</Paragraph>
-                    <Paragraph TextIndent="84">&lt;Image Source="/Assets/ninegrid.gif" NineGrid="30,20,30,20" Height="164" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Image Source="/Assets/ninegrid.gif" Height="82" /&gt;
+&lt;Image Source="/Assets/ninegrid.gif" NineGrid="3,3,3,3" Height="164" /&gt;
+&lt;Image Source="/Assets/ninegrid.gif" NineGrid="30,20,30,20" Height="164" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

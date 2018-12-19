@@ -24,9 +24,9 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarToggleButton Icon="Shuffle" Label="SymbolIcon" Click="AppBarButton_Click"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;AppBarToggleButton Icon="Shuffle" Label="SymbolIcon" Click="AppBarButton_Click"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="An AppBarToggleButton with a bitmap icon.">
@@ -42,13 +42,13 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarToggleButton Label="BitmapIcon" Click="AppBarButton_Click"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;BitmapIcon UriSource="ms-appx:///Assets/Slices2.png"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarToggleButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarToggleButton Label="BitmapIcon" Click="AppBarButton_Click"&gt;
+    &lt;AppBarToggleButton.Icon&gt;
+        &lt;BitmapIcon UriSource="ms-appx:///Assets/Slices2.png"/&gt;
+    &lt;/AppBarToggleButton.Icon&gt;
+&lt;/AppBarToggleButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="An AppBarToggleButton with a font icon.">
@@ -64,14 +64,13 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarToggleButton Label="FontIcon" Click="AppBarButton_Click"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;FontIcon FontFamily="Candara" Glyph="<Run Text="&#x03A3;" />"/&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarToggleButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarToggleButton Label="FontIcon" Click="AppBarButton_Click"&gt;
+    &lt;AppBarToggleButton.Icon&gt;
+        &lt;FontIcon FontFamily="Candara" Glyph="&#x03A3;"/&gt;
+    &lt;/AppBarToggleButton.Icon&gt;
+&lt;/AppBarToggleButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="A three-state AppBarToggleButton with a path icon.">
@@ -89,13 +88,13 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarToggleButton Label="PathIcon" Click="AppBarButton_Click" IsThreeState="True"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarToggleButton.Icon&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarToggleButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarToggleButton Label="PathIcon" Click="AppBarButton_Click" IsThreeState="True"&gt;
+    &lt;AppBarToggleButton.Icon&gt;
+        &lt;PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/&gt;
+    &lt;/AppBarToggleButton.Icon&gt;
+&lt;/AppBarToggleButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

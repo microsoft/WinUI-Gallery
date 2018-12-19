@@ -104,19 +104,21 @@
                                  Click="RadioBtn_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            
+
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ItemsRepeater</Paragraph>
-                    <Paragraph TextIndent="24">ItemsSource="{x:Bind BarItems}"</Paragraph>
-                    <Paragraph TextIndent="24">Layout="{StaticResource
-                        <Run x:Name="layout">VerticalStackLayout</Run>}"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">ItemTemplate="{StaticResource
-                        <Run x:Name="elementGenerator">HorizontalBarTemplate</Run>}" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind BarItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+    </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
+                    <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"

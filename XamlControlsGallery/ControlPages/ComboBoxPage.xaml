@@ -29,14 +29,14 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ComboBox SelectionChanged="ColorComboBox_SelectionChanged" Header="Colors" PlaceholderText="Pick a color" Width="200"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Blue&lt;/x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Green&lt;/x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Red&lt;/x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Yellow&lt;/x:String&gt;</Paragraph>
-                    <Paragraph>&lt;/ComboBox&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ComboBox SelectionChanged="ColorComboBox_SelectionChanged" Header="Colors" PlaceholderText="Pick a color" Width="200"&gt;
+    &lt;x:String&gt;Blue&lt;/x:String&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Red&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+&lt;/ComboBox&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         
@@ -51,10 +51,10 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2"</Paragraph>
-                    <Paragraph TextIndent="12">Header="Font" Width="200" Loaded="Combo2_Loaded"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2"
+          Header="Font" Width="200" Loaded="Combo2_Loaded"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -69,9 +69,9 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ComboBox IsEditable="True" ItemsSource="{x:Bind FontSizes}" Width="200" TextSubmitted="Combo3_TextSubmitted"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ComboBox IsEditable="True" ItemsSource="{x:Bind FontSizes}" Width="200" TextSubmitted="Combo3_TextSubmitted"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

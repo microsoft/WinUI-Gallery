@@ -45,6 +45,7 @@ namespace AppUIBasics.ControlPages
 
             calendarIdentifier.ItemsSource = calendarIdentifiers;
             calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
+            LanguageSubstitution.Value = Control1.Language;
         }
 
         private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,6 +62,8 @@ namespace AppUIBasics.ControlPages
             if(Windows.Globalization.Language.IsWellFormed(language.Text))
             {
                 Control1.Language = language.Text;
+                // Must update manually because CalendarView.Language is not a dependency property.
+                LanguageSubstitution.Value = Control1.Language;
             }
             else
             {

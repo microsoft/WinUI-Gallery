@@ -43,15 +43,20 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;StackPanel Orientation="<Run x:Name="OrientationLabel">Vertical</Run>"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Red"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Blue"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Green"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Yellow"/&gt;</Paragraph>
-                    <Paragraph>&lt;/StackPanel&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation="$(Orientation)"&gt;
+    &lt;Rectangle Fill="Red"/&gt;
+    &lt;Rectangle Fill="Blue"/&gt;
+    &lt;Rectangle Fill="Green"/&gt;
+    &lt;Rectangle Fill="Yellow"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

@@ -11,17 +11,11 @@
         <local:ControlExample x:Name="Example1" HeaderText="Select different looks for the person picture.">
 
             <local:ControlExample.Example>
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="300" />
-                    </Grid.RowDefinitions>
-                    <PersonPicture x:Name="personPicture" Grid.Row="1"
+                <PersonPicture x:Name="personPicture" Height="300"
                 VerticalAlignment="Top"
                 ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://docs.microsoft.com/en-us/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}"
                 DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
                 Initials="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='SB'}" />
-                </Grid>
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
@@ -32,18 +26,17 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <Grid>
-                    <RichTextBlock x:Name="rtb" Style="{StaticResource XamlCodeRichTextBlockStyle}" Visibility="{x:Bind ProfileImageRadio.IsChecked, Mode=OneWay}">
-                        <Paragraph>&lt;PersonPicture ProfilePicture=&quot;https://docs.microsoft.com/en-us/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png&quot; /&gt;</Paragraph>
-                    </RichTextBlock>
-                    <RichTextBlock x:Name="rtb1" Style="{StaticResource XamlCodeRichTextBlockStyle}" Visibility="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay}">
-                        <Paragraph>&lt;PersonPicture DisplayName=&quot;Jane Doe&quot; /&gt;</Paragraph>
-                    </RichTextBlock>
-                    <RichTextBlock x:Name="rtb2" Style="{StaticResource XamlCodeRichTextBlockStyle}" Visibility="{x:Bind InitialsRadio.IsChecked, Mode=OneWay}">
-                        <Paragraph>&lt;PersonPicture Initials=&quot;SB&quot; /&gt;</Paragraph>
-                    </RichTextBlock>
-                </Grid>
+                <x:String>
+                    &lt;PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="ProfilePicture" Value="{x:Bind ProfileImageRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;ProfilePicture='https://docs.microsoft.com/en-us/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'&quot;}" />
+                    <local:ControlExampleSubstitution Key="DisplayName" Value="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;DisplayName='Jane Doe'&quot;}" />
+                    <local:ControlExampleSubstitution Key="Initials" Value="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;Initials='SB'&quot;}" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

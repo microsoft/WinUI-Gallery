@@ -20,9 +20,9 @@
                 <DatePicker Header="Pick a date" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;DatePicker Header="Pick a date" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;DatePicker Header="Pick a date" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A DatePicker with day formatted and year hidden.">
@@ -34,11 +34,9 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;DatePicker
-                        <Bold>DayFormat="{}{day.integer} ({dayofweek.abbreviated})" YearVisible="False"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;DatePicker DayFormat="{}{day.integer} ({dayofweek.abbreviated})" YearVisible="False" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

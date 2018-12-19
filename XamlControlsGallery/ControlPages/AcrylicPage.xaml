@@ -71,11 +71,9 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                    <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                        <Paragraph>&lt;Rectangle
-                            <Bold>Fill="{ThemeResource SystemControlAcrylicElementBrush}"</Bold> /&gt;
-                        </Paragraph>
-                    </RichTextBlock>
+                <x:String>
+                    &lt;Rectangle Fill="{ThemeResource SystemControlAcrylicElementBrush}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
@@ -90,11 +88,9 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                    <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                        <Paragraph>&lt;Rectangle
-                            <Bold>Fill="{ThemeResource SystemControlAcrylicWindowBrush}"</Bold> /&gt;
-                        </Paragraph>
-                    </RichTextBlock>
+                <x:String>
+                    &lt;Rectangle Fill="{ThemeResource SystemControlAcrylicWindowBrush}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
@@ -133,22 +129,22 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Rectangle
-                        <Bold>Fill="{ThemeResource CustomAcrylicInAppBrush}"</Bold> /&gt;
-                    </Paragraph>
-                    <Paragraph></Paragraph>
-                    <Paragraph>&lt;ResourceDictionary x:Key="Default"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;media:AcrylicBrush
-                        <Bold>x:Key="CustomAcrylicBrush"</Bold> BackgroundSource="Backdrop"
-                    </Paragraph>
-                    <Paragraph TextIndent="36">TintOpacity="<Run Text="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>"
-                        TintColor="<Run Text="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay, Converter={StaticResource colorStringConverter}}"/>"
-                        FallbackColor="<Run Text="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay, Converter={StaticResource colorStringConverter}}"/>" /&gt;
-                    </Paragraph>
-                    <Paragraph>&lt;/ResourceDictionary&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppBrush}" /&gt;
+
+&lt;ResourceDictionary x:Key="Default"&gt;
+    &lt;media:AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop"
+            TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
+&lt;/ResourceDictionary&gt;
+</x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
             <local:ControlExample.Example>
@@ -185,23 +181,24 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
+
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Rectangle
-                        <Bold>Fill="{ThemeResource CustomAcrylicBackgroundBrush}"</Bold> /&gt;
-                    </Paragraph>
-                    <Paragraph></Paragraph>
-                    <Paragraph>&lt;ResourceDictionary x:Key="Default"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;media:AcrylicBrush
-                        <Bold>x:Key="CustomAcrylicBackgroundBrush"</Bold> BackgroundSource="HostBackdrop"
-                    </Paragraph>
-                    <Paragraph TextIndent="36">TintOpacity="<Run Text="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>"
-                        TintColor="<Run Text="{x:Bind ColorSelector.SelectedItem, Mode=OneWay, Converter={StaticResource colorStringConverter}}"/>"
-                        FallbackColor="<Run Text="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay, Converter={StaticResource colorStringConverter}}"/>" /&gt;
-                    </Paragraph>
-                    <Paragraph>&lt;/ResourceDictionary&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Rectangle Fill="{ThemeResource CustomAcrylicBackgroundBrush}" /&gt;
+
+&lt;ResourceDictionary x:Key="Default"&gt;
+    &lt;media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop"
+        TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
+&lt;/ResourceDictionary&gt;
+</x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection>
+                    <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
+                    <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

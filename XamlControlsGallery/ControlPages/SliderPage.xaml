@@ -18,12 +18,12 @@
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider1" AutomationProperties.Name="simple slider" Width="200" />
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider1.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />
+                        Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Slider AutomationProperties.Name="simple slider" Width="200"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Slider AutomationProperties.Name="simple slider" Width="200"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
@@ -31,31 +31,25 @@
                 <Slider x:Name="Slider2" Header="Control header" Width="200" Minimum="500" Maximum="1000"
                         LargeChange="100" StepFrequency="10" SmallChange="10" Value="800"/>
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider2.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />
+                        Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Slider Width="200"
-                        <Bold>Minimum="500" Maximum="1000" StepFrequency="10"</Bold>
-                    </Paragraph>
-                    <Paragraph TextIndent="12">
-                        <Bold>SmallChange="10" LargeChange="100" Value="800"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Slider Width="200" Minimum="500" Maximum="1000" StepFrequency="10"
+        SmallChange="10" LargeChange="100" Value="800" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider3.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />
+                        Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Slider AutomationProperties.Name="Slider with ticks"
-                        <Bold>TickFrequency="10" TickPlacement="Outside"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
@@ -63,13 +57,13 @@
                 <Slider x:Name="Slider4" Width="100" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
                         Maximum="50" Minimum="-50" AutomationProperties.Name="vertical slider"/>
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider4.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />
+                        Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Slider AutomationProperties.Name="vertical slider" Width="100" Orientation="Vertical"</Paragraph>
-                    <Paragraph TextIndent="12">TickFrequency="10" TickPlacement="Outside" Maximum="50" Minimum="-50"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Slider AutomationProperties.Name="vertical slider" Width="100" Orientation="Vertical"
+    TickFrequency="10" TickPlacement="Outside" Maximum="50" Minimum="-50"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

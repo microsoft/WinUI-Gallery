@@ -29,9 +29,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;HyperlinkButton Content="Microsoft home page" NavigateUri="http://www.microsoft.com"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;HyperlinkButton Content="Microsoft home page" NavigateUri="http://www.microsoft.com"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -40,9 +40,9 @@
                 <HyperlinkButton x:Name="Control2" Content="Go to ToggleButton" Click="GoToHyperlinkButton_Click" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;HyperlinkButton Content="ToggleButton" Click="HyperlinkButton_Click"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;HyperlinkButton Content="ToggleButton" Click="HyperlinkButton_Click"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
