@@ -1,5 +1,5 @@
 ﻿<local:ItemsPageBase
-    x:Class="AppUIBasics.ControlPages.RepeaterPage"
+    x:Class="AppUIBasics.ControlPages.ItemsRepeaterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
@@ -29,56 +29,41 @@
                 <Ellipse Fill="{ThemeResource SystemAccentColor}" Height="{x:Bind Diameter}" Width="{x:Bind Diameter}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
-        
-        <controls:RecyclePool x:Key="RecyclePool"/>
-        <controls:RecyclePool x:Key="RecyclePool2" />
-        <controls:RecyclePool x:Key="RecyclePool3" />
-        
-        <controls:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" ItemSpacing="8"/>
-        <controls:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" ItemSpacing="8"/>
-        <controls:GridLayout x:Name="UniformGridLayout" MinItemSpacing="8" LineSpacing="8"/>
 
-        <common:ActivityFeedLayout x:Key="MyFeedLayout" ItemSpacing="12" RowSpacing="12" MinItemSize="108, 108"/>
-        <controls:GridLayout x:Key="UniformGridLayout2" ItemWidth="108" ItemHeight="108" MinItemSpacing="12" LineSpacing="12"/>
+        <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
+                <TextBlock Text="{x:Bind}" />
+            </Button>
+        </DataTemplate>
 
-        <controls:RecyclingViewGenerator x:Key="HorizontalElementGenerator"
-                                         RecyclePool="{StaticResource RecyclePool}">
-            <StaticResource x:Key="hItem" ResourceKey="HorizontalBarTemplate"/>
-        </controls:RecyclingViewGenerator>
+        <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
+                <TextBlock Text="{x:Bind}" />
+            </Button>
+        </DataTemplate>
 
-        <controls:RecyclingViewGenerator x:Key="VerticalElementGenerator"
-                                         RecyclePool="{StaticResource RecyclePool}">
-            <StaticResource x:Key="item" ResourceKey="VerticalBarTemplate"/>
-        </controls:RecyclingViewGenerator>
+        <controls:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
+        <controls:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" Spacing="8"/>
+        <controls:UniformGridLayout x:Name="UniformGridLayout" MinRowSpacing="8" MinColumnSpacing="8"/>
 
-        <controls:RecyclingViewGenerator x:Key="CircularElementGenerator"
-                                         RecyclePool="{StaticResource RecyclePool2}">
-            <StaticResource x:Key="item" ResourceKey="CircularTemplate"/>
-        </controls:RecyclingViewGenerator>
+        <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
+        <controls:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
-        <controls:RecyclingViewGenerator x:Key="GridViewGenerator"
-                                         RecyclePool="{StaticResource RecyclePool3}"
-                                         SelectTemplateKey="GridViewGenerator_SelectTemplateKey">
-            <DataTemplate x:Name="NormalItem" x:DataType="x:Int32">
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
-                    <TextBlock Text="{x:Bind}" />
-                </Button>
-            </DataTemplate>
-            <DataTemplate x:Name="AccentItem" x:DataType="x:Int32">
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
-                    <TextBlock Text="{x:Bind}" />
-                </Button>
-            </DataTemplate>
-        </controls:RecyclingViewGenerator>
+        <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
+                                  Normal="{StaticResource NormalItemTemplate}"
+                                  Accent="{StaticResource AccentItemTemplate}"/>
     </Page.Resources>
 
     <StackPanel>
         <local:ControlExample HeaderText="Non-interactive items laid out by ItemsRepeater">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" MaxHeight="500">
-                <controls:Repeater x:Name="repeater"
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+                          HorizontalScrollMode="Auto" 
+                          IsVerticalScrollChainingEnabled="False"
+                          MaxHeight="500">
+                <controls:ItemsRepeater x:Name="repeater"
                                Layout="{StaticResource VerticalStackLayout}"
                                ItemsSource="{x:Bind BarItems}"
-                               ViewGenerator="{StaticResource HorizontalElementGenerator}"/>
+                               ItemTemplate="{StaticResource HorizontalBarTemplate}"/>
             </ScrollViewer>
             <local:ControlExample.Options>
                 <StackPanel Spacing="12">
@@ -122,17 +107,20 @@
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
                               HorizontalContentAlignment="Stretch">
 
-            <!-- ElementTracker enables Repeater to coordinate with ScrollViewer down-level.  It's not needed
+            <!-- ScrollAnchorProvider enables ItemsRepeater to coordinate with ScrollViewer down-level.  It's not needed
                  on 17700+ builds. -->
-            <controls:ElementTracker>
-                <ScrollViewer x:Name="scrollViewer" Height="400" MinWidth="480" Padding="0,0,16,0">
-                    <controls:Repeater x:Name="repeater2" 
+            <controls:ScrollAnchorProvider>
+                <ScrollViewer x:Name="scrollViewer"
+                              Height="400"
+                              IsVerticalScrollChainingEnabled="False"
+                              Padding="0,0,16,0">
+                    <controls:ItemsRepeater x:Name="repeater2" 
                                        Margin="0,0,12,0"
                                        HorizontalAlignment="Stretch"
                                        Layout="{StaticResource MyFeedLayout}"
-                                       ViewGenerator="{StaticResource GridViewGenerator}"/>
+                                       ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
                 </ScrollViewer>
-            </controls:ElementTracker>
+            </controls:ScrollAnchorProvider>
 
             <local:ControlExample.Options>
                 <StackPanel Spacing="12">
