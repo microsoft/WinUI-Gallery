@@ -31,11 +31,9 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="ProfilePicture" Value="{x:Bind ProfileImageRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;ProfilePicture='https://docs.microsoft.com/en-us/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'&quot;}" />
-                    <local:ControlExampleSubstitution Key="DisplayName" Value="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;DisplayName='Jane Doe'&quot;}" />
-                    <local:ControlExampleSubstitution Key="Initials" Value="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter=&quot;Initials='SB'&quot;}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="ProfilePicture" IsEnabled="{x:Bind ProfileImageRadio.IsChecked.Value}" Value="ProfilePicture=&quot;https://docs.microsoft.com/en-us/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png&quot;" />
+                <local:ControlExampleSubstitution Key="DisplayName" IsEnabled="{x:Bind DisplayNameRadio.IsChecked.Value}" Value="DisplayName=&quot;Jane Doe&quot;" />
+                <local:ControlExampleSubstitution Key="Initials" IsEnabled="{x:Bind InitialsRadio.IsChecked.Value}" Value="Initials=&quot;SB&quot;" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

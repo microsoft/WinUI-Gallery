@@ -128,10 +128,15 @@ namespace AppUIBasics.ControlPages
 
     public class MyConverters
     {
-        public double UniformLength { get; set; }
         public static Thickness IntToThickness(double UniformLength)
         {
             return new Thickness(UniformLength);
         }
+
+        public static SolidColorBrush ColorToBrush(Color color)
+        {
+            return new SolidColorBrush(color);
+        }
+
     }
 }

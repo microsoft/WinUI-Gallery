@@ -139,11 +139,9 @@
 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>
-                    <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
-                    <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
@@ -193,11 +191,9 @@
 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
-                    <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
-                    <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

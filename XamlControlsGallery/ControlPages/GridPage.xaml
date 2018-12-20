@@ -33,8 +33,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Rectangle x:Name="Rectangle1" Fill="Red"
-                        Grid.Column="{x:Bind ColumnSlider.Value, Converter={StaticResource doubleIntConverter}, Mode=OneWay}"
-                        Grid.Row="{x:Bind RowSlider.Value, Converter={StaticResource doubleIntConverter}, Mode=OneWay}"
+                        Grid.Column="{x:Bind (x:Int32)ColumnSlider.Value, Mode=OneWay}"
+                        Grid.Row="{x:Bind (x:Int32)RowSlider.Value, Mode=OneWay}"
                         Height="50" Width="50" />
                 <Rectangle Fill="Blue" Grid.Row="1" />
                 <Rectangle Fill="Green" Grid.Column="1" />
@@ -75,10 +75,8 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="Column" Value="{x:Bind ColumnSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="Row" Value="{x:Bind RowSlider.Value, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="Column" Value="{x:Bind ColumnSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Row" Value="{x:Bind RowSlider.Value, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

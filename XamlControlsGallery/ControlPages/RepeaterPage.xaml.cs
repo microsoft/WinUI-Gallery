@@ -95,7 +95,7 @@ namespace AppUIBasics.ControlPages
 
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayoutBase;
 
-            layout2.Text = layoutKey;
+            layout2.Value = layoutKey;
         }
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)

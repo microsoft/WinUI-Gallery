@@ -25,7 +25,7 @@
                 </Canvas.Resources>
                 <Rectangle Fill="Red" Canvas.Left="{x:Bind LeftSlider.Value, Mode=OneWay}"
                         Canvas.Top="{x:Bind TopSlider.Value, Mode=OneWay}"
-                        Canvas.ZIndex="{x:Bind ZSlider.Value, Converter={StaticResource doubleIntConverter}, Mode=OneWay}" />
+                        Canvas.ZIndex="{x:Bind (x:Int32)ZSlider.Value, Mode=OneWay}" />
                 <Rectangle Fill="Blue" Canvas.Left="20" Canvas.Top="20" Canvas.ZIndex="1" />
                 <Rectangle Fill="Green" Canvas.Left="40" Canvas.Top="40" Canvas.ZIndex="2" />
                 <Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" />
@@ -56,11 +56,9 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

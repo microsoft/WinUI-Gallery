@@ -56,9 +56,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind StretchImage.Stretch, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind StretchImage.Stretch, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 

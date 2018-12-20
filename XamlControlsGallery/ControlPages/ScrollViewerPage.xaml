@@ -113,13 +113,11 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind zoomCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind hsmCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind hsbvCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind vsmCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind vsbvCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)zoomCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)hsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)hsbvCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)vsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)vsbvCombo.SelectedItem).Content, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

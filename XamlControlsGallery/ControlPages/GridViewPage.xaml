@@ -158,13 +158,11 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageOverlayTemplate" />
-                    <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="IsSwipeEnabled" Value="{x:Bind Control1.IsSwipeEnabled, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageOverlayTemplate" />
+                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsSwipeEnabled" Value="{x:Bind Control1.IsSwipeEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

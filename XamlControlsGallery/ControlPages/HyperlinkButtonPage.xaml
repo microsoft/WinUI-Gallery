@@ -21,7 +21,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A hyperlink button that navigates to a URI.">
             <local:ControlExample.Example>
-                <HyperlinkButton x:Name="Control1" Content="Microsoft home page" NavigateUri="http://www.microsoft.com" IsEnabled="{x:Bind DisableControl1.IsChecked, Converter={StaticResource negationConverter}, Mode=OneWay}" />
+                <HyperlinkButton x:Name="Control1" Content="Microsoft home page" NavigateUri="http://www.microsoft.com" IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>

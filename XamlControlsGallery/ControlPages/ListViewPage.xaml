@@ -114,9 +114,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
@@ -161,17 +159,17 @@
 
             <!--
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;</Paragraph>
-                    <Paragraph />
-                    <Paragraph>&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemsPanel/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ItemsPanelTemplate/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;ItemsStackPanel AreStickyGroupHeadersEnabled="False"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ItemsPanelTemplate /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemsPanel/&gt;</Paragraph>
-                    <Paragraph>&lt;ListView/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">                    
+&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
+
+&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;
+    &lt;ListView.ItemsPanel/&gt;
+        &lt;ItemsPanelTemplate/&gt;
+            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="False"/&gt;
+        &lt;ItemsPanelTemplate /&gt;
+    &lt;ListView.ItemsPanel/&gt;
+&lt;ListView/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
             -->
         </local:ControlExample>

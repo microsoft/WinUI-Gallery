@@ -59,13 +59,11 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind selectionMode.SelectedValue, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="IsGroupLabelVisible" Value="{x:Bind isGroupLabelVisible.IsChecked.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="IsOutOfScopeEnabled" Value="{x:Bind isOutOfScopeEnabled.IsChecked.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution x:Name="LanguageSubstitution" Key="Language" />
-                    <local:ControlExampleSubstitution Key="CalendarIdentifier" Value="{x:Bind Control1.CalendarIdentifier, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind selectionMode.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsGroupLabelVisible" Value="{x:Bind isGroupLabelVisible.IsChecked.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsOutOfScopeEnabled" Value="{x:Bind isOutOfScopeEnabled.IsChecked.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution x:Name="LanguageSubstitution" Key="Language" />
+                <local:ControlExampleSubstitution Key="CalendarIdentifier" Value="{x:Bind Control1.CalendarIdentifier, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

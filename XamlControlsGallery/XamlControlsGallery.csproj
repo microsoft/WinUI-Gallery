@@ -240,13 +240,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
-    <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
-    <Compile Include="Common\ColorToBrushConverter.cs" />
-    <Compile Include="Common\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
-    <Compile Include="Common\DoubleToIntConverter.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
@@ -254,11 +250,8 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientedSize.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Common\StringToBrushConverter.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\UIHelper.cs" />
-    <Compile Include="Common\ValueToFontFamilyConverter.cs" />
-    <Compile Include="Common\ValueToStringConverter.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>

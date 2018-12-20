@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
+    xmlns:control="using:AppUIBasics.ControlPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -126,7 +127,7 @@
         <local:ControlExample x:Name="Example4" HeaderText="Other XAML Easing Functions">
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox x:Name="EasingComboBox" ItemsSource="{x:Bind EasingFunctions}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Loaded="EasingComboBox_Loaded"/>
+                    <ComboBox x:Name="EasingComboBox" ItemsSource="{x:Bind EasingFunctions}" DisplayMemberPath="Name" SelectedValuePath="EasingFunctionBase" Loaded="EasingComboBox_Loaded"/>
                     <RadioButton x:Name="easeOutRB" Content="EaseOut" IsChecked="True" />
                     <RadioButton x:Name="easeInRB" Content="EaseIn" />
                     <RadioButton x:Name="easeInOutRB" Content="EaseInOut" />
@@ -165,9 +166,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="EasingFunction" Value="{x:Bind EasingComboBox.SelectedItem, Mode=OneWay, Converter={StaticResource comboBoxItemToStringConverter}}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="EasingFunction" Value="{x:Bind ((control:NamedEasingFunction)EasingComboBox.SelectedItem).Name, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

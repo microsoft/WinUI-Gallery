@@ -34,9 +34,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
 
         </local:ControlExample>

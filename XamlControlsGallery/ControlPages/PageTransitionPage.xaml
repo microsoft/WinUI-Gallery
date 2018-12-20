@@ -49,9 +49,7 @@
             </x:String>
         </local:ControlExample.CSharp>
         <local:ControlExample.Substitutions>
-            <local:ControlExampleSubstitutionCollection>
-                <local:ControlExampleSubstitution x:Name="TransitionValue" Key="TransitionParameter" Value="" />
-            </local:ControlExampleSubstitutionCollection>
+            <local:ControlExampleSubstitution x:Name="TransitionValue" Key="TransitionParameter" Value="" />
         </local:ControlExample.Substitutions>
     </local:ControlExample>
 

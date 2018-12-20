@@ -140,13 +140,11 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="PaneBackground" Value="{x:Bind paneBackgroundCombobox.SelectedItem.(ComboBoxItem.Tag), Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="IsPaneOpen" Value="{x:Bind splitView.IsPaneOpen, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="OpenPaneLength" Value="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="CompactPaneLength" Value="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="DisplayMode" Value="{x:Bind splitView.DisplayMode, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="PaneBackground" Value="{x:Bind ((ComboBoxItem)paneBackgroundCombobox.SelectedItem).Tag, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsPaneOpen" Value="{x:Bind splitView.IsPaneOpen, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="OpenPaneLength" Value="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CompactPaneLength" Value="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="DisplayMode" Value="{x:Bind splitView.DisplayMode, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

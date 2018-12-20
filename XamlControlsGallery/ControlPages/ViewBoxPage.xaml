@@ -70,11 +70,9 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="Size" Value="{x:Bind SizeSlider.Value, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind Control1.Stretch, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="StretchDirection" Value="{x:Bind Control1.StretchDirection, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="Size" Value="{x:Bind SizeSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind Control1.Stretch, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="StretchDirection" Value="{x:Bind Control1.StretchDirection, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

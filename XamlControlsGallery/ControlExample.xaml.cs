@@ -15,7 +15,6 @@ using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Markup;
@@ -25,7 +24,8 @@ namespace AppUIBasics
 {
     /// <summary>
     /// Describes a textual substitution in sample content.
-    /// All appearances of $(Key) are replaced with ValueAsString().
+    /// If enabled (default), then $(Key) is replaced with the stringified value.
+    /// If disabled, then $(Key) is replaced with the empty string.
     /// </summary>
     public sealed class ControlExampleSubstitution : DependencyObject
     {
@@ -44,8 +44,24 @@ namespace AppUIBasics
             }
         }
 
+        private bool _enabled = true;
+        public bool IsEnabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                ValueChanged?.Invoke(this, null);
+            }
+        }
+
         public string ValueAsString()
         {
+            if (!IsEnabled)
+            {
+                return string.Empty;
+            }
+
             object value = Value;
 
             // For solid color brushes, use the underlying color.
@@ -61,10 +77,6 @@ namespace AppUIBasics
             
             return value.ToString();
         }
-    }
-
-    public sealed class ControlExampleSubstitutionCollection : List<ControlExampleSubstitution>
-    {
     }
 
     [ContentProperty(Name = "Example")]
@@ -119,12 +131,10 @@ namespace AppUIBasics
             set { SetValue(CSharpSourceProperty, value); }
         }
 
-        public static readonly DependencyProperty SubstitutionsProperty =
-            DependencyProperty.Register("Substitutions", typeof(ControlExampleSubstitutionCollection), typeof(ControlExample),
-                PropertyMetadata.Create(() => new ControlExampleSubstitutionCollection()));
-        public ControlExampleSubstitutionCollection Substitutions
+        public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(IList<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
+        public IList<ControlExampleSubstitution> Substitutions
         {
-            get { return (ControlExampleSubstitutionCollection)GetValue(SubstitutionsProperty); }
+            get { return (IList<ControlExampleSubstitution>)GetValue(SubstitutionsProperty); }
             set { SetValue(SubstitutionsProperty, value); }
         }
 
@@ -166,6 +176,7 @@ namespace AppUIBasics
         public ControlExample()
         {
             this.InitializeComponent();
+            Substitutions = new List<ControlExampleSubstitution>();
         }
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)

@@ -32,10 +32,8 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="IsClearEnabled" Value="{x:Bind clearEnabledCheck.IsChecked, Mode=OneWay}" />
-                    <local:ControlExampleSubstitution Key="IsReadOnly" Value="{x:Bind readOnlyCheck.IsChecked, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="IsClearEnabled" Value="{x:Bind clearEnabledCheck.IsChecked, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsReadOnly" Value="{x:Bind readOnlyCheck.IsChecked, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
@@ -57,9 +55,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
-                    <local:ControlExampleSubstitution Key="Slider" Value="{x:Bind slider.Value, Mode=OneWay}" />
-                </local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitution Key="Slider" Value="{x:Bind slider.Value, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

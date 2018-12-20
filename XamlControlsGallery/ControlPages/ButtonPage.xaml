@@ -20,7 +20,7 @@
             <local:ControlExample.Example>
                 <RelativePanel>
                     <Button x:Name="Button1" Content="Button" Click="Button_Click"
-                            IsEnabled="{x:Bind DisableButton1.IsChecked, Converter={StaticResource negationConverter}, Mode=OneWay}" />
+                            IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
                     <TextBlock x:Name="Control1Output" Margin="8,0,0,0" FontFamily="Global User Interface"
                             RelativePanel.RightOf="Button1" RelativePanel.AlignVerticalCenterWith="Button1" />
                 </RelativePanel>

@@ -43,30 +43,15 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <!--  Application-specific resources  -->
-            <common:BooleanNegationConverter x:Key="negationConverter" />
-            <common:ValueToStringConverter x:Key="valueToStringConverter" />
-            <common:DoubleToIntConverter x:Key="doubleIntConverter" />
-            <common:ValueToFontFamilyConverter x:Key="valueToFontFamilyConverter" />
-            <common:ComboBoxItemToStringConverter x:Key="comboBoxItemToStringConverter" />
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
-            <common:StringToBrushConverter x:Key="stringToBrushConverter" />
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <common:NullToVisibilityConverter x:Key="inverseNullToVisibilityConverter" NonNullValue="Collapsed" NullValue="Visible" />
             <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
-            <common:ColorToBrushConverter x:Key="colorToBrushConverter"/>
 
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
             <x:String x:Key="AppName">All controls</x:String>
-
-            <Style x:Key="XamlCodeRichTextBlockStyle" TargetType="RichTextBlock">
-                <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-                <Setter Property="FontWeight" Value="Light" />
-                <Setter Property="FontFamily" Value="Consolas" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="TextWrapping" Value="NoWrap" />
-            </Style>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />

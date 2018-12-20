@@ -114,7 +114,7 @@
     </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitutionCollection>
+                <local:ControlExampleSubstitutionCollection x:DefaultBindMode="OneWay">
                     <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
                     <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
                 </local:ControlExampleSubstitutionCollection>
@@ -144,17 +144,19 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ItemsRepeater</Paragraph>
-                    <Paragraph TextIndent="24">ItemsSource="{x:Bind NumberedItems}"</Paragraph>
-                    <Paragraph TextIndent="24">Layout="{StaticResource
-                        <Run x:Name="layout2">MyFeedLayout</Run>}"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">ItemTemplate="{StaticResource
-                        <Run>SimpleItemTemplate</Run>}" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind NumberedItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitutionCollection x:DefaultBindMode="OneWay">
+                    <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
+                    <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+                </local:ControlExampleSubstitutionCollection>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>

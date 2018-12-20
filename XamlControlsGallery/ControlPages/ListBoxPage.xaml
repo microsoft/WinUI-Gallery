@@ -43,7 +43,7 @@
                     <ListBox x:Name="ListBox2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1"
                             SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded" />
                     <TextBlock x:Name="Control2Output" Text="You can set the font used for this text."
-                            FontFamily="{x:Bind ListBox2.SelectedValue, Converter={StaticResource valueToFontFamilyConverter}, Mode=OneWay}"
+                            FontFamily="{x:Bind (FontFamily)ListBox2.SelectedValue, Mode=OneWay}"
                             Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
             </local:ControlExample.Example>

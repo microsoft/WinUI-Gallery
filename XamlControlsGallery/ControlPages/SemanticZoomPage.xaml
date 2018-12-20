@@ -38,7 +38,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
-            <TextBlock Text="{x:Bind Group.(data:ControlInfoDataGroup.Title)}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
+            <TextBlock Text="{x:Bind ((data:ControlInfoDataGroup)Group).Title}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
         </DataTemplate>
     </Page.Resources>
 

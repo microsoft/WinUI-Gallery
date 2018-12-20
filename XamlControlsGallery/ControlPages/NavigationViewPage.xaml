@@ -8,8 +8,6 @@
         x:Class="AppUIBasics.ControlPages.NavigationViewPage"
         mc:Ignorable="d">
     <Page.Resources>
-        <converters:BooleanNegationConverter x:Key="NotConverter"/>
-
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
                 <DataTemplate x:DataType="converters:Category">
