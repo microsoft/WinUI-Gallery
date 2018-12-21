@@ -159,7 +159,7 @@
 
             <!--
             <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">                    
+                <x:String xml:space="preserve">
 &lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
 
 &lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;
