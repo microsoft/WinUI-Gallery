@@ -40,10 +40,10 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBlock Text="TextBlock with an offset ToolTip."/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ToolTipService.ToolTip/&gt;</Paragraph>
+                    <Paragraph>&lt;TextBlock Text="TextBlock with an offset ToolTip."&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;ToolTipService.ToolTip&gt;</Paragraph>
                     <Paragraph TextIndent="24">&lt;ToolTip Content="Offset ToolTip." HorizontalOffset="100" VerticalOffset="-80"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ToolTipService.ToolTip/&gt;</Paragraph>
+                    <Paragraph TextIndent="12">&lt;/ToolTipService.ToolTip&gt;</Paragraph>
                     <Paragraph>&lt;/TextBlock&gt;</Paragraph>
                 </RichTextBlock>
             </local:ControlExample.Xaml>
