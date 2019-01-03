@@ -40,7 +40,7 @@
         <CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True" />
 
         <!-- When using x:Bind, you need to set x:DataType -->
-        <DataTemplate x:Name="ContactListViewTemplate" x:DataType="local1:Contact">
+        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
