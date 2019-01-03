@@ -11,7 +11,7 @@
     <Page.Resources>
         <DataTemplate x:Key="FolderTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem 
+            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
                 ItemsSource="{x:Bind Children}" IsExpanded="True">
 
                 <StackPanel Orientation="Horizontal">
@@ -24,7 +24,7 @@
 
         <DataTemplate x:Key="FileTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem>
+            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
 
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Source="../Assets/file.png"/>
