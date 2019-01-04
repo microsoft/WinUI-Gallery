@@ -15,9 +15,9 @@
         <GroupStyle>
             <GroupStyle.HeaderTemplate>
                 <DataTemplate x:DataType="local1:GroupInfoList">
-				    <Border AutomationProperties.Name="{x:Bind Key}">
+                    <Border AutomationProperties.Name="{x:Bind Key}">
                         <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
-				    </Border>
+                    </Border>
                 </DataTemplate>
             </GroupStyle.HeaderTemplate>
         </GroupStyle>
