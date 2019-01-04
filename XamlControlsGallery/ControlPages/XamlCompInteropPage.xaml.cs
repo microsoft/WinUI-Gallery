@@ -113,5 +113,22 @@ namespace AppUIBasics.ControlPages
             ExpressionButton4.StartAnimation(anim);
         }
 
+        private void ActualSizeOffsetExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Only establish the reference parameter if the API exists to do so.
+            //if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
+
+            var anim = _compositor.CreateExpressionAnimation();
+            anim.Expression = "(source.ActualOffset.Y) + (source.ActualSize.Y / 2)";
+            anim.Target = "Translation.Y";
+            anim.SetExpressionReferenceParameter("source", Sample4Source);
+
+            Sample4Destination.StartAnimation(anim);
+        }
+
+        private void Sample4Source_Click(object sender, RoutedEventArgs e)
+        {
+            Sample4Source.Height += 25;
+        }
     }
 }

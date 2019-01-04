@@ -53,5 +53,19 @@
                 <Button x:Name="ExpressionButton4" Content="Item 4" Width="100" Height="50" Margin="5" PointerEntered="element_PointerEntered" PointerExited="element_PointerExited" />
             </StackPanel>
         </local:ControlExample>
+
+        <local:ControlExample HeaderText="You can reference ActualSize and ActualOffset to animate based on changes to layout" Loaded="ActualSizeOffsetExample_Loaded" MinimumUniversalAPIContract="8" CSharpSource="Motion/AnimationInterop/AnimationInteropSample3_cs.txt">
+            <StackPanel Margin="0,0,0,50">
+                <TextBlock Text="-- Directions here --" Margin="0,0,0,12" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Sample4Source" Click="Sample4Source_Click" Content="Hello" Height="100" />
+                    <TextBlock x:Name="Sample4Destination" Grid.Column="1" Text="Hello" />
+                </Grid>
+            </StackPanel>
+        </local:ControlExample>
     </StackPanel>
 </Page>
