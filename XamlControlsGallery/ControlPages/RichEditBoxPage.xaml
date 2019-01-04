@@ -166,7 +166,7 @@
                     </muxcontrols:DropDownButton.Flyout>
                 </muxcontrols:DropDownButton>
 
-                <RichEditBox x:Name="editor" Height="200" 
+                <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
                              RelativePanel.Below="openFileButton" 
                              RelativePanel.AlignLeftWithPanel="True" 
                              RelativePanel.AlignRightWithPanel="True" />
