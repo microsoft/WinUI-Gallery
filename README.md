@@ -15,12 +15,14 @@ Shows all of the XAML controls in an interactive format. This app is the interac
 
 This sample shows how to:
 
-- **Specify XAML controls in markup:** Each control page shows the markup used to create each example
+- **Specify XAML controls in markup:** Each control page shows the markup used to create each example.
+- **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [Windows UI Toolkit](https://docs.microsoft.com/en-us/uwp/toolkits/winui/) controls like NavigationView, SwipeControl, and more.
 - **Basic layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
 - **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
-**Note** The Windows universal samples require Visual Studio 2017 to build and Windows 10 to execute.
+**Note** The Xaml Controls Gallery requires [Visual Studio 2017](http://go.microsoft.com/fwlink/?LinkID=532422)
+ and the [Windows Insider SDK](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK) to build and Windows 10 to execute.
  
 To obtain information about Windows 10 development, go to the [Windows Dev Center](http://go.microsoft.com/fwlink/?LinkID=532421)
 

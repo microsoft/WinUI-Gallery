@@ -10,7 +10,7 @@
     <AssemblyName>AppUIBasics</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.18298.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -211,6 +211,8 @@
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Simple.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_cs.txt" />
@@ -226,6 +228,7 @@
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
