@@ -126,7 +126,8 @@
         <local:ControlExample x:Name="Example4" HeaderText="Other XAML Easing Functions">
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox x:Name="EasingComboBox" ItemsSource="{x:Bind EasingFunctions}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Loaded="EasingComboBox_Loaded"/>
+                    <ComboBox x:Name="EasingComboBox" AutomationProperties.Name="Easing type" ItemsSource="{x:Bind EasingFunctions}" 
+                              DisplayMemberPath="Item1" SelectedValuePath="Item2" Loaded="EasingComboBox_Loaded"/>
                     <RadioButton x:Name="easeOutRB" Content="EaseOut" IsChecked="True" />
                     <RadioButton x:Name="easeInRB" Content="EaseIn" />
                     <RadioButton x:Name="easeInOutRB" Content="EaseInOut" />
