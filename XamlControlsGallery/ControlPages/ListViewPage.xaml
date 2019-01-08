@@ -137,7 +137,9 @@
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate x:DataType="local1:GroupInfoList">
-                                <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                <Border AutomationProperties.Name="{x:Bind Key}">
+                                    <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                </Border>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
@@ -159,7 +161,9 @@
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate x:DataType="local1:GroupInfoList">
-                                <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                <Border AutomationProperties.Name="{x:Bind Key}">
+                                    <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                </Border>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
