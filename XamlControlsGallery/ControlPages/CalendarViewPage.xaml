@@ -35,19 +35,10 @@
 
                     <ComboBox x:Name="calendarIdentifier" Margin="0,10,0,0" Header="CalendarIdentifier" Width="220" />
 
-                    <TextBox
-                        x:Name="language"
-                        Width="150"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        Header="Language"
-                        Text="en-US" />
+                    <ComboBox x:Name="calendarLanguages" Header="Language" Margin="0,10,0,0" Width="220"
+                              DisplayMemberPath="Name" SelectedIndex="0" SelectedValuePath="Code"
+                              SelectionChanged="calendarLanguages_SelectionChanged"/>
 
-                    <Button
-                        x:Name="setLanguage"
-                        Margin="0,16,0,0"
-                        Click="setLanguage_Click"
-                        Content="Set Language" />
                 </StackPanel>
             </local:ControlExample.Options>
 
