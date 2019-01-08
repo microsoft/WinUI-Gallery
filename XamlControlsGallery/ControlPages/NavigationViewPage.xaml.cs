@@ -73,11 +73,14 @@ namespace AppUIBasics.ControlPages
             else
             {
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
-                string selectedItemTag = ((string)selectedItem.Tag);
-                sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
-                Type pageType = Type.GetType(pageName);
-                contentFrame.Navigate(pageType);
+                if (selectedItem != null)
+                {
+                    string selectedItemTag = ((string)selectedItem.Tag);
+                    sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+                    string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                    Type pageType = Type.GetType(pageName);
+                    contentFrame.Navigate(pageType);
+                }
             }
         }
 
