@@ -253,6 +253,7 @@
     <Compile Include="Common\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\DoubleToIntConverter.cs" />
+    <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ShowAcrylicBehindHeaderConverter.cs" />
     <Compile Include="Common\ImageLoader.cs" />
