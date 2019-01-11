@@ -21,9 +21,7 @@ This sample shows how to:
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
 - **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
-**Note** The Xaml Controls Gallery requires [Visual Studio 2017](http://go.microsoft.com/fwlink/?LinkID=532422)
- and the [Windows Insider SDK](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK) to build and Windows 10 to execute.
- 
+**Note** The Xaml Controls Gallery requires [Visual Studio 2017](http://go.microsoft.com/fwlink/?LinkID=532422) to build and Windows 10 to execute.
 To obtain information about Windows 10 development, go to the [Windows Dev Center](http://go.microsoft.com/fwlink/?LinkID=532421)
 
 To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
