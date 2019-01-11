@@ -105,11 +105,7 @@
         <!--  Content Region  -->
         <ScrollViewer
             x:Name="svPanel"
-            GotFocus="OnSvPanelGotFocus"
-            IsTabStop="True"
-            KeyDown="OnSvPanelKeyDown"
-            Loaded="OnSvPanelLoaded"
-            UseSystemFocusVisuals="False"
+
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <Grid x:Name="contentRoot" Padding="24,0,0,0" SizeChanged="OnContentRootSizeChanged">
