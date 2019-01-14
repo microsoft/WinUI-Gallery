@@ -71,7 +71,7 @@ namespace AppUIBasics
             if (e.Key == VirtualKey.Up)
             {
                 var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up);
-                if (nextElement != null && nextElement.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
+                if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
                 {
                     NavigationRootPage.Current.PageHeader.Focus(FocusState.Programmatic);
                 }
