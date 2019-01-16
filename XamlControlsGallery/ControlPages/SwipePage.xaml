@@ -36,7 +36,7 @@
                                            Invoked="Flag_ItemInvoked"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="500" Margin="12" Height="68">
                                 <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
@@ -55,7 +55,7 @@
                         <Paragraph TextIndent='12'>&lt;/Border.Resources&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;SwipeControl BorderThickness="1"</Paragraph>
                         <Paragraph TextIndent='24'>LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"</Paragraph>
-                        <Paragraph TextIndent='24'>Width="300" Margin="12" Height="68"&gt;</Paragraph>
+                        <Paragraph TextIndent='24'>Width="500" Margin="12" Height="68"&gt;</Paragraph>
                         <Paragraph TextIndent='36'>&lt;TextBlock Text="Swipe Right" Margin="12"</Paragraph>
                         <Paragraph TextIndent='69'>HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;/SwipeControl&gt;</Paragraph>
@@ -74,7 +74,7 @@
                                 <SwipeItem Text="Archive" IconSource="{StaticResource ArchiveIcon}" BehaviorOnInvoked="Close" Invoked="DeleteOne_ItemInvoked"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Left" Margin="12"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
@@ -92,7 +92,7 @@
                         <Paragraph TextIndent='12'>&lt;/Border.Resources&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"</Paragraph>
                         <Paragraph TextIndent='24'>RightItems="{StaticResource right}"</Paragraph>
-                        <Paragraph TextIndent='24'>Width="300" Margin="12" Height="68"&gt;</Paragraph>
+                        <Paragraph TextIndent='24'>Width="500" Margin="12" Height="68"&gt;</Paragraph>
                         <Paragraph TextIndent='24'>&lt;TextBlock Text="Swipe Left" Margin="12"</Paragraph>
                         <Paragraph TextIndent='57'>HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;/SwipeControl&gt;</Paragraph>
@@ -123,7 +123,7 @@
 
                          <ListView.ItemTemplate>
                              <DataTemplate>
-                                 <SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68" Width="800" MinWidth="200" LeftItems="{StaticResource left}"
+                                 <SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68" MinWidth="200" LeftItems="{StaticResource left}"
                                            RightItems="{StaticResource right}">
                                      <TextBlock Text="{Binding}" FontSize="24" Margin="12"
                                             HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
@@ -155,7 +155,7 @@
                         <Paragraph TextIndent='12'>&lt;ListView.ItemTemplate&gt;</Paragraph>
                         <Paragraph TextIndent='24'>&lt;DataTemplate&gt;</Paragraph>
                         <Paragraph TextIndent='36'>&lt;SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68"</Paragraph>
-                        <Paragraph TextIndent='69'>Width="800" MinWidth="200" LeftItems="{StaticResource left}"</Paragraph>
+                        <Paragraph TextIndent='69'>MinWidth="200" LeftItems="{StaticResource left}"</Paragraph>
                         <Paragraph TextIndent='78'>RightItems="{StaticResource right}"&gt;</Paragraph>
                         <Paragraph TextIndent='48'>&lt;TextBlock Text="{Binding}" FontSize="24" Margin="12"</Paragraph>
                         <Paragraph TextIndent='81'>HorizontalAlignment="Stretch" VerticalAlignment="Center"/&gt;</Paragraph>
@@ -181,7 +181,7 @@
                                 <SwipeItem Text="Lock" Background="{StaticResource PurpleGradient}" IconSource="{StaticResource LockIcon}" BehaviorOnInvoked="Close"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Left" Margin="12"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
@@ -204,7 +204,7 @@
                         <Paragraph TextIndent='12'>&lt;/Border.Resources&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"</Paragraph>
                         <Paragraph TextIndent='24'>RightItems="{StaticResource right}"</Paragraph>
-                        <Paragraph TextIndent='24'>Width="300" Margin="12" Height="68"&gt;</Paragraph>
+                        <Paragraph TextIndent='24'>Width="500" Margin="12" Height="68"&gt;</Paragraph>
                         <Paragraph TextIndent='24'>&lt;TextBlock Text="Swipe Left" Margin="12"</Paragraph>
                         <Paragraph TextIndent='57'>HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;/SwipeControl&gt;</Paragraph>
@@ -225,7 +225,7 @@
                                 </SwipeItem>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
@@ -244,7 +244,7 @@
                         <Paragraph TextIndent='12'>&lt;/Border.Resources&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;SwipeControl BorderThickness="1"</Paragraph>
                         <Paragraph TextIndent='24'>LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"</Paragraph>
-                        <Paragraph TextIndent='24'>Width="300" Margin="12" Height="68"&gt;</Paragraph>
+                        <Paragraph TextIndent='24'>Width="500" Margin="12" Height="68"&gt;</Paragraph>
                         <Paragraph TextIndent='36'>&lt;TextBlock Text="Swipe Right" Margin="12"</Paragraph>
                         <Paragraph TextIndent='69'>HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;</Paragraph>
                         <Paragraph TextIndent='12'>&lt;/SwipeControl&gt;</Paragraph>
