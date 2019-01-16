@@ -243,6 +243,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
+    <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
@@ -380,6 +381,9 @@
     </Compile>
     <Compile Include="ControlPages\InkCanvasPage.xaml.cs">
       <DependentUpon>InkCanvasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ItemsRepeaterPage.xaml.cs">
+      <DependentUpon>ItemsRepeaterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\ListBoxPage.xaml.cs">
       <DependentUpon>ListBoxPage.xaml</DependentUpon>
@@ -803,6 +807,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\InkCanvasPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ItemsRepeaterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
