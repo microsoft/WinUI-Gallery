@@ -205,52 +205,6 @@ namespace AppUIBasics
             base.OnNavigatedFrom(e);
         }
 
-        private void OnSvPanelLoaded(object sender, RoutedEventArgs e)
-        {
-            svPanel.XYFocusDown = contentFrame.GetDescendantsOfType<Control>().FirstOrDefault(c => c.IsTabStop) ?? svPanel.GetDescendantsOfType<Control>().FirstOrDefault(c => c.IsTabStop);
-        }
-
-        private void OnSvPanelGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (e.OriginalSource == sender && NavigationRootPage.Current.IsFocusSupported)
-            {
-                bool isElementFound = false;
-                var elements = contentFrame.GetDescendantsOfType<Control>().Where(c => c.IsTabStop);
-                foreach (var element in elements)
-                {
-                    Rect elementRect = element.TransformToVisual(svPanel).TransformBounds(new Rect(0.0, 0.0, element.ActualWidth, element.ActualHeight));
-                    Rect panelRect = new Rect(0.0, 70.0, svPanel.ActualWidth, svPanel.ActualHeight);
-
-                    if (elementRect.Top < panelRect.Bottom)
-                    {
-                        element.Focus(FocusState.Programmatic);
-                        isElementFound = true;
-                        break;
-                    }
-                }
-                if (!isElementFound)
-                {
-                    svPanel.UseSystemFocusVisuals = true;
-                }
-            }
-        }
-
-        private void OnSvPanelKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up);
-                if (nextElement.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
-                {
-                    NavigationRootPage.Current.PageHeader.Focus(FocusState.Programmatic);
-                }
-                else
-                {
-                    FocusManager.TryMoveFocus(FocusNavigationDirection.Up);
-                }
-            }
-        }
-
         private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
         {
             string targetState = "NormalFrameContent";
