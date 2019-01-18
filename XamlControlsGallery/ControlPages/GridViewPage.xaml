@@ -107,23 +107,23 @@
                     <StackPanel>
                         <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
                         <RadioButton
-                            Click="ItemTemplate_Click"
+                            Checked="ItemTemplate_Checked"
                             Content="Image overlay"
                             GroupName="Template"
                             IsChecked="True"
                             Tag="ImageOverlayTemplate" />
                         <RadioButton
-                            Click="ItemTemplate_Click"
+                            Checked="ItemTemplate_Checked"
                             Content="Icon/Text"
                             GroupName="Template"
                             Tag="IconTextTemplate" />
                         <RadioButton
-                            Click="ItemTemplate_Click"
+                            Checked="ItemTemplate_Checked"
                             Content="Image/Text"
                             GroupName="Template"
                             Tag="ImageTextTemplate" />
                         <RadioButton
-                            Click="ItemTemplate_Click"
+                            Checked="ItemTemplate_Checked"
                             Content="Text"
                             GroupName="Template"
                             Tag="TextTemplate" />

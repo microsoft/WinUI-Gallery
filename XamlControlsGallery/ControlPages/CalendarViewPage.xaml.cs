@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Reflection;
 using Windows.Globalization;
 using Windows.UI.Popups;
+using AppUIBasics.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -45,7 +46,9 @@ namespace AppUIBasics.ControlPages
 
             calendarIdentifier.ItemsSource = calendarIdentifiers;
             calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
-            LanguageSubstitution.Value = Control1.Language;
+
+            var langs = new LanguageList();
+            calendarLanguages.ItemsSource = langs.Languages;
         }
 
         private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,17 +60,12 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private async void setLanguage_Click(object sender, RoutedEventArgs e)
+        private void calendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(Windows.Globalization.Language.IsWellFormed(language.Text))
+            string selectedLang = calendarLanguages.SelectedValue.ToString();
+            if (Windows.Globalization.Language.IsWellFormed(selectedLang))
             {
-                Control1.Language = language.Text;
-                // Must update manually because CalendarView.Language is not a dependency property.
-                LanguageSubstitution.Value = Control1.Language;
-            }
-            else
-            {
-                await new MessageDialog("That language is not valid.  Please check the language and try again.").ShowAsync();
+                Control1.Language = selectedLang;
             }
         }
     }

@@ -1,0 +1,30 @@
+﻿<Page.Resources>
+    <DataTemplate x:Key="FolderTemplate" x:DataType="controlpages:ExplorerItem">
+        <controls:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
+            ItemsSource="{x:Bind Children}" IsExpanded="True">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Source="../Assets/folder.png"/>
+                <TextBlock Margin="0,0,10,0"/>
+                <TextBlock Text="{x:Bind Name}" />
+            </StackPanel>
+        </controls:TreeViewItem>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FileTemplate" x:DataType="controlpages:ExplorerItem">
+        <controls:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Source="../Assets/file.png"/>
+                <TextBlock Margin="0,0,10,0"/>
+                <TextBlock Text="{x:Bind Name}"/>
+            </StackPanel>
+        </controls:TreeViewItem>
+    </DataTemplate>
+
+    <local:ExplorerItemTemplateSelector x:Key="ExpolrerItemTemplateSelector"
+        FolderTemplate="{StaticResource FolderTemplate}"
+        FileTemplate="{StaticResource FileTemplate}" />
+</Page.Resources>
+
+<controls:TreeView ItemsSource="{x:Bind DataSource}" 
+                   ItemTemplateSelector="{StaticResource ExpolrerItemTemplateSelector}" />
+

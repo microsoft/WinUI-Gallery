@@ -35,34 +35,28 @@
 
                     <ComboBox x:Name="calendarIdentifier" Margin="0,10,0,0" Header="CalendarIdentifier" Width="220" />
 
-                    <TextBox
-                        x:Name="language"
-                        Width="150"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        Header="Language"
-                        Text="en-US" />
+                    <ComboBox x:Name="calendarLanguages" Header="Language" Margin="0,10,0,0" Width="220"
+                              DisplayMemberPath="Name" SelectedIndex="0" SelectedValuePath="Code"
+                              SelectionChanged="calendarLanguages_SelectionChanged"/>
 
-                    <Button
-                        x:Name="setLanguage"
-                        Margin="0,16,0,0"
-                        Click="setLanguage_Click"
-                        Content="Set Language" />
                 </StackPanel>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;CalendarView SelectionMode="$(SelectionMode)" IsGroupLabelVisible="$(IsGroupLabelVisible)"
-        IsOutOfScopeEnabled="$(IsOutOfScopeEnabled)" Language="$(Language)"
-        CalendarIdentifier="$(CalendarIdentifier)" /&gt;
+&lt;CalendarView 
+    SelectionMode="$(SelectionMode)" 
+    IsGroupLabelVisible="$(IsGroupLabelVisible)"
+    IsOutOfScopeEnabled="$(IsOutOfScopeEnabled)"
+    Language="$(Language)"
+    CalendarIdentifier="$(CalendarIdentifier)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind selectionMode.SelectedValue, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="IsGroupLabelVisible" Value="{x:Bind isGroupLabelVisible.IsChecked.Value, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="IsOutOfScopeEnabled" Value="{x:Bind isOutOfScopeEnabled.IsChecked.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution x:Name="LanguageSubstitution" Key="Language" />
+                <local:ControlExampleSubstitution Key="Language" Value="{x:Bind Control1.Language, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="CalendarIdentifier" Value="{x:Bind Control1.CalendarIdentifier, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>

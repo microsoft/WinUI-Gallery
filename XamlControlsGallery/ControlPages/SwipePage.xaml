@@ -36,7 +36,7 @@
                                            Invoked="Flag_ItemInvoked"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="500" Margin="12" Height="68">
                                 <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
@@ -73,7 +73,7 @@
                                 <SwipeItem Text="Archive" IconSource="{StaticResource ArchiveIcon}" BehaviorOnInvoked="Close" Invoked="DeleteOne_ItemInvoked"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Left" Margin="12"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
@@ -122,7 +122,7 @@
 
                          <ListView.ItemTemplate>
                              <DataTemplate>
-                                 <SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68" Width="800" MinWidth="200" LeftItems="{StaticResource left}"
+                                 <SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68" MinWidth="200" LeftItems="{StaticResource left}"
                                            RightItems="{StaticResource right}">
                                      <TextBlock Text="{Binding}" FontSize="24" Margin="12"
                                             HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
@@ -180,7 +180,7 @@
                                 <SwipeItem Text="Lock" Background="{StaticResource PurpleGradient}" IconSource="{StaticResource LockIcon}" BehaviorOnInvoked="Close"/>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" RightItems="{StaticResource right}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Left" Margin="12"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
@@ -224,7 +224,7 @@
                                 </SwipeItem>
                             </SwipeItems>
                         </Border.Resources>
-                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="300" Margin="12" Height="68">
+                        <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}" LeftItems="{StaticResource left}" Width="500" Margin="12" Height="68">
                             <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
