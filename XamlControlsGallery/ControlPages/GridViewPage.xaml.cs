@@ -41,7 +41,7 @@ namespace AppUIBasics.ControlPages
             {
                 var template = tag.ToString();
                 Control1.ItemTemplate = (DataTemplate)this.Resources[template];
-                itemTemplate.Text = template;
+                itemTemplate.Value = template;
             }
         }
 

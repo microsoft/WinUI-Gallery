@@ -27,12 +27,14 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="<Run Text="{x:Bind clearEnabledCheck.IsChecked.Value, Mode=OneWay}"></Run>"
-                        IsReadOnly="<Run Text="{x:Bind readOnlyCheck.IsChecked.Value, Mode=OneWay}"></Run> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="$(IsClearEnabled)" IsReadOnly="$(IsReadOnly)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsClearEnabled" Value="{x:Bind clearEnabledCheck.IsChecked, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsReadOnly" Value="{x:Bind readOnlyCheck.IsChecked, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="PlaceholderValue of RatingControl">
@@ -48,12 +50,13 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RatingControl AutomationProperties.Name="RatingControl with placeholder" PlaceholderValue="
-                        <Run Text="{x:Bind slider.Value, Mode=OneWay}"></Run> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;RatingControl AutomationProperties.Name="RatingControl with placeholder" PlaceholderValue="$(Slider)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Slider" Value="{x:Bind slider.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

@@ -92,10 +92,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Application FocusVisualKind="Reveal"/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Application FocusVisualKind="Reveal"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -114,32 +113,33 @@
                         FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                         FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                         FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                        FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                        FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}" />
+                        FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                        FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}" />
                     <Button
                         Style="{StaticResource ButtonRevealCustomStyle}"
                         AutomationProperties.Name="Square button 5"
                         FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                         FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                         FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                        FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                        FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}" />
+                        FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                        FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}" />
                     <Button
                         Style="{StaticResource ButtonRevealCustomStyle}"
                         AutomationProperties.Name="Square button 6"
                         FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                         FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                         FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                        FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                        FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}" />
+                        FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                        FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}" />
                 </StackPanel>
 
                 <TextBox MinWidth="300" Margin="0,16,0,0" AutomationProperties.Name="Sample textBox"
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                     FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                    FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                    FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"/>
+                    FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                    FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"
+                         />
 
                 <ComboBox MinWidth="300" Margin="0,16,0,0" 
                           AutomationProperties.Name="Sample ComboBox"
@@ -147,8 +147,8 @@
                           FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                           FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                           FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                          FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                          FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}">
+                          FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                          FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}">
                     <ComboBoxItem>Apples</ComboBoxItem>
                     <ComboBoxItem>Bananas</ComboBoxItem>
                     <ComboBoxItem>Oranges</ComboBoxItem>
@@ -160,16 +160,16 @@
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                     FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                    FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                    FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"/>
+                    FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                    FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"/>
 
                 <Slider MinWidth="300" Margin="5,16,0,0" IsFocusEngagementEnabled="True" 
                     AutomationProperties.Name="Sample slider"
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
                     FocusVisualSecondaryThickness="{x:Bind local2:MyConverters.IntToThickness(secondarySlider.Value), Mode=OneWay}"
-                    FocusVisualPrimaryBrush="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
-                    FocusVisualSecondaryBrush="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"/>
+                    FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
+                    FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"/>
 
                 <TimePicker MinWidth="300" Margin="5,16,0,0" AutomationProperties.Name="Sample TimePicker"/>
 
@@ -199,7 +199,7 @@
                         <Button x:Name="primaryColorPickerButton"
                                 Grid.Column="1"
                                 AutomationProperties.Name="{x:Bind myPrimaryColorPicker.Color}"
-                                Background="{x:Bind myPrimaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
+                                Background="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
                                 Flyout="{StaticResource myPrimaryColorPickerFlyout}"
                                 Height="40"
                                 Width="40"
@@ -212,7 +212,7 @@
                         <Button x:Name="secondaryColorPickerButton" 
                                 Grid.Column="1" Grid.Row="1"
                                 AutomationProperties.Name="{x:Bind myPrimaryColorPicker.Color}"
-                                Background="{x:Bind mySecondaryColorPicker.Color, Converter={StaticResource colorToBrushConverter}, Mode=OneWay}"
+                                Background="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"
                                 Flyout="{StaticResource mySecondaryColorPickerFlyout}"
                                 Height="40"
                                 Width="40"
@@ -223,35 +223,28 @@
 
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid.Resources&gt;</Paragraph>
-                    <Paragraph TextIndent="32">&lt;SolidColorBrush x:Key="
-                        <Run x:Name="primaryColorRun"/> " Color="
-                        <Run Text="{x:Bind myPrimaryColorPicker.Color.ToString(), Mode=OneWay}" /> "/&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="32">&lt;SolidColorBrush x:Key="SystemControlFocusVisualSecondaryBrush" Color="
-                        <Run Text="{x:Bind mySecondaryColorPicker.Color.ToString(), Mode=OneWay}" /> "/&gt;
-                    </Paragraph>
-                    <Paragraph>&lt;/Grid.Resources&gt;</Paragraph>
-
-                    <Paragraph>&lt;Button Width="100" Height="100"</Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualPrimaryThickness="
-                        <Run Text="{x:Bind primarySlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualSecondaryThickness="
-                        <Run Text="{x:Bind secondarySlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualMargin="
-                        <Run Text="{x:Bind marginSlider.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualPrimaryBrush="
-                        <Run x:Name="primaryBrushRun"/> "
-                    </Paragraph>
-                    <Paragraph TextIndent="32">FocusVisualSecondaryBrush="
-                        <Run Text="{}{StaticResource SystemControlFocusVisualSecondaryBrush}"/> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid.Resources&gt;
+          &lt;SolidColorBrush x:Key="$(PrimaryColorKey)" Color="$(PrimaryColor)" /&gt;
+          &lt;SolidColorBrush x:Key="SystemControlFocusVisualSecondaryBrush" Color="$(SecondaryColor)" /&gt;
+&lt;/Grid.Resources&gt;
+&lt;Button Width="100" Height="100"
+          FocusVisualPrimaryThickness="$(PrimaryThickness)"
+          FocusVisualSecondaryThickness="$(SecondaryThickness)"
+          FocusVisualMargin="$(Margin)"
+          FocusVisualPrimaryBrush="$(PrimaryBrush)"
+          FocusVisualSecondaryBrush="{StaticResource SystemControlFocusVisualSecondaryBrush}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="primaryColorKeyText" Key="PrimaryColorKey" />
+                <local:ControlExampleSubstitution Key="PrimaryColor" Value="{x:Bind myPrimaryColorPicker.Color, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SecondaryColor" Value="{x:Bind mySecondaryColorPicker.Color, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="PrimaryThickness" Value="{x:Bind primarySlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SecondaryThickness" Value="{x:Bind secondarySlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Margin" Value="{x:Bind marginSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution x:Name="primaryBrushText" Key="PrimaryBrush" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <TextBlock Margin="0,16,0,0">
             <Run>Notes:</Run>

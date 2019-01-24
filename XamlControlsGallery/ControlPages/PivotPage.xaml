@@ -23,22 +23,22 @@
                 </PivotItem>
             </Pivot>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Pivot Title="EMAIL"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;PivotItem Header="All"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="all emails go here." /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/PivotItem&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;PivotItem Header="Unread"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="unread emails go here." /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/PivotItem&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;PivotItem Header="Flagged"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="flagged emails go here." /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/PivotItem&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;PivotItem Header="Urgent"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="urgent emails go here." /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/PivotItem&gt;</Paragraph>
-                    <Paragraph>&lt;/Pivot&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Pivot Title="EMAIL"&gt;
+    &lt;PivotItem Header="All"&gt;
+        &lt;TextBlock Text="all emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Unread"&gt;
+        &lt;TextBlock Text="unread emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Flagged"&gt;
+        &lt;TextBlock Text="flagged emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Urgent"&gt;
+        &lt;TextBlock Text="urgent emails go here." /&gt;
+    &lt;/PivotItem&gt;
+&lt;/Pivot&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

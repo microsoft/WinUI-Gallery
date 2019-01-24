@@ -22,11 +22,11 @@
                 </RichTextBlock>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RichTextBlock&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Paragraph&gt;I am a RichTextBlock.&lt;/Paragraph&gt;</Paragraph>
-                    <Paragraph>&lt;/RichTextBlock&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;RichTextBlock&gt;
+    &lt;Paragraph&gt;I am a RichTextBlock.&lt;/Paragraph&gt;
+&lt;/RichTextBlock&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A RichTextBlock with a custom selection highlight color.">
@@ -41,14 +41,14 @@
                 </RichTextBlock>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RichTextBlock SelectionHighlightColor="Green"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Paragraph&gt;RichTextBlock provides a rich text display container that supports</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Run FontStyle="Italic" FontWeight="Bold"&gt;formatted text&lt;/Run&gt;,</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Hyperlink NavigateUri="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.documents.hyperlink.aspx"&gt;hyperlinks&lt;/Hyperlink&gt;, inline images, and other rich content.&lt;/Paragraph&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Paragraph&gt;RichTextBlock also supports a built-in overflow model.&lt;/Paragraph&gt;</Paragraph>
-                    <Paragraph>&lt;/RichTextBlock&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;RichTextBlock SelectionHighlightColor="Green"&gt;
+    &lt;Paragraph&gt;RichTextBlock provides a rich text display container that supports
+        &lt;Run FontStyle="Italic" FontWeight="Bold"&gt;formatted text&lt;/Run&gt;,
+        &lt;Hyperlink NavigateUri="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.documents.hyperlink.aspx"&gt;hyperlinks&lt;/Hyperlink&gt;, inline images, and other rich content.&lt;/Paragraph&gt;
+    &lt;Paragraph&gt;RichTextBlock also supports a built-in overflow model.&lt;/Paragraph&gt;
+&lt;/RichTextBlock&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A RichTextBlock with overflow."
@@ -72,27 +72,24 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Grid.ColumnDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ColumnDefinition/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Grid.ColumnDefinitions&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;RichTextBlock  Grid.Column="0"
-                        <Bold>OverflowContentTarget="{x:Bind firstOverflowContainer}"</Bold> TextAlignment="Justify" Margin="12,0"&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="24">&lt;Paragraph&gt;Linked text containers allow text which does not fit in one element to overflow into a different element on the page. Creative use of linked text containers enables basic multicolumn support and other advanced page layouts.&lt;/Paragraph&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;!-- Additional content not shown. --&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/RichTextBlock&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;RichTextBlockOverflow
-                        <Bold>x:Name="firstOverflowContainer" OverflowContentTarget="{x:Bind secondOverflowContainer}"</Bold> Grid.Column="1" Margin="12,0"/&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;RichTextBlockOverflow
-                        <Bold>x:Name="secondOverflowContainer"</Bold> Grid.Column="2" Margin="12,0"/&gt;
-                    </Paragraph>
-                    <Paragraph>&lt;/Grid&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition/&gt;
+        &lt;ColumnDefinition/&gt;
+        &lt;ColumnDefinition/&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+    &lt;RichTextBlock Grid.Column="0" OverflowContentTarget="{x:Bind firstOverflowContainer}" TextAlignment="Justify" Margin="12,0"&gt;
+        &lt;Paragraph&gt;
+            Linked text containers allow text which does not fit in one element to overflow into a different element on the page.
+            Creative use of linked text containers enables basic multicolumn support and other advanced page layouts.
+        &lt;/Paragraph&gt;
+    &lt;!-- Additional content not shown. --&gt;
+    &lt;/RichTextBlock&gt;
+    &lt;RichTextBlockOverflow x:Name="firstOverflowContainer" OverflowContentTarget="{x:Bind secondOverflowContainer}" Grid.Column="1" Margin="12,0"/&gt;
+    &lt;RichTextBlockOverflow x:Name="secondOverflowContainer" Grid.Column="2" Margin="12,0"/&gt;
+&lt;/Grid&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

@@ -42,16 +42,16 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton Icon="Add" Label="Add"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton Icon="ReShare" Label="Share"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton Icon="Edit" Label="Edit"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;CommandBar.SecondaryCommands&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;AppBarButton Icon="Setting" Label="Settings"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/CommandBar.SecondaryCommands&gt;</Paragraph>
-                    <Paragraph>&lt;/CommandBar&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right"&gt;
+    &lt;AppBarButton Icon="Add" Label="Add"/&gt;
+    &lt;AppBarButton Icon="ReShare" Label="Share"/&gt;
+    &lt;AppBarButton Icon="Edit" Label="Edit"/&gt;
+    &lt;CommandBar.SecondaryCommands&gt;
+        &lt;AppBarButton Icon="Setting" Label="Settings"/&gt;
+    &lt;/CommandBar.SecondaryCommands&gt;
+&lt;/CommandBar&gt;
+</x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>      
     </StackPanel>

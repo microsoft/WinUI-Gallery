@@ -58,14 +58,13 @@
             </StackPanel>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TextBox Name="mailvalidation"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">Header="Email:"</Paragraph>
-                    <Paragraph TextIndent="12">Validation.IsRequired="True"</Paragraph>
-                    <Paragraph TextIndent="12">UpdateSourceTrigger=PropertyChanged,</Paragraph>
-                    <Paragraph TextIndent="12">Mode=TwoWay}></Paragraph>
-                </RichTextBlock>
-                
+                <x:String xml:space="preserve">
+&lt;TextBox Name="mailvalidation"
+    Header="Email:"
+    Validation.IsRequired="True"
+    UpdateSourceTrigger=PropertyChanged,
+    Mode=TwoWay}&gt;
+</x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

@@ -11,7 +11,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="FileTemplate" x:DataType="controlpages:ExplorerItem">
-        <controls:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
+        <controls:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
             <StackPanel Orientation="Horizontal">
                 <Image Width="20" Source="../Assets/file.png"/>
                 <TextBlock Margin="0,0,10,0"/>

@@ -36,18 +36,18 @@
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Empty cart"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Button.Flyout&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Flyout&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="All items will be removed. Do you want to continue?" Margin="0,0,0,12" /&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;Button Click="DeleteConfirmation_Click" Content="Yes, empty my cart" /&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/Flyout&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Button.Flyout&gt;</Paragraph>
-                    <Paragraph>&lt;/Button&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Button Content="Empty cart"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;Flyout&gt;
+            &lt;StackPanel&gt;
+                &lt;TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="All items will be removed. Do you want to continue?" Margin="0,0,0,12" /&gt;
+                &lt;Button Click="DeleteConfirmation_Click" Content="Yes, empty my cart" /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Flyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

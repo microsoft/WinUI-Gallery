@@ -29,10 +29,6 @@ namespace AppUIBasics.ControlPages
             if (sender is RadioButton rb && Control1 != null)
             {
                 string orientationName = rb.Tag.ToString();
-                if (OrientationLabel != null)
-                {
-                    OrientationLabel.Text = orientationName;
-                }
 
                 switch (orientationName)
                 {

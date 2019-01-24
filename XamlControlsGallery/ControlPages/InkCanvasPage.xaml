@@ -27,9 +27,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;InkCanvas /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;InkCanvas /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

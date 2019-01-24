@@ -81,8 +81,8 @@ namespace AppUIBasics.ControlPages
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
 
-            layout.Text = layoutKey;
-            elementGenerator.Text = itemTemplateKey;
+            layout.Value = layoutKey;
+            elementGenerator.Value = itemTemplateKey;
 
             isHorizontal = !isHorizontal;
         }
@@ -93,7 +93,7 @@ namespace AppUIBasics.ControlPages
 
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 
-            layout2.Text = layoutKey;
+            layout2.Value = layoutKey;
         }
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)
@@ -103,21 +103,21 @@ namespace AppUIBasics.ControlPages
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 itemTemplateKey = "HorizontalBarTemplate";
 
                 repeater.MaxWidth = MaxLength + 12;
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 itemTemplateKey = "VerticalBarTemplate";
 
                 repeater.MaxWidth = 6000;
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
-                layout.Text = layoutKey;
+                layout.Value = layoutKey;
                 itemTemplateKey = "CircularTemplate";
 
                 repeater.MaxWidth = 540;
@@ -127,7 +127,7 @@ namespace AppUIBasics.ControlPages
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
 
-            elementGenerator.Text = itemTemplateKey;
+            elementGenerator.Value = itemTemplateKey;
         }
     }
 

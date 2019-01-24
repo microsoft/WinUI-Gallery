@@ -91,8 +91,10 @@ namespace AppUIBasics.ControlPages
                 _transitionInfo = null;
             }
 
-            if (transitionRun != null)
-                transitionRun.Text = pageTransitionString;
+            if (TransitionValue != null)
+            {
+                TransitionValue.Value = pageTransitionString;
+            }
         }
     }
 }

@@ -22,9 +22,9 @@
                 <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarButton Icon="Like" Label="SymbolIcon" Click="AppBarButton_Click"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;AppBarButton Icon="Like" Label="SymbolIcon" Click="AppBarButton_Click"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="An AppBarButton with a bitmap icon.">
@@ -38,13 +38,13 @@
                 <TextBlock x:Name="Control2Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarButton Label="BitmapIcon" Click="AppBarButton_Click"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton.Icon&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;BitmapIcon UriSource="ms-appx:///Assets/Slices2.png"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarButton.Icon&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarButton Label="BitmapIcon" Click="AppBarButton_Click"&gt;
+    &lt;AppBarButton.Icon&gt;
+        &lt;BitmapIcon UriSource="ms-appx:///Assets/Slices2.png"/&gt;
+    &lt;/AppBarButton.Icon&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="An AppBarButton with a font icon.">
@@ -58,13 +58,13 @@
                 <TextBlock x:Name="Control3Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarButton Label="FontIcon" Click="AppBarButton_Click"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton.Icon&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;FontIcon FontFamily="Candara" Glyph="&#x03A3;"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarButton.Icon&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarButton Label="FontIcon" Click="AppBarButton_Click"&gt;
+    &lt;AppBarButton.Icon&gt;
+        &lt;FontIcon FontFamily="Candara" Glyph="&#x03A3;"/&gt;
+    &lt;/AppBarButton.Icon&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="An AppBarButton with a path icon.">
@@ -80,15 +80,15 @@
                 <TextBlock x:Name="Control4Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AppBarButton Label="PathIcon" Click="AppBarButton_Click"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;AppBarButton.Content&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;Viewbox  Stretch="Uniform"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/Viewbox&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/AppBarButton.Content&gt;</Paragraph>
-                    <Paragraph>&lt;/AppBarButton&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AppBarButton Label="PathIcon" Click="AppBarButton_Click"&gt;
+    &lt;AppBarButton.Content&gt;
+        &lt;Viewbox Stretch="Uniform"&gt;
+            &lt;PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/&gt;
+        &lt;/Viewbox&gt;
+    &lt;/AppBarButton.Content&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

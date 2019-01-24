@@ -146,22 +146,24 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;GridView ItemsSource=&quot;{x:Bind Items}&quot;</Paragraph>
-                    <Paragraph TextIndent="36">
-                        ItemTemplate=&quot;{StaticResource <Run x:Name="itemTemplate">ImageOverlayTemplate</Run>}&quot;</Paragraph>
-                    <Paragraph TextIndent="36">
-                        IsItemClickEnabled=&quot;<Run Text="{x:Bind Control1.IsItemClickEnabled, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="36">
-                        IsSwipeEnabled=&quot;<Run Text="{x:Bind Control1.IsSwipeEnabled, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="36">
-                        CanDragItems=&quot;<Run Text="{x:Bind Control1.CanDragItems, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="36">
-                        SelectionMode=&quot;<Run Text="{x:Bind Control1.SelectionMode, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="36">SelectionChanged=&quot;Control1_SelectionChanged&quot;</Paragraph>
-                    <Paragraph TextIndent="36">ItemClick=&quot;Control1_ItemClick&quot; /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;GridView ItemsSource="{x:Bind Items}"
+          ItemTemplate="{StaticResource $(ItemTemplate)}"
+          IsItemClickEnabled="$(IsItemClickEnabled)"
+          IsSwipeEnabled="$(IsSwipeEnabled)"
+          CanDragItems="$(CanDragItems)"
+          SelectionMode="$(SelectionMode)"
+          SelectionChanged="Control1_SelectionChanged"
+          ItemClick="Control1_ItemClick" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageOverlayTemplate" />
+                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsSwipeEnabled" Value="{x:Bind Control1.IsSwipeEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>
