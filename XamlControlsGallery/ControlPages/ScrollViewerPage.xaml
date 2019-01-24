@@ -44,7 +44,7 @@
 
                     <TextBlock Text="ZoomMode" VerticalAlignment="Center" Margin="0,0,10,0" />
 
-                    <ComboBox Grid.Column="1" SelectionChanged="ZoomModeComboBox_SelectionChanged" HorizontalAlignment="Stretch" AutomationProperties.Name="zoom mode">
+                    <ComboBox Grid.Column="1" x:Name="zoomCombo" SelectionChanged="ZoomModeComboBox_SelectionChanged" HorizontalAlignment="Stretch" AutomationProperties.Name="zoom mode">
                         <ComboBoxItem>Enabled</ComboBoxItem>
                         <ComboBoxItem IsSelected="True">Disabled</ComboBoxItem>
                     </ComboBox>
@@ -101,25 +101,24 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ScrollViewer Height="270" ZoomMode="Disabled"</Paragraph>
-                    <Paragraph TextIndent="36">IsVerticalScrollChainingEnabled="True"</Paragraph>
-                    <Paragraph TextIndent="36">ManipulationCompleted="Control1_ManipulationCompleted"</Paragraph>
-                    <Paragraph TextIndent="36">HorizontalScrollMode="
-                        <Run Text="{x:Bind hsmCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" /> "
-                        HorizontalScrollBarVisibility="
-                        <Run Text="{x:Bind hsbvCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" /> "
-                    </Paragraph>
-                    <Paragraph TextIndent="36">VerticalScrollMode="
-                        <Run Text="{x:Bind vsmCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" /> "
-                        VerticalScrollBarVisibility="
-                        <Run Text="{x:Bind vsbvCombo.SelectedItem, Converter={StaticResource comboBoxItemToStringConverter}, Mode=OneWay}" /> " &gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"</Paragraph>
-                    <Paragraph TextIndent="48">HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;</Paragraph>
-                    <Paragraph>&lt;/ScrollViewer&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ScrollViewer Height="270" ZoomMode="$(ZoomMode)"
+            IsVerticalScrollChainingEnabled="True"
+            ManipulationCompleted="Control1_ManipulationCompleted"
+            HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+            VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
+           HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
+&lt;/ScrollViewer&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)zoomCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)hsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)hsbvCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)vsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)vsbvCombo.SelectedItem).Content, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

@@ -29,11 +29,14 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ProgressRing IsActive="<Run Text="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ProgressRing IsActive="$(IsActive)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+
         </local:ControlExample>
     </StackPanel>
 </Page>

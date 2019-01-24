@@ -52,25 +52,28 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Viewbox Height="<Run Text="{x:Bind SizeSlider.Value, Mode=OneWay}" />"
-                        Width="<Run Text="{x:Bind SizeSlider.Value, Mode=OneWay}" />" StretchDirection="Both"&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Border BorderBrush="Gray" BorderThickness="15"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Background="DarkGray"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;Rectangle Fill="Blue" Height="10" Width="40"/&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;Rectangle Fill="Green" Height="10" Width="40"/&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;Rectangle Fill="Red" Height="10" Width="40"/&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;Rectangle Fill="Yellow" Height="10" Width="40"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;Image Source="ms-appx:///Assets/Slices.png"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;TextBlock Text="This is text." HorizontalAlignment="Center"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Border&gt;</Paragraph>
-                    <Paragraph>&lt;/Viewbox&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Viewbox Height="$(Size)" Width="$(Size)" Stretch="$(Stretch)" StretchDirection="$(StretchDirection)"&gt;
+    &lt;Border BorderBrush="Gray" BorderThickness="15"&gt;
+        &lt;StackPanel Background="DarkGray"&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;Rectangle Fill="Blue" Height="10" Width="40"/&gt;
+                &lt;Rectangle Fill="Green" Height="10" Width="40"/&gt;
+                &lt;Rectangle Fill="Red" Height="10" Width="40"/&gt;
+                &lt;Rectangle Fill="Yellow" Height="10" Width="40"/&gt;
+            &lt;/StackPanel&gt;
+            &lt;Image Source="ms-appx:///Assets/Slices.png"/&gt;
+            &lt;TextBlock Text="This is text." HorizontalAlignment="Center"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Border&gt;
+&lt;/Viewbox&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Size" Value="{x:Bind SizeSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Stretch" Value="{x:Bind Control1.Stretch, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="StretchDirection" Value="{x:Bind Control1.StretchDirection, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

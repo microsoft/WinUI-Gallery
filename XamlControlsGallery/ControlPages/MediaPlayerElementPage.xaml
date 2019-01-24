@@ -10,12 +10,12 @@
                         AreTransportControlsEnabled="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;MediaPlayerElement Source="/Assets/SampleMedia/ladybug.wmv"</Paragraph>
-                    <Paragraph TextIndent="78">MaxWidth="400"</Paragraph>
-                    <Paragraph TextIndent="78">AutoPlay="False"</Paragraph>
-                    <Paragraph TextIndent="78">AreTransportControlsEnabled="True" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;MediaPlayerElement Source="/Assets/SampleMedia/ladybug.wmv"
+                    MaxWidth="400"
+                    AutoPlay="False"
+                    AreTransportControlsEnabled="True" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
@@ -23,11 +23,11 @@
                 <MediaElement Source="ms-appx:///Assets/SampleMedia/fishes.wmv" MaxWidth="400" AutoPlay="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"</Paragraph>
-                    <Paragraph TextIndent="78">MaxWidth="400"</Paragraph>
-                    <Paragraph TextIndent="78">AutoPlay="True" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"
+                    MaxWidth="400"
+                    AutoPlay="True" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

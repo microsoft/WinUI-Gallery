@@ -104,15 +104,17 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>
-                        &lt;Border BorderThickness=&quot;<Run Text="{x:Bind Control1.BorderThickness.Top, Mode=OneWay}" />&quot;
-                        BorderBrush=&quot;<Run Text="{x:Bind Control1.BorderBrush.(SolidColorBrush.Color), Converter={StaticResource colorStringConverter}, Mode=OneWay}" />&quot;
-                        Background=&quot;<Run Text="{x:Bind Control1.Background.(SolidColorBrush.Color), Converter={StaticResource colorStringConverter}, Mode=OneWay}" />&quot;&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text=&quot;Text inside a border&quot; FontSize=&quot;18&quot; Foreground=&quot;Black&quot; /&gt;</Paragraph>
-                    <Paragraph>&lt;/Border&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Border BorderThickness="$(BorderThickness)" BorderBrush="$(BorderBrush)" Background="$(Background)"&gt;
+    &lt;TextBlock Text="Text inside a border" FontSize="18" Foreground="Black" /&gt;
+&lt;/Border&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="BorderThickness" Value="{x:Bind Control1.BorderThickness.Top, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="BorderBrush" Value="{x:Bind ((SolidColorBrush)Control1.BorderBrush).Color, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Background" Value="{x:Bind ((SolidColorBrush)Control1.Background).Color, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

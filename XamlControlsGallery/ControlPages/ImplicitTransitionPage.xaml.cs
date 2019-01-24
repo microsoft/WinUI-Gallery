@@ -40,6 +40,7 @@ namespace AppUIBasics.ControlPages
             if (customValue >= 0.0 && customValue <= 1.0)
             {
                 OpacityRectangle.Opacity = customValue;
+                OpacityValue.Value = customValue;
             }
         }
         private void RotationButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,7 @@ namespace AppUIBasics.ControlPages
             {
                 RotationRectangle.Rotation = 0;
             }
+            RotationValue.Value = RotationRectangle.Rotation;
         }
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -84,6 +86,7 @@ namespace AppUIBasics.ControlPages
             if (customValue > 0.0 && customValue <= 5)
             {
                 ScaleRectangle.Scale = new Vector3(customValue);
+                ScaleValue.Value = customValue;
             }
         }
 
@@ -111,6 +114,7 @@ namespace AppUIBasics.ControlPages
             if (customValue >= 0.0 && customValue <= 200.0)
             {
                 TranslateRectangle.Translation = new Vector3(customValue);
+                TranslationValue.Value = customValue;
             }
         }
 

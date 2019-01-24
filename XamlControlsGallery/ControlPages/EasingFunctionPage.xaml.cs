@@ -18,24 +18,35 @@ using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
+    public class NamedEasingFunction
+    {
+        public string Name { get; private set; }
+        public EasingFunctionBase EasingFunctionBase { get; private set; }
+        public NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
+        {
+            this.Name = name;
+            this.EasingFunctionBase = easingFunctionBase;
+        }
+    }
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class EasingFunctionPage : Page
     {
-        private List<Tuple<string, EasingFunctionBase>> EasingFunctions { get; } = new List<Tuple<string, EasingFunctionBase>>()
+        private List<NamedEasingFunction> EasingFunctions { get; } = new List<NamedEasingFunction>()
             {
-            new Tuple<string, EasingFunctionBase>("BackEase", new BackEase()),
-            new Tuple<string, EasingFunctionBase>("BounceEase", new BounceEase()),
-            new Tuple<string, EasingFunctionBase>("CircleEase", new CircleEase()),
-            new Tuple<string, EasingFunctionBase>("CubicEase", new CubicEase()),
-            new Tuple<string, EasingFunctionBase>("ElasticEase", new ElasticEase()),
-            new Tuple<string, EasingFunctionBase>("ExponentialEase", new ExponentialEase()),
-            new Tuple<string, EasingFunctionBase>("PowerEase", new PowerEase()),
-            new Tuple<string, EasingFunctionBase>("QuadraticEase", new QuadraticEase()),
-            new Tuple<string, EasingFunctionBase>("QuarticEase", new QuarticEase()),
-            new Tuple<string, EasingFunctionBase>("QuinticEase", new QuinticEase()),
-            new Tuple<string, EasingFunctionBase>("SineEase", new SineEase())
+            new NamedEasingFunction("BackEase", new BackEase()),
+            new NamedEasingFunction("BounceEase", new BounceEase()),
+            new NamedEasingFunction("CircleEase", new CircleEase()),
+            new NamedEasingFunction("CubicEase", new CubicEase()),
+            new NamedEasingFunction("ElasticEase", new ElasticEase()),
+            new NamedEasingFunction("ExponentialEase", new ExponentialEase()),
+            new NamedEasingFunction("PowerEase", new PowerEase()),
+            new NamedEasingFunction("QuadraticEase", new QuadraticEase()),
+            new NamedEasingFunction("QuarticEase", new QuarticEase()),
+            new NamedEasingFunction("QuinticEase", new QuinticEase()),
+            new NamedEasingFunction("SineEase", new SineEase())
             };
 
         public EasingFunctionPage()
@@ -84,7 +95,7 @@ namespace AppUIBasics.ControlPages
 
         private void EasingComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            EasingComboBox.SelectedIndex = 0; 
+            EasingComboBox.SelectedIndex = 0;
         }
     }
 }

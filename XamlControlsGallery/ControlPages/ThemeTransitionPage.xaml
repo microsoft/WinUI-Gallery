@@ -31,20 +31,20 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;StackPanel x:Name="EntranceStackPanel" Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;StackPanel.ChildrenTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;EntranceThemeTransition IsStaggeringEnabled="True" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/StackPanel.ChildrenTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;</Paragraph>
-                    <Paragraph>&lt;/StackPanel&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;StackPanel x:Name="EntranceStackPanel" Orientation="Horizontal"&gt;
+    &lt;StackPanel.ChildrenTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;EntranceThemeTransition IsStaggeringEnabled="True" /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/StackPanel.ChildrenTransitions&gt;
+    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         
@@ -74,15 +74,15 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Rectangle x:Name="RightRectangle" Fill="Blue" &gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle.Transitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;RepositionThemeTransition /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Rectangle.Transitions&gt;</Paragraph>
-                    <Paragraph>&lt;/Rectangle&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Rectangle x:Name="RightRectangle" Fill="Blue" &gt;
+    &lt;Rectangle.Transitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;RepositionThemeTransition /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/Rectangle.Transitions&gt;
+&lt;/Rectangle&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -104,15 +104,15 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListView&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemContainerTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;ContentThemeTransition /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ListView.ItemContainerTransitions&gt;</Paragraph>
-                    <Paragraph>&lt;/ListView&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ListView&gt;
+    &lt;ListView.ItemContainerTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;ContentThemeTransition /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/ListView.ItemContainerTransitions&gt;
+&lt;/ListView&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -136,15 +136,15 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListView&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ListView.ItemContainerTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AddDeleteThemeTransition /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ListView.ItemContainerTransitions&gt;</Paragraph>
-                    <Paragraph>&lt;/ListView&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ListView&gt;
+    &lt;ListView.ItemContainerTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;AddDeleteThemeTransition /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/ListView.ItemContainerTransitions&gt;
+&lt;/ListView&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -169,21 +169,21 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Popup x:Name="ExamplePopup"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Popup.ChildTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;PopupThemeTransition /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Popup.ChildTransitions&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Border Background="{ThemeResource FlyoutBackgroundThemeBrush}" BorderThickness="2" BorderBrush="LightGray"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Margin="10"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;TextBlock Text="This is a popup using PopupThemeTransition" /&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;Button Content="Close Popup" Click="ClosePopupButton_Click" /&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/Border&gt;</Paragraph>
-                    <Paragraph>&lt;/Popup&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Popup x:Name="ExamplePopup"&gt;
+    &lt;Popup.ChildTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;PopupThemeTransition /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/Popup.ChildTransitions&gt;
+    &lt;Border Background="{ThemeResource FlyoutBackgroundThemeBrush}" BorderThickness="2" BorderBrush="LightGray"&gt;
+        &lt;StackPanel Margin="10"&gt;
+            &lt;TextBlock Text="This is a popup using PopupThemeTransition" /&gt;
+            &lt;Button Content="Close Popup" Click="ClosePopupButton_Click" /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Border&gt;
+&lt;/Popup&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 

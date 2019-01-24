@@ -35,7 +35,7 @@
         </DataTemplate>
 
         <controlpages:ExplorerItemTemplateSelector 
-            x:Key="ExpolrerItemTemplateSelector"
+            x:Key="ExplorerItemTemplateSelector"
             FolderTemplate="{StaticResource FolderTemplate}"
             FileTemplate="{StaticResource FileTemplate}" />
     </Page.Resources>
@@ -49,9 +49,9 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;controls:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -63,9 +63,9 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView SelectionMode="Multiple" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;controls:TreeView SelectionMode="Multiple" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -94,7 +94,7 @@
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
                     <muxcontrols:TreeView Name="FileTree" Grid.Column="2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}" 
-                            ItemTemplateSelector="{StaticResource ExpolrerItemTemplateSelector}" />
+                            ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" />
                 </Grid>
             </local:ControlExample.Example>
         </local:ControlExample>

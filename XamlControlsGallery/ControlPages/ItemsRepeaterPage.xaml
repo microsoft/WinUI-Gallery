@@ -69,7 +69,7 @@
                 <StackPanel Spacing="12">
                     <Button x:Name="AddBtn" Content="Add Item" Click="AddBtn_Click" MinWidth="150"/>
                     <Button x:Name="DeleteBtn" Content="Remove Item" Click="DeleteBtn_Click" MinWidth="150"/>
-                    
+
                     <RadioButton x:Name="VStackBtn" 
                                  GroupName="Sample1Layouts"
                                  Margin="0,24,0,0"
@@ -89,19 +89,19 @@
                                  Click="RadioBtn_Click"/>
                 </StackPanel>
             </local:ControlExample.Options>
-            
+
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;muxcontrols:ItemsRepeater</Paragraph>
-                    <Paragraph TextIndent="24">ItemsSource="{x:Bind BarItems}"</Paragraph>
-                    <Paragraph TextIndent="24">Layout="{StaticResource
-                        <Run x:Name="layout">VerticalStackLayout</Run>}"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">ItemTemplate="{StaticResource
-                        <Run x:Name="elementGenerator">HorizontalBarTemplate</Run>}" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind BarItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+    </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
+                <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
@@ -130,17 +130,17 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;muxcontrols:ItemsRepeater</Paragraph>
-                    <Paragraph TextIndent="24">ItemsSource="{x:Bind NumberedItems}"</Paragraph>
-                    <Paragraph TextIndent="24">Layout="{StaticResource
-                        <Run x:Name="layout2">MyFeedLayout</Run>}"
-                    </Paragraph>
-                    <Paragraph TextIndent="24">ItemTemplate="{StaticResource
-                        <Run>SimpleItemTemplate</Run>}" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind NumberedItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
+                <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>
