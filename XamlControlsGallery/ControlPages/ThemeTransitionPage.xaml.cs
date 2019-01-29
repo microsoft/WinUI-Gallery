@@ -22,11 +22,13 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class ThemeTransitionPage : Page
     {
+
+        private int _itemCount = 10;
         public ThemeTransitionPage()
         {
             this.InitializeComponent();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < _itemCount; i++)
             {
                 AddRemoveListView.Items.Add(new ListViewItem() { Content = "Item " + i });
             }
@@ -64,7 +66,8 @@ namespace AppUIBasics.ControlPages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddRemoveListView.Items.Add(new ListViewItem() { Content = "New Item" });
+            AddRemoveListView.Items.Add(new ListViewItem() { Content = "New Item " +  _itemCount.ToString()});
+            _itemCount++;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
