@@ -1,4 +1,4 @@
-﻿<RichEditBox Height="200">
+﻿<RichEditBox AutomationProperties.Name="Editor with content links" Height="200">
     <RichEditBox.ContentLinkProviders>
         <ContentLinkProviderCollection>
             <ContactContentLinkProvider/>
