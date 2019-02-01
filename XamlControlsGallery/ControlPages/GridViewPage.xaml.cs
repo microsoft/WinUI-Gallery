@@ -31,7 +31,7 @@ namespace AppUIBasics.ControlPages
         {
             base.OnNavigatedTo(e);
 
-            Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            Control1.ItemsSource = CustomDataObject.GetDataObjects();
         }
 
         private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
