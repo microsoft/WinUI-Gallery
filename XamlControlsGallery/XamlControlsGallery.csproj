@@ -243,12 +243,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
-	<Compile Include="Common\ActivityFeedLayout.cs" />
+    <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\LanguageList.cs" />
-	<Compile Include="Common\MenuItemTemplateSelector.cs" />
+    <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
@@ -1049,7 +1049,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.1.181217001-prerelease</Version>
+      <Version>2.1.190131001-prerelease</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
