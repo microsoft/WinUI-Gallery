@@ -24,12 +24,11 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private static int _clicks = 0;
+        private int _clicks = 0;
         private void RepeatButton_Click(object sender, RoutedEventArgs e)
         {
             _clicks += 1;
             Control2Output.Text = _clicks.ToString();
-            DeterminateProgressValue.Text = _clicks.ToString();
             ProgressBar2.Value = _clicks;
 
             if (_clicks >= 100) _clicks = 0;

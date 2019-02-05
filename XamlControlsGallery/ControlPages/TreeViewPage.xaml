@@ -11,7 +11,7 @@
     <Page.Resources>
         <DataTemplate x:Key="FolderTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem 
+            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
                 ItemsSource="{x:Bind Children}" IsExpanded="True">
 
                 <StackPanel Orientation="Horizontal">
@@ -24,7 +24,7 @@
 
         <DataTemplate x:Key="FileTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem>
+            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
 
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Source="../Assets/file.png"/>
@@ -35,7 +35,7 @@
         </DataTemplate>
 
         <controlpages:ExplorerItemTemplateSelector 
-            x:Key="ExpolrerItemTemplateSelector"
+            x:Key="ExplorerItemTemplateSelector"
             FolderTemplate="{StaticResource FolderTemplate}"
             FileTemplate="{StaticResource FileTemplate}" />
     </Page.Resources>
@@ -49,9 +49,9 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;controls:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -63,17 +63,22 @@
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView SelectionMode="Multiple" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;controls:TreeView SelectionMode="Multiple" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        
-        <local:ControlExample HeaderText="A TreeView with DataBinding Using ItemSource">
+
+        <local:ControlExample HeaderText="A TreeView with DataBinding Using ItemSource" XamlSource="TreeView\TreeViewDataBindingSample_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView Name="TreeView1" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
-                            HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}">
+                    <muxcontrols:TreeView Name="TreeView1" 
+                                          MinWidth="345" 
+                                          MaxHeight="400" 
+                                          Margin="0,12,0,0"
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Top" 
+                                          ItemsSource="{x:Bind DataSource}">
                         <muxcontrols:TreeView.ItemTemplate>
                             <DataTemplate x:DataType="controlpages:ExplorerItem">
                                 <muxcontrols:TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}" IsExpanded="True"/>
@@ -82,34 +87,16 @@
                     </muxcontrols:TreeView>
                 </Grid>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView ItemsSource="{x:Bind DataSource}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;TreeView.ItemTemplate/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DataTemplate x:DataType="local:ExplorerItem"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DataTemplate/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;TreeView.ItemTemplate/&gt;</Paragraph>
-                    <Paragraph>&lt;controls:TreeView/&gt;</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TreeView with ItemTemplateSelector">
+        <local:ControlExample HeaderText="A TreeView with ItemTemplateSelector" XamlSource="TreeView\TreeViewTemplateSelectorSample_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView Name="FileTree" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
-                            HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}" ItemTemplateSelector="{StaticResource ExpolrerItemTemplateSelector}"
-                                 Grid.Column="2">
-                    </muxcontrols:TreeView>
+                    <muxcontrols:TreeView Name="FileTree" Grid.Column="2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}" 
+                            ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" />
                 </Grid>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <RichTextBlock>
-                    <Paragraph>&lt;controls:TreeView    ItemsSource="{x:Bind DataSource}"/&gt;</Paragraph>
-                    <Paragraph>&lt;                     ItemTemplateSelector="{StaticResource ExpolrerItemTemplateSelector}"/&gt;</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>

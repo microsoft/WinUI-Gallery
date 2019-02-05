@@ -94,7 +94,12 @@ namespace AppUIBasics.ControlPages
 
         private void Combo3_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
         {
-            if (double.TryParse(sender.Text, out double newValue) && newValue < 100 && newValue > 8)
+            bool isDouble = double.TryParse(sender.Text, out double newValue);
+
+            // Set the selected item if:
+            // - The value successfully parsed to double AND
+            // - The value is in the list of sizes OR is a custom value between 8 and 100
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
             {
                 // Update the SelectedItem to the new value. 
                 sender.SelectedItem = newValue;

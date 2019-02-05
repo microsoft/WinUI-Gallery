@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Text;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
@@ -35,11 +36,13 @@ namespace AppUIBasics.ControlPages
             {
                 _type = MarkerType.Bullet;
                 mySymbolIcon.Symbol = Symbol.List;
+                myListButton.SetValue(AutomationProperties.NameProperty, "Bullets");
             }
             else if (symbol.Symbol == Symbol.Bullets)
             {
                 _type = MarkerType.UppercaseRoman;
                 mySymbolIcon.Symbol = Symbol.Bullets;
+                myListButton.SetValue(AutomationProperties.NameProperty, "Roman Numerals");
             }
             myRichEditBox.Document.Selection.ParagraphFormat.ListType = _type;
 

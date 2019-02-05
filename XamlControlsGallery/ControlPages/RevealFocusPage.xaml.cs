@@ -58,8 +58,8 @@ namespace AppUIBasics.ControlPages
             }
 
             primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-            primaryBrushRun.Text = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
-            primaryColorRun.Text = "SystemControlFocusVisualPrimaryBrush";
+            primaryBrushText.Value = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
+            primaryColorKeyText.Value = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
         }
 
@@ -70,8 +70,8 @@ namespace AppUIBasics.ControlPages
             {
                 myPrimaryColorPicker.Color = (this.Resources["SystemControlRevealFocusVisualBrush"] as SolidColorBrush).Color;
                 primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-                primaryBrushRun.Text = "{StaticResource SystemControlRevealFocusVisualBrush}";
-                primaryColorRun.Text = "SystemControlRevealFocusVisualBrush";
+                primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
+                primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
             }
         }
@@ -128,10 +128,15 @@ namespace AppUIBasics.ControlPages
 
     public class MyConverters
     {
-        public double UniformLength { get; set; }
         public static Thickness IntToThickness(double UniformLength)
         {
             return new Thickness(UniformLength);
         }
+
+        public static SolidColorBrush ColorToBrush(Color color)
+        {
+            return new SolidColorBrush(color);
+        }
+
     }
 }

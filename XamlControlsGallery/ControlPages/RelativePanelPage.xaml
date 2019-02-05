@@ -26,14 +26,14 @@
             <Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/>
         </RelativePanel>
         <local:ControlExample.Xaml>
-            <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                <Paragraph>&lt;RelativePanel  Width="300"&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;Rectangle x:Name="Rectangle1" Fill="Red" Height="50" Width="50"/&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" RelativePanel.AlignRightWithPanel="True"/&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/&gt;</Paragraph>
-                <Paragraph>&lt;/RelativePanel&gt;</Paragraph>
-            </RichTextBlock>
+            <x:String xml:space="preserve">
+&lt;RelativePanel  Width="300"&gt;
+    &lt;Rectangle x:Name="Rectangle1" Fill="Red" Height="50" Width="50"/&gt;
+    &lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;
+    &lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" RelativePanel.AlignRightWithPanel="True"/&gt;
+    &lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/&gt;
+&lt;/RelativePanel&gt;
+            </x:String>
         </local:ControlExample.Xaml>
     </local:ControlExample>
 

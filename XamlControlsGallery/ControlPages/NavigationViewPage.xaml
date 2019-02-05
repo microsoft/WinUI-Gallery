@@ -8,10 +8,6 @@
         x:Class="AppUIBasics.ControlPages.NavigationViewPage"
         mc:Ignorable="d">
     <Page.Resources>
-        <converters:BooleanNegationConverter x:Key="NotConverter"/>
-        <converters:BooleanNegationToBackButtonVisibilityConverter x:Key="BooleanNegationToBackVisibilityConverter" />
-        <converters:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
-
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
                 <DataTemplate x:DataType="converters:Category">
@@ -53,7 +49,7 @@
                                       BackgroundSource="Backdrop"
                                       TintColor="White"
                                       TintOpacity="0.8"
-                                      FallbackColor="#F2F2F2" />  
+                                      FallbackColor="#F2F2F2" />
                     </ResourceDictionary>
                     <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="myBrush" Color="{StaticResource SystemBaseHighColor}" />
@@ -61,7 +57,7 @@
                                       BackgroundSource="Backdrop"
                                       TintColor="#1F1F1F"
                                       TintOpacity="0.8"
-                                      FallbackColor="#1F1F1F" />  
+                                      FallbackColor="#1F1F1F" />
                     </ResourceDictionary>
                     <ResourceDictionary x:Key="HighContrast">
                         <SolidColorBrush x:Key="myBrush" Color="{ThemeResource SystemColorButtonFaceColor}"/>
@@ -266,7 +262,7 @@
 
                     <CheckBox x:Name="sffCheck" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>
                     <CheckBox x:Name="suppressselectionCheck_Checked" Content="Selection of Menu Item2 suppressed" IsChecked="False" Click="suppressselectionCheck_Checked_Click"/>
-                    
+
                 </StackPanel>
 
             </local:ControlExample.Options>
@@ -276,42 +272,42 @@
                                         PaneTitle="{Binding ElementName=paneText, Path=Text, Mode=TwoWay}"
                                         PaneDisplayMode="Left" ExpandedModeThresholdWidth="500"
                                         IsTabStop="False">
-                    <muxcontrols:NavigationView.MenuItems>
-                        <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item" >
-                            <muxcontrols:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="Play"/>
-                            </muxcontrols:NavigationViewItem.Icon>
-                        </muxcontrols:NavigationViewItem>
-                        <muxcontrols:NavigationViewItemHeader Content="Actions"/>
-                        <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="True">
-                            <muxcontrols:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="Save"/>
-                            </muxcontrols:NavigationViewItem.Icon>
-                        </muxcontrols:NavigationViewItem>
-                        <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item">
-                            <muxcontrols:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="Refresh"/>
-                            </muxcontrols:NavigationViewItem.Icon>
-                        </muxcontrols:NavigationViewItem>
-                    </muxcontrols:NavigationView.MenuItems>
+                <muxcontrols:NavigationView.MenuItems>
+                    <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item" >
+                        <muxcontrols:NavigationViewItem.Icon>
+                            <SymbolIcon Symbol="Play"/>
+                        </muxcontrols:NavigationViewItem.Icon>
+                    </muxcontrols:NavigationViewItem>
+                    <muxcontrols:NavigationViewItemHeader Content="Actions"/>
+                    <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="True">
+                        <muxcontrols:NavigationViewItem.Icon>
+                            <SymbolIcon Symbol="Save"/>
+                        </muxcontrols:NavigationViewItem.Icon>
+                    </muxcontrols:NavigationViewItem>
+                    <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item">
+                        <muxcontrols:NavigationViewItem.Icon>
+                            <SymbolIcon Symbol="Refresh"/>
+                        </muxcontrols:NavigationViewItem.Icon>
+                    </muxcontrols:NavigationViewItem>
+                </muxcontrols:NavigationView.MenuItems>
 
-                    <muxcontrols:NavigationView.PaneCustomContent>
-                        <HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="Collapsed" />
-                    </muxcontrols:NavigationView.PaneCustomContent>
+                <muxcontrols:NavigationView.PaneCustomContent>
+                    <HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="Collapsed" />
+                </muxcontrols:NavigationView.PaneCustomContent>
 
-                    <muxcontrols:NavigationView.AutoSuggestBox>
-                        <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search"/>
-                    </muxcontrols:NavigationView.AutoSuggestBox>
+                <muxcontrols:NavigationView.AutoSuggestBox>
+                    <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search"/>
+                </muxcontrols:NavigationView.AutoSuggestBox>
 
-                    <muxcontrols:NavigationView.PaneFooter>
-                        <StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Collapsed">
-                            <NavigationViewItem Icon="Download" />
-                            <NavigationViewItem Icon="Favorite" />
-                        </StackPanel>
-                    </muxcontrols:NavigationView.PaneFooter>
+                <muxcontrols:NavigationView.PaneFooter>
+                    <StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Collapsed">
+                        <muxcontrols:NavigationViewItem Icon="Download" AutomationProperties.Name="download"/>
+                        <muxcontrols:NavigationViewItem Icon="Favorite" AutomationProperties.Name="favorite"/>
+                    </StackPanel>
+                </muxcontrols:NavigationView.PaneFooter>
 
-                    <Frame x:Name="contentFrame"/>
-                </muxcontrols:NavigationView>
+                <Frame x:Name="contentFrame"/>
+            </muxcontrols:NavigationView>
 
         </local:ControlExample>
     </Grid>

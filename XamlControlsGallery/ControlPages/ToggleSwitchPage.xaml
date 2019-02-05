@@ -22,9 +22,9 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple ToggleSwitch.">
             <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -34,11 +34,9 @@
                 <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="130"/>
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ToggleSwitch
-                        <Bold>Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ToggleSwitch Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

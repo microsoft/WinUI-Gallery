@@ -35,11 +35,6 @@ namespace AppUIBasics.ControlPages
                 var strStretch = (sender as RadioButton).Content.ToString();
                 var stretch = (Stretch)Enum.Parse(typeof(Stretch), strStretch);
                 StretchImage.Stretch = stretch;
-
-                if (StretchLabel != null)
-                {
-                    StretchLabel.Text = strStretch;
-                }
             }
         }
     }

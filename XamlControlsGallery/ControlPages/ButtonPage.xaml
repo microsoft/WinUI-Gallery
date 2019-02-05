@@ -20,7 +20,7 @@
             <local:ControlExample.Example>
                 <RelativePanel>
                     <Button x:Name="Button1" Content="Button" Click="Button_Click"
-                            IsEnabled="{x:Bind DisableButton1.IsChecked, Converter={StaticResource negationConverter}, Mode=OneWay}" />
+                            IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
                     <TextBlock x:Name="Control1Output" Margin="8,0,0,0" FontFamily="Global User Interface"
                             RelativePanel.RightOf="Button1" RelativePanel.AlignVerticalCenterWith="Button1" />
                 </RelativePanel>
@@ -31,9 +31,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Button" Click="Button_Click" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Button Content="Button" Click="Button_Click" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A Button with graphical content.">
@@ -46,19 +46,18 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">
-                        <Bold>&lt;Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/&gt;</Bold>
-                    </Paragraph>
-                    <Paragraph>&lt;/Button&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;
+    &lt;Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/&gt;
+&lt;/Button&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Custom button appearance" XamlSource="Buttons/Button/CustomButtonStyle.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Button3" Click="Button_Click" contract7Present:CornerRadius="10" Padding="4,-3,4,-3" BorderThickness="1" FontWeight="Bold">
+                    <Button x:Name="Button3" AutomationProperties.Name="Custom appearance" Click="Button_Click" 
+                            contract7Present:CornerRadius="10" Padding="4,-3,4,-3" BorderThickness="1" FontWeight="Bold">
                         <Button.Resources>
                             <ResourceDictionary>
                                 <ResourceDictionary.ThemeDictionaries>

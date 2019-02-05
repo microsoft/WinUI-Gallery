@@ -9,9 +9,9 @@
                 <CalendarDatePicker PlaceholderText="Pick a date" Header="Calendar" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;CalendarDatePicker PlaceholderText="Pick a date" Header="Calendar" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;CalendarDatePicker PlaceholderText="Pick a date" Header="Calendar" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

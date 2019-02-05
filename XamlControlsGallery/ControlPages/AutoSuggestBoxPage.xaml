@@ -13,11 +13,11 @@
                         FontFamily="Global User Interface" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"</Paragraph>
-                    <Paragraph TextIndent="48">SuggestionChosen="AutoSuggestBox_SuggestionChosen"</Paragraph>
-                    <Paragraph TextIndent="48">Width="300" AutomationProperties.Name="Basic AutoSuggestBox"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"
+                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                Width="300" AutomationProperties.Name="Basic AutoSuggestBox"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="An AutoSuggestBox that provides a SearchBox experience">
@@ -39,13 +39,13 @@
                 </RelativePanel>
             </Grid>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;AutoSuggestBox PlaceholderText="Type a control name"</Paragraph>
-                    <Paragraph TextIndent="24">TextChanged="Control2_TextChanged"</Paragraph>
-                    <Paragraph TextIndent="24">QueryIcon="Find"</Paragraph>
-                    <Paragraph TextIndent="24">QuerySubmitted="Control2_QuerySubmitted"</Paragraph>
-                    <Paragraph TextIndent="24">SuggestionChosen="Control2_SuggestionChosen"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;AutoSuggestBox PlaceholderText="Type a control name"
+        TextChanged="Control2_TextChanged"
+        QueryIcon="Find"
+        QuerySubmitted="Control2_QuerySubmitted"
+        SuggestionChosen="Control2_SuggestionChosen"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
