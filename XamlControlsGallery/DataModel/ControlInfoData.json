@@ -1453,7 +1453,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/tabs-pivot"
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/pivot"
             }
           ],
           "RelatedControls": [
