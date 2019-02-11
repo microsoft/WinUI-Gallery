@@ -36,8 +36,9 @@ namespace AppUIBasics.ControlPages
         }
 
         private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
-        {            
-            ShowMenu((sender as Button).IsPointerOver);
+        {   
+            // always show a context menue in standard mode
+            ShowMenu(false);
         }
 
         private void MyImageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
