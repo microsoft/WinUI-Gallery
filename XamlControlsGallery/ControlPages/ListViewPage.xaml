@@ -151,13 +151,13 @@
                 <x:String xml:space="preserve">
 &lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
 
-&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;
-    &lt;ListView.ItemsPanel/&gt;
-        &lt;ItemsPanelTemplate/&gt;
+&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
+    &lt;ListView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
             &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="False"/&gt;
-        &lt;ItemsPanelTemplate /&gt;
-    &lt;ListView.ItemsPanel/&gt;
-&lt;ListView/&gt;
+        &lt;/ItemsPanelTemplate&gt;
+    &lt;/ListView.ItemsPanel&gt;
+&lt;/ListView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             
@@ -190,13 +190,13 @@
                 <x:String xml:space="preserve">
 &lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
 
-&lt;ListView ItemsSource="{x:Bind Contacts}"/&gt;
-    &lt;ListView.ItemsPanel/&gt;
-        &lt;ItemsPanelTemplate/&gt;
+&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
+    &lt;ListView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
             &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="True"/&gt;
-        &lt;ItemsPanelTemplate /&gt;
-    &lt;ListView.ItemsPanel/&gt;
-&lt;ListView/&gt;
+        &lt;/ItemsPanelTemplate &gt;
+    &lt;/ListView.ItemsPanel&gt;
+&lt;/ListView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
