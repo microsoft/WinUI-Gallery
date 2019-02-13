@@ -20,12 +20,12 @@ namespace AppUIBasics.ControlPages
             SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
         }
 
-        private void ShowMenu()
+        private void ShowMenu(bool isTransient)
         {
             if(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
                 FlyoutShowOptions myOption = new FlyoutShowOptions();
-                myOption.ShowMode = FlyoutShowMode.Transient;
+                myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
                 myOption.Placement = FlyoutPlacementMode.RightEdgeAlignedTop;
                 CommandBarFlyout1.ShowAt(Image1, myOption);
             }
@@ -36,13 +36,14 @@ namespace AppUIBasics.ControlPages
         }
 
         private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
-        {
-            ShowMenu();
+        {   
+            // always show a context menu in standard mode
+            ShowMenu(false);
         }
 
         private void MyImageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ShowMenu();
+            ShowMenu((sender as Button).IsPointerOver);
         }
     }
 }
