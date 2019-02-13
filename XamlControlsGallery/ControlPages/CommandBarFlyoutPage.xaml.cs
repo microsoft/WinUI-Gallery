@@ -37,7 +37,7 @@ namespace AppUIBasics.ControlPages
 
         private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
         {   
-            // always show a context menue in standard mode
+            // always show a context menu in standard mode
             ShowMenu(false);
         }
 
