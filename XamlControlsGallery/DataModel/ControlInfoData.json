@@ -1083,6 +1083,29 @@
             "Button",
             "AppBarButton"
           ]
+        },
+        {
+          "UniqueId": "TeachingTip",
+          "Title": "TeachingTip",
+          "Subtitle": "A content-rich flyout for guiding users and enabling teaching moments.",
+          "ImagePath": "ms-appx:///Assets/TeachingTip.png",
+          "Description": "The XAML TeachingTip Control provides a way for your app to guide and inform users in your application with a non-invasive and content rich notification. TeachingTip can be used for bringing focus to a new or important feature, teaching users how to perform a task, or enhancing the user workflow by providing contextually relevant information to their task at hand.",
+          "Content": "<p>Look at the <i>TeachingTip.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "TeachingTip - API",
+              "Uri": ""
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": ""
+            }
+          ],
+          "RelatedControls": [
+            "ContentDialog",
+            "Flyout"
+          ]
         }
       ]
     },
