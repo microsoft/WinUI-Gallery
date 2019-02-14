@@ -14,7 +14,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
+        <Button Content="Save" Click="OnFirstSaveButtonClick">
+            <muxc:TeachingTip.Attach>
+                <muxc:TeachingTip x:Name="AutoSaveTip"
+                    Title="Saving automatically"
+                    Subtext="We save your changes as you go - so you never have to.">
+                </muxc:TeachingTip>
+            </muxc:TeachingTip.Attach>
+        </Button>
     </StackPanel>
 </Page>
