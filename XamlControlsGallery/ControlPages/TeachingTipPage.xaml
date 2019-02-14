@@ -17,11 +17,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-        <Button Content="Save">
+        <Button Content="Save" Click="Button_Click">
             <muxc:TeachingTip.Attach>
                 <muxc:TeachingTip x:Name="AutoSaveTip"
                     Title="Saving automatically"
                     Subtext="We save your changes as you go - so you never have to.">
+                    <muxc:TeachingTip.IconSource>
+                        <muxc:SymbolIconSource Symbol="Save"/>
+                    </muxc:TeachingTip.IconSource>
+                    <muxc:TeachingTip.BleedingImageContent>
+                        <Grid/>
+                    </muxc:TeachingTip.BleedingImageContent>
                 </muxc:TeachingTip>
             </muxc:TeachingTip.Attach>
         </Button>

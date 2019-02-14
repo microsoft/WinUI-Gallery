@@ -24,5 +24,9 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AutoSaveTip.IsOpen = true;
+        }
     }
 }
