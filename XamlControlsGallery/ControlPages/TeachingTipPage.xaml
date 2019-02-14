@@ -17,19 +17,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-        <Button Content="Save" Click="Button_Click">
-            <muxc:TeachingTip.Attach>
-                <muxc:TeachingTip x:Name="AutoSaveTip"
+
+        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip.">
+            <local:ControlExample.Example>
+                <Button Content="Save" Click="SaveButtonClick1">
+                    <muxc:TeachingTip.Attach>
+                        <muxc:TeachingTip x:Name="AutoSaveTip1"
                     Title="Saving automatically"
                     Subtext="We save your changes as you go - so you never have to.">
-                    <muxc:TeachingTip.IconSource>
-                        <muxc:SymbolIconSource Symbol="Save"/>
-                    </muxc:TeachingTip.IconSource>
-                    <muxc:TeachingTip.BleedingImageContent>
-                        <Grid/>
-                    </muxc:TeachingTip.BleedingImageContent>
-                </muxc:TeachingTip>
-            </muxc:TeachingTip.Attach>
-        </Button>
+                            <muxc:TeachingTip.IconSource>
+                                <muxc:SymbolIconSource Symbol="Save"/>
+                            </muxc:TeachingTip.IconSource>
+                            <muxc:TeachingTip.BleedingImageContent>
+                                <Grid/>
+                            </muxc:TeachingTip.BleedingImageContent>
+                        </muxc:TeachingTip>
+                    </muxc:TeachingTip.Attach>
+                </Button>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Save" Click="SaveButtonClick1"&gt;
+    &lt;muxc:TeachingTip.Attach&gt;
+        &lt;muxc:TeachingTip x:Name="AutoSaveTip1"
+            Title="Saving automatically"
+            Subtext="We save your changes as you go - so you never have to."&gt;
+            &lt;muxc:TeachingTip.IconSource&gt;
+                &lt;muxc:SymbolIconSource Symbol="Save"/&gt;
+            &lt;/muxc:TeachingTip.IconSource&gt;
+            &lt;muxc:TeachingTip.BleedingImageContent&gt;
+                &lt;Grid/&gt;
+            &lt;/muxc:TeachingTip.BleedingImageContent&gt;
+        &lt;/muxc:TeachingTip&gt;
+    &lt;/muxc:TeachingTip.Attach&gt;
+&lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
     </StackPanel>
 </Page>
