@@ -23,8 +23,8 @@
                 <Button Content="Save" Click="SaveButtonClick1">
                     <muxc:TeachingTip.Attach>
                         <muxc:TeachingTip x:Name="AutoSaveTip1"
-                    Title="Saving automatically"
-                    Subtext="We save your changes as you go - so you never have to.">
+                            Title="Saving automatically"
+                            Subtext="We save your changes as you go - so you never have to.">
                             <muxc:TeachingTip.IconSource>
                                 <muxc:SymbolIconSource Symbol="Save"/>
                             </muxc:TeachingTip.IconSource>
