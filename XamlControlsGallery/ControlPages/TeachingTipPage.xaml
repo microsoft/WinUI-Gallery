@@ -17,7 +17,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-        <Button Content="Save" Click="OnFirstSaveButtonClick">
+        <Button Content="Save">
             <muxc:TeachingTip.Attach>
                 <muxc:TeachingTip x:Name="AutoSaveTip"
                     Title="Saving automatically"
