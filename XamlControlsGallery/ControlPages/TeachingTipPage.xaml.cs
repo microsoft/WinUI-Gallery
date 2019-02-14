@@ -29,5 +29,15 @@ namespace AppUIBasics.ControlPages
             AutoSaveTip1.IsOpen = true;
         }
 
+        private void SaveButtonClick2(object sender, RoutedEventArgs e)
+        {
+            AutoSaveTip2.IsOpen = true;
+        }
+
+        private void SaveButtonClick3(object sender, RoutedEventArgs e)
+        {
+            AutoSaveTip3.IsOpen = true;
+        }
+
     }
 }

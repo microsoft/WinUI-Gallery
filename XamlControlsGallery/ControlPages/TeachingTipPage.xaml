@@ -18,7 +18,7 @@
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
 
-        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip.">
+        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip with a title, subtitle, and icon.">
             <local:ControlExample.Example>
                 <Button Content="Save" Click="SaveButtonClick1">
                     <muxc:TeachingTip.Attach>
@@ -45,9 +45,90 @@
             &lt;muxc:TeachingTip.IconSource&gt;
                 &lt;muxc:SymbolIconSource Symbol="Save"/&gt;
             &lt;/muxc:TeachingTip.IconSource&gt;
-            &lt;muxc:TeachingTip.BleedingImageContent&gt;
-                &lt;Grid/&gt;
-            &lt;/muxc:TeachingTip.BleedingImageContent&gt;
+        &lt;/muxc:TeachingTip&gt;
+    &lt;/muxc:TeachingTip.Attach&gt;
+&lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example2" HeaderText="A light-dismiss TeachingTip with hero content.">
+            <local:ControlExample.Example>
+                <Button Content="Save" Click="SaveButtonClick2">
+                    <muxc:TeachingTip.Attach>
+                        <muxc:TeachingTip x:Name="AutoSaveTip2"
+                        Title="Saving automatically"
+                        Subtext="We save your changes as you go - so you never have to."
+                        Placement="Right"
+                        IsLightDismissEnabled="True">
+                            <muxc:TeachingTip.IconSource>
+                                <muxc:SymbolIconSource Symbol="Save"/>
+                            </muxc:TeachingTip.IconSource>
+                            <muxc:TeachingTip.BleedingImageContent>
+                                <Image Source="/Assets/SampleMedia/LandscapeImage8.jpg"/>
+                            </muxc:TeachingTip.BleedingImageContent>
+                        </muxc:TeachingTip>
+                    </muxc:TeachingTip.Attach>
+                </Button>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Save" Click="SaveButtonClick2"&gt;
+    &lt;muxc:TeachingTip.Attach&gt;
+        &lt;muxc:TeachingTip x:Name="AutoSaveTip2"
+            Title="Saving automatically"
+            Subtext="We save your changes as you go - so you never have to."
+            Placement="Right"
+            IsLightDismissEnabled="False"&gt;
+            &lt;muxc:TeachingTip.HeroContent&gt;
+                &lt;Image Source="/Assets/SampleMedia/LandscapeImage8.jpg"/&gt;
+            &lt;/muxc:TeachingTip.HeroContent&gt;
+        &lt;/muxc:TeachingTip&gt;
+    &lt;/muxc:TeachingTip.Attach&gt;
+&lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example3" HeaderText="A TeachingTip with content and buttons.">
+            <local:ControlExample.Example>
+                <Button Content="Save" Click="SaveButtonClick3">
+                    <muxc:TeachingTip.Attach>
+                        <muxc:TeachingTip x:Name="AutoSaveTip3"
+                        Title="Saving automatically"
+                        Subtext="We save your changes as you go - so you never have to."
+                        ActionButtonText="Disable Auto Save"
+                        CloseButtonText="Close">
+                            <muxc:TeachingTip.IconSource>
+                                <muxc:SymbolIconSource/>
+                            </muxc:TeachingTip.IconSource>
+                            <muxc:TeachingTip.BleedingImageContent>
+                                <Grid/>
+                            </muxc:TeachingTip.BleedingImageContent>
+                            <muxc:TeachingTip.Content>
+                                <StackPanel>
+                                    <TextBlock>You can change your tip preferences in <Hyperlink NavigateUri="app:/item/SettingsPage">Settings</Hyperlink> if you change your mind.</TextBlock>
+                                </StackPanel>
+                            </muxc:TeachingTip.Content>
+                        </muxc:TeachingTip>
+                    </muxc:TeachingTip.Attach>
+                </Button>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Save" Click="SaveButtonClick2"&gt;
+    &lt;muxc:TeachingTip.Attach&gt;
+        &lt;muxc:TeachingTip x:Name="AutoSaveTip2"
+            Title="Saving automatically"
+            Subtext="We save your changes as you go - so you never have to."
+            ActionButtonText="Disable Auto Save"
+            ActionButtonCommand="DisableAutoSave"
+            CloseButtonText="Close"&gt;
+            &lt;muxc:TeachingTip.Content&gt;
+                &lt;StackPanel&gt;
+                    &lt;TextBlock&gt; You can change your tip preferences in &lt;Hyperlink NavigateUri="app:/item/SettingsPage"&gt;Settings&lt;/Hyperlink&gt; if you change your mind.&lt;/TextBlock&gt;
+                &lt;/StackPanel&gt;
+            &lt;/muxc:TeachingTip.Content&gt;
         &lt;/muxc:TeachingTip&gt;
     &lt;/muxc:TeachingTip.Attach&gt;
 &lt;/Button&gt;
