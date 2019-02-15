@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -26,6 +27,7 @@ namespace AppUIBasics.ControlPages
 
         private void SaveButtonClick1(object sender, RoutedEventArgs e)
         {
+            TeachingTip.SetAttach(null, AutoSaveTip1);
             AutoSaveTip1.IsOpen = true;
         }
 

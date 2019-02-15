@@ -33,12 +33,13 @@
                             </muxc:TeachingTip.BleedingImageContent>
                         </muxc:TeachingTip>
                     </muxc:TeachingTip.Attach>
+                    <Button.Resources></Button.Resources>
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Button Content="Save" Click="SaveButtonClick1"&gt;
-    &lt;muxc:TeachingTip.Attach&gt;
+    &lt;Button.Resources&gt;
         &lt;muxc:TeachingTip x:Name="AutoSaveTip1"
             Title="Saving automatically"
             Subtext="We save your changes as you go - so you never have to."&gt;
@@ -46,13 +47,13 @@
                 &lt;muxc:SymbolIconSource Symbol="Save"/&gt;
             &lt;/muxc:TeachingTip.IconSource&gt;
         &lt;/muxc:TeachingTip&gt;
-    &lt;/muxc:TeachingTip.Attach&gt;
+    &lt;/Button.Resources&gt;
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="A light-dismiss TeachingTip with hero content.">
+        <local:ControlExample x:Name="Example2" HeaderText="A pointing TeachingTip with hero content that is light-dismiss enabled.">
             <local:ControlExample.Example>
                 <Button Content="Save" Click="SaveButtonClick2">
                     <muxc:TeachingTip.Attach>
@@ -90,7 +91,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="A TeachingTip with content and buttons.">
+        <local:ControlExample x:Name="Example3" HeaderText="A pointing TeachingTip with content and buttons.">
             <local:ControlExample.Example>
                 <Button Content="Save" Click="SaveButtonClick3">
                     <muxc:TeachingTip.Attach>
