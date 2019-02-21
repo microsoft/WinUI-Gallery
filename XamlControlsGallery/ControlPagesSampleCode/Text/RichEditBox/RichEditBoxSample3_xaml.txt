@@ -103,7 +103,8 @@
     <RichEditBox x:Name="editor" Height="200" 
                  RelativePanel.Below="openFileButton" 
                  RelativePanel.AlignLeftWithPanel="True" 
-                 RelativePanel.AlignRightWithPanel="True" />
+                 RelativePanel.AlignRightWithPanel="True"
+                 GotFocus="Editor_GotFocus" />
     <StackPanel Orientation="Horizontal" 
                 RelativePanel.Below="editor" 
                 RelativePanel.AlignLeftWith="editor" 
