@@ -38,7 +38,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
-            <TextBlock Text="{x:Bind Group.(data:ControlInfoDataGroup.Title)}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
+            <TextBlock Text="{x:Bind ((data:ControlInfoDataGroup)Group).Title}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -59,23 +59,23 @@
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;SemanticZoom Height="500"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;SemanticZoom.ZoomedInView&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;GridView ItemsSource="{x:Bind cvsGroups.View}" SelectionMode="None"</Paragraph>
-                    <Paragraph TextIndent="60">ItemTemplate="{StaticResource ZoomedInTemplate}"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;GridView.GroupStyle&gt;</Paragraph>
-                    <Paragraph TextIndent="48">&lt;GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" /&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;/GridView.GroupStyle&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/GridView&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/SemanticZoom.ZoomedInView&gt;</Paragraph>
-                    <Paragraph></Paragraph>
-                    <Paragraph TextIndent="12">&lt;SemanticZoom.ZoomedOutView&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" HorizontalAlignment="Stretch"</Paragraph>
-                    <Paragraph TextIndent="60">SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" /&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/SemanticZoom.ZoomedOutView&gt;</Paragraph>
-                    <Paragraph>&lt;/SemanticZoom&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;SemanticZoom Height="500"&gt;
+    &lt;SemanticZoom.ZoomedInView&gt;
+        &lt;GridView ItemsSource="{x:Bind cvsGroups.View}" SelectionMode="None"
+                  ItemTemplate="{StaticResource ZoomedInTemplate}"&gt;
+            &lt;GridView.GroupStyle&gt;
+                &lt;GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" /&gt;
+            &lt;/GridView.GroupStyle&gt;
+        &lt;/GridView&gt;
+    &lt;/SemanticZoom.ZoomedInView&gt;
+
+    &lt;SemanticZoom.ZoomedOutView&gt;
+        &lt;ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" HorizontalAlignment="Stretch"
+                  SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" /&gt;
+    &lt;/SemanticZoom.ZoomedOutView&gt;
+&lt;/SemanticZoom&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

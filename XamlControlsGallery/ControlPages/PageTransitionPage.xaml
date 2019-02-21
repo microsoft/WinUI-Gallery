@@ -33,20 +33,24 @@
         </Frame>
 
         <local:ControlExample.Xaml>
-            <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                <Paragraph>&lt;Frame x:Name="ContentFrame"&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;Frame.ContentTransitions&gt;</Paragraph>
-                <Paragraph TextIndent="24">&lt;TransitionCollection&gt;</Paragraph>
-                <Paragraph TextIndent="36">&lt;NavigationThemeTransition  /&gt;</Paragraph>
-                <Paragraph TextIndent="24">&lt;/TransitionCollection&gt;</Paragraph>
-                <Paragraph TextIndent="12">&lt;/Frame.ContentTransitions&gt;</Paragraph>
-                <Paragraph>&lt;/Frame&gt;</Paragraph>
-                <Paragraph></Paragraph>
-                <Paragraph>ContentFrame.Navigate(typeof(SamplePage), null
-                    <Run x:Name="transitionRun" /> );
-                </Paragraph>
-            </RichTextBlock>
+            <x:String xml:space="preserve">
+&lt;Frame x:Name="ContentFrame"&gt;
+    &lt;Frame.ContentTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;NavigationThemeTransition  /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/Frame.ContentTransitions&gt;
+&lt;/Frame&gt;
+            </x:String>
         </local:ControlExample.Xaml>
+        <local:ControlExample.CSharp>
+            <x:String>
+                ContentFrame.Navigate(typeof(SamplePage), null$(TransitionParameter));
+            </x:String>
+        </local:ControlExample.CSharp>
+        <local:ControlExample.Substitutions>
+            <local:ControlExampleSubstitution x:Name="TransitionValue" Key="TransitionParameter" Value="" />
+        </local:ControlExample.Substitutions>
     </local:ControlExample>
 
 </Page>

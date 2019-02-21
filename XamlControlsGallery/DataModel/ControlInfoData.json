@@ -1206,6 +1206,26 @@
           ]
         },
         {
+          "UniqueId": "ItemsRepeater",
+          "Title": "ItemsRepeater",
+          "Subtitle": "A flexible, primitive control for data-driven layouts.",
+          "ImagePath": "ms-appx:///Assets/ListView.png",
+          "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
+          "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsPreview": true,
+          "Docs": [
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/lists"
+            }
+          ],
+          "RelatedControls": [
+            "ScrollViewer",
+            "ListView",
+            "GridView"
+          ]
+        },
+        {
           "UniqueId": "Grid",
           "Title": "Grid",
           "Subtitle": "A layout panel that supports arranging child elements in rows and columns. ",
@@ -1433,7 +1453,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/tabs-pivot"
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/pivot"
             }
           ],
           "RelatedControls": [

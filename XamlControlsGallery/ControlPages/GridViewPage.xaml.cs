@@ -31,14 +31,18 @@ namespace AppUIBasics.ControlPages
         {
             base.OnNavigatedTo(e);
 
-            Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            Control1.ItemsSource = CustomDataObject.GetDataObjects();
         }
 
-        private void ItemTemplate_Click(object sender, RoutedEventArgs e)
+        private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
         {
-            var template = (sender as FrameworkElement).Tag.ToString();
-            Control1.ItemTemplate = (DataTemplate)this.Resources[template];
-            itemTemplate.Text = template;
+            var tag = (sender as FrameworkElement).Tag;
+            if (tag != null)
+            {
+                var template = tag.ToString();
+                Control1.ItemTemplate = (DataTemplate)this.Resources[template];
+                itemTemplate.Value = template;
+            }
         }
 
         private void Control1_SelectionChanged(object sender, SelectionChangedEventArgs e)

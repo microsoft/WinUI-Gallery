@@ -10,7 +10,7 @@
     <AssemblyName>AppUIBasics</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.18298.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -228,6 +228,7 @@
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
@@ -242,28 +243,20 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
-    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
-    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\Category.cs" />
-    <Compile Include="Common\ColorStringConverter.cs" />
-    <Compile Include="Common\ColorToBrushConverter.cs" />
-    <Compile Include="Common\ComboBoxItemToStringConverter.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
-    <Compile Include="Common\DoubleToIntConverter.cs" />
+    <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
-    <Compile Include="Common\ShowAcrylicBehindHeaderConverter.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientedSize.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Common\StringToBrushConverter.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\UIHelper.cs" />
-    <Compile Include="Common\ValueToFontFamilyConverter.cs" />
-    <Compile Include="Common\ValueToStringConverter.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
@@ -378,6 +371,9 @@
     </Compile>
     <Compile Include="ControlPages\InkCanvasPage.xaml.cs">
       <DependentUpon>InkCanvasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ItemsRepeaterPage.xaml.cs">
+      <DependentUpon>ItemsRepeaterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\ListBoxPage.xaml.cs">
       <DependentUpon>ListBoxPage.xaml</DependentUpon>
@@ -804,6 +800,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\ItemsRepeaterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\ListBoxPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1049,7 +1049,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.0.181011001</Version>
+      <Version>2.1.190131001-prerelease</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>

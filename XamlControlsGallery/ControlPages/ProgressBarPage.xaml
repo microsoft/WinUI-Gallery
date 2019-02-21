@@ -29,13 +29,14 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ProgressBar Width="130" IsIndeterminate="True"
-                        ShowPaused="<Run Text="{x:Bind PausedRB.IsChecked.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />"
-                        ShowError="<Run Text="{x:Bind ErrorRB.IsChecked.Value, Converter={StaticResource valueToStringConverter}, Mode=OneWay}" />" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="ShowPaused" Value="{x:Bind PausedRB.IsChecked, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ShowError" Value="{x:Bind ErrorRB.IsChecked, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A determinate progress bar.">
@@ -45,11 +46,13 @@
                 <RepeatButton Content="Click and hold" Click="RepeatButton_Click" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ProgressBar Width="130" Value="<Run x:Name="DeterminateProgressValue">0</Run>" /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ProgressBar Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="DeterminateProgressValue" Value="{x:Bind ProgressBar2.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

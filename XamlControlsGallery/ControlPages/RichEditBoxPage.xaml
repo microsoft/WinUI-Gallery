@@ -23,11 +23,11 @@
     <StackPanel>
 
         <local:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
-            <RichEditBox />
+            <RichEditBox AutomationProperties.Name="simple text editor"/>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;RichEditBox x:Name="editor" Height="200"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;RichEditBox x:Name="editor" AutomationProperties.Name="simple text editor"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -37,7 +37,7 @@
                               HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <StackPanel>
                 <TextBlock Margin="0,0,0,10" Text="Prefix an entry with an at-sign (@) symbol to see a list of people and place suggestions that matches the entry." TextWrapping="WrapWholeWords"/>
-                <RichEditBox Height="200">
+                <RichEditBox Height="200" AutomationProperties.Name="Editor with content links">
                     <contract6Present:RichEditBox.ContentLinkProviders>
                         <contract6Present:ContentLinkProviderCollection>
                             <contract6Present:ContactContentLinkProvider/>
@@ -52,7 +52,9 @@
                               XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt"
                               CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt"
                               MinimumUniversalAPIContract="7">
-            <RichEditBox x:Name="REBCustom" Width="800" Height="200" 
+            <RichEditBox x:Name="REBCustom" AutomationProperties.Name="editor with custom menu" 
+                         Width="800" 
+                         Height="200" 
                          Loaded="REBCustom_Loaded" 
                          Unloaded="REBCustom_Unloaded"/>
 
@@ -166,7 +168,7 @@
                     </muxcontrols:DropDownButton.Flyout>
                 </muxcontrols:DropDownButton>
 
-                <RichEditBox x:Name="editor" Height="200" 
+                <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
                              RelativePanel.Below="openFileButton" 
                              RelativePanel.AlignLeftWithPanel="True" 
                              RelativePanel.AlignRightWithPanel="True" />

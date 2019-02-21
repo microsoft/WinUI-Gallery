@@ -18,24 +18,24 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Toggling Sound">
             <ToggleSwitch x:Name="soundToggle" OffContent="Sound Off" OnContent="Sound On" Toggled="soundToggle_Toggled"/>
-            <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>ElementSoundPlayer.State = ElementSoundPlayerState.Off;</Paragraph>
-                    <Paragraph>ElementSoundPlayer.State = ElementSoundPlayerState.On;</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+ElementSoundPlayer.State = ElementSoundPlayerState.On;
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="Toggling Spatial Audio">
             <StackPanel Orientation="Vertical">
                 <CheckBox x:Name="spatialAudioBox" IsEnabled="False" Content="Enable Spatial Audio" Checked="spatialAudioBox_Checked" Unchecked="spatialAudioBox_Unchecked"/>
                 <TextBlock Margin="0,5,0,0" Text="Can only enable spatial audio when sound is on!" Foreground="Red" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic"/>
             </StackPanel>
-            <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>ElementSoundPlayer.State = ElementSoundPlayerState.On;</Paragraph>
-                    <Paragraph>ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+ElementSoundPlayer.State = ElementSoundPlayerState.On;
+ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Play Specific System Sound">
             <Grid>
@@ -54,19 +54,19 @@
                     <ComboBoxItem>GoBack</ComboBoxItem>
                 </ComboBox>
             </Grid>
-            <local:ControlExample.Xaml>
-                <RichTextBlock x:Name="codeText" Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>ElementSoundPlayer.State = ElementSoundPlayerState.On;</Paragraph>
-                    <Paragraph></Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.Focus);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.Invoke);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.Show);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.Hide);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.MoveNext);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.MovePrevious);</Paragraph>
-                    <Paragraph>ElementSoundPlayer.Play(ElementSoundKind.GoBack);</Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+ElementSoundPlayer.State = ElementSoundPlayerState.On;
+
+ElementSoundPlayer.Play(ElementSoundKind.Focus);
+ElementSoundPlayer.Play(ElementSoundKind.Invoke);
+ElementSoundPlayer.Play(ElementSoundKind.Show);
+ElementSoundPlayer.Play(ElementSoundKind.Hide);
+ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
+ElementSoundPlayer.Play(ElementSoundKind.MovePrevious);
+ElementSoundPlayer.Play(ElementSoundKind.GoBack);
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </Page>

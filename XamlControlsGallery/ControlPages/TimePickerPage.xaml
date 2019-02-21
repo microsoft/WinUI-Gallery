@@ -18,30 +18,26 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple TimePicker.">
             <TimePicker />
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TimePicker/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;TimePicker/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A TimePicker with a header and minute increments specified."
                 RelativePanel.Below="Example1">
             <TimePicker Header="Arrival time" MinuteIncrement="15" />
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TimePicker
-                        <Bold>Header="Arrival time" MinuteIncrement="15"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;TimePicker Header="Arrival time" MinuteIncrement="15" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A TimePicker using a 24-hour clock.">
             <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" />
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;TimePicker
-                        <Bold>ClockIdentifier="24HourClock" Header="24 hour clock"</Bold> /&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

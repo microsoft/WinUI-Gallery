@@ -21,7 +21,7 @@
         <local:ControlExample HeaderText="A simple ToggleButton with text content.">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                 <ToggleButton x:Name="Toggle1" Content="ToggleButton"
-                    IsEnabled="{x:Bind DisableToggle1.IsChecked, Converter={StaticResource negationConverter}, Mode=OneWay}"
+                    IsEnabled="{x:Bind DisableToggle1.IsChecked.Value.Equals(x:False), Mode=OneWay}"
                     Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" />
                 <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
@@ -31,9 +31,9 @@
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ToggleButton Content="ToggleButton" Click="Button_Click"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

@@ -27,14 +27,14 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListBox SelectionChanged="ColorListBox_SelectionChanged" Width="200"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Blue&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Green&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Red&lt;x:String&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;x:String&gt;Yellow&lt;x:String&gt;</Paragraph>
-                    <Paragraph>&lt;/ListBox&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ListBox SelectionChanged="ColorListBox_SelectionChanged" Width="200"&gt;
+    &lt;x:String&gt;Blue&lt;x:String&gt;
+    &lt;x:String&gt;Green&lt;x:String&gt;
+    &lt;x:String&gt;Red&lt;x:String&gt;
+    &lt;x:String&gt;Yellow&lt;x:String&gt;
+&lt;/ListBox&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A ListBox with its ItemsSource and Height set.">
@@ -43,14 +43,14 @@
                     <ListBox x:Name="ListBox2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1"
                             SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded" />
                     <TextBlock x:Name="Control2Output" Text="You can set the font used for this text."
-                            FontFamily="{x:Bind ListBox2.SelectedValue, Converter={StaticResource valueToFontFamilyConverter}, Mode=OneWay}"
+                            FontFamily="{x:Bind (FontFamily)ListBox2.SelectedValue, Mode=OneWay}"
                             Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded"/&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;ListBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded"/&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

@@ -1,0 +1,146 @@
+﻿<local:ItemsPageBase
+    x:Class="AppUIBasics.ControlPages.ItemsRepeaterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppUIBasics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:l="using:AppUIBasics.ControlPages"
+    xmlns:common="using:AppUIBasics.Common"
+    mc:Ignorable="d" FontFamily="Segoe UI">
+
+    <Page.Resources>
+        <DataTemplate x:Key="HorizontalBarTemplate" x:DataType="l:Bar">
+            <Border Background="{ThemeResource SystemChromeLowColor}" Width="{x:Bind MaxLength}">
+                <Rectangle Fill="{ThemeResource SystemAccentColor}" Width="{x:Bind Length}" Height="24" HorizontalAlignment="Left"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="VerticalBarTemplate" x:DataType="l:Bar">
+            <Border Background="{ThemeResource SystemChromeLowColor}" Height="{x:Bind MaxHeight}">
+                <Rectangle Fill="{ThemeResource SystemAccentColor}" Height="{x:Bind Height}" Width="48" VerticalAlignment="Top"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CircularTemplate" x:DataType="l:Bar">
+            <Grid>
+                <Ellipse Fill="{ThemeResource SystemChromeLowColor}" Height="{x:Bind MaxDiameter}" Width="{x:Bind MaxDiameter}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Ellipse Fill="{ThemeResource SystemAccentColor}" Height="{x:Bind Diameter}" Width="{x:Bind Diameter}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
+                <TextBlock Text="{x:Bind}" />
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
+                <TextBlock Text="{x:Bind}" />
+            </Button>
+        </DataTemplate>
+
+        <muxcontrols:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
+        <muxcontrols:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" Spacing="8"/>
+        <muxcontrols:UniformGridLayout x:Name="UniformGridLayout" MinRowSpacing="8" MinColumnSpacing="8"/>
+
+        <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
+        <muxcontrols:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
+
+        <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
+                                  Normal="{StaticResource NormalItemTemplate}"
+                                  Accent="{StaticResource AccentItemTemplate}"/>
+    </Page.Resources>
+
+    <StackPanel>
+        <local:ControlExample HeaderText="Non-interactive items laid out by ItemsRepeater">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+                          HorizontalScrollMode="Auto" 
+                          IsVerticalScrollChainingEnabled="False"
+                          MaxHeight="500">
+                <muxcontrols:ItemsRepeater x:Name="repeater"
+                               Layout="{StaticResource VerticalStackLayout}"
+                               ItemsSource="{x:Bind BarItems}"
+                               ItemTemplate="{StaticResource HorizontalBarTemplate}"/>
+            </ScrollViewer>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <Button x:Name="AddBtn" Content="Add Item" Click="AddBtn_Click" MinWidth="150"/>
+                    <Button x:Name="DeleteBtn" Content="Remove Item" Click="DeleteBtn_Click" MinWidth="150"/>
+
+                    <RadioButton x:Name="VStackBtn" 
+                                 GroupName="Sample1Layouts"
+                                 Margin="0,24,0,0"
+                                 Content="StackLayout - Vertical"
+                                 Click="RadioBtn_Click"
+                                 Tag="VerticalStackLayout"
+                                 IsChecked="True"/>
+                    <RadioButton x:Name="HStackBtn"
+                                 GroupName="Sample1Layouts"
+                                 Content="StackLayout - Horizontal"
+                                 Tag="HorizontalStackLayout"
+                                 Click="RadioBtn_Click"/>
+                    <RadioButton x:Name="HGridBtn"
+                                 GroupName="Sample1Layouts"
+                                 Content="UniformGridLayout"
+                                 Tag="UniformGridLayout"
+                                 Click="RadioBtn_Click"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind BarItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+    </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
+                <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
+                              HorizontalContentAlignment="Stretch">
+
+            <!-- ScrollAnchorProvider enables ItemsRepeater to coordinate with ScrollViewer down-level.
+                 It's not needed on 17700+ builds. -->
+            <muxcontrols:ScrollAnchorProvider>
+                <ScrollViewer x:Name="scrollViewer"
+                              Height="400"
+                              IsVerticalScrollChainingEnabled="False"
+                              Padding="0,0,16,0">
+                    <muxcontrols:ItemsRepeater x:Name="repeater2" 
+                                       Margin="0,0,12,0"
+                                       HorizontalAlignment="Stretch"
+                                       Layout="{StaticResource MyFeedLayout}"
+                                       ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
+                </ScrollViewer>
+            </muxcontrols:ScrollAnchorProvider>
+
+            <local:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButton GroupName="Sample2Layouts" Content="Uniform grid" Tag="UniformGridLayout2" Click="LayoutBtn_Click"/>
+                    <RadioButton GroupName="Sample2Layouts" IsChecked="True" Content="Custom virtualizing layout" Tag="MyFeedLayout" Click="LayoutBtn_Click"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ItemsRepeater
+        ItemsSource="{x:Bind NumberedItems}"
+        Layout="{StaticResource $(Layout)}"
+        ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
+                <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+    </StackPanel>
+</local:ItemsPageBase>

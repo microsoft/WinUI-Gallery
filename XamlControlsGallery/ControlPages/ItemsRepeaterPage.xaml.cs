@@ -19,14 +19,14 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class RepeaterPage : ItemsPageBase
+    public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         private Random random = new Random();
         private int MaxLength = 425;
         private bool isHorizontal = false;
 
         public ObservableCollection<Bar> BarItems;
-        public RepeaterPage()
+        public ItemsRepeaterPage()
         {
             this.InitializeComponent();
             InitializeData();
@@ -64,27 +64,25 @@ namespace AppUIBasics.ControlPages
 
         private void OrientationBtn_Click(object sender, RoutedEventArgs e)
         {
-            string layoutKey = String.Empty, elementGeneratorKey = String.Empty, itemTemplateKey = String.Empty;
+            string layoutKey = String.Empty, itemTemplateKey = String.Empty;
 
             if (isHorizontal)
             {
                 layoutKey = "VerticalStackLayout";
-                elementGeneratorKey = "HorizontalElementGenerator";
                 itemTemplateKey = "HorizontalBarTemplate";
             }
             else
             {
                 layoutKey = "HorizontalStackLayout";
-                elementGeneratorKey = "VerticalElementGenerator";
                 itemTemplateKey = "VerticalBarTemplate";
             }
 
-            repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayoutBase;
-            repeater.ViewGenerator = Resources[elementGeneratorKey] as Microsoft.UI.Xaml.Controls.ViewGenerator;
+            repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+            repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
 
-            layout.Text = layoutKey;
-            elementGenerator.Text = itemTemplateKey;
+            layout.Value = layoutKey;
+            elementGenerator.Value = itemTemplateKey;
 
             isHorizontal = !isHorizontal;
         }
@@ -93,51 +91,61 @@ namespace AppUIBasics.ControlPages
         {
             string layoutKey = ((FrameworkElement)sender).Tag as string;
 
-            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayoutBase;
+            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 
-            layout2.Text = layoutKey;
+            layout2.Value = layoutKey;
         }
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)
         {
-            string elementGeneratorKey = String.Empty, itemTemplateKey = String.Empty;
+            string itemTemplateKey = String.Empty;
             var layoutKey = ((FrameworkElement)sender).Tag as string;
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
             {
-                layout.Text = layoutKey;
-                elementGeneratorKey = "HorizontalElementGenerator";
+                layout.Value = layoutKey;
                 itemTemplateKey = "HorizontalBarTemplate";
 
                 repeater.MaxWidth = MaxLength + 12;
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
-                layout.Text = layoutKey;
-                elementGeneratorKey = "VerticalElementGenerator";
+                layout.Value = layoutKey;
                 itemTemplateKey = "VerticalBarTemplate";
 
                 repeater.MaxWidth = 6000;
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
-                layout.Text = layoutKey;
-                elementGeneratorKey = "CircularElementGenerator";
+                layout.Value = layoutKey;
                 itemTemplateKey = "CircularTemplate";
 
                 repeater.MaxWidth = 540;
             }
 
-            repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayoutBase;
-            repeater.ViewGenerator = Resources[elementGeneratorKey] as Microsoft.UI.Xaml.Controls.ViewGenerator;
+            repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+            repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
 
-            elementGenerator.Text = itemTemplateKey;
+            elementGenerator.Value = itemTemplateKey;
         }
+    }
 
-        private void GridViewGenerator_SelectTemplateKey(Microsoft.UI.Xaml.Controls.RecyclingViewGenerator sender, Microsoft.UI.Xaml.Controls.SelectTemplateEventArgs args)
+    public class MyDataTemplateSelector : DataTemplateSelector
+    {
+        public DataTemplate Normal { get; set; }
+        public DataTemplate Accent { get; set; }
+
+        protected override DataTemplate SelectTemplateCore(object item)
         {
-            args.TemplateKey = ((int)args.DataContext) % 2 == 0 ? nameof(this.NormalItem) : nameof(this.AccentItem);
+            if ((int)item % 2 == 0)
+            {
+                return Normal;
+            }
+            else
+            {
+                return Accent;
+            }
         }
     }
 

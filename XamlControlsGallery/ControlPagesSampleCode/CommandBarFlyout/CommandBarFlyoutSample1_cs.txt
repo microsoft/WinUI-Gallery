@@ -1,21 +1,17 @@
-﻿public void OnClosed(object sender, object args)
+﻿private void ShowMenu(bool isTransient)
 {
-    myImageBorder.BorderBrush = new SolidColorBrush(Colors.Transparent);
+    FlyoutShowOptions myOption = new FlyoutShowOptions();
+    myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
+    CommandBarFlyout1.ShowAt(Image1, myOption);
 }
 
-public void Image_PointerPressed(object sender, PointerRoutedEventArgs args)
+private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
 {
-    wasLeftPointerPressed = args.GetCurrentPoint(myImageBorder).Properties.IsLeftButtonPressed;
+    // always show a context menu in standard mode
+    ShowMenu(false);
 }
 
-public void Image_PointerReleased(object sender, PointerRoutedEventArgs args)
+private void MyImageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
 {
-    if (wasLeftPointerPressed)
-    {
-        myImageBorder.BorderBrush = new SolidColorBrush(Colors.Red);
-        FlyoutShowOptions myOption = new FlyoutShowOptions();
-        myOption.ShowMode = FlyoutShowMode.Transient;
-        CommandBarFlyout1.ShowAt(Image1, myOption);
-        wasLeftPointerPressed = false;
-    }
+    ShowMenu((sender as Button).IsPointerOver);
 }
