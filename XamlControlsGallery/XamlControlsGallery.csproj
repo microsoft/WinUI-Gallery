@@ -93,6 +93,7 @@
     <Content Include="..\SharedContent\cs\Default.rd.xml">
       <Link>Properties\Default.rd.xml</Link>
     </Content>
+    <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
     <Content Include="Assets\SampleMedia\grapes.jpg" />
@@ -239,10 +240,10 @@
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\AnimatedVisuals\LottieLogo1.cs" />
     <Compile Include="Behaviors\ImageScrollBehavior.cs" />
     <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />

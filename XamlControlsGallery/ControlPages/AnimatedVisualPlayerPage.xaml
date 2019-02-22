@@ -16,24 +16,38 @@
                               >
 
             <local:ControlExample.Example>
-                <StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Text -->
+                    <TextBlock Width="600" TextWrapping="WrapWholeWords">
+                        This AnimatedVisualPlayer consumes a Lottie animation which was created in 
+                        Adobe AfterEffects and translated into Windows.UI.Composition objects using 
+                        <Hyperlink NavigateUri="https://aka.ms/lottie">
+                           Lottie-Windows
+                        </Hyperlink>.
+                        Since the 
+                        <Hyperlink NavigateUri="https://docs.microsoft.com/uwp/api/windows.ui.composition.compositionshape">
+                            CompositionShapes
+                        </Hyperlink> being used in the animation are supported on Windows 10 version 17763 and above, 
+                        the AnimatedVisualPlayer instatiates an Image as FallbackContent when its Source is unavailable.
+                    </TextBlock>
                     <Border Width="400" Height="400" 
                             BorderBrush="{ThemeResource ToolTipBorderThemeBrush}"
                             BorderThickness="5"
                             Background="LightGray"
+                            Margin="0, 20, 0, 20"
                             >
 
                         <!--  AnimatedVisualPlayer  -->
                         <muxcontrols:AnimatedVisualPlayer x:Name="Player"
                                                           AutoPlay="False">
                             
-                            <!--  Codegen-ed Lottie animation source: Assets/AnimatedVisuals/LottieLogo1.cs -->
+                            <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
                             <animatedvisuals:LottieLogo1/>
 
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
                             <muxcontrols:AnimatedVisualPlayer.FallbackContent>
                                 <DataTemplate>
-                                    <Image Source="Assets/LottiePlayerFallback.png"/>
+                                    <Image Source="Assets/LottieLogo1.png"/>
                                 </DataTemplate>
                             </muxcontrols:AnimatedVisualPlayer.FallbackContent>
                         </muxcontrols:AnimatedVisualPlayer>
@@ -84,14 +98,7 @@
                         </Button>
                     </Grid>
                     
-                    <!-- Text -->
-                    <TextBlock Width="400" TextWrapping="WrapWholeWords">
-                        This AnimatedVisualPlayer consumes a Lottie animation source. 
-                        To learn more about Lottie, visit: 
-                        <Hyperlink>
-                            https://aka.ms/lottie
-                        </Hyperlink>
-                    </TextBlock>
+                    
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
