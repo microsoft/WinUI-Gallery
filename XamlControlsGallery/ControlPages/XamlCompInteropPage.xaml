@@ -56,9 +56,36 @@
 
         <local:ControlExample HeaderText="Reference ActualSize in ExpressionAnimations to make novel layouts based on size" Loaded="ActualSizeExample_Loaded" MinimumUniversalAPIContract="8" CSharpSource="Motion/AnimationInterop/AnimationInteropSample4_cs.txt">
             <local:ControlExample.Options>
-                <Slider Header="Change radius" Minimum="200" Maximum="400" ValueChanged="RadiusSlider_ValueChanged" Width="100" />
+                <Slider Header="Change radius" Minimum="200" Maximum="400" ValueChanged="RadiusSlider_ValueChanged" MinWidth="150" />
             </local:ControlExample.Options>
             <Grid x:Name="LayoutPanel" Width="200" Height="200" Margin="12" />
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Reference ActualOffset and ActualSize in ExpressionAnimations to position elements relative to each other" Loaded="ActualOffsetExample_Loaded" MinimumUniversalAPIContract="8" XamlSource="Motion/AnimationInterop/AnimationInteropSample5_xaml.txt" CSharpSource="Motion/AnimationInterop/AnimationInteropSample5_cs.txt">
+            <local:ControlExample.Options>
+                <StackPanel MinWidth="150">
+                    <Slider x:Name="FontSizeSlider" Header="Change font size" Minimum="12" Maximum="24" />
+                    <Slider x:Name="MarginSlider" Header="Change text margin" Minimum="0" Maximum="100" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <StackPanel>
+                <TextBlock Text="This sample positions a popup relative to a block of text that has variable layout size based on font size. Use the sliders to move and resize the text." TextWrapping="WrapWholeWords" Style="{ThemeResource BaseTextBlockStyle}"/>
+                <Grid HorizontalAlignment="Left" Margin="0,12,0,0">
+                    <TextBlock x:Name="PopupTarget" 
+                               Width="300" 
+                               TextWrapping="WrapWholeWords" 
+                               Margin="{x:Bind MarginSlider.Value, Converter={StaticResource doubleToThicknessConverter}, Mode=OneWay}" 
+                               FontSize="{x:Bind FontSizeSlider.Value, Mode=OneWay}" 
+                               Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+                    <!-- Notice that the popup is a sibling to the target, not an ancestor. -->
+                    <Popup x:Name="Popup" Margin="5">
+                        <Grid MinWidth="50" MaxWidth="200" MinHeight="50" BorderBrush="LightGray" BorderThickness="2" Background="{ThemeResource FlyoutBackgroundThemeBrush}">
+                            <TextBlock Text="I am always right aligned center to the target." TextWrapping="WrapWholeWords" Margin="6" FontSize="12" VerticalAlignment="Center" />
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </StackPanel>
         </local:ControlExample>
     </StackPanel>
 </Page>

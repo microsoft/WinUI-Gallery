@@ -4,6 +4,7 @@ using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
@@ -157,6 +158,23 @@ namespace AppUIBasics.ControlPages
         {
             if (LayoutPanel == null) return;
             LayoutPanel.Width = LayoutPanel.Height = e.NewValue;
+        }
+
+        private void ActualOffsetExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Only create an expression using ActualSize if the API exists to do so.
+            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
+
+            // This sample positions a popup relative to a block of text that has variable layout size based on font size.
+            var anim = _compositor.CreateExpressionAnimation();
+
+            anim.Expression = "Vector3(source.ActualOffset.X + source.ActualSize.X, source.ActualOffset.Y + source.ActualSize.Y / 2 - 25, 0)";
+            anim.Target = "Translation";
+            anim.SetExpressionReferenceParameter("source", PopupTarget);
+
+            Popup.StartAnimation(anim);
+
+            Popup.IsOpen = true;
         }
     }
 }
