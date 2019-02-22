@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     xmlns:media="using:Windows.UI.Xaml.Media"
+    xmlns:preview="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -13,6 +14,7 @@
                 <ResourceDictionary x:Key="Default">
                     <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
                     <media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
+                    <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop" TintLuminosityOpacity="0.8" TintOpacity="0.8" TintColor="SkyBlue" FallbackColor="SkyBlue"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -194,6 +196,46 @@
                 <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
+            <local:ControlExample.Example>
+                <Grid x:Name="Example5Grid" MinWidth="650" MinHeight="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Ellipse Fill="Magenta" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <Rectangle x:Name="CustomAcrylicShapeLumin" Margin="12" Fill="{ThemeResource CustomAcrylicInAppLuminosity}"/>
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <TextBlock Text="Tint Opacity :" Margin="0,0,0,12"/>
+                    <Slider x:Name="OpacitySliderLumin" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.01" StepFrequency="0.01" 
+                            HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint opacity"/>
+                    <TextBlock Text="Tint Luminosity Opacity :" Margin="0,0,0,12"/>
+                    <Slider x:Name="LuminositySlider" ValueChanged="LuminositySlider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.01" StepFrequency="0.01" 
+                            HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint luminosity"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" /&gt;
+
+&lt;ResourceDictionary x:Key="Default"&gt;
+    &lt;media:AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop"
+            TintOpacity="$(OpacitySlider)" TintLuminosityOpacity="$(TintLuminositySlider)" TintColor="SkyBlue" FallbackColor="SkyBlue" /&gt;
+&lt;/ResourceDictionary&gt;
+</x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderLumin.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="TintLuminositySlider" Value="{x:Bind LuminositySlider.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
