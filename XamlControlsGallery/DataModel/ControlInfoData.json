@@ -1473,6 +1473,29 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "AnimatedVisualPlayer",
+          "Title": "AnimatedVisualPlayer",
+          "Subtitle": "The AnimatedVisualPlayer allows playback of animated Windows.UI.Composition.Visual trees.",
+          "ImagePath": "Assets/Animations.png",
+          "Description": "The AnimatedVisualPlayer allows playback of animated Windows.UI.Composition.Visual trees.",
+          "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AnimatedVisualPlayer API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            },
+            {
+              "Title": "Sample application with walkthrough of scenarios",
+              "Uri": "ms-windows-store://pdp/?productid=9N3J5TG8FF7F"
+            },
+            {
+              "Title": "Documentation and Tutorials",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials"
+            }
+          ]
+        },
+        {
           "UniqueId": "Image",
           "Title": "Image",
           "Subtitle": "A control to display image content.",
