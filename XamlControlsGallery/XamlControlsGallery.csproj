@@ -215,6 +215,7 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample1.txt" />

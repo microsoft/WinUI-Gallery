@@ -54,18 +54,11 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="You can reference ActualSize and ActualOffset to animate based on changes to layout" Loaded="ActualSizeOffsetExample_Loaded" MinimumUniversalAPIContract="8" CSharpSource="Motion/AnimationInterop/AnimationInteropSample3_cs.txt">
-            <StackPanel Margin="0,0,0,50">
-                <TextBlock Text="-- Directions here --" Margin="0,0,0,12" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="Sample4Source" Click="Sample4Source_Click" Content="Hello" Height="100" />
-                    <TextBlock x:Name="Sample4Destination" Grid.Column="1" Text="Hello" />
-                </Grid>
-            </StackPanel>
+        <local:ControlExample HeaderText="Reference ActualSize in ExpressionAnimations to make novel layouts based on size" Loaded="ActualSizeExample_Loaded" MinimumUniversalAPIContract="8" CSharpSource="Motion/AnimationInterop/AnimationInteropSample4_cs.txt">
+            <local:ControlExample.Options>
+                <Slider Header="Change radius" Minimum="200" Maximum="400" ValueChanged="RadiusSlider_ValueChanged" Width="100" />
+            </local:ControlExample.Options>
+            <Grid x:Name="LayoutPanel" Width="200" Height="200" Margin="12" />
         </local:ControlExample>
     </StackPanel>
 </Page>
