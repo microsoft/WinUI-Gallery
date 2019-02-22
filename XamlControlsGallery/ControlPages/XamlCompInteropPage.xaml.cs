@@ -128,7 +128,7 @@ namespace AppUIBasics.ControlPages
             //   yOffset = The starting vertical offset for the element.
 
             String radius = "(source.ActualSize.X / 2)"; // Since the layout is a circle, width and height are equivalent meaning we could use X or Y. We'll use X.
-            String theta = "Pi/source.ActualSize.X * " + radius + " + ((2 * Pi)/total)*index"; // T
+            String theta = ".02 * " + radius + " + ((2 * Pi)/total)*index"; // The first value is the rate of angular change based on radius. The last value spaces the buttons equally.
             String xOffset = radius; // We offset x by radius because the buttons naturally layout along the left edge. We need to move them to center of the circle first.
             String yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
 
