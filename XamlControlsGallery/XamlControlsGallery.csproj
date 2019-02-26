@@ -215,6 +215,9 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample1.txt" />
@@ -247,6 +250,7 @@
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
+    <Compile Include="Common\DoubleToThicknessConverter.cs" />
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
