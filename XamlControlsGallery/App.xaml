@@ -72,14 +72,6 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
 
-            <Style TargetType="TextBox">
-                <Setter Property="PlaceholderForeground" Value="{ThemeResource TextControlPlaceholderForeground}" />
-            </Style>
-
-            <Style TargetType="ComboBox">
-                <Setter Property="PlaceholderForeground" Value="{ThemeResource ComboBoxPlaceHolderForeground}" />
-            </Style>
-
             <Style x:Key="CustomAutoSuggestBoxTextBoxStyle" TargetType="TextBox">
                 <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}" />
                 <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}" />
