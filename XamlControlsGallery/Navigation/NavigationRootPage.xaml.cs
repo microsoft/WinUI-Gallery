@@ -265,11 +265,6 @@ namespace AppUIBasics
             }
         }
 
-        private void KeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-        {
-            controlsSearchBox.Focus(FocusState.Keyboard);
-        }
-
         private void NavigationViewControl_PaneClosing(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewPaneClosingEventArgs args)
         {
             AppTitle.Visibility = Visibility.Collapsed;
