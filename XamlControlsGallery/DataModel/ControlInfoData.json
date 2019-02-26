@@ -1473,6 +1473,29 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "AnimatedVisualPlayer",
+          "Title": "AnimatedVisualPlayer",
+          "Subtitle": "An element to render and control playback of motion graphics.",
+          "ImagePath": "Assets/Animations.png",
+          "Description": "An element to render and control playback of motion graphics.",
+          "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AnimatedVisualPlayer API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            },
+            {
+              "Title": "Full Samples",
+              "Uri": "ms-windows-store://pdp/?productid=9N3J5TG8FF7F"
+            },
+            {
+              "Title": "Tutorials",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials"
+            }
+          ]
+        },
+        {
           "UniqueId": "Image",
           "Title": "Image",
           "Subtitle": "A control to display image content.",
