@@ -1475,9 +1475,9 @@
         {
           "UniqueId": "AnimatedVisualPlayer",
           "Title": "AnimatedVisualPlayer",
-          "Subtitle": "The AnimatedVisualPlayer controls playback of animated Windows.UI.Composition Visual trees.",
+          "Subtitle": "An element to render and control playback of motion graphics.",
           "ImagePath": "Assets/Animations.png",
-          "Description": "The AnimatedVisualPlayer controls playback of animated Windows.UI.Composition.Visual trees.",
+          "Description": "An element to render and control playback of motion graphics.",
           "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
