@@ -3,6 +3,7 @@ using System.Numerics;
 using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
@@ -140,6 +141,8 @@ namespace AppUIBasics.ControlPages
             for (int i = 0; i < totalElements; i++)
             {
                 Button element = new Button() { Content = "Button" };
+                AutomationProperties.SetName(element, "Button " + i);
+
                 LayoutPanel.Children.Add(element);
 
                 var anim = _compositor.CreateExpressionAnimation();
