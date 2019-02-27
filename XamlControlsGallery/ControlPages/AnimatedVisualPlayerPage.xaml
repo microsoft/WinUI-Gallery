@@ -44,7 +44,7 @@
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
                             <muxcontrols:AnimatedVisualPlayer.FallbackContent>
                                 <DataTemplate>
-                                    <Image Source="Assets/LottieLogo1.png"/>
+                                    <Image Source="/Assets/LottieLogo1.png"/>
                                 </DataTemplate>
                             </muxcontrols:AnimatedVisualPlayer.FallbackContent>
                         </muxcontrols:AnimatedVisualPlayer>
