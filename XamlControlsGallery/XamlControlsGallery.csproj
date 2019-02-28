@@ -224,7 +224,6 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
-    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
