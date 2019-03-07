@@ -24,7 +24,7 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "UICommand",
+          "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
           "Subtitle": "An object which is used to define the look and feel of a given command",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
@@ -42,6 +42,32 @@
             }
           ],
           "RelatedControls": [
+            "StandardUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
+          ]
+        },
+        {
+          "UniqueId": "StandardUICommand",
+          "Title": "StandardUICommand",
+          "Subtitle": "A set of built-in XamlUICommands representing commonly used commands",
+          "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
+          "Description": "A set of built-in XamlUICommands represeting commonly used set of commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls.",
+          "Content": "",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "XamlUICommand - API",
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.xamluicommand"
+            },
+            {
+              "Title": "StandardUICommand - API",
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.standarduicommand"
+            }
+          ],
+          "RelatedControls": [
+            "XamlUICommand",
             "AppBarButton",
             "AppBarToggleButton",
             "CommandBar"
