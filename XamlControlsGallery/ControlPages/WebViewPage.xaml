@@ -32,9 +32,9 @@
             </Grid>
         </local:ControlExample.Example>
         <local:ControlExample.Xaml>
-            <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                <Paragraph>&lt;WebView Source="https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/web-view" /&gt;</Paragraph>
-            </RichTextBlock>
+            <x:String>
+                &lt;WebView Source="https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/web-view" /&gt;
+            </x:String>
         </local:ControlExample.Xaml>
     </local:ControlExample>
 </Page>

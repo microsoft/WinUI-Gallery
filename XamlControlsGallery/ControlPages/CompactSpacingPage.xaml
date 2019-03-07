@@ -53,44 +53,52 @@
                 <TextBlock Grid.Column="1" Grid.Row="5" Text="MenuBar" />
             </Grid>
             <local:ControlExample x:Name="Example1" HeaderText="Adding The compact dictionary to your app.xaml">
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}" FontFamily="Consolas">
-                    <Paragraph>&lt;Application.Resources/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ResourceDictionary/&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;ResourceDictionary.MergedDictionaries/&gt;</Paragraph>
-                    <Paragraph TextIndent="20">&lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;/ResourceDictionary.MergedDictionaries&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ResourceDictionary&gt;</Paragraph>
-                    <Paragraph>&lt;/Application.Resources&gt;</Paragraph>
-                </RichTextBlock>
+                <local:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
             </local:ControlExample>
 
             <local:ControlExample x:Name="Example2" HeaderText="Adding the compact dictionary to your page.">
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}" FontFamily="Consolas">
-                    <Paragraph>&lt;Application.Resources/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ResourceDictionary/&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;ResourceDictionary.MergedDictionaries/&gt;</Paragraph>
-                    <Paragraph TextIndent="20">&lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;/ResourceDictionary.MergedDictionaries&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ResourceDictionary&gt;</Paragraph>
-                    <Paragraph>&lt;/Application.Resources&gt;</Paragraph>
-                </RichTextBlock> 
+                <local:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
             </local:ControlExample>
           
             <local:ControlExample x:Name="Example3" HeaderText="Adding The compact dictionary on layout panels">
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}" FontFamily="Consolas">
-                    <Paragraph>&lt;Application.Resources/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;ResourceDictionary/&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;ResourceDictionary.MergedDictionaries/&gt;</Paragraph>
-                    <Paragraph TextIndent="20">&lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;</Paragraph>
-                    <Paragraph TextIndent="16">&lt;/ResourceDictionary.MergedDictionaries&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/ResourceDictionary&gt;</Paragraph>
-                    <Paragraph>&lt;/Application.Resources&gt;</Paragraph>
-                </RichTextBlock>
+                <local:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Application.Resources&gt;
+    &lt;ResourceDictionary/&gt;
+        &lt;ResourceDictionary.MergedDictionaries/&gt;
+            &lt;ResourceDictionary Source="Styles/CompactSizing.xaml" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
             </local:ControlExample>
             <local:ControlExample x:Name="Example4" HeaderText="Compact Spacing - Resource Dictionary">
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}" FontFamily="Consolas">
-                    <Paragraph>&lt;Need to paste code here/&gt;</Paragraph>
-                </RichTextBlock>
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;Need to paste code here/&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
             </local:ControlExample>
         </StackPanel>
     </Grid>

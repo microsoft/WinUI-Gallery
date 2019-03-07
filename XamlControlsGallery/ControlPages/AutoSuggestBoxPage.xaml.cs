@@ -26,12 +26,8 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class AutoSuggestBoxPage : Page
     {
-        public ObservableCollection<string> Suggestions { get; private set; }
-
         public AutoSuggestBoxPage()
         {
-            this.Suggestions = new ObservableCollection<string>();
-
             this.InitializeComponent();
         }
 
@@ -39,11 +35,13 @@ namespace AppUIBasics.ControlPages
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                Suggestions.Clear();
-                Suggestions.Add(sender.Text + "1");
-                Suggestions.Add(sender.Text + "2");
+                List<string> suggestions = new List<string>()
+                {
+                    sender.Text + "1",
+                    sender.Text + "2"
+                };
+                Control1.ItemsSource = suggestions;
             }
-            Control1.ItemsSource = Suggestions;
         }
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {

@@ -33,14 +33,14 @@
                         VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/>
             </Grid>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph>&lt;/StackPanel&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
+    &lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;
+    &lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;
+    &lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample HeaderText="Two groups of radio buttons explicitly grouped by GroupName."
@@ -80,24 +80,24 @@
                         Height="50" Margin="0,10,0,10" />
             </StackPanel>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="Background" Style="{ThemeResource BaseTextBlockStyle}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Green" Tag="Green" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Blue" Tag="Blue" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="White" Tag="White" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/StackPanel  Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;TextBlock Text="BorderBrush" Style="{ThemeResource BaseTextBlockStyle}"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Green" Tag="Green" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="Blue" Tag="Blue" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;RadioButton Content="White" Tag="White" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph>&lt;/StackPanel&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;StackPanel Orientation="Horizontal"&gt;
+        &lt;TextBlock Text="Background" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
+        &lt;RadioButton Content="Green" Tag="Green" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Blue" Tag="Blue" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="White" Tag="White" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+    &lt;/StackPanel  Orientation="Horizontal"&gt;
+    &lt;StackPanel Orientation="Horizontal"&gt;
+        &lt;TextBlock Text="BorderBrush" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
+        &lt;RadioButton Content="Green" Tag="Green" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Blue" Tag="Blue" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="White" Tag="White" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </RelativePanel>

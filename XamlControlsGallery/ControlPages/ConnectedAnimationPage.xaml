@@ -6,32 +6,20 @@
       xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
       mc:Ignorable="d">
     <StackPanel>
+        <RichTextBlock>
+            <Paragraph>See the full sample on GitHub:
+                <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">
+                    https://github.com/Microsoft/Xaml-Controls-Gallery
+                </Hyperlink>
+            </Paragraph>
+        </RichTextBlock>
+
         <local:ControlExample HeaderText="A connected animation between a list page and a detail page">
             <Frame x:Name="CollectionContentFrame" MinWidth="500" Height="750" />
-
-            <local:ControlExample.Xaml>
-                <RichTextBlock MaxWidth="840" IsTextSelectionEnabled="True">
-                    <Paragraph>See the full sample on GitHub:
-                        <Hyperlink NavigateUri="https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics">
-                            https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A connected animation between elements on the same page">
             <Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />
-
-            <local:ControlExample.Xaml>
-                <RichTextBlock MaxWidth="840" IsTextSelectionEnabled="True">
-                    <Paragraph>See the full sample on GitHub:
-                        <Hyperlink NavigateUri="https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics">
-                            https://github.com/Microsoft/Windows-universal-samples/tree/dev/Samples/XamlUIBasics
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A simple connected animation" CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSimple.txt">
@@ -50,6 +38,5 @@
             </local:ControlExample.Options>
             <Frame x:Name="ContentFrame" MinWidth="500" MinHeight="300" Height="500" />
         </local:ControlExample>
-
     </StackPanel>
 </Page>

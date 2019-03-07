@@ -33,17 +33,19 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;VariableSizedWrapGrid Grid.Row="1" Orientation="<Run x:Name="OrientationLabel">Vertical</Run>"
-                        MaximumRowsOrColumns="3" ItemHeight="44" ItemWidth="44"&gt;
-                    </Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Red"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Blue" Height="80" VariableSizedWrapGrid.RowSpan="2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Green" Width="80" VariableSizedWrapGrid.ColumnSpan="2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;Rectangle Fill="Yellow" Height="80" Width="80" VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="2"/&gt;</Paragraph>
-                    <Paragraph>&lt;/VariableSizedWrapGrid&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;VariableSizedWrapGrid Orientation="$(Orientation)" MaximumRowsOrColumns="3" ItemHeight="44" ItemWidth="44"&gt;
+    &lt;Rectangle Fill="Red"/&gt;
+    &lt;Rectangle Fill="Blue" Height="80" VariableSizedWrapGrid.RowSpan="2"/&gt;
+    &lt;Rectangle Fill="Green" Width="80" VariableSizedWrapGrid.ColumnSpan="2"/&gt;
+    &lt;Rectangle Fill="Yellow" Height="80" Width="80" VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="2"/&gt;
+&lt;/VariableSizedWrapGrid&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+
         </local:ControlExample>
     </StackPanel>
 </Page>

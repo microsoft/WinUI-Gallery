@@ -43,33 +43,15 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <!--  Application-specific resources  -->
-            <common:BooleanNegationConverter x:Key="negationConverter" />
-            <common:ValueToStringConverter x:Key="valueToStringConverter" />
-            <common:ColorStringConverter x:Key="colorStringConverter" />
-            <common:DoubleToIntConverter x:Key="doubleIntConverter" />
-            <common:ValueToFontFamilyConverter x:Key="valueToFontFamilyConverter" />
-            <common:ComboBoxItemToStringConverter x:Key="comboBoxItemToStringConverter" />
-            <common:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
-            <common:StringToBrushConverter x:Key="stringToBrushConverter" />
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <common:NullToVisibilityConverter x:Key="inverseNullToVisibilityConverter" NonNullValue="Collapsed" NullValue="Visible" />
             <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
-            <common:ShowAcrylicBehindHeaderConverter x:Key="showAcrylicBehindHeaderConverter" />
-            <common:ColorToBrushConverter x:Key="colorToBrushConverter"/>
 
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
             <x:String x:Key="AppName">All controls</x:String>
-
-            <Style x:Key="XamlCodeRichTextBlockStyle" TargetType="RichTextBlock">
-                <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-                <Setter Property="FontWeight" Value="Light" />
-                <Setter Property="FontFamily" Value="Consolas" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="TextWrapping" Value="NoWrap" />
-            </Style>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />
@@ -88,14 +70,6 @@
             <Style x:Key="GridViewItemStyleSmall" TargetType="GridViewItem">
                 <Setter Property="Margin" Value="0,0,0,14" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            </Style>
-
-            <Style TargetType="TextBox">
-                <Setter Property="PlaceholderForeground" Value="{ThemeResource TextControlPlaceholderForeground}" />
-            </Style>
-
-            <Style TargetType="ComboBox">
-                <Setter Property="PlaceholderForeground" Value="{ThemeResource ComboBoxPlaceHolderForeground}" />
             </Style>
 
             <Style x:Key="CustomAutoSuggestBoxTextBoxStyle" TargetType="TextBox">

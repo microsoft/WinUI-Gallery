@@ -43,17 +43,22 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>
-                        &lt;CalendarView SelectionMode=&quot;<Run Text="{x:Bind selectionMode.SelectedValue, Mode=OneWay}" />&quot;
-                        IsGroupLabelVisible=&quot;<Run Text="{x:Bind isGroupLabelVisible.IsChecked.Value, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="24">
-                        IsOutOfScopeEnabled=&quot;<Run Text="{x:Bind isOutOfScopeEnabled.IsChecked.Value, Mode=OneWay}" />&quot;
-                        Language=&quot;<Run Text="{x:Bind Control1.Language, Mode=OneWay}" />&quot;</Paragraph>
-                    <Paragraph TextIndent="24">
-                        CalendarIdentifier=&quot;<Run Text="{x:Bind Control1.CalendarIdentifier, Mode=OneWay}" />&quot; /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;CalendarView 
+    SelectionMode="$(SelectionMode)" 
+    IsGroupLabelVisible="$(IsGroupLabelVisible)"
+    IsOutOfScopeEnabled="$(IsOutOfScopeEnabled)"
+    Language="$(Language)"
+    CalendarIdentifier="$(CalendarIdentifier)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind selectionMode.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsGroupLabelVisible" Value="{x:Bind isGroupLabelVisible.IsChecked.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsOutOfScopeEnabled" Value="{x:Bind isOutOfScopeEnabled.IsChecked.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Language" Value="{x:Bind Control1.Language, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CalendarIdentifier" Value="{x:Bind Control1.CalendarIdentifier, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>

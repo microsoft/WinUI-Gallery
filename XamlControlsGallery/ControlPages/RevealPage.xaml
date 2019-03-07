@@ -83,33 +83,33 @@
             </StackPanel>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid HorizontalAlignment="Center" Margin="5" Background="{ThemeResource CustomAcrylicInAppBrush}" RequestedTheme="Light"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;StackPanel Orientation="Vertical"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="World" Margin="1, 2, 0, 0"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="CellPhone" Margin="0, 2, 1, 0"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Delete" Margin="1, 2, 0, 2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Comment" Margin="0, 2, 1, 2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph>&lt;/Grid&gt;</Paragraph>
-                    <Paragraph> </Paragraph>
-                    <Paragraph>&lt;Grid HorizontalAlignment="Center" Margin="5" Background="{ThemeResource CustomAcrylicInAppBrush_dark}" RequestedTheme="Dark"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;StackPanel Orientation="Vertical"&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="World" Margin="1, 2, 0, 0"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="CellPhone" Margin="0, 2, 1, 0"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;StackPanel Orientation="Horizontal"&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Delete" Margin="1, 2, 0, 2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Comment" Margin="0, 2, 1, 2"/&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/StackPanel&gt;</Paragraph>
-                    <Paragraph>&lt;/Grid&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid HorizontalAlignment="Center" Margin="5" Background="{ThemeResource CustomAcrylicInAppBrush}" RequestedTheme="Light"&gt;
+    &lt;StackPanel Orientation="Vertical"&gt;
+        &lt;StackPanel Orientation="Horizontal"&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="World" Margin="1, 2, 0, 0"/&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="CellPhone" Margin="0, 2, 1, 0"/&gt;
+        &lt;/StackPanel&gt;
+        &lt;StackPanel Orientation="Horizontal"&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Delete" Margin="1, 2, 0, 2"/&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Comment" Margin="0, 2, 1, 2"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/StackPanel&gt;
+&lt;/Grid&gt;
+ 
+&lt;Grid HorizontalAlignment="Center" Margin="5" Background="{ThemeResource CustomAcrylicInAppBrush_dark}" RequestedTheme="Dark"&gt;
+    &lt;StackPanel Orientation="Vertical"&gt;
+        &lt;StackPanel Orientation="Horizontal"&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="World" Margin="1, 2, 0, 0"/&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="CellPhone" Margin="0, 2, 1, 0"/&gt;
+        &lt;/StackPanel&gt;
+        &lt;StackPanel Orientation="Horizontal"&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Delete" Margin="1, 2, 0, 2"/&gt;
+            &lt;AppBarButton Style="{ThemeResource AppBarButtonRevealStyle}" Icon="Comment" Margin="0, 2, 1, 2"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/StackPanel&gt;
+&lt;/Grid&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -118,9 +118,9 @@
             <Button Style="{StaticResource ButtonRevealStyle}" Content="Button" Width="130" />
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Button" /&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String>
+                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Button" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
@@ -131,11 +131,11 @@
             </Grid>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Grid BorderThickness="3" BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;TextBlock Text="SystemControlRevealBorderChromeWhiteBrush" /&gt;</Paragraph>
-                    <Paragraph>&lt;/Grid&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Grid BorderThickness="3" BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"&gt;
+    &lt;TextBlock Text="SystemControlBackgroundListMediumRevealBorderBrush" /&gt;
+&lt;/Grid&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

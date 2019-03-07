@@ -6,8 +6,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
+    
     <Page.Resources>
-        <muxcontrols:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1" Closed="OnClosed">
+        <muxcontrols:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
             <AppBarButton Label="Share" Icon="Share" Click="OnElementClicked" />
             <AppBarButton Label="Save" Icon="Save" Click="OnElementClicked" />
             <AppBarButton Label="Delete" Icon="Delete" Click="OnElementClicked" />
@@ -17,15 +18,16 @@
             </muxcontrols:CommandBarFlyout.SecondaryCommands>
         </muxcontrols:CommandBarFlyout>
     </Page.Resources>
+    
     <StackPanel>
         <local:ControlExample HeaderText="CommandBarFlyout for commands on an in-app object" XamlSource="CommandBarFlyout/CommandBarFlyoutSample1_xaml.txt"
                               CSharpSource="CommandBarFlyout/CommandBarFlyoutSample1_cs.txt">
             <StackPanel>
                 <TextBlock Text="Click or right click the image to open a CommandBarFlyout" />
-                <Border x:Name="myImageBorder" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="2">
-                    <Image x:Name="Image1" Height="300" Source="/Assets/SampleMedia/rainier.jpg" PointerPressed="Image_PointerPressed"
-                           PointerReleased="Image_PointerReleased" ContextFlyout="{x:Bind CommandBarFlyout1}"/>
-                </Border>
+                <Button x:Name="myImageButton" AutomationProperties.Name="mountain" Padding="0" Margin="0,12"
+                        Click="MyImageButton_Click" ContextRequested="MyImageButton_ContextRequested" >
+                    <Image x:Name="Image1" Height="300" Source="/Assets/SampleMedia/rainier.jpg"/>
+                </Button>
                 <TextBlock x:Name="SelectedOptionText" Text="" />
             </StackPanel>
         </local:ControlExample>

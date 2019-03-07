@@ -108,13 +108,14 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"</Paragraph>
-                    <Paragraph TextIndent="12">SelectionMode="
-                        <Run Text="{x:Bind Control2.SelectionMode, Converter={StaticResource valueToStringConverter}, Mode=OneWay}"/> "/&gt;
-                    </Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"
+    SelectionMode="$(SelectionMode)" /&gt;
+                </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A ListView with Grouped Headers" XamlSource="ListView\ListViewGroupedHeaderSample_xaml.txt">
@@ -137,14 +138,29 @@
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate x:DataType="local1:GroupInfoList">
-                                <Border AutomationProperties.Name="{x:Bind Key}">
-                                    <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
-                                </Border>
+                                <TextBlock Text="{x:Bind Key}"
+                                       Style="{ThemeResource TitleTextBlockStyle}"/>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
                 </ListView.GroupStyle>
             </ListView>
+
+            
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
+
+&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
+    &lt;ListView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
+            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="False"/&gt;
+        &lt;/ItemsPanelTemplate&gt;
+    &lt;/ListView.ItemsPanel&gt;
+&lt;/ListView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A ListView with Grouped Sticky Headers" XamlSource="ListView\ListViewStickyHeaderSample_xaml.txt">
@@ -170,6 +186,19 @@
                 </ListView.GroupStyle>
             </ListView>
 
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
+
+&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
+    &lt;ListView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
+            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="True"/&gt;
+        &lt;/ItemsPanelTemplate &gt;
+    &lt;/ListView.ItemsPanel&gt;
+&lt;/ListView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A ListView with Images">
@@ -191,27 +220,26 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
 
-                            <StackPanel Margin="12,0,0,0" Grid.Column="1" >
-                                <TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
+                                <StackPanel Margin="12,0,0,0" Grid.Column="1" >
+                                    <TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
+                                        <TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                                        <TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                    </StackPanel>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
-                                    <TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
-                                    <TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
             <local:ControlExample.Xaml>
-                <RichTextBlock TextWrapping="WrapWholeWords">
-                    <Paragraph>Refer to the DataTemplate on the ListViewPage.xaml page to see the full sample code.</Paragraph>
-                </RichTextBlock>
+                <x:String>Refer to the DataTemplate on the ListViewPage.xaml page to get this visual of Images in a list.</x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

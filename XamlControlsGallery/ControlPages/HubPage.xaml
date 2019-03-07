@@ -95,21 +95,21 @@
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
             <local:ControlExample.Xaml>
-                <RichTextBlock Style="{StaticResource XamlCodeRichTextBlockStyle}">
-                    <Paragraph>&lt;Hub Header=&quot;News&quot;&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;HubSection Header=&quot;Latest&quot;&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DataTemplate&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;!-- Content --&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DataTemplate&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/HubSection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;HubSection Header=&quot;Tech&quot; IsHeaderInteractive=&quot;True&quot; Background=&quot;#222222&quot; MinWidth=&quot;250&quot; RequestedTheme=&quot;Dark&quot;&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;DataTemplate&gt;</Paragraph>
-                    <Paragraph TextIndent="36">&lt;!-- Content --&gt;</Paragraph>
-                    <Paragraph TextIndent="24">&lt;/DataTemplate&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;/HubSection&gt;</Paragraph>
-                    <Paragraph TextIndent="12">&lt;!-- More sections --&gt;</Paragraph>
-                    <Paragraph>&lt;/Hub&gt;</Paragraph>
-                </RichTextBlock>
+                <x:String xml:space="preserve">
+&lt;Hub Header="News"&gt;
+    &lt;HubSection Header="Latest"&gt;
+        &lt;DataTemplate&gt;
+            &lt;!-- Content --&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/HubSection&gt;
+    &lt;HubSection Header="Tech" IsHeaderInteractive="True" Background="#222222" MinWidth="250" RequestedTheme="Dark"&gt;
+        &lt;DataTemplate&gt;
+            &lt;!-- Content --&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/HubSection&gt;
+    &lt;!-- More sections --&gt;
+&lt;/Hub&gt;
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
