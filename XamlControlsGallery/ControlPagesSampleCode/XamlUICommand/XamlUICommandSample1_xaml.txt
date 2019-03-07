@@ -1,0 +1,14 @@
+﻿<Page.Resources>
+    <XamlUICommand x:Name="CustomXamlUICommand" ExecuteRequested="CustomXamlUICommand_ExecuteRequested" Description="This is a custom command" Label="Custom Command">
+        <XamlUICommand.IconSource>
+            <SymbolIconSource Symbol="Favorite" />
+        </XamlUICommand.IconSource>
+        <XamlUICommand.KeyboardAccelerators>
+            <KeyboardAccelerator Key="D" Modifiers="Control"/>
+        </XamlUICommand.KeyboardAccelerators>
+    </XamlUICommand>
+</Page.Resources>
+
+<Grid>
+    <AppBarButton Command="{StaticResource CustomXamlUICommand}"/>
+</Grid>

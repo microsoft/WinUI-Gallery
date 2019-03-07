@@ -1,0 +1,4 @@
+﻿private void CustomXamlUICommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
+{
+    //Insert Your Command Action Here
+}
