@@ -41,9 +41,9 @@
 
                 <TextBlock TextWrapping="Wrap" Margin="0,0,0,12">
                     XamlUICommand allows the sharing of the UX associated with a command.
-                    In this instance we create a simple Custom Command with an label, icon, shortcut, and a description.
+                    In this instance we create a simple Custom Command with a label, icon, shortcut, and description.
                     It's defined as a resource and could be used in many controls, like this AppBarButton.
-                    The button (and other WinUI controls) automatically gets all these UI properties, without the need to define the properties again.
+                    The button (and other controls) automatically gets all these UI properties, without the need to define the properties again.
                 </TextBlock>
 
                 <AppBarButton Grid.Row="1" Command="{StaticResource CustomXamlUICommand}"/>
