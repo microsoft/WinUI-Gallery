@@ -9,6 +9,8 @@
     </XamlUICommand>
 </Page.Resources>
 
-<Grid>
-    <AppBarButton Command="{StaticResource CustomXamlUICommand}"/>
-</Grid>
+<RelativePanel Grid.Row="1">
+    <AppBarButton x:Name="CustomButton" Command="{StaticResource CustomXamlUICommand}"/>
+    <TextBlock x:Name="XamlUICommandOutput" Margin="8,0,0,0" FontFamily="Global User Interface" 
+                RelativePanel.RightOf="CustomButton" RelativePanel.AlignVerticalCenterWith="CustomButton" />
+</RelativePanel>
