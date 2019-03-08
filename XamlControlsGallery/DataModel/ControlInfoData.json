@@ -35,10 +35,6 @@
             {
               "Title": "XamlUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.xamluicommand"
-            },
-            {
-              "Title": "StandardUICommand - API",
-              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.standarduicommand"
             }
           ],
           "RelatedControls": [
@@ -51,16 +47,12 @@
         {
           "UniqueId": "StandardUICommand",
           "Title": "StandardUICommand",
-          "Subtitle": "A set of built-in XamlUICommands representing commonly used commands",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
-          "Description": "A set of built-in XamlUICommands represeting commonly used set of commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls.",
+          "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls. E.g. Save, Open, Copy, Paste, etc.",
           "Content": "",
           "IsNew": true,
           "Docs": [
-            {
-              "Title": "XamlUICommand - API",
-              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.xamluicommand"
-            },
             {
               "Title": "StandardUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.standarduicommand"

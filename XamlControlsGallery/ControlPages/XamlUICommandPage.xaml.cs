@@ -17,11 +17,11 @@ namespace AppUIBasics.ControlPages
 
         private void CustomXamlUICommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
         {
-            //Insert Your Command Action Here
+            XamlUICommandOutput.Text = "You fired the custom command";
         }
         private void ControlExample_Loaded(object sender, RoutedEventArgs e)
         {
 
         }
-     }
+    }
 }
