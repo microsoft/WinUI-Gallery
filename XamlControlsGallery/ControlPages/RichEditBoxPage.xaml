@@ -21,7 +21,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-
+        
         <local:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <RichEditBox AutomationProperties.Name="simple text editor"/>
             <local:ControlExample.Xaml>
@@ -154,7 +154,8 @@
                 <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
                              RelativePanel.Below="openFileButton" 
                              RelativePanel.AlignLeftWithPanel="True" 
-                             RelativePanel.AlignRightWithPanel="True" />
+                             RelativePanel.AlignRightWithPanel="True" 
+                             GotFocus="Editor_GotFocus"/>
                 <StackPanel Orientation="Horizontal" 
                             RelativePanel.Below="editor" 
                             RelativePanel.AlignLeftWith="editor" 
