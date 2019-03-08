@@ -46,7 +46,12 @@
                     The button (and other controls) automatically gets all these UI properties, without the need to define the properties again.
                 </TextBlock>
 
-                <AppBarButton Grid.Row="1" Command="{StaticResource CustomXamlUICommand}"/>
+                <RelativePanel Grid.Row="1">
+                    <AppBarButton x:Name="CustomButton" Command="{StaticResource CustomXamlUICommand}"/>
+                    <TextBlock x:Name="XamlUICommandOutput" Margin="8,0,0,0" FontFamily="Global User Interface" 
+                               RelativePanel.RightOf="CustomButton" RelativePanel.AlignVerticalCenterWith="CustomButton" />
+                </RelativePanel>
+
             </Grid>
         </local:ControlExample>
     </StackPanel>
