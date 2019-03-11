@@ -1,5 +1,6 @@
 ﻿<Page.Resources>
-    <XamlUICommand x:Name="CustomXamlUICommand" ExecuteRequested="CustomXamlUICommand_ExecuteRequested" Description="This is a custom command" Label="Custom Command">
+    <XamlUICommand x:Name="CustomXamlUICommand" ExecuteRequested="CustomXamlUICommand_ExecuteRequested" 
+	Description="This is a custom command" Label="Custom Command">
         <XamlUICommand.IconSource>
             <SymbolIconSource Symbol="Favorite" />
         </XamlUICommand.IconSource>
