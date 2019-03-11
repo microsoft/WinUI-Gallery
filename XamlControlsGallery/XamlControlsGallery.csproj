@@ -229,8 +229,8 @@
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_cs.txt" />
-    <Content Include="ControlPagesSampleCode\UICommand\UICommandSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\StandardUICommand\StandardUICommandSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\StandardUICommand\StandardUICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample1_cs.txt" />
@@ -500,8 +500,8 @@
     <Compile Include="ControlPages\TreeViewPage.xaml.cs">
       <DependentUpon>TreeViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\UICommandPage.xaml.cs">
-      <DependentUpon>UICommandPage.xaml</DependentUpon>
+    <Compile Include="ControlPages\StandardUICommandPage.xaml.cs">
+      <DependentUpon>StandardUICommandPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\VariableSizedWrapGridPage.xaml.cs">
       <DependentUpon>VariableSizedWrapGridPage.xaml</DependentUpon>
@@ -512,6 +512,9 @@
     <Compile Include="Common\NullToVisibilityConverter.cs" />
     <Compile Include="ControlPages\XamlCompInteropPage.xaml.cs">
       <DependentUpon>XamlCompInteropPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\XamlUICommandPage.xaml.cs">
+      <DependentUpon>XamlUICommandPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\ControlInfoDataSource.cs" />
     <Compile Include="ItemPage.xaml.cs">
@@ -582,6 +585,8 @@
     <Content Include="Assets\Tiles\Tile_General.png" />
     <Content Include="Assets\Windows_Desktop.png" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
@@ -968,7 +973,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\UICommandPage.xaml">
+    <Page Include="ControlPages\StandardUICommandPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -983,6 +988,10 @@
     <Page Include="ControlPages\XamlCompInteropPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\XamlUICommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ItemPage.xaml">
       <Generator>MSBuild:Compile</Generator>

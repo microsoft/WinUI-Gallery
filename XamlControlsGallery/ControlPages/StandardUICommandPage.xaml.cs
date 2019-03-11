@@ -14,11 +14,11 @@ namespace AppUIBasics.ControlPages
         public ICommand Command { get; set; }
     }
 
-    public sealed partial class UICommandPage : Page
+    public sealed partial class StandardUICommandPage : Page
     {
         ObservableCollection<ListItemData> collection = new ObservableCollection<ListItemData>();
 
-        public UICommandPage()
+        public StandardUICommandPage()
         {
             this.InitializeComponent();
         }
