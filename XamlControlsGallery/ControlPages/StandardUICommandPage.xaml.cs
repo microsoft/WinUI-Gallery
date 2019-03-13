@@ -91,5 +91,14 @@ namespace AppUIBasics.ControlPages
                 }
             }
         }
+
+        private void ListViewRight_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            MenuFlyout flyout = new MenuFlyout();
+            ListItemData data = (ListItemData)args.Item;
+            MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command};
+            flyout.Items.Add(item);
+            args.ItemContainer.ContextFlyout = flyout;
+        }
     }
 }

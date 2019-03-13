@@ -16,7 +16,7 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
     </Page.Resources>
-
+    
     <StackPanel>
         <local:ControlExample HeaderText="Exposing a command in multiple controls using StandardUICommand"
                               XamlSource="StandardUICommand\StandardUICommandSample1_xaml.txt"
@@ -55,15 +55,10 @@
                     </muxcontrols:MenuBarItem>
                 </muxcontrols:MenuBar>
 
-                <ListView x:Name="ListViewRight" Grid.Row="2" Height="500" Loaded="ListView_Loaded" IsItemClickEnabled="True" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemContainerStyle="{StaticResource HorizontalSwipe}">
+                <ListView x:Name="ListViewRight" Grid.Row="2" Height="500" Loaded="ListView_Loaded" ContainerContentChanging="ListViewRight_ContainerContentChanging" IsItemClickEnabled="True" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemContainerStyle="{StaticResource HorizontalSwipe}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local2:ListItemData">
                             <UserControl PointerEntered="ListViewSwipeContainer_PointerEntered" PointerExited="ListViewSwipeContainer_PointerExited">
-                                <UserControl.ContextFlyout>
-                                    <MenuFlyout>
-                                        <MenuFlyoutItem Command="{x:Bind Command}" CommandParameter="{x:Bind Text}" />
-                                    </MenuFlyout>
-                                </UserControl.ContextFlyout>
                                 <Grid AutomationProperties.Name="{x:Bind Text}">
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup x:Name="HoveringStates">
