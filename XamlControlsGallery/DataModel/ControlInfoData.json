@@ -196,7 +196,7 @@
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
           "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
           "Content": "",
-          "IsNew": true,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "MenuBar - API",
@@ -210,7 +210,8 @@
           "RelatedControls": [
             "CommandBar",
             "MenuFlyout",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -236,7 +237,8 @@
             "MenuFlyout",
             "RichEditBox",
             "TextBox",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
