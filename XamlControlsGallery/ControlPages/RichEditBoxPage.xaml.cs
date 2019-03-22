@@ -18,6 +18,7 @@ using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -124,13 +125,17 @@ namespace AppUIBasics.ControlPages
         {
             FindBoxRemoveHighlights();
 
+            Color highlightBackgroundColor = (Color)App.Current.Resources["SystemColorHighlightColor"];
+            Color highlightForegroundColor = (Color)App.Current.Resources["SystemColorHighlightTextColor"];
+
             string textToFind = findBox.Text;
             if (textToFind != null)
             {
                 ITextRange searchRange = editor.Document.GetRange(0, 0);
                 while (searchRange.FindText(textToFind, TextConstants.MaxUnitCount, FindOptions.None) > 0)
                 {
-                    searchRange.CharacterFormat.BackgroundColor = Colors.Yellow;
+                    searchRange.CharacterFormat.BackgroundColor = highlightBackgroundColor;
+                    searchRange.CharacterFormat.ForegroundColor = highlightForegroundColor;
                 }
             }
         }
@@ -138,7 +143,25 @@ namespace AppUIBasics.ControlPages
         private void FindBoxRemoveHighlights()
         {
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
-            documentRange.CharacterFormat.BackgroundColor = Colors.Transparent;
+            SolidColorBrush defaultBackground = editor.Background as SolidColorBrush;
+            SolidColorBrush defaultForeground = editor.Foreground as SolidColorBrush;
+
+            documentRange.CharacterFormat.BackgroundColor = defaultBackground.Color;
+            documentRange.CharacterFormat.ForegroundColor = defaultForeground.Color;
+        }
+
+        private void Editor_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // reset colors to correct defaults for Focused state
+            ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
+            SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
+            SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
+
+            if (background != null && foreground != null)
+            {
+                documentRange.CharacterFormat.BackgroundColor = background.Color;
+                documentRange.CharacterFormat.ForegroundColor = foreground.Color;
+            }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -169,6 +192,6 @@ namespace AppUIBasics.ControlPages
             {
                 REBCustom.ContextFlyout.Opening -= ContextFlyout_Opening;
             }
-        }
+        } 
     }
 }

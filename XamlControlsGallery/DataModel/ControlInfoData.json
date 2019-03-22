@@ -24,7 +24,7 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "UICommand",
+          "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
           "Subtitle": "An object which is used to define the look and feel of a given command",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
@@ -35,13 +35,31 @@
             {
               "Title": "XamlUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.xamluicommand"
-            },
+            }
+          ],
+          "RelatedControls": [
+            "StandardUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
+          ]
+        },
+        {
+          "UniqueId": "StandardUICommand",
+          "Title": "StandardUICommand",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'",
+          "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
+          "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls. E.g. Save, Open, Copy, Paste, etc.",
+          "Content": "",
+          "IsNew": true,
+          "Docs": [
             {
               "Title": "StandardUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.standarduicommand"
             }
           ],
           "RelatedControls": [
+            "XamlUICommand",
             "AppBarButton",
             "AppBarToggleButton",
             "CommandBar"
@@ -178,7 +196,7 @@
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
           "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
           "Content": "",
-          "IsNew": true,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "MenuBar - API",
@@ -192,7 +210,8 @@
           "RelatedControls": [
             "CommandBar",
             "MenuFlyout",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -218,7 +237,8 @@
             "MenuFlyout",
             "RichEditBox",
             "TextBox",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -1243,7 +1263,7 @@
           "Docs": [
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/lists"
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/items-repeater"
             }
           ],
           "RelatedControls": [
@@ -1499,6 +1519,29 @@
       "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "AnimatedVisualPlayer",
+          "Title": "AnimatedVisualPlayer",
+          "Subtitle": "An element to render and control playback of motion graphics.",
+          "ImagePath": "Assets/Animations.png",
+          "Description": "An element to render and control playback of motion graphics.",
+          "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AnimatedVisualPlayer API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            },
+            {
+              "Title": "Full Samples",
+              "Uri": "ms-windows-store://pdp/?productid=9N3J5TG8FF7F"
+            },
+            {
+              "Title": "Tutorials",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials"
+            }
+          ]
+        },
         {
           "UniqueId": "Image",
           "Title": "Image",

@@ -14,11 +14,11 @@ namespace AppUIBasics.ControlPages
         public ICommand Command { get; set; }
     }
 
-    public sealed partial class UICommandPage : Page
+    public sealed partial class StandardUICommandPage : Page
     {
         ObservableCollection<ListItemData> collection = new ObservableCollection<ListItemData>();
 
-        public UICommandPage()
+        public StandardUICommandPage()
         {
             this.InitializeComponent();
         }
@@ -90,6 +90,15 @@ namespace AppUIBasics.ControlPages
                     collection.Add(new ListItemData { Text = "List item " + i.ToString(), Command = null });
                 }
             }
+        }
+
+        private void ListViewRight_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            MenuFlyout flyout = new MenuFlyout();
+            ListItemData data = (ListItemData)args.Item;
+            MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command};
+            flyout.Items.Add(item);
+            args.ItemContainer.ContextFlyout = flyout;
         }
     }
 }
