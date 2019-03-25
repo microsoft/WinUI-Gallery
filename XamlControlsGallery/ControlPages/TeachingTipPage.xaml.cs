@@ -19,27 +19,35 @@ namespace AppUIBasics.ControlPages
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class TeachingTipPage : Page
-    {
+    { 
+
         public TeachingTipPage()
         {
             this.InitializeComponent();
+            ToggleThemeTeachingTip1.Target = PageHeader.TeachingTipTarget;
+            ToggleThemeTeachingTip3.Target = PageHeader.TeachingTipTarget;
         }
 
-        private void SaveButtonClick1(object sender, RoutedEventArgs e)
+        private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
-            TeachingTip.SetAttach(null, AutoSaveTip1);
-            AutoSaveTip1.IsOpen = true;
+
+            ToggleThemeTeachingTip1.IsOpen = true;
+
         }
 
-        private void SaveButtonClick2(object sender, RoutedEventArgs e)
+        private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            AutoSaveTip2.IsOpen = true;
+            ToggleThemeTeachingTip2.IsOpen = true;
         }
 
-        private void SaveButtonClick3(object sender, RoutedEventArgs e)
+        private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            AutoSaveTip3.IsOpen = true;
+            ToggleThemeTeachingTip3.IsOpen = true;
         }
 
+        private void AutoSaveTip2_ActionButtonClick(TeachingTip sender, object args)
+        {
+            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
+        }
     }
 }

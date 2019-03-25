@@ -21,6 +21,11 @@ namespace AppUIBasics
     public sealed partial class PageHeader : UserControl
     {
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
+
+        public Action ToggleThemeAction { get; set; }
+
+        public static FrameworkElement TeachingTipTarget;
+
         public object Title
         {
             get { return GetValue(TitleProperty); }
@@ -59,11 +64,10 @@ namespace AppUIBasics
             get { return pageTitle; }
         }
 
-        public Action ToggleThemeAction { get; set; }
-
         public PageHeader()
         {
             this.InitializeComponent();
+            TeachingTipTarget = ThemeButton;
         }
 
         public void UpdateBackground(bool isFilteredPage)
@@ -71,7 +75,7 @@ namespace AppUIBasics
             VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
         }
 
-        private void OnThemeButtonClick(object sender, RoutedEventArgs e)
+        public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
         }

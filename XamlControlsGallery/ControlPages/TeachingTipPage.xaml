@@ -15,123 +15,104 @@
         xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
+        xmlns:controls="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-
-        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip with a title, subtitle, and icon.">
+        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip with a title, subtitle, and icon that targets the Toggle Theme button with its tail. Press the Test button to trigger the TeachingTip to appear.">
             <local:ControlExample.Example>
-                <Button Content="Save" Click="SaveButtonClick1">
-                    <muxc:TeachingTip.Attach>
-                        <muxc:TeachingTip x:Name="AutoSaveTip1"
-                            Title="Saving automatically"
-                            Subtext="We save your changes as you go - so you never have to.">
-                            <muxc:TeachingTip.IconSource>
-                                <muxc:SymbolIconSource Symbol="Save"/>
-                            </muxc:TeachingTip.IconSource>
-                            <muxc:TeachingTip.BleedingImageContent>
-                                <Grid/>
-                            </muxc:TeachingTip.BleedingImageContent>
-                        </muxc:TeachingTip>
-                    </muxc:TeachingTip.Attach>
-                    <Button.Resources></Button.Resources>
+                <Button Content="Test" Click="TestButtonClick1" >
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip1"                   
+                            Title="Change themes without hassle"                                        
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!">
+                            <controls:TeachingTip.IconSource>
+                                <controls:SymbolIconSource Symbol="Refresh" />
+                            </controls:TeachingTip.IconSource>
+                        </controls:TeachingTip>
+                    </Button.Resources>
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Button Content="Save" Click="SaveButtonClick1"&gt;
+&lt;Button Content="Test" Click="TestButtonClick1"&gt;
     &lt;Button.Resources&gt;
-        &lt;muxc:TeachingTip x:Name="AutoSaveTip1"
-            Title="Saving automatically"
-            Subtext="We save your changes as you go - so you never have to."&gt;
-            &lt;muxc:TeachingTip.IconSource&gt;
-                &lt;muxc:SymbolIconSource Symbol="Save"/&gt;
-            &lt;/muxc:TeachingTip.IconSource&gt;
-        &lt;/muxc:TeachingTip&gt;
+        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip1"
+            Title="Change themes without hassle"
+            Subtext="It's easier than ever to see control samples in both light and dark theme!"&gt;
+            &lt;controls:TeachingTip.IconSource&gt;
+                &lt;controls:SymbolIconSource Symbol="Refresh"/&gt;
+            &lt;/controls:TeachingTip.IconSource&gt;
+        &lt;/controls:TeachingTip&gt;
     &lt;/Button.Resources&gt;
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="A pointing TeachingTip with hero content that is light-dismiss enabled.">
+        <local:ControlExample x:Name="Example2" HeaderText="A non-targeted and light-dismiss enabled TeachingTip with content, preferred placement, placement margin, an Action button, and a Close button. Press the Test button to trigger the TeachingTip to appear.">
             <local:ControlExample.Example>
-                <Button Content="Save" Click="SaveButtonClick2">
-                    <muxc:TeachingTip.Attach>
-                        <muxc:TeachingTip x:Name="AutoSaveTip2"
-                        Title="Saving automatically"
-                        Subtext="We save your changes as you go - so you never have to."
-                        Placement="Right"
-                        IsLightDismissEnabled="True">
-                            <muxc:TeachingTip.IconSource>
-                                <muxc:SymbolIconSource Symbol="Save"/>
-                            </muxc:TeachingTip.IconSource>
-                            <muxc:TeachingTip.BleedingImageContent>
-                                <Image Source="/Assets/SampleMedia/LandscapeImage8.jpg"/>
-                            </muxc:TeachingTip.BleedingImageContent>
-                        </muxc:TeachingTip>
-                    </muxc:TeachingTip.Attach>
+                <Button Content="Test" Click="TestButtonClick2">
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip2"                   
+                            Title="Change themes without hassle"
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                            PreferredPlacement="Auto"                                              
+                            PlacementMargin="20"
+                            IsLightDismissEnabled="True"
+                            ActionButtonClick="AutoSaveTip2_ActionButtonClick"
+                            ActionButtonContent="Toggle theme now"
+                            CloseButtonContent="Got it!">
+                        </controls:TeachingTip>
+                    </Button.Resources>
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Button Content="Save" Click="SaveButtonClick2"&gt;
-    &lt;muxc:TeachingTip.Attach&gt;
-        &lt;muxc:TeachingTip x:Name="AutoSaveTip2"
-            Title="Saving automatically"
-            Subtext="We save your changes as you go - so you never have to."
-            Placement="Right"
-            IsLightDismissEnabled="False"&gt;
-            &lt;muxc:TeachingTip.HeroContent&gt;
-                &lt;Image Source="/Assets/SampleMedia/LandscapeImage8.jpg"/&gt;
-            &lt;/muxc:TeachingTip.HeroContent&gt;
-        &lt;/muxc:TeachingTip&gt;
-    &lt;/muxc:TeachingTip.Attach&gt;
+&lt;Button Content="Test" Click="TestButtonClick2"&gt;
+    &lt;Button.Resources&gt;
+        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip2"
+            Title="Change themes without hassle"
+            Subtext="It's easier than ever to see control samples in both light and dark theme!"
+            PreferredPlacement="TopRight"
+            Margin="20"
+            IsLightDismissEnabled="True"                            
+            ActionButtonClick="AutoSaveTip2_ActionButtonClick"
+            ActionButtonContent="Toggle theme now"
+            CloseButtonContent="Got it!">&gt;
+        &lt;/controls:TeachingTip&gt;
+    &lt;/Button.Resources&gt;
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="A pointing TeachingTip with content and buttons.">
+        <local:ControlExample x:Name="Example3" HeaderText="A TeachingTip with hero content and preferred placement that targets the Toggle Theme button with its tail. Press the Test button to trigger the TeachingTip to appear.">
             <local:ControlExample.Example>
-                <Button Content="Save" Click="SaveButtonClick3">
-                    <muxc:TeachingTip.Attach>
-                        <muxc:TeachingTip x:Name="AutoSaveTip3"
-                        Title="Saving automatically"
-                        Subtext="We save your changes as you go - so you never have to."
-                        ActionButtonText="Disable Auto Save"
-                        CloseButtonText="Close">
-                            <muxc:TeachingTip.IconSource>
-                                <muxc:SymbolIconSource/>
-                            </muxc:TeachingTip.IconSource>
-                            <muxc:TeachingTip.BleedingImageContent>
-                                <Grid/>
-                            </muxc:TeachingTip.BleedingImageContent>
-                            <muxc:TeachingTip.Content>
-                                <StackPanel>
-                                    <TextBlock>You can change your tip preferences in <Hyperlink NavigateUri="app:/item/SettingsPage">Settings</Hyperlink> if you change your mind.</TextBlock>
-                                </StackPanel>
-                            </muxc:TeachingTip.Content>
-                        </muxc:TeachingTip>
-                    </muxc:TeachingTip.Attach>
+                <Button Content="Test" Click="TestButtonClick3">
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip3"                   
+                            Title="Change themes without hassle"
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                            PreferredPlacement="LeftEdgeAlignedBottom">
+                            <controls:TeachingTip.HeroContent>
+                                <Image Source="/Assets/SampleMedia/sunset.jpg" />
+                            </controls:TeachingTip.HeroContent>
+                        </controls:TeachingTip>
+                    </Button.Resources>
                 </Button>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Button Content="Save" Click="SaveButtonClick2"&gt;
-    &lt;muxc:TeachingTip.Attach&gt;
-        &lt;muxc:TeachingTip x:Name="AutoSaveTip2"
-            Title="Saving automatically"
-            Subtext="We save your changes as you go - so you never have to."
-            ActionButtonText="Disable Auto Save"
-            ActionButtonCommand="DisableAutoSave"
-            CloseButtonText="Close"&gt;
-            &lt;muxc:TeachingTip.Content&gt;
-                &lt;StackPanel&gt;
-                    &lt;TextBlock&gt; You can change your tip preferences in &lt;Hyperlink NavigateUri="app:/item/SettingsPage"&gt;Settings&lt;/Hyperlink&gt; if you change your mind.&lt;/TextBlock&gt;
-                &lt;/StackPanel&gt;
-            &lt;/muxc:TeachingTip.Content&gt;
-        &lt;/muxc:TeachingTip&gt;
-    &lt;/muxc:TeachingTip.Attach&gt;
+&lt;Button Content="Save" Click="TestButtonClick3"&gt;
+    &lt;Button.Resources&gt;
+        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip3"
+            Title="Change themes without hassle"
+            Subtext="It's easier than ever to see control samples in both light and dark theme!"
+            PreferredPlacement="LeftBottom"&gt;
+            &lt;controls:TeachingTip.HeroContent&gt;
+                    &lt;Image Source="/Assets/SampleMedia/sunset.jpg" /&gt;
+            &lt;/controls:TeachingTip.HeroContent&gt;
+        &lt;/controls:TeachingTip&gt;
+    &lt;/Button.Resources&gt;
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>

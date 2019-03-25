@@ -155,6 +155,7 @@
     <Content Include="Assets\Sun-100-Black.png" />
     <Content Include="Assets\Sun.32.scale-100-White.png" />
     <Content Include="Assets\Swipe.png" />
+    <Content Include="Assets\TeachingTip.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-150.png" />
@@ -402,6 +403,9 @@
     </Compile>
     <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
       <DependentUpon>PageTransitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
+      <DependentUpon>TeachingTipPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\WebViewPage.xaml.cs">
       <DependentUpon>WebViewPage.xaml</DependentUpon>
@@ -676,6 +680,10 @@
     <Page Include="ControlPages\DropDownButtonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\TeachingTipPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\WebViewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
