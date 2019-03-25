@@ -1,4 +1,4 @@
-﻿<Button Content="Test" Click="TestButtonClick2" />
+﻿<Button Content="Show TeachingTip" Click="TestButtonClick2" />
 
 <controls:TeachingTip x:Name="ToggleThemeTeachingTip2"                   
 	Title="Change themes without hassle"

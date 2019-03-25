@@ -15,6 +15,7 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
 {
@@ -24,9 +25,9 @@ namespace AppUIBasics
 
         public Action ToggleThemeAction { get; set; }
 
-        public static FrameworkElement TeachingTip1;
-        public static FrameworkElement TeachingTip2;
-        public static FrameworkElement TeachingTip3;
+        public static TeachingTip TeachingTip1;
+        public static TeachingTip TeachingTip2;
+        public static TeachingTip TeachingTip3;
 
         public object Title
         {

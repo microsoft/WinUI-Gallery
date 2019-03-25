@@ -142,6 +142,9 @@
                                 <controls:TeachingTip.HeroContent>
                                     <Image Source="/Assets/SampleMedia/sunset.jpg" />
                                 </controls:TeachingTip.HeroContent>
+                                <controls:TeachingTip.Content>
+                                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,16,0,0">To change your desktop theme visit the <Hyperlink NavigateUri="ms-settings:colors">Settings app</Hyperlink>.</TextBlock>
+                                </controls:TeachingTip.Content>
                             </controls:TeachingTip>
                         </AppBarButton.Resources>
                     </AppBarButton>

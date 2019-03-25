@@ -15,26 +15,29 @@
         xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
+        mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-        <local:ControlExample x:Name="Example1" HeaderText="Show a targeted TeachingTip on the Toggle Theme button." XamlSource="TeachingTip/TeachingTipSample1_xaml.txt"
+        <local:ControlExample HeaderText="Show a targeted TeachingTip on the Toggle Theme button." 
+                              XamlSource="TeachingTip/TeachingTipSample1_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample1_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick1" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick1" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="Show a non-targeted TeachingTip with buttons." XamlSource="TeachingTip/TeachingTipSample2_xaml.txt"
+        <local:ControlExample HeaderText="Show a non-targeted TeachingTip with buttons." 
+                              XamlSource="TeachingTip/TeachingTipSample2_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample2_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick2" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick2" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button." XamlSource="TeachingTip/TeachingTipSample3_xaml.txt"
+        <local:ControlExample HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button." 
+                              XamlSource="TeachingTip/TeachingTipSample3_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample3_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick3" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick3" />
             </local:ControlExample.Example>
         </local:ControlExample>
 

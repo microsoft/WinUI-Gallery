@@ -15,10 +15,8 @@ using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
-
     public sealed partial class TeachingTipPage : Page
     { 
-
         public TeachingTipPage()
         {
             this.InitializeComponent();
@@ -26,19 +24,17 @@ namespace AppUIBasics.ControlPages
 
         private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
-
-            (PageHeader.TeachingTip1 as TeachingTip).IsOpen = true;
-
+            PageHeader.TeachingTip1.IsOpen = true;
         }
 
         private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            (PageHeader.TeachingTip2 as TeachingTip).IsOpen = true;
+            PageHeader.TeachingTip2.IsOpen = true;
         }
 
         private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            (PageHeader.TeachingTip3 as TeachingTip).IsOpen = true;
+            PageHeader.TeachingTip3.IsOpen = true;
         }
     }
 }

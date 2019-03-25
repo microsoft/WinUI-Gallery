@@ -1,4 +1,4 @@
-﻿<Button Content="Test" Click="TestButtonClick1" />
+﻿<Button Content="Show TeachingTip" Click="TestButtonClick1" />
 
 <controls:TeachingTip x:Name="ToggleThemeTeachingTip1"                   
 	Target="{x:Bind ThemeButton}"
