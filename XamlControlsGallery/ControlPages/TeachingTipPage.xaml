@@ -17,105 +17,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
-        <local:ControlExample x:Name="Example1" HeaderText="A simple TeachingTip with a title, subtitle, and icon that targets the Toggle Theme button with its tail. Press the Test button to trigger the TeachingTip to appear.">
+        <local:ControlExample x:Name="Example1" HeaderText="Show a targeted TeachingTip on the Toggle Theme button." XamlSource="TeachingTip/TeachingTipSample1_xaml.txt"
+                              CSharpSource="TeachingTip/TeachingTipSample1_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick1" >
-                    <Button.Resources>
-                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip1"                   
-                            Title="Change themes without hassle"                                        
-                            Subtitle="It's easier than ever to see control samples in both light and dark theme!">
-                            <controls:TeachingTip.IconSource>
-                                <controls:SymbolIconSource Symbol="Refresh" />
-                            </controls:TeachingTip.IconSource>
-                        </controls:TeachingTip>
-                    </Button.Resources>
-                </Button>
+                <Button Content="Test" Click="TestButtonClick1" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button Content="Test" Click="TestButtonClick1"&gt;
-    &lt;Button.Resources&gt;
-        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip1"
-            Title="Change themes without hassle"
-            Subtext="It's easier than ever to see control samples in both light and dark theme!"&gt;
-            &lt;controls:TeachingTip.IconSource&gt;
-                &lt;controls:SymbolIconSource Symbol="Refresh"/&gt;
-            &lt;/controls:TeachingTip.IconSource&gt;
-        &lt;/controls:TeachingTip&gt;
-    &lt;/Button.Resources&gt;
-&lt;/Button&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="A non-targeted and light-dismiss enabled TeachingTip with content, preferred placement, placement margin, an Action button, and a Close button. Press the Test button to trigger the TeachingTip to appear.">
+        <local:ControlExample x:Name="Example2" HeaderText="Show a non-targeted TeachingTip with buttons." XamlSource="TeachingTip/TeachingTipSample2_xaml.txt"
+                              CSharpSource="TeachingTip/TeachingTipSample2_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick2">
-                    <Button.Resources>
-                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip2"                   
-                            Title="Change themes without hassle"
-                            Subtitle="It's easier than ever to see control samples in both light and dark theme!"
-                            PreferredPlacement="Auto"                                              
-                            PlacementMargin="20"
-                            IsLightDismissEnabled="True"
-                            ActionButtonClick="AutoSaveTip2_ActionButtonClick"
-                            ActionButtonContent="Toggle theme now"
-                            CloseButtonContent="Got it!">
-                        </controls:TeachingTip>
-                    </Button.Resources>
-                </Button>
+                <Button Content="Test" Click="TestButtonClick2" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button Content="Test" Click="TestButtonClick2"&gt;
-    &lt;Button.Resources&gt;
-        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip2"
-            Title="Change themes without hassle"
-            Subtext="It's easier than ever to see control samples in both light and dark theme!"
-            PreferredPlacement="TopRight"
-            Margin="20"
-            IsLightDismissEnabled="True"                            
-            ActionButtonClick="AutoSaveTip2_ActionButtonClick"
-            ActionButtonContent="Toggle theme now"
-            CloseButtonContent="Got it!">&gt;
-        &lt;/controls:TeachingTip&gt;
-    &lt;/Button.Resources&gt;
-&lt;/Button&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="A TeachingTip with hero content and preferred placement that targets the Toggle Theme button with its tail. Press the Test button to trigger the TeachingTip to appear.">
+        <local:ControlExample x:Name="Example3" HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button." XamlSource="TeachingTip/TeachingTipSample3_xaml.txt"
+                              CSharpSource="TeachingTip/TeachingTipSample3_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Test" Click="TestButtonClick3">
-                    <Button.Resources>
-                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip3"                   
-                            Title="Change themes without hassle"
-                            Subtitle="It's easier than ever to see control samples in both light and dark theme!"
-                            PreferredPlacement="LeftEdgeAlignedBottom">
-                            <controls:TeachingTip.HeroContent>
-                                <Image Source="/Assets/SampleMedia/sunset.jpg" />
-                            </controls:TeachingTip.HeroContent>
-                        </controls:TeachingTip>
-                    </Button.Resources>
-                </Button>
+                <Button Content="Test" Click="TestButtonClick3" />
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button Content="Save" Click="TestButtonClick3"&gt;
-    &lt;Button.Resources&gt;
-        &lt;controls:TeachingTip x:Name="ToggleThemeTeachingTip3"
-            Title="Change themes without hassle"
-            Subtext="It's easier than ever to see control samples in both light and dark theme!"
-            PreferredPlacement="LeftBottom"&gt;
-            &lt;controls:TeachingTip.HeroContent&gt;
-                    &lt;Image Source="/Assets/SampleMedia/sunset.jpg" /&gt;
-            &lt;/controls:TeachingTip.HeroContent&gt;
-        &lt;/controls:TeachingTip&gt;
-    &lt;/Button.Resources&gt;
-&lt;/Button&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
     </StackPanel>

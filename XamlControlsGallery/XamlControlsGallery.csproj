@@ -225,6 +225,12 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />

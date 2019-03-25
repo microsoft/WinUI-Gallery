@@ -1,0 +1,11 @@
+﻿<Button Content="Test" Click="TestButtonClick3" />
+
+<controls:TeachingTip x:Name="ToggleThemeTeachingTip3" 
+    Target="{x:Bind ThemeButton}"
+    Title="Change themes without hassle"
+    Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+    PreferredPlacement="LeftEdgeAlignedBottom">
+    <controls:TeachingTip.HeroContent>
+        <Image Source="/Assets/SampleMedia/sunset.jpg" />
+    </controls:TeachingTip.HeroContent>
+</controls:TeachingTip>

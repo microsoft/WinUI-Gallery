@@ -15,39 +15,30 @@ using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class TeachingTipPage : Page
     { 
 
         public TeachingTipPage()
         {
             this.InitializeComponent();
-            ToggleThemeTeachingTip1.Target = PageHeader.TeachingTipTarget;
-            ToggleThemeTeachingTip3.Target = PageHeader.TeachingTipTarget;
         }
 
         private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
 
-            ToggleThemeTeachingTip1.IsOpen = true;
+            (PageHeader.TeachingTip1 as TeachingTip).IsOpen = true;
 
         }
 
         private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip2.IsOpen = true;
+            (PageHeader.TeachingTip2 as TeachingTip).IsOpen = true;
         }
 
         private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip3.IsOpen = true;
-        }
-
-        private void AutoSaveTip2_ActionButtonClick(TeachingTip sender, object args)
-        {
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
+            (PageHeader.TeachingTip3 as TeachingTip).IsOpen = true;
         }
     }
 }

@@ -24,7 +24,9 @@ namespace AppUIBasics
 
         public Action ToggleThemeAction { get; set; }
 
-        public static FrameworkElement TeachingTipTarget;
+        public static FrameworkElement TeachingTip1;
+        public static FrameworkElement TeachingTip2;
+        public static FrameworkElement TeachingTip3;
 
         public object Title
         {
@@ -67,8 +69,11 @@ namespace AppUIBasics
         public PageHeader()
         {
             this.InitializeComponent();
-            TeachingTipTarget = ThemeButton;
+            TeachingTip1 = ToggleThemeTeachingTip1;
+            TeachingTip2 = ToggleThemeTeachingTip2;
+            TeachingTip3 = ToggleThemeTeachingTip3;
         }
+
 
         public void UpdateBackground(bool isFilteredPage)
         {
@@ -78,6 +83,11 @@ namespace AppUIBasics
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+        }
+
+        private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+        {
+            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
         }
     }
 }
