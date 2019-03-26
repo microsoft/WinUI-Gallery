@@ -1118,11 +1118,11 @@
           "Docs": [
             {
               "Title": "TeachingTip - API",
-              "Uri": ""
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.teachingtip"
             },
             {
               "Title": "Guidelines",
-              "Uri": ""
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/teaching-tip"
             }
           ],
           "RelatedControls": [
