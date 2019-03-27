@@ -15,13 +15,24 @@
         xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:Microsoft.UI.Xaml.Controls"
         mc:Ignorable="d">
     <StackPanel HorizontalAlignment="Left">
         <local:ControlExample HeaderText="Show a targeted TeachingTip on the Toggle Theme button." 
                               XamlSource="TeachingTip/TeachingTipSample1_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample1_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Show TeachingTip" Click="TestButtonClick1" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick1">
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip1"                   
+                            Title="Change themes without hassle"                                        
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!">
+                            <controls:TeachingTip.IconSource>
+                                <controls:SymbolIconSource Symbol="Refresh" />
+                            </controls:TeachingTip.IconSource>
+                        </controls:TeachingTip>
+                    </Button.Resources>
+                </Button>
             </local:ControlExample.Example>
         </local:ControlExample>
 
@@ -29,15 +40,42 @@
                               XamlSource="TeachingTip/TeachingTipSample2_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample2_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Show TeachingTip" Click="TestButtonClick2" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick2">
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip2"                   
+                                Title="Change themes without hassle"
+                                Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                                PreferredPlacement="Auto"                                              
+                                PlacementMargin="20"
+                                IsLightDismissEnabled="True"
+                                ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
+                                ActionButtonContent="Toggle theme now"
+                                CloseButtonContent="Got it!">
+                        </controls:TeachingTip>
+                    </Button.Resources>
+                </Button>
             </local:ControlExample.Example>
         </local:ControlExample>
-
+        
         <local:ControlExample HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button." 
                               XamlSource="TeachingTip/TeachingTipSample3_xaml.txt"
                               CSharpSource="TeachingTip/TeachingTipSample3_cs.txt">
             <local:ControlExample.Example>
-                <Button Content="Show TeachingTip" Click="TestButtonClick3" />
+                <Button Content="Show TeachingTip" Click="TestButtonClick3">
+                    <Button.Resources>
+                        <controls:TeachingTip x:Name="ToggleThemeTeachingTip3" 
+                                Title="Change themes without hassle"
+                                Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                                PreferredPlacement="LeftEdgeAlignedBottom">
+                            <controls:TeachingTip.HeroContent>
+                                <Image Source="/Assets/SampleMedia/sunset.jpg" AutomationProperties.Name="Sunset" />
+                            </controls:TeachingTip.HeroContent>
+                            <controls:TeachingTip.Content>
+                                <TextBlock TextWrapping="WrapWholeWords" Margin="0,16,0,0">To change your desktop theme visit the <Hyperlink NavigateUri="ms-settings:colors">Settings app</Hyperlink>.</TextBlock>
+                            </controls:TeachingTip.Content>
+                        </controls:TeachingTip>
+                    </Button.Resources>
+                </Button>
             </local:ControlExample.Example>
         </local:ControlExample>
 
