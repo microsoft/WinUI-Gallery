@@ -7,9 +7,9 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,38 +20,21 @@ namespace AppUIBasics.ControlPages
         public TeachingTipPage()
         {
             this.InitializeComponent();
-            ToggleThemeTeachingTip1.Target = PageHeader.TeachingTipTarget;
-            ToggleThemeTeachingTip3.Target = PageHeader.TeachingTipTarget;
-        }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
-
-            ToggleThemeTeachingTip1.IsOpen = false;
-            ToggleThemeTeachingTip2.IsOpen = false;
-            ToggleThemeTeachingTip3.IsOpen = false;
-
         }
 
         private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip1.IsOpen = true;
+            PageHeader.TeachingTip1.IsOpen = true;
         }
 
         private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip2.IsOpen = true;
+            PageHeader.TeachingTip2.IsOpen = true;
         }
 
         private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip3.IsOpen = true;
-        }
-
-        private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
-        {
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
+            PageHeader.TeachingTip3.IsOpen = true;
         }
     }
 }
