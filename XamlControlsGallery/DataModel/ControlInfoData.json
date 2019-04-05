@@ -1802,12 +1802,17 @@
         {
           "UniqueId": "CompactSizing",
           "Title": "Compact Sizing",
-          "Subtitle": "(Preview) How to use a Resource Dictionary to enable compact sizing.",
+          "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
           "ImagePath": "ms-appx:///Assets/CompactSizing.png",
-          "Description": "Preview! This functionality will come to WinUI later this year.",
+          "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "Content": "",
-          "IsPreview": true,
-          "Docs": []
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Spacing",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/style/spacing"
+            }
+          ]
         }
       ]
     },

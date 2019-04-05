@@ -34,13 +34,13 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Application.Resources&gt;
-    &lt;ResourceDictionary/&gt;
-        &lt;ResourceDictionary.MergedDictionaries&gt;
-            &lt;ResourceDictionary Source="CompactSize.xaml"&gt;
-        &lt;ResourceDictionary.MergedDictionaries/&gt;
-    &lt;/ResourceDictionary&gt;
-&lt;/Application.Resources&gt;
+&lt;Page.Resources&gt;
+            &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&lt;
+&lt;/Page.Resources&gt;
+                    
+&lt;Grid.Resources&gt;
+            &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&lt;
+&lt;/Grid.Resources&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
