@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28714.193
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlControlsGallery", "XamlControlsGallery.csproj", "{3F68773A-31A5-59FE-926C-0569E415C9D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FE49C6E-888D-44BC-A751-A7898F54F031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
