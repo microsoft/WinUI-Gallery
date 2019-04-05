@@ -185,6 +185,9 @@ namespace AppUIBasics
 
         private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
+            // Close any open teaching tips before navigation
+            CloseTeachingTips();
+
             if (args.IsSettingsInvoked)
             {
                 rootFrame.Navigate(typeof(SettingsPage));
@@ -211,6 +214,9 @@ namespace AppUIBasics
 
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
+            // Close any open teaching tips before navigation
+            CloseTeachingTips();
+
             if (e.SourcePageType == typeof(AllControlsPage) ||
                 e.SourcePageType == typeof(NewControlsPage))
             {
@@ -223,6 +229,11 @@ namespace AppUIBasics
                 bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
                 PageHeader?.UpdateBackground(isFilteredPage);
             }
+        }
+        private void CloseTeachingTips()
+        {
+            PageHeader.TeachingTip1.IsOpen = false;
+            PageHeader.TeachingTip3.IsOpen = false;
         }
 
         private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
