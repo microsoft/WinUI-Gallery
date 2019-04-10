@@ -25,9 +25,9 @@ namespace AppUIBasics
 
         public Action ToggleThemeAction { get; set; }
 
-        public static TeachingTip TeachingTip1;
-        public static TeachingTip TeachingTip2;
-        public static TeachingTip TeachingTip3;
+        public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
+        public TeachingTip TeachingTip2 => ToggleThemeTeachingTip2;
+        public TeachingTip TeachingTip3 => ToggleThemeTeachingTip3;
 
         public object Title
         {
@@ -70,9 +70,6 @@ namespace AppUIBasics
         public PageHeader()
         {
             this.InitializeComponent();
-            TeachingTip1 = ToggleThemeTeachingTip1;
-            TeachingTip2 = ToggleThemeTeachingTip2;
-            TeachingTip3 = ToggleThemeTeachingTip3;
         }
 
 
