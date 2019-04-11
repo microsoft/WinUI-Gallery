@@ -232,8 +232,11 @@ namespace AppUIBasics
         }
         private void CloseTeachingTips()
         {
-            PageHeader.TeachingTip1.IsOpen = false;
-            PageHeader.TeachingTip3.IsOpen = false;
+            if (Current?.PageHeader != null)
+            {
+                Current.PageHeader.TeachingTip1.IsOpen = false;
+                Current.PageHeader.TeachingTip3.IsOpen = false;
+            }
         }
 
         private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
