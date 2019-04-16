@@ -185,6 +185,9 @@ namespace AppUIBasics
 
         private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
+            // Close any open teaching tips before navigation
+            CloseTeachingTips();
+
             if (args.IsSettingsInvoked)
             {
                 rootFrame.Navigate(typeof(SettingsPage));
@@ -211,6 +214,9 @@ namespace AppUIBasics
 
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
+            // Close any open teaching tips before navigation
+            CloseTeachingTips();
+
             if (e.SourcePageType == typeof(AllControlsPage) ||
                 e.SourcePageType == typeof(NewControlsPage))
             {
@@ -222,6 +228,14 @@ namespace AppUIBasics
 
                 bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
                 PageHeader?.UpdateBackground(isFilteredPage);
+            }
+        }
+        private void CloseTeachingTips()
+        {
+            if (Current?.PageHeader != null)
+            {
+                Current.PageHeader.TeachingTip1.IsOpen = false;
+                Current.PageHeader.TeachingTip3.IsOpen = false;
             }
         }
 
@@ -263,11 +277,6 @@ namespace AppUIBasics
             {
                 NavigationRootPage.RootFrame.Navigate(typeof(SearchResultsPage), args.QueryText);
             }
-        }
-
-        private void KeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-        {
-            controlsSearchBox.Focus(FocusState.Keyboard);
         }
 
         private void NavigationViewControl_PaneClosing(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewPaneClosingEventArgs args)

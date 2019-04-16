@@ -21,7 +21,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-
+        
         <local:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <RichEditBox AutomationProperties.Name="simple text editor"/>
             <local:ControlExample.Xaml>
@@ -31,23 +31,6 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="RichEditBox with ContentLinks enabled."
-                              MinimumUniversalAPIContract="6"
-                              XamlSource="Text\RichEditBox\RichEditBoxSample2_xaml.txt"
-                              HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
-            <StackPanel>
-                <TextBlock Margin="0,0,0,10" Text="Prefix an entry with an at-sign (@) symbol to see a list of people and place suggestions that matches the entry." TextWrapping="WrapWholeWords"/>
-                <RichEditBox Height="200" AutomationProperties.Name="Editor with content links">
-                    <contract6Present:RichEditBox.ContentLinkProviders>
-                        <contract6Present:ContentLinkProviderCollection>
-                            <contract6Present:ContactContentLinkProvider/>
-                            <contract6Present:PlaceContentLinkProvider/>
-                        </contract6Present:ContentLinkProviderCollection>
-                    </contract6Present:RichEditBox.ContentLinkProviders>
-                </RichEditBox>
-            </StackPanel>
-        </local:ControlExample>
-      
         <local:ControlExample HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'" 
                               XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt"
                               CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt"
@@ -171,7 +154,8 @@
                 <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
                              RelativePanel.Below="openFileButton" 
                              RelativePanel.AlignLeftWithPanel="True" 
-                             RelativePanel.AlignRightWithPanel="True" />
+                             RelativePanel.AlignRightWithPanel="True" 
+                             GotFocus="Editor_GotFocus"/>
                 <StackPanel Orientation="Horizontal" 
                             RelativePanel.Below="editor" 
                             RelativePanel.AlignLeftWith="editor" 

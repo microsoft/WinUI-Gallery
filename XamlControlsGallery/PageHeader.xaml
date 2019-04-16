@@ -2,6 +2,7 @@
     x:Class="AppUIBasics.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:AppUIBasics"
     x:Name="headerControl"
     Padding="14,0,12,0"
@@ -114,6 +115,38 @@
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE771;" Margin="0,-2,0,0" />
                         </AppBarButton.Icon>
+                        <AppBarButton.Resources>
+                            <controls:TeachingTip x:Name="ToggleThemeTeachingTip1"                   
+                            Target="{x:Bind ThemeButton}"
+                            Title="Change themes without hassle"                                        
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!">
+                                <controls:TeachingTip.IconSource>
+                                    <controls:SymbolIconSource Symbol="Refresh" />
+                                </controls:TeachingTip.IconSource>
+                            </controls:TeachingTip>
+                            <controls:TeachingTip x:Name="ToggleThemeTeachingTip2"                   
+                                Title="Change themes without hassle"
+                                Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                                PreferredPlacement="Auto"                                              
+                                PlacementMargin="20"
+                                IsLightDismissEnabled="True"
+                                ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
+                                ActionButtonContent="Toggle theme now"
+                                CloseButtonContent="Got it!">
+                            </controls:TeachingTip>
+                            <controls:TeachingTip x:Name="ToggleThemeTeachingTip3" 
+                                Target="{x:Bind ThemeButton}"
+                                Title="Change themes without hassle"
+                                Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                                PreferredPlacement="LeftBottom">
+                                <controls:TeachingTip.HeroContent>
+                                    <Image Source="/Assets/SampleMedia/sunset.jpg" AutomationProperties.Name="Sunset" />
+                                </controls:TeachingTip.HeroContent>
+                                <controls:TeachingTip.Content>
+                                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,16,0,0">To change your desktop theme visit the <Hyperlink NavigateUri="ms-settings:colors">Settings app</Hyperlink>.</TextBlock>
+                                </controls:TeachingTip.Content>
+                            </controls:TeachingTip>
+                        </AppBarButton.Resources>
                     </AppBarButton>
                 </CommandBar>
             </Border>

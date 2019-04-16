@@ -15,12 +15,20 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
 {
     public sealed partial class PageHeader : UserControl
     {
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
+
+        public Action ToggleThemeAction { get; set; }
+
+        public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
+        public TeachingTip TeachingTip2 => ToggleThemeTeachingTip2;
+        public TeachingTip TeachingTip3 => ToggleThemeTeachingTip3;
+
         public object Title
         {
             get { return GetValue(TitleProperty); }
@@ -59,21 +67,25 @@ namespace AppUIBasics
             get { return pageTitle; }
         }
 
-        public Action ToggleThemeAction { get; set; }
-
         public PageHeader()
         {
             this.InitializeComponent();
         }
+
 
         public void UpdateBackground(bool isFilteredPage)
         {
             VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
         }
 
-        private void OnThemeButtonClick(object sender, RoutedEventArgs e)
+        public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+        }
+
+        private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+        {
+            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
         }
     }
 }

@@ -83,10 +83,7 @@
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
                     RequestedTheme="Light"
-                    TextChanged="OnControlsSearchBoxTextChanged" >
-                    <AutoSuggestBox.KeyboardAccelerators>
-                        <KeyboardAccelerator Invoked="KeyboardAccelerator_Invoked" Key="E" Modifiers="Control"/>
-                    </AutoSuggestBox.KeyboardAccelerators>
+                    TextChanged="OnControlsSearchBoxTextChanged">
                 </AutoSuggestBox>
             </mux:NavigationView.AutoSuggestBox>
 
