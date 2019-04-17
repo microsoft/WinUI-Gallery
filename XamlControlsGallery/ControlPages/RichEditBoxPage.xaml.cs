@@ -29,7 +29,7 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void ContextFlyout_Opening(object sender, object e)
+        private void Menu_Opening(object sender, object e)
         {
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
             if (myFlyout.Target == REBCustom)
@@ -181,7 +181,11 @@ namespace AppUIBasics.ControlPages
             // Prior to UniversalApiContract 7, RichEditBox did not have a default ContextFlyout set.
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
-                REBCustom.ContextFlyout.Opening += ContextFlyout_Opening;
+                // customize the menu that opens on text selection
+                REBCustom.SelectionFlyout.Opening += Menu_Opening;
+
+                // also customize the context menu to match selection menu
+                REBCustom.ContextFlyout.Opening += Menu_Opening;
             }
         }
 
@@ -190,7 +194,8 @@ namespace AppUIBasics.ControlPages
             // Prior to UniversalApiContract 7, RichEditBox did not have a default ContextFlyout set.
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
-                REBCustom.ContextFlyout.Opening -= ContextFlyout_Opening;
+                REBCustom.SelectionFlyout.Opening -= Menu_Opening;
+                REBCustom.ContextFlyout.Opening -= Menu_Opening;
             }
         } 
     }
