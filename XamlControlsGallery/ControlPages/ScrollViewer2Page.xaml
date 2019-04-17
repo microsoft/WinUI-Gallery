@@ -10,170 +10,18 @@
     xmlns:common="using:AppUIBasics.Common"
     mc:Ignorable="d" FontFamily="Segoe UI">
 
+    <Page.Resources>
+        <x:String x:Key="ImageUri">ms-appx:///Assets/MainPage_Banner.jpg</x:String>
+        <BitmapImage x:Key="BitmapImageSource" UriSource="{StaticResource ImageUri}"/>
+    </Page.Resources>
+
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A scrollable image.">
 
+        <local:ControlExample HeaderText="Constrain the layout of content.">
             <muxcontrols:ScrollViewer x:Name="scroller1"
-                                      ContentOrientation="None"
-                                      MaxZoomFactor="5"
-                                      MinZoomFactor="0.1"
-                                      HorizontalAlignment="Left"
-                                      VerticalAlignment="Top"
-                                      IsTabStop="True"
-                                      HorizontalScrollMode="{x:Bind ObjectToScrollMode(hsmCombo.SelectedItem), Mode=OneWay}"
-                                      HorizontalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(hsbvCombo.SelectedItem), Mode=OneWay}"
-                                      VerticalScrollMode="{x:Bind ObjectToScrollMode(vsmCombo.SelectedItem), Mode=OneWay}"
-                                      VerticalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(vsbvCombo.SelectedItem), Mode=OneWay}"
-                                      ZoomMode="Disabled"
+                                      ContentOrientation="{x:Bind ObjectToContentOrientation(cbContentOrientation.SelectedValue), Mode=OneWay}"
                                       Height="420"
-                                      >
-                <Image x:Name="image" Source="ms-appx:///Assets/MainPage_Banner.jpg" Stretch="None" HorizontalAlignment="Left"
-                        VerticalAlignment="Top" />
-            </muxcontrols:ScrollViewer>
-
-            <local:ControlExample.Options>
-                <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="ScrollMode"
-                               Grid.Row="0"
-                               Grid.ColumnSpan="2"
-                               HorizontalAlignment="Left"
-                               FontWeight="SemiBold"
-                               Margin="0,4" />
-
-                    <TextBlock Text="Horizontal"
-                               Grid.Row="1" 
-                               VerticalAlignment="Center"/>
-                    <ComboBox x:Name="hsmCombo"
-                              ItemsSource="{x:Bind ScrollModes}"
-                              SelectedIndex="0"
-                              Grid.Row="1"
-                              Grid.Column="1" 
-                              HorizontalAlignment="Stretch"/>
-
-                    <TextBlock Text="Vertical"
-                               Grid.Row="2"
-                               VerticalAlignment="Center" />
-                    <ComboBox x:Name="vsmCombo"
-                              ItemsSource="{x:Bind ScrollModes}"
-                              SelectedIndex="0"
-                              Grid.Row="2"
-                              Grid.Column="1" 
-                              HorizontalAlignment="Stretch"/>
-
-
-                    <TextBlock Text="ScrollControllerVisibility"
-                               FontWeight="SemiBold"
-                               HorizontalAlignment="Left"
-                               Grid.Row="3"
-                               Grid.ColumnSpan="2"
-                               Margin="0,12,0,4" />
-
-                    <TextBlock Grid.Row="4"
-                               Text="Horizontal"
-                               VerticalAlignment="Center" />
-                    <ComboBox Grid.Row="4"
-                              Grid.Column="1"
-                              x:Name="hsbvCombo"
-                              ItemsSource="{x:Bind ScrollBarVisibility}"
-                              SelectedIndex="2"
-                              HorizontalAlignment="Stretch"/>
-
-                    <TextBlock Grid.Row="5"
-                               Text="Vertical"
-                               VerticalAlignment="Center" />
-                    <ComboBox Grid.Row="5"
-                              Grid.Column="1"
-                              x:Name="vsbvCombo"
-                              ItemsSource="{x:Bind ScrollBarVisibility}"
-                              SelectedIndex="2"
-                              HorizontalAlignment="Stretch"/>
-
-
-                    <TextBlock Text="Zooming"
-                               Grid.Row="6"
-                               Grid.ColumnSpan="2"
-                               HorizontalAlignment="Left"
-                               FontWeight="SemiBold"
-                               Margin="0,12,0,4" />
-
-                    <TextBlock Grid.Row="7" Text="ZoomMode" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="cbZoomMode"
-                              ItemsSource="{x:Bind ZoomModes, Mode=OneWay}"
-                              SelectedIndex="0"
-                              SelectedItem="{x:Bind scroller1.ZoomMode, Mode=OneWay}"
-                              Grid.Row="7"
-                              Grid.Column="1"
-                              SelectionChanged="ZoomModeComboBox_SelectionChanged"
-                              HorizontalAlignment="Stretch"/>
-
-                    <TextBlock Grid.Row="8" Text="ZoomFactor" VerticalAlignment="Center"/>
-                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False"
-                            Maximum="{x:Bind scroller1.MaxZoomFactor, Mode=OneWay}"
-                            Minimum="{x:Bind scroller1.MinZoomFactor, Mode=OneWay}"
-                            Value="1.0"
-                            StepFrequency="0.1"
-                            TickFrequency="1.0"
-                            ValueChanged="ZoomSlider_ValueChanged" />
-
-                </Grid>
-            </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;ScrollViewer IsTabStop="True" 
-              ContentOrientation="None"
-              HorizontalScrollMode="$(HorizontalScrollMode)"
-              HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
-              VerticalScrollMode="$(VerticalScrollMode)"
-              VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"
-              ZoomMode="$(ZoomMode)"
-              Height="$(Height)" &gt;
-
-    &lt;Image Source="ms-appx:///Assets/MainPage_Banner.jpg"
-           Stretch="None" 
-           HorizontalAlignment="Left"
-           VerticalAlignment="Top"/&gt;
-
-&lt;/ScrollViewer&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind hsmCombo.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind hsbvCombo.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind vsmCombo.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind vsbvCombo.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind (x:String)cbZoomMode.SelectedItem, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller1.Height, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example2" HeaderText="A collection of items that can reflow.">
-            <muxcontrols:ScrollViewer x:Name="scroller2"
-                                   HorizontalScrollMode="Enabled"
-                                   HorizontalScrollBarVisibility="Auto"
-                                   VerticalScrollMode="Enabled"
-                                   VerticalScrollBarVisibility="Auto"
-                                   Height="420"
-                                   ContentOrientation="{x:Bind ObjectToContentOrientation(cbContentOrientation.SelectedValue), Mode=OneWay}">
+                                      KeyDown="Scroller_HandleKeyDown">
 
                 <VariableSizedWrapGrid HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
                     <VariableSizedWrapGrid.ChildrenTransitions>
@@ -267,25 +115,246 @@
 
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="ContentOrientation" Value="{x:Bind cbContentOrientation.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller2.Height, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller1.Height, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
 
         </local:ControlExample>
 
-        
-        <local:ControlExample HeaderText="Adjusting the default animation used for panning and zooming.">
+        <local:ControlExample HeaderText="Image content inside of a ScrollViewer.">
 
+            <muxcontrols:ScrollViewer x:Name="scroller2"
+                                      ContentOrientation="None"
+                                      MaxZoomFactor="5"
+                                      MinZoomFactor="0.1"
+                                      IsTabStop="True"
+                                      HorizontalScrollMode="{x:Bind ObjectToScrollMode(hsmCombo.SelectedItem), Mode=OneWay}"
+                                      HorizontalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(hsbvCombo.SelectedItem), Mode=OneWay}"
+                                      VerticalScrollMode="{x:Bind ObjectToScrollMode(vsmCombo.SelectedItem), Mode=OneWay}"
+                                      VerticalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(vsbvCombo.SelectedItem), Mode=OneWay}"
+                                      ZoomMode="Disabled"
+                                      Height="420"
+                                      KeyDown="Scroller_HandleKeyDown">
+                <Image x:Name="image" Source="{StaticResource BitmapImageSource}" Stretch="None" HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+            </muxcontrols:ScrollViewer>
+
+            <local:ControlExample.Options>
+                <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="ScrollMode"
+                               Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Left"
+                               FontWeight="SemiBold"
+                               Margin="0,4" />
+
+                    <TextBlock Text="Horizontal"
+                               Grid.Row="1" 
+                               VerticalAlignment="Center"/>
+                    <ComboBox x:Name="hsmCombo"
+                              ItemsSource="{x:Bind ScrollModes}"
+                              SelectedIndex="0"
+                              Grid.Row="1"
+                              Grid.Column="1" 
+                              HorizontalAlignment="Stretch"/>
+
+                    <TextBlock Text="Vertical"
+                               Grid.Row="2"
+                               VerticalAlignment="Center" />
+                    <ComboBox x:Name="vsmCombo"
+                              ItemsSource="{x:Bind ScrollModes}"
+                              SelectedIndex="0"
+                              Grid.Row="2"
+                              Grid.Column="1" 
+                              HorizontalAlignment="Stretch"/>
+
+
+                    <TextBlock Text="ScrollControllerVisibility"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Left"
+                               Grid.Row="3"
+                               Grid.ColumnSpan="2"
+                               Margin="0,12,0,4" />
+
+                    <TextBlock Grid.Row="4"
+                               Text="Horizontal"
+                               VerticalAlignment="Center" />
+                    <ComboBox Grid.Row="4"
+                              Grid.Column="1"
+                              x:Name="hsbvCombo"
+                              ItemsSource="{x:Bind ScrollBarVisibility}"
+                              SelectedIndex="0"
+                              HorizontalAlignment="Stretch"/>
+
+                    <TextBlock Grid.Row="5"
+                               Text="Vertical"
+                               VerticalAlignment="Center" />
+                    <ComboBox Grid.Row="5"
+                              Grid.Column="1"
+                              x:Name="vsbvCombo"
+                              ItemsSource="{x:Bind ScrollBarVisibility}"
+                              SelectedIndex="0"
+                              HorizontalAlignment="Stretch"/>
+
+
+                    <TextBlock Text="Zooming"
+                               Grid.Row="6"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Left"
+                               FontWeight="SemiBold"
+                               Margin="0,12,0,4" />
+
+                    <TextBlock Grid.Row="7" Text="ZoomMode" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cbZoomMode"
+                              ItemsSource="{x:Bind ZoomModes, Mode=OneWay}"
+                              SelectedIndex="0"
+                              SelectedItem="{x:Bind scroller2.ZoomMode, Mode=OneWay}"
+                              Grid.Row="7"
+                              Grid.Column="1"
+                              SelectionChanged="ZoomModeComboBox_SelectionChanged"
+                              HorizontalAlignment="Stretch"/>
+
+                    <TextBlock Grid.Row="8" Text="ZoomFactor" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False"
+                            Maximum="{x:Bind scroller2.MaxZoomFactor, Mode=OneWay}"
+                            Minimum="{x:Bind scroller2.MinZoomFactor, Mode=OneWay}"
+                            Value="1.0"
+                            StepFrequency="0.1"
+                            TickFrequency="1.0"
+                            ValueChanged="ZoomSlider_ValueChanged" />
+
+                </Grid>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollViewer IsTabStop="True" 
+              ContentOrientation="None"
+              HorizontalScrollMode="$(HorizontalScrollMode)"
+              HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+              VerticalScrollMode="$(VerticalScrollMode)"
+              VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"
+              ZoomMode="$(ZoomMode)"
+              Height="$(Height)" &gt;
+
+    &lt;Image Source="$(ImageUri)"
+           Stretch="None" 
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"/&gt;
+
+&lt;/ScrollViewer&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind hsmCombo.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind hsbvCombo.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind vsmCombo.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind vsbvCombo.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind (x:String)cbZoomMode.SelectedItem, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller2.Height, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ImageUri" Value="{StaticResource ImageUri}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Selectively ignore input">
             <muxcontrols:ScrollViewer x:Name="scroller3"
                                       ContentOrientation="None"
-                                      ScrollAnimationStarting="Scroller3_ScrollAnimationStarting"
-                                      ZoomAnimationStarting="Scroller3_ZoomAnimationStarting"
+                                      MaxZoomFactor="5"
+                                      MinZoomFactor="0.1"
+                                      IsTabStop="True"
+                                      VerticalScrollChainingMode="Never"
+                                      HorizontalScrollChainingMode="Never"
+                                      ZoomMode="Enabled"
+                                      Height="420"
+                                      KeyDown="Scroller_HandleKeyDown">
+                <Image Source="{StaticResource BitmapImageSource}" 
+                       Stretch="None"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top" />
+            </muxcontrols:ScrollViewer>
+
+            <local:ControlExample.Options>
+                <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Ignored Input Kind(s)"
+                               Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               HorizontalAlignment="Left"
+                               FontWeight="SemiBold"
+                               Margin="0,12,0,4" />
+                    <ListView x:Name="lvIgnoredInputKinds"
+                              ItemsSource="{x:Bind InputKinds}"
+                              IsMultiSelectCheckBoxEnabled="True"
+                              SelectionMode="Multiple" 
+                              SelectedIndex="0"
+                              SelectionChanged="LvIgnoredInputKinds_SelectionChanged"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="2"
+                              HorizontalAlignment="Stretch">
+                    </ListView>
+                </Grid>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:ScrollViewer ContentOrientation="None"
+                   IgnoredInputKind="$(IgnoredInputKind)"&gt;
+
+    &lt;Image Source="$(ImageUri)"
+           Stretch="None" 
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"/&gt;
+
+&lt;/muxc:ScrollViewer&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+           
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IgnoredInputKind" Value="{x:Bind scroller3.IgnoredInputKind, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ImageUri" Value="{StaticResource ImageUri}" />
+            </local:ControlExample.Substitutions>
+           
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="Customize the default animation used for panning and zooming.">
+
+            <muxcontrols:ScrollViewer x:Name="scroller4"
+                                      ContentOrientation="None"
+                                      ScrollAnimationStarting="Scroller4_ScrollAnimationStarting"
+                                      ZoomAnimationStarting="Scroller4_ZoomAnimationStarting"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
-                                      Height="420">
-                <Image x:Name="image2"
-                       Source="ms-appx:///Assets/MainPage_Banner.jpg"
+                                      Height="420"
+                                      KeyDown="Scroller_HandleKeyDown">
+                <Image Source="{StaticResource BitmapImageSource}"
                        Stretch="None"
-                       Loaded="image_Loaded"
+                       Loaded="Sample4_ImageLoaded"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top" />
             </muxcontrols:ScrollViewer>
@@ -322,6 +391,7 @@
                         X target: <Run FontWeight="SemiBold" Text="{x:Bind xposSlider.Value, Mode=OneWay}"/>
                     </TextBlock>
                     <Slider x:Name="xposSlider"
+                            Maximum="{x:Bind Sample4MaximumXViewportPosition, Mode=OneWay}"
                             StepFrequency="1"
                             Grid.Row="1"
                             Grid.Column="1" 
@@ -332,6 +402,7 @@
                         Y target: <Run FontWeight="SemiBold" Text="{x:Bind yposSlider.Value, Mode=OneWay}"/>
                     </TextBlock>
                     <Slider x:Name="yposSlider"
+                            Maximum="{x:Bind Sample4MaximumYViewportPosition, Mode=OneWay}"
                             StepFrequency="1"
                             Grid.Row="2"
                             Grid.Column="1" 
@@ -410,12 +481,12 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:Scroller ContentOrientation="None"
-          ScrollAnimationStarting="Scroller_ScrollAnimationStarting"
-          ZoomAnimationStarting="Scroller_ZoomAnimationStarting"
-          Height="$(Height)"/&gt;
+&lt;muxc:ScrollViewer ContentOrientation="None"
+                   ScrollAnimationStarting="Scroller_ScrollAnimationStarting"
+                   ZoomAnimationStarting="Scroller_ZoomAnimationStarting"
+                   Height="$(Height)"/&gt;
 
-    &lt;Image Source="ms-appx:///Assets/MainPage_Banner.jpg"
+    &lt;Image Source="$(ImageUri)"
            Stretch="None" 
            HorizontalAlignment="Left"
            VerticalAlignment="Top"/&gt;
@@ -425,215 +496,10 @@
             </local:ControlExample.Xaml>
            
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller3.Height, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Height" Value="{x:Bind scroller4.Height, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ImageUri" Value="{StaticResource ImageUri}" />
             </local:ControlExample.Substitutions>
  
         </local:ControlExample>
-
-        <local:ControlExample HeaderText="Scroll anchoring">
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" TextWrapping="WrapWholeWords" xml:space="preserve">Scroll anchoring keeps track of what's in view and prevents those annoying jumps when content reflows (e.g. an item is inserted or removed or changes in size).
-
-In this sample the Buttons are registered as potential anchor candidates.  The Scroller tracks the candidate nearest to the anchor point specified by the HorizontalAnchorRatio and VerticalAnchorRatio.
-
-When the viewport is at the start or end of the scrollable region it will stick to the edge(s) nearest the anchor point.  For example, when scrolled to the bottom of the list and an item is inserted at the very end the viewport will automatically shift down to show the new item.
-                </TextBlock>
-
-                <muxcontrols:ScrollViewer x:Name="scroller4"
-                                   HorizontalAnchorRatio="{x:Bind (x:Double)horizRatioSlider.Value, Mode=OneWay}"
-                                   VerticalAnchorRatio="{x:Bind (x:Double)vertRatioSlider.Value, Mode=OneWay}"
-                                   AnchorRequested="scroller4_AnchorRequested"
-                                   Width="300"
-                                   Height="600"
-                                   Margin="2"
-                                   Grid.Row="1"
-                                   Background="AliceBlue" 
-                                   VerticalAlignment="Top"
-                                   HorizontalAlignment="Left"
-                                   ZoomMode="Enabled">
-                    <Border x:Name="border" BorderThickness="2" BorderBrush="DarkGray" Margin="12" Background="LightGray">
-                        <StackPanel x:Name="stackPanel" Margin="30">
-                            <StackPanel.ChildrenTransitions>
-                                <TransitionCollection>
-                                    <RepositionThemeTransition/>
-                                </TransitionCollection>
-                            </StackPanel.ChildrenTransitions>
-                        </StackPanel>
-                    </Border>
-                </muxcontrols:ScrollViewer>
-
-                <Canvas x:Name="cnsAnchorPoint"
-                        IsHitTestVisible="False"
-                        Width="300"
-                        Height="600"
-                        Margin="2"
-                        Grid.Row="1"
-                        Background="Transparent"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
-                    <Rectangle x:Name="rectAnchorPoint" Width="4" Height="4" Fill="Red"/>
-                </Canvas>
-            </Grid>
-
-            <local:ControlExample.Options>
-                <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="110" />
-                        <ColumnDefinition MinWidth="120"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--
-                    <ToggleSwitch x:Name="tsAnchoringEnabled"
-                                  Toggled="tsAnchoringEnabled_Toggled"
-                                  IsOn="True"
-                                  Grid.ColumnSpan="2">
-                        <ToggleSwitch.HeaderTemplate>
-                            <DataTemplate>
-                                <TextBlock FontWeight="SemiBold">Anchoring Enabled</TextBlock>
-                            </DataTemplate>
-                        </ToggleSwitch.HeaderTemplate>
-                    </ToggleSwitch>
-                    -->
-
-                    <TextBlock Text="Anchor Point"
-                               Grid.Row="1"
-                               Grid.ColumnSpan="2"
-                               HorizontalAlignment="Left"
-                               FontWeight="SemiBold"
-                               Margin="0,4" />
-
-                    <TextBlock Grid.Row="2" 
-                               VerticalAlignment="Center">
-                        Horiz. Ratio: <Run FontWeight="SemiBold" Text="{x:Bind FormatDouble(horizRatioSlider.Value), Mode=OneWay}"/>
-                    </TextBlock>
-                    <Slider x:Name="horizRatioSlider"
-                            StepFrequency="0.01"
-                            Minimum="0.0"
-                            Maximum="1.0"
-                            TickFrequency="0.1"
-                            Grid.Row="2"
-                            Grid.Column="1" 
-                            HorizontalAlignment="Stretch"
-                            ValueChanged="horizRatioSlider_ValueChanged"/>
-
-                    <TextBlock Grid.Row="3"
-                               VerticalAlignment="Center" >
-                        Vert. Ratio: <Run FontWeight="SemiBold" Text="{x:Bind FormatDouble(vertRatioSlider.Value), Mode=OneWay}"/>
-                    </TextBlock>
-                    <Slider x:Name="vertRatioSlider"
-                            StepFrequency="0.01"
-                            Minimum="0.0"
-                            Maximum="1.0"
-                            TickFrequency="0.1"
-                            Grid.Row="3"
-                            Grid.Column="1" 
-                            HorizontalAlignment="Stretch"
-                            ValueChanged="vertRatioSlider_ValueChanged"/>
-
-                    <TextBlock Text="Element Operations"
-                               Grid.Row="4"
-                               Grid.ColumnSpan="2"
-                               HorizontalAlignment="Left"
-                               FontWeight="SemiBold"
-                               Margin="0,4" />
-
-                    <TextBlock Text="Insert Item At"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               Grid.Row="5"/>
-                    <TextBox x:Name="tbInsertAt"
-                             PlaceholderText="Click an item"
-                             TextAlignment="Center"
-                             MinWidth="40"
-                             Grid.Column="1"
-                             Grid.Row="5"/>
-
-                    <TextBlock Text="Remove Item At"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               Grid.Row="6"/>
-                    <TextBox x:Name="tbRemoveAt"
-                             PlaceholderText="Shift+Click an item"
-                             TextAlignment="Center"
-                             MinWidth="40"
-                             Grid.Column="1"
-                             Grid.Row="6"/>
-
-                    <TextBlock Text="Expand Item At"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               Grid.Row="7"/>
-                    <TextBox x:Name="tbExpandAt"
-                             PlaceholderText="Ctrl+Click an item"
-                             TextAlignment="Center"
-                             MinWidth="40"
-                             Grid.Column="1"
-                             Grid.Row="7"/>
-
-                    <TextBlock Text="Shrink Item At"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               Grid.Row="8"/>
-                    <TextBox x:Name="tbShrinkAt"
-                             PlaceholderText="Alt+Click an item"
-                             TextAlignment="Center"
-                             MinWidth="40"
-                             Grid.Column="1"
-                             Grid.Row="8"/>
-
-                    <Button Content="Do it!" Click="Doit_Click"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="9"/>
-
-                </Grid>
-            </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;muxcontrols:ScrollViewer x:Name="scroller4"
-                   HorizontalAnchorRatio="$(HorizontalAnchorRatio)"
-                   VerticalAnchorRatio="$(VerticalAnchorRatio)"
-                   AnchorRequested="scroller4_AnchorRequested"
-                   Background="AliceBlue" 
-                   ZoomMode="Enabled"&gt;
-    &lt;Border x:Name="border" BorderThickness="2" BorderBrush="DarkGray" Margin="12" Background="LightGray"&gt;
-        &lt;StackPanel x:Name="stackPanel" Margin="30"&gt;
-            &lt;StackPanel.ChildrenTransitions&gt;
-                &lt;TransitionCollection&gt;
-                    &lt;RepositionThemeTransition/&gt;
-                &lt;/TransitionCollection&gt;
-            &lt;/StackPanel.ChildrenTransitions&gt;
-                    &lt;!-- ... --&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Border&gt;
-&lt;/muxcontrols:ScrollViewer&gt;
-    
-                </x:String>
-            </local:ControlExample.Xaml>
-
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="HorizontalAnchorRatio" Value="{x:Bind (x:Double)horizRatioSlider.Value, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="VerticalAnchorRatio" Value="{x:Bind (x:Double)vertRatioSlider.Value, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
-        
     </StackPanel>
 </local:ItemsPageBase>

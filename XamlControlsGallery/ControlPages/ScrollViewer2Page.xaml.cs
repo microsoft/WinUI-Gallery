@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using mux = Microsoft.UI.Xaml.Controls;
+using muxc = Microsoft.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,69 +26,18 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class ScrollViewer2Page : ItemsPageBase
     {
-        private enum ScrollAnimationOptions
-        {
-            Default,
-            Custom1,
-            Custom2
-        }
-
-        public enum ZoomAnimationOptions
-        {
-            Default,
-            Custom1,
-            Custom2
-        }
-
         public ScrollViewer2Page()
         {
             this.InitializeComponent();
 
-            this.scroller1.StateChanged += Scroller_StateChanged;
+            this.scroller2.StateChanged += Scroller_StateChanged;
         }
-
-        #region Converters
-
-        private mux::ScrollBarVisibility ObjectToScrollControllerVisibility(object value)
-        {
-            Enum.TryParse<mux::ScrollBarVisibility>(value as string, out mux::ScrollBarVisibility output);
-            return output;
-        }
-
-        private mux::ScrollMode ObjectToScrollMode(object value)
-        {
-            Enum.TryParse<mux::ScrollMode>(value as string, out mux::ScrollMode output);
-            return output;
-        }
-
-        private mux::ContentOrientation ObjectToContentOrientation(object value)
-        {
-            Enum.TryParse<mux::ContentOrientation>(value as string, out mux::ContentOrientation output);
-            return output;
-        }
-
-        #endregion
-
-        #region Property values
-
-        public string[] ZoomModes => Enum.GetNames(typeof(mux::ZoomMode));
-
-        public string[] ScrollModes => Enum.GetNames(typeof(mux::ScrollMode));
-
-        public string[] ScrollBarVisibility => Enum.GetNames(typeof(mux::ScrollBarVisibility));
-
-        public string[] ContentOrientation => Enum.GetNames(typeof(mux::ContentOrientation));
-
-        public string[] ScrollingAnimations => Enum.GetNames(typeof(ScrollAnimationOptions));
-
-        public string[] ZoomingAnimations => Enum.GetNames(typeof(ZoomAnimationOptions));
-        #endregion
 
         #region Zooming
 
         private void ZoomModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (scroller1 != null && ZoomSlider != null)
+            if (scroller2 != null && ZoomSlider != null)
             {
                 ComboBox cb = sender as ComboBox;
                 if (cb != null)
@@ -96,12 +45,12 @@ namespace AppUIBasics.ControlPages
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Enabled
-                            scroller1.ZoomMode = mux::ZoomMode.Enabled;
+                            scroller2.ZoomMode = muxc.ZoomMode.Enabled;
                             ZoomSlider.IsEnabled = true;
                             break;
                         default: // Disabled
-                            scroller1.ZoomMode = mux::ZoomMode.Disabled;
-                            scroller1.ZoomTo(1.0f, new Vector2());
+                            scroller2.ZoomMode = muxc.ZoomMode.Disabled;
+                            scroller2.ZoomTo(1.0f, new Vector2());
                             ZoomSlider.Value = 1;
                             ZoomSlider.IsEnabled = false;
                             break;
@@ -110,10 +59,10 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Scroller_StateChanged(mux.ScrollViewer sender, object args)
+        private void Scroller_StateChanged(muxc.ScrollViewer sender, object args)
         {
             // each time it comes to rest update the slider to reflect the current zoom factor
-            if (sender.State == mux.InteractionState.Idle)
+            if (sender.State == muxc.InteractionState.Idle)
             {
                 ZoomSlider.Value = Math.Round(sender.ZoomFactor, (int)(10 * ZoomSlider.StepFrequency));
                 ZoomSlider.ValueChanged += ZoomSlider_ValueChanged;
@@ -126,41 +75,69 @@ namespace AppUIBasics.ControlPages
 
         private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            var center = new Vector2((float)this.scroller1.ActualWidth / 2, (float)this.scroller1.ActualHeight / 2);
-            if (scroller1 != null)
+            if (scroller2 != null)
             {
                 // Zoom based on the center point of the current viewport
-                scroller1.ZoomTo((float)e.NewValue, center);
+                scroller2.ZoomTo((float)e.NewValue, null);
             }
         }
 
         #endregion
 
-        #region Custom Animations & Scroll Anchoring
-        private void image_Loaded(object sender, RoutedEventArgs e)
+        #region Custom Animations
+
+        public double Sample4MaximumXViewportPosition
+        {
+            get { return (double)GetValue(Sample4MaximumXViewportPositionProperty); }
+            set { SetValue(Sample4MaximumXViewportPositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty Sample4MaximumXViewportPositionProperty =
+            DependencyProperty.Register(
+                nameof(Sample4MaximumXViewportPosition),
+                typeof(double),
+                typeof(ScrollViewer2Page),
+                new PropertyMetadata(0.0));
+
+
+        public double Sample4MaximumYViewportPosition
+        {
+            get { return (double)GetValue(Sample4MaximumYViewportPositionProperty); }
+            set { SetValue(Sample4MaximumYViewportPositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty Sample4MaximumYViewportPositionProperty =
+            DependencyProperty.Register(
+                nameof(Sample4MaximumYViewportPosition),
+                typeof(double),
+                typeof(ScrollViewer2Page),
+                new PropertyMetadata(0.0));
+
+        private void Sample4_ImageLoaded(object sender, RoutedEventArgs e)
         {
             var image = sender as Image;
-            xposSlider.Maximum = image.ActualWidth - scroller3.ActualWidth;
-            yposSlider.Maximum = image.ActualHeight - scroller3.ActualHeight;
+            Sample4MaximumXViewportPosition = image.ActualWidth - ((FrameworkElement)image.Parent).ActualWidth;
+            Sample4MaximumYViewportPosition = image.ActualHeight - ((FrameworkElement)image.Parent).ActualHeight;
         }
 
         private void Go_Click(object sender, RoutedEventArgs e)
         {
-            var newX = (xposSlider.Value / xposSlider.Maximum) * (image.ActualWidth * scroller3.ZoomFactor - scroller3.ActualWidth);
-            var newY = (yposSlider.Value / yposSlider.Maximum) * (image.ActualHeight * scroller3.ZoomFactor - scroller3.ActualHeight);
+            var newZoomFactor = zoomFactorSlider.Value;
+
+            var newX = (xposSlider.Value / xposSlider.Maximum) * (image.ActualWidth * newZoomFactor - scroller4.ActualWidth);
+            var newY = (yposSlider.Value / yposSlider.Maximum) * (image.ActualHeight * newZoomFactor - scroller4.ActualHeight);
 
             // Scroll
-            scroller3.ScrollTo(newX, newY);
+            scroller4.ScrollTo(newX, newY);
 
             // Zoom
-            scroller3.ZoomTo((float)zoomFactorSlider.Value, new Vector2((float)scroller3.ActualWidth / 2, (float)scroller3.ActualHeight / 2));
+            scroller4.ZoomTo((float)newZoomFactor, null);
 
         }
 
-
         #region Adjust scrolling animation
 
-        private void Scroller3_ScrollAnimationStarting(mux.ScrollViewer sender, mux.ScrollAnimationStartingEventArgs args)
+        private void Scroller4_ScrollAnimationStarting(muxc.ScrollViewer sender, muxc.ScrollAnimationStartingEventArgs args)
         {
             try
             {
@@ -173,18 +150,10 @@ namespace AppUIBasics.ControlPages
                     if (nameof(ScrollAnimationOptions.Default) != (string)cbAnimation.SelectedItem)
                     {
                         double targetHorizontalOffset = args.EndPosition.X;
-                        //if (cmbOffsetsKind.SelectedIndex == 1)
-                        //{
-                        //    targetHorizontalOffset += scroller3.HorizontalOffset;
-                        //}
-                        float targetHorizontalPosition = ComputeHorizontalPositionFromOffset(targetHorizontalOffset);
+                        float targetHorizontalPosition = ComputeHorizontalPositionFromOffset(sender.Content, targetHorizontalOffset, sender.ZoomFactor);
 
                         double targetVerticalOffset = args.EndPosition.Y;
-                        //if (cmbOffsetsKind.SelectedIndex == 1)
-                        //{
-                        //    targetVerticalOffset += scroller3.VerticalOffset;
-                        //}
-                        float targetVerticalPosition = ComputeVerticalPositionFromOffset(targetVerticalOffset);
+                        float targetVerticalPosition = ComputeVerticalPositionFromOffset(sender.Content, targetVerticalOffset, sender.ZoomFactor);
 
                         customKeyFrameAnimation = stockKeyFrameAnimation.Compositor.CreateVector3KeyFrameAnimation();
 
@@ -258,7 +227,7 @@ namespace AppUIBasics.ControlPages
 
         #region Adjust zooming animation
 
-        private void Scroller3_ZoomAnimationStarting(mux.ScrollViewer sender, mux.ZoomAnimationStartingEventArgs args)
+        private void Scroller4_ZoomAnimationStarting(muxc.ScrollViewer sender, muxc.ZoomAnimationStartingEventArgs args)
         {
             try
             {
@@ -271,10 +240,6 @@ namespace AppUIBasics.ControlPages
                     if (nameof(ZoomAnimationOptions.Default) != (string)cbZoomAnimation.SelectedItem)
                     {
                         float targetZoomFactor = (float)zoomFactorSlider.Value;
-                        //if (cmbZoomFactorKind.SelectedIndex == 1)
-                        //{
-                        //    targetZoomFactor += scroller.ZoomFactor;
-                        //}
 
                         customKeyFrameAnimation = stockKeyFrameAnimation.Compositor.CreateScalarKeyFrameAnimation();
                         float deltaZoomFactor = (float)(targetZoomFactor - sender.ZoomFactor);
@@ -342,237 +307,44 @@ namespace AppUIBasics.ControlPages
 
         #endregion
 
-
-        #region Scroll anchoring
-
-        private void scroller4_AnchorRequested(mux.ScrollViewer sender, mux.ScrollerAnchorRequestedEventArgs args)
-        {
-            // Raised each time the Scroller is searching for an anchor element to track its position before/after its arrange pass
-            // which will then be used to determine how much automatic shift to apply to its viewport to maintain the relative position
-            // of that anchor element
-
-            // We'll just register the children of the StackPanel as potential candidates.  It will select the one nearest
-            // the anchor point which is determined by its HorizontalAnchorRatio + VerticalAnchorRatio
-            //if (tsAnchoringEnabled.IsOn)
-            //{
-                foreach (var child in this.stackPanel.Children)
-                {
-                    args.AnchorCandidates.Add(child);
-                }
-            //}
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            Insert(0, 16);
-        }
-
-        private int operationCount = 0;
-        //private Button currentAnchor = null;
-        private UIElement anchorElement = null;
-        private SolidColorBrush itemBorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray);
-        private SolidColorBrush itemBackgroundBrush = new SolidColorBrush(Windows.UI.Colors.DarkGray);
-
-        private void Insert(int newIndex, int newCount)
-        {
-            if (newIndex < 0 || newIndex > stackPanel.Children.Count || newCount <= 0)
-            {
-                throw new ArgumentException();
-            }
-
-            for (int i = 0; i < newCount; i++)
-            {
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = "TB#" + stackPanel.Children.Count + "_" + operationCount;
-                textBlock.Name = "textBlock" + stackPanel.Children.Count + "_" + operationCount;
-                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-                textBlock.VerticalAlignment = VerticalAlignment.Center;
-
-                Button button = new Button();
-                button.Name = "button" + stackPanel.Children.Count + "_" + operationCount;
-                button.BorderThickness = button.Margin = new Thickness(3);
-                button.BorderBrush = itemBorderBrush;
-                button.Background = itemBackgroundBrush;
-                //if (chkHorizontalOrientation.IsChecked == true)
-                //{
-                //    button.Width = 120;
-                //    button.Height = 170;
-                //}
-                //else
-                //{
-                button.Width = 170;
-                button.Height = 120;
-                //}
-                button.Content = textBlock;
-
-                button.CanBeScrollAnchor = true;
-
-                button.Click += AnchoringDemoButton_Click;
-
-                stackPanel.Children.Insert(newIndex + i, button);
-            }
-
-            operationCount++;
-        }
-
-        private void AnchoringDemoButton_Click(object sender, RoutedEventArgs e)
-        {
-            var index = stackPanel.Children.IndexOf((Button)sender).ToString();
-
-            tbInsertAt.Text = String.Empty;
-            tbRemoveAt.Text = String.Empty;
-            tbExpandAt.Text = String.Empty;
-            tbShrinkAt.Text = String.Empty;
-
-            if (Window.Current.CoreWindow.GetAsyncKeyState(Windows.System.VirtualKey.Shift).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down))
-            {
-                tbRemoveAt.Text = index;
-            }
-            else if (Window.Current.CoreWindow.GetAsyncKeyState(Windows.System.VirtualKey.Control).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down))
-            {
-                tbExpandAt.Text = index;
-            }
-            else if (Window.Current.CoreWindow.GetAsyncKeyState(Windows.System.VirtualKey.Menu).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down))
-            {
-                tbShrinkAt.Text = index;
-            }
-            else
-            {
-                tbInsertAt.Text = index;
-            }
-        }
-
-        private void Remove(int oldIndex, int oldCount)
-        {
-            if (oldIndex < 0 || oldIndex > stackPanel.Children.Count - oldCount || oldCount <= 0)
-            {
-                throw new ArgumentException();
-            }
-
-            bool isAnchorRemoved = false;
-
-            for (int i = 0; i < oldCount; i++)
-            {
-                if (!isAnchorRemoved && anchorElement == stackPanel.Children[oldIndex])
-                {
-                    isAnchorRemoved = true;
-                }
-                stackPanel.Children.RemoveAt(oldIndex);
-            }
-
-            //if (isAnchorRemoved)
-            //{
-            //    BtnSetAnchorElement_Click(null, null);
-            //}
-
-            operationCount++;
-        }
-
-        private void Replace(int oldIndex, int oldCount, int newCount)
-        {
-            if (oldIndex < 0 || oldIndex > stackPanel.Children.Count - oldCount || oldCount <= 0 || newCount <= 0)
-            {
-                throw new ArgumentException();
-            }
-
-            for (int i = 0; i < oldCount; i++)
-            {
-                stackPanel.Children.RemoveAt(oldIndex);
-            }
-
-            for (int i = 0; i < newCount; i++)
-            {
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = "Item #" + stackPanel.Children.Count + "_" + operationCount;
-                textBlock.Name = "textBlock" + stackPanel.Children.Count + "_" + operationCount;
-                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-                textBlock.VerticalAlignment = VerticalAlignment.Center;
-
-                Button button = new Button();
-                button.Name = "border" + stackPanel.Children.Count + "_" + operationCount;
-                button.BorderThickness = button.Margin = new Thickness(3);
-                button.BorderBrush = itemBorderBrush;
-                button.Background = itemBackgroundBrush;
-                //if (chkHorizontalOrientation.IsChecked == true)
-                //{
-                //    button.Width = 120;
-                //    button.Height = 170;
-                //}
-                //else
-                //{
-                button.Width = 170;
-                button.Height = 120;
-                //}
-                button.Content = textBlock;
-
-                stackPanel.Children.Insert(oldIndex + i, button);
-            }
-        }
-
-        private void Shrink(int index, int amount)
-        {
-            if (index < 0 || index >= stackPanel.Children.Count)
-            {
-                throw new ArgumentException();
-            }
-
-            Button button = stackPanel.Children[index] as Button;
-            button.Height = Math.Max(20, button.Height - 20 * amount);
-        }
-
-        private void Expand(int index, int amount)
-        {
-            if (index < 0 || index >= stackPanel.Children.Count)
-            {
-                throw new ArgumentException();
-            }
-
-            Button button = stackPanel.Children[index] as Button;
-            button.Height += 20 * amount;
-        }
-
-        #endregion
-
         #region Helper methods
-        private float ComputeHorizontalPositionFromOffset(double offset)
+
+        private float ComputeHorizontalPositionFromOffset(UIElement content, double offset, float zoomFactor)
         {
-            return (float)(offset + ComputeMinHorizontalPosition(scroller3.ZoomFactor));
+            return (float)(offset + ComputeMinHorizontalPosition(content, zoomFactor));
         }
 
-        private float ComputeVerticalPositionFromOffset(double offset)
+        private float ComputeVerticalPositionFromOffset(UIElement content, double offset, float zoomFactor)
         {
-            return (float)(offset + ComputeMinVerticalPosition(scroller3.ZoomFactor));
+            return (float)(offset + ComputeMinVerticalPosition(content, zoomFactor));
         }
 
-        private float ComputeMinHorizontalPosition(float zoomFactor)
+        private float ComputeMinHorizontalPosition(UIElement content, float zoomFactor)
         {
-            UIElement child = scroller3.Content;
-
-            if (child == null)
+            if (content == null)
             {
                 return 0;
             }
 
-            FrameworkElement childAsFE = child as FrameworkElement;
+            FrameworkElement contentAsFE = content as FrameworkElement;
 
-            if (childAsFE == null)
+            if (contentAsFE == null)
             {
                 return 0;
             }
 
-            Thickness childMargin = childAsFE.Margin;
-            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller3);
-            double childWidth = double.IsNaN(childAsFE.Width) ? childAsFE.ActualWidth : childAsFE.Width;
+            Thickness childMargin = contentAsFE.Margin;
+            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
+            double childWidth = double.IsNaN(contentAsFE.Width) ? contentAsFE.ActualWidth : contentAsFE.Width;
             float minPosX = 0.0f;
             float extentWidth = Math.Max(0.0f, (float)(childWidth + childMargin.Left + childMargin.Right));
 
-            if (childAsFE.HorizontalAlignment == HorizontalAlignment.Center ||
-                childAsFE.HorizontalAlignment == HorizontalAlignment.Stretch)
+            if (contentAsFE.HorizontalAlignment == HorizontalAlignment.Center ||
+                contentAsFE.HorizontalAlignment == HorizontalAlignment.Stretch)
             {
                 minPosX = Math.Min(0.0f, (extentWidth * zoomFactor - scrollerVisual.Size.X) / 2.0f);
             }
-            else if (childAsFE.HorizontalAlignment == HorizontalAlignment.Right)
+            else if (contentAsFE.HorizontalAlignment == HorizontalAlignment.Right)
             {
                 minPosX = Math.Min(0.0f, extentWidth * zoomFactor - scrollerVisual.Size.X);
             }
@@ -580,41 +352,38 @@ namespace AppUIBasics.ControlPages
             return minPosX;
         }
 
-        private float ComputeMinVerticalPosition(float zoomFactor)
+        private float ComputeMinVerticalPosition(UIElement content, float zoomFactor)
         {
-            UIElement child = scroller3.Content;
-
-            if (child == null)
+            if (content == null)
             {
                 return 0;
             }
 
-            FrameworkElement childAsFE = child as FrameworkElement;
+            FrameworkElement contentAsFE = content as FrameworkElement;
 
-            if (childAsFE == null)
+            if (contentAsFE == null)
             {
                 return 0;
             }
 
-            Thickness childMargin = childAsFE.Margin;
-            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller3);
-            double childHeight = double.IsNaN(childAsFE.Height) ? childAsFE.ActualHeight : childAsFE.Height;
+            Thickness childMargin = contentAsFE.Margin;
+            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
+            double childHeight = double.IsNaN(contentAsFE.Height) ? contentAsFE.ActualHeight : contentAsFE.Height;
             float minPosY = 0.0f;
             float extentHeight = Math.Max(0.0f, (float)(childHeight + childMargin.Top + childMargin.Bottom));
 
-            if (childAsFE.VerticalAlignment == VerticalAlignment.Center ||
-                childAsFE.VerticalAlignment == VerticalAlignment.Stretch)
+            if (contentAsFE.VerticalAlignment == VerticalAlignment.Center ||
+                contentAsFE.VerticalAlignment == VerticalAlignment.Stretch)
             {
                 minPosY = Math.Min(0.0f, (extentHeight * zoomFactor - scrollerVisual.Size.Y) / 2.0f);
             }
-            else if (childAsFE.VerticalAlignment == VerticalAlignment.Bottom)
+            else if (contentAsFE.VerticalAlignment == VerticalAlignment.Bottom)
             {
                 minPosY = Math.Min(0.0f, extentHeight * zoomFactor - scrollerVisual.Size.Y);
             }
 
             return minPosY;
         }
-
 
         public string FormatDouble(double value)
         {
@@ -623,42 +392,77 @@ namespace AppUIBasics.ControlPages
 
         #endregion
 
-        private void horizRatioSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        #endregion
+
+        #region x:Bind Converter Helpers
+
+        private muxc.ScrollBarVisibility ObjectToScrollControllerVisibility(object value)
         {
-            Canvas.SetLeft(rectAnchorPoint, scroller2.ActualWidth * scroller2.HorizontalAnchorRatio /*- scroller2.HorizontalOffset - rectAnchorPoint.Width / 2*/);
+            Enum.TryParse<muxc.ScrollBarVisibility>(value as string, out muxc.ScrollBarVisibility output);
+            return output;
         }
 
-        private void vertRatioSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        private muxc.ScrollMode ObjectToScrollMode(object value)
         {
-            Canvas.SetTop(rectAnchorPoint, scroller2.ActualHeight * scroller2.VerticalAnchorRatio /*- scroller2.VerticalOffset - rectAnchorPoint.Height / 2*/);
+            Enum.TryParse<muxc.ScrollMode>(value as string, out muxc.ScrollMode output);
+            return output;
         }
 
-        private void Doit_Click(object sender, RoutedEventArgs e)
+        private muxc.ContentOrientation ObjectToContentOrientation(object value)
         {
-            var remove = Int32.TryParse(tbRemoveAt.Text, out int removalIndex);
-            var insert = Int32.TryParse(tbInsertAt.Text, out int insertionIndex);
-            var expand = Int32.TryParse(tbExpandAt.Text, out int expandIndex);
-            var shrink = Int32.TryParse(tbShrinkAt.Text, out int shrinkIndex);
-
-            Random rand = new Random();
-            if (remove && IsValidIndex(removalIndex)) Remove(removalIndex, 1);
-            if (insert && IsValidIndex(insertionIndex)) Insert(insertionIndex, 1);
-            if (expand && IsValidIndex(expandIndex)) Expand(expandIndex, rand.Next(1, 4));
-            if (shrink && IsValidIndex(shrinkIndex)) Shrink(shrinkIndex, rand.Next(1, 4));
+            Enum.TryParse<muxc.ContentOrientation>(value as string, out muxc.ContentOrientation output);
+            return output;
         }
 
-        public bool IsValidIndex(int index)
+        private void LvIgnoredInputKinds_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            return index >= 0 && index < this.stackPanel.Children.Count;
-        }
+            var listView = sender as ListView;
 
-        //private void tsAnchoringEnabled_Toggled(object sender, RoutedEventArgs e)
-        //{
-        //    var toggleSwitch = sender as ToggleSwitch;
-        //    scroller2.IsAnchoredAtHorizontalExtent = tsAnchoringEnabled.IsOn;
-        //    scroller2.IsAnchoredAtVerticalExtent = tsAnchoringEnabled.IsOn;
-        //}
+            var stringified = String.Join(',', listView.SelectedItems);
+            Enum.TryParse<muxc.InputKind>(stringified, out muxc.InputKind output);
+
+            scroller3.IgnoredInputKind = output;
+        }
 
         #endregion
+
+        #region Property values for binding available options
+
+        private enum ScrollAnimationOptions
+        {
+            Default,
+            Custom1,
+            Custom2
+        }
+
+        public enum ZoomAnimationOptions
+        {
+            Default,
+            Custom1,
+            Custom2
+        }
+
+
+        public string[] ZoomModes => Enum.GetNames(typeof(muxc.ZoomMode));
+
+        public string[] ScrollModes => Enum.GetNames(typeof(muxc.ScrollMode));
+
+        public string[] ScrollBarVisibility => Enum.GetNames(typeof(muxc.ScrollBarVisibility));
+
+        public string[] ContentOrientation => Enum.GetNames(typeof(muxc.ContentOrientation));
+
+        public string[] ScrollingAnimations => Enum.GetNames(typeof(ScrollAnimationOptions));
+
+        public string[] ZoomingAnimations => Enum.GetNames(typeof(ZoomAnimationOptions));
+
+        public string[] InputKinds => Enum.GetNames(typeof(muxc.InputKind));
+
+        #endregion
+
+        private void Scroller_HandleKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            // Swallow gamepad / keyboard input when focused to prevent the Page's ScrollViewer from scrollling
+            e.Handled = true;
+        }
     }
 }
