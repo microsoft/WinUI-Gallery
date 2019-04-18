@@ -35,88 +35,120 @@ namespace AppUIBasics.ControlPages
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            var customValue = Convert.ToDouble(OpacityTextBox.Text);
+			try
+			{
+				var customValue = Convert.ToDouble(OpacityTextBox.Text);
 
-            if (customValue >= 0.0 && customValue <= 1.0)
-            {
-                OpacityRectangle.Opacity = customValue;
-                OpacityValue.Value = customValue;
-            }
-        }
+				if (customValue >= 0.0 && customValue <= 1.0)
+				{
+					OpacityRectangle.Opacity = customValue;
+					OpacityValue.Value = customValue;
+				}
+
+			}
+			catch
+			{
+				Flyout fo = numericValidationFlyout;
+				fo.ShowAt((FrameworkElement)sender);
+			}
+		}
         private void RotationButton_Click(object sender, RoutedEventArgs e)
         {
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
+			RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
-            float customValue = (float)Convert.ToDouble(RotationTextBox.Text);
-
-            if (customValue >= 0.0 && customValue <= 360.0)
-            {
-                RotationRectangle.Rotation = customValue;
-            }
-            else
-            {
-                RotationRectangle.Rotation = 0;
-            }
-            RotationValue.Value = RotationRectangle.Rotation;
-        }
+			try
+			{
+				float customValue = (float)Convert.ToDouble(RotationTextBox.Text);
+				if (customValue >= 0.0 && customValue <= 360.0)
+				{
+					RotationRectangle.Rotation = customValue;
+				}
+				else
+				{
+					RotationRectangle.Rotation = 0;
+				}
+				RotationValue.Value = RotationRectangle.Rotation;
+			}
+			catch
+			{
+				Flyout fo = numericValidationFlyout;
+				fo.ShowAt((FrameworkElement)sender);
+			}
+		}
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            var _scaleTransition = ScaleRectangle.ScaleTransition;
+				var _scaleTransition = ScaleRectangle.ScaleTransition;
 
-            _scaleTransition.Components = ((ScaleX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
-                                         ((ScaleY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
-                                         ((ScaleZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
+				_scaleTransition.Components = ((ScaleX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
+											 ((ScaleY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
+											 ((ScaleZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
 
-            float customValue;
-            if (sender != null && (sender as Button).Tag != null)
-            {
-                customValue = (float)Convert.ToDouble((sender as Button).Tag);
-            }
-            else
-            {
-                customValue = (float)Convert.ToDouble(ScaleTextBox.Text);
-            }
+			try
+			{
+				float customValue;
+				if (sender != null && (sender as Button).Tag != null)
+				{
+					customValue = (float)Convert.ToDouble((sender as Button).Tag);
+				}
+				else
+				{
+					customValue = (float)Convert.ToDouble(ScaleTextBox.Text);
+				}
 
-            if (customValue > 0.0 && customValue <= 5)
-            {
-                ScaleRectangle.Scale = new Vector3(customValue);
-                ScaleValue.Value = customValue;
-            }
-        }
+				if (customValue > 0.0 && customValue <= 5)
+				{
+					ScaleRectangle.Scale = new Vector3(customValue);
+					ScaleValue.Value = customValue;
+				}
+			}
+			catch
+			{
+				Flyout fo = numericValidationFlyout;
+				fo.ShowAt((FrameworkElement)sender);
+			}
+		}
 
         private void TranslateButton_Click(object sender, RoutedEventArgs e)
         {
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            var _translationTransition = TranslateRectangle.TranslationTransition;
+			var _translationTransition = TranslateRectangle.TranslationTransition;
 
-            _translationTransition.Components = ((TranslateX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
-                                         ((TranslateY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
-                                         ((TranslateZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
+			_translationTransition.Components = ((TranslateX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
+											 ((TranslateY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
+											 ((TranslateZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
 
-            float customValue;
-            if (sender != null && (sender as Button).Tag != null)
-            {
-                customValue = (float)Convert.ToDouble((sender as Button).Tag);
-            }
-            else
-            {
-                customValue = (float)Convert.ToDouble(TranslationTextBox.Text);
-            }
+			try
+			{
+				float customValue;
+				if (sender != null && (sender as Button).Tag != null)
+				{
+					customValue = (float)Convert.ToDouble((sender as Button).Tag);
+				}
+				else
+				{
+					customValue = (float)Convert.ToDouble(TranslationTextBox.Text);
+				}
 
-            if (customValue >= 0.0 && customValue <= 200.0)
-            {
-                TranslateRectangle.Translation = new Vector3(customValue);
-                TranslationValue.Value = customValue;
-            }
-        }
+				if (customValue >= 0.0 && customValue <= 200.0)
+				{
+					TranslateRectangle.Translation = new Vector3(customValue);
+					TranslationValue.Value = customValue;
+				}
+			}
+			catch
+			{
+				Flyout fo = numericValidationFlyout;
+				fo.ShowAt((FrameworkElement)sender);
+			}
+		}
 
         private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {

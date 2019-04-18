@@ -7,6 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Flyout x:Key="numericValidationFlyout" x:Name="numericValidationFlyout" Placement="Bottom">
+            <TextBlock Style="{ThemeResource BaseTextBlockStyle}"
+                       Text="Value must be numeric."/>
+        </Flyout>
+    </Page.Resources>
+
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ControlExample HeaderText="Automatically animate changes to Opacity" MinimumUniversalAPIContract="7">
             <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
