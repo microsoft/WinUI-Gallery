@@ -1178,7 +1178,7 @@
           "Docs": [
             {
               "Title": "ScrollViewer - API",
-              "Uri": "http://docs.microsoft.com/en-us/windows/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
             },
             {
               "Title": "Guidance",
