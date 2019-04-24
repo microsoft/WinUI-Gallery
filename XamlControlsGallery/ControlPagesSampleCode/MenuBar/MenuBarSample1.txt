@@ -1,19 +1,19 @@
-﻿<MenuBar>
-    <MenuBarItem Title="File">
+﻿<muxc:MenuBar>
+    <muxc:MenuBarItem Title="File">
         <MenuFlyoutItem Text="New"/>
         <MenuFlyoutItem Text="Open..."/>
         <MenuFlyoutItem Text="Save"/>
         <MenuFlyoutItem Text="Exit"/>
-    </MenuBarItem>
+    </muxc:MenuBarItem>
 
-    <MenuBarItem Title="Edit">
+    <muxc:MenuBarItem Title="Edit">
         <MenuFlyoutItem Text="Undo"/>
         <MenuFlyoutItem Text="Cut"/>
         <MenuFlyoutItem Text="Copy"/>
         <MenuFlyoutItem Text="Paste"/>
-    </MenuBarItem>
+    </muxc:MenuBarItem>
 
-    <MenuBarItem Title="Help">
+    <muxc:MenuBarItem Title="Help">
         <MenuFlyoutItem Text="About"/>
-    </MenuBarItem>
-</MenuBar>
+    </muxc:MenuBarItem>
+</muxc:MenuBar>

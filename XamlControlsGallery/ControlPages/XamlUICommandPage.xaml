@@ -1,0 +1,58 @@
+﻿<Page x:Class="AppUIBasics.ControlPages.XamlUICommandPage" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:local="using:AppUIBasics"
+      xmlns:local2="using:AppUIBasics.ControlPages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="HorizontalSwipe" TargetType="ListViewItem" BasedOn="{StaticResource ListViewItemRevealStyle}">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <XamlUICommand x:Name="CustomXamlUICommand" ExecuteRequested="CustomXamlUICommand_ExecuteRequested" Description="This is a custom command" Label="Custom XamlUICommand">
+            <XamlUICommand.IconSource>
+                <SymbolIconSource Symbol="Favorite" />
+            </XamlUICommand.IconSource>
+            <XamlUICommand.KeyboardAccelerators>
+                <KeyboardAccelerator Key="D" Modifiers="Control"/>
+            </XamlUICommand.KeyboardAccelerators>
+        </XamlUICommand>
+    </Page.Resources>
+
+    <StackPanel>
+        <local:ControlExample HeaderText="Creating a reusable command with XamlUICommand"
+                              XamlSource="XamlUICommand\XamlUICommandSample1_xaml.txt"
+                              CSharpSource="XamlUICommand\XamlUICommandSample1_cs.txt"
+                              HorizontalContentAlignment="Stretch"
+                              MinimumUniversalAPIContract="7"
+                              Loaded="ControlExample_Loaded">
+            <Grid x:Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,12">
+                    XamlUICommand allows the sharing of the UX associated with a command.
+                    In this instance we create a simple Custom Command with a label, icon, shortcut, and description.
+                    It's defined as a resource and could be used in many controls, like this AppBarButton.
+                    The button (and other controls) automatically gets all these UI properties, without the need to define the properties again.
+                </TextBlock>
+
+                <RelativePanel Grid.Row="1">
+                    <AppBarButton x:Name="CustomButton" Command="{StaticResource CustomXamlUICommand}"/>
+                    <TextBlock x:Name="XamlUICommandOutput" Margin="8,0,0,0" FontFamily="Global User Interface" 
+                               RelativePanel.RightOf="CustomButton" RelativePanel.AlignVerticalCenterWith="CustomButton" />
+                </RelativePanel>
+
+            </Grid>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

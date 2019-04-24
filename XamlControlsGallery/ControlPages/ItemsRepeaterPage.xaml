@@ -107,9 +107,9 @@
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
                               HorizontalContentAlignment="Stretch">
 
-            <!-- ScrollAnchorProvider enables ItemsRepeater to coordinate with ScrollViewer down-level.
+            <!-- ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
                  It's not needed on 17700+ builds. -->
-            <muxcontrols:ScrollAnchorProvider>
+            <muxcontrols:ItemsRepeaterScrollHost>
                 <ScrollViewer x:Name="scrollViewer"
                               Height="400"
                               IsVerticalScrollChainingEnabled="False"
@@ -120,7 +120,7 @@
                                        Layout="{StaticResource MyFeedLayout}"
                                        ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
                 </ScrollViewer>
-            </muxcontrols:ScrollAnchorProvider>
+            </muxcontrols:ItemsRepeaterScrollHost>
 
             <local:ControlExample.Options>
                 <StackPanel Spacing="12">

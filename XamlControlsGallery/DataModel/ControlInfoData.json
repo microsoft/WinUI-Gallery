@@ -24,7 +24,7 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "UICommand",
+          "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
           "Subtitle": "An object which is used to define the look and feel of a given command",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
@@ -35,13 +35,31 @@
             {
               "Title": "XamlUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.xamluicommand"
-            },
+            }
+          ],
+          "RelatedControls": [
+            "StandardUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
+          ]
+        },
+        {
+          "UniqueId": "StandardUICommand",
+          "Title": "StandardUICommand",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'",
+          "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
+          "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls. E.g. Save, Open, Copy, Paste, etc.",
+          "Content": "",
+          "IsNew": true,
+          "Docs": [
             {
               "Title": "StandardUICommand - API",
               "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.input.standarduicommand"
             }
           ],
           "RelatedControls": [
+            "XamlUICommand",
             "AppBarButton",
             "AppBarToggleButton",
             "CommandBar"
@@ -178,7 +196,7 @@
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
           "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
           "Content": "",
-          "IsNew": true,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "MenuBar - API",
@@ -192,7 +210,8 @@
           "RelatedControls": [
             "CommandBar",
             "MenuFlyout",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -218,7 +237,8 @@
             "MenuFlyout",
             "RichEditBox",
             "TextBox",
-            "UICommand"
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -1022,6 +1042,7 @@
             }
           ],
           "RelatedControls": [
+            "TeachingTip",
             "Flyout",
             "ContentDialog"
           ]
@@ -1056,6 +1077,7 @@
           "RelatedControls": [
             "Flyout",
             "MenuFlyout",
+            "TeachingTip",
             "ToolTip"
           ]
         },
@@ -1078,10 +1100,35 @@
             }
           ],
           "RelatedControls": [
+            "TeachingTip",
             "ContentDialog",
             "MenuFlyout",
             "Button",
             "AppBarButton"
+          ]
+        },
+        {
+          "UniqueId": "TeachingTip",
+          "Title": "TeachingTip",
+          "Subtitle": "A content-rich flyout for guiding users and enabling teaching moments.",
+          "ImagePath": "ms-appx:///Assets/TeachingTip.png",
+          "Description": "The XAML TeachingTip Control provides a way for your app to guide and inform users in your application with a non-invasive and content rich notification. TeachingTip can be used for bringing focus to a new or important feature, teaching users how to perform a task, or enhancing the user workflow by providing contextually relevant information to their task at hand.",
+          "Content": "<p>Look at the <i>TeachingTip.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "TeachingTip - API",
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.teachingtip"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/teaching-tip"
+            }
+          ],
+          "RelatedControls": [
+            "ContentDialog",
+            "Flyout",
+            "ToolTip"
           ]
         }
       ]
@@ -1105,6 +1152,33 @@
             {
               "Title": "ScrollViewer - API",
               "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.scrollviewer.aspx"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/scroll-controls"
+            }
+          ],
+          "RelatedControls": [
+            "ViewBox",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel",
+            "ParallaxView"
+          ]
+        },
+        {
+          "UniqueId": "ScrollViewer2",
+          "Title": "ScrollViewer (preview)",
+          "Subtitle": "A container control that lets the user pan and zoom its content.",
+          "ImagePath": "ms-appx:///Assets/ScrollViewer.png",
+          "Description": "The new ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
+          "Content": "<p>Look at the <i>ScrollViewer2Page.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsPreview": true,
+          "Docs": [
+            {
+              "Title": "ScrollViewer - API",
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
             },
             {
               "Title": "Guidance",
@@ -1212,11 +1286,11 @@
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
           "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsPreview": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/lists"
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/items-repeater"
             }
           ],
           "RelatedControls": [
@@ -1472,6 +1546,29 @@
       "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "AnimatedVisualPlayer",
+          "Title": "AnimatedVisualPlayer",
+          "Subtitle": "An element to render and control playback of motion graphics.",
+          "ImagePath": "Assets/Animations.png",
+          "Description": "An element to render and control playback of motion graphics.",
+          "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AnimatedVisualPlayer API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            },
+            {
+              "Title": "Full Samples",
+              "Uri": "ms-windows-store://pdp/?productid=9N3J5TG8FF7F"
+            },
+            {
+              "Title": "Tutorials",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials"
+            }
+          ]
+        },
         {
           "UniqueId": "Image",
           "Title": "Image",
@@ -1732,12 +1829,17 @@
         {
           "UniqueId": "CompactSizing",
           "Title": "Compact Sizing",
-          "Subtitle": "(Preview) How to use a Resource Dictionary to enable compact sizing.",
+          "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
           "ImagePath": "ms-appx:///Assets/CompactSizing.png",
-          "Description": "Preview! This functionality will come to WinUI later this year.",
+          "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "Content": "",
-          "IsPreview": true,
-          "Docs": []
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Spacing",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/style/spacing"
+            }
+          ]
         }
       ]
     },

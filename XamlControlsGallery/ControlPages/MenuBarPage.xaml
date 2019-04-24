@@ -7,62 +7,69 @@
       xmlns:data="using:AppUIBasics.Data"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample HeaderText="A Simple MenuBar" 
+        <local:ControlExample HeaderText="A simple MenuBar" 
                               XamlSource="MenuBar\MenuBarSample1.txt">
-            <StackPanel x:Name="Control1" Orientation="Horizontal">
-                <muxcontrols:MenuBar>
-                    <muxcontrols:MenuBarItem Title="File">
-                        <MenuFlyoutItem Text="New"/>
-                        <MenuFlyoutItem Text="Open..."/>
-                        <MenuFlyoutItem Text="Save"/>
-                        <MenuFlyoutItem Text="Exit"/>
-                    </muxcontrols:MenuBarItem>
+            <muxc:MenuBar>
+                <muxc:MenuBarItem Title="File">
+                    <MenuFlyoutItem Text="New"/>
+                    <MenuFlyoutItem Text="Open..."/>
+                    <MenuFlyoutItem Text="Save"/>
+                    <MenuFlyoutItem Text="Exit"/>
+                </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Edit">
-                        <MenuFlyoutItem Text="Undo"/>
-                        <MenuFlyoutItem Text="Cut"/>
-                        <MenuFlyoutItem Text="Copy"/>
-                        <MenuFlyoutItem Text="Paste"/>
-                    </muxcontrols:MenuBarItem>
+                <muxc:MenuBarItem Title="Edit">
+                    <MenuFlyoutItem Text="Undo"/>
+                    <MenuFlyoutItem Text="Cut"/>
+                    <MenuFlyoutItem Text="Copy"/>
+                    <MenuFlyoutItem Text="Paste"/>
+                </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Help">
-                        <MenuFlyoutItem Text="About"/>
-                    </muxcontrols:MenuBarItem>
-                </muxcontrols:MenuBar>
-            </StackPanel>
+                <muxc:MenuBarItem Title="Help">
+                    <MenuFlyoutItem Text="About"/>
+                </muxc:MenuBarItem>
+            </muxc:MenuBar>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="MenuBar with Submenus and Seperators"
+        <local:ControlExample HeaderText="MenuBar with submenus, seperators, and radio items"
                               XamlSource="MenuBar\MenuBarSample2.txt">
-            <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <muxcontrols:MenuBar>
-                    <muxcontrols:MenuBarItem Title="File">
-                        <MenuFlyoutSubItem Text="New">
-                            <MenuFlyoutItem Text="Plain Text Document"/>
-                            <MenuFlyoutItem Text="Rich Text Document"/>
-                            <MenuFlyoutItem Text="Other Formats..."/>
-                        </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Text="Open..."/>
-                        <MenuFlyoutItem Text="Save"/>
-                        <MenuFlyoutSeparator />
-                        <MenuFlyoutItem Text="Exit"/>
-                    </muxcontrols:MenuBarItem>
+            <muxc:MenuBar>
+                <muxc:MenuBarItem Title="File">
+                    <MenuFlyoutSubItem Text="New">
+                        <MenuFlyoutItem Text="Plain Text Document"/>
+                        <MenuFlyoutItem Text="Rich Text Document"/>
+                        <MenuFlyoutItem Text="Other Formats..."/>
+                    </MenuFlyoutSubItem>
+                    <MenuFlyoutItem Text="Open..."/>
+                    <MenuFlyoutItem Text="Save"/>
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem Text="Exit"/>
+                </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Edit">
-                        <MenuFlyoutItem Text="Undo"/>
-                        <MenuFlyoutItem Text="Cut"/>
-                        <MenuFlyoutItem Text="Copy"/>
-                        <MenuFlyoutItem Text="Paste"/>
-                    </muxcontrols:MenuBarItem>
+                <muxc:MenuBarItem Title="Edit">
+                    <MenuFlyoutItem Text="Undo"/>
+                    <MenuFlyoutItem Text="Cut"/>
+                    <MenuFlyoutItem Text="Copy"/>
+                    <MenuFlyoutItem Text="Paste"/>
+                </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Help">
-                        <MenuFlyoutItem Text="About"/>
-                    </muxcontrols:MenuBarItem>
-                </muxcontrols:MenuBar>
-            </StackPanel>
+                <muxc:MenuBarItem Title="View">
+                    <MenuFlyoutItem Text="Output"/>
+                    <MenuFlyoutSeparator/>
+                    <muxc:RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/>
+                    <muxc:RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/>
+                    <MenuFlyoutSeparator/>
+                    <muxc:RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup"/>
+                    <muxc:RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup"/>
+                    <muxc:RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup"/>
+                </muxc:MenuBarItem>
+
+                <muxc:MenuBarItem Title="Help">
+                    <MenuFlyoutItem Text="About"/>
+                </muxc:MenuBarItem>
+            </muxc:MenuBar>
         </local:ControlExample>
     </StackPanel>
 </Page>
