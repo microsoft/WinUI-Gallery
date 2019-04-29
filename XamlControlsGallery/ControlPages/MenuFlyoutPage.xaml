@@ -35,7 +35,7 @@
         &lt;MenuFlyout&gt;
             &lt;MenuFlyoutItem Text="By rating" Click="MenuFlyoutItem_Click" Tag="rating"&gt;
             &lt;MenuFlyoutItem Text="By match" Click="MenuFlyoutItem_Click" Tag="match"&gt;
-            &lt;MenuFlyoutItem Text="By distance" Click="MenuFlyoutItem_Click" Tag="distance&gt;
+            &lt;MenuFlyoutItem Text="By distance" Click="MenuFlyoutItem_Click" Tag="distance"&gt;
         &lt;/MenuFlyout&gt;
     &lt;/AppBarButton.Flyout&gt;
 &lt;/AppBarButton&gt;
