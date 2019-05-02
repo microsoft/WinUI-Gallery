@@ -19,7 +19,6 @@ namespace UITests
         public static void ClassInitialize(TestContext context)
         {
             Setup(context);
-            //NavigateTo("Selection and picker controls", "RadioButton");
             var buttonTab = session.FindElementByName("Basic Input");
             buttonTab.Click();
             var button = session.FindElementByName("RadioButton");
