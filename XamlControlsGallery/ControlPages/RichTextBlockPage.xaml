@@ -35,7 +35,7 @@
                     <Paragraph>RichTextBlock provides a rich text display container that supports
                         <Run FontStyle="Italic" FontWeight="Bold">formatted text</Run> ,
                         <Hyperlink
-                                NavigateUri="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.documents.hyperlink.aspx">hyperlinks</Hyperlink> , inline images, and other rich content.
+                                NavigateUri="https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">hyperlinks</Hyperlink> , inline images, and other rich content.
                     </Paragraph>
                     <Paragraph>RichTextBlock also supports a built-in overflow model.</Paragraph>
                 </RichTextBlock>
@@ -45,7 +45,7 @@
 &lt;RichTextBlock SelectionHighlightColor="Green"&gt;
     &lt;Paragraph&gt;RichTextBlock provides a rich text display container that supports
         &lt;Run FontStyle="Italic" FontWeight="Bold"&gt;formatted text&lt;/Run&gt;,
-        &lt;Hyperlink NavigateUri="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.documents.hyperlink.aspx"&gt;hyperlinks&lt;/Hyperlink&gt;, inline images, and other rich content.&lt;/Paragraph&gt;
+        &lt;Hyperlink NavigateUri="https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Documents.Hyperlink"&gt;hyperlinks&lt;/Hyperlink&gt;, inline images, and other rich content.&lt;/Paragraph&gt;
     &lt;Paragraph&gt;RichTextBlock also supports a built-in overflow model.&lt;/Paragraph&gt;
 &lt;/RichTextBlock&gt;
                 </x:String>
