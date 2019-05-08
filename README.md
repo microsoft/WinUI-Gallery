@@ -23,8 +23,9 @@ This sample shows how to:
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
 - **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
-**Note** The Xaml Controls Gallery requires [Visual Studio 2017](http://go.microsoft.com/fwlink/?LinkID=532422) to build and Windows 10 to execute.
-To obtain information about Windows 10 development, go to the [Windows Dev Center](http://go.microsoft.com/fwlink/?LinkID=532421)
+**Note** The Xaml Controls Gallery requires Visual Studio 2017 or later to build and Windows 10 to execute.
+
+To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/en-us/windows)
 
 To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
 
@@ -32,11 +33,9 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ## Related topics
 
-[XAML app UI, start to finish](http://msdn.microsoft.com/library/windows/apps/dn263191.aspx)  
+[Get started with Windows 10 apps](https://docs.microsoft.com/en-us/windows/uwp/get-started/)  
 
-Each control page in the application has links to the relevant MSDN documentation for that control.
-
-[Install a prebuilt version of this sample](https://www.microsoft.com/store/productId/9MSVH128X2ZT).
+[Install a prebuilt version of this sample](https://www.microsoft.com/store/productId/9MSVH128X2ZT). Each control page in the application has links to relevant Microsoft Docs for that control.
 
 [Windows UI Library (WinUI)](https://docs.microsoft.com/en-us/uwp/toolkits/winui/)
 
