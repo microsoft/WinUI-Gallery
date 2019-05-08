@@ -76,23 +76,23 @@
           "Docs": [
             {
               "Title": "AppBarButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.appbarbutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.appbarbutton"
             },
             {
               "Title": "SymbolIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.symbolicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.symbolicon"
             },
             {
               "Title": "FontIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.fonticon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.fonticon"
             },
             {
               "Title": "BitmapIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.bitmapicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.bitmapicon"
             },
             {
               "Title": "PathIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.pathicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.pathicon"
             },
             {
               "Title": "Guidelines",
@@ -136,23 +136,23 @@
           "Docs": [
             {
               "Title": "AppBarToggleButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.appbartogglebutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.appbartogglebutton"
             },
             {
               "Title": "SymbolIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.symbolicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.symbolicon"
             },
             {
               "Title": "FontIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.fonticon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.fonticon"
             },
             {
               "Title": "BitmapIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.bitmapicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.bitmapicon"
             },
             {
               "Title": "PathIcon - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.pathicon.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.pathicon"
             },
             {
               "Title": "Guidelines",
@@ -176,7 +176,7 @@
           "Docs": [
             {
               "Title": "CommandBar - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.commandbar.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.commandbar"
             },
             {
               "Title": "Guidelines",
@@ -225,7 +225,7 @@
           "Docs": [
             {
               "Title": "CommandBarFlyout - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.commandbarflyout.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.commandbarflyout"
             },
             {
               "Title": "Guidelines",
@@ -252,19 +252,19 @@
           "Docs": [
             {
               "Title": "MenuFlyout - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.menuflyout.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.menuflyout"
             },
             {
               "Title": "MenuFlyoutItem - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.menuflyoutitem.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.menuflyoutitem"
             },
             {
               "Title": "MenuFlyoutSeparator - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.menuflyoutseparator.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.menuflyoutseparator"
             },
             {
               "Title": "ToggleMenuFlyoutItem - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.togglemenuflyoutitem.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.togglemenuflyoutitem"
             },
             {
               "Title": "Guidelines",
@@ -330,7 +330,7 @@
           "Docs": [
             {
               "Title": "FlipView - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.flipview.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.flipview"
             },
             {
               "Title": "Guidelines",
@@ -355,7 +355,7 @@
           "Docs": [
             {
               "Title": "GridView - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.gridview.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.gridview"
             },
             {
               "Title": "Guidelines",
@@ -380,11 +380,11 @@
           "Docs": [
             {
               "Title": "ListBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.listbox"
             },
             {
               "Title": "ListBoxItem - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listboxitem.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.listboxitem"
             }
           ],
           "RelatedControls": [
@@ -406,7 +406,7 @@
           "Docs": [
             {
               "Title": "ListView - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listview.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.listview"
             },
             {
               "Title": "Inverted Lists",
@@ -519,7 +519,7 @@
           "Docs": [
             {
               "Title": "CalendarDatePicker - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.calendardatepicker.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.calendardatepicker"
             },
             {
               "Title": "Guidelines",
@@ -542,7 +542,7 @@
           "Docs": [
             {
               "Title": "CalendarView - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.calendarview.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.calendarview"
             },
             {
               "Title": "Guidelines",
@@ -566,7 +566,7 @@
           "Docs": [
             {
               "Title": "DatePicker - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.datepicker.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.datepicker"
             },
             {
               "Title": "Guidelines",
@@ -590,7 +590,7 @@
           "Docs": [
             {
               "Title": "TimePicker - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.timepicker.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.timepicker"
             },
             {
               "Title": "Guidelines",
@@ -622,7 +622,7 @@
           "Docs": [
             {
               "Title": "Button - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.button.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.button"
             },
             {
               "Title": "Guidelines",
@@ -675,7 +675,7 @@
           "Docs": [
             {
               "Title": "HyperlinkButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.hyperlinkbutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.hyperlinkbutton"
             },
             {
               "Title": "Guidelines",
@@ -700,7 +700,7 @@
           "Docs": [
             {
               "Title": "RepeatButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.repeatbutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.primitives.repeatbutton"
             },
             {
               "Title": "Guidelines",
@@ -725,7 +725,7 @@
           "Docs": [
             {
               "Title": "ToggleButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.primitives.togglebutton"
             },
             {
               "Title": "Guidelines",
@@ -807,7 +807,7 @@
           "Docs": [
             {
               "Title": "CheckBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.checkbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.checkbox"
             },
             {
               "Title": "Guidelines",
@@ -854,11 +854,11 @@
           "Docs": [
             {
               "Title": "ComboBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.combobox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.combobox"
             },
             {
               "Title": "ComboBoxItem - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.comboboxitem.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.comboboxitem"
             },
             {
               "Title": "Guidelines",
@@ -885,7 +885,7 @@
           "Docs": [
             {
               "Title": "RadioButton - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.radiobutton.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.radiobutton"
             },
             {
               "Title": "Guidelines",
@@ -932,7 +932,7 @@
           "Docs": [
             {
               "Title": "Slider - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.slider.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.slider"
             },
             {
               "Title": "Guidelines",
@@ -956,7 +956,7 @@
           "Docs": [
             {
               "Title": "ToggleSwitch - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.toggleswitch.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.toggleswitch"
             },
             {
               "Title": "Guidelines",
@@ -990,7 +990,7 @@
           "Docs": [
             {
               "Title": "ProgressBar - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.button.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.button"
             },
             {
               "Title": "Guidelines",
@@ -1012,7 +1012,7 @@
           "Docs": [
             {
               "Title": "ProgressRing - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.progressring.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.progressring"
             },
             {
               "Title": "Guidelines",
@@ -1034,7 +1034,7 @@
           "Docs": [
             {
               "Title": "ToolTip - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.tooltip.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.tooltip"
             },
             {
               "Title": "Guidance",
@@ -1067,7 +1067,7 @@
           "Docs": [
             {
               "Title": "ContentDialog - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.contentdialog.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.contentdialog"
             },
             {
               "Title": "Guidelines",
@@ -1092,7 +1092,7 @@
           "Docs": [
             {
               "Title": "Flyout - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.flyout.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.flyout"
             },
             {
               "Title": "Guidelines",
@@ -1151,7 +1151,7 @@
           "Docs": [
             {
               "Title": "ScrollViewer - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.scrollviewer.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.scrollviewer"
             },
             {
               "Title": "Guidance",
@@ -1178,7 +1178,7 @@
           "Docs": [
             {
               "Title": "SemanticZoom - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.semanticzoom.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.semanticzoom"
             },
             {
               "Title": "Guidelines",
@@ -1211,7 +1211,7 @@
           "Docs": [
             {
               "Title": "Border - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.border.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.border"
             },
             {
               "Title": "Guidelines",
@@ -1237,7 +1237,7 @@
           "Docs": [
             {
               "Title": "Canvas - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.canvas.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.canvas"
             },
             {
               "Title": "Guidelines",
@@ -1283,7 +1283,7 @@
           "Docs": [
             {
               "Title": "Grid - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.grid.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.grid"
             },
             {
               "Title": "Guidelines",
@@ -1309,7 +1309,7 @@
           "Docs": [
             {
               "Title": "RelativePanel - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.relativepanel.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.relativepanel"
             },
             {
               "Title": "Guidance",
@@ -1335,7 +1335,7 @@
           "Docs": [
             {
               "Title": "SplitView - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.splitview.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.splitview"
             },
             {
               "Title": "Guidelines",
@@ -1361,7 +1361,7 @@
           "Docs": [
             {
               "Title": "StackPanel - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.stackpanel.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.stackpanel"
             },
             {
               "Title": "Guidance",
@@ -1387,7 +1387,7 @@
           "Docs": [
             {
               "Title": "VariableSizedWrapGrid - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.variablesizedwrapgrid.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.variablesizedwrapgrid"
             },
             {
               "Title": "Guidance",
@@ -1413,7 +1413,7 @@
           "Docs": [
             {
               "Title": "Viewbox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.viewbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.viewbox"
             }
           ],
           "RelatedControls": [
@@ -1444,11 +1444,11 @@
           "Docs": [
             {
               "Title": "Hub - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.hub.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.hub"
             },
             {
               "Title": "HubSection - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.hubsection.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.hubsection"
             },
             {
               "Title": "Guidance",
@@ -1496,7 +1496,7 @@
           "Docs": [
             {
               "Title": "Pivot - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.pivot.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.pivot"
             },
             {
               "Title": "Guidelines",
@@ -1553,7 +1553,7 @@
           "Docs": [
             {
               "Title": "Image - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.image.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.image"
             },
             {
               "Title": "Guidelines",
@@ -1576,7 +1576,7 @@
           "Docs": [
             {
               "Title": "InkCanvas - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.inkcanvas.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.inkcanvas"
             },
             {
               "Title": "Guidelines",
@@ -1834,7 +1834,7 @@
           "Docs": [
             {
               "Title": "AutoSuggestBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.autosuggestbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.autosuggestbox"
             },
             {
               "Title": "Guidelines",
@@ -1858,7 +1858,7 @@
           "Docs": [
             {
               "Title": "PasswordBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.passwordbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.passwordbox"
             },
             {
               "Title": "Guidelines",
@@ -1883,7 +1883,7 @@
           "Docs": [
             {
               "Title": "RichEditBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.richeditbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.richeditbox"
             },
             {
               "Title": "Guidelines",
@@ -1907,7 +1907,7 @@
           "Docs": [
             {
               "Title": "RichTextBlock - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.richtextblock.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.richtextblock"
             },
             {
               "Title": "Guidelines",
@@ -1933,7 +1933,7 @@
           "Docs": [
             {
               "Title": "TextBlock - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.textblock"
             },
             {
               "Title": "Guidelines",
@@ -1958,7 +1958,7 @@
           "Docs": [
             {
               "Title": "TextBox - API",
-              "Uri": "http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textbox.aspx"
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.textbox"
             },
             {
               "Title": "Guidelines",
