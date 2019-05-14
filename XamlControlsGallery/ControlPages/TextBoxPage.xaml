@@ -28,7 +28,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TextBlock Header="Enter your name:" PlaceholderText="Name" /&gt;
+                    &lt;TextBox Header="Enter your name:" PlaceholderText="Name" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
