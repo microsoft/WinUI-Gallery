@@ -41,7 +41,7 @@ namespace UITests
                 }
                 catch
                 {  }
-                Thread.Sleep(125000);
+                Thread.Sleep(120000);
                if (session == null)
                 {
                     session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
