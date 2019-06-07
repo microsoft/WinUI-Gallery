@@ -40,7 +40,7 @@ namespace UITests
                     session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
                 }
                 catch
-                {  }
+                {  }     
                 Thread.Sleep(126000);
                if (session == null)
                 {
