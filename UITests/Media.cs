@@ -40,9 +40,12 @@ namespace UITests
         [TestMethod]
         public void PlayMedia()
         {
+            Thread.Sleep(1000);
             WindowsElement play = session.FindElementByAccessibilityId("PlayPauseButton");
             Assert.IsNotNull(play);
             Assert.IsNotNull(session.FindElementByAccessibilityId("svPanel"));
+            Thread.Sleep(1000);
+
             try
             {
                 play.Click();
@@ -51,6 +54,8 @@ namespace UITests
             {
 
             }
+            Thread.Sleep(1000);
+            play.Click();
         }
     }
 
