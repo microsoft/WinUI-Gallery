@@ -2,7 +2,7 @@
 
 This UI Test repository of collection of test scenarios that covers basic interactions with [Universal Windows Platform controls (UI elements)](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/). Use this as a reference on how to interact with certain UWP controls you have in your application.
 
-The test scenarios are written against [AppUIBasics](../../ApplicationUnderTests/AppUIBasics) application that contains all UWP basic controls. This application needs to be installed once in the machine you are running your test. Follow the instruction on the application [README](../../ApplicationUnderTests/AppUIBasics/README.md).
+The test scenarios are written to test the controls in the Xaml Controls Gallery app, which contains all UWP Xaml controls. The Xaml Controls Gallery app needs to be installed on the machine where you are running your tests. Follow the instructions in the root README to install the app.
 
 
 ## Requirements
