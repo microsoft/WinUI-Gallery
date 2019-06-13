@@ -9,9 +9,9 @@
     
     <Page.Resources>
         <muxcontrols:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
-            <AppBarButton Label="Share" Icon="Share" Click="OnElementClicked" />
-            <AppBarButton Label="Save" Icon="Save" Click="OnElementClicked" />
-            <AppBarButton Label="Delete" Icon="Delete" Click="OnElementClicked" />
+            <AppBarButton Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
+            <AppBarButton Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
+            <AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
             <muxcontrols:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton Label="Resize" Click="OnElementClicked" />
                 <AppBarButton Label="Move" Click="OnElementClicked" />
