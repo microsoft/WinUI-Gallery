@@ -35,11 +35,11 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Page.Resources&gt;
-            &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&lt;
+    &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&gt;
 &lt;/Page.Resources&gt;
                     
 &lt;Grid.Resources&gt;
-            &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&lt;
+    &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&gt;
 &lt;/Grid.Resources&gt;
                 </x:String>
             </local:ControlExample.Xaml>
