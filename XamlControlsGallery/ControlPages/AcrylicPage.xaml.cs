@@ -24,12 +24,17 @@ namespace AppUIBasics.ControlPages
         {
             ColorSelector.SelectedIndex = ColorSelectorInApp.SelectedIndex = 0;
             FallbackColorSelector.SelectedIndex = FallbackColorSelectorInApp.SelectedIndex = 0;
-            OpacitySlider.Value = OpacitySliderInApp.Value = 0.8;
+            OpacitySlider.Value = OpacitySliderInApp.Value = OpacitySliderLumin.Value = 0.8;
+            LuminositySlider.Value = 0.8;
         }
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             Rectangle shape = (sender == OpacitySliderInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
+
+            if (sender == OpacitySliderLumin)
+                shape = CustomAcrylicShapeLumin;
+
             ((AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
         }
 
@@ -43,6 +48,12 @@ namespace AppUIBasics.ControlPages
         {
             Rectangle shape = (sender == FallbackColorSelectorInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
             ((AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+        }
+
+        private void LuminositySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Rectangle shape = CustomAcrylicShapeLumin;
+            ((AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
         }
     }
 }
