@@ -47,6 +47,7 @@
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <common:NullToVisibilityConverter x:Key="inverseNullToVisibilityConverter" NonNullValue="Collapsed" NullValue="Visible" />
             <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
+            <common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
 
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>

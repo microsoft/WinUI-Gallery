@@ -3,7 +3,9 @@ using System.Numerics;
 using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
@@ -93,7 +95,7 @@ namespace AppUIBasics.ControlPages
 
         private void StackedButtonsExample_Loaded(object sender, RoutedEventArgs e)
         {
-            // Only establish the reference parameter if the API exists to do so.
+            // Only run the sample if the API is present. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
             var anim = _compositor.CreateExpressionAnimation();
@@ -113,5 +115,69 @@ namespace AppUIBasics.ControlPages
             ExpressionButton4.StartAnimation(anim);
         }
 
+        private void ActualSizeExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Only create an expression using ActualSize if the API exists to do so.
+            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
+
+            // We will lay out some buttons in a circle.
+            // The formulas we will use are:
+            //   X = radius * cos(theta) + xOffset
+            //   Y = radius * sin(theta) + yOffset
+            //   radius = 1/2 the width and height of the parent container
+            //   theta = the angle for each element. The starting value of theta depends on both the number of elements and the relative index of each element.
+            //   xOffset = The starting horizontal offset for the element. 
+            //   yOffset = The starting vertical offset for the element.
+
+            String radius = "(source.ActualSize.X / 2)"; // Since the layout is a circle, width and height are equivalent meaning we could use X or Y. We'll use X.
+            String theta = ".02 * " + radius + " + ((2 * Pi)/total)*index"; // The first value is the rate of angular change based on radius. The last value spaces the buttons equally.
+            String xOffset = radius; // We offset x by radius because the buttons naturally layout along the left edge. We need to move them to center of the circle first.
+            String yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
+
+            // We combine X, Y, and Z subchannels into a single animation because we can only start a single animation on Translation.
+            String expression = String.Format("Vector3({0}*cos({1})+{2}, {0}*sin({1})+{3},0)", radius, theta, xOffset, yOffset);
+
+            int totalElements = 8;
+            for (int i = 0; i < totalElements; i++)
+            {
+                Button element = new Button() { Content = "Button" };
+                AutomationProperties.SetName(element, "Button " + i);
+
+                LayoutPanel.Children.Add(element);
+
+                var anim = _compositor.CreateExpressionAnimation();
+
+                anim.Expression = expression;
+                anim.SetScalarParameter("index", i + 1);
+                anim.SetScalarParameter("total", totalElements);
+                anim.Target = "Translation";
+                anim.SetExpressionReferenceParameter("source", LayoutPanel);
+
+                element.StartAnimation(anim);
+            }
+        }
+
+        private void RadiusSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            if (LayoutPanel == null) return;
+            LayoutPanel.Width = LayoutPanel.Height = e.NewValue;
+        }
+
+        private void ActualOffsetExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Only create an expression using ActualSize if the API exists to do so.
+            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
+
+            // This sample positions a popup relative to a block of text that has variable layout size based on font size.
+            var anim = _compositor.CreateExpressionAnimation();
+
+            anim.Expression = "Vector3(source.ActualOffset.X + source.ActualSize.X, source.ActualOffset.Y + source.ActualSize.Y / 2 - 25, 0)";
+            anim.Target = "Translation";
+            anim.SetExpressionReferenceParameter("source", PopupTarget);
+
+            Popup.StartAnimation(anim);
+
+            Popup.IsOpen = true;
+        }
     }
 }
