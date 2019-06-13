@@ -1168,6 +1168,33 @@
           ]
         },
         {
+          "UniqueId": "ScrollViewer2",
+          "Title": "ScrollViewer (preview)",
+          "Subtitle": "A container control that lets the user pan and zoom its content.",
+          "ImagePath": "ms-appx:///Assets/ScrollViewer.png",
+          "Description": "The new ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
+          "Content": "<p>Look at the <i>ScrollViewer2Page.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsPreview": true,
+          "Docs": [
+            {
+              "Title": "ScrollViewer - API",
+              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/scroll-controls"
+            }
+          ],
+          "RelatedControls": [
+            "ViewBox",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel",
+            "ParallaxView"
+          ]
+        },
+        {
           "UniqueId": "SemanticZoom",
           "Title": "SemanticZoom",
           "Subtitle": "Lets the user zoom between two different views of a collection, making it easier to navigate through large collections of items.",
@@ -1259,7 +1286,7 @@
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
           "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsPreview": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "Guidelines",
