@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -67,7 +68,7 @@ namespace AppUIBasics.ControlPages
                 ZoomSlider.Value = Math.Round(sender.ZoomFactor, (int)(10 * ZoomSlider.StepFrequency));
                 ZoomSlider.ValueChanged += ZoomSlider_ValueChanged;
             }
-            else 
+            else
             {
                 ZoomSlider.ValueChanged -= ZoomSlider_ValueChanged;
             }
@@ -461,8 +462,14 @@ namespace AppUIBasics.ControlPages
 
         private void Scroller_HandleKeyDown(object sender, KeyRoutedEventArgs e)
         {
-            // Swallow gamepad / keyboard input when focused to prevent the Page's ScrollViewer from scrollling
-            e.Handled = true;
+            // Swallow up and down for gamepad / keyboard input when focused to prevent the Page's ScrollViewer from scrollling
+            switch (e.Key)
+            {
+                case VirtualKey.Up:
+                case VirtualKey.Down:
+                    e.Handled = true;
+                    break;
+            }
         }
     }
 }
