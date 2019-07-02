@@ -49,8 +49,8 @@
                     <MenuFlyout>
                         <MenuFlyoutItem Text="Reset" />
                         <MenuFlyoutSeparator />
-                        <ToggleMenuFlyoutItem Text="Repeat" />
-                        <ToggleMenuFlyoutItem Text="Shuffle" />
+                        <ToggleMenuFlyoutItem x:Name="RepeatToggleMenuFlyoutItem" Text="Repeat" IsChecked="True" />
+                        <ToggleMenuFlyoutItem x:Name="ShuffleToggleMenuFlyoutItem" Text="Shuffle" IsChecked="True" />
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>
@@ -61,13 +61,17 @@
         &lt;MenuFlyout&gt;
             &lt;MenuFlyoutItem Text="Reset"/&gt;
             &lt;MenuFlyoutSeparator/&gt;
-            &lt;ToggleMenuFlyoutItem Text="Repeat"/&gt;
-            &lt;ToggleMenuFlyoutItem Text="Shuffle"/&gt;
+            &lt;ToggleMenuFlyoutItem Text="Repeat" IsChecked="$(RepeatToggle)"/&gt;
+            &lt;ToggleMenuFlyoutItem Text="Shuffle" IsChecked="$(ShuffleToggle)"/&gt;
         &lt;/MenuFlyout&gt;
     &lt;/Button.Flyout&gt;
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="RepeatToggle" Value="{x:Bind RepeatToggleMenuFlyoutItem.IsChecked, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="ShuffleToggle" Value="{x:Bind ShuffleToggleMenuFlyoutItem.IsChecked, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A MenuFlyout with cascading menus.">
             <Button x:Name="Control3" Content="File Options">
