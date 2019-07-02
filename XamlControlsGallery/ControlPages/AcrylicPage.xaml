@@ -198,7 +198,10 @@
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
+        
+        <!-- Disable this sample until we find the root cause of the Luminosity slider crash. -->
+        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic." 
+                              Visibility="Collapsed">
             <local:ControlExample.Example>
                 <Grid x:Name="Example5Grid" MinWidth="650" MinHeight="200">
                     <Grid.ColumnDefinitions>
