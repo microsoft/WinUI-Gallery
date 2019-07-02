@@ -498,6 +498,31 @@
             "GridView",
             "TreeView"
           ]
+        },
+        {
+          "UniqueId": "TabView",
+          "Title": "TabView",
+          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "IsPreview":  true,
+          "Docs": [
+            {
+              "Title": "TabView - API",
+              "Uri": ""
+            },
+            {
+              "Title": "Guidance",
+              "Uri": ""
+            }
+          ],
+          "RelatedControls": [
+            "NavigationView",
+            "ListView"
+          ]
         }
       ]
     },
