@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <StackPanel>
         <!-- TODO: BUG: TabStrip scrolling doesn't work? Add a bunch of tabs - the content is the right size, but the tabs flow offscreen -->
         <!-- TODO: BUG: Add animation disabled? -->
         <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
@@ -55,5 +55,48 @@
             </local:ControlExample.Xaml>
 
         </local:ControlExample>
-    </Grid>
+
+        <local:ControlExample HeaderText="A TabView with keyboarding support">
+            <local:ControlExample.Example>
+                <!-- TODO: BUG: HorizontalAlignment="stretch" doesn't work? -->
+                <!-- TODO: BUG: Mousewheel should close the tab -->
+                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddButtonClick="TabView_AddButtonClick">
+                    <muxcontrols:TabView.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number2" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number3" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number4" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number5" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number6" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        <KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                    </muxcontrols:TabView.KeyboardAccelerators>
+                    
+                    <muxcontrols:TabView.Items>
+                        <!-- TODO: How can we make this tab non-draggable? -->
+                        <muxcontrols:TabViewItem Icon="Document" Header="Document 1">
+                            <StackPanel Padding="16">
+                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 1</TextBlock>
+                            </StackPanel>
+                        </muxcontrols:TabViewItem>
+
+                        <muxcontrols:TabViewItem Icon="Document" Header="Document 2" >
+                            <StackPanel Padding="16">
+                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 2</TextBlock>
+                            </StackPanel>
+                        </muxcontrols:TabViewItem>
+                    </muxcontrols:TabView.Items>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;TODO /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+
+        </local:ControlExample>
+    </StackPanel>
 </Page>
