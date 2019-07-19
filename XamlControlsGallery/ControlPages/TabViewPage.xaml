@@ -14,39 +14,7 @@
         <!-- TODO: BUG: Add animation disabled? -->
         <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddButtonClick="TabView_AddButtonClick">
-                    <muxcontrols:TabView.Items>
-                        <!-- TODO: How can we make this tab non-draggable? -->
-                        <muxcontrols:TabViewItem Icon="Home" Header="Home" IsCloseable="False" CanDrag="False">
-                            <StackPanel Padding="16">
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Home</TextBlock>
-
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Bacon ipsum dolor amet cupim picanha enim dolore, quis rump meatball voluptate tail eiusmod corned beef. Kevin cupim nisi nulla dolore laboris meatball shank t-bone kielbasa in. Ipsum quis pariatur turducken. Bresaola alcatra laborum t-bone corned beef sed excepteur ex jowl. Lorem chuck in in beef.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ex bresaola ham, spare ribs porchetta veniam incididunt magna aliqua jowl dolor cow. Ex doner lorem t-bone, brisket laborum sirloin short ribs aliqua boudin swine. Laborum landjaeger buffalo t-bone rump fatback dolor ham hock ut bacon excepteur dolore est eu ea. Duis pancetta ut shank do eu salami chicken ham hock turkey qui et elit. Venison quis officia ribeye ham hock consequat pig, aliqua jerky landjaeger commodo tail in. Est cupim beef short loin, andouille id commodo reprehenderit. Eu chicken duis id officia.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ad sunt eiusmod, venison anim nostrud ut cillum meatball drumstick exercitation kielbasa sausage qui cupim. Sint incididunt in lorem buffalo elit brisket short loin tail turducken est qui pork. Chuck ullamco adipisicing, laborum cupidatat tempor leberkas shoulder. Sint nulla flank doner, velit salami t-bone minim aliqua. Shankle veniam dolor esse short loin id officia ground round kielbasa ham t-bone ipsum tongue capicola. Bacon pork chop veniam, enim ex consectetur labore. In tail id, lorem shank officia pariatur burgdoggen rump ex mollit sirloin.</TextBlock>
-                            </StackPanel>
-                        </muxcontrols:TabViewItem>
-
-                        <muxcontrols:TabViewItem Icon="Document" Header="Document 1">
-                            <StackPanel Padding="16">
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 1</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ex bresaola ham, spare ribs porchetta veniam incididunt magna aliqua jowl dolor cow. Ex doner lorem t-bone, brisket laborum sirloin short ribs aliqua boudin swine. Laborum landjaeger buffalo t-bone rump fatback dolor ham hock ut bacon excepteur dolore est eu ea. Duis pancetta ut shank do eu salami chicken ham hock turkey qui et elit. Venison quis officia ribeye ham hock consequat pig, aliqua jerky landjaeger commodo tail in. Est cupim beef short loin, andouille id commodo reprehenderit. Eu chicken duis id officia.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ad sunt eiusmod, venison anim nostrud ut cillum meatball drumstick exercitation kielbasa sausage qui cupim. Sint incididunt in lorem buffalo elit brisket short loin tail turducken est qui pork. Chuck ullamco adipisicing, laborum cupidatat tempor leberkas shoulder. Sint nulla flank doner, velit salami t-bone minim aliqua. Shankle veniam dolor esse short loin id officia ground round kielbasa ham t-bone ipsum tongue capicola. Bacon pork chop veniam, enim ex consectetur labore. In tail id, lorem shank officia pariatur burgdoggen rump ex mollit sirloin.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Bacon ipsum dolor amet cupim picanha enim dolore, quis rump meatball voluptate tail eiusmod corned beef. Kevin cupim nisi nulla dolore laboris meatball shank t-bone kielbasa in. Ipsum quis pariatur turducken. Bresaola alcatra laborum t-bone corned beef sed excepteur ex jowl. Lorem chuck in in beef.</TextBlock>
-
-                            </StackPanel>
-                        </muxcontrols:TabViewItem>
-
-                        <muxcontrols:TabViewItem Icon="Document" Header="Document 2" >
-                            <StackPanel Padding="16">
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 2</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ex bresaola ham, spare ribs porchetta veniam incididunt magna aliqua jowl dolor cow. Ex doner lorem t-bone, brisket laborum sirloin short ribs aliqua boudin swine. Laborum landjaeger buffalo t-bone rump fatback dolor ham hock ut bacon excepteur dolore est eu ea. Duis pancetta ut shank do eu salami chicken ham hock turkey qui et elit. Venison quis officia ribeye ham hock consequat pig, aliqua jerky landjaeger commodo tail in. Est cupim beef short loin, andouille id commodo reprehenderit. Eu chicken duis id officia.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Bacon ipsum dolor amet cupim picanha enim dolore, quis rump meatball voluptate tail eiusmod corned beef. Kevin cupim nisi nulla dolore laboris meatball shank t-bone kielbasa in. Ipsum quis pariatur turducken. Bresaola alcatra laborum t-bone corned beef sed excepteur ex jowl. Lorem chuck in in beef.</TextBlock>
-                                <TextBlock TextWrapping="WrapWholeWords" Padding="0,16,0,0">Ad sunt eiusmod, venison anim nostrud ut cillum meatball drumstick exercitation kielbasa sausage qui cupim. Sint incididunt in lorem buffalo elit brisket short loin tail turducken est qui pork. Chuck ullamco adipisicing, laborum cupidatat tempor leberkas shoulder. Sint nulla flank doner, velit salami t-bone minim aliqua. Shankle veniam dolor esse short loin id officia ground round kielbasa ham t-bone ipsum tongue capicola. Bacon pork chop veniam, enim ex consectetur labore. In tail id, lorem shank officia pariatur burgdoggen rump ex mollit sirloin.</TextBlock>
-                            </StackPanel>
-                        </muxcontrols:TabViewItem>
-                    </muxcontrols:TabView.Items>
-                </muxcontrols:TabView>
+                <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddButtonClick="TabView_AddButtonClick" MinHeight="475"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
@@ -60,7 +28,7 @@
             <local:ControlExample.Example>
                 <!-- TODO: BUG: HorizontalAlignment="stretch" doesn't work? -->
                 <!-- TODO: BUG: Mousewheel should close the tab -->
-                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddButtonClick="TabView_AddButtonClick">
+                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddButtonClick="TabView_AddButtonClick" MinHeight="475">
                     <muxcontrols:TabView.KeyboardAccelerators>
                         <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
                         <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
@@ -74,21 +42,6 @@
                         <KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
                         <KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
                     </muxcontrols:TabView.KeyboardAccelerators>
-                    
-                    <muxcontrols:TabView.Items>
-                        <!-- TODO: How can we make this tab non-draggable? -->
-                        <muxcontrols:TabViewItem Icon="Document" Header="Document 1">
-                            <StackPanel Padding="16">
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 1</TextBlock>
-                            </StackPanel>
-                        </muxcontrols:TabViewItem>
-
-                        <muxcontrols:TabViewItem Icon="Document" Header="Document 2" >
-                            <StackPanel Padding="16">
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}">Document 2</TextBlock>
-                            </StackPanel>
-                        </muxcontrols:TabViewItem>
-                    </muxcontrols:TabView.Items>
                 </muxcontrols:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>

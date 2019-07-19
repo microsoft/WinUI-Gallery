@@ -15,47 +15,58 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
 using AppUIBasics.SamplePages;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TabViewPage : Page
     {
         public TabViewPage()
         {
             this.InitializeComponent();
+
+            for (int i = 0; i < 5; i++)
+            {
+                TabView1.Items.Add(CreateNewTab(i));
+                TabView2.Items.Add(CreateNewTab(i));
+            }
         }
 
         private void TabView_AddButtonClick(TabView sender, object args)
         {
-            sender.Items.Add(CreateNewTab());
+            sender.Items.Add(CreateNewTab(sender.Items.Count));
         }
 
-        private TabViewItem CreateNewTab()
+        private TabViewItem CreateNewTab(int index)
         {
             TabViewItem newItem = new TabViewItem();
 
-            newItem.Header = "New Document";
-            newItem.Icon = new SymbolIcon(Symbol.Placeholder);
+            newItem.Header = "Document " + index;
+            newItem.Icon = new SymbolIcon(Symbol.Document);
 
             Frame frame = new Frame();
 
-            newItem.Content = frame;
+            switch (index % 3)
+            {
+                case 0:
+                    frame.Navigate(typeof(SamplePage1));
+                    break;
+                case 1:
+                    frame.Navigate(typeof(SamplePage2));
+                    break;
+                case 2:
+                    frame.Navigate(typeof(SamplePage3));
+                    break;
+            }
 
-            frame.Navigate(typeof(SamplePage1));
+            newItem.Content = frame;
 
             return newItem;
         }
 
-
         private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
-            (args.Element as TabView).Items.Add(CreateNewTab());
+            var senderTabView = args.Element as TabView;
+            senderTabView.Items.Add(CreateNewTab(senderTabView.Items.Count));
         }
-        
 
         private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
@@ -112,6 +123,5 @@ namespace AppUIBasics.ControlPages
                 InvokedTabView.SelectedIndex = tabToSelect;
             }
         }
-
     }
 }
