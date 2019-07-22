@@ -297,19 +297,35 @@ namespace AppUIBasics
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
         {
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+            const int smallLeftIndent = 0, largeLeftIndent = 34;
+
+            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
                 AppTitle.TranslationTransition = new Vector3Transition();
-            }
-
-            if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
-                sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
-            {
-                AppTitle.Translation = new System.Numerics.Vector3(34, 0, 0);
+                
+                if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+                {
+                    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
+                }
+                else
+                {
+                    AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
+                }
             }
             else
             {
-                AppTitle.Translation = new System.Numerics.Vector3(0);
+                Thickness currMargin = AppTitle.Margin;
+
+                if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+                {
+                    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
+                else
+                {
+                    AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
             }
         }
     }
