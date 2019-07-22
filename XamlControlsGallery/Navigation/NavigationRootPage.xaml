@@ -58,7 +58,8 @@
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
                        Text="XAML Controls Gallery"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,8,0,0"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 
