@@ -72,6 +72,7 @@
             IsTabStop="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
+            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ItemInvoked="OnNavigationViewItemInvoked">
             <mux:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox

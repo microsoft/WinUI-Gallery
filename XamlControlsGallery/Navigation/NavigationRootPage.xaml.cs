@@ -27,6 +27,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Foundation.Metadata;
 
 namespace AppUIBasics
 {
@@ -281,19 +282,34 @@ namespace AppUIBasics
 
         private void NavigationViewControl_PaneClosing(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewPaneClosingEventArgs args)
         {
-            AppTitle.Visibility = Visibility.Collapsed;
+            UpdateAppTitleMargin(sender);
         }
 
         private void NavigationViewControl_PaneOpened(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
         {
-            AppTitle.Visibility = Visibility.Visible;
-            if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded)
+            UpdateAppTitleMargin(sender);
+        }
+
+        private void NavigationViewControl_DisplayModeChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs args)
+        {
+            UpdateAppTitleMargin(sender);
+        }
+
+        private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
+        {
+            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
             {
-                AppTitleBar.Margin = new Thickness(40, 0, 0, 0);
+                AppTitle.TranslationTransition = new Vector3Transition();
+            }
+
+            if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+            {
+                AppTitle.Translation = new System.Numerics.Vector3(34, 0, 0);
             }
             else
             {
-                AppTitleBar.Margin = new Thickness();
+                AppTitle.Translation = new System.Numerics.Vector3(0);
             }
         }
     }
