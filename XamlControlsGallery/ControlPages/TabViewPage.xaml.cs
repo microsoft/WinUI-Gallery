@@ -111,5 +111,21 @@ namespace AppUIBasics.ControlPages
                 InvokedTabView.SelectedIndex = tabToSelect;
             }
         }
+
+        private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string widthModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+            TabViewWidthMode widthMode = TabViewWidthMode.Equal;
+            switch (widthModeString)
+            {
+                case "Equal":
+                    widthMode = TabViewWidthMode.Equal;
+                    break;
+                case "SizeToContent":
+                    widthMode = TabViewWidthMode.SizeToContent;
+                    break;
+            }
+            TabView3.TabWidthMode = widthMode;
+        }
     }
 }

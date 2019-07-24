@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:samplepages="using:AppUIBasics.SamplePages"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -21,7 +22,6 @@
                     &lt;TODO /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A TabView with keyboarding support">
@@ -49,7 +49,35 @@
                     &lt;TODO /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+        </local:ControlExample>
 
+        <local:ControlExample HeaderText="Tab widths can either be equally sized or sized to the content of the tab">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddButtonVisible="False" MinHeight="475">
+                    <muxcontrols:TabView.Items>
+                        <muxcontrols:TabViewItem Icon="Home" Header="Home" IsCloseable="False">
+                            <samplepages:SamplePage1 />
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Icon="MusicInfo" Header="Tab 2 Has Longer Text" IsCloseable="False">
+                            <samplepages:SamplePage2 />
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Icon="Placeholder" Header="Third Tab" IsCloseable="False">
+                            <samplepages:SamplePage3 />
+                        </muxcontrols:TabViewItem>
+                    </muxcontrols:TabView.Items>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Equal" />
+                    <ComboBoxItem Content="SizeToContent" />
+                </ComboBox>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;TODO /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>
