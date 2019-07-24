@@ -7,6 +7,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="ColorPicker Properties." HorizontalContentAlignment="Left">
 
             <ColorPicker x:Name="colorPicker"
+                IsMoreButtonVisible="{x:Bind moreBtn.IsChecked.Value, Mode=OneWay}"
                 IsColorSliderVisible="{x:Bind colorSlider.IsChecked.Value, Mode=OneWay}"
                 IsColorChannelTextInputVisible="{x:Bind colorChannelInput.IsChecked.Value, Mode=OneWay}"
                 IsHexInputVisible="{x:Bind hexInput.IsChecked.Value, Mode=OneWay}"
@@ -16,6 +17,7 @@
 
             <local:ControlExample.Options>
                 <StackPanel Width="250" Margin="0,-5,0,0">
+                    <CheckBox Content="IsMoreButtonVisible" x:Name="moreBtn" IsChecked="False"/>
                     <CheckBox Content="IsColorSliderVisible" x:Name="colorSlider" IsChecked="True" />
                     <CheckBox Content="IsColorChannelTextInputVisible" x:Name="colorChannelInput" IsChecked="True" />
                     <CheckBox Content="IsHexInputVisible" x:Name="hexInput" IsChecked="True" />
@@ -39,6 +41,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ColorPicker
+      IsMoreButtonVisible="$(IsMoreButtonVisible)"
       IsColorSliderVisible="$(IsColorSliderVisible)"
       IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
       IsHexInputVisible="$(IsHexInputVisible)"
@@ -48,6 +51,7 @@
 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsMoreButtonVisible" Value="{x:Bind moreBtn.IsChecked, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="IsColorSliderVisible" Value="{x:Bind colorSlider.IsChecked, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="IsColorChannelTextInputVisible" Value="{x:Bind colorChannelInput.IsChecked, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="IsHexInputVisible" Value="{x:Bind hexInput.IsChecked, Mode=OneWay}"/>
