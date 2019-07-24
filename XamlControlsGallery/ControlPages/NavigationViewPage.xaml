@@ -4,20 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="using:AppUIBasics.Common"
-        xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         x:Class="AppUIBasics.ControlPages.NavigationViewPage"
         mc:Ignorable="d">
     <Page.Resources>
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
                 <DataTemplate x:DataType="converters:Category">
-                    <muxcontrols:NavigationViewItem 
+                    <muxc:NavigationViewItem 
                                 Content="{x:Bind Name}"
                                 ToolTipService.ToolTip="{x:Bind Tooltip}">
-                        <muxcontrols:NavigationViewItem.Icon>
+                        <muxc:NavigationViewItem.Icon>
                             <SymbolIcon Symbol="{x:Bind Glyph}" />
-                        </muxcontrols:NavigationViewItem.Icon>
-                    </muxcontrols:NavigationViewItem>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
                 </DataTemplate>
             </converters:MenuItemTemplateSelector.ItemTemplate>
         </converters:MenuItemTemplateSelector>
@@ -91,21 +91,21 @@
                            Margin="0,0,0,12"
                            Text="If you have five or more equally important navigation categories that should prominently appear on larger window widths, consider using a left navigation pane." />
 
-                <muxcontrols:NavigationView x:Name="nvSample5" 
+                <muxc:NavigationView x:Name="nvSample5" 
                                             Grid.Row="1" 
                                             Height="460"
                                             Header="This is Header Text" 
                                             PaneDisplayMode="Auto" 
                                             IsTabStop="False" 
                                             SelectionChanged="NavigationView_SelectionChanged5" >
-                    <muxcontrols:NavigationView.MenuItems>
-                        <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" Icon="Play" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" Icon="Save" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" Icon="Refresh" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" Icon="Download" />
-                    </muxcontrols:NavigationView.MenuItems>
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" Icon="Play" />
+                        <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" Icon="Save" />
+                        <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" Icon="Refresh" />
+                        <muxc:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" Icon="Download" />
+                    </muxc:NavigationView.MenuItems>
                     <Frame Margin="0,0,0,0" x:Name="contentFrame5" />
-                </muxcontrols:NavigationView>
+                </muxc:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -125,22 +125,22 @@
                            Margin="0,0,0,12"
                            Text="If you have equally important navigation categories that should be de-emphasized relative to the content of your app, consider using a top navigation pane." />
 
-                <muxcontrols:NavigationView x:Name="nvSample6"
+                <muxc:NavigationView x:Name="nvSample6"
                                             Grid.Row="1"
                                             Height="460"
                                             PaneDisplayMode="Top"
                                             Header="This is Header Text"
                                             IsTabStop="False" 
                                             SelectionChanged="NavigationView_SelectionChanged6">
-                    <muxcontrols:NavigationView.MenuItems>
-                        <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item4" Tag="SamplePage3" />
-                    </muxcontrols:NavigationView.MenuItems>
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
+                        <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
+                        <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
+                        <muxc:NavigationViewItem Content="Menu Item4" Tag="SamplePage3" />
+                    </muxc:NavigationView.MenuItems>
 
                     <Frame x:Name="contentFrame6" />
-                </muxcontrols:NavigationView>
+                </muxc:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -160,20 +160,20 @@
                            Margin="0,0,0,12"
                            Text="If you have equally important navigation categories and limited app content space, consider using a top navigation pane on larger window widths and a minimal left navigation pane on smaller window widths." />
 
-                <muxcontrols:NavigationView x:Name="nvSample2" Grid.Row="1" Height="460"
+                <muxc:NavigationView x:Name="nvSample2" Grid.Row="1" Height="460"
                                             SelectionChanged="NavigationView_SelectionChanged2"
                                             PaneDisplayMode="Auto" IsTabStop="False" >
-                    <muxcontrols:NavigationView.MenuItems>
-                        <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
-                        <muxcontrols:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" />
-                    </muxcontrols:NavigationView.MenuItems>
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" />
+                        <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
+                        <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
+                        <muxc:NavigationViewItem Content="Menu Item4" Tag="SamplePage4" />
+                    </muxc:NavigationView.MenuItems>
 
-                    <muxcontrols:NavigationView.Content>
+                    <muxc:NavigationView.Content>
                         <Frame x:Name="contentFrame2" />
-                    </muxcontrols:NavigationView.Content>
-                </muxcontrols:NavigationView>
+                    </muxc:NavigationView.Content>
+                </muxc:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -194,17 +194,17 @@
                            Margin="0,0,0,12"
                            Text="For the tabs pattern, ensure that you unify selection and focus by setting the SelectionFollowsFocus property to True. If using a Frame to swap out content, then navigating between items shouldn't be recorded into the Frame's navigation stack. Please see the C# in the sample below to understand how to do this." />
 
-                <muxcontrols:NavigationView x:Name="nvSample7" Grid.Row="1" Height="460"
+                <muxc:NavigationView x:Name="nvSample7" Grid.Row="1" Height="460"
                                             PaneDisplayMode="Top" SelectionFollowsFocus="Enabled"  SelectionChanged="NavigationView_SelectionChanged7"
                                             IsTabStop="False" IsBackButtonVisible="Collapsed" >
-                    <muxcontrols:NavigationView.MenuItems>
-                        <muxcontrols:NavigationViewItem Content="Item1" Tag="SamplePage1" />
-                        <muxcontrols:NavigationViewItem Content="Item2" Tag="SamplePage2" />
-                        <muxcontrols:NavigationViewItem Content="Item3" Tag="SamplePage3" />
-                        <muxcontrols:NavigationViewItem Content="Item4" Tag="SamplePage4" />
-                    </muxcontrols:NavigationView.MenuItems>
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Item1" Tag="SamplePage1" />
+                        <muxc:NavigationViewItem Content="Item2" Tag="SamplePage2" />
+                        <muxc:NavigationViewItem Content="Item3" Tag="SamplePage3" />
+                        <muxc:NavigationViewItem Content="Item4" Tag="SamplePage4" />
+                    </muxc:NavigationView.MenuItems>
                     <Frame x:Name="contentFrame7" />
-                </muxcontrols:NavigationView>
+                </muxc:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -225,14 +225,14 @@
                            Margin="0,0,0,12"
                            Text="When data binding, use the MenuItemsSource property to bind to an observable collection of items, and do not set the MenuItems property. In addition, set the MenuItemTemplate property and use a NavigationViewItem as the data template. If you wish to bind to the header content as well, use data template selectors via the MenuItemTemplateSelector property. " />
 
-                <muxcontrols:NavigationView x:Name="nvSample4" Grid.Row="2" Height="460"
+                <muxc:NavigationView x:Name="nvSample4" Grid.Row="2" Height="460"
                                             MenuItemTemplateSelector="{StaticResource selector}"
                                             MenuItemsSource="{x:Bind Categories, Mode=OneWay}" 
                                             IsTabStop="False" SelectionChanged="NavigationView_SelectionChanged4">
                     <StackPanel>
                         <Frame Margin="0,0,0,0" x:Name="contentFrame4" />
                     </StackPanel>
-                </muxcontrols:NavigationView>
+                </muxc:NavigationView>
             </Grid>
         </local:ControlExample>
 
@@ -266,49 +266,115 @@
                 </StackPanel>
 
             </local:ControlExample.Options>
-            <muxcontrols:NavigationView x:Name="nvSample" Height="540" Margin="0,12,0,0"
+            <muxc:NavigationView x:Name="nvSample" Height="540" Margin="0,12,0,0"
                                         SelectionChanged="NavigationView_SelectionChanged"
                                         Header="{Binding ElementName=headerText, Path=Text, Mode=TwoWay}"
                                         PaneTitle="{Binding ElementName=paneText, Path=Text, Mode=TwoWay}"
                                         PaneDisplayMode="Left" ExpandedModeThresholdWidth="500"
                                         IsTabStop="False">
-                <muxcontrols:NavigationView.MenuItems>
-                    <muxcontrols:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item" >
-                        <muxcontrols:NavigationViewItem.Icon>
+                <muxc:NavigationView.MenuItems>
+                    <muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item" >
+                        <muxc:NavigationViewItem.Icon>
                             <SymbolIcon Symbol="Play"/>
-                        </muxcontrols:NavigationViewItem.Icon>
-                    </muxcontrols:NavigationViewItem>
-                    <muxcontrols:NavigationViewItemHeader Content="Actions"/>
-                    <muxcontrols:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="True">
-                        <muxcontrols:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                    <muxc:NavigationViewItemHeader Content="Actions"/>
+                    <muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="True">
+                        <muxc:NavigationViewItem.Icon>
                             <SymbolIcon Symbol="Save"/>
-                        </muxcontrols:NavigationViewItem.Icon>
-                    </muxcontrols:NavigationViewItem>
-                    <muxcontrols:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item">
-                        <muxcontrols:NavigationViewItem.Icon>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                    <muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item">
+                        <muxc:NavigationViewItem.Icon>
                             <SymbolIcon Symbol="Refresh"/>
-                        </muxcontrols:NavigationViewItem.Icon>
-                    </muxcontrols:NavigationViewItem>
-                </muxcontrols:NavigationView.MenuItems>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+                </muxc:NavigationView.MenuItems>
 
-                <muxcontrols:NavigationView.PaneCustomContent>
+                <muxc:NavigationView.PaneCustomContent>
                     <HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="Collapsed" />
-                </muxcontrols:NavigationView.PaneCustomContent>
+                </muxc:NavigationView.PaneCustomContent>
 
-                <muxcontrols:NavigationView.AutoSuggestBox>
+                <muxc:NavigationView.AutoSuggestBox>
                     <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search"/>
-                </muxcontrols:NavigationView.AutoSuggestBox>
+                </muxc:NavigationView.AutoSuggestBox>
 
-                <muxcontrols:NavigationView.PaneFooter>
+                <muxc:NavigationView.PaneFooter>
                     <StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="Collapsed">
-                        <muxcontrols:NavigationViewItem Icon="Download" AutomationProperties.Name="download"/>
-                        <muxcontrols:NavigationViewItem Icon="Favorite" AutomationProperties.Name="favorite"/>
+                        <muxc:NavigationViewItem Icon="Download" AutomationProperties.Name="download"/>
+                        <muxc:NavigationViewItem Icon="Favorite" AutomationProperties.Name="favorite"/>
                     </StackPanel>
-                </muxcontrols:NavigationView.PaneFooter>
+                </muxc:NavigationView.PaneFooter>
 
                 <Frame x:Name="contentFrame"/>
-            </muxcontrols:NavigationView>
+            </muxc:NavigationView>
 
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:NavigationView x:Name="nvSample"
+    IsSettingsVisible="$(SettingsVis)"
+    IsBackButtonVisible="$(BackButtonVis)"
+    IsBackEnabled="$(BackButtonEn)"
+    SelectionChanged="NavigationView_SelectionChanged"
+    Header="$(HeaderText)"
+    AlwaysShowHeader="$(ShowHeader)"
+    PaneTitle="$(PaneTitleText)"
+    PaneDisplayMode="$(PaneDisplayMode)" 
+    ExpandedModeThresholdWidth="500"
+    SelectionFollowsFocus="$(SelectionFollowsFocus)"
+    IsTabStop="False"&gt;
+                    
+    &lt;muxc:NavigationView.MenuItems&gt;
+        &lt;muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item"&gt;
+            &lt;muxc:NavigationViewItem.Icon&gt;
+                &lt;SymbolIcon Symbol="Play"/&gt;
+            &lt;/muxc:NavigationViewItem.Icon&gt;
+        &lt;/muxc:NavigationViewItem&gt;
+        &lt;muxc:NavigationViewItemHeader Content="Actions"/&gt;
+        &lt;muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="$(SelectsOnInvoked)"&gt;
+            &lt;muxc:NavigationViewItem.Icon&gt;
+                &lt;SymbolIcon Symbol="Save"/&gt;
+            &lt;/muxc:NavigationViewItem.Icon&gt;
+        &lt;/muxc:NavigationViewItem&gt;
+        &lt;muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item"&gt;
+            &lt;muxc:NavigationViewItem.Icon&gt;
+                &lt;SymbolIcon Symbol="Refresh"/&gt;
+            &lt;/muxc:NavigationViewItem.Icon&gt;
+        &lt;/muxc:NavigationViewItem&gt;
+    &lt;/muxc:NavigationView.MenuItems&gt;
+                    
+    &lt;muxc:NavigationView.PaneCustomContent&gt;
+        &lt;HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="$(PaneCustomContentVis)" /&gt;
+    &lt;/muxc:NavigationView.PaneCustomContent&gt;
+
+    &lt;muxc:NavigationView.AutoSuggestBox&gt;
+        &lt;AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" /&gt;
+    &lt;/muxc:NavigationView.AutoSuggestBox&gt;
+
+    &lt;muxc:NavigationView.PaneFooter&gt;
+        &lt;StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="$(PaneFooterVis)"&gt;
+            &lt;muxc:NavigationViewItem Icon="Download" AutomationProperties.Name="download" /&gt;
+            &lt;muxc:NavigationViewItem Icon="Favorite" AutomationProperties.Name="favorite" /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/muxc:NavigationView.PaneFooter&gt;
+
+    &lt;Frame x:Name="contentFrame"/&gt;
+&lt;/muxc:NavigationView&gt;
+</x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SettingsVis" Value="{x:Bind settingsCheck.IsChecked, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="BackButtonVis" Value="{x:Bind nvSample.IsBackButtonVisible, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="BackButtonEn" Value="{x:Bind enableCheck.IsChecked, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="HeaderText" Value="{x:Bind headerText.Text, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="ShowHeader" Value="{x:Bind headerCheck.IsChecked, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="PaneTitleText" Value="{x:Bind paneText.Text, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="PaneCustomContentVis" Value="{x:Bind PaneHyperlink.Visibility, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="PaneFooterVis" Value="{x:Bind FooterStackPanel.Visibility, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="PaneDisplayMode" Value="{x:Bind nvSample.PaneDisplayMode, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="SelectionFollowsFocus" Value="{x:Bind nvSample.SelectionFollowsFocus, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="SelectsOnInvoked" Value="{x:Bind SamplePage2Item.SelectsOnInvoked, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </Grid>
 </Page>
