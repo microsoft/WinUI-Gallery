@@ -79,5 +79,55 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <local:ControlExample HeaderText="Use BitmapIcon.ShowAsMonochrome to display full color icons in the TabViewItem">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView x:Name="TabView4" SelectedIndex="0" IsAddButtonVisible="False" MinWidth="490">
+                    <muxcontrols:TabView.Items>
+                        <muxcontrols:TabViewItem Header="CMD Prompt" IsCloseable="False">
+                            <muxcontrols:TabViewItem.Icon>
+                                <BitmapIcon UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
+                            </muxcontrols:TabViewItem.Icon>
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Header="Powershell" IsCloseable="False">
+                            <muxcontrols:TabViewItem.Icon>
+                                <BitmapIcon UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
+                            </muxcontrols:TabViewItem.Icon>
+                            
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsCloseable="False">
+                            <muxcontrols:TabViewItem.Icon>
+                                <BitmapIcon UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" />
+                            </muxcontrols:TabViewItem.Icon>
+                        </muxcontrols:TabViewItem>
+                    </muxcontrols:TabView.Items>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.Items&gt;
+        &lt;TabViewItem Header="CMD Prompt" IsCloseable="False"&gt;
+            &lt;TabViewItem.Icon&gt;
+                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.Icon&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Powershell" IsCloseable="False"&gt;
+            &lt;TabViewItem.Icon&gt;
+                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.Icon&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Windows Subsystem for Linux" IsCloseable="False"&gt;
+            &lt;TabViewItem.Icon&gt;
+                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.Icon&gt;
+        &lt;/TabViewItem&gt;
+    &lt;/TabView.Items&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        
     </StackPanel>
 </Page>
