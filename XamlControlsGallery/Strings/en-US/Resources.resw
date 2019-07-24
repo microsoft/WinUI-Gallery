@@ -148,4 +148,10 @@
     <value>From any control page, open the help panel from the bottom app bar to see custom help content for that control.</value>
     <comment>Default content for the about settings flyout. Shown when data context is null.</comment>
   </data>
+  <data name="FeedbackHeader.Text" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="FeedbackLink.Text" xml:space="preserve">
+    <value>Send feedback about this page</value>
+  </data>
 </root>

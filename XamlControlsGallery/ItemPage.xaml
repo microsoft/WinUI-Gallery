@@ -71,11 +71,17 @@
                         <Setter Target="seeAlsoPanel.(Grid.Row)" Value="3" />
                         <Setter Target="seeAlsoPanel.(Grid.Column)" Value="0" />
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
+                        
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="DocumentationPanel.Margin" Value="0" />
+
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
+                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
+
+                        <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowLayout">
@@ -89,11 +95,15 @@
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
 
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
-                        <Setter Target="DocumentationPanel.Margin" Value="0" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
+                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
+
+                        <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="rightMargin.Width" Value="0" />
                         <Setter Target="contentRoot.Padding" Value="14,0" />
@@ -140,6 +150,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -172,7 +183,7 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="1" Grid.ColumnSpan="3">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
@@ -221,6 +232,16 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                    </StackPanel>
+
+                    <StackPanel x:Name="FeedbackPanel" Grid.Row="2" Grid.ColumnSpan="3">
+                        <TextBlock
+                            x:Name="feedbackHeader"
+                            x:Uid="FeedbackHeader"
+                            Style="{StaticResource SubtitleTextBlockStyle}" />
+                        <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">
+                            <TextBlock x:Uid="FeedbackLink" />
+                        </HyperlinkButton>
                     </StackPanel>
                 </Grid>
             </Grid>
