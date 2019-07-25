@@ -68,16 +68,19 @@
                 </muxcontrols:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged">
+                <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="150">
                     <ComboBoxItem Content="Equal" />
                     <ComboBoxItem Content="SizeToContent" />
                 </ComboBox>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TODO /&gt;
+                    &lt;TabView TabWidthMode="$(TabWidthMode)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="TabWidthMode" Value="{x:Bind TabView3.TabWidthMode, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Use BitmapIcon.ShowAsMonochrome to display full color icons in the TabViewItem">
