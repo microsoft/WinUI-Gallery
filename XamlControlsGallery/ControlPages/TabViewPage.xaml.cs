@@ -11,7 +11,7 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 TabView1.Items.Add(CreateNewTab(i));
                 TabView2.Items.Add(CreateNewTab(i));
