@@ -501,7 +501,7 @@
         },
         {
           "UniqueId": "TabView",
-          "Title": "TabView",
+          "Title": "TabView (preview)",
           "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
