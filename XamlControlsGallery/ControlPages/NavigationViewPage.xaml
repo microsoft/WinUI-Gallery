@@ -327,18 +327,18 @@
     &lt;muxc:NavigationView.MenuItems&gt;
         &lt;muxc:NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item"&gt;
             &lt;muxc:NavigationViewItem.Icon&gt;
-                &lt;SymbolIcon Symbol="Play"/&gt;
+                &lt;SymbolIcon Symbol="Play" /&gt;
             &lt;/muxc:NavigationViewItem.Icon&gt;
         &lt;/muxc:NavigationViewItem&gt;
         &lt;muxc:NavigationViewItemHeader Content="Actions"/&gt;
         &lt;muxc:NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="$(SelectsOnInvoked)"&gt;
             &lt;muxc:NavigationViewItem.Icon&gt;
-                &lt;SymbolIcon Symbol="Save"/&gt;
+                &lt;SymbolIcon Symbol="Save" /&gt;
             &lt;/muxc:NavigationViewItem.Icon&gt;
         &lt;/muxc:NavigationViewItem&gt;
         &lt;muxc:NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item"&gt;
             &lt;muxc:NavigationViewItem.Icon&gt;
-                &lt;SymbolIcon Symbol="Refresh"/&gt;
+                &lt;SymbolIcon Symbol="Refresh" /&gt;
             &lt;/muxc:NavigationViewItem.Icon&gt;
         &lt;/muxc:NavigationViewItem&gt;
     &lt;/muxc:NavigationView.MenuItems&gt;
@@ -346,11 +346,7 @@
     &lt;muxc:NavigationView.PaneCustomContent&gt;
         &lt;HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="$(PaneCustomContentVis)" /&gt;
     &lt;/muxc:NavigationView.PaneCustomContent&gt;
-
-    &lt;muxc:NavigationView.AutoSuggestBox&gt;
-        &lt;AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" /&gt;
-    &lt;/muxc:NavigationView.AutoSuggestBox&gt;
-
+    $(NavViewASB)
     &lt;muxc:NavigationView.PaneFooter&gt;
         &lt;StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="$(PaneFooterVis)"&gt;
             &lt;muxc:NavigationViewItem Icon="Download" AutomationProperties.Name="download" /&gt;
@@ -358,7 +354,7 @@
         &lt;/StackPanel&gt;
     &lt;/muxc:NavigationView.PaneFooter&gt;
 
-    &lt;Frame x:Name="contentFrame"/&gt;
+    &lt;Frame x:Name="contentFrame" /&gt;
 &lt;/muxc:NavigationView&gt;
 </x:String>
             </local:ControlExample.Xaml>
@@ -374,6 +370,15 @@
                 <local:ControlExampleSubstitution Key="PaneDisplayMode" Value="{x:Bind nvSample.PaneDisplayMode, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="SelectionFollowsFocus" Value="{x:Bind nvSample.SelectionFollowsFocus, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="SelectsOnInvoked" Value="{x:Bind SamplePage2Item.SelectsOnInvoked, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution x:Name="navViewASB" Key="NavViewASB">
+                    <local:ControlExampleSubstitution.Value>
+                        <x:String xml:space="preserve">
+    &lt;muxc:NavigationView.AutoSuggestBox&gt;
+        &lt;AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" /&gt;
+    &lt;/muxc:NavigationView.AutoSuggestBox&gt;
+                        </x:String>
+                    </local:ControlExampleSubstitution.Value>
+                </local:ControlExampleSubstitution>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </Grid>

@@ -237,10 +237,13 @@ namespace AppUIBasics.ControlPages
                 AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
                 asb.SetValue(AutomationProperties.NameProperty, "search");
                 nvSample.AutoSuggestBox = asb;
+
+                navViewASB.Value = "\r\n    <muxc:NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "muxc:NavigationView.AutoSuggestBox> \r\n";
             }
             else
             {
                 nvSample.AutoSuggestBox = null;
+                navViewASB.Value = null;
             }
         }
 
