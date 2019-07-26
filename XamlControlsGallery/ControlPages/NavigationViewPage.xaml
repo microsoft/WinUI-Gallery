@@ -370,15 +370,7 @@
                 <local:ControlExampleSubstitution Key="PaneDisplayMode" Value="{x:Bind nvSample.PaneDisplayMode, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="SelectionFollowsFocus" Value="{x:Bind nvSample.SelectionFollowsFocus, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="SelectsOnInvoked" Value="{x:Bind SamplePage2Item.SelectsOnInvoked, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution x:Name="navViewASB" Key="NavViewASB">
-                    <local:ControlExampleSubstitution.Value>
-                        <x:String xml:space="preserve">
-    &lt;muxc:NavigationView.AutoSuggestBox&gt;
-        &lt;AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" /&gt;
-    &lt;/muxc:NavigationView.AutoSuggestBox&gt;
-                        </x:String>
-                    </local:ControlExampleSubstitution.Value>
-                </local:ControlExampleSubstitution>
+                <local:ControlExampleSubstitution x:Name="navViewASB" Key="NavViewASB"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </Grid>

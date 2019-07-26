@@ -51,6 +51,8 @@ namespace AppUIBasics.ControlPages
             Categories.Add(new Category { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" });
             Categories.Add(new Category { Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 4" });
             nvSample4.SelectedItem = firstCategory;
+
+            setASBSubstitutionString();
         }
 
         public Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(Boolean toggleOn)
@@ -238,13 +240,18 @@ namespace AppUIBasics.ControlPages
                 asb.SetValue(AutomationProperties.NameProperty, "search");
                 nvSample.AutoSuggestBox = asb;
 
-                navViewASB.Value = "\r\n    <muxc:NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "muxc:NavigationView.AutoSuggestBox> \r\n";
+                setASBSubstitutionString();
             }
             else
             {
                 nvSample.AutoSuggestBox = null;
                 navViewASB.Value = null;
             }
+        }
+
+        private void setASBSubstitutionString()
+        {
+            navViewASB.Value = "\r\n    <muxc:NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "muxc:NavigationView.AutoSuggestBox> \r\n";
         }
 
         private void panemc_Check_Click(object sender, RoutedEventArgs e)
