@@ -6,7 +6,9 @@ languages:
 products:
   - windows
   - windows-uwp
-description: Demonstrates the usage of all XAML/WinUI controls in an interactive format. 
+statusNotificationTargets:
+- controlsgallery@microsoft.com 
+description: Demonstrates the usage of all XAML/WinUI controls in an interactive format.
 ---
 
 # XAML Controls Gallery
