@@ -1,10 +1,11 @@
 ---
-topic: sample
+page_type: sample
 languages:
-- csharp
+  - csharp
+  - XAML
 products:
-- windows
-- windows-uwp
+  - windows
+  - windows-uwp
 ---
 
 # XAML Controls Gallery
