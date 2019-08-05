@@ -2,7 +2,7 @@
 page_type: sample
 languages:
   - csharp
-  - XAML
+  - xaml
 products:
   - windows
   - windows-uwp
