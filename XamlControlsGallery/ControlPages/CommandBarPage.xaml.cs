@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -18,8 +19,31 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CommandBarPage : Page
+    public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
     {
+        private bool multipleButtons = false;
+
+        public bool MultipleButtons
+        {
+            get
+            {
+                return multipleButtons;
+            }
+            set
+            {
+                multipleButtons = value;
+                OnPropertyChanged("MultipleButtons");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
         public CommandBarPage()
         {
             this.InitializeComponent();
@@ -45,12 +69,14 @@ namespace AppUIBasics.ControlPages
 
             if (PrimaryCommandBar.SecondaryCommands.Count == 1)
             {
+                MultipleButtons = true;
                 var newButton = new AppBarButton();
                 newButton.Icon = new SymbolIcon(Symbol.Add);
                 newButton.Label = "Button 1";
                 newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
                 {
-                    Key = Windows.System.VirtualKey.N, Modifiers = Windows.System.VirtualKeyModifiers.Control
+                    Key = Windows.System.VirtualKey.N,
+                    Modifiers = Windows.System.VirtualKeyModifiers.Control
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
@@ -101,6 +127,7 @@ namespace AppUIBasics.ControlPages
         {
             while (PrimaryCommandBar.SecondaryCommands.Count > 1)
             {
+                MultipleButtons = false;
                 PrimaryCommandBar.SecondaryCommands.RemoveAt(PrimaryCommandBar.SecondaryCommands.Count - 1);
             }
         }
