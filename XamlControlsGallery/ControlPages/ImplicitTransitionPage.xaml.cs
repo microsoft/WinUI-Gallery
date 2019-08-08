@@ -201,19 +201,19 @@ namespace AppUIBasics.ControlPages
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                if ((String)(sender as TextBox).Header == "Opacity")
+                if ((String)(sender as TextBox).Header == "Opacity (0.0 to 1.0)")
                 {
                     OpacityButton_Click(null, null);
                 }
-                if ((String)(sender as TextBox).Header == "Rotation")
+                if ((String)(sender as TextBox).Header == "Rotation (0.0 to 360.0)")
                 {
                     RotationButton_Click(null, null);
                 }
-                if ((String)(sender as TextBox).Header == "Scale")
+                if ((String)(sender as TextBox).Header == "Scale (0.0 to 5.0)")
                 {
                     ScaleButton_Click(null, null);
                 }
-                if ((String)(sender as TextBox).Header == "Translation")
+                if ((String)(sender as TextBox).Header == "Translation (0.0 to 200.0)")
                 {
                     TranslateButton_Click(null, null);
                 }
