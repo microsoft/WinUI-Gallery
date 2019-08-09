@@ -44,15 +44,15 @@ namespace AppUIBasics.ControlPages
             // Add compact button to the command bar. It provides functionality specific
             // to this page, and is removed when leaving the page.
 
-                CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
-                separator = new AppBarSeparator();
-                appBar.PrimaryCommands.Insert(0, separator);
+            CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            separator = new AppBarSeparator();
+            appBar.PrimaryCommands.Insert(0, separator);
 
-                compactButton = new AppBarToggleButton();
-                compactButton.Icon = new SymbolIcon(Symbol.FontSize);
-                compactButton.Label = "IsCompact";
-                compactButton.Click += CompactButton_Click;
-                appBar.PrimaryCommands.Insert(0, compactButton);
+            compactButton = new AppBarToggleButton();
+            compactButton.Icon = new SymbolIcon(Symbol.FontSize);
+            compactButton.Label = "IsCompact";
+            compactButton.Click += CompactButton_Click;
+            appBar.PrimaryCommands.Insert(0, compactButton);
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
@@ -88,6 +88,9 @@ namespace AppUIBasics.ControlPages
                         break;
                     case "Button4":
                         Control4Output.Text = "You clicked: " + name;
+                        break;
+                    case "Button5":
+                        Control5Output.Text = "You clicked: " + name;
                         break;
                 }
             }

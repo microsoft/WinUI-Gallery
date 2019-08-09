@@ -34,7 +34,12 @@
                 <AppBarButton x:Name="shareButton" Icon="ReShare" Label="Share"/>
                 <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
                 <CommandBar.SecondaryCommands>
-                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings"/>
+                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="S" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+
                 </CommandBar.SecondaryCommands>
             </CommandBar>
 
@@ -56,7 +61,11 @@
     &lt;AppBarButton Icon="ReShare" Label="Share"/&gt;
     &lt;AppBarButton Icon="Edit" Label="Edit"/&gt;
     &lt;CommandBar.SecondaryCommands&gt;
-        &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;/&gt;$(MultipleButtonsSecondaryCommands)
+        &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;&gt;$(MultipleButtonsSecondaryCommands)
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="S" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;
     &lt;/CommandBar.SecondaryCommands&gt;
 &lt;/CommandBar&gt;
 </x:String>
