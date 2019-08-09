@@ -393,7 +393,6 @@
             <Style x:Key="AutoSuggestBoxStyle" TargetType="AutoSuggestBox">
                 <Setter Property="VerticalAlignment" Value="Top" />
                 <Setter Property="IsTabStop" Value="False" />
-                <Setter Property="TextBoxStyle" Value="{StaticResource CustomAutoSuggestBoxTextBoxStyle}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="AutoSuggestBox">

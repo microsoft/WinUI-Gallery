@@ -84,7 +84,6 @@
                     PlaceholderText="Search"
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    RequestedTheme="Light"
                     TextChanged="OnControlsSearchBoxTextChanged">
                 </AutoSuggestBox>
             </mux:NavigationView.AutoSuggestBox>
