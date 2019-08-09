@@ -91,5 +91,24 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample x:Name="Example5" HeaderText="An AppBarButton with a KeyboardAccelerator">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton x:Name="Button5" Icon="Save" Label="Save" Click="AppBarButton_Click">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <TextBlock x:Name="Control5Output" Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;AppBarButton Icon="Save" Label="Save" Click="AppBarButton_Click"&gt;
+    &lt;AppBarButton.KeyboardAccelerators&gt;
+        &lt;KeybardAccelerator Modifiers="Control" Key="S"/&gt;
+    &lt;AppBarButton.KeyboardAccelerators/&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
     </StackPanel>
 </Page>

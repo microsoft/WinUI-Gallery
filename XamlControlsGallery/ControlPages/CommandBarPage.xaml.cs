@@ -125,11 +125,6 @@ namespace AppUIBasics.ControlPages
                 Modifiers = Windows.System.VirtualKeyModifiers.Control
             });
 
-            settingsButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
-            {
-                Key = Windows.System.VirtualKey.S,
-                Modifiers = Windows.System.VirtualKeyModifiers.Control
-            });
         }
 
     }
