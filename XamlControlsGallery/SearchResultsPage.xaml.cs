@@ -76,14 +76,28 @@ namespace AppUIBasics
                 // creating a list of user-selectable result categories:
                 var filterList = new List<Filter>();
 
+                // Query is already lowercase
+                var querySplit = queryText.ToLower().Split(" ");
                 foreach (var group in ControlInfoDataSource.Instance.Groups)
                 {
                     var matchingItems =
                         group.Items.Where(item =>
-                            item.Title.ToLower().Contains(queryText) ||
-                            item.Subtitle.ToLower().Contains(queryText))
-                        .ToList();
-
+                        {
+                            // Idea: check for every word entered (separated by space) if it is in the name, 
+                            // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
+                            // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
+                            bool flag = true;
+                            foreach (string queryToken in querySplit)
+                            {
+                                // Check if token is in title or subtitle
+                                if (!item.Title.ToLower().Contains(queryToken) && !item.Subtitle.ToLower().Contains(queryToken))
+                                {
+                                    // Neither title nor sub title contain one of the tokens so we discard this item!
+                                    flag = false;
+                                }
+                            }
+                            return flag;
+                        }).ToList();
                     int numberOfMatchingItems = matchingItems.Count();
 
                     if (numberOfMatchingItems > 0)
