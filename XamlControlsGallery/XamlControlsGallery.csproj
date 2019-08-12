@@ -374,9 +374,6 @@
     <Compile Include="ControlPages\GridViewPage.xaml.cs">
       <DependentUpon>GridViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\HubPage.xaml.cs">
-      <DependentUpon>HubPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\HyperlinkButtonPage.xaml.cs">
       <DependentUpon>HyperlinkButtonPage.xaml</DependentUpon>
     </Compile>
@@ -626,7 +623,6 @@
     <Content Include="Assets\Flyout.png" />
     <Content Include="Assets\Grid.png" />
     <Content Include="Assets\GridView.png" />
-    <Content Include="Assets\Hub.png" />
     <Content Include="Assets\HyperlinkButton.png" />
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\ListBox.png" />
@@ -817,10 +813,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\GridViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\HubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
