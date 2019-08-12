@@ -340,8 +340,7 @@
           "RelatedControls": [
             "GridView",
             "ListView",
-            "SemanticZoom",
-            "Hub"
+            "SemanticZoom"
           ]
         },
         {
@@ -365,8 +364,7 @@
           "RelatedControls": [
             "ListView",
             "FlipView",
-            "SemanticZoom",
-            "Hub"
+            "SemanticZoom"
           ]
         },
         {
@@ -424,8 +422,7 @@
           "RelatedControls": [
             "GridView",
             "FlipView",
-            "SemanticZoom",
-            "Hub"
+            "SemanticZoom"
           ]
         },
         {
@@ -1214,8 +1211,7 @@
           ],
           "RelatedControls": [
             "GridView",
-            "ListView",
-            "Hub"
+            "ListView"
           ]
         }
       ]
@@ -1461,35 +1457,6 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "Hub",
-          "Title": "Hub",
-          "Subtitle": "Presents information from different sources in a scrollable view.",
-          "ImagePath": "ms-appx:///Assets/Hub.png",
-          "Description": "Use a Hub to display information from different source in a single scrollable view.  Hub can also be used to show categorical information in a separated section format.",
-          "Content": "<p>This page shows a simplified <b>Hub</b> control with minimal content to demonstrate basic <b>Hub</b> usage. Look at the <i>HubPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Hub</b> control typically takes up the full page. The app home uses a more fully implemented <b>Hub</b> that demonstrates this. Look at the <i>MainPage.xaml</i> file in Visual Studio to see the full code for the home page <b>Hub</b>.</p>",
-          "IsNew": false,
-          "Docs": [
-            {
-              "Title": "Hub - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.hub"
-            },
-            {
-              "Title": "HubSection - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.hubsection"
-            },
-            {
-              "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/hub"
-            }
-          ],
-          "RelatedControls": [
-            "Pivot",
-            "SemanticZoom",
-            "ListView",
-            "GridView"
-          ]
-        },
-        {
           "UniqueId": "NavigationView",
           "Title": "NavigationView",
           "Subtitle": "Common vertical layout for top-level areas of your app via a collapsible navigation menu.",
@@ -1531,7 +1498,6 @@
             }
           ],
           "RelatedControls": [
-            "Hub",
             "SemanticZoom",
             "ListView",
             "GridView"
