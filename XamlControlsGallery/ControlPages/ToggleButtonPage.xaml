@@ -32,9 +32,13 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click"/&gt;
+                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click" $(IsEnabled)/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableToggle1.IsChecked.Value, Mode=OneWay}"
+                                                  Value= "IsEnabled=&quot;False&quot; "/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
