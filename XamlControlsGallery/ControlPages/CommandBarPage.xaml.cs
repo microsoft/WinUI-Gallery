@@ -128,9 +128,9 @@ namespace AppUIBasics.ControlPages
         {
             while (PrimaryCommandBar.SecondaryCommands.Count > 1)
             {
-                MultipleButtons = false;
                 PrimaryCommandBar.SecondaryCommands.RemoveAt(PrimaryCommandBar.SecondaryCommands.Count - 1);
-            }
+            }                
+            MultipleButtons = false;
         }
 
 
