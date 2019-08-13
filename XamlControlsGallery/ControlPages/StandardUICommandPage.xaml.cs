@@ -98,8 +98,8 @@ namespace AppUIBasics.ControlPages
             ListItemData data = (ListItemData)args.Item;
             MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command };
             flyout.Opened += delegate (object element, object e) {
-                var flyOutElement = element as MenuFlyout;
-                var elementToHighlight = flyOutElement.Target as ListViewItem;
+                MenuFlyout flyoutElement = element as MenuFlyout;
+                ListViewItem elementToHighlight = flyoutElement.Target as ListViewItem;
                 elementToHighlight.IsSelected = true;
             };
             flyout.Items.Add(item);
