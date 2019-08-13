@@ -78,7 +78,6 @@
             <mux:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
-                    Style="{StaticResource AutoSuggestBoxStyle}"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
                     PlaceholderText="Search"
