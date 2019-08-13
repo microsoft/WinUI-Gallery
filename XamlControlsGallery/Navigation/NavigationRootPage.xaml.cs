@@ -167,7 +167,7 @@ namespace AppUIBasics
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsFocusSupported)
+            if (IsFocusSupported && NavigationViewControl.IsPaneOpen)
             {
                 controlsSearchBox.Focus(FocusState.Keyboard);
             }
