@@ -109,8 +109,8 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-                MultipleButtons = true;
             }
+            MultipleButtons = true;
         }
 
         private void RemoveSecondaryCommands_Click(object sender, RoutedEventArgs e)
