@@ -69,7 +69,6 @@ namespace AppUIBasics.ControlPages
 
             if (PrimaryCommandBar.SecondaryCommands.Count == 1)
             {
-                MultipleButtons = true;
                 var newButton = new AppBarButton();
                 newButton.Icon = new SymbolIcon(Symbol.Add);
                 newButton.Label = "Button 1";
@@ -109,6 +108,8 @@ namespace AppUIBasics.ControlPages
                     Modifiers = Windows.System.VirtualKeyModifiers.Control
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
+
+                MultipleButtons = true;
             }
         }
 
