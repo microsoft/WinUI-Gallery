@@ -169,9 +169,8 @@ namespace AppUIBasics
         {
             if (IsFocusSupported)
             {
-                _newControlsMenuItem.Focus(FocusState.Keyboard);
+                controlsSearchBox.Focus(FocusState.Keyboard);
             }
-            _newControlsMenuItem.IsSelected = true;
         }
 
         private void OnGamepadRemoved(object sender, Gamepad e)
