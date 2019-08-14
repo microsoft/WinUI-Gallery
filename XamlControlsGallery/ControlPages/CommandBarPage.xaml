@@ -18,6 +18,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <x:String x:Key="MultipleButtonsSecondaryCommands" xml:space="preserve">
+        &lt;AppBarButton Icon="Add" Label="Button 1"/&gt;
+        &lt;AppBarButton Icon="Delete" Label="Button 2"/&gt;
+        &lt;AppBarSeparator /&gt;
+        &lt;AppBarButton Icon="FontDecrease" Label="Button 3"/&gt;
+        &lt;AppBarButton Icon="FontIncrease" Label="Button 4"/&gt;</x:String>
+    </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
 
@@ -43,16 +51,21 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right"&gt;
+&lt;CommandBar Background="Transparent" IsOpen="$(IsOpen)" DefaultLabelPosition="Right"$(IsSticky)&gt;
     &lt;AppBarButton Icon="Add" Label="Add"/&gt;
     &lt;AppBarButton Icon="ReShare" Label="Share"/&gt;
     &lt;AppBarButton Icon="Edit" Label="Edit"/&gt;
     &lt;CommandBar.SecondaryCommands&gt;
-        &lt;AppBarButton Icon="Setting" Label="Settings"/&gt;
+        &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;/&gt;$(MultipleButtonsSecondaryCommands)
     &lt;/CommandBar.SecondaryCommands&gt;
 &lt;/CommandBar&gt;
 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsOpen" IsEnabled="True" Value="{x:Bind PrimaryCommandBar.IsOpen, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsSticky" IsEnabled="{x:Bind PrimaryCommandBar.IsSticky, Mode=OneWay}" Value=" IsSticky=&quot;True&quot; " />
+                <local:ControlExampleSubstitution Key="MultipleButtonsSecondaryCommands" IsEnabled="{x:Bind MultipleButtons, Mode=OneWay}" Value="{StaticResource MultipleButtonsSecondaryCommands}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>      
     </StackPanel>
 </Page>
