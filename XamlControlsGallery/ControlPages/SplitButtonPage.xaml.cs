@@ -9,6 +9,9 @@ namespace AppUIBasics.ControlPages
         public SplitButtonPage()
         {
             this.InitializeComponent();
+            myRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
         }
 
         private void ColorButton_Click(object sender, RoutedEventArgs e)
