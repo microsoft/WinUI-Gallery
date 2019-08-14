@@ -91,7 +91,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example5" HeaderText="An AppBarButton with a KeyboardAccelerator">
+        <local:ControlExample x:Name="Example5" HeaderText="An AppBarButton with \"Ctrl+S\" accelerator.">
             <StackPanel Orientation="Horizontal">
                 <AppBarButton x:Name="Button5" Icon="Save" Label="Save" Click="AppBarButton_Click">
                     <AppBarButton.KeyboardAccelerators>
