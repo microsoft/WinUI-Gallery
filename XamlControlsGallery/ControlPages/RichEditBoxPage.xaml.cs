@@ -24,6 +24,8 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
+        private Color currentColor = Colors.Black;
+
         public RichEditBoxPage()
         {
             this.InitializeComponent();
@@ -119,6 +121,7 @@ namespace AppUIBasics.ControlPages
 
             fontColorButton.Flyout.Hide();
             editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+            currentColor = color;
         }
 
         private void FindBoxHighlightMatches()
@@ -197,6 +200,12 @@ namespace AppUIBasics.ControlPages
                 REBCustom.SelectionFlyout.Opening -= Menu_Opening;
                 REBCustom.ContextFlyout.Opening -= Menu_Opening;
             }
-        } 
+        }
+
+        private void Editor_TextChanged(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
+
+        }
     }
 }
