@@ -205,7 +205,6 @@ namespace AppUIBasics.ControlPages
         private void Editor_TextChanged(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-
         }
     }
 }
