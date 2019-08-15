@@ -203,6 +203,8 @@ namespace AppUIBasics
                 ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
             }
 
+            // We use reflection to call the OnNavigatedFrom function the user leaves this page
+            // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
             Frame contentFrameAsFrame = contentFrame as Frame;
             Page innerPage = contentFrameAsFrame.Content as Page;
             MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
