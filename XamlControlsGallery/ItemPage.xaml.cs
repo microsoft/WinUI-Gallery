@@ -50,6 +50,13 @@ namespace AppUIBasics
 
             LayoutVisualStates.CurrentStateChanged += (s, e) => UpdateSeeAlsoPanelVerticalTranslationAnimation();
             Loaded += (s,e) => SetInitialVisuals();
+            this.Unloaded += this.ItemPage_Unloaded;
+        }
+
+        private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Notifying the pageheader that this Itempage was unloaded
+            NavigationRootPage.Current.PageHeader.Event_ItemPage_Unloaded(sender, e);
         }
 
         public void SetInitialVisuals()
