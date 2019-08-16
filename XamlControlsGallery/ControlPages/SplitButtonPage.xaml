@@ -26,11 +26,11 @@
                     <Rectangle x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Fill="Black" Margin="0"/>
                     <muxcontrols:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <Flyout.FlyoutPresenterStyle>
+                            <contract8Present:Flyout.FlyoutPresenterStyle>
                                 <Style TargetType="FlyoutPresenter">
-                                    <contract8Present:Setter  Property="IsDefaultShadowEnabled" Value="True" />
+                                    <Setter Property="IsDefaultShadowEnabled" Value="True" />
                                 </Style>
-                            </Flyout.FlyoutPresenterStyle>
+                            </contract8Present:Flyout.FlyoutPresenterStyle>
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                                 <VariableSizedWrapGrid.Resources>
                                     <Style TargetType="Rectangle">

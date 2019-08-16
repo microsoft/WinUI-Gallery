@@ -21,11 +21,11 @@
                     <SymbolIcon x:Name="mySymbolIcon" Symbol="List"/>
                     <muxcontrols:ToggleSplitButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <Flyout.FlyoutPresenterStyle>
+                            <contract8Present:Flyout.FlyoutPresenterStyle>
                                 <Style TargetType="FlyoutPresenter">
-                                    <contract8Present:Setter  Property="IsDefaultShadowEnabled" Value="True" />
+                                    <Setter Property="IsDefaultShadowEnabled" Value="True" />
                                 </Style>
-                            </Flyout.FlyoutPresenterStyle>
+                            </contract8Present:Flyout.FlyoutPresenterStyle>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
