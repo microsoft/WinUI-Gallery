@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
       mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Using ToggleSplitButton to control bulleted list functionality in RichEditBox" 
@@ -20,6 +21,11 @@
                     <SymbolIcon x:Name="mySymbolIcon" Symbol="List"/>
                     <muxcontrols:ToggleSplitButton.Flyout>
                         <Flyout Placement="Bottom">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <contract8Present:Setter  Property="IsDefaultShadowEnabled" Value="True" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">

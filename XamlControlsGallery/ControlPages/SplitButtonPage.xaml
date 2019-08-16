@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,8)"
       mc:Ignorable="d">
 
     <Page.Resources>
@@ -25,6 +26,11 @@
                     <Rectangle x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Fill="Black" Margin="0"/>
                     <muxcontrols:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <contract8Present:Setter  Property="IsDefaultShadowEnabled" Value="True" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                                 <VariableSizedWrapGrid.Resources>
                                     <Style TargetType="Rectangle">
