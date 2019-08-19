@@ -13,14 +13,19 @@ namespace AppUIBasics.ControlPages
 
             for (int i = 0; i < 3; i++)
             {
-                TabView1.Items.Add(CreateNewTab(i));
-                TabView2.Items.Add(CreateNewTab(i));
+                TabView1.TabItems.Add(CreateNewTab(i));
+                TabView2.TabItems.Add(CreateNewTab(i));
             }
         }
 
         private void TabView_AddButtonClick(TabView sender, object args)
         {
-            sender.Items.Add(CreateNewTab(sender.Items.Count));
+            sender.TabItems.Add(CreateNewTab(sender.TabItems.Count));
+        }
+
+        private void TabView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            sender.TabItems.Remove(args.Tab);
         }
 
         private TabViewItem CreateNewTab(int index)
@@ -28,7 +33,7 @@ namespace AppUIBasics.ControlPages
             TabViewItem newItem = new TabViewItem();
 
             newItem.Header = "Document " + index;
-            newItem.Icon = new SymbolIcon(Symbol.Document);
+            newItem.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document};
 
             Frame frame = new Frame();
 
@@ -53,7 +58,7 @@ namespace AppUIBasics.ControlPages
         private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             var senderTabView = args.Element as TabView;
-            senderTabView.Items.Add(CreateNewTab(senderTabView.Items.Count));
+            senderTabView.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
         }
 
         private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
@@ -61,9 +66,9 @@ namespace AppUIBasics.ControlPages
             var InvokedTabView = (args.Element as TabView);
 
             // Only close the selected tab if it is closeable
-            if (((TabViewItem)InvokedTabView.SelectedItem).IsCloseable)
+            if (((TabViewItem)InvokedTabView.SelectedItem).IsClosable)
             {
-                InvokedTabView.Items.Remove(InvokedTabView.SelectedItem);
+                InvokedTabView.TabItems.Remove(InvokedTabView.SelectedItem);
             }
         }
 
@@ -101,12 +106,12 @@ namespace AppUIBasics.ControlPages
                     break;
                 case Windows.System.VirtualKey.Number9:
                     // Select the last tab
-                    tabToSelect = InvokedTabView.Items.Count - 1;
+                    tabToSelect = InvokedTabView.TabItems.Count - 1;
                     break;
             }
 
             // Only select the tab if it is in the list
-            if (tabToSelect < InvokedTabView.Items.Count)
+            if (tabToSelect < InvokedTabView.TabItems.Count)
             {
                 InvokedTabView.SelectedIndex = tabToSelect;
             }

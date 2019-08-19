@@ -157,6 +157,9 @@
     <Content Include="Assets\Sun-100-Black.png" />
     <Content Include="Assets\Sun.32.scale-100-White.png" />
     <Content Include="Assets\Swipe.png" />
+    <Content Include="Assets\TabViewIcons\cmd.png" />
+    <Content Include="Assets\TabViewIcons\linux.png" />
+    <Content Include="Assets\TabViewIcons\powershell.png" />
     <Content Include="Assets\TeachingTip.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
@@ -588,6 +591,12 @@
     </Compile>
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabViewPages\MyTabContentControl.xaml.cs">
+      <DependentUpon>MyTabContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabViewPages\TabViewWindowingSamplePage.xaml.cs">
+      <DependentUpon>TabViewWindowingSamplePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1087,6 +1096,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TabViewPages\MyTabContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabViewPages\TabViewWindowingSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ColorCode.UWP">
@@ -1096,7 +1113,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190702001-prerelease</Version>
+      <Version>2.2.190815004-prerelease</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
@@ -1108,6 +1125,7 @@
   <ItemGroup>
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
