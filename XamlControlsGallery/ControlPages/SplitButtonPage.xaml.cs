@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -6,6 +7,8 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class SplitButtonPage : Page
     {
+        private Color currentColor = Colors.Black;
+
         public SplitButtonPage()
         {
             this.InitializeComponent();
@@ -26,6 +29,7 @@ namespace AppUIBasics.ControlPages
 
             myColorButton.Flyout.Hide();
             myRichEditBox.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+            currentColor = color;
         }
 
         private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
@@ -34,6 +38,12 @@ namespace AppUIBasics.ControlPages
             var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
+            currentColor = color;
+        }
+
+        private void MyRichEditBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
         }
     }
 }
