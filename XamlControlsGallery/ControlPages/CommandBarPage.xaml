@@ -20,11 +20,27 @@
 
     <Page.Resources>
         <x:String x:Key="MultipleButtonsSecondaryCommands" xml:space="preserve">
-        &lt;AppBarButton Icon="Add" Label="Button 1"/&gt;
-        &lt;AppBarButton Icon="Delete" Label="Button 2"/&gt;
+        &lt;AppBarButton Icon="Add" Label="Button 1"&gt;
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="N" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;
+        &lt;AppBarButton Icon="Delete" Label="Button 2"&gt;
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Key="Delete" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;
         &lt;AppBarSeparator /&gt;
-        &lt;AppBarButton Icon="FontDecrease" Label="Button 3"/&gt;
-        &lt;AppBarButton Icon="FontIncrease" Label="Button 4"/&gt;</x:String>
+        &lt;AppBarButton Icon="FontDecrease" Label="Button 3"&gt;
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="Subtract" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;
+        &lt;AppBarButton Icon="FontIncrease" Label="Button 4"&gt;
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="Add" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;</x:String>
     </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
@@ -34,7 +50,12 @@
                 <AppBarButton x:Name="shareButton" Icon="ReShare" Label="Share"/>
                 <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
                 <CommandBar.SecondaryCommands>
-                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings"/>
+                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="S" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+
                 </CommandBar.SecondaryCommands>
             </CommandBar>
 
@@ -56,7 +77,11 @@
     &lt;AppBarButton Icon="ReShare" Label="Share"/&gt;
     &lt;AppBarButton Icon="Edit" Label="Edit"/&gt;
     &lt;CommandBar.SecondaryCommands&gt;
-        &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;/&gt;$(MultipleButtonsSecondaryCommands)
+        &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;&gt;
+            &lt;AppBarButton.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="S" /&gt;
+            &lt;/AppBarButton.KeyboardAccelerators&gt;
+        &lt;/AppBarButton&gt;$(MultipleButtonsSecondaryCommands)
     &lt;/CommandBar.SecondaryCommands&gt;
 &lt;/CommandBar&gt;
 </x:String>
