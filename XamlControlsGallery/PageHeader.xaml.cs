@@ -29,6 +29,7 @@ namespace AppUIBasics
         public TeachingTip TeachingTip2 => ToggleThemeTeachingTip2;
         public TeachingTip TeachingTip3 => ToggleThemeTeachingTip3;
 
+
         public object Title
         {
             get { return GetValue(TitleProperty); }
@@ -86,6 +87,17 @@ namespace AppUIBasics
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
             NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
+        }
+
+        /// <summary>
+        /// This method will be called when a <see cref="ItemPage"/> gets unloaded. 
+        /// Put any code in here that should be done when a <see cref="ItemPage"/> gets unloaded.
+        /// </summary>
+        /// <param name="sender">The sender (the ItemPage)</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> of the ItemPage that was unloaded.</param>
+        public void Event_ItemPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
