@@ -11,16 +11,14 @@
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <muxcontrols:TabView x:Name="Tabs" 
-                       VerticalAlignment="Stretch"
-                       AddTabButtonClick="Tabs_AddTabButtonClick"
-                       
-                       AllowDropTabs="True"
-                       TabDroppedOutside="Tabs_TabDroppedOutside"
-                       
-                       TabStripDragOver="Tabs_TabStripDragOver"
-                       TabStripDrop="Tabs_TabStripDrop"
-                       TabDragStarting="Tabs_TabDragStarting"
-                       >
+                             VerticalAlignment="Stretch"
+                             AddTabButtonClick="Tabs_AddTabButtonClick"
+                             TabCloseRequested="Tabs_TabCloseRequested"
+                             AllowDropTabs="True"
+                             TabDroppedOutside="Tabs_TabDroppedOutside"
+                             TabStripDragOver="Tabs_TabStripDragOver"
+                             TabStripDrop="Tabs_TabStripDrop"
+                             TabDragStarting="Tabs_TabDragStarting" >
             <muxcontrols:TabView.TabStripFooter>
                 <Grid x:Name="CustomDragRegion" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </muxcontrols:TabView.TabStripFooter>

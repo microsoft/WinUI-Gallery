@@ -105,7 +105,7 @@
                             <muxcontrols:TabViewItem.IconSource>
                                 <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
                             </muxcontrols:TabViewItem.IconSource>
-
+                            
                         </muxcontrols:TabViewItem>
                         <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
                             <muxcontrols:TabViewItem.IconSource>
@@ -118,27 +118,21 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView&gt;
-    &lt;TabView.Items&gt;
-        &lt;TabViewItem Header="CMD Prompt" IsCloseable="False"&gt;
-            &lt;TabViewItem.Icon&gt;
-                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.Icon&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Powershell" IsCloseable="False"&gt;
-            &lt;TabViewItem.Icon&gt;
-                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.Icon&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Windows Subsystem for Linux" IsCloseable="False"&gt;
-            &lt;TabViewItem.Icon&gt;
-                &lt;BitmapIcon UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.Icon&gt;
-        &lt;/TabViewItem&gt;
-    &lt;/TabView.Items&gt;
-&lt;/TabView&gt;
+                    TODO
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <local:ControlExample HeaderText="Complete TabView windowing sample">
+            <local:ControlExample.Example>
+                <Button Content="Click here to launch the sample" Click="TabViewWindowingButton_Click"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    Check out the TabViewWindowingSamplePage.xaml and *.cs files to see the complete code.
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
     </StackPanel>
 </Page>

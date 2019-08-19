@@ -86,6 +86,10 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItems.Add(tab);
         }
 
+        private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            sender.TabItems.Remove(args.Tab);
+        }
 
         // Create a new Window once the Tab is dragged outside.
         private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
