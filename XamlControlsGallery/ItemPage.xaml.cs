@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -26,6 +26,7 @@ using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using System.Reflection;
 
 namespace AppUIBasics
 {
@@ -201,6 +202,14 @@ namespace AppUIBasics
                 var target = NavigationRootPage.Current.PageHeader.TitlePanel;
                 ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
             }
+
+            // We use reflection to call the OnNavigatedFrom function the user leaves this page
+            // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
+            Frame contentFrameAsFrame = contentFrame as Frame;
+            Page innerPage = contentFrameAsFrame.Content as Page;
+            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            dynMethod.Invoke(innerPage, new object[] { e });
 
             base.OnNavigatedFrom(e);
         }
