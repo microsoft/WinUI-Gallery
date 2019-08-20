@@ -16,11 +16,12 @@ namespace AppUIBasics.ControlPages
         public TabViewPage()
         {
             this.InitializeComponent();
-
+        }
+        private void TabView_Loaded(object sender, RoutedEventArgs e)
+        {
             for (int i = 0; i < 3; i++)
             {
-                TabView1.TabItems.Add(CreateNewTab(i));
-                TabView2.TabItems.Add(CreateNewTab(i));
+                (sender as TabView).TabItems.Add(CreateNewTab(i));
             }
         }
 

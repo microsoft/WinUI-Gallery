@@ -11,11 +11,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <!-- TODO: BUG: TabStrip scrolling doesn't work? Add a bunch of tabs - the content is the right size, but the tabs flow offscreen -->
-        <!-- TODO: BUG: Add animation disabled? -->
         <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" MinHeight="475"/>
+                <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
@@ -28,7 +26,7 @@
             <local:ControlExample.Example>
                 <!-- TODO: BUG: HorizontalAlignment="stretch" doesn't work? -->
                 <!-- TODO: BUG: Mousewheel should close the tab -->
-                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" MinHeight="475">
+                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
                     <muxcontrols:TabView.KeyboardAccelerators>
                         <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
                         <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
@@ -119,6 +117,30 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
                     TODO
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="A TabView with accent colored TabStrip background">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView x:Name="TabView5" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                    <muxcontrols:TabView.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorLight2}"/>
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorDark2}"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </muxcontrols:TabView.Resources>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;TODO /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
