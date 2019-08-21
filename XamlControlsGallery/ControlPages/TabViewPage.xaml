@@ -17,12 +17,12 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TODO /&gt;
+                    &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with keyboarding support (Ctrl+T, Ctrl+W, Ctrl+1-9)">
+        <local:ControlExample HeaderText="A TabView with keyboarding support (Ctrl+T, Ctrl+W, Ctrl+1-9)" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
             <local:ControlExample.Example>
                 <!-- TODO: BUG: HorizontalAlignment="stretch" doesn't work? -->
                 <!-- TODO: BUG: Mousewheel should close the tab -->
@@ -43,8 +43,22 @@
                 </muxcontrols:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;TODO /&gt;
+                <x:String xml:space="preserve">
+&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"&gt;
+    &lt;TabView.KeyboardAccelerators&gt;
+        &lt;KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number2" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number3" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number4" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number5" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number6" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+    &lt;/TabView.KeyboardAccelerators&gt;
+&lt;/TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -103,7 +117,6 @@
                             <muxcontrols:TabViewItem.IconSource>
                                 <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
                             </muxcontrols:TabViewItem.IconSource>
-                            
                         </muxcontrols:TabViewItem>
                         <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
                             <muxcontrols:TabViewItem.IconSource>
@@ -116,7 +129,25 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-                    TODO
+&lt;TabView&gt;
+    &lt;TabView.TabItems&gt;
+        &lt;TabViewItem Header="CMD Prompt"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Powershell"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Windows Subsystem for Linux"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+    &lt;/TabView.TabItems&gt;
+&lt;/TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -139,8 +170,21 @@
                 </muxcontrols:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;TODO /&gt;
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;ResourceDictionary.ThemeDictionaries&gt;
+                &lt;ResourceDictionary x:Key="Light"&gt;
+                    &lt;SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorLight2}"/&gt;
+                &lt;/ResourceDictionary&gt;
+                &lt;ResourceDictionary x:Key="Dark"&gt;
+                    &lt;SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorDark2}"/&gt;
+                &lt;/ResourceDictionary&gt;
+            &lt;/ResourceDictionary.ThemeDictionaries&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/TabView.Resources&gt;
+&lt;/TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
