@@ -167,11 +167,10 @@ namespace AppUIBasics
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsFocusSupported)
+            if (IsFocusSupported && NavigationViewControl.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded)
             {
-                _newControlsMenuItem.Focus(FocusState.Keyboard);
+                controlsSearchBox.Focus(FocusState.Keyboard);
             }
-            _newControlsMenuItem.IsSelected = true;
         }
 
         private void OnGamepadRemoved(object sender, Gamepad e)
