@@ -1175,11 +1175,11 @@
           "Docs": [
             {
               "Title": "ScrollViewer - API",
-              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.scrollviewer"
             },
             {
               "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/scroll-controls"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/scroll-controls"
             }
           ],
           "RelatedControls": [
