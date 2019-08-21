@@ -68,7 +68,7 @@
         <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="Red" IsTextSelectionEnabled="True">
             <Paragraph>
                 This sample requires a later version of Windows to be fully functional. Learn more about version adaptive apps:
-                <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-apps">https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/version-adaptive-apps</Hyperlink>
+                <Hyperlink NavigateUri="https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps">https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps</Hyperlink>
             </Paragraph>
         </RichTextBlock>
 
