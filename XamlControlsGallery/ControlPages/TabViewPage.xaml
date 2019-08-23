@@ -63,6 +63,31 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
+                    <muxcontrols:TabView.TabStripHeader>
+                        <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
+                    </muxcontrols:TabView.TabStripHeader>
+                    <muxcontrols:TabView.TabStripFooter>
+                        <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
+                    </muxcontrols:TabView.TabStripFooter>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.TabStripHeader&gt;
+        &lt;TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
+    &lt;/TabView.TabStripHeader&gt;
+    &lt;TabView.TabStripFooter&gt;
+        &lt;TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
+    &lt;/TabView.TabStripFooter&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="Tab widths can either be equally sized or sized to the content of the tab">
             <local:ControlExample.Example>
                 <muxcontrols:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
