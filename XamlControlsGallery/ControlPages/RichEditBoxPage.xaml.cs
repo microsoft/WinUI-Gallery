@@ -163,7 +163,6 @@ namespace AppUIBasics.ControlPages
             if (background != null && foreground != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
-                documentRange.CharacterFormat.ForegroundColor = foreground.Color;
             }
         }
 
