@@ -27,7 +27,7 @@ namespace AppUIBasics.ControlPages
     {
         private Color currentColor = Colors.Black;
         // String used to restore the colors when the focus gets reenabled
-        // See #146 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/146
+        // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
         private string LastFormattedText = "";
         public RichEditBoxPage()
         {
