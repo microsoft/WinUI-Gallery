@@ -9,6 +9,7 @@
 //*********************************************************
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -25,7 +26,9 @@ namespace AppUIBasics.ControlPages
     public sealed partial class RichEditBoxPage : Page
     {
         private Color currentColor = Colors.Black;
-
+        // String used to restore the colors when the focus gets reenabled
+        // See #146 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/146
+        private string LastFormattedText = "";
         public RichEditBoxPage()
         {
             this.InitializeComponent();
@@ -160,11 +163,19 @@ namespace AppUIBasics.ControlPages
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
             SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
 
+            editor.Document.ApplyDisplayUpdates();
+
             if (background != null && foreground != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
                 documentRange.CharacterFormat.ForegroundColor = foreground.Color;
             }
+            editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
+        }
+
+        private void Editor_LosingFocus(object sender,RoutedEventArgs e)
+        {
+            editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)

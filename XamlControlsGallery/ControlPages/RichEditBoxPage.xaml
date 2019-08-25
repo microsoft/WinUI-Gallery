@@ -156,7 +156,8 @@
                              RelativePanel.AlignLeftWithPanel="True" 
                              RelativePanel.AlignRightWithPanel="True" 
                              TextChanged="Editor_TextChanged"
-                             GotFocus="Editor_GotFocus"/>
+                             GotFocus="Editor_GotFocus"
+                             LosingFocus="Editor_LosingFocus"/>
                 <StackPanel Orientation="Horizontal" 
                             RelativePanel.Below="editor" 
                             RelativePanel.AlignLeftWith="editor" 
