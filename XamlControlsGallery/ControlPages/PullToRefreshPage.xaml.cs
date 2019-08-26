@@ -64,10 +64,10 @@ namespace AppUIBasics.ControlPages
                 Image ptrImage = new Image();
                 if (App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
                 {
-                    ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/sun-100-Black.png"));
+                    ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
                 } else
                 {
-                    ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/Sun.32.scale-100-White.png"));
+                    ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunWhite.png"));
                 }
 
                 ptrImage.Width = 35;

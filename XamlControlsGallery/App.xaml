@@ -26,13 +26,11 @@
                 <ResourceDictionary x:Key="Light">
                     <StaticResource x:Key="HomePageBackgroundBrush" ResourceKey="ApplicationPageBackgroundThemeBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <ImageSource x:Key="PTRCustom">ms-appx:///Assets/SunBlack.png</ImageSource>
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <StaticResource x:Key="HomePageBackgroundBrush" ResourceKey="ApplicationPageBackgroundThemeBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <ImageSource x:Key="PTRCustom">ms-appx:///Assets/SunWhite.png</ImageSource>
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
