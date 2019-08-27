@@ -37,7 +37,6 @@ namespace AppUIBasics.TabViewPages
                 // Main Window -- add some default items
                 for (int i = 0; i < 3; i++)
                 {
-                    // TODO: Add a user control to the content of the TabViewItem
                     Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new MyTabContentControl() { DataContext = $"Page {i}" } });
                 }
 
@@ -129,10 +128,6 @@ namespace AppUIBasics.TabViewPages
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
-            // TODO: This crashes when updating to WinUI because e.Items[0] is NULL. Why?
-
-            // TODO: Why does e.Items[0] return the ToggleSwitch and not the item itself??
-
             // We can only drag one tab at a time, so grab the first one...
             var firstItem = args.Tab;
 
