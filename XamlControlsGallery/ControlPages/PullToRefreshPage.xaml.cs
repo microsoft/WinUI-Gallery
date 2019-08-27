@@ -9,6 +9,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -62,7 +63,13 @@ namespace AppUIBasics.ControlPages
                     new TypedEventHandler<RefreshVisualizer, RefreshStateChangedEventArgs>(rv2_RefreshStateChanged);
 
                 Image ptrImage = new Image();
-                if (App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
+                // Checking is mode is high contrast and user uses one of the high contrast modes where white icon would be better
+                AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
+                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
+                    && !(accessibilitySettings.HighContrast 
+                            && accessibilitySettings.HighContrastScheme.Equals("High Contrast White")
+                            || accessibilitySettings.HighContrastScheme.Equals("High Contrast #1") 
+                            || accessibilitySettings.HighContrastScheme.Equals("High Contrast #2")))
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
                 } else
