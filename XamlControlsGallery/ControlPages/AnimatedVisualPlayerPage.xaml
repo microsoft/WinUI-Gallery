@@ -65,7 +65,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="PlayButton_Click"
-                            AutomationProperties.Name="Play video button">
+                            AutomationProperties.Name="Play">
                             <SymbolIcon Symbol="Play" />
                         </Button>
                         <!--  Pause  -->
@@ -76,7 +76,7 @@
                                   Checked="PauseButton_Checked"
                                   IsThreeState="False"
                                   Unchecked="PauseButton_Unchecked"
-                                  AutomationProperties.Name="Pause video button">
+                                  AutomationProperties.Name="Pause">
                             <SymbolIcon Symbol="Pause" />
                         </ToggleButton>
                         <!--  Resume  -->
@@ -85,7 +85,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="StopButton_Click"
-                            AutomationProperties.Name="Stop video button">
+                            AutomationProperties.Name="Stop">
                             <SymbolIcon Symbol="Stop" />
                         </Button>
                         <!--  Reverse  -->
@@ -94,7 +94,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="ReverseButton_Click"
-                            AutomationProperties.Name="Reverse video button">
+                            AutomationProperties.Name="Reverse">
                             <SymbolIcon Symbol="Previous" />
                         </Button>
                     </Grid>
