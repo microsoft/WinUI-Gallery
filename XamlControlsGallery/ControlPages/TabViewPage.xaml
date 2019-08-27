@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
     xmlns:samplepages="using:AppUIBasics.SamplePages"
+    xmlns:local1="using:AppUIBasics.ControlPages"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -18,6 +19,23 @@
             <local:ControlExample.Xaml>
                 <x:String>
                     &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView x:Name="TabViewItemsSourceSample" SelectedIndex="0" Margin="-12" MinHeight="475" TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested">
+                    <muxcontrols:TabView.TabItemTemplate>
+                        <DataTemplate x:DataType="local1:MyData">
+                            <muxcontrols:TabViewItem Header="{x:Bind DataHeader}" IconSource="{x:Bind DataIconSource}" Content="{x:Bind DataContent}" />
+                        </DataTemplate>
+                    </muxcontrols:TabView.TabItemTemplate >
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

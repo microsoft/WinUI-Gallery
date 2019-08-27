@@ -8,15 +8,28 @@ using Windows.UI.Xaml;
 using Windows.UI.ViewManagement;
 using Windows.UI.Core;
 using AppUIBasics.TabViewPages;
+using System.Collections.ObjectModel;
 
 namespace AppUIBasics.ControlPages
 {
+    public class MyData
+    {
+        public string DataHeader { get; set; }
+        public Microsoft.UI.Xaml.Controls.IconSource DataIconSource { get; set; }
+        public object DataContent { get; set; }
+    }
+
     public sealed partial class TabViewPage : Page
     {
+        ObservableCollection<MyData> myDatas;
+
         public TabViewPage()
         {
             this.InitializeComponent();
+
+            InitializeDataBindingSampleData();
         }
+        
         private void TabView_Loaded(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 3; i++)
@@ -39,8 +52,8 @@ namespace AppUIBasics.ControlPages
         {
             TabViewItem newItem = new TabViewItem();
 
-            newItem.Header = "Document " + index;
-            newItem.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document};
+            newItem.Header = $"Document {index}";
+            newItem.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
 
             Frame frame = new Frame();
 
@@ -61,6 +74,56 @@ namespace AppUIBasics.ControlPages
 
             return newItem;
         }
+
+        #region ItemsSourceSample
+        private void InitializeDataBindingSampleData()
+        {
+            myDatas = new ObservableCollection<MyData>();
+
+            for (int index = 0; index < 3; index++)
+            {
+                myDatas.Add(CreateNewMyData(index));
+            }
+        }
+
+        private MyData CreateNewMyData(int index)
+        {
+            var newData = new MyData();
+            newData.DataHeader = $"MyData Doc {index}";
+            newData.DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder };
+
+            Frame frame = new Frame();
+
+            switch (index % 3)
+            {
+                case 0:
+                    frame.Navigate(typeof(SamplePage1));
+                    break;
+                case 1:
+                    frame.Navigate(typeof(SamplePage2));
+                    break;
+                case 2:
+                    frame.Navigate(typeof(SamplePage3));
+                    break;
+            }
+
+            newData.DataContent = frame;
+
+            return newData;
+        }
+
+        private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args)
+        {
+            // Add a new MyData item to the collection. TabView automatically generates a TabViewItem.
+            myDatas.Add(CreateNewMyData(myDatas.Count));
+        }
+
+        private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            // Remove the requested MyData object from the collection. 
+            myDatas.Remove(args.Item as MyData);
+        }
+        #endregion
 
         private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
