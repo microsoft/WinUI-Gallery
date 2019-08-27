@@ -19,8 +19,11 @@
                              TabStripDragOver="Tabs_TabStripDragOver"
                              TabStripDrop="Tabs_TabStripDrop"
                              TabDragStarting="Tabs_TabDragStarting" >
+            <muxcontrols:TabView.TabStripHeader>
+                <Grid x:Name="ShellTitlebarInset" Background="Transparent" />
+            </muxcontrols:TabView.TabStripHeader>
             <muxcontrols:TabView.TabStripFooter>
-                <Grid x:Name="CustomDragRegion" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <Grid x:Name="CustomDragRegion" Background="Transparent" />
             </muxcontrols:TabView.TabStripFooter>
         </muxcontrols:TabView>
     </Grid>

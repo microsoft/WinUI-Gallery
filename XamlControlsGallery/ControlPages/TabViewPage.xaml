@@ -24,7 +24,6 @@
 
         <local:ControlExample HeaderText="A TabView with keyboarding support (Ctrl+T, Ctrl+W, Ctrl+1-9)" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
             <local:ControlExample.Example>
-                <!-- TODO: BUG: HorizontalAlignment="stretch" doesn't work? -->
                 <!-- TODO: BUG: Mousewheel should close the tab -->
                 <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
                     <muxcontrols:TabView.KeyboardAccelerators>

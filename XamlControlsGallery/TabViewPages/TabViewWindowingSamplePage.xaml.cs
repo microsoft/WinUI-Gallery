@@ -77,8 +77,27 @@ namespace AppUIBasics.TabViewPages
 
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
         {
-            CustomDragRegion.Height = sender.Height;
-            CustomDragRegion.MinWidth = sender.SystemOverlayRightInset;
+            // To ensure that the tabs in the titlebar are not occluded by shell
+            // content, we must ensure that we account for left and right overlays.
+            // In LTR layouts, the right inset includes the caption buttons and the
+            // drag region, which is flipped in RTL. 
+
+            // The SystemOverlayLeftInset and SystemOverlayRightInset values are
+            // in terms of physical left and right. Therefore, we need to flip
+            // then when our flow direction is RTL.
+            if (FlowDirection == FlowDirection.LeftToRight)
+            {
+                CustomDragRegion.MinWidth = sender.SystemOverlayRightInset;
+                ShellTitlebarInset.MinWidth = sender.SystemOverlayLeftInset;
+            }
+            else
+            {
+                CustomDragRegion.MinWidth = sender.SystemOverlayLeftInset;
+                ShellTitlebarInset.MinWidth = sender.SystemOverlayRightInset;
+            }
+
+            // Ensure that the height of the custom regions are the same as the titlebar.
+            CustomDragRegion.Height = ShellTitlebarInset.Height = sender.Height;
         }
 
         public void AddTabToTabs(TabViewItem tab)
