@@ -40,6 +40,7 @@
 
             <local:ControlExample.Options>
                 <StackPanel>
+                    <TextBlock Margin="0,0,0,8" Text="Image stretch mode" />
                     <RadioButton x:Name="StretchNone" Content="None" GroupName="ImageStretch" IsChecked="True"
                         Checked="ImageStretch_Checked" />
                     <RadioButton x:Name="StretchFill" Content="Fill" GroupName="ImageStretch"
