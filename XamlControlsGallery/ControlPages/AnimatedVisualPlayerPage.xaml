@@ -85,7 +85,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="StopButton_Click"
-                            ToolTipService.ToolTip="Stop video">
+                            ToolTipService.ToolTip="Stop">
                             <SymbolIcon Symbol="Stop" />
                         </Button>
                         <!--  Reverse  -->
