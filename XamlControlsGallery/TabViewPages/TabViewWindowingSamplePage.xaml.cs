@@ -51,7 +51,6 @@ namespace AppUIBasics.TabViewPages
 
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonForegroundColor = Windows.UI.Colors.Gray;
                 titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
                 Window.Current.SetTitleBar(CustomDragRegion);
@@ -64,7 +63,6 @@ namespace AppUIBasics.TabViewPages
                 // Extend into the titlebar
                 window.TitleBar.ExtendsContentIntoTitleBar = true;
                 window.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                window.TitleBar.ButtonForegroundColor = Windows.UI.Colors.Gray;
                 window.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
                 // TODO: What we really want is: CustomDragRegion.MinWidth = titlebBar.SystemOverlayRightInset;
