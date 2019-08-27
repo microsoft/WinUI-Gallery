@@ -102,11 +102,6 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItems.Add(tab);
         }
 
-        private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
-        {
-            sender.TabItems.Remove(args.Tab);
-        }
-
         // Create a new Window once the Tab is dragged outside.
         private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
@@ -211,6 +206,14 @@ namespace AppUIBasics.TabViewPages
         private void Tabs_AddTabButtonClick(TabView sender, object args)
         {
             sender.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = "New Item", Content = new MyTabContentControl() { DataContext = "New Item" } });
+        }
+
+        private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            sender.TabItems.Remove(args.Tab);
+
+            // TODO: Try to close the window if the last tab is removed.
+            // TODO: This logic should be handled by VectorChanged, but since VectorChanged isn't yet impl, handle it here instead
         }
     }
 }
