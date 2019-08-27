@@ -193,9 +193,11 @@ namespace AppUIBasics.ControlPages
         {
             Flyout formatFlyout = new Flyout();
             formatFlyout.Content = new TextBlock();
+            formatFlyout.FlyoutPresenterStyle = FlyoutPresenterStyle;
             (formatFlyout.Content as TextBlock).Text = message;
             formatFlyout.Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
             formatFlyout.ShowAt(element);
+            (formatFlyout.Content as TextBlock).Focus(FocusState.Programmatic);
         }
         private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
