@@ -22,7 +22,7 @@
                 <contract7Present:RadioButton x:Name="SlideFromLeftRB" Content="Slide from Left" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="SlideNavigationTransitionInfo From Left" />
 
                 <TextBlock Margin="0,8,0,8">Navigate</TextBlock>
-                <Button Content="Navigate Forward" Click="ForwardButton1_Click" HorizontalAlignment="Stretch" Margin="0,0,0,5   "/>
+                <Button Content="Navigate Forward" Click="ForwardButton1_Click" HorizontalAlignment="Stretch" Margin="0,0,0,4"/>
                 <Button Content="Navigate Backward" Click="BackwardButton1_Click" HorizontalAlignment="Stretch" />
             </StackPanel>
         </local:ControlExample.Options>
