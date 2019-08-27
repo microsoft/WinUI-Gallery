@@ -65,7 +65,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="PlayButton_Click"
-                            ToolTipService.ToolTip="Play video">
+                            ToolTipService.ToolTip="Play">
                             <SymbolIcon Symbol="Play" />
                         </Button>
                         <!--  Pause  -->
@@ -76,7 +76,7 @@
                                   Checked="PauseButton_Checked"
                                   IsThreeState="False"
                                   Unchecked="PauseButton_Unchecked" 
-                                  ToolTipService.ToolTip="Pause video">
+                                  ToolTipService.ToolTip="Pause">
                             <SymbolIcon Symbol="Pause" />
                         </ToggleButton>
                         <!--  Resume  -->
@@ -94,7 +94,7 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             Click="ReverseButton_Click"
-                            ToolTipService.ToolTip="Reverse video">
+                            ToolTipService.ToolTip="Reverse">
                             <SymbolIcon Symbol="Previous" />
                         </Button>
                     </Grid>
