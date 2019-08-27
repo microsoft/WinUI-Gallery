@@ -29,7 +29,8 @@ namespace AppUIBasics.ControlPages
 
             InitializeDataBindingSampleData();
         }
-        
+
+        #region SharedTabViewLogic
         private void TabView_Loaded(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 3; i++)
@@ -74,6 +75,7 @@ namespace AppUIBasics.ControlPages
 
             return newItem;
         }
+        #endregion
 
         #region ItemsSourceSample
         private void InitializeDataBindingSampleData()
@@ -125,6 +127,7 @@ namespace AppUIBasics.ControlPages
         }
         #endregion
 
+        #region KeyboardAcceleratorSample
         private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             var senderTabView = args.Element as TabView;
@@ -186,6 +189,7 @@ namespace AppUIBasics.ControlPages
                 InvokedTabView.SelectedIndex = tabToSelect;
             }
         }
+        #endregion
 
         private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
