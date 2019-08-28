@@ -69,6 +69,7 @@
                                FontWeight="SemiBold"
                                Margin="0,12,0,4" />
                     <ComboBox x:Name="cbContentOrientation"
+                              AutomationProperties.Name="Content orientation"
                               ItemsSource="{x:Bind ContentOrientation}"
                               SelectedIndex="0"
                               Grid.Row="1"
@@ -170,6 +171,7 @@
                                Grid.Row="1" 
                                VerticalAlignment="Center"/>
                     <ComboBox x:Name="hsmCombo"
+                              AutomationProperties.Name="Horizontal scroll modes"
                               ItemsSource="{x:Bind ScrollModes}"
                               SelectedIndex="0"
                               Grid.Row="1"
@@ -180,6 +182,7 @@
                                Grid.Row="2"
                                VerticalAlignment="Center" />
                     <ComboBox x:Name="vsmCombo"
+                              AutomationProperties.Name="Vertical scroll modes"
                               ItemsSource="{x:Bind ScrollModes}"
                               SelectedIndex="0"
                               Grid.Row="2"
@@ -200,6 +203,7 @@
                     <ComboBox Grid.Row="4"
                               Grid.Column="1"
                               x:Name="hsbvCombo"
+                              AutomationProperties.Name="Horizontal scroll controller visibility"
                               ItemsSource="{x:Bind ScrollBarVisibility}"
                               SelectedIndex="0"
                               HorizontalAlignment="Stretch"/>
@@ -208,6 +212,7 @@
                                Text="Vertical"
                                VerticalAlignment="Center" />
                     <ComboBox Grid.Row="5"
+                              AutomationProperties.Name="Vertical scroll controller visibility"
                               Grid.Column="1"
                               x:Name="vsbvCombo"
                               ItemsSource="{x:Bind ScrollBarVisibility}"
@@ -224,6 +229,7 @@
 
                     <TextBlock Grid.Row="7" Text="ZoomMode" VerticalAlignment="Center"/>
                     <ComboBox x:Name="cbZoomMode"
+                              AutomationProperties.Name="Zoom mode"
                               ItemsSource="{x:Bind ZoomModes, Mode=OneWay}"
                               SelectedIndex="0"
                               SelectedItem="{x:Bind scroller2.ZoomMode, Mode=OneWay}"
@@ -412,6 +418,7 @@
                                Grid.Row="3"
                                VerticalAlignment="Center" />
                     <ComboBox x:Name="cbAnimation"
+                              AutomationProperties.Name="scrolling animation"
                               SelectedIndex="0"
                               ItemsSource="{x:Bind ScrollingAnimations}"
                               Grid.Row="3"
@@ -454,6 +461,7 @@
                                VerticalAlignment="Center" />
                     <ComboBox x:Name="cbZoomAnimation"
                               SelectedIndex="0"
+                              AutomationProperties.Name="zooming animation"
                               ItemsSource="{x:Bind ZoomingAnimations}"
                               Grid.Row="7"
                               Grid.Column="1"
