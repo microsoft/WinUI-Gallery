@@ -18,9 +18,7 @@
     
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
-            <Grid AutomationProperties.Name="{x:Bind Title}" Width="190" Height="130">
-                <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" />
-            </Grid>
+                <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" AutomationProperties.Name="{x:Bind Title}" Width="190" Height="130" AutomationProperties.AccessibilityView="Raw" />
         </DataTemplate>
 
         <DataTemplate x:Key="IconTextTemplate" x:DataType="local1:CustomDataObject">
