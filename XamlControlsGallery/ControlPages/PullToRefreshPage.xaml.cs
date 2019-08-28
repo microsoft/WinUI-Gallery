@@ -57,15 +57,14 @@ namespace AppUIBasics.ControlPages
                 Image ptrImage = new Image();
                 AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
                 // Checking light theme
-                if (App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
+                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
+                    && !accessibilitySettings.HighContrast)
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
                 }
                 // Checking high contrast theme
                 else if (accessibilitySettings.HighContrast
-                          && accessibilitySettings.HighContrastScheme.Equals("High Contrast White")
-                          || accessibilitySettings.HighContrastScheme.Equals("High Contrast #1")
-                          || accessibilitySettings.HighContrastScheme.Equals("High Contrast #2"))
+                          && accessibilitySettings.HighContrastScheme.Equals("High Contrast Black"))
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
                 }
