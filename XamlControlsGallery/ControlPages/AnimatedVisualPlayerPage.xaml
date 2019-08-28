@@ -64,6 +64,7 @@
                             Grid.Column="0"
                             Margin="10"
                             HorizontalAlignment="Stretch"
+                            Click="PlayButton_Click"
                             ToolTipService.ToolTip="Play"
                             AutomationProperties.Name="Play">
                             <SymbolIcon Symbol="Play" />
@@ -75,6 +76,7 @@
                                   HorizontalAlignment="Stretch"
                                   Checked="PauseButton_Checked"
                                   IsThreeState="False"
+                                  Unchecked="PauseButton_Unchecked"
                                   ToolTipService.ToolTip="Pause"
                                   AutomationProperties.Name="Pause">
                             <SymbolIcon Symbol="Pause" />
@@ -84,6 +86,7 @@
                             Grid.Column="2"
                             Margin="10"
                             HorizontalAlignment="Stretch"
+                            Click="StopButton_Click"
                             ToolTipService.ToolTip="Stop"
                             AutomationProperties.Name="Stop">
                             <SymbolIcon Symbol="Stop" />
@@ -93,6 +96,7 @@
                             Grid.Column="3"
                             Margin="10"
                             HorizontalAlignment="Stretch"
+                            Click="ReverseButton_Click"
                             ToolTipService.ToolTip="Reverse"
                             AutomationProperties.Name="Reverse">
                             <SymbolIcon Symbol="Previous" />
