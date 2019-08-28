@@ -158,14 +158,6 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
-            // Editor might have gained focus because user changed color.
-            // Change selection color
-            // Note that only way to regain with selection containing text is using the change color button
-            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-            // Save changes
-            editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
-
-
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -177,12 +169,23 @@ namespace AppUIBasics.ControlPages
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
             }
-            // saving caret position
-            var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character);
+            // saving selection span
+            var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character) - 1;
+            if(caretPosition <= 0)
+            {
+                // User has not entered text, prevent invalid values and just set index to 1
+                caretPosition = 1;
+            }
+            var selectionLength = editor.Document.Selection.Length;
             // restoring text styling, unintentionally sets caret position at beginning of text
             editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
-            // restoring caret position
+            // restoring selection position
             editor.Document.Selection.SetIndex(TextRangeUnit.Character, caretPosition, false);
+            editor.Document.Selection.SetRange(caretPosition, caretPosition + selectionLength);
+            // Editor might have gained focus because user changed color.
+            // Change selection color
+            // Note that only way to regain with selection containing text is using the change color button
+            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
         }
 
         private void Editor_LosingFocus(object sender, RoutedEventArgs e)
