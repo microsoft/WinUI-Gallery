@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -63,18 +55,24 @@ namespace AppUIBasics.ControlPages
                     new TypedEventHandler<RefreshVisualizer, RefreshStateChangedEventArgs>(rv2_RefreshStateChanged);
 
                 Image ptrImage = new Image();
-                // Checking is mode is high contrast and user uses one of the high contrast modes where white icon would be better
                 AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
-                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
-                    && !(accessibilitySettings.HighContrast 
-                            && accessibilitySettings.HighContrastScheme.Equals("High Contrast White")
-                            || accessibilitySettings.HighContrastScheme.Equals("High Contrast #1") 
-                            || accessibilitySettings.HighContrastScheme.Equals("High Contrast #2")))
+                // Checking light theme
+                if (App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
-                } else
+                }
+                // Checking high contrast theme
+                else if (accessibilitySettings.HighContrast
+                          && accessibilitySettings.HighContrastScheme.Equals("High Contrast White")
+                          || accessibilitySettings.HighContrastScheme.Equals("High Contrast #1")
+                          || accessibilitySettings.HighContrastScheme.Equals("High Contrast #2"))
+                {
+                    ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
+                }
+                else
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunWhite.png"));
+
                 }
 
                 ptrImage.Width = 35;
@@ -94,7 +92,7 @@ namespace AppUIBasics.ControlPages
                 rc2.Content = lv2;
 
                 Ex2Grid.Children.Add(rc2);
-                Grid.SetRow( rc2, 1);
+                Grid.SetRow(rc2, 1);
                 Grid.SetRow(lv2, 1);
 
                 timer1.Interval = new TimeSpan(0, 0, 0, 0, 500);
@@ -201,6 +199,6 @@ namespace AppUIBasics.ControlPages
         private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args)
         {
             //visualizerContentVisual.StopAnimation("RotationAngle");
-         }
+        }
     }
 }
