@@ -39,7 +39,7 @@ namespace AppUIBasics.ControlPages
 
         private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
         {
-            if ((sender as Microsoft.UI.Xaml.Controls.ToggleSplitButton).IsChecked)
+            if (sender.IsChecked)
             {
                 //add bulleted list
                 myRichEditBox.Document.Selection.ParagraphFormat.ListType = _type;
