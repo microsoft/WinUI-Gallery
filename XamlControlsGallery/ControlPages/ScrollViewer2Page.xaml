@@ -134,6 +134,7 @@
                                       VerticalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(vsbvCombo.SelectedItem), Mode=OneWay}"
                                       ZoomMode="Disabled"
                                       Height="420"
+                                      AutomationProperties.Name="Scrollviewer with image inside"
                                       KeyDown="Scroller_HandleKeyDown">
                 <Image x:Name="image" Source="{StaticResource BitmapImageSource}" Stretch="None" HorizontalAlignment="Left"
                         VerticalAlignment="Top" />
