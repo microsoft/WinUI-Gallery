@@ -239,6 +239,7 @@
                             Minimum="{x:Bind scroller2.MinZoomFactor, Mode=OneWay}"
                             Value="1.0"
                             StepFrequency="0.1"
+                            SmallChange="0.1"
                             TickFrequency="1.0"
                             ValueChanged="ZoomSlider_ValueChanged" />
 
@@ -443,6 +444,7 @@
                     <Slider x:Name="zoomFactorSlider"
                             StepFrequency="0.1"
                             TickFrequency="0.2"
+                            SmallChange="0.1"
                             Minimum="0.1"
                             Maximum="2.0"
                             Value="1.0"
