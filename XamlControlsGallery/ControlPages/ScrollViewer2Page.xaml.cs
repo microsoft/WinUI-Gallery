@@ -47,9 +47,6 @@ namespace AppUIBasics.ControlPages
             scroller2MouseIsOver = true;
         }
 
-        private void ZoomSlider_ValueChanged1(object sender, RangeBaseValueChangedEventArgs e)
-        {
-        }
 
         #region Zooming
 
