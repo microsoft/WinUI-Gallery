@@ -44,8 +44,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <GridView
-            x:Name="itemGridView"
+        <GridView x:Name="itemGridView"
             Padding="24,0,0,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
@@ -65,18 +64,28 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <ParallaxView
+                <Grid Margin="-24,0,0,24">
+                    <ParallaxView
                     x:Name="headerImageView"
                     Height="250"
-                    Margin="-24,0,0,24"
+                    Margin="0,0,0,0"
                     Source="{x:Bind itemGridView}"
                     VerticalShift="350">
-                    <Image
+                        <Image
                         x:Name="headerImage"
                         HorizontalAlignment="Center"
                         Source="Assets/MainPage_Banner.jpg"
                         Stretch="UniformToFill" />
-                </ParallaxView>
+                    </ParallaxView>
+                    <Border Height="60" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                <GradientStop Offset="0" Color="{ThemeResource SystemAltMediumColor}"/>
+                                <GradientStop Offset="1" Color="Transparent"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
             </GridView.Header>
         </GridView>
 

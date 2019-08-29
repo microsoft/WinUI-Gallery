@@ -100,10 +100,13 @@ namespace AppUIBasics
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
         {
-            var full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
-            var left = 12 + (full ? 0 : coreTitleBar.SystemOverlayLeftInset);
-            AppTitle.Margin = new Thickness(left, 8, 0, 0);
+            //bool full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
+            //var left = 12 + (full ? 0 : coreTitleBar.SystemOverlayLeftInset);
+            //AppTitle.Margin = new Thickness(left, 8, 0, 0);
+            Thickness currMargin = AppTitleBar.Margin;
+            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
             AppTitleBar.Height = coreTitleBar.Height;
+            Window.Current.SetTitleBar(AppTitleBar);
         }
 
         public bool CheckNewControlSelected()
@@ -308,26 +311,36 @@ namespace AppUIBasics
 
         private void NavigationViewControl_DisplayModeChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs args)
         {
+            Thickness currMargin = AppTitleBar.Margin;
+            if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
+            {
+                AppTitleBar.Margin = new Thickness((sender.CompactPaneLength * 2), currMargin.Top, currMargin.Right, currMargin.Bottom);
+            }
+            else
+            {
+                AppTitleBar.Margin = new Thickness(sender.CompactPaneLength, currMargin.Top, currMargin.Right, currMargin.Bottom);
+            }
+
             UpdateAppTitleMargin(sender);
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
         {
-            const int smallLeftIndent = 0, largeLeftIndent = 34;
+            const int smallLeftIndent = 12, largeLeftIndent = 34;
 
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
                 AppTitle.TranslationTransition = new Vector3Transition();
                 
-                if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
-                    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
-                {
-                    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
-                }
-                else
-                {
+                //if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                //    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+                //{
+                //    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
+                //}
+                //else
+                //{
                     AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
-                }
+                //}
             }
             else
             {

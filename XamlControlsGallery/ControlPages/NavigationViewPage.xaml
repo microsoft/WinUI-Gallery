@@ -7,6 +7,7 @@
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         x:Class="AppUIBasics.ControlPages.NavigationViewPage"
         mc:Ignorable="d">
+    
     <Page.Resources>
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
@@ -21,6 +22,8 @@
                 </DataTemplate>
             </converters:MenuItemTemplateSelector.ItemTemplate>
         </converters:MenuItemTemplateSelector>
+
+        <Thickness x:Key="NavigationViewHeaderMargin">12,0</Thickness>
     </Page.Resources>
 
     <Grid x:Name="rootGrid">
@@ -95,7 +98,7 @@
                                             Grid.Row="1" 
                                             Height="460"
                                             Header="This is Header Text" 
-                                            PaneDisplayMode="Auto" 
+                                            PaneDisplayMode="LeftMinimal" 
                                             IsTabStop="False" 
                                             SelectionChanged="NavigationView_SelectionChanged5" >
                     <muxc:NavigationView.MenuItems>

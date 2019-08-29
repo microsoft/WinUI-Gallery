@@ -18,10 +18,103 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     NavigationCacheMode="Enabled">
 
+    <Page.Resources>
+        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true"/>
+    </Page.Resources>
+
     <!--  This grid acts as a root panel for the page.  -->
     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters />
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="itemGridView.Padding" Value="14,0,14,0" />
+                        <Setter Target="headerImageView.Margin" Value="-14,0,-14,14" />
+                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
+                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <GridView x:Name="itemGridView"
+            Padding="0,0,0,0"
+            AutomationProperties.AutomationId="ItemGridView"
+            AutomationProperties.Name="Items In Group"
+            ContainerContentChanging="OnItemGridViewContainerContentChanging"
+            IsItemClickEnabled="True"
+            IsSwipeEnabled="False"
+            ItemClick="OnItemGridViewItemClick"
+            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
+            ItemTemplate="{StaticResource ControlItemTemplate}"
+            ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
+            KeyDown="OnItemGridViewKeyDown"
+            Loaded="OnItemGridViewLoaded"
+            SizeChanged="OnItemGridViewSizeChanged"
+            SelectionMode="None">
+            <interactivity:Interaction.Behaviors>
+                <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
+            </interactivity:Interaction.Behaviors>
+
+            <GridView.Header>
+                <Grid Margin="0,0,0,24">
+                    <ParallaxView
+                        x:Name="headerImageView"
+                        Height="250"
+                        Margin="0,0,0,0"
+                        Source="{x:Bind itemGridView}"
+                        VerticalShift="350">
+                        <Image
+                            x:Name="headerImage"
+                            HorizontalAlignment="Center"
+                            Source="Assets/MainPage_Banner.jpg"
+                            Stretch="UniformToFill" />
+                    </ParallaxView>
+                    <Border Height="60" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                <GradientStop Offset="0" Color="{ThemeResource SystemAltMediumColor}"/>
+                                <GradientStop Offset="1" Color="Transparent"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </GridView.Header>
+
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="local:GroupInfoList">
+                            <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+        </GridView>
+
+        <local:PageHeader
+            x:Name="pageHeader"
+            Title="What's New"
+            VerticalAlignment="Top"
+            Background="{ThemeResource HomePageBackgroundBrush}"
+            FontSize="42"
+            Padding="24,34,12,12"
+            Foreground="White" />
+    </Grid>
+    
+    <!--<Grid Background="{ThemeResource HomePageBackgroundBrush}">
+        <VisualStateManager.VisualStateGroups>
+            --><!--  Visual states reflect the application's window size  --><!--
             <VisualStateGroup x:Name="LayoutVisualStates">
                 <VisualState x:Name="WideLayout">
                     <VisualState.StateTriggers>
@@ -47,10 +140,111 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <ScrollViewer x:Name="newPageSV" >
+        <ListView x:Name="newPageLV"
+            ScrollViewer.VerticalScrollMode="Enabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            
+            <interactivity:Interaction.Behaviors>
+                <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
+            </interactivity:Interaction.Behaviors>
+
+            <ListView.Header>
+                <ParallaxView
+                        x:Name="headerImageView"
+                        Height="250"
+                        Margin="-24,0,0,24"
+                        Source="{x:Bind newPageLV}"
+                        VerticalShift="350">
+                    <Image
+                            x:Name="headerImage"
+                            HorizontalAlignment="Center"
+                            Source="Assets/MainPage_Banner.jpg"
+                            Stretch="UniformToFill" />
+                </ParallaxView>
+            </ListView.Header>
+
+            
+                <GridView x:Name="newItemGridView"
+                    Padding="24,0,0,0"
+                    AutomationProperties.AutomationId="ItemGridView"
+                    AutomationProperties.Name="Items In Group"
+                    ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                    IsItemClickEnabled="True"
+                    IsSwipeEnabled="False"
+                    ItemClick="OnItemGridViewItemClick"
+                    ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                    ItemTemplate="{StaticResource ControlItemTemplate}"
+                    ItemsSource="{x:Bind Items, Mode=OneWay}"
+                    KeyDown="OnItemGridViewKeyDown"
+                    Loaded="OnItemGridViewLoaded"
+                    SizeChanged="OnItemGridViewSizeChanged"
+                    SelectionMode="None"
+                    >
+                    <GridView.Header>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Padding="0,0,0,10" Text="Recently Added Samples" />
+                    </GridView.Header>
+                </GridView>
+            
+            
+                <GridView x:Name="updatedItemGridView"
+                    Padding="24,0,0,0"
+                    AutomationProperties.AutomationId="ItemGridView"
+                    AutomationProperties.Name="Items In Group"
+                    ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                    IsItemClickEnabled="True"
+                    IsSwipeEnabled="False"
+                    ItemClick="OnItemGridViewItemClick"
+                    ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                    ItemTemplate="{StaticResource ControlItemTemplate}"
+                    ItemsSource="{x:Bind UpdatedItems, Mode=OneWay}"
+                    KeyDown="OnItemGridViewKeyDown"
+                    Loaded="OnItemGridViewLoaded"
+                    SizeChanged="OnItemGridViewSizeChanged"
+                    SelectionMode="None"
+                    >
+                    <GridView.Header>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Padding="0,0,0,10" Text="Recently Updated Samples" />
+                    </GridView.Header>
+                </GridView>
+            
+            <ListViewItem>
+                <GridView x:Name="previewItemGridView"
+                    Padding="24,0,0,0"
+                    AutomationProperties.AutomationId="ItemGridView"
+                    AutomationProperties.Name="Items In Group"
+                    ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                    IsItemClickEnabled="True"
+                    IsSwipeEnabled="False"
+                    ItemClick="OnItemGridViewItemClick"
+                    ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                    ItemTemplate="{StaticResource ControlItemTemplate}"
+                    ItemsSource="{x:Bind PreviewItems, Mode=OneWay}"
+                    KeyDown="OnItemGridViewKeyDown"
+                    Loaded="OnItemGridViewLoaded"
+                    SizeChanged="OnItemGridViewSizeChanged"
+                    SelectionMode="None"
+                    >
+                    <GridView.Header>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Padding="0,0,0,10" Text="Preview Samples" />
+                    </GridView.Header>
+                </GridView>
+            </ListViewItem>
+        </ListView>
+
+        <local:PageHeader x:Name="pageHeader"
+                        Title="What's New"
+                        VerticalAlignment="Top"
+                        Background="{ThemeResource HomePageBackgroundBrush}"
+                        FontSize="42"
+                        Padding="24,34,12,12"
+                        Foreground="White" />
+        
+        
+
+        --><!--<ScrollViewer x:Name="newPageSV" >
             <StackPanel HorizontalAlignment="Stretch">
                 <Grid>
-                    <ParallaxView
+                    --><!--<ParallaxView
                         x:Name="headerImageView"
                         Height="250"
                         Margin="-24,0,0,24"
@@ -61,20 +255,19 @@
                             HorizontalAlignment="Center"
                             Source="Assets/MainPage_Banner.jpg"
                             Stretch="UniformToFill" />
-                    </ParallaxView>
+                    </ParallaxView>-->
 
-                    <local:PageHeader
+                    <!--<local:PageHeader
                         x:Name="pageHeader"
                         Title="What's New"
                         VerticalAlignment="Top"
                         Background="{ThemeResource HomePageBackgroundBrush}"
                         FontSize="42"
                         Padding="24,34,12,12"
-                        Foreground="White" />
+                        Foreground="White" />--><!--
                 </Grid>
 
-                <GridView
-                    x:Name="newItemGridView"
+                --><!--<GridView x:Name="newItemGridView"
                     Padding="24,0,0,0"
                     AutomationProperties.AutomationId="ItemGridView"
                     AutomationProperties.Name="Items In Group"
@@ -95,8 +288,7 @@
                     </GridView.Header>
                 </GridView>
 
-                <GridView
-                    x:Name="updatedItemGridView"
+                <GridView x:Name="updatedItemGridView"
                     Padding="24,0,0,0"
                     AutomationProperties.AutomationId="ItemGridView"
                     AutomationProperties.Name="Items In Group"
@@ -117,8 +309,7 @@
                     </GridView.Header>
                 </GridView>
 
-                <GridView
-                    x:Name="previewItemGridView"
+                <GridView x:Name="previewItemGridView"
                     Padding="24,0,0,0"
                     AutomationProperties.AutomationId="ItemGridView"
                     AutomationProperties.Name="Items In Group"
@@ -137,8 +328,8 @@
                     <GridView.Header>
                         <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Padding="0,0,0,10" Text="Preview Samples" />
                     </GridView.Header>
-                </GridView>
+                </GridView>--><!--
             </StackPanel>
-        </ScrollViewer>
-    </Grid>
+        </ScrollViewer>--><!--
+    </Grid>-->
 </local:ItemsPageBase>
