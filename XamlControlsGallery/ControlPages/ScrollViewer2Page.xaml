@@ -233,7 +233,8 @@
                               HorizontalAlignment="Stretch"/>
 
                     <TextBlock Grid.Row="8" Text="ZoomFactor" VerticalAlignment="Center"/>
-                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False" AutomationProperties.Name="Zoomfactor"
+                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False" 
+                            AutomationProperties.Name="Zoomfactor"
                             Maximum="{x:Bind scroller2.MaxZoomFactor, Mode=OneWay}"
                             Minimum="{x:Bind scroller2.MinZoomFactor, Mode=OneWay}"
                             Value="1.0"
