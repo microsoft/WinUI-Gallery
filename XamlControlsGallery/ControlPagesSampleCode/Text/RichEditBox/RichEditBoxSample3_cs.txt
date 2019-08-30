@@ -1,4 +1,6 @@
-﻿
+﻿private Color currentColor = Colors.Black;
+private string LastFormattedText = "";
+
 private async void OpenButton_Click(object sender, RoutedEventArgs e)
 {
     // Open a text file.
@@ -78,6 +80,7 @@ private void ColorButton_Click(object sender, RoutedEventArgs e)
 
     fontColorButton.Flyout.Hide();
     editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+    currentColor = color;
 }
 
 private void FindBoxHighlightMatches()
@@ -116,9 +119,40 @@ private void Editor_GotFocus(object sender, RoutedEventArgs e)
     SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
     SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
 
+    editor.Document.ApplyDisplayUpdates();
+
     if (background != null && foreground != null)
     {
         documentRange.CharacterFormat.BackgroundColor = background.Color;
-        documentRange.CharacterFormat.ForegroundColor = foreground.Color;
+    }
+    // saving selection span
+    var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character) - 1;
+    if(caretPosition <= 0)
+    {
+        caretPosition = 1;
+    }
+    var selectionLength = editor.Document.Selection.Length;
+    // restoring text styling, unintentionally sets caret position at beginning of text
+    editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
+    // restoring selection position
+    editor.Document.Selection.SetIndex(TextRangeUnit.Character, caretPosition, false);
+    editor.Document.Selection.SetRange(caretPosition, caretPosition + selectionLength);
+    // Editor might have gained focus because user changed color.
+    // Change selection color
+    // Note that only way to regain with selection containing text is using the change color button
+    editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
+}
+
+private void Editor_LosingFocus(object sender, RoutedEventArgs e)
+{
+    editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
+}
+
+private void Editor_TextChanging(object sender, RichEditBoxTextChangingEventArgs e)
+{
+    // Fix bug where selected text would get colored when editor loses focus
+    if (FocusManager.GetFocusedElement() == editor)
+    {
+        editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
     }
 }
