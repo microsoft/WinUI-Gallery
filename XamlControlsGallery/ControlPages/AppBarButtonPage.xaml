@@ -110,5 +110,15 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample HeaderText="An AppBarButton with Reveal style applied">
+            <local:ControlExample.Example>
+                <AppBarButton Style="{StaticResource AppBarButtonRevealStyle}" Icon="Add" Label="Add item" />
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;AppBarButton Style="{StaticResource AppBarButtonRevealStyle}" Icon="Add" Label="Add item" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
     </StackPanel>
 </Page>
