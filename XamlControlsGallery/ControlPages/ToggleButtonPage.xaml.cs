@@ -36,5 +36,14 @@ namespace AppUIBasics.ControlPages
         {
             Control1Output.Text = "Off";
         }
+        private void ToggleButtonReveal_Checked(object sender, RoutedEventArgs e)
+        {
+            ControlRevealOutput.Text = "On";
+        }
+
+        private void ToggleButtonReveal_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ControlRevealOutput.Text = "Off";
+        }
     }
 }
