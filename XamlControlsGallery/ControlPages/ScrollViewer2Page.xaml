@@ -234,7 +234,8 @@
                               HorizontalAlignment="Stretch"/>
 
                     <TextBlock Grid.Row="8" Text="ZoomFactor" VerticalAlignment="Center"/>
-                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False"
+                    <Slider Grid.Row="8" Grid.Column="1" x:Name="ZoomSlider" IsEnabled="False" 
+                            AutomationProperties.Name="Zoomfactor"
                             Maximum="{x:Bind scroller2.MaxZoomFactor, Mode=OneWay}"
                             Minimum="{x:Bind scroller2.MinZoomFactor, Mode=OneWay}"
                             Value="1.0"
@@ -393,6 +394,7 @@
                         X target: <Run FontWeight="SemiBold" Text="{x:Bind xposSlider.Value, Mode=OneWay}"/>
                     </TextBlock>
                     <Slider x:Name="xposSlider"
+                            AutomationProperties.Name="x position"
                             Maximum="{x:Bind Sample4MaximumXViewportPosition, Mode=OneWay}"
                             StepFrequency="1"
                             Grid.Row="1"
@@ -404,6 +406,7 @@
                         Y target: <Run FontWeight="SemiBold" Text="{x:Bind yposSlider.Value, Mode=OneWay}"/>
                     </TextBlock>
                     <Slider x:Name="yposSlider"
+                            AutomationProperties.Name="y position"
                             Maximum="{x:Bind Sample4MaximumYViewportPosition, Mode=OneWay}"
                             StepFrequency="1"
                             Grid.Row="2"
@@ -442,6 +445,7 @@
                         Scale factor: <Run FontWeight="SemiBold" Text="{x:Bind FormatDouble(zoomFactorSlider.Value), Mode=OneWay}"/>
                     </TextBlock>
                     <Slider x:Name="zoomFactorSlider"
+                            AutomationProperties.Name="Scale factor"
                             StepFrequency="0.1"
                             TickFrequency="0.2"
                             Minimum="0.1"
