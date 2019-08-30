@@ -9,7 +9,6 @@
 //*********************************************************
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
