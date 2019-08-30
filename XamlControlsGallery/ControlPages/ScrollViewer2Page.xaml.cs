@@ -27,12 +27,26 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class ScrollViewer2Page : ItemsPageBase
     {
+        private bool scroller2MouseIsOver = false;
         public ScrollViewer2Page()
         {
             this.InitializeComponent();
 
             this.scroller2.StateChanged += Scroller_StateChanged;
+            this.scroller2.PointerEntered += this.Scroller2_PointerEntered;
+            this.scroller2.PointerExited += this.Scroller2_PointerExited;
         }
+
+        private void Scroller2_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            scroller2MouseIsOver = false;
+        }
+
+        private void Scroller2_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            scroller2MouseIsOver = true;
+        }
+
 
         #region Zooming
 
@@ -62,15 +76,13 @@ namespace AppUIBasics.ControlPages
 
         private void Scroller_StateChanged(muxc.ScrollViewer sender, object args)
         {
-            // each time it comes to rest update the slider to reflect the current zoom factor
-            if (sender.State == muxc.InteractionState.Idle)
+            
+            // Checking if sender is idle and the scrollviewer has the mouse over itsself 
+            // since when using slider, the sender may sometimes still be idle while
+            // user is still changing the slider
+            if (sender.State == muxc.InteractionState.Idle && scroller2MouseIsOver)
             {
                 ZoomSlider.Value = Math.Round(sender.ZoomFactor, (int)(10 * ZoomSlider.StepFrequency));
-                ZoomSlider.ValueChanged += ZoomSlider_ValueChanged;
-            }
-            else
-            {
-                ZoomSlider.ValueChanged -= ZoomSlider_ValueChanged;
             }
         }
 
