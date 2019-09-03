@@ -42,7 +42,7 @@
         </local:ControlExample>
         <local:ControlExample HeaderText="A ToggleButton with Reveal style applied.">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                <ToggleButton Content="ToggleButton"
+                <ToggleButton  x:Name="ToggleReveal" Content="ToggleButton"
                               Style="{StaticResource ToggleButtonRevealStyle}"
                               Checked="ToggleButtonReveal_Checked" Unchecked="ToggleButtonReveal_Unchecked" />
                 <TextBlock x:Name="ControlRevealOutput" Margin="8,0,0,0" VerticalAlignment="Center" />
