@@ -61,7 +61,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Image x:Name="textBoxToPlace" Source="Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
+&lt;Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
     &lt;ToolTipService.ToolTip/&gt;
         &lt;ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/&gt;
     &lt;/ToolTipService.ToolTip/&gt;
