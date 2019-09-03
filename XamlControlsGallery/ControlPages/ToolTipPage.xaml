@@ -50,22 +50,22 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TextBlock with a ToolTip using PlacementRect" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="An Image with a ToolTip using PlacementRect." MinimumUniversalAPIContract="7">
             <local:ControlExample.Example>
-                <TextBlock Text="Textblock with a ToolTip using PlacementRect" x:Name="textBoxToPlace" >
+                <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" >
                     <ToolTipService.ToolTip >
                             <ToolTip Content="PlacementRect Tooltip"  Placement="Right"
-                                contract7Present:PlacementRect="0,0,280,20" />
+                                contract7Present:PlacementRect="0,0,400,266" />
                     </ToolTipService.ToolTip>
-                </TextBlock>
+                </Image>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TextBlock Text="TextBlock with a ToolTip using PlacementRect."/&gt;
+&lt;Image x:Name="textBoxToPlace" Source="Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
     &lt;ToolTipService.ToolTip/&gt;
-        &lt;ToolTip Content="Offset ToolTip." PlacementRect="0,0,280,20"/&gt;
+        &lt;ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/&gt;
     &lt;/ToolTipService.ToolTip/&gt;
-&lt;/TextBlock&gt;
+&lt;/Image&gt;
                     </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
