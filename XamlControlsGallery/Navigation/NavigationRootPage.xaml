@@ -56,11 +56,11 @@
                 IsHitTestVisible="True"
                 VerticalAlignment="Top"
                 Background="Transparent"
+                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
                        Text="XAML Controls Gallery"
-                       VerticalAlignment="Top"
-                       Margin="0,6,0,0"
+                       VerticalAlignment="Center"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 

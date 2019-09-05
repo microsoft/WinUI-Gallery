@@ -100,13 +100,11 @@ namespace AppUIBasics
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
         {
-            //bool full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
-            //var left = 12 + (full ? 0 : coreTitleBar.SystemOverlayLeftInset);
-            //AppTitle.Margin = new Thickness(left, 8, 0, 0);
+            //ensure the custom title bar does not overlap window caption controls
             Thickness currMargin = AppTitleBar.Margin;
             AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
-            AppTitleBar.Height = coreTitleBar.Height;
-            Window.Current.SetTitleBar(AppTitleBar);
+
+            //Window.Current.SetTitleBar(AppTitleBar);
         }
 
         public bool CheckNewControlSelected()
@@ -315,6 +313,7 @@ namespace AppUIBasics
             if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
             {
                 AppTitleBar.Margin = new Thickness((sender.CompactPaneLength * 2), currMargin.Top, currMargin.Right, currMargin.Bottom);
+
             }
             else
             {
@@ -331,7 +330,7 @@ namespace AppUIBasics
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
                 AppTitle.TranslationTransition = new Vector3Transition();
-                
+
                 //if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
                 //    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
                 //{
@@ -346,17 +345,18 @@ namespace AppUIBasics
             {
                 Thickness currMargin = AppTitle.Margin;
 
-                if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
-                    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
-                {
-                    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-                }
-                else
-                {
+                //if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                //    sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+                //{
+                //    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                //}
+                //else
+                //{
                     AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-                }
+                //}
             }
         }
+
     }
 
 
