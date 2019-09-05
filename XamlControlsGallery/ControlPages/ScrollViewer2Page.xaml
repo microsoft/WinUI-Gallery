@@ -21,6 +21,7 @@
             <muxcontrols:ScrollViewer x:Name="scroller1"
                                       ContentOrientation="{x:Bind ObjectToContentOrientation(cbContentOrientation.SelectedValue), Mode=OneWay}"
                                       Height="420"
+                                      AutomationProperties.Name="Scrollviewer with item grid inside"
                                       IsTabStop="True"
                                       KeyDown="Scroller_HandleKeyDown">
 
@@ -135,6 +136,7 @@
                                       VerticalScrollBarVisibility="{x:Bind ObjectToScrollControllerVisibility(vsbvCombo.SelectedItem), Mode=OneWay}"
                                       ZoomMode="Disabled"
                                       Height="420"
+                                      AutomationProperties.Name="Scrollviewer with image inside"
                                       KeyDown="Scroller_HandleKeyDown">
                 <Image x:Name="image" Source="{StaticResource BitmapImageSource}" Stretch="None" HorizontalAlignment="Left"
                         VerticalAlignment="Top" />
@@ -291,6 +293,7 @@
                                       IsTabStop="True"
                                       VerticalScrollChainingMode="Never"
                                       HorizontalScrollChainingMode="Never"
+                                      AutomationProperties.Name="Scrollviewer with image inside"
                                       ZoomMode="Enabled"
                                       Height="420"
                                       KeyDown="Scroller_HandleKeyDown">
@@ -359,8 +362,10 @@
                                       ScrollAnimationStarting="Scroller4_ScrollAnimationStarting"
                                       ZoomAnimationStarting="Scroller4_ZoomAnimationStarting"
                                       HorizontalAlignment="Left"
+                                      AutomationProperties.Name="Scrollviewer with image inside"
                                       VerticalAlignment="Top"
                                       Height="420"
+                                      IsTabStop="True"
                                       KeyDown="Scroller_HandleKeyDown">
                 <Image Source="{StaticResource BitmapImageSource}"
                        Stretch="None"
