@@ -25,10 +25,17 @@ namespace AppUIBasics.ControlPages
         }
 
         private static int _clicks = 0;
+        private static int _clickReveal = 0;
         private void RepeatButton_Click(object sender, RoutedEventArgs e)
         {
             _clicks += 1;
             Control1Output.Text = "Number of clicks: " + _clicks;
+        }
+
+        private void RepeatButtonReveal_Click(object sender, RoutedEventArgs e)
+        {
+            _clickReveal += 1;
+            ControlRevealOutput.Text = "Number of clicks: " + _clickReveal;
         }
     }
 }
