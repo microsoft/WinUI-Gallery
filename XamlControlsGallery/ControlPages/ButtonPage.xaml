@@ -57,6 +57,26 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample HeaderText="Reveal style applied to Button.">
+            <local:ControlExample.Example>
+                <Button Style="{StaticResource ButtonRevealStyle}" Content="Button"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String >
+                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Button" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        <local:ControlExample HeaderText="Accent style applied to Button.">
+            <local:ControlExample.Example>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Button"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String >
+                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Button" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Custom button appearance" XamlSource="Buttons/Button/CustomButtonStyle.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
