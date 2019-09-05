@@ -81,7 +81,7 @@
                             Source="Assets/MainPage_Banner.jpg"
                             Stretch="UniformToFill" />
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="70" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                Visibility="Collapsed"
                                Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
@@ -107,7 +107,7 @@
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="42"
             Padding="24,34,12,12"
-            Foreground="White" />
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" />
     </Grid>
     
 </local:ItemsPageBase>

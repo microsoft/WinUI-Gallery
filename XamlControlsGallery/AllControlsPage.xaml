@@ -67,16 +67,16 @@
             <GridView.Header>
                 <Grid Margin="-24,0,0,24">
                     <ParallaxView
-                    x:Name="headerImageView"
-                    Height="250"
-                    Margin="0,0,0,0"
-                    Source="{x:Bind itemGridView}"
-                    VerticalShift="350">
+                        x:Name="headerImageView"
+                        Height="250"
+                        Margin="0,0,0,0"
+                        Source="{x:Bind itemGridView}"
+                        VerticalShift="350">
                         <Image
-                        x:Name="headerImage"
-                        HorizontalAlignment="Center"
-                        Source="Assets/MainPage_Banner.jpg"
-                        Stretch="UniformToFill" />
+                            x:Name="headerImage"
+                            HorizontalAlignment="Center"
+                            Source="Assets/MainPage_Banner.jpg"
+                            Stretch="UniformToFill" />
                     </ParallaxView>
                     <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
@@ -94,6 +94,6 @@
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="42"
             Padding="24,34,12,12"
-            Foreground="White" />
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" />
     </Grid>
 </local:ItemsPageBase>

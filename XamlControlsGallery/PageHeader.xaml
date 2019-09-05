@@ -42,6 +42,10 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
+        <Rectangle x:Name="NarrowBackground" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Visibility="Collapsed" />
+
+        <Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />
+        
         <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top" MinHeight="66">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

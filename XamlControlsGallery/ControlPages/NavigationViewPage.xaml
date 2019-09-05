@@ -22,8 +22,6 @@
                 </DataTemplate>
             </converters:MenuItemTemplateSelector.ItemTemplate>
         </converters:MenuItemTemplateSelector>
-
-        <Thickness x:Key="NavigationViewHeaderMargin">12,0</Thickness>
     </Page.Resources>
 
     <Grid x:Name="rootGrid">
@@ -98,7 +96,7 @@
                                             Grid.Row="1" 
                                             Height="460"
                                             Header="This is Header Text" 
-                                            PaneDisplayMode="LeftMinimal" 
+                                            PaneDisplayMode="Auto" 
                                             IsTabStop="False" 
                                             SelectionChanged="NavigationView_SelectionChanged5" >
                     <muxc:NavigationView.MenuItems>
