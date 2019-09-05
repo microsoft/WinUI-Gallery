@@ -31,40 +31,7 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-            <!--<VisualStateGroup>
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger x:Name="WideLayoutTrigger" MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="commandBarBorder.Visibility" Value="Visible" />
-                        <Setter Target="NarrowBackground.Visibility" Value="Collapsed" />
-                        <Setter Target="WideBackground.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="grid.(Grid.Column)" Value="0" />
-                        <Setter Target="grid.(Grid.ColumnSpan)" Value="3" />
-                        <Setter Target="topCommandBar.Margin" Value="0,0,36,0" />
-                        <Setter Target="topCommandBar.DefaultLabelPosition" Value="Collapsed" />
-                        --><!--<Setter Target="headerControl.Padding" Value="0,0,12,0" />--><!--
-                        <Setter Target="NarrowBackground.Visibility" Value="Visible" />
-                        <Setter Target="WideBackground.Visibility" Value="Collapsed" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>-->
-            <!--<VisualStateGroup x:Name="PageTypeStates">
-                <VisualState x:Name="NonFilteredPage" />
-                <VisualState x:Name="FilteredPage">
-                    <VisualState.Setters>
-                        <Setter Target="WideBackground.Fill" Value="{ThemeResource HomePageBackgroundBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>-->
+            
             <VisualStateGroup x:Name="TitleForegroundStates">
                 <VisualState x:Name="DefaultForeground" />
                 <VisualState x:Name="AlternateForeground">
@@ -74,10 +41,6 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
-        <!--<Rectangle x:Name="NarrowBackground" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Visibility="Collapsed" />
-
-        <Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />-->
 
         <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top" MinHeight="66">
             <Grid.ColumnDefinitions>

@@ -78,14 +78,7 @@
                         Source="Assets/MainPage_Banner.jpg"
                         Stretch="UniformToFill" />
                     </ParallaxView>
-                    <Border Height="60" VerticalAlignment="Top">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                <GradientStop Offset="0" Color="{ThemeResource SystemAltMediumColor}"/>
-                                <GradientStop Offset="1" Color="Transparent"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                    </Border>
+                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                Visibility="Collapsed"
                                Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
