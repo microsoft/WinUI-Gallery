@@ -151,18 +151,6 @@ namespace AppUIBasics
             //draw into the title bar
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             
-            //remove the solid-colored backgrounds behind the caption controls and system back button
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-            }
             await EnsureWindow(args);
         }
 

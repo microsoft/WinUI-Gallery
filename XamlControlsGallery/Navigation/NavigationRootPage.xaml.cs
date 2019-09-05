@@ -28,6 +28,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Foundation.Metadata;
+using Windows.UI;
 
 namespace AppUIBasics
 {
@@ -96,6 +97,39 @@ namespace AppUIBasics
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
+
+
+            // remove the solid-colored backgrounds behind the caption controls and system back button
+            // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
+            Loaded += delegate (object sender, RoutedEventArgs e) {
+                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+
+                var currentTheme = App.RootTheme.ToString();
+                bool darkTheme = false;
+
+                switch (currentTheme)
+                {
+                    case "Dark":
+                        darkTheme = true;
+                        break;
+                    case "Default":
+                        if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                        {
+                            darkTheme = true;
+                        }
+                        break;
+                }
+                if (darkTheme)
+                {
+                    titleBar.ButtonForegroundColor = Colors.White;
+                }
+                else
+                {
+                    titleBar.ButtonForegroundColor = Colors.Black;
+                }
+            };
         }
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
@@ -168,11 +202,10 @@ namespace AppUIBasics
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsFocusSupported)
+            if (IsFocusSupported && NavigationViewControl.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded)
             {
-                _newControlsMenuItem.Focus(FocusState.Keyboard);
+                controlsSearchBox.Focus(FocusState.Keyboard);
             }
-            _newControlsMenuItem.IsSelected = true;
         }
 
         private void OnGamepadRemoved(object sender, Gamepad e)

@@ -154,8 +154,8 @@
     <Content Include="Assets\Sound.png" />
     <Content Include="Assets\SplitButton.png" />
     <Content Include="Assets\StoryboardAnimation.png" />
-    <Content Include="Assets\Sun-100-Black.png" />
-    <Content Include="Assets\Sun.32.scale-100-White.png" />
+    <Content Include="Assets\SunBlack.png" />
+    <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\Swipe.png" />
     <Content Include="Assets\TeachingTip.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
