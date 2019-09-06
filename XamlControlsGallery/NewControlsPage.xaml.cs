@@ -9,14 +9,9 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace AppUIBasics
 {
@@ -81,20 +76,11 @@ namespace AppUIBasics
 
     public class GroupInfoList : List<object>
     {
-        public GroupInfoList(IEnumerable<object> items) : base(items)
-        {
-        }
+        public GroupInfoList(IEnumerable<object> items) : base(items) { }
+
         public object Key { get; set; }
 
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                _title = value;
-            }
-        }
+        public string Title { get; set; }
     }
 }
  
