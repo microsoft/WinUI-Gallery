@@ -414,9 +414,6 @@
     <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
       <DependentUpon>PageTransitionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\ScrollViewer2Page.xaml.cs">
-      <DependentUpon>ScrollViewer2Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
     </Compile>
@@ -441,7 +438,9 @@
     <Compile Include="ControlPages\ProgressRingPage.xaml.cs">
       <DependentUpon>ProgressRingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs" />
+    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs">
+      <DependentUpon>PullToRefreshPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\RadioButtonPage.xaml.cs">
       <DependentUpon>RadioButtonPage.xaml</DependentUpon>
     </Compile>
@@ -690,10 +689,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\TeachingTipPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\ScrollViewer2Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1082,7 +1077,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190822001-prerelease</Version>
+      <Version>2.2.190830001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>

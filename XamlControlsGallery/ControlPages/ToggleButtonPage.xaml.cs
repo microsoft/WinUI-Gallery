@@ -25,6 +25,7 @@ namespace AppUIBasics.ControlPages
 
             // Set initial outpput value.
             Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
+            ControlRevealOutput.Text = (bool)ToggleReveal.IsChecked ? "On" : "Off";
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -35,6 +36,15 @@ namespace AppUIBasics.ControlPages
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             Control1Output.Text = "Off";
+        }
+        private void ToggleButtonReveal_Checked(object sender, RoutedEventArgs e)
+        {
+            ControlRevealOutput.Text = "On";
+        }
+
+        private void ToggleButtonReveal_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ControlRevealOutput.Text = "Off";
         }
     }
 }
