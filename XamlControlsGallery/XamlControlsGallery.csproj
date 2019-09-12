@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -418,10 +418,7 @@
     <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
       <DependentUpon>PageTransitionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\ScrollViewer2Page.xaml.cs">
-      <DependentUpon>ScrollViewer2Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ControlPages\TabViewPage.xaml.cs">
+	<Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
@@ -448,7 +445,7 @@
     <Compile Include="ControlPages\ProgressRingPage.xaml.cs">
       <DependentUpon>ProgressRingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs" >
+    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs">
       <DependentUpon>PullToRefreshPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\RadioButtonPage.xaml.cs">
@@ -709,10 +706,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\TeachingTipPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\ScrollViewer2Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1109,7 +1102,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190820003-prerelease</Version>
+      <Version>2.2.190830001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
