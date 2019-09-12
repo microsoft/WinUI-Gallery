@@ -234,6 +234,7 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_cs.txt" />
@@ -418,7 +419,7 @@
     <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
       <DependentUpon>PageTransitionPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="ControlPages\TabViewPage.xaml.cs">
+    <Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">

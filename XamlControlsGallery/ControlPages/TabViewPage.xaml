@@ -12,7 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
+        <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs" CSharpSource="TabView\TabViewBasicSample_cs.txt">
             <local:ControlExample.Example>
                 <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475"/>
             </local:ControlExample.Example>

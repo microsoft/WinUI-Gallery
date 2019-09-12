@@ -56,6 +56,7 @@ namespace AppUIBasics.ControlPages
             newItem.Header = $"Document {index}";
             newItem.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
 
+            // The content of the tab is often a frame that contains a page, though it could be any UIElement.
             Frame frame = new Frame();
 
             switch (index % 3)
