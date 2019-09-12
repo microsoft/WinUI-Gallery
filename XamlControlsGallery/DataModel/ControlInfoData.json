@@ -498,25 +498,26 @@
         },
         {
           "UniqueId": "TabView",
-          "Title": "TabView (preview)",
+          "Title": "TabView",
           "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "Content": "",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
-          "IsPreview":  true,
+          "IsPreview": false,
           "Docs": [
             {
               "Title": "TabView - API",
-              "Uri": ""
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
             },
             {
               "Title": "Guidance",
-              "Uri": ""
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
             }
           ],
           "RelatedControls": [
+            "Pivot",
             "NavigationView",
             "ListView"
           ]
