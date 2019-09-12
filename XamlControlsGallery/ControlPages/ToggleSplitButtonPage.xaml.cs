@@ -13,20 +13,6 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void myListButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
-        {
-            if ((sender as Microsoft.UI.Xaml.Controls.ToggleSplitButton).IsChecked)
-            {
-                //add bulleted list
-                myRichEditBox.Document.Selection.ParagraphFormat.ListType = _type;                
-            }
-            else
-            {
-                //remove bulleted list
-                myRichEditBox.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
-            }            
-        }
-
         private void BulletButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedBullet = (Button)sender;
@@ -49,6 +35,20 @@ namespace AppUIBasics.ControlPages
             myListButton.IsChecked = true;
             myListButton.Flyout.Hide();
             myRichEditBox.Focus(FocusState.Keyboard);
+        }
+
+        private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
+        {
+            if (sender.IsChecked)
+            {
+                //add bulleted list
+                myRichEditBox.Document.Selection.ParagraphFormat.ListType = _type;
+            }
+            else
+            {
+                //remove bulleted list
+                myRichEditBox.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+            }
         }
     }
 }

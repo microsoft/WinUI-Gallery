@@ -32,9 +32,13 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button Content="Button" Click="Button_Click" /&gt;
+                    &lt;Button Content="Button" Click="Button_Click" $(IsEnabled)/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                    <local:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableButton1.IsChecked.Value, Mode=OneWay}"
+                                                  Value= "IsEnabled=&quot;False&quot; "/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A Button with graphical content.">
             <local:ControlExample.Example>
@@ -50,6 +54,26 @@
 &lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;
     &lt;Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/&gt;
 &lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        <local:ControlExample HeaderText="Reveal style applied to Button.">
+            <local:ControlExample.Example>
+                <Button Style="{StaticResource ButtonRevealStyle}" Content="Button"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String >
+                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Button" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        <local:ControlExample HeaderText="Accent style applied to Button.">
+            <local:ControlExample.Example>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Button"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String >
+                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Button" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

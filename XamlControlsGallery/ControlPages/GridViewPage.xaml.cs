@@ -55,7 +55,7 @@ namespace AppUIBasics.ControlPages
 
         private void Control1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ClickOutput.Text = "You clicked " + e.ClickedItem.ToString() + ".";
+            ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
         }
 
         private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)

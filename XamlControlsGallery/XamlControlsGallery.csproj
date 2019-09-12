@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -154,8 +154,8 @@
     <Content Include="Assets\Sound.png" />
     <Content Include="Assets\SplitButton.png" />
     <Content Include="Assets\StoryboardAnimation.png" />
-    <Content Include="Assets\Sun-100-Black.png" />
-    <Content Include="Assets\Sun.32.scale-100-White.png" />
+    <Content Include="Assets\SunBlack.png" />
+    <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\Swipe.png" />
     <Content Include="Assets\TabViewIcons\cmd.png" />
     <Content Include="Assets\TabViewIcons\linux.png" />
@@ -222,6 +222,7 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample3.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_xaml.txt" />
@@ -378,9 +379,6 @@
     <Compile Include="ControlPages\GridViewPage.xaml.cs">
       <DependentUpon>GridViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\HubPage.xaml.cs">
-      <DependentUpon>HubPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\HyperlinkButtonPage.xaml.cs">
       <DependentUpon>HyperlinkButtonPage.xaml</DependentUpon>
     </Compile>
@@ -450,7 +448,9 @@
     <Compile Include="ControlPages\ProgressRingPage.xaml.cs">
       <DependentUpon>ProgressRingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs" />
+    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs" >
+      <DependentUpon>PullToRefreshPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\RadioButtonPage.xaml.cs">
       <DependentUpon>RadioButtonPage.xaml</DependentUpon>
     </Compile>
@@ -639,7 +639,6 @@
     <Content Include="Assets\Flyout.png" />
     <Content Include="Assets\Grid.png" />
     <Content Include="Assets\GridView.png" />
-    <Content Include="Assets\Hub.png" />
     <Content Include="Assets\HyperlinkButton.png" />
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\ListBox.png" />
@@ -834,10 +833,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\GridViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\HubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

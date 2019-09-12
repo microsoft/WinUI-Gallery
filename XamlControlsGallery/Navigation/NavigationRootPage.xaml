@@ -58,7 +58,8 @@
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
                        Text="XAML Controls Gallery"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,8,0,0"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 
@@ -70,19 +71,19 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
+            IsPaneOpen="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
+            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ItemInvoked="OnNavigationViewItemInvoked">
             <mux:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
-                    Style="{StaticResource AutoSuggestBoxStyle}"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
                     PlaceholderText="Search"
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    RequestedTheme="Light"
                     TextChanged="OnControlsSearchBoxTextChanged">
                 </AutoSuggestBox>
             </mux:NavigationView.AutoSuggestBox>

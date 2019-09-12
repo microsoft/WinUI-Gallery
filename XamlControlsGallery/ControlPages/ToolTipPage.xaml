@@ -16,6 +16,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     mc:Ignorable="d">
 
     <StackPanel>
@@ -34,7 +35,7 @@
             <local:ControlExample.Example>
                 <TextBlock Text="TextBlock with an offset ToolTip.">
                     <ToolTipService.ToolTip>
-                        <ToolTip Content="Offset ToolTip." HorizontalOffset="100" VerticalOffset="-80"/>
+                        <ToolTip Content="Offset ToolTip." VerticalOffset="-80"/>
                     </ToolTipService.ToolTip>
                 </TextBlock>
             </local:ControlExample.Example>
@@ -42,10 +43,30 @@
                 <x:String xml:space="preserve">
 &lt;TextBlock Text="TextBlock with an offset ToolTip."/&gt;
     &lt;ToolTipService.ToolTip/&gt;
-        &lt;ToolTip Content="Offset ToolTip." HorizontalOffset="100" VerticalOffset="-80"/&gt;
+        &lt;ToolTip Content="Offset ToolTip." VerticalOffset="-80"/&gt;
     &lt;/ToolTipService.ToolTip/&gt;
 &lt;/TextBlock&gt;
                 </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="An Image with a ToolTip using PlacementRect." MinimumUniversalAPIContract="7">
+            <local:ControlExample.Example>
+                <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" >
+                    <ToolTipService.ToolTip >
+                            <ToolTip Content="Non-occluding ToolTip."  Placement="Right"
+                                contract7Present:PlacementRect="0,0,400,266" />
+                    </ToolTipService.ToolTip>
+                </Image>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
+    &lt;ToolTipService.ToolTip/&gt;
+        &lt;ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/&gt;
+    &lt;/ToolTipService.ToolTip/&gt;
+&lt;/Image&gt;
+                    </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

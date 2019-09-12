@@ -40,7 +40,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;CheckBox Content="Two-state CheckBox"
+&lt;CheckBox Content="Three-state CheckBox"
           IsThreeState="True"
           Checked="Control2_Checked"
           Unchecked="Control2_Unchecked"

@@ -32,7 +32,24 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click"/&gt;
+                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click" $(IsEnabled)/&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableToggle1.IsChecked.Value, Mode=OneWay}"
+                                                  Value= "IsEnabled=&quot;False&quot; "/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+        <local:ControlExample HeaderText="A ToggleButton with Reveal style applied.">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <ToggleButton  x:Name="ToggleReveal" Content="ToggleButton"
+                              Style="{StaticResource ToggleButtonRevealStyle}"
+                              Checked="ToggleButtonReveal_Checked" Unchecked="ToggleButtonReveal_Unchecked" />
+                <TextBlock x:Name="ControlRevealOutput" Margin="8,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;ToggleButton Content="ToggleButton" Style="{StaticResource ToggleButtonRevealStyle}"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

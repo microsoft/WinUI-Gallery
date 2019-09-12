@@ -16,7 +16,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <muxcontrols:ToggleSplitButton x:Name="myListButton" AutomationProperties.Name="Bullets" VerticalAlignment="Top" Click="myListButton_Click">
+                <muxcontrols:ToggleSplitButton x:Name="myListButton" AutomationProperties.Name="Bullets" VerticalAlignment="Top" IsCheckedChanged="MyListButton_IsCheckedChanged">
                     <SymbolIcon x:Name="mySymbolIcon" Symbol="List"/>
                     <muxcontrols:ToggleSplitButton.Flyout>
                         <Flyout Placement="Bottom">

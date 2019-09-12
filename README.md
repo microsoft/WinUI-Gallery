@@ -1,10 +1,14 @@
 ---
-topic: sample
+page_type: sample
 languages:
-- csharp
+  - csharp
+  - xaml
 products:
-- windows
-- windows-uwp
+  - windows
+  - windows-uwp
+statusNotificationTargets:
+- controlsgallery@microsoft.com 
+description: Demonstrates the usage of all XAML/WinUI controls in an interactive format.
 ---
 
 # XAML Controls Gallery
