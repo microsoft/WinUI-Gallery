@@ -20,8 +20,25 @@ namespace AppUIBasics.TabViewPages
         public TabViewWindowingSamplePage()
         {
             this.InitializeComponent();
+
+            Tabs.TabItemsChanged += Tabs_TabItemsChanged;
         }
 
+        private async void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+        {
+            // If there are no more tabs, close the window.
+            if (sender.TabItems.Count == 0)
+            {
+                if (RootAppWindow != null)
+                {
+                    await RootAppWindow.CloseAsync();
+                }
+                else
+                {
+                    Window.Current.Close();
+                }
+            }
+        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -64,8 +81,8 @@ namespace AppUIBasics.TabViewPages
                 window.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
                 window.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
-                // TODO: What we really want is: CustomDragRegion.MinWidth = titlebBar.SystemOverlayRightInset;
-
+                // Due to a bug in AppWindow, we cannot follow the same pattern as CoreWindow when setting the min width.
+                // Instead, set a hardcoded number. 
                 CustomDragRegion.MinWidth = 188;
 
                 window.Frame.DragRegionVisuals.Add(CustomDragRegion);
@@ -115,9 +132,6 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItems.Remove(args.Tab);
             newPage.AddTabToTabs(args.Tab);
 
-            // TODO: Remove when TabView.TabItems.VectorChagned is exposed.
-            sender.Tag = newWindow;
-
             await newWindow.TryShowAsync();
         }
 
@@ -141,7 +155,7 @@ namespace AppUIBasics.TabViewPages
             object obj;
             if (e.DataView.Properties.TryGetValue(DataIdentifier, out obj))
             {
-                // TODO - BUG: obj should never be null, but occassionally is. Why?
+                // Ensure that the obj property is set before continuing. 
                 if (obj == null)
                 {
                     return;
@@ -184,12 +198,6 @@ namespace AppUIBasics.TabViewPages
 
                     // Select the newly dragged tab
                     destinationTabView.SelectedItem = obj;
-
-                    // TODO: This logic should be handled by VectorChanged, but since VectorChanged isn't yet impl, handle it here instead
-                    if (destinationTabViewListView.Items.Count == 0 && destinationTabView.Tag != null)
-                    {
-                        await (destinationTabView.Tag as AppWindow).CloseAsync();
-                    }
                 }
             }
         }
@@ -211,9 +219,6 @@ namespace AppUIBasics.TabViewPages
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
             sender.TabItems.Remove(args.Tab);
-
-            // TODO: Try to close the window if the last tab is removed.
-            // TODO: This logic should be handled by VectorChanged, but since VectorChanged isn't yet impl, handle it here instead
         }
     }
 }

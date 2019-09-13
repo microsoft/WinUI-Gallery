@@ -15,6 +15,8 @@
                              AddTabButtonClick="Tabs_AddTabButtonClick"
                              TabCloseRequested="Tabs_TabCloseRequested"
                              AllowDropTabs="True"
+                             CanDragTabs="True"
+                             CanReorderTabs="True"
                              TabDroppedOutside="Tabs_TabDroppedOutside"
                              TabStripDragOver="Tabs_TabStripDragOver"
                              TabStripDrop="Tabs_TabStripDrop"
