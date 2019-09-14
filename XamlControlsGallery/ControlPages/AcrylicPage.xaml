@@ -4,9 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     xmlns:media="using:Microsoft.UI.Xaml.Media"
-    xmlns:preview="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:contract8Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 8)"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -200,8 +198,7 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <!-- Disable this sample until we find the root cause of the Luminosity slider crash. -->
-        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic." MinimumUniversalAPIContract="8">
+        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example5Grid" MinWidth="650" MinHeight="200">
                     <Grid.ColumnDefinitions>
