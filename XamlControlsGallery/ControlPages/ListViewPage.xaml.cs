@@ -24,11 +24,13 @@ namespace AppUIBasics.ControlPages
         public ListViewPage()
         {
             this.InitializeComponent();
+            
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            BaseExample.ItemsSource = await Contact.GetContactsAsync();
             Control2.ItemsSource = await Contact.GetContactsAsync();
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
@@ -36,22 +38,22 @@ namespace AppUIBasics.ControlPages
 
         private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Control2 != null)
+            if (BaseExample != null)
             {
                 string selectionMode = e.AddedItems[0].ToString();
                 switch (selectionMode)
                 {
                     case "None":
-                        Control2.SelectionMode = ListViewSelectionMode.None;
+                        BaseExample.SelectionMode = ListViewSelectionMode.None;
                         break;
                     case "Single":
-                        Control2.SelectionMode = ListViewSelectionMode.Single;
+                        BaseExample.SelectionMode = ListViewSelectionMode.Single;
                         break;
                     case "Multiple":
-                        Control2.SelectionMode = ListViewSelectionMode.Multiple;
+                        BaseExample.SelectionMode = ListViewSelectionMode.Multiple;
                         break;
                     case "Extended":
-                        Control2.SelectionMode = ListViewSelectionMode.Extended;
+                        BaseExample.SelectionMode = ListViewSelectionMode.Extended;
                         break;
                 }
             }
