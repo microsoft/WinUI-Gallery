@@ -133,7 +133,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs">
+        <local:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
                 <muxcontrols:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
                     <muxcontrols:TabView.TabStripHeader>
@@ -199,7 +199,7 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Use BitmapIcon.ShowAsMonochrome to display full color icons in the TabViewItem">
+        <local:ControlExample HeaderText="TabView with color tab icons">
             <local:ControlExample.Example>
                 <muxcontrols:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
                     <muxcontrols:TabView.TabItems>
