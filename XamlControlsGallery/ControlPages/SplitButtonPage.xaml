@@ -88,7 +88,11 @@
                     </muxcontrols:SplitButton.Flyout>
                 </muxcontrols:SplitButton>
 
-                <RichEditBox x:Name="myRichEditBox" Grid.Column="1" MinWidth="240" MinHeight="96" PlaceholderText="Type something here" TextChanged="MyRichEditBox_TextChanged"/>
+                <RichEditBox x:Name="myRichEditBox" Grid.Column="1" MinWidth="240" MinHeight="96" 
+                             PlaceholderText="Type something here" 
+                             GotFocus="MyRichEditBox_GotFocus"
+                             LosingFocus="MyRichEditBox_LosingFocus"
+                             TextChanging="MyRichEditBox_TextChanging"/>
             </Grid>
         </local:ControlExample>
     </StackPanel>
