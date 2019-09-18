@@ -23,6 +23,59 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
+            <local:ControlExample.Example>
+                <muxcontrols:TabView SelectedIndex="0" Margin="-12" MinHeight="475" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
+                    <muxcontrols:TabView.TabItems>
+                        <muxcontrols:TabViewItem Header="Document 0">
+                            <muxcontrols:TabViewItem.IconSource>
+                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
+                            </muxcontrols:TabViewItem.IconSource>
+                            <samplepages:SamplePage1 />
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Header="Document 1">
+                            <muxcontrols:TabViewItem.IconSource>
+                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
+                            </muxcontrols:TabViewItem.IconSource>
+                            <samplepages:SamplePage2 />
+                        </muxcontrols:TabViewItem>
+                        <muxcontrols:TabViewItem Header="Document 2">
+                            <muxcontrols:TabViewItem.IconSource>
+                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
+                            </muxcontrols:TabViewItem.IconSource>
+                            <samplepages:SamplePage3 />
+                        </muxcontrols:TabViewItem>
+                    </muxcontrols:TabView.TabItems>
+                </muxcontrols:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested"&gt;
+    &lt;TabView.TabItems&gt;
+        &lt;TabViewItem Header="Document 0"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage1 /&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Document 1"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage2 /&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Document 2"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage3 /&gt;
+        &lt;/TabViewItem&gt;
+    &lt;/TabView.TabItems&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
             <local:ControlExample.Example>
                 <muxcontrols:TabView x:Name="TabViewItemsSourceSample" SelectedIndex="0" Margin="-12" MinHeight="475" TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested">
