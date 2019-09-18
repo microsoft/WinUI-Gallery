@@ -93,24 +93,30 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with keyboarding support (Ctrl+T, Ctrl+W, Ctrl+1-9)" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
+        <local:ControlExample HeaderText="A TabView with keyboarding support" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
             <local:ControlExample.Example>
-                <!-- TODO: BUG: Mousewheel should close the tab -->
-                <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
-                    <muxcontrols:TabView.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number2" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number3" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number4" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number5" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number6" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        <KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                    </muxcontrols:TabView.KeyboardAccelerators>
-                </muxcontrols:TabView>
+                <StackPanel>
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+T opens a new tab" />
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+W closes the selected tab" />
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+1 to Ctrl+8 selects that number tab" />
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,24" Text="- Ctrl+9 selects the last tab (regardless of the number of tabs)" />
+
+                    <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                        <muxcontrols:TabView.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number2" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number3" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number4" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number5" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number6" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                            <KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
+                        </muxcontrols:TabView.KeyboardAccelerators>
+                    </muxcontrols:TabView>
+                </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -135,14 +141,20 @@
 
         <local:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
             <local:ControlExample.Example>
-                <muxcontrols:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
-                    <muxcontrols:TabView.TabStripHeader>
-                        <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
-                    </muxcontrols:TabView.TabStripHeader>
-                    <muxcontrols:TabView.TabStripFooter>
-                        <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
-                    </muxcontrols:TabView.TabStripFooter>
-                </muxcontrols:TabView>
+                <StackPanel>
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="You can put any content in the TabStripHeader and TabStripFooter areas" />
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region" />
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,24" Text="See TabViewWindowingSamplePage.xaml and *.cs files to see the complete code" />
+
+                    <muxcontrols:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
+                        <muxcontrols:TabView.TabStripHeader>
+                            <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
+                        </muxcontrols:TabView.TabStripHeader>
+                        <muxcontrols:TabView.TabStripFooter>
+                            <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
+                        </muxcontrols:TabView.TabStripFooter>
+                    </muxcontrols:TabView>
+                </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -201,25 +213,29 @@
 
         <local:ControlExample HeaderText="TabView with color tab icons">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
-                    <muxcontrols:TabView.TabItems>
-                        <muxcontrols:TabViewItem Header="CMD Prompt" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
-                            </muxcontrols:TabViewItem.IconSource>
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem Header="Powershell" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
-                            </muxcontrols:TabViewItem.IconSource>
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" />
-                            </muxcontrols:TabViewItem.IconSource>
-                        </muxcontrols:TabViewItem>
-                    </muxcontrols:TabView.TabItems>
-                </muxcontrols:TabView>
+                <StackPanel>
+                    <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem" />
+
+                    <muxcontrols:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
+                        <muxcontrols:TabView.TabItems>
+                            <muxcontrols:TabViewItem Header="CMD Prompt" IsClosable="False">
+                                <muxcontrols:TabViewItem.IconSource>
+                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
+                                </muxcontrols:TabViewItem.IconSource>
+                            </muxcontrols:TabViewItem>
+                            <muxcontrols:TabViewItem Header="Powershell" IsClosable="False">
+                                <muxcontrols:TabViewItem.IconSource>
+                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
+                                </muxcontrols:TabViewItem.IconSource>
+                            </muxcontrols:TabViewItem>
+                            <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
+                                <muxcontrols:TabViewItem.IconSource>
+                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" />
+                                </muxcontrols:TabViewItem.IconSource>
+                            </muxcontrols:TabViewItem>
+                        </muxcontrols:TabView.TabItems>
+                    </muxcontrols:TabView>
+                </StackPanel>
             </local:ControlExample.Example>
 
             <local:ControlExample.Xaml>
