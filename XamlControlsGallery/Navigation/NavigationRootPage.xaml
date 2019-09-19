@@ -71,7 +71,6 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
-            IsPaneOpen="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
