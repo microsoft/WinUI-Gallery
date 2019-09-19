@@ -35,25 +35,25 @@ namespace AppUIBasics.ControlPages
             if (sender == OpacitySliderLumin)
                 shape = CustomAcrylicShapeLumin;
 
-            ((AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
+            ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
         }
 
         private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Rectangle shape = (sender == ColorSelectorInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
-            ((AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+            ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
         }
 
         private void FallbackColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Rectangle shape = (sender == FallbackColorSelectorInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
-            ((AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+            ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
         }
 
         private void LuminositySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             Rectangle shape = CustomAcrylicShapeLumin;
-            ((AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
+            ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
         }
     }
 }
