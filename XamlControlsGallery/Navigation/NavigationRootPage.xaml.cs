@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -17,8 +17,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
@@ -133,10 +131,9 @@ namespace AppUIBasics
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
         {
-            var full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
-            var left = 12 + (full ? 0 : coreTitleBar.SystemOverlayLeftInset);
-            AppTitle.Margin = new Thickness() { Left = left, Top = 8, Right = 0, Bottom = 0 };
-            AppTitleBar.Height = coreTitleBar.Height;
+            //ensure the custom title bar does not overlap window caption controls
+            Thickness currMargin = AppTitleBar.Margin;
+            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
         }
 
         public bool CheckNewControlSelected()
@@ -216,18 +213,18 @@ namespace AppUIBasics
             _isGamePadConnected = Gamepad.Gamepads.Any();
         }
 
-        private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
-            if (args.IsSettingsSelected)
+            if (args.IsSettingsInvoked)
             {
                 rootFrame.Navigate(typeof(SettingsPage));
             }
             else
             {
-                var invokedItem = args.SelectedItemContainer;
+                var invokedItem = args.InvokedItemContainer;
 
                 if (invokedItem == _allControlsMenuItem)
                 {
@@ -292,7 +289,7 @@ namespace AppUIBasics
                     var matchingItems = group.Items.Where(
                         item =>
                         {
-                            // Idea: check for every word entered (separated by space) if it is in the name,
+                            // Idea: check for every word entered (separated by space) if it is in the name, 
                             // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
                             // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
                             bool flag = item.IncludedInBuild;
@@ -348,23 +345,49 @@ namespace AppUIBasics
 
         private void NavigationViewControl_DisplayModeChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs args)
         {
+            Thickness currMargin = AppTitleBar.Margin;
+            if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
+            {
+                AppTitleBar.Margin = new Thickness((sender.CompactPaneLength * 2), currMargin.Top, currMargin.Right, currMargin.Bottom);
+
+            }
+            else
+            {
+                AppTitleBar.Margin = new Thickness(sender.CompactPaneLength, currMargin.Top, currMargin.Right, currMargin.Bottom);
+            }
+
             UpdateAppTitleMargin(sender);
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
         {
-            const int smallLeftIndent = 0, largeLeftIndent = 34;
+            const int smallLeftIndent = 4, largeLeftIndent = 24;
 
-            AppTitle.TranslationTransition = new Vector3Transition();
-
-            if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
-                sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
+            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
-                AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
+                AppTitle.TranslationTransition = new Vector3Transition();
+
+                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                {
+                    AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
+                }
+                else
+                {
+                    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
+                }
             }
             else
             {
-                AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
+                Thickness currMargin = AppTitle.Margin;
+
+                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                {
+                    AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
+                else
+                {
+                    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
             }
         }
 
@@ -373,7 +396,7 @@ namespace AppUIBasics
             controlsSearchBox.Focus(FocusState.Programmatic);
         }
 
-#region Helpers for test automation
+        #region Helpers for test automation
 
         private static string _error = string.Empty;
         private static string _log = string.Empty;
@@ -453,7 +476,6 @@ namespace AppUIBasics
 
         #endregion
     }
-
 
     public enum DeviceType
     {

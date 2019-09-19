@@ -55,7 +55,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="40,0,12,36"
+            Padding="12,0,12,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -76,7 +76,7 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-40,0,-12,-100" Height="220">
+                <Grid Margin="-12,0,-12,24" Height="250">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -92,7 +92,6 @@
                     </ParallaxView>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
-
                     <TextBlock x:Name="smallHeaderText"
                                x:Uid="NewControlsPage_SmallHeader"
                                Visibility="Collapsed"
@@ -104,7 +103,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource HomePageBackgroundBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -113,10 +112,10 @@
 
         <local:PageHeader x:Name="pageHeader"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
-            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-            FontSize="28"
-            Padding="{ThemeResource NavigationViewHeaderMargin}"
+            Background="{ThemeResource HomePageBackgroundBrush}"
+            FontSize="42"
+            Padding="24,34,12,12"
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
             IsHitTestVisible="False"/>
     </Grid>
     

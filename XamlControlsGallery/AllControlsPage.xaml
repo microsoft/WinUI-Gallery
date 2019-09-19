@@ -51,7 +51,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="40,0,0,36"
+            Padding="24,0,0,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -72,7 +72,7 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-40,0,0,-60"  Height="220">
+                <Grid Margin="-24,0,0,24">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -100,11 +100,10 @@
         <local:PageHeader x:Name="pageHeader"
             x:Uid="AllControlsPage_PageHeader"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
-            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"              
-            FontSize="28"
-            Padding="{ThemeResource NavigationViewHeaderMargin}"
-            IsHitTestVisible="False"
-            ShadowOpacity="0"/>
+            Background="{ThemeResource HomePageBackgroundBrush}"
+            FontSize="42"
+            Padding="24,34,12,12"
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" 
+            IsHitTestVisible="False" />
     </Grid>
 </local:ItemsPageBase>
