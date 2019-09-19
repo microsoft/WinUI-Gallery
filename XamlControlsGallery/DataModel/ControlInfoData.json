@@ -1619,7 +1619,8 @@
             }
           ],
           "RelatedControls": [
-            "Image"
+            "Image",
+            "AnimatedVisualPlayer"
           ]
         },
         {
