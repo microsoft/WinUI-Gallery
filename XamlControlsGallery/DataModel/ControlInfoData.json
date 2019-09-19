@@ -1547,7 +1547,7 @@
             }
           ],
           "RelatedControls": [
-            "MediaElement",
+            "MediaPlayerElement",
             "PersonPicture"
           ]
         },
@@ -1575,35 +1575,11 @@
           ]
         },
         {
-          "UniqueId": "MediaElement",
-          "Title": "MediaElement",
-          "Subtitle": "A control to display video and image content.",
-          "ImagePath": "ms-appx:///Assets/MediaElement.png",
-          "Description": "You can use a MediaElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
-          "Content": "<p>Look at the <i>MediaElementPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "Docs": [
-            {
-              "Title": "MediaElement - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.mediaelement"
-            },
-            {
-              "Title": "Media Playback",
-              "Uri": "http://windowsstyleguide/controls-and-patterns/media-playback/"
-            }
-          ],
-          "RelatedControls": [
-            "Image",
-            "MediaPlayerElement",
-            "WebView"
-          ]
-        },
-        {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
           "Subtitle": "A control to display video and image content.",
           "ImagePath": "ms-appx:///Assets/MediaElement.png",
-          "Description": "This control is the newer version of MediaElement.",
+          "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "Content": "",
           "IsNew": false,
           "Docs": [
@@ -1617,8 +1593,7 @@
             }
           ],
           "RelatedControls": [
-            "Image",
-            "MediaElement"
+            "Image"
           ]
         },
         {
@@ -1685,7 +1660,7 @@
             }
           ],
           "RelatedControls": [
-            "MediaElement"
+            "MediaPlayerElement"
           ]
         }
       ]

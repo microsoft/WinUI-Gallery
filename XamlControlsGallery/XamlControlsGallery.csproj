@@ -399,9 +399,6 @@
     <Compile Include="ControlPages\MediaPlayerElementPage.xaml.cs">
       <DependentUpon>MediaPlayerElementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\MediaElementPage.xaml.cs">
-      <DependentUpon>MediaElementPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\MenuBarPage.xaml.cs">
       <DependentUpon>MenuBarPage.xaml</DependentUpon>
     </Compile>
@@ -839,10 +836,6 @@
     <Page Include="ControlPages\MediaPlayerElementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\MediaElementPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\MenuBarPage.xaml">
       <SubType>Designer</SubType>
