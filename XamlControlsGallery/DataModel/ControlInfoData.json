@@ -521,7 +521,7 @@
             },
             {
               "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
             }
           ],
           "RelatedControls": [
