@@ -54,10 +54,10 @@
 
             <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
 
-            <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1.5">
-                <GradientStop Offset="0" Color="Transparent"/>
-                <GradientStop Offset="0.5" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
-                <GradientStop Offset="1" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
+            <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="0" Color="{ThemeResource SystemAltMediumColor}"/>
+                <GradientStop Offset="0.5" Color="{ThemeResource SystemAltMediumColor}"/>
+                <GradientStop Offset="1" Color="Transparent"/>
             </LinearGradientBrush>
 
             <!--  Application-specific resources  -->

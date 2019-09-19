@@ -16,37 +16,15 @@
     xmlns:local="using:AppUIBasics">
 
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <ResourceDictionary.ThemeDictionaries>
-                        <ResourceDictionary x:Key="Light">
-                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
-                        </ResourceDictionary>
-                        <ResourceDictionary x:Key="Dark">
-                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
-                        </ResourceDictionary>
-                        <ResourceDictionary x:Key="HighContrast">
-                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="{ThemeResource SystemColorWindowColor}" />
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemColorWindowColor}" />
-                        </ResourceDictionary>
-                    </ResourceDictionary.ThemeDictionaries>
-                </ResourceDictionary>
-                <ResourceDictionary>
-                    <DataTemplate x:Key="NavigationViewHeaderTemplate">
-                        <local:PageHeader
-                            Title="{Binding}"
-                            Background="Transparent"
-                            BackgroundColorOpacity="1" />
-                    </DataTemplate>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <DataTemplate x:Key="NavigationViewHeaderTemplate">
+            <local:PageHeader
+                Title="{Binding}"
+                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                BackgroundColorOpacity="1" />
+        </DataTemplate>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -126,10 +104,11 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
+            IsTitleBarAutoPaddingEnabled="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            SelectionChanged="OnNavigationViewSelectionChanged">
+            ItemInvoked="OnNavigationViewItemInvoked">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
@@ -147,7 +126,7 @@
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating" />
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating"/>
         </NavigationView>
     </Grid>
 </Page>
