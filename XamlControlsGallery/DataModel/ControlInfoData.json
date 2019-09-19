@@ -867,7 +867,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists#drop-down-lists"
             }
           ],
           "RelatedControls": [
