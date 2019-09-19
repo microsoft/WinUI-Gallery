@@ -100,14 +100,14 @@
             </GridView.GroupStyle>
         </GridView>
 
-        <local:PageHeader
-            x:Name="pageHeader"
+        <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource NewControlsName}"
             VerticalAlignment="Top"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="42"
             Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" />
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
+            IsHitTestVisible="False"/>
     </Grid>
     
 </local:ItemsPageBase>
