@@ -16,7 +16,7 @@ namespace AppUIBasics.Behaviors
         private const int _minFontSize = 24;
         private const int scrollViewerThresholdValue = 190;
         private ScrollViewer scrollViewer;
-        private GridView gridView;
+        private ListViewBase listGridView;
 
         public DependencyObject AssociatedObject { get; private set; }
 
@@ -35,14 +35,14 @@ namespace AppUIBasics.Behaviors
             AssociatedObject = associatedObject;
             if (!GetScrollViewer())
             {
-                ((GridView)associatedObject).Loaded += GridView_Loaded;
+                ((ListViewBase)associatedObject).Loaded += ListGridView_Loaded;
             }
         }
 
-        private void GridView_Loaded(object sender, RoutedEventArgs e)
+        private void ListGridView_Loaded(object sender, RoutedEventArgs e)
         {
             GetScrollViewer();
-            gridView = sender as GridView;
+            listGridView = sender as ListViewBase;
         }
 
         private bool GetScrollViewer()
@@ -95,7 +95,7 @@ namespace AppUIBasics.Behaviors
 
         public void Detach()
         {
-            ((GridView)AssociatedObject).Loaded -= GridView_Loaded;
+            ((ListViewBase)AssociatedObject).Loaded -= ListGridView_Loaded;
             AssociatedObject = null;
         }
     }

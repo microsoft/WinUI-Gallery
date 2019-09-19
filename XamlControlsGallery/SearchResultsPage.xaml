@@ -62,6 +62,7 @@
                             x:Name="resultsGridView"
                             AutomationProperties.AutomationId="ResultsGridView"
                             Margin="12,24,0,0"
+                            Padding="0,0,0,36"
                             AutomationProperties.Name="Search Results"
                             ContainerContentChanging="OnItemGridViewContainerContentChanging"
                             IsItemClickEnabled="True"
@@ -87,8 +88,8 @@
                                             <AdaptiveTrigger MinWindowWidth="0" />
                                         </VisualState.StateTriggers>
                                         <VisualState.Setters>
-                                            <Setter Target="resultsGridView.Margin" Value="0,14,0,0" />
-                                            <Setter Target="resultsGridView.Padding" Value="14,0" />
+                                            <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
+                                            <Setter Target="resultsGridView.Padding" Value="12,0" />
                                             <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                                         </VisualState.Setters>
                                     </VisualState>

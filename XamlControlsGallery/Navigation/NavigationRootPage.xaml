@@ -51,15 +51,16 @@
             Fill="{ThemeResource NavigationViewDefaultPaneBackground}"
             Visibility="Collapsed" Canvas.ZIndex="0" />
 
-        <Border Grid.Column="1" x:Name="AppTitleBar"
+        <Border x:Name="AppTitleBar"
+                Grid.Column="1"
                 IsHitTestVisible="True"
                 VerticalAlignment="Top"
                 Background="Transparent"
+                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
                        Text="XAML Controls Gallery"
-                       VerticalAlignment="Top"
-                       Margin="0,8,0,0"
+                       VerticalAlignment="Center"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 
@@ -71,6 +72,7 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
+            IsTitleBarAutoPaddingEnabled="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
