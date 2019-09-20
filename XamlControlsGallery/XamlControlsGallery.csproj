@@ -215,7 +215,9 @@
     <Content Include="Assets\WebView.png" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Simple.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
