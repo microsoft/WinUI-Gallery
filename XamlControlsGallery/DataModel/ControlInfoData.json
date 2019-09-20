@@ -503,32 +503,6 @@
             "GridView",
             "TreeView"
           ]
-        },
-        {
-          "UniqueId": "TabView",
-          "Title": "TabView",
-          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
-          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
-          "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
-          "Content": "",
-          "IsNew": true,
-          "IsUpdated": false,
-          "IsPreview": false,
-          "Docs": [
-            {
-              "Title": "TabView - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
-            },
-            {
-              "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
-            }
-          ],
-          "RelatedControls": [
-            "Pivot",
-            "NavigationView",
-            "ListView"
-          ]
         }
       ]
     },
@@ -1512,6 +1486,32 @@
             "SemanticZoom",
             "ListView",
             "GridView"
+          ]
+        },
+        {
+          "UniqueId": "TabView",
+          "Title": "TabView",
+          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "Content": "",
+          "IsNew": true,
+          "IsUpdated": false,
+          "IsPreview": false,
+          "Docs": [
+            {
+              "Title": "TabView - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
+            }
+          ],
+          "RelatedControls": [
+            "Pivot",
+            "NavigationView",
+            "ListView"
           ]
         }
       ]
