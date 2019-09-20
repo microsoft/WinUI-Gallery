@@ -1102,7 +1102,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/dialogs"
             }
           ],
           "RelatedControls": [
