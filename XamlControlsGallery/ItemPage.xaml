@@ -175,7 +175,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="data:ControlInfoDocLink">
-                                    <HyperlinkButton NavigateUri="{Binding Uri}">
+                                    <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
                                         <TextBlock Text="{x:Bind Title}" />
                                     </HyperlinkButton>
                                 </DataTemplate>
@@ -239,7 +239,8 @@
                             x:Name="feedbackHeader"
                             x:Uid="FeedbackHeader"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
-                        <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">
+                        <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose" 
+                                         ToolTipService.ToolTip="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">
                             <TextBlock x:Uid="FeedbackLink" />
                         </HyperlinkButton>
                     </StackPanel>
