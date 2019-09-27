@@ -66,6 +66,7 @@
     </Page.Resources>
 
     <StackPanel>
+
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a GridView.">
             <Grid>
                 <Grid.RowDefinitions>
@@ -76,8 +77,9 @@
                 <GridView
                     x:Name="Control1"
                     CanDragItems="{x:Bind DragCheckBox.IsChecked.Value, Mode=OneWay}"
+                    CanReorderItems="{x:Bind ReorderCheckBox.IsChecked.Value, Mode=OneWay}"
+                    AllowDrop="{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}"
                     IsItemClickEnabled="{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}"
-                    IsSwipeEnabled="{x:Bind SwipeCheckBox.IsChecked.Value, Mode=OneWay}"
                     ItemClick="Control1_ItemClick"
                     ItemTemplate="{StaticResource ImageTemplate}"                    
                     SelectionChanged="Control1_SelectionChanged" />
@@ -114,9 +116,11 @@
                             Tag="TextTemplate" />
                         <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
                         <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
+                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="200"> In order to drag, drop, and reorder items within the GridView, make sure all boxes are checked below.</TextBlock>
                         <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
-                        <CheckBox x:Name="SwipeCheckBox" Content="IsSwipeEnabled" />
                         <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
+                        <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
+                        <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
                         <ComboBox
                             Margin="0,12,0,0"
                             Header="SelectionMode"
@@ -135,8 +139,9 @@
 &lt;GridView ItemsSource="{x:Bind Items}"
           ItemTemplate="{StaticResource $(ItemTemplate)}"
           IsItemClickEnabled="$(IsItemClickEnabled)"
-          IsSwipeEnabled="$(IsSwipeEnabled)"
           CanDragItems="$(CanDragItems)"
+          AllowDrop="$(CanDropItems)"
+          CanReorderItems="$(CanReorderItems)"
           SelectionMode="$(SelectionMode)"
           SelectionChanged="Control1_SelectionChanged"
           ItemClick="Control1_ItemClick" /&gt;
@@ -145,8 +150,9 @@
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageTemplate" />
                 <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="IsSwipeEnabled" Value="{x:Bind Control1.IsSwipeEnabled, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind Control1.AllowDrop, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind Control1.CanReorderItems, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
