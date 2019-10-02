@@ -421,6 +421,7 @@
           ],
           "RelatedControls": [
             "GridView",
+            "StandardUICommand",
             "FlipView",
             "SemanticZoom"
           ]

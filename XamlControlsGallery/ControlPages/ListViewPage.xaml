@@ -99,15 +99,16 @@
         <local:ControlExample HeaderText="Basic ListView with Simple DataTemplate">
             <StackPanel>
                 <TextBlock Margin="0 0 0 15">
-                    This is a basic ListView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize the specific ListView.
+                    This is a basic ListView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize a simple ListView like this one.
                 </TextBlock>
                 <ListView
                 x:Name="BaseExample"
                 ItemTemplate="{StaticResource ContactListViewTemplate2}"
                 BorderThickness="1"
                 BorderBrush="DimGray"
-                MinWidth="550" 
-                Height="400"/>
+                Width="350" 
+                Height="400"
+                HorizontalAlignment="Left"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -117,7 +118,7 @@
     ItemTemplate="{StaticResource ContactListViewTemplate}"
     BorderThickness="1"
     BorderBrush="DimGray"
-    MinWidth="550" 
+    Width="350" 
     Height="400"/&gt;
                     
  &lt;DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact"&gt;
@@ -127,11 +128,12 @@
 &lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown above)
 called ContactListViewTemplate, defined in a Page.Resources section. 
                     
-The data template is defined to display a Contact object (class defined in C# code-behind), and the text displayed is
-bound to the Contact object's Name attribute.
+The data template is defined to display a Contact object (class defined in C# code-behind), and the text 
+displayed is bound to the Contact object's Name attribute.
                     
-The ItemsSource for the ListView is a collection called Contacts List and is defined in the C# code-behind, but can be 
-defined as a XAML property as well. --&gt;
+The ItemsSource for the ListView is an ObservableCollection&lt;Contact&gt; called ContactsList and is
+defined in the C# code-behind. --&gt;
+
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -141,7 +143,7 @@ defined as a XAML property as well. --&gt;
                 <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
                     You can enable four different selection modes on the right. <LineBreak/><Bold>None</Bold> disables selection all together.<LineBreak/><Bold>Single</Bold>
                     allows for only one item to be selected in the list.<LineBreak/><Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.<LineBreak/><Bold>Extended</Bold>
-                    allows the user to select multiple items by using Ctrl+Click to select the range of items that they want (contiguous in the list or not).
+                    allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
                 </TextBlock>
                 <ListView
                 x:Name="Control2"
@@ -151,8 +153,9 @@ defined as a XAML property as well. --&gt;
                 AllowDrop="False"
                 BorderThickness="1"
                 BorderBrush="DimGray"
-                MinWidth="550" 
-                Height="400"/>
+                Width="400" 
+                Height="400"
+                HorizontalAlignment="Left"/>
             </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
@@ -258,9 +261,10 @@ defined as a XAML property as well. --&gt;
             
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;!-- Full code to implement dragging and dropping between lists can be found in the 
+source code for the XAML Controls Gallery. -->
+
 &lt;!-- The following properties should be added to the ListView definitions to build this sample. --&gt;
-&lt;!-- Full code to implement dragging and dropping between lists can be found in the source code for the XAML Controls Gallery. -->
-                        
 &lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"
     SelectionMode="Single" /&gt;
     
@@ -316,9 +320,10 @@ defined as a XAML property as well. --&gt;
                 SelectionMode="Single"
                 ShowsScrollingPlaceholders="True"
                 Height="400"
-                MinWidth="550"
+                Width="400"
                 BorderThickness="1"
-                BorderBrush="DimGray">
+                BorderBrush="DimGray"
+                HorizontalAlignment="Left">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <ItemsStackPanel x:Name="GroupedStackPanel" AreStickyGroupHeadersEnabled="False" Loaded="StackPanel_loaded" />
@@ -345,8 +350,8 @@ defined as a XAML property as well. --&gt;
                 <x:String xml:space="preserve">
 &lt;!-- ListViews with grouped items must be bound to a CollectionViewSource, as shown below. --&gt;
 &lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
-
-&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
+               
+&lt;ListView ItemsSource="{x:Bind ContactsCVS.View, Mode=OneWay}"&gt;
     &lt;ListView.ItemsPanel&gt;
         &lt;ItemsPanelTemplate&gt;
             &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="$(AreStickyGroupHeadersEnabled)"/&gt;
@@ -429,13 +434,8 @@ defined as a XAML property as well. --&gt;
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ListView
-     x:Name="InvertedListView"
-     ItemTemplate="{StaticResource MessageViewTemplate}"
-     BorderThickness="1"
-     BorderBrush="DimGray"
-     Height="400"
-     SelectionMode="None"&gt;
+&lt;!-- The ListView itself does not need any new properties added to its definition. --&gt;
+&lt;ListView x:Name="InvertedListView"&gt;
                     
      &lt;!-- The ItemsStackPanel must be edited to update the following two properties --&gt;
      &lt;!-- These properties allow the list to grow from the bottom --&gt;
@@ -445,7 +445,7 @@ defined as a XAML property as well. --&gt;
          &lt;/ItemsPanelTemplate&gt;
      &lt;/ListView.ItemsPanel&gt;
 
-     &lt;!-- The following setter property is created so that ListViewItems correctly align to the left or right. --&gt;
+     &lt;!-- This setter property is created so ListViewItems correctly align to the left or right. --&gt;
      &lt;ListView.ItemContainerStyle&gt;
          &lt;Style TargetType="ListViewItem"&gt;
              &lt;Setter Property="HorizontalContentAlignment" Value="Stretch"/&gt;
@@ -454,9 +454,9 @@ defined as a XAML property as well. --&gt;
 &lt;/ListView&gt;
 
 &lt;!-- Data template used: --&gt;
-&lt;!-- The data template is bound to a custom data type of message. --&gt;
-&lt;!-- Each message object has a color and alignment assigned to it based on whether it was sent or recieved. --&gt;
-&lt;!--Those values are bound in the DataTemplate.--&gt;
+&lt;!-- The data template is bound to a custom DataType called Message. --&gt;
+&lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
+sent or recieved, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
      &lt;Grid&gt;
          &lt;Grid.RowDefinitions&gt;
@@ -466,9 +466,12 @@ defined as a XAML property as well. --&gt;
              &lt;Grid.ColumnDefinitions&gt;
                  &lt;ColumnDefinition Width="*"/&gt;
              &lt;/Grid.ColumnDefinitions&gt;
-             &lt;StackPanel Height="75" Width="350" Padding="10 0 0 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
-                 &lt;TextBlock Text="{x:Bind MsgText}" Padding="0 10 0 0" FontSize="20" Foreground="White"&gt;&lt;/TextBlock&gt;
-                 &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0 0 0 10" FontSize="15" Foreground="White"&gt;&lt;/TextBlock&gt;
+             &lt;StackPanel Height="75" Width="350" Padding="10 0 0 10" Background="{x:Bind BgColor}" 
+                    CornerRadius="4"&gt;
+                 &lt;TextBlock Text="{x:Bind MsgText}" Padding="0 10 0 0" FontSize="20" 
+                    Foreground="White"&gt;&lt;/TextBlock&gt;
+                 &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0 0 0 10" FontSize="15" 
+                    Foreground="White"&gt;&lt;/TextBlock&gt;
               &lt;/StackPanel&gt;
          &lt;/Grid&gt;
     &lt;/Grid&gt;

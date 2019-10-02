@@ -28,8 +28,8 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class ListViewPage : ItemsPageBase
     {
-        ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
 
         ItemsStackPanel stackPanelObj;
 
@@ -47,9 +47,8 @@ namespace AppUIBasics.ControlPages
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
             BaseExample.ItemsSource = await Contact.GetContactsAsync();
             Control2.ItemsSource = await Contact.GetContactsAsync();
-
-           
             contacts1 = await Contact.GetContactsAsync();
+
             DragDropListView.ItemsSource = contacts1;
 
             contacts2.Add(new Contact("John", "Doe", "ABC Printers"));
@@ -100,13 +99,13 @@ namespace AppUIBasics.ControlPages
                 if (items.Length > 0) { items.AppendLine(); }
                 if (item.ToString() != null)
                 {
-                    //append name from contact object onto data string
+                    // Append name from contact object onto data string
                     items.Append(item.ToString() + " " + item.Company);
                 } 
             }
             // Set the content of the DataPackage
             e.Data.SetText(items.ToString());
-            // As we want our Reference list to say intact, we only allow Copy
+
             e.Data.RequestedOperation = DataPackageOperation.Move;
 
         }
@@ -137,7 +136,6 @@ namespace AppUIBasics.ControlPages
                     Contact temp = new Contact(info[0], info[1], info[2]);
                     
                     // Find the insertion index:
-                    // (logic/math from Microsoft official sample at https://code.msdn.microsoft.com/windowsapps/XAML-ListView-and-GridView-6bd77f71/sourcecode?fileId=86691&pathId=2147057425)
                     Windows.Foundation.Point pos = e.GetPosition(DragDropListView2.ItemsPanelRoot);
 
                     // Find height of a random item from the target list view
@@ -193,7 +191,6 @@ namespace AppUIBasics.ControlPages
                 Contact temp = new Contact(info[0], info[1], info[2]);
 
                 // Find the insertion index
-                // (logic/math from Microsoft official sample at https://code.msdn.microsoft.com/windowsapps/XAML-ListView-and-GridView-6bd77f71/sourcecode?fileId=86691&pathId=2147057425)
                 Windows.Foundation.Point pos = e.GetPosition(DragDropListView.ItemsPanelRoot);
 
                 // Find height of a random item from the target list view
@@ -279,7 +276,6 @@ namespace AppUIBasics.ControlPages
         // Inverted List Example
         //===================================================================================================================
 
-        // Original implementation from Windows Universal Samples at https://github.com/microsoft/Windows-universal-samples/blob/master/Samples/XamlBottomUpList/cs/Scenario1_Basic.xaml.cs
         private void AddItemToEnd()
         {
 
