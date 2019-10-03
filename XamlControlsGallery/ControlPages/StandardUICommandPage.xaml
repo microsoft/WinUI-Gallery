@@ -5,7 +5,7 @@
       xmlns:local2="using:AppUIBasics.ControlPages"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="HorizontalSwipe" TargetType="ListViewItem" BasedOn="{StaticResource ListViewItemRevealStyle}">
@@ -38,22 +38,22 @@
                     keyboard shortcut, and a description.
                 </TextBlock>
 
-                <muxcontrols:MenuBar Grid.Row="1">
-                    <muxcontrols:MenuBarItem Title="File">
+                <muxc:MenuBar Grid.Row="1">
+                    <muxc:MenuBarItem Title="File">
                         <MenuFlyoutItem Text="New"/>
                         <MenuFlyoutItem Text="Open..."/>
                         <MenuFlyoutItem Text="Save"/>
                         <MenuFlyoutItem Text="Exit"/>
-                    </muxcontrols:MenuBarItem>
+                    </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Edit">
+                    <muxc:MenuBarItem Title="Edit">
                         <MenuFlyoutItem x:Name="DeleteFlyoutItem"/>
-                    </muxcontrols:MenuBarItem>
+                    </muxc:MenuBarItem>
 
-                    <muxcontrols:MenuBarItem Title="Help">
+                    <muxc:MenuBarItem Title="Help">
                         <MenuFlyoutItem Text="About"/>
-                    </muxcontrols:MenuBarItem>
-                </muxcontrols:MenuBar>
+                    </muxc:MenuBarItem>
+                </muxc:MenuBar>
 
                 <ListView x:Name="ListViewRight" Grid.Row="2" Height="500" Loaded="ListView_Loaded" ContainerContentChanging="ListViewRight_ContainerContentChanging" IsItemClickEnabled="True" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemContainerStyle="{StaticResource HorizontalSwipe}">
                     <ListView.ItemTemplate>

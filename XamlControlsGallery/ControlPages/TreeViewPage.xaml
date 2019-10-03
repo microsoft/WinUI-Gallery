@@ -1,7 +1,7 @@
 ﻿<Page x:Class="AppUIBasics.ControlPages.TreeViewPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:local="using:AppUIBasics"
       xmlns:controlpages="using:AppUIBasics.ControlPages"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
     <Page.Resources>
         <DataTemplate x:Key="FolderTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
+            <muxc:TreeViewItem AutomationProperties.Name="{x:Bind Name}"
                 ItemsSource="{x:Bind Children}" IsExpanded="True">
 
                 <StackPanel Orientation="Horizontal">
@@ -19,19 +19,19 @@
                     <TextBlock Margin="0,0,10,0"/>
                     <TextBlock Text="{x:Bind Name}" />
                 </StackPanel>
-            </muxcontrols:TreeViewItem>
+            </muxc:TreeViewItem>
         </DataTemplate>
 
         <DataTemplate x:Key="FileTemplate"
                       x:DataType="controlpages:ExplorerItem">
-            <muxcontrols:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
+            <muxc:TreeViewItem AutomationProperties.Name="{x:Bind Name}">
 
                 <StackPanel Orientation="Horizontal">
                     <Image Width="20" Source="../Assets/file.png"/>
                     <TextBlock Margin="0,0,10,0"/>
                     <TextBlock Text="{x:Bind Name}"/>
                 </StackPanel>
-            </muxcontrols:TreeViewItem>
+            </muxc:TreeViewItem>
         </DataTemplate>
 
         <controlpages:ExplorerItemTemplateSelector 
@@ -44,13 +44,13 @@
         <local:ControlExample HeaderText="A simple TreeView with drag and drop support">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView x:Name="sampleTreeView" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
+                    <muxc:TreeView x:Name="sampleTreeView" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" ItemInvoked="sampleTreeView_ItemInvoked" CanDragItems="True" AllowDrop="True" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;controls:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;
+                    &lt;muxc:TreeView  CanDragItems="True"  AllowDrop="True"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -58,13 +58,13 @@
         <local:ControlExample HeaderText="A TreeView with Multi-selection enabled">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView x:Name="sampleTreeView2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
+                    <muxc:TreeView x:Name="sampleTreeView2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="Multiple"/>
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;controls:TreeView SelectionMode="Multiple" /&gt;
+                    &lt;muxc:TreeView SelectionMode="Multiple" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -72,19 +72,19 @@
         <local:ControlExample HeaderText="A TreeView with DataBinding Using ItemSource" XamlSource="TreeView\TreeViewDataBindingSample_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView Name="TreeView1" 
+                    <muxc:TreeView Name="TreeView1" 
                                           MinWidth="345" 
                                           MaxHeight="400" 
                                           Margin="0,12,0,0"
                                           HorizontalAlignment="Center" 
                                           VerticalAlignment="Top" 
                                           ItemsSource="{x:Bind DataSource}">
-                        <muxcontrols:TreeView.ItemTemplate>
+                        <muxc:TreeView.ItemTemplate>
                             <DataTemplate x:DataType="controlpages:ExplorerItem">
-                                <muxcontrols:TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}" IsExpanded="True"/>
+                                <muxc:TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}" IsExpanded="True"/>
                             </DataTemplate>
-                        </muxcontrols:TreeView.ItemTemplate>
-                    </muxcontrols:TreeView>
+                        </muxc:TreeView.ItemTemplate>
+                    </muxc:TreeView>
                 </Grid>
             </local:ControlExample.Example>
         </local:ControlExample>
@@ -92,7 +92,7 @@
         <local:ControlExample HeaderText="A TreeView with ItemTemplateSelector" XamlSource="TreeView\TreeViewTemplateSelectorSample_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Height="400" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
-                    <muxcontrols:TreeView Name="FileTree" Grid.Column="2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
+                    <muxc:TreeView Name="FileTree" Grid.Column="2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}" 
                             ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" />
                 </Grid>
