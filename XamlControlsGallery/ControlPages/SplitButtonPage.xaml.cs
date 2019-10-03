@@ -38,6 +38,10 @@ namespace AppUIBasics.ControlPages
             currentColor = color;
         }
 
+        private void RevealColorButton_Click(object sender,RoutedEventArgs e)
+        {
+            myColorButtonReveal.Flyout.Hide();
+        }
         private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {
             var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)sender.Content;

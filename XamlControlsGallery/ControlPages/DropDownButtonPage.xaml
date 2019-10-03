@@ -13,15 +13,29 @@
     <StackPanel>
         <local:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
-            <muxcontrols:DropDownButton Content="Email">
-                <muxcontrols:DropDownButton.Flyout>
-                    <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutItem Text="Send"/>
-                        <MenuFlyoutItem Text="Reply"/>
-                        <MenuFlyoutItem Text="Reply All"/>
-                    </MenuFlyout>
-                </muxcontrols:DropDownButton.Flyout>
-            </muxcontrols:DropDownButton>
+                <muxcontrols:DropDownButton Content="Email">
+                    <muxcontrols:DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="Send"/>
+                            <MenuFlyoutItem Text="Reply"/>
+                            <MenuFlyoutItem Text="Reply All"/>
+                        </MenuFlyout>
+                    </muxcontrols:DropDownButton.Flyout>
+                </muxcontrols:DropDownButton>
+            </StackPanel>
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="Reveal style applied to DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_RevealStyle.txt">
+            <StackPanel x:Name="ControlReveal" Orientation="Horizontal">
+                <muxcontrols:DropDownButton Content="Email" Style="{ThemeResource DropDownButtonRevealStyle}">
+                    <muxcontrols:DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="Send"/>
+                            <MenuFlyoutItem Text="Reply"/>
+                            <MenuFlyoutItem Text="Reply All"/>
+                        </MenuFlyout>
+                    </muxcontrols:DropDownButton.Flyout>
+                </muxcontrols:DropDownButton>
             </StackPanel>
         </local:ControlExample>
 
