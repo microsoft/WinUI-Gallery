@@ -98,9 +98,9 @@
 
         <local:ControlExample HeaderText="A SplitButton with RevealStyle applied" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
             <local:ControlExample.Example>
-                <muxcontrols:SplitButton AutomationProperties.Name="Font color with reveal" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Style="{ThemeResource SplitButtonRevealStyle}">
+                <muxc:SplitButton AutomationProperties.Name="Font color with reveal" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Style="{ThemeResource SplitButtonRevealStyle}">
                     Choose color
-                    <muxcontrols:SplitButton.Flyout>
+                    <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                                 <VariableSizedWrapGrid.Resources>
@@ -162,8 +162,8 @@
                                 </Button>
                             </VariableSizedWrapGrid>
                         </Flyout>
-                    </muxcontrols:SplitButton.Flyout>
-                </muxcontrols:SplitButton>
+                    </muxc:SplitButton.Flyout>
+                </muxc:SplitButton>
             </local:ControlExample.Example>
         </local:ControlExample>
     </StackPanel>

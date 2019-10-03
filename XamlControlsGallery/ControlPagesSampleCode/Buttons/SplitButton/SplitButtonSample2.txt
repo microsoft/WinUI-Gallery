@@ -1,8 +1,8 @@
-﻿<SplitButton x:Name="myColorButton" Style="{ThemeResource SplitButtonRevealStyle}" >
+﻿<muxc:SplitButton x:Name="myColorButton" Style="{ThemeResource SplitButtonRevealStyle}" >
     Choose color
-    <SplitButton.Flyout>
+    <muxc:SplitButton.Flyout>
         <Flyout Placement="Bottom">
             <!-- flyout content -->
         </Flyout>
-    </SplitButton.Flyout>
-</SplitButton>
+    </muxc:SplitButton.Flyout>
+</muxc:SplitButton>
