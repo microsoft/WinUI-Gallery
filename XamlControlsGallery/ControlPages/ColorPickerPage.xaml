@@ -41,7 +41,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ColorPicker
+&lt;muxc:ColorPicker
       IsMoreButtonVisible="$(IsMoreButtonVisible)"
       IsColorSliderVisible="$(IsColorSliderVisible)"
       IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
