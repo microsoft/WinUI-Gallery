@@ -59,35 +59,11 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="StyledGridTemplate" x:DataType="local1:ImageWithBackground">
-            <Image Source="{x:Bind ImageSrc}" Stretch="Fill" VerticalAlignment="Center" Height="100" Width="100" Margin="30"></Image>
-        </DataTemplate>
-
         <DataTemplate x:Key="TextTemplate" x:DataType="local1:CustomDataObject">
             <StackPanel Width="240" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" />
             </StackPanel>
         </DataTemplate>
-
-        <Flyout x:Key="ColorPickerFlyout">
-            <StackPanel>
-                <ColorPicker x:Name="StyledGridColorPicker"
-                         IsColorChannelTextInputVisible="False"
-                         IsColorPreviewVisible="True"
-                         IsHexInputVisible="False"/>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0" Content="OK" Padding="10" Click="StyledGrid_ColorChanged" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
-                    <Button Grid.Column="1" Content="Cancel" Padding="10" Click="StyledGrid_ColorCancel" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
-                </Grid>
-
-            </StackPanel>
-        </Flyout>
     </Page.Resources>
 
     <StackPanel>
@@ -136,36 +112,46 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="GridView with Style Customization">
+        <local:ControlExample HeaderText="GridView with Layout Customization">
             <StackPanel>
                 <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
-                    Use the options on the right to control different styling customizations to the GridView below.
+                    Use the options on the right to control different layout customizations to the GridView below.
                 </TextBlock>
-                <GridView
-                    x:Name="StyledGrid"
-                    ItemTemplate="{StaticResource StyledGridTemplate}">
-
+                <GridView x:Name="StyledGrid">
+                    
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local1:CustomDataObject">
+                            <Grid Width="200">
+                                <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
+                                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Padding="12" Background="LightGray" Opacity=".75">
+                                    <TextBlock Text="{x:Bind Title}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock Text="Likes, " Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"></TextBlock>
+                                        <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                        <TextBlock Text="Views" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
-                            <Setter x:Name="BgSetter" Property="Background" Value="White"/>
                             <Setter Property="Margin" Value="5"/>
-                            <Setter Property="Opacity" Value="1"/>
                         </Style>
                     </GridView.ItemContainerStyle>
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
                 </GridView>
             </StackPanel>
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Button x:Name="ColorPickerButton" Width="150" Flyout="{StaticResource ColorPickerFlyout}" Margin="0 20 0 0">
-                        <TextBlock TextWrapping="Wrap" Text="Select Item Background Color"></TextBlock>
-                    </Button>
-
-                    <Slider x:Name="OpacitySlider" Header="Background Opacity" Width="150" ValueChanged="StyledGrid_OpacityChanged"  
-                            Minimum="0" Maximum="1" StepFrequency="0.1" Margin="0 20 0 0" />
-
-                    <CheckBox Margin="0 15 0 0" x:Name="GradientCheckbox" Content="Gradient Background" Click="StyledGrid_GradientApply"></CheckBox>
-
                     <Grid HorizontalAlignment="Left" Margin="0 20 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -200,9 +186,7 @@ some parts of the GridViewItems. --&gt;
 
     &lt;GridView.ItemContainerStyle&gt;
         &lt;Style TargetType="GridViewItem"&gt;
-            &lt;Setter Property="Background" Value="$(Background)"/&gt;
             &lt;Setter Property="Margin" Value="$(ColMargin) $(RowMargin) $(ColMargin) $(RowMargin)"/&gt;
-            &lt;Setter Property="Opacity" Value="$(Opacity)"/&gt;
         &lt;/Style&gt;
     &lt;/GridView.ItemContainerStyle&gt;
 &lt;/GridView&gt;      
@@ -224,9 +208,6 @@ LinearGradientBrush. See the source code of this application for more details. -
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Background" Value="{x:Bind StyledGridColorPicker.Color, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="Opacity" Value="{x:Bind sys:String.Format('{0:0.00}', OpacitySlider.Value), Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="Gradient" Value="{x:Bind GradientCheckbox.IsChecked, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColSpace.PlaceholderText, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.PlaceholderText, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>

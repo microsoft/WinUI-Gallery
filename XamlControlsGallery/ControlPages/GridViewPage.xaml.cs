@@ -34,7 +34,6 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class GridViewPage : ItemsPageBase
     {
-        ObservableCollection<ImageWithBackground> ImagesBgList = new ObservableCollection<ImageWithBackground>();
         int ActualColSpace;
         int ActualRowSpace;
 
@@ -51,13 +50,7 @@ namespace AppUIBasics.ControlPages
             ObservableCollection<CustomDataObject> Items2 = new ObservableCollection<CustomDataObject>(tempList);
             Control0.ItemsSource = Items2;
             Control1.ItemsSource = Items;
-
-            foreach (CustomDataObject obj in Items)
-            {
-                ImageWithBackground temp = new ImageWithBackground("#f2d349", obj.ImageLocation);
-                ImagesBgList.Add(temp);
-            }
-            StyledGrid.ItemsSource = ImagesBgList;
+            StyledGrid.ItemsSource = Items;
 
             ActualColSpace = 5;
             ActualRowSpace = 5;
@@ -132,82 +125,6 @@ namespace AppUIBasics.ControlPages
                         break;
                 }
             }
-        }
-
-        private void StyledGrid_OpacityChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            Slider slider = sender as Slider;
-            for (int i = 0; i < StyledGrid.Items.Count; i++)
-            {
-                var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
-
-                item.Opacity = slider.Value;
-            }
-        }
-
-        private void StyledGrid_ColorChanged(object sender, RoutedEventArgs e)
-        {
-
-            for (int i = 0; i < StyledGrid.Items.Count; i++)
-            {
-                var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
-
-                item.Background = new SolidColorBrush(StyledGridColorPicker.Color);
-            }
-
-            if (GradientCheckbox.IsChecked == true)
-            {
-                StyledGrid_GradientApply(sender, e);
-            }
-
-            ColorPickerButton.Flyout.Hide();
-        }
-
-        private void StyledGrid_ColorCancel(object sender, RoutedEventArgs e)
-        {
-            StyledGridColorPicker.ContextFlyout.Hide();
-        }
-
-        private void StyledGrid_GradientApply(object sender, RoutedEventArgs e)
-        {
-            if (GradientCheckbox.IsChecked == true)
-            {
-                // Create a new Linear Gradient brush with a stop for the selected color
-                var brush = new LinearGradientBrush();
-                GradientStop tmp = new GradientStop();
-                tmp.Color = StyledGridColorPicker.Color;
-                tmp.Offset = 0.1;
-
-                GradientStop tmp2 = new GradientStop();
-                tmp2.Color = Colors.White;
-                tmp2.Offset = 2.0;
-
-                GradientStopCollection stops = new GradientStopCollection();
-                stops.Add(tmp);
-                stops.Add(tmp2);
-
-                brush.GradientStops = stops;
-
-                // Apply this Linear Gradient Brush as the background to all items in the GridView
-                for (int i = 0; i < StyledGrid.Items.Count; i++)
-                {
-                    var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
-
-                    item.Background = brush;
-                }
-            }
-
-            else
-            {
-                // Apply back regular background color without Gradient once user un-checks Gradient Checkbox
-                for (int i = 0; i < StyledGrid.Items.Count; i++)
-                {
-                    var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
-
-                    item.Background = new SolidColorBrush(StyledGridColorPicker.Color);
-                }
-            }
-
         }
 
         private void StyledGrid_IncreaseColSpace(object sender, RoutedEventArgs e)
@@ -292,23 +209,6 @@ namespace AppUIBasics.ControlPages
 
                 item.Margin = NewMargin;
             }
-        }
-    }
-    public class ImageWithBackground
-    {
-        public string Color { get; set; }
-        public string ImageSrc { get; set; }
-        public double OpacityLevel { get; set; } = 100;
-
-        public ImageWithBackground(string col, string src)
-        {
-            Color = col;
-            ImageSrc = src;
-        }
-
-        public override string ToString()
-        {
-            return Color + " " + ImageSrc;
         }
     }
 }
