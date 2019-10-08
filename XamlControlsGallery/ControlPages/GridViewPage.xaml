@@ -121,15 +121,13 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                     
                     <GridView.ItemTemplate>
                         <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local1:CustomDataObject">
-                            <Grid Width="200">
+                            <Grid Width="100">
                                 <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
-                                <StackPanel Orientation="Vertical" Height="60" VerticalAlignment="Bottom" Padding="12" Background="LightGray" Opacity=".75">
+                                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5 1 5 1" Background="LightGray" Opacity=".75">
                                     <TextBlock Text="{x:Bind Title}"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        <TextBlock Text="Likes, " Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"></TextBlock>
-                                        <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                        <TextBlock Text="Views" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"></TextBlock>
+                                        <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -144,9 +142,10 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
 
                     <GridView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
+                            <ItemsWrapGrid Loaded="StyledGrid_InitWrapGrid" x:Name="MaxItemsWrapGrid" MaximumRowsOrColumns="3" Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </GridView.ItemsPanel>
+                    
                 </GridView>
             </StackPanel>
 
@@ -156,22 +155,55 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                        <TextBox Header="Space Between Columns" Grid.Column ="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin=" 0 0 5 10"
-                                 KeyDown="StyledGrid_ChangeCol"/>
-                        <Button x:Name="IncColSpace" Grid.Column="1" Content="+" FontSize="15" Click="StyledGrid_IncreaseColSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom"></Button>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left">
+                            </TextBlock>
+                            <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                                 TextChanged="StyledGrid_ChangeCol"/>
+                            <Button x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                            <Button x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
                     </Grid>
 
                     <Grid HorizontalAlignment="Left">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                        <TextBox Header="Space Between Rows" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
-                                 KeyDown="StyledGrid_ChangeRow"/>
-                        <Button x:Name="IncRowSpace" Grid.Column="1" Content="+" FontSize="15" Click="StyledGrid_IncreaseRowSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom"></Button>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                                 TextChanged="StyledGrid_ChangeRow"/>
+                        <Button x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <Button x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                                 TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
+                        <Button x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <Button x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
                     </Grid>
 
                 </StackPanel>
@@ -179,7 +211,7 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- The GridView used for this example is shown below. Setter properties are used to customize 
-some parts of the GridViewItems. --&gt;
+some parts of the GridViewItems (i.e. the margins). --&gt;
 &lt;GridView
     x:Name="StyledGrid"
     ItemTemplate="{StaticResource StyledGridTemplate}"&gt;
@@ -189,27 +221,46 @@ some parts of the GridViewItems. --&gt;
             &lt;Setter Property="Margin" Value="$(ColMargin) $(RowMargin) $(ColMargin) $(RowMargin)"/&gt;
         &lt;/Style&gt;
     &lt;/GridView.ItemContainerStyle&gt;
+                    
+    &lt;!-- An extra property also needs to be added to the GridView's ItemsWrapGrid. 
+    The following sets the maximum # of items to show before wrapping.--&gt;
+    &lt;GridView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
+            &lt;ItemsWrapGrid Loaded="StyledGrid_InitWrapGrid" x:Name="MaxItemsWrapGrid" 
+                              MaximumRowsOrColumns="$(MaxItems)" Orientation="Horizontal"/&gt;
+        &lt;/ItemsPanelTemplate&gt;
+    &lt;/GridView.ItemsPanel&gt;
+                    
 &lt;/GridView&gt;      
                     
 &lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown below)
 called StyledGridTemplate, defined in the Page.Resources section of the XAML file. 
                     
-The data template is defined to display a ImageWithBackground object (class defined in C# code-behind), 
-and the image displayed has its source defined in the ImageSrc attribute, which the Image Source 
-property below is bound to. --&gt;
+The data template is defined to display a CustomDataObject object (class defined in C# code-behind).
+CustomDataObject objects have ImageLocation, Title, and Likes attributes which are all bound in the 
+data template below--&gt;
                     
-&lt;DataTemplate x:Key="StyledGridTemplate" x:DataType="local1:ImageWithBackground"&gt;
-        &lt;Image Source="{x:Bind ImageSrc}" Stretch="Fill" VerticalAlignment="Center"
-                  Height="100" Width="100" Margin="30"&gt;&lt;/Image&gt;
+&lt;DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;Grid Width="100"&gt;
+        &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/&gt;
+        &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5 1 5 1" 
+                       Background="LightGray" Opacity=".75"&gt;
+            &lt;TextBlock Text="{x:Bind Title}"/&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" 
+                              Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+                &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" 
+                              Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
 &lt;/DataTemplate&gt;
-
-&lt;!-- The gradient was applied by changing the background of each GridViewItem to use a 
-LinearGradientBrush. See the source code of this application for more details. --&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColSpace.PlaceholderText, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.PlaceholderText, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind MaxItems.PlaceholderText, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 

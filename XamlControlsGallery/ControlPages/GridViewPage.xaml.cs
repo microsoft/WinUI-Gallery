@@ -25,6 +25,8 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
+
 
 
 namespace AppUIBasics.ControlPages
@@ -36,10 +38,13 @@ namespace AppUIBasics.ControlPages
     {
         int ActualColSpace;
         int ActualRowSpace;
+        int ActualMaxItems;
 
+        ItemsWrapGrid StyledGridIWG;
         public GridViewPage()
         {
             this.InitializeComponent();
+            this.DataContext = this;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -54,7 +59,8 @@ namespace AppUIBasics.ControlPages
 
             ActualColSpace = 5;
             ActualRowSpace = 5;
-
+            ActualMaxItems = 3;
+            MaxItems.Text = ActualMaxItems.ToString();
         }
 
         private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
@@ -150,6 +156,37 @@ namespace AppUIBasics.ControlPages
             NotifyPropertyChanged();
         }
 
+        private void StyledGrid_DecreaseColSpace(object sender, RoutedEventArgs e)
+        {
+            if (ActualColSpace - 1 >= 0)
+            {
+                ActualColSpace -= 1;
+
+                // Update text box with newly increased value
+                ColSpace.Text = ActualColSpace.ToString();
+                ColSpace.PlaceholderText = ActualColSpace.ToString();
+
+                for (int i = 0; i < StyledGrid.Items.Count; i++)
+                {
+                    var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+
+                    Thickness NewMargin = item.Margin;
+                    NewMargin.Left = item.Margin.Left - 1;
+                    NewMargin.Right = item.Margin.Right - 1;
+
+                    item.Margin = NewMargin;
+                }
+            }
+
+            else
+            {
+                ColSpace.Text = "";
+                ColSpace.PlaceholderText = "0";
+            }
+
+            NotifyPropertyChanged();
+        }
+
         private void StyledGrid_IncreaseRowSpace(object sender, RoutedEventArgs e)
         {
 
@@ -158,7 +195,6 @@ namespace AppUIBasics.ControlPages
             // Update text box with newly increased value
             RowSpace.Text = ActualRowSpace.ToString();
             RowSpace.PlaceholderText = ActualRowSpace.ToString();
-
 
             for (int i = 0; i < StyledGrid.Items.Count; i++)
             {
@@ -174,41 +210,199 @@ namespace AppUIBasics.ControlPages
             NotifyPropertyChanged();
         }
 
-        private void StyledGrid_ChangeRow(object sender, KeyRoutedEventArgs e)
+        private void StyledGrid_DecreaseRowSpace(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if (ActualRowSpace -1 >= 0)
             {
-                RowSpace.Text = RowSpace.Text.ToString();
-                RowSpace.PlaceholderText = RowSpace.Text.ToString();
+                ActualRowSpace -= 1;
+
+                // Update text box with newly increased value
+                RowSpace.Text = ActualRowSpace.ToString();
+                RowSpace.PlaceholderText = ActualRowSpace.ToString();
 
                 for (int i = 0; i < StyledGrid.Items.Count; i++)
                 {
                     var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                     Thickness NewMargin = item.Margin;
-                    NewMargin.Top = Convert.ToInt32(RowSpace.Text);
-                    NewMargin.Bottom = Convert.ToInt32(RowSpace.Text);
+                    NewMargin.Top = item.Margin.Top - 1;
+                    NewMargin.Bottom = item.Margin.Bottom - 1;
 
                     item.Margin = NewMargin;
                 }
             }
+
+            else
+            {
+                RowSpace.Text = "";
+                RowSpace.PlaceholderText = "0";
+            }
+
+            NotifyPropertyChanged();
         }
 
-        private void StyledGrid_ChangeCol(object sender, KeyRoutedEventArgs e)
+        private void StyledGrid_ChangeRow(object sender, TextChangedEventArgs e)
         {
-            ColSpace.Text = ColSpace.Text.ToString();
-            ColSpace.PlaceholderText = ColSpace.Text.ToString();
-
-            for (int i = 0; i < StyledGrid.Items.Count; i++)
+            try
             {
-                var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                // Make sure that value entered is a number
+                int newVal = Convert.ToInt32(RowSpace.Text.ToString());
 
-                Thickness NewMargin = item.Margin;
-                NewMargin.Left = Convert.ToInt32(ColSpace.Text);
-                NewMargin.Right = Convert.ToInt32(ColSpace.Text);
+                // If empty or negative string, reset to 0.
+                if (RowSpace.Text.ToString() != "" && newVal >= 0)
+                {
+                    RowSpace.Text = RowSpace.Text.ToString();
+                    RowSpace.PlaceholderText = RowSpace.Text.ToString();
 
-                item.Margin = NewMargin;
+                    for (int i = 0; i < StyledGrid.Items.Count; i++)
+                    {
+                        var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+
+                        Thickness NewMargin = item.Margin;
+                        NewMargin.Top = Convert.ToInt32(RowSpace.Text);
+                        NewMargin.Bottom = Convert.ToInt32(RowSpace.Text);
+
+                        item.Margin = NewMargin;
+                    }
+                }
+                else
+                {
+                    RowSpace.Text = "";
+                    RowSpace.PlaceholderText = "";
+                }
+
             }
+            catch (FormatException)
+            {
+                RowSpace.Text = "";
+                RowSpace.PlaceholderText = "0";
+            }        
+        }
+
+        private void StyledGrid_ChangeCol(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Make sure that value entered is a number
+                int newVal = Convert.ToInt32(ColSpace.Text.ToString());
+
+                // If empty or negative string, reset to 0.
+                if (ColSpace.Text.ToString() != "" && newVal >= 0)
+                {
+                    ColSpace.Text = ColSpace.Text.ToString();
+                    ColSpace.PlaceholderText = ColSpace.Text.ToString();
+
+                    for (int i = 0; i < StyledGrid.Items.Count; i++)
+                    {
+                        var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+
+                        Thickness NewMargin = item.Margin;
+                        NewMargin.Left = Convert.ToInt32(ColSpace.Text);
+                        NewMargin.Right = Convert.ToInt32(ColSpace.Text);
+
+                        item.Margin = NewMargin;
+                    }
+                }
+                else
+                {
+                    ColSpace.Text = "";
+                    ColSpace.PlaceholderText = "";
+                }
+
+            }
+            catch (FormatException)
+            {
+                ColSpace.Text = "";
+                ColSpace.PlaceholderText = "0";
+            }
+        }
+
+        private void StyledGrid_IncreaseMaxItems(object sender, RoutedEventArgs e)
+        {
+
+            if (Convert.ToInt32(MaxItems.Text.ToString()) >= 0)
+            { 
+                ActualMaxItems += 1;
+                MaxItems.Text = ActualMaxItems.ToString();
+                MaxItems.PlaceholderText = ActualMaxItems.ToString();
+
+                StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
+            }
+            
+        }
+
+        private void StyledGrid_DecreaseMaxItems(object sender, RoutedEventArgs e)
+        {
+            
+            if (Convert.ToInt32(MaxItems.Text.ToString())  >= 1)
+            {
+                ActualMaxItems -= 1;
+                MaxItems.Text = ActualMaxItems.ToString();
+                MaxItems.PlaceholderText = ActualMaxItems.ToString();
+
+                StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
+            }
+            else
+            {
+                sendMessage();
+                ActualMaxItems = 1;
+                MaxItems.Text = "1";
+                MaxItems.PlaceholderText = "1";
+            }
+        }
+
+        private void StyledGrid_ChangeMaxItems(object sender, TextChangedEventArgs e)
+        {
+
+            try
+            {
+                // Make sure that value entered is a number
+                int newVal = Convert.ToInt32(MaxItems.Text.ToString());
+
+                // If empty or negative string, reset to 0.
+                if (Convert.ToInt32(MaxItems.Text.ToString()) >= 1)
+                {
+                    MaxItems.PlaceholderText = MaxItems.Text.ToString();
+                    ActualMaxItems = Convert.ToInt32(MaxItems.Text);
+
+                    StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
+                }
+
+                else
+                {
+                    sendMessage();
+                    ActualMaxItems = 1;
+                    MaxItems.Text = "1";
+                    MaxItems.PlaceholderText = "1";
+                }
+
+            }
+            catch (FormatException)
+            {
+                MaxItems.Text = "";
+                MaxItems.PlaceholderText = "1";
+            }
+            
+        }
+
+        private void StyledGrid_InitWrapGrid(object sender, RoutedEventArgs e)
+        {
+            StyledGridIWG = sender as ItemsWrapGrid;
+            StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
+        }
+
+        private async void sendMessage()
+        {
+            var messageDialog = new MessageDialog("Value cannot be less than 1.");
+
+            // Set the command that will be invoked by default
+            messageDialog.DefaultCommandIndex = 0;
+
+            // Set the command to be invoked when escape is pressed
+            messageDialog.CancelCommandIndex = 1;
+
+            // Show the message dialog
+            await messageDialog.ShowAsync();
         }
     }
 }
