@@ -31,9 +31,6 @@ using Windows.UI.Popups;
 
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class GridViewPage : ItemsPageBase
     {
         int ActualColSpace;
@@ -41,6 +38,7 @@ namespace AppUIBasics.ControlPages
         int ActualMaxItems;
 
         ItemsWrapGrid StyledGridIWG;
+
         public GridViewPage()
         {
             this.InitializeComponent();
@@ -50,11 +48,13 @@ namespace AppUIBasics.ControlPages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            // Get data objects and place them into an ObservableCollection
             List<CustomDataObject> tempList = CustomDataObject.GetDataObjects();
             ObservableCollection<CustomDataObject> Items = new ObservableCollection<CustomDataObject>(tempList);
             ObservableCollection<CustomDataObject> Items2 = new ObservableCollection<CustomDataObject>(tempList);
-            Control0.ItemsSource = Items2;
-            Control1.ItemsSource = Items;
+            BasicGridView.ItemsSource = Items2;
+            ContentGridView.ItemsSource = Items;
             StyledGrid.ItemsSource = Items;
 
             ActualColSpace = 5;
@@ -69,12 +69,12 @@ namespace AppUIBasics.ControlPages
             if (tag != null)
             {
                 var template = tag.ToString();
-                Control1.ItemTemplate = (DataTemplate)this.Resources[template];
+                ContentGridView.ItemTemplate = (DataTemplate)this.Resources[template];
                 itemTemplate.Value = template;
             }
         }
 
-        private void Control1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ContentGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is GridView gridView)
             {
@@ -82,14 +82,14 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Control1_ItemClick(object sender, ItemClickEventArgs e)
+        private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
         }
 
-        private void Control0_ItemClick(object sender, ItemClickEventArgs e)
+        private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
+            ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
         }
 
         private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)
@@ -99,35 +99,35 @@ namespace AppUIBasics.ControlPages
 
         private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            if (Control1.FlowDirection == FlowDirection.LeftToRight)
+            if (ContentGridView.FlowDirection == FlowDirection.LeftToRight)
             {
-                Control1.FlowDirection = FlowDirection.RightToLeft;
+                ContentGridView.FlowDirection = FlowDirection.RightToLeft;
             }
             else
             {
-                Control1.FlowDirection = FlowDirection.LeftToRight;
+                ContentGridView.FlowDirection = FlowDirection.LeftToRight;
             }
         }
 
         private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ContentGridView != null)
             {
                 string colorName = e.AddedItems[0].ToString();
                 switch (colorName)
                 {
                     case "None":
-                        Control1.SelectionMode = ListViewSelectionMode.None;
+                        ContentGridView.SelectionMode = ListViewSelectionMode.None;
                         SelectionOutput.Text = string.Empty;
                         break;
                     case "Single":
-                        Control1.SelectionMode = ListViewSelectionMode.Single;
+                        ContentGridView.SelectionMode = ListViewSelectionMode.Single;
                         break;
                     case "Multiple":
-                        Control1.SelectionMode = ListViewSelectionMode.Multiple;
+                        ContentGridView.SelectionMode = ListViewSelectionMode.Multiple;
                         break;
                     case "Extended":
-                        Control1.SelectionMode = ListViewSelectionMode.Extended;
+                        ContentGridView.SelectionMode = ListViewSelectionMode.Extended;
                         break;
                 }
             }
@@ -135,17 +135,19 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_IncreaseColSpace(object sender, RoutedEventArgs e)
         {
-
             ActualColSpace += 1;
 
             // Update text box with newly increased value
             ColSpace.Text = ActualColSpace.ToString();
             ColSpace.PlaceholderText = ActualColSpace.ToString();
 
+            // Increase left/right margin on all GridViewItems
             for (int i = 0; i < StyledGrid.Items.Count; i++)
             {
                 var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
+                // Create a Thickness property to bind to each item's Margin property.
+                // Use existing margin and only change relevant values (left/right)
                 Thickness NewMargin = item.Margin;
                 NewMargin.Left = item.Margin.Left + 1;
                 NewMargin.Right = item.Margin.Right + 1;
@@ -158,6 +160,7 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_DecreaseColSpace(object sender, RoutedEventArgs e)
         {
+            // Make sure new value is positive
             if (ActualColSpace - 1 >= 0)
             {
                 ActualColSpace -= 1;
@@ -166,10 +169,13 @@ namespace AppUIBasics.ControlPages
                 ColSpace.Text = ActualColSpace.ToString();
                 ColSpace.PlaceholderText = ActualColSpace.ToString();
 
+                // Increase left/right margin on all GridViewItems
                 for (int i = 0; i < StyledGrid.Items.Count; i++)
                 {
                     var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
+                    // Create a Thickness property to bind to each item's Margin property.
+                    // Use existing margin and only change relevant values (left/right)
                     Thickness NewMargin = item.Margin;
                     NewMargin.Left = item.Margin.Left - 1;
                     NewMargin.Right = item.Margin.Right - 1;
@@ -178,10 +184,12 @@ namespace AppUIBasics.ControlPages
                 }
             }
 
+            // If new value is negative, reset text box to 0 and display an error message.
             else
             {
                 ColSpace.Text = "";
                 ColSpace.PlaceholderText = "0";
+                sendMessage();
             }
 
             NotifyPropertyChanged();
@@ -189,17 +197,18 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_IncreaseRowSpace(object sender, RoutedEventArgs e)
         {
-
             ActualRowSpace += 1;
 
-            // Update text box with newly increased value
             RowSpace.Text = ActualRowSpace.ToString();
             RowSpace.PlaceholderText = ActualRowSpace.ToString();
 
+            // Increase top/bottom margin on all GridViewItems
             for (int i = 0; i < StyledGrid.Items.Count; i++)
             {
                 var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
+                // Create a Thickness property to bind to each item's Margin property.
+                // Use existing margin and only change relevant values (top/bottom)
                 Thickness NewMargin = item.Margin;
                 NewMargin.Top = item.Margin.Top + 1;
                 NewMargin.Bottom = item.Margin.Bottom + 1;
@@ -212,6 +221,7 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_DecreaseRowSpace(object sender, RoutedEventArgs e)
         {
+            // Make sure new value is positive
             if (ActualRowSpace -1 >= 0)
             {
                 ActualRowSpace -= 1;
@@ -220,10 +230,13 @@ namespace AppUIBasics.ControlPages
                 RowSpace.Text = ActualRowSpace.ToString();
                 RowSpace.PlaceholderText = ActualRowSpace.ToString();
 
+                // Decrease top/bottom margin on all GridViewItems
                 for (int i = 0; i < StyledGrid.Items.Count; i++)
                 {
                     var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
+                    // Create a Thickness property to bind to each item's Margin property.
+                    // Use existing margin and only change relevant values (top/bottom)
                     Thickness NewMargin = item.Margin;
                     NewMargin.Top = item.Margin.Top - 1;
                     NewMargin.Bottom = item.Margin.Bottom - 1;
@@ -232,10 +245,12 @@ namespace AppUIBasics.ControlPages
                 }
             }
 
+            // If new value is negative, reset text box to 0 and display an error message.
             else
             {
                 RowSpace.Text = "";
                 RowSpace.PlaceholderText = "0";
+                sendMessage();
             }
 
             NotifyPropertyChanged();
@@ -254,6 +269,7 @@ namespace AppUIBasics.ControlPages
                     RowSpace.Text = RowSpace.Text.ToString();
                     RowSpace.PlaceholderText = RowSpace.Text.ToString();
 
+                    // Create new Thickness object and update relevant parts of Margin property (top/bottom)
                     for (int i = 0; i < StyledGrid.Items.Count; i++)
                     {
                         var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
@@ -272,6 +288,8 @@ namespace AppUIBasics.ControlPages
                 }
 
             }
+
+            // If entered value not a number, reset to 0.
             catch (FormatException)
             {
                 RowSpace.Text = "";
@@ -292,6 +310,7 @@ namespace AppUIBasics.ControlPages
                     ColSpace.Text = ColSpace.Text.ToString();
                     ColSpace.PlaceholderText = ColSpace.Text.ToString();
 
+                    // Create new Thickness object and update relevant parts of Margin property (top/bottom)
                     for (int i = 0; i < StyledGrid.Items.Count; i++)
                     {
                         var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
@@ -310,6 +329,8 @@ namespace AppUIBasics.ControlPages
                 }
 
             }
+
+            // If entered value not a number, reset to 0.
             catch (FormatException)
             {
                 ColSpace.Text = "";
@@ -319,13 +340,15 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_IncreaseMaxItems(object sender, RoutedEventArgs e)
         {
-
+            // Make sure value is positive
             if (Convert.ToInt32(MaxItems.Text.ToString()) >= 0)
             { 
+                // Increment ActualMaxItems and update text box
                 ActualMaxItems += 1;
                 MaxItems.Text = ActualMaxItems.ToString();
                 MaxItems.PlaceholderText = ActualMaxItems.ToString();
 
+                // Set property by accessing StyledGridIWG ItemsWrapGrid object, which is defined on load (via StyledGrid_InitWrapGrid fcn)
                 StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
             }
             
@@ -333,15 +356,19 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_DecreaseMaxItems(object sender, RoutedEventArgs e)
         {
-            
+            // Make sure new value is greater than 1
             if (Convert.ToInt32(MaxItems.Text.ToString())  >= 1)
             {
+                // Decrement ActualMaxItems and update text box
                 ActualMaxItems -= 1;
                 MaxItems.Text = ActualMaxItems.ToString();
                 MaxItems.PlaceholderText = ActualMaxItems.ToString();
 
+                // Set property by accessing StyledGridIWG ItemsWrapGrid object, which is defined on load (via StyledGrid_InitWrapGrid fcn)
                 StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
             }
+
+            // If value is less than 1, reset textbox to 1 and display error message.
             else
             {
                 sendMessage();
@@ -359,15 +386,17 @@ namespace AppUIBasics.ControlPages
                 // Make sure that value entered is a number
                 int newVal = Convert.ToInt32(MaxItems.Text.ToString());
 
-                // If empty or negative string, reset to 0.
+                // Make sure number is not less than 1
                 if (Convert.ToInt32(MaxItems.Text.ToString()) >= 1)
                 {
                     MaxItems.PlaceholderText = MaxItems.Text.ToString();
                     ActualMaxItems = Convert.ToInt32(MaxItems.Text);
-
+                    
+                    // Set property by accessing StyledGridIWG ItemsWrapGrid object, which is defined on load (via StyledGrid_InitWrapGrid fcn)
                     StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
                 }
 
+                // If number is less than 1, reset textbox to 1 and display error message.
                 else
                 {
                     sendMessage();
@@ -377,6 +406,8 @@ namespace AppUIBasics.ControlPages
                 }
 
             }
+            
+            // If value not a number, reset text box to 1.
             catch (FormatException)
             {
                 MaxItems.Text = "";
@@ -387,7 +418,10 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_InitWrapGrid(object sender, RoutedEventArgs e)
         {
+            // Update ItemsWrapGrid object created on page load by assigning it to StyledGrid's ItemWrapGrid
             StyledGridIWG = sender as ItemsWrapGrid;
+
+            // Now we can change StyledGrid's MaximumRowsorColumns property within its ItemsPanel>ItemsPanelTemplate>ItemsWrapGrid.
             StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
         }
 
@@ -395,13 +429,11 @@ namespace AppUIBasics.ControlPages
         {
             var messageDialog = new MessageDialog("Value cannot be less than 1.");
 
-            // Set the command that will be invoked by default
+            // Set the commands to close the message
             messageDialog.DefaultCommandIndex = 0;
-
-            // Set the command to be invoked when escape is pressed
             messageDialog.CancelCommandIndex = 1;
 
-            // Show the message dialog
+            // Show message
             await messageDialog.ShowAsync();
         }
     }

@@ -73,23 +73,22 @@
                     This is a basic GridView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize the specific GridView.
                 </TextBlock>
                 <GridView
-                    x:Name="Control0"
+                    x:Name="BasicGridView"
                     ItemTemplate="{StaticResource ImageTemplate}"
                     IsItemClickEnabled="True"
-                    ItemClick="Control0_ItemClick"
+                    ItemClick="BasicGridView_ItemClick"
                     SelectionMode="Single"/>
-
                 <TextBlock x:Name="ClickOutput0" Style="{StaticResource OutputTextBlockStyle}" />
             </StackPanel>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;GridView
-    x:Name="Control0"
+    x:Name="BasicGridView"
     ItemTemplate="{StaticResource ImageTemplate}"
     ItemsSource="{x:Bind Items}"
     IsItemClickEnabled="True"
-    ItemClick="Control0_ItemClick"
+    ItemClick="BasicGridView_ItemClick"
     SelectionMode="Single"/&gt;
                     
  &lt;DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject"&gt;
@@ -105,7 +104,7 @@ and the source of the image displayed is bound to the CustomDataObject object's 
 The ItemsSource for the ListView is an ObservableCollection&lt;CustomDataObject&gt; called Items and
 is defined in the C# code-behind, but can be defined as a XAML property as well. 
                     
-The IsItemClickEnabled property allows items to be clicked, and a function called Control0_ItemClick 
+The IsItemClickEnabled property allows items to be clicked, and a function called BasicGridView_ItemClick 
 is called when an item is clicked. This function is defined in the C# code-behind and simply outputs 
 the title of the selected item into a TextBlock below the GridView. --&gt;
                 </x:String>
@@ -162,12 +161,11 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left">
-                            </TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
-                                 TextChanged="StyledGrid_ChangeCol"/>
-                            <Button x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
-                            <Button x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                                TextChanged="StyledGrid_ChangeCol"/>
+                        <Button x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <Button x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
                     </Grid>
 
                     <Grid HorizontalAlignment="Left">
@@ -264,7 +262,7 @@ data template below--&gt;
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example1" HeaderText="Content inside of a GridView.">
+        <local:ControlExample HeaderText="Content inside of a GridView.">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -272,19 +270,20 @@ data template below--&gt;
                 </Grid.RowDefinitions>
 
                 <GridView
-                    x:Name="Control1"
+                    x:Name="ContentGridView"
                     CanDragItems="{x:Bind DragCheckBox.IsChecked.Value, Mode=OneWay}"
                     CanReorderItems="{x:Bind ReorderCheckBox.IsChecked.Value, Mode=OneWay}"
                     AllowDrop="{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}"
                     IsItemClickEnabled="{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}"
-                    ItemClick="Control1_ItemClick"
+                    ItemClick="ContentGridView_ItemClick"
                     ItemTemplate="{StaticResource ImageTemplate}"                    
-                    SelectionChanged="Control1_SelectionChanged" />
+                    SelectionChanged="ContentGridView_SelectionChanged" />
 
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Name="ClickOutput" Style="{StaticResource OutputTextBlockStyle}" />
                     <TextBlock x:Name="SelectionOutput" Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
+                
             </Grid>
             <local:ControlExample.Options>
                 <StackPanel x:Name="Control2">
@@ -333,24 +332,90 @@ data template below--&gt;
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;GridView ItemsSource="{x:Bind Items}"
-          ItemTemplate="{StaticResource $(ItemTemplate)}"
-          IsItemClickEnabled="$(IsItemClickEnabled)"
-          CanDragItems="$(CanDragItems)"
-          AllowDrop="$(CanDropItems)"
-          CanReorderItems="$(CanReorderItems)"
-          SelectionMode="$(SelectionMode)"
-          SelectionChanged="Control1_SelectionChanged"
-          ItemClick="Control1_ItemClick" /&gt;
+&lt;!-- The GridView used for this sample is shown below, with all of the necessary added properties. --&gt;
+&lt;GridView 
+    x:Name="ContentGridView"
+    ItemsSource="{x:Bind Items}"
+    ItemTemplate="{StaticResource $(ItemTemplate)}"
+    IsItemClickEnabled="$(IsItemClickEnabled)"
+    CanDragItems="$(CanDragItems)"
+    AllowDrop="$(CanDropItems)"
+    CanReorderItems="$(CanReorderItems)"
+    SelectionMode="$(SelectionMode)"
+    SelectionChanged="ContentGridView_SelectionChanged"
+    ItemClick="ContentGridView_ItemClick" /&gt;
+
+&lt;!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
+to handle the events of when a selection changes on the GridView and when an item is clicked. --&gt;
+                    
+&lt;!-- There are four data templates defined in the Page.Resources section, and this GridView's 
+ItemTemplate is bound to one of them based on your selection on the left. Below is the source code
+for all four options:--&gt;
+
+&lt;!-- Image: --&gt;
+&lt;DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" AutomationProperties.Name="{x:Bind Title}" 
+              Width="190" Height="130" AutomationProperties.AccessibilityView="Raw" /&gt;
+&lt;/DataTemplate&gt;
+
+&lt;!-- Icon/Text: --&gt;
+&lt;DataTemplate x:Key="IconTextTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;RelativePanel AutomationProperties.Name="{x:Bind Title}" Width="280" MinHeight="160"&gt;
+        &lt;Image x:Name="image"
+            Width="18"
+            Margin="0,4,0,0"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            Source="{x:Bind ImageLocation}"
+            Stretch="Uniform" /&gt;
+        &lt;TextBlock x:Name="title" Style="{StaticResource BaseTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" 
+            RelativePanel.RightOf="image" RelativePanel.AlignTopWithPanel="True"/&gt;
+        &lt;TextBlock Text="{x:Bind Description}" Style="{StaticResource CaptionTextBlockStyle}" 
+                    TextWrapping="Wrap" Margin="0,4,8,0" RelativePanel.Below="title" TextTrimming="WordEllipsis"/&gt;
+    &lt;/RelativePanel&gt;
+&lt;/DataTemplate&gt;
+
+&lt;!-- Image/Text: --&gt;
+&lt;DataTemplate x:Key="ImageTextTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;Grid AutomationProperties.Name="{x:Bind Title}" Width="280"&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width="Auto"/&gt;
+            &lt;ColumnDefinition Width="*" /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;Image Source="{x:Bind ImageLocation}" Height="100" Stretch="Fill" VerticalAlignment="Top"/&gt;
+        &lt;StackPanel Grid.Column="1" Margin="8,0,0,8"&gt;
+            &lt;TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" 
+                          Margin="0,0,0,8"/&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                &lt;TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+            &lt;/StackPanel&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" /&gt;
+                &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;
+
+&lt;!-- Text: --&gt;
+&lt;DataTemplate x:Key="TextTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;StackPanel Width="240" Orientation="Horizontal"&gt;
+        &lt;TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/DataTemplate&gt;
+
+                    
+                    
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageTemplate" />
-                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind Control1.AllowDrop, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind Control1.CanReorderItems, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind ContentGridView.IsItemClickEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind ContentGridView.CanDragItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind ContentGridView.AllowDrop, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind ContentGridView.CanReorderItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ContentGridView.SelectionMode, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
