@@ -42,6 +42,18 @@ namespace AppUIBasics.ControlPages
             BarItems.Add(new Bar(300, this.MaxLength));
             BarItems.Add(new Bar(25, this.MaxLength));
             BarItems.Add(new Bar(175, this.MaxLength));
+
+            ObservableCollection<object> basicData = new ObservableCollection<object>();
+            basicData.Add(64);
+            basicData.Add("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+            basicData.Add(128);
+            basicData.Add("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+            basicData.Add(256);
+            basicData.Add("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
+            basicData.Add(512);
+            basicData.Add("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+            basicData.Add(1024);
+            repeater0.ItemsSource = basicData;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -145,6 +157,31 @@ namespace AppUIBasics.ControlPages
             else
             {
                 return Accent;
+            }
+        }
+    }
+
+    public class StringOrIntTemplateSelector : DataTemplateSelector
+    {
+        public DataTemplate StringTemplate { get; set; }
+
+        public DataTemplate IntTemplate { get; set; }
+
+        protected override DataTemplate SelectTemplateCore(object item)
+        {
+            if (item.GetType() == typeof(String))
+            {
+                return StringTemplate;
+            }
+
+            else if (item.GetType() == typeof(int))
+            {
+                return IntTemplate;
+            }
+
+            else
+            {
+                return null;
             }
         }
     }
