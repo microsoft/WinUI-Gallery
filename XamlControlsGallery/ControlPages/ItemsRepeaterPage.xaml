@@ -54,6 +54,32 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="ImageTemplate" x:DataType="x:String">
+            <StackPanel>
+                <Image Height="200" Source="{x:Bind}" Margin="5"></Image>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory">
+            <StackPanel>
+                <TextBlock Text="{x:Bind CategoryName}" Padding="10" FontSize="30"/>
+                <ScrollViewer 
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled"
+                        HorizontalScrollMode="Auto"
+                        VerticalScrollMode="Disabled">
+                    <muxcontrols:ItemsRepeater 
+                                x:Name="innerRepeater"
+                                ItemsSource="{x:Bind CategoryItems}"
+                                ItemTemplate="{StaticResource ImageTemplate}">
+                        <muxcontrols:ItemsRepeater.Layout>
+                            <muxcontrols:StackLayout Orientation="Horizontal" />
+                        </muxcontrols:ItemsRepeater.Layout>
+                    </muxcontrols:ItemsRepeater>
+                </ScrollViewer>
+            </StackPanel>
+        </DataTemplate>
+
         <muxcontrols:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
         <muxcontrols:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" Spacing="8"/>
         <muxcontrols:UniformGridLayout x:Name="UniformGridLayout" MinRowSpacing="8" MinColumnSpacing="8"/>
@@ -64,15 +90,16 @@
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
                                   Accent="{StaticResource AccentItemTemplate}"/>
+
         <l:StringOrIntTemplateSelector x:Key="StringOrIntTemplateSelector"
-                                   StringTemplate="{StaticResource StringDataTemplate}"
+                                       StringTemplate="{StaticResource StringDataTemplate}"
                                        IntTemplate="{StaticResource IntDataTemplate}"/>
     </Page.Resources>
 
     <StackPanel>
         <local:ControlExample HeaderText="Basic ItemsRepeater">
             <StackPanel>
-                <TextBlock Text="This is a basic ItemsRepeater that uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="This is a basic ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
                 <muxcontrols:ItemsRepeater x:Name="repeater0" 
                                 Margin="0,0,12,0"
                                 HorizontalAlignment="Stretch"
@@ -159,16 +186,100 @@ DataTemplateSelector to those two data templates, and defines each of them. This
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ItemsRepeater
+&lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
+&lt;ScrollViewer HorizontalScrollBarVisibility="Auto" 
+                HorizontalScrollMode="Auto" 
+                IsVerticalScrollChainingEnabled="False"
+                MaxHeight="500"&gt;
+    &lt;ItemsRepeater
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+&lt;ScrollViewer/&gt;
+                    
+&lt;!-- The Layout specifications used: --&gt;
+                    
+$(displayLayout)     
+                    
+&lt;!-- The DataTemplate used: --&gt;
+                    
+$(displayDataTemplate)                    
+                    
+&lt;!-- All of the options use the same ItemsSource - a list of custom-class Bar objects called BarItems.
+Bar objects have the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and MaxDiameter. --&gt;
     </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
                 <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
+                <local:ControlExampleSubstitution x:Name="displayLayout" Key="displayLayout"/>
+                <local:ControlExampleSubstitution x:Name="displayDataTemplate" Key="displayDataTemplate"/>
             </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Browsing within nested ItemsRepeaters">
+            <ScrollViewer>
+                <muxcontrols:ItemsRepeater 
+                x:Name="outerRepeater"
+                VerticalAlignment="Top"
+                ItemTemplate ="{StaticResource CategoryTemplate}">
+                    <muxcontrols:ItemsRepeater.Layout>
+                        <muxcontrols:StackLayout Orientation="Vertical" />
+                    </muxcontrols:ItemsRepeater.Layout>
+                </muxcontrols:ItemsRepeater>
+            </ScrollViewer>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- The nested ItemsRepeater experience is achieved by creating one ItemsRepeater (outerRepeater below) 
+and creating another ItemsRepeater (innerRepeater below) inside the outer one's DataTemplate. Below is the 
+outer ItemsRepeater definition and the DataTemplate it uses. --&gt;
+                    
+&lt;ScrollViewer&gt;
+    &lt;ItemsRepeater 
+        x:Name="outerRepeater"
+        VerticalAlignment="Top"
+        ItemTemplate ="{StaticResource CategoryTemplate}"&gt;
+        &lt;ItemsRepeater.Layout&gt;
+           &lt;StackLayout Orientation="Vertical" /&gt;
+        &lt;/ItemsRepeater.Layout&gt;
+    &lt;/ItemsRepeater&gt;
+&lt;/ScrollViewer&gt;
+                    
+&lt;DataTemplate x:Key="CategoryTemplate" x:DataType="NestedCategory"&gt;
+    &lt;StackPanel&gt;
+        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="10" FontSize="30"/&gt;
+        &lt;ScrollViewer
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Disabled"
+            HorizontalScrollMode="Auto"
+            VerticalScrollMode="Disabled"&gt;
+            &lt;ItemsRepeater 
+                    x:Name="innerRepeater"
+                    ItemsSource="{x:Bind CategoryItems}"
+                    ItemTemplate="{StaticResource ImageTemplate}"&gt;
+                &lt;ItemsRepeater.Layout&gt;
+                    &lt;StackLayout Orientation="Horizontal" /&gt;
+                &lt;/ItemsRepeater.Layout&gt;
+            &lt;/ItemsRepeater&gt;
+        &lt;/ScrollViewer&gt;
+    &lt;/StackPanel&gt;
+&lt;/DataTemplate&gt;
+                    
+&lt;!-- The DataTemplate shown above is bound to a custom-class type called NestedCategory, 
+which is defined in the code-behind. NestedCategory objects have the following two attributes: 
+a CategoryName (string), and a collection of strings called CategoryItems. Each string in 
+this collection represents an image source. --&gt;
+                    
+&lt;!-- The inner ItemsRepeater is bound to its own, separate DataTemplate called ImageTemplate: --&gt;
+                    
+&lt;DataTemplate x:Key="ImageTemplate" x:DataType="x:String"&gt;
+    &lt;StackPanel&gt;
+        &lt;Image Height="200" Source="{x:Bind}" Margin="5">&lt;/Image&gt;
+    &lt;/StackPanel&gt;
+&lt;/DataTemplate&gt;                  
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
@@ -198,15 +309,53 @@ DataTemplateSelector to those two data templates, and defines each of them. This
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ItemsRepeater
-        ItemsSource="{x:Bind NumberedItems}"
-        Layout="{StaticResource $(Layout)}"
-        ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
+&lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
+&lt;ScrollViewer x:Name="scrollViewer"
+                Height="400"
+                IsVerticalScrollChainingEnabled="False"
+                Padding="0,0,16,0"&gt;
+    &lt;ItemsRepeater
+            ItemsSource="{x:Bind NumberedItems}"
+            Layout="{StaticResource $(Layout)}"
+            ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
+&lt;ScrollViewer/&gt; 
+                    
+&lt;!-- The Layout specifications used: --&gt;
+                    
+$(displayLayout2)     
+                    
+&lt;!-- The ItemTemplate is bound to a DataTemplateSelector called MyDataTemplateSelector.
+MyDataTemplateSelector is defined in the code-behind to return the Accent DataTemplate for 
+odd-numbered-items, and returns the Normal DataTemplate for even-numbered-items. The two 
+data templates and the XAML declaration of MyDataTemplateSelector are below: --&gt;
+
+&lt;MyDataTemplateSelector x:Key="MyDataTemplateSelector"
+                            Normal="{StaticResource NormalItemTemplate}"
+                            Accent="{StaticResource AccentItemTemplate}"/&gt;    
+                    
+&lt;DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32"&gt;
+    &lt;Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}"&gt;
+        &lt;TextBlock Text="{x:Bind}" /&gt;
+    &lt;/Button&gt;
+&lt;/DataTemplate&gt;
+
+&lt;DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32"&gt;
+    &lt;Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}"&gt;
+        &lt;TextBlock Text="{x:Bind}" /&gt;
+    &lt;/Button&gt;
+&lt;/DataTemplate&gt;
+                    
+&lt;!-- All of the options use the same ItemsSource - a list of integers called NumberedItems.--&gt;
+                    
+&lt;!-- ActivityFeedLayout is a custom designed virtualizing layout, defined in the code-behind. 
+View the XAML Controls Gallery source code to see more details about this custom layout. --&gt;
+                    
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
                 <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+                <local:ControlExampleSubstitution x:Name="displayLayout2" Key="displayLayout2"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 

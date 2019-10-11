@@ -1,11 +1,15 @@
-﻿using System;
+﻿using AppUIBasics.Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps.OfflineMaps;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +30,7 @@ namespace AppUIBasics.ControlPages
         private bool isHorizontal = false;
 
         public ObservableCollection<Bar> BarItems;
+
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -54,6 +59,48 @@ namespace AppUIBasics.ControlPages
             basicData.Add("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
             basicData.Add(1024);
             repeater0.ItemsSource = basicData;
+
+            ObservableCollection<NestedCategory> nestedCategories = new ObservableCollection<NestedCategory>();
+            // Add category objects to a separate collection
+            nestedCategories.Add(
+                new NestedCategory("John's Photos",  new ObservableCollection<string>{
+                                                            "../Assets/SampleMedia/cliff.jpg",
+                                                            "../Assets/SampleMedia/grapes.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage1.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage2.jpg"}));
+
+            nestedCategories.Add(
+                new NestedCategory("Paul's Photos", new ObservableCollection<string>{
+                                                            "../Assets/SampleMedia/LandScapeImage4.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage5.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage6.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage7.jpg"}));
+
+            nestedCategories.Add(
+                new NestedCategory("George's Photos", new ObservableCollection<string>{
+                                                            "../Assets/SampleMedia/LandScapeImage3.jpg",
+                                                            "../Assets/SampleMedia/LandScapeImage8.jpg",
+                                                            "../Assets/SampleMedia/rainier.jpg",
+                                                            "../Assets/SampleMedia/sunset.jpg"}));
+
+            nestedCategories.Add(
+                new NestedCategory("Ringo's Photos", new ObservableCollection<string>{
+                                                            "../Assets/SampleMedia/treetops.jpg",
+                                                            "../Assets/SampleMedia/valley.jpg",
+                                                            "../Assets/Windows_Desktop.png"}));
+
+            outerRepeater.ItemsSource = nestedCategories;
+
+            // Intitalize code sample for non-interactive items layout
+            displayLayout.Value = "<muxcontrols:StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
+
+            displayDataTemplate.Value = @"<DataTemplate x:Key='HorizontalBarTemplate' x:DataType='l: Bar'>
+    <Border Background = '{ThemeResource SystemChromeLowColor}' Width = '{x:Bind MaxLength}' >
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}' Height = '24' HorizontalAlignment = 'Left'/> 
+    </Border>
+</DataTemplate>";
+
+            displayLayout2.Value = "<common:ActivityFeedLayout x:Key = 'MyFeedLayout' ColumnSpacing = '12' RowSpacing = '12' MinItemSize = '80, 108'/>";
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -106,6 +153,15 @@ namespace AppUIBasics.ControlPages
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 
             layout2.Value = layoutKey;
+
+            if (layoutKey == "UniformGridLayout2")
+            {
+                displayLayout2.Value = "<UniformGridLayout x:Key = 'UniformGridLayout2' MinItemWidth = '108' MinItemHeight = '108' MinRowSpacing = '12' MinColumnSpacing = '12'/>";
+            }
+            else if (layoutKey == "MyFeedLayout")
+            {
+                displayLayout2.Value = "<common:ActivityFeedLayout x:Key = 'MyFeedLayout' ColumnSpacing = '12' RowSpacing = '12' MinItemSize = '80, 108'/>";
+            }
         }
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)
@@ -119,6 +175,13 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "HorizontalBarTemplate";
 
                 repeater.MaxWidth = MaxLength + 12;
+
+                displayLayout.Value = "<StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
+                displayDataTemplate.Value = @"<DataTemplate x:Key='HorizontalBarTemplate' x:DataType='l: Bar'>
+    <Border Background = '{ThemeResource SystemChromeLowColor}' Width = '{x:Bind MaxLength}' >
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}' Height = '24' HorizontalAlignment = 'Left'/> 
+    </Border>
+</DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
@@ -126,6 +189,13 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "VerticalBarTemplate";
 
                 repeater.MaxWidth = 6000;
+
+                displayLayout.Value = "<StackLayout x:Name = 'HorizontalStackLayout' Orientation = 'Horizontal' Spacing = '8'/> ";
+                displayDataTemplate.Value = @"<DataTemplate x: Key = 'VerticalBarTemplate' x: DataType = 'l:Bar'>
+    <Border Background = '{ThemeResource SystemChromeLowColor}' Height = '{x:Bind MaxHeight}'>
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Height}' Width = '48' VerticalAlignment = 'Top'/>
+    </Border>
+</DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
@@ -133,8 +203,15 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "CircularTemplate";
 
                 repeater.MaxWidth = 540;
-            }
 
+                displayLayout.Value = "<UniformGridLayout x:Name = 'UniformGridLayout' MinRowSpacing = '8' MinColumnSpacing = '8'/>";
+                displayDataTemplate.Value = @"<DataTemplate x:Key='CircularTemplate' x:DataType='l: Bar'>
+    <Grid>
+        <Ellipse Fill = '{ThemeResource SystemChromeLowColor}' Height = '{x:Bind MaxDiameter}' Width = '{x:Bind MaxDiameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
+        <Ellipse Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Diameter}' Width = '{x:Bind Diameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
+    </Grid>
+</DataTemplate>";
+            }
             repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
@@ -142,6 +219,18 @@ namespace AppUIBasics.ControlPages
             elementGenerator.Value = itemTemplateKey;
         }
     }
+
+    public class NestedCategory
+    {
+        public string CategoryName { get; set; }
+        public ObservableCollection<string> CategoryItems { get; set; }
+        public NestedCategory(string catName, ObservableCollection<string> catItems)
+        {
+            CategoryName = catName;
+            CategoryItems = catItems;
+        }
+    }
+
 
     public class MyDataTemplateSelector : DataTemplateSelector
     {
