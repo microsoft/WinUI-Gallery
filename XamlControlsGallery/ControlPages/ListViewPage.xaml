@@ -81,9 +81,9 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Height="75" Width="350" Padding="10 0 0 10" Background="{x:Bind BgColor}" CornerRadius="4">
-                        <TextBlock Text="{x:Bind MsgText}" Padding="0 10 0 0" FontSize="20" Foreground="White"></TextBlock>
-                        <TextBlock Text="{x:Bind MsgDateTime}" Padding="0 0 0 10" FontSize="15" Foreground="White"></TextBlock>
+                    <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
+                        <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="White"/>
+                        <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="White"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -215,14 +215,14 @@ defined in the C# code-behind. --&gt;
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="ListView with Drag, Drop, and Reordering Support">
+        <local:ControlExample HeaderText="ListViews with Drag, Drop, and Reordering Support">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" TextWrapping="Wrap">
-                    In this ListView, you can drag and drop within a list to reorder it, or drag and drop between both lists to move and reorder items.
+                    In these ListView controls, you can drag and drop within a list to reorder items, or drag and drop between lists to move items.
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <ListView
@@ -408,7 +408,7 @@ source code for the XAML Controls Gallery. -->
         <local:ControlExample HeaderText="ListView for Messaging or Data Logging">
             <StackPanel>
                 <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
-                    This ListView is inverted to grow from the bottom up. It's a good way to display logs or messages.
+                    This ListView is inverted to grow from the bottom up. It's a good way to display logs or messages, with most recent at the bottom.
                 </TextBlock>
                 <ListView
                     x:Name="InvertedListView"
