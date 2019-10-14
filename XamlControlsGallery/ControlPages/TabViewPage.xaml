@@ -5,7 +5,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:samplepages="using:AppUIBasics.SamplePages"
     xmlns:local1="using:AppUIBasics.ControlPages"
     mc:Ignorable="d"
@@ -14,81 +14,81 @@
     <StackPanel>
         <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs" CSharpSource="TabView\TabViewBasicSample_cs.txt">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475"/>
+                <muxc:TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
+                    &lt;muxc:TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
             <local:ControlExample.Example>
-                <muxcontrols:TabView SelectedIndex="0" Margin="-12" MinHeight="475" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
-                    <muxcontrols:TabView.TabItems>
-                        <muxcontrols:TabViewItem Header="Document 0">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
-                            </muxcontrols:TabViewItem.IconSource>
+                <muxc:TabView SelectedIndex="0" Margin="-12" MinHeight="475" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
+                    <muxc:TabView.TabItems>
+                        <muxc:TabViewItem Header="Document 0">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Placeholder" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage1 />
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem Header="Document 1">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
-                            </muxcontrols:TabViewItem.IconSource>
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem Header="Document 1">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Placeholder" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage2 />
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem Header="Document 2">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
-                            </muxcontrols:TabViewItem.IconSource>
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem Header="Document 2">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Placeholder" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage3 />
-                        </muxcontrols:TabViewItem>
-                    </muxcontrols:TabView.TabItems>
-                </muxcontrols:TabView>
+                        </muxc:TabViewItem>
+                    </muxc:TabView.TabItems>
+                </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested"&gt;
-    &lt;TabView.TabItems&gt;
-        &lt;TabViewItem Header="Document 0"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
+&lt;muxc:TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested"&gt;
+    &lt;muxc:TabView.TabItems&gt;
+        &lt;muxc:TabViewItem Header="Document 0"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
             &lt;samplepages:SamplePage1 /&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Document 1"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
+        &lt;/muxc:TabViewItem&gt;
+        &lt;muxc:TabViewItem Header="Document 1"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
             &lt;samplepages:SamplePage2 /&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Document 2"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
+        &lt;/muxc:TabViewItem&gt;
+        &lt;muxc:TabViewItem Header="Document 2"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
             &lt;samplepages:SamplePage3 /&gt;
-        &lt;/TabViewItem&gt;
-    &lt;/TabView.TabItems&gt;
-&lt;/TabView&gt;
+        &lt;/muxc:TabViewItem&gt;
+    &lt;/muxc:TabView.TabItems&gt;
+&lt;/muxc:TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabViewItemsSourceSample" SelectedIndex="0" Margin="-12" MinHeight="475" TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested">
-                    <muxcontrols:TabView.TabItemTemplate>
+                <muxc:TabView x:Name="TabViewItemsSourceSample" SelectedIndex="0" Margin="-12" MinHeight="475" TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested">
+                    <muxc:TabView.TabItemTemplate>
                         <DataTemplate x:DataType="local1:MyData">
-                            <muxcontrols:TabViewItem Header="{x:Bind DataHeader}" IconSource="{x:Bind DataIconSource}" Content="{x:Bind DataContent}" />
+                            <muxc:TabViewItem Header="{x:Bind DataHeader}" IconSource="{x:Bind DataIconSource}" Content="{x:Bind DataContent}" />
                         </DataTemplate>
-                    </muxcontrols:TabView.TabItemTemplate >
-                </muxcontrols:TabView>
+                    </muxc:TabView.TabItemTemplate >
+                </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" /&gt;
+                    &lt;muxc:TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -101,8 +101,8 @@
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+1 to Ctrl+8 selects that number tab" />
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,24" Text="- Ctrl+9 selects the last tab (regardless of the number of tabs)" />
 
-                    <muxcontrols:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
-                        <muxcontrols:TabView.KeyboardAccelerators>
+                    <muxc:TabView x:Name="TabView2" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                        <muxc:TabView.KeyboardAccelerators>
                             <KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" />
                             <KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" />
                             <KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
@@ -114,14 +114,14 @@
                             <KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
                             <KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
                             <KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" />
-                        </muxcontrols:TabView.KeyboardAccelerators>
-                    </muxcontrols:TabView>
+                        </muxc:TabView.KeyboardAccelerators>
+                    </muxc:TabView>
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"&gt;
-    &lt;TabView.KeyboardAccelerators&gt;
+&lt;muxc:TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"&gt;
+    &lt;muxc:TabView.KeyboardAccelerators&gt;
         &lt;KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" /&gt;
         &lt;KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" /&gt;
         &lt;KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
@@ -133,8 +133,8 @@
         &lt;KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
         &lt;KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
         &lt;KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
-    &lt;/TabView.KeyboardAccelerators&gt;
-&lt;/TabView&gt;
+    &lt;/muxc:TabView.KeyboardAccelerators&gt;
+&lt;/muxc:TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -146,54 +146,54 @@
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region" />
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,24" Text="See TabViewWindowingSamplePage.xaml and *.cs files to see the complete code" />
 
-                    <muxcontrols:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
-                        <muxcontrols:TabView.TabStripHeader>
+                    <muxc:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
+                        <muxc:TabView.TabStripHeader>
                             <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
-                        </muxcontrols:TabView.TabStripHeader>
-                        <muxcontrols:TabView.TabStripFooter>
+                        </muxc:TabView.TabStripHeader>
+                        <muxc:TabView.TabStripFooter>
                             <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
-                        </muxcontrols:TabView.TabStripFooter>
-                    </muxcontrols:TabView>
+                        </muxc:TabView.TabStripFooter>
+                    </muxc:TabView>
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView&gt;
-    &lt;TabView.TabStripHeader&gt;
+&lt;muxc:TabView&gt;
+    &lt;muxc:TabView.TabStripHeader&gt;
         &lt;TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
-    &lt;/TabView.TabStripHeader&gt;
-    &lt;TabView.TabStripFooter&gt;
+    &lt;/muxc:TabView.TabStripHeader&gt;
+    &lt;muxc:TabView.TabStripFooter&gt;
         &lt;TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
-    &lt;/TabView.TabStripFooter&gt;
-&lt;/TabView&gt;
+    &lt;/muxc:TabView.TabStripFooter&gt;
+&lt;/muxc:TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Tab widths can either be equally sized or sized to the content of the tab">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
-                    <muxcontrols:TabView.TabItems>
-                        <muxcontrols:TabViewItem  Header="Home" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="Home" />
-                            </muxcontrols:TabViewItem.IconSource>
+                <muxc:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
+                    <muxc:TabView.TabItems>
+                        <muxc:TabViewItem  Header="Home" IsClosable="False">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Home" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage1 />
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem  Header="Tab 2 Has Longer Text" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="MusicInfo" />
-                            </muxcontrols:TabViewItem.IconSource>
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem  Header="Tab 2 Has Longer Text" IsClosable="False">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="MusicInfo" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage2 />
-                        </muxcontrols:TabViewItem>
-                        <muxcontrols:TabViewItem  Header="Third Tab" IsClosable="False">
-                            <muxcontrols:TabViewItem.IconSource>
-                                <muxcontrols:SymbolIconSource Symbol="Placeholder" />
-                            </muxcontrols:TabViewItem.IconSource>
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem  Header="Third Tab" IsClosable="False">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Placeholder" />
+                            </muxc:TabViewItem.IconSource>
                             <samplepages:SamplePage3 />
-                        </muxcontrols:TabViewItem>
-                    </muxcontrols:TabView.TabItems>
-                </muxcontrols:TabView>
+                        </muxc:TabViewItem>
+                    </muxc:TabView.TabItems>
+                </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="150">
@@ -203,7 +203,7 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TabView TabWidthMode="$(TabWidthMode)" /&gt;
+                    &lt;muxc:TabView TabWidthMode="$(TabWidthMode)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -216,57 +216,57 @@
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem" />
 
-                    <muxcontrols:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
-                        <muxcontrols:TabView.TabItems>
-                            <muxcontrols:TabViewItem Header="CMD Prompt" IsClosable="False">
-                                <muxcontrols:TabViewItem.IconSource>
-                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
-                                </muxcontrols:TabViewItem.IconSource>
-                            </muxcontrols:TabViewItem>
-                            <muxcontrols:TabViewItem Header="Powershell" IsClosable="False">
-                                <muxcontrols:TabViewItem.IconSource>
-                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
-                                </muxcontrols:TabViewItem.IconSource>
-                            </muxcontrols:TabViewItem>
-                            <muxcontrols:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
-                                <muxcontrols:TabViewItem.IconSource>
-                                    <muxcontrols:BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" />
-                                </muxcontrols:TabViewItem.IconSource>
-                            </muxcontrols:TabViewItem>
-                        </muxcontrols:TabView.TabItems>
-                    </muxcontrols:TabView>
+                    <muxc:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
+                        <muxc:TabView.TabItems>
+                            <muxc:TabViewItem Header="CMD Prompt" IsClosable="False">
+                                <muxc:TabViewItem.IconSource>
+                                    <muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
+                                </muxc:TabViewItem.IconSource>
+                            </muxc:TabViewItem>
+                            <muxc:TabViewItem Header="Powershell" IsClosable="False">
+                                <muxc:TabViewItem.IconSource>
+                                    <muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
+                                </muxc:TabViewItem.IconSource>
+                            </muxc:TabViewItem>
+                            <muxc:TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
+                                <muxc:TabViewItem.IconSource>
+                                    <muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" />
+                                </muxc:TabViewItem.IconSource>
+                            </muxc:TabViewItem>
+                        </muxc:TabView.TabItems>
+                    </muxc:TabView>
                 </StackPanel>
             </local:ControlExample.Example>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView&gt;
-    &lt;TabView.TabItems&gt;
-        &lt;TabViewItem Header="CMD Prompt"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Powershell"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
-        &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Windows Subsystem for Linux"&gt;
-            &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
-            &lt;/TabViewItem.IconSource&gt;
-        &lt;/TabViewItem&gt;
-    &lt;/TabView.TabItems&gt;
-&lt;/TabView&gt;
+&lt;muxc:TabView&gt;
+    &lt;muxc:TabView.TabItems&gt;
+        &lt;muxc:TabViewItem Header="CMD Prompt"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
+        &lt;/muxc:TabViewItem&gt;
+        &lt;muxc:TabViewItem Header="Powershell"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
+        &lt;/muxc:TabViewItem&gt;
+        &lt;muxc:TabViewItem Header="Windows Subsystem for Linux"&gt;
+            &lt;muxc:TabViewItem.IconSource&gt;
+                &lt;muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
+            &lt;/muxc:TabViewItem.IconSource&gt;
+        &lt;/muxc:TabViewItem&gt;
+    &lt;/muxc:TabView.TabItems&gt;
+&lt;/muxc:TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A TabView with accent colored TabStrip background">
             <local:ControlExample.Example>
-                <muxcontrols:TabView x:Name="TabView5" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
-                    <muxcontrols:TabView.Resources>
+                <muxc:TabView x:Name="TabView5" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                    <muxc:TabView.Resources>
                         <ResourceDictionary>
                             <ResourceDictionary.ThemeDictionaries>
                                 <ResourceDictionary x:Key="Light">
@@ -277,13 +277,13 @@
                                 </ResourceDictionary>
                             </ResourceDictionary.ThemeDictionaries>
                         </ResourceDictionary>
-                    </muxcontrols:TabView.Resources>
-                </muxcontrols:TabView>
+                    </muxc:TabView.Resources>
+                </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TabView&gt;
-    &lt;TabView.Resources&gt;
+&lt;muxc:TabView&gt;
+    &lt;muxc:TabView.Resources&gt;
         &lt;ResourceDictionary&gt;
             &lt;ResourceDictionary.ThemeDictionaries&gt;
                 &lt;ResourceDictionary x:Key="Light"&gt;
@@ -294,8 +294,8 @@
                 &lt;/ResourceDictionary&gt;
             &lt;/ResourceDictionary.ThemeDictionaries&gt;
         &lt;/ResourceDictionary&gt;
-    &lt;/TabView.Resources&gt;
-&lt;/TabView&gt;
+    &lt;/muxc:TabView.Resources&gt;
+&lt;/muxc:TabView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

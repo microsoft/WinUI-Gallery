@@ -1,7 +1,7 @@
-﻿<controls:TreeView ItemsSource="{x:Bind DataSource}">
-   <controls:TreeView.ItemTemplate>
+﻿<muxc:TreeView ItemsSource="{x:Bind DataSource}">
+   <muxc:TreeView.ItemTemplate>
       <DataTemplate x:DataType="local:ExplorerItem">
-         <controls:TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}"/>
+         <muxc:TreeViewItem ItemsSource="{x:Bind Children}" Content="{x:Bind Name}"/>
       </DataTemplate>
-   </controls:TreeView.ItemTemplate>
-</controls:TreeView>
+   </muxc:TreeView.ItemTemplate>
+</muxc:TreeView>

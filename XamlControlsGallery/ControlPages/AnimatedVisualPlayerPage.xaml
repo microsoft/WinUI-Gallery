@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
-    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -35,19 +35,19 @@
                             Margin="0, 20, 0, 20">
 
                         <!--  AnimatedVisualPlayer  -->
-                        <muxcontrols:AnimatedVisualPlayer x:Name="Player"
+                        <muxc:AnimatedVisualPlayer x:Name="Player"
                                                           AutoPlay="False">
 
                             <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
                             <animatedvisuals:LottieLogo1/>
 
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
-                            <muxcontrols:AnimatedVisualPlayer.FallbackContent>
+                            <muxc:AnimatedVisualPlayer.FallbackContent>
                                 <DataTemplate>
                                     <Image Source="/Assets/LottieLogo1.png"/>
                                 </DataTemplate>
-                            </muxcontrols:AnimatedVisualPlayer.FallbackContent>
-                        </muxcontrols:AnimatedVisualPlayer>
+                            </muxc:AnimatedVisualPlayer.FallbackContent>
+                        </muxc:AnimatedVisualPlayer>
                     </Border>
 
                     <!--  Playback Buttons  -->
@@ -107,9 +107,9 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String  xml:space="preserve">
-&lt;muxcontrols:AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
+&lt;muxc:AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
     &lt;animatedvisuals:LottieLogo1/&gt;
-&lt;/muxcontrols:AnimatedVisualPlayer&gt;
+&lt;/muxc:AnimatedVisualPlayer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

@@ -1,8 +1,8 @@
-﻿<ToggleSplitButton x:Name="myListButton" VerticalAlignment="Top" Click="myListButton_Click">
+﻿<muxc:ToggleSplitButton x:Name="myListButton" VerticalAlignment="Top" Click="myListButton_Click">
     <SymbolIcon x:Name="mySymbolIcon" Symbol="List"/>
-    <ToggleSplitButton.Flyout>
+    <muxc:ToggleSplitButton.Flyout>
         <Flyout Placement="Bottom">
             <!-- flyout content -->
         </Flyout>
-    </ToggleSplitButton.Flyout>
-</ToggleSplitButton>
+    </muxc:ToggleSplitButton.Flyout>
+</muxc:ToggleSplitButton>

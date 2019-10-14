@@ -15,7 +15,7 @@
       xmlns:local2="using:AppUIBasics.ControlPages"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:mux="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
     <StackPanel  XYFocusKeyboardNavigation="Enabled">
@@ -155,7 +155,7 @@
                     <ComboBoxItem>Strawberries</ComboBoxItem>
                 </ComboBox>
 
-                <mux:RatingControl Margin="5,16,0,0"
+                <muxc:RatingControl Margin="5,16,0,0"
                     AutomationProperties.Name="sample ratingControl"
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
