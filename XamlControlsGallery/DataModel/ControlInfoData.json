@@ -407,17 +407,26 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.listview"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/listview-and-gridview"
+            },
+            {
+              "Title": "Drag and Drop - Full Sample",
+              "Uri": "https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/XamlDragAndDrop"
+            },
+            {
+              "Title": "CollectionViewSource - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Data.CollectionViewSource#see-also"
+            },
+            {
               "Title": "Inverted Lists",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inverted-lists"
             },
             {
               "Title": "Inverted Lists - Full Sample",
               "Uri": "https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlBottomUpList"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists"
             }
+            
           ],
           "RelatedControls": [
             "GridView",

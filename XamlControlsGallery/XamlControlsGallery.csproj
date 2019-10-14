@@ -216,6 +216,10 @@
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />

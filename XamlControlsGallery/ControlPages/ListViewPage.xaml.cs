@@ -11,6 +11,7 @@ using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -91,7 +92,7 @@ namespace AppUIBasics.ControlPages
         private void Source_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
             // Prepare a string with one dragged item per line
-            var items = new StringBuilder();
+            StringBuilder items = new StringBuilder();
             foreach (Contact item in e.Items)
             {
                 if (items.Length > 0) { items.AppendLine(); }
@@ -123,14 +124,14 @@ namespace AppUIBasics.ControlPages
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
 
-                var def = e.GetDeferral();
-                var s = await e.DataView.GetTextAsync();
-                var items = s.Split('\n');
-                foreach (var item in items)
+                DragOperationDeferral def = e.GetDeferral();
+                string s = await e.DataView.GetTextAsync();
+                string[] items = s.Split('\n');
+                foreach (string item in items)
                 {
 
                     // Create Contact object from string, add to existing target ListView
-                    var info = item.Split(" ", 3);
+                    string[] info = item.Split(" ", 3);
                     Contact temp = new Contact(info[0], info[1], info[2]);
                     
                     // Find the insertion index:
@@ -178,12 +179,12 @@ namespace AppUIBasics.ControlPages
         private async void Source_Drop(object sender, DragEventArgs e)
         {
 
-            var def = e.GetDeferral();
-            var s = await e.DataView.GetTextAsync();
-            var items = s.Split('\n');
-            foreach (var item in items)
+            DragOperationDeferral def = e.GetDeferral();
+            string s = await e.DataView.GetTextAsync();
+            string[] items = s.Split('\n');
+            foreach (string item in items)
             {
-                var info = item.Split(" ", 3);
+                string[] info = item.Split(" ", 3);
 
                 // Create Contact object from string, add to existing target ListView
                 Contact temp = new Contact(info[0], info[1], info[2]);
@@ -343,7 +344,7 @@ namespace AppUIBasics.ControlPages
             StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Contacts.txt"));
             IList<string> lines = await FileIO.ReadLinesAsync(file);
 
-            var contacts = new ObservableCollection<Contact>();
+            ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
 
             for (int i = 0; i < lines.Count; i += 3)
             {
