@@ -25,12 +25,12 @@
         <DataTemplate x:Key="IconTextTemplate" x:DataType="local1:CustomDataObject">
             <RelativePanel AutomationProperties.Name="{x:Bind Title}" Width="280" MinHeight="160">
                 <Image x:Name="image"
-                    Width="18"
-                    Margin="0,4,0,0"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignTopWithPanel="True"
-                    Source="{x:Bind ImageLocation}"
-                    Stretch="Uniform" />
+                       Width="18"
+                       Margin="0,4,0,0"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True"
+                       Source="{x:Bind ImageLocation}"
+                       Stretch="Uniform" />
                 <TextBlock x:Name="title" Style="{StaticResource BaseTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" 
                     RelativePanel.RightOf="image" RelativePanel.AlignTopWithPanel="True"/>
                 <TextBlock Text="{x:Bind Description}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap" Margin="0,4,8,0" 
@@ -67,9 +67,11 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample HeaderText="Basic GridView with Simple DataTemplate">
+        <local:ControlExample HeaderText="Basic GridView with Simple DataTemplate"
+                              XamlSource="GridView/GridViewSample1_xaml.txt"
+                              CSharpSource="GridView/GridViewSample1_cs.txt">
             <StackPanel>
-                <TextBlock Margin="0 0 0 15">
+                <TextBlock Margin="0,0,0,15">
                     This is a basic GridView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize the specific GridView.
                 </TextBlock>
                 <GridView
@@ -80,40 +82,11 @@
                     SelectionMode="Single"/>
                 <TextBlock x:Name="ClickOutput0" Style="{StaticResource OutputTextBlockStyle}" />
             </StackPanel>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;GridView
-    x:Name="BasicGridView"
-    ItemTemplate="{StaticResource ImageTemplate}"
-    ItemsSource="{x:Bind Items}"
-    IsItemClickEnabled="True"
-    ItemClick="BasicGridView_ItemClick"
-    SelectionMode="Single"/&gt;
-                    
- &lt;DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject"&gt;
-     &lt;Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" Width="190" Height="130"&gt;
-&lt;/DataTemplate&gt;
-                    
-&lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown above)
-called ImageTemplate, defined in the Page.Resources section of the XAML file. 
-                    
-The data template is defined to display a CustomDataObject object (class defined in C# code-behind),
-and the source of the image displayed is bound to the CustomDataObject object's ImageLocation attribute.
-                    
-The ItemsSource for the ListView is an ObservableCollection&lt;CustomDataObject&gt; called Items and
-is defined in the C# code-behind, but can be defined as a XAML property as well. 
-                    
-The IsItemClickEnabled property allows items to be clicked, and a function called BasicGridView_ItemClick 
-is called when an item is clicked. This function is defined in the C# code-behind and simply outputs 
-the title of the selected item into a TextBlock below the GridView. --&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="GridView with Layout Customization">
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,15">
                     Use the options on the right to control different layout customizations to the GridView below.
                 </TextBlock>
                 <GridView x:Name="StyledGrid">
@@ -122,7 +95,7 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                         <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local1:CustomDataObject">
                             <Grid Width="100">
                                 <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
-                                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5 1 5 1" Background="LightGray" Opacity=".75">
+                                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="LightGray" Opacity=".75">
                                     <TextBlock Text="{x:Bind Title}"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
@@ -150,7 +123,7 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Grid HorizontalAlignment="Left" Margin="0 20 0 0">
+                    <Grid HorizontalAlignment="Left" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -161,11 +134,13 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
                                 TextChanged="StyledGrid_ChangeCol"/>
-                        <Button x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
-                        <Button x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <Button x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <Button x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
 
                     <Grid HorizontalAlignment="Left">
@@ -179,11 +154,13 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin=" 0 0 5 10" 
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
                                  TextChanged="StyledGrid_ChangeRow"/>
-                        <Button x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
-                        <Button x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <Button x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <Button x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
 
                     <Grid HorizontalAlignment="Left">
@@ -197,11 +174,13 @@ the title of the selected item into a TextBlock below the GridView. --&gt;
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0 0 0 5" HorizontalAlignment="Left"></TextBlock>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  Margin=" 0 0 5 10" 
-                                 TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
-                        <Button x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" Margin=" 0 0 5 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
-                        <Button x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" Margin=" 0 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
+                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
+                        <Button x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <Button x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
 
                 </StackPanel>
@@ -216,7 +195,7 @@ some parts of the GridViewItems (i.e. the margins). --&gt;
 
     &lt;GridView.ItemContainerStyle&gt;
         &lt;Style TargetType="GridViewItem"&gt;
-            &lt;Setter Property="Margin" Value="$(ColMargin) $(RowMargin) $(ColMargin) $(RowMargin)"/&gt;
+            &lt;Setter Property="Margin" Value="$(ColMargin), $(RowMargin), $(ColMargin), $(RowMargin)"/&gt;
         &lt;/Style&gt;
     &lt;/GridView.ItemContainerStyle&gt;
                     
@@ -224,31 +203,29 @@ some parts of the GridViewItems (i.e. the margins). --&gt;
     The following sets the maximum # of items to show before wrapping.--&gt;
     &lt;GridView.ItemsPanel&gt;
         &lt;ItemsPanelTemplate&gt;
-            &lt;ItemsWrapGrid Loaded="StyledGrid_InitWrapGrid" x:Name="MaxItemsWrapGrid" 
-                              MaximumRowsOrColumns="$(MaxItems)" Orientation="Horizontal"/&gt;
+            &lt;ItemsWrapGrid x:Name="MaxItemsWrapGrid" 
+                           MaximumRowsOrColumns="$(MaxItems)" 
+                           Orientation="Horizontal"/&gt;
         &lt;/ItemsPanelTemplate&gt;
-    &lt;/GridView.ItemsPanel&gt;
-                    
+    &lt;/GridView.ItemsPanel&gt;                  
 &lt;/GridView&gt;      
                     
 &lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown below)
 called StyledGridTemplate, defined in the Page.Resources section of the XAML file. 
                     
-The data template is defined to display a CustomDataObject object (class defined in C# code-behind).
-CustomDataObject objects have ImageLocation, Title, and Likes attributes which are all bound in the 
-data template below--&gt;
+The data template is defined to display a CustomDataObject object (same type as in above sample). --&gt;
                     
 &lt;DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local1:CustomDataObject"&gt;
     &lt;Grid Width="100"&gt;
         &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/&gt;
-        &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5 1 5 1" 
-                       Background="LightGray" Opacity=".75"&gt;
+        &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" 
+                    Background="LightGray" Opacity=".75"&gt;
             &lt;TextBlock Text="{x:Bind Title}"/&gt;
             &lt;StackPanel Orientation="Horizontal"&gt;
                 &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" 
-                              Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
                 &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" 
-                              Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
             &lt;/StackPanel&gt;
         &lt;/StackPanel&gt;
     &lt;/Grid&gt;
@@ -348,65 +325,11 @@ data template below--&gt;
 &lt;!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
 to handle the events of when a selection changes on the GridView and when an item is clicked. --&gt;
                     
-&lt;!-- There are four data templates defined in the Page.Resources section, and this GridView's 
-ItemTemplate is bound to one of them based on your selection on the left. Below is the source code
-for all four options:--&gt;
+&lt;!-- The data template bound to this GridView's ItemTemplate property is based on which one you
+select from the options on the right. The currently selected DataTemplate is: --&gt;
 
-&lt;!-- Image: --&gt;
-&lt;DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject"&gt;
-    &lt;Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" AutomationProperties.Name="{x:Bind Title}" 
-              Width="190" Height="130" AutomationProperties.AccessibilityView="Raw" /&gt;
-&lt;/DataTemplate&gt;
+$(DisplayDT)
 
-&lt;!-- Icon/Text: --&gt;
-&lt;DataTemplate x:Key="IconTextTemplate" x:DataType="local1:CustomDataObject"&gt;
-    &lt;RelativePanel AutomationProperties.Name="{x:Bind Title}" Width="280" MinHeight="160"&gt;
-        &lt;Image x:Name="image"
-            Width="18"
-            Margin="0,4,0,0"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignTopWithPanel="True"
-            Source="{x:Bind ImageLocation}"
-            Stretch="Uniform" /&gt;
-        &lt;TextBlock x:Name="title" Style="{StaticResource BaseTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" 
-            RelativePanel.RightOf="image" RelativePanel.AlignTopWithPanel="True"/&gt;
-        &lt;TextBlock Text="{x:Bind Description}" Style="{StaticResource CaptionTextBlockStyle}" 
-                    TextWrapping="Wrap" Margin="0,4,8,0" RelativePanel.Below="title" TextTrimming="WordEllipsis"/&gt;
-    &lt;/RelativePanel&gt;
-&lt;/DataTemplate&gt;
-
-&lt;!-- Image/Text: --&gt;
-&lt;DataTemplate x:Key="ImageTextTemplate" x:DataType="local1:CustomDataObject"&gt;
-    &lt;Grid AutomationProperties.Name="{x:Bind Title}" Width="280"&gt;
-        &lt;Grid.ColumnDefinitions&gt;
-            &lt;ColumnDefinition Width="Auto"/&gt;
-            &lt;ColumnDefinition Width="*" /&gt;
-        &lt;/Grid.ColumnDefinitions&gt;
-        &lt;Image Source="{x:Bind ImageLocation}" Height="100" Stretch="Fill" VerticalAlignment="Top"/&gt;
-        &lt;StackPanel Grid.Column="1" Margin="8,0,0,8"&gt;
-            &lt;TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" 
-                          Margin="0,0,0,8"/&gt;
-            &lt;StackPanel Orientation="Horizontal"&gt;
-                &lt;TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                &lt;TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-            &lt;/StackPanel&gt;
-            &lt;StackPanel Orientation="Horizontal"&gt;
-                &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" /&gt;
-                &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-            &lt;/StackPanel&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Grid&gt;
-&lt;/DataTemplate&gt;
-
-&lt;!-- Text: --&gt;
-&lt;DataTemplate x:Key="TextTemplate" x:DataType="local1:CustomDataObject"&gt;
-    &lt;StackPanel Width="240" Orientation="Horizontal"&gt;
-        &lt;TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" /&gt;
-    &lt;/StackPanel&gt;
-&lt;/DataTemplate&gt;
-
-                    
-                    
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -416,6 +339,7 @@ for all four options:--&gt;
                 <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind ContentGridView.AllowDrop, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind ContentGridView.CanReorderItems, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ContentGridView.SelectionMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution x:Name="DisplayDT" Key="DisplayDT" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>

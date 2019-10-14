@@ -61,6 +61,13 @@ namespace AppUIBasics.ControlPages
             ActualRowSpace = 5;
             ActualMaxItems = 3;
             MaxItems.Text = ActualMaxItems.ToString();
+
+            DisplayDT.Value = @"<!-- ImageTemplate: -->
+<DataTemplate x:Key='ImageTemplate' x:DataType='local1: CustomDataObject'>
+    <Image Stretch = 'UniformToFill' Source = '{x:Bind ImageLocation}' 
+           AutomationProperties.Name = '{x:Bind Title}' Width = '190' Height = '130' 
+           AutomationProperties.AccessibilityView = 'Raw'/>
+</DataTemplate> ";
         }
 
         private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
@@ -68,9 +75,74 @@ namespace AppUIBasics.ControlPages
             var tag = (sender as FrameworkElement).Tag;
             if (tag != null)
             {
-                var template = tag.ToString();
+                string template = tag.ToString();
                 ContentGridView.ItemTemplate = (DataTemplate)this.Resources[template];
                 itemTemplate.Value = template;
+
+                if (template == "ImageTemplate")
+                {
+                    DisplayDT.Value = @"<!-- ImageTemplate: -->
+<DataTemplate x:Key='ImageTemplate' x:DataType='local1: CustomDataObject'>
+    <Image Stretch = 'UniformToFill' Source = '{x:Bind ImageLocation}' 
+           AutomationProperties.Name = '{x:Bind Title}' Width = '190' Height = '130' 
+           AutomationProperties.AccessibilityView = 'Raw'/>
+</DataTemplate> ";
+                }
+
+                else if (template == "IconTextTemplate")
+                {
+                    DisplayDT.Value = @"<!-- IconTextTemplate: -->
+<DataTemplate x:Key='IconTextTemplate' x:DataType='local1:CustomDataObject'>
+    <RelativePanel AutomationProperties.Name='{x:Bind Title}' Width='280' MinHeight='160'>
+        <Image x:Name='image'
+               Width='18'
+               Margin='0,4,0,0'
+               RelativePanel.AlignLeftWithPanel='True'
+               RelativePanel.AlignTopWithPanel='True'
+               Source='{x:Bind ImageLocation}'
+               Stretch='Uniform' />
+        <TextBlock x:Name='title' Style='{StaticResource BaseTextBlockStyle}' Margin='8,0,0,0' 
+                   Text='{x:Bind Title}' RelativePanel.RightOf='image' RelativePanel.AlignTopWithPanel='True'/>
+        <TextBlock Text='{x:Bind Description}' Style='{StaticResource CaptionTextBlockStyle}' 
+                   TextWrapping='Wrap' Margin='0,4,8,0' RelativePanel.Below='title' TextTrimming='WordEllipsis'/>
+    </RelativePanel>
+</DataTemplate>";
+                }
+
+                else if (template == "ImageTextTemplate")
+                {
+                    DisplayDT.Value = @"<!-- ImageTextTemplate: -->
+<DataTemplate x: Key = 'ImageTextTemplate' x: DataType = 'local1:CustomDataObject'>
+    <Grid AutomationProperties.Name = '{x:Bind Title}' Width = '280'>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = 'Auto'/>
+                <ColumnDefinition Width = '*'/>
+        </Grid.ColumnDefinitions>
+        <Image Source = '{x:Bind ImageLocation}' Height = '100' Stretch = 'Fill' VerticalAlignment = 'Top'/>
+        <StackPanel Grid.Column = '1' Margin = '8,0,0,8'>
+            <TextBlock Text = '{x:Bind Title}' Style = '{ThemeResource SubtitleTextBlockStyle}' Margin = '0,0,0,8'/>
+            <StackPanel Orientation = 'Horizontal'>
+                <TextBlock Text = '{x:Bind Views}' Style = '{ThemeResource CaptionTextBlockStyle}'/>
+                    <TextBlock Text = ' Views ' Style = '{ThemeResource CaptionTextBlockStyle}'/>
+            </StackPanel>
+            <StackPanel Orientation = 'Horizontal'>
+                    <TextBlock Text = '{x:Bind Likes}' Style = '{ThemeResource CaptionTextBlockStyle}'/> 
+                    <TextBlock Text = ' Likes' Style = '{ThemeResource CaptionTextBlockStyle}'/>
+            </StackPanel>
+        </StackPanel>
+     </Grid>
+</DataTemplate>";
+                }
+
+                else
+                {
+                    DisplayDT.Value = @"<!-- TextTemplate: -->
+<DataTemplate x:Key='TextTemplate' x:DataType='local1: CustomDataObject'>
+    <StackPanel Width = '240' Orientation = 'Horizontal'>
+        <TextBlock Style = '{StaticResource TitleTextBlockStyle}' Margin = '8,0,0,0' Text = '{x:Bind Title}'/>
+            </StackPanel>
+</DataTemplate>";
+                }
             }
         }
 
@@ -144,7 +216,7 @@ namespace AppUIBasics.ControlPages
             // Increase left/right margin on all GridViewItems
             for (int i = 0; i < StyledGrid.Items.Count; i++)
             {
-                var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                 // Create a Thickness property to bind to each item's Margin property.
                 // Use existing margin and only change relevant values (left/right)
@@ -172,7 +244,7 @@ namespace AppUIBasics.ControlPages
                 // Increase left/right margin on all GridViewItems
                 for (int i = 0; i < StyledGrid.Items.Count; i++)
                 {
-                    var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                    GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                     // Create a Thickness property to bind to each item's Margin property.
                     // Use existing margin and only change relevant values (left/right)
@@ -205,7 +277,7 @@ namespace AppUIBasics.ControlPages
             // Increase top/bottom margin on all GridViewItems
             for (int i = 0; i < StyledGrid.Items.Count; i++)
             {
-                var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                 // Create a Thickness property to bind to each item's Margin property.
                 // Use existing margin and only change relevant values (top/bottom)
@@ -233,7 +305,7 @@ namespace AppUIBasics.ControlPages
                 // Decrease top/bottom margin on all GridViewItems
                 for (int i = 0; i < StyledGrid.Items.Count; i++)
                 {
-                    var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                    GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                     // Create a Thickness property to bind to each item's Margin property.
                     // Use existing margin and only change relevant values (top/bottom)
@@ -272,7 +344,7 @@ namespace AppUIBasics.ControlPages
                     // Create new Thickness object and update relevant parts of Margin property (top/bottom)
                     for (int i = 0; i < StyledGrid.Items.Count; i++)
                     {
-                        var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                        GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                         Thickness NewMargin = item.Margin;
                         NewMargin.Top = Convert.ToInt32(RowSpace.Text);
@@ -313,7 +385,7 @@ namespace AppUIBasics.ControlPages
                     // Create new Thickness object and update relevant parts of Margin property (top/bottom)
                     for (int i = 0; i < StyledGrid.Items.Count; i++)
                     {
-                        var item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+                        GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
 
                         Thickness NewMargin = item.Margin;
                         NewMargin.Left = Convert.ToInt32(ColSpace.Text);
@@ -427,7 +499,7 @@ namespace AppUIBasics.ControlPages
 
         private async void sendMessage()
         {
-            var messageDialog = new MessageDialog("Value cannot be less than 1.");
+            MessageDialog messageDialog = new MessageDialog("Value cannot be less than 1.");
 
             // Set the commands to close the message
             messageDialog.DefaultCommandIndex = 0;
