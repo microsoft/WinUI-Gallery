@@ -53,6 +53,9 @@ namespace AppUIBasics.ControlPages
             nvSample4.SelectedItem = firstCategory;
 
             setASBSubstitutionString();
+
+            // Fixes #218
+            nvSample2.UpdateLayout();
         }
 
         public Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(Boolean toggleOn)
