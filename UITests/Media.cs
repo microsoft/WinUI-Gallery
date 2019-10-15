@@ -12,8 +12,6 @@ namespace UITests
     [TestClass]
     public class Media : Test_Base
     {
-        private static WindowsElement mediaElement1 = null;
-        private static WindowsElement mediaElement2 = null;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
@@ -58,9 +56,6 @@ namespace UITests
     [TestClass]
     public class PersonPicture : Test_Base
     {
-        private static WindowsElement mediaElement1 = null;
-        private static WindowsElement mediaElement2 = null;
-
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
