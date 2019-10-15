@@ -61,7 +61,6 @@ namespace AppUIBasics.ControlPages
             repeater0.ItemsSource = basicData;
 
             ObservableCollection<NestedCategory> nestedCategories = new ObservableCollection<NestedCategory>();
-            // Add category objects to a separate collection
             nestedCategories.Add(
                 new NestedCategory("John's Photos",  new ObservableCollection<string>{
                                                             "../Assets/SampleMedia/cliff.jpg",
@@ -96,11 +95,13 @@ namespace AppUIBasics.ControlPages
 
             displayDataTemplate.Value = @"<DataTemplate x:Key='HorizontalBarTemplate' x:DataType='l: Bar'>
     <Border Background = '{ThemeResource SystemChromeLowColor}' Width = '{x:Bind MaxLength}' >
-        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}' Height = '24' HorizontalAlignment = 'Left'/> 
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}' 
+                   Height = '24' HorizontalAlignment = 'Left'/> 
     </Border>
 </DataTemplate>";
 
-            displayLayout2.Value = "<common:ActivityFeedLayout x:Key = 'MyFeedLayout' ColumnSpacing = '12' RowSpacing = '12' MinItemSize = '80, 108'/>";
+            displayLayout2.Value = @"<UniformGridLayout x:Key = 'UniformGridLayout2' MinItemWidth = '108' MinItemHeight = '108'
+                   MinRowSpacing = '12' MinColumnSpacing = '12'/>";
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -156,11 +157,13 @@ namespace AppUIBasics.ControlPages
 
             if (layoutKey == "UniformGridLayout2")
             {
-                displayLayout2.Value = "<UniformGridLayout x:Key = 'UniformGridLayout2' MinItemWidth = '108' MinItemHeight = '108' MinRowSpacing = '12' MinColumnSpacing = '12'/>";
+                displayLayout2.Value = @"<UniformGridLayout x:Key = 'UniformGridLayout2' MinItemWidth = '108' MinItemHeight = '108'
+                   MinRowSpacing = '12' MinColumnSpacing = '12'/>";
             }
             else if (layoutKey == "MyFeedLayout")
             {
-                displayLayout2.Value = "<common:ActivityFeedLayout x:Key = 'MyFeedLayout' ColumnSpacing = '12' RowSpacing = '12' MinItemSize = '80, 108'/>";
+                displayLayout2.Value = @"<common:ActivityFeedLayout x:Key = 'MyFeedLayout' ColumnSpacing = '12'
+                          RowSpacing = '12' MinItemSize = '80, 108'/>";
             }
         }
 
@@ -179,7 +182,8 @@ namespace AppUIBasics.ControlPages
                 displayLayout.Value = "<StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
                 displayDataTemplate.Value = @"<DataTemplate x:Key='HorizontalBarTemplate' x:DataType='l: Bar'>
     <Border Background = '{ThemeResource SystemChromeLowColor}' Width = '{x:Bind MaxLength}' >
-        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}' Height = '24' HorizontalAlignment = 'Left'/> 
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Width = '{x:Bind Length}'
+                   Height = '24' HorizontalAlignment = 'Left'/> 
     </Border>
 </DataTemplate>";
             }
@@ -193,7 +197,8 @@ namespace AppUIBasics.ControlPages
                 displayLayout.Value = "<StackLayout x:Name = 'HorizontalStackLayout' Orientation = 'Horizontal' Spacing = '8'/> ";
                 displayDataTemplate.Value = @"<DataTemplate x: Key = 'VerticalBarTemplate' x: DataType = 'l:Bar'>
     <Border Background = '{ThemeResource SystemChromeLowColor}' Height = '{x:Bind MaxHeight}'>
-        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Height}' Width = '48' VerticalAlignment = 'Top'/>
+        <Rectangle Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Height}' 
+                   Width = '48' VerticalAlignment = 'Top'/>
     </Border>
 </DataTemplate>";
             }
@@ -207,8 +212,10 @@ namespace AppUIBasics.ControlPages
                 displayLayout.Value = "<UniformGridLayout x:Name = 'UniformGridLayout' MinRowSpacing = '8' MinColumnSpacing = '8'/>";
                 displayDataTemplate.Value = @"<DataTemplate x:Key='CircularTemplate' x:DataType='l: Bar'>
     <Grid>
-        <Ellipse Fill = '{ThemeResource SystemChromeLowColor}' Height = '{x:Bind MaxDiameter}' Width = '{x:Bind MaxDiameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
-        <Ellipse Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Diameter}' Width = '{x:Bind Diameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
+        <Ellipse Fill = '{ThemeResource SystemChromeLowColor}' Height = '{x:Bind MaxDiameter}' 
+                 Width = '{x:Bind MaxDiameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
+        <Ellipse Fill = '{ThemeResource SystemAccentColor}' Height = '{x:Bind Diameter}' 
+                 Width = '{x:Bind Diameter}' VerticalAlignment = 'Center' HorizontalAlignment = 'Center'/>
     </Grid>
 </DataTemplate>";
             }
@@ -252,12 +259,15 @@ namespace AppUIBasics.ControlPages
 
     public class StringOrIntTemplateSelector : DataTemplateSelector
     {
+        // Define the (currently empty) data templates to return
+        // These will be "filled-in" in the XAML code.
         public DataTemplate StringTemplate { get; set; }
 
         public DataTemplate IntTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
+            // Return the correct data template based on the item's type.
             if (item.GetType() == typeof(String))
             {
                 return StringTemplate;
