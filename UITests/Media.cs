@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,11 +24,7 @@ namespace UITests
             var button = session.FindElementByName("MediaPlayerElement");
             button.Click();
             var mediaElements = session.FindElementsByClassName("MediaPlayerElement");
-            Assert.IsTrue(mediaElements.Count >= 2);
-            mediaElement1 = mediaElements[0];
-            mediaElement2 = mediaElements[1];
-            Assert.IsNotNull(mediaElement1);
-            Assert.IsNotNull(mediaElement2);
+  
         }
 
         [ClassCleanup]
