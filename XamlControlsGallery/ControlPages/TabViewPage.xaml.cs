@@ -133,6 +133,8 @@ namespace AppUIBasics.ControlPages
         {
             var senderTabView = args.Element as TabView;
             senderTabView.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
+
+            args.Handled = true;
         }
 
         private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
@@ -144,6 +146,8 @@ namespace AppUIBasics.ControlPages
             {
                 InvokedTabView.TabItems.Remove(InvokedTabView.SelectedItem);
             }
+
+            args.Handled = true;
         }
 
         private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
@@ -189,6 +193,8 @@ namespace AppUIBasics.ControlPages
             {
                 InvokedTabView.SelectedIndex = tabToSelect;
             }
+
+            args.Handled = true;
         }
         #endregion
 
