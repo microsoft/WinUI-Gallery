@@ -21,9 +21,9 @@ namespace UITests
             Setup(context);
             var buttonTab = session.FindElementByName("Media");
             buttonTab.Click();
-            var button = session.FindElementByName("MediaElement");
+            var button = session.FindElementByName("MediaPlayerElement");
             button.Click();
-            var mediaElements = session.FindElementsByClassName("MediaElement");
+            var mediaElements = session.FindElementsByClassName("MediaPlayerElement");
             Assert.IsTrue(mediaElements.Count >= 2);
             mediaElement1 = mediaElements[0];
             mediaElement2 = mediaElements[1];
