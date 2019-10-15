@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +12,6 @@ namespace UITests
     [TestClass]
     public class Media : Test_Base
     {
-        private static WindowsElement mediaElement1 = null;
-        private static WindowsElement mediaElement2 = null;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
@@ -24,11 +22,7 @@ namespace UITests
             var button = session.FindElementByName("MediaPlayerElement");
             button.Click();
             var mediaElements = session.FindElementsByClassName("MediaPlayerElement");
-            Assert.IsTrue(mediaElements.Count >= 2);
-            mediaElement1 = mediaElements[0];
-            mediaElement2 = mediaElements[1];
-            Assert.IsNotNull(mediaElement1);
-            Assert.IsNotNull(mediaElement2);
+  
         }
 
         [ClassCleanup]
@@ -62,9 +56,6 @@ namespace UITests
     [TestClass]
     public class PersonPicture : Test_Base
     {
-        private static WindowsElement mediaElement1 = null;
-        private static WindowsElement mediaElement2 = null;
-
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
