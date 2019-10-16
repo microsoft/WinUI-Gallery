@@ -33,6 +33,10 @@
           "IsNew": true,
           "Docs": [
             {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/commanding#command-experiences-using-the-xamluicommand-class"
+            },
+            {
               "Title": "XamlUICommand - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.input.xamluicommand"
             }
@@ -53,6 +57,10 @@
           "Content": "",
           "IsNew": true,
           "Docs": [
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/commanding#command-experiences-using-the-standarduicommand-class"
+            },
             {
               "Title": "StandardUICommand - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.input.standarduicommand"
@@ -736,7 +744,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/toggles"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/buttons#create-a-toggle-split-button"
             }
           ],
           "RelatedControls": [
@@ -763,7 +771,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/buttons"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/buttons#create-a-split-button"
             }
           ],
           "RelatedControls": [
@@ -869,7 +877,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists#drop-down-lists"
             }
           ],
           "RelatedControls": [
@@ -920,7 +928,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.RatingControl"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/rating"
             }
           ],
           "RelatedControls": [
@@ -997,7 +1005,7 @@
           "Docs": [
             {
               "Title": "ProgressBar - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.button"
+              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.ProgressBar"
             },
             {
               "Title": "Guidelines",
@@ -1078,7 +1086,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/dialogs-and-flyouts/dialogs"
             }
           ],
           "RelatedControls": [
@@ -1218,10 +1226,6 @@
             {
               "Title": "Border - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.border"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/grid-tutorial"
             }
           ],
           "RelatedControls": [
@@ -1268,6 +1272,10 @@
           "IsNew": true,
           "Docs": [
             {
+              "Title": "ItemsRepeater - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.itemsrepeater?view=winui-2.2"
+            },
+            {
               "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/items-repeater"
             }
@@ -1292,8 +1300,12 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.grid"
             },
             {
-              "Title": "Guidelines",
+              "Title": "Tutorial",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/grid-tutorial"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels#grid"
             }
           ],
           "RelatedControls": [
@@ -1485,6 +1497,32 @@
             "ListView",
             "GridView"
           ]
+        },
+        {
+          "UniqueId": "TabView",
+          "Title": "TabView",
+          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "Content": "",
+          "IsNew": true,
+          "IsUpdated": false,
+          "IsPreview": false,
+          "Docs": [
+            {
+              "Title": "TabView - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
+            }
+          ],
+          "RelatedControls": [
+            "Pivot",
+            "NavigationView",
+            "ListView"
+          ]
         }
       ]
     },
@@ -1499,13 +1537,13 @@
           "UniqueId": "AnimatedVisualPlayer",
           "Title": "AnimatedVisualPlayer",
           "Subtitle": "An element to render and control playback of motion graphics.",
-          "ImagePath": "Assets/Animations.png",
+          "ImagePath": "ms-appx:///Assets/Animations.png",
           "Description": "An element to render and control playback of motion graphics.",
           "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
             {
-              "Title": "AnimatedVisualPlayer API",
+              "Title": "AnimatedVisualPlayer - API",
               "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
             },
             {
@@ -1515,6 +1553,14 @@
             {
               "Title": "Tutorials",
               "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials"
+            },
+            {
+              "Title": "Lottie Overview",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie"
+            },
+            {
+              "Title": "Lottie Windows - GitHub",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
             }
           ]
         },
@@ -1537,7 +1583,7 @@
             }
           ],
           "RelatedControls": [
-            "MediaElement",
+            "MediaPlayerElement",
             "PersonPicture"
           ]
         },
@@ -1565,35 +1611,11 @@
           ]
         },
         {
-          "UniqueId": "MediaElement",
-          "Title": "MediaElement",
-          "Subtitle": "A control to display video and image content.",
-          "ImagePath": "ms-appx:///Assets/MediaElement.png",
-          "Description": "You can use a MediaElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
-          "Content": "<p>Look at the <i>MediaElementPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "Docs": [
-            {
-              "Title": "MediaElement - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.mediaelement"
-            },
-            {
-              "Title": "Media Playback",
-              "Uri": "http://windowsstyleguide/controls-and-patterns/media-playback/"
-            }
-          ],
-          "RelatedControls": [
-            "Image",
-            "MediaPlayerElement",
-            "WebView"
-          ]
-        },
-        {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
           "Subtitle": "A control to display video and image content.",
           "ImagePath": "ms-appx:///Assets/MediaElement.png",
-          "Description": "This control is the newer version of MediaElement.",
+          "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "Content": "",
           "IsNew": false,
           "Docs": [
@@ -1603,12 +1625,12 @@
             },
             {
               "Title": "Media Playback",
-              "Uri": "http://windowsstyleguide/controls-and-patterns/media-playback/"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/media-playback"
             }
           ],
           "RelatedControls": [
             "Image",
-            "MediaElement"
+            "AnimatedVisualPlayer"
           ]
         },
         {
@@ -1675,7 +1697,7 @@
             }
           ],
           "RelatedControls": [
-            "MediaElement"
+            "MediaPlayerElement"
           ]
         }
       ]
@@ -1749,7 +1771,7 @@
           "Docs": [
             {
               "Title": "Reveal Focus - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.application#Windows_UI_Xaml_Application_FocusVisualKind"
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.focusvisualkind#Windows_UI_Xaml_Application_FocusVisualKind"
             },
             {
               "Title": "Guidelines",
@@ -1772,6 +1794,14 @@
             {
               "Title": "Theme Editor (GitHub)",
               "Uri": "https://github.com/Microsoft/fluent-xaml-theme-editor"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/color#scoping-with-a-resourcedictionary"
+            },
+            {
+              "Title": "ColorPaletteResources - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.colorpaletteresources"
             }
           ]
         },
@@ -1999,6 +2029,10 @@
           "IsNew": true,
           "Docs": [
             {
+              "Title": "EasingFunctionBase - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.animation.easingfunctionbase"
+            },
+            {
               "Title": "Timing and Easing",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/timing-and-easing"
             },
@@ -2027,6 +2061,10 @@
               "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Media.Animation.NavigationThemeTransition"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/page-transitions"
+            },
+            {
               "Title": "Quickstart: Motion",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/"
             }
@@ -2050,6 +2088,10 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/xaml-animation#animations-available-in-the-library"
+            },
+            {
               "Title": "Quickstart: Motion",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/"
             }
@@ -2069,12 +2111,20 @@
           "Content": "<p>Look at the <i>XamlCompInterop.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
             {
-              "Title": "Animation Interop",
-              "Uri": "https://docs.microsoft.com/windows/uwp/composition/using-the-visual-layer-with-xaml"
-            },
-            {
               "Title": "Quickstart: Motion",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/"
+            },
+            {
+              "Title": "Composition Animation - API",
+              "Uri": "https://docs.microsoft.com/windows/uwp/composition/composition-animation"
+            },
+            {
+              "Title": "Guidelines - Xaml Property Animations",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/xaml-property-animations"
+            },
+            {
+              "Title": "Using the Visual Layer with XAML",
+              "Uri": "https://docs.microsoft.com/windows/uwp/composition/using-the-visual-layer-with-xaml"
             }
           ],
           "RelatedControls": [
@@ -2093,6 +2143,10 @@
             {
               "Title": "Transitions - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/motion-in-practice#implicit-animations"
             },
             {
               "Title": "Quickstart: Motion",

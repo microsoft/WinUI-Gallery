@@ -157,6 +157,9 @@
     <Content Include="Assets\SunBlack.png" />
     <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\Swipe.png" />
+    <Content Include="Assets\TabViewIcons\cmd.png" />
+    <Content Include="Assets\TabViewIcons\linux.png" />
+    <Content Include="Assets\TabViewIcons\powershell.png" />
     <Content Include="Assets\TeachingTip.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
@@ -212,7 +215,9 @@
     <Content Include="Assets\WebView.png" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Simple.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
@@ -235,6 +240,8 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_cs.txt" />
@@ -403,9 +410,6 @@
     <Compile Include="ControlPages\MediaPlayerElementPage.xaml.cs">
       <DependentUpon>MediaPlayerElementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\MediaElementPage.xaml.cs">
-      <DependentUpon>MediaElementPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\MenuBarPage.xaml.cs">
       <DependentUpon>MenuBarPage.xaml</DependentUpon>
     </Compile>
@@ -417,6 +421,9 @@
     </Compile>
     <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
       <DependentUpon>PageTransitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TabViewPage.xaml.cs">
+      <DependentUpon>TabViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
@@ -587,6 +594,12 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabViewPages\MyTabContentControl.xaml.cs">
+      <DependentUpon>MyTabContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabViewPages\TabViewWindowingSamplePage.xaml.cs">
+      <DependentUpon>TabViewWindowingSamplePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -689,6 +702,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\DropDownButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -843,10 +860,6 @@
     <Page Include="ControlPages\MediaPlayerElementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ControlPages\MediaElementPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\MenuBarPage.xaml">
       <SubType>Designer</SubType>
@@ -1072,6 +1085,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TabViewPages\MyTabContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabViewPages\TabViewWindowingSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ColorCode.UWP">
@@ -1081,7 +1102,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190830001</Version>
+      <Version>2.2.190917002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
@@ -1093,6 +1114,7 @@
   <ItemGroup>
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

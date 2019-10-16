@@ -1,8 +1,8 @@
-﻿<DropDownButton AutomationProperties.Name="Email">
-    <DropDownButton.Content>
+﻿<muxc:DropDownButton AutomationProperties.Name="Email">
+    <muxc:DropDownButton.Content>
         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE715;"/>
-    </DropDownButton.Content>
-    <DropDownButton.Flyout>
+    </muxc:DropDownButton.Content>
+    <muxc:DropDownButton.Flyout>
         <MenuFlyout Placement="Bottom">
             <MenuFlyoutItem Text="Send">
                 <MenuFlyoutItem.Icon>
@@ -20,5 +20,5 @@
                 </MenuFlyoutItem.Icon>
             </MenuFlyoutItem>
         </MenuFlyout>
-    </DropDownButton.Flyout>
-</DropDownButton>
+    </muxc:DropDownButton.Flyout>
+</muxc:DropDownButton>

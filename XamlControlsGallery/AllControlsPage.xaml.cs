@@ -31,7 +31,8 @@ namespace AppUIBasics
         {
             var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItem>().ElementAt(1);
             menuItem.IsSelected = true;
-            NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
+            NavigationRootPage.Current.NavigationView.Header = string.Empty;
+
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
         }
 

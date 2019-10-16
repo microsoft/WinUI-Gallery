@@ -4,19 +4,19 @@
       xmlns:local="using:AppUIBasics"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     
     <Page.Resources>
-        <muxcontrols:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
+        <muxc:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
             <AppBarButton Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
             <AppBarButton Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
             <AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
-            <muxcontrols:CommandBarFlyout.SecondaryCommands>
+            <muxc:CommandBarFlyout.SecondaryCommands>
                 <AppBarButton Label="Resize" Click="OnElementClicked" />
                 <AppBarButton Label="Move" Click="OnElementClicked" />
-            </muxcontrols:CommandBarFlyout.SecondaryCommands>
-        </muxcontrols:CommandBarFlyout>
+            </muxc:CommandBarFlyout.SecondaryCommands>
+        </muxc:CommandBarFlyout>
     </Page.Resources>
     
     <StackPanel>

@@ -4,13 +4,13 @@
       xmlns:local="using:AppUIBasics"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
     <Page.Resources>
         <x:Double x:Key="SwatchSize">32</x:Double>
     </Page.Resources>
-    
+
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A SplitButton controling text color in a RichEditBox" 
                               XamlSource="Buttons\SplitButton\SplitButtonSample1.txt"
@@ -21,9 +21,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <muxcontrols:SplitButton x:Name="myColorButton" AutomationProperties.Name="Font color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Click="myColorButton_Click">
+                <muxc:SplitButton x:Name="myColorButton" AutomationProperties.Name="Font color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Click="myColorButton_Click">
                     <Rectangle x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Fill="Black" Margin="0"/>
-                    <muxcontrols:SplitButton.Flyout>
+                    <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                                 <VariableSizedWrapGrid.Resources>
@@ -85,11 +85,86 @@
                                 </Button>
                             </VariableSizedWrapGrid>
                         </Flyout>
-                    </muxcontrols:SplitButton.Flyout>
-                </muxcontrols:SplitButton>
+                    </muxc:SplitButton.Flyout>
+                </muxc:SplitButton>
 
-                <RichEditBox x:Name="myRichEditBox" Grid.Column="1" MinWidth="240" MinHeight="96" PlaceholderText="Type something here" TextChanged="MyRichEditBox_TextChanged"/>
+                <RichEditBox x:Name="myRichEditBox" Grid.Column="1" MinWidth="240" MinHeight="96" 
+                             PlaceholderText="Type something here" 
+                             GotFocus="MyRichEditBox_GotFocus"
+                             LosingFocus="MyRichEditBox_LosingFocus"
+                             TextChanging="MyRichEditBox_TextChanging"/>
             </Grid>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="A SplitButton with RevealStyle applied" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
+            <local:ControlExample.Example>
+                <muxc:SplitButton AutomationProperties.Name="Font color with reveal" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Style="{ThemeResource SplitButtonRevealStyle}">
+                    Choose color
+                    <muxc:SplitButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
+                                <VariableSizedWrapGrid.Resources>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Width" Value="{StaticResource SwatchSize}"/>
+                                        <Setter Property="Height" Value="{StaticResource SwatchSize}"/>
+                                    </Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="MinWidth" Value="0"/>
+                                        <Setter Property="MinHeight" Value="0"/>
+                                        <Setter Property="Margin" Value="6"/>
+                                    </Style>
+                                </VariableSizedWrapGrid.Resources>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Red">
+                                    <Button.Content>
+                                        <Rectangle Fill="Red"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Orange">
+                                    <Button.Content>
+                                        <Rectangle Fill="Orange"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Yellow">
+                                    <Button.Content>
+                                        <Rectangle Fill="Yellow"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Green">
+                                    <Button.Content>
+                                        <Rectangle Fill="Green"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Blue">
+                                    <Button.Content>
+                                        <Rectangle Fill="Blue"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Indigo">
+                                    <Button.Content>
+                                        <Rectangle Fill="Indigo"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Violet">
+                                    <Button.Content>
+                                        <Rectangle Fill="Violet"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Gray">
+                                    <Button.Content>
+                                        <Rectangle Fill="Gray"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="RevealColorButton_Click" AutomationProperties.Name="Black">
+                                    <Button.Content>
+                                        <Rectangle Fill="Black"/>
+                                    </Button.Content>
+                                </Button>
+                            </VariableSizedWrapGrid>
+                        </Flyout>
+                    </muxc:SplitButton.Flyout>
+                </muxc:SplitButton>
+            </local:ControlExample.Example>
         </local:ControlExample>
     </StackPanel>
 </Page>

@@ -30,12 +30,12 @@
         </Button.Content>
     </Button>
 
-    <muxcontrols:DropDownButton x:Name="fontColorButton" AutomationProperties.Name="Font color"
+    <muxc:DropDownButton x:Name="fontColorButton" AutomationProperties.Name="Font color"
                                 BorderThickness="0" ToolTipService.ToolTip="Font color"
                                 Background="Transparent" 
                                 RelativePanel.AlignRightWithPanel="True">
         <SymbolIcon Symbol="FontColor"/>
-        <muxcontrols:DropDownButton.Flyout>
+        <muxc:DropDownButton.Flyout>
             <Flyout Placement="Bottom">
                 <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                     <VariableSizedWrapGrid.Resources>
@@ -97,8 +97,8 @@
                     </Button>
                 </VariableSizedWrapGrid>
             </Flyout>
-        </muxcontrols:DropDownButton.Flyout>
-    </muxcontrols:DropDownButton>
+        </muxc:DropDownButton.Flyout>
+    </muxc:DropDownButton>
 
     <RichEditBox x:Name="editor" Height="200" 
                  RelativePanel.Below="openFileButton" 
