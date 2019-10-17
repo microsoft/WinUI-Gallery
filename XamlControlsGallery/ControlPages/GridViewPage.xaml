@@ -91,47 +91,45 @@
             </Grid>
             <local:ControlExample.Options>
                 <StackPanel x:Name="Control2">
-                    <StackPanel>
-                        <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
-                        <RadioButton
-                            Checked="ItemTemplate_Checked"
-                            Content="Image"
-                            GroupName="Template"
-                            IsChecked="True"
-                            Tag="ImageTemplate" />
-                        <RadioButton
-                            Checked="ItemTemplate_Checked"
-                            Content="Icon/Text"
-                            GroupName="Template"
-                            Tag="IconTextTemplate" />
-                        <RadioButton
-                            Checked="ItemTemplate_Checked"
-                            Content="Image/Text"
-                            GroupName="Template"
-                            Tag="ImageTextTemplate" />
-                        <RadioButton
-                            Checked="ItemTemplate_Checked"
-                            Content="Text"
-                            GroupName="Template"
-                            Tag="TextTemplate" />
-                        <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
-                        <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
-                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="200"> In order to drag, drop, and reorder items within the GridView, make sure all boxes are checked below.</TextBlock>
-                        <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
-                        <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
-                        <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
-                        <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
-                        <ComboBox
-                            Margin="0,12,0,0"
-                            Header="SelectionMode"
-                            SelectedIndex="1"
-                            SelectionChanged="SelectionModeComboBox_SelectionChanged">
-                            <x:String>None</x:String>
-                            <x:String>Single</x:String>
-                            <x:String>Multiple</x:String>
-                            <x:String>Extended</x:String>
-                        </ComboBox>
-                    </StackPanel>
+                    <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
+                    <RadioButton
+                        Checked="ItemTemplate_Checked"
+                        Content="Image"
+                        GroupName="Template"
+                        IsChecked="True"
+                        Tag="ImageTemplate" />
+                    <RadioButton
+                        Checked="ItemTemplate_Checked"
+                        Content="Icon/Text"
+                        GroupName="Template"
+                        Tag="IconTextTemplate" />
+                    <RadioButton
+                        Checked="ItemTemplate_Checked"
+                        Content="Image/Text"
+                        GroupName="Template"
+                        Tag="ImageTextTemplate" />
+                    <RadioButton
+                        Checked="ItemTemplate_Checked"
+                        Content="Text"
+                        GroupName="Template"
+                        Tag="TextTemplate" />
+                    <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
+                    <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
+                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" MaxWidth="200"> In order to drag, drop, and reorder items within the GridView, make sure all boxes are checked below.</TextBlock>
+                    <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
+                    <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
+                    <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
+                    <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
+                    <ComboBox
+                        Margin="0,12,0,0"
+                        Header="SelectionMode"
+                        SelectedIndex="1"
+                        SelectionChanged="SelectionModeComboBox_SelectionChanged">
+                        <x:String>None</x:String>
+                        <x:String>Single</x:String>
+                        <x:String>Multiple</x:String>
+                        <x:String>Extended</x:String>
+                    </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>

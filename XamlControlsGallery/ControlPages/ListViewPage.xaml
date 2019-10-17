@@ -73,23 +73,15 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Height="Auto" Grid.Row="1" Margin="5" HorizontalAlignment="{x:Bind MsgAlignment}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
-                        <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="White"/>
-                        <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="White"/>
-                    </StackPanel>
-                </Grid>
+            <Grid Height="Auto" Grid.Row="1" Margin="5" HorizontalAlignment="{x:Bind MsgAlignment}">
+                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="White"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="White"/>
+                </StackPanel>
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="ContactListViewTemplate2" x:DataType="local1:Contact">
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local1:Contact">
             <TextBlock Text="{x:Bind Name}" x:Phase="1" Margin="0,5,0,5"/>
         </DataTemplate>
         
@@ -100,13 +92,13 @@
                               XamlSource="ListView\ListViewSample1_xaml.txt"
                               CSharpSource="ListView\ListViewSample1_cs.txt">
             <StackPanel>
-                <TextBlock Margin="0 0 0 15">
+                <TextBlock Margin="0,0,0,15">
                     This is a basic ListView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize a simple ListView like this one.
                 </TextBlock>
                 <ListView x:Name="BaseExample"
-                    ItemTemplate="{StaticResource ContactListViewTemplate2}"
+                    ItemTemplate="{StaticResource BasicListViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="DimGray"
+                    BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
                     Width="350" 
                     Height="400"
                     HorizontalAlignment="Left"/>
@@ -115,21 +107,18 @@
 
         <local:ControlExample HeaderText="ListView with Selection Support">
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,15">
                     You can enable four different selection modes on the right. <LineBreak/><Bold>None</Bold> disables selection all together.<LineBreak/><Bold>Single</Bold>
                     allows for only one item to be selected in the list.<LineBreak/><Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.<LineBreak/><Bold>Extended</Bold>
                     allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
                 </TextBlock>
-                <ListView
-                x:Name="Control2" ItemTemplate="{StaticResource ContactListViewTemplate}"
-                    CanDragItems="False"
-                    CanReorderItems="False"
-                    AllowDrop="False"
-                    BorderThickness="1"
-                    BorderBrush="DimGray"
-                    Width="400" 
-                    Height="400"
-                    HorizontalAlignment="Left"/>
+                <ListView x:Name="Control2" 
+                          ItemTemplate="{StaticResource ContactListViewTemplate}"
+                          BorderThickness="1"
+                          BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                          Width="400" 
+                          Height="400"
+                          HorizontalAlignment="Left"/>
             </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
@@ -145,7 +134,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;!-- The following properties should be added to the ListView definition to build this sample. --&gt;
+&lt;!-- To create this sample, add/change the following properties onto the code for the base example above: --&gt;
                         
 &lt;ListView 
     SelectionMode="$(SelectionMode)" 
@@ -194,15 +183,20 @@
         <local:ControlExample HeaderText="ListViews with Drag, Drop, and Reordering Support">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" TextWrapping="Wrap">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">
                     In these ListView controls, you can drag and drop within a list to reorder items, or drag and drop between lists to move items.
                 </TextBlock>
-                <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <ListView
                     x:Name="DragDropListView"
+                    Grid.Column="0"
+                    Grid.Row="1"
                     ItemTemplate="{StaticResource ContactListViewTemplate}"
                     CanDragItems="True"
                     CanReorderItems="True"
@@ -215,9 +209,11 @@
                     DragItemsStarting="Source_DragItemsStarting"
                     DragOver="Source_DragOver"
                     Drop="Source_Drop"
-                    Margin="15"/>
+                    Margin="12"/>
                 <ListView
                     x:Name="DragDropListView2"
+                    Grid.Column="1"
+                    Grid.Row="1"
                     ItemTemplate="{StaticResource ContactListViewTemplate}"
                     CanDragItems="True"
                     CanReorderItems="True"
@@ -231,7 +227,6 @@
                     BorderBrush="DimGray"
                     MinWidth="350" 
                     Height="400"/>
-                </StackPanel>
             </Grid>
             
             <local:ControlExample.Xaml>
@@ -291,8 +286,7 @@ source code for the XAML Controls Gallery. -->
             </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ToggleSwitch x:Name="StickySwitch" Header="Sticky Headers" IsOn="False" Toggled="ToggleSwitch_Toggled">
-                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="StickySwitch" Header="Sticky Headers" IsOn="False" Toggled="ToggleSwitch_Toggled"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
@@ -339,7 +333,8 @@ source code for the XAML Controls Gallery. -->
      &lt;!-- These properties allow the list to grow from the bottom --&gt;
      &lt;ListView.ItemsPanel&gt;
          &lt;ItemsPanelTemplate&gt;
-             &lt;ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" VerticalAlignment="Bottom"/&gt;
+             &lt;ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" 
+                              VerticalAlignment="Bottom"/&gt;
          &lt;/ItemsPanelTemplate&gt;
      &lt;/ListView.ItemsPanel&gt;
 
