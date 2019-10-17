@@ -57,26 +57,26 @@
                          Margin="6"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"
-                         Fill="Gray"/>
+                         Fill="{StaticResource SystemControlBackgroundBaseMediumBrush}"/>
                 <TextBlock Grid.Column="1"
                            Text="{x:Bind Name}"
                            x:Phase="1"
                            Style="{ThemeResource BaseTextBlockStyle}"
                            Margin="12,6,0,0"/>
-                <TextBlock  Grid.Column="1"
-                            Grid.Row="1"
-                            Text="{x:Bind Company}"
-                            x:Phase="2"
-                            Style="{ThemeResource BodyTextBlockStyle}"
-                            Margin="12,0,0,6"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{x:Bind Company}"
+                           x:Phase="2"
+                           Style="{ThemeResource BodyTextBlockStyle}"
+                           Margin="12,0,0,6"/>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
             <Grid Height="Auto" Grid.Row="1" Margin="5" HorizontalAlignment="{x:Bind MsgAlignment}">
                 <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
-                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="White"/>
-                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="White"/>
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{StaticResource SystemControlForegroundAltHighBrush}"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{StaticResource SystemControlForegroundAltMediumHighBrush}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -98,7 +98,7 @@
                 <ListView x:Name="BaseExample"
                     ItemTemplate="{StaticResource BasicListViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                     Width="350" 
                     Height="400"
                     HorizontalAlignment="Left"/>
@@ -115,7 +115,7 @@
                 <ListView x:Name="Control2" 
                           ItemTemplate="{StaticResource ContactListViewTemplate}"
                           BorderThickness="1"
-                          BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                          BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                           Width="400" 
                           Height="400"
                           HorizontalAlignment="Left"/>
@@ -159,7 +159,7 @@
                     Margin="6"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Fill="Gray"/&gt;
+                    Fill="{StaticResource SystemControlBackgroundBaseMediumBrush}"/&gt;
         &lt;TextBlock Grid.Column="1"
                     Text="{x:Bind Name}"
                     x:Phase="1"
@@ -203,7 +203,7 @@
                     AllowDrop="True"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="DimGray"
+                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                     MinWidth="350" 
                     Height="400"
                     DragItemsStarting="Source_DragItemsStarting"
@@ -224,7 +224,7 @@
                     DragEnter="Target_DragEnter"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="DimGray"
+                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                     MinWidth="350" 
                     Height="400"/>
             </Grid>
@@ -263,7 +263,7 @@ source code for the XAML Controls Gallery. -->
                 Height="400"
                 Width="400"
                 BorderThickness="1"
-                BorderBrush="DimGray"
+                BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                 HorizontalAlignment="Left">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -304,7 +304,7 @@ source code for the XAML Controls Gallery. -->
                     x:Name="InvertedListView"
                     ItemTemplate="{StaticResource MessageViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="DimGray"
+                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
                     Height="400"
                     SelectionMode="None">
                     
@@ -390,7 +390,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
                       Height="400"
                       MinWidth="550"
                       BorderThickness="1"
-                      BorderBrush="DimGray">
+                      BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
@@ -424,7 +424,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
      Height="400"
      MinWidth="550"
      BorderThickness="1"
-     BorderBrush="DimGray"&gt;
+     BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"&gt;
                     
 &lt;!-- Data Template Used: --&gt;
 &lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;

@@ -21,6 +21,7 @@ using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
@@ -296,7 +297,7 @@ namespace AppUIBasics.ControlPages
         public string MsgText { get; private set; }
         public string MsgDateTime { get; private set; }
         public string MsgAlignment { get; set; }
-        public string BgColor { get; set; }
+        public SolidColorBrush BgColor { get; set; }
         public Message(string text, string datetime, string align)
         {
             MsgText = text;
@@ -306,13 +307,13 @@ namespace AppUIBasics.ControlPages
             // If recieved message, use yellow background
             if (MsgAlignment == "Left")
             {
-                BgColor = "#f5d471";
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"]; 
             }
 
             // If sent message, use light gray
             else
             {
-                BgColor = "#c7c6c5";
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundBaseMediumLowBrush"];
             }
         }
 
