@@ -5,7 +5,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:l="using:AppUIBasics.ControlPages"
     xmlns:common="using:AppUIBasics.Common"
     mc:Ignorable="d" FontFamily="Segoe UI">
@@ -74,23 +74,23 @@
                         VerticalScrollBarVisibility="Disabled"
                         HorizontalScrollMode="Disabled"
                         VerticalScrollMode="Disabled">
-                    <muxcontrols:ItemsRepeater x:Name="innerRepeater"
+                    <muxc:ItemsRepeater x:Name="innerRepeater"
                                                ItemsSource="{x:Bind CategoryItems}"
                                                ItemTemplate="{StaticResource StringDataTemplateColor}">
-                        <muxcontrols:ItemsRepeater.Layout>
-                            <muxcontrols:StackLayout Orientation="Horizontal" />
-                        </muxcontrols:ItemsRepeater.Layout>
-                    </muxcontrols:ItemsRepeater>
+                        <muxc:ItemsRepeater.Layout>
+                            <muxc:StackLayout Orientation="Horizontal" />
+                        </muxc:ItemsRepeater.Layout>
+                    </muxc:ItemsRepeater>
                 </ScrollViewer>
             </StackPanel>
         </DataTemplate>
 
-        <muxcontrols:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
-        <muxcontrols:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" Spacing="8"/>
-        <muxcontrols:UniformGridLayout x:Name="UniformGridLayout" MinRowSpacing="8" MinColumnSpacing="8"/>
+        <muxc:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
+        <muxc:StackLayout x:Name="HorizontalStackLayout" Orientation="Horizontal" Spacing="8"/>
+        <muxc:UniformGridLayout x:Name="UniformGridLayout" MinRowSpacing="8" MinColumnSpacing="8"/>
 
         <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
-        <muxcontrols:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
+        <muxc:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
@@ -107,10 +107,10 @@
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
                           MaxHeight="500">
-                <muxcontrols:ItemsRepeater x:Name="repeater"
-                                           Layout="{StaticResource VerticalStackLayout}"
-                                           ItemsSource="{x:Bind BarItems}"
-                                           ItemTemplate="{StaticResource HorizontalBarTemplate}"/>
+                <muxc:ItemsRepeater x:Name="repeater"
+                               Layout="{StaticResource VerticalStackLayout}"
+                               ItemsSource="{x:Bind BarItems}"
+                               ItemTemplate="{StaticResource HorizontalBarTemplate}"/>
             </ScrollViewer>
             <local:ControlExample.Options>
                 <StackPanel Spacing="12">
@@ -139,6 +139,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+
 &lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
 &lt;ScrollViewer HorizontalScrollBarVisibility="Auto" 
         HorizontalScrollMode="Auto" 
@@ -175,29 +176,29 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
             <StackPanel>
                 <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
-                <muxcontrols:ItemsRepeater x:Name="MixedTypeRepeater" 
+                <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                                            Margin="0,0,12,0"
                                            HorizontalAlignment="Stretch"
                                            ItemTemplate="{StaticResource StringOrIntTemplateSelector}">        
 
-                    <muxcontrols:ItemsRepeater.Layout>
-                        <muxcontrols:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxcontrols:UniformGridLayout>
-                    </muxcontrols:ItemsRepeater.Layout>
-                </muxcontrols:ItemsRepeater>
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
+                    </muxc:ItemsRepeater.Layout>
+                </muxc:ItemsRepeater>
             </StackPanel>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Laying out nested ItemsRepeaters">
             <ScrollViewer>
-                <muxcontrols:ItemsRepeater x:Name="outerRepeater"
+                <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
                                            ItemTemplate ="{StaticResource CategoryTemplate}">
 
-                    <muxcontrols:ItemsRepeater.Layout>
-                        <muxcontrols:StackLayout Orientation="Vertical" />
-                    </muxcontrols:ItemsRepeater.Layout> 
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:StackLayout Orientation="Vertical" />
+                    </muxc:ItemsRepeater.Layout> 
 
-                </muxcontrols:ItemsRepeater>
+                </muxc:ItemsRepeater>
             </ScrollViewer>
 
             <local:ControlExample.Xaml>
@@ -260,19 +261,20 @@ a CategoryName (string), and a collection of strings called CategoryItems. --&gt
 
             <!-- ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
                  It's not needed on 17700+ builds. -->
-            <muxcontrols:ItemsRepeaterScrollHost>
+            <muxc:ItemsRepeaterScrollHost>
                 <ScrollViewer x:Name="scrollViewer"
                               Height="400"
                               IsVerticalScrollChainingEnabled="False"
                               Padding="0,0,16,0">
-                    <muxcontrols:ItemsRepeater 
-                              x:Name="repeater2" 
-                              Margin="0,0,12,0"
-                              HorizontalAlignment="Stretch"
-                              Layout="{StaticResource MyFeedLayout}"
-                              ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
+                    
+                    <muxc:ItemsRepeater x:Name="repeater2" 
+                                       Margin="0,0,12,0"
+                                       HorizontalAlignment="Stretch"
+                                       Layout="{StaticResource MyFeedLayout}"
+                                       ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
+
                 </ScrollViewer>
-            </muxcontrols:ItemsRepeaterScrollHost>
+            </muxc:ItemsRepeaterScrollHost>
 
             <local:ControlExample.Options>
                 <StackPanel Spacing="12">

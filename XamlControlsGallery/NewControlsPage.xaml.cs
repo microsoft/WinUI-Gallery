@@ -9,13 +9,9 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 
 namespace AppUIBasics
 {
@@ -26,30 +22,50 @@ namespace AppUIBasics
             this.InitializeComponent();
         }
 
-        private IEnumerable<ControlInfoDataItem> _updateditems;
-
-        public IEnumerable<ControlInfoDataItem> UpdatedItems
-        {
-            get { return _updateditems; }
-            set { SetProperty(ref _updateditems, value); }
-        }
-
-        private IEnumerable<ControlInfoDataItem> _previewitems;
-
-        public IEnumerable<ControlInfoDataItem> PreviewItems
-        {
-            get { return _previewitems; }
-            set { SetProperty(ref _previewitems, value); }
-        }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             menuItem.IsSelected = true;
-            NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
-            Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.IsNew)).OrderBy(i => i.Title).ToList();
-            UpdatedItems = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.IsUpdated)).OrderBy(i => i.Title).ToList();
-            PreviewItems = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.IsPreview)).OrderBy(i => i.Title).ToList();
+            NavigationRootPage.Current.NavigationView.Header = string.Empty;
+
+            Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
+            itemsCVS.Source = FormatData();
+        }
+
+        private ObservableCollection<GroupInfoList> FormatData()
+        {
+            var query = from item in this.Items
+                        group item by item.BadgeString into g
+                        orderby g.Key
+                        select new GroupInfoList(g) { Key = g.Key };
+
+            ObservableCollection<GroupInfoList> groupList = new ObservableCollection<GroupInfoList>(query);
+
+            //Move Preview samples to the back of the list
+            var previewGroup = groupList.ElementAt(1);
+            if (previewGroup?.Key.ToString() == "Preview")
+            {
+                groupList.RemoveAt(1);
+                groupList.Insert(groupList.Count, previewGroup);
+            }
+
+            foreach (var item in groupList)
+            {
+                switch (item.Key.ToString())
+                {
+                    case "New":
+                        item.Title = "Recently Added Samples";
+                        break;
+                    case "Updated":
+                        item.Title = "Recently Updated Samples";
+                        break;
+                    case "Preview":
+                        item.Title = "Preview Samples";
+                        break;
+                }
+            }
+
+            return groupList;
         }
 
         protected override bool GetIsNarrowLayoutState()
@@ -57,4 +73,14 @@ namespace AppUIBasics
             return LayoutVisualStates.CurrentState == NarrowLayout;
         }
     }
+
+    public class GroupInfoList : List<object>
+    {
+        public GroupInfoList(IEnumerable<object> items) : base(items) { }
+
+        public object Key { get; set; }
+
+        public string Title { get; set; }
+    }
 }
+ 

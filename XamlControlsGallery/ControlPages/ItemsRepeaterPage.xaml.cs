@@ -108,7 +108,7 @@ namespace AppUIBasics.ControlPages
             outerRepeater.ItemsSource = nestedCategories;
 
             // Intitalize code sample for non-interactive items layout
-            displayLayout.Value = "<muxcontrols:StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
+            displayLayout.Value = "<StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
 
             displayDataTemplate.Value = @"<DataTemplate x:Key='HorizontalBarTemplate' x:DataType='l: Bar'>
     <Border Background = '{ThemeResource SystemChromeLowColor}' Width = '{x:Bind MaxLength}' >

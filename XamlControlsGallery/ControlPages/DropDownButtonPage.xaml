@@ -7,31 +7,45 @@
       xmlns:data="using:AppUIBasics.Data"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     
     <StackPanel>
         <local:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
-            <muxcontrols:DropDownButton Content="Email">
-                <muxcontrols:DropDownButton.Flyout>
-                    <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutItem Text="Send"/>
-                        <MenuFlyoutItem Text="Reply"/>
-                        <MenuFlyoutItem Text="Reply All"/>
-                    </MenuFlyout>
-                </muxcontrols:DropDownButton.Flyout>
-            </muxcontrols:DropDownButton>
+                <muxc:DropDownButton Content="Email">
+                    <muxc:DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="Send"/>
+                            <MenuFlyoutItem Text="Reply"/>
+                            <MenuFlyoutItem Text="Reply All"/>
+                        </MenuFlyout>
+                    </muxc:DropDownButton.Flyout>
+                </muxc:DropDownButton>
+            </StackPanel>
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="Reveal style applied to DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_RevealStyle.txt">
+            <StackPanel x:Name="ControlReveal" Orientation="Horizontal">
+                <muxc:DropDownButton Content="Email" Style="{ThemeResource DropDownButtonRevealStyle}">
+                    <muxc:DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="Send"/>
+                            <MenuFlyoutItem Text="Reply"/>
+                            <MenuFlyoutItem Text="Reply All"/>
+                        </MenuFlyout>
+                    </muxc:DropDownButton.Flyout>
+                </muxc:DropDownButton>
             </StackPanel>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="DropDownButton with Icons" XamlSource="Buttons/DropDown/DropDownButton_Icon.txt">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-            <muxcontrols:DropDownButton AutomationProperties.Name="Email">
-                <muxcontrols:DropDownButton.Content>
+            <muxc:DropDownButton AutomationProperties.Name="Email">
+                <muxc:DropDownButton.Content>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE715;"/>
-                </muxcontrols:DropDownButton.Content>
-                <muxcontrols:DropDownButton.Flyout>
+                </muxc:DropDownButton.Content>
+                <muxc:DropDownButton.Flyout>
                     <MenuFlyout Placement="Bottom">
                         <MenuFlyoutItem Text="Send">
                             <MenuFlyoutItem.Icon>
@@ -49,8 +63,8 @@
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>
-                </muxcontrols:DropDownButton.Flyout>
-            </muxcontrols:DropDownButton>
+                </muxc:DropDownButton.Flyout>
+            </muxc:DropDownButton>
             </StackPanel>
         </local:ControlExample>
     </StackPanel>

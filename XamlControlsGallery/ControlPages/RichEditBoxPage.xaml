@@ -16,7 +16,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:contract6Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d">
 
@@ -79,14 +79,14 @@
                     </Button.Content>
                 </Button>
 
-                <muxcontrols:DropDownButton x:Name="fontColorButton"
+                <muxc:DropDownButton x:Name="fontColorButton"
                                             BorderThickness="0" 
                                             AutomationProperties.Name="Font color"
                                             ToolTipService.ToolTip="Font color"
                                             Background="Transparent" 
                                             RelativePanel.AlignRightWithPanel="True">
                     <SymbolIcon Symbol="FontColor"/>
-                    <muxcontrols:DropDownButton.Flyout>
+                    <muxc:DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
                                 <VariableSizedWrapGrid.Resources>
@@ -148,8 +148,8 @@
                                 </Button>
                             </VariableSizedWrapGrid>
                         </Flyout>
-                    </muxcontrols:DropDownButton.Flyout>
-                </muxcontrols:DropDownButton>
+                    </muxc:DropDownButton.Flyout>
+                </muxc:DropDownButton>
 
                 <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
                              RelativePanel.Below="openFileButton" 

@@ -35,18 +35,18 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="itemGridView.Padding" Value="14,0,14,0" />
-                        <Setter Target="headerImageView.Margin" Value="-14,0,-14,14" />
+                        <Setter Target="itemGridView.Padding" Value="12,0,12,36" />
+                        <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
+                        <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <GridView
-            x:Name="itemGridView"
-            Padding="24,0,0,0"
+        <GridView x:Name="itemGridView"
+            Padding="24,0,0,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -65,28 +65,35 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <ParallaxView
-                    x:Name="headerImageView"
-                    Height="250"
-                    Margin="-24,0,0,24"
-                    Source="{x:Bind itemGridView}"
-                    VerticalShift="350">
-                    <Image
-                        x:Name="headerImage"
-                        HorizontalAlignment="Center"
-                        Source="Assets/MainPage_Banner.jpg"
-                        Stretch="UniformToFill" />
-                </ParallaxView>
+                <Grid Margin="-24,0,0,24">
+                    <ParallaxView
+                        x:Name="headerImageView"
+                        Height="250"
+                        Margin="0,0,0,0"
+                        Source="{x:Bind itemGridView}"
+                        VerticalShift="350">
+                        <Image
+                            x:Name="headerImage"
+                            HorizontalAlignment="Center"
+                            Source="Assets/MainPage_Banner.jpg"
+                            Stretch="UniformToFill" />
+                    </ParallaxView>
+                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <TextBlock x:Name="smallHeaderText"
+                               Visibility="Collapsed"
+                               Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
+                               Text="{StaticResource ControlsName}"/>
+                </Grid>
             </GridView.Header>
         </GridView>
 
-        <local:PageHeader
-            x:Name="pageHeader"
-            Title="{StaticResource AppName}"
+        <local:PageHeader x:Name="pageHeader"
+            Title="{StaticResource ControlsName}"
             VerticalAlignment="Top"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="42"
             Padding="24,34,12,12"
-            Foreground="White" />
+            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" 
+            IsHitTestVisible="False" />
     </Grid>
 </local:ItemsPageBase>

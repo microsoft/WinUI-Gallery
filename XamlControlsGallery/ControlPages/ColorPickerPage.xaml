@@ -2,11 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="ColorPicker Properties." HorizontalContentAlignment="Left">
 
-            <ColorPicker x:Name="colorPicker"
+            <muxc:ColorPicker x:Name="colorPicker"
                 IsMoreButtonVisible="{x:Bind moreBtn.IsChecked.Value, Mode=OneWay}"
                 IsColorSliderVisible="{x:Bind colorSlider.IsChecked.Value, Mode=OneWay}"
                 IsColorChannelTextInputVisible="{x:Bind colorChannelInput.IsChecked.Value, Mode=OneWay}"
@@ -40,7 +41,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ColorPicker
+&lt;muxc:ColorPicker
       IsMoreButtonVisible="$(IsMoreButtonVisible)"
       IsColorSliderVisible="$(IsColorSliderVisible)"
       IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
