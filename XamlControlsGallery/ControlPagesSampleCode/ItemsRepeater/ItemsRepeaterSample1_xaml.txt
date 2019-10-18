@@ -1,16 +1,21 @@
 <!-- XAML Code -->
 
 <!-- This is the ItemsRepeater used in this example: -->
-<ItemsRepeater x:Name="repeater0" 
+<ItemsRepeater x:Name="MixedTypeRepeater" 
                Margin="0,0,12,0"
                HorizontalAlignment="Stretch"
-               ItemTemplate="{StaticResource StringOrIntTemplateSelector}"
-               ItemsSource="{x:Bind StringsAndInts}">
+               ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
+
+    <ItemsRepeater.Layout>
+        <UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxcontrols:UniformGridLayout>
+    </ItemsRepeater.Layout>
+</ItemsRepeater>
 
 <!-- The ItemsSource is bound in the C# code-behind to an ObservableCollection called 
 StringsAndInts.StringsAndInts has both string objects and integer objects. The ItemTemplate
 is a DataTemplateSelector called StringOrIntTemplateSelector, and is defined in the 
-code-behind and shown in the C# code-behind section below. -->
+code-behind and shown in the C# code-behind section below. The layout is a simple 
+UniformGridLayout where each item is a 200x200 square. -->
                         
 <!-- StringOrIntTemplateSelector assesses the type of an item, and returns StringDataTemplate if 
 the item is a string, and IntDataTemplate if the item is an integer (see C# code-behind below). 
@@ -22,15 +27,17 @@ defines each of them: -->
                              IntTemplate="{StaticResource IntDataTemplate}"/>         
                         
 <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
-    <Grid Background="Black" Margin="10">
-        <TextBlock Padding="10" Text="{x:Bind}" Foreground="White" HorizontalAlignment="Center" 
-                   TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+    <Grid Background="{StaticResource SystemControlBackgroundBaseHighBrush}" Margin="10">
+        <TextBlock Padding="10" Text="{x:Bind}" 
+                   Foreground="{StaticResource SystemControlForegroundAltHighBrush}" 
+                   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
     </Grid>
 </DataTemplate>
 
 <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-    <Grid Width="100" Height="100" Margin="10">
-        <TextBlock Padding="10" Text="{x:Bind}" FontSize="50" HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"></TextBlock>
+    <Grid Background="{StaticResource SystemControlBackgroundAltHighBrush}" Margin="10">
+        <TextBlock Padding="10" Text="{x:Bind}" 
+        Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" 
+        FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </DataTemplate>

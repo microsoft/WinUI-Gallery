@@ -43,14 +43,20 @@
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
-            <Grid Background="Black" Margin="10">
-                <TextBlock Padding="10" Text="{x:Bind}" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+            <Grid Background="{StaticResource SystemControlBackgroundBaseHighBrush}" Margin="10">
+                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundAltHighBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringDataTemplateColor" x:DataType="x:String">
+            <Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10 10">
+                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundAltHighBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-            <Grid Width="100" Height="100" Margin="10">
-                <TextBlock Padding="10" Text="{x:Bind}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <Grid Background="{StaticResource SystemControlBackgroundAltHighBrush}" Margin="10">
+                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </DataTemplate>
 
@@ -62,15 +68,15 @@
 
         <DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory">
             <StackPanel>
-                <TextBlock Text="{x:Bind CategoryName}" Padding="10" FontSize="30"/>
+                <TextBlock Text="{x:Bind CategoryName}" Padding="8" FontSize="30"/>
                 <ScrollViewer 
-                        HorizontalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Disabled"
-                        HorizontalScrollMode="Auto"
+                        HorizontalScrollMode="Disabled"
                         VerticalScrollMode="Disabled">
                     <muxcontrols:ItemsRepeater x:Name="innerRepeater"
                                                ItemsSource="{x:Bind CategoryItems}"
-                                               ItemTemplate="{StaticResource ImageTemplate}">
+                                               ItemTemplate="{StaticResource StringDataTemplateColor}">
                         <muxcontrols:ItemsRepeater.Layout>
                             <muxcontrols:StackLayout Orientation="Horizontal" />
                         </muxcontrols:ItemsRepeater.Layout>
@@ -96,24 +102,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample HeaderText="Basic ItemsRepeater"
-                              XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
-                              CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
-            <StackPanel>
-                <TextBlock Text="This is a basic ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
-                <muxcontrols:ItemsRepeater x:Name="repeater0" 
-                                Margin="0,0,12,0"
-                                HorizontalAlignment="Stretch"
-                                ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
-
-                    <muxcontrols:ItemsRepeater.Layout>
-                        <muxcontrols:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxcontrols:UniformGridLayout>
-                    </muxcontrols:ItemsRepeater.Layout>
-                </muxcontrols:ItemsRepeater>
-            </StackPanel>
-        </local:ControlExample>
-        
-        <local:ControlExample HeaderText="Non-interactive items laid out by ItemsRepeater">
+        <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" 
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
@@ -181,15 +170,33 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Browsing within nested ItemsRepeaters">
+        <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
+            <StackPanel>
+                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
+                <muxcontrols:ItemsRepeater x:Name="MixedTypeRepeater" 
+                                           Margin="0,0,12,0"
+                                           HorizontalAlignment="Stretch"
+                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">        
+
+                    <muxcontrols:ItemsRepeater.Layout>
+                        <muxcontrols:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxcontrols:UniformGridLayout>
+                    </muxcontrols:ItemsRepeater.Layout>
+                </muxcontrols:ItemsRepeater>
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Laying out nested ItemsRepeaters">
             <ScrollViewer>
-                <muxcontrols:ItemsRepeater 
-                x:Name="outerRepeater"
-                VerticalAlignment="Top"
-                ItemTemplate ="{StaticResource CategoryTemplate}">
+                <muxcontrols:ItemsRepeater x:Name="outerRepeater"
+                                           VerticalAlignment="Top"
+                                           ItemTemplate ="{StaticResource CategoryTemplate}">
+
                     <muxcontrols:ItemsRepeater.Layout>
                         <muxcontrols:StackLayout Orientation="Vertical" />
-                    </muxcontrols:ItemsRepeater.Layout>
+                    </muxcontrols:ItemsRepeater.Layout> 
+
                 </muxcontrols:ItemsRepeater>
             </ScrollViewer>
 
@@ -210,18 +217,17 @@ the outer ItemsRepeater definition and the DataTemplate it uses. --&gt;
     &lt;/ItemsRepeater&gt;
 &lt;/ScrollViewer&gt;
                     
-&lt;DataTemplate x:Key="CategoryTemplate" x:DataType="NestedCategory"&gt;
+&lt;DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory"&gt;
     &lt;StackPanel&gt;
-        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="10" FontSize="30"/&gt;
-        &lt;ScrollViewer
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Disabled"
-            HorizontalScrollMode="Auto"
-            VerticalScrollMode="Disabled"&gt;
-            &lt;ItemsRepeater 
-                    x:Name="innerRepeater"
-                    ItemsSource="{x:Bind CategoryItems}"
-                    ItemTemplate="{StaticResource ImageTemplate}"&gt;
+        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="8" FontSize="30"/&gt;
+        &lt;ScrollViewer 
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Disabled"
+                HorizontalScrollMode="Disabled"
+                VerticalScrollMode="Disabled"&gt;
+            &lt;ItemsRepeater x:Name="innerRepeater"
+                           ItemsSource="{x:Bind CategoryItems}"
+                           ItemTemplate="{StaticResource StringDataTemplateColor}"&gt;
                 &lt;ItemsRepeater.Layout&gt;
                     &lt;StackLayout Orientation="Horizontal" /&gt;
                 &lt;/ItemsRepeater.Layout&gt;
@@ -232,16 +238,17 @@ the outer ItemsRepeater definition and the DataTemplate it uses. --&gt;
                     
 &lt;!-- The DataTemplate shown above is bound to a custom-class type called NestedCategory, 
 which is defined in the code-behind. NestedCategory objects have the following two attributes: 
-a CategoryName (string), and a collection of strings called CategoryItems. Each string in 
-this collection represents an image source. --&gt;
+a CategoryName (string), and a collection of strings called CategoryItems. --&gt;
                     
-&lt;!-- The inner ItemsRepeater is bound to its own, separate DataTemplate called ImageTemplate: --&gt;
+&lt;!-- The inner ItemsRepeater is bound to its own, separate DataTemplate called StringDataTemplateColor: --&gt;
                     
-&lt;DataTemplate x:Key="ImageTemplate" x:DataType="x:String"&gt;
-    &lt;StackPanel&gt;
-        &lt;Image Height="200" Source="{x:Bind}" Margin="5">&lt;/Image&gt;
-    &lt;/StackPanel&gt;
-&lt;/DataTemplate&gt;                  
+&lt;DataTemplate x:Key="StringDataTemplateColor" x:DataType="x:String"&gt;
+    &lt;Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10 10"&gt;
+        &lt;TextBlock Padding="10" Text="{x:Bind}" 
+                   Foreground="{StaticResource SystemControlForegroundAltHighBrush}" 
+                   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;               
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

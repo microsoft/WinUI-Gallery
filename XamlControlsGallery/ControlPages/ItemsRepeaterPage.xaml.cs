@@ -58,35 +58,52 @@ namespace AppUIBasics.ControlPages
             basicData.Add(512);
             basicData.Add("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
             basicData.Add(1024);
-            repeater0.ItemsSource = basicData;
+            MixedTypeRepeater.ItemsSource = basicData;
 
             ObservableCollection<NestedCategory> nestedCategories = new ObservableCollection<NestedCategory>();
             nestedCategories.Add(
-                new NestedCategory("John's Photos",  new ObservableCollection<string>{
-                                                            "../Assets/SampleMedia/cliff.jpg",
-                                                            "../Assets/SampleMedia/grapes.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage1.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage2.jpg"}));
+                new NestedCategory("Fruits",  new ObservableCollection<string>{
+                                                            "Apricots",
+                                                            "Bananas",
+                                                            "Grapes",
+                                                            "Strawberries",
+                                                            "Watermelon",
+                                                            "Plums",
+                                                            "Blueberries"
+                }));
 
             nestedCategories.Add(
-                new NestedCategory("Paul's Photos", new ObservableCollection<string>{
-                                                            "../Assets/SampleMedia/LandScapeImage4.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage5.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage6.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage7.jpg"}));
+                new NestedCategory("Vegetables", new ObservableCollection<string>{
+                                                            "Broccoli",
+                                                            "Spinach",
+                                                            "Sweet potato",
+                                                            "Cauliflower",
+                                                            "Onion",
+                                                            "Brussel sprouts",
+                                                            "Carrots"
+                }));
 
             nestedCategories.Add(
-                new NestedCategory("George's Photos", new ObservableCollection<string>{
-                                                            "../Assets/SampleMedia/LandScapeImage3.jpg",
-                                                            "../Assets/SampleMedia/LandScapeImage8.jpg",
-                                                            "../Assets/SampleMedia/rainier.jpg",
-                                                            "../Assets/SampleMedia/sunset.jpg"}));
+                new NestedCategory("Grains", new ObservableCollection<string>{
+                                                            "Rice",
+                                                            "Quinoa",
+                                                            "Pasta",
+                                                            "Bread",
+                                                            "Farro",
+                                                            "Oats",
+                                                            "Barley"
+                }));
 
             nestedCategories.Add(
-                new NestedCategory("Ringo's Photos", new ObservableCollection<string>{
-                                                            "../Assets/SampleMedia/treetops.jpg",
-                                                            "../Assets/SampleMedia/valley.jpg",
-                                                            "../Assets/Windows_Desktop.png"}));
+                new NestedCategory("Proteins", new ObservableCollection<string>{
+                                                            "Steak",
+                                                            "Chicken",
+                                                            "Tofu",
+                                                            "Salmon",
+                                                            "Pork",
+                                                            "Chickpeas",
+                                                            "Eggs"
+                }));
 
             outerRepeater.ItemsSource = nestedCategories;
 
