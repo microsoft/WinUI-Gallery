@@ -12,10 +12,6 @@ using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.AccessControl;
 using Windows.Graphics.Display;
 using Windows.Media.Devices;
 using Windows.UI;
@@ -26,8 +22,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
-
-
+using System.Diagnostics;
 
 namespace AppUIBasics.ControlPages
 {
@@ -212,6 +207,7 @@ namespace AppUIBasics.ControlPages
             // Update text box with newly increased value
             ColSpace.Text = ActualColSpace.ToString();
             ColSpace.PlaceholderText = ActualColSpace.ToString();
+            ColSpacesDec.IsEnabled = true;
 
             // Increase left/right margin on all GridViewItems
             for (int i = 0; i < StyledGrid.Items.Count; i++)
@@ -233,8 +229,9 @@ namespace AppUIBasics.ControlPages
         private void StyledGrid_DecreaseColSpace(object sender, RoutedEventArgs e)
         {
             // Make sure new value is positive
-            if (ActualColSpace - 1 >= 0)
+            if (ActualColSpace > 0)
             {
+                ColSpacesDec.IsEnabled = true;
                 ActualColSpace -= 1;
 
                 // Update text box with newly increased value
@@ -261,7 +258,7 @@ namespace AppUIBasics.ControlPages
             {
                 ColSpace.Text = "";
                 ColSpace.PlaceholderText = "0";
-                sendMessage();
+                ColSpacesDec.IsEnabled = false;
             }
 
             NotifyPropertyChanged();
@@ -270,7 +267,7 @@ namespace AppUIBasics.ControlPages
         private void StyledGrid_IncreaseRowSpace(object sender, RoutedEventArgs e)
         {
             ActualRowSpace += 1;
-
+            RowSpacesDec.IsEnabled = true;
             RowSpace.Text = ActualRowSpace.ToString();
             RowSpace.PlaceholderText = ActualRowSpace.ToString();
 
@@ -294,9 +291,10 @@ namespace AppUIBasics.ControlPages
         private void StyledGrid_DecreaseRowSpace(object sender, RoutedEventArgs e)
         {
             // Make sure new value is positive
-            if (ActualRowSpace -1 >= 0)
+            if (ActualRowSpace > 0)
             {
                 ActualRowSpace -= 1;
+                RowSpacesDec.IsEnabled = true;
 
                 // Update text box with newly increased value
                 RowSpace.Text = ActualRowSpace.ToString();
@@ -322,7 +320,7 @@ namespace AppUIBasics.ControlPages
             {
                 RowSpace.Text = "";
                 RowSpace.PlaceholderText = "0";
-                sendMessage();
+                RowSpacesDec.IsEnabled = false;
             }
 
             NotifyPropertyChanged();
@@ -414,7 +412,8 @@ namespace AppUIBasics.ControlPages
         {
             // Make sure value is positive
             if (Convert.ToInt32(MaxItems.Text.ToString()) >= 0)
-            { 
+            {
+                MaxItemsDec.IsEnabled = true;
                 // Increment ActualMaxItems and update text box
                 ActualMaxItems += 1;
                 MaxItems.Text = ActualMaxItems.ToString();
@@ -429,8 +428,9 @@ namespace AppUIBasics.ControlPages
         private void StyledGrid_DecreaseMaxItems(object sender, RoutedEventArgs e)
         {
             // Make sure new value is greater than 1
-            if (Convert.ToInt32(MaxItems.Text.ToString())  >= 1)
+            if (Convert.ToInt32(MaxItems.Text.ToString())  > 1)
             {
+                MaxItemsDec.IsEnabled = true;
                 // Decrement ActualMaxItems and update text box
                 ActualMaxItems -= 1;
                 MaxItems.Text = ActualMaxItems.ToString();
@@ -443,7 +443,7 @@ namespace AppUIBasics.ControlPages
             // If value is less than 1, reset textbox to 1 and display error message.
             else
             {
-                sendMessage();
+                MaxItemsDec.IsEnabled = false;
                 ActualMaxItems = 1;
                 MaxItems.Text = "1";
                 MaxItems.PlaceholderText = "1";
@@ -452,15 +452,15 @@ namespace AppUIBasics.ControlPages
 
         private void StyledGrid_ChangeMaxItems(object sender, TextChangedEventArgs e)
         {
-
             try
             {
                 // Make sure that value entered is a number
                 int newVal = Convert.ToInt32(MaxItems.Text.ToString());
 
                 // Make sure number is not less than 1
-                if (Convert.ToInt32(MaxItems.Text.ToString()) >= 1)
+                if (Convert.ToInt32(MaxItems.Text.ToString()) > 1)
                 {
+                    MaxItemsDec.IsEnabled = true;
                     MaxItems.PlaceholderText = MaxItems.Text.ToString();
                     ActualMaxItems = Convert.ToInt32(MaxItems.Text);
                     
@@ -471,10 +471,11 @@ namespace AppUIBasics.ControlPages
                 // If number is less than 1, reset textbox to 1 and display error message.
                 else
                 {
-                    sendMessage();
+                    MaxItemsDec.IsEnabled = false;
                     ActualMaxItems = 1;
-                    MaxItems.Text = "1";
                     MaxItems.PlaceholderText = "1";
+                    MaxItems.Text = "1";
+                    StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
                 }
 
             }
@@ -495,18 +496,6 @@ namespace AppUIBasics.ControlPages
 
             // Now we can change StyledGrid's MaximumRowsorColumns property within its ItemsPanel>ItemsPanelTemplate>ItemsWrapGrid.
             StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
-        }
-
-        private async void sendMessage()
-        {
-            MessageDialog messageDialog = new MessageDialog("Value cannot be less than 1.");
-
-            // Set the commands to close the message
-            messageDialog.DefaultCommandIndex = 0;
-            messageDialog.CancelCommandIndex = 1;
-
-            // Show message
-            await messageDialog.ShowAsync();
         }
     }
 }

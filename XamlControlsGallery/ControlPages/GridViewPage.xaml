@@ -14,8 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
-    xmlns:local1="using:AppUIBasics.ControlPages"
-    xmlns:sys="using:System">
+    xmlns:local1="using:AppUIBasics.ControlPages">
 
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
@@ -253,7 +252,7 @@ The data template is defined to display a CustomDataObject object (same type as 
                     AllowDrop="{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}"
                     IsItemClickEnabled="{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}"
                     ItemClick="ContentGridView_ItemClick"
-                    ItemTemplate="{StaticResource ImageTemplate}"                    
+                    ItemTemplate="{StaticResource ImageTemplate}"
                     SelectionChanged="ContentGridView_SelectionChanged" />
 
                 <StackPanel Grid.Row="1">
@@ -289,7 +288,8 @@ The data template is defined to display a CustomDataObject object (same type as 
                             Tag="TextTemplate" />
                         <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
                         <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
-                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> In order to drag, drop, and reorder items within the GridView, make sure all boxes are checked below.</TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> In order to drag, drop, and reorder items within the GridView, make sure the last three boxes are checked below.<LineBreak/></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> Turning on IsItemClickEnabled will allow the user to click on an item (and print output below the GridView), regardless of selection mode.<LineBreak/></TextBlock>
                         <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
                         <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
                         <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
