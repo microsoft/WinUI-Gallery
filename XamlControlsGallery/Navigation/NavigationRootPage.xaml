@@ -13,7 +13,7 @@
     x:Class="AppUIBasics.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mux="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:AppUIBasics">
 
     <Page.Resources>
@@ -51,19 +51,20 @@
             Fill="{ThemeResource NavigationViewDefaultPaneBackground}"
             Visibility="Collapsed" Canvas.ZIndex="0" />
 
-        <Border Grid.Column="1" x:Name="AppTitleBar"
+        <Border x:Name="AppTitleBar"
+                Grid.Column="1"
                 IsHitTestVisible="True"
                 VerticalAlignment="Top"
                 Background="Transparent"
+                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
                        Text="XAML Controls Gallery"
-                       VerticalAlignment="Top"
-                       Margin="0,8,0,0"
+                       VerticalAlignment="Center"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 
-        <mux:NavigationView
+        <muxc:NavigationView
             Canvas.ZIndex="0"
             x:Name="NavigationViewControl"
             Grid.Column="1"
@@ -71,12 +72,12 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
-            IsPaneOpen="False"
+            IsTitleBarAutoPaddingEnabled="False"
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ItemInvoked="OnNavigationViewItemInvoked">
-            <mux:NavigationView.AutoSuggestBox>
+            <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
                     VerticalAlignment="Center"
@@ -86,9 +87,9 @@
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
                     TextChanged="OnControlsSearchBoxTextChanged">
                 </AutoSuggestBox>
-            </mux:NavigationView.AutoSuggestBox>
+            </muxc:NavigationView.AutoSuggestBox>
 
             <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" />
-        </mux:NavigationView>
+        </muxc:NavigationView>
     </Grid>
 </Page>

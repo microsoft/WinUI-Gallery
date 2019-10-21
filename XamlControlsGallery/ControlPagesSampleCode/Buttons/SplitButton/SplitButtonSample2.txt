@@ -1,5 +1,5 @@
-﻿<muxc:SplitButton x:Name="myColorButton" Click="myColorButton_Click">
-    <Rectangle x:Name="CurrentColor" Width="32" Height="32" Fill="Black"/>
+﻿<muxc:SplitButton x:Name="myColorButton" Style="{ThemeResource SplitButtonRevealStyle}" >
+    Choose color
     <muxc:SplitButton.Flyout>
         <Flyout Placement="Bottom">
             <!-- flyout content -->
