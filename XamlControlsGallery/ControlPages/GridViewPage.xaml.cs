@@ -251,6 +251,12 @@ namespace AppUIBasics.ControlPages
 
                     item.Margin = NewMargin;
                 }
+
+                // If this action caused RowSpaces to go to 0, deactivate decrease button
+                if (ActualColSpace == 0)
+                {
+                    ColSpacesDec.IsEnabled = false;
+                }
             }
 
             // If new value is negative, reset text box to 0 and display an error message.
@@ -313,6 +319,12 @@ namespace AppUIBasics.ControlPages
 
                     item.Margin = NewMargin;
                 }
+
+                // If this action caused RowSpaces to go to 0, deactivate decrease button
+                if (ActualRowSpace == 0)
+                {
+                    RowSpacesDec.IsEnabled = false;
+                }
             }
 
             // If new value is negative, reset text box to 0 and display an error message.
@@ -336,6 +348,7 @@ namespace AppUIBasics.ControlPages
                 // If empty or negative string, reset to 0.
                 if (RowSpace.Text.ToString() != "" && newVal >= 0)
                 {
+                    RowSpacesDec.IsEnabled = true;
                     RowSpace.Text = RowSpace.Text.ToString();
                     RowSpace.PlaceholderText = RowSpace.Text.ToString();
 
@@ -362,6 +375,22 @@ namespace AppUIBasics.ControlPages
             // If entered value not a number, reset to 0.
             catch (FormatException)
             {
+                // If clearing a text entry, reset margins to 0.
+                if (RowSpace.Text == "")
+                {
+                    for (int i = 0; i < StyledGrid.Items.Count; i++)
+                    {
+                        GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+
+                        Thickness NewMargin = item.Margin;
+                        NewMargin.Top = 0;
+                        NewMargin.Bottom = 0;
+
+                        item.Margin = NewMargin;
+                    }
+
+                    RowSpacesDec.IsEnabled = false;
+                }
                 RowSpace.Text = "";
                 RowSpace.PlaceholderText = "0";
             }        
@@ -377,6 +406,8 @@ namespace AppUIBasics.ControlPages
                 // If empty or negative string, reset to 0.
                 if (ColSpace.Text.ToString() != "" && newVal >= 0)
                 {
+                    ColSpacesDec.IsEnabled = true;
+
                     ColSpace.Text = ColSpace.Text.ToString();
                     ColSpace.PlaceholderText = ColSpace.Text.ToString();
 
@@ -403,6 +434,23 @@ namespace AppUIBasics.ControlPages
             // If entered value not a number, reset to 0.
             catch (FormatException)
             {
+                // If clearing a text entry, reset margins to 0.
+                if (ColSpace.Text == "")
+                {
+                    for (int i = 0; i < StyledGrid.Items.Count; i++)
+                    {
+                        GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+
+                        Thickness NewMargin = item.Margin;
+                        NewMargin.Left = 0;
+                        NewMargin.Right = 0;
+
+                        item.Margin = NewMargin;
+                    }
+
+                    ColSpacesDec.IsEnabled = false;
+                }
+
                 ColSpace.Text = "";
                 ColSpace.PlaceholderText = "0";
             }
@@ -411,7 +459,7 @@ namespace AppUIBasics.ControlPages
         private void StyledGrid_IncreaseMaxItems(object sender, RoutedEventArgs e)
         {
             // Make sure value is positive
-            if (Convert.ToInt32(MaxItems.Text.ToString()) >= 0)
+            if (ActualMaxItems == 1 || Convert.ToInt32(MaxItems.Text.ToString()) >= 0 )
             {
                 MaxItemsDec.IsEnabled = true;
                 // Increment ActualMaxItems and update text box
@@ -463,6 +511,7 @@ namespace AppUIBasics.ControlPages
                     MaxItemsDec.IsEnabled = true;
                     MaxItems.PlaceholderText = MaxItems.Text.ToString();
                     ActualMaxItems = Convert.ToInt32(MaxItems.Text);
+
                     
                     // Set property by accessing StyledGridIWG ItemsWrapGrid object, which is defined on load (via StyledGrid_InitWrapGrid fcn)
                     StyledGridIWG.MaximumRowsOrColumns = ActualMaxItems;
@@ -483,8 +532,14 @@ namespace AppUIBasics.ControlPages
             // If value not a number, reset text box to 1.
             catch (FormatException)
             {
+                if (MaxItems.Text == "")
+                {
+                    StyledGridIWG.MaximumRowsOrColumns = 1;
+                    MaxItemsDec.IsEnabled = false;
+                }
                 MaxItems.Text = "";
                 MaxItems.PlaceholderText = "1";
+                ActualMaxItems = 1;
             }
             
         }
