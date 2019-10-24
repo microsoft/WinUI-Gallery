@@ -253,7 +253,8 @@ The data template is defined to display a CustomDataObject object (same type as 
                     IsItemClickEnabled="{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}"
                     ItemClick="ContentGridView_ItemClick"
                     ItemTemplate="{StaticResource ImageTemplate}"
-                    SelectionChanged="ContentGridView_SelectionChanged" />
+                    SelectionChanged="ContentGridView_SelectionChanged" 
+                    FlowDirection="LeftToRight"/>
 
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Name="ClickOutput" Style="{StaticResource OutputTextBlockStyle}" />
@@ -320,7 +321,8 @@ The data template is defined to display a CustomDataObject object (same type as 
     CanReorderItems="$(CanReorderItems)"
     SelectionMode="$(SelectionMode)"
     SelectionChanged="ContentGridView_SelectionChanged"
-    ItemClick="ContentGridView_ItemClick" /&gt;
+    ItemClick="ContentGridView_ItemClick" 
+    FlowDirection="$(FlowDirec)"/&gt;
 
 &lt;!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
 to handle the events of when a selection changes on the GridView and when an item is clicked. --&gt;
@@ -339,6 +341,7 @@ $(DisplayDT)
                 <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind ContentGridView.AllowDrop, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind ContentGridView.CanReorderItems, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ContentGridView.SelectionMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="FlowDirec" Value="{x:Bind ContentGridView.FlowDirection, Mode=OneWay}" />
                 <local:ControlExampleSubstitution x:Name="DisplayDT" Key="DisplayDT" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
