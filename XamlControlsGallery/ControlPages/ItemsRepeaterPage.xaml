@@ -43,19 +43,19 @@
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
-            <Grid Background="{StaticResource SystemControlBackgroundBaseHighBrush}" Margin="10">
+            <Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10">
                 <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundAltHighBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplateColor" x:DataType="x:String">
-            <Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10 10">
+            <Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10, 10">
                 <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundAltHighBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-            <Grid Background="{StaticResource SystemControlBackgroundAltHighBrush}" Margin="10">
+            <Grid Background="{ThemeResource SystemChromeLowColor}" Margin="10">
                 <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </DataTemplate>
@@ -171,6 +171,42 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
+                              HorizontalContentAlignment="Stretch"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample2_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample2_cs.txt">
+
+            <!-- ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
+                 It's not needed on 17700+ builds. -->
+            <muxc:ItemsRepeaterScrollHost>
+                <ScrollViewer x:Name="scrollViewer"
+                              Height="400"
+                              IsVerticalScrollChainingEnabled="False"
+                              Padding="0,0,16,0">
+
+                    <muxc:ItemsRepeater x:Name="repeater2" 
+                                       Margin="0,0,12,0"
+                                       HorizontalAlignment="Stretch"
+                                       Layout="{StaticResource MyFeedLayout}"
+                                       ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
+
+                </ScrollViewer>
+            </muxc:ItemsRepeaterScrollHost>
+
+            <local:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButton GroupName="Sample2Layouts" Content="Uniform grid" Tag="UniformGridLayout2" Click="LayoutBtn_Click"/>
+                    <RadioButton GroupName="Sample2Layouts" IsChecked="True" Content="Custom virtualizing layout" Tag="MyFeedLayout" Click="LayoutBtn_Click"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
+                <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+                <local:ControlExampleSubstitution x:Name="displayLayout2" Key="displayLayout2"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+        
         <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection"
                               XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
@@ -196,7 +232,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
 
                     <muxc:ItemsRepeater.Layout>
                         <muxc:StackLayout Orientation="Vertical" />
-                    </muxc:ItemsRepeater.Layout> 
+                    </muxc:ItemsRepeater.Layout>
 
                 </muxc:ItemsRepeater>
             </ScrollViewer>
@@ -252,42 +288,6 @@ a CategoryName (string), and a collection of strings called CategoryItems. --&gt
 &lt;/DataTemplate&gt;               
                 </x:String>
             </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
-                              HorizontalContentAlignment="Stretch"
-                              XamlSource="ItemsRepeater/ItemsRepeaterSample2_xaml.txt"
-                              CSharpSource="ItemsRepeater/ItemsRepeaterSample2_cs.txt">
-
-            <!-- ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
-                 It's not needed on 17700+ builds. -->
-            <muxc:ItemsRepeaterScrollHost>
-                <ScrollViewer x:Name="scrollViewer"
-                              Height="400"
-                              IsVerticalScrollChainingEnabled="False"
-                              Padding="0,0,16,0">
-                    
-                    <muxc:ItemsRepeater x:Name="repeater2" 
-                                       Margin="0,0,12,0"
-                                       HorizontalAlignment="Stretch"
-                                       Layout="{StaticResource MyFeedLayout}"
-                                       ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
-
-                </ScrollViewer>
-            </muxc:ItemsRepeaterScrollHost>
-
-            <local:ControlExample.Options>
-                <StackPanel Spacing="12">
-                    <RadioButton GroupName="Sample2Layouts" Content="Uniform grid" Tag="UniformGridLayout2" Click="LayoutBtn_Click"/>
-                    <RadioButton GroupName="Sample2Layouts" IsChecked="True" Content="Custom virtualizing layout" Tag="MyFeedLayout" Click="LayoutBtn_Click"/>
-                </StackPanel>
-            </local:ControlExample.Options>
-
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
-                <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
-                <local:ControlExampleSubstitution x:Name="displayLayout2" Key="displayLayout2"/>
-            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
     </StackPanel>
