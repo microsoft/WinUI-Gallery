@@ -139,8 +139,8 @@
                     &lt;FontIcon Glyph="&amp;#xE72D;"/&gt;
                 &lt;/MenuFlyoutItem.Icon&gt;
             &lt;/MenuFlyoutItem&gt;
-            &lt;MenuFlyoutItem Text="Copy"/&gt;
-            &lt;MenuFlyoutItem Text="Delete"/&gt;
+            &lt;MenuFlyoutItem Text="Copy" Icon="Copy"/&gt;
+            &lt;MenuFlyoutItem Text="Delete" Icon="Delete"/&gt;
             &lt;MenuFlyoutSeparator/&gt;
             &lt;MenuFlyoutItem Text="Rename"/&gt;
             &lt;MenuFlyoutItem Text="Select"/&gt;
@@ -192,12 +192,12 @@
                     &lt;KeyboardAccelerator Key="S" Modifiers="Control"/&gt;
                 &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
             &lt;/MenuFlyoutItem&gt;
-            &lt;MenuFlyoutItem Text="Copy"&gt;
+            &lt;MenuFlyoutItem Text="Copy" Icon="Copy"&gt;
                 &lt;MenuFlyoutItem.KeyboardAccelerators&gt;
                     &lt;KeyboardAccelerator Key="C" Modifiers="Control"/&gt;
                 &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
             &lt;/MenuFlyoutItem&gt;
-            &lt;MenuFlyoutItem Text="Delete"&gt;
+            &lt;MenuFlyoutItem Text="Delete" Icon="Delete"&gt;
                 &lt;MenuFlyoutItem.KeyboardAccelerators&gt;
                     &lt;KeyboardAccelerator Key="Delete" /&gt;
                 &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
