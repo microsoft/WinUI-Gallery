@@ -32,19 +32,19 @@
 
         <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
-                <TextBlock Text="{x:Bind}" />
+                <TextBlock Text="{x:Bind}"/>
             </Button>
         </DataTemplate>
 
         <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
-                <TextBlock Text="{x:Bind}" />
+                <TextBlock Text="{x:Bind}"/>
             </Button>
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
-            <Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10">
-                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundAltHighBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+            <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10">
+                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
             </Grid>
         </DataTemplate>
 
@@ -56,7 +56,7 @@
 
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
             <Grid Background="{ThemeResource SystemChromeLowColor}" Margin="10">
-                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{StaticResource SystemControlForegroundBaseHighBrush}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Padding="10" Text="{x:Bind}" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </DataTemplate>
 
@@ -69,19 +69,13 @@
         <DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory">
             <StackPanel>
                 <TextBlock Text="{x:Bind CategoryName}" Padding="8" Style="{StaticResource TitleTextBlockStyle}"/>
-                <ScrollViewer 
-                        HorizontalScrollBarVisibility="Disabled"
-                        VerticalScrollBarVisibility="Disabled"
-                        HorizontalScrollMode="Disabled"
-                        VerticalScrollMode="Disabled">
-                    <muxc:ItemsRepeater x:Name="innerRepeater"
-                                               ItemsSource="{x:Bind CategoryItems}"
-                                               ItemTemplate="{StaticResource StringDataTemplateColor}">
-                        <muxc:ItemsRepeater.Layout>
-                            <muxc:StackLayout Orientation="Horizontal" />
-                        </muxc:ItemsRepeater.Layout>
-                    </muxc:ItemsRepeater>
-                </ScrollViewer>
+                <muxc:ItemsRepeater x:Name="innerRepeater"
+                                    ItemsSource="{x:Bind CategoryItems}"
+                                    ItemTemplate="{StaticResource StringDataTemplateColor}">
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:StackLayout Orientation="Horizontal" />
+                    </muxc:ItemsRepeater.Layout>
+                </muxc:ItemsRepeater>
             </StackPanel>
         </DataTemplate>
 
@@ -211,7 +205,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                               XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
             <StackPanel>
-                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"/>
                 <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                                            Margin="0,0,12,0"
                                            HorizontalAlignment="Stretch"
