@@ -5,7 +5,7 @@
                 Height="400"
                 IsVerticalScrollChainingEnabled="False"
                 Padding="0,0,16,0">
-    <ItemsRepeater
+    <muxc:ItemsRepeater
             ItemsSource="{x:Bind NumberedItems}"
             Layout="{StaticResource $(Layout)}"
             ItemTemplate="{StaticResource $(ItemTemplate)}" />

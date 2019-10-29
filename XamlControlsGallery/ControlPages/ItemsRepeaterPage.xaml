@@ -55,15 +55,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-            <Grid Background="{ThemeResource SystemChromeLowColor}" Margin="10">
+            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="10">
                 <TextBlock Padding="10" Text="{x:Bind}" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="ImageTemplate" x:DataType="x:String">
-            <StackPanel>
-                <Image Height="200" Source="{x:Bind}" Margin="5"/>
-            </StackPanel>
         </DataTemplate>
 
         <DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory">
@@ -139,7 +133,7 @@
         HorizontalScrollMode="Auto" 
         IsVerticalScrollChainingEnabled="False"
         MaxHeight="500"&gt;
-    &lt;ItemsRepeater
+    &lt;muxc:ItemsRepeater
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
@@ -238,32 +232,26 @@ and creating another ItemsRepeater (innerRepeater below) inside the outer one's 
 the outer ItemsRepeater definition and the DataTemplate it uses. --&gt;
                     
 &lt;ScrollViewer&gt;
-    &lt;ItemsRepeater 
+    &lt;muxc:ItemsRepeater 
         x:Name="outerRepeater"
         VerticalAlignment="Top"
         ItemTemplate ="{StaticResource CategoryTemplate}"&gt;
         &lt;ItemsRepeater.Layout&gt;
-           &lt;StackLayout Orientation="Vertical" /&gt;
+           &lt;muxc:StackLayout Orientation="Vertical" /&gt;
         &lt;/ItemsRepeater.Layout&gt;
-    &lt;/ItemsRepeater&gt;
+    &lt;/muxc:ItemsRepeater&gt;
 &lt;/ScrollViewer&gt;
                     
 &lt;DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory"&gt;
     &lt;StackPanel&gt;
-        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="8" FontSize="30"/&gt;
-        &lt;ScrollViewer 
-                HorizontalScrollBarVisibility="Disabled"
-                VerticalScrollBarVisibility="Disabled"
-                HorizontalScrollMode="Disabled"
-                VerticalScrollMode="Disabled"&gt;
-            &lt;ItemsRepeater x:Name="innerRepeater"
-                           ItemsSource="{x:Bind CategoryItems}"
-                           ItemTemplate="{StaticResource StringDataTemplateColor}"&gt;
-                &lt;ItemsRepeater.Layout&gt;
-                    &lt;StackLayout Orientation="Horizontal" /&gt;
-                &lt;/ItemsRepeater.Layout&gt;
-            &lt;/ItemsRepeater&gt;
-        &lt;/ScrollViewer&gt;
+        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="8" Style="{StaticResource TitleTextBlockStyle}"/&gt;
+        &lt;muxc:ItemsRepeater x:Name="innerRepeater"
+                            ItemsSource="{x:Bind CategoryItems}"
+                            ItemTemplate="{StaticResource StringDataTemplateColor}"&gt;
+            &lt;muxc:ItemsRepeater.Layout&gt;
+                &lt;muxc:StackLayout Orientation="Horizontal" /&gt;
+            &lt;/muxc:ItemsRepeater.Layout&gt;
+        &lt;/muxc:ItemsRepeater&gt;
     &lt;/StackPanel&gt;
 &lt;/DataTemplate&gt;
                     

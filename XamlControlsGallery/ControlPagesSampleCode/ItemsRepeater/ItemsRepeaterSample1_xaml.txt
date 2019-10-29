@@ -1,15 +1,15 @@
 <!-- XAML Code -->
 
 <!-- This is the ItemsRepeater used in this example: -->
-<ItemsRepeater x:Name="MixedTypeRepeater" 
+<muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                Margin="0,0,12,0"
                HorizontalAlignment="Stretch"
                ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
 
     <ItemsRepeater.Layout>
-        <UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxcontrols:UniformGridLayout>
+        <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
     </ItemsRepeater.Layout>
-</ItemsRepeater>
+</muxc:ItemsRepeater>
 
 <!-- The ItemsSource is bound in the C# code-behind to an ObservableCollection called 
 StringsAndInts. StringsAndInts has both string objects and integer objects. The ItemTemplate
@@ -36,7 +36,7 @@ defines each of them: -->
 </DataTemplate>
 
 <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-    <Grid Background="{ThemeResource SystemChromeLowColor}" Margin="10">
+    <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="10">
         <TextBlock Padding="10" Text="{x:Bind}" 
                    Style="{StaticResource HeaderTextBlockStyle}"
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
