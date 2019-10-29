@@ -54,12 +54,6 @@ namespace AppUIBasics.ControlPages
 
         }
 
-        private void penTipShape_Toggled(object sender, RoutedEventArgs e)
-        {
-            UpdatePen();
-
-        }
-
         private void UpdatePen()
         {
             if (_inkPresenter != null)
@@ -84,7 +78,7 @@ namespace AppUIBasics.ControlPages
 
                 defaultAttributes.Size = new Size(strokeSize.Value, strokeSize.Value);
                 defaultAttributes.DrawAsHighlighter = drawAsHighlighter.IsChecked.Value;
-                defaultAttributes.PenTip = penTipShape.IsOn ? PenTipShape.Circle : PenTipShape.Rectangle;
+                defaultAttributes.PenTip = (bool)penTipShape.IsChecked ? PenTipShape.Circle : PenTipShape.Rectangle;
 
                 _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);
             }
@@ -93,6 +87,11 @@ namespace AppUIBasics.ControlPages
         private void clearAll_Click(object sender, RoutedEventArgs e)
         {
             _inkPresenter.StrokeContainer.Clear();
+        }
+
+        private void PenTip_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdatePen();
         }
     }
 }
