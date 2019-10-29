@@ -124,7 +124,6 @@ namespace AppUIBasics.ControlPages
         {
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
-
                 DragOperationDeferral def = e.GetDeferral();
                 string s = await e.DataView.GetTextAsync();
                 string[] items = s.Split('\n');

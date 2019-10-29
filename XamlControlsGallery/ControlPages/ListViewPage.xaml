@@ -73,7 +73,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
-            <Grid Height="Auto" Grid.Row="1" Margin="5" HorizontalAlignment="{x:Bind MsgAlignment}">
+            <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
                 <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
                     <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{StaticResource SystemControlForegroundAltHighBrush}"/>
                     <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{StaticResource SystemControlForegroundAltMediumHighBrush}"/>
@@ -351,22 +351,11 @@ source code for the XAML Controls Gallery. -->
 &lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
 sent or recieved, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
-     &lt;Grid&gt;
-         &lt;Grid.RowDefinitions&gt;
-             &lt;RowDefinition Height="Auto"/&gt;
-             &lt;/Grid.RowDefinitions&gt;
-                &lt;Grid Height="Auto" Grid.Row="1" Margin="5" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
-             &lt;Grid.ColumnDefinitions&gt;
-                 &lt;ColumnDefinition Width="*"/&gt;
-             &lt;/Grid.ColumnDefinitions&gt;
-             &lt;StackPanel Height="75" Width="350" Padding="10 0 0 10" Background="{x:Bind BgColor}" 
-                    CornerRadius="4"&gt;
-                 &lt;TextBlock Text="{x:Bind MsgText}" Padding="0 10 0 0" FontSize="20" 
-                    Foreground="White"&gt;&lt;/TextBlock&gt;
-                 &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0 0 0 10" FontSize="15" 
-                    Foreground="White"&gt;&lt;/TextBlock&gt;
-              &lt;/StackPanel&gt;
-         &lt;/Grid&gt;
+    &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
+        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
+            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{StaticResource SystemControlForegroundAltHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{StaticResource SystemControlForegroundAltMediumHighBrush}"/&gt;
+        &lt;/StackPanel&gt;
     &lt;/Grid&gt;
 &lt;/DataTemplate&gt;
 
@@ -430,29 +419,29 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
 &lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;
 &lt;!-- The full code for the class can be found in this page's source code, but its attributes are referenced/bound below. --&gt;
 
-    &lt;DataTemplate x:DataType="local1:CustomDataObject"&gt;
-        &lt;Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}"&gt;
-            &lt;Grid.ColumnDefinitions&gt;
-                &lt;ColumnDefinition Width="Auto" MinWidth="150"/&gt;
-                &lt;ColumnDefinition Width="*" /&gt;
-            &lt;/Grid.ColumnDefinitions&gt;
-            &lt;Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/&gt;
+&lt;DataTemplate x:DataType="local1:CustomDataObject"&gt;
+    &lt;Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}"&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width="Auto" MinWidth="150"/&gt;
+            &lt;ColumnDefinition Width="*" /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/&gt;
 
-                &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
-                    &lt;TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
-                    &lt;StackPanel Orientation="Horizontal"&gt;
-                        &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
-                    &lt;/StackPanel&gt;
-                    &lt;StackPanel Orientation="Horizontal"&gt;
-                        &lt;TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
-                        &lt;TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                        &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/&gt;
-                        &lt;TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
-                        &lt;TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                    &lt;/StackPanel&gt;
-                &lt;/StackPanel&gt;
-            &lt;/Grid&gt;
-        &lt;/DataTemplate&gt;                  
+        &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
+            &lt;TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
+            &lt;/StackPanel&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
+                &lt;TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
+                &lt;TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;                  
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
