@@ -303,7 +303,7 @@ namespace AppUIBasics.ControlPages
             MsgDateTime = datetime;
             MsgAlignment = align;
 
-            // If recieved message, use yellow background
+            // If recieved message, use accent background
             if (MsgAlignment == "Left")
             {
                 BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"]; 
@@ -312,7 +312,7 @@ namespace AppUIBasics.ControlPages
             // If sent message, use light gray
             else
             {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundBaseMediumLowBrush"];
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"];
             }
         }
 

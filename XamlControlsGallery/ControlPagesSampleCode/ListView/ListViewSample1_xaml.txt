@@ -4,7 +4,7 @@
     x:Name="BaseExample"
     ItemTemplate="{StaticResource ContactListViewTemplate}"
     BorderThickness="1"
-    BorderBrush="DimGray"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
     Width="350" 
     Height="400"
     HorizontalAlignment="Left"/>

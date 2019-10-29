@@ -57,7 +57,7 @@
                          Margin="6"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"
-                         Fill="{StaticResource SystemControlBackgroundBaseMediumBrush}"/>
+                         Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                 <TextBlock Grid.Column="1"
                            Text="{x:Bind Name}"
                            x:Phase="1"
@@ -75,8 +75,8 @@
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
             <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
                 <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
-                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{StaticResource SystemControlForegroundAltHighBrush}"/>
-                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{StaticResource SystemControlForegroundAltMediumHighBrush}"/>
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -98,7 +98,7 @@
                 <ListView x:Name="BaseExample"
                     ItemTemplate="{StaticResource BasicListViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     Width="350" 
                     Height="400"
                     HorizontalAlignment="Left"/>
@@ -115,7 +115,7 @@
                 <ListView x:Name="Control2" 
                           ItemTemplate="{StaticResource ContactListViewTemplate}"
                           BorderThickness="1"
-                          BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                          BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                           Width="400" 
                           Height="400"
                           HorizontalAlignment="Left"/>
@@ -159,7 +159,7 @@
                     Margin="6"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Fill="{StaticResource SystemControlBackgroundBaseMediumBrush}"/&gt;
+                    Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/&gt;
         &lt;TextBlock Grid.Column="1"
                     Text="{x:Bind Name}"
                     x:Phase="1"
@@ -203,7 +203,7 @@
                     AllowDrop="True"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     MinWidth="350" 
                     Height="400"
                     DragItemsStarting="Source_DragItemsStarting"
@@ -224,7 +224,7 @@
                     DragEnter="Target_DragEnter"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     MinWidth="350" 
                     Height="400"/>
             </Grid>
@@ -263,7 +263,7 @@ source code for the XAML Controls Gallery. -->
                 Height="400"
                 Width="400"
                 BorderThickness="1"
-                BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                 HorizontalAlignment="Left">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -304,7 +304,7 @@ source code for the XAML Controls Gallery. -->
                     x:Name="InvertedListView"
                     ItemTemplate="{StaticResource MessageViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     Height="400"
                     SelectionMode="None">
                     
@@ -353,8 +353,8 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
     &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
         &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
-            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{StaticResource SystemControlForegroundAltHighBrush}"/&gt;
-            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{StaticResource SystemControlForegroundAltMediumHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/&gt;
         &lt;/StackPanel&gt;
     &lt;/Grid&gt;
 &lt;/DataTemplate&gt;
@@ -379,7 +379,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
                       Height="400"
                       MinWidth="550"
                       BorderThickness="1"
-                      BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}">
+                      BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
@@ -413,7 +413,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
      Height="400"
      MinWidth="550"
      BorderThickness="1"
-     BorderBrush="{StaticResource SystemControlForegroundBaseMediumLowBrush}"&gt;
+     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"&gt;
                     
 &lt;!-- Data Template Used: --&gt;
 &lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;

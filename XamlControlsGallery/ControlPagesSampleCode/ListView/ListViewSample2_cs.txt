@@ -9,14 +9,14 @@ public static async Task<ObservableCollection<GroupInfoList>> GetContactsGrouped
     // Grab Contact objects from pre-existing list (list is returned from function GetContactsAsync())
     var query = from item in await GetContactsAsync()
 
-	        // Group the items returned from the query, sort and select the ones you want to keep
-                group item by item.LastName.Substring(0, 1).ToUpper() into g
-                orderby g.Key
+    // Group the items returned from the query, sort and select the ones you want to keep
+    group item by item.LastName.Substring(0, 1).ToUpper() into g
+    orderby g.Key
 
-		// GroupInfoList is a simple custom class that has an IEnumerable type attribute, and
-		// a key attribute. The IGrouping-typed variable g now holds the Contact objects, 
-		// and these objects will be used to create a new GroupInfoList object.
-                select new GroupInfoList(g) { Key = g.Key };
+    // GroupInfoList is a simple custom class that has an IEnumerable type attribute, and
+    // a key attribute. The IGrouping-typed variable g now holds the Contact objects, 
+    // and these objects will be used to create a new GroupInfoList object.
+    select new GroupInfoList(g) { Key = g.Key };
     
     return new ObservableCollection<GroupInfoList>(query);
 }
