@@ -1777,7 +1777,7 @@
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Theme Editor (GitHub)",
@@ -1800,7 +1800,7 @@
           "ImagePath": "ms-appx:///Assets/CompactSizing.png",
           "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Spacing",
@@ -2094,7 +2094,7 @@
           "Title": "Animation interop",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
           "ImagePath": "ms-appx:///Assets/StoryboardAnimation.png",
-          "IsNew": true,
+          "IsNew": false,
           "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
           "Content": "<p>Look at the <i>XamlCompInterop.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
@@ -2124,7 +2124,7 @@
           "Title": "Implicit Transitions",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
           "ImagePath": "ms-appx:///Assets/Transitions.png",
-          "IsNew": true,
+          "IsNew": false,
           "Description": "Use Implicit Transitions to automatically animate changes to properties.",
           "Content": "<p>Look at the <i>ImplicitTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
