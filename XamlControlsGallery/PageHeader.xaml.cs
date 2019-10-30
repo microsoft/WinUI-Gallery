@@ -36,6 +36,16 @@ namespace AppUIBasics
             set { SetValue(TitleProperty, value); }
         }
 
+        public Thickness HeaderPadding
+        {
+            get { return (Thickness)GetValue(HeaderPaddingProperty); }
+            set { SetValue(HeaderPaddingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for BackgroundColorOpacity.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderPaddingProperty =
+            DependencyProperty.Register("HeaderPadding", typeof(Thickness), typeof(PageHeader), new PropertyMetadata((Thickness)App.Current.Resources["PageHeaderDefaultPadding"]));
+
         public double BackgroundColorOpacity
         {
             get { return (double)GetValue(BackgroundColorOpacityProperty); }
@@ -74,10 +84,10 @@ namespace AppUIBasics
         }
 
 
-        public void UpdateBackground(bool isFilteredPage)
-        {
-            VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
-        }
+        //public void UpdateBackground(bool isFilteredPage)
+        //{
+        //    VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
+        //}
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {

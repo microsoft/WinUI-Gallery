@@ -259,8 +259,8 @@ namespace AppUIBasics
             {
                 NavigationViewControl.AlwaysShowHeader = true;
 
-                bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
-                PageHeader?.UpdateBackground(isFilteredPage);
+                //bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
+                //PageHeader?.UpdateBackground(isFilteredPage);
             }
         }
         private void CloseTeachingTips()
@@ -352,6 +352,7 @@ namespace AppUIBasics
             }
 
             UpdateAppTitleMargin(sender);
+            UpdateHeaderMargin(sender);
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
@@ -362,7 +363,8 @@ namespace AppUIBasics
             {
                 AppTitle.TranslationTransition = new Vector3Transition();
 
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
+                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
                     AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
                 }
@@ -375,13 +377,29 @@ namespace AppUIBasics
             {
                 Thickness currMargin = AppTitle.Margin;
 
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
+                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
                     AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
                 }
                 else
                 {
                     AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
+            }
+        }
+
+        private void UpdateHeaderMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
+        {
+            if (PageHeader != null)
+            {
+                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
+                {
+                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
+                }
+                else
+                {
+                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
                 }
             }
         }

@@ -5,7 +5,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:AppUIBasics"
     x:Name="headerControl"
-    Padding="12,0,12,0"
+    Padding="{x:Bind HeaderPadding, Mode=OneWay}"
     Background="Transparent"
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
     FontSize="24">
@@ -42,9 +42,9 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Rectangle x:Name="NarrowBackground" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Visibility="Collapsed" />
+        <!--<Rectangle x:Name="NarrowBackground" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Visibility="Collapsed" />-->
 
-        <Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />
+        <!--<Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />-->
         
         <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top" MinHeight="66">
             <Grid.ColumnDefinitions>
