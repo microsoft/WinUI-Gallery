@@ -141,11 +141,11 @@
                     
 &lt;!-- The Layout specifications used: --&gt;
                     
-$(displayLayout)     
+$(SampleCodeLayout)     
                     
 &lt;!-- The DataTemplate used: $(ElementGenerator)--&gt;
                     
-$(displayDataTemplate)                    
+$(SampleCodeDT)                    
                     
 &lt;!-- The ItemsSource used is a list of custom-class Bar objects called BarItems. Bar objects have 
 the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and MaxDiameter. --&gt;
@@ -154,8 +154,8 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
                 <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
-                <local:ControlExampleSubstitution x:Name="displayLayout" Key="displayLayout"/>
-                <local:ControlExampleSubstitution x:Name="displayDataTemplate" Key="displayDataTemplate"/>
+                <local:ControlExampleSubstitution x:Name="SampleCodeLayout" Key="SampleCodeLayout"/>
+                <local:ControlExampleSubstitution x:Name="SampleCodeDT" Key="SampleCodeDT"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
@@ -191,7 +191,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
                 <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
-                <local:ControlExampleSubstitution x:Name="displayLayout2" Key="displayLayout2"/>
+                <local:ControlExampleSubstitution x:Name="SampleCodeLayout2" Key="SampleCodeLayout2"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
         

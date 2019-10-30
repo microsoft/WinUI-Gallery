@@ -13,7 +13,7 @@
                     
 <!-- The Layout specifications used: -->
                     
-$(displayLayout2)     
+$(SampleCodeLayout2)     
                     
 <!-- The ItemTemplate is bound to a DataTemplateSelector called MyDataTemplateSelector. 
 MyDataTemplateSelector is defined in the code-behind to return the Accent DataTemplate 
