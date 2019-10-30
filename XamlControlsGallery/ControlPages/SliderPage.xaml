@@ -54,7 +54,7 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider4" Width="100" Height="90" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
+                <Slider x:Name="Slider4" Width="100" Height="100" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
                         Maximum="50" Minimum="-50" AutomationProperties.Name="vertical slider"/>
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
                         Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
