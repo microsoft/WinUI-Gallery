@@ -199,7 +199,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                               XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
             <StackPanel>
-                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items. The full source code for this ItemsRepeater is below." TextWrapping="Wrap"/>
+                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items." TextWrapping="Wrap"/>
                 <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                                            Margin="0,0,12,0"
                                            HorizontalAlignment="Stretch"
@@ -212,7 +212,8 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Laying out nested ItemsRepeaters">
+        <local:ControlExample HeaderText="Laying out nested ItemsRepeaters"
+                              XamlSource="ItemsRepeater/ItemsRepeaterNestedSample_xaml.txt">
             <ScrollViewer>
                 <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
@@ -224,52 +225,6 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
 
                 </muxc:ItemsRepeater>
             </ScrollViewer>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;!-- The nested ItemsRepeater experience is achieved by creating one ItemsRepeater (outerRepeater below) 
-and creating another ItemsRepeater (innerRepeater below) inside the outer one's DataTemplate. Below is 
-the outer ItemsRepeater definition and the DataTemplate it uses. --&gt;
-                    
-&lt;ScrollViewer&gt;
-    &lt;muxc:ItemsRepeater 
-        x:Name="outerRepeater"
-        VerticalAlignment="Top"
-        ItemTemplate ="{StaticResource CategoryTemplate}"&gt;
-        &lt;ItemsRepeater.Layout&gt;
-           &lt;muxc:StackLayout Orientation="Vertical" /&gt;
-        &lt;/ItemsRepeater.Layout&gt;
-    &lt;/muxc:ItemsRepeater&gt;
-&lt;/ScrollViewer&gt;
-                    
-&lt;DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory"&gt;
-    &lt;StackPanel&gt;
-        &lt;TextBlock Text="{x:Bind CategoryName}" Padding="8" Style="{StaticResource TitleTextBlockStyle}"/&gt;
-        &lt;muxc:ItemsRepeater x:Name="innerRepeater"
-                            ItemsSource="{x:Bind CategoryItems}"
-                            ItemTemplate="{StaticResource StringDataTemplateColor}"&gt;
-            &lt;muxc:ItemsRepeater.Layout&gt;
-                &lt;muxc:StackLayout Orientation="Horizontal" /&gt;
-            &lt;/muxc:ItemsRepeater.Layout&gt;
-        &lt;/muxc:ItemsRepeater&gt;
-    &lt;/StackPanel&gt;
-&lt;/DataTemplate&gt;
-                    
-&lt;!-- The DataTemplate shown above is bound to a custom-class type called NestedCategory, 
-which is defined in the code-behind. NestedCategory objects have the following two attributes: 
-a CategoryName (string), and a collection of strings called CategoryItems. --&gt;
-                    
-&lt;!-- The inner ItemsRepeater is bound to its own, separate DataTemplate called StringDataTemplateColor: --&gt;
-                    
-&lt;DataTemplate x:Key="StringDataTemplateColor" x:DataType="x:String"&gt;
-    &lt;Grid Background="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10 10"&gt;
-        &lt;TextBlock Padding="10" Text="{x:Bind}" 
-                   Foreground="{StaticResource SystemControlForegroundAltHighBrush}" 
-                   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/&gt;
-    &lt;/Grid&gt;
-&lt;/DataTemplate&gt;               
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
 
     </StackPanel>

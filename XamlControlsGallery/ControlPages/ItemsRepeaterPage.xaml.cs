@@ -6,17 +6,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Services.Maps.OfflineMaps;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -48,7 +39,7 @@ namespace AppUIBasics.ControlPages
             BarItems.Add(new Bar(25, this.MaxLength));
             BarItems.Add(new Bar(175, this.MaxLength));
 
-            ObservableCollection<object> basicData = new ObservableCollection<object>();
+            List<object> basicData = new List<object>();
             basicData.Add(64);
             basicData.Add("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
             basicData.Add(128);
@@ -60,7 +51,7 @@ namespace AppUIBasics.ControlPages
             basicData.Add(1024);
             MixedTypeRepeater.ItemsSource = basicData;
 
-            ObservableCollection<NestedCategory> nestedCategories = new ObservableCollection<NestedCategory>();
+            List<NestedCategory> nestedCategories = new List<NestedCategory>();
             nestedCategories.Add(
                 new NestedCategory("Fruits",  new ObservableCollection<string>{
                                                             "Apricots",
@@ -289,12 +280,10 @@ namespace AppUIBasics.ControlPages
             {
                 return StringTemplate;
             }
-
             else if (item.GetType() == typeof(int))
             {
                 return IntTemplate;
             }
-
             else
             {
                 return null;
