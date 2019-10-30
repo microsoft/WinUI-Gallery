@@ -48,12 +48,6 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="StringDataTemplateColor" x:DataType="x:String">
-            <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10, 0, 10, 10">
-                <TextBlock Padding="8" Text="{x:Bind}" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-        </DataTemplate>
-
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
             <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="10">
                 <TextBlock Padding="10" Text="{x:Bind}" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -65,7 +59,7 @@
                 <TextBlock Text="{x:Bind CategoryName}" Padding="8" Style="{StaticResource TitleTextBlockStyle}"/>
                 <muxc:ItemsRepeater x:Name="innerRepeater"
                                     ItemsSource="{x:Bind CategoryItems}"
-                                    ItemTemplate="{StaticResource StringDataTemplateColor}">
+                                    ItemTemplate="{StaticResource StringDataTemplate}">
                     <muxc:ItemsRepeater.Layout>
                         <muxc:StackLayout Orientation="Horizontal" />
                     </muxc:ItemsRepeater.Layout>

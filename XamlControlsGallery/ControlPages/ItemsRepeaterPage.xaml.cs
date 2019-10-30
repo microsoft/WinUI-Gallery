@@ -99,9 +99,9 @@ namespace AppUIBasics.ControlPages
             outerRepeater.ItemsSource = nestedCategories;
 
             // Set sample code to display on page's initial load
-            SampleCodeLayout.Value = "<muxc:StackLayout x:Name='VerticalStackLayout' Orientation='Vertical' Spacing='8'/>";
+            SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
 
-            SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l: Bar"">
+            SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
         <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}"" 
                    Height=""24"" HorizontalAlignment=""Left""/> 
@@ -188,7 +188,7 @@ namespace AppUIBasics.ControlPages
                 repeater.MaxWidth = MaxLength + 12;
 
                 SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
-                SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l: Bar"">
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
         <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}""
                    Height=""24"" HorizontalAlignment=""Left""/> 
@@ -218,7 +218,7 @@ namespace AppUIBasics.ControlPages
                 repeater.MaxWidth = 540;
 
                 SampleCodeLayout.Value = @"<muxc:UniformGridLayout x:Name=""UniformGridLayout"" MinRowSpacing=""8"" MinColumnSpacing=""8""/>";
-                SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l: Bar"">
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l:Bar"">
     <Grid>
         <Ellipse Fill=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxDiameter}"" 
                  Width=""{x:Bind MaxDiameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>

@@ -6,9 +6,9 @@
                HorizontalAlignment="Stretch"
                ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
 
-    <ItemsRepeater.Layout>
-        <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
-    </ItemsRepeater.Layout>
+    <muxc:ItemsRepeater.Layout>
+        <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"/>
+    </muxc:ItemsRepeater.Layout>
 </muxc:ItemsRepeater>
 
 <!-- The ItemsSource is bound in the C# code-behind to an ObservableCollection called 

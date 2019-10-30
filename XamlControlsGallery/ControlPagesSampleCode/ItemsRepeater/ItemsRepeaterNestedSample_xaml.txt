@@ -7,9 +7,9 @@ the outer ItemsRepeater definition and the DataTemplate it uses. -->
         x:Name="outerRepeater"
         VerticalAlignment="Top"
         ItemTemplate ="{StaticResource CategoryTemplate}">
-        <ItemsRepeater.Layout>
+        <muxc:ItemsRepeater.Layout>
            <muxc:StackLayout Orientation="Vertical" />
-        </ItemsRepeater.Layout>
+        </muxc:ItemsRepeater.Layout>
     </muxc:ItemsRepeater>
 </ScrollViewer>
                     
