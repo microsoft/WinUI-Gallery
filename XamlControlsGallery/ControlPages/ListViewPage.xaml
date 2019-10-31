@@ -105,13 +105,24 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="ListView with Selection Support">
+        <local:ControlExample HeaderText="ListView with Selection Support"
+                              XamlSource="ListView/ListViewSample3_xaml.txt">
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Margin="0,0,0,15">
-                    You can enable four different selection modes on the right. <LineBreak/><Bold>None</Bold> disables selection all together.<LineBreak/><Bold>Single</Bold>
-                    allows for only one item to be selected in the list.<LineBreak/><Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.<LineBreak/><Bold>Extended</Bold>
-                    allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
-                </TextBlock>
+                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                    <Paragraph>You can enable four different selection modes on the right.</Paragraph>
+                    <Paragraph>
+                        <Bold>None</Bold> disables selection all together.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Single</Bold> allows for only one item to be selected in the list.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
+                    </Paragraph>
+                </RichTextBlock>
                 <ListView x:Name="Control2" 
                           ItemTemplate="{StaticResource ContactListViewTemplate}"
                           BorderThickness="1"
@@ -131,50 +142,6 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;!-- To create this sample, add/change the following properties onto the code for the base example above: --&gt;
-                        
-&lt;ListView 
-    SelectionMode="$(SelectionMode)" 
-    ItemTemplate="{StaticResource ContactListViewTemplate}"/&gt;
-    
-&lt;!-- DataTemplate used: --&gt;
-
-&lt;DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
-    &lt;Grid&gt;
-        &lt;Grid.RowDefinitions&gt;
-            &lt;RowDefinition Height="*"/&gt;
-            &lt;RowDefinition Height="*"/&gt;
-        &lt;/Grid.RowDefinitions&gt;
-        &lt;Grid.ColumnDefinitions&gt;
-            &lt;ColumnDefinition Width="Auto"/&gt;
-            &lt;ColumnDefinition Width="*"/&gt;
-        &lt;/Grid.ColumnDefinitions&gt;
-        &lt;Ellipse x:Name="Ellipse"
-                    Grid.RowSpan="2"
-                    Width ="32"
-                    Height="32"
-                    Margin="6"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/&gt;
-        &lt;TextBlock Grid.Column="1"
-                    Text="{x:Bind Name}"
-                    x:Phase="1"
-                    Style="{ThemeResource BaseTextBlockStyle}"
-                    Margin="12,6,0,0"/&gt;
-        &lt;TextBlock  Grid.Column="1"
-                    Grid.Row="1"
-                    Text="{x:Bind Company}"
-                    x:Phase="2"
-                    Style="{ThemeResource BodyTextBlockStyle}"
-                    Margin="12,0,0,6"/&gt;
-    &lt;/Grid>
-&lt;/DataTemplate&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
@@ -208,7 +175,7 @@
                     Height="400"
                     DragItemsStarting="Source_DragItemsStarting"
                     DragOver="Source_DragOver"
-                    Drop="Source_Drop"
+                    Drop="ListView_Drop"
                     Margin="12"/>
                 <ListView
                     x:Name="DragDropListView2"
@@ -219,7 +186,7 @@
                     CanReorderItems="True"
                     AllowDrop="True"
                     DragOver="Target_DragOver"
-                    Drop="Target_Drop"
+                    Drop="ListView_Drop"
                     DragItemsStarting="Target_DragItemsStarting"
                     DragEnter="Target_DragEnter"
                     SelectionMode="Single" 

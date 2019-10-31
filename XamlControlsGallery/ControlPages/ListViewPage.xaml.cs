@@ -11,15 +11,12 @@ using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -120,8 +117,10 @@ namespace AppUIBasics.ControlPages
             e.AcceptedOperation = DataPackageOperation.Move;
         }
 
-        private async void Target_Drop(object sender, DragEventArgs e)
+        private async void ListView_Drop(object sender, DragEventArgs e)
         {
+            ListView target = (ListView)sender;
+
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
                 DragOperationDeferral def = e.GetDeferral();
@@ -133,19 +132,30 @@ namespace AppUIBasics.ControlPages
                     // Create Contact object from string, add to existing target ListView
                     string[] info = item.Split(" ", 3);
                     Contact temp = new Contact(info[0], info[1], info[2]);
-                    
-                    // Find the insertion index:
-                    Windows.Foundation.Point pos = e.GetPosition(DragDropListView2.ItemsPanelRoot);
 
-                    // Find height of a random item from the target list view
-                    ListViewItem sampleItem = (ListViewItem)DragDropListView.ContainerFromIndex(0);
+                    // Find the insertion index:
+                    Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
+
+                    // Find which ListView is the target, find height of first item
+                    ListViewItem sampleItem;
+                    if (target.Name == "DragDropListView")
+                    {
+                        sampleItem = (ListViewItem)DragDropListView2.ContainerFromIndex(0);
+                    }
+                    // Only other case is target = DragDropListView2
+                    else
+                    {
+                        sampleItem = (ListViewItem)DragDropListView.ContainerFromIndex(0);
+                    }
+
+                    // Adjust ItemHeight for margins
                     double itemHeight = sampleItem.ActualHeight + sampleItem.Margin.Top + sampleItem.Margin.Bottom;
 
                     // Find index based on dividing number of items by height of each item
-                    int index = Math.Min(DragDropListView2.Items.Count - 1, (int)(pos.Y / itemHeight));
+                    int index = Math.Min(target.Items.Count - 1, (int)(pos.Y / itemHeight));
 
                     // Find the item that we want to drop
-                    ListViewItem targetItem = (ListViewItem)DragDropListView2.ContainerFromIndex(index); ;
+                    ListViewItem targetItem = (ListViewItem)target.ContainerFromIndex(index); ;
 
                     // Figure out if to insert above or below
                     Windows.Foundation.Point positionInItem = e.GetPosition(targetItem);
@@ -155,18 +165,33 @@ namespace AppUIBasics.ControlPages
                     }
 
                     // Don't go out of bounds
-                    index = Math.Min(DragDropListView2.Items.Count, index);
+                    index = Math.Min(target.Items.Count, index);
 
-                    // Finally, add to target listview
-                    contacts2.Insert(index, temp);
-
-                    // Go through source list and remove the items that are being moved
-                    foreach (Contact contact in DragDropListView.Items)
+                    // Find correct source list
+                    if (target.Name == "DragDropListView")
                     {
-                        if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                        // Find the ItemsSource for the target ListView and insert
+                        contacts1.Insert(index, temp);
+                        //Go through source list and remove the items that are being moved
+                        foreach (Contact contact in DragDropListView2.Items)
                         {
-                            contacts1.Remove(contact);
-                            break;
+                            if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                            {
+                                contacts2.Remove(contact);
+                                break;
+                            }
+                        }
+                    }
+                    else if (target.Name == "DragDropListView2")
+                    {
+                        contacts2.Insert(index, temp);
+                        foreach (Contact contact in DragDropListView.Items)
+                        {
+                            if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                            {
+                                contacts1.Remove(contact);
+                                break;
+                            }
                         }
                     }
                 }
@@ -174,60 +199,6 @@ namespace AppUIBasics.ControlPages
                 e.AcceptedOperation = DataPackageOperation.Move;
                 def.Complete();
             }
-        }
-
-        private async void Source_Drop(object sender, DragEventArgs e)
-        {
-
-            DragOperationDeferral def = e.GetDeferral();
-            string s = await e.DataView.GetTextAsync();
-            string[] items = s.Split('\n');
-            foreach (string item in items)
-            {
-                string[] info = item.Split(" ", 3);
-
-                // Create Contact object from string, add to existing target ListView
-                Contact temp = new Contact(info[0], info[1], info[2]);
-
-                // Find the insertion index
-                Windows.Foundation.Point pos = e.GetPosition(DragDropListView.ItemsPanelRoot);
-
-                // Find height of a random item from the target list view
-                ListViewItem sampleItem = (ListViewItem)DragDropListView.ContainerFromIndex(0);
-                double itemHeight = sampleItem.ActualHeight + sampleItem.Margin.Top + sampleItem.Margin.Bottom;
-
-                // Find index based on dividing number of items by height of each item
-                int index = Math.Min(DragDropListView.Items.Count - 1, (int)(pos.Y / itemHeight));
-
-                // Find the item that we want to drop
-                ListViewItem targetItem = (ListViewItem)DragDropListView.ContainerFromIndex(index); ;
-
-                // Figure out if to insert above or below
-                Windows.Foundation.Point positionInItem = e.GetPosition(targetItem);
-                if (positionInItem.Y > itemHeight / 2)
-                {
-                    index++;
-                }
-
-                // Don't go out of bounds
-                index = Math.Min(DragDropListView.Items.Count, index);
-
-                // Finally, add to target listview
-                contacts1.Insert(index, temp);
-
-                // Go through source list and remove the items that are being moved
-                foreach (Contact contact in DragDropListView2.Items)
-                {
-                    if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
-                    {
-                        contacts2.Remove(contact);
-                        break;
-                    }
-                }
-            }
-
-            e.AcceptedOperation = DataPackageOperation.Move;
-            def.Complete();
         }
 
         private void Target_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
@@ -277,16 +248,15 @@ namespace AppUIBasics.ControlPages
 
         private void AddItemToEnd()
         {
-
             InvertedListView.Items.Add(
-                new Message("Message " + ++messageNumber, DateTime.Now.ToString(), "Right")
+                new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Right)
                 );
         }
 
         private void MessageRecieved(object sender, RoutedEventArgs e)
         {
             InvertedListView.Items.Add(
-                new Message("Message " + ++messageNumber, DateTime.Now.ToString(), "Left")
+                new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
                 );
         }
     }
@@ -294,23 +264,23 @@ namespace AppUIBasics.ControlPages
     public class Message
     {
         public string MsgText { get; private set; }
-        public string MsgDateTime { get; private set; }
-        public string MsgAlignment { get; set; }
+        public DateTime MsgDateTime { get; private set; }
+        public HorizontalAlignment MsgAlignment { get; set; }
         public SolidColorBrush BgColor { get; set; }
-        public Message(string text, string datetime, string align)
+        public Message(string text, DateTime dateTime, HorizontalAlignment align)
         {
             MsgText = text;
-            MsgDateTime = datetime;
+            MsgDateTime = dateTime;
             MsgAlignment = align;
 
             // If recieved message, use accent background
-            if (MsgAlignment == "Left")
+            if (MsgAlignment == HorizontalAlignment.Left)
             {
                 BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"]; 
             }
 
             // If sent message, use light gray
-            else
+            else if (MsgAlignment == HorizontalAlignment.Right)
             {
                 BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"];
             }
@@ -318,7 +288,7 @@ namespace AppUIBasics.ControlPages
 
         public override string ToString()
         {
-            return MsgDateTime + " " + MsgText;
+            return MsgDateTime.ToString() + " " + MsgText;
         }
     }
 
