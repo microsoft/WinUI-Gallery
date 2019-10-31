@@ -56,7 +56,7 @@
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
-            <Thickness x:Key="PageHeaderDefaultPadding">12,0</Thickness>
+            <Thickness x:Key="PageHeaderDefaultPadding">12,28,12,0</Thickness>
             <Thickness x:Key="PageHeaderMinimalPadding">-4,0,12,0</Thickness>
 
             <x:String x:Key="ControlsName">All controls</x:String>
