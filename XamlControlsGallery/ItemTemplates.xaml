@@ -8,7 +8,7 @@
         <UserControl>
             <Grid
                 x:Name="controlRoot"
-                Width="345"
+                Width="360"
                 Height="140"
                 Padding="12"
                 Background="{ThemeResource SystemControlBackgroundListLowBrush}">
