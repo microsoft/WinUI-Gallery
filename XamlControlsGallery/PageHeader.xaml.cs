@@ -83,12 +83,6 @@ namespace AppUIBasics
             this.InitializeComponent();
         }
 
-
-        //public void UpdateBackground(bool isFilteredPage)
-        //{
-        //    VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
-        //}
-
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();

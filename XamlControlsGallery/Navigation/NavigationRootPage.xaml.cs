@@ -258,9 +258,6 @@ namespace AppUIBasics
             else
             {
                 NavigationViewControl.AlwaysShowHeader = true;
-
-                //bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
-                //PageHeader?.UpdateBackground(isFilteredPage);
             }
         }
         private void CloseTeachingTips()
