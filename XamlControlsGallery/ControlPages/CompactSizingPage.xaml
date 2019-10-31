@@ -27,8 +27,8 @@
             <local:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Fluent Standard and Compact Sizing" />
-                    <RadioButton Content="Standard" Tag="StandardSize" GroupName="ControlSize" Checked="Standard_Checked" IsChecked="True" />
-                    <RadioButton Content="Compact" Tag="CompactSize" GroupName="ControlSize" Checked="Compact_Checked" />
+                    <RadioButton Content="Standard" VerticalAlignment="Center" Tag="StandardSize" GroupName="ControlSize" Checked="Standard_Checked" IsChecked="True" />
+                    <RadioButton Content="Compact" VerticalAlignment="Center" Tag="CompactSize" GroupName="ControlSize" Checked="Compact_Checked" />
                 </StackPanel>
             </local:ControlExample.Options>
 

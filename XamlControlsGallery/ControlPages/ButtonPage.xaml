@@ -27,7 +27,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="DisableButton1" Content="Disable button" />
+                    <CheckBox x:Name="DisableButton1" VerticalAlignment="Center" Content="Disable button" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>

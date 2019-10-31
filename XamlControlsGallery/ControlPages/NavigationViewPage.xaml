@@ -258,7 +258,7 @@
                     <CheckBox x:Name="paneFooterCheck" VerticalAlignment="Center" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
                     <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
+                    <RadioButton Content="Left" VerticalAlignment="Center" IsChecked="True" Checked="panePositionLeft_Checked"/>
                     <RadioButton Content="Top" VerticalAlignment="Center" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
 
                     <CheckBox x:Name="sffCheck" VerticalAlignment="Center" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>

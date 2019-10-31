@@ -57,21 +57,25 @@
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
                                 Content="Green"
+                                VerticalAlignment="Center" 
                                 GroupName="BGColor" />
 
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
                                 Content="Yellow"
+                                VerticalAlignment="Center" 
                                 GroupName="BGColor" />
 
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
                                 Content="Blue"
+                                VerticalAlignment="Center" 
                                 GroupName="BGColor" />
 
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
                                 Content="White"
+                                VerticalAlignment="Center" 
                                 GroupName="BGColor"
                                 IsChecked="True" />
                         </StackPanel>
@@ -81,22 +85,26 @@
                             <RadioButton
                                 Checked="RadioButton_Checked"
                                 Content="Green"
+                                VerticalAlignment="Center" 
                                 GroupName="BorderBrush" />
 
                             <RadioButton
                                 Checked="RadioButton_Checked"
                                 Content="Yellow"
+                                VerticalAlignment="Center" 
                                 GroupName="BorderBrush"
                                 IsChecked="True" />
 
                             <RadioButton
                                 Checked="RadioButton_Checked"
                                 Content="Blue"
+                                VerticalAlignment="Center" 
                                 GroupName="BorderBrush" />
 
                             <RadioButton
                                 Checked="RadioButton_Checked"
                                 Content="White"
+                                VerticalAlignment="Center" 
                                 GroupName="BorderBrush" />
                         </StackPanel>
                     </Grid>
