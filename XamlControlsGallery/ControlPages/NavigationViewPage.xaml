@@ -255,7 +255,7 @@
                     <TextBlock Text="PaneTitle:" Margin="0,12,0,0"/>
                     <TextBox x:Name="paneText" Text="Pane Title" AutomationProperties.Name="PaneTitle property"/>
                     <CheckBox x:Name="panemc_Check" Content="PaneCustomContent visible" IsChecked="False" Click="panemc_Check_Click"/>
-                    <CheckBox x:Name="paneFooterCheck" Content="PaneFooter ddvisible" IsChecked="False" Click="paneFooterCheck_Click"/>
+                    <CheckBox x:Name="paneFooterCheck" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
                     <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
                     <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>

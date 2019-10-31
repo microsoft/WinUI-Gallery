@@ -123,7 +123,6 @@
                 HorizontalScrollMode="Auto"
                 VerticalScrollBarVisibility="Disabled"
                 VerticalScrollMode="Disabled">
-                
                 <StackPanel>
                     <ContentPresenter
                         x:Name="XamlPresenter"
