@@ -1869,9 +1869,9 @@
         {
           "UniqueId": "RichEditBox",
           "Title": "RichEditBox",
-          "Subtitle": "A rich text editing control that supports formatted text, hyperlinks, and other rich content.",
+          "Subtitle": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
           "ImagePath": "ms-appx:///Assets/RichEditBox.png",
-          "Description": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
+          "Description": "A rich text editing control that supports formatted text, hyperlinks, and other rich content.",
           "Content": "<p>On this page, you can type into the <b>RichTextBox</b> control and save it as a RichTextFormat (.rtf) document, or load an existing .rtf document. You can format the text as <b>Bold</b> or <u>Underlined</u>, and change the text color.</p><p>Look at the <i>RichEditBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
