@@ -1919,9 +1919,9 @@
         {
           "UniqueId": "TextBlock",
           "Title": "TextBlock",
-          "Subtitle": "A lightweight control for displaying small amounts of text.",
+          "Subtitle": "TextBlock is the primary control for displaying read-only text in your app. You typically display text by setting the Text property to a simple string. You can also display a series of strings in Run elements and give each different formatting.",
           "ImagePath": "ms-appx:///Assets/TextBlock.png",
-          "Description": "TextBlock is the primary control for displaying read-only text in your app. You typically display text by setting the Text property to a simple string. You can also display a series of strings in Run elements and give each different formatting.",
+          "Description": "A lightweight control for displaying small amounts of text.",
           "Content": "<p>Look at the <i>TextBlockPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
