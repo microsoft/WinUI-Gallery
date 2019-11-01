@@ -1146,9 +1146,9 @@
         {
           "UniqueId": "ScrollViewer",
           "Title": "ScrollViewer",
-          "Subtitle": "A container control that lets the user pan and zoom its content.",
+          "Subtitle": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "ImagePath": "ms-appx:///Assets/ScrollViewer.png",
-          "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
+          "Description": "A container control that lets the user pan and zoom its content.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
