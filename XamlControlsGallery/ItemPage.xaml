@@ -132,7 +132,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock
-                    x:Name="subTitleText"
+                    x:Name="descriptionText"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Grid.ColumnSpan="2"
                     Margin="0,5,24,0"
