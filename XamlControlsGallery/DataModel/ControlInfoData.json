@@ -479,9 +479,9 @@
         {
           "UniqueId": "DataGrid",
           "Title": "DataGrid",
-          "Subtitle": "The DataGrid control presents data in a customizable table of rows and columns.",
+          "Subtitle": "The DataGrid control provides a flexible way to display a collection of data in rows and columns.",
           "ImagePath": "ms-appx:///Assets/GridView.png",
-          "Description": "The DataGrid control provides a flexible way to display a collection of data in rows and columns.",
+          "Description": "The DataGrid control presents data in a customizable table of rows and columns.",
           "Content": "The DataGrid control presents data in a customizable table of rows and columns.",
           "IsNew": false,
           "Docs": [
