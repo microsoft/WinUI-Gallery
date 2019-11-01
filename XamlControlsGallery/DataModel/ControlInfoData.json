@@ -927,9 +927,9 @@
         {
           "UniqueId": "Slider",
           "Title": "Slider",
-          "Subtitle": "A control that lets the user select from a range of values by moving a Thumb control along a track.",
+          "Subtitle": "Use a Slider when you want your users to be able to set defined, contiguous values (such as volume or brightness) or a range of discrete values (such as screen resolution settings).",
           "ImagePath": "ms-appx:///Assets/Slider.png",
-          "Description": "Use a Slider when you want your users to be able to set defined, contiguous values (such as volume or brightness) or a range of discrete values (such as screen resolution settings).",
+          "Description": "A control that lets the user select from a range of values by moving a Thumb control along a track.",
           "Content": "<p>Look at the <i>SliderPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
