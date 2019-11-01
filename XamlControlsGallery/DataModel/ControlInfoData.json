@@ -562,9 +562,9 @@
         {
           "UniqueId": "DatePicker",
           "Title": "DatePicker",
-          "Subtitle": "A configurable control that lets a user pick a date value.",
+          "Subtitle": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "ImagePath": "ms-appx:///Assets/DatePicker.png",
-          "Description": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
+          "Description": "A configurable control that lets a user pick a date value.",
           "Content": "<p>Look at the <i>DatePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
