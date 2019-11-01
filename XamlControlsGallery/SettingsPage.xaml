@@ -1,137 +1,127 @@
-﻿ //*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
-using System.Linq;
-using Windows.System;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Navigation;
+﻿<Page
+    x:Class="AppUIBasics.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-namespace AppUIBasics
-{
-    ///<summary>
-    /// A page that displays the app's settings.
-    ///</summary>
-public sealed partial class SettingsPage : Page
-    {
-        public string Version
-        {
-            get
-            {
-                var version = Windows.ApplicationModel.Package.Current.Id.Version;
-                return String.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
-            }
-        }
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="contentSV.Padding" Value="14,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ScrollViewer
+            x:Name="contentSV"
+            Grid.Row="1"
+            Padding="20,0,0,0"
+            IsTabStop="False"
+            UseSystemFocusVisuals="False"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,4,0,0"
+                    FontWeight="Normal"
+                    Text="Theme Mode" />
+                <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
+                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" VerticalAlignment="Center" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
+                    <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" VerticalAlignment="Center" Content="Dark" />
+                    <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" VerticalAlignment="Center" Content="Use system setting" />
+                </StackPanel>
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
+                    Text="Sound" />
+                <StackPanel Margin="0,10,0,0">
+                    <ToggleSwitch x:Name="soundToggle" Header="Controls provide audible feedback" Toggled="soundToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
+                    <CheckBox x:Name="spatialSoundBox" VerticalAlignment="Center" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Spatial Audio"/>
+                    <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
+                </StackPanel>
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
+                    Text="About" />
+                <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
+                    <Paragraph>
+                        This app is the interactive companion to the
+                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>.
+                        The source code to this app is available on
+                        <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">
+                            https://github.com/Microsoft/Xaml-Controls-Gallery
+                        </Hyperlink>.
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,0">
+                        To clone the source repository:
+                    </Paragraph>
+                    <Paragraph Margin="20,10,0,10">
+                        git clone https://github.com/Microsoft/Xaml-Controls-Gallery
+                    </Paragraph>
+                    <Paragraph>
+                        To contact the authors,
+                        <Hyperlink NavigateUri="mailto:ControlsGallery@microsoft.com">mailto:ControlsGallery@microsoft.com </Hyperlink>.
+                    </Paragraph>
+                </RichTextBlock>
+                <TextBlock Margin="0,10,0,0">
+                    Version: 
+                    <Run Text="{x:Bind Version}" />
+                </TextBlock>
+                <Button Click="OnFeedbackButtonClick" Content="Feedback" Margin="0,8,0,0" Visibility="Collapsed" />
 
-        public SettingsPage()
-        {
-            this.InitializeComponent();
-            Loaded += OnSettingsPageLoaded;
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
+                    Text="Dependencies and References" />
+                <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,10,0,0">
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://aka.ms/winui">Windows UI Library</Hyperlink>
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal">ColorCode-Universal</Hyperlink>
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/Microsoft/Win2D">Win2D</Hyperlink>
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/Microsoft/XamlBehaviors">Xaml Behaviors</Hyperlink>
+                    </Paragraph>
+                </RichTextBlock>
 
-            if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
-                soundToggle.IsOn = true;
-            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
-                spatialSoundBox.IsChecked = true;
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            NavigationRootPage.Current.NavigationView.Header = "Settings";
-        }
-
-        private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
-        {
-            await Launcher.LaunchUriAsync(new Uri("feedback-hub:"));
-        }
-
-        private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
-        {
-            var currentTheme = App.RootTheme.ToString();
-            (ThemePanel.Children.Cast
-<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
-        }
-
-        private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
-        {
-            var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            if (selectedTheme != null)
-            {
-                App.RootTheme = App.GetEnum
-    <ElementTheme>(selectedTheme);
-                if (selectedTheme == "Dark")
-                {
-                    titleBar.ButtonForegroundColor = Colors.White;
-                }
-                else if (selectedTheme == "Light")
-                {
-                    titleBar.ButtonForegroundColor = Colors.Black;
-                }
-                else
-                {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                    {
-                        titleBar.ButtonForegroundColor = Colors.White;
-                    }
-                    else
-                    {
-                        titleBar.ButtonForegroundColor = Colors.Black;
-                    }
-                }
-            }
-        }
-
-        private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                NavigationRootPage.Current.PageHeader.Focus(FocusState.Programmatic);
-            }
-        }
-        private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if(soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
-            }
-        }
-
-        private void soundToggle_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                spatialSoundBox.IsEnabled = true;
-                ElementSoundPlayer.State = ElementSoundPlayerState.On;
-            }
-            else
-            {
-                spatialSoundBox.IsEnabled = false;
-                spatialSoundBox.IsChecked = false;
-
-                ElementSoundPlayer.State = ElementSoundPlayerState.Off;
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;                
-            }
-        }
-
-        private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            }
-        }
-    }
-}
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
+                    Text="Disclaimer" />
+                <RichTextBlock MaxWidth="840" Margin="0,10,0,50" IsTextSelectionEnabled="True">
+                    <Paragraph>THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</Paragraph>
+                    <Paragraph>
+                        <LineBreak />Copyright (c) Microsoft Corporation. All rights reserved.
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=822631">Microsoft Services Agreement</Hyperlink> ,
+                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=521839">Microsoft Privacy Statement</Hyperlink>
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
