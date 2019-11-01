@@ -378,10 +378,10 @@
         {
           "UniqueId": "ListBox",
           "Title": "ListBox",
-          "Subtitle": "A control that presents an inline list of items that the user can select from.",
-          "ImagePath": "ms-appx:///Assets/ListBox.png",
-          "Description": "Use a ListBox when you want the options to be visible all the time or when users can select more than one option at a time. ListBox controls are always open, which allows several items to be displayed to the user without user interaction.",
+          "Subtitle": "Use a ListBox when you want the options to be visible all the time or when users can select more than one option at a time. ListBox controls are always open, which allows several items to be displayed to the user without user interaction.",
           "Content": "<p>Look at the <i>ListBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "ImagePath": "ms-appx:///Assets/ListBox.png",
+          "Description": "A control that presents an inline list of items that the user can select from.",
           "IsNew": false,
           "Docs": [
             {
@@ -403,10 +403,10 @@
         {
           "UniqueId": "ListView",
           "Title": "ListView",
-          "Subtitle": "Presents a collection of items in a list that can scroll vertically.",
-          "ImagePath": "ms-appx:///Assets/ListView.png",
-          "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
+          "Subtitle": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "ImagePath": "ms-appx:///Assets/ListView.png",
+          "Description": "Presents a collection of items in a list that can scroll vertically.",
           "IsUpdated": true,
           "Docs": [
             {
