@@ -1227,9 +1227,9 @@
         {
           "UniqueId": "Canvas",
           "Title": "Canvas",
-          "Subtitle": "A layout panel that supports absolute positioning of child elements relative to the top left corner of the canvas.",
+          "Subtitle": "The Canvas provides absolute positioning of controls or content. Content is positioned relative to the Canvas using the Canvas.Top and Canvas.Left attached properties.",
           "ImagePath": "ms-appx:///Assets/Canvas.png",
-          "Description": "The Canvas provides absolute positioning of controls or content. Content is positioned relative to the Canvas using the Canvas.Top and Canvas.Left attached properties.",
+          "Description": "A layout panel that supports absolute positioning of child elements relative to the top left corner of the canvas.",
           "Content": "<p>Items are positioned on the <b>Canvas</b> using the <b>Canvas.Top</b> and <b>Canvas.Left</b> attached properties. Use the sliders to change these properties for the red rectangle and see how it moves around.</p><p>To see the effect of the <b>ZIndex</b> attached property, make sure the red rectangle is overlapping the other rectangles.</p><p>Look at the <i>CanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
