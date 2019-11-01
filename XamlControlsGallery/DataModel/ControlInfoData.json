@@ -951,9 +951,9 @@
         {
           "UniqueId": "ToggleSwitch",
           "Title": "ToggleSwitch",
-          "Subtitle": "A switch that can be toggled between 2 states.",
+          "Subtitle": "Use ToggleSwitch controls to present users with exactly two mutually exclusive options (like on/off), where choosing an option results in an immediate commit. A toggle switch should have a single label.",
           "ImagePath": "ms-appx:///Assets/ToggleSwitch.png",
-          "Description": "Use ToggleSwitch controls to present users with exactly two mutually exclusive options (like on/off), where choosing an option results in an immediate commit. A toggle switch should have a single label.",
+          "Description": "A switch that can be toggled between 2 states.",
           "Content": "<p>Look at the <i>ToggleSwitchPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
