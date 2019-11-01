@@ -32,14 +32,39 @@
 
         <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
-                <TextBlock Text="{x:Bind}" />
+                <TextBlock Text="{x:Bind}"/>
             </Button>
         </DataTemplate>
 
         <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
-                <TextBlock Text="{x:Bind}" />
+                <TextBlock Text="{x:Bind}"/>
             </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
+            <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10">
+                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
+            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="10">
+                <TextBlock Padding="10" Text="{x:Bind}" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CategoryTemplate" x:DataType="l:NestedCategory">
+            <StackPanel>
+                <TextBlock Text="{x:Bind CategoryName}" Padding="8" Style="{StaticResource TitleTextBlockStyle}"/>
+                <muxc:ItemsRepeater x:Name="innerRepeater"
+                                    ItemsSource="{x:Bind CategoryItems}"
+                                    ItemTemplate="{StaticResource StringDataTemplate}">
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:StackLayout Orientation="Horizontal" />
+                    </muxc:ItemsRepeater.Layout>
+                </muxc:ItemsRepeater>
+            </StackPanel>
         </DataTemplate>
 
         <muxc:StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
@@ -52,10 +77,14 @@
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
                                   Accent="{StaticResource AccentItemTemplate}"/>
+
+        <l:StringOrIntTemplateSelector x:Key="StringOrIntTemplateSelector"
+                                       StringTemplate="{StaticResource StringDataTemplate}"
+                                       IntTemplate="{StaticResource IntDataTemplate}"/>
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample HeaderText="Non-interactive items laid out by ItemsRepeater">
+        <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" 
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
@@ -92,20 +121,42 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ItemsRepeater
+
+&lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
+&lt;ScrollViewer HorizontalScrollBarVisibility="Auto" 
+        HorizontalScrollMode="Auto" 
+        IsVerticalScrollChainingEnabled="False"
+        MaxHeight="500"&gt;
+    &lt;muxc:ItemsRepeater
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+&lt;ScrollViewer/&gt;
+                    
+&lt;!-- The Layout specifications used: --&gt;
+                    
+$(SampleCodeLayout)     
+                    
+&lt;!-- The DataTemplate used: $(ElementGenerator)--&gt;
+                    
+$(SampleCodeDT)                    
+                    
+&lt;!-- The ItemsSource used is a list of custom-class Bar objects called BarItems. Bar objects have 
+the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and MaxDiameter. --&gt;
     </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
                 <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
+                <local:ControlExampleSubstitution x:Name="SampleCodeLayout" Key="SampleCodeLayout"/>
+                <local:ControlExampleSubstitution x:Name="SampleCodeDT" Key="SampleCodeDT"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
-                              HorizontalContentAlignment="Stretch">
+                              HorizontalContentAlignment="Stretch"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample2_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample2_cs.txt">
 
             <!-- ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
                  It's not needed on 17700+ builds. -->
@@ -114,11 +165,13 @@
                               Height="400"
                               IsVerticalScrollChainingEnabled="False"
                               Padding="0,0,16,0">
+
                     <muxc:ItemsRepeater x:Name="repeater2" 
                                        Margin="0,0,12,0"
                                        HorizontalAlignment="Stretch"
                                        Layout="{StaticResource MyFeedLayout}"
                                        ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
+
                 </ScrollViewer>
             </muxc:ItemsRepeaterScrollHost>
 
@@ -129,18 +182,44 @@
                 </StackPanel>
             </local:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;muxc:ItemsRepeater
-        ItemsSource="{x:Bind NumberedItems}"
-        Layout="{StaticResource $(Layout)}"
-        ItemTemplate="{StaticResource $(ItemTemplate)}" /&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout2" Key="Layout" Value="MyFeedLayout" />
                 <local:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+                <local:ControlExampleSubstitution x:Name="SampleCodeLayout2" Key="SampleCodeLayout2"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
+        
+        <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
+            <StackPanel>
+                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items." TextWrapping="Wrap"/>
+                <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
+                                           Margin="0,0,12,0"
+                                           HorizontalAlignment="Stretch"
+                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">        
+
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
+                    </muxc:ItemsRepeater.Layout>
+                </muxc:ItemsRepeater>
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Laying out nested ItemsRepeaters"
+                              XamlSource="ItemsRepeater/ItemsRepeaterNestedSample_xaml.txt">
+            <ScrollViewer>
+                <muxc:ItemsRepeater x:Name="outerRepeater"
+                                           VerticalAlignment="Top"
+                                           ItemTemplate ="{StaticResource CategoryTemplate}">
+
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:StackLayout Orientation="Vertical" />
+                    </muxc:ItemsRepeater.Layout>
+
+                </muxc:ItemsRepeater>
+            </ScrollViewer>
+        </local:ControlExample>
+
     </StackPanel>
 </local:ItemsPageBase>

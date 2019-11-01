@@ -748,9 +748,9 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
-          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
           "IsUpdated": true,
           "Docs": [
