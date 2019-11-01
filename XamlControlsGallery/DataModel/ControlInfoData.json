@@ -1087,9 +1087,9 @@
         {
           "UniqueId": "Flyout",
           "Title": "Flyout",
-          "Subtitle": "Shows contextual information and enables user interaction.",
+          "Subtitle": "A Flyout displays lightweight UI that is either information, or requires user interaction. Unlike a dialog, a Flyout can be light dismissed by clicking or tapping off of it. Use it to collect input from the user, show more details about an item, or ask the user to confirm an action.",
           "ImagePath": "ms-appx:///Assets/Flyout.png",
-          "Description": "A Flyout displays lightweight UI that is either information, or requires user interaction. Unlike a dialog, a Flyout can be light dismissed by clicking or tapping off of it. Use it to collect input from the user, show more details about an item, or ask the user to confirm an action.",
+          "Description": "Shows contextual information and enables user interaction.",
           "Content": "<p>Look at the <i>FlyoutPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
