@@ -671,9 +671,9 @@
         {
           "UniqueId": "HyperlinkButton",
           "Title": "HyperlinkButton",
-          "Subtitle": "A button that appears as hyperlink text, and can navigate to a URI or handle a Click event.",
+          "Subtitle": "A HyperlinkButton appears as a text hyperlink. When a user clicks it, it opens the page you specify in the NavigateUri property in the default browser. Or you can handle its Click event, typically to navigate within your app.",
           "ImagePath": "ms-appx:///Assets/HyperlinkButton.png",
-          "Description": "A HyperlinkButton appears as a text hyperlink. When a user clicks it, it opens the page you specify in the NavigateUri property in the default browser. Or you can handle its Click event, typically to navigate within your app.",
+          "Description": "A button that appears as hyperlink text, and can navigate to a URI or handle a Click event.",
           "Content": "<p>A <b>HyperlinkButton</b> looks like hyperlink text, but works like a button. You can use it in two ways:</p><ul><li>Set the <b>NavigateUri</b> property. When a user clicks it, it will automatically open the URI in the default browser.</li><li>Handle the <b>Click</b> event. This works just like the <b>Click</b> event of a standard <b>Button</b>, and can be used to navigate within your app.</li></ul><p>Each control page in this app has two sets of hyperlink buttons, one set to open documentation in Internet Explorer, and one set to navigate to related control pages in the app.</p><p>Look at the <i>HyperlinkButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
