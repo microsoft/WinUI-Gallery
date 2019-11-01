@@ -26,9 +26,9 @@
         {
           "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
-          "Subtitle": "An object which is used to define the look and feel of a given command",
+          "Subtitle": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
-          "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls.",
+          "Description": "An object which is used to define the look and feel of a given command.",
           "Content": "",
           "IsNew": false,
           "Docs": [
