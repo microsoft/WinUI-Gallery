@@ -1578,9 +1578,9 @@
         {
           "UniqueId": "InkCanvas",
           "Title": "InkCanvas",
-          "Subtitle": "A control to capture and display strokes.",
+          "Subtitle": "You can use an InkCanvas to capture strokes and display them.  You can also change the way the strokes are displayed through the InkDrawingAttributes.",
           "ImagePath": "ms-appx:///Assets/InkCanvas.png",
-          "Description": "You can use an InkCanvas to capture strokes and display them.  You can also change the way the strokes are displayed through the InkDrawingAttributes.",
+          "Description": "A control to capture and display strokes.",
           "Content": "<p>Look at the <i>InkCanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
