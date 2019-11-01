@@ -1944,9 +1944,9 @@
         {
           "UniqueId": "TextBox",
           "Title": "TextBox",
-          "Subtitle": "A single-line or multi-line plain text field.",
+          "Subtitle": "Use a TextBox to let a user enter simple text input in your app. You can add a header and placeholder text to let the user know what the TextBox is for, and you can customize it in other ways.",
           "ImagePath": "ms-appx:///Assets/TextBox.png",
-          "Description": "Use a TextBox to let a user enter simple text input in your app. You can add a header and placeholder text to let the user know what the TextBox is for, and you can customize it in other ways.",
+          "Description": "A single-line or multi-line plain text field.",
           "Content": "<p>Look at the <i>TextBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
