@@ -435,10 +435,10 @@
         {
           "UniqueId": "PullToRefresh",
           "Title": "PullToRefresh",
-          "Subtitle": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
-          "ImagePath": "ms-appx:///Assets/PullToRefresh.png",
-          "Description": "PullToRefresh Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
+          "Subtitle": "PullToRefresh Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "ImagePath": "ms-appx:///Assets/PullToRefresh.png",
+          "Description": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
           "IsNew": false,
           "Docs": [
             {
