@@ -696,9 +696,9 @@
         {
           "UniqueId": "RepeatButton",
           "Title": "RepeatButton",
-          "Subtitle": "A button that raises its Click event repeatedly from the time it's pressed until it's released.",
+          "Subtitle": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "ImagePath": "ms-appx:///Assets/Button.png",
-          "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
+          "Description": "A button that raises its Click event repeatedly from the time it's pressed until it's released.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
