@@ -1029,9 +1029,9 @@
         {
           "UniqueId": "ToolTip",
           "Title": "ToolTip",
-          "Subtitle": "Displays information for an element in a pop-up window.",
+          "Subtitle": "A ToolTip shows more information about a UI element. You might show information about what the element does, or what the user should do. The ToolTip is shown when a user hovers over or presses and holds the UI element.",
           "ImagePath": "ms-appx:///Assets/ToolTip.png",
-          "Description": "A ToolTip shows more information about a UI element. You might show information about what the element does, or what the user should do. The ToolTip is shown when a user hovers over or presses and holds the UI element.",
+          "Description": "Displays information for an element in a pop-up window.",
           "Content": "<p>Look at the <i>ToolTipPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
