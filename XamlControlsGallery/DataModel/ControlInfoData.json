@@ -1601,9 +1601,9 @@
         {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
-          "Subtitle": "A control to display video and image content.",
+          "Subtitle": "A control to display video and image content. You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "ImagePath": "ms-appx:///Assets/MediaElement.png",
-          "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
+          "Description": "A control to display video and image content. You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "Content": "",
           "IsNew": false,
           "Docs": [
