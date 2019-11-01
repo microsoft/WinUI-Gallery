@@ -330,10 +330,10 @@
         {
           "UniqueId": "FlipView",
           "Title": "FlipView",
-          "Subtitle": "Presents a collection of items that the user can flip through, one item at a time.",
-          "ImagePath": "ms-appx:///Assets/FlipView.png",
-          "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
+          "Subtitle": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "ImagePath": "ms-appx:///Assets/FlipView.png",
+          "Description": "Presents a collection of items that the user can flip through, one item at a time.",
           "IsNew": false,
           "Docs": [
             {
