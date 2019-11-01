@@ -252,9 +252,9 @@
         {
           "UniqueId": "MenuFlyout",
           "Title": "MenuFlyout",
-          "Subtitle": "Shows a contextual list of simple commands or options.",
+          "Subtitle": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
           "ImagePath": "ms-appx:///Assets/MenuFlyout.png",
-          "Description": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
+          "Description": "Shows a contextual list of simple commands or options.",
           "Content": "<p>Look at the <i>MenuFlyoutPage.xaml</i> file in Visual Studio to see the full code.</p>",
           "IsNew": false,
           "Docs": [
