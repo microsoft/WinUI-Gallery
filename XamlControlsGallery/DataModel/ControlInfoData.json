@@ -225,9 +225,9 @@
         {
           "UniqueId": "CommandBarFlyout",
           "Title": "CommandBarFlyout",
-          "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands",
+          "Subtitle": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired",
           "ImagePath": "ms-appx:///Assets/CommandBarFlyout.png",
-          "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
+          "Description": "A mini-toolbar displaying proactive commands, and an optional menu of commands.",
           "Content": "",
           "IsNew": false,
           "Docs": [
