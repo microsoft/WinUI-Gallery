@@ -1796,9 +1796,9 @@
         {
           "UniqueId": "CompactSizing",
           "Title": "Compact Sizing",
-          "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
+          "Subtitle": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "ImagePath": "ms-appx:///Assets/CompactSizing.png",
-          "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
+          "Description": "How to use a Resource Dictionary to enable compact sizing.",
           "Content": "",
           "IsNew": false,
           "Docs": [
