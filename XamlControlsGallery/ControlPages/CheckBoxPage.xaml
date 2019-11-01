@@ -18,7 +18,7 @@
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <!-- A two-state CheckBox. -->
-                    <CheckBox Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" />
+                    <CheckBox VerticalAlignment="Center" Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" />
                     <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
@@ -33,7 +33,7 @@
         <local:ControlExample x:Name="Example2" HeaderText="A 3-state CheckBox." RelativePanel.Below="Example1">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="Three-state CheckBox" IsThreeState="True" Indeterminate="Control2_Indeterminate"
+                    <CheckBox VerticalAlignment="Center" Content="Three-state CheckBox" IsThreeState="True" Indeterminate="Control2_Indeterminate"
                             Checked="Control2_Checked" Unchecked="Control2_Unchecked" />
                     <TextBlock x:Name="Control2Output" Margin="8,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
@@ -51,14 +51,14 @@
         <local:ControlExample x:Name="Example3" HeaderText="Using a 3-state CheckBox." RelativePanel.Below="Example2">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
+                    <CheckBox x:Name="OptionsAllCheckBox" VerticalAlignment="Center" Content="Select all" IsThreeState="True"
                             Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked"
                             Indeterminate="SelectAll_Indeterminate" />
-                    <CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked"
+                    <CheckBox x:Name="Option1CheckBox" VerticalAlignment="Center" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked"
                             Unchecked="Option_Unchecked" />
-                    <CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked"
+                    <CheckBox x:Name="Option2CheckBox" VerticalAlignment="Center" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked"
                             Unchecked="Option_Unchecked" IsChecked="True" />
-                    <CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked"
+                    <CheckBox x:Name="Option3CheckBox" VerticalAlignment="Center" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked"
                             Unchecked="Option_Unchecked" />
                 </StackPanel>
             </local:ControlExample.Example>
