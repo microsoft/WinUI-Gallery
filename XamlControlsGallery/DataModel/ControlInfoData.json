@@ -176,9 +176,9 @@
         {
           "UniqueId": "CommandBar",
           "Title": "CommandBar",
-          "Subtitle": "A toolbar for displaying application-specific commands that handles layout and resizing of its contents.",
+          "Subtitle": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
           "ImagePath": "ms-appx:///Assets/CommandBar.png",
-          "Description": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
+          "Description": "A toolbar for displaying application-specific commands that handles layout and resizing of its contents.",
           "Content": "<p>The bottom app bar on this page is a <b>CommandBar</b> control.</p><p>Add secondary commands and then resize the app to see how the <b>CommandBar</b> automatically adapts to different widths.</p><p>This <b>CommandBar</b> element is in the ItemPage so it can be shared across all control pages in the app. Look at the <i>ItemPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": false,
           "Docs": [
