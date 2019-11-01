@@ -1820,9 +1820,9 @@
         {
           "UniqueId": "AutoSuggestBox",
           "Title": "AutoSuggestBox",
-          "Subtitle": "A control to provide suggestions as a user is typing.",
+          "Subtitle": "A text control that makes suggestions to users as they type. The app is notified when text has been changed by the user and is responsible for providing relevant suggestions for this control to display.",
           "ImagePath": "ms-appx:///Assets/AutoSuggestBox.png",
-          "Description": "A text control that makes suggestions to users as they type. The app is notified when text has been changed by the user and is responsible for providing relevant suggestions for this control to display.",
+          "Description": "A control to provide suggestions as a user is typing.",
           "Content": "<p>Look at the <i>AutoSuggestBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
@@ -1844,9 +1844,9 @@
         {
           "UniqueId": "PasswordBox",
           "Title": "PasswordBox",
-          "Subtitle": "A control for entering passwords.",
+          "Subtitle": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
           "ImagePath": "ms-appx:///Assets/PasswordBox.png",
-          "Description": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
+          "Description": "A control for entering passwords.",
           "Content": "<p>Look at the <i>PasswordBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
