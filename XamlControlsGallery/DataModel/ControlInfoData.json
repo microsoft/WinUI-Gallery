@@ -849,9 +849,9 @@
         {
           "UniqueId": "ComboBox",
           "Title": "ComboBox",
-          "Subtitle": "A drop-down list of items a user can select from.",
+          "Subtitle": "Use a ComboBox when you need to conserve on-screen space and when users select only one option at a time. A ComboBox shows only the currently selected item.",
           "ImagePath": "ms-appx:///Assets/ComboBox.png",
-          "Description": "Use a ComboBox when you need to conserve on-screen space and when users select only one option at a time. A ComboBox shows only the currently selected item.",
+          "Description": "A drop-down list of items a user can select from.",
           "Content": "",
           "IsUpdated": false,
           "Docs": [
