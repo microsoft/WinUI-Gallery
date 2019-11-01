@@ -721,9 +721,9 @@
         {
           "UniqueId": "ToggleButton",
           "Title": "ToggleButton",
-          "Subtitle": "A button that can be switched between two states like a CheckBox.",
+          "Subtitle": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "ImagePath": "ms-appx:///Assets/ToggleButton.png",
-          "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
+          "Description": "A button that can be switched between two states like a CheckBox.",
           "Content": "<p><b>ToggleButton</b> is used as a base class for similar controls like <b>CheckBox</b> and <b>RadioButton</b>. It can be used on its own, but don't use it if a <b>CheckBox</b>, <b>RadioButton</b>, or <b>ToggleSwitch</b> would convey your intent better.</p><p>Look at the <i>ToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
