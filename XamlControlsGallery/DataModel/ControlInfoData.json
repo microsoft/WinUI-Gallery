@@ -138,7 +138,7 @@
           "Title": "AppBarToggleButton",
           "Subtitle": "A button that can be on, off, or indeterminate like a CheckBox, and is styled for use in an app bar or other specialized UI.",
           "ImagePath": "ms-appx:///Assets/AppBarToggleButton.png",
-          "Description": "An AppBarToggleButton looks like an AppBarButton, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
+          "Description": "Similar to an AppBarButton, but works like a CheckBox. It can have 2-3 states. You can determine it's state by checking the IsChecked property.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Look at the <i>AppBarToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
@@ -723,7 +723,7 @@
           "Title": "ToggleButton",
           "Subtitle": "A button that can be switched between two states like a CheckBox.",
           "ImagePath": "ms-appx:///Assets/ToggleButton.png",
-          "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
+          "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It can have 2-3 states. You can determine it's state by checking the IsChecked property.",
           "Content": "<p><b>ToggleButton</b> is used as a base class for similar controls like <b>CheckBox</b> and <b>RadioButton</b>. It can be used on its own, but don't use it if a <b>CheckBox</b>, <b>RadioButton</b>, or <b>ToggleSwitch</b> would convey your intent better.</p><p>Look at the <i>ToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
