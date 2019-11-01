@@ -1,4 +1,4 @@
-﻿<Page
+<Page
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         x:Class="AppUIBasics.ControlPages.NavigationViewPage"
         mc:Ignorable="d">
-
+    
     <Page.Resources>
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
@@ -258,7 +258,7 @@
                     <CheckBox x:Name="paneFooterCheck" VerticalAlignment="Center" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
                     <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
+                    <RadioButton Content="Left" VerticalAlignment="Center" IsChecked="True" Checked="panePositionLeft_Checked"/>
                     <RadioButton Content="Top" VerticalAlignment="Center" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
 
                     <CheckBox x:Name="sffCheck" VerticalAlignment="Center" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>
