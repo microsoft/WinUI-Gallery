@@ -200,9 +200,9 @@
         {
           "UniqueId": "MenuBar",
           "Title": "MenuBar",
-          "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
+          "Subtitle": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
-          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
+          "Description": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "Content": "",
           "IsUpdated": true,
           "Docs": [
