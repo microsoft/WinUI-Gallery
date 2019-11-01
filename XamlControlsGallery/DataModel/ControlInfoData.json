@@ -112,9 +112,9 @@
         {
           "UniqueId": "AppBarSeparator",
           "Title": "AppBarSeparator",
-          "Subtitle": "A vertical line that's used to visually separate groups of commands in an app bar.",
+          "Subtitle": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
-          "Description": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
+          "Description": "A vertical line that's used to visually separate groups of commands in an app bar.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons and separators on this page change.</p><p>When the <b>IsCompact</b> property is true, the padding around the <b>AppBarSeparator</b> is reduced.</p><p>Look at the <i>AppBarSeparatorPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": false,
           "Docs": [
