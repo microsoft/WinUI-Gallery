@@ -985,9 +985,9 @@
         {
           "UniqueId": "ProgressBar",
           "Title": "ProgressBar",
-          "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction.",
+          "Subtitle": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "ImagePath": "ms-appx:///Assets/ProgressBar.png",
-          "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
+          "Description": "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
