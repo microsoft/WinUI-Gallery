@@ -1,4 +1,5 @@
-﻿using Windows.Storage;
+﻿using System;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -11,6 +12,7 @@ namespace AppUIBasics.Common
     public static class ThemeHelper
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
+        private static Window CurrentApplicationWindow;
 
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
@@ -60,18 +62,36 @@ namespace AppUIBasics.Common
 
         public static void Initialize()
         {
-
+            // Save reference as this might be null when the user is in another app
+            CurrentApplicationWindow = Window.Current;
             string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
 
             if (savedTheme != null)
             {
                 RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
             }
+
+            // Registering to color changes, thus we notice when user changes theme system wide
+            UISettings uiSettings = new UISettings();
+            uiSettings.ColorValuesChanged += UiSettings_ColorValuesChanged;
+        }
+
+        private async static void UiSettings_ColorValuesChanged(UISettings sender, object args)
+        {
+            // Make sure we have a reference to our window so we dispatch a UI change
+            if (CurrentApplicationWindow != null)
+            {
+                // Dispatch on UI thread so that we have a current appbar to access and change
+                await CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+                        {
+                            UpdateSystemCaptionButtonColors();
+                        });
+            }
         }
 
         public static bool IsDarkTheme()
         {
-            if(RootTheme == ElementTheme.Default)
+            if (RootTheme == ElementTheme.Default)
             {
                 return Application.Current.RequestedTheme == ApplicationTheme.Dark;
             }
