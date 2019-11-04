@@ -7,10 +7,10 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,9 +28,8 @@ namespace AppUIBasics.ControlPages
 
         private void topAppBar_Opened(object sender, object e)
         {
-
-                CommandBar headerTopAppBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
-                headerTopAppBar.IsOpen = false;
+            CommandBar headerTopAppBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            headerTopAppBar.IsOpen = false;
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)

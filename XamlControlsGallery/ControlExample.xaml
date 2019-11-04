@@ -48,14 +48,14 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Interactivity:Interaction.Behaviors>
+        <!--Interactivity:Interaction.Behaviors>
             <Core:EventTriggerBehavior EventName="Loaded">
                 <Media:ControlStoryboardAction Storyboard="{StaticResource PopInStoryboard}" />
             </Core:EventTriggerBehavior>
             <Core:EventTriggerBehavior EventName="Unloaded">
                 <Media:ControlStoryboardAction Storyboard="{StaticResource PopOutStoryboard}" />
             </Core:EventTriggerBehavior>
-        </Interactivity:Interaction.Behaviors>
+        </-->
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

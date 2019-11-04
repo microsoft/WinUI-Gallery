@@ -19,7 +19,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <local:ItemTemplates />
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+                <XamlControlsResources />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
@@ -76,7 +76,7 @@
                 <Setter Property="ZoomMode" Value="Disabled" />
             </Style>
 
-            <Style x:Key="GridViewItemStyle" TargetType="GridViewItem">
+            <Style x:Key="GridViewItemStyle" TargetType="GridViewItem" >
                 <Setter Property="Margin" Value="0,0,12,12" />
             </Style>
 
@@ -93,7 +93,6 @@
                 <Setter Property="Margin" Value="12,0,12,12" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

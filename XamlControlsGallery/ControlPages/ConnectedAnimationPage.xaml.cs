@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using AppUIBasics.SamplePages;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
 
 namespace AppUIBasics.ControlPages
 {
@@ -42,7 +43,7 @@ namespace AppUIBasics.ControlPages
             return null;
         }
 
-        private void NavigateButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void NavigateButton_Click(object sender, RoutedEventArgs e)
         {
             var currentContent = ContentFrame.Content;
 

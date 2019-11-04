@@ -2,15 +2,15 @@
 using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Windows.UI.Composition;
+using Microsoft.UI.Composition;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -21,8 +21,8 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class PullToRefreshPage : Page
     {
-        private ObservableCollection<string> items1 = new ObservableCollection<string>();
-        private ObservableCollection<string> items2 = new ObservableCollection<string>();
+        private TestObservableCollection<string> items1 = new TestObservableCollection<string>();
+        private TestObservableCollection<string> items2 = new TestObservableCollection<string>();
         private DispatcherTimer timer1 = new DispatcherTimer();
         private DispatcherTimer timer2 = new DispatcherTimer();
         private Visual visualizerContentVisual;
@@ -83,7 +83,7 @@ namespace AppUIBasics.ControlPages
                 ListView lv2 = new ListView();
                 lv2.Width = 200;
                 lv2.Height = 200;
-                lv2.BorderThickness = new Thickness(1);
+                lv2.BorderThickness = ThicknessHelper.FromUniformLength(1);
                 lv2.HorizontalAlignment = HorizontalAlignment.Center;
                 lv2.BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"];
 

@@ -6,11 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <muxc:TabView x:Name="Tabs" 
+        <TabView x:Name="Tabs" 
                              VerticalAlignment="Stretch"
                              AddTabButtonClick="Tabs_AddTabButtonClick"
                              TabCloseRequested="Tabs_TabCloseRequested"
@@ -21,12 +20,12 @@
                              TabStripDragOver="Tabs_TabStripDragOver"
                              TabStripDrop="Tabs_TabStripDrop"
                              TabDragStarting="Tabs_TabDragStarting" >
-            <muxc:TabView.TabStripHeader>
+            <TabView.TabStripHeader>
                 <Grid x:Name="ShellTitlebarInset" Background="Transparent" />
-            </muxc:TabView.TabStripHeader>
-            <muxc:TabView.TabStripFooter>
+            </TabView.TabStripHeader>
+            <TabView.TabStripFooter>
                 <Grid x:Name="CustomDragRegion" Background="Transparent" />
-            </muxc:TabView.TabStripFooter>
-        </muxc:TabView>
+            </TabView.TabStripFooter>
+        </TabView>
     </Grid>
 </Page>

@@ -1,9 +1,9 @@
 ﻿using Windows.Foundation.Metadata;
-using Windows.UI;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -14,7 +14,7 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             // Do custom logic
             SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
@@ -35,13 +35,13 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
+        private void MyImageButton_ContextRequested(Microsoft.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
         {   
             // always show a context menu in standard mode
             ShowMenu(false);
         }
 
-        private void MyImageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             ShowMenu((sender as Button).IsPointerOver);
         }

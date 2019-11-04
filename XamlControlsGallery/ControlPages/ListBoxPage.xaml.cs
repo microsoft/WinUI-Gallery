@@ -9,8 +9,9 @@
 //*********************************************************
 using System;
 using System.Collections.Generic;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -45,21 +46,21 @@ namespace AppUIBasics.ControlPages
             switch (colorName)
             {
                 case "Yellow":
-                    Control1Output.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                    Control1Output.Fill = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
                     break;
                 case "Green":
-                    Control1Output.Fill = new SolidColorBrush(Windows.UI.Colors.Green);
+                    Control1Output.Fill = new SolidColorBrush(Microsoft.UI.Colors.Green);
                     break;
                 case "Blue":
-                    Control1Output.Fill = new SolidColorBrush(Windows.UI.Colors.Blue);
+                    Control1Output.Fill = new SolidColorBrush(Microsoft.UI.Colors.Blue);
                     break;
                 case "Red":
-                    Control1Output.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                    Control1Output.Fill = new SolidColorBrush(Microsoft.UI.Colors.Red);
                     break;
             }
         }
 
-        private void ListBox2_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void ListBox2_Loaded(object sender, RoutedEventArgs e)
         {
             ListBox2.SelectedIndex = 2;
         }

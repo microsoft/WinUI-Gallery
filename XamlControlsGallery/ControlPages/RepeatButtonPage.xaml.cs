@@ -7,8 +7,8 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,7 +35,7 @@ namespace AppUIBasics.ControlPages
         private void RepeatButtonReveal_Click(object sender, RoutedEventArgs e)
         {
             _clickReveal += 1;
-            ControlRevealOutput.Text = "Number of clicks: " + _clickReveal;
+            // ControlRevealOutput.Text = "Number of clicks: " + _clickReveal;
         }
     }
 }

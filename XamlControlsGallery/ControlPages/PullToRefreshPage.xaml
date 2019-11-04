@@ -29,7 +29,7 @@
                 </local:ControlExample.Xaml>
                 <local:ControlExample.CSharp>
                     <x:String xml:space="preserve">
-ObservableCollection&lt;string&gt; items = new ObservableCollection&lt;string&gt;();
+TestObservableCollection&lt;string&gt; items = new TestObservableCollection&lt;string&gt;();
 listview.ItemsSource = items;
 
 private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
@@ -79,7 +79,7 @@ private void WorkCompleted()
                 </local:ControlExample.Xaml>
                 <local:ControlExample.CSharp>
                     <x:String xml:space="preserve">
-ObservableCollection&lt;string&gt; items = new ObservableCollection&lt;string&gt;();
+TestObservableCollection&lt;string&gt; items = new TestObservableCollection&lt;string&gt;();
 listview.ItemsSource = items;
 
 private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)

@@ -7,14 +7,8 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
@@ -28,7 +22,6 @@ namespace AppUIBasics
         public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
         public TeachingTip TeachingTip2 => ToggleThemeTeachingTip2;
         public TeachingTip TeachingTip3 => ToggleThemeTeachingTip3;
-
 
         public object Title
         {

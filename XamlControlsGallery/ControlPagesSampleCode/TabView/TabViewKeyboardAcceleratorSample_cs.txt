@@ -2,7 +2,8 @@
 {
     var senderTabView = args.Element as TabView;
     senderTabView.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
-    args.Handled = true;
+
+	args.Handled = true;
 }
 
 private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
@@ -14,7 +15,8 @@ private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sen
     {
         InvokedTabView.TabItems.Remove(InvokedTabView.SelectedItem);
     }
-    args.Handled = true;
+
+	args.Handled = true;
 }
 
 private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
@@ -60,5 +62,6 @@ private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerato
     {
         InvokedTabView.SelectedIndex = tabToSelect;
     }
-    args.Handled = true;
+
+	args.Handled = true;
 }

@@ -14,8 +14,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Storage;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -44,8 +44,8 @@ namespace AppUIBasics.Data
             this.IsNew = isNew;
             this.IsUpdated = isUpdated;
             this.IsPreview = isPreview;
-            this.Docs = new ObservableCollection<ControlInfoDocLink>();
-            this.RelatedControls = new ObservableCollection<string>();
+            this.Docs = new TestObservableCollection<ControlInfoDocLink>();
+            this.RelatedControls = new TestObservableCollection<string>();
         }
 
         public string UniqueId { get; private set; }
@@ -58,8 +58,10 @@ namespace AppUIBasics.Data
         public bool IsNew { get; private set; }
         public bool IsUpdated { get; private set; }
         public bool IsPreview { get; private set; }
-        public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
-        public ObservableCollection<string> RelatedControls { get; private set; }
+        public TestObservableCollection<ControlInfoDocLink> Docs { get; private set; }
+        public TestObservableCollection<string> RelatedControls { get; private set; }
+
+        public bool IncludedInBuild { get; set; }
 
         public override string ToString()
         {
@@ -91,7 +93,7 @@ namespace AppUIBasics.Data
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
-            this.Items = new ObservableCollection<ControlInfoDataItem>();
+            this.Items = new TestObservableCollection<ControlInfoDataItem>();
         }
 
         public string UniqueId { get; private set; }
@@ -99,7 +101,7 @@ namespace AppUIBasics.Data
         public string Subtitle { get; private set; }
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
-        public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
+        public TestObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
         {
@@ -197,6 +199,9 @@ namespace AppUIBasics.Data
 
             lock (_lock)
             {
+                var loader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+                string pageRoot = loader.GetString("PageStringRoot");
+
                 foreach (JsonValue groupValue in jsonArray)
                 {
                     JsonObject groupObject = groupValue.GetObject();
@@ -239,6 +244,12 @@ namespace AppUIBasics.Data
                                                                 isNew,
                                                                 isUpdated,
                                                                 isPreview);
+
+                        {
+                            string pageString = pageRoot + item.UniqueId + "Page";
+                            Type pageType = Type.GetType(pageString);
+                            item.IncludedInBuild = pageType != null;
+                        }
 
                         if (itemObject.ContainsKey("Docs"))
                         {

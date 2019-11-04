@@ -9,7 +9,7 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -32,14 +32,14 @@ namespace AppUIBasics
             itemsCVS.Source = FormatData();
         }
 
-        private ObservableCollection<GroupInfoList> FormatData()
+        private TestObservableCollection<GroupInfoList> FormatData()
         {
             var query = from item in this.Items
                         group item by item.BadgeString into g
                         orderby g.Key
                         select new GroupInfoList(g) { Key = g.Key };
 
-            ObservableCollection<GroupInfoList> groupList = new ObservableCollection<GroupInfoList>(query);
+            TestObservableCollection<GroupInfoList> groupList = new TestObservableCollection<GroupInfoList>(query);
 
             //Move Preview samples to the back of the list
             var previewGroup = groupList.ElementAt(1);

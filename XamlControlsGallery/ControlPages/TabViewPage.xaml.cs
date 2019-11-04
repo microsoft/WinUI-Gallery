@@ -1,10 +1,9 @@
 ﻿using System;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using AppUIBasics.SamplePages;
 using Windows.ApplicationModel.Core;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Windows.UI.ViewManagement;
 using Windows.UI.Core;
 using AppUIBasics.TabViewPages;
@@ -21,7 +20,7 @@ namespace AppUIBasics.ControlPages
 
     public sealed partial class TabViewPage : Page
     {
-        ObservableCollection<MyData> myDatas;
+        TestObservableCollection<MyData> myDatas;
 
         public TabViewPage()
         {
@@ -81,7 +80,7 @@ namespace AppUIBasics.ControlPages
         #region ItemsSourceSample
         private void InitializeDataBindingSampleData()
         {
-            myDatas = new ObservableCollection<MyData>();
+            myDatas = new TestObservableCollection<MyData>();
 
             for (int index = 0; index < 3; index++)
             {
@@ -214,7 +213,7 @@ namespace AppUIBasics.ControlPages
             TabView3.TabWidthMode = widthMode;
         }
 
-        private async void TabViewWindowingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;

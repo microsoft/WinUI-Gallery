@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -55,12 +55,9 @@ namespace AppUIBasics.ControlPages
             return TimeSpan.FromMilliseconds(PeriodSlider.Value);
         }
 
-        private void StartAnimationIfAPIPresent(UIElement sender, Windows.UI.Composition.CompositionAnimation animation)
+        private void StartAnimationIfAPIPresent(UIElement sender, Microsoft.UI.Composition.CompositionAnimation animation)
         {
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-            {
-                (sender as UIElement).StartAnimation(animation);
-            }
+            (sender as UIElement).StartAnimation(animation);
         }
 
         private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -84,20 +81,13 @@ namespace AppUIBasics.ControlPages
             anim.Expression = "Vector3(1/scaleElement.Scale.X, 1/scaleElement.Scale.Y, 1)";
             anim.Target = "Scale";
 
-            // Only establish the reference parameter if the API exists to do so.
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-            {
-                anim.SetExpressionReferenceParameter("scaleElement", rectangle);
-            }
+            anim.SetExpressionReferenceParameter("scaleElement", rectangle);            
 
             StartAnimationIfAPIPresent(ellipse, anim);
         }
 
         private void StackedButtonsExample_Loaded(object sender, RoutedEventArgs e)
         {
-            // Only run the sample if the API is present. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var anim = _compositor.CreateExpressionAnimation();
             anim.Expression = "(above.Scale.Y - 1) * 50 + above.Translation.Y % (50 * index)";
             anim.Target = "Translation.Y";
@@ -117,9 +107,6 @@ namespace AppUIBasics.ControlPages
 
         private void ActualSizeExample_Loaded(object sender, RoutedEventArgs e)
         {
-            // Only create an expression using ActualSize if the API exists to do so.
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
-
             // We will lay out some buttons in a circle.
             // The formulas we will use are:
             //   X = radius * cos(theta) + xOffset
@@ -157,7 +144,7 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void RadiusSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        private void RadiusSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             if (LayoutPanel == null) return;
             LayoutPanel.Width = LayoutPanel.Height = e.NewValue;
@@ -165,9 +152,6 @@ namespace AppUIBasics.ControlPages
 
         private void ActualOffsetExample_Loaded(object sender, RoutedEventArgs e)
         {
-            // Only create an expression using ActualSize if the API exists to do so.
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
-
             // This sample positions a popup relative to a block of text that has variable layout size based on font size.
             var anim = _compositor.CreateExpressionAnimation();
 

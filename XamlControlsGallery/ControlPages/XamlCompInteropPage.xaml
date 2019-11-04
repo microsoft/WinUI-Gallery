@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:ControlExample HeaderText="Use a natural motion composition animation on a UIElement"  Loaded="NaturalMotionExample_Loaded" MinimumUniversalAPIContract="7" CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt">
+        <local:ControlExample HeaderText="Use a natural motion composition animation on a UIElement"  Loaded="NaturalMotionExample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt">
             <StackPanel VerticalAlignment="Stretch">
                 <TextBlock Text="Hover over the button to animate its scale." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,0,12"  />
                 <Button Content="Item" Width="100" Height="50" PointerEntered="element_PointerEntered" PointerExited="element_PointerExited" />
@@ -28,7 +28,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="ExpressionAnimation on an Ellipse element" Loaded="ExpressionSample_Loaded" MinimumUniversalAPIContract="7" CSharpSource="Motion/AnimationInterop/AnimationInteropSample2_cs.txt">
+        <local:ControlExample HeaderText="ExpressionAnimation on an Ellipse element" Loaded="ExpressionSample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample2_cs.txt">
             <StackPanel Height="200">
                 <TextBlock Text="Hover over the square to animate its scale. Notice that the ellipse also animates." Style="{ThemeResource BodyTextBlockStyle}"   />
                 <TextBlock Text="The scale of the circle is inversely related to the scale of the square." Margin="0,0,0,12" />
@@ -43,7 +43,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Driving several related animations together using ExpressionAnimation" Loaded="StackedButtonsExample_Loaded" MinimumUniversalAPIContract="7" CSharpSource="Motion/AnimationInterop/AnimationInteropSample3_cs.txt">
+        <local:ControlExample HeaderText="Driving several related animations together using ExpressionAnimation" Loaded="StackedButtonsExample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample3_cs.txt">
             <StackPanel Margin="0,0,0,50">
                 <TextBlock Text="Hover over any button to animate its scale. Notice that the other buttons move out of the way." Style="{ThemeResource BodyTextBlockStyle}"  />
                 <TextBlock Text="Each button animates as a function of the previous button's scale and translation." Margin="0,0,0,12" />
@@ -54,14 +54,14 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Reference ActualSize in ExpressionAnimations to make novel layouts based on size" Loaded="ActualSizeExample_Loaded" MinimumUniversalAPIContract="8" CSharpSource="Motion/AnimationInterop/AnimationInteropSample4_cs.txt">
+        <local:ControlExample HeaderText="Reference ActualSize in ExpressionAnimations to make novel layouts based on size" Loaded="ActualSizeExample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample4_cs.txt">
             <local:ControlExample.Options>
                 <Slider Header="Change radius" Minimum="200" Maximum="400" ValueChanged="RadiusSlider_ValueChanged" MinWidth="150" />
             </local:ControlExample.Options>
             <Grid x:Name="LayoutPanel" Width="200" Height="200" Margin="12" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Reference ActualOffset and ActualSize in ExpressionAnimations to position elements relative to each other" Loaded="ActualOffsetExample_Loaded" MinimumUniversalAPIContract="8" XamlSource="Motion/AnimationInterop/AnimationInteropSample5_xaml.txt" CSharpSource="Motion/AnimationInterop/AnimationInteropSample5_cs.txt">
+        <local:ControlExample HeaderText="Reference ActualOffset and ActualSize in ExpressionAnimations to position elements relative to each other" Loaded="ActualOffsetExample_Loaded" XamlSource="Motion/AnimationInterop/AnimationInteropSample5_xaml.txt" CSharpSource="Motion/AnimationInterop/AnimationInteropSample5_cs.txt">
             <local:ControlExample.Options>
                 <StackPanel MinWidth="150">
                     <Slider x:Name="FontSizeSlider" Header="Change font size" Minimum="12" Maximum="24" />

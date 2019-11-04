@@ -15,10 +15,10 @@ using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Markup;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics
 {
@@ -138,7 +138,7 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength(1, GridUnitType.Star)));
+        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength { Value = 1, GridUnitType = GridUnitType.Star }));
         public GridLength ExampleHeight
         {
             get { return (GridLength)GetValue(ExampleHeightProperty); }
@@ -275,22 +275,25 @@ namespace AppUIBasics
             var sampleCodeRTB = new RichTextBlock();
             sampleCodeRTB.FontFamily = new FontFamily("Consolas");
 
-            var formatter = GenerateRichTextFormatter();
-            formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleCodeRTB;
+            //var formatter = GenerateRichTextFormatter();
+            //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
+            presenter.Content = sampleString; // sampleCodeRTB;
         }
 
-        private RichTextBlockFormatter GenerateRichTextFormatter()
-        {
-            var formatter = new RichTextBlockFormatter(App.ActualTheme);
+        // TODO: RichTextBlockFormatter is coming from a nuget package that is built against Windows.UI.Xaml
+        // Hence it cannot be used in a Microsoft.UI.Xaml project. The package is ColorCode.UWP
 
-            if (App.ActualTheme == ElementTheme.Dark)
-            {
-                UpdateFormatterDarkThemeColors(formatter);
-            }
+        //private RichTextBlockFormatter GenerateRichTextFormatter()
+        //{
+        //    var formatter = new RichTextBlockFormatter(App.ActualTheme);
 
-            return formatter;
-        }
+        //    if (App.ActualTheme == ElementTheme.Dark)
+        //    {
+        //        UpdateFormatterDarkThemeColors(formatter);
+        //    }
+
+        //    return formatter;
+        //}
 
         private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
         {

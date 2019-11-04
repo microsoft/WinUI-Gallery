@@ -16,7 +16,6 @@
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:controls="using:Windows.UI.Xaml.Controls"
     NavigationCacheMode="Enabled">
 
     <!--  This grid acts as a root panel for the page.  -->
@@ -60,9 +59,9 @@
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
+            <!--interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
-            </interactivity:Interaction.Behaviors>
+            </-->
 
             <GridView.Header>
                 <Grid Margin="-24,0,0,24">
@@ -71,14 +70,16 @@
                         Height="250"
                         Margin="0,0,0,0"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="350">
+                        VerticalShift="0">
                         <Image
+                            Margin="0,0"
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.jpg"
+                            VerticalAlignment="Center"
+                            Source="Assets/WinUI3Alpha2.png"
                             Stretch="UniformToFill" />
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" Visibility="Collapsed" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                Visibility="Collapsed"
                                Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
