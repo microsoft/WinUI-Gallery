@@ -1,4 +1,6 @@
 ﻿using Windows.Storage;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
 namespace AppUIBasics.Common
@@ -52,6 +54,7 @@ namespace AppUIBasics.Common
                 }
 
                 ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
+                UpdateSystemCaptionButtonColors();
             }
         }
 
@@ -73,6 +76,20 @@ namespace AppUIBasics.Common
                 return Application.Current.RequestedTheme == ApplicationTheme.Dark;
             }
             return RootTheme == ElementTheme.Dark;
+        }
+
+        public static void UpdateSystemCaptionButtonColors()
+        {
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            if (ThemeHelper.IsDarkTheme())
+            {
+                titleBar.ButtonForegroundColor = Colors.White;
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Colors.Black;
+            }
         }
     }
 }
