@@ -71,24 +71,13 @@ namespace AppUIBasics
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
-                if (selectedTheme == "Dark")
+                if (ThemeHelper.IsDarkTheme())
                 {
                     titleBar.ButtonForegroundColor = Colors.White;
                 }
-                else if (selectedTheme == "Light")
-                {
-                    titleBar.ButtonForegroundColor = Colors.Black;
-                }
                 else
                 {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                    {
-                        titleBar.ButtonForegroundColor = Colors.White;
-                    }
-                    else
-                    {
-                        titleBar.ButtonForegroundColor = Colors.Black;
-                    }
+                    titleBar.ButtonForegroundColor = Colors.Black;
                 }
             }
         }

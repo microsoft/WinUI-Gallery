@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
+﻿using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace AppUIBasics.Common
 {
+    /// <summary>
+    /// Class providing functionality around switching and restoring theme settings
+    /// </summary>
     public static class ThemeHelper
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
@@ -68,5 +66,13 @@ namespace AppUIBasics.Common
             }
         }
 
+        public static bool IsDarkTheme()
+        {
+            if(RootTheme == ElementTheme.Default)
+            {
+                return Application.Current.RequestedTheme == ApplicationTheme.Dark;
+            }
+            return RootTheme == ElementTheme.Dark;
+        }
     }
 }
