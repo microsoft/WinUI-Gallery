@@ -33,53 +33,7 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-        private const string SelectedAppThemeKey = "SelectedAppTheme";
-
-        /// <summary>
-        /// Gets the current actual theme of the app based on the requested theme of the
-        /// root element, or if that value is Default, the requested theme of the Application.
-        /// </summary>
-        public static ElementTheme ActualTheme
-        {
-            get
-            {
-                if (Window.Current.Content is FrameworkElement rootElement)
-                {
-                    if (rootElement.RequestedTheme != ElementTheme.Default)
-                    {
-                        return rootElement.RequestedTheme;
-                    }
-                }
-
-                return GetEnum<ElementTheme>(Current.RequestedTheme.ToString());
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets (with LocalSettings persistence) the RequestedTheme of the root element.
-        /// </summary>
-        public static ElementTheme RootTheme
-        {
-            get
-            {
-                if (Window.Current.Content is FrameworkElement rootElement)
-                {
-                    return rootElement.RequestedTheme;
-                }
-
-                return ElementTheme.Default;
-            }
-            set
-            {
-                if (Window.Current.Content is FrameworkElement rootElement)
-                {
-                    rootElement.RequestedTheme = value;
-                }
-
-                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
-            }
-        }
-
+        
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -174,12 +128,7 @@ namespace AppUIBasics
 
             Frame rootFrame = GetRootFrame();
 
-            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
-
-            if (savedTheme != null)
-            {
-                RootTheme = GetEnum<ElementTheme>(savedTheme);
-            }
+            ThemeHelper.Initialize();
 
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;

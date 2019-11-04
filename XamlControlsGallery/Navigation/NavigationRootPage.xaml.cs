@@ -106,7 +106,7 @@ namespace AppUIBasics
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
-                var currentTheme = App.RootTheme.ToString();
+                var currentTheme = ThemeHelper.RootTheme.ToString();
                 bool darkTheme = false;
 
                 switch (currentTheme)

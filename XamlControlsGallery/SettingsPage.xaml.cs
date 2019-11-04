@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Common;
 using System;
 using System.Linq;
 using Windows.System;
@@ -58,7 +59,7 @@ namespace AppUIBasics
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
-            var currentTheme = App.RootTheme.ToString();
+            var currentTheme = ThemeHelper.RootTheme.ToString();
             (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
         }
 
@@ -69,7 +70,7 @@ namespace AppUIBasics
 
             if (selectedTheme != null)
             {
-                App.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
+                ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
                 if (selectedTheme == "Dark")
                 {
                     titleBar.ButtonForegroundColor = Colors.White;

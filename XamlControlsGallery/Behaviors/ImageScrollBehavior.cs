@@ -1,4 +1,5 @@
-﻿using Microsoft.Xaml.Interactivity;
+﻿using AppUIBasics.Common;
+using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
 using Windows.UI;
@@ -77,7 +78,7 @@ namespace AppUIBasics.Behaviors
             }
             else
             {
-                if (App.ActualTheme != ElementTheme.Dark)
+                if (ThemeHelper.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
                     Color foreground = new Color() { A = _alpha };

@@ -278,6 +278,7 @@
     <Compile Include="Common\OrientedSize.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\ThemeHelper.cs" />
     <Compile Include="Common\UIHelper.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
