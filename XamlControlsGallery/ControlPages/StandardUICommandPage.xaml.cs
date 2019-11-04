@@ -1,10 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -16,7 +15,7 @@ namespace AppUIBasics.ControlPages
 
     public sealed partial class StandardUICommandPage : Page
     {
-        ObservableCollection<ListItemData> collection = new ObservableCollection<ListItemData>();
+        TestObservableCollection<ListItemData> collection = new TestObservableCollection<ListItemData>();
 
         public StandardUICommandPage()
         {

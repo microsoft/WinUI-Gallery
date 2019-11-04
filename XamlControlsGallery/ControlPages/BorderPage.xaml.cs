@@ -7,11 +7,11 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Media;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,7 +29,7 @@ namespace AppUIBasics.ControlPages
 
         private void ThicknessSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            if (Control1 != null) Control1.BorderThickness = new Thickness(e.NewValue);
+            if (Control1 != null) Control1.BorderThickness = ThicknessHelper.FromUniformLength(e.NewValue);
         }
 
         private void BGRadioButton_Checked(object sender, RoutedEventArgs e)

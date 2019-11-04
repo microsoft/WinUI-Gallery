@@ -10,15 +10,15 @@
 using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Data;
 
 namespace AppUIBasics
 {
@@ -48,6 +48,12 @@ namespace AppUIBasics
             if (sender.ContainerFromItem(sender.Items.LastOrDefault()) is GridViewItem container)
             {
                 container.XYFocusDown = container;
+            }
+
+            var item = args.Item as ControlInfoDataItem;
+            if (item != null)
+            {
+                args.ItemContainer.IsEnabled = item.IncludedInBuild;
             }
         }
 

@@ -11,9 +11,9 @@ using System;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -130,7 +130,7 @@ namespace AppUIBasics.ControlPages
     {
         public static Thickness IntToThickness(double UniformLength)
         {
-            return new Thickness(UniformLength);
+            return ThicknessHelper.FromUniformLength(UniformLength);
         }
 
         public static SolidColorBrush ColorToBrush(Color color)

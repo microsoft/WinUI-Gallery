@@ -5,10 +5,8 @@ using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.ViewManagement;
 using Windows.UI.WindowManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.TabViewPages
 {
@@ -66,10 +64,11 @@ namespace AppUIBasics.TabViewPages
                 coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
 
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+                titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
 
-                Window.Current.SetTitleBar(CustomDragRegion);
+                // Bug 23809028: Window.Current.SetTitleBar is not available in MUX [XamlControlsGallery]
+                // Window.Current.SetTitleBar(CustomDragRegion);
             }
             else
             {
@@ -78,14 +77,15 @@ namespace AppUIBasics.TabViewPages
 
                 // Extend into the titlebar
                 window.TitleBar.ExtendsContentIntoTitleBar = true;
-                window.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                window.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+                window.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
+                window.TitleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
 
                 // Due to a bug in AppWindow, we cannot follow the same pattern as CoreWindow when setting the min width.
                 // Instead, set a hardcoded number. 
                 CustomDragRegion.MinWidth = 188;
 
-                window.Frame.DragRegionVisuals.Add(CustomDragRegion);
+                // Bug 23797226: Need a version of AppWindowFrame.DragRegionVisuals for MUX [XamlControlsGallery] 
+                // window.Frame.DragRegionVisuals.Add(CustomDragRegion);
             }
         }
 
@@ -127,7 +127,8 @@ namespace AppUIBasics.TabViewPages
             var newPage = new TabViewWindowingSamplePage();
             newPage.SetupWindow(newWindow);
 
-            ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
+            // Bug 23808988: ElementCompositionPreview.SetAppWindowContent requires WUC type[XamlControlsGallery]
+            // ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
 
             Tabs.TabItems.Remove(args.Tab);
             newPage.AddTabToTabs(args.Tab);
@@ -147,7 +148,7 @@ namespace AppUIBasics.TabViewPages
             args.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
-        private async void Tabs_TabStripDrop(object sender, DragEventArgs e)
+        private void Tabs_TabStripDrop(object sender, DragEventArgs e)
         {
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView

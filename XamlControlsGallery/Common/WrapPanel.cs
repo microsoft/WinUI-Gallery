@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
 {
@@ -103,9 +103,9 @@ namespace AppUIBasics
         /// Gets or sets the direction in which child elements are arranged.
         /// </summary>
         /// <value>
-        /// One of the <see cref="T:Windows.UI.Xaml.Controls.Orientation" />
+        /// One of the <see cref="T:Microsoft.UI.Xaml.Controls.Orientation" />
         /// values.  The default is
-        /// <see cref="F:Windows.UI.Xaml.Controls.Orientation.Horizontal" />.
+        /// <see cref="F:Microsoft.UI.Xaml.Controls.Orientation.Horizontal" />.
         /// </value>
         public Orientation Orientation
         {
@@ -219,7 +219,7 @@ namespace AppUIBasics
         /// Measures the child elements of a
         /// <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" /> in anticipation
         /// of arranging them during the
-        /// <see cref="Windows.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
+        /// <see cref="Microsoft.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
         /// pass.
         /// </summary>
         /// <param name="constraint">

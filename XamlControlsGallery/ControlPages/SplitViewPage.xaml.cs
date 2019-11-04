@@ -7,14 +7,14 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,15 +25,15 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class SplitViewPage : Page
     {
-        private ObservableCollection<NavLink> _navLinks =  new ObservableCollection<NavLink>()
+        private TestObservableCollection<NavLink> _navLinks =  new TestObservableCollection<NavLink>()
         {
-            new NavLink() { Label = "People", Symbol = Windows.UI.Xaml.Controls.Symbol.People  },
-            new NavLink() { Label = "Globe", Symbol = Windows.UI.Xaml.Controls.Symbol.Globe },
-            new NavLink() { Label = "Message", Symbol = Windows.UI.Xaml.Controls.Symbol.Message },
-            new NavLink() { Label = "Mail", Symbol = Windows.UI.Xaml.Controls.Symbol.Mail },
+            new NavLink() { Label = "People", Symbol = Symbol.People  },
+            new NavLink() { Label = "Globe", Symbol = Symbol.Globe },
+            new NavLink() { Label = "Message", Symbol = Symbol.Message },
+            new NavLink() { Label = "Mail", Symbol = Symbol.Mail },
         };
 
-        public ObservableCollection<NavLink> NavLinks
+        public TestObservableCollection<NavLink> NavLinks
         {
             get { return _navLinks; }
         }

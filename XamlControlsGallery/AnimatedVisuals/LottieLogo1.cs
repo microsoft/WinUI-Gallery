@@ -10,8 +10,8 @@ using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Numerics;
-using Windows.UI;
-using Windows.UI.Composition;
+using Microsoft.UI;
+using Microsoft.UI.Composition;
 
 namespace AnimatedVisuals
 {
@@ -20,22 +20,9 @@ namespace AnimatedVisuals
         public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
         {
             diagnostics = null;
-            if (!IsRuntimeCompatible())
-            {
-                return null;
-            }
             return new AnimatedVisual(compositor);
         }
-
-        static bool IsRuntimeCompatible()
-        {
-            if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Composition.CompositionGeometricClip"))
-            {
-                return false;
-            }
-            return true;
-        }
-
+        
         sealed class AnimatedVisual : IAnimatedVisual
         {
             const long c_durationTicks = 59670000;
@@ -95,17 +82,17 @@ namespace AnimatedVisuals
             // Rectangle Path 1
             CompositionColorBrush ColorBrush_AlmostDarkTurquoise_FF00D1C1()
             {
-                return _c.CreateColorBrush(Color.FromArgb(0xFF, 0x00, 0xD1, 0xC1));
+                return _c.CreateColorBrush(Windows.UI.Color.FromArgb(0xFF, 0x00, 0xD1, 0xC1));
             }
 
             CompositionColorBrush ColorBrush_AlmostTeal_FF007A87()
             {
-                return _colorBrush_AlmostTeal_FF007A87 = _c.CreateColorBrush(Color.FromArgb(0xFF, 0x00, 0x7A, 0x87));
+                return _colorBrush_AlmostTeal_FF007A87 = _c.CreateColorBrush(Windows.UI.Color.FromArgb(0xFF, 0x00, 0x7A, 0x87));
             }
 
             CompositionColorBrush ColorBrush_White()
             {
-                return _colorBrush_White = _c.CreateColorBrush(Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));
+                return _colorBrush_White = _c.CreateColorBrush(Windows.UI.Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));
             }
 
             CompositionPath CompositionPath_00()

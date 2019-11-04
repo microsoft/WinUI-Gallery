@@ -11,8 +11,8 @@ using AppUIBasics.Common;
 using AppUIBasics.Data;
 using System.Collections.Generic;
 using System.Linq;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {

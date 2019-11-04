@@ -1,207 +1,388 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using System.Text;
-using Windows.UI.Xaml.Data;
-using System.Runtime.CompilerServices;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+#define INDEI
+
+using System;
+using System.Numerics;
+using System.Threading.Tasks;
+using Windows.Foundation;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Collections;
 
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    /// 
-
-    //Class for the Page
     public sealed partial class InputValidationPage : Page
     {
         public InputValidationPage()
         {
+            ViewModel = new PurchaseViewModel();
             this.InitializeComponent();
-
-            ViewModel = new ViewModel();
         }
 
-        public ViewModel ViewModel { get; set; }
-        private void mailvalidation_TextChanged(object sender, TextChangedEventArgs e)
+        #region ViewModelProperty
+
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register("ViewModel", typeof(PurchaseViewModel), typeof(InputValidationPage), new PropertyMetadata(null));
+
+        public PurchaseViewModel ViewModel
         {
-            WinformsValidate(sender, e);
+            get { return GetValue(ViewModelProperty) as PurchaseViewModel; }
+            set { SetValue(ViewModelProperty, value); }
         }
 
-        private void WinformsValidate(object sender, TextChangedEventArgs e)
-        {
-            var foo = sender as TextBox;
-            var ErrorsCollection = Windows.UI.Xaml.Data.Validation.GetErrors(foo);
-            ErrorsCollection.Clear();
-            Windows.UI.Xaml.Data.Validation.AddErrorHandler(foo, OnValidationError);
+        #endregion
 
-            if (!new EmailAddressAttribute().IsValid(foo.Text))
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //CardHolderNameField.Focus(FocusState.Programmatic);
+            //PlayEntranceTransition();
+            /*
+            Microsoft.UI.Xaml.Controls.InputValidationError err = new Microsoft.UI.Xaml.Controls.InputValidationError("testing");
+            Windows.Foundation.Collections.IObservableVector<InputValidationError> validationErrors = CardHolderNameField.ValidationErrors;
+            Windows.Foundation.Collections.IObservableVector<Windows.UI.Xaml.Controls.InputValidationError> errorsCasted = Shim.ReinterpretCast<Windows.Foundation.Collections.IObservableVector<Windows.UI.Xaml.Controls.InputValidationError>>(validationErrors);
+            errorsCasted.Clear();
+            var errCasted = Shim.ReinterpretCast<Windows.UI.Xaml.Controls.InputValidationError>(err);
+            errorsCasted.Add(errCasted);
+            */
+        }
+
+        /*
+        private void PlayEntranceTransition()
+        {
+            var compositor = Window.Current.Compositor;
+
+            var easingFunction = compositor.CreateCubicBezierEasingFunction(new Vector2(0.1f, 0.9f), new Vector2(0.2f, 1f));
+            var duration = TimeSpan.FromMilliseconds(300);
+
+            var backdropVisual = ElementCompositionPreview.GetElementVisual(Backdrop);
+            var purchaseFormVisual = ElementCompositionPreview.GetElementVisual(PurchaseForm);
+
+            // Initial conditions
+            backdropVisual.Opacity = 0f;
+            purchaseFormVisual.Opacity = 0f;
+
+            // Set up animations
+            var backdropVisualOpacityAnim = compositor.CreateScalarKeyFrameAnimation();
+            backdropVisualOpacityAnim.Target = "Opacity";
+            backdropVisualOpacityAnim.Duration = duration;
+            backdropVisualOpacityAnim.InsertKeyFrame(1f, 1f, easingFunction);
+
+            var purchaseFormVisualOpacityAnim = compositor.CreateScalarKeyFrameAnimation();
+            purchaseFormVisualOpacityAnim.Target = "Opacity";
+            purchaseFormVisualOpacityAnim.Duration = duration;
+            purchaseFormVisualOpacityAnim.InsertKeyFrame(1f, 1f, easingFunction);
+
+            // Start animations
+            backdropVisual.StartAnimation(backdropVisualOpacityAnim.Target, backdropVisualOpacityAnim);
+            purchaseFormVisual.StartAnimation(purchaseFormVisualOpacityAnim.Target, purchaseFormVisualOpacityAnim);
+        }
+
+        public override Task PlayExitTransition()
+        {
+            var compositor = Window.Current.Compositor;
+
+            var easingFunction = compositor.CreateCubicBezierEasingFunction(new Vector2(0.7f, 0.0f), new Vector2(1.0f, 0.5f));
+            var duration = TimeSpan.FromMilliseconds(500);
+
+            var backdropVisual = ElementCompositionPreview.GetElementVisual(Backdrop);
+            var purchaseFormVisual = ElementCompositionPreview.GetElementVisual(PurchaseForm);
+
+            // Set up animations
+            var backdropVisualOpacityAnim = compositor.CreateScalarKeyFrameAnimation();
+            backdropVisualOpacityAnim.Target = "Opacity";
+            backdropVisualOpacityAnim.Duration = duration;
+            backdropVisualOpacityAnim.InsertKeyFrame(1f, 0f, easingFunction);
+
+            var purchaseFormVisualOpacityAnim = compositor.CreateScalarKeyFrameAnimation();
+            purchaseFormVisualOpacityAnim.Target = "Opacity";
+            purchaseFormVisualOpacityAnim.Duration = duration;
+            purchaseFormVisualOpacityAnim.InsertKeyFrame(1f, 0f, easingFunction);
+
+            // Start animations in scoped batch
+
+            var scopedBatch = compositor.CreateScopedBatch(Windows.UI.Composition.CompositionBatchTypes.Animation);
+
+            backdropVisual.StartAnimation(backdropVisualOpacityAnim.Target, backdropVisualOpacityAnim);
+            purchaseFormVisual.StartAnimation(purchaseFormVisualOpacityAnim.Target, purchaseFormVisualOpacityAnim);
+
+            scopedBatch.End();
+
+            // Set up task completion
+
+            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
+            TypedEventHandler<object, CompositionBatchCompletedEventArgs> completedHandler = null;
+            completedHandler = new TypedEventHandler<object, CompositionBatchCompletedEventArgs>((sender, args) =>
             {
-                ErrorsCollection = Windows.UI.Xaml.Data.Validation.GetErrors(foo);
-                ErrorsCollection.Add(new ValidationError("Email is not a valid email address"));
-            }
-        }
-        private void OnValidationError(object sender, ValidationErrorEventArgs e)
-        {
+                scopedBatch.Completed -= completedHandler;
+                tcs.SetResult(null);
+            });
+            scopedBatch.Completed += completedHandler;
 
+            return tcs.Task;
         }
-
+        */
     }
 
-    //ViewModel
-    public class ViewModel
+    public class PurchaseViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+#if INDEI
+        , Microsoft.UI.Xaml.Data.INotifyDataErrorInfo
+#endif
     {
-        public ViewModel()
+        public PurchaseViewModel()
         {
-            Person = new Person();
         }
 
-        public Person Person { get; set; }
-    }
+        private string _name;
 
-    public class Person : ValidationWrapper
-    {
-        [MinLength(4, ErrorMessage = "Name must be at least 4 characters")]
-        [MaxLength(6, ErrorMessage = "Name must be no more than 6 characters")]
+        [System.ComponentModel.DefaultValue("")]
+        [MinLength(5, ErrorMessage = "Name must be more than 4 characters")]
         public string Name
         {
-            get { return GetValue<string>("Name"); }
-            set { SetValue("Name", value); }
-        }
-    }
-
-    //ValidationWrapper
-    public class ValidationWrapper : NotifyDataErrorInfoBase, INotifyPropertyChanged
-    {
-        private readonly Dictionary<string, object> _values = new Dictionary<string, object>();
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #region get/set
-        protected T GetValue<T>(string propertyName)
-        {
-            if (string.IsNullOrEmpty(propertyName))
+            get
             {
-                throw new ArgumentException("Invalid property name", propertyName);
+                return _name;
             }
-
-            object value;
-            if (!_values.TryGetValue(propertyName, out value))
+            set
             {
-                value = default(T);
-                _values.Add(propertyName, value);
-            }
-            return (T)value;
-        }
-
-        // Validate() gets called from inside SetValue
-        protected void SetValue<T>(string propertyName, T value)
-        {
-            if (string.IsNullOrEmpty(propertyName))
-            {
-                throw new ArgumentException("Invalid property name", propertyName);
-            }
-
-            var current = GetValue<T>(propertyName);
-
-            if (!value.Equals(current))
-            {
-                _values[propertyName] = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                Validate(propertyName);
+                SetValue(ref _name, value);
             }
         }
-        #endregion
 
-        #region Populate errors (C# - DataAnnotations)
-        private Task Validate(string propertyName)
+        private string _cardNumber;
+        public string CardNumber
         {
-            ClearErrors();
-
-
-            return Task.Run(() =>
+            get
             {
-                var val = GetPropertyValue(propertyName);
-                var results = new ObservableCollection<ValidationResult>();
-                var context = new ValidationContext(this, null, null)
-                { MemberName = propertyName };
+                return _cardNumber;
+            }
+            set
+            {
+                SetValue(ref _cardNumber, value);
+            }
+        }
 
-                // Validator is from the .Net System.ComponentModel.DataAnnotations namespace
-                Validator.TryValidateProperty(val, context, results);
+        private string _address;
+        public string Address
+        {
+            get
+            {
+                return _address;
+            }
+            set
+            {
+                SetValue(ref _address, value);
+            }
+        }
 
-                foreach (var result in results)
+        private string _city;
+        public string City
+        {
+            get
+            {
+                return _city;
+            }
+            set
+            {
+                SetValue(ref _city, value);
+            }
+        }
+
+        private string _zip;
+        [CustomValidation(typeof(PurchaseViewModel), "ValidateZip")]
+        public string Zip
+        {
+            get
+            {
+                return _zip;
+            }
+            set
+            {
+                SetValue(ref _zip, value);
+            }
+        }
+
+        private string _cardExpirationMonth;
+        public string CardExpirationMonth
+        {
+            get
+            {
+                return _cardExpirationMonth;
+            }
+            set
+            {
+                SetValue(ref _cardExpirationMonth, value);
+            }
+        }
+
+        private string _cardExpirationYear;
+        public string CardExpirationYear
+        {
+            get
+            {
+                return _cardExpirationYear;
+            }
+            set
+            {
+                SetValue(ref _cardExpirationYear, value);
+            }
+        }
+
+        private string _ccv;
+        public string CCV
+        {
+            get
+            {
+                return _ccv;
+            }
+            set
+            {
+                SetValue(ref _ccv, value);
+            }
+        }
+
+        private string _billingAddress;
+        public string BillingAddress
+        {
+            get
+            {
+                return _billingAddress;
+            }
+            set
+            {
+                SetValue(ref _billingAddress, value);
+            }
+        }
+
+        private string _billingCity;
+        public string BillingCity
+        {
+            get
+            {
+                return _billingCity;
+            }
+            set
+            {
+                SetValue(ref _billingCity, value);
+            }
+        }
+
+        private string _billingZip;
+        [CustomValidation(typeof(PurchaseViewModel), "ValidateZip")]
+        public string BillingZip
+        {
+            get
+            {
+                return _billingZip;
+            }
+            set
+            {
+                SetValue(ref _billingZip, value);
+            }
+        }
+
+        public event Microsoft.UI.Xaml.Data.PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new Microsoft.UI.Xaml.Data.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #region INPC/INDEI
+        private void SetValue<T>(ref T currentValue, T newValue, [CallerMemberName] string propertyName = "")
+        {
+            if (!EqualityComparer<T>.Default.Equals(currentValue, newValue))
+            {
+                currentValue = newValue;
+                NotifyPropertyChanged(propertyName);
+                OnPropertyChanged(newValue, propertyName);
+            }
+        }
+
+        Dictionary<string, List<System.ComponentModel.DataAnnotations.ValidationResult>> _errors = new Dictionary<string, List<System.ComponentModel.DataAnnotations.ValidationResult>>();
+        public bool HasErrors
+        {
+            get
+            {
+                return _errors.Any();
+            }
+        }      
+
+#if INDEI
+        public event EventHandler<Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs> ErrorsChanged;
+#endif
+
+        private void OnPropertyChanged(object value, string propertyName)
+        {
+            ClearErrors(propertyName);
+            var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            var result = Validator.TryValidateProperty(
+                value,
+                new ValidationContext(this, null, null)
                 {
-                    Errors[propertyName].Add(new ValidationError(result.ErrorMessage));
-                }
+                    MemberName = propertyName
+                },
+                results
+                );
 
-                OnErrorsChanged(propertyName);
-            });
-        }
-        #endregion
-
-        #region privates
-        private object GetPropertyValue([CallerMemberName] string propertyName = "")
-        {
-            return _values.ContainsKey(propertyName) ? _values[propertyName] : null;
-        }
-
-        #endregion
-    }
-
-    //NotifyDataErrorInfoBase
-    public class NotifyDataErrorInfoBase : Windows.UI.Xaml.Data.INotifyDataErrorInfo
-    {
-        protected readonly Dictionary<string, ObservableCollection<ValidationError>> Errors;
-
-        protected NotifyDataErrorInfoBase()
-        {
-            Errors = new Dictionary<string, ObservableCollection<ValidationError>>();
-        }
-
-        public bool HasErrors => Errors.Any();
-
-        public event EventHandler<Windows.UI.Xaml.Data.DataErrorsChangedEventArgs> ErrorsChanged;
-
-        IEnumerable<object> Windows.UI.Xaml.Data.INotifyDataErrorInfo.GetErrors(string propertyName)
-        {
-            return propertyName != null && Errors.ContainsKey(propertyName)
-                ? Errors[propertyName] as IEnumerable<ValidationError>
-                : new ObservableCollection<ValidationError>() as IEnumerable<ValidationError>;
-        }
-
-        protected virtual void OnErrorsChanged(string propertyName)
-        {
-            ErrorsChanged?.Invoke(this, new Windows.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
-        }
-
-        protected void ClearErrors()
-        {
-            foreach (var propertyName in Errors.Keys.ToList())
+            if (!result)
             {
-                Errors.Remove(propertyName);
-                OnErrorsChanged(propertyName);
+                AddErrors(propertyName, results);
             }
         }
 
-        //IEnumerable<object> Windows.UI.Xaml.Data.INotifyDataErrorInfo.GetErrors(string propertyName)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public static ValidationResult ValidateZip(string zip)
+        {
+            if (!zip.Any(x => char.IsLetter(x)))
+            {
+                return ValidationResult.Success;
+            }
+            else
+            {
+                return new ValidationResult(
+                    "Zip code must contain numbers only");
+            }
+        }
+
+        private void AddErrors(string propertyName, IEnumerable<ValidationResult> results)
+        {
+            List<ValidationResult> errors = null;
+            if (!_errors.TryGetValue(propertyName, out errors))
+            {
+                errors = new List<ValidationResult>();
+                _errors.Add(propertyName, errors);
+            }
+
+            errors.AddRange(results);
+#if INDEI
+            ErrorsChanged?.Invoke(this, new Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
+#endif
+        }
+
+        private void ClearErrors(string propertyName)
+        {
+            if (_errors.TryGetValue(propertyName, out var errors))
+            {
+                errors.Clear();
+#if INDEI
+                ErrorsChanged?.Invoke(this, new Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
+#endif
+            }
+        }
+
+        public IEnumerable<object> GetErrors(string propertyName)
+        {
+            return _errors[propertyName];
+        }
+
+        #endregion
     }
 }

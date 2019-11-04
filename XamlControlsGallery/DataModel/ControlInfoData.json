@@ -617,6 +617,20 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "InputValidation",
+          "Title": "InputValidation",
+          "Subtitle": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
+          "ImagePath": "ms-appx:///Assets/TextBox.png",
+          "Description": "A feature to display developer-defined errors for text values",
+          "Content": "<p>Look at the <i>InputValidationPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [],
+          "RelatedControls": [
+            "TextBox",
+            "PasswordBox"
+          ]
+        },
+        {
           "UniqueId": "Button",
           "Title": "Button",
           "Subtitle": "A control that responds to user input and raises a Click event.",

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using mux = Microsoft.UI.Xaml.Controls;
 
 
@@ -17,7 +17,7 @@ namespace AppUIBasics.ControlPages
     {
         mux.TreeViewNode personalFolder;
         mux.TreeViewNode personalFolder2;
-        private ObservableCollection<ExplorerItem> DataSource;
+        private TestObservableCollection<ExplorerItem> DataSource;
 
         public TreeViewPage()
         {
@@ -85,9 +85,9 @@ namespace AppUIBasics.ControlPages
             return;
         }
         
-        private ObservableCollection<ExplorerItem> GetData()
+        private TestObservableCollection<ExplorerItem> GetData()
         {
-            var list = new ObservableCollection<ExplorerItem>();
+            var list = new TestObservableCollection<ExplorerItem>();
             ExplorerItem folder1 = new ExplorerItem()
             {
                 Name = "Work Documents",
@@ -174,14 +174,14 @@ namespace AppUIBasics.ControlPages
         public enum ExplorerItemType { Folder, File };
         public String Name { get; set; }
         public ExplorerItemType Type { get; set; }
-        private ObservableCollection<ExplorerItem> m_children;
-        public ObservableCollection<ExplorerItem> Children
+        private TestObservableCollection<ExplorerItem> m_children;
+        public TestObservableCollection<ExplorerItem> Children
         {
             get
             {
                 if (m_children == null)
                 {
-                    m_children = new ObservableCollection<ExplorerItem>();
+                    m_children = new TestObservableCollection<ExplorerItem>();
                 }
                 return m_children;
             }

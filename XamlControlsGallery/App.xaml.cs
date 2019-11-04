@@ -20,11 +20,11 @@ using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.System.Profile;
-using Windows.UI;
+using Microsoft.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {
@@ -101,7 +101,7 @@ namespace AppUIBasics
         {
             ElementSoundPlayer.State = ElementSoundPlayerState.On;
 
-            if(!withSpatial)
+            if (!withSpatial)
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             else
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
@@ -150,13 +150,13 @@ namespace AppUIBasics
 #endif
             //draw into the title bar
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            
+
             await EnsureWindow(args);
         }
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
         {
-            
+
         }
 
         protected async override void OnActivated(IActivatedEventArgs args)

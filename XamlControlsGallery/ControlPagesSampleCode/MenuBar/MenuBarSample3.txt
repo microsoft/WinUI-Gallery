@@ -1,5 +1,5 @@
-﻿<muxc:MenuBar>
-  <muxc:MenuBarItem Title="File">
+﻿<MenuBar>
+  <MenuBarItem Title="File">
     <MenuFlyoutItem Text="New">
       <MenuFlyoutItem.KeyboardAccelerators>
         <KeyboardAccelerator Modifiers="Control" Key="N"/>
@@ -20,9 +20,9 @@
         <KeyboardAccelerator Modifiers="Control" Key="E"/>
       </MenuFlyoutItem.KeyboardAccelerators>
     </MenuFlyoutItem>
-  </muxc:MenuBarItem>
+  </MenuBarItem>
 
-  <muxc:MenuBarItem Title="Edit">
+  <MenuBarItem Title="Edit">
     <MenuFlyoutItem Text="Undo">
       <MenuFlyoutItem.KeyboardAccelerators>
         <KeyboardAccelerator Modifiers="Control" Key="Z"/>
@@ -43,13 +43,13 @@
         <KeyboardAccelerator Modifiers="Control" Key="V"/>
       </MenuFlyoutItem.KeyboardAccelerators>
     </MenuFlyoutItem>
-  </muxc:MenuBarItem>
+  </MenuBarItem>
 
-  <muxc:MenuBarItem Title="Help">
+  <MenuBarItem Title="Help">
     <MenuFlyoutItem Text="About">
       <MenuFlyoutItem.KeyboardAccelerators>
         <KeyboardAccelerator Modifiers="Control" Key="I"/>
       </MenuFlyoutItem.KeyboardAccelerators>
     </MenuFlyoutItem>
-  </muxc:MenuBarItem>
-</muxc:MenuBar>
+  </MenuBarItem>
+</MenuBar>

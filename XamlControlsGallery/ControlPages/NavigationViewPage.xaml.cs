@@ -4,19 +4,10 @@ using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Diagnostics;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
 using System.Linq;
-using Windows.UI.Xaml.Input;
 using Windows.System;
-using Windows.UI.ViewManagement;
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using AppUIBasics.Data;
-using Windows.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,7 +24,7 @@ namespace AppUIBasics.ControlPages
 
         public VirtualKey ArrowKey;
 
-        public ObservableCollection<CategoryBase> Categories { get; set; }
+        public TestObservableCollection<CategoryBase> Categories { get; set; }
 
         public NavigationViewPage()
         {
@@ -44,7 +35,7 @@ namespace AppUIBasics.ControlPages
             nvSample6.SelectedItem = nvSample6.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             nvSample7.SelectedItem = nvSample7.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
 
-            Categories = new ObservableCollection<CategoryBase>();
+            Categories = new TestObservableCollection<CategoryBase>();
             Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
             Categories.Add(firstCategory);
             Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });
@@ -179,7 +170,7 @@ namespace AppUIBasics.ControlPages
  
         private void databindHeader_Checked(object sender, RoutedEventArgs e)
         {
-            Categories = new ObservableCollection<CategoryBase>()
+            Categories = new TestObservableCollection<CategoryBase>()
             {
                 new Header { Name = "Header1 "},
                 new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
@@ -193,7 +184,7 @@ namespace AppUIBasics.ControlPages
 
         private void databindHeader_Checked_Unchecked(object sender, RoutedEventArgs e)
         {
-            Categories = new ObservableCollection<CategoryBase>()
+            Categories = new TestObservableCollection<CategoryBase>()
             {
                 new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
                 new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" },
@@ -202,7 +193,7 @@ namespace AppUIBasics.ControlPages
             };
         }
 
-        private void Grid_ManipulationDelta1(object sender, Windows.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs e)
+        private void Grid_ManipulationDelta1(object sender, Microsoft.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs e)
         {
             var grid = sender as Grid;
             grid.Width = grid.ActualWidth + e.Delta.Translation.X;
@@ -254,7 +245,7 @@ namespace AppUIBasics.ControlPages
 
         private void setASBSubstitutionString()
         {
-            navViewASB.Value = "\r\n    <muxc:NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "muxc:NavigationView.AutoSuggestBox> \r\n";
+            navViewASB.Value = "\r\n    <NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "NavigationView.AutoSuggestBox> \r\n";
         }
 
         private void panemc_Check_Click(object sender, RoutedEventArgs e)

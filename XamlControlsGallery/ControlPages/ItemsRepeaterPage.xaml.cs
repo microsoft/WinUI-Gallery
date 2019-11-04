@@ -6,13 +6,13 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -25,7 +25,7 @@ namespace AppUIBasics.ControlPages
         private int MaxLength = 425;
         private bool isHorizontal = false;
 
-        public ObservableCollection<Bar> BarItems;
+        public TestObservableCollection<Bar> BarItems;
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -37,7 +37,7 @@ namespace AppUIBasics.ControlPages
         {
             if (BarItems == null)
             {
-                BarItems = new ObservableCollection<Bar>();
+                BarItems = new TestObservableCollection<Bar>();
             }
             BarItems.Add(new Bar(300, this.MaxLength));
             BarItems.Add(new Bar(25, this.MaxLength));

@@ -16,16 +16,14 @@ using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
 using System.Reflection;
 
 namespace AppUIBasics
@@ -170,6 +168,22 @@ namespace AppUIBasics
             base.OnNavigatedTo(e);
         }
 
+        protected override void OnKeyDown(KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Escape)
+            {
+                this.Item = null;
+                if (this.contentFrame.CanGoBack)
+                {
+                    this.contentFrame.GoBack();
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(AllControlsPage));
+                }
+            }
+        }
+
         void PlayConnectedAnimation()
         {
             if (NavigationRootPage.Current.PageHeader != null)
@@ -203,7 +217,7 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
-            //Reverse Connected Animation
+            // Reverse Connected Animation
             if (e.SourcePageType != typeof(ItemPage))
             {
                 var target = NavigationRootPage.Current.PageHeader.TitlePanel;
@@ -214,9 +228,12 @@ namespace AppUIBasics
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
             Frame contentFrameAsFrame = contentFrame as Frame;
             Page innerPage = contentFrameAsFrame.Content as Page;
-            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            if (innerPage != null)
+            {
+                MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                dynMethod.Invoke(innerPage, new object[] { e });
+            }
 
             base.OnNavigatedFrom(e);
         }

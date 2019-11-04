@@ -13,7 +13,7 @@
         </Style>
     </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:ControlExample HeaderText="Automatically animate changes to Opacity" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Automatically animate changes to Opacity" >
             <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
 
             <local:ControlExample.Options>
@@ -46,7 +46,7 @@ private void button_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Rotation" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Automatically animate changes to Rotation" >
             <Rectangle x:Name="RotationRectangle" Width="50" Height="50" VerticalAlignment="Center" Margin="45,5,5,5" >
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -86,7 +86,7 @@ private void button_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Scale" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Automatically animate changes to Scale" >
             <Rectangle x:Name="ScaleRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Top" Margin="45,5,5,5" />
 
             <local:ControlExample.Options>
@@ -126,7 +126,7 @@ private void button_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Translation" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Automatically animate changes to Translation" >
             <Rectangle x:Name="TranslateRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Top" Margin="45,5,5,5" />
 
             <local:ControlExample.Options>
@@ -167,7 +167,7 @@ private void button_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Implicitly animate when the Background changes" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Implicitly animate when the Background changes" >
             <ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="50" Height="50" VerticalAlignment="Top" Margin="45,5,5,5" />
             <local:ControlExample.Options>
                 <Button Content="Change Background Color" Click="BackgroundButton_Click"  />
@@ -199,7 +199,7 @@ private void button_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Implicitly animate when the Grid's theme changes" MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Implicitly animate when the Grid's theme changes" >
             <Grid x:Name="ThemeExampleGrid" 
                   BorderThickness="1" 
                   BorderBrush="DimGray" 

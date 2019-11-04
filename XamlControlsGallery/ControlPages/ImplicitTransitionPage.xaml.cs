@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls.Primitives;
 
 namespace AppUIBasics.ControlPages
 {
@@ -19,9 +20,6 @@ namespace AppUIBasics.ControlPages
 
         void SetupImplicitTransitionsIfAPIAvailable()
         {
-            // If the API is not present, simply no-op.
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             OpacityRectangle.OpacityTransition = new ScalarTransition();
             RotationRectangle.RotationTransition = new ScalarTransition();
             ScaleRectangle.ScaleTransition = new Vector3Transition();
@@ -32,9 +30,6 @@ namespace AppUIBasics.ControlPages
 
         private void OpacityButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var customValue = 0.0;
             try
             {
@@ -58,9 +53,6 @@ namespace AppUIBasics.ControlPages
         }
         private void RotationButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
             float customValue = 0;
@@ -87,9 +79,6 @@ namespace AppUIBasics.ControlPages
         }
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var _scaleTransition = ScaleRectangle.ScaleTransition;
 
             _scaleTransition.Components = ((ScaleX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
@@ -136,9 +125,6 @@ namespace AppUIBasics.ControlPages
 
         private void TranslateButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var _translationTransition = TranslateRectangle.TranslationTransition;
 
             _translationTransition.Components = ((TranslateX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
@@ -195,7 +181,7 @@ namespace AppUIBasics.ControlPages
             formatFlyout.Content = new TextBlock();
             formatFlyout.FlyoutPresenterStyle = FlyoutPresenterStyle;
             (formatFlyout.Content as TextBlock).Text = message;
-            formatFlyout.Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+            formatFlyout.Placement = FlyoutPlacementMode.Top;
             formatFlyout.ShowAt(element);
             (formatFlyout.Content as TextBlock).Focus(FocusState.Programmatic);
         }
@@ -224,16 +210,14 @@ namespace AppUIBasics.ControlPages
 
         private void BackgroundButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            if ((BrushPresenter.Background as SolidColorBrush).Color == Windows.UI.Colors.Blue)
+            if ((BrushPresenter.Background as SolidColorBrush).Color == Microsoft.UI.Colors.Blue)
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
             }
             else
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Blue);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue);
             }
         }
 

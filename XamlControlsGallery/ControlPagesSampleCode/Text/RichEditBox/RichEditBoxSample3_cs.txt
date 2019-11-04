@@ -73,13 +73,13 @@ private void ColorButton_Click(object sender, RoutedEventArgs e)
 {
     // Extract the color of the button that was clicked.
     Button clickedColor = (Button)sender;
-    var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-    var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+    var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+    var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
     editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
     fontColorButton.Flyout.Hide();
-    editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+    editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
     currentColor = color;
 }
 

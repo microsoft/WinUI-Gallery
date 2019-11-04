@@ -21,14 +21,13 @@ using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation.Metadata;
-using Windows.UI;
+using Microsoft.UI;
+using Windows.Foundation;
 
 namespace AppUIBasics
 {
@@ -92,7 +91,8 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-            Window.Current.SetTitleBar(AppTitleBar);
+            // Bug 23809028: Window.Current.SetTitleBar is not available in MUX [XamlControlsGallery]
+            // Window.Current.SetTitleBar(AppTitleBar);
 
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
 
@@ -101,7 +101,8 @@ namespace AppUIBasics
 
             // remove the solid-colored backgrounds behind the caption controls and system back button
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
-            Loaded += delegate (object sender, RoutedEventArgs e) {
+            Loaded += delegate (object sender, RoutedEventArgs e)
+            {
                 ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
@@ -134,9 +135,10 @@ namespace AppUIBasics
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
         {
-            //ensure the custom title bar does not overlap window caption controls
-            Thickness currMargin = AppTitleBar.Margin;
-            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
+            var full = (ApplicationView.GetForCurrentView().IsFullScreenMode);
+            var left = 12 + (full ? 0 : coreTitleBar.SystemOverlayLeftInset);
+            AppTitle.Margin = new Thickness() { Left = left, Top = 8, Right = 0, Bottom = 0 };
+            AppTitleBar.Height = coreTitleBar.Height;
         }
 
         public bool CheckNewControlSelected()
@@ -340,51 +342,65 @@ namespace AppUIBasics
 
         private void NavigationViewControl_DisplayModeChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs args)
         {
-            Thickness currMargin = AppTitleBar.Margin;
-            if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
-            {
-                AppTitleBar.Margin = new Thickness((sender.CompactPaneLength * 2), currMargin.Top, currMargin.Right, currMargin.Bottom);
-
-            }
-            else
-            {
-                AppTitleBar.Margin = new Thickness(sender.CompactPaneLength, currMargin.Top, currMargin.Right, currMargin.Bottom);
-            }
-
             UpdateAppTitleMargin(sender);
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
         {
-            const int smallLeftIndent = 4, largeLeftIndent = 24;
+            const int smallLeftIndent = 0, largeLeftIndent = 34;
 
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+            AppTitle.TranslationTransition = new Vector3Transition();
+
+            if (sender.IsPaneOpen == false && (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded ||
+                sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact))
             {
-                AppTitle.TranslationTransition = new Vector3Transition();
-
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
-                {
-                    AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
-                }
-                else
-                {
-                    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
-                }
+                AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
             }
             else
             {
-                Thickness currMargin = AppTitle.Margin;
-
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
-                {
-                    AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-                }
-                else
-                {
-                    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
-                }
+                AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
             }
         }
+
+        #region Helpers for test automation
+
+        private static string _error = string.Empty;
+        private static string _log = string.Empty;
+
+        private async void WaitForIdleInvokerButton_Click(object sender, RoutedEventArgs e)
+        {
+            _idleStateEnteredCheckBox.IsChecked = false;
+            await Windows.System.Threading.ThreadPool.RunAsync(WaitForIdleWorker);
+
+            _logReportingTextBox.Text = _log;
+
+            if (_error.Length == 0)
+            {
+                _idleStateEnteredCheckBox.IsChecked = true;
+            }
+            else
+            {
+                // Setting Text will raise a property-changed event, so even if we
+                // immediately set it back to the empty string, we'll still get the
+                // error-reported event that we can detect and handle.
+                _errorReportingTextBox.Text = _error;
+                _errorReportingTextBox.Text = string.Empty;
+
+                _error = string.Empty;
+            }
+        }
+
+        private static void WaitForIdleWorker(IAsyncAction action)
+        {
+            _error = IdleSynchronizer.TryWait(out _log);
+        }
+
+        private void CloseAppInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
+        #endregion
     }
 
 

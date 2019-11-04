@@ -14,8 +14,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -75,12 +75,12 @@ namespace AppUIBasics.ControlPages
         }
 
         #region Public Methods
-        public static async Task<ObservableCollection<Contact>> GetContactsAsync()
+        public static async Task<TestObservableCollection<Contact>> GetContactsAsync()
         {
             StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Contacts.txt"));
             IList<string> lines = await FileIO.ReadLinesAsync(file);
 
-            var contacts = new ObservableCollection<Contact>();
+            var contacts = new TestObservableCollection<Contact>();
 
             for (int i = 0; i < lines.Count; i += 3)
             {
@@ -90,14 +90,14 @@ namespace AppUIBasics.ControlPages
             return contacts;
         }
 
-        public static async Task<ObservableCollection<GroupInfoList>> GetContactsGroupedAsync()
+        public static async Task<TestObservableCollection<GroupInfoList>> GetContactsGroupedAsync()
         {
             var query = from item in await GetContactsAsync()
                         group item by item.LastName.Substring(0, 1).ToUpper() into g
                         orderby g.Key
                         select new GroupInfoList(g) { Key = g.Key };
 
-            return new ObservableCollection<GroupInfoList>(query);
+            return new TestObservableCollection<GroupInfoList>(query);
         }
 
         public override string ToString()
