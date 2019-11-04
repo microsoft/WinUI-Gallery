@@ -13,7 +13,7 @@ description: Demonstrates the usage of all XAML/WinUI controls in an interactive
 
 > **Note:** WinUI 3 Alpha is in the `winui3alpha` branch. So after cloning, make sure you checkout the branch, or use this command line to create the clone:
 
-> `git clone --single-branch  --branch winui3alpha https://github.com/microsoft/Xaml-Controls-Gallery.git`
+> `git clone --single-branch --branch winui3alpha https://github.com/microsoft/Xaml-Controls-Gallery.git`
 
 
 # XAML Controls Gallery
