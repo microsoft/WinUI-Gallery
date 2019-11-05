@@ -1127,7 +1127,6 @@
     <PackageReference Include="Microsoft.WinUI">
       <Version>3.0.0-alpha.191101.0</Version>
     </PackageReference>
-
     <!--  This package cannot be used since it is compiled against Windows.UI.Xaml 
       PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
