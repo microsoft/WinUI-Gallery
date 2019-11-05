@@ -1113,6 +1113,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs.Desktop, Version=14.0">
+      <Name>Visual C++ 2015 UWP Desktop Runtime for native apps</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
     </PackageReference>
@@ -1127,6 +1132,7 @@
     <PackageReference Include="Microsoft.WinUI">
       <Version>3.0.0-alpha.191101.0</Version>
     </PackageReference>
+
     <!--  This package cannot be used since it is compiled against Windows.UI.Xaml 
       PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
