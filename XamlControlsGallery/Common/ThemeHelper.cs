@@ -13,7 +13,8 @@ namespace AppUIBasics.Common
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
         private static Window CurrentApplicationWindow;
-
+        // Keep reference so it does not optimized/gc'ed away
+        private static UISettings uiSettings;
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
         /// root element, or if that value is Default, the requested theme of the Application.
@@ -72,17 +73,17 @@ namespace AppUIBasics.Common
             }
 
             // Registering to color changes, thus we notice when user changes theme system wide
-            UISettings uiSettings = new UISettings();
+            uiSettings = new UISettings();
             uiSettings.ColorValuesChanged += UiSettings_ColorValuesChanged;
         }
 
-        private async static void UiSettings_ColorValuesChanged(UISettings sender, object args)
+        private static void UiSettings_ColorValuesChanged(UISettings sender, object args)
         {
             // Make sure we have a reference to our window so we dispatch a UI change
             if (CurrentApplicationWindow != null)
             {
                 // Dispatch on UI thread so that we have a current appbar to access and change
-                await CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+                CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
                         {
                             UpdateSystemCaptionButtonColors();
                         });
