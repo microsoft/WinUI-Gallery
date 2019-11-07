@@ -30,7 +30,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Guidelines",
@@ -55,7 +55,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls. E.g. Save, Open, Copy, Paste, etc.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Guidelines",
@@ -80,7 +80,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarButton.png",
           "Description": "App bar buttons differ from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Use the <b>Label</b> and <b>Icon</b> properties to define the content of the app bar buttons. Set the <b>Label</b> property to a string to specify the text label. The label is shown by default but is hidden when the button is in its compact state, so you also need to specify a meaningful icon. To do that, set the button's <b>Icon</b> property to an element derived from the <b>IconElement</b> class. Four kinds of icon elements are provided:</p><p><b>FontIcon</b> - The icon is based on a glyph from the specified font family.</p><p><b>BitmapIcon</b> - The icon is based on a bitmap image file with the specified Uri.</p><p><b>PathIcon</b> - The icon is based on Path data.</p><p><b>SymbolIcon</b> - The icon is based on a predefined list of glyphs from the Segoe UI Symbol font.</p><p>Look at the <i>AppBarButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "AppBarButton - API",
@@ -116,7 +116,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons and separators on this page change.</p><p>When the <b>IsCompact</b> property is true, the padding around the <b>AppBarSeparator</b> is reduced.</p><p>Look at the <i>AppBarSeparatorPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "AppBarSeparator - API",
@@ -140,7 +140,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarToggleButton.png",
           "Description": "An AppBarToggleButton looks like an AppBarButton, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Look at the <i>AppBarToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "AppBarToggleButton - API",
@@ -180,7 +180,7 @@
           "ImagePath": "ms-appx:///Assets/CommandBar.png",
           "Description": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
           "Content": "<p>The bottom app bar on this page is a <b>CommandBar</b> control.</p><p>Add secondary commands and then resize the app to see how the <b>CommandBar</b> automatically adapts to different widths.</p><p>This <b>CommandBar</b> element is in the ItemPage so it can be shared across all control pages in the app. Look at the <i>ItemPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "CommandBar - API",
@@ -202,7 +202,7 @@
           "Title": "MenuBar",
           "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
-          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
+          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
           "Content": "",
           "IsUpdated": true,
           "Docs": [
@@ -229,7 +229,7 @@
           "ImagePath": "ms-appx:///Assets/CommandBarFlyout.png",
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "CommandBarFlyout - API",
@@ -358,7 +358,7 @@
           "ImagePath": "ms-appx:///Assets/GridView.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "GridView - API",
@@ -407,7 +407,6 @@
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
           "IsUpdated": true,
           "Docs": [
             {
@@ -465,7 +464,7 @@
           "ImagePath": "ms-appx:///Assets/TreeView.png",
           "Description": "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items. ",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "TreeView - API",
@@ -484,7 +483,7 @@
           "ImagePath": "ms-appx:///Assets/GridView.png",
           "Description": "The DataGrid control provides a flexible way to display a collection of data in rows and columns.",
           "Content": "The DataGrid control presents data in a customizable table of rows and columns.",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "DataGrid - API",
@@ -623,7 +622,7 @@
           "ImagePath": "ms-appx:///Assets/Button.png",
           "Description": "The Button control provides a Click event to respond to user input from a touch, mouse, keyboard, stylus, or other input device. You can put different kinds of content in a button, such as text or an image, or you can restyle a button to give it a new look.",
           "Content": "<p>The main purpose of a <b>Button</b> is to make something happen when a user clicks it. There are two ways you can make something happen:</p><ul><li>Handle the <b>Click</b> event.</li><li>Bind the <b>Command</b> property to an ICommand implementation that describes the command logic.</li></ul><p>Buttons often have only simple string content, but you can use any object as content. You can also change the style and template to give them any look you want.</p><p>Look at the <i>ButtonPage.xaml</i> file in Visual Studio to see the custom button style and template definitions used on this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Button - API",
@@ -648,7 +647,7 @@
           "ImagePath": "ms-appx:///Assets/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "DropDownButton - API",
@@ -701,7 +700,7 @@
           "ImagePath": "ms-appx:///Assets/Button.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RepeatButton - API",
@@ -726,7 +725,7 @@
           "ImagePath": "ms-appx:///Assets/ToggleButton.png",
           "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p><b>ToggleButton</b> is used as a base class for similar controls like <b>CheckBox</b> and <b>RadioButton</b>. It can be used on its own, but don't use it if a <b>CheckBox</b>, <b>RadioButton</b>, or <b>ToggleSwitch</b> would convey your intent better.</p><p>Look at the <i>ToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ToggleButton - API",
@@ -749,11 +748,11 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
-          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
-          "IsNew": true,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "SplitButton - API",
@@ -781,7 +780,7 @@
           "ImagePath": "ms-appx:///Assets/ToggleSplitButton.png",
           "Description": "A version of the SplitButton where the activation target toggles on/off.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "ToggleSplitButton - API",
@@ -854,8 +853,7 @@
           "ImagePath": "ms-appx:///Assets/ComboBox.png",
           "Description": "Use a ComboBox when you need to conserve on-screen space and when users select only one option at a time. A ComboBox shows only the currently selected item.",
           "Content": "",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ComboBox - API",
@@ -1035,7 +1033,7 @@
           "ImagePath": "ms-appx:///Assets/ToolTip.png",
           "Description": "A ToolTip shows more information about a UI element. You might show information about what the element does, or what the user should do. The ToolTip is shown when a user hovers over or presses and holds the UI element.",
           "Content": "<p>Look at the <i>ToolTipPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ToolTip - API",
@@ -1671,7 +1669,7 @@
           "ImagePath": "ms-appx:///Assets/WebView.png",
           "Description": "A control that hosts HTML content in an app.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "WebView - API",
@@ -1706,7 +1704,7 @@
           "ImagePath": "ms-appx:///Assets/AcrylicBrush.png",
           "Description": "A translucent material recommended for panel backgrounds.",
           "Content": "",
-          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Acrylic - API",
@@ -1779,7 +1777,7 @@
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Theme Editor (GitHub)",
@@ -1802,7 +1800,7 @@
           "ImagePath": "ms-appx:///Assets/CompactSizing.png",
           "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Spacing",
@@ -1985,7 +1983,7 @@
           "ImagePath": "ms-appx:///Assets/ConnectedAnimations.png",
           "Description": "Connected animations continue elements during page navigation and help the user maintain their context between views.",
           "Content": "<p>Look at the <i>ConnectedAnimationPage.xaml</i> and <i>ConnectedAnimationPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "ConnectedAnimation - API",
@@ -2016,7 +2014,7 @@
           "ImagePath": "ms-appx:///Assets/EasingFunctions.png",
           "Description": "Easing is a way to manipulate the velocity of an object as it animates.",
           "Content": "<p>Look at the <i>EasingFunctionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "EasingFunctionBase - API",
@@ -2044,7 +2042,7 @@
           "ImagePath": "ms-appx:///Assets/Transitions.png",
           "Description": "Page transitions provide visual feedback about the relationship between pages.",
           "Content": "<p>Look at the <i>PageTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "NavigationThemeTransition - API",
@@ -2071,7 +2069,7 @@
           "ImagePath": "ms-appx:///Assets/Transitions.png",
           "Description": "Theme transitions are pre-packaged, easy-to-apply animations.",
           "Content": "<p>Look at the <i>ThemeTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "Transitions - API",
@@ -2096,7 +2094,7 @@
           "Title": "Animation interop",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
           "ImagePath": "ms-appx:///Assets/StoryboardAnimation.png",
-          "IsNew": true,
+          "IsNew": false,
           "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
           "Content": "<p>Look at the <i>XamlCompInterop.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
@@ -2126,7 +2124,7 @@
           "Title": "Implicit Transitions",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
           "ImagePath": "ms-appx:///Assets/Transitions.png",
-          "IsNew": true,
+          "IsNew": false,
           "Description": "Use Implicit Transitions to automatically animate changes to properties.",
           "Content": "<p>Look at the <i>ImplicitTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [

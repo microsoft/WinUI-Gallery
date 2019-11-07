@@ -1,18 +1,13 @@
-﻿using System;
+﻿using AppUIBasics.Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -26,6 +21,7 @@ namespace AppUIBasics.ControlPages
         private bool isHorizontal = false;
 
         public ObservableCollection<Bar> BarItems;
+
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -42,6 +38,78 @@ namespace AppUIBasics.ControlPages
             BarItems.Add(new Bar(300, this.MaxLength));
             BarItems.Add(new Bar(25, this.MaxLength));
             BarItems.Add(new Bar(175, this.MaxLength));
+
+            List<object> basicData = new List<object>();
+            basicData.Add(64);
+            basicData.Add("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+            basicData.Add(128);
+            basicData.Add("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+            basicData.Add(256);
+            basicData.Add("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
+            basicData.Add(512);
+            basicData.Add("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+            basicData.Add(1024);
+            MixedTypeRepeater.ItemsSource = basicData;
+
+            List<NestedCategory> nestedCategories = new List<NestedCategory>();
+            nestedCategories.Add(
+                new NestedCategory("Fruits",  new ObservableCollection<string>{
+                                                            "Apricots",
+                                                            "Bananas",
+                                                            "Grapes",
+                                                            "Strawberries",
+                                                            "Watermelon",
+                                                            "Plums",
+                                                            "Blueberries"
+                }));
+
+            nestedCategories.Add(
+                new NestedCategory("Vegetables", new ObservableCollection<string>{
+                                                            "Broccoli",
+                                                            "Spinach",
+                                                            "Sweet potato",
+                                                            "Cauliflower",
+                                                            "Onion",
+                                                            "Brussel sprouts",
+                                                            "Carrots"
+                }));
+
+            nestedCategories.Add(
+                new NestedCategory("Grains", new ObservableCollection<string>{
+                                                            "Rice",
+                                                            "Quinoa",
+                                                            "Pasta",
+                                                            "Bread",
+                                                            "Farro",
+                                                            "Oats",
+                                                            "Barley"
+                }));
+
+            nestedCategories.Add(
+                new NestedCategory("Proteins", new ObservableCollection<string>{
+                                                            "Steak",
+                                                            "Chicken",
+                                                            "Tofu",
+                                                            "Salmon",
+                                                            "Pork",
+                                                            "Chickpeas",
+                                                            "Eggs"
+                }));
+
+            outerRepeater.ItemsSource = nestedCategories;
+
+            // Set sample code to display on page's initial load
+            SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
+
+            SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
+    <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
+        <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}"" 
+                   Height=""24"" HorizontalAlignment=""Left""/> 
+    </Border>
+</DataTemplate>";
+
+            SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
+                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -94,6 +162,17 @@ namespace AppUIBasics.ControlPages
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 
             layout2.Value = layoutKey;
+
+            if (layoutKey == "UniformGridLayout2")
+            {
+                SampleCodeLayout2.Value = @"<muxc:UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
+                   MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
+            }
+            else if (layoutKey == "MyFeedLayout")
+            {
+                SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
+                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            }
         }
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)
@@ -107,6 +186,14 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "HorizontalBarTemplate";
 
                 repeater.MaxWidth = MaxLength + 12;
+
+                SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
+    <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
+        <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}""
+                   Height=""24"" HorizontalAlignment=""Left""/> 
+    </Border>
+</DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
@@ -114,6 +201,14 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "VerticalBarTemplate";
 
                 repeater.MaxWidth = 6000;
+
+                SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""HorizontalStackLayout"" Orientation=""Horizontal"" Spacing=""8""/> ";
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""l:Bar"">
+    <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
+        <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Height}"" 
+                   Width=""48"" VerticalAlignment=""Top""/>
+    </Border>
+</DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
@@ -121,8 +216,17 @@ namespace AppUIBasics.ControlPages
                 itemTemplateKey = "CircularTemplate";
 
                 repeater.MaxWidth = 540;
-            }
 
+                SampleCodeLayout.Value = @"<muxc:UniformGridLayout x:Name=""UniformGridLayout"" MinRowSpacing=""8"" MinColumnSpacing=""8""/>";
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l:Bar"">
+    <Grid>
+        <Ellipse Fill=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxDiameter}"" 
+                 Width=""{x:Bind MaxDiameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
+        <Ellipse Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Diameter}"" 
+                 Width=""{x:Bind Diameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
+    </Grid>
+</DataTemplate>";
+            }
             repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
@@ -130,6 +234,18 @@ namespace AppUIBasics.ControlPages
             elementGenerator.Value = itemTemplateKey;
         }
     }
+
+    public class NestedCategory
+    {
+        public string CategoryName { get; set; }
+        public ObservableCollection<string> CategoryItems { get; set; }
+        public NestedCategory(string catName, ObservableCollection<string> catItems)
+        {
+            CategoryName = catName;
+            CategoryItems = catItems;
+        }
+    }
+
 
     public class MyDataTemplateSelector : DataTemplateSelector
     {
@@ -145,6 +261,32 @@ namespace AppUIBasics.ControlPages
             else
             {
                 return Accent;
+            }
+        }
+    }
+
+    public class StringOrIntTemplateSelector : DataTemplateSelector
+    {
+        // Define the (currently empty) data templates to return
+        // These will be "filled-in" in the XAML code.
+        public DataTemplate StringTemplate { get; set; }
+
+        public DataTemplate IntTemplate { get; set; }
+
+        protected override DataTemplate SelectTemplateCore(object item)
+        {
+            // Return the correct data template based on the item's type.
+            if (item.GetType() == typeof(String))
+            {
+                return StringTemplate;
+            }
+            else if (item.GetType() == typeof(int))
+            {
+                return IntTemplate;
+            }
+            else
+            {
+                return null;
             }
         }
     }
