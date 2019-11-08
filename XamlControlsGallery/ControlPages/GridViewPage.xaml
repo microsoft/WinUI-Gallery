@@ -67,8 +67,8 @@
         <DataTemplate x:Key="ImageOverlayTemplate" x:DataType="local1:CustomDataObject">
             <Grid Width="100">
                 <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
-                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="LightGray" Opacity=".75">
-                    <TextBlock Text="{x:Bind Title}" Foreground="SystemControlForegroundAltHighBrush"/>
+                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
+                    <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                         <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"></TextBlock>
@@ -154,9 +154,9 @@
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
                         <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
                                  TextChanged="StyledGrid_ChangeRow"/>
-                        <Button x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
+                        <RepeatButton x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
                                 Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <Button x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
+                        <RepeatButton x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
                                 Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
 
@@ -174,9 +174,9 @@
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
                         <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
                                  Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
-                        <Button x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
+                        <RepeatButton x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
                                 Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <Button x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
+                        <RepeatButton x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
                                 Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
 
