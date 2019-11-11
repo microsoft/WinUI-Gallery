@@ -112,7 +112,7 @@ namespace AppUIBasics
 
         private void OnToggleTheme()
         {
-            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? App.ActualTheme : _currentElementTheme.Value;
+            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
             var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
             SetControlExamplesTheme(newTheme);
         }
@@ -192,7 +192,7 @@ namespace AppUIBasics
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            SetControlExamplesTheme(App.ActualTheme);
+            SetControlExamplesTheme(ThemeHelper.ActualTheme);
 
             base.OnNavigatingFrom(e);
         }

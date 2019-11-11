@@ -22,7 +22,7 @@ using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.System.Profile;
 using Microsoft.UI;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -34,52 +34,6 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-        private const string SelectedAppThemeKey = "SelectedAppTheme";
-
-        /// <summary>
-        /// Gets the current actual theme of the app based on the requested theme of the
-        /// root element, or if that value is Default, the requested theme of the Application.
-        /// </summary>
-        public static ElementTheme ActualTheme
-        {
-            get
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    if (rootElement.RequestedTheme != ElementTheme.Default)
-                    {
-                        return rootElement.RequestedTheme;
-                    }
-                }
-
-                return GetEnum<ElementTheme>(Current.RequestedTheme.ToString());
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets (with LocalSettings persistence) the RequestedTheme of the root element.
-        /// </summary>
-        public static ElementTheme RootTheme
-        {
-            get
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    return rootElement.RequestedTheme;
-                }
-
-                return ElementTheme.Default;
-            }
-            set
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    rootElement.RequestedTheme = value;
-                }
-
-                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
-            }
-        }
 
 #if !UNIVERSAL
         private static Window currentWindow;
@@ -209,12 +163,7 @@ namespace AppUIBasics
 
             Frame rootFrame = GetRootFrame();
 
-            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
-
-            if (savedTheme != null)
-            {
-                RootTheme = GetEnum<ElementTheme>(savedTheme);
-            }
+            ThemeHelper.Initialize();
 
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;

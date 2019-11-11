@@ -78,7 +78,7 @@ namespace AppUIBasics.Behaviors
             }
             else
             {
-                if (App.ActualTheme != ElementTheme.Dark)
+                if (ThemeHelper.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
                     Color foreground = new Color() { A = _alpha };
