@@ -94,6 +94,7 @@
             FontSize="42"
             Padding="24,34,12,12"
             Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" 
-            IsHitTestVisible="False" />
+            IsHitTestVisible="False"
+            ShadowOpacity="1"/>
     </Grid>
 </local:ItemsPageBase>
