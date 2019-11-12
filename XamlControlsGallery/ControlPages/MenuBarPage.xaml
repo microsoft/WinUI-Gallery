@@ -32,6 +32,7 @@
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
+        <TextBlock x:Name="SelectedOptionText" Text="" />
 
         <local:ControlExample HeaderText="MenuBar with keyboard accelerators" 
                               XamlSource="Menubar\MenuBarSample3.txt">
