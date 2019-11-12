@@ -93,6 +93,7 @@
 
             </muxc:MenuBar>
         </local:ControlExample>
+        <TextBlock x:Name="SelectedOptionText1" Text="" />
 
         <local:ControlExample HeaderText="MenuBar with submenus, seperators, and radio items"
                               XamlSource="MenuBar\MenuBarSample2.txt">
