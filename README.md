@@ -13,7 +13,7 @@ description: Demonstrates the usage of all XAML/WinUI controls in an interactive
 
 # XAML Controls Gallery
 
-![Xaml Gallery Screenshot](https://i.imgur.com/W5dmkLl.png)
+![Xaml Gallery Screenshot](README_Images/XamlGalleryLanding.PNG)
 
 [![Build Status](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_apis/build/status/XAML%20Controls%20%20Gallery%20-%20CI%20Tests?branchName=master)](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_build/latest?definitionId=2&branchName=master)
 
