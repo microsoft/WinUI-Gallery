@@ -100,25 +100,25 @@
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File">
                     <MenuFlyoutSubItem Text="New">
-                        <MenuFlyoutItem Text="Plain Text Document"/>
-                        <MenuFlyoutItem Text="Rich Text Document"/>
-                        <MenuFlyoutItem Text="Other Formats..."/>
+                        <MenuFlyoutItem Text="Plain Text Document" Click="OnElementClicked2"/>
+                        <MenuFlyoutItem Text="Rich Text Document" Click="OnElementClicked2"/>
+                        <MenuFlyoutItem Text="Other Formats..." Click="OnElementClicked2"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Open..."/>
-                    <MenuFlyoutItem Text="Save"/>
+                    <MenuFlyoutItem Text="Open..." Click="OnElementClicked2"/>
+                    <MenuFlyoutItem Text="Save" Click="OnElementClicked2"/>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutItem Text="Exit"/>
+                    <MenuFlyoutItem Text="Exit" Click="OnElementClicked2"/>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem Text="Undo"/>
-                    <MenuFlyoutItem Text="Cut"/>
-                    <MenuFlyoutItem Text="Copy"/>
-                    <MenuFlyoutItem Text="Paste"/>
+                    <MenuFlyoutItem Text="Undo" Click="OnElementClicked2"/>
+                    <MenuFlyoutItem Text="Cut" Click="OnElementClicked2"/>
+                    <MenuFlyoutItem Text="Copy" Click="OnElementClicked2"/>
+                    <MenuFlyoutItem Text="Paste" Click="OnElementClicked2"/>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="View">
-                    <MenuFlyoutItem Text="Output"/>
+                    <MenuFlyoutItem Text="Output" Click="OnElementClicked2"/>
                     <MenuFlyoutSeparator/>
                     <muxc:RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/>
                     <muxc:RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/>
@@ -129,7 +129,7 @@
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem Text="About"/>
+                    <MenuFlyoutItem Text="About" Click="OnElementClicked2"/>
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
