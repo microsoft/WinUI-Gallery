@@ -17,7 +17,7 @@ namespace AppUIBasics.ControlPages
         private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             // Do custom logic
-            SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
+            example.onClickedText = "You clicked: " + (sender as AppBarButton).Label;
         }
 
         private void ShowMenu(bool isTransient)
