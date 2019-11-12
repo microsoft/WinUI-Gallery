@@ -14,21 +14,21 @@
                               XamlSource="MenuBar\MenuBarSample1.txt">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File">
-                    <MenuFlyoutItem Text="New"/>
-                    <MenuFlyoutItem Text="Open..."/>
-                    <MenuFlyoutItem Text="Save"/>
-                    <MenuFlyoutItem Text="Exit"/>
+                    <MenuFlyoutItem Text="New" Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Open..." Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Save" Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Exit" Click="OnElementClicked"/>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem Text="Undo"/>
-                    <MenuFlyoutItem Text="Cut"/>
-                    <MenuFlyoutItem Text="Copy"/>
-                    <MenuFlyoutItem Text="Paste"/>
+                    <MenuFlyoutItem Text="Undo" Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Cut" Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Copy" Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Paste" Click="OnElementClicked"/>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem Text="About"/>
+                    <MenuFlyoutItem Text="About" Click="OnElementClicked"/>
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
