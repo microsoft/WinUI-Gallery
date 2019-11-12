@@ -64,6 +64,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,15" Text="{x:Bind HeaderText}" />
+        <TextBlock Margin="0,40" Text="{x:Bind onClickedText}"/>
 
         <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="Red" IsTextSelectionEnabled="True">
             <Paragraph>
