@@ -15,7 +15,7 @@
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File">
                     <MenuFlyoutItem Text="New" Click="OnElementClicked"/>
-                    <MenuFlyoutItem Text="Open..." Click="OnElementClicked"/>
+                    <MenuFlyoutItem Text="Open" Click="OnElementClicked"/>
                     <MenuFlyoutItem Text="Save" Click="OnElementClicked"/>
                     <MenuFlyoutItem Text="Exit" Click="OnElementClicked"/>
                 </muxc:MenuBarItem>
