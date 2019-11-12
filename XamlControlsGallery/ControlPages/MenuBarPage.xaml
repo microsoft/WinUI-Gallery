@@ -43,17 +43,17 @@
                             <KeyboardAccelerator Modifiers="Control" Key="N"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Open">
+                    <MenuFlyoutItem Text="Open" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="O"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Save">
+                    <MenuFlyoutItem Text="Save" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="S"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Exit">
+                    <MenuFlyoutItem Text="Exit" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="E"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -61,22 +61,22 @@
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem Text="Undo">
+                    <MenuFlyoutItem Text="Undo" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="Z"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Cut">
+                    <MenuFlyoutItem Text="Cut" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="X"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Copy">
+                    <MenuFlyoutItem Text="Copy" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="C"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Paste">
+                    <MenuFlyoutItem Text="Paste" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="V"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -84,7 +84,7 @@
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem Text="About">
+                    <MenuFlyoutItem Text="About" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="I"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
@@ -133,5 +133,6 @@
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
+        <TextBlock x:Name="SelectedOptionText2" Text="" />
     </StackPanel>
 </Page>
