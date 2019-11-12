@@ -38,7 +38,7 @@
                               XamlSource="Menubar\MenuBarSample3.txt">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File">
-                    <MenuFlyoutItem Text="New">
+                    <MenuFlyoutItem Text="New" Click="OnElementClicked1">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="N"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
