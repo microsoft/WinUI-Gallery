@@ -202,7 +202,7 @@
           "Title": "MenuBar",
           "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
-          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
+          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
           "Content": "",
           "IsUpdated": true,
           "Docs": [
@@ -748,9 +748,9 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
-          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
           "IsUpdated": true,
           "Docs": [

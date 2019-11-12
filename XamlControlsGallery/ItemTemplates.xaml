@@ -8,7 +8,7 @@
         <UserControl>
             <Grid
                 x:Name="controlRoot"
-                Width="345"
+                Width="344"
                 Height="140"
                 Padding="12"
                 Background="{ThemeResource SystemControlBackgroundListLowBrush}">
@@ -58,7 +58,7 @@
                         Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                         Margin="0,4,16,0"
                         RelativePanel.Below="titleText"
-                        Text="{x:Bind Description}"
+                        Text="{x:Bind Subtitle}"
                         TextTrimming="CharacterEllipsis" />
                 </RelativePanel>
 
