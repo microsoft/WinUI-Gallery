@@ -28,7 +28,7 @@
                         Click="MyImageButton_Click" ContextRequested="MyImageButton_ContextRequested" >
                     <Image x:Name="Image1" Height="300" Source="/Assets/SampleMedia/rainier.jpg"/>
                 </Button>
-                <TextBlock x:Name="SelectedOptionText" Text="" />
+                <!--<TextBlock x:Name="SelectedOptionText" Text="" />-->
             </StackPanel>
         </local:ControlExample>
     </StackPanel>
