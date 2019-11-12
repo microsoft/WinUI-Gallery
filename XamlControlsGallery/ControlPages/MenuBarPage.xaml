@@ -120,12 +120,12 @@
                 <muxc:MenuBarItem Title="View">
                     <MenuFlyoutItem Text="Output" Click="OnElementClicked2"/>
                     <MenuFlyoutSeparator/>
-                    <muxc:RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/>
-                    <muxc:RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/>
+                    <muxc:RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup" Click="OnElementClicked2"/>
+                    <muxc:RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True" Click="OnElementClicked2"/>
                     <MenuFlyoutSeparator/>
-                    <muxc:RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup"/>
-                    <muxc:RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup"/>
-                    <muxc:RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup"/>
+                    <muxc:RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup" Click="OnElementClicked2"/>
+                    <muxc:RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup" Click="OnElementClicked2"/>
+                    <muxc:RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup" Click="OnElementClicked2"/>
                 </muxc:MenuBarItem>
 
                 <muxc:MenuBarItem Title="Help">
