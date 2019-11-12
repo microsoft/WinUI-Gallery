@@ -32,7 +32,6 @@
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
-        <TextBlock x:Name="SelectedOptionText" Text="" />
 
         <local:ControlExample x:Name="example1" HeaderText="MenuBar with keyboard accelerators" 
                               XamlSource="Menubar\MenuBarSample3.txt" onClickedText="">
@@ -93,8 +92,7 @@
 
             </muxc:MenuBar>
         </local:ControlExample>
-        <TextBlock x:Name="SelectedOptionText1" Text="" />
-        
+
         <local:ControlExample x:Name="example2" HeaderText="MenuBar with submenus, seperators, and radio items"
                               XamlSource="MenuBar\MenuBarSample2.txt">
             <muxc:MenuBar>
@@ -133,6 +131,5 @@
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
         </local:ControlExample>
-        <TextBlock x:Name="SelectedOptionText2" Text="" />
     </StackPanel>
 </Page>
