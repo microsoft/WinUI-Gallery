@@ -43,7 +43,7 @@
                             <KeyboardAccelerator Modifiers="Control" Key="N"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Open...">
+                    <MenuFlyoutItem Text="Open">
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="O"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
