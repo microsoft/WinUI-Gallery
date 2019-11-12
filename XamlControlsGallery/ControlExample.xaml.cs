@@ -90,6 +90,13 @@ namespace AppUIBasics
             set { SetValue(HeaderTextProperty, value); }
         }
 
+        public static readonly DependencyProperty onClickedTextProperty = DependencyProperty.Register("onClickedText", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public string onClickedText
+        {
+            get { return (string)GetValue(onClickedTextProperty); }
+            set { SetValue(onClickedTextProperty, value); }
+        }
+
         public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register("Example", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
         public object Example
         {
