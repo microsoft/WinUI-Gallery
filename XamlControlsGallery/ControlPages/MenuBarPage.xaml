@@ -35,7 +35,7 @@
         <TextBlock x:Name="SelectedOptionText" Text="" />
 
         <local:ControlExample HeaderText="MenuBar with keyboard accelerators" 
-                              XamlSource="Menubar\MenuBarSample3.txt">
+                              XamlSource="Menubar\MenuBarSample3.txt" onClickedText="">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File">
                     <MenuFlyoutItem Text="New" Click="OnElementClicked1">
