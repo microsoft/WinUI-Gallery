@@ -26,5 +26,11 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // Do custom logic
+            SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+        }
     }
 }
