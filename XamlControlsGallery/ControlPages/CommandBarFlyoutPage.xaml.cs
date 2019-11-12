@@ -16,7 +16,6 @@ namespace AppUIBasics.ControlPages
 
         private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            // Do custom logic
             example.onClickedText = "You clicked: " + (sender as AppBarButton).Label;
         }
 
