@@ -102,7 +102,7 @@
                     <MenuFlyoutSubItem Text="New">
                         <MenuFlyoutItem Text="Plain Text Document" Click="OnElementClicked2"/>
                         <MenuFlyoutItem Text="Rich Text Document" Click="OnElementClicked2"/>
-                        <MenuFlyoutItem Text="Other Formats..." Click="OnElementClicked2"/>
+                        <MenuFlyoutItem Text="Other Formats" Click="OnElementClicked2"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Open" Click="OnElementClicked2"/>
                     <MenuFlyoutItem Text="Save" Click="OnElementClicked2"/>
