@@ -11,7 +11,9 @@ using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -25,19 +27,41 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class ListViewPage : ItemsPageBase
     {
+        ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
+
+        ItemsStackPanel stackPanelObj;
+
+        int messageNumber;
+
         public ListViewPage()
         {
             this.InitializeComponent();
+            // Add first item to inverted list so it's not empty
+            AddItemToEnd();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Items = ControlInfoDataSource.Instance.Groups.Take(3).SelectMany(g => g.Items).ToList();
+            BaseExample.ItemsSource = await Contact.GetContactsAsync();
             Control2.ItemsSource = await Contact.GetContactsAsync();
+            contacts1 = await Contact.GetContactsAsync();
+
+            DragDropListView.ItemsSource = contacts1;
+
+            contacts2.Add(new Contact("John", "Doe", "ABC Printers"));
+            contacts2.Add(new Contact("Jane", "Doe", "XYZ Refridgerators"));
+            contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
+            DragDropListView2.ItemsSource = contacts2;
+
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
         }
 
+        //===================================================================================================================
+        // Selection Modes Example
+        //===================================================================================================================
         private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Control2 != null)
@@ -325,7 +349,7 @@ namespace AppUIBasics.ControlPages
         {
             IList<string> lines = await FileLoader.LoadLines("Assets/Contacts.txt");
 
-            var contacts = new ObservableCollection<Contact>();
+            ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
 
             for (int i = 0; i < lines.Count-2; i += 3)
             {
