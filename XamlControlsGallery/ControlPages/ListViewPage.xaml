@@ -57,44 +57,80 @@
                          Margin="6"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"
-                         Fill="Gray"/>
+                         Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                 <TextBlock Grid.Column="1"
                            Text="{x:Bind Name}"
                            x:Phase="1"
                            Style="{ThemeResource BaseTextBlockStyle}"
                            Margin="12,6,0,0"/>
-                <TextBlock  Grid.Column="1"
-                            Grid.Row="1"
-                            Text="{x:Bind Company}"
-                            x:Phase="2"
-                            Style="{ThemeResource BodyTextBlockStyle}"
-                            Margin="12,0,0,6"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{x:Bind Company}"
+                           x:Phase="2"
+                           Style="{ThemeResource BodyTextBlockStyle}"
+                           Margin="12,0,0,6"/>
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="ContactListViewTemplate2" x:DataType="local1:Contact">
-            <Grid Margin="0,12,0,12">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" MinWidth="550"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1"
-                           Text="{x:Bind Name}"
-                           x:Phase="1"
-                           Margin="0,12,0,0"/>
+        <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
+            <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
+                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
+                </StackPanel>
             </Grid>
         </DataTemplate>
+
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local1:Contact">
+            <TextBlock Text="{x:Bind Name}" x:Phase="1" Margin="0,5,0,5"/>
+        </DataTemplate>
+        
     </Page.Resources>
     <StackPanel>
-        <local:ControlExample HeaderText="A Simple ListView with Selection support">
-            <ListView
-                x:Name="Control2"
-                CanDragItems="True"
-                CanReorderItems="True"
-                AllowDrop="True"
-                BorderThickness="1"
-                BorderBrush="DimGray"
-                MinWidth="550" 
-                Height="400"/>
+        
+        <local:ControlExample HeaderText="Basic ListView with Simple DataTemplate"
+                              XamlSource="ListView\ListViewSample1_xaml.txt"
+                              CSharpSource="ListView\ListViewSample1_cs.txt">
+            <StackPanel>
+                <TextBlock Margin="0,0,0,15">
+                    This is a basic ListView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize a simple ListView like this one.
+                </TextBlock>
+                <ListView x:Name="BaseExample"
+                    ItemTemplate="{StaticResource BasicListViewTemplate}"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    Width="350" 
+                    Height="400"
+                    HorizontalAlignment="Left"/>
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="ListView with Selection Support"
+                              XamlSource="ListView/ListViewSample3_xaml.txt">
+            <StackPanel>
+                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                    <Paragraph>You can enable four different selection modes on the right.</Paragraph>
+                    <Paragraph>
+                        <Bold>None</Bold> disables selection all together.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Single</Bold> allows for only one item to be selected in the list.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
+                    </Paragraph>
+                </RichTextBlock>
+                <ListView x:Name="Control2" 
+                          ItemTemplate="{StaticResource ContactListViewTemplate}"
+                          BorderThickness="1"
+                          BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                          Width="400" 
+                          Height="400"
+                          HorizontalAlignment="Left"/>
+            </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
                     <ComboBox SelectionChanged="SelectionModeComboBox_SelectionChanged" Header="SelectionMode"
@@ -106,11 +142,71 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample.Options>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control2.SelectionMode, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
 
+        <local:ControlExample HeaderText="ListViews with Drag, Drop, and Reordering Support">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">
+                    In these ListView controls, you can drag and drop within a list to reorder items, or drag and drop between lists to move items.
+                </TextBlock>
+                <ListView
+                    x:Name="DragDropListView"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    ItemTemplate="{StaticResource ContactListViewTemplate}"
+                    CanDragItems="True"
+                    CanReorderItems="True"
+                    AllowDrop="True"
+                    SelectionMode="Single" 
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    MinWidth="350" 
+                    Height="400"
+                    DragItemsStarting="Source_DragItemsStarting"
+                    DragOver="Source_DragOver"
+                    Drop="ListView_Drop"
+                    Margin="12"/>
+                <ListView
+                    x:Name="DragDropListView2"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    ItemTemplate="{StaticResource ContactListViewTemplate}"
+                    CanDragItems="True"
+                    CanReorderItems="True"
+                    AllowDrop="True"
+                    DragOver="Target_DragOver"
+                    Drop="ListView_Drop"
+                    DragItemsStarting="Target_DragItemsStarting"
+                    DragEnter="Target_DragEnter"
+                    SelectionMode="Single" 
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    MinWidth="350" 
+                    Height="400"/>
+            </Grid>
+            
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;!-- Full code to implement dragging and dropping between lists can be found in the 
+source code for the XAML Controls Gallery. -->
+
+&lt;!-- The following properties should be added to the ListView definitions to build this sample. --&gt;
 &lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"
-    SelectionMode="$(SelectionMode)" /&gt;
+    SelectionMode="Single" /&gt;
+    
+&lt;!-- DataTemplate used is the same as the above sample. --&gt;
+
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -118,90 +214,130 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A ListView with Grouped Headers" XamlSource="ListView\ListViewGroupedHeaderSample_xaml.txt">
-            <ListView 
+        <local:ControlExample HeaderText="ListView with Grouped Headers" 
+                              XamlSource="ListView\ListViewSample2_xaml.txt"
+                              CSharpSource="ListView\ListViewSample2_cs.txt">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
+                    Switch the toggle on the right to enable sticky group headers, which makes the headers stay put at the top of the ListView while scrolling.
+                </TextBlock>
+                <ListView 
+                x:Name="GroupedListViewCtrl"
                 ItemsSource="{x:Bind ContactsCVS.View, Mode=OneWay}"
                 ItemTemplate="{StaticResource ContactListViewTemplate}"
                 SelectionMode="Single"
                 ShowsScrollingPlaceholders="True"
                 Height="400"
-                MinWidth="550"
+                Width="400"
                 BorderThickness="1"
-                BorderBrush="DimGray">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsStackPanel AreStickyGroupHeadersEnabled="False" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
+                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                HorizontalAlignment="Left">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsStackPanel x:Name="GroupedStackPanel" AreStickyGroupHeadersEnabled="False" Loaded="StackPanel_loaded" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
-                <ListView.GroupStyle>
-                    <GroupStyle >
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="local1:GroupInfoList">
-                                <TextBlock Text="{x:Bind Key}"
-                                       Style="{ThemeResource TitleTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                    </GroupStyle>
-                </ListView.GroupStyle>
-            </ListView>
+                    <ListView.GroupStyle>
+                        <GroupStyle >
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate x:DataType="local1:GroupInfoList">
+                                    <Border AutomationProperties.Name="{x:Bind Key}">
+                                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                </ListView>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <ToggleSwitch x:Name="StickySwitch" Header="Sticky Headers" IsOn="False" Toggled="ToggleSwitch_Toggled"/>
+                </StackPanel>
+            </local:ControlExample.Options>
 
-            
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
-
-&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
-    &lt;ListView.ItemsPanel&gt;
-        &lt;ItemsPanelTemplate&gt;
-            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="False"/&gt;
-        &lt;/ItemsPanelTemplate&gt;
-    &lt;/ListView.ItemsPanel&gt;
-&lt;/ListView&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-            
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="AreStickyGroupHeadersEnabled" Value="{x:Bind StickySwitch.IsOn, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A ListView with Grouped Sticky Headers" XamlSource="ListView\ListViewStickyHeaderSample_xaml.txt">
-            <ListView 
-                ItemsSource="{x:Bind ContactsCVS.View, Mode=OneWay}"
-                ItemTemplate="{StaticResource ContactListViewTemplate}"
-                SelectionMode="Single"
-                ShowsScrollingPlaceholders="True"
-                Height="400" 
-                MinWidth="550"
-                BorderThickness="1"
-                BorderBrush="DimGray">
-                <ListView.GroupStyle>
-                    <GroupStyle >
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="local1:GroupInfoList">
-                                <Border AutomationProperties.Name="{x:Bind Key}">
-                                    <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
-                                </Border>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                    </GroupStyle>
-                </ListView.GroupStyle>
-            </ListView>
+        <local:ControlExample HeaderText="ListView for Messaging or Data Logging">
+            <StackPanel>
+                <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
+                    This ListView is inverted to grow from the bottom up. It's a good way to display logs or messages, with most recent at the bottom.
+                </TextBlock>
+                <ListView
+                    x:Name="InvertedListView"
+                    ItemTemplate="{StaticResource MessageViewTemplate}"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    Height="400"
+                    SelectionMode="None">
+                    
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsStackPanel 
+                                ItemsUpdatingScrollMode="KeepLastItemInView" 
+                                VerticalAlignment="Bottom"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                </ListView>
+            </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True"/&gt;
+&lt;ListView x:Name="InvertedListView"
+             ItemTemplate="{StaticResource MessageViewTemplate}"&gt;
+                    
+     &lt;!-- The ItemsStackPanel must be edited to update the following two properties --&gt;
+     &lt;!-- These properties allow the list to grow from the bottom --&gt;
+     &lt;ListView.ItemsPanel&gt;
+         &lt;ItemsPanelTemplate&gt;
+             &lt;ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" 
+                              VerticalAlignment="Bottom"/&gt;
+         &lt;/ItemsPanelTemplate&gt;
+     &lt;/ListView.ItemsPanel&gt;
 
-&lt;ListView ItemsSource="{x:Bind Contacts}"&gt;
-    &lt;ListView.ItemsPanel&gt;
-        &lt;ItemsPanelTemplate&gt;
-            &lt;ItemsStackPanel AreStickyGroupHeadersEnabled="True"/&gt;
-        &lt;/ItemsPanelTemplate &gt;
-    &lt;/ListView.ItemsPanel&gt;
+     &lt;!-- This setter property is created so ListViewItems correctly align to the left or right. --&gt;
+     &lt;ListView.ItemContainerStyle&gt;
+         &lt;Style TargetType="ListViewItem"&gt;
+             &lt;Setter Property="HorizontalContentAlignment" Value="Stretch"/&gt;
+         &lt;/Style&gt;
+     &lt;/ListView.ItemContainerStyle&gt;
 &lt;/ListView&gt;
+
+&lt;!-- Data template used: --&gt;
+&lt;!-- The data template is bound to a custom DataType called Message. --&gt;
+&lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
+sent or recieved, and those values are bound in the DataTemplate.--&gt;
+&lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
+    &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
+        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
+            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;
+
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Options>
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Click="{x:Bind AddItemToEnd}" Margin="0 0 0 10">Send Message</Button>
+                    <Button Click="MessageRecieved">Recieve Message</Button>
+                </StackPanel>
+            </local:ControlExample.Options>
+
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A ListView with Images">
+        <local:ControlExample HeaderText="ListView with Images">
             <ListView x:Name="Control4"
                       CanDragItems="True"
                       CanReorderItems="True"
@@ -210,7 +346,7 @@
                       Height="400"
                       MinWidth="550"
                       BorderThickness="1"
-                      BorderBrush="DimGray">
+                      BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
@@ -239,7 +375,41 @@
                 </ListView>
 
             <local:ControlExample.Xaml>
-                <x:String>Refer to the DataTemplate on the ListViewPage.xaml page to get this visual of Images in a list.</x:String>
+                <x:String xml:space="preserve">
+&lt;ListView x:Name="Control4"
+     Height="400"
+     MinWidth="550"
+     BorderThickness="1"
+     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"&gt;
+                    
+&lt;!-- Data Template Used: --&gt;
+&lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;
+&lt;!-- The full code for the class can be found in this page's source code, but its attributes are referenced/bound below. --&gt;
+
+&lt;DataTemplate x:DataType="local1:CustomDataObject"&gt;
+    &lt;Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}"&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width="Auto" MinWidth="150"/&gt;
+            &lt;ColumnDefinition Width="*" /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/&gt;
+
+        &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
+            &lt;TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
+            &lt;/StackPanel&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
+                &lt;TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
+                &lt;TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;                  
+                </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>

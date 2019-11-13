@@ -63,6 +63,7 @@ namespace AppUIBasics.ControlPages
            AutomationProperties.Name = '{x:Bind Title}' Width = '190' Height = '130' 
            AutomationProperties.AccessibilityView = 'Raw'/>
 </DataTemplate> ";
+
         }
 
         private void ItemTemplate_Checked(object sender, RoutedEventArgs e)

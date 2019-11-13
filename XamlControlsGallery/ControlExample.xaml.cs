@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Common;
 using ColorCode;
 using ColorCode.Common;
 using System;
@@ -282,9 +283,9 @@ namespace AppUIBasics
 
         private RichTextBlockFormatter GenerateRichTextFormatter()
         {
-            var formatter = new RichTextBlockFormatter(App.ActualTheme);
+            var formatter = new RichTextBlockFormatter(ThemeHelper.ActualTheme);
 
-            if (App.ActualTheme == ElementTheme.Dark)
+            if (ThemeHelper.ActualTheme == ElementTheme.Dark)
             {
                 UpdateFormatterDarkThemeColors(formatter);
             }
