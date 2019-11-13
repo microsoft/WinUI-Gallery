@@ -39,6 +39,8 @@
         directly on the ListView's item source to for further optimization. Please see the AppUIBasics sample for an example of how to do this.  -->
         <CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True" />
 
+        <CollectionViewSource x:Name="FilteredInfoCVS" IsSourceGrouped="False"/>
+
         <!-- When using x:Bind, you need to set x:DataType -->
         <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
             <Grid>
@@ -271,6 +273,30 @@ source code for the XAML Controls Gallery. -->
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="ListView with Filtering">
+            <ListView 
+                x:Name="FilteredListView"
+                ItemsSource="{x:Bind FilteredInfoCVS.View, Mode=OneWay}"
+                ItemTemplate="{StaticResource ContactListViewTemplate}"
+                SelectionMode="Single"
+                ShowsScrollingPlaceholders="True"
+                Height="400"
+                Width="400"
+                BorderThickness="1"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
+            </ListView>
+
+            <local:ControlExample.Options>
+                <StackPanel Width="200">
+                    <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+                    <TextBox x:Name="FilterByFirstName" Width="150" Header="First Name" Margin="8" HorizontalAlignment="Left" TextChanged="FilteredLV_FNameChanged"></TextBox>
+                    <TextBox x:Name="FilterByLastName" Width="150" Header="Last Name" Margin="8" HorizontalAlignment="Left" TextChanged="FilteredLV_LNameChanged"></TextBox>
+                    <TextBox x:Name="FilterByCompany" Width="150" Header="Company" Margin="8" HorizontalAlignment="Left" TextChanged="FilteredLV_CompanyChanged"></TextBox>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="ListView for Messaging or Data Logging">
             <StackPanel>
                 <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
@@ -365,23 +391,23 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                             </Grid.ColumnDefinitions>
                             <Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
 
-                                <StackPanel Margin="12,0,0,0" Grid.Column="1" >
-                                    <TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
-                                        <TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                        <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/>
-                                        <TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
-                                        <TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    </StackPanel>
+                            <StackPanel Margin="12,0,0,0" Grid.Column="1" >
+                                <TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
                                 </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
+                                    <TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                                    <TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">

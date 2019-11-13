@@ -9,6 +9,7 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,8 @@ namespace AppUIBasics.ControlPages
     {
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
+        IList<Contact> contacts3 = new List<Contact>();
+        IEnumerable<Contact> FilteredData;
 
         ItemsStackPanel stackPanelObj;
 
@@ -57,6 +60,10 @@ namespace AppUIBasics.ControlPages
 
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
+
+            // Initialize list of contacts to be filtered
+            contacts3 = await Contact.GetContactsAsync();
+            FilteredInfoCVS.Source = contacts3;
         }
 
         //===================================================================================================================
