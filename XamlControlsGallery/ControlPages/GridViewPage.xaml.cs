@@ -10,6 +10,7 @@
 using AppUIBasics.Common;
 using AppUIBasics.Data;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -30,8 +31,9 @@ namespace AppUIBasics.ControlPages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            Control1.ItemsSource = CustomDataObject.GetDataObjects();
+            List<CustomDataObject> tempList = CustomDataObject.GetDataObjects();
+            ObservableCollection<CustomDataObject> Items = new ObservableCollection<CustomDataObject>(tempList);
+            Control1.ItemsSource = Items;
         }
 
         private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
