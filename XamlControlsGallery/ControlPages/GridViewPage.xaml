@@ -15,7 +15,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     xmlns:local1="using:AppUIBasics.ControlPages">
-    
+
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
             <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" AutomationProperties.Name="{x:Bind Title}" Width="190" Height="130" AutomationProperties.AccessibilityView="Raw" />
@@ -24,12 +24,12 @@
         <DataTemplate x:Key="IconTextTemplate" x:DataType="local1:CustomDataObject">
             <RelativePanel AutomationProperties.Name="{x:Bind Title}" Width="280" MinHeight="160">
                 <Image x:Name="image"
-                    Width="18"
-                    Margin="0,4,0,0"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignTopWithPanel="True"
-                    Source="{x:Bind ImageLocation}"
-                    Stretch="Uniform" />
+                       Width="18"
+                       Margin="0,4,0,0"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True"
+                       Source="{x:Bind ImageLocation}"
+                       Stretch="Uniform" />
                 <TextBlock x:Name="title" Style="{StaticResource BaseTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" 
                     RelativePanel.RightOf="image" RelativePanel.AlignTopWithPanel="True"/>
                 <TextBlock Text="{x:Bind Description}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap" Margin="0,4,8,0" 
@@ -63,10 +63,180 @@
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="8,0,0,0" Text="{x:Bind Title}" />
             </StackPanel>
         </DataTemplate>
+
+        <DataTemplate x:Key="ImageOverlayTemplate" x:DataType="local1:CustomDataObject">
+            <Grid Width="100">
+                <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
+                <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
+                    <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                        <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="Content inside of a GridView.">
+        <local:ControlExample HeaderText="Basic GridView with Simple DataTemplate"
+                              XamlSource="GridView/GridViewSample1_xaml.txt"
+                              CSharpSource="GridView/GridViewSample1_cs.txt">
+            <StackPanel>
+                <TextBlock Margin="0,0,0,15">
+                    This is a basic GridView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize the specific GridView.
+                </TextBlock>
+                <GridView
+                    x:Name="BasicGridView"
+                    ItemTemplate="{StaticResource ImageTemplate}"
+                    IsItemClickEnabled="True"
+                    ItemClick="BasicGridView_ItemClick"
+                    SelectionMode="Single"/>
+                <TextBlock x:Name="ClickOutput0" Style="{StaticResource OutputTextBlockStyle}" />
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="GridView with Layout Customization">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                    Use the options on the right to control different layout customizations to the GridView below.
+                </TextBlock>
+                <GridView x:Name="StyledGrid"
+                          ItemTemplate="{StaticResource ImageOverlayTemplate}">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Loaded="StyledGrid_InitWrapGrid" x:Name="MaxItemsWrapGrid" MaximumRowsOrColumns="3" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    
+                </GridView>
+            </StackPanel>
+
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <Grid HorizontalAlignment="Left" Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
+                                TextChanged="StyledGrid_ChangeCol"/>
+                        <RepeatButton x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <RepeatButton x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
+                                 TextChanged="StyledGrid_ChangeRow"/>
+                        <RepeatButton x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <RepeatButton x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
+                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
+                        <RepeatButton x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
+                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <RepeatButton x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
+                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    </Grid>
+
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- The GridView used for this example is shown below. Setter properties are used to customize 
+some parts of the GridViewItems (i.e. the margins). --&gt;
+&lt;GridView
+    x:Name="StyledGrid"
+    ItemTemplate="{StaticResource ImageOverlayTemplate}"&gt;
+
+    &lt;GridView.ItemContainerStyle&gt;
+        &lt;Style TargetType="GridViewItem"&gt;
+            &lt;Setter Property="Margin" Value="$(ColMargin), $(RowMargin), $(ColMargin), $(RowMargin)"/&gt;
+        &lt;/Style&gt;
+    &lt;/GridView.ItemContainerStyle&gt;
+                    
+    &lt;!-- An extra property also needs to be added to the GridView's ItemsWrapGrid. 
+    The following sets the maximum # of items to show before wrapping.--&gt;
+    &lt;GridView.ItemsPanel&gt;
+        &lt;ItemsPanelTemplate&gt;
+            &lt;ItemsWrapGrid x:Name="MaxItemsWrapGrid" 
+                           MaximumRowsOrColumns="$(MaxItems)" 
+                           Orientation="Horizontal"/&gt;
+        &lt;/ItemsPanelTemplate&gt;
+    &lt;/GridView.ItemsPanel&gt;                  
+&lt;/GridView&gt;      
+                    
+&lt;!-- In this example, the ListView's ItemTemplate property is bound to a data template (shown below)
+called StyledGridTemplate, defined in the Page.Resources section of the XAML file. 
+                    
+The data template is defined to display a CustomDataObject object (same type as in above sample). --&gt;
+                    
+&lt;DataTemplate x:Name="ImageOverlayTemplate" x:DataType="local1:CustomDataObject"&gt;
+    &lt;Grid Width="100"&gt;
+        &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/&gt;
+        &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" 
+                    Background="LightGray" Opacity=".75"&gt;
+            &lt;TextBlock Text="{x:Bind Title}"/&gt;
+            &lt;StackPanel Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" 
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+                &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" 
+                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColSpace.PlaceholderText, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.PlaceholderText, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind MaxItems.PlaceholderText, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Content inside of a GridView.">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -74,83 +244,104 @@
                 </Grid.RowDefinitions>
 
                 <GridView
-                    x:Name="Control1"
+                    x:Name="ContentGridView"
                     CanDragItems="{x:Bind DragCheckBox.IsChecked.Value, Mode=OneWay}"
                     CanReorderItems="{x:Bind ReorderCheckBox.IsChecked.Value, Mode=OneWay}"
                     AllowDrop="{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}"
                     IsItemClickEnabled="{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}"
-                    ItemClick="Control1_ItemClick"
-                    ItemTemplate="{StaticResource ImageTemplate}"                    
-                    SelectionChanged="Control1_SelectionChanged" />
+                    ItemClick="ContentGridView_ItemClick"
+                    ItemTemplate="{StaticResource ImageTemplate}"
+                    SelectionChanged="ContentGridView_SelectionChanged" 
+                    FlowDirection="LeftToRight"/>
 
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Name="ClickOutput" Style="{StaticResource OutputTextBlockStyle}" />
                     <TextBlock x:Name="SelectionOutput" Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
+                
             </Grid>
             <local:ControlExample.Options>
                 <StackPanel x:Name="Control2">
-                    <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
-                    <RadioButton
-                        Checked="ItemTemplate_Checked"
-                        Content="Image"
-                        GroupName="Template"
-                        IsChecked="True"
-                        Tag="ImageTemplate" />
-                    <RadioButton
-                        Checked="ItemTemplate_Checked"
-                        Content="Icon/Text"
-                        GroupName="Template"
-                        Tag="IconTextTemplate" />
-                    <RadioButton
-                        Checked="ItemTemplate_Checked"
-                        Content="Image/Text"
-                        GroupName="Template"
-                        Tag="ImageTextTemplate" />
-                    <RadioButton
-                        Checked="ItemTemplate_Checked"
-                        Content="Text"
-                        GroupName="Template"
-                        Tag="TextTemplate" />
-                    <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
-                    <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
-                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" MaxWidth="200"> In order to drag, drop, and reorder items within the GridView, make sure all boxes are checked below.</TextBlock>
-                    <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
-                    <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
-                    <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
-                    <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
-                    <ComboBox
-                        Margin="0,12,0,0"
-                        Header="SelectionMode"
-                        SelectedIndex="1"
-                        SelectionChanged="SelectionModeComboBox_SelectionChanged">
-                        <x:String>None</x:String>
-                        <x:String>Single</x:String>
-                        <x:String>Multiple</x:String>
-                        <x:String>Extended</x:String>
-                    </ComboBox>
+                    <StackPanel>
+                        <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
+                        <RadioButton
+                            Checked="ItemTemplate_Checked"
+                            Content="Image"
+                            GroupName="Template"
+                            IsChecked="True"
+                            Tag="ImageTemplate" />
+                        <RadioButton
+                            Checked="ItemTemplate_Checked"
+                            Content="Icon/Text"
+                            GroupName="Template"
+                            Tag="IconTextTemplate" />
+                        <RadioButton
+                            Checked="ItemTemplate_Checked"
+                            Content="Image/Text"
+                            GroupName="Template"
+                            Tag="ImageTextTemplate" />
+                        <RadioButton
+                            Checked="ItemTemplate_Checked"
+                            Content="Text"
+                            GroupName="Template"
+                            Tag="TextTemplate" />
+                        <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
+                        <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
+                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> In order to drag, drop, and reorder items within the GridView, make sure the last three boxes are checked below.<LineBreak/></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> Turning on IsItemClickEnabled will allow the user to click on an item (and print output below the GridView), regardless of selection mode.<LineBreak/></TextBlock>
+                        <CheckBox x:Name="ItemClickCheckBox" Click="ItemClickCheckBox_Click" Content="IsItemClickEnabled" />
+                        <CheckBox x:Name="DragCheckBox" Content="CanDragItems" />
+                        <CheckBox x:Name="ReorderCheckBox" Content="CanReorderItems" />
+                        <CheckBox x:Name="DropCheckBox" Content="AllowDrop" />
+                        <ComboBox
+                            Margin="0,12,0,0"
+                            Header="SelectionMode"
+                            SelectedIndex="1"
+                            SelectionChanged="SelectionModeComboBox_SelectionChanged">
+                            <x:String>None</x:String>
+                            <x:String>Single</x:String>
+                            <x:String>Multiple</x:String>
+                            <x:String>Extended</x:String>
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;GridView ItemsSource="{x:Bind Items}"
-          ItemTemplate="{StaticResource $(ItemTemplate)}"
-          IsItemClickEnabled="$(IsItemClickEnabled)"
-          CanDragItems="$(CanDragItems)"
-          AllowDrop="$(CanDropItems)"
-          CanReorderItems="$(CanReorderItems)"
-          SelectionMode="$(SelectionMode)"
-          SelectionChanged="Control1_SelectionChanged"
-          ItemClick="Control1_ItemClick" /&gt;
+
+&lt;!-- The GridView used for this sample is shown below, with all of the necessary added properties. --&gt;
+&lt;GridView 
+    x:Name="ContentGridView"
+    ItemsSource="{x:Bind Items}"
+    ItemTemplate="{StaticResource $(ItemTemplate)}"
+    IsItemClickEnabled="$(IsItemClickEnabled)"
+    CanDragItems="$(CanDragItems)"
+    AllowDrop="$(CanDropItems)"
+    CanReorderItems="$(CanReorderItems)"
+    SelectionMode="$(SelectionMode)"
+    SelectionChanged="ContentGridView_SelectionChanged"
+    ItemClick="ContentGridView_ItemClick" 
+    FlowDirection="$(FlowDirec)"/&gt;
+
+&lt;!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
+to handle the events of when a selection changes on the GridView and when an item is clicked. --&gt;
+                    
+&lt;!-- The data template bound to this GridView's ItemTemplate property is based on which one you
+select from the options on the right. The currently selected DataTemplate is: --&gt;
+
+$(DisplayDT)
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="itemTemplate" Key="ItemTemplate" Value="ImageTemplate" />
-                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind Control1.IsItemClickEnabled, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind Control1.CanDragItems, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind Control1.AllowDrop, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind Control1.CanReorderItems, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind Control1.SelectionMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="IsItemClickEnabled" Value="{x:Bind ContentGridView.IsItemClickEnabled, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDragItems" Value="{x:Bind ContentGridView.CanDragItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind ContentGridView.AllowDrop, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind ContentGridView.CanReorderItems, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ContentGridView.SelectionMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="FlowDirec" Value="{x:Bind ContentGridView.FlowDirection, Mode=OneWay}" />
+                <local:ControlExampleSubstitution x:Name="DisplayDT" Key="DisplayDT" />
+
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
