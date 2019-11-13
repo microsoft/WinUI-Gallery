@@ -58,6 +58,7 @@ namespace AppUIBasics.ControlPages
             primaryBrushText.Value = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
             primaryColorKeyText.Value = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
+            FocusVisualKindSubstitution.Value = "HighVisibility";
         }
 
         // DEMO ONLY: Change focus visual mode to reveal focus
@@ -70,6 +71,7 @@ namespace AppUIBasics.ControlPages
                 primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
                 primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
+                FocusVisualKindSubstitution.Value = "Reveal";
             }
         }
 

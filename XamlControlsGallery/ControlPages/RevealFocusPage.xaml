@@ -88,9 +88,12 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Application FocusVisualKind="Reveal"/&gt;
+                    &lt;Application FocusVisualKind="$(FocusVisualKind)"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution x:Name="FocusVisualKindSubstitution" Key="FocusVisualKind" Value="HighVisibility" IsEnabled="True"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <TextBlock Margin="0,16,0,0" TextWrapping="WrapWholeWords">
