@@ -5,7 +5,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:AppUIBasics"
     x:Name="headerControl"
-    Padding="12,0,12,0"
+    Padding="{x:Bind HeaderPadding, Mode=OneWay}"
     Background="Transparent"
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
     FontSize="24">
