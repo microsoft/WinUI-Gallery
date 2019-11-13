@@ -9,6 +9,7 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace AppUIBasics.ControlPages
     {
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
+        IList<Contact> contacts3 = new List<Contact>();
+        IEnumerable<Contact> FilteredData;
 
         ItemsStackPanel stackPanelObj;
 
@@ -55,6 +58,10 @@ namespace AppUIBasics.ControlPages
 
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
+
+            // Initialize list of contacts to be filtered
+            contacts3 = await Contact.GetContactsAsync();
+            FilteredInfoCVS.Source = contacts3;
         }
 
         //===================================================================================================================
@@ -98,7 +105,7 @@ namespace AppUIBasics.ControlPages
                 {
                     // Append name from contact object onto data string
                     items.Append(item.ToString() + " " + item.Company);
-                } 
+                }
             }
             // Set the content of the DataPackage
             e.Data.SetText(items.ToString());
@@ -195,7 +202,7 @@ namespace AppUIBasics.ControlPages
                         }
                     }
                 }
-                
+
                 e.AcceptedOperation = DataPackageOperation.Move;
                 def.Complete();
             }
@@ -243,6 +250,62 @@ namespace AppUIBasics.ControlPages
         }
 
         //===================================================================================================================
+        // Filtered List Example
+        //===================================================================================================================
+
+        private void FilteredLV_FNameChanged(object sender, RoutedEventArgs e)
+        {
+            FilteredData =
+                from contact in contacts3
+                where contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower())
+                select contact;
+
+            if (FilterByFirstName.Text == "")
+            {
+                FilteredInfoCVS.Source = contacts3;
+            }
+            else
+            {
+                FilteredInfoCVS.Source = FilteredData;
+            }
+
+        }
+
+        private void FilteredLV_LNameChanged(object sender, RoutedEventArgs e)
+        {
+            FilteredData =
+                from contact in contacts3
+                where contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower())
+                select contact;
+
+            if (FilterByLastName.Text == "")
+            {
+                FilteredInfoCVS.Source = contacts3;
+            }
+            else
+            {
+                FilteredInfoCVS.Source = FilteredData;
+            }
+        }
+
+        private void FilteredLV_CompanyChanged(object sender, RoutedEventArgs e)
+        {
+            FilteredData =
+                from contact in contacts3
+                where contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower())
+                select contact;
+
+            if (FilterByCompany.Text == "")
+            {
+                FilteredInfoCVS.Source = contacts3;
+            }
+            else
+            {
+                FilteredInfoCVS.Source = FilteredData;
+            }
+        }
+
+        //===================================================================================================================
         // Inverted List Example
         //===================================================================================================================
 
@@ -276,7 +339,7 @@ namespace AppUIBasics.ControlPages
             // If recieved message, use accent background
             if (MsgAlignment == HorizontalAlignment.Left)
             {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"]; 
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
             }
 
             // If sent message, use light gray
