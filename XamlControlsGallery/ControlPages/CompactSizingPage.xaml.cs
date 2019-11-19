@@ -2,8 +2,6 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using AppUIBasics.SamplePages;
-using Windows.UI.Xaml.Navigation;
-
 namespace AppUIBasics.ControlPages
 {
     public sealed partial class CompactSizingPage : Page
