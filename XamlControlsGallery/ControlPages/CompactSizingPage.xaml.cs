@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using AppUIBasics.SamplePages;
+
 namespace AppUIBasics.ControlPages
 {
 
