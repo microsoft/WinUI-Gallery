@@ -758,7 +758,7 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "A button that displays a dropdown in addition to an execution hit target.",
+          "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
