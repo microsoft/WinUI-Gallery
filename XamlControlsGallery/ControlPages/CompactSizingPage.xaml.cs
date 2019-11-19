@@ -12,8 +12,6 @@ namespace AppUIBasics.ControlPages
 
         }
 
-      
-
         private void Example1_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
