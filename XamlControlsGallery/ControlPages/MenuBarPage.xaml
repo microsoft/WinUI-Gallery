@@ -12,124 +12,133 @@
     <StackPanel>
         <local:ControlExample x:Name="example" HeaderText="A simple MenuBar" 
                               XamlSource="MenuBar\MenuBarSample1.txt">
-            <muxc:MenuBar>
-                <muxc:MenuBarItem Title="File">
-                    <MenuFlyoutItem x:Name="11" Text="New" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="12" Text="Open" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="13" Text="Save" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="14" Text="Exit" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
+            <StackPanel>
+                <TextBlock x:Name="SelectedOptionText" Text="" />
+                    <muxc:MenuBar>
+                    <muxc:MenuBarItem Title="File">
+                        <MenuFlyoutItem x:Name="o1" Text="New" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o2" Text="Open" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o3" Text="Save" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o4" Text="Exit" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem x:Name="15" Text="Undo" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="16" Text="Cut" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="17" Text="Copy" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="18" Text="Paste" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
+                    <muxc:MenuBarItem Title="Edit">
+                        <MenuFlyoutItem x:Name="o5" Text="Undo" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o6" Text="Cut" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o7" Text="Copy" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="o8" Text="Paste" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem x:Name="19" Text="About" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
-            </muxc:MenuBar>
+                    <muxc:MenuBarItem Title="Help">
+                        <MenuFlyoutItem x:Name="o9" Text="About" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
+                </muxc:MenuBar>
+            </StackPanel>
         </local:ControlExample>
 
         <local:ControlExample x:Name="example1" HeaderText="MenuBar with keyboard accelerators" 
                               XamlSource="Menubar\MenuBarSample3.txt" onClickedText="">
-            <muxc:MenuBar>
-                <muxc:MenuBarItem Title="File">
-                    <MenuFlyoutItem x:Name ="2" Text="New" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="N"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name ="21" Text="Open" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="O"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name ="23" Text="Save" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="S"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name ="24" Text="Exit" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="E"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                </muxc:MenuBarItem>
+            <StackPanel>
+                <TextBlock x:Name="SelectedOptionText1" Text="" />
+                <muxc:MenuBar>
+                    <muxc:MenuBarItem Title="File">
+                        <MenuFlyoutItem x:Name ="t2" Text="New" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name ="t1" Text="Open" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="O"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name ="t3" Text="Save" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name ="t4" Text="Exit" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="E"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem x:Name="25" Text="Undo" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="Z"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name="26" Text="Cut" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="X"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name="27" Text="Copy" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="C"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem x:Name="28" Text="Paste" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="V"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                </muxc:MenuBarItem>
+                    <muxc:MenuBarItem Title="Edit">
+                        <MenuFlyoutItem x:Name="t5" Text="Undo" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="Z"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="t6" Text="Cut" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="X"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="t7" Text="Copy" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="C"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="t8" Text="Paste" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="V"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem x:Name="29" Text="About" Click="OnElementClicked">
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="I"/>
-                        </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
-                </muxc:MenuBarItem>
+                    <muxc:MenuBarItem Title="Help">
+                        <MenuFlyoutItem x:Name="t9" Text="About" Click="OnElementClicked">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="I"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </muxc:MenuBarItem>
 
-            </muxc:MenuBar>
+                </muxc:MenuBar>
+            </StackPanel>
         </local:ControlExample>
 
         <local:ControlExample x:Name="example2" HeaderText="MenuBar with submenus, seperators, and radio items"
                               XamlSource="MenuBar\MenuBarSample2.txt">
-            <muxc:MenuBar>
-                <muxc:MenuBarItem Title="File">
-                    <MenuFlyoutSubItem Text="New">
-                        <MenuFlyoutItem x:Name="31" Text="Plain Text Document" Click="OnElementClicked"/>
-                        <MenuFlyoutItem x:Name="32" Text="Rich Text Document" Click="OnElementClicked"/>
-                        <MenuFlyoutItem x:Name="33" Text="Other Formats" Click="OnElementClicked"/>
-                    </MenuFlyoutSubItem>
-                    <MenuFlyoutItem x:Name="34" Text="Open" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="35" Text="Save" Click="OnElementClicked"/>
-                    <MenuFlyoutSeparator />
-                    <MenuFlyoutItem x:Name="36" Text="Exit" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
+            <StackPanel>
+                <TextBlock x:Name="SelectedOptionText2" Text="" />
+                <muxc:MenuBar>
+                    <muxc:MenuBarItem Title="File">
+                        <MenuFlyoutSubItem Text="New">
+                            <MenuFlyoutItem x:Name="z1" Text="Plain Text Document" Click="OnElementClicked"/>
+                            <MenuFlyoutItem x:Name="z2" Text="Rich Text Document" Click="OnElementClicked"/>
+                            <MenuFlyoutItem x:Name="z3" Text="Other Formats" Click="OnElementClicked"/>
+                        </MenuFlyoutSubItem>
+                        <MenuFlyoutItem x:Name="z4" Text="Open" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="z5" Text="Save" Click="OnElementClicked"/>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem x:Name="z6" Text="Exit" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Edit">
-                    <MenuFlyoutItem x:Name="37" Text="Undo" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="38" Text="Cut" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="39" Text="Copy" Click="OnElementClicked"/>
-                    <MenuFlyoutItem x:Name="311" Text="Paste" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
+                    <muxc:MenuBarItem Title="Edit">
+                        <MenuFlyoutItem x:Name="z7" Text="Undo" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="z8" Text="Cut" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="z9" Text="Copy" Click="OnElementClicked"/>
+                        <MenuFlyoutItem x:Name="z11" Text="Paste" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="View">
-                    <MenuFlyoutItem x:Name="312" Text="Output" Click="OnElementClicked"/>
-                    <MenuFlyoutSeparator/>
-                    <muxc:RadioMenuFlyoutItem x:Name="313" Text="Landscape" GroupName="OrientationGroup" Click="OnElementClicked"/>
-                    <muxc:RadioMenuFlyoutItem x:Name="314" Text="Portrait" GroupName="OrientationGroup" IsChecked="True" Click="OnElementClicked"/>
-                    <MenuFlyoutSeparator/>
-                    <muxc:RadioMenuFlyoutItem x:Name="315" Text="Small icons" GroupName="SizeGroup" Click="OnElementClicked"/>
-                    <muxc:RadioMenuFlyoutItem x:Name="316" Text="Medium icons" IsChecked="True" GroupName="SizeGroup" Click="OnElementClicked"/>
-                    <muxc:RadioMenuFlyoutItem x:Name="317" Text="Large icons" GroupName="SizeGroup" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
+                    <muxc:MenuBarItem Title="View">
+                        <MenuFlyoutItem x:Name="z12" Text="Output" Click="OnElementClicked"/>
+                        <MenuFlyoutSeparator/>
+                        <muxc:RadioMenuFlyoutItem x:Name="z13" Text="Landscape" GroupName="OrientationGroup" Click="OnElementClicked"/>
+                        <muxc:RadioMenuFlyoutItem x:Name="z14" Text="Portrait" GroupName="OrientationGroup" IsChecked="True" Click="OnElementClicked"/>
+                        <MenuFlyoutSeparator/>
+                        <muxc:RadioMenuFlyoutItem x:Name="z15" Text="Small icons" GroupName="SizeGroup" Click="OnElementClicked"/>
+                        <muxc:RadioMenuFlyoutItem x:Name="z16" Text="Medium icons" IsChecked="True" GroupName="SizeGroup" Click="OnElementClicked"/>
+                        <muxc:RadioMenuFlyoutItem x:Name="z17" Text="Large icons" GroupName="SizeGroup" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
 
-                <muxc:MenuBarItem Title="Help">
-                    <MenuFlyoutItem Text="About" Click="OnElementClicked"/>
-                </muxc:MenuBarItem>
-            </muxc:MenuBar>
+                    <muxc:MenuBarItem Title="Help">
+                        <MenuFlyoutItem x:Name="z18" Text="About" Click="OnElementClicked"/>
+                    </muxc:MenuBarItem>
+                </muxc:MenuBar>
+            </StackPanel>
         </local:ControlExample>
     </StackPanel>
 </Page>
