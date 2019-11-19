@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using AppUIBasics.SamplePages;
+using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -12,6 +13,8 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
 
         }
+
+      
 
         private void Example1_Loaded(object sender, RoutedEventArgs e)
         {

@@ -24,7 +24,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Spacing="4">
             <TextBlock x:Name="HeaderBlock" Text="Compact Size" FontSize="18"/>
-            <TextBox Header="First Name:" x:Name="txtfirstName" />
+            <TextBox Header="First Name:" x:Name="txtfirstName" Text="{Binding firstName, Mode=TwoWay}"/>
             <TextBox Header="Last Name:" x:Name="txtLastName"  />
             <PasswordBox Header="Password:" />
             <PasswordBox Header="Confirm Password:" />

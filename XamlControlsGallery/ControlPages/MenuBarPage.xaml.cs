@@ -29,16 +29,20 @@ namespace AppUIBasics.ControlPages
 
         private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            //ControlExample example = (sender as MenuFlyoutItem).Parent as ControlExample;
+            var example = ((sender as MenuFlyoutItem).Parent as ControlExample);
+
             example.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
+            //s = "You clicked: " + (sender as MenuFlyoutItem).Text;
         }
 
-        private void OnElementClicked1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            example1.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
-        }
-        private void OnElementClicked2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            example2.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
-        }
+        //private void OnElementClicked1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        //{
+        //    example1.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
+        //}
+        //private void OnElementClicked2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        //{
+        //    example2.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
+        //}
     }
 }
