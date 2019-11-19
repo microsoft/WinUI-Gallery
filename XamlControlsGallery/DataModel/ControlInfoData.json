@@ -653,7 +653,7 @@
         {
           "UniqueId": "DropDownButton",
           "Title": "DropDownButton",
-          "Subtitle": "A button that displays a flyout of choices from which one can be chosen.",
+          "Subtitle": "A button that displays a flyout of choices when clicked.",
           "ImagePath": "ms-appx:///Assets/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
           "Content": "",
