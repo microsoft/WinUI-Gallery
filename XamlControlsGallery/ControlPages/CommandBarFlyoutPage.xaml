@@ -9,12 +9,12 @@
     
     <Page.Resources>
         <muxc:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
-            <AppBarButton Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
-            <AppBarButton Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
-            <AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
+            <AppBarButton x:Name="o1" Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
+            <AppBarButton x:Name="o2" Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
+            <AppBarButton x:Name="o3" Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
             <muxc:CommandBarFlyout.SecondaryCommands>
-                <AppBarButton Label="Resize" Click="OnElementClicked" />
-                <AppBarButton Label="Move" Click="OnElementClicked" />
+                <AppBarButton x:Name="o4" Label="Resize" Click="OnElementClicked" />
+                <AppBarButton x:Name="o5" Label="Move" Click="OnElementClicked" />
             </muxc:CommandBarFlyout.SecondaryCommands>
         </muxc:CommandBarFlyout>
     </Page.Resources>
