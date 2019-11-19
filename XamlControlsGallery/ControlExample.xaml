@@ -21,7 +21,7 @@
         </Storyboard>
 
         <Storyboard x:Name="PopInStoryboard">
-            <PopInThemeAnimation FromVerticalOffset="156" SpeedRatio=".2" TargetName="rootGrid" />
+            <PopInThemeAnimation FromVerticalOffset="152" SpeedRatio=".2" TargetName="rootGrid" />
         </Storyboard>
     </UserControl.Resources>
 
