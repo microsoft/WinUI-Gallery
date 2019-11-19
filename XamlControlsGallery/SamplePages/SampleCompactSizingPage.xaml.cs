@@ -17,17 +17,12 @@ namespace AppUIBasics.SamplePages
 {
     public sealed partial class SampleCompactSizingPage : Page
     {
-        public string firstName { 
-            get;
-            set; }
+  
         public SampleCompactSizingPage()
         {
             this.InitializeComponent();
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            txtfirstName.Text = "jack";
-        }
+   
 
 
 
