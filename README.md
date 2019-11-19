@@ -19,7 +19,7 @@ description: Demonstrates the usage of all XAML/WinUI controls in an interactive
 
 Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Toolkit](https://docs.microsoft.com/uwp/toolkits/winui/) APIs.
 
-This sample shows how to:
+The XAML Controls Gallery shows how to:
 
 - **Specify XAML controls in markup:** Each control page shows the markup used to create each example.
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [Windows UI Toolkit](https://docs.microsoft.com/uwp/toolkits/winui/) controls like NavigationView, SwipeControl, and more.
@@ -27,7 +27,7 @@ This sample shows how to:
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
 - **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
-**Note** The Xaml Controls Gallery requires Visual Studio [2017](http://go.microsoft.com/fwlink/?LinkID=532422) or [2019](https://visualstudio.microsoft.com/vs/) to build and Windows 10 to execute.
+>**Note**: The Xaml Controls Gallery requires Visual Studio [2017](http://go.microsoft.com/fwlink/?LinkID=532422) or [2019](https://visualstudio.microsoft.com/vs/) to build and Windows 10 to execute.
 
 To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 
