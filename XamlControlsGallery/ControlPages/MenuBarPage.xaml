@@ -37,7 +37,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="MenuBar with keyboard accelerators" 
-                              XamlSource="Menubar\MenuBarSample3.txt" onClickedText="">
+                              XamlSource="Menubar\MenuBarSample3.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText1" Text="" />
                 <muxc:MenuBar>
