@@ -38,11 +38,11 @@ namespace AppUIBasics.ControlPages
             }
             else if(exampleNumber == "t")
             {
-                SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+                SelectedOptionText1.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
-            else if (exampleNumber2 == "z")
+            else if(exampleNumber == "z")
             {
-                SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+                SelectedOptionText2.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
         }
 
