@@ -29,7 +29,6 @@ namespace AppUIBasics.ControlPages
 
         private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            //ControlExample example = (sender as MenuFlyoutItem).Parent as ControlExample;
             var selectedFlyoutItem = sender as MenuFlyoutItem;
             string exampleNumber = selectedFlyoutItem.Name.Substring(0, 1);
             if(exampleNumber == "o")
@@ -45,14 +44,5 @@ namespace AppUIBasics.ControlPages
                 SelectedOptionText2.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
         }
-
-        //private void OnElementClicked1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        //{
-        //    example1.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
-        //}
-        //private void OnElementClicked2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        //{
-        //    example2.onClickedText = "You clicked: " + (sender as MenuFlyoutItem).Text;
-        //}
     }
 }
