@@ -32,15 +32,15 @@ namespace AppUIBasics.ControlPages
             //ControlExample example = (sender as MenuFlyoutItem).Parent as ControlExample;
             var selectedFlyoutItem = sender as MenuFlyoutItem;
             string exampleNumber = selectedFlyoutItem.Name.Substring(0, 1);
-            if(exampleNumber == "1")
+            if(exampleNumber == "o")
             {
                 SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
-            else if(exampleNumber == "2")
+            else if(exampleNumber == "t")
             {
                 SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
-            else if (exampleNumber == "3")
+            else if (exampleNumber2 == "z")
             {
                 SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
             }
