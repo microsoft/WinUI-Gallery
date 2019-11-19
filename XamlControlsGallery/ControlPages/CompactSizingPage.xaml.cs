@@ -5,7 +5,6 @@ using AppUIBasics.SamplePages;
 
 namespace AppUIBasics.ControlPages
 {
-
     public sealed partial class CompactSizingPage : Page
     {
         public CompactSizingPage()
