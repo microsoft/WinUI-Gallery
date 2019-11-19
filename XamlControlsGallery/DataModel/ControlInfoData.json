@@ -26,7 +26,7 @@
         {
           "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
-          "Subtitle": "An object which is used to define the look and feel of a given command",
+          "Subtitle": "An object which is used to define the look and feel of a given command.",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls.",
           "Content": "",
@@ -51,7 +51,7 @@
         {
           "UniqueId": "StandardUICommand",
           "Title": "StandardUICommand",
-          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'.",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively my the inbox controls. E.g. Save, Open, Copy, Paste, etc.",
           "Content": "",
@@ -225,7 +225,7 @@
         {
           "UniqueId": "CommandBarFlyout",
           "Title": "CommandBarFlyout",
-          "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands",
+          "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands.",
           "ImagePath": "ms-appx:///Assets/CommandBarFlyout.png",
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
           "Content": "",
@@ -354,7 +354,7 @@
         {
           "UniqueId": "GridView",
           "Title": "GridView",
-          "Subtitle": "Presents a collection of items in rows and columns that can scroll horizontally.",
+          "Subtitle": "A control that presents a collection of items in rows and columns.",
           "ImagePath": "ms-appx:///Assets/GridView.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -403,7 +403,7 @@
         {
           "UniqueId": "ListView",
           "Title": "ListView",
-          "Subtitle": "Presents a collection of items in a list that can scroll vertically.",
+          "Subtitle": "A control that presents a collection of items in a vertical list.",
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -572,7 +572,7 @@
         {
           "UniqueId": "DatePicker",
           "Title": "DatePicker",
-          "Subtitle": "A configurable control that lets a user pick a date value.",
+          "Subtitle": "A control that lets a user pick a date value.",
           "ImagePath": "ms-appx:///Assets/DatePicker.png",
           "Description": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>DatePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -653,7 +653,7 @@
         {
           "UniqueId": "DropDownButton",
           "Title": "DropDownButton",
-          "Subtitle": "A control that drops down a flyout of choices from which one can be chosen",
+          "Subtitle": "A button that displays a flyout of choices when clicked.",
           "ImagePath": "ms-appx:///Assets/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
           "Content": "",
@@ -758,7 +758,7 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target.",
+          "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
@@ -837,7 +837,7 @@
         {
           "UniqueId": "ColorPicker",
           "Title": "ColorPicker",
-          "Subtitle": "A selectable color spectrum.",
+          "Subtitle": "A control that displays a selectable color spectrum.",
           "ImagePath": "ms-appx:///Assets/ColorPicker.png",
           "Description": "A selectable color spectrum.",
           "Content": "",
@@ -1499,7 +1499,7 @@
         {
           "UniqueId": "TabView",
           "Title": "TabView",
-          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "Subtitle": "A control that displays a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "Content": "",
@@ -1783,7 +1783,7 @@
         {
           "UniqueId": "ColorPaletteResources",
           "Title": "ColorPaletteResources",
-          "Subtitle": "",
+          "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
           "Content": "",
