@@ -1,0 +1,32 @@
+<!-- XAML Code -->
+
+<!-- The ListView must be bound to a CollectionViewSource, which is defined in the 
+Page.Resources section and shown below. It is intialized with values in the code-behind.
+The ListView uses the same DataTemplate as shown in a few examples above. -->
+
+<Page.Resources>
+	<CollectionViewSource x:Name="FilteredInfoCVS" IsSourceGrouped="False"/>
+</Page.Resources>
+
+<ListView 
+    x:Name="FilteredListView"
+    ItemsSource="{x:Bind FilteredInfoCVS.View, Mode=OneWay}"
+    ItemTemplate="{StaticResource ContactListViewTemplate}"
+    SelectionMode="Single"
+    ShowsScrollingPlaceholders="True"
+    Height="400"
+    Width="400"
+    BorderThickness="1"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
+</ListView>
+
+<!-- The textboxes used for filtering are shown below: -->
+<StackPanel Width="200">
+    <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+    <TextBox x:Name="FilterByFirstName" Width="150" Header="First Name" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="FilteredLV_FNameChanged"/>
+    <TextBox x:Name="FilterByLastName" Width="150" Header="Last Name" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="FilteredLV_LNameChanged"/>
+    <TextBox x:Name="FilterByCompany" Width="150" Header="Company" Margin="8" 
+	     HorizontalAlignment="Left" TextChanged="FilteredLV_CompanyChanged"/>
+</StackPanel>

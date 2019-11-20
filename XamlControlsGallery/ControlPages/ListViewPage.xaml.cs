@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,7 @@ namespace AppUIBasics.ControlPages
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
             FilteredInfoCVS.Source = contacts3;
+            FilteredData = contacts3;
         }
 
         //===================================================================================================================
@@ -253,56 +255,24 @@ namespace AppUIBasics.ControlPages
         // Filtered List Example
         //===================================================================================================================
 
-        private void FilteredLV_FNameChanged(object sender, RoutedEventArgs e)
+        private void FilteredLV_FNameChanged(object sender, TextChangedEventArgs e)
         {
-            FilteredData =
-                from contact in contacts3
-                where contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower())
-                select contact;
-
-            if (FilterByFirstName.Text == "")
-            {
-                FilteredInfoCVS.Source = contacts3;
-            }
-            else
-            {
-                FilteredInfoCVS.Source = FilteredData;
-            }
+            FilteredData = FilteredData.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
+            FilteredInfoCVS.Source = FilteredData;
 
         }
 
-        private void FilteredLV_LNameChanged(object sender, RoutedEventArgs e)
+        private void FilteredLV_LNameChanged(object sender, TextChangedEventArgs e)
         {
-            FilteredData =
-                from contact in contacts3
-                where contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower())
-                select contact;
-
-            if (FilterByLastName.Text == "")
-            {
-                FilteredInfoCVS.Source = contacts3;
-            }
-            else
-            {
-                FilteredInfoCVS.Source = FilteredData;
-            }
+            FilteredData = FilteredData.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
+            FilteredInfoCVS.Source = FilteredData;
         }
 
-        private void FilteredLV_CompanyChanged(object sender, RoutedEventArgs e)
+        private void FilteredLV_CompanyChanged(object sender, TextChangedEventArgs e)
         {
-            FilteredData =
-                from contact in contacts3
-                where contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower())
-                select contact;
+            FilteredData = FilteredData.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
+            FilteredInfoCVS.Source = FilteredData;
 
-            if (FilterByCompany.Text == "")
-            {
-                FilteredInfoCVS.Source = contacts3;
-            }
-            else
-            {
-                FilteredInfoCVS.Source = FilteredData;
-            }
         }
 
         //===================================================================================================================

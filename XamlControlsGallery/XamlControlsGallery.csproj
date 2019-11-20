@@ -233,6 +233,8 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
