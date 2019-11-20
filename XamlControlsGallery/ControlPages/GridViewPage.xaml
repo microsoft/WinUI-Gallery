@@ -133,7 +133,7 @@
 
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
                         <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                TextChanged="StyledGrid_ChangeCol"/>
+                                TextChanged="StyledGrid_ChangeCol" AutomationProperties.Name="Space between columns"/>
                         <RepeatButton x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" 
                                 Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                         <RepeatButton x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" 
@@ -153,7 +153,7 @@
 
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
                         <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                 TextChanged="StyledGrid_ChangeRow"/>
+                                 TextChanged="StyledGrid_ChangeRow" AutomationProperties.Name="Space between rows"/>
                         <RepeatButton x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
                                 Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                         <RepeatButton x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
@@ -173,7 +173,7 @@
 
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
                         <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
-                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
+                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left" AutomationProperties.Name="Maximum number of items to show before wrapping"/>
                         <RepeatButton x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
                                 Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                         <RepeatButton x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
