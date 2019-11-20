@@ -11,6 +11,11 @@ using AppUIBasics.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+>>>>>>> 9959393 (Updated ListView filtering sample to include friendlier version of Linq, and implemented functionality to filter by multiple categories at once)
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +69,7 @@ namespace AppUIBasics.ControlPages
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
             FilteredInfoCVS.Source = contacts3;
+            FilteredData = contacts3;
         }
 
         //===================================================================================================================
