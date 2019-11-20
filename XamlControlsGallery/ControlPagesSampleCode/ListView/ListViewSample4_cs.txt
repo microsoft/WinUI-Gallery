@@ -1,0 +1,38 @@
+// C# Code
+
+// Make sure to add this to your declarations at the top for the filtering method:
+using System.Linq;
+// ...
+
+// Initialize an IEnumerable<Contact> object to hold the filtered data, that will get
+// updated inside the filtering functions:
+IEnumerable<Contact> FilteredData;
+
+// Initialize the CollectionViewSource to include all data on first load of the page:
+// contacts is a populated list of Contact objects.
+FilteredInfoCVS.Source = contacts;
+
+/* The following three functions are called whenever the text changes, i.e.
+a user types in one of the three text boxes. A Linq query is used to select only
+items from the list (or from the currently filtered items) that match the search query, 
+and the CollectionViewSource's Source property is bound to that collection of matching items. */
+
+private void FilteredLV_FNameChanged(object sender, TextChangedEventArgs e)
+{
+    FilteredData = FilteredData.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
+    FilteredInfoCVS.Source = FilteredData;
+
+}
+
+private void FilteredLV_LNameChanged(object sender, TextChangedEventArgs e)
+{
+    FilteredData = FilteredData.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
+    FilteredInfoCVS.Source = FilteredData;
+}
+
+private void FilteredLV_CompanyChanged(object sender, TextChangedEventArgs e)
+{
+    FilteredData = FilteredData.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
+    FilteredInfoCVS.Source = FilteredData;
+
+}
