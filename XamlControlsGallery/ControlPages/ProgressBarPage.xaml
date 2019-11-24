@@ -46,7 +46,7 @@
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <muxc:ProgressBar Width="130" x:Name="ProgressBar2" Value="{x:Bind ProgressValue.Value,Mode=OneWay}"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
-                <TextBlock Text="Click and hold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBlock Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <muxc:NumberBox x:Name="ProgressValue" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline"/>
             </StackPanel>
             <local:ControlExample.Xaml>
