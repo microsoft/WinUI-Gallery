@@ -128,33 +128,23 @@
                             <Setter Property="StepFrequency" Value="1" />
                             <Setter Property="HorizontalAlignment" Value="Stretch" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-
-                        <Style x:Key="DefaultTextBlockStyle" TargetType="TextBlock">
-                            <Setter Property="MaxWidth" Value="200"/>
-                            <Setter Property="Width" Value="200"/>
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="Margin" Value="0,16,0,8" />
-                            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+                            <Setter Property="MaxWidth" Value="250" />
+                            <Setter Property="Margin" Value="0,0,0,16" />
                         </Style>
                     </StackPanel.Resources>
 
-                    <!--At the time of writing this, the available version of the NumberBox 
-                            does not deal very well with sizing and headers-->
-                    <!--Thats why we create our own header-->
-
-                    <TextBlock Style="{ThemeResource DefaultTextBlockStyle}" Margin="0,0,0,8">Space between columns</TextBlock>
                     <muxc:NumberBox x:Name="ColumnSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between columns"
                                     Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
                     </muxc:NumberBox>
 
-                    <TextBlock Style="{ThemeResource DefaultTextBlockStyle}">Space between rows</TextBlock>
                     <muxc:NumberBox x:Name="RowSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between rows"
                                     Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
                     </muxc:NumberBox>
 
-                    <TextBlock Style="{ThemeResource DefaultTextBlockStyle}">Maximum number of items before wrapping</TextBlock>
-                    <muxc:NumberBox x:Name="WrapItemCount" Minimum="1" Maximum="10" Value="3"
+                    <muxc:NumberBox x:Name="WrapItemCount" Minimum="1" Maximum="8" Value="3"
+                                    Header="Maximum number of items before wrapping"
                                     Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
                     </muxc:NumberBox>
                 </StackPanel>
