@@ -25,7 +25,11 @@ namespace UITests
     public class Test_Base
     {
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
+#if DEBUG
+        private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery.Debug_8wekyb3d8bbwe!App";
+#else
         private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery_8wekyb3d8bbwe!App";
+#endif
         protected static WindowsDriver<WindowsElement> session = null;
 
         public static void Setup(TestContext context)
