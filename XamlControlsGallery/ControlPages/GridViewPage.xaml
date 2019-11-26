@@ -15,8 +15,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     xmlns:local1="using:AppUIBasics.ControlPages"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
@@ -134,19 +133,18 @@
                     </StackPanel.Resources>
 
                     <muxc:NumberBox x:Name="ColumnSpace" Minimum="0" Maximum="100" Value="5"
-                                    Header="Space between columns"
-                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
-                    </muxc:NumberBox>
+                                    Header="Space between columns" AutomationProperties.Name="Space between columns"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
                     <muxc:NumberBox x:Name="RowSpace" Minimum="0" Maximum="100" Value="5"
-                                    Header="Space between rows"
-                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
-                    </muxc:NumberBox>
+                                    Header="Space between rows" AutomationProperties.Name="Space between rows"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
                     <muxc:NumberBox x:Name="WrapItemCount" Minimum="1" Maximum="8" Value="3"
                                     Header="Maximum number of items before wrapping"
-                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged">
-                    </muxc:NumberBox>
+                                    AutomationProperties.Name="Maximum number of items before wrapping"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
+
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>

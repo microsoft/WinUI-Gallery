@@ -38,8 +38,6 @@ namespace AppUIBasics.ControlPages
             ContentGridView.ItemsSource = Items;
             StyledGrid.ItemsSource = Items;
 
-            //MaxItems.Text = ActualMaxItems.ToString();
-
             DisplayDT.Value = @"<!-- ImageTemplate: -->
 <DataTemplate x:Key='ImageTemplate' x:DataType='local1: CustomDataObject'>
     <Image Stretch = 'UniformToFill' Source = '{x:Bind ImageLocation}' 
