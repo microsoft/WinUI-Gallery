@@ -1,0 +1,6 @@
+﻿<controls:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+    Header="Enter an integer:" 
+    Value="1" 
+    SpinButtonPlacementMode="Compact" 
+    StepFrequency="1" >
+</controls:NumberBox>

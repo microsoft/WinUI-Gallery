@@ -248,6 +248,10 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
@@ -433,6 +437,9 @@
     </Compile>
     <Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\NumberBox.xaml.cs">
+      <DependentUpon>NumberBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
@@ -717,6 +724,10 @@
     <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\NumberBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\TeachingTipPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1105,19 +1116,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ColorCode.UWP">
-      <Version>2.0.5</Version>
+      <Version>2.0.6</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.9</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.3.191107001-prerelease</Version>
+      <Version>2.3.191125001-prerelease</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
-      <Version>2.0.0</Version>
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Win2D.uwp">
-      <Version>1.23.0</Version>
+      <Version>1.24.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
