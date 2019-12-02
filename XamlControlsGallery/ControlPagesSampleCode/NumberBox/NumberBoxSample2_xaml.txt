@@ -1,7 +1,7 @@
-﻿<controls:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+﻿<muxc:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
     Header="Enter an integer:" 
     Value="1" 
     SpinButtonPlacementMode="Compact" 
     SmallChange="10"
 	LargeChange="100" >
-</controls:NumberBox>
+</muxc:NumberBox>

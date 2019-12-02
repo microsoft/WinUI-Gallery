@@ -1,1 +1,1 @@
-﻿<controls:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
+﻿<muxc:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />

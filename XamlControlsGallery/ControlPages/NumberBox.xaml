@@ -15,7 +15,7 @@
         xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         mc:Ignorable="d">
 
     <StackPanel HorizontalAlignment="Left">
@@ -23,7 +23,7 @@
         <local:ControlExample HeaderText="A NumberBox that evaluates expressions." 
                               XamlSource="NumberBox/NumberBoxSample1_xaml.txt">
             <local:ControlExample.Example>
-                <controls:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
+                <muxc:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
@@ -31,13 +31,13 @@
                               XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <controls:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+                    <muxc:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
                                     Header="Enter an integer:" 
                                     Value="10" 
                                     SpinButtonPlacementMode="Compact" 
                                     SmallChange="10"
                                     LargeChange="100">
-                    </controls:NumberBox>
+                    </muxc:NumberBox>
                 </StackPanel>
             </local:ControlExample.Example>
             
@@ -55,7 +55,7 @@
                               XamlSource="NumberBox/NumberBoxSample3_xaml.txt"
                               CSharpSource="NumberBox/NumberBoxSample3_cs.txt">
             <local:ControlExample.Example>
-                <controls:NumberBox x:Name="FormattedNumberBox" Header="Enter a dollar amount:" PlaceholderText="0.00" />
+                <muxc:NumberBox x:Name="FormattedNumberBox" Header="Enter a dollar amount:" PlaceholderText="0.00" />
             </local:ControlExample.Example>
         </local:ControlExample>
 
