@@ -2,5 +2,6 @@
     Header="Enter an integer:" 
     Value="1" 
     SpinButtonPlacementMode="Compact" 
-    StepFrequency="1" >
+    SmallChange="10"
+	LargeChange="100" >
 </controls:NumberBox>
