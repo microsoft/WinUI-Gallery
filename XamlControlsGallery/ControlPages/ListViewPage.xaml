@@ -39,8 +39,6 @@
         directly on the ListView's item source to for further optimization. Please see the AppUIBasics sample for an example of how to do this.  -->
         <CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True" />
 
-        <CollectionViewSource x:Name="FilteredInfoCVS" IsSourceGrouped="False"/>
-
         <!-- When using x:Bind, you need to set x:DataType -->
         <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
             <Grid>
@@ -278,7 +276,6 @@ source code for the XAML Controls Gallery. -->
                               CSharpSource="ListView/ListViewSample4_cs.txt">
             <ListView 
                 x:Name="FilteredListView"
-                ItemsSource="{x:Bind FilteredInfoCVS.View, Mode=OneWay}"
                 ItemTemplate="{StaticResource ContactListViewTemplate}"
                 SelectionMode="Single"
                 ShowsScrollingPlaceholders="True"
