@@ -11,11 +11,6 @@ using AppUIBasics.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
-using System.Collections.ObjectModel;
-using System.Diagnostics;
->>>>>>> 9959393 (Updated ListView filtering sample to include friendlier version of Linq, and implemented functionality to filter by multiple categories at once)
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +30,15 @@ namespace AppUIBasics.ControlPages
     {
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
-        IList<Contact> contacts3 = new List<Contact>();
-        IEnumerable<Contact> FilteredData;
+        ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
+        static ObservableCollection<Contact> contacts_copy;
+        IEnumerable<Contact> FilteredData1;
+        IEnumerable<Contact> FilteredData2;
+        IEnumerable<Contact> FilteredData3;
+
+        bool FNameFilterApplied = false;
+        bool LNameFilterApplied = false;
+        bool CompanyFilterApplied = false;
 
         ItemsStackPanel stackPanelObj;
 
@@ -68,8 +70,12 @@ namespace AppUIBasics.ControlPages
 
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
-            FilteredInfoCVS.Source = contacts3;
-            FilteredData = contacts3;
+            FilteredData1 = await Contact.GetContactsAsync();
+            FilteredData2 = await Contact.GetContactsAsync();
+            FilteredData3 = await Contact.GetContactsAsync();
+            contacts_copy = new ObservableCollection<Contact>(contacts3);
+
+            FilteredListView.ItemsSource = contacts3;
         }
 
         //===================================================================================================================
