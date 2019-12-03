@@ -11,7 +11,7 @@ ObservableCollection<Contact> contactsFiltered = new ObservableCollection<Contac
 /* Populate contactsFiltered with all contact objects (in this case, contacts holds
 all of our Contact objects so we copy them into contactsFiltered). Set this newly populated
 collection as the ItemsSource for the ListView. */
-contactsFiltered = new ObservableCollection<Contact>(contacts3);
+contactsFiltered = new ObservableCollection<Contact>(allContacts);
 FilteredListView.ItemsSource = contactsFiltered;
 
 
@@ -21,7 +21,7 @@ private void OnFilterChanged(object sender, TextChangedEventArgs args)
 {
     // This is a Linq query that selects only items that return True after being passed through
     // the Filter function, and adds all of those selected items to filtered.
-    var filtered = contacts3.Where(contact => Filter(contact));
+    var filtered = allContacts.Where(contact => Filter(contact));
     Remove_NonMatching(filtered);
     AddBack_Contacts(filtered);
 }
@@ -41,7 +41,7 @@ private bool Filter(Contact contact)
 
 /* These functions go through the current list being displayed (contactsFiltered), and remove
 any items not in the filtered collection (any items that don't belong), or add back any items 
-from the original contacts3 list that are now supposed to be displayed (i.e. when backspace is hit). 
+from the original allContacts list that are now supposed to be displayed (i.e. when backspace is hit). 
 See XAML Controls Gallery source code for more detail. */
 private void Remove_NonMatching(IEnumerable<Contact> fd) { ... }
 private void AddBack_Contacts(IEnumerable<Contact> fd) { ... }
