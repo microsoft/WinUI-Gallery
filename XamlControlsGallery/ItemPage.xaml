@@ -51,7 +51,7 @@
                 <VisualState x:Name="NormalFrameContent" />
                 <VisualState x:Name="WideFrameContent">
                     <VisualState.Setters>
-                        <Setter Target="contentFrame.Width" Value="1000" />
+                        <Setter Target="contentFrame.Width" Value="1028" />
                         <Setter Target="contentFrame.HorizontalAlignment" Value="Left" />
                     </VisualState.Setters>
                 </VisualState>
