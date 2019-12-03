@@ -31,14 +31,7 @@ namespace AppUIBasics.ControlPages
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
-        static ObservableCollection<Contact> contacts_copy;
-        IEnumerable<Contact> FilteredData1;
-        IEnumerable<Contact> FilteredData2;
-        IEnumerable<Contact> FilteredData3;
-
-        bool FNameFilterApplied = false;
-        bool LNameFilterApplied = false;
-        bool CompanyFilterApplied = false;
+        ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
 
         ItemsStackPanel stackPanelObj;
 
@@ -70,12 +63,9 @@ namespace AppUIBasics.ControlPages
 
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
-            FilteredData1 = await Contact.GetContactsAsync();
-            FilteredData2 = await Contact.GetContactsAsync();
-            FilteredData3 = await Contact.GetContactsAsync();
-            contacts_copy = new ObservableCollection<Contact>(contacts3);
+            contacts3Filtered = new ObservableCollection<Contact>(contacts3);
 
-            FilteredListView.ItemsSource = contacts3;
+            FilteredListView.ItemsSource = contacts3Filtered;
         }
 
         //===================================================================================================================
