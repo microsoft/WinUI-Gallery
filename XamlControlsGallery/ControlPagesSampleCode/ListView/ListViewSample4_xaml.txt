@@ -17,9 +17,9 @@ in the code-behind, called contactsFiltered. -->
 <!-- The textboxes used for filtering are shown below: -->
 <StackPanel Width="200">
     <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
-    <TextBox x:Name="FilterByFirstName" Width="150" Header="First Name" Margin="8"
+    <TextBox x:Name="FilterByFirstName" Width="150" Header="First name" Margin="8"
 	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
-    <TextBox x:Name="FilterByLastName" Width="150" Header="Last Name" Margin="8"
+    <TextBox x:Name="FilterByLastName" Width="150" Header="Last name" Margin="8"
 	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
     <TextBox x:Name="FilterByCompany" Width="150" Header="Company" Margin="8" 
 	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
