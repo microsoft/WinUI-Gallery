@@ -12,7 +12,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +29,7 @@ namespace AppUIBasics.ControlPages
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
-        static ObservableCollection<Contact> contacts_copy;
-        IEnumerable<Contact> FilteredData1;
-        IEnumerable<Contact> FilteredData2;
-        IEnumerable<Contact> FilteredData3;
-
-        bool FNameFilterApplied = false;
-        bool LNameFilterApplied = false;
-        bool CompanyFilterApplied = false;
+        ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
 
         ItemsStackPanel stackPanelObj;
 
@@ -69,12 +61,9 @@ namespace AppUIBasics.ControlPages
 
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
-            FilteredData1 = await Contact.GetContactsAsync();
-            FilteredData2 = await Contact.GetContactsAsync();
-            FilteredData3 = await Contact.GetContactsAsync();
-            contacts_copy = new ObservableCollection<Contact>(contacts3);
+            contacts3Filtered = new ObservableCollection<Contact>(contacts3);
 
-            FilteredListView.ItemsSource = contacts3;
+            FilteredListView.ItemsSource = contacts3Filtered;
         }
 
         //===================================================================================================================
@@ -267,144 +256,46 @@ namespace AppUIBasics.ControlPages
         //===================================================================================================================
         private void Remove_NonMatching(IEnumerable<Contact> fd)
         {
-            for (int i = 0; i < contacts3.Count; i++)
+            for (int i = contacts3Filtered.Count - 1; i >= 0; i--)
             {
-                if (fd.Contains(contacts3[i]))
+                var item = contacts3Filtered[i];
+                // If contact is not in the filtered argument list, remove it from the ListView's source.
+                if (!fd.Contains(item))
                 {
-                    continue;
-                }
-                else
-                {
-                    contacts3.Remove(contacts3[i]);
-                    i--;
+                    contacts3Filtered.Remove(item);
                 }
             }
         }
 
         private void AddBack_Contacts(IEnumerable<Contact> fd)
+        // When a user hits backspace, more contacts may need to be added back into the list
         {
-            for (int i = 0; i < contacts_copy.Count; i++)
+            foreach (var item in fd)
             {
-                if (fd.Contains(contacts_copy[i]) && !(contacts3.Contains(contacts_copy[i])))
+                // If item in filtered list is not currently in ListView's source collection, add it back in
+                if (!contacts3Filtered.Contains(item))
                 {
-                    contacts3.Add(contacts_copy[i]);
+                    contacts3Filtered.Add(item);
                 }
             }
         }
-        private void FilteredLV_FNameChanged(object sender, TextChangedEventArgs e)
+
+        private void OnFilterChanged(object sender, TextChangedEventArgs args)
         {
-            if (LNameFilterApplied)
-            {
-                FilteredData1 = FilteredData2.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
-                Debug.Print("other filters applied\n");
-            }
-            else if (CompanyFilterApplied)
-            {
-                FilteredData1 = FilteredData3.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
-            }
-            else if (CompanyFilterApplied && LNameFilterApplied)
-            {
-                FilteredData1 = contacts3.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
-            }
-            else
-            {
-                FilteredData1 = contacts_copy.Where(contact => contact.FirstName.ToLower().Contains(FilterByFirstName.Text.ToLower()));
-                Debug.Print("no other filters applied\n");
-            }
-
-            FNameFilterApplied = true;
-            // First, remove all non-matching contacts
-            Remove_NonMatching(FilteredData1);
-
-            // Check if any previously-deleted contacts need to be added back in
-            AddBack_Contacts(FilteredData1);
-
-            // Check if list has been reset, i.e. no filters are currently applied
-            if (FilterByFirstName.Text == "")
-            {
-                Debug.Print("empty field detected\n");
-                FNameFilterApplied = false;
-                AddBack_Contacts(FilteredData1);
-            }
-
+            // Linq query that selects only items that return True after being passed through Filter function
+            var filtered = contacts3.Where(contact => Filter(contact));
+            Remove_NonMatching(filtered);
+            AddBack_Contacts(filtered);
         }
 
-        private void FilteredLV_LNameChanged(object sender, TextChangedEventArgs e)
+        private bool Filter(Contact contact)
         {
-            if (FNameFilterApplied)
-            {
-                FilteredData2 = FilteredData1.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
-            }
-            if (CompanyFilterApplied)
-            {
-                FilteredData2 = FilteredData3.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
-            }
-            else if (FNameFilterApplied && CompanyFilterApplied)
-            {
-                FilteredData2 = contacts3.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
-            }
-            else
-            {
-                FilteredData2 = contacts_copy.Where(contact => contact.LastName.ToLower().Contains(FilterByLastName.Text.ToLower()));
-            }
+            // When the text in any filter is changed, contact list is ran through all three filters to make sure
+            // they can properly interact with each other (i.e. they can all be applied at the same time).
 
-            LNameFilterApplied = true;
-
-            // First, remove all non-matching contacts
-            Remove_NonMatching(FilteredData2);
-
-            // Check if any previously-deleted contacts need to be added back in
-            AddBack_Contacts(FilteredData2);
-
-
-            // Check if list has been reset, i.e. no filters are currently applied
-            if (FilterByLastName.Text == "")
-            {
-                LNameFilterApplied = false;
-                AddBack_Contacts(FilteredData2);
-            }
-        }
-
-        private void FilteredLV_CompanyChanged(object sender, TextChangedEventArgs e)
-        {
-            if (LNameFilterApplied)
-            {
-                Debug.Print("1\n");
-                FilteredData3 = FilteredData2.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
-            }
-            else if (FNameFilterApplied)
-            {
-                Debug.Print("2\n");
-                FilteredData3 = FilteredData1.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
-            }
-            else if (LNameFilterApplied && FNameFilterApplied)
-            {
-                Debug.Print("3\n");
-                FilteredData3 = contacts3.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
-            }
-            else
-            {
-                Debug.Print("4\n");
-                FilteredData3 = contacts_copy.Where(contact => contact.Company.ToLower().Contains(FilterByCompany.Text.ToLower()));
-            }
-
-            CompanyFilterApplied = true;
-
-            // First, remove all non-matching contacts
-            Remove_NonMatching(FilteredData3);
-
-            // Check if any previously-deleted contacts need to be added back in
-            AddBack_Contacts(FilteredData3);
-
-
-            // Check if list has been reset, i.e. no filters are currently applied
-            if (FilterByCompany.Text == "")
-            {
-                Debug.Print("5\n");
-                CompanyFilterApplied = false;
-                AddBack_Contacts(FilteredData3);
-            }
-
+            return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
         }
 
         //===================================================================================================================
