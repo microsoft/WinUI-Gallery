@@ -16,7 +16,7 @@
                 <TextBlock Margin="0,0,0,8">Transition modes</TextBlock>
                 <RadioButton x:Name="DefaultRB" Content="Default" IsChecked="True" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="Default NavigationTransitionInfo"/>
                 <RadioButton x:Name="EntranceRB" Content="Entrance" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="EntranceNavigationTransitionInfo" />
-                <RadioButton x:Name="DrillRB" Content="Drill" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="DrillInNavigationTransitionInfo" />
+                <RadioButton x:Name="DrillRB" Content="DrillIn" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="DrillInNavigationTransitionInfo" />
                 <RadioButton x:Name="SuppressRB" Content="Suppress" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="SuppressNavigationTransitionInfo" />
                 <contract7Present:RadioButton x:Name="SlideFromRightRB" Content="Slide from Right" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="SlideNavigationTransitionInfo From Right" />
                 <contract7Present:RadioButton x:Name="SlideFromLeftRB" Content="Slide from Left" Checked="TransitionRadioButton_Checked" AutomationProperties.Name="SlideNavigationTransitionInfo From Left" />
