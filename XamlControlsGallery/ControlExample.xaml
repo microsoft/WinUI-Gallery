@@ -22,7 +22,7 @@
         </Storyboard>
 
         <Storyboard x:Name="PopInStoryboard">
-            <PopInThemeAnimation FromVerticalOffset="150" SpeedRatio=".2" TargetName="rootGrid" />
+            <PopInThemeAnimation FromVerticalOffset="152" SpeedRatio=".2" TargetName="rootGrid" />
         </Storyboard>
     </UserControl.Resources>
 
@@ -69,7 +69,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,15" Text="{x:Bind HeaderText}" />
+        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16" Text="{x:Bind HeaderText}" />
 
         <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="Red" IsTextSelectionEnabled="True">
             <Paragraph>
