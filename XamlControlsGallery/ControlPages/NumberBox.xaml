@@ -30,17 +30,15 @@
         <local:ControlExample HeaderText="A NumberBox with a spin button." 
                               XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
             <local:ControlExample.Example>
-                <StackPanel>
-                    <muxc:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
-                                    Header="Enter an integer:" 
-                                    Value="10" 
-                                    SpinButtonPlacementMode="Compact" 
-                                    SmallChange="10"
-                                    LargeChange="100">
-                    </muxc:NumberBox>
-                </StackPanel>
+              <muxc:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+                              VerticalAlignment="Top"
+                              Header="Enter an integer:" 
+                              Value="10" 
+                              SpinButtonPlacementMode="Compact" 
+                              SmallChange="10"
+                              LargeChange="100">
+              </muxc:NumberBox> 
             </local:ControlExample.Example>
-            
             <local:ControlExample.Options>
                 <StackPanel x:Name="SpinButtonPlacementGroup">
                     <TextBlock Text="SpinButton Placement" Margin="0,0,0,8" />
@@ -48,9 +46,7 @@
                     <RadioButton Content="Compact" Tag="Compact" Checked="RadioButton_Checked" IsChecked="True" />
                 </StackPanel>
             </local:ControlExample.Options>
-            
         </local:ControlExample>
-
         <local:ControlExample HeaderText="A formatted NumberBox that rounds to the nearest 0.25." 
                               XamlSource="NumberBox/NumberBoxSample3_xaml.txt"
                               CSharpSource="NumberBox/NumberBoxSample3_cs.txt">
