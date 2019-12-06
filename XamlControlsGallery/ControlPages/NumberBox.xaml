@@ -26,7 +26,6 @@
                 <muxc:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
             </local:ControlExample.Example>
         </local:ControlExample>
-
         <local:ControlExample HeaderText="A NumberBox with a spin button." 
                               XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
             <local:ControlExample.Example>
@@ -36,8 +35,7 @@
                               Value="10" 
                               SpinButtonPlacementMode="Compact" 
                               SmallChange="10"
-                              LargeChange="100">
-              </muxc:NumberBox> 
+                              LargeChange="100" />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel x:Name="SpinButtonPlacementGroup">
@@ -54,6 +52,5 @@
                 <muxc:NumberBox x:Name="FormattedNumberBox" Header="Enter a dollar amount:" PlaceholderText="0.00" />
             </local:ControlExample.Example>
         </local:ControlExample>
-
     </StackPanel>
 </Page>
