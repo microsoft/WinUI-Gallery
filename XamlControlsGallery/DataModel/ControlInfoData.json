@@ -1854,9 +1854,9 @@
         {
           "UniqueId": "NumberBox",
           "Title": "NumberBox",
-          "Subtitle": "A single-line or multi-line plain text field.",
+          "Subtitle": "A text control used for numeric input and evaluation of algebraic equations.",
           "ImagePath": "ms-appx:///Assets/NumberBox.png",
-          "Description": "Use a NumberBox to let a user enter numeric and formulaic input in your app.",
+          "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
