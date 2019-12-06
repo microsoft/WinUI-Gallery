@@ -300,7 +300,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Complete TabView windowing sample">
+        <local:ControlExample HeaderText="Complete TabView windowing sample" MinimumUniversalAPIContract="8">
             <local:ControlExample.Example>
                 <Button Content="Click here to launch the sample" Click="TabViewWindowingButton_Click"/>
             </local:ControlExample.Example>
