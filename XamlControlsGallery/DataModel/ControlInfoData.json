@@ -626,6 +626,29 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "AutomationProperties",
+          "Title": "AutomationProperties",
+          "Subtitle": "Attributes that help with writing accessible XAML.",
+          "ImagePath": "ms-appx:///Assets/Button.png",
+          "Description": "The AutomationProperties attributes provide functionality around accessible components.",
+          "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AutomationProperties - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.automation.automationproperties"
+            },
+            {
+              "Title": "Accessibility Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/accessibility/accessibility"
+            }
+          ],
+          "RelatedControls": [
+            "TextBlock",
+            "Image"
+          ]
+        },
+        {
           "UniqueId": "Button",
           "Title": "Button",
           "Subtitle": "A control that responds to user input and raises a Click event.",
