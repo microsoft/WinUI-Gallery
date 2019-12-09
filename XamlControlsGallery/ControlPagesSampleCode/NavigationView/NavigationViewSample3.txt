@@ -1,4 +1,4 @@
-﻿<!-- Put the following VisualStateManager inside the first component of your Page, -->
+﻿<!-- Put the following VisualStateGroup(s) inside the first component of your Page -->
 <VisualStateManager.VisualStateGroups>
     <VisualStateGroup>
         <VisualState>
