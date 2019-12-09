@@ -440,6 +440,10 @@
               "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Data.CollectionViewSource#see-also"
             },
             {
+              "Title": "Filtering collections and lists through user input",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/listview-filtering"
+            },
+            {
               "Title": "Inverted Lists",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inverted-lists"
             },
@@ -447,7 +451,7 @@
               "Title": "Inverted Lists - Full Sample",
               "Uri": "https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlBottomUpList"
             }
-            
+
           ],
           "RelatedControls": [
             "GridView",
