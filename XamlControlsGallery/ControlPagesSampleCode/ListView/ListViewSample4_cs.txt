@@ -16,7 +16,6 @@ FilteredListView.ItemsSource = contactsFiltered;
 
 
 // Whenever text changes in any of the filtering text boxes, the following function is called:
-
 private void OnFilterChanged(object sender, TextChangedEventArgs args)
 {
     // This is a Linq query that selects only items that return True after being passed through
