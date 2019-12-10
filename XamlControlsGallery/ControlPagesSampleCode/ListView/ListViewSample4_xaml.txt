@@ -1,7 +1,8 @@
 <!-- XAML Code -->
 
 <!-- The ListView's ItemsSource is an ObservableCollection<Contact> that is defined and bound
-in the code-behind, called contactsFiltered. -->
+in the code-behind, called contactsFiltered. This ListView uses the same DataTemplate as the
+samples above it, called ContactListViewTemplate - you can see its definition above. -->
 
 <ListView 
     x:Name="FilteredListView"
