@@ -262,7 +262,7 @@ source code for the XAML Controls Gallery. -->
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="ListView with Filtering"
+        <local:ControlExample HeaderText="ListView with filtering"
                               XamlSource="ListView/ListViewSample4_xaml.txt"
                               CSharpSource="ListView/ListViewSample4_cs.txt">
             <ListView 
