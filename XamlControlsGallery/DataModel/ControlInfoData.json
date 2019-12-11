@@ -1600,13 +1600,16 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas"
             },
             {
+              "Title": "InkToolbar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar"
+            },
+            {
               "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inking-controls"
             }
           ],
           "RelatedControls": [
-            "Canvas",
-            "InkToolbar"
+            "Canvas"
           ]
         },
         {
