@@ -1,12 +1,14 @@
 using System;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.UI.ViewManagement;
-using Windows.UI.WindowManagement;
+using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Windowing;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics.TabViewPages
 {
@@ -88,6 +90,31 @@ namespace AppUIBasics.TabViewPages
         public void AddTabToTabs(TabViewItem tab)
         {
             Tabs.TabItems.Add(tab);
+        }
+
+        // Create a new Window once the Tab is dragged outside.
+        private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
+        {
+            // AppWindow was introduced in Windows 10 version 18362 (ApiContract version 8). 
+            // If the app is running on a version earlier than 18362, simply no-op.
+            // If your app needs to support multiple windows on earlier versions of Win10, you can use CoreWindow/ApplicationView.
+            // More information about showing multiple views can be found here: https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views
+            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+            {
+                return;
+            }
+
+            AppWindow newWindow = await AppWindow.TryCreateAsync();
+
+            var newPage = new TabViewWindowingSamplePage();
+            newPage.SetupWindow(newWindow);
+
+            ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
+
+            Tabs.TabItems.Remove(args.Tab);
+            newPage.AddTabToTabs(args.Tab);
+
+            await newWindow.TryShowAsync();
         }
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
