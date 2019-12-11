@@ -1733,6 +1733,10 @@
             {
               "Title": "Guidance",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
+            },
+            {
+              "Title": "Show multiple views for an app",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views"
             }
           ],
           "RelatedControls": [
