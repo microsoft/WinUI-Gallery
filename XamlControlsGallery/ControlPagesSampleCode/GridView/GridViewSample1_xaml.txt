@@ -8,7 +8,7 @@
     SelectionMode="Single"/>
                     
 <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
-     <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" Width="190" Height="130">
+     <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" Width="190" Height="130"/>
 </DataTemplate>
                     
 <!-- In this example, the GridView's ItemTemplate property is bound to a data template (shown above)
