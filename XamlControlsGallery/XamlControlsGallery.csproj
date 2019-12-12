@@ -305,6 +305,9 @@
     <Compile Include="ControlExample.xaml.cs">
       <DependentUpon>ControlExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
+      <DependentUpon>AutomationPropertiesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\AcrylicPage.xaml.cs">
       <DependentUpon>AcrylicPage.xaml</DependentUpon>
     </Compile>
@@ -698,6 +701,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConnectedAnimationPages\DetailedInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AutomationPropertiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
