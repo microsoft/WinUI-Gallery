@@ -15,6 +15,8 @@ namespace AppUIBasics.ControlPages
         // (which also applies to this RichEditBox)
         private string LastFormattedText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.";
+        private int LastRawTextLength = 0;
+
         public SplitButtonPage()
         {
             this.InitializeComponent();
@@ -38,7 +40,7 @@ namespace AppUIBasics.ControlPages
             currentColor = color;
         }
 
-        private void RevealColorButton_Click(object sender,RoutedEventArgs e)
+        private void RevealColorButton_Click(object sender, RoutedEventArgs e)
         {
             myColorButtonReveal.Flyout.Hide();
         }
@@ -65,6 +67,12 @@ namespace AppUIBasics.ControlPages
 
         private void MyRichEditBox_GotFocus(object sender, RoutedEventArgs e)
         {
+            myRichEditBox.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
+            if (currentRawText.Length != LastRawTextLength)
+            {
+                // User used cut or paste from action command, skip the event
+                return;
+            }
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = myRichEditBox.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -97,6 +105,11 @@ namespace AppUIBasics.ControlPages
 
         private void MyRichEditBox_LosingFocus(object sender, RoutedEventArgs e)
         {
+            // Save text length to determine text length change
+            myRichEditBox.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
+            LastRawTextLength = lastRawText.Length;
+
+            // Save formatted to restore formatting upon regaining focus
             myRichEditBox.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
     }
