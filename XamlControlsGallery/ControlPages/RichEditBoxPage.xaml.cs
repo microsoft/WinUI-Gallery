@@ -28,6 +28,8 @@ namespace AppUIBasics.ControlPages
         // String used to restore the colors when the focus gets reenabled
         // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
         private string LastFormattedText = "";
+        private int LastRawTextLength = 0;
+
         public RichEditBoxPage()
         {
             this.InitializeComponent();
@@ -157,6 +159,13 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
+            editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
+            if (currentRawText.Length != LastRawTextLength)
+            {
+                // User used cut or paste from action command, skip the event
+                return;
+            }
+            
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -189,6 +198,10 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_LosingFocus(object sender, RoutedEventArgs e)
         {
+            // Save text length to determine text length change
+            editor.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
+            LastRawTextLength = lastRawText.Length; 
+            
             editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
 
