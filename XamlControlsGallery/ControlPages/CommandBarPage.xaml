@@ -73,8 +73,8 @@
                 <x:String xml:space="preserve">
 &lt;CommandBar Background="Transparent" IsOpen="$(IsOpen)" DefaultLabelPosition="Right"$(IsSticky)&gt;
     &lt;AppBarButton Icon="Add" Label="Add"/&gt;
-    &lt;AppBarButton Icon="ReShare" Label="Share"/&gt;
     &lt;AppBarButton Icon="Edit" Label="Edit"/&gt;
+    &lt;AppBarButton Icon="Share" Label="Share"/&gt;
     &lt;CommandBar.SecondaryCommands&gt;
         &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;&gt;
             &lt;AppBarButton.KeyboardAccelerators&gt;
