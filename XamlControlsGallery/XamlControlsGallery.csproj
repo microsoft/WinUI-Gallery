@@ -310,6 +310,9 @@
     <Compile Include="ControlExample.xaml.cs">
       <DependentUpon>ControlExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
+      <DependentUpon>AutomationPropertiesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\AcrylicPage.xaml.cs">
       <DependentUpon>AcrylicPage.xaml</DependentUpon>
     </Compile>
@@ -619,7 +622,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
+    <AppxManifest Include="Package.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <AppxManifest Include="Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Assets\AutoSuggestBox.png" />
@@ -703,6 +709,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConnectedAnimationPages\DetailedInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AutomationPropertiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1123,7 +1133,7 @@
       <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.3.191127001-prerelease</Version>
+      <Version>2.3.191211002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.1</Version>

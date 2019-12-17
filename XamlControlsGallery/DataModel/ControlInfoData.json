@@ -895,6 +895,7 @@
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsPreview": true,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -992,6 +993,29 @@
       "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "AutomationProperties",
+          "Title": "AutomationProperties",
+          "Subtitle": "Attributes that help with writing accessible XAML.",
+          "ImagePath": "ms-appx:///Assets/Button.png",
+          "Description": "The AutomationProperties attributes provide functionality around accessible components.",
+          "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AutomationProperties - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.automation.automationproperties"
+            },
+            {
+              "Title": "Accessibility Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/accessibility/accessibility"
+            }
+          ],
+          "RelatedControls": [
+            "TextBlock",
+            "Image"
+          ]
+        },
         {
           "UniqueId": "ProgressBar",
           "Title": "ProgressBar",
@@ -1514,6 +1538,10 @@
             {
               "Title": "Guidance",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
+            },
+            {
+              "Title": "Show multiple views for an app",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views"
             }
           ],
           "RelatedControls": [
@@ -1599,13 +1627,16 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas"
             },
             {
+              "Title": "InkToolbar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar"
+            },
+            {
               "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inking-controls"
             }
           ],
           "RelatedControls": [
-            "Canvas",
-            "InkToolbar"
+            "Canvas"
           ]
         },
         {

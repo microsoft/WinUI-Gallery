@@ -1,5 +1,6 @@
 ﻿private Color currentColor = Colors.Black;
 private string LastFormattedText = "";
+private int LastRawTextLength = 0;
 
 private async void OpenButton_Click(object sender, RoutedEventArgs e)
 {
@@ -114,6 +115,12 @@ private void FindBoxRemoveHighlights()
 
 private void Editor_GotFocus(object sender, RoutedEventArgs e)
 {
+    editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
+    if (currentRawText.Length != LastRawTextLength)
+    {
+        // User used cut or paste from action command, skip the event
+        return;
+    }
     // reset colors to correct defaults for Focused state
     ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
     SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -145,6 +152,11 @@ private void Editor_GotFocus(object sender, RoutedEventArgs e)
 
 private void Editor_LosingFocus(object sender, RoutedEventArgs e)
 {
+    // Save text length to determine text length change
+    editor.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
+    LastRawTextLength = lastRawText.Length; 
+            
+    // Save formatted to restore formatting upon regaining focus
     editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
 }
 
