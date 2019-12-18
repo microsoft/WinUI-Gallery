@@ -40,9 +40,30 @@ private bool Filter(Contact contact)
 
 /* These functions go through the current list being displayed (contactsFiltered), and remove
 any items not in the filtered collection (any items that don't belong), or add back any items 
-from the original allContacts list that are now supposed to be displayed (i.e. when backspace is hit). 
-See XAML Controls Gallery source code for more detail. */
-private void Remove_NonMatching(IEnumerable<Contact> fd) { ... }
-private void AddBack_Contacts(IEnumerable<Contact> fd) { ... }
+from the original allContacts list that are now supposed to be displayed (i.e. when backspace is hit). */
 
+private void Remove_NonMatching(IEnumerable<Contact> filteredData)
+{
+    for (int i = contacts3Filtered.Count - 1; i >= 0; i--)
+    {
+        var item = contacts3Filtered[i];
+        // If contact is not in the filtered argument list, remove it from the ListView's source.
+        if (!filteredData.Contains(item))
+        {
+            contacts3Filtered.Remove(item);
+        }
+    }
+}
+
+private void AddBack_Contacts(IEnumerable<Contact> filteredData)
+{
+    foreach (var item in filteredData)
+    {
+        // If item in filtered list is not currently in ListView's source collection, add it back in
+        if (!contacts3Filtered.Contains(item))
+        {
+            contacts3Filtered.Add(item);
+        }
+    }
+}
 
