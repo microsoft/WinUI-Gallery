@@ -12,8 +12,7 @@ samples above it, called ContactListViewTemplate - you can see its definition ab
     Height="400"
     Width="400"
     BorderThickness="1"
-    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
-</ListView>
+    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"/>
 
 <!-- The textboxes used for filtering are shown below: -->
 <StackPanel Width="200">
