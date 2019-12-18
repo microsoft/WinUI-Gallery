@@ -442,8 +442,8 @@
     <Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\NumberBox.xaml.cs">
-      <DependentUpon>NumberBox.xaml</DependentUpon>
+    <Compile Include="ControlPages\NumberBoxPage.xaml.cs">
+      <DependentUpon>NumberBoxPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
@@ -736,7 +736,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlPages\NumberBox.xaml">
+    <Page Include="ControlPages\NumberBoxPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
