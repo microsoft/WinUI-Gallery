@@ -1893,7 +1893,7 @@
           "Docs": [
             {
               "Title": "NumberBox - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.numberbox"
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.numberbox"
             },
             {
               "Title": "Guidelines",
