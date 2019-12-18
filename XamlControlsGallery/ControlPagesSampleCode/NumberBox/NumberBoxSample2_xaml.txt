@@ -3,5 +3,5 @@
     Value="1" 
     SpinButtonPlacementMode="Compact" 
     SmallChange="10"
-	LargeChange="100" >
+    LargeChange="100" >
 </muxc:NumberBox>

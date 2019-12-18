@@ -19,13 +19,18 @@
         mc:Ignorable="d">
 
     <StackPanel HorizontalAlignment="Left">
-
         <local:ControlExample HeaderText="A NumberBox that evaluates expressions." 
                               XamlSource="NumberBox/NumberBoxSample1_xaml.txt">
             <local:ControlExample.Example>
                 <muxc:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
             </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;muxc:NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
+        
         <local:ControlExample HeaderText="A NumberBox with a spin button." 
                               XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
             <local:ControlExample.Example>
@@ -45,6 +50,7 @@
                 </StackPanel>
             </local:ControlExample.Options>
         </local:ControlExample>
+        
         <local:ControlExample HeaderText="A formatted NumberBox that rounds to the nearest 0.25." 
                               XamlSource="NumberBox/NumberBoxSample3_xaml.txt"
                               CSharpSource="NumberBox/NumberBoxSample3_cs.txt">
