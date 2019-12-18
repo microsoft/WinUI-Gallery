@@ -418,20 +418,20 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
     &lt;Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}"&gt;
         &lt;Grid.ColumnDefinitions&gt;
             &lt;ColumnDefinition Width="Auto" MinWidth="150"/&gt;
-            &lt;ColumnDefinition Width="*" /&gt;
+            &lt;ColumnDefinition Width="*"/&gt;
         &lt;/Grid.ColumnDefinitions&gt;
         &lt;Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/&gt;
 
         &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
             &lt;TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
-                        HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+                       HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
             &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
-                        TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
+                       TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
             &lt;StackPanel Orientation="Horizontal"&gt;
                 &lt;TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
                 &lt;TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
                 &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" 
-                            HorizontalAlignment="Left"/&gt;
+                           HorizontalAlignment="Left"/&gt;
                 &lt;TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
                 &lt;TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
             &lt;/StackPanel&gt;
