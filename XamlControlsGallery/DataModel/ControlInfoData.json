@@ -1863,6 +1863,31 @@
           ]
         },
         {
+          "UniqueId": "NumberBox",
+          "Title": "NumberBox",
+          "Subtitle": "A text control used for numeric input and evaluation of algebraic equations.",
+          "ImagePath": "ms-appx:///Assets/NumberBox.png",
+          "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
+          "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "NumberBox - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.numberbox"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/number-box"
+            }
+          ],
+          "RelatedControls": [
+            "TextBox",
+            "TextBlock",
+            "RichTextBlock",
+            "RichEditBox"
+          ]
+        },
+        {
           "UniqueId": "PasswordBox",
           "Title": "PasswordBox",
           "Subtitle": "A control for entering passwords.",
@@ -1908,6 +1933,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBox",
             "RichTextBlock",
             "TextBlock"
@@ -1933,6 +1959,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBlock",
             "TextBox",
             "PasswordBox",
@@ -1959,6 +1986,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBox",
             "RichTextBlock",
             "PasswordBox",
@@ -1985,6 +2013,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBlock",
             "RichTextBlock",
             "PasswordBox",
