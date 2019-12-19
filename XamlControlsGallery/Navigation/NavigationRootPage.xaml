@@ -59,7 +59,7 @@
                 Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
                 Canvas.ZIndex="1">
             <TextBlock x:Name="AppTitle"
-                       Text="XAML Controls Gallery"
+                       Text="{x:Bind GetAppTitleFromSystem()}"
                        VerticalAlignment="Center"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
