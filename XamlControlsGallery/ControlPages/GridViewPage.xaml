@@ -124,7 +124,7 @@
                     <StackPanel.Resources>
                         <Style x:Key="DefaultNumberBoxStyle" TargetType="muxc:NumberBox">
                             <Setter Property="SpinButtonPlacementMode" Value="Inline" />
-                            <Setter Property="StepFrequency" Value="1" />
+                            <Setter Property="SmallChange" Value="1" />
                             <Setter Property="HorizontalAlignment" Value="Stretch" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="MaxWidth" Value="250" />
