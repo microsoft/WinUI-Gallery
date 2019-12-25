@@ -44,6 +44,7 @@
     </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
+            <StackPanel>
             <TextBlock x:Name="SelectedOptionText"></TextBlock>
             <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
                 <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
@@ -58,7 +59,7 @@
 
                 </CommandBar.SecondaryCommands>
             </CommandBar>
-
+</StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Show or hide" />
