@@ -96,6 +96,7 @@
       <Link>Properties\Default.rd.xml</Link>
     </Content>
     <Content Include="Assets\LottieLogo1.png" />
+    <Content Include="Assets\NumberBox.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
     <Content Include="Assets\SampleMedia\grapes.jpg" />
@@ -248,6 +249,9 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
@@ -304,6 +308,9 @@
     </Compile>
     <Compile Include="ControlExample.xaml.cs">
       <DependentUpon>ControlExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
+      <DependentUpon>AutomationPropertiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\AcrylicPage.xaml.cs">
       <DependentUpon>AcrylicPage.xaml</DependentUpon>
@@ -433,6 +440,9 @@
     </Compile>
     <Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\NumberBoxPage.xaml.cs">
+      <DependentUpon>NumberBoxPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
@@ -611,7 +621,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
+    <AppxManifest Include="Package.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <AppxManifest Include="Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Assets\AutoSuggestBox.png" />
@@ -698,6 +711,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\AutomationPropertiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -717,6 +734,10 @@
     <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\NumberBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\TeachingTipPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1111,7 +1132,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190917002</Version>
+      <Version>2.3.191211002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>

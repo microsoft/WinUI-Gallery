@@ -14,7 +14,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
-    xmlns:local1="using:AppUIBasics.ControlPages">
+    xmlns:local1="using:AppUIBasics.ControlPages"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
@@ -120,65 +121,29 @@
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Grid HorizontalAlignment="Left" Margin="0,20,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                    <StackPanel.Resources>
+                        <Style x:Key="DefaultNumberBoxStyle" TargetType="muxc:NumberBox">
+                            <Setter Property="SpinButtonPlacementMode" Value="Inline" />
+                            <Setter Property="SmallChange" Value="1" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="MaxWidth" Value="250" />
+                            <Setter Property="Margin" Value="0,0,0,16" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                TextChanged="StyledGrid_ChangeCol"/>
-                        <RepeatButton x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
+                    <muxc:NumberBox x:Name="ColumnSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between columns" AutomationProperties.Name="Space between columns"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
-                    <Grid HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                    <muxc:NumberBox x:Name="RowSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between rows" AutomationProperties.Name="Space between rows"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                 TextChanged="StyledGrid_ChangeRow"/>
-                        <RepeatButton x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <Grid HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
-                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
+                    <muxc:NumberBox x:Name="WrapItemCount" Minimum="1" Maximum="8" Value="3"
+                                    Header="Maximum number of items before wrapping"
+                                    AutomationProperties.Name="Maximum number of items before wrapping"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
                 </StackPanel>
             </local:ControlExample.Options>
@@ -230,9 +195,9 @@ The data template is defined to display a CustomDataObject object (same type as 
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColSpace.PlaceholderText, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.PlaceholderText, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind MaxItems.PlaceholderText, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColumnSpace.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind WrapItemCount.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
