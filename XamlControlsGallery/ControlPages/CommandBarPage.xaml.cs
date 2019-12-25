@@ -65,7 +65,7 @@ namespace AppUIBasics.ControlPages
         private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var selectedFlyoutItem = sender as AppBarButton;
-            SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+            SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Text;
         }
 
         private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)

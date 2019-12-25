@@ -47,13 +47,13 @@
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText"></TextBlock>
                 <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
-                    <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
-                    <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
-                    <AppBarButton x:Name="shareButton" Icon="Share" Label="Share"/>
+                    <AppBarButton x:Name="addButton" Icon="Add" Label="Add" Click="OnElementClicked"/>
+                    <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit" Click="OnElementClicked"/>
+                    <AppBarButton x:Name="shareButton" Icon="Share" Label="Share" Click="OnElementClicked"/>
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
+                        <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings" Click="OnElementClicked">
                             <AppBarButton.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="S" />
+                                <KeyboardAccelerator Modifiers="Control" Key="S"/>
                             </AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
 
