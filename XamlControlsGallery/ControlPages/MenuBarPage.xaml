@@ -14,7 +14,7 @@
                               XamlSource="MenuBar\MenuBarSample1.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText" Text="" />
-                    <muxc:MenuBar>
+                <muxc:MenuBar>
                     <muxc:MenuBarItem Title="File">
                         <MenuFlyoutItem x:Name="o1" Text="New" Click="OnElementClicked"/>
                         <MenuFlyoutItem x:Name="o2" Text="Open" Click="OnElementClicked"/>
