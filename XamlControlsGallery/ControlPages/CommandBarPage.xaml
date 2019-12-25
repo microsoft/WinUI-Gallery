@@ -44,7 +44,7 @@
     </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
-
+            <TextBlock x:Name="SelectedOptionText"></TextBlock>
             <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
                 <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
                 <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>

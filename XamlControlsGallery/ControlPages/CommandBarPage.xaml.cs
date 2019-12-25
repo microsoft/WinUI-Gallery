@@ -66,9 +66,9 @@ namespace AppUIBasics.ControlPages
         {
             var selectedFlyoutItem = sender as AppBarButton;
             SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
-            
+        }
 
-            private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
+        private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
         {
             // Add compact button to the command bar. It provides functionality specific
             // to this page, and is removed when leaving the page.
@@ -135,7 +135,7 @@ namespace AppUIBasics.ControlPages
             while (PrimaryCommandBar.SecondaryCommands.Count > 1)
             {
                 PrimaryCommandBar.SecondaryCommands.RemoveAt(PrimaryCommandBar.SecondaryCommands.Count - 1);
-            }                
+            }
             MultipleButtons = false;
         }
 
