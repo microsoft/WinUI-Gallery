@@ -45,21 +45,21 @@
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
             <StackPanel>
-            <TextBlock x:Name="SelectedOptionText"></TextBlock>
-            <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
-                <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
-                <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
-                <AppBarButton x:Name="shareButton" Icon="Share" Label="Share"/>
-                <CommandBar.SecondaryCommands>
-                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
-                        <AppBarButton.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="S" />
-                        </AppBarButton.KeyboardAccelerators>
-                    </AppBarButton>
+                <TextBlock x:Name="SelectedOptionText"></TextBlock>
+                <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
+                    <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
+                    <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
+                    <AppBarButton x:Name="shareButton" Icon="Share" Label="Share"/>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
+                            <AppBarButton.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="S" />
+                            </AppBarButton.KeyboardAccelerators>
+                        </AppBarButton>
 
-                </CommandBar.SecondaryCommands>
-            </CommandBar>
-</StackPanel>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+            </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Show or hide" />
@@ -92,6 +92,6 @@
                 <local:ControlExampleSubstitution Key="IsSticky" IsEnabled="{x:Bind PrimaryCommandBar.IsSticky, Mode=OneWay}" Value=" IsSticky=&quot;True&quot; " />
                 <local:ControlExampleSubstitution Key="MultipleButtonsSecondaryCommands" IsEnabled="{x:Bind MultipleButtons, Mode=OneWay}" Value="{StaticResource MultipleButtonsSecondaryCommands}"/>
             </local:ControlExample.Substitutions>
-        </local:ControlExample>      
+        </local:ControlExample>
     </StackPanel>
 </Page>
