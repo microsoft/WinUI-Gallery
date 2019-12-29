@@ -37,18 +37,12 @@ namespace AppUIBasics.ControlPages
             UpdatePen();
         }
 
-        private void strokeSize_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            UpdatePen();
-        }
-
         private void UpdatePen()
         {
             if (_inkPresenter != null)
             {
                 var defaultAttributes = _inkPresenter.CopyDefaultDrawingAttributes();
 
-                defaultAttributes.Size = new Size(strokeSize.Value, strokeSize.Value);
                 defaultAttributes.PenTip = (bool)penTipShape.IsChecked ? PenTipShape.Circle : PenTipShape.Rectangle;
 
                 _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);

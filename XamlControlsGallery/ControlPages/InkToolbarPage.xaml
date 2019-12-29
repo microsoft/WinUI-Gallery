@@ -19,8 +19,6 @@
             
             <local:ControlExample.Options>
                 <StackPanel Width="180">
-                    <Slider x:Name="strokeSize" Header="Stroke Size" Minimum="1" Maximum="20" Value="5"
-                            ValueChanged="strokeSize_ValueChanged" Margin="0,12,0,0" IsFocusEngagementEnabled="False"/>
                     <StackPanel Margin="0,5,0,0">
                         <TextBlock>Pen tip</TextBlock>
                         <RadioButton x:Name="penTipShape" Checked="PenTip_Checked" Content="Circle" IsChecked="True"></RadioButton>
