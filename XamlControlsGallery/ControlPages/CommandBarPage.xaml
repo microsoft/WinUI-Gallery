@@ -44,21 +44,21 @@
     </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
-
-            <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
-                <AppBarButton x:Name="addButton" Icon="Add" Label="Add"/>
-                <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit"/>
-                <AppBarButton x:Name="shareButton" Icon="Share" Label="Share"/>
-                <CommandBar.SecondaryCommands>
-                    <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
-                        <AppBarButton.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="I" />
-                        </AppBarButton.KeyboardAccelerators>
-                    </AppBarButton>
-
-                </CommandBar.SecondaryCommands>
-            </CommandBar>
-
+            <StackPanel>
+                <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
+                    <AppBarButton x:Name="addButton" Icon="Add" Label="Add" Click="OnElementClicked"/>
+                    <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit" Click="OnElementClicked"/>
+                    <AppBarButton x:Name="shareButton" Icon="Share" Label="Share" Click="OnElementClicked"/>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings" Click="OnElementClicked">
+                            <AppBarButton.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="I" />
+                            </AppBarButton.KeyboardAccelerators>
+                        </AppBarButton>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+                <TextBlock x:Name="SelectedOptionText" Padding="0,8,0,0"></TextBlock>
+            </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Show or hide" />
@@ -69,7 +69,6 @@
                     <Button Margin="0,12,0,0" Content="Remove secondary commands" Click="RemoveSecondaryCommands_Click" />
                 </StackPanel>
             </local:ControlExample.Options>
-
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CommandBar Background="Transparent" IsOpen="$(IsOpen)" DefaultLabelPosition="Right"$(IsSticky)&gt;
