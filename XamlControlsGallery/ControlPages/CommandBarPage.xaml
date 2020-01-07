@@ -78,7 +78,7 @@
     &lt;CommandBar.SecondaryCommands&gt;
         &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;&gt;
             &lt;AppBarButton.KeyboardAccelerators&gt;
-                    &lt;KeyboardAccelerator Modifiers="Control" Key="S" /&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="I" /&gt;
             &lt;/AppBarButton.KeyboardAccelerators&gt;
         &lt;/AppBarButton&gt;$(MultipleButtonsSecondaryCommands)
     &lt;/CommandBar.SecondaryCommands&gt;
