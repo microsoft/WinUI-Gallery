@@ -52,7 +52,7 @@
                 <CommandBar.SecondaryCommands>
                     <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings">
                         <AppBarButton.KeyboardAccelerators>
-                            <KeyboardAccelerator Modifiers="Control" Key="S" />
+                            <KeyboardAccelerator Modifiers="Control" Key="I" />
                         </AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
 
@@ -79,7 +79,7 @@
     &lt;CommandBar.SecondaryCommands&gt;
         &lt;AppBarButton Icon=&quot;Setting&quot; Label=&quot;Settings&quot;&gt;
             &lt;AppBarButton.KeyboardAccelerators&gt;
-                    &lt;KeyboardAccelerator Modifiers="Control" Key="S" /&gt;
+                    &lt;KeyboardAccelerator Modifiers="Control" Key="I" /&gt;
             &lt;/AppBarButton.KeyboardAccelerators&gt;
         &lt;/AppBarButton&gt;$(MultipleButtonsSecondaryCommands)
     &lt;/CommandBar.SecondaryCommands&gt;
@@ -91,6 +91,6 @@
                 <local:ControlExampleSubstitution Key="IsSticky" IsEnabled="{x:Bind PrimaryCommandBar.IsSticky, Mode=OneWay}" Value=" IsSticky=&quot;True&quot; " />
                 <local:ControlExampleSubstitution Key="MultipleButtonsSecondaryCommands" IsEnabled="{x:Bind MultipleButtons, Mode=OneWay}" Value="{StaticResource MultipleButtonsSecondaryCommands}"/>
             </local:ControlExample.Substitutions>
-        </local:ControlExample>      
+        </local:ControlExample>
     </StackPanel>
 </Page>
