@@ -875,7 +875,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists#drop-down-lists"
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/combo-box"
             }
           ],
           "RelatedControls": [
@@ -1636,7 +1636,30 @@
             }
           ],
           "RelatedControls": [
-            "Canvas"
+            "Canvas",
+            "InkToolbar"
+          ]
+        },
+        {
+          "UniqueId": "InkToolbar",
+          "Title": "InkToolbar",
+          "Subtitle": "A control to change settings of an InkCanvas.",
+          "ImagePath": "ms-appx:///Assets/InkCanvas.png",
+          "Description": "The InkToolbar is a control containing a customizable and extensible collection of buttons that activate ink-related features in an associated InkCanvas",
+          "Content": "<p>Look at the <i>InkCanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "InkToolbar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inking-controls"
+            }
+          ],
+          "RelatedControls": [
+            "InkCanvas"
           ]
         },
         {
