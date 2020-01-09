@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Hosting;
+using Windows.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -53,7 +57,7 @@ namespace AppUIBasics.ControlPages
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
             nestedCategories.Add(
-                new NestedCategory("Fruits",  new ObservableCollection<string>{
+                new NestedCategory("Fruits", new ObservableCollection<string>{
                                                             "Apricots",
                                                             "Bananas",
                                                             "Grapes",
@@ -110,6 +114,45 @@ namespace AppUIBasics.ControlPages
 
             SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
+
+
+            IList<String> colors = new List<String>();
+            colors.Add("BlueViolet");
+            colors.Add("BurlyWood");
+            colors.Add("Crimson");
+            colors.Add("DarkCyan");
+            colors.Add("DarkSalmon");
+            colors.Add("MediumAquamarine");
+            colors.Add("DodgerBlue");
+            colors.Add("Firebrick");
+            colors.Add("Goldenrod");
+            colors.Add("Orange");
+            colors.Add("PaleVioletRed");
+            colors.Add("Lime");
+            colors.Add("MediumOrchid");
+            colors.Add("SeaGreen");
+            colors.Add("SandyBrown");
+            colors.Add("SteelBlue");
+
+            animatedScrollRepeater.ItemsSource = colors;
+            animatedScrollRepeater.ElementPrepared += OnElementPrepared;
+
+            PinterestRepeater.ItemTemplate = VirtualizingItemFactory;
+            string _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate. Vivamus semper augue leo, eget faucibus nulla mattis nec. " +
+                "Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. Sed a sem et ante gravida congue sit amet ut augue. " +
+                "Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate." +
+                " Vivamus semper augue leo, eget faucibus nulla mattis nec. Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. " +
+                "Sed a sem et ante gravida congue sit amet ut augue. Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus.";
+        
+            var rnd = new Random();
+            var data = new ObservableCollection<Recipe>(Enumerable.Range(0, 100).Select(k =>
+                           new Recipe
+                           {
+                               ImageUri = new Uri(string.Format("ms-appx:///Images/recipe{0}.png", k % 8 + 1)),
+                               Description = k + " - " + _lorem.Substring(0, rnd.Next(50, 350))
+                           }));
+
+            PinterestRepeater.ItemsSource = data;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -233,6 +276,72 @@ namespace AppUIBasics.ControlPages
 
             elementGenerator.Value = itemTemplateKey;
         }
+
+        // ==========================================================================
+        // Animated Scrolling ItemsRepeater with Content Sample
+        // ==========================================================================
+
+        private void Animated_GotItem(object sender, RoutedEventArgs e)
+        {
+            var item = sender as FrameworkElement;
+            Debug.Print("sending to center\n\n");
+            item.StartBringIntoView(new BringIntoViewOptions()
+            {
+                VerticalAlignmentRatio = 0.5,
+                AnimationDesired = true,
+            });
+
+            // Update corresponding rectangle with selected color
+            Button senderBtn = sender as Button;
+            colorRectangle.Fill = senderBtn.Background;
+        }
+
+
+        /* This function occurs each time an element is made ready for use.
+         * This is necessary for virtualization. */
+        private void OnElementPrepared(Microsoft.UI.Xaml.Controls.ItemsRepeater sender, Microsoft.UI.Xaml.Controls.ItemsRepeaterElementPreparedEventArgs args)
+        {
+            var item = ElementCompositionPreview.GetElementVisual(args.Element);
+            var svVisual = ElementCompositionPreview.GetElementVisual(Animated_ScrollViewer);
+            var scrollProperties = ElementCompositionPreview.GetScrollViewerManipulationPropertySet(Animated_ScrollViewer);
+
+            var scaleExpresion = scrollProperties.Compositor.CreateExpressionAnimation();
+            scaleExpresion.SetReferenceParameter("svVisual", svVisual);
+            scaleExpresion.SetReferenceParameter("scrollProperties", scrollProperties);
+            scaleExpresion.SetReferenceParameter("item", item);
+
+            // scale the item based on the distance of the item relative to the center of the viewport.
+            scaleExpresion.Expression = "1 - abs((svVisual.Size.Y/2 - scrollProperties.Translation.Y) - (item.Offset.Y + item.Size.Y/2))*(.25/(svVisual.Size.Y/2))";
+
+            item.StartAnimation("Scale.X", scaleExpresion);
+            item.StartAnimation("Scale.Y", scaleExpresion);
+            var centerPointExpression = scrollProperties.Compositor.CreateExpressionAnimation();
+            centerPointExpression.SetReferenceParameter("item", item);
+            centerPointExpression.Expression = "Vector3(item.Size.X/2, item.Size.Y/2, 0)";
+            item.StartAnimation("CenterPoint", centerPointExpression);
+        }
+
+        private void animatedScrollRepeater_EffectiveViewportChanged(FrameworkElement sender, EffectiveViewportChangedEventArgs args)
+        {
+            // Find the range of the viewport in which the middle-most element sits in
+            double midpoint_low = (Animated_ScrollViewer.ViewportHeight / 2) - (sender.ActualHeight / 2);
+            double midpoint_high = (Animated_ScrollViewer.ViewportHeight / 2) + (sender.ActualHeight / 2);
+
+            Debug.Print("low: " + midpoint_low + " high: " + midpoint_high + "\n");
+
+            // Find position of current item/element
+            var transform = sender.TransformToVisual(Animated_ScrollViewer);
+            var pos = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
+
+            // Check if it's in the middle - if so, change the color in the rectangle
+            if (pos.Y > midpoint_low && pos.Y < midpoint_high)
+            {
+                // Update corresponding rectangle with selected color
+                Button senderBtn = sender as Button;
+                colorRectangle.Fill = senderBtn.Background;
+            }
+
+        }
     }
 
     public class NestedCategory
@@ -313,4 +422,11 @@ namespace AppUIBasics.ControlPages
         public double Diameter { get; set; }
         public double MaxDiameter { get; set; }
     }
+
+    public class Recipe
+    { 
+        public Uri ImageUri { get; set; }
+        public string Description { get; set; }
+    }
+
 }
