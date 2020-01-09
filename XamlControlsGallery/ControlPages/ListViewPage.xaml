@@ -84,10 +84,10 @@
         <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local1:Contact">
             <TextBlock Text="{x:Bind Name}" x:Phase="1" Margin="0,5,0,5"/>
         </DataTemplate>
-        
+
     </Page.Resources>
     <StackPanel>
-        
+
         <local:ControlExample HeaderText="Basic ListView with Simple DataTemplate"
                               XamlSource="ListView\ListViewSample1_xaml.txt"
                               CSharpSource="ListView\ListViewSample1_cs.txt">
@@ -195,7 +195,7 @@
                     MinWidth="350" 
                     Height="400"/>
             </Grid>
-            
+
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Full code to implement dragging and dropping between lists can be found in the 
@@ -262,6 +262,33 @@ source code for the XAML Controls Gallery. -->
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="ListView with filtering"
+                              XamlSource="ListView/ListViewSample4_xaml.txt"
+                              CSharpSource="ListView/ListViewSample4_cs.txt">
+            <ListView 
+                x:Name="FilteredListView"
+                ItemTemplate="{StaticResource ContactListViewTemplate}"
+                SelectionMode="Single"
+                ShowsScrollingPlaceholders="True"
+                Height="400"
+                Width="400"
+                BorderThickness="1"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"/>
+
+            <local:ControlExample.Options>
+                <StackPanel Width="200">
+                    <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+                    <TextBox x:Name="FilterByFirstName" Header="First name" Margin="8"
+                             HorizontalAlignment="Stretch" TextChanged="OnFilterChanged"/>
+                    <TextBox x:Name="FilterByLastName" Header="Last name" Margin="8"
+                             HorizontalAlignment="Stretch" TextChanged="OnFilterChanged"/>
+                    <TextBox x:Name="FilterByCompany" Header="Company" Margin="8"
+                             HorizontalAlignment="Stretch" TextChanged="OnFilterChanged"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="ListView for Messaging or Data Logging">
             <StackPanel>
                 <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
@@ -274,7 +301,7 @@ source code for the XAML Controls Gallery. -->
                     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     Height="400"
                     SelectionMode="None">
-                    
+
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <ItemsStackPanel 
@@ -356,23 +383,23 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
                             </Grid.ColumnDefinitions>
                             <Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
 
-                                <StackPanel Margin="12,0,0,0" Grid.Column="1" >
-                                    <TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
-                                        <TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                        <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/>
-                                        <TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
-                                        <TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    </StackPanel>
+                            <StackPanel Margin="12,0,0,0" Grid.Column="1" >
+                                <TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
+                                           HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
+                                <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
+                                           TextTrimming="CharacterEllipsis" Width="350" TextWrapping="NoWrap"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/>
+                                    <TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold"/>
+                                    <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                                    <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                 </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -395,16 +422,17 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
         &lt;Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/&gt;
 
         &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
-            &lt;TextBlock Text="{x:Bind Title}" FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+            &lt;TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
+                        HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+            &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
+                        TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
             &lt;StackPanel Orientation="Horizontal"&gt;
-                &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" LineHeight="20" Style="{ThemeResource BodyTextBlockStyle}" TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
-            &lt;/StackPanel&gt;
-            &lt;StackPanel Orientation="Horizontal"&gt;
-                &lt;TextBlock Text="{x:Bind Views}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
-                &lt;TextBlock Text=" Views " FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left"/&gt;
-                &lt;TextBlock Text="{x:Bind Likes}" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
-                &lt;TextBlock Text=" Likes" FontFamily="Segoe UI" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                &lt;TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
+                &lt;TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" 
+                            HorizontalAlignment="Left"/&gt;
+                &lt;TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
+                &lt;TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
             &lt;/StackPanel&gt;
         &lt;/StackPanel&gt;
     &lt;/Grid&gt;
