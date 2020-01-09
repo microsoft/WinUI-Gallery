@@ -391,8 +391,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
                                     <TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" 
-                                               HorizontalAlignment="Left"/>
+                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold"/>
                                     <TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
                                     <TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                 </StackPanel>
