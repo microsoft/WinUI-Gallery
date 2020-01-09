@@ -78,7 +78,7 @@
             <muxc:RecyclingElementFactory.RecyclePool>
                 <muxc:RecyclePool />
             </muxc:RecyclingElementFactory.RecyclePool>
-            <DataTemplate x:Key="item">
+            <DataTemplate x:Key="item" x:DataType="l:Recipe">
                 <UserControl IsTabStop="True" UseSystemFocusVisuals="True" Margin="5" >
                     <StackPanel BorderThickness="1" Background="LightGray" Margin="5">
                         <Image x:Name="recipeImage" Source="{x:Bind ImageUri}"  Width="100" Height="100"/>

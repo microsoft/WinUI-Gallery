@@ -148,7 +148,7 @@ namespace AppUIBasics.ControlPages
             var data = new ObservableCollection<Recipe>(Enumerable.Range(0, 100).Select(k =>
                            new Recipe
                            {
-                               ImageUri = new Uri(string.Format("ms-appx:///Images/recipe{0}.png", k % 8 + 1)),
+                               ImageUri = string.Format("/Assets/Images/LandscapeImage{0}.jpg", k % 8 + 1),
                                Description = k + " - " + _lorem.Substring(0, rnd.Next(50, 350))
                            }));
 
@@ -425,7 +425,7 @@ namespace AppUIBasics.ControlPages
 
     public class Recipe
     { 
-        public Uri ImageUri { get; set; }
+        public string ImageUri { get; set; }
         public string Description { get; set; }
     }
 
