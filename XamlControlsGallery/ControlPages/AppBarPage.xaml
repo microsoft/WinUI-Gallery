@@ -39,8 +39,8 @@
                         </StackPanel.ChildrenTransitions>
                         <StackPanel.Resources>
                             <Style TargetType="Button">
-                                <Setter Property="Height" Value="90" />
-                                <Setter Property="Width" Value="157" />
+                                <Setter Property="Height" Value="92" />
+                                <Setter Property="Width" Value="156" />
                             </Style>
                         </StackPanel.Resources>
                         <Button Click="NavBarButton_Click" Content="App bars" Tag="AppBars" />
