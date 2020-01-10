@@ -219,7 +219,7 @@
                     <Slider x:Name="OpacitySliderLumin" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.01" StepFrequency="0.01" 
                             HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint opacity"/>
                     <TextBlock Text="Tint Luminosity Opacity :" Margin="0,0,0,12"/>
-                    <Slider x:Name="LuminositySlider" ValueChanged="LuminositySlider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.01" StepFrequency="0.01" 
+                    <Slider x:Name="LuminositySlider" ValueChanged="LuminositySlider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.0001" StepFrequency="0.0001" 
                             HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint luminosity"/>
                 </StackPanel>
             </local:ControlExample.Options>
