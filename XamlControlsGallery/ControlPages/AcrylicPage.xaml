@@ -65,7 +65,7 @@
                 <Grid x:Name="Example1Grid" MinWidth="320" Height="200">
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
                     <Rectangle Fill="{ThemeResource SystemControlAcrylicElementBrush}" Margin="12" />
@@ -82,7 +82,7 @@
                 <Grid x:Name="Example2Grid" Width="320" Height="200">
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
                     <Rectangle Fill="{ThemeResource SystemControlAcrylicWindowBrush}" Margin="12" />
@@ -99,11 +99,11 @@
                 <Grid x:Name="Example3Grid" MinWidth="320" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="252"/>
                     </Grid.ColumnDefinitions>
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
                     <Rectangle x:Name="CustomAcrylicShapeInApp" Margin="12" Fill="{ThemeResource CustomAcrylicInAppBrush}"/>
