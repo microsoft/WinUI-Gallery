@@ -81,7 +81,7 @@
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               XamlSource="NavigationView\NavigationViewSample1.txt"
-                              WebViewHeight="250">
+                              WebViewHeight="252">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -241,7 +241,7 @@
                               HeaderText="API in action"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
-                              WebViewHeight="250" >
+                              WebViewHeight="252" >
             <local:ControlExample.Options>
                 <StackPanel>
                     <CheckBox x:Name="settingsCheck" Content="Settings item visible" IsChecked="True" Click="settingsCheck_Click"/>

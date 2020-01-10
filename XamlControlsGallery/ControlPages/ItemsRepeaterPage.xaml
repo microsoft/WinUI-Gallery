@@ -43,13 +43,13 @@
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
-            <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10">
-                <TextBlock Padding="10" Text="{x:Bind}" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="12">
+                <TextBlock Padding="12" Text="{x:Bind}" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
-            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="10">
+            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Margin="12">
                 <TextBlock Padding="10" Text="{x:Bind}" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </DataTemplate>

@@ -29,7 +29,7 @@
         <DataTemplate x:Key="ImageTextListMailFolderTemplate" x:DataType="data:ControlInfoDataItem">
             <Grid Margin="0,12,0,12">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" MinWidth="550"/>
+                    <ColumnDefinition Width="Auto" MinWidth="552"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{x:Bind Title}" Margin="0,12,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" />
             </Grid>
@@ -54,7 +54,7 @@
                          Grid.RowSpan="2"
                          Width ="32"
                          Height="32"
-                         Margin="6"
+                         Margin="8"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"
                          Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
@@ -62,21 +62,21 @@
                            Text="{x:Bind Name}"
                            x:Phase="1"
                            Style="{ThemeResource BaseTextBlockStyle}"
-                           Margin="12,6,0,0"/>
+                           Margin="12,8,0,0"/>
                 <TextBlock Grid.Column="1"
                            Grid.Row="1"
                            Text="{x:Bind Company}"
                            x:Phase="2"
                            Style="{ThemeResource BodyTextBlockStyle}"
-                           Margin="12,0,0,6"/>
+                           Margin="12,0,0,8"/>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
             <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
-                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
-                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
-                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
+                <StackPanel MinHeight="76" Width="352" Padding="12, 0, 0, 12" Background="{x:Bind BgColor}" CornerRadius="4">
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 12, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 12" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -92,14 +92,14 @@
                               XamlSource="ListView\ListViewSample1_xaml.txt"
                               CSharpSource="ListView\ListViewSample1_cs.txt">
             <StackPanel>
-                <TextBlock Margin="0,0,0,15">
+                <TextBlock Margin="0,0,0,16">
                     This is a basic ListView that has the full source code below. <LineBreak/>Other samples on this page display only the additional markup needed to customize a simple ListView like this one.
                 </TextBlock>
                 <ListView x:Name="BaseExample"
                     ItemTemplate="{StaticResource BasicListViewTemplate}"
                     BorderThickness="1"
                     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                    Width="350" 
+                    Width="352" 
                     Height="400"
                     HorizontalAlignment="Left"/>
             </StackPanel>
@@ -108,7 +108,7 @@
         <local:ControlExample HeaderText="ListView with Selection Support"
                               XamlSource="ListView/ListViewSample3_xaml.txt">
             <StackPanel>
-                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,16">
                     <Paragraph>You can enable four different selection modes on the right.</Paragraph>
                     <Paragraph>
                         <Bold>None</Bold> disables selection all together.
@@ -171,7 +171,7 @@
                     SelectionMode="Single" 
                     BorderThickness="1"
                     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                    MinWidth="350" 
+                    MinWidth="352" 
                     Height="400"
                     DragItemsStarting="Source_DragItemsStarting"
                     DragOver="Source_DragOver"
@@ -192,7 +192,7 @@
                     SelectionMode="Single" 
                     BorderThickness="1"
                     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-                    MinWidth="350" 
+                    MinWidth="352" 
                     Height="400"/>
             </Grid>
 
@@ -218,7 +218,7 @@ source code for the XAML Controls Gallery. -->
                               XamlSource="ListView\ListViewSample2_xaml.txt"
                               CSharpSource="ListView\ListViewSample2_cs.txt">
             <StackPanel>
-                <TextBlock TextWrapping="Wrap" Margin="0 0 0 15">
+                <TextBlock TextWrapping="Wrap" Margin="0 0 0 16">
                     Switch the toggle on the right to enable sticky group headers, which makes the headers stay put at the top of the ListView while scrolling.
                 </TextBlock>
                 <ListView 
@@ -291,8 +291,8 @@ source code for the XAML Controls Gallery. -->
 
         <local:ControlExample HeaderText="ListView for Messaging or Data Logging">
             <StackPanel>
-                <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
-                    This ListView is inverted to grow from the bottom up. It's a good way to display logs or messages, with most recent at the bottom.
+                <TextBlock Margin="0, 0, 0, 16" TextWrapping="Wrap">
+                    This ListView is inverted to grow from the bottom up. It's a good way to display logs or messages, with the most recent at the bottom.
                 </TextBlock>
                 <ListView
                     x:Name="InvertedListView"
@@ -357,7 +357,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
             </local:ControlExample.Xaml>
             <local:ControlExample.Options>
                 <StackPanel HorizontalAlignment="Right">
-                    <Button Click="{x:Bind AddItemToEnd}" Margin="0 0 0 10">Send Message</Button>
+                    <Button Click="{x:Bind AddItemToEnd}" Margin="0 0 0 12">Send Message</Button>
                     <Button Click="MessageRecieved">Recieve Message</Button>
                 </StackPanel>
             </local:ControlExample.Options>
@@ -371,28 +371,28 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
                       CanDrag="True"
                       AllowDrop="True"
                       Height="400"
-                      MinWidth="550"
+                      MinWidth="552"
                       BorderThickness="1"
                       BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" MinWidth="150"/>
+                                <ColumnDefinition Width="Auto" MinWidth="152"/>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
 
                             <StackPanel Margin="12,0,0,0" Grid.Column="1" >
                                 <TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
-                                           HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
+                                           HorizontalAlignment="Left" Margin="0,0,0,8" LineHeight="20"/>
                                 <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
                                            TextTrimming="CharacterEllipsis" Width="350" TextWrapping="NoWrap"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/>
+                                    <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                     <TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/>
                                     <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                                    <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="4,0,0,0"/>
                                     <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                 </StackPanel>
                             </StackPanel>
