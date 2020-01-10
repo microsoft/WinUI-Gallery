@@ -112,7 +112,7 @@
             <local:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Tint Opacity :" Margin="0,0,0,12"/>
-                    <Slider x:Name="OpacitySliderInApp" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.01" StepFrequency="0.01" 
+                    <Slider x:Name="OpacitySliderInApp" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.0001" StepFrequency="0.0001" 
                             HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint opacity"/>
                     <TextBlock Text="Tint Color :" Margin="0,12"/>
                     <ComboBox x:Name="ColorSelectorInApp" SelectionChanged="ColorSelector_SelectionChanged" ItemTemplate="{StaticResource ColorTemplate}"
