@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid x:Name="DestinationElement" Grid.Row="1" Grid.Column="0" MinHeight="{StaticResource TileHeight}" Background="{ThemeResource SystemAccentColor}" Margin="12" Width="150" Height="200" VerticalAlignment="Top" />
+            <Grid x:Name="DestinationElement" Grid.Row="1" Grid.Column="0" MinHeight="{StaticResource TileHeight}" Background="{ThemeResource SystemAccentColor}" Margin="12" Width="152" Height="200" VerticalAlignment="Top" />
 
             <StackPanel x:Name="ContentPanel" Grid.Row="1" Grid.Column="1" MinHeight="200" Margin="12">
                 <TextBlock Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="WrapWholeWords" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" Margin="0,0,0,12"/>
