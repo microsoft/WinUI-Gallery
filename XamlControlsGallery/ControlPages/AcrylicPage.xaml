@@ -20,7 +20,7 @@
             <DataTemplate x:Key="ColorTemplate" x:DataType="SolidColorBrush">
                 <StackPanel Orientation="Horizontal" AutomationProperties.Name="{x:Bind Color}">
                     <Rectangle Height="20" Width="20" Fill="{x:Bind}"/>
-                    <TextBlock Text="{x:Bind Color}" Margin="5,0,0,0"/>
+                    <TextBlock Text="{x:Bind Color}" Margin="4,0,0,0"/>
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
