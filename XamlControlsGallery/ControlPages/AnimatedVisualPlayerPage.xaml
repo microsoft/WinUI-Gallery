@@ -30,7 +30,7 @@
                     </TextBlock>
                     <Border Width="400" Height="400"
                             BorderBrush="{ThemeResource ToolTipBorderThemeBrush}"
-                            BorderThickness="5"
+                            BorderThickness="4"
                             Background="LightGray"
                             Margin="0, 20, 0, 20">
 
@@ -62,7 +62,7 @@
                         <!--  Play  -->
                         <Button x:Name="PlayButton"
                             Grid.Column="0"
-                            Margin="10"
+                            Margin="12"
                             HorizontalAlignment="Stretch"
                             Click="PlayButton_Click"
                             ToolTipService.ToolTip="Play"
@@ -72,7 +72,7 @@
                         <!--  Pause  -->
                         <ToggleButton x:Name="PauseButton"
                                   Grid.Column="1"
-                                  Margin="10"
+                                  Margin="12"
                                   HorizontalAlignment="Stretch"
                                   Checked="PauseButton_Checked"
                                   IsThreeState="False"
@@ -84,7 +84,7 @@
                         <!--  Resume  -->
                         <Button x:Name="StopButton"
                             Grid.Column="2"
-                            Margin="10"
+                            Margin="12"
                             HorizontalAlignment="Stretch"
                             Click="StopButton_Click"
                             ToolTipService.ToolTip="Stop"
@@ -94,7 +94,7 @@
                         <!--  Reverse  -->
                         <Button x:Name="ReverseButton"
                             Grid.Column="3"
-                            Margin="10"
+                            Margin="12"
                             HorizontalAlignment="Stretch"
                             Click="ReverseButton_Click"
                             ToolTipService.ToolTip="Reverse"
