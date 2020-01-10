@@ -150,7 +150,7 @@
                 <Grid x:Name="Example4Grid" MinWidth="320" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="252"/>
                     </Grid.ColumnDefinitions>
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
