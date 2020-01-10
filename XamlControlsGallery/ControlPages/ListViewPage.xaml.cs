@@ -27,6 +27,8 @@ namespace AppUIBasics.ControlPages
     {
         ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
 
         ItemsStackPanel stackPanelObj;
 
@@ -55,6 +57,12 @@ namespace AppUIBasics.ControlPages
 
             Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
+
+            // Initialize list of contacts to be filtered
+            contacts3 = await Contact.GetContactsAsync();
+            contacts3Filtered = new ObservableCollection<Contact>(contacts3);
+
+            FilteredListView.ItemsSource = contacts3Filtered;
         }
 
         //===================================================================================================================
@@ -98,7 +106,7 @@ namespace AppUIBasics.ControlPages
                 {
                     // Append name from contact object onto data string
                     items.Append(item.ToString() + " " + item.Company);
-                } 
+                }
             }
             // Set the content of the DataPackage
             e.Data.SetText(items.ToString());
@@ -195,7 +203,7 @@ namespace AppUIBasics.ControlPages
                         }
                     }
                 }
-                
+
                 e.AcceptedOperation = DataPackageOperation.Move;
                 def.Complete();
             }
@@ -243,6 +251,53 @@ namespace AppUIBasics.ControlPages
         }
 
         //===================================================================================================================
+        // Filtered List Example
+        //===================================================================================================================
+        private void Remove_NonMatching(IEnumerable<Contact> filteredData)
+        {
+            for (int i = contacts3Filtered.Count - 1; i >= 0; i--)
+            {
+                var item = contacts3Filtered[i];
+                // If contact is not in the filtered argument list, remove it from the ListView's source.
+                if (!filteredData.Contains(item))
+                {
+                    contacts3Filtered.Remove(item);
+                }
+            }
+        }
+
+        private void AddBack_Contacts(IEnumerable<Contact> filteredData)
+        // When a user hits backspace, more contacts may need to be added back into the list
+        {
+            foreach (var item in filteredData)
+            {
+                // If item in filtered list is not currently in ListView's source collection, add it back in
+                if (!contacts3Filtered.Contains(item))
+                {
+                    contacts3Filtered.Add(item);
+                }
+            }
+        }
+
+        private void OnFilterChanged(object sender, TextChangedEventArgs args)
+        {
+            // Linq query that selects only items that return True after being passed through Filter function
+            var filtered = contacts3.Where(contact => Filter(contact));
+            Remove_NonMatching(filtered);
+            AddBack_Contacts(filtered);
+        }
+
+        private bool Filter(Contact contact)
+        {
+            // When the text in any filter is changed, contact list is ran through all three filters to make sure
+            // they can properly interact with each other (i.e. they can all be applied at the same time).
+
+            return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        //===================================================================================================================
         // Inverted List Example
         //===================================================================================================================
 
@@ -276,7 +331,7 @@ namespace AppUIBasics.ControlPages
             // If recieved message, use accent background
             if (MsgAlignment == HorizontalAlignment.Left)
             {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"]; 
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
             }
 
             // If sent message, use light gray

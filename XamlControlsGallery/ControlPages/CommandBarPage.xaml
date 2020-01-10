@@ -69,7 +69,6 @@
                     <Button Margin="0,12,0,0" Content="Remove secondary commands" Click="RemoveSecondaryCommands_Click" />
                 </StackPanel>
             </local:ControlExample.Options>
-
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CommandBar Background="Transparent" IsOpen="$(IsOpen)" DefaultLabelPosition="Right"$(IsSticky)&gt;

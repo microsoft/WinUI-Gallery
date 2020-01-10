@@ -62,6 +62,12 @@ namespace AppUIBasics.ControlPages
             PrimaryCommandBar.IsSticky = false;
         }
 
+        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var selectedFlyoutItem = sender as AppBarButton;
+            SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
+        }
+
         private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
         {
             // Add compact button to the command bar. It provides functionality specific
@@ -129,7 +135,7 @@ namespace AppUIBasics.ControlPages
             while (PrimaryCommandBar.SecondaryCommands.Count > 1)
             {
                 PrimaryCommandBar.SecondaryCommands.RemoveAt(PrimaryCommandBar.SecondaryCommands.Count - 1);
-            }                
+            }
             MultipleButtons = false;
         }
 
