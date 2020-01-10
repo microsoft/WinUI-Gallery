@@ -19,7 +19,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple FlipView with items declared inline."
                 ExampleHeight="Auto">
             <local:ControlExample.Example>
-                <FlipView MaxWidth="400" Height="270">
+                <FlipView MaxWidth="400" Height="272">
                     <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/>
                     <Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/>
                     <Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/>

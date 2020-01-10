@@ -65,7 +65,7 @@
 
             <StackPanel>
                 <TextBlock Text="The normal image" />
-                <Image Source="/Assets/ninegrid.gif" Height="82" />
+                <Image Source="/Assets/ninegrid.gif" Height="84" />
                 <TextBlock Text="Image stretched evenly" />
                 <Image Source="/Assets/ninegrid.gif" NineGrid="3,3,3,3" Height="164" />
                 <TextBlock Text="Image stretched using nine grid" />

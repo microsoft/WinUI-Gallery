@@ -15,7 +15,7 @@
     </Page.Resources>
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ControlExample HeaderText="Automatically animate changes to Opacity" MinimumUniversalAPIContract="7">
-            <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
+            <Rectangle x:Name="OpacityRectangle" Width="52" Height="52" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="44,4,4,4" Opacity="0.5" />
 
             <local:ControlExample.Options>
                 <StackPanel>
@@ -90,20 +90,20 @@ private void button_Click(object sender, RoutedEventArgs e)
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Automatically animate changes to Scale" MinimumUniversalAPIContract="7">
-            <Rectangle x:Name="ScaleRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Top" Margin="45,5,5,5" />
+            <Rectangle x:Name="ScaleRectangle" Width="52" Height="52" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Top" Margin="44,4,4,4" />
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Button Content="Set Scale to (0.5, 0.5, 0.5)" Tag="0.5" Margin="5" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Set Scale to (1.0, 1.0, 1.0)" Tag="1.0" Margin="5" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Set Scale to (2.0, 2.0, 2.0)" Tag="2.0" Margin="5" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Scale to (0.5, 0.5, 0.5)" Tag="0.5" Margin="4" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Scale to (1.0, 1.0, 1.0)" Tag="1.0" Margin="4" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Scale to (2.0, 2.0, 2.0)" Tag="2.0" Margin="4" Click="ScaleButton_Click" HorizontalAlignment="Stretch" />
                     <TextBlock Text="Components" />
                     <CheckBox x:Name="ScaleX" Content="Animate X" IsChecked="True" />
                     <CheckBox x:Name="ScaleY" Content="Animate Y" IsChecked="True" />
                     <CheckBox x:Name="ScaleZ" Content="Animate Z" IsChecked="True" />
                     <muxc:NumberBox x:Name="ScaleNumberBox" Header="Scale (0.0 to 5.0)" Value="1" 
-                                    Minimum="0" Maximum="5" Margin="5" KeyDown="NumberBox_KeyDown" />
-                    <Button Content="Set custom scale" Click="ScaleButton_Click" Margin="5" HorizontalAlignment="Stretch" />
+                                    Minimum="0" Maximum="5" Margin="4" KeyDown="NumberBox_KeyDown" />
+                    <Button Content="Set custom scale" Click="ScaleButton_Click" Margin="4" HorizontalAlignment="Stretch" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
@@ -135,9 +135,9 @@ private void button_Click(object sender, RoutedEventArgs e)
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Button Content="Set Translation to (0, 0, 0)" Tag="0" Margin="5" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Set Translation to (100, 100, 100)" Tag="100" Margin="5" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Set Translation to (200, 200, 200)" Tag="200" Margin="5" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Translation to (0, 0, 0)" Tag="0" Margin="4" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Translation to (100, 100, 100)" Tag="100" Margin="4" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Set Translation to (200, 200, 200)" Tag="200" Margin="4" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
 
                     <TextBlock Text="Components" />
                     <CheckBox x:Name="TranslateX" Content="Animate X" IsChecked="True" />
@@ -173,7 +173,7 @@ private void button_Click(object sender, RoutedEventArgs e)
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Implicitly animate when the Background changes" MinimumUniversalAPIContract="7">
-            <ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="50" Height="50" VerticalAlignment="Top" Margin="45,5,5,5" />
+            <ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="52" Height="52" VerticalAlignment="Top" Margin="44,4,4,4" />
             <local:ControlExample.Options>
                 <Button Content="Change Background Color" Click="BackgroundButton_Click"  />
             </local:ControlExample.Options>
@@ -213,7 +213,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                   MinHeight="200" 
                   VerticalAlignment="Top" 
                   RequestedTheme="Light">
-                <StackPanel Margin="12" Spacing="6">
+                <StackPanel Margin="12" Spacing="8">
                     <TextBlock Text="Lorem Ipsum" Style="{ThemeResource SubheaderTextBlockStyle}" />
                     <TextBlock Text="The background of this grid animates when the theme changes." TextWrapping="WrapWholeWords" />
                     <Button Content="Button" />
