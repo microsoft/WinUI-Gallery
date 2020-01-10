@@ -200,14 +200,14 @@
 
         <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
             <local:ControlExample.Example>
-                <Grid x:Name="Example5Grid" MinWidth="650" MinHeight="200">
+                <Grid x:Name="Example5Grid" MinWidth="652" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="252"/>
                     </Grid.ColumnDefinitions>
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
                     <Rectangle x:Name="CustomAcrylicShapeLumin" Margin="12" Fill="{ThemeResource CustomAcrylicInAppLuminosity}"/>
