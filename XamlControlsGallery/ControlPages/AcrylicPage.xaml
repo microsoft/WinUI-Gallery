@@ -34,13 +34,13 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Example1Grid.Width" Value="400"/>
-                        <Setter Target="Example1Grid.Height" Value="250"/>
+                        <Setter Target="Example1Grid.Height" Value="252"/>
                         <Setter Target="Example2Grid.Width" Value="400"/>
-                        <Setter Target="Example2Grid.Height" Value="250"/>
+                        <Setter Target="Example2Grid.Height" Value="252"/>
                         <Setter Target="Example3Grid.Width" Value="500"/>
-                        <Setter Target="Example3Grid.MinHeight" Value="250"/>
+                        <Setter Target="Example3Grid.MinHeight" Value="252"/>
                         <Setter Target="Example4Grid.Width" Value="500"/>
-                        <Setter Target="Example4Grid.MinHeight" Value="250"/>
+                        <Setter Target="Example4Grid.MinHeight" Value="252"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="WiderLayout">
@@ -49,13 +49,13 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Example1Grid.Width" Value="400"/>
-                        <Setter Target="Example1Grid.Height" Value="250"/>
+                        <Setter Target="Example1Grid.Height" Value="252"/>
                         <Setter Target="Example2Grid.Width" Value="400"/>
-                        <Setter Target="Example2Grid.Height" Value="250"/>
-                        <Setter Target="Example3Grid.Width" Value="650"/>
-                        <Setter Target="Example3Grid.MinHeight" Value="250"/>
-                        <Setter Target="Example4Grid.Width" Value="650"/>
-                        <Setter Target="Example4Grid.MinHeight" Value="250"/>
+                        <Setter Target="Example2Grid.Height" Value="252"/>
+                        <Setter Target="Example3Grid.Width" Value="652"/>
+                        <Setter Target="Example3Grid.MinHeight" Value="252"/>
+                        <Setter Target="Example4Grid.Width" Value="652"/>
+                        <Setter Target="Example4Grid.MinHeight" Value="252"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
