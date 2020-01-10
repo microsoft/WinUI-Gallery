@@ -10,6 +10,6 @@
         <Image Source="https://github.com/Microsoft/fluent-xaml-theme-editor/raw/c27345fe37debcdfcbdd578ecb01e0715dd36ccd/XamlThemeEditor_screenshot.png" />
         <TextBlock Margin="0,20,0,0" Text="The ColorPaletteResources API allows you to easily access global values that adjust the theme colors of your controls. This API can also be scoped to a container or control within a page." TextWrapping="WrapWholeWords"/>
         <TextBlock Margin="0,20,0,0" Text="To learn more about this API and to see what it can do, checkout the Fluent XAML Theme Editor!" TextWrapping="WrapWholeWords"/>
-        <HyperlinkButton Content="Launch Editor" NavigateUri="https://aka.ms/FluentXamlThemeEditor" Margin="0,10,0,0"/>
+        <HyperlinkButton Content="Launch Editor" NavigateUri="https://aka.ms/FluentXamlThemeEditor" Margin="0,12,0,0"/>
     </StackPanel>
 </Page>

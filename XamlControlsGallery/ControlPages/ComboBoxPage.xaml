@@ -25,7 +25,7 @@
                         <x:String>Red</x:String>
                         <x:String>Yellow</x:String>
                     </ComboBox>
-                    <Rectangle x:Name="Control1Output" Height="30" Width="100" Margin="0,8,0,0" />
+                    <Rectangle x:Name="Control1Output" Height="32" Width="100" Margin="0,8,0,0" />
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>

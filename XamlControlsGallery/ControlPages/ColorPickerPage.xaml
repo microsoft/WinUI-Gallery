@@ -17,7 +17,7 @@
                 IsAlphaTextInputVisible="{x:Bind alphaTextInput.IsChecked.Value, Mode=OneWay}" />
 
             <local:ControlExample.Options>
-                <StackPanel Width="250" Margin="0,-5,0,0">
+                <StackPanel Width="252" Margin="0,-4,0,0">
                     <CheckBox Content="IsMoreButtonVisible" x:Name="moreBtn" IsChecked="False"/>
                     <CheckBox Content="IsColorSliderVisible" x:Name="colorSlider" IsChecked="True" />
                     <CheckBox Content="IsColorChannelTextInputVisible" x:Name="colorChannelInput" IsChecked="True" />

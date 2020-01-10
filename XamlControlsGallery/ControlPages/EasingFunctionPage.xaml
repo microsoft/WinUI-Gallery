@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="*" MinWidth="300"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Animate" Click="Button1_Click" AutomationProperties.Name="Animate rectangle using Standard Easing Function" />
-                <Rectangle Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" Grid.Column="1">
+                <Rectangle Width="52" Height="52" Fill="{ThemeResource SystemAccentColor}" Grid.Column="1">
                     <Rectangle.RenderTransform>
                         <TranslateTransform x:Name="Translation1" />
                     </Rectangle.RenderTransform>

@@ -15,7 +15,7 @@
         </RichTextBlock>
 
         <local:ControlExample HeaderText="A connected animation between a list page and a detail page">
-            <Frame x:Name="CollectionContentFrame" MinWidth="500" Height="750" />
+            <Frame x:Name="CollectionContentFrame" MinWidth="500" Height="752" />
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A connected animation between elements on the same page">
