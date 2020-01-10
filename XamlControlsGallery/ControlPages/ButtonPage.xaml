@@ -138,8 +138,8 @@
                         </Button.Resources>
 
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE10B;" Margin="0,10,0,10" FontSize="15" FontWeight="{x:Bind FontWeight}"/>
-                            <TextBlock Text="Custom Button Appearance" Margin="12, 7, 0, 0"/>
+                            <FontIcon Glyph="&#xE10B;" Margin="0,12,0,12" FontSize="15" FontWeight="{x:Bind FontWeight}"/>
+                            <TextBlock Text="Custom Button Appearance" Margin="12, 8, 0, 0"/>
                         </StackPanel>
                     </Button>
 

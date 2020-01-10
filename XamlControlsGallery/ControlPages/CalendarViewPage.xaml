@@ -19,12 +19,12 @@
                 SelectionMode="Single" />
 
             <local:ControlExample.Options>
-                <StackPanel Margin="0,-5,0,0">
+                <StackPanel Margin="0,-4,0,0">
                     <CheckBox x:Name="isGroupLabelVisible" Content="IsGroupLabelVisible" IsChecked="True" />
                     <CheckBox x:Name="isOutOfScopeEnabled" Content="IsOutOfScopeEnabled" IsChecked="True" />
                     <ComboBox
                         x:Name="selectionMode"
-                        Margin="0,10,0,0"
+                        Margin="0,12,0,0"
                         Header="SelectionMode"
                         SelectedValue="Single"
                         SelectionChanged="SelectionMode_SelectionChanged">
@@ -33,9 +33,9 @@
                         <x:String>Multiple</x:String>
                     </ComboBox>
 
-                    <ComboBox x:Name="calendarIdentifier" Margin="0,10,0,0" Header="CalendarIdentifier" Width="220" />
+                    <ComboBox x:Name="calendarIdentifier" Margin="0,12,0,0" Header="CalendarIdentifier" Width="220" />
 
-                    <ComboBox x:Name="calendarLanguages" Header="Language" Margin="0,10,0,0" Width="220"
+                    <ComboBox x:Name="calendarLanguages" Header="Language" Margin="0,12,0,0" Width="220"
                               DisplayMemberPath="Name" SelectedIndex="0" SelectedValuePath="Code"
                               SelectionChanged="calendarLanguages_SelectionChanged"/>
 

@@ -35,7 +35,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Slider x:Name="TopSlider" Minimum="-100" Maximum="100" StepFrequency="1" VerticalAlignment="Top" Orientation="Vertical" IsDirectionReversed="True" Height="110">
                         <Slider.Header>
-                            <TextBlock Text="Canvas.Top" Margin="0,0,0,10" />
+                            <TextBlock Text="Canvas.Top" Margin="0,0,0,12" />
                         </Slider.Header>
                     </Slider>
                     <StackPanel Margin="16,0,0,0">
