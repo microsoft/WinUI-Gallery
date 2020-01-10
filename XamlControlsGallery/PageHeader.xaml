@@ -18,7 +18,7 @@
                         <local:DeviceFamilyTrigger DeviceFamily="Windows.Xbox" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="headerControl.Padding" Value="24,15,48,0" />
+                        <Setter Target="headerControl.Padding" Value="24,16,48,0" />
                         <Setter Target="headerControl.Height" Value="75" />
                     </VisualState.Setters>
                 </VisualState>
@@ -27,7 +27,7 @@
                         <local:DeviceFamilyTrigger DeviceFamily="Windows.Mobile" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="headerControl.Padding" Value="14,0,14,0" />
+                        <Setter Target="headerControl.Padding" Value="12,0,12,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -80,7 +80,7 @@
                         Click="OnThemeButtonClick"
                         Label="Toggle Theme">
                         <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE771;" Margin="0,-2,0,0" />
+                            <FontIcon Glyph="&#xE771;" Margin="0,-4,0,0" />
                         </AppBarButton.Icon>
                         <AppBarButton.Resources>
                             <muxc:TeachingTip x:Name="ToggleThemeTeachingTip1"                   

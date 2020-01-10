@@ -40,7 +40,7 @@
                     Margin="0,4,0,0"
                     FontWeight="Normal"
                     Text="Theme Mode" />
-                <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
+                <StackPanel x:Name="ThemePanel" Margin="0,12,0,0">
                     <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
                     <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
                     <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
@@ -60,7 +60,7 @@
                     Margin="0,40,0,0"
                     FontWeight="Normal"
                     Text="About" />
-                <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
+                <RichTextBlock MaxWidth="840" Margin="0,12,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
                         This app is the interactive companion to the
                         <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>.
@@ -72,7 +72,7 @@
                     <Paragraph Margin="0,10,0,0">
                         To clone the source repository:
                     </Paragraph>
-                    <Paragraph Margin="20,10,0,10">
+                    <Paragraph Margin="20,12,0,12">
                         git clone https://github.com/Microsoft/Xaml-Controls-Gallery
                     </Paragraph>
                     <Paragraph>
@@ -80,7 +80,7 @@
                         <Hyperlink NavigateUri="mailto:ControlsGallery@microsoft.com">mailto:ControlsGallery@microsoft.com </Hyperlink>.
                     </Paragraph>
                 </RichTextBlock>
-                <TextBlock Margin="0,10,0,0">
+                <TextBlock Margin="0,12,0,0">
                     Version: 
                     <Run Text="{x:Bind Version}" />
                 </TextBlock>
@@ -91,17 +91,17 @@
                     Margin="0,40,0,0"
                     FontWeight="Normal"
                     Text="Dependencies and References" />
-                <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,10,0,0">
-                    <Paragraph Margin="0,10,0,10">
+                <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,12,0,0">
+                    <Paragraph Margin="0,12,0,12">
                         <Hyperlink NavigateUri="https://aka.ms/winui">Windows UI Library</Hyperlink>
                     </Paragraph>
-                    <Paragraph Margin="0,10,0,10">
+                    <Paragraph Margin="0,12,0,12">
                         <Hyperlink NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal">ColorCode-Universal</Hyperlink>
                     </Paragraph>
-                    <Paragraph Margin="0,10,0,10">
+                    <Paragraph Margin="0,12,0,12">
                         <Hyperlink NavigateUri="https://github.com/Microsoft/Win2D">Win2D</Hyperlink>
                     </Paragraph>
-                    <Paragraph Margin="0,10,0,10">
+                    <Paragraph Margin="0,12,0,12">
                         <Hyperlink NavigateUri="https://github.com/Microsoft/XamlBehaviors">Xaml Behaviors</Hyperlink>
                     </Paragraph>
                 </RichTextBlock>
@@ -111,12 +111,12 @@
                     Margin="0,40,0,0"
                     FontWeight="Normal"
                     Text="Disclaimer" />
-                <RichTextBlock MaxWidth="840" Margin="0,10,0,50" IsTextSelectionEnabled="True">
+                <RichTextBlock MaxWidth="840" Margin="0,12,0,52" IsTextSelectionEnabled="True">
                     <Paragraph>THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</Paragraph>
                     <Paragraph>
                         <LineBreak />Copyright (c) Microsoft Corporation. All rights reserved.
                     </Paragraph>
-                    <Paragraph Margin="0,10,0,10">
+                    <Paragraph Margin="0,12,0,12">
                         <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=822631">Microsoft Services Agreement</Hyperlink> ,
                         <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=521839">Microsoft Privacy Statement</Hyperlink>
                     </Paragraph>

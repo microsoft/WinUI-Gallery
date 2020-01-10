@@ -45,7 +45,7 @@
                     Source="{x:Bind ImagePath}"
                     Stretch="Uniform" />
 
-                <RelativePanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,6,0,0">
+                <RelativePanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,8,0,0">
                     <TextBlock
                         x:Name="titleText"
                         Style="{StaticResource SubtitleTextBlockStyle}"
@@ -69,7 +69,7 @@
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" >
 
                     <Rectangle Fill="{ThemeResource SystemAccentColor}" Opacity=".5" />
-                    <TextBlock Text="{x:Bind BadgeString}" Margin="8,2,8,4" />
+                    <TextBlock Text="{x:Bind BadgeString}" Margin="8,0,8,4" />
                 </Grid>
             </Grid>
         </UserControl>
