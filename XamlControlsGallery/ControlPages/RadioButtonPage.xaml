@@ -74,7 +74,7 @@
                     </ScrollViewer>
                 </StackPanel>
                 <Border x:Name="Control2Output" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
-                        Height="50" Margin="0,10,0,10" />
+                        Height="52" Margin="0,12,0,12" />
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">

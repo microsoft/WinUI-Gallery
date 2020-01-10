@@ -25,7 +25,7 @@
 
         <local:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
             <local:ControlExample.Example>
-                <muxc:TabView SelectedIndex="0" Margin="-12" MinHeight="475" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
+                <muxc:TabView SelectedIndex="0" Margin="-12" MinHeight="476" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
                     <muxc:TabView.TabItems>
                         <muxc:TabViewItem Header="Document 0">
                             <muxc:TabViewItem.IconSource>
@@ -148,10 +148,10 @@
 
                     <muxc:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475" TabWidthMode="SizeToContent">
                         <muxc:TabView.TabStripHeader>
-                            <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
+                            <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,8" Style="{ThemeResource BaseTextBlockStyle}" />
                         </muxc:TabView.TabStripHeader>
                         <muxc:TabView.TabStripFooter>
-                            <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
+                            <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8" Style="{ThemeResource BaseTextBlockStyle}" />
                         </muxc:TabView.TabStripFooter>
                     </muxc:TabView>
                 </StackPanel>
@@ -172,7 +172,7 @@
 
         <local:ControlExample HeaderText="Tab widths can either be equally sized or sized to the content of the tab">
             <local:ControlExample.Example>
-                <muxc:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
+                <muxc:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="476">
                     <muxc:TabView.TabItems>
                         <muxc:TabViewItem  Header="Home" IsClosable="False">
                             <muxc:TabViewItem.IconSource>
@@ -196,7 +196,7 @@
                 </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="150">
+                <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="152">
                     <ComboBoxItem Content="Equal" />
                     <ComboBoxItem Content="SizeToContent" />
                 </ComboBox>

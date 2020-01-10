@@ -31,7 +31,7 @@
         <local:ControlExample HeaderText="A ToggleSwitch with custom header and content.">
             <StackPanel Orientation="Horizontal">
                 <ToggleSwitch x:Name="ToggleSwitch2" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True"/>
-                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="130"/>
+                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="132"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>

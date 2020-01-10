@@ -24,7 +24,7 @@
                               d:Source="{Binding Groups, Source={d:DesignData Source=/DataModel/ControlInfoData.json, Type=data:ControlInfoDataSource}}"/>
 
         <DataTemplate x:Key="ZoomedInTemplate" x:DataType="data:ControlInfoDataItem">
-            <StackPanel Orientation="Horizontal" MinWidth="200" Margin="12,6,12,6">
+            <StackPanel Orientation="Horizontal" MinWidth="200" Margin="12,8,12,8">
                 <Image Source="{x:Bind ImagePath}" Width="36"/>
                 <StackPanel Margin="20,0,0,0">
                     <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}"/>

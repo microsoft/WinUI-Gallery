@@ -42,7 +42,7 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
+                <Slider x:Name="Slider3" Width="292" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
                 <TextBlock Style="{StaticResource OutputTextBlockStyle}"
                         Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </StackPanel>

@@ -14,7 +14,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                     <TextBlock Text="Your Rating:" />
-                    <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="{x:Bind RatingControl1.Value, Mode=OneWay}" />
+                    <TextBlock Margin="4,0,0,0" FontWeight="Bold" Text="{x:Bind RatingControl1.Value, Mode=OneWay}" />
                 </StackPanel>
             </StackPanel>
 

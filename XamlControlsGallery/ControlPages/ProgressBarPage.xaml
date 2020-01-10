@@ -20,7 +20,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="An indeterminate progress bar.">
 
-            <muxc:ProgressBar Width="130" IsIndeterminate="True" VerticalAlignment="Top" Margin="10,10,0,0"
+            <muxc:ProgressBar Width="132" IsIndeterminate="True" VerticalAlignment="Top" Margin="12,12,0,0"
                 ShowPaused="{x:Bind PausedRB.IsChecked.Value, Mode=OneWay}"
                 ShowError="{x:Bind ErrorRB.IsChecked.Value, Mode=OneWay}" />
 
@@ -33,7 +33,7 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;muxc:ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
+                    &lt;muxc:ProgressBar Width="132" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -44,14 +44,14 @@
 
         <local:ControlExample HeaderText="A determinate progress bar.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <muxc:ProgressBar Width="130" x:Name="ProgressBar2" Value="{x:Bind ProgressValue.Value, Mode=OneWay}"/>
+                <muxc:ProgressBar Width="132" x:Name="ProgressBar2" Value="{x:Bind ProgressValue.Value, Mode=OneWay}"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
                 <TextBlock x:Name="ProgresLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgresLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;muxc:ProgressBar Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                    &lt;muxc:ProgressBar Width="132" Value="$(DeterminateProgressValue)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>

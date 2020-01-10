@@ -44,7 +44,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Button Content="Close" Click="confirmColor_Click"
-                        Margin="0,12,2,0" HorizontalAlignment="Stretch"/>
+                        Margin="0,12,4,0" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </RelativePanel>
             </Flyout>
@@ -64,7 +64,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Button Content="Close" Click="confirmColor_Click"
-                        Margin="0,12,2,0" HorizontalAlignment="Stretch"/>
+                        Margin="0,12,4,0" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </RelativePanel>
             </Flyout>
@@ -158,7 +158,7 @@
                     <ComboBoxItem>Strawberries</ComboBoxItem>
                 </ComboBox>
 
-                <muxc:RatingControl Margin="5,16,0,0"
+                <muxc:RatingControl Margin="4,16,0,0"
                     AutomationProperties.Name="sample ratingControl"
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
@@ -166,7 +166,7 @@
                     FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
                     FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"/>
 
-                <Slider MinWidth="300" Margin="5,16,0,0" IsFocusEngagementEnabled="True" 
+                <Slider MinWidth="300" Margin="4,16,0,0" IsFocusEngagementEnabled="True" 
                     AutomationProperties.Name="Sample slider"
                     FocusVisualMargin="{x:Bind local2:MyConverters.IntToThickness(marginSlider.Value), Mode=OneWay}"
                     FocusVisualPrimaryThickness="{x:Bind local2:MyConverters.IntToThickness(primarySlider.Value), Mode=OneWay}"
@@ -174,14 +174,14 @@
                     FocusVisualPrimaryBrush="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
                     FocusVisualSecondaryBrush="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"/>
 
-                <TimePicker MinWidth="300" Margin="5,16,0,0" AutomationProperties.Name="Sample TimePicker"/>
+                <TimePicker MinWidth="300" Margin="4,16,0,0" AutomationProperties.Name="Sample TimePicker"/>
 
             </StackPanel>
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Slider x:Name="primarySlider" Header="Primary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="2"/>
-                    <Slider x:Name="secondarySlider" Header="Secondary Thickness" MinWidth="50" Minimum="0"  Maximum="10" Value="1"/>
+                    <Slider x:Name="primarySlider" Header="Primary Thickness" MinWidth="52" Minimum="0"  Maximum="10" Value="2"/>
+                    <Slider x:Name="secondarySlider" Header="Secondary Thickness" MinWidth="52" Minimum="0"  Maximum="10" Value="1"/>
                     <Slider x:Name="marginSlider" Header="Margin" MinWidth="50" Minimum="-20"  Maximum="20" Value="-3"/>
                     <Button Content="Reset margin" Click="Button_Click" Margin="0,10"/>
                     <Button Content="Move keyboard focus" Margin="0,24" Click="MoveFocusBtn_Click"/>
@@ -206,7 +206,7 @@
                                 Flyout="{StaticResource myPrimaryColorPickerFlyout}"
                                 Height="40"
                                 Width="40"
-                                Margin="10"
+                                Margin="12"
                                 HorizontalAlignment="Right"/>
 
                         <TextBlock Grid.Row="1"

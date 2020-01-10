@@ -20,7 +20,7 @@
     <StackPanel>
         <local:ControlExample HeaderText="An indeterminate progress ring.">
 
-            <ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="60" Width="60" VerticalAlignment="Top" Margin="12,12,0,0"/>
 
             <local:ControlExample.Options>
                 <StackPanel>

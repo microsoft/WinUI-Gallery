@@ -15,11 +15,11 @@
                         <EntranceThemeTransition IsStaggeringEnabled="True" />
                     </TransitionCollection>
                 </StackPanel.ChildrenTransitions>
-                <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
-                <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
-                <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
-                <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
-                <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+                <Rectangle Width="52" Height="50" Margin="4" Fill="LightBlue" />
+                <Rectangle Width="52" Height="50" Margin="4" Fill="LightBlue" />
+                <Rectangle Width="52" Height="50" Margin="4" Fill="LightBlue" />
+                <Rectangle Width="52" Height="50" Margin="4" Fill="LightBlue" />
+                <Rectangle Width="52" Height="50" Margin="4" Fill="LightBlue" />
             </StackPanel>
 
             <local:ControlExample.Options>
@@ -38,11 +38,11 @@
             &lt;EntranceThemeTransition IsStaggeringEnabled="True" /&gt;
         &lt;/TransitionCollection&gt;
     &lt;/StackPanel.ChildrenTransitions&gt;
-    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
-    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
-    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
-    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
-    &lt;Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="52" Margin="4" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="52" Margin="4" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="52" Margin="4" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="52" Margin="4" Fill="LightBlue" /&gt;
+    &lt;Rectangle Width="50" Height="52" Margin="4" Fill="LightBlue" /&gt;
 &lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
@@ -56,9 +56,9 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="Red" Width="75" Height="75" Margin="5" />
-                <Rectangle x:Name="MiddleElement" Fill="Green" Width="75" Height="75" Grid.Column="1" Margin="5"  />
-                <Rectangle Fill="Blue" Width="75" Height="75" Grid.Column="2" Margin="5" >
+                <Rectangle Fill="Red" Width="76" Height="76" Margin="4" />
+                <Rectangle x:Name="MiddleElement" Fill="Green" Width="76" Height="76" Grid.Column="1" Margin="4"  />
+                <Rectangle Fill="Blue" Width="76" Height="76" Grid.Column="2" Margin="4" >
                     <Rectangle.Transitions>
                         <TransitionCollection>
                             <RepositionThemeTransition />

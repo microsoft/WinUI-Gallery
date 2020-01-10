@@ -20,18 +20,18 @@
 
     <local:ControlExample HeaderText="A RelativePanel control." ExampleHeight="Auto" HorizontalAlignment="Left" VerticalAlignment="Top">
         <RelativePanel Width="300">
-            <Rectangle x:Name="Rectangle1" Fill="Red" Height="50" Width="50"/>
-            <Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/>
-            <Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" RelativePanel.AlignRightWithPanel="True"/>
-            <Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/>
+            <Rectangle x:Name="Rectangle1" Fill="Red" Height="52" Width="52"/>
+            <Rectangle x:Name="Rectangle2" Fill="Blue" Height="52" Width="52" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/>
+            <Rectangle x:Name="Rectangle3" Fill="Green" Height="52" Width="52" RelativePanel.AlignRightWithPanel="True"/>
+            <Rectangle x:Name="Rectangle4" Fill="Yellow" Height="52" Width="52" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/>
         </RelativePanel>
         <local:ControlExample.Xaml>
             <x:String xml:space="preserve">
 &lt;RelativePanel  Width="300"&gt;
-    &lt;Rectangle x:Name="Rectangle1" Fill="Red" Height="50" Width="50"/&gt;
-    &lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;
-    &lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" RelativePanel.AlignRightWithPanel="True"/&gt;
-    &lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/&gt;
+    &lt;Rectangle x:Name="Rectangle1" Fill="Red" Height="52" Width="52"/&gt;
+    &lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="52" Width="52" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;
+    &lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="52" Width="52" RelativePanel.AlignRightWithPanel="True"/&gt;
+    &lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="52" Width="52" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/&gt;
 &lt;/RelativePanel&gt;
             </x:String>
         </local:ControlExample.Xaml>
