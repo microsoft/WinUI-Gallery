@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using Windows.Foundation;
 using Windows.UI.Xaml;
@@ -21,15 +22,23 @@ namespace AppUIBasics.Common
 
         public double Width { get; set; }
 
+        private bool cachedBoundsInvalid = false;
+        protected override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, NotifyCollectionChangedEventArgs args)
+        {
+            m_cachedBounds.Clear();
+            cachedBoundsInvalid = true;
+        }
+
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {
             var viewport = context.RealizationRect;
-            Debug.WriteLine("Measure: " + viewport);
+            //Debug.WriteLine("Measure: " + viewport);
 
-            if (availableSize.Width != m_lastAvailableWidth)
+            if (availableSize.Width != m_lastAvailableWidth || cachedBoundsInvalid)
             {
                 UpdateCachedBounds(availableSize);
                 m_lastAvailableWidth = availableSize.Width;
+                cachedBoundsInvalid = false;
             }
 
             // Initialize column offsets
@@ -49,7 +58,7 @@ namespace AppUIBasics.Common
             // Measure items from start index to when we hit the end of the viewport.
             while (currentIndex < context.ItemCount && nextOffset < viewport.Bottom)
             {
-                Debug.WriteLine("Measuring " + currentIndex);
+                //Debug.WriteLine("Measuring " + currentIndex);
                 var child = context.GetOrCreateElementAt(currentIndex);
                 child.Measure(new Size(Width, availableSize.Height));
 

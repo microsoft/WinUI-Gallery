@@ -292,6 +292,7 @@
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientedSize.cs" />
+    <Compile Include="Common\PinterestLayout.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\ThemeHelper.cs" />
@@ -582,7 +583,6 @@
     <Compile Include="PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PinterestLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamplePages\SampleCompactSizingPage.xaml.cs">
       <DependentUpon>SampleCompactSizingPage.xaml</DependentUpon>

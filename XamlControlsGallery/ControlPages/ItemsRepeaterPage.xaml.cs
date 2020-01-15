@@ -1,7 +1,9 @@
 ﻿using AppUIBasics.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -25,7 +27,12 @@ namespace AppUIBasics.ControlPages
         private bool isHorizontal = false;
 
         public ObservableCollection<Bar> BarItems;
+        public MyItemsSource filteredRecipeData = new MyItemsSource(null);
+        public List<Recipe> staticRecipeData;
+        //public List<Recipe> tempFilteredRecipeData;
 
+        private double AnimatedBtnHeight;
+        private Windows.UI.Xaml.Thickness AnimatedBtnMargin;
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -116,7 +123,7 @@ namespace AppUIBasics.ControlPages
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
 
 
-            IList<String> colors = new List<String>();
+            IList<string> colors = new List<String>();
             colors.Add("BlueViolet");
             colors.Add("BurlyWood");
             colors.Add("Crimson");
@@ -145,14 +152,19 @@ namespace AppUIBasics.ControlPages
                 "Sed a sem et ante gravida congue sit amet ut augue. Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus.";
         
             var rnd = new Random();
-            var data = new ObservableCollection<Recipe>(Enumerable.Range(0, 100).Select(k =>
-                           new Recipe
-                           {
-                               ImageUri = string.Format("/Assets/Images/LandscapeImage{0}.jpg", k % 8 + 1),
-                               Description = k + " - " + _lorem.Substring(0, rnd.Next(50, 350))
-                           }));
+            List<Recipe> tempList = new List<Recipe>(
+                                        Enumerable.Range(0, 100).Select(k =>
+                                           new Recipe
+                                           {
+                                               PrimaryKey = k.ToString(),
+                                               ImageUri = string.Format("/Assets/SampleMedia/LandscapeImage{0}.jpg", k % 8 + 1),
+                                               Description = k + " - " + _lorem.Substring(0, rnd.Next(50, 350))
+                                           }));
 
-            PinterestRepeater.ItemsSource = data;
+            filteredRecipeData.InitializeCollection(tempList);
+
+            staticRecipeData = new List<Recipe>(tempList);
+            PinterestRepeater.ItemsSource = filteredRecipeData;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -284,7 +296,6 @@ namespace AppUIBasics.ControlPages
         private void Animated_GotItem(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
-            Debug.Print("sending to center\n\n");
             item.StartBringIntoView(new BringIntoViewOptions()
             {
                 VerticalAlignmentRatio = 0.5,
@@ -320,28 +331,86 @@ namespace AppUIBasics.ControlPages
             centerPointExpression.Expression = "Vector3(item.Size.X/2, item.Size.Y/2, 0)";
             item.StartAnimation("CenterPoint", centerPointExpression);
         }
-
-        private void animatedScrollRepeater_EffectiveViewportChanged(FrameworkElement sender, EffectiveViewportChangedEventArgs args)
+        private void GetButtonSize(object sender, RoutedEventArgs e)
         {
-            // Find the range of the viewport in which the middle-most element sits in
-            double midpoint_low = (Animated_ScrollViewer.ViewportHeight / 2) - (sender.ActualHeight / 2);
-            double midpoint_high = (Animated_ScrollViewer.ViewportHeight / 2) + (sender.ActualHeight / 2);
-
-            Debug.Print("low: " + midpoint_low + " high: " + midpoint_high + "\n");
-
-            // Find position of current item/element
-            var transform = sender.TransformToVisual(Animated_ScrollViewer);
-            var pos = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
-
-            // Check if it's in the middle - if so, change the color in the rectangle
-            if (pos.Y > midpoint_low && pos.Y < midpoint_high)
-            {
-                // Update corresponding rectangle with selected color
-                Button senderBtn = sender as Button;
-                colorRectangle.Fill = senderBtn.Background;
-            }
+            Button AnimatedBtn = sender as Button;
+            AnimatedBtnHeight = AnimatedBtn.ActualHeight;
+            AnimatedBtnMargin = AnimatedBtn.Margin;
 
         }
+
+        private void Animated_ScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        {
+            Button SelectedItem = GetSelectedItemFromViewport() as Button;
+            // Update corresponding rectangle with selected color
+            colorRectangle.Fill = SelectedItem.Background;
+        }
+
+        // Find centerpoint of ScrollViewer
+        private double CenterPointOfViewportInExtent()
+        {
+            return Animated_ScrollViewer.VerticalOffset + Animated_ScrollViewer.ViewportHeight / 2;
+        }
+
+        // Find index of the item that's at the center of the viewport
+        private int GetSelectedIndexFromViewport()
+        {
+            int selectedItemIndex = (int)Math.Floor(CenterPointOfViewportInExtent() / ((double)AnimatedBtnMargin.Top + AnimatedBtnHeight));
+            selectedItemIndex %= animatedScrollRepeater.ItemsSourceView.Count;
+            return selectedItemIndex;
+        }
+
+        private object GetSelectedItemFromViewport()
+        {
+            var selectedIndex = GetSelectedIndexFromViewport();
+            var selectedElement = animatedScrollRepeater.TryGetElement(selectedIndex) as Button;
+            return selectedElement;
+        }
+
+        // ==========================================================================
+        // Pinterest Layout with Filtering/Sorting
+        // ==========================================================================
+        public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
+        {
+            IList<Recipe> newFilteredData = new List<Recipe>();
+            // Linq query that selects only items that return True after being passed through Filter function
+            foreach (Recipe element in staticRecipeData)
+            {
+                if (element.Description.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    newFilteredData.Add(element);
+                }
+            }
+            //Remove_NonMatching(newFilteredData);
+            //AddBack_Elements(newFilteredData);
+            filteredRecipeData.InitializeCollection(newFilteredData);
+        }
+
+        //private void Remove_NonMatching(IEnumerable<Recipe> tempFiltered)
+        //{
+        //    for (int i = filteredRecipeData.Count - 1; i >= 0; i--)
+        //    {
+        //        var item = filteredRecipeData[i];
+        //        // If contact is not in the filtered argument list, remove it from the ListView's source.
+        //        if (!tempFiltered.Contains(item))
+        //        {
+        //            filteredRecipeData.Remove(item);
+        //        }
+        //    }
+        //}
+
+        //private void AddBack_Elements(IEnumerable<Recipe> tempFiltered)
+        //// When a user hits backspace, more contacts may need to be added back into the list
+        //{
+        //    foreach (var item in tempFiltered)
+        //    {
+        //        // If item in filtered list is not currently in ListView's source collection, add it back in
+        //        if (!filteredRecipeData.Contains(item))
+        //        {
+        //            filteredRecipeData.Add(item);
+        //        }
+        //    }
+        //}
     }
 
     public class NestedCategory
@@ -427,6 +496,155 @@ namespace AppUIBasics.ControlPages
     { 
         public string ImageUri { get; set; }
         public string Description { get; set; }
+        public string PrimaryKey { get; set; }
     }
+
+    // Custom data source class that assigns elements unique IDs, making filtering easier
+    public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+    {
+        private List<Recipe> inner = new List<Recipe>();
+
+        public MyItemsSource(IEnumerable<Recipe> collection)
+        {
+            InitializeCollection(collection);
+        }
+
+        public void InitializeCollection(IEnumerable<Recipe> collection)
+        {
+            inner.Clear();
+            if (collection != null)
+            {
+                Debug.Print("adding to collection\n");
+                inner.AddRange(collection);
+            }
+
+            if (CollectionChanged != null)
+            {
+                Debug.Print("collection changed\n");
+                CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            }
+        }
+
+        #region IReadOnlyList<T>
+
+
+        public int Count => this.inner != null ? this.inner.Count : 0;
+
+        public object this[int index]
+        {
+            get
+            {
+                return inner[index] as Recipe;
+            }
+
+            set
+            {
+                inner[index] = (Recipe)value;
+            }
+        }
+
+
+        public IEnumerator<Recipe> GetEnumerator() => this.inner.GetEnumerator();
+
+        #endregion
+
+        #region INotifyCollectionChanged
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        #endregion
+
+        #region IKeyIndexMapping
+
+        private int lastRequestedIndex = IndexNotFound;
+        private const int IndexNotFound = -1;
+
+        public int IndexFromKey(string key)
+        {
+            // We'll try to increase our odds of finding a match sooner by starting from the
+            // position that we know was last requested and search forward.
+            var start = lastRequestedIndex;
+            for (int i = start; i < this.Count; i++)
+            {
+                if (((Recipe)this[i]).PrimaryKey.Equals(key))
+                    return i;
+            }
+
+            // Then try searching backward.
+            start = Math.Min(this.Count - 1, lastRequestedIndex);
+            for (int i = start; i >= 0; i--)
+            {
+                if (((Recipe)this[i]).PrimaryKey.Equals(key))
+                    return i;
+            }
+
+            return IndexNotFound;
+        }
+
+        public string KeyFromIndex(int index)
+        {
+            var key = ((Recipe)this[index]).PrimaryKey;
+            lastRequestedIndex = index;
+            return key;
+        }
+        
+        // Unused List methods
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Add(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int IndexOf(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFixedSize => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+
+        #endregion
+    }
+
 
 }
