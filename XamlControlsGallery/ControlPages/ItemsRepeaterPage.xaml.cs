@@ -150,7 +150,7 @@ namespace AppUIBasics.ControlPages
                 "Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate." +
                 " Vivamus semper augue leo, eget faucibus nulla mattis nec. Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. " +
                 "Sed a sem et ante gravida congue sit amet ut augue. Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus.";
-        
+
             var rnd = new Random();
             List<Recipe> tempList = new List<Recipe>(
                                         Enumerable.Range(0, 100).Select(k =>
@@ -386,6 +386,11 @@ namespace AppUIBasics.ControlPages
             filteredRecipeData.InitializeCollection(newFilteredData);
         }
 
+        private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
+        {
+            PinterestRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+        }
+
         //private void Remove_NonMatching(IEnumerable<Recipe> tempFiltered)
         //{
         //    for (int i = filteredRecipeData.Count - 1; i >= 0; i--)
@@ -493,7 +498,7 @@ namespace AppUIBasics.ControlPages
     }
 
     public class Recipe
-    { 
+    {
         public string ImageUri { get; set; }
         public string Description { get; set; }
         public string PrimaryKey { get; set; }
@@ -587,7 +592,7 @@ namespace AppUIBasics.ControlPages
             lastRequestedIndex = index;
             return key;
         }
-        
+
         // Unused List methods
         IEnumerator IEnumerable.GetEnumerator()
         {

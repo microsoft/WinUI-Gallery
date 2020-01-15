@@ -25,8 +25,11 @@ namespace AppUIBasics.Common
         private bool cachedBoundsInvalid = false;
         protected override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, NotifyCollectionChangedEventArgs args)
         {
+            // The data collection has changed, so the bounds of all the indices are not valid anymore. 
+            // We need to re-evaluate all the bounds and cache them during the next measure.
             m_cachedBounds.Clear();
             cachedBoundsInvalid = true;
+            InvalidateMeasure();
         }
 
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)

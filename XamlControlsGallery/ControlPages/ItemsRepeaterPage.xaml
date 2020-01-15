@@ -206,7 +206,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <local:ControlExampleSubstitution x:Name="SampleCodeLayout2" Key="SampleCodeLayout2"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        
+
         <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection"
                               XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
@@ -215,7 +215,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                                            Margin="0,0,12,0"
                                            HorizontalAlignment="Stretch"
-                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">        
+                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
 
                     <muxc:ItemsRepeater.Layout>
                         <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
@@ -245,7 +245,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <ScrollViewer x:Name="Animated_ScrollViewer" 
                               Grid.Column="0"
                               Height="175"
@@ -275,7 +275,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Virtualized, Content-Heavy Layout with Filtering and Sorting">
-            <Grid>
+            <Grid Height="600">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -290,9 +290,13 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                     </ScrollViewer>
                 </muxc:ItemsRepeaterScrollHost>
 
-                <TextBox x:Name="FilterRecipes" Grid.Column="1" Header="Ingredient" Width="200"
-             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20"
-             TextChanged="FilterRecipes_FilterChanged"/>
+                <StackPanel Grid.Column="1">
+                    <TextBox x:Name="FilterRecipes"  Header="Ingredient" Width="200"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20"
+                        TextChanged="FilterRecipes_FilterChanged"/>
+                    <TextBlock>Enable Animations</TextBlock>
+                    <CheckBox Content="Enable Animations" x:Name="EnableAnimations" Checked="OnEnableAnimationsChanged" Unchecked="OnEnableAnimationsChanged" />
+                </StackPanel>
             </Grid>
         </local:ControlExample>
 

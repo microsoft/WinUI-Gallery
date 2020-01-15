@@ -283,6 +283,7 @@
     <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
+    <Compile Include="Common\DefaultElementAnimator.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\DoubleToThicknessConverter.cs" />
     <Compile Include="Common\LanguageList.cs" />
