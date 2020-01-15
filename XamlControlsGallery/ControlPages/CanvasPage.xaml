@@ -16,7 +16,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A Canvas control.">
 
-            <Canvas x:Name="Control1" Width="120" Height="120" Background="Gray" VerticalAlignment="Top">
+            <Canvas x:Name="Control1" Width="140" Height="140" Background="Gray" VerticalAlignment="Top">
                 <Canvas.Resources>
                     <Style TargetType="Rectangle">
                         <Setter Property="Height" Value="40" />
@@ -33,13 +33,13 @@
 
             <local:ControlExample.Options>
                 <StackPanel Orientation="Horizontal">
-                    <Slider x:Name="TopSlider" Minimum="-100" Maximum="100" StepFrequency="1" VerticalAlignment="Top" Orientation="Vertical" IsDirectionReversed="True" Height="110">
+                    <Slider x:Name="TopSlider" Minimum="0" Maximum="100" StepFrequency="1" VerticalAlignment="Top" Orientation="Vertical" IsDirectionReversed="True" Height="110">
                         <Slider.Header>
                             <TextBlock Text="Canvas.Top" Margin="0,0,0,10" />
                         </Slider.Header>
                     </Slider>
                     <StackPanel Margin="16,0,0,0">
-                        <Slider x:Name="LeftSlider" Header="Canvas.Left" Minimum="-100" Maximum="100" StepFrequency="1"
+                        <Slider x:Name="LeftSlider" Header="Canvas.Left" Minimum="0" Maximum="100" StepFrequency="1"
                             Width="100" />
                         <Slider x:Name="ZSlider" Header="Canvas.ZIndex" Minimum="0" Maximum="4" StepFrequency="1" Width="100" />
                     </StackPanel>
