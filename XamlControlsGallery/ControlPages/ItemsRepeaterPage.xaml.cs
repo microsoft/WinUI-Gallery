@@ -4,16 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -144,7 +139,6 @@ namespace AppUIBasics.ControlPages
             animatedScrollRepeater.ItemsSource = colors;
             animatedScrollRepeater.ElementPrepared += OnElementPrepared;
 
-            PinterestRepeater.ItemTemplate = VirtualizingItemFactory;
             string _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate. Vivamus semper augue leo, eget faucibus nulla mattis nec. " +
                 "Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. Sed a sem et ante gravida congue sit amet ut augue. " +
                 "Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate." +
@@ -162,7 +156,6 @@ namespace AppUIBasics.ControlPages
                                            }));
 
             filteredRecipeData.InitializeCollection(tempList);
-
             staticRecipeData = new List<Recipe>(tempList);
             PinterestRepeater.ItemsSource = filteredRecipeData;
         }
@@ -372,50 +365,13 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
         {
-            IList<Recipe> newFilteredData = new List<Recipe>();
-            // Linq query that selects only items that return True after being passed through Filter function
-            foreach (Recipe element in staticRecipeData)
-            {
-                if (element.Description.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    newFilteredData.Add(element);
-                }
-            }
-            //Remove_NonMatching(newFilteredData);
-            //AddBack_Elements(newFilteredData);
-            filteredRecipeData.InitializeCollection(newFilteredData);
+            filteredRecipeData.InitializeCollection(staticRecipeData.Where(i => i.Description.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase)));
         }
 
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
             PinterestRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
         }
-
-        //private void Remove_NonMatching(IEnumerable<Recipe> tempFiltered)
-        //{
-        //    for (int i = filteredRecipeData.Count - 1; i >= 0; i--)
-        //    {
-        //        var item = filteredRecipeData[i];
-        //        // If contact is not in the filtered argument list, remove it from the ListView's source.
-        //        if (!tempFiltered.Contains(item))
-        //        {
-        //            filteredRecipeData.Remove(item);
-        //        }
-        //    }
-        //}
-
-        //private void AddBack_Elements(IEnumerable<Recipe> tempFiltered)
-        //// When a user hits backspace, more contacts may need to be added back into the list
-        //{
-        //    foreach (var item in tempFiltered)
-        //    {
-        //        // If item in filtered list is not currently in ListView's source collection, add it back in
-        //        if (!filteredRecipeData.Contains(item))
-        //        {
-        //            filteredRecipeData.Add(item);
-        //        }
-        //    }
-        //}
     }
 
     public class NestedCategory
@@ -561,39 +517,19 @@ namespace AppUIBasics.ControlPages
 
         #region IKeyIndexMapping
 
-        private int lastRequestedIndex = IndexNotFound;
-        private const int IndexNotFound = -1;
-
-        public int IndexFromKey(string key)
-        {
-            // We'll try to increase our odds of finding a match sooner by starting from the
-            // position that we know was last requested and search forward.
-            var start = lastRequestedIndex;
-            for (int i = start; i < this.Count; i++)
-            {
-                if (((Recipe)this[i]).PrimaryKey.Equals(key))
-                    return i;
-            }
-
-            // Then try searching backward.
-            start = Math.Min(this.Count - 1, lastRequestedIndex);
-            for (int i = start; i >= 0; i--)
-            {
-                if (((Recipe)this[i]).PrimaryKey.Equals(key))
-                    return i;
-            }
-
-            return IndexNotFound;
-        }
-
         public string KeyFromIndex(int index)
         {
-            var key = ((Recipe)this[index]).PrimaryKey;
-            lastRequestedIndex = index;
-            return key;
+            return ((Recipe)this[index]).PrimaryKey;
         }
 
-        // Unused List methods
+        #endregion
+
+        #region Unused List methods
+        public int IndexFromKey(string key)
+        {
+            throw new NotImplementedException();
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
@@ -647,9 +583,7 @@ namespace AppUIBasics.ControlPages
 
         public object SyncRoot => throw new NotImplementedException();
 
-
         #endregion
+
     }
-
-
 }

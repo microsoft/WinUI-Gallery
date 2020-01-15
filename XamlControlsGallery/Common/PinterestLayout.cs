@@ -28,6 +28,7 @@ namespace AppUIBasics.Common
             // The data collection has changed, so the bounds of all the indices are not valid anymore. 
             // We need to re-evaluate all the bounds and cache them during the next measure.
             m_cachedBounds.Clear();
+            m_firstIndex = m_lastIndex = 0;
             cachedBoundsInvalid = true;
             InvalidateMeasure();
         }
@@ -85,8 +86,6 @@ namespace AppUIBasics.Common
                     }
                 }
 
-                child.Arrange(m_cachedBounds[currentIndex]);
-
                 m_lastIndex = currentIndex;
                 currentIndex++;
             }
@@ -95,18 +94,20 @@ namespace AppUIBasics.Common
             return extent;
         }
 
-        // The children are arranged during measure, so ArrangeOverride can be a no-op.
-        //protected override Size ArrangeOverride(VirtualizingLayoutContext context, Size finalSize)
-        //{
-        //    Debug.WriteLine("Arrange: " + context.RealizationRect);
-        //    for (int index = m_firstIndex; index <= m_lastIndex; index++)
-        //    {
-        //        Debug.WriteLine("Arranging " + index);
-        //        var child = context.GetElementAt(index);
-        //        child.Arrange(m_cachedBounds[index]);
-        //    }
-        //    return finalSize;
-        //}
+        protected override Size ArrangeOverride(VirtualizingLayoutContext context, Size finalSize)
+        {
+            // Debug.WriteLine("Arrange: " + context.RealizationRect);
+            if (m_cachedBounds.Count > 0)
+            {
+                for (int index = m_firstIndex; index <= m_lastIndex; index++)
+                {
+                    // Debug.WriteLine("Arranging " + index);
+                    var child = context.GetOrCreateElementAt(index);
+                    child.Arrange(m_cachedBounds[index]);
+                }
+            }
+            return finalSize;
+        }
 
         private void UpdateCachedBounds(Size availableSize)
         {

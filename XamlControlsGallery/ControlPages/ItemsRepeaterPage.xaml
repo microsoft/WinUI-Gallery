@@ -74,23 +74,18 @@
         <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
         <muxc:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
-        <muxc:RecyclingElementFactory x:Name="VirtualizingItemFactory">
-            <muxc:RecyclingElementFactory.RecyclePool>
-                <muxc:RecyclePool />
-            </muxc:RecyclingElementFactory.RecyclePool>
-            <DataTemplate x:Key="item" x:DataType="l:Recipe">
-                <UserControl IsTabStop="True" UseSystemFocusVisuals="True" Margin="5" >
-                    <StackPanel BorderThickness="1" Background="LightGray" Margin="5">
-                        <Image x:Name="recipeImage" Source="{x:Bind ImageUri}"  Width="100" Height="100"/>
-                        <TextBlock 
+        <DataTemplate x:DataType="l:Recipe" x:Key="RecipeTemplate">
+            <UserControl IsTabStop="True" UseSystemFocusVisuals="True" Margin="5" >
+                <StackPanel BorderThickness="1" Background="LightGray" Margin="5">
+                    <Image x:Name="recipeImage" Source="{x:Bind ImageUri}"  Width="100" Height="100"/>
+                    <TextBlock 
                             x:Name="recipeDescription" 
                             Text="{x:Bind Description}"
                             TextWrapping="Wrap"
                             Margin="10" />
-                    </StackPanel>
-                </UserControl>
-            </DataTemplate>
-        </muxc:RecyclingElementFactory>
+                </StackPanel>
+            </UserControl>
+        </DataTemplate>
 
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
@@ -230,11 +225,9 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
                                            ItemTemplate ="{StaticResource CategoryTemplate}">
-
                     <muxc:ItemsRepeater.Layout>
                         <muxc:StackLayout Orientation="Vertical" />
                     </muxc:ItemsRepeater.Layout>
-
                 </muxc:ItemsRepeater>
             </ScrollViewer>
         </local:ControlExample>
@@ -282,7 +275,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 </Grid.ColumnDefinitions>
                 <muxc:ItemsRepeaterScrollHost x:Name="tracker" Grid.Column="0">
                     <ScrollViewer>
-                        <muxc:ItemsRepeater x:Name="PinterestRepeater">
+                        <muxc:ItemsRepeater x:Name="PinterestRepeater" ItemTemplate="{StaticResource RecipeTemplate}">
                             <muxc:ItemsRepeater.Layout>
                                 <common:PinterestLayout Width="200" />
                             </muxc:ItemsRepeater.Layout>
