@@ -158,8 +158,12 @@ namespace AppUIBasics.ControlPages
             
             foreach (Recipe rec in tempList)
             {
-                string fruitOption = 
-                rec.Ingredients = "\n" + fruits[rnd.Next(0, 6)] + "\n" + vegetables[rnd.Next(0, 6)] + "\n" + grains[rnd.Next(0, 6)] + "\n" + proteins[rnd.Next(0, 6)]
+                string fruitOption = fruits[rnd.Next(0, 6)];
+                string vegOption = vegetables[rnd.Next(0, 6)];
+                string grainOption = grains[rnd.Next(0, 6)];
+                string proteinOption = proteins[rnd.Next(0, 6)];
+                rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + grainOption + "\n" + proteinOption;
+                rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
                 rec.RandomizeIngredients();
             }
 
@@ -468,6 +472,12 @@ namespace AppUIBasics.ControlPages
         public string Ingredients { get; set; }
         public List<string> IngList { get; set; }
         public string Name { get; set; }
+        public int numIngredients {
+            get 
+            {
+                return IngList.Count();
+            }
+        }
 
         public void RandomizeIngredients()
         {
