@@ -79,10 +79,12 @@
                 <StackPanel BorderThickness="1" Background="LightGray" Margin="5">
                     <Image x:Name="recipeImage" Source="{x:Bind ImageUri}"  Width="100" Height="100"/>
                     <TextBlock 
-                            x:Name="recipeDescription" 
-                            Text="{x:Bind Description}"
+                            x:Name="recipeName" 
+                            Text="{x:Bind Name}"
                             TextWrapping="Wrap"
-                            Margin="10" />
+                            Margin="15,10,10,0" 
+                            Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind Ingredients}" Style="{StaticResource BodyTextBlockStyle}" Margin="15,0,15,15"/>
                 </StackPanel>
             </UserControl>
         </DataTemplate>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -58,49 +59,49 @@ namespace AppUIBasics.ControlPages
             MixedTypeRepeater.ItemsSource = basicData;
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
-            nestedCategories.Add(
-                new NestedCategory("Fruits", new ObservableCollection<string>{
-                                                            "Apricots",
-                                                            "Bananas",
-                                                            "Grapes",
-                                                            "Strawberries",
-                                                            "Watermelon",
-                                                            "Plums",
-                                                            "Blueberries"
-                }));
+            ObservableCollection<string> fruits = new ObservableCollection<string>{
+                                                        "Apricots",
+                                                        "Bananas",
+                                                        "Grapes",
+                                                        "Strawberries",
+                                                        "Watermelon",
+                                                        "Plums",
+                                                        "Blueberries"};
 
-            nestedCategories.Add(
-                new NestedCategory("Vegetables", new ObservableCollection<string>{
-                                                            "Broccoli",
-                                                            "Spinach",
-                                                            "Sweet potato",
-                                                            "Cauliflower",
-                                                            "Onion",
-                                                            "Brussel sprouts",
-                                                            "Carrots"
-                }));
+            nestedCategories.Add(new NestedCategory("Fruits", fruits));
 
-            nestedCategories.Add(
-                new NestedCategory("Grains", new ObservableCollection<string>{
-                                                            "Rice",
-                                                            "Quinoa",
-                                                            "Pasta",
-                                                            "Bread",
-                                                            "Farro",
-                                                            "Oats",
-                                                            "Barley"
-                }));
+            ObservableCollection<string> vegetables = new ObservableCollection<string>{
+                                                        "Broccoli",
+                                                        "Spinach",
+                                                        "Sweet potato",
+                                                        "Cauliflower",
+                                                        "Onion",
+                                                        "Brussel sprouts",
+                                                        "Carrots"};
 
-            nestedCategories.Add(
-                new NestedCategory("Proteins", new ObservableCollection<string>{
-                                                            "Steak",
-                                                            "Chicken",
-                                                            "Tofu",
-                                                            "Salmon",
-                                                            "Pork",
-                                                            "Chickpeas",
-                                                            "Eggs"
-                }));
+            nestedCategories.Add(new NestedCategory("Vegetables", vegetables));
+
+            ObservableCollection<string> grains = new ObservableCollection<string>{
+                                                         "Rice",
+                                                         "Quinoa",
+                                                         "Pasta",
+                                                         "Bread",
+                                                         "Farro",
+                                                         "Oats",
+                                                         "Barley"};
+
+            nestedCategories.Add(new NestedCategory("Grains", grains));
+
+            ObservableCollection<string> proteins = new ObservableCollection<string>{
+                                                         "Steak",
+                                                         "Chicken",
+                                                         "Tofu",
+                                                         "Salmon",
+                                                         "Pork",
+                                                         "Chickpeas",
+                                                         "Eggs"};
+
+            nestedCategories.Add(new NestedCategory("Proteins", proteins));
 
             outerRepeater.ItemsSource = nestedCategories;
 
@@ -139,21 +140,28 @@ namespace AppUIBasics.ControlPages
             animatedScrollRepeater.ItemsSource = colors;
             animatedScrollRepeater.ElementPrepared += OnElementPrepared;
 
-            string _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate. Vivamus semper augue leo, eget faucibus nulla mattis nec. " +
-                "Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. Sed a sem et ante gravida congue sit amet ut augue. " +
-                "Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate." +
-                " Vivamus semper augue leo, eget faucibus nulla mattis nec. Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. " +
-                "Sed a sem et ante gravida congue sit amet ut augue. Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus.";
+            //string _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate. Vivamus semper augue leo, eget faucibus nulla mattis nec. " +
+            //    "Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. Sed a sem et ante gravida congue sit amet ut augue. " +
+            //    "Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet erat vel massa rutrum, eget mollis massa vulputate." +
+            //    " Vivamus semper augue leo, eget faucibus nulla mattis nec. Donec scelerisque lacus at dui ultricies, eget auctor ipsum placerat. Integer aliquet libero sed nisi eleifend, nec rutrum arcu lacinia. " +
+            //    "Sed a sem et ante gravida congue sit amet ut augue. Donec quis pellentesque urna, non finibus metus. Proin sed ornare tellus.";
 
             var rnd = new Random();
             List<Recipe> tempList = new List<Recipe>(
                                         Enumerable.Range(0, 100).Select(k =>
                                            new Recipe
                                            {
-                                               PrimaryKey = k.ToString(),
-                                               ImageUri = string.Format("/Assets/SampleMedia/LandscapeImage{0}.jpg", k % 8 + 1),
-                                               Description = k + " - " + _lorem.Substring(0, rnd.Next(50, 350))
+                                               Num = k,
+                                               Name = "Recipe " + k.ToString(),
+                                               ImageUri = string.Format("/Assets/SampleMedia/LandscapeImage{0}.jpg", k % 8 + 1)
                                            }));
+            
+            foreach (Recipe rec in tempList)
+            {
+                string fruitOption = 
+                rec.Ingredients = "\n" + fruits[rnd.Next(0, 6)] + "\n" + vegetables[rnd.Next(0, 6)] + "\n" + grains[rnd.Next(0, 6)] + "\n" + proteins[rnd.Next(0, 6)]
+                rec.RandomizeIngredients();
+            }
 
             filteredRecipeData.InitializeCollection(tempList);
             staticRecipeData = new List<Recipe>(tempList);
@@ -365,7 +373,7 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
         {
-            filteredRecipeData.InitializeCollection(staticRecipeData.Where(i => i.Description.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase)));
+            filteredRecipeData.InitializeCollection(staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase)));
         }
 
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
@@ -455,9 +463,36 @@ namespace AppUIBasics.ControlPages
 
     public class Recipe
     {
+        public int Num { get; set; }
         public string ImageUri { get; set; }
-        public string Description { get; set; }
-        public string PrimaryKey { get; set; }
+        public string Ingredients { get; set; }
+        public List<string> IngList { get; set; }
+        public string Name { get; set; }
+
+        public void RandomizeIngredients()
+        {
+            // To give the items different heights, give recipes random numbers of random ingredients
+            Random rndNum = new Random();
+            Random rndIng = new Random();
+
+            ObservableCollection<string> extras = new ObservableCollection<string>{
+                                                         "Garlic",
+                                                         "Lemon",
+                                                         "Butter",
+                                                         "Lime",
+                                                         "Feta Cheese",
+                                                         "Parmesan Cheese",
+                                                         "Breadcrumbs"};
+            for (int i =0; i < rndNum.Next(0,4); i++)
+            {
+                string newIng = extras[rndIng.Next(0, 6)];
+                if (!IngList.Contains(newIng))
+                {
+                    Ingredients += "\n" + newIng;
+                }
+            }
+
+        }
     }
 
     // Custom data source class that assigns elements unique IDs, making filtering easier
@@ -519,7 +554,7 @@ namespace AppUIBasics.ControlPages
 
         public string KeyFromIndex(int index)
         {
-            return ((Recipe)this[index]).PrimaryKey;
+            return inner[index].ToString();
         }
 
         #endregion
