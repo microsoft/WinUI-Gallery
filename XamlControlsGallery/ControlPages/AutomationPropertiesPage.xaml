@@ -43,12 +43,12 @@
         <local:ControlExample HeaderText="Providing a label for another control">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <TextBlock FontSize="{x:Bind FontSizeNumberBox.Value,Mode=OneWay}" TextWrapping="WrapWholeWords" Margin="0,8,0,8">Cat ipsum dolor sit amet, incidunt. Ratione. 
+                    <TextBlock x:Name="FontSizeChangingTextBlock" TextWrapping="WrapWholeWords" Margin="0,8,0,8">Cat ipsum dolor sit amet, incidunt. Ratione. 
                         Ipsa omnis dolor rem or vel. Ipsa elit quaerat sequi, nequeporro nisi qui. Vel autem. 
                         Laborum pariatur nemo for veritatis yet explicabo eaque or esse. Ipsum ullam omnis so sed nequeporro but magna.</TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock x:Name="FontSizeLabel" VerticalAlignment="Center" FontSize="16" Margin="0,0,8,0" Text="Font size of texts"/>
-                        <muxc:NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" AutomationProperties.LabeledBy="{x:Bind FontSizeLabel}"/>
+                        <TextBlock x:Name="FontSizeLabel" VerticalAlignment="Center" FontSize="16" Margin="0,0,8,0" Text="Font size of text"/>
+                        <muxc:NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
