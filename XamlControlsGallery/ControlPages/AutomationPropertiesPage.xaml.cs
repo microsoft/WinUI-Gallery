@@ -20,5 +20,19 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private void FontSizeNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            // Ensure that if user clears the NumberBox, we don't pass 0 or null as fontsize
+            if(sender.Value >= sender.Minimum)
+            {
+                FontSizeChangingTextBlock.FontSize = sender.Value;
+            }
+            else
+            {
+                // We fell below minimu, so lets restore a correct value
+                sender.Value = sender.Minimum;
+            }
+        }
     }
 }
