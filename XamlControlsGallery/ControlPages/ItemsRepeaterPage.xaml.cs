@@ -25,6 +25,7 @@ namespace AppUIBasics.ControlPages
         public ObservableCollection<Bar> BarItems;
         public MyItemsSource filteredRecipeData = new MyItemsSource(null);
         public List<Recipe> staticRecipeData;
+        private bool? IsSortDescending = null;
         //public List<Recipe> tempFilteredRecipeData;
 
         private double AnimatedBtnHeight;
@@ -153,7 +154,6 @@ namespace AppUIBasics.ControlPages
                                            {
                                                Num = k,
                                                Name = "Recipe " + k.ToString(),
-                                               ImageUri = string.Format("/Assets/SampleMedia/LandscapeImage{0}.jpg", k % 8 + 1)
                                            }));
             
             foreach (Recipe rec in tempList)
@@ -375,14 +375,43 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         // Pinterest Layout with Filtering/Sorting
         // ==========================================================================
-        public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
-        {
-            filteredRecipeData.InitializeCollection(staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase)));
-        }
+        
 
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
             PinterestRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+        }
+
+        public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateSortAndFilter();
+        }
+
+        private void OnSortAscClick(object sender, RoutedEventArgs e)
+        {
+            if (IsSortDescending == true || IsSortDescending == null)
+            {
+                IsSortDescending = false;
+                UpdateSortAndFilter();
+            }
+        }
+
+        private void OnSortDesClick(object sender, RoutedEventArgs e)
+        {
+            if (!IsSortDescending == true || IsSortDescending == null)
+            {
+                IsSortDescending = true;
+                UpdateSortAndFilter();
+            }
+        }
+
+        private void UpdateSortAndFilter()
+        {
+            var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
+            var sortedFilteredTypes = (bool)IsSortDescending ?
+                filteredTypes.OrderByDescending(i => i.numIngredients) :
+                filteredTypes.OrderBy(i => i.numIngredients);
+            filteredRecipeData.InitializeCollection(sortedFilteredTypes);
         }
     }
 
@@ -468,7 +497,6 @@ namespace AppUIBasics.ControlPages
     public class Recipe
     {
         public int Num { get; set; }
-        public string ImageUri { get; set; }
         public string Ingredients { get; set; }
         public List<string> IngList { get; set; }
         public string Name { get; set; }
@@ -499,6 +527,7 @@ namespace AppUIBasics.ControlPages
                 if (!IngList.Contains(newIng))
                 {
                     Ingredients += "\n" + newIng;
+                    IngList.Add(newIng);
                 }
             }
 
@@ -517,15 +546,27 @@ namespace AppUIBasics.ControlPages
 
         public void InitializeCollection(IEnumerable<Recipe> collection)
         {
+            List<Recipe> oldStuff = new List<Recipe>(inner);
             inner.Clear();
             if (collection != null)
             {
-                Debug.Print("adding to collection\n");
+                Debug.Print("adding to collection\n\n");
                 inner.AddRange(collection);
+                
             }
 
             if (CollectionChanged != null)
             {
+                Debug.Print("\n--------------------------------OLD LIST:----------------------------------\n");
+                foreach (Recipe item in oldStuff)
+                {
+                    Debug.Print("item key: " + item.Num.ToString() + "\n");
+                }
+                Debug.Print("\n--------------------------------NEW LIST:----------------------------------\n");
+                foreach (Recipe item in inner)
+                {
+                    Debug.Print("item key: " + item.Num.ToString() + "\n");
+                }
                 Debug.Print("collection changed\n");
                 CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             }
@@ -564,16 +605,25 @@ namespace AppUIBasics.ControlPages
 
         public string KeyFromIndex(int index)
         {
-            return inner[index].ToString();
+            return inner[index].Num.ToString();
+        }
+
+        public int IndexFromKey(string key)
+        {
+           foreach (Recipe item in inner)
+           {
+                if (item.Num.ToString() == key)
+                {
+                    return inner.IndexOf(item);
+                }
+           }
+           return -1;
         }
 
         #endregion
 
         #region Unused List methods
-        public int IndexFromKey(string key)
-        {
-            throw new NotImplementedException();
-        }
+
 
         IEnumerator IEnumerable.GetEnumerator()
         {
