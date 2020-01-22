@@ -412,6 +412,9 @@ namespace AppUIBasics.ControlPages
                 filteredTypes.OrderByDescending(i => i.numIngredients) :
                 filteredTypes.OrderBy(i => i.numIngredients);
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
+
+            // Workaround for issue : https://github.com/microsoft/microsoft-ui-xaml/issues/1871
+            UpdateLayout();
         }
     }
 
@@ -557,17 +560,17 @@ namespace AppUIBasics.ControlPages
 
             if (CollectionChanged != null)
             {
-                Debug.Print("\n--------------------------------OLD LIST:----------------------------------\n");
-                foreach (Recipe item in oldStuff)
-                {
-                    Debug.Print("item key: " + item.Num.ToString() + "\n");
-                }
-                Debug.Print("\n--------------------------------NEW LIST:----------------------------------\n");
-                foreach (Recipe item in inner)
-                {
-                    Debug.Print("item key: " + item.Num.ToString() + "\n");
-                }
-                Debug.Print("collection changed\n");
+                //Debug.Print("\n--------------------------------OLD LIST:----------------------------------\n");
+                //foreach (Recipe item in oldStuff)
+                //{
+                //    Debug.Print("item key: " + item.Num.ToString() + "\n");
+                //}
+                //Debug.Print("\n--------------------------------NEW LIST:----------------------------------\n");
+                //foreach (Recipe item in inner)
+                //{
+                //    Debug.Print("item key: " + item.Num.ToString() + "\n");
+                //}
+                //Debug.Print("collection changed\n");
                 CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             }
         }
