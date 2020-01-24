@@ -1,4 +1,5 @@
-﻿using Windows.UI.Core;
+﻿using System;
+using Windows.UI.Core;
 using Windows.UI.Input.Inking;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,9 +27,12 @@ namespace AppUIBasics.ControlPages
             {
                 var defaultAttributes = _inkPresenter.CopyDefaultDrawingAttributes();
 
-                defaultAttributes.PenTip = (bool)penTipShape.IsChecked ? PenTipShape.Circle : PenTipShape.Rectangle;
-
-                _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);
+                // If we are using a pencil, changing pentip is not allowed!
+                if(defaultAttributes.Kind != InkDrawingAttributesKind.Pencil)
+                {
+                    defaultAttributes.PenTip = (bool)penTipShape.IsChecked ? PenTipShape.Circle : PenTipShape.Rectangle;
+                    _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);
+                }
             }
         }
 
