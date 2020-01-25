@@ -27,7 +27,7 @@ namespace AppUIBasics.ControlPages
                 var defaultAttributes = _inkPresenter.CopyDefaultDrawingAttributes();
 
                 // If we are using a pencil, changing pentip is not allowed!
-                if(defaultAttributes.Kind != InkDrawingAttributesKind.Pencil)
+                if(defaultAttributes.Kind == InkDrawingAttributesKind.Default)
                 {
                     defaultAttributes.PenTip = (bool)penTipShape.IsChecked ? PenTipShape.Circle : PenTipShape.Rectangle;
                     _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);
