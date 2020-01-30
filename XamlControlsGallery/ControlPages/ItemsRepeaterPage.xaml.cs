@@ -25,7 +25,7 @@ namespace AppUIBasics.ControlPages
         public ObservableCollection<Bar> BarItems;
         public MyItemsSource filteredRecipeData = new MyItemsSource(null);
         public List<Recipe> staticRecipeData;
-        private bool? IsSortDescending = null;
+        private bool IsSortDescending = false;
         //public List<Recipe> tempFilteredRecipeData;
 
         private double AnimatedBtnHeight;
@@ -169,7 +169,9 @@ namespace AppUIBasics.ControlPages
 
             filteredRecipeData.InitializeCollection(tempList);
             staticRecipeData = new List<Recipe>(tempList);
+            UpdateSortAndFilter();
             PinterestRepeater.ItemsSource = filteredRecipeData;
+            
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -389,7 +391,7 @@ namespace AppUIBasics.ControlPages
 
         private void OnSortAscClick(object sender, RoutedEventArgs e)
         {
-            if (IsSortDescending == true || IsSortDescending == null)
+            if (IsSortDescending == true)
             {
                 IsSortDescending = false;
                 UpdateSortAndFilter();
@@ -398,7 +400,7 @@ namespace AppUIBasics.ControlPages
 
         private void OnSortDesClick(object sender, RoutedEventArgs e)
         {
-            if (!IsSortDescending == true || IsSortDescending == null)
+            if (!IsSortDescending == true)
             {
                 IsSortDescending = true;
                 UpdateSortAndFilter();
@@ -408,13 +410,13 @@ namespace AppUIBasics.ControlPages
         private void UpdateSortAndFilter()
         {
             var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
-            var sortedFilteredTypes = (bool)IsSortDescending ?
+            var sortedFilteredTypes = IsSortDescending ?
                 filteredTypes.OrderByDescending(i => i.numIngredients) :
                 filteredTypes.OrderBy(i => i.numIngredients);
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
 
-            // Workaround for issue : https://github.com/microsoft/microsoft-ui-xaml/issues/1871
-            UpdateLayout();
+            //// Workaround for issue : https://github.com/microsoft/microsoft-ui-xaml/issues/1871
+            //UpdateLayout();
         }
     }
 
