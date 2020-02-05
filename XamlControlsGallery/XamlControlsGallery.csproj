@@ -1151,6 +1151,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup />
