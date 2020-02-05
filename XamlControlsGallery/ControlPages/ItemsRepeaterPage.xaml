@@ -265,7 +265,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
 
                 <Rectangle x:Name="colorRectangle"
                             Grid.Column="1"
-                            Stroke="Black"
+                            Stroke="{ThemeResource SystemControlForegroundBaseHighBrush}"
                             Height="150"
                             Width="150"
                             Margin="10,0,0,0"/>
