@@ -228,12 +228,18 @@
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
@@ -293,11 +299,11 @@
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientedSize.cs" />
-    <Compile Include="Common\PinterestLayout.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\ThemeHelper.cs" />
     <Compile Include="Common\UIHelper.cs" />
+    <Compile Include="Common\VariedImageSizeLayout.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
@@ -1134,7 +1140,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.0-pr.200128002</Version>
+      <Version>2.4.0-prerelease.200203002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>

@@ -13,9 +13,9 @@ using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutC
 
 namespace AppUIBasics.Common
 {
-    public class PinterestLayout : VirtualizingLayout
+    public class VariedImageSizeLayout : VirtualizingLayout
     {
-        public PinterestLayout()
+        public VariedImageSizeLayout()
         {
             Width = 150.0;
         }
