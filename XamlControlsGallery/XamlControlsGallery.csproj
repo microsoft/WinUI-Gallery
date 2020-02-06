@@ -1141,7 +1141,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.0-prerelease.200113001</Version>
+      <Version>2.4.0-prerelease.200203002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
