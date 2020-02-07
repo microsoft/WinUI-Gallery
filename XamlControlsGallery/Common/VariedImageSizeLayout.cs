@@ -15,14 +15,7 @@ namespace AppUIBasics.Common
 {
     public class VariedImageSizeLayout : VirtualizingLayout
     {
-        public VariedImageSizeLayout()
-        {
-            Width = 150.0;
-        }
-
-        public double Width { get; set; }
-
-        private bool cachedBoundsInvalid = false;
+        public double Width { get; set; } = 150;        
         protected override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, NotifyCollectionChangedEventArgs args)
         {
             // The data collection has changed, so the bounds of all the indices are not valid anymore. 
@@ -36,13 +29,11 @@ namespace AppUIBasics.Common
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {
             var viewport = context.RealizationRect;
-            //Debug.WriteLine("Measure: " + viewport);
 
             if (availableSize.Width != m_lastAvailableWidth || cachedBoundsInvalid)
             {
                 UpdateCachedBounds(availableSize);
                 m_lastAvailableWidth = availableSize.Width;
-                cachedBoundsInvalid = false;
             }
 
             // Initialize column offsets
@@ -62,7 +53,6 @@ namespace AppUIBasics.Common
             // Measure items from start index to when we hit the end of the viewport.
             while (currentIndex < context.ItemCount && nextOffset < viewport.Bottom)
             {
-                //Debug.WriteLine("Measuring " + currentIndex);
                 var child = context.GetOrCreateElementAt(currentIndex);
                 child.Measure(new Size(Width, availableSize.Height));
 
@@ -96,12 +86,10 @@ namespace AppUIBasics.Common
 
         protected override Size ArrangeOverride(VirtualizingLayoutContext context, Size finalSize)
         {
-            // Debug.WriteLine("Arrange: " + context.RealizationRect);
             if (m_cachedBounds.Count > 0)
             {
                 for (int index = m_firstIndex; index <= m_lastIndex; index++)
                 {
-                    // Debug.WriteLine("Arranging " + index);
                     var child = context.GetOrCreateElementAt(index);
                     child.Arrange(m_cachedBounds[index]);
                 }
@@ -126,6 +114,8 @@ namespace AppUIBasics.Common
                 m_cachedBounds[index] = new Rect(columnIndex * Width, nextOffset, Width, oldHeight);
                 m_columnOffsets[columnIndex] += oldHeight;
             }
+
+            cachedBoundsInvalid = false;
         }
 
         private int GetStartIndex(Rect viewport)
@@ -192,5 +182,6 @@ namespace AppUIBasics.Common
         double m_lastAvailableWidth = 0.0;
         List<double> m_columnOffsets = new List<double>();
         List<Rect> m_cachedBounds = new List<Rect>();
+        private bool cachedBoundsInvalid = false;
     }
 }

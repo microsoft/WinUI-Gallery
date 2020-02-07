@@ -4,7 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Reflection;
 using System.Linq;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
@@ -23,6 +26,7 @@ namespace AppUIBasics.ControlPages
         public MyItemsSource filteredRecipeData = new MyItemsSource(null);
         public List<Recipe> staticRecipeData;
         private bool IsSortDescending = false;
+        public List<Recipe> tempList;
 
         private double AnimatedBtnHeight;
         private Windows.UI.Xaml.Thickness AnimatedBtnMargin;
@@ -56,14 +60,7 @@ namespace AppUIBasics.ControlPages
             MixedTypeRepeater.ItemsSource = basicData;
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
-            ObservableCollection<string> fruits = new ObservableCollection<string>{
-                                                        "Apricots",
-                                                        "Bananas",
-                                                        "Grapes",
-                                                        "Strawberries",
-                                                        "Watermelon",
-                                                        "Plums",
-                                                        "Blueberries"};
+            ObservableCollection<string> fruits = new ObservableCollection<string>{ "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
 
             nestedCategories.Add(new NestedCategory("Fruits", fruits));
 
@@ -117,38 +114,27 @@ namespace AppUIBasics.ControlPages
 
 
             // Initialize list of colors for animated scrolling sample
-            IList<string> colors = new List<String>();
-            colors.Add("BlueViolet");
-            colors.Add("BurlyWood");
-            colors.Add("Crimson");
-            colors.Add("DarkCyan");
-            colors.Add("DarkSalmon");
-            colors.Add("MediumAquamarine");
-            colors.Add("DodgerBlue");
-            colors.Add("Firebrick");
-            colors.Add("Goldenrod");
-            colors.Add("Orange");
-            colors.Add("PaleVioletRed");
-            colors.Add("Olive");
-            colors.Add("MediumOrchid");
-            colors.Add("SeaGreen");
-            colors.Add("SandyBrown");
-            colors.Add("SteelBlue");
+            IList<String> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
+            for (int i =0; i < colors.Count(); i++)
+            {
+                colors[i] = colors[i].Substring(17);
 
+            }
+            
             animatedScrollRepeater.ItemsSource = colors;
             animatedScrollRepeater.ElementPrepared += OnElementPrepared;
 
-            //Initialize list of recipes for varied image size layout sample
+            // Initialize list of recipes for varied image size layout sample
             var rnd = new Random();
-            List<Recipe> tempList = new List<Recipe>(
+            tempList = new List<Recipe>(
                                         Enumerable.Range(0, 1000).Select(k =>
                                             new Recipe
                                             {
                                                 Num = k,
                                                 Name = "Recipe " + k.ToString(),
-                                                Color = colors[k % 15 + 1]
+                                                Color = colors[(k % 100) + 1]
                                             }));
-            
+
             foreach (Recipe rec in tempList)
             {
                 // Add one food from each option into the recipe's ingredient list and ingredient string
@@ -166,10 +152,10 @@ namespace AppUIBasics.ControlPages
             // Initialize custom MyItemsSource object with new recipe data
             filteredRecipeData.InitializeCollection(tempList);
             // Save a static copy to compare to while filtering
-            staticRecipeData = new List<Recipe>(tempList);
-            
+            staticRecipeData = tempList;
+
             VariedImageSizeRepeater.ItemsSource = filteredRecipeData;
-            
+
         }
 
         // ==========================================================================
@@ -392,8 +378,8 @@ namespace AppUIBasics.ControlPages
             var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
             // Sort the recipes by whichever sorting mode was last selected (least to most ingredients by default)
             var sortedFilteredTypes = IsSortDescending ?
-                filteredTypes.OrderByDescending(i => i.numIngredients) :
-                filteredTypes.OrderBy(i => i.numIngredients);
+                filteredTypes.OrderByDescending(i => i.IngList.Count()) :
+                filteredTypes.OrderBy(i => i.IngList.Count());
             // Re-initialize MyItemsSource object with this newly filtered data
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
         }
@@ -485,7 +471,7 @@ namespace AppUIBasics.ControlPages
         public List<string> IngList { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-        public int numIngredients {
+        public int NumIngredients {
             get 
             {
                 return IngList.Count();

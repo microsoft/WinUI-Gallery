@@ -75,7 +75,7 @@
         <muxc:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
         <DataTemplate x:DataType="l:Recipe" x:Key="RecipeTemplate">
-            <StackPanel BorderThickness="1" Background="LightGray" Margin="5">
+            <StackPanel BorderThickness="1" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" Margin="5">
                 <StackPanel Background="{x:Bind Color}" Margin="8" Height="75" Opacity=".8">
                     <TextBlock Text="{x:Bind Num.ToString()}" FontSize="35" TextAlignment="Center" 
                                Padding="12"  Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
@@ -187,7 +187,6 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                                        HorizontalAlignment="Stretch"
                                        Layout="{StaticResource MyFeedLayout}"
                                        ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
-
                 </ScrollViewer>
             </muxc:ItemsRepeaterScrollHost>
 
@@ -250,7 +249,6 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                               Width="250"
                               ViewChanging="Animated_ScrollViewer_ViewChanging">
                     <muxc:ItemsRepeater x:Name="animatedScrollRepeater">
-                        <muxc:ItemsRepeater.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
                                 <Button Content="{x:Bind}"
                                         Background="{x:Bind}"
@@ -259,7 +257,6 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                                         HorizontalAlignment="Stretch"
                                         Loaded="GetButtonSize"/>
                             </DataTemplate>
-                        </muxc:ItemsRepeater.ItemTemplate>
                     </muxc:ItemsRepeater>
                 </ScrollViewer>
 

@@ -422,6 +422,9 @@
     <Compile Include="ControlPages\InkCanvasPage.xaml.cs">
       <DependentUpon>InkCanvasPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\InkToolbarPage.xaml.cs">
+      <DependentUpon>InkToolbarPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\ItemsRepeaterPage.xaml.cs">
       <DependentUpon>ItemsRepeaterPage.xaml</DependentUpon>
     </Compile>
@@ -738,6 +741,10 @@
     <Page Include="ControlPages\DropDownButtonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\InkToolbarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>
