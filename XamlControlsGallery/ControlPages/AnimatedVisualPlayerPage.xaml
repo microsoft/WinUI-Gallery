@@ -38,7 +38,7 @@
                                                           AutoPlay="False">
 
                             <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
-                            <animatedvisuals:LottieLogo1/>
+                            <!--<animatedvisuals:LottieLogo1/>-->
 
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
                             <AnimatedVisualPlayer.FallbackContent>

@@ -105,7 +105,7 @@
       <Link>Properties\Default.rd.xml</Link>
     </Content>
     <Content Include="Assets\WinUI3Alpha2.png" />
-    <Content Include="Assets\LottieLogo1.png" />
+    <!--<Content Include="Assets\LottieLogo1.png" /-->
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
     <Content Include="Assets\SampleMedia\grapes.jpg" />
@@ -268,7 +268,7 @@
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimatedVisuals\LottieLogo1.cs" />
+    <!--<Compile Include="AnimatedVisuals\LottieLogo1.cs" /-->
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -439,9 +439,9 @@
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
     </Compile>
-    <!--Compile Include="ControlPages\WebViewPage.xaml.cs">
-      <DependentUpon>WebViewPage.xaml</DependentUpon>
-    </Compile-->
+    <Compile Include="ControlPages\WebView2Page.xaml.cs">
+      <DependentUpon>WebView2Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\ParallaxViewPage.xaml.cs">
       <DependentUpon>ParallaxViewPage.xaml</DependentUpon>
     </Compile>
@@ -725,10 +725,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <!--Page Include="ControlPages\WebViewPage.xaml">
+    <Page Include="ControlPages\WebView2Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page-->
+    </Page>
     <Page Include="ControlPages\SplitButtonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1124,8 +1124,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.9</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2">
+      <Version>0.8.355</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.WinUI">
-      <Version>3.0.0-alpha.191101.0</Version>
+      <Version>3.0.0-alpha.200210.0</Version>
     </PackageReference>
     <!--  This package cannot be used since it is compiled against Windows.UI.Xaml 
       PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
@@ -1137,11 +1140,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="Microsoft.VCLibs.Desktop, Version=14.0">
-      <Name>Visual C++ 2015 UWP Desktop Runtime for native apps</Name>
-    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
