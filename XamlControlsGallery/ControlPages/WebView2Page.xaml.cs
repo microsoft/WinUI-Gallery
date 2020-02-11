@@ -8,13 +8,14 @@
 //
 //*********************************************************
 using System;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
-    public sealed partial class WebViewPage : Page
+    public sealed partial class WebView2Page : Page
     {
-        public WebViewPage()
+        public WebView2Page()
         {
             this.InitializeComponent();
         }

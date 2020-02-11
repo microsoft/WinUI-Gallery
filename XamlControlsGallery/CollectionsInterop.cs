@@ -16,7 +16,7 @@ namespace AppUIBasics
     // to use MUX types, such that creating WUX types raises an RPC_E_WRONG_THREAD error
     // due to DXamlCore not being initialized.  For the purposes of our tests, we're providing
     // our own implementation of TestObservableCollection<T> that implements MUX.INotifyCollectionChanged.
-    public class TestObservableCollection<T> : Collection<T>, Microsoft.UI.Xaml.Interop.INotifyCollectionChanged
+    public class TestObservableCollection<T> : Collection<T>, Microsoft.UI.Xaml.Interop.INotifyCollectionChanged, INotifyPropertyChanged
     {
         private ReentrancyGuard reentrancyGuard = null;
 
@@ -147,6 +147,8 @@ namespace AppUIBasics
                 CollectionChanged?.Invoke(this, e);
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 
     public class TestBindableVector<T> : IList<T>, IBindableVector
