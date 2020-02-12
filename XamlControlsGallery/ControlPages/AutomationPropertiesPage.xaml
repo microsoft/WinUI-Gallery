@@ -21,8 +21,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
-        <TextBlock Margin="0,8,0,0">To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow.</TextBlock>
-        
+        <TextBlock Margin="0,8,0,0" Text="To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow" 
+                   TextWrapping="WrapWholeWords"/>
+
         <!-- AutomationProperties.Name sample -->
         <local:ControlExample HeaderText="Enabling alternate text for controls">
             <local:ControlExample.Example>
