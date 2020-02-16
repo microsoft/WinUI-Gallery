@@ -13,7 +13,7 @@ namespace AppUIBasics.Common
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
         private static Window CurrentApplicationWindow;
-        // Keep reference so it does not optimized/gc'ed away
+        // Keep reference so it does not get optimized/garbage collected
         private static UISettings uiSettings;
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the

@@ -12,7 +12,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A SplitButton controling text color in a RichEditBox" 
+        <local:ControlExample x:Name="Example1" HeaderText="A SplitButton controlling text color in a RichEditBox" 
                               XamlSource="Buttons\SplitButton\SplitButtonSample1.txt"
                               WebViewHeight="150">
             <Grid x:Name="Control1" ColumnSpacing="24">

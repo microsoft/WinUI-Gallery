@@ -18,7 +18,7 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            // Set initial outpput value.
+            // Set initial output value.
             Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
             ControlRevealOutput.Text = (bool)ToggleReveal.IsChecked ? "On" : "Off";
         }

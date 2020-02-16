@@ -67,7 +67,7 @@ namespace AppUIBasics.ControlPages
                                                             "Sweet potato",
                                                             "Cauliflower",
                                                             "Onion",
-                                                            "Brussel sprouts",
+                                                            "Brussels sprouts",
                                                             "Carrots"
                 }));
 
