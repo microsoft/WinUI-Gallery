@@ -27,9 +27,6 @@ namespace AppUIBasics.ControlPages
         }
     }
 
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class EasingFunctionPage : Page
     {
         private List<NamedEasingFunction> EasingFunctions { get; } = new List<NamedEasingFunction>()
