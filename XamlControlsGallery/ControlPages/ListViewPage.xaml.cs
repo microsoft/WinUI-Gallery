@@ -337,7 +337,7 @@ namespace AppUIBasics.ControlPages
             // If sent message, use light gray
             else if (MsgAlignment == HorizontalAlignment.Right)
             {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"];
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlErrorTextForegroundBrush"];
             }
         }
 
