@@ -30,7 +30,7 @@ namespace AppUIBasics.ControlPages
             }
             else
             {
-                // We fell below minimu, so lets restore a correct value
+                // We fell below minimum, so lets restore a correct value
                 sender.Value = sender.Minimum;
             }
         }

@@ -6,7 +6,7 @@
 // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
-//*********************************************************C:\Users\saschule\Source\Repos\Xaml-Controls-Gallery\XamlControlsGallery\Assets\InkCanvas.png
+//*********************************************************
 using Microsoft.UI.Xaml.Controls;
 using Windows.Globalization.NumberFormatting;
 using Windows.UI.Xaml;
