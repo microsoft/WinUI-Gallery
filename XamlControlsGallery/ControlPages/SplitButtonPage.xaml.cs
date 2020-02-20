@@ -54,7 +54,7 @@ namespace AppUIBasics.ControlPages
 
         private void MyRichEditBox_TextChanging(object sender, RichEditBoxTextChangingEventArgs e)
         {
-            // Hitting control+b and similiar commands my overwrite the color,
+            // Hitting control+b and similar commands my overwrite the color,
             // which result to black text on black background when losing focus on dark theme.
             // Solution: check if text actually changed
             if (e.IsContentChanging)

@@ -18,7 +18,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="Reveal by default">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <Grid BorderThickness="0,0,0,1" BorderBrush="{ThemeResource ButtonBackground}" Margin="0,10,10,10">
-                    <TextBlock Margin="5" TextWrapping="WrapWholeWords" Text="Reveal is on by default for many of our controls. For those controls, no enabling of Reveal is required. Please see the guidance documention for a full list."/>
+                    <TextBlock Margin="5" TextWrapping="WrapWholeWords" Text="Reveal is on by default for many of our controls. For those controls, no enabling of Reveal is required. Please see the guidance documentation for a full list."/>
                 </Grid>
                 <CommandBar OverflowButtonVisibility="Visible" DefaultLabelPosition="Right" HorizontalAlignment="Left">
                     <AppBarButton Icon="Admin" Label="Admin"/>
