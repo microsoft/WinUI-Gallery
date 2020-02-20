@@ -223,7 +223,7 @@
                                     <muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
                                 </muxc:TabViewItem.IconSource>
                             </muxc:TabViewItem>
-                            <muxc:TabViewItem Header="Powershell" IsClosable="False">
+                            <muxc:TabViewItem Header="PowerShell" IsClosable="False">
                                 <muxc:TabViewItem.IconSource>
                                     <muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
                                 </muxc:TabViewItem.IconSource>
@@ -247,7 +247,7 @@
                 &lt;muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
             &lt;/muxc:TabViewItem.IconSource&gt;
         &lt;/muxc:TabViewItem&gt;
-        &lt;muxc:TabViewItem Header="Powershell"&gt;
+        &lt;muxc:TabViewItem Header="PowerShell"&gt;
             &lt;muxc:TabViewItem.IconSource&gt;
                 &lt;muxc:BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
             &lt;/muxc:TabViewItem.IconSource&gt;

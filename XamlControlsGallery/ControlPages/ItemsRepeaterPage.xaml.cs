@@ -1,4 +1,4 @@
-﻿using AppUIBasics.Common;
+using AppUIBasics.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +14,6 @@ using Windows.UI.Xaml.Hosting;
 
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         private Random random = new Random();
@@ -60,6 +57,7 @@ namespace AppUIBasics.ControlPages
             MixedTypeRepeater.ItemsSource = basicData;
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
+
             ObservableCollection<string> fruits = new ObservableCollection<string>{ "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
 
             nestedCategories.Add(new NestedCategory("Fruits", fruits));

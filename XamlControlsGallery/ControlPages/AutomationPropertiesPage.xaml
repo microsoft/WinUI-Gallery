@@ -21,8 +21,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
-        <TextBlock Margin="0,8,0,0">To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow.</TextBlock>
-        
+        <TextBlock Margin="0,8,0,0" Text="To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow" 
+                   TextWrapping="WrapWholeWords"/>
+
         <!-- AutomationProperties.Name sample -->
         <local:ControlExample HeaderText="Enabling alternate text for controls">
             <local:ControlExample.Example>
@@ -32,7 +33,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;!-- This image will be anounced as "Image of treetops,Image" --&gt;
+&lt;!-- This image will be announced as "Image of treetops,Image" --&gt;
 &lt;Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" 
        AutomationProperties.Name="Image of treetops"/&gt;
                 </x:String>
@@ -68,7 +69,7 @@
         </local:ControlExample>
         
         <!-- AutomationProperties.AccessibilityView sample-->
-        <local:ControlExample HeaderText="Modifiyng accessibility view of custom templates">
+        <local:ControlExample HeaderText="Modifying accessibility view of custom templates">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/>

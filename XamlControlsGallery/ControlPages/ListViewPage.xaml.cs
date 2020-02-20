@@ -51,7 +51,7 @@ namespace AppUIBasics.ControlPages
             DragDropListView.ItemsSource = contacts1;
 
             contacts2.Add(new Contact("John", "Doe", "ABC Printers"));
-            contacts2.Add(new Contact("Jane", "Doe", "XYZ Refridgerators"));
+            contacts2.Add(new Contact("Jane", "Doe", "XYZ Refrigerators"));
             contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
             DragDropListView2.ItemsSource = contacts2;
 
@@ -308,7 +308,7 @@ namespace AppUIBasics.ControlPages
                 );
         }
 
-        private void MessageRecieved(object sender, RoutedEventArgs e)
+        private void MessageReceived(object sender, RoutedEventArgs e)
         {
             InvertedListView.Items.Add(
                 new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
@@ -328,7 +328,7 @@ namespace AppUIBasics.ControlPages
             MsgDateTime = dateTime;
             MsgAlignment = align;
 
-            // If recieved message, use accent background
+            // If received message, use accent background
             if (MsgAlignment == HorizontalAlignment.Left)
             {
                 BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
@@ -337,7 +337,7 @@ namespace AppUIBasics.ControlPages
             // If sent message, use light gray
             else if (MsgAlignment == HorizontalAlignment.Right)
             {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundChromeMediumBrush"];
+                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlErrorTextForegroundBrush"];
             }
         }
 

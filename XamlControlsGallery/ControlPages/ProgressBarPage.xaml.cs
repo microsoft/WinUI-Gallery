@@ -10,13 +10,8 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ProgressBarPage : Page
     {
         public ProgressBarPage()
@@ -24,14 +19,17 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private int _clicks = 0;
-        private void RepeatButton_Click(object sender, RoutedEventArgs e)
+        private void ProgressValue_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
         {
-            _clicks += 1;
-            Control2Output.Text = _clicks.ToString();
-            ProgressBar2.Value = _clicks;
-
-            if (_clicks >= 100) _clicks = 0;
+            // Value might be NaN, which is not valid as value, thus we need to handle changes ourselves
+            if (!sender.Value.IsNaN())
+            {
+                ProgressBar2.Value = sender.Value;
+            }
+            else
+            {
+                sender.Value = 0;
+            }
         }
     }
 }
