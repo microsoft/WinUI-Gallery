@@ -19,13 +19,8 @@ using Microsoft.UI;
 using System.Collections.ObjectModel;
 #endif
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SplitViewPage : Page
     {
         private ObservableCollection<NavLink> _navLinks =  new ObservableCollection<NavLink>()

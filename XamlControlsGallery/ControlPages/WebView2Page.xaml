@@ -17,7 +17,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 
-    <!-- URL's on this page have a en-us as localization since having them not have a fixed locale results in the page having the language used by the user, 
+    <!-- URLs on this page have a en-us as localization since having them not have a fixed locale results in the page having the language used by the user, 
         which may be a different language than the app is using. This was quite confusing to see and was not intuitive.-->
     <local:ControlExample HeaderText="A simple WebView2 " HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
         <local:ControlExample.Example>

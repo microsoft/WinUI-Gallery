@@ -124,7 +124,7 @@ namespace AppUIBasics.TabViewPages
                     // First we need to get the position in the List to drop to
                     var index = -1;
 
-                    // Determine which items in the list our pointer is inbetween.
+                    // Determine which items in the list our pointer is between.
                     for (int i = 0; i < destinationTabView.TabItems.Count; i++)
                     {
                         var item = destinationTabView.ContainerFromIndex(i) as TabViewItem;

@@ -104,7 +104,7 @@
                 <x:String xml:space="preserve">
 &lt;AppBarButton Icon="Save" Label="Save" Click="AppBarButton_Click"&gt;
     &lt;AppBarButton.KeyboardAccelerators&gt;
-        &lt;KeybardAccelerator Modifiers="Control" Key="S"/&gt;
+        &lt;KeyboardAccelerator Modifiers="Control" Key="S"/&gt;
     &lt;AppBarButton.KeyboardAccelerators/&gt;
 &lt;/AppBarButton&gt;
                 </x:String>

@@ -222,7 +222,7 @@
                                     <BitmapIconSource UriSource="ms-appx:///Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
-                            <TabViewItem Header="Powershell" IsClosable="False">
+                            <TabViewItem Header="PowerShell" IsClosable="False">
                                 <TabViewItem.IconSource>
                                     <BitmapIconSource UriSource="ms-appx:///Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" />
                                 </TabViewItem.IconSource>
@@ -246,7 +246,7 @@
                 &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
             &lt;/TabViewItem.IconSource&gt;
         &lt;/TabViewItem&gt;
-        &lt;TabViewItem Header="Powershell"&gt;
+        &lt;TabViewItem Header="PowerShell"&gt;
             &lt;TabViewItem.IconSource&gt;
                 &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
             &lt;/TabViewItem.IconSource&gt;
