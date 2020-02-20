@@ -99,7 +99,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="MenuBar with submenus, seperators, and radio items"
+        <local:ControlExample HeaderText="MenuBar with submenus, separators, and radio items"
                               XamlSource="MenuBar\MenuBarSample2.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText2" Text="" />

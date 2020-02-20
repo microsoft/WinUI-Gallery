@@ -120,7 +120,7 @@
                         <Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.
                     </Paragraph>
                     <Paragraph>
-                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
+                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the individual items they want, or Shift+Click to select a range of contiguous items.
                     </Paragraph>
                 </RichTextBlock>
                 <ListView x:Name="Control2" 
@@ -343,7 +343,7 @@ source code for the XAML Controls Gallery. -->
 &lt;!-- Data template used: --&gt;
 &lt;!-- The data template is bound to a custom DataType called Message. --&gt;
 &lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
-sent or recieved, and those values are bound in the DataTemplate.--&gt;
+sent or received, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
     &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
         &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
@@ -358,7 +358,7 @@ sent or recieved, and those values are bound in the DataTemplate.--&gt;
             <local:ControlExample.Options>
                 <StackPanel HorizontalAlignment="Right">
                     <Button Click="{x:Bind AddItemToEnd}" Margin="0 0 0 10">Send Message</Button>
-                    <Button Click="MessageRecieved">Recieve Message</Button>
+                    <Button Click="MessageReceived">Receive Message</Button>
                 </StackPanel>
             </local:ControlExample.Options>
 
