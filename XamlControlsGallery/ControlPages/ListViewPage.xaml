@@ -129,7 +129,7 @@
                         <Bold>Multiple</Bold> causes checkboxes to appear next to items, so that multiple items can be chosen from the list.
                     </Paragraph>
                     <Paragraph>
-                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the indvidual items they want, or Shift+Click to select a range of contiguous items.
+                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the individual items they want, or Shift+Click to select a range of contiguous items.
                     </Paragraph>
                 </RichTextBlock>
                 <ListView x:Name="Control2" 
@@ -367,7 +367,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
             <local:ControlExample.Options>
                 <StackPanel HorizontalAlignment="Right">
                     <Button Click="{x:Bind AddItemToEnd}" Margin="0 0 0 10">Send Message</Button>
-                    <Button Click="MessageRecieved">Recieve Message</Button>
+                    <Button Click="MessageReceived">Receive Message</Button>
                 </StackPanel>
             </local:ControlExample.Options>
 
