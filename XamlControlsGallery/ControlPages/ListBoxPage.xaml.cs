@@ -12,13 +12,8 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ListBoxPage : Page
     {
         private List<Tuple<string, FontFamily>> _fonts = new List<Tuple<string, FontFamily>>()
