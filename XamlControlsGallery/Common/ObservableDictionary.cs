@@ -28,11 +28,7 @@ namespace AppUIBasics.Common
 
         private void InvokeMapChanged(CollectionChange change, string key)
         {
-            var eventHandler = MapChanged;
-            if (eventHandler != null)
-            {
-                eventHandler(this, new ObservableDictionaryChangedEventArgs(change, key));
-            }
+            MapChanged?.Invoke(this, new ObservableDictionaryChangedEventArgs(change, key));
         }
 
         public void Add(string key, object value)
