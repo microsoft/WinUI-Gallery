@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,8 +62,7 @@ namespace AppUIBasics.Common
                 // Save the navigation state for all registered frames
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame))
+                    if (weakFrameReference.TryGetTarget(out Frame frame))
                     {
                         SaveFrameNavigationState(frame);
                     }
@@ -116,8 +115,7 @@ namespace AppUIBasics.Common
                 // Restore any registered frames to their saved state
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame))
+                    if (weakFrameReference.TryGetTarget(out Frame frame))
                     {
                         frame.ClearValue(FrameSessionStateProperty);
                         RestoreFrameNavigationState(frame);
@@ -183,8 +181,7 @@ namespace AppUIBasics.Common
             SessionState.Remove((String)frame.GetValue(FrameSessionStateKeyProperty));
             _registeredFrames.RemoveAll((weakFrameReference) =>
             {
-                Frame testFrame;
-                return !weakFrameReference.TryGetTarget(out testFrame) || testFrame == frame;
+                return !weakFrameReference.TryGetTarget(out Frame testFrame) || testFrame == frame;
             });
         }
 
