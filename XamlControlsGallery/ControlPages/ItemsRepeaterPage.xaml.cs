@@ -23,10 +23,9 @@ namespace AppUIBasics.ControlPages
         public MyItemsSource filteredRecipeData = new MyItemsSource(null);
         public List<Recipe> staticRecipeData;
         private bool IsSortDescending = false;
-        public List<Recipe> tempList;
 
         private double AnimatedBtnHeight;
-        private Windows.UI.Xaml.Thickness AnimatedBtnMargin;
+        private Thickness AnimatedBtnMargin;
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -58,42 +57,10 @@ namespace AppUIBasics.ControlPages
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
 
-            ObservableCollection<string> fruits = new ObservableCollection<string>{ "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
-
-            nestedCategories.Add(new NestedCategory("Fruits", fruits));
-
-            ObservableCollection<string> vegetables = new ObservableCollection<string>{
-                                                        "Broccoli",
-                                                        "Spinach",
-                                                        "Sweet potato",
-                                                        "Cauliflower",
-                                                        "Onion",
-                                                        "Brussel sprouts",
-                                                        "Carrots"};
-
-            nestedCategories.Add(new NestedCategory("Vegetables", vegetables));
-
-            ObservableCollection<string> grains = new ObservableCollection<string>{
-                                                         "Rice",
-                                                         "Quinoa",
-                                                         "Pasta",
-                                                         "Bread",
-                                                         "Farro",
-                                                         "Oats",
-                                                         "Barley"};
-
-            nestedCategories.Add(new NestedCategory("Grains", grains));
-
-            ObservableCollection<string> proteins = new ObservableCollection<string>{
-                                                         "Steak",
-                                                         "Chicken",
-                                                         "Tofu",
-                                                         "Salmon",
-                                                         "Pork",
-                                                         "Chickpeas",
-                                                         "Eggs"};
-
-            nestedCategories.Add(new NestedCategory("Proteins", proteins));
+            nestedCategories.Add(new NestedCategory("Fruits", GetFruits()));
+            nestedCategories.Add(new NestedCategory("Vegetables", GetVegetables()));
+            nestedCategories.Add(new NestedCategory("Grains", GetGrains()));
+            nestedCategories.Add(new NestedCategory("Proteins", GetProteins()));
 
             outerRepeater.ItemsSource = nestedCategories;
 
@@ -110,50 +77,35 @@ namespace AppUIBasics.ControlPages
             SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
 
-
-            // Initialize list of colors for animated scrolling sample
-            IList<String> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
-            for (int i =0; i < colors.Count(); i++)
-            {
-                colors[i] = colors[i].Substring(17);
-
-            }
-            
-            animatedScrollRepeater.ItemsSource = colors;
+            // Initialize list of colors for animatedScrollRepeater
+            animatedScrollRepeater.ItemsSource = GetColors();
             animatedScrollRepeater.ElementPrepared += OnElementPrepared;
 
-            // Initialize list of recipes for varied image size layout sample
-            var rnd = new Random();
-            tempList = new List<Recipe>(
-                                        Enumerable.Range(0, 1000).Select(k =>
-                                            new Recipe
-                                            {
-                                                Num = k,
-                                                Name = "Recipe " + k.ToString(),
-                                                Color = colors[(k % 100) + 1]
-                                            }));
-
-            foreach (Recipe rec in tempList)
-            {
-                // Add one food from each option into the recipe's ingredient list and ingredient string
-                string fruitOption = fruits[rnd.Next(0, 6)];
-                string vegOption = vegetables[rnd.Next(0, 6)];
-                string grainOption = grains[rnd.Next(0, 6)];
-                string proteinOption = proteins[rnd.Next(0, 6)];
-                rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + grainOption + "\n" + proteinOption;
-                rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
-
-                // Add extra ingredients so items have varied heights in the layout
-                rec.RandomizeIngredients();
-            }
-
             // Initialize custom MyItemsSource object with new recipe data
-            filteredRecipeData.InitializeCollection(tempList);
+            List<Recipe> RecipeList = GetRecipeList();
+            filteredRecipeData.InitializeCollection(RecipeList);
             // Save a static copy to compare to while filtering
-            staticRecipeData = tempList;
-
+            staticRecipeData = RecipeList;
             VariedImageSizeRepeater.ItemsSource = filteredRecipeData;
 
+        }
+
+        private ObservableCollection<string> GetFruits()
+        {
+            return new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
+        }
+
+        private ObservableCollection<string> GetVegetables()
+        {
+            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussel sprouts","Carrots"};
+        }
+        private ObservableCollection<string> GetGrains()
+        {
+            return new ObservableCollection<string>{"Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley"};
+        }
+        private ObservableCollection<string> GetProteins()
+        {
+            return new ObservableCollection<string>{"Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs"};
         }
 
         // ==========================================================================
@@ -263,6 +215,19 @@ namespace AppUIBasics.ControlPages
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
 
+        private IList<String> GetColors()
+        {
+            // Initialize list of colors for animated scrolling sample
+            IList<String> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
+            for (int i = 0; i < colors.Count(); i++)
+            {
+                colors[i] = colors[i].Substring(17);
+
+            }
+
+            return colors;
+
+        }
         private void Animated_GotItem(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
@@ -302,6 +267,7 @@ namespace AppUIBasics.ControlPages
             centerPointExpression.Expression = "Vector3(item.Size.X/2, item.Size.Y/2, 0)";
             item.StartAnimation("CenterPoint", centerPointExpression);
         }
+
         private void GetButtonSize(object sender, RoutedEventArgs e)
         {
             Button AnimatedBtn = sender as Button;
@@ -341,7 +307,35 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         // VariedImageSize Layout with Filtering/Sorting
         // ==========================================================================
-        
+        private List<Recipe> GetRecipeList()
+        {
+            // Initialize list of recipes for varied image size layout sample
+            var rnd = new Random();
+            List<Recipe> tempList = new List<Recipe>(
+                                        Enumerable.Range(0, 1000).Select(k =>
+                                            new Recipe
+                                            {
+                                                Num = k,
+                                                Name = "Recipe " + k.ToString(),
+                                                Color = GetColors()[(k % 100) + 1]
+                                            }));
+
+            foreach (Recipe rec in tempList)
+            {
+                // Add one food from each option into the recipe's ingredient list and ingredient string
+                string fruitOption = GetFruits()[rnd.Next(0, 6)];
+                string vegOption = GetVegetables()[rnd.Next(0, 6)];
+                string grainOption = GetGrains()[rnd.Next(0, 6)];
+                string proteinOption = GetProteins()[rnd.Next(0, 6)];
+                rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + grainOption + "\n" + proteinOption;
+                rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
+
+                // Add extra ingredients so items have varied heights in the layout
+                rec.RandomizeIngredients();
+            }
+
+            return tempList;
+        }
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
             VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
