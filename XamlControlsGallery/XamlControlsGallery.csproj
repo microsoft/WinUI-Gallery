@@ -228,6 +228,10 @@
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
@@ -285,6 +289,7 @@
     <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
+    <Compile Include="Common\DefaultElementAnimator.cs" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\DoubleToThicknessConverter.cs" />
     <Compile Include="Common\LanguageList.cs" />
@@ -298,6 +303,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Common\ThemeHelper.cs" />
     <Compile Include="Common\UIHelper.cs" />
+    <Compile Include="Common\VariedImageSizeLayout.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
@@ -737,8 +743,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\InkToolbarPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>

@@ -74,6 +74,22 @@
         <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
         <muxc:UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
+        <DataTemplate x:DataType="l:Recipe" x:Key="RecipeTemplate">
+            <StackPanel BorderThickness="1" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" Margin="5">
+                <StackPanel Background="{x:Bind Color}" Margin="8" Height="75" Opacity=".8">
+                    <TextBlock Text="{x:Bind Num.ToString()}" FontSize="35" TextAlignment="Center" 
+                               Padding="12"  Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                </StackPanel>
+                <TextBlock 
+                    x:Name="recipeName" 
+                    Text="{x:Bind Name}"
+                    TextWrapping="Wrap"
+                    Margin="15,0,10,0" 
+                    Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Text="{x:Bind Ingredients}" Style="{StaticResource BodyTextBlockStyle}" Margin="15,0,15,15"/>
+            </StackPanel>
+        </DataTemplate>
+
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
                                   Accent="{StaticResource AccentItemTemplate}"/>
@@ -171,7 +187,6 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                                        HorizontalAlignment="Stretch"
                                        Layout="{StaticResource MyFeedLayout}"
                                        ItemTemplate="{StaticResource MyDataTemplateSelector}"/>
-
                 </ScrollViewer>
             </muxc:ItemsRepeaterScrollHost>
 
@@ -188,7 +203,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <local:ControlExampleSubstitution x:Name="SampleCodeLayout2" Key="SampleCodeLayout2"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        
+
         <local:ControlExample HeaderText="ItemsRepeater with mixed-type collection"
                               XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt"
                               CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt">
@@ -197,7 +212,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <muxc:ItemsRepeater x:Name="MixedTypeRepeater" 
                                            Margin="0,0,12,0"
                                            HorizontalAlignment="Stretch"
-                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">        
+                                           ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
 
                     <muxc:ItemsRepeater.Layout>
                         <muxc:UniformGridLayout MinItemWidth="200" MinItemHeight="200"></muxc:UniformGridLayout>
@@ -212,13 +227,79 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
                                            ItemTemplate ="{StaticResource CategoryTemplate}">
-
                     <muxc:ItemsRepeater.Layout>
                         <muxc:StackLayout Orientation="Vertical" />
                     </muxc:ItemsRepeater.Layout>
-
                 </muxc:ItemsRepeater>
             </ScrollViewer>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Animated Scrolling and Content Display"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample3_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample3_cs.txt">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer x:Name="Animated_ScrollViewer" 
+                              Grid.Column="0"
+                              Height="175"
+                              Width="250"
+                              ViewChanging="Animated_ScrollViewer_ViewChanging">
+                    <muxc:ItemsRepeater x:Name="animatedScrollRepeater">
+                            <DataTemplate x:DataType="x:String">
+                                <Button Content="{x:Bind}"
+                                        Background="{x:Bind}"
+                                        Click="Animated_GotItem" 
+                                        GotFocus="Animated_GotItem" 
+                                        HorizontalAlignment="Stretch"
+                                        Loaded="GetButtonSize"/>
+                            </DataTemplate>
+                    </muxc:ItemsRepeater>
+                </ScrollViewer>
+
+                <Rectangle x:Name="colorRectangle"
+                           AutomationProperties.Name="ColorRectangle"
+                           Grid.Column="1"
+                           Stroke="{ThemeResource SystemControlForegroundBaseHighBrush}"
+                           Height="150"
+                           Width="150"
+                           Margin="10,0,0,0"/>
+            </Grid>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Virtualized, Content-Heavy Layout with Filtering and Sorting"
+                              XamlSource="ItemsRepeater/ItemsRepeaterSample4_xaml.txt"
+                              CSharpSource="ItemsRepeater/ItemsRepeaterSample4_cs.txt">
+            <Grid Height="600">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <muxc:ItemsRepeaterScrollHost x:Name="tracker" Grid.Column="0">
+                    <ScrollViewer>
+                        <muxc:ItemsRepeater x:Name="VariedImageSizeRepeater" ItemTemplate="{StaticResource RecipeTemplate}">
+                            <muxc:ItemsRepeater.Layout>
+                                <common:VariedImageSizeLayout Width="200"/>
+                            </muxc:ItemsRepeater.Layout>
+                        </muxc:ItemsRepeater>
+                    </ScrollViewer>
+                </muxc:ItemsRepeaterScrollHost>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <TextBox x:Name="FilterRecipes" Header="Filter by ingredient..." Width="200"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20"
+                             TextChanged="FilterRecipes_FilterChanged"/>
+                    <TextBlock>Enable Animations</TextBlock>
+                    <CheckBox Content="Enable animations" x:Name="EnableAnimations" Checked="OnEnableAnimationsChanged" 
+                              Unchecked="OnEnableAnimationsChanged" Margin="0,0,0,10"/>
+                    <TextBlock Text="Sort by number of ingredients" Margin="0,0,0,10"/>
+                    <Button Content="Least to most" Click="OnSortAscClick" Margin="0,0,0,5"/>
+                    <Button Content="Most to least" Click="OnSortDesClick"/>
+                </StackPanel>
+            </Grid>
         </local:ControlExample>
 
     </StackPanel>
