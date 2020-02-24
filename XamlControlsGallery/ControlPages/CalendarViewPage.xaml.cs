@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -48,8 +48,7 @@ namespace AppUIBasics.ControlPages
 
         private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CalendarViewSelectionMode selectionMode;
-            if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out selectionMode))
+            if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
             {
                 Control1.SelectionMode = selectionMode;
             }
