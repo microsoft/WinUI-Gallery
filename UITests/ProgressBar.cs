@@ -37,10 +37,10 @@ namespace UITests
             button.Click();
             progressBarElement = session.FindElementByAccessibilityId("ProgressBar2");
             Assert.IsNotNull(progressBarElement);
-            clickAndHoldButton = session.FindElementByName("Click and hold");
+            // Numberbox is a spinner, thus "Increase" is the button we need
+            clickAndHoldButton = session.FindElementByName("Increase");
             Assert.IsNotNull(clickAndHoldButton);
             Thread.Sleep(3000);
-
         }
 
         [ClassCleanup]
