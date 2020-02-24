@@ -1,13 +1,16 @@
-﻿using AppUIBasics.Common;
+using AppUIBasics.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Collections.Specialized;
 using System.Diagnostics;
-using System.IO;
+using System.Reflection;
 using System.Linq;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Hosting;
 
 namespace AppUIBasics.ControlPages
 {
@@ -15,10 +18,14 @@ namespace AppUIBasics.ControlPages
     {
         private Random random = new Random();
         private int MaxLength = 425;
-        private bool isHorizontal = false;
 
         public ObservableCollection<Bar> BarItems;
+        public MyItemsSource filteredRecipeData = new MyItemsSource(null);
+        public List<Recipe> staticRecipeData;
+        private bool IsSortDescending = false;
 
+        private double AnimatedBtnHeight;
+        private Thickness AnimatedBtnMargin;
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -49,49 +56,11 @@ namespace AppUIBasics.ControlPages
             MixedTypeRepeater.ItemsSource = basicData;
 
             List<NestedCategory> nestedCategories = new List<NestedCategory>();
-            nestedCategories.Add(
-                new NestedCategory("Fruits",  new ObservableCollection<string>{
-                                                            "Apricots",
-                                                            "Bananas",
-                                                            "Grapes",
-                                                            "Strawberries",
-                                                            "Watermelon",
-                                                            "Plums",
-                                                            "Blueberries"
-                }));
 
-            nestedCategories.Add(
-                new NestedCategory("Vegetables", new ObservableCollection<string>{
-                                                            "Broccoli",
-                                                            "Spinach",
-                                                            "Sweet potato",
-                                                            "Cauliflower",
-                                                            "Onion",
-                                                            "Brussels sprouts",
-                                                            "Carrots"
-                }));
-
-            nestedCategories.Add(
-                new NestedCategory("Grains", new ObservableCollection<string>{
-                                                            "Rice",
-                                                            "Quinoa",
-                                                            "Pasta",
-                                                            "Bread",
-                                                            "Farro",
-                                                            "Oats",
-                                                            "Barley"
-                }));
-
-            nestedCategories.Add(
-                new NestedCategory("Proteins", new ObservableCollection<string>{
-                                                            "Steak",
-                                                            "Chicken",
-                                                            "Tofu",
-                                                            "Salmon",
-                                                            "Pork",
-                                                            "Chickpeas",
-                                                            "Eggs"
-                }));
+            nestedCategories.Add(new NestedCategory("Fruits", GetFruits()));
+            nestedCategories.Add(new NestedCategory("Vegetables", GetVegetables()));
+            nestedCategories.Add(new NestedCategory("Grains", GetGrains()));
+            nestedCategories.Add(new NestedCategory("Proteins", GetProteins()));
 
             outerRepeater.ItemsSource = nestedCategories;
 
@@ -107,8 +76,41 @@ namespace AppUIBasics.ControlPages
 
             SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
+
+            // Initialize list of colors for animatedScrollRepeater
+            animatedScrollRepeater.ItemsSource = GetColors();
+            animatedScrollRepeater.ElementPrepared += OnElementPrepared;
+
+            // Initialize custom MyItemsSource object with new recipe data
+            List<Recipe> RecipeList = GetRecipeList();
+            filteredRecipeData.InitializeCollection(RecipeList);
+            // Save a static copy to compare to while filtering
+            staticRecipeData = RecipeList;
+            VariedImageSizeRepeater.ItemsSource = filteredRecipeData;
+
         }
 
+        private ObservableCollection<string> GetFruits()
+        {
+            return new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
+        }
+
+        private ObservableCollection<string> GetVegetables()
+        {
+            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussel sprouts","Carrots"};
+        }
+        private ObservableCollection<string> GetGrains()
+        {
+            return new ObservableCollection<string>{"Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley"};
+        }
+        private ObservableCollection<string> GetProteins()
+        {
+            return new ObservableCollection<string>{"Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs"};
+        }
+
+        // ==========================================================================
+        // Basic, non-interactive ItemsRepeater
+        // ==========================================================================
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             BarItems.Add(new Bar(random.Next(this.MaxLength), this.MaxLength));
@@ -124,51 +126,6 @@ namespace AppUIBasics.ControlPages
                 {
                     DeleteBtn.IsEnabled = false;
                 }
-            }
-        }
-
-        private void OrientationBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string layoutKey = String.Empty, itemTemplateKey = String.Empty;
-
-            if (isHorizontal)
-            {
-                layoutKey = "VerticalStackLayout";
-                itemTemplateKey = "HorizontalBarTemplate";
-            }
-            else
-            {
-                layoutKey = "HorizontalStackLayout";
-                itemTemplateKey = "VerticalBarTemplate";
-            }
-
-            repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-            repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
-            repeater.ItemsSource = BarItems;
-
-            layout.Value = layoutKey;
-            elementGenerator.Value = itemTemplateKey;
-
-            isHorizontal = !isHorizontal;
-        }
-
-        private void LayoutBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string layoutKey = ((FrameworkElement)sender).Tag as string;
-
-            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-
-            layout2.Value = layoutKey;
-
-            if (layoutKey == "UniformGridLayout2")
-            {
-                SampleCodeLayout2.Value = @"<muxc:UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
-                   MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
-            }
-            else if (layoutKey == "MyFeedLayout")
-            {
-                SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
-                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
             }
         }
 
@@ -229,6 +186,194 @@ namespace AppUIBasics.ControlPages
             repeater.ItemsSource = BarItems;
 
             elementGenerator.Value = itemTemplateKey;
+        }
+
+        // ==========================================================================
+        // Virtualizing, scrollable list of items laid out by ItemsRepeater
+        // ==========================================================================
+        private void LayoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string layoutKey = ((FrameworkElement)sender).Tag as string;
+
+            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+
+            layout2.Value = layoutKey;
+
+            if (layoutKey == "UniformGridLayout2")
+            {
+                SampleCodeLayout2.Value = @"<muxc:UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
+                   MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
+            }
+            else if (layoutKey == "MyFeedLayout")
+            {
+                SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
+                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            }
+        }
+
+        // ==========================================================================
+        // Animated Scrolling ItemsRepeater with Content Sample
+        // ==========================================================================
+
+        private IList<String> GetColors()
+        {
+            // Initialize list of colors for animated scrolling sample
+            IList<String> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
+            for (int i = 0; i < colors.Count(); i++)
+            {
+                colors[i] = colors[i].Substring(17);
+
+            }
+
+            return colors;
+
+        }
+        private void Animated_GotItem(object sender, RoutedEventArgs e)
+        {
+            var item = sender as FrameworkElement;
+            item.StartBringIntoView(new BringIntoViewOptions()
+            {
+                VerticalAlignmentRatio = 0.5,
+                AnimationDesired = true,
+            });
+
+            // Update corresponding rectangle with selected color
+            Button senderBtn = sender as Button;
+            colorRectangle.Fill = senderBtn.Background;
+        }
+
+
+        /* This function occurs each time an element is made ready for use.
+         * This is necessary for virtualization. */
+        private void OnElementPrepared(Microsoft.UI.Xaml.Controls.ItemsRepeater sender, Microsoft.UI.Xaml.Controls.ItemsRepeaterElementPreparedEventArgs args)
+        {
+            var item = ElementCompositionPreview.GetElementVisual(args.Element);
+            var svVisual = ElementCompositionPreview.GetElementVisual(Animated_ScrollViewer);
+            var scrollProperties = ElementCompositionPreview.GetScrollViewerManipulationPropertySet(Animated_ScrollViewer);
+
+            var scaleExpresion = scrollProperties.Compositor.CreateExpressionAnimation();
+            scaleExpresion.SetReferenceParameter("svVisual", svVisual);
+            scaleExpresion.SetReferenceParameter("scrollProperties", scrollProperties);
+            scaleExpresion.SetReferenceParameter("item", item);
+
+            // Scale the item based on the distance of the item relative to the center of the viewport.
+            scaleExpresion.Expression = "1 - abs((svVisual.Size.Y/2 - scrollProperties.Translation.Y) - (item.Offset.Y + item.Size.Y/2))*(.25/(svVisual.Size.Y/2))";
+
+            // Animate the item to change size based on distance from center of viewpoint
+            item.StartAnimation("Scale.X", scaleExpresion);
+            item.StartAnimation("Scale.Y", scaleExpresion);
+            var centerPointExpression = scrollProperties.Compositor.CreateExpressionAnimation();
+            centerPointExpression.SetReferenceParameter("item", item);
+            centerPointExpression.Expression = "Vector3(item.Size.X/2, item.Size.Y/2, 0)";
+            item.StartAnimation("CenterPoint", centerPointExpression);
+        }
+
+        private void GetButtonSize(object sender, RoutedEventArgs e)
+        {
+            Button AnimatedBtn = sender as Button;
+            AnimatedBtnHeight = AnimatedBtn.ActualHeight;
+            AnimatedBtnMargin = AnimatedBtn.Margin;
+        }
+
+        private void Animated_ScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        {
+            Button SelectedItem = GetSelectedItemFromViewport() as Button;
+            // Update corresponding rectangle with selected color
+            colorRectangle.Fill = SelectedItem.Background;
+        }
+
+        // Find centerpoint of ScrollViewer
+        private double CenterPointOfViewportInExtent()
+        {
+            return Animated_ScrollViewer.VerticalOffset + Animated_ScrollViewer.ViewportHeight / 2;
+        }
+
+        // Find index of the item that's at the center of the viewport
+        private int GetSelectedIndexFromViewport()
+        {
+            int selectedItemIndex = (int)Math.Floor(CenterPointOfViewportInExtent() / ((double)AnimatedBtnMargin.Top + AnimatedBtnHeight));
+            selectedItemIndex %= animatedScrollRepeater.ItemsSourceView.Count;
+            return selectedItemIndex;
+        }
+
+        // Return item that's currently in center of viewport
+        private object GetSelectedItemFromViewport()
+        {
+            var selectedIndex = GetSelectedIndexFromViewport();
+            var selectedElement = animatedScrollRepeater.TryGetElement(selectedIndex) as Button;
+            return selectedElement;
+        }
+
+        // ==========================================================================
+        // VariedImageSize Layout with Filtering/Sorting
+        // ==========================================================================
+        private List<Recipe> GetRecipeList()
+        {
+            // Initialize list of recipes for varied image size layout sample
+            var rnd = new Random();
+            List<Recipe> tempList = new List<Recipe>(
+                                        Enumerable.Range(0, 1000).Select(k =>
+                                            new Recipe
+                                            {
+                                                Num = k,
+                                                Name = "Recipe " + k.ToString(),
+                                                Color = GetColors()[(k % 100) + 1]
+                                            }));
+
+            foreach (Recipe rec in tempList)
+            {
+                // Add one food from each option into the recipe's ingredient list and ingredient string
+                string fruitOption = GetFruits()[rnd.Next(0, 6)];
+                string vegOption = GetVegetables()[rnd.Next(0, 6)];
+                string grainOption = GetGrains()[rnd.Next(0, 6)];
+                string proteinOption = GetProteins()[rnd.Next(0, 6)];
+                rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + grainOption + "\n" + proteinOption;
+                rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
+
+                // Add extra ingredients so items have varied heights in the layout
+                rec.RandomizeIngredients();
+            }
+
+            return tempList;
+        }
+        private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
+        {
+            VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+        }
+
+        public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateSortAndFilter();
+        }
+
+        private void OnSortAscClick(object sender, RoutedEventArgs e)
+        {
+            if (IsSortDescending == true)
+            {
+                IsSortDescending = false;
+                UpdateSortAndFilter();
+            }
+        }
+
+        private void OnSortDesClick(object sender, RoutedEventArgs e)
+        {
+            if (!IsSortDescending == true)
+            {
+                IsSortDescending = true;
+                UpdateSortAndFilter();
+            }
+        }
+
+        private void UpdateSortAndFilter()
+        {
+            // Find all recipes that ingredients include what was typed into the filtering text box
+            var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
+            // Sort the recipes by whichever sorting mode was last selected (least to most ingredients by default)
+            var sortedFilteredTypes = IsSortDescending ?
+                filteredTypes.OrderByDescending(i => i.IngList.Count()) :
+                filteredTypes.OrderBy(i => i.IngList.Count());
+            // Re-initialize MyItemsSource object with this newly filtered data
+            filteredRecipeData.InitializeCollection(sortedFilteredTypes);
         }
     }
 
@@ -309,5 +454,172 @@ namespace AppUIBasics.ControlPages
 
         public double Diameter { get; set; }
         public double MaxDiameter { get; set; }
+    }
+
+    public class Recipe
+    {
+        public int Num { get; set; }
+        public string Ingredients { get; set; }
+        public List<string> IngList { get; set; }
+        public string Name { get; set; }
+        public string Color { get; set; }
+        public int NumIngredients {
+            get 
+            {
+                return IngList.Count();
+            }
+        }
+
+        public void RandomizeIngredients()
+        {
+            // To give the items different heights, give recipes random numbers of random ingredients
+            Random rndNum = new Random();
+            Random rndIng = new Random();
+
+            ObservableCollection<string> extras = new ObservableCollection<string>{
+                                                         "Garlic",
+                                                         "Lemon",
+                                                         "Butter",
+                                                         "Lime",
+                                                         "Feta Cheese",
+                                                         "Parmesan Cheese",
+                                                         "Breadcrumbs"};
+            for (int i =0; i < rndNum.Next(0,4); i++)
+            {
+                string newIng = extras[rndIng.Next(0, 6)];
+                if (!IngList.Contains(newIng))
+                {
+                    Ingredients += "\n" + newIng;
+                    IngList.Add(newIng);
+                }
+            }
+
+        }
+    }
+
+    // Custom data source class that assigns elements unique IDs, making filtering easier
+    public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+    {
+        private List<Recipe> inner = new List<Recipe>();
+
+        public MyItemsSource(IEnumerable<Recipe> collection)
+        {
+            InitializeCollection(collection);
+        }
+
+        public void InitializeCollection(IEnumerable<Recipe> collection)
+        {
+            inner.Clear();
+            if (collection != null)
+            {
+                inner.AddRange(collection);
+            }
+
+            if (CollectionChanged != null)
+            {
+                CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            }
+        }
+
+        #region IReadOnlyList<T>
+        public int Count => this.inner != null ? this.inner.Count : 0;
+
+        public object this[int index]
+        {
+            get
+            {
+                return inner[index] as Recipe;
+            }
+
+            set
+            {
+                inner[index] = (Recipe)value;
+            }
+        }
+
+        public IEnumerator<Recipe> GetEnumerator() => this.inner.GetEnumerator();
+
+        #endregion
+
+        #region INotifyCollectionChanged
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        #endregion
+
+        #region IKeyIndexMapping
+        public string KeyFromIndex(int index)
+        {
+            return inner[index].Num.ToString();
+        }
+
+        public int IndexFromKey(string key)
+        {
+           foreach (Recipe item in inner)
+           {
+                if (item.Num.ToString() == key)
+                {
+                    return inner.IndexOf(item);
+                }
+           }
+           return -1;
+        }
+
+        #endregion
+
+        #region Unused List methods
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Add(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int IndexOf(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFixedSize => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        #endregion
     }
 }
