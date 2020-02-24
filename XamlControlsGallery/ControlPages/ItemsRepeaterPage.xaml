@@ -73,6 +73,22 @@
         <common:ActivityFeedLayout x:Key="MyFeedLayout" ColumnSpacing="12" RowSpacing="12" MinItemSize="80, 108"/>
         <UniformGridLayout x:Key="UniformGridLayout2" MinItemWidth="108" MinItemHeight="108" MinRowSpacing="12" MinColumnSpacing="12"/>
 
+        <DataTemplate x:DataType="l:Recipe" x:Key="RecipeTemplate">
+            <StackPanel BorderThickness="1" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" Margin="5">
+                <StackPanel Background="{x:Bind Color}" Margin="8" Height="75" Opacity=".8">
+                    <TextBlock Text="{x:Bind Num.ToString()}" FontSize="35" TextAlignment="Center" 
+                               Padding="12"  Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                </StackPanel>
+                <TextBlock 
+                    x:Name="recipeName" 
+                    Text="{x:Bind Name}"
+                    TextWrapping="Wrap"
+                    Margin="15,0,10,0" 
+                    Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Text="{x:Bind Ingredients}" Style="{StaticResource BodyTextBlockStyle}" Margin="15,0,15,15"/>
+            </StackPanel>
+        </DataTemplate>
+
         <l:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
                                   Normal="{StaticResource NormalItemTemplate}"
                                   Accent="{StaticResource AccentItemTemplate}"/>
