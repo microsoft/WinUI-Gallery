@@ -65,7 +65,7 @@ namespace AppUIBasics.ControlPages
                 {
                     _transitionInfo = new EntranceNavigationTransitionInfo();
                 }
-                else if (senderTransitionString == "Drill")
+                else if (senderTransitionString == "DrillIn")
                 {
                     _transitionInfo = new DrillInNavigationTransitionInfo();
                 }
