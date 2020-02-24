@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Windows.ApplicationModel.Core;
@@ -107,8 +107,7 @@ namespace AppUIBasics.TabViewPages
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView
 
-            object obj;
-            if (e.DataView.Properties.TryGetValue(DataIdentifier, out obj))
+            if (e.DataView.Properties.TryGetValue(DataIdentifier, out object obj))
             {
                 // Ensure that the obj property is set before continuing.
                 if (obj == null)

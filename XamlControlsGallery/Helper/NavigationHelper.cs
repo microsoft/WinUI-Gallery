@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -122,10 +122,7 @@ namespace AppUIBasics.Helper
                 }
 
                 // Pass the navigation parameter to the new page
-                if (this.LoadState != null)
-                {
-                    this.LoadState(this, new LoadStateEventArgs(e.Parameter, null));
-                }
+                this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
             }
             else
             {
