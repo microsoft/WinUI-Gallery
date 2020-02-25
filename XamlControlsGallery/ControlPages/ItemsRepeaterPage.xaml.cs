@@ -131,7 +131,7 @@ namespace AppUIBasics.ControlPages
 
         private void RadioBtn_Click(object sender, RoutedEventArgs e)
         {
-            string itemTemplateKey = String.Empty;
+            string itemTemplateKey = string.Empty;
             var layoutKey = ((FrameworkElement)sender).Tag as string;
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
@@ -215,10 +215,10 @@ namespace AppUIBasics.ControlPages
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
 
-        private IList<String> GetColors()
+        private IList<string> GetColors()
         {
             // Initialize list of colors for animated scrolling sample
-            IList<String> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
+            IList<string> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
             for (int i = 0; i < colors.Count(); i++)
             {
                 colors[i] = colors[i].Substring(17);
@@ -418,7 +418,7 @@ namespace AppUIBasics.ControlPages
         protected override DataTemplate SelectTemplateCore(object item)
         {
             // Return the correct data template based on the item's type.
-            if (item.GetType() == typeof(String))
+            if (item.GetType() == typeof(string))
             {
                 return StringTemplate;
             }
