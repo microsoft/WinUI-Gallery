@@ -25,8 +25,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null && ZoomSlider != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -63,8 +62,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -89,8 +87,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -118,8 +115,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -144,8 +140,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {

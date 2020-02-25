@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -194,8 +194,7 @@ namespace AppUIBasics
         private Frame GetRootFrame()
         {
             Frame rootFrame;
-            NavigationRootPage rootPage = Window.Current.Content as NavigationRootPage;
-            if (rootPage == null)
+            if (!(Window.Current.Content is NavigationRootPage rootPage))
             {
                 rootPage = new NavigationRootPage();
                 rootFrame = (Frame)rootPage.FindName("rootFrame");

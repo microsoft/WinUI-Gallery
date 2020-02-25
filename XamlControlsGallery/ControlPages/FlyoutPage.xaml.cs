@@ -23,8 +23,7 @@ namespace AppUIBasics.ControlPages
 
         private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
         {
-            Flyout f = this.Control1.Flyout as Flyout;
-            if (f != null)
+            if (this.Control1.Flyout is Flyout f)
             {
                 f.Hide();
             }

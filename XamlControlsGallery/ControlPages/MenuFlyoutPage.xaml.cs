@@ -23,9 +23,7 @@ namespace AppUIBasics.ControlPages
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            MenuFlyoutItem selectedItem = sender as MenuFlyoutItem;
-
-            if (selectedItem != null)
+            if (sender is MenuFlyoutItem selectedItem)
             {
                 string sortOption = selectedItem.Tag.ToString();
                 switch (sortOption)

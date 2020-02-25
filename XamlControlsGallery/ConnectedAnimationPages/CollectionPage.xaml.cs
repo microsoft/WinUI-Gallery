@@ -48,8 +48,7 @@ namespace AppUIBasics.ConnectedAnimationPages
         private void collection_ItemClick(object sender, ItemClickEventArgs e)
         {
             // Get the collection item corresponding to the clicked item.
-            var container = collection.ContainerFromItem(e.ClickedItem) as ListViewItem;
-            if (container != null)
+            if (collection.ContainerFromItem(e.ClickedItem) is ListViewItem container)
             {
                 // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
                 _storeditem = container.Content as CustomDataObject;
