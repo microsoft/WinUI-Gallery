@@ -255,7 +255,8 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                                         Click="Animated_GotItem" 
                                         GotFocus="Animated_GotItem" 
                                         HorizontalAlignment="Stretch"
-                                        Loaded="GetButtonSize"/>
+                                        Loaded="GetButtonSize"
+                                        Foreground="{StaticResource SystemBaseHighColor}"/>
                             </DataTemplate>
                     </muxc:ItemsRepeater>
                 </ScrollViewer>
