@@ -166,7 +166,7 @@ namespace AppUIBasics.ControlPages
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public enum ExplorerItemType { Folder, File };
-        public String Name { get; set; }
+        public string Name { get; set; }
         public ExplorerItemType Type { get; set; }
         private ObservableCollection<ExplorerItem> m_children;
         public ObservableCollection<ExplorerItem> Children
@@ -215,7 +215,7 @@ namespace AppUIBasics.ControlPages
 
         }
 
-        private void NotifyPropertyChanged(String propertyName)
+        private void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

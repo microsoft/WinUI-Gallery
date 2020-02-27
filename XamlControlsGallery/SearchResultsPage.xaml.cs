@@ -152,12 +152,12 @@ namespace AppUIBasics
     /// </summary>
     public sealed class Filter : INotifyPropertyChanged
     {
-        private String _name;
+        private string _name;
         private int _count;
         private bool? _active;
         private List<ControlInfoDataItem> _items;
 
-        public Filter(String name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
+        public Filter(string name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
         {
             this.Name = name;
             this.Count = count;
@@ -165,7 +165,7 @@ namespace AppUIBasics
             this.Items = controlInfoList;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Description;
         }
@@ -176,7 +176,7 @@ namespace AppUIBasics
             set { this.SetProperty(ref _items, value); }
         }
 
-        public String Name
+        public string Name
         {
             get { return _name; }
             set { if (this.SetProperty(ref _name, value)) this.NotifyPropertyChanged(nameof(Description)); }
@@ -194,9 +194,9 @@ namespace AppUIBasics
             set { this.SetProperty(ref _active, value); }
         }
 
-        public String Description
+        public string Description
         {
-            get { return String.Format("{0} ({1})", _name, _count); }
+            get { return string.Format("{0} ({1})", _name, _count); }
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace AppUIBasics
         /// support CallerMemberName.</param>
         /// <returns>True if the value was changed, false if the existing value matched the
         /// desired value.</returns>
-        private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
+        private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (object.Equals(storage, value)) return false;
 

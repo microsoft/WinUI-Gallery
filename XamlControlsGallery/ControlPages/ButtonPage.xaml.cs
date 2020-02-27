@@ -21,9 +21,7 @@ namespace AppUIBasics.ControlPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
-
-            if (b != null)
+            if (sender is Button b)
             {
                 string name = b.Name;
 

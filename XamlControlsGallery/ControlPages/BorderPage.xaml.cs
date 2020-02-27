@@ -29,9 +29,7 @@ namespace AppUIBasics.ControlPages
 
         private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
-
-            if (rb != null && Control1 != null)
+            if (sender is RadioButton rb && Control1 != null)
             {
                 string colorName = rb.Content.ToString();
                 switch (colorName)
@@ -54,9 +52,7 @@ namespace AppUIBasics.ControlPages
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
-
-            if (rb != null && Control1 != null)
+            if (sender is RadioButton rb && Control1 != null)
             {
                 string colorName = rb.Content.ToString();
                 switch (colorName)
