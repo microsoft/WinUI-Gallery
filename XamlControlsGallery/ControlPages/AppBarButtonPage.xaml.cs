@@ -54,8 +54,7 @@ namespace AppUIBasics.ControlPages
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButton toggle = sender as ToggleButton;
-            if (toggle != null && toggle.IsChecked != null)
+            if (sender is ToggleButton toggle && toggle.IsChecked != null)
             {
                 Button1.IsCompact =
                 Button2.IsCompact =
@@ -66,9 +65,7 @@ namespace AppUIBasics.ControlPages
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
-
-            if (b != null)
+            if (sender is Button b)
             {
                 string name = b.Name;
 

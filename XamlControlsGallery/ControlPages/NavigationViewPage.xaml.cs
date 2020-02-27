@@ -16,9 +16,9 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class NavigationViewPage : Page
     {
-        public static Boolean CameFromToggle = false;
+        public static bool CameFromToggle = false;
 
-        public static Boolean CameFromGridChange = false;
+        public static bool CameFromGridChange = false;
 
         public VirtualKey ArrowKey;
 
@@ -49,7 +49,7 @@ namespace AppUIBasics.ControlPages
             nvSample2.UpdateLayout();
         }
 
-        public Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(Boolean toggleOn)
+        public Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
         {
             if (toggleOn)
             {

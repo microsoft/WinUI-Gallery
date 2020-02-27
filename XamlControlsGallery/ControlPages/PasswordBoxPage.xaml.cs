@@ -21,9 +21,7 @@ namespace AppUIBasics.ControlPages
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordBox pb = sender as PasswordBox;
-
-            if (pb != null)
+            if (sender is PasswordBox pb)
             {
                 if (string.IsNullOrEmpty(pb.Password) || pb.Password == "Password")
                 {
