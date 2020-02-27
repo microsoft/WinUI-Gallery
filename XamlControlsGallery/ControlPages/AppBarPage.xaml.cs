@@ -42,8 +42,7 @@ namespace AppUIBasics.ControlPages
         {
             ButtonBase b = (ButtonBase)sender;
 
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame != null && b.Tag != null)
+            if (Window.Current.Content is Frame rootFrame && b.Tag != null)
             {
                 if (b.Tag.ToString() == "Home")
                 {
@@ -58,9 +57,7 @@ namespace AppUIBasics.ControlPages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Button homeButton = AppBarContentPanel.Children[0] as Button;
-
-            if (homeButton != null && homeButton.Tag.ToString() != "Home")
+            if (AppBarContentPanel.Children[0] is Button homeButton && homeButton.Tag.ToString() != "Home")
             {
                 homeButton = new Button();
                 homeButton.Content = "Home";
@@ -84,9 +81,7 @@ namespace AppUIBasics.ControlPages
 
         private void RemoveHomeButton()
         {
-            Button homeButton = AppBarContentPanel.Children[0] as Button;
-
-            if (homeButton != null && homeButton.Tag.ToString() == "Home")
+            if (AppBarContentPanel.Children[0] is Button homeButton && homeButton.Tag.ToString() == "Home")
             {
                 homeButton.Click -= NavBarButton_Click;
                 AppBarContentPanel.Children.RemoveAt(0);
