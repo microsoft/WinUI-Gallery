@@ -173,17 +173,17 @@ namespace AppUIBasics
             set { SetValue(ExampleHeightProperty, value); }
         }
 
-        public static readonly DependencyProperty WebViewHeightProperty = DependencyProperty.Register("WebViewHeight", typeof(Int32), typeof(ControlExample), new PropertyMetadata(400));
-        public Int32 WebViewHeight
+        public static readonly DependencyProperty WebViewHeightProperty = DependencyProperty.Register("WebViewHeight", typeof(int), typeof(ControlExample), new PropertyMetadata(400));
+        public int WebViewHeight
         {
-            get { return (Int32)GetValue(WebViewHeightProperty); }
+            get { return (int)GetValue(WebViewHeightProperty); }
             set { SetValue(WebViewHeightProperty, value); }
         }
 
-        public static readonly DependencyProperty WebViewWidthProperty = DependencyProperty.Register("WebViewWidth", typeof(Int32), typeof(ControlExample), new PropertyMetadata(800));
-        public Int32 WebViewWidth
+        public static readonly DependencyProperty WebViewWidthProperty = DependencyProperty.Register("WebViewWidth", typeof(int), typeof(ControlExample), new PropertyMetadata(800));
+        public int WebViewWidth
         {
-            get { return (Int32)GetValue(WebViewWidthProperty); }
+            get { return (int)GetValue(WebViewWidthProperty); }
             set { SetValue(WebViewWidthProperty, value); }
         }
 
@@ -242,7 +242,7 @@ namespace AppUIBasics
 
         private void GenerateSyntaxHighlightedContent(ContentPresenter presenter, string sampleString, string sampleUri, ILanguage highlightLanguage)
         {
-            if (!String.IsNullOrEmpty(sampleString))
+            if (!string.IsNullOrEmpty(sampleString))
             {
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
@@ -266,7 +266,7 @@ namespace AppUIBasics
         }
 
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
-        private void FormatAndRenderSampleFromString(String sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
+        private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
         {
             // Trim out stray blank lines at start and end.
             sampleString = sampleString.TrimStart('\n').TrimEnd();

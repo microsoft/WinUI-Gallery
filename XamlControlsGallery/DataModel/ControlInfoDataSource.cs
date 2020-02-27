@@ -36,7 +36,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(String uniqueId, String title, String subtitle, String imagePath, String badgeString, String description, String content, bool isNew, bool isUpdated, bool isPreview)
+        public ControlInfoDataItem(string uniqueId, string title, string subtitle, string imagePath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -90,7 +90,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string description)
         {
             this.UniqueId = uniqueId;
             this.Title = title;

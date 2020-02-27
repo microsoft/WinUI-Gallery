@@ -38,7 +38,7 @@ namespace AppUIBasics
             get
             {
                 var version = Windows.ApplicationModel.Package.Current.Id.Version;
-                return String.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+                return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
             }
         }
 

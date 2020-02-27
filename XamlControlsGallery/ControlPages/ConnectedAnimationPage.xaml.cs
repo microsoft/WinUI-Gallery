@@ -61,11 +61,11 @@ namespace AppUIBasics.ControlPages
     // Sample data object used to populate the collection page.
     public class CustomDataObject
     {
-        public String Title { get; set; }
-        public String ImageLocation { get; set; }
-        public String Views { get; set; }
+        public string Title { get; set; }
+        public string ImageLocation { get; set; }
+        public string Views { get; set; }
         public string Likes { get; set; }
-        public String Description { get; set; }
+        public string Description { get; set; }
 
         public CustomDataObject()
         {

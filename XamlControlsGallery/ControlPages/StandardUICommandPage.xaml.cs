@@ -14,7 +14,7 @@ namespace AppUIBasics.ControlPages
 {
     public class ListItemData
     {
-        public String Text { get; set; }
+        public string Text { get; set; }
         public ICommand Command { get; set; }
     }
 
