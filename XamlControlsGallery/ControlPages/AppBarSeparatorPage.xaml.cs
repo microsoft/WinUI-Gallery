@@ -56,8 +56,7 @@ namespace AppUIBasics.ControlPages
             // the CommandBar sets the IsCompact property automatically. You only set it
             // yourself if the control in not in a CommandBar.
 
-            ToggleButton toggle = sender as ToggleButton;
-            if (toggle != null && toggle.IsChecked != null)
+            if (sender is ToggleButton toggle && toggle.IsChecked != null)
             {
                 foreach (ICommandBarElement element in Control1.Children)
                 {
