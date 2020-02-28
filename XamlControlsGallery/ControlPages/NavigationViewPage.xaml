@@ -1,4 +1,4 @@
-﻿<Page
+<Page
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -257,9 +257,10 @@
                     <CheckBox x:Name="panemc_Check" Content="PaneCustomContent visible" IsChecked="False" Click="panemc_Check_Click"/>
                     <CheckBox x:Name="paneFooterCheck" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
-                    <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
-                    <RadioButton Content="Top" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
+                    <muxc:RadioButtons Header="Pane position:" Margin="0,8,0,8">
+                        <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
+                        <RadioButton Content="Top" Checked="panePositionTop_Checked"/>
+                    </muxc:RadioButtons>
 
                     <CheckBox x:Name="sffCheck" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>
                     <CheckBox x:Name="suppressselectionCheck_Checked" Content="Selection of Menu Item2 suppressed" IsChecked="False" Click="suppressselectionCheck_Checked_Click"/>
