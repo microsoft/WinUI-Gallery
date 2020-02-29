@@ -101,7 +101,7 @@ namespace AppUIBasics.ControlPages
 
         private ObservableCollection<string> GetVegetables()
         {
-            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussel sprouts","Carrots"};
+            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussels sprouts","Carrots"};
         }
         private ObservableCollection<string> GetGrains()
         {
@@ -519,10 +519,7 @@ namespace AppUIBasics.ControlPages
                 inner.AddRange(collection);
             }
 
-            if (CollectionChanged != null)
-            {
-                CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            }
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         #region IReadOnlyList<T>
