@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -104,10 +104,12 @@ namespace AppUIBasics.ControlPages
                 // If the item is invalid, reject it and revert the text. 
                 sender.Text = sender.SelectedValue.ToString();
 
-                var dialog = new ContentDialog();
-                dialog.Content = "The font size must be a number between 8 and 100.";
-                dialog.CloseButtonText = "Close";
-                dialog.DefaultButton = ContentDialogButton.Close;
+                var dialog = new ContentDialog
+                {
+                    Content = "The font size must be a number between 8 and 100.",
+                    CloseButtonText = "Close",
+                    DefaultButton = ContentDialogButton.Close
+                };
                 var task = dialog.ShowAsync();
             }
 

@@ -69,9 +69,11 @@ namespace AppUIBasics.ControlPages
 
             if (PrimaryCommandBar.SecondaryCommands.Count == 1)
             {
-                var newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.Add);
-                newButton.Label = "Button 1";
+                var newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.Add),
+                    Label = "Button 1"
+                };
                 newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.N,
@@ -79,9 +81,11 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-                newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.Delete);
-                newButton.Label = "Button 2";
+                newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.Delete),
+                    Label = "Button 2"
+                };
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
                 newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
                 {
@@ -89,9 +93,11 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(new AppBarSeparator());
 
-                newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.FontDecrease);
-                newButton.Label = "Button 3";
+                newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.FontDecrease),
+                    Label = "Button 3"
+                };
                 newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.Subtract,
@@ -99,9 +105,11 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-                newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.FontIncrease);
-                newButton.Label = "Button 4";
+                newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.FontIncrease),
+                    Label = "Button 4"
+                };
                 newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.Add,
