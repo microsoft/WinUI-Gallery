@@ -135,7 +135,7 @@ namespace AppUIBasics.ControlPages
             String yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
 
             // We combine X, Y, and Z subchannels into a single animation because we can only start a single animation on Translation.
-            String expression = String.Format("Vector3({0}*cos({1})+{2}, {0}*sin({1})+{3},0)", radius, theta, xOffset, yOffset);
+            String expression = string.Format("Vector3({0}*cos({1})+{2}, {0}*sin({1})+{3},0)", radius, theta, xOffset, yOffset);
 
             int totalElements = 8;
             for (int i = 0; i < totalElements; i++)
