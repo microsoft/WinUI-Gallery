@@ -1307,11 +1307,11 @@
             },
             {
               "Title": "StackLayout - API",
-              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.stacklayout?view=winui-2.3"
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.stacklayout?view=winui-2.3"
             },
             {
               "Title": "UniformGridLayout - API",
-              "Uri": "https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.uniformgridlayout?view=winui-2.3"
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.uniformgridlayout?view=winui-2.3"
             }
           ],
           "RelatedControls": [
