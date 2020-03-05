@@ -92,5 +92,67 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <local:ControlExample HeaderText="RichTextBlock with custom TextHighlighting">
+            <local:ControlExample.Example>
+                <RichTextBlock x:Name="TextHighlightingRichTextBlock">
+                    <Paragraph>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                    </Paragraph>
+                </RichTextBlock>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <ComboBox Header="Text highlighting color" SelectionChanged="HighlightColorCombobox_SelectionChanged">
+                        <ComboBoxItem Content="Yellow" IsSelected="True"/>
+                        <ComboBoxItem Content="Red"/>
+                        <ComboBoxItem Content="Blue"/>
+                    </ComboBox>
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RichTextBlock x:Name="TextHighlightingRichTextBlock"&gt;
+    &lt;Paragraph&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+    &lt;/Paragraph&gt;
+&lt;/RichTextBlock&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void HighlightColorCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    // Get color to use
+    var selectedItem = (sender as ComboBox).SelectedItem as ComboBoxItem;
+    var color = Colors.Yellow;
+    switch (selectedItem.Content as string)
+    {
+        case "Yellow":
+            color = Colors.Yellow;
+            break;
+        case "Red":
+            color = Colors.Red;
+            break;
+        case "Blue":
+            color = Colors.Blue;
+            break;
+    }
+
+    // Get text
+    TextRange textRange = new TextRange() { StartIndex = 28, Length = 11 };
+    TextHighlighter highlighter = new TextHighlighter()
+    {
+        Background = new SolidColorBrush((Color)color),
+        Ranges = { textRange }
+    };
+
+
+    TextHighlightingRichTextBlock.TextHighlighters.Clear();
+    TextHighlightingRichTextBlock.TextHighlighters.Add(highlighter);
+}
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
     </StackPanel>
 </Page>
