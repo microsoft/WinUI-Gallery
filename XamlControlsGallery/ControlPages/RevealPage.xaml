@@ -115,11 +115,11 @@
 
         <local:ControlExample x:Name="Example3" HeaderText="Reveal style applied on buttons">
 
-            <Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal button" Width="130" />
+            <Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal style button" Width="130" />
 
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal button" /&gt;
+                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal style button" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
