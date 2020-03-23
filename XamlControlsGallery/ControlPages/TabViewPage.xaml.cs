@@ -224,16 +224,16 @@ namespace AppUIBasics.ControlPages
             switch (widthModeString)
             {
                 case "Auto":
-                    widthMode = TabViewCloseButtonOverlayMode.Auto;
+                    overlayMode = TabViewCloseButtonOverlayMode.Auto;
                     break;
                 case "OnHover":
-                    widthMode = TabViewCloseButtonOverlayMode.OnHover;
+                    overlayMode = TabViewCloseButtonOverlayMode.OnHover;
                     break;
                 case "Always":
-                    widthMode = TabViewCloseButtonOverlayMode.Always;
+                    overlayMode = TabViewCloseButtonOverlayMode.Always;
                     break;
             }
-            TabView31.CloseButtonOverlayMode = widthMode;
+            TabView4.CloseButtonOverlayMode = overlayMode;
         }
 
         private async void TabViewWindowingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)

@@ -214,7 +214,7 @@
 
         <local:ControlExample HeaderText="The close button can be persistent or only visible on hover">
             <local:ControlExample.Example>
-                <muxc:TabView x:Name="TabView31" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
+                <muxc:TabView x:Name="TabView4" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
                     <muxc:TabView.TabItems>
                         <muxc:TabViewItem  Header="Home">
                             <muxc:TabViewItem.IconSource>
@@ -250,7 +250,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView31.CloseButtonOverlayMode, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView4.CloseButtonOverlayMode, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
@@ -259,7 +259,7 @@
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem" />
 
-                    <muxc:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
+                    <muxc:TabView SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
                         <muxc:TabView.TabItems>
                             <muxc:TabViewItem Header="CMD Prompt" IsClosable="False">
                                 <muxc:TabViewItem.IconSource>
@@ -308,7 +308,7 @@
 
         <local:ControlExample HeaderText="A TabView with accent colored TabStrip background">
             <local:ControlExample.Example>
-                <muxc:TabView x:Name="TabView5" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                <muxc:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
                     <muxc:TabView.Resources>
                         <ResourceDictionary>
                             <ResourceDictionary.ThemeDictionaries>
