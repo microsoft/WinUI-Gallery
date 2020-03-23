@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.TabViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -170,7 +170,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Tab widths can either be equally sized or sized to the content of the tab">
+        <local:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected">
             <local:ControlExample.Example>
                 <muxc:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
                     <muxc:TabView.TabItems>
@@ -197,8 +197,9 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="150">
-                    <ComboBoxItem Content="Equal" />
                     <ComboBoxItem Content="SizeToContent" />
+                    <ComboBoxItem Content="Equal" />
+                    <ComboBoxItem Content="Compact" />
                 </ComboBox>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
@@ -211,12 +212,54 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="The close button can be persistent or only visible on hover">
+            <local:ControlExample.Example>
+                <muxc:TabView x:Name="TabView4" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
+                    <muxc:TabView.TabItems>
+                        <muxc:TabViewItem  Header="Home">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Home" />
+                            </muxc:TabViewItem.IconSource>
+                            <samplepages:SamplePage1 />
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem  Header="Tab 2 Has Longer Text">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="MusicInfo" />
+                            </muxc:TabViewItem.IconSource>
+                            <samplepages:SamplePage2 />
+                        </muxc:TabViewItem>
+                        <muxc:TabViewItem  Header="Third Tab">
+                            <muxc:TabViewItem.IconSource>
+                                <muxc:SymbolIconSource Symbol="Placeholder" />
+                            </muxc:TabViewItem.IconSource>
+                            <samplepages:SamplePage3 />
+                        </muxc:TabViewItem>
+                    </muxc:TabView.TabItems>
+                </muxc:TabView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <ComboBox Header="TabViewItem CloseButtonOverlayMode" SelectedIndex="1" SelectionChanged="TabCloseButtonOverlayModeComboBox_SelectionChanged" Width="150">
+                    <ComboBoxItem Content="Auto" />
+                    <ComboBoxItem Content="Always" />
+                    <ComboBoxItem Content="OnHover" />
+                </ComboBox>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;muxc:TabView CloseButtonOverlayMode="$(CloseButtonOverlayMode)" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView4.CloseButtonOverlayMode, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="TabView with color tab icons">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem" />
 
-                    <muxc:TabView x:Name="TabView4" SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
+                    <muxc:TabView SelectedIndex="0" IsAddTabButtonVisible="False" MinWidth="490" TabWidthMode="SizeToContent">
                         <muxc:TabView.TabItems>
                             <muxc:TabViewItem Header="CMD Prompt" IsClosable="False">
                                 <muxc:TabViewItem.IconSource>
@@ -265,7 +308,7 @@
 
         <local:ControlExample HeaderText="A TabView with accent colored TabStrip background">
             <local:ControlExample.Example>
-                <muxc:TabView x:Name="TabView5" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
+                <muxc:TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
                     <muxc:TabView.Resources>
                         <ResourceDictionary>
                             <ResourceDictionary.ThemeDictionaries>
