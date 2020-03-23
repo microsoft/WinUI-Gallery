@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Controls;
@@ -210,8 +210,30 @@ namespace AppUIBasics.ControlPages
                 case "SizeToContent":
                     widthMode = TabViewWidthMode.SizeToContent;
                     break;
+                case "Compact":
+                    widthMode = TabViewWidthMode.Compact;
+                    break;
             }
             TabView3.TabWidthMode = widthMode;
+        }
+
+        private void TabCloseButtonBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string widthModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+            TabViewCloseButtonOverlayMode widthMode = TabViewCloseButtonOverlayMode.Auto;
+            switch (widthModeString)
+            {
+                case "Auto":
+                    widthMode = TabViewCloseButtonOverlayMode.Auto;
+                    break;
+                case "OnHover":
+                    widthMode = TabViewCloseButtonOverlayMode.OnHover;
+                    break;
+                case "Always":
+                    widthMode = TabViewCloseButtonOverlayMode.Always;
+                    break;
+            }
+            TabView31.CloseButtonOverlayMode = widthMode;
         }
 
         private async void TabViewWindowingButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
