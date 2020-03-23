@@ -170,7 +170,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab or sized to only show the icon when not selected">
+        <local:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected">
             <local:ControlExample.Example>
                 <muxc:TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
                     <muxc:TabView.TabItems>
@@ -238,7 +238,7 @@
                 </muxc:TabView>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <ComboBox Header="TabViewItem CloseButtonBehavior" SelectedIndex="1" SelectionChanged="TabCloseButtonBehaviorComboBox_SelectionChanged" Width="150">
+                <ComboBox Header="TabViewItem CloseButtonOverlayMode" SelectedIndex="1" SelectionChanged="TabCloseButtonOverlayModeComboBox_SelectionChanged" Width="150">
                     <ComboBoxItem Content="Auto" />
                     <ComboBoxItem Content="Always" />
                     <ComboBoxItem Content="OnHover" />

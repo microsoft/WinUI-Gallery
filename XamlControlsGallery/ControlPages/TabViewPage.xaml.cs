@@ -217,10 +217,10 @@ namespace AppUIBasics.ControlPages
             TabView3.TabWidthMode = widthMode;
         }
 
-        private void TabCloseButtonBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TabCloseButtonOverlayModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string widthModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
-            TabViewCloseButtonOverlayMode widthMode = TabViewCloseButtonOverlayMode.Auto;
+            TabViewCloseButtonOverlayMode overlayMode = TabViewCloseButtonOverlayMode.Auto;
             switch (widthModeString)
             {
                 case "Auto":
