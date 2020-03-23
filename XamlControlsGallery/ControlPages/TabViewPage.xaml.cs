@@ -221,7 +221,7 @@ namespace AppUIBasics.ControlPages
         {
             string overlayModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
             TabViewCloseButtonOverlayMode overlayMode = TabViewCloseButtonOverlayMode.Auto;
-            switch (widthModeString)
+            switch (overlayModeString)
             {
                 case "Auto":
                     overlayMode = TabViewCloseButtonOverlayMode.Auto;
