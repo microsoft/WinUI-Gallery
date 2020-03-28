@@ -147,6 +147,13 @@ namespace AppUIBasics
 
                 if (pageType != null)
                 {
+                    // Pagetype is not null!
+                    // So lets generate the github links and set them!
+                    var gitHubBaseURI = "https://github.com/microsoft/Xaml-Controls-Gallery/tree/master/XamlControlsGallery/ControlPages/";
+                    var pageName = pageType.Name + ".xaml";
+                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
+                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
+
                     this.contentFrame.Navigate(pageType);
                 }
 

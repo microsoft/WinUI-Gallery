@@ -151,6 +151,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -158,7 +159,27 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="DocumentationPanel" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                        <TextBlock
+                            x:Name="SourceHeader"
+                            x:Uid="SourceHeader"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                            Text="Page source code"/>
+                        <HyperlinkButton
+                            x:Name="PageCodeGitHubLink"
+                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
+                            Margin="0,12,0,0">
+                            <TextBlock Text="C# code on GitHub"/>
+                        </HyperlinkButton>
+
+                        <HyperlinkButton
+                            x:Name="PageMarkupGitHubLink"
+                            ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                            <TextBlock Text="XAML code on GitHub"/>
+                        </HyperlinkButton>
+                    </StackPanel>
+
+                    <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
                         <TextBlock
                             x:Name="docHeader"
                             x:Uid="DocHeader"
@@ -183,7 +204,7 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,40">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
