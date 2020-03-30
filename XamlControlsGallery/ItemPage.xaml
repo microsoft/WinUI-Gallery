@@ -71,7 +71,9 @@
                         <Setter Target="seeAlsoPanel.(Grid.Row)" Value="3" />
                         <Setter Target="seeAlsoPanel.(Grid.Column)" Value="0" />
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
-                        
+
+                        <Setter Target="SourcePanel.(Grid.ColumnSpan)" Value="1" />
+
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
@@ -80,7 +82,7 @@
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
-                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="2" />
                         <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
@@ -94,6 +96,8 @@
                         <Setter Target="seeAlsoPanel.(Grid.Column)" Value="0" />
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
 
+                        <Setter Target="SourcePanel.(Grid.ColumnSpan)" Value="1" />
+
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
@@ -102,7 +106,7 @@
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
-                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="2" />
                         <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="rightMargin.Width" Value="0" />
@@ -159,12 +163,12 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,40">
                         <TextBlock
                             x:Name="SourceHeader"
                             x:Uid="SourceHeader"
                             Style="{ThemeResource SubtitleTextBlockStyle}"
-                            Text="Page source code"/>
+                            Text="Sample source code"/>
                         <HyperlinkButton
                             x:Name="PageCodeGitHubLink"
                             ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
@@ -255,7 +259,7 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="FeedbackPanel" Grid.Row="2" Grid.ColumnSpan="3">
+                    <StackPanel x:Name="FeedbackPanel" Grid.Row="3" Grid.ColumnSpan="3">
                         <TextBlock
                             x:Name="feedbackHeader"
                             x:Uid="FeedbackHeader"
