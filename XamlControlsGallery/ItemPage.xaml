@@ -168,19 +168,20 @@
                             x:Name="SourceHeader"
                             x:Uid="SourceHeader"
                             Style="{ThemeResource SubtitleTextBlockStyle}"
-                            Text="Sample source code"/>
-                        <HyperlinkButton
-                            x:Name="PageCodeGitHubLink"
-                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
-                            Margin="0,12,0,0">
-                            <TextBlock Text="C# code on GitHub"/>
-                        </HyperlinkButton>
-
+                            Text="View page code on GitHub"/>
                         <HyperlinkButton
                             x:Name="PageMarkupGitHubLink"
                             ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
-                            <TextBlock Text="XAML code on GitHub"/>
+                            <TextBlock Text="XAML source code"/>
                         </HyperlinkButton>
+                        <HyperlinkButton
+                            
+                            x:Name="PageCodeGitHubLink"
+                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
+                            Margin="0,12,0,0">
+                            <TextBlock Text="C# source code"/>
+                        </HyperlinkButton>
+
                     </StackPanel>
 
                     <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
