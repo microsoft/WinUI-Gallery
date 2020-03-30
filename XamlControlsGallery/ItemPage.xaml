@@ -175,13 +175,11 @@
                             <TextBlock Text="XAML source code"/>
                         </HyperlinkButton>
                         <HyperlinkButton
-                            
                             x:Name="PageCodeGitHubLink"
                             ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
                             Margin="0,12,0,0">
                             <TextBlock Text="C# source code"/>
                         </HyperlinkButton>
-
                     </StackPanel>
 
                     <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
