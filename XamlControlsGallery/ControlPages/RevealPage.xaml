@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.RevealPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -115,11 +115,11 @@
 
         <local:ControlExample x:Name="Example3" HeaderText="Reveal style applied on buttons">
 
-            <Button Style="{StaticResource ButtonRevealStyle}" Content="Button" Width="130" />
+            <Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal style button" Width="130" />
 
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Button" /&gt;
+                    &lt;Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal style button" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
