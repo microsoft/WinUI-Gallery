@@ -120,6 +120,9 @@
                         <Hyperlink NavigateUri="https://www.microsoft.com/store/productId/9NBLGGH4TLCQ">Windows Community Toolkit Sample app</Hyperlink>
                     </Paragraph>
                     <Paragraph Margin="0,10,0,0">
+                        <Hyperlink NavigateUri="https://www.microsoft.com/store/productId/9N2XD3Q8X57C">Fluent XAML Theme Editor</Hyperlink>
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,0">
                         <Hyperlink NavigateUri="https://www.microsoft.com/store/productId/9N1H8CZHBPXB">Windows Composition Samples</Hyperlink>
                     </Paragraph>
                 </RichTextBlock>
