@@ -47,3 +47,5 @@ public class Contact
 
 	// ... Methods ...
 }
+
+ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
