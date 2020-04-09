@@ -2272,6 +2272,27 @@
           "RelatedControls": [
             "ScrollViewer"
           ]
+        },
+        {
+          "UniqueId": "RadialGradientBrush",
+          "Title": "RadialGradientBrush",
+          "Subtitle": "A brush to show radial gradients",
+          "ImagePath": "ms-appx:///Assets/Canvas.png",
+          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
+          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "RadialGradientBrush - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design"
+            }
+          ],
+          "RelatedControls": [
+          ]
         }
       ]
     }
