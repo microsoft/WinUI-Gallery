@@ -343,6 +343,9 @@
     <Compile Include="ControlPages\AppBarToggleButtonPage.xaml.cs">
       <DependentUpon>AppBarToggleButtonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\RadialGradientBrushPage.xaml.cs">
+      <DependentUpon>RadialGradientBrushPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\ConnectedAnimationPage.xaml.cs">
       <DependentUpon>ConnectedAnimationPage.xaml</DependentUpon>
     </Compile>
@@ -734,6 +737,10 @@
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RadialGradientBrushPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\CompactSizingPage.xaml">
       <SubType>Designer</SubType>
@@ -1165,7 +1172,6 @@
     <None Include=".editorconfig" />
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
