@@ -164,13 +164,6 @@ namespace AppUIBasics
                     return;
                 }
 
-                ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((string)e.Parameter);
-                var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
-                if (menuItem != null)
-                {
-                    menuItem.IsSelected = true;
-                }
-
                 PlayConnectedAnimation();
             }
 

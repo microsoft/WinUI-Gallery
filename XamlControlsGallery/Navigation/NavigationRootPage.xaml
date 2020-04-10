@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -85,6 +85,7 @@
                     PlaceholderText="Search"
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                    MinWidth="200"
                     TextChanged="OnControlsSearchBoxTextChanged">
                 </AutoSuggestBox>
             </muxc:NavigationView.AutoSuggestBox>
