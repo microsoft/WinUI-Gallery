@@ -38,7 +38,7 @@
     &lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;
     &lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;
     &lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;
-&lt;/StackPanel&gt;
+&lt;/muxc:RadioButtons&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
