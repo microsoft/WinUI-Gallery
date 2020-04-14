@@ -108,7 +108,7 @@ namespace AppUIBasics
 
             };
 
-            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
+            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
