@@ -15,8 +15,9 @@
       xmlns:media="using:Microsoft.UI.Xaml.Media"
       xmlns:local="using:AppUIBasics">
     <StackPanel>
-
-        <local:ControlExample x:Name="Example1" HeaderText="RadialGradientBrush with default, relative and absolute mapping modes">
+        <local:ControlExample
+            HeaderText="RadialGradientBrush with default, relative and absolute mapping modes"
+            XamlSource="Brushes\RadialGradientBrushSample1_xaml.txt">
             <StackPanel Orientation="Horizontal">
                 <Rectangle Width="200" Height="200" HorizontalAlignment="Left">
                     <Rectangle.Fill>
@@ -30,6 +31,7 @@
                         </media:RadialGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
+
                 <Rectangle Width="200" Height="200">
                     <Rectangle.Fill>
                         <media:RadialGradientBrush
@@ -46,6 +48,7 @@
                         </media:RadialGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
+
                 <Rectangle Width="200" Height="200">
                     <Rectangle.Fill>
                         <media:RadialGradientBrush
@@ -63,62 +66,10 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </StackPanel>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot; HorizontalAlignment=&quot;Left&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.2&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LimeGreen&quot; Offset=&quot;0.4&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;0.6&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.8&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightGray&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;RelativeToBoundingBox&quot;
-                                GradientOrigin=&quot;0.5,0.5&quot;
-                                Center=&quot;0.5,0.5&quot;
-                                RadiusX=&quot;0.5&quot; RadiusY=&quot;0.5&quot;&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.2&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LimeGreen&quot; Offset=&quot;0.4&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;0.6&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.8&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightGray&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;Absolute&quot;
-                                GradientOrigin=&quot;100,100&quot;
-                                Center=&quot;100,100&quot;
-                                RadiusX=&quot;100&quot; RadiusY=&quot;100&quot;&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.2&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LimeGreen&quot; Offset=&quot;0.4&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;0.6&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.8&quot; /&gt;
-                            &lt;GradientStop Color=&quot;LightGray&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-            &lt;/StackPanel&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
-
-        <local:ControlExample x:Name="Example2" HeaderText="RadialGradientBrush with relative and absolute mapping modes">
+        <local:ControlExample
+            HeaderText="RadialGradientBrush with relative and absolute mapping modes"
+            XamlSource="Brushes\RadialGradientBrushSample2_xaml.txt">
             <StackPanel Orientation="Horizontal">
                 <Rectangle Width="200" Height="200">
                     <Rectangle.Fill>
@@ -132,6 +83,7 @@
                         </media:RadialGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
+
                 <Rectangle Width="200" Height="200">
                     <Rectangle.Fill>
                         <media:RadialGradientBrush
@@ -145,41 +97,10 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </StackPanel>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;RelativeToBoundingBox&quot;
-                                Center=&quot;0.25,0.25&quot;
-                                RadiusX=&quot;.5&quot; RadiusY=&quot;.5&quot;
-                                GradientOrigin=&quot;0.5,.25&quot;&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;Absolute&quot;
-                                Center=&quot;50,50&quot;
-                                RadiusX=&quot;100&quot; RadiusY=&quot;100&quot;
-                                GradientOrigin=&quot;100,50&quot;&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-            &lt;/StackPanel&gt;          
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
-
-        <local:ControlExample x:Name="Example3" HeaderText="RadialGradientBrush SpreadMethod (Pad, Reflect, Repeat)">
+        <local:ControlExample
+            HeaderText="RadialGradientBrush SpreadMethod (Pad, Reflect, Repeat)"
+            XamlSource="Brushes\RadialGradientBrushSample3_xaml.txt">
             <StackPanel Orientation="Horizontal">
                 <Rectangle Width="200" Height="200">
                     <Rectangle.Fill>
@@ -223,55 +144,6 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </StackPanel>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;RelativeToBoundingBox&quot;
-                                Center=&quot;0.25,0.25&quot;
-                                RadiusX=&quot;.5&quot; RadiusY=&quot;.5&quot;
-                                GradientOrigin=&quot;0.5,.25&quot;
-                                SpreadMethod=&quot;Pad&quot;&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;RelativeToBoundingBox&quot;
-                                Center=&quot;0.25,0.25&quot;
-                                RadiusX=&quot;.5&quot; RadiusY=&quot;.5&quot;
-                                GradientOrigin=&quot;0.5,.25&quot;
-                                SpreadMethod=&quot;Reflect&quot;&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-
-                &lt;Rectangle Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-                    &lt;Rectangle.Fill&gt;
-                        &lt;media:RadialGradientBrush
-                                MappingMode=&quot;RelativeToBoundingBox&quot;
-                                Center=&quot;0.25,0.25&quot;
-                                RadiusX=&quot;.5&quot; RadiusY=&quot;.5&quot;
-                                GradientOrigin=&quot;0.5,.25&quot;
-                                SpreadMethod=&quot;Repeat&quot;&gt;
-                            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0.0&quot; /&gt;
-                            &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;1&quot; /&gt;
-                        &lt;/media:RadialGradientBrush&gt;
-                    &lt;/Rectangle.Fill&gt;
-                &lt;/Rectangle&gt;
-            &lt;/StackPanel&gt; 
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
-
     </StackPanel>
 </Page>

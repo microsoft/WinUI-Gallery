@@ -2285,13 +2285,11 @@
             {
               "Title": "RadialGradientBrush - API",
               "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design"
             }
           ],
           "RelatedControls": [
+            "Acrylic",
+            "ColorPaletteResources"
           ]
         }
       ]
