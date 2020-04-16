@@ -219,9 +219,7 @@
     <Content Include="Assets\TreeView.png" />
     <Content Include="Assets\updated.png" />
     <Content Include="Assets\WebView.png" />
-    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample3_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample2_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
