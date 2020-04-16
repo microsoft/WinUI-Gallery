@@ -28,6 +28,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using muxc = Microsoft.UI.Xaml.Controls;
+using AppUIBasics.ControlPages;
 
 namespace AppUIBasics
 {
@@ -221,9 +222,19 @@ namespace AppUIBasics
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
+            if(args.InvokedItemContainer.IsSelected)
+            {
+                // Clicked on an item that is already selected,
+                // Avoid navigating to the same page again causing movement.
+                return;
+            }
+
             if (args.IsSettingsInvoked)
             {
-                rootFrame.Navigate(typeof(SettingsPage));
+                if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
+                {
+                    rootFrame.Navigate(typeof(SettingsPage));
+                }
             }
             else
             {
@@ -231,11 +242,17 @@ namespace AppUIBasics
 
                 if (invokedItem == _allControlsMenuItem)
                 {
-                    rootFrame.Navigate(typeof(AllControlsPage));
+                    if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
+                    {
+                        rootFrame.Navigate(typeof(AllControlsPage));
+                    }
                 }
                 else if (invokedItem == _newControlsMenuItem)
                 {
-                    rootFrame.Navigate(typeof(NewControlsPage));
+                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
+                    {
+                        rootFrame.Navigate(typeof(NewControlsPage));
+                    }
                 }
                 else
                 {
