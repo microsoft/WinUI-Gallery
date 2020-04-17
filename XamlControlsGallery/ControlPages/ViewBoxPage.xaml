@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -15,7 +15,8 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a Viewbox.">
             <Viewbox x:Name="Control1" Height="{x:Bind SizeSlider.Value, Mode=OneWay}"
@@ -38,16 +39,18 @@
                 <StackPanel Width="200">
                     <Slider x:Name="SizeSlider" Header="Width/Height" Maximum="300" Minimum="20" Value="200" />
 
-                    <TextBlock Text="Stretch" Margin="0,0,0,8" />
-                    <RadioButton Content="None" Tag="None" GroupName="Stretch" Checked="StretchButton_Checked" />
-                    <RadioButton Content="Fill" Tag="Fill" GroupName="Stretch" Checked="StretchButton_Checked" />
-                    <RadioButton Content="Uniform" Tag="Uniform" GroupName="Stretch" Checked="StretchButton_Checked" IsChecked="True" />
-                    <RadioButton Content="UniformToFill" Tag="UniformToFill" GroupName="Stretch" Checked="StretchButton_Checked" />
+                    <muxc:RadioButtons Header="Stretch">
+                        <RadioButton Content="None" Tag="None" Checked="StretchButton_Checked" />
+                        <RadioButton Content="Fill" Tag="Fill" Checked="StretchButton_Checked" />
+                        <RadioButton Content="Uniform" Tag="Uniform" Checked="StretchButton_Checked" IsChecked="True" />
+                        <RadioButton Content="UniformToFill" Tag="UniformToFill" Checked="StretchButton_Checked" />
+                    </muxc:RadioButtons>
 
-                    <TextBlock Text="StretchDirection" Margin="0,16,0,8" />
-                    <RadioButton Content="UpOnly" Tag="UpOnly" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" />
-                    <RadioButton Content="DownOnly" Tag="DownOnly" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" />
-                    <RadioButton Content="Both" Tag="Both" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" IsChecked="True" />
+                    <muxc:RadioButtons Header="StretchDirection">
+                        <RadioButton Content="UpOnly" Tag="UpOnly" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" />
+                        <RadioButton Content="DownOnly" Tag="DownOnly" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" />
+                        <RadioButton Content="Both" Tag="Both" GroupName="StretchDirection" Checked="StretchDirectionButton_Checked" IsChecked="True" />
+                    </muxc:RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
 
