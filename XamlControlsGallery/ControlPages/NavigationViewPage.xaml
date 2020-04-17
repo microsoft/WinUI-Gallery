@@ -1,4 +1,4 @@
-﻿<Page
+<Page
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -68,6 +68,10 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -258,8 +262,8 @@
                     <CheckBox x:Name="paneFooterCheck" Content="PaneFooter visible" IsChecked="False" Click="paneFooterCheck_Click"/>
 
                     <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
-                    <RadioButton Content="Top" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
+                    <RadioButton x:Name="nvSampleLeft" Content="Left" IsChecked="True" Checked="panePositionLeft_Checked"/>
+                    <RadioButton x:Name="nvSampleTop" Content="Top" Checked="panePositionTop_Checked" Margin="0,0,0,12"/>
 
                     <CheckBox x:Name="sffCheck" Content="Keyboard SelectionFollowsFocus" IsChecked="False" Click="sffCheck_Click"/>
                     <CheckBox x:Name="suppressselectionCheck_Checked" Content="Selection of Menu Item2 suppressed" IsChecked="False" Click="suppressselectionCheck_Checked_Click"/>
@@ -373,6 +377,55 @@
                 <local:ControlExampleSubstitution Key="SelectsOnInvoked" Value="{x:Bind SamplePage2Item.SelectsOnInvoked, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution x:Name="navViewASB" Key="NavViewASB"/>
             </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample Grid.Row="10" 
+                              HeaderText="Hierarchical NavigationView"
+                              VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" 
+                              XamlSource="NavigationView\NavigationViewSample4_xaml.txt"
+                              CSharpSource="NavigationView\NavigationViewSample4_cs.txt"
+                              WebViewHeight="400">
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <RadioButton x:Name="nvSample8Left" Content="Left mode" Checked="panePositionLeft_Checked"/>
+                    <RadioButton x:Name="nvSample8Top" Content="Top mode" Checked="panePositionTop_Checked"/>
+                    <RadioButton x:Name="nvSample8LeftCompact" Content="LeftCompact mode" Checked="panePositionLeftCompact_Checked"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="WrapWholeWords"
+                           Margin="0,0,0,12"
+                           Grid.Row="0"
+                           Text="NavigationView supports hierarchy in Left, LeftCompact, and Top display modes. Note that Left or Top mode works best if your parent items should navigate to specific pages, rather than just serve as headings. To expand the sub-menu without selecting the parent item, click the chevron. Choose between the three modes to see how each works." />
+
+                <muxc:NavigationView x:Name="nvSample8" Grid.Row="1" Height="460" Header="This is Header Text" 
+                                            PaneDisplayMode="Left" 
+                                            IsTabStop="False" 
+                                            SelectionChanged="NavigationView_SelectionChanged8">
+                     <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
+                        <muxc:NavigationViewItem Content="Parent Item 1" Icon="Save" ToolTipService.ToolTip="Parent Item 1" Tag="SamplePage2">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Child A" Icon="Refresh" ToolTipService.ToolTip="Child 1" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Child B" Icon="Download" ToolTipService.ToolTip="Child 2" Tag="SamplePage4"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem Content="Parent Item 2" Icon="Calendar" ToolTipService.ToolTip="Parent Item 2" Tag="SamplePage2Red">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Child C" Icon="Page" ToolTipService.ToolTip="Child 1" Tag="SamplePage5"/>
+                                <muxc:NavigationViewItem Content="Child D" Icon="Mail" ToolTipService.ToolTip="Child 2" Tag="SamplePage6"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                    </muxc:NavigationView.MenuItems>
+                        <Frame Margin="0,0,0,0" x:Name="contentFrame8" />
+                    </muxc:NavigationView>
+            </Grid>
         </local:ControlExample>
     </Grid>
 </Page>
