@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls;
 using AppUIBasics.SamplePages;
@@ -27,25 +27,18 @@ namespace AppUIBasics.ControlPages
                 return null;
             }
             
-            foreach(RadioButton rb in ConfigurationPanel.Children)
+            var selectedName = (ConfigurationPanel.SelectedItem as RadioButton).Content.ToString();
+            switch (selectedName)
             {
-                if (rb.IsChecked == true)
-                {
-                    switch (rb.Content.ToString())
-                    {
-                        case "Default":
-                            return null;
-                        case "Gravity":
-                            return new GravityConnectedAnimationConfiguration();
-                        case "Direct":
-                            return new DirectConnectedAnimationConfiguration();
-                        case "Basic":
-                            return new BasicConnectedAnimationConfiguration();
-                    }
-                }
+                case "Gravity":
+                    return new GravityConnectedAnimationConfiguration();
+                case "Direct":
+                    return new DirectConnectedAnimationConfiguration();
+                case "Basic":
+                    return new BasicConnectedAnimationConfiguration();
+                default:
+                    return null;
             }
-
-            return null;
         }
 
         private void NavigateButton_Click(object sender, RoutedEventArgs e)

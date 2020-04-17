@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -51,8 +51,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel>
-                            <TextBlock Margin="0,8" Text="Background" />
+                        <RadioButtons Header="Background">
 
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
@@ -74,9 +73,9 @@
                                 Content="White"
                                 GroupName="BGColor"
                                 IsChecked="True" />
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Margin="0,8" Text="BorderBrush" />
+                        </RadioButtons>
+                        
+                        <RadioButtons Grid.Column="1" Header="BorderBrush">
 
                             <RadioButton
                                 Checked="RadioButton_Checked"
@@ -98,7 +97,7 @@
                                 Checked="RadioButton_Checked"
                                 Content="White"
                                 GroupName="BorderBrush" />
-                        </StackPanel>
+                        </RadioButtons>
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Options>
