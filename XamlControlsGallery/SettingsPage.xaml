@@ -55,6 +55,10 @@
                     <CheckBox x:Name="spatialSoundBox" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Spatial Audio"/>
                     <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
                 </StackPanel>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
+                <StackPanel Margin="0,10,0,0">
+                    <ToggleSwitch x:Name="navigationToggle" Header="Navigation control location" Toggled="navigationToggle_Toggled" OffContent="Left" OnContent="Top" Margin="0,0,0,4" />
+                </StackPanel>
                 <TextBlock
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"

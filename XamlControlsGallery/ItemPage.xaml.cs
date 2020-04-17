@@ -164,13 +164,6 @@ namespace AppUIBasics
                     return;
                 }
 
-                ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((string)e.Parameter);
-                var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
-                if (menuItem != null)
-                {
-                    menuItem.IsSelected = true;
-                }
-
                 PlayConnectedAnimation();
             }
 
@@ -210,12 +203,13 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
+            // Disable temporarily while investigating this crash.
             //Reverse Connected Animation
-            if (e.SourcePageType != typeof(ItemPage))
-            {
-                var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
-            }
+            //if (e.SourcePageType != typeof(ItemPage))
+            //{
+            //    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
+            //    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
+            //}
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145

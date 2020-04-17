@@ -219,6 +219,7 @@
     <Content Include="Assets\TreeView.png" />
     <Content Include="Assets\updated.png" />
     <Content Include="Assets\WebView.png" />
+    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
@@ -342,6 +343,9 @@
     </Compile>
     <Compile Include="ControlPages\AppBarToggleButtonPage.xaml.cs">
       <DependentUpon>AppBarToggleButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RadialGradientBrushPage.xaml.cs">
+      <DependentUpon>RadialGradientBrushPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\ConnectedAnimationPage.xaml.cs">
       <DependentUpon>ConnectedAnimationPage.xaml</DependentUpon>
@@ -734,6 +738,10 @@
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RadialGradientBrushPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\CompactSizingPage.xaml">
       <SubType>Designer</SubType>
@@ -1152,7 +1160,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.0-prerelease.200322001</Version>
+      <Version>2.4.0-prerelease.200414001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
