@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -262,8 +262,7 @@ The data template is defined to display a CustomDataObject object (same type as 
             </Grid>
             <local:ControlExample.Options>
                 <StackPanel x:Name="Control2">
-                    <StackPanel>
-                        <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
+                    <RadioButtons Header="ItemTemplate">
                         <RadioButton
                             Checked="ItemTemplate_Checked"
                             Content="Image"
@@ -285,6 +284,8 @@ The data template is defined to display a CustomDataObject object (same type as 
                             Content="Text"
                             GroupName="Template"
                             Tag="TextTemplate" />
+                    </RadioButtons>
+                    <StackPanel>
                         <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
                         <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
                         <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> In order to drag, drop, and reorder items within the GridView, make sure the last three boxes are checked below.<LineBreak/></TextBlock>

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -25,11 +25,10 @@
             <Frame x:Name="ContentFrame" />
 
             <local:ControlExample.Options>
-                <StackPanel>
-                    <TextBlock Text="Fluent Standard and Compact Sizing" />
+                <RadioButtons Header="Fluent Standard and Compact Sizing">
                     <RadioButton Content="Standard" Tag="StandardSize" GroupName="ControlSize" Checked="Standard_Checked" IsChecked="True" />
                     <RadioButton Content="Compact" Tag="CompactSize" GroupName="ControlSize" Checked="Compact_Checked" />
-                </StackPanel>
+                </RadioButtons>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>

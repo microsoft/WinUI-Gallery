@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
 using Microsoft.UI.Composition;
@@ -40,12 +40,9 @@ namespace AppUIBasics.ControlPages
 
         float GetDampingRatio()
         {
-            foreach (RadioButton rb in DampingStackPanel.Children)
+            if(DampingStackPanel.SelectedItem != null)
             {
-                if (rb.IsChecked == true)
-                {
-                    return (float)Convert.ToDouble(rb.Content);
-                }
+                return (float)Convert.ToDouble((DampingStackPanel.SelectedItem as RadioButton).Content);
             }
             return 0.6f;
         }

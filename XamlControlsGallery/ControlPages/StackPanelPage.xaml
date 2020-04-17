@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -35,11 +35,10 @@
             </StackPanel>
 
             <local:ControlExample.Options>
-                <StackPanel x:Name="OrientationGroup">
-                    <TextBlock Text="Orientation" Margin="0,0,0,8" />
+                <RadioButtons x:Name="OrientationGroup" Header="Orientation">
                     <RadioButton Content="Horizontal" Tag="Horizontal" Checked="RadioButton_Checked" />
                     <RadioButton Content="Vertical" Tag="Vertical" Checked="RadioButton_Checked" IsChecked="True" />
-                </StackPanel>
+                </RadioButtons>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
