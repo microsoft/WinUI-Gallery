@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -40,7 +40,7 @@ namespace AppUIBasics
         public static NavigationRootPage Current;
         public static Frame RootFrame = null;
 
-        public Windows.System.VirtualKey ArrowKey;
+        public VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
         private PageHeader _header;
@@ -72,26 +72,13 @@ namespace AppUIBasics
             }
         }
 
-        public string AppTitleText
-        {
-            get
-            {
-#if !UNIVERSAL
-                return "WinUI 3 Controls Gallery";
-#else
-                return "WinUI 3 Controls Gallery (UWP)";
-#endif
-            }
-        }
-
         public NavigationRootPage()
         {
             this.InitializeComponent();
 
-#if !UNIVERSAL
-            AppTitleBar.Visibility = Visibility.Collapsed;
-            App.CurrentWindow.Title = AppTitleText;
-#endif
+            // Workaround for VisualState issue that should be fixed
+            // by https://github.com/microsoft/microsoft-ui-xaml/pull/2271
+            NavigationViewControl.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
 
             _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
@@ -112,20 +99,23 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-#if UNIVERSAL
+            Window.Current.SetTitleBar(AppTitleBar);
+
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
-#endif
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
-            // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
+
+            // remove the solid-colored backgrounds behind the caption controls and system back button
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
+                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             };
 
-            NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
+            NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -141,6 +131,11 @@ namespace AppUIBasics
             AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
         }
 
+        public string GetAppTitleFromSystem()
+        {
+            return Windows.ApplicationModel.Package.Current.DisplayName;
+        }
+
         public bool CheckNewControlSelected()
         {
             return _newControlsMenuItem.IsSelected;
@@ -150,29 +145,25 @@ namespace AppUIBasics
         {
             foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title))
             {
-                var item = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group };
-                AutomationProperties.SetName(item, group.Title);
-                if (group.ImagePath.ToLowerInvariant().EndsWith(".png"))
+                var itemGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImagePath) };
+                AutomationProperties.SetName(itemGroup, group.Title);
+
+                foreach (var item in group.Items)
                 {
-                    item.Icon = new BitmapIcon() { UriSource = new Uri(group.ImagePath, UriKind.RelativeOrAbsolute) };
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImagePath) };
+                    itemGroup.MenuItems.Add(itemInGroup);
+                    AutomationProperties.SetName(itemInGroup, item.Title);
                 }
-                else
-                {
-                    item.Icon = new FontIcon()
-                    {
-                        FontFamily = new FontFamily("Segoe MDL2 Assets"),
-                        Glyph = group.ImagePath
-                    };
-                }
-                NavigationViewControl.MenuItems.Add(item);
+
+                NavigationViewControl.MenuItems.Add(itemGroup);
 
                 if (group.UniqueId == "AllControls")
                 {
-                    this._allControlsMenuItem = item;
+                    this._allControlsMenuItem = itemGroup;
                 }
                 else if (group.UniqueId == "NewControls")
                 {
-                    this._newControlsMenuItem = item;
+                    this._newControlsMenuItem = itemGroup;
                 }
             }
 
@@ -186,6 +177,17 @@ namespace AppUIBasics
             NavigationViewControl.MenuItems.Insert(2, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
 
             _newControlsMenuItem.Loaded += OnNewControlsMenuItemLoaded;
+        }
+
+        private static IconElement GetIcon(string imagePath)
+        {
+            return imagePath.ToLowerInvariant().EndsWith(".png") ?
+                        (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
+                        (IconElement)new FontIcon()
+                        {
+                            FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                            Glyph = imagePath
+                        };
         }
 
         private void SetDeviceFamily()
@@ -223,9 +225,19 @@ namespace AppUIBasics
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
+            if(args.InvokedItemContainer.IsSelected)
+            {
+                // Clicked on an item that is already selected,
+                // Avoid navigating to the same page again causing movement.
+                return;
+            }
+
             if (args.IsSettingsInvoked)
             {
-                rootFrame.Navigate(typeof(SettingsPage));
+                if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
+                {
+                    rootFrame.Navigate(typeof(SettingsPage));
+                }
             }
             else
             {
@@ -233,16 +245,31 @@ namespace AppUIBasics
 
                 if (invokedItem == _allControlsMenuItem)
                 {
-                    rootFrame.Navigate(typeof(AllControlsPage));
+                    if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
+                    {
+                        rootFrame.Navigate(typeof(AllControlsPage));
+                    }
                 }
                 else if (invokedItem == _newControlsMenuItem)
                 {
-                    rootFrame.Navigate(typeof(NewControlsPage));
+                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
+                    {
+                        rootFrame.Navigate(typeof(NewControlsPage));
+                    }
                 }
                 else
                 {
-                    var itemId = ((ControlInfoDataGroup)invokedItem.DataContext).UniqueId;
-                    rootFrame.Navigate(typeof(SectionPage), itemId);
+                    if (invokedItem.DataContext is ControlInfoDataGroup)
+                    {
+                        var itemId = ((ControlInfoDataGroup)invokedItem.DataContext).UniqueId;
+                        rootFrame.Navigate(typeof(SectionPage), itemId);
+                    }
+                    else if (invokedItem.DataContext is ControlInfoDataItem)
+                    {
+                        var item = (ControlInfoDataItem)invokedItem.DataContext;
+                        rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
+                    }
+
                 }
             }
         }
@@ -362,6 +389,7 @@ namespace AppUIBasics
             }
 
             UpdateAppTitleMargin(sender);
+            UpdateHeaderMargin(sender);
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
@@ -372,7 +400,8 @@ namespace AppUIBasics
             {
                 AppTitle.TranslationTransition = new Vector3Transition();
 
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
+                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
                     AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
                 }
@@ -385,13 +414,29 @@ namespace AppUIBasics
             {
                 Thickness currMargin = AppTitle.Margin;
 
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen)
+                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
+                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
                     AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
                 }
                 else
                 {
                     AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                }
+            }
+        }
+
+        private void UpdateHeaderMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
+        {
+            if (PageHeader != null)
+            {
+                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
+                {
+                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
+                }
+                else
+                {
+                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
                 }
             }
         }

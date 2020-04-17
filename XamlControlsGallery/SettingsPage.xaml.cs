@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -75,7 +75,7 @@ namespace AppUIBasics
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
             var currentTheme = ThemeHelper.RootTheme.ToString();
-           ((RadioButton)ThemePanel.Children.FirstOrDefault(c => (c as RadioButton)?.Tag?.ToString() == currentTheme)).IsChecked = true;
+            (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
         }
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace AppUIBasics
         }
         private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
         {
-            if(soundToggle.IsOn == true)
+            if (soundToggle.IsOn == true)
             {
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
             }

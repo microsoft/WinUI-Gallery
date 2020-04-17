@@ -8,9 +8,11 @@
 //
 //*********************************************************
 using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
@@ -23,8 +25,6 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
-using System.Reflection;
-using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
@@ -163,12 +163,7 @@ namespace AppUIBasics
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
 
-                ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((string)e.Parameter);
-                var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
-                if (menuItem != null)
-                {
-                    menuItem.IsSelected = true;
-                }
+                PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
@@ -202,12 +197,13 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
-            // Reverse Connected Animation
-            if (e.SourcePageType != typeof(ItemPage))
-            {
-                var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
-            }
+            // Disable temporarily while investigating this crash.
+            //Reverse Connected Animation
+            //if (e.SourcePageType != typeof(ItemPage))
+            //{
+            //    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
+            //    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
+            //}
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
