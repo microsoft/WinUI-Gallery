@@ -64,7 +64,6 @@
                     <RadioButton Content="Top"/>
                 </RadioButtons>
 
-                
                 <TextBlock
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"
