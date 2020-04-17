@@ -1,4 +1,4 @@
-﻿using Windows.Foundation.Metadata;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
@@ -36,8 +36,7 @@ namespace AppUIBasics.SamplePages
 
         private void AddContentPanelAnimations()
         {
-            ContentPanel.Transitions = new TransitionCollection();
-            ContentPanel.Transitions.Add(new EntranceThemeTransition());
+            ContentPanel.Transitions = new TransitionCollection {new EntranceThemeTransition()};
         }
     }
 }

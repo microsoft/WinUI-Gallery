@@ -1,4 +1,4 @@
-﻿using Windows.Foundation.Metadata;
+using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,9 +24,11 @@ namespace AppUIBasics.ControlPages
         {
             if(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
             {
-                FlyoutShowOptions myOption = new FlyoutShowOptions();
-                myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
-                myOption.Placement = FlyoutPlacementMode.RightEdgeAlignedTop;
+                FlyoutShowOptions myOption = new FlyoutShowOptions
+                {
+                    ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard,
+                    Placement = FlyoutPlacementMode.RightEdgeAlignedTop
+                };
                 CommandBarFlyout1.ShowAt(Image1, myOption);
             }
             else

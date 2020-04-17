@@ -43,24 +43,28 @@ namespace AppUIBasics.ControlPages
             BarItems.Add(new Bar(25, this.MaxLength));
             BarItems.Add(new Bar(175, this.MaxLength));
 
-            List<object> basicData = new List<object>();
-            basicData.Add(64);
-            basicData.Add("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-            basicData.Add(128);
-            basicData.Add("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
-            basicData.Add(256);
-            basicData.Add("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
-            basicData.Add(512);
-            basicData.Add("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-            basicData.Add(1024);
+            List<object> basicData = new List<object>
+            {
+                64,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                128,
+                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                256,
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                512,
+                "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                1024
+            };
             MixedTypeRepeater.ItemsSource = basicData;
 
-            List<NestedCategory> nestedCategories = new List<NestedCategory>();
+            List<NestedCategory> nestedCategories = new List<NestedCategory>
+            {
+                new NestedCategory("Fruits", GetFruits()),
+                new NestedCategory("Vegetables", GetVegetables()),
+                new NestedCategory("Grains", GetGrains()),
+                new NestedCategory("Proteins", GetProteins())
+            };
 
-            nestedCategories.Add(new NestedCategory("Fruits", GetFruits()));
-            nestedCategories.Add(new NestedCategory("Vegetables", GetVegetables()));
-            nestedCategories.Add(new NestedCategory("Grains", GetGrains()));
-            nestedCategories.Add(new NestedCategory("Proteins", GetProteins()));
 
             outerRepeater.ItemsSource = nestedCategories;
 
@@ -97,7 +101,7 @@ namespace AppUIBasics.ControlPages
 
         private ObservableCollection<string> GetVegetables()
         {
-            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussel sprouts","Carrots"};
+            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussels sprouts","Carrots"};
         }
         private ObservableCollection<string> GetGrains()
         {
@@ -515,10 +519,7 @@ namespace AppUIBasics.ControlPages
                 inner.AddRange(collection);
             }
 
-            if (CollectionChanged != null)
-            {
-                CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            }
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         #region IReadOnlyList<T>
