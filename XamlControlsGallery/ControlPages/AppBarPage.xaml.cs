@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -59,9 +59,11 @@ namespace AppUIBasics.ControlPages
         {
             if (AppBarContentPanel.Children[0] is Button homeButton && homeButton.Tag.ToString() != "Home")
             {
-                homeButton = new Button();
-                homeButton.Content = "Home";
-                homeButton.Tag = "Home";
+                homeButton = new Button
+                {
+                    Content = "Home",
+                    Tag = "Home"
+                };
                 homeButton.Click += NavBarButton_Click;
 
                 AppBarContentPanel.Children.Insert(0, homeButton);

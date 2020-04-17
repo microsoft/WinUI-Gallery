@@ -51,10 +51,11 @@ namespace AppUIBasics.ControlPages
 
         private TabViewItem CreateNewTab(int index)
         {
-            TabViewItem newItem = new TabViewItem();
-
-            newItem.Header = $"Document {index}";
-            newItem.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document };
+            TabViewItem newItem = new TabViewItem
+            {
+                Header = $"Document {index}",
+                IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document }
+            };
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
             Frame frame = new Frame();
@@ -91,9 +92,11 @@ namespace AppUIBasics.ControlPages
 
         private MyData CreateNewMyData(int index)
         {
-            var newData = new MyData();
-            newData.DataHeader = $"MyData Doc {index}";
-            newData.DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder };
+            var newData = new MyData
+            {
+                DataHeader = $"MyData Doc {index}",
+                DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }
+            };
 
             Frame frame = new Frame();
 
