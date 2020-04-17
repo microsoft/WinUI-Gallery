@@ -49,8 +49,10 @@ namespace AppUIBasics.ControlPages
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
             if (myFlyout != null && myFlyout.Target == REBCustom)
             {
-                AppBarButton myButton = new AppBarButton();
-                myButton.Command = new StandardUICommand(StandardUICommandKind.Share);
+                AppBarButton myButton = new AppBarButton
+                {
+                    Command = new StandardUICommand(StandardUICommandKind.Share)
+                };
                 myFlyout.PrimaryCommands.Add(myButton);
             }
             else
@@ -100,8 +102,10 @@ namespace AppUIBasics.ControlPages
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            FileSavePicker savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            FileSavePicker savePicker = new FileSavePicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
 
             // Dropdown of file types the user can save the file as
             savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });

@@ -79,9 +79,11 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-                newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.Delete);
-                newButton.Label = "Button 2";
+                newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.Delete),
+                    Label = "Button 2"
+                };
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
                 newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {

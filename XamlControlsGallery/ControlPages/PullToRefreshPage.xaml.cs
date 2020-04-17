@@ -80,18 +80,14 @@ namespace AppUIBasics.ControlPages
                 rv2.Content = ptrImage;
                 rc2.Visualizer = rv2;
 
-                ListView lv2 = new ListView();
-                lv2.Width = 200;
-                lv2.Height = 200;
-
-#if !UNIVERSAL
-                lv2.BorderThickness = new Thickness(1);
-#else
-                lv2.BorderThickness = ThicknessHelper.FromUniformLength(1);
-#endif
-
-                lv2.HorizontalAlignment = HorizontalAlignment.Center;
-                lv2.BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"];
+                ListView lv2 = new ListView
+                {
+                    Width = 200,
+                    Height = 200,
+                    BorderThickness = new Thickness(1),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"]
+                };
 
 
                 rc2.Content = lv2;
