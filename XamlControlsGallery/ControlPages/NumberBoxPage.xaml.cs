@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -23,14 +23,18 @@ namespace AppUIBasics.ControlPages
 
         private void SetNumberBoxNumberFormatter()
         {
-            IncrementNumberRounder rounder = new IncrementNumberRounder();
-            rounder.Increment = 0.25;
-            rounder.RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp;
+            IncrementNumberRounder rounder = new IncrementNumberRounder
+            {
+                Increment = 0.25,
+                RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
+            };
 
-            DecimalFormatter formatter = new DecimalFormatter();
-            formatter.IntegerDigits = 1;
-            formatter.FractionDigits = 2;
-            formatter.NumberRounder = rounder;
+            DecimalFormatter formatter = new DecimalFormatter
+            {
+                IntegerDigits = 1,
+                FractionDigits = 2,
+                NumberRounder = rounder
+            };
             FormattedNumberBox.NumberFormatter = formatter;
         }
 

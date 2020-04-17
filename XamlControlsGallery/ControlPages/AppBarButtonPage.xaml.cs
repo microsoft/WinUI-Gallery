@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -43,9 +43,11 @@ namespace AppUIBasics.ControlPages
             separator = new AppBarSeparator();
             appBar.PrimaryCommands.Insert(0, separator);
 
-            compactButton = new AppBarToggleButton();
-            compactButton.Icon = new SymbolIcon(Symbol.FontSize);
-            compactButton.Label = "IsCompact";
+            compactButton = new AppBarToggleButton
+            {
+                Icon = new SymbolIcon(Symbol.FontSize),
+                Label = "IsCompact"
+            };
             compactButton.Click += CompactButton_Click;
             appBar.PrimaryCommands.Insert(0, compactButton);
         }
