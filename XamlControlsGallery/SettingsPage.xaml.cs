@@ -8,6 +8,7 @@
 //
 //*********************************************************
 using AppUIBasics.Common;
+using AppUIBasics.Helper;
 using Microsoft.Graphics.Canvas.Effects;
 using System;
 using System.Linq;
@@ -112,11 +113,7 @@ namespace AppUIBasics
 
         private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            NavigationRootPage.Current.NavigationView.PaneDisplayMode = navigationToggle.IsOn ?
-                Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top :
-                Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
-
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = !navigationToggle.IsOn;
+            NavigationOrientationHelper.IsLeftMode = !navigationToggle.IsOn;
         }
 
         private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
