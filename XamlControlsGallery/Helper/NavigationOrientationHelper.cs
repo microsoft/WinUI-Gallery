@@ -36,13 +36,13 @@ namespace AppUIBasics.Helper
             }
         }
 
-        public static void UpdateTitleBar(bool value)
+        public static void UpdateTitleBar(bool isLeftMode)
         {
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = value;
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
 
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            if (value)
+            if (isLeftMode)
             {
                 NavigationRootPage.Current.NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
