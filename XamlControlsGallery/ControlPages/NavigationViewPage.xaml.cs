@@ -304,7 +304,6 @@ namespace AppUIBasics.ControlPages
                     nvSample.IsPaneOpen = true;
                     FooterStackPanel.Orientation = Orientation.Vertical;
                 }
-
                 else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
                 {
                     nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
@@ -316,7 +315,6 @@ namespace AppUIBasics.ControlPages
 
         private void panePositionTop_Checked(object sender, RoutedEventArgs e)
         {
-            
             if ((sender as RadioButton).IsChecked == true)
             {
                 if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
@@ -325,13 +323,11 @@ namespace AppUIBasics.ControlPages
                     nvSample.IsPaneOpen = false;
                     FooterStackPanel.Orientation = Orientation.Horizontal;
                 }
-
                 else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
                 {
                     nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
                     nvSample8.IsPaneOpen = false;
                 }
-                
             }
         }
 
@@ -344,7 +340,6 @@ namespace AppUIBasics.ControlPages
                     nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
                     nvSample8.IsPaneOpen = false;
                 }
-
             }
         }
 

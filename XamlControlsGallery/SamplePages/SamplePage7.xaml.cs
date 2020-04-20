@@ -5,9 +5,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace AppUIBasics.SamplePages
 {
-    public sealed partial class SamplePage2Red : Page
+    public sealed partial class SamplePage7 : Page
     {
-        public SamplePage2Red()
+        public SamplePage7()
         {
             this.InitializeComponent();
         }

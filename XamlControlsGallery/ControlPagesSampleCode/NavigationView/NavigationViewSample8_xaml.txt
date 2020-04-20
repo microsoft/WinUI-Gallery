@@ -1,0 +1,21 @@
+<muxc:NavigationView x:Name="nvSample8" Height="460"
+                     PaneDisplayMode="$(PaneDisplay)" 
+                     IsTabStop="False" 
+                     SelectionChanged="NavigationView_SelectionChanged8">
+    <muxc:NavigationView.MenuItems>
+        <muxc:NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
+        <muxc:NavigationViewItem Content="Parent Item 1" Icon="Save" ToolTipService.ToolTip="Parent Item 1" Tag="SamplePage2">
+            <muxc:NavigationViewItem.MenuItems>
+                <muxc:NavigationViewItem Content="Child A" Icon="Refresh" ToolTipService.ToolTip="Child 1" Tag="SamplePage3"/>
+                <muxc:NavigationViewItem Content="Child B" Icon="Download" ToolTipService.ToolTip="Child 2" Tag="SamplePage4"/>
+            </muxc:NavigationViewItem.MenuItems>
+        </muxc:NavigationViewItem>
+        <muxc:NavigationViewItem Content="Parent Item 2" Icon="Calendar" ToolTipService.ToolTip="Parent Item 2" Tag="SamplePage7">
+            <muxc:NavigationViewItem.MenuItems>
+                <muxc:NavigationViewItem Content="Child C" Icon="Page" ToolTipService.ToolTip="Child 1" Tag="SamplePage5"/>
+                <muxc:NavigationViewItem Content="Child D" Icon="Mail" ToolTipService.ToolTip="Child 2" Tag="SamplePage6"/>
+            </muxc:NavigationViewItem.MenuItems>
+        </muxc:NavigationViewItem>
+    </muxc:NavigationView.MenuItems>
+    <Frame Margin="0,0,0,0" x:Name="contentFrame8" />
+</muxc:NavigationView>
