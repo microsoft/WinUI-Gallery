@@ -388,7 +388,7 @@
                               WebViewHeight="400">
             <local:ControlExample.Options>
                 <StackPanel>
-                    <RadioButton x:Name="nvSample8Left" Content="Left mode" Checked="panePositionLeft_Checked"/>
+                    <RadioButton x:Name="nvSample8Left" Content="Left mode" Checked="panePositionLeft_Checked" IsChecked="True"/>
                     <RadioButton x:Name="nvSample8Top" Content="Top mode" Checked="panePositionTop_Checked"/>
                     <RadioButton x:Name="nvSample8LeftCompact" Content="LeftCompact mode" Checked="panePositionLeftCompact_Checked"/>
                 </StackPanel>
