@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Collections.Generic;
@@ -108,8 +108,7 @@ namespace AppUIBasics.Common
 
             for (int index = 0; index < m_cachedBounds.Count; index++)
             {
-                double nextOffset = 0.0;
-                int columnIndex = GetIndexOfLowestColumn(m_columnOffsets, out nextOffset);
+                int columnIndex = GetIndexOfLowestColumn(m_columnOffsets, out var nextOffset);
                 var oldHeight = m_cachedBounds[index].Height;
                 m_cachedBounds[index] = new Rect(columnIndex * Width, nextOffset, Width, oldHeight);
                 m_columnOffsets[columnIndex] += oldHeight;

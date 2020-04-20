@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -25,11 +25,11 @@
                 ShowError="{x:Bind ErrorRB.IsChecked.Value, Mode=OneWay}" />
 
             <local:ControlExample.Options>
-                <StackPanel>
-                    <RadioButton x:Name="RunningRB" GroupName="ProgressState" Content="Running" IsChecked="True" />
-                    <RadioButton x:Name="PausedRB" GroupName="ProgressState" Content="Paused" />
-                    <RadioButton x:Name="ErrorRB" GroupName="ProgressState" Content="Error" />
-                </StackPanel>
+                <muxc:RadioButtons Header="Progress state">
+                    <RadioButton x:Name="RunningRB" Content="Running" IsChecked="True" />
+                    <RadioButton x:Name="PausedRB" Content="Paused" />
+                    <RadioButton x:Name="ErrorRB" Content="Error" />
+                </muxc:RadioButtons>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
@@ -46,8 +46,8 @@
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <muxc:ProgressBar Width="130" x:Name="ProgressBar2"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
-                <TextBlock x:Name="ProgresLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgresLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" ValueChanged="ProgressValue_ValueChanged"/>
+                <TextBlock x:Name="ProgressLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" ValueChanged="ProgressValue_ValueChanged"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
