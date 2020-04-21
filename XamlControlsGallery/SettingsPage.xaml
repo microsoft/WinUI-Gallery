@@ -87,6 +87,33 @@
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"
                     FontWeight="Normal"
+                    Text="Found a bug? Want a new sample?" />
+                <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
+                    <Paragraph>
+                        If you have found a bug within the Xaml Controls Gallery, please file an issue on GitHub:
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new?template=bug_report.md">New Xaml Controls Gallery Bug Report</Hyperlink>
+                    </Paragraph>
+                    <Paragraph>
+                        If you would like a new sample, request it on GitHub:
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new?template=sample_request.md">New Sample Request</Hyperlink>
+                    </Paragraph>
+                    <Paragraph>
+                        If you found a bug in your app (not in the Xaml Controls Gallery) and need help, file an issue on the WinUI GitHub:
+                    </Paragraph>
+                    <Paragraph Margin="0,10,0,10">
+                        <Hyperlink NavigateUri="https://github.com/microsoft/microsoft-ui-xaml/issues/new/choose">New WinUI Bug Report</Hyperlink>
+                    </Paragraph>
+
+                </RichTextBlock>
+
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
                     Text="Dependencies and References" />
                 <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,10,0,0">
                     <Paragraph Margin="0,10,0,10">
