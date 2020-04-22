@@ -56,11 +56,6 @@ namespace AppUIBasics
             NavigationRootPage.Current.NavigationView.Header = "Settings";
         }
 
-        private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
-        {
-            await Launcher.LaunchUriAsync(new Uri("feedback-hub:"));
-        }
-
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
             var currentTheme = ThemeHelper.RootTheme.ToString();
