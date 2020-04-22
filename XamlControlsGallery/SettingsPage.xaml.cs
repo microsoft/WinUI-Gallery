@@ -7,6 +7,9 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Common;
+using AppUIBasics.Helper;
+using Microsoft.Graphics.Canvas.Effects;
 using System;
 using System.Linq;
 using Windows.System;
@@ -124,6 +127,11 @@ namespace AppUIBasics
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
+        }
+
+        private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            NavigationOrientationHelper.IsLeftMode = !navigationToggle.IsOn;
         }
 
         private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)

@@ -7,7 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
+using AppUIBasics.Helper;
 using ColorCode;
 using ColorCode.Common;
 using System;

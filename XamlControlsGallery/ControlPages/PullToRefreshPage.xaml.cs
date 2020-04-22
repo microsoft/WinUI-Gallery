@@ -1,16 +1,17 @@
-﻿using System;
+using AppUIBasics.Helper;
+using System;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Microsoft.UI.Composition;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Dispatching;
 
 #if !UNIVERSAL
 using System.Collections.ObjectModel;

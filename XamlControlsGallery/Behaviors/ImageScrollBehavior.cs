@@ -1,7 +1,8 @@
-﻿using Microsoft.Xaml.Interactivity;
+using AppUIBasics.Helper;
+using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
-using Windows.UI;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -47,7 +48,7 @@ namespace AppUIBasics.Behaviors
 
         private bool GetScrollViewer()
         {
-            scrollViewer = Common.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
+            scrollViewer = Helper.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
             if (scrollViewer != null)
             {
                 scrollViewer.ViewChanging += ScrollViewer_ViewChanging;

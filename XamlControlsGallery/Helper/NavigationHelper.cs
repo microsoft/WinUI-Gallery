@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics.Common
+namespace AppUIBasics.Helper
 {
     /// <summary>
     /// NavigationHelper aids in navigation between pages. It manages
