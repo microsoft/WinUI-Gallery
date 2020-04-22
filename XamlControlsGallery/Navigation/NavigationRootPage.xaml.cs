@@ -29,6 +29,7 @@ using Windows.Foundation.Metadata;
 using Windows.UI;
 using muxc = Microsoft.UI.Xaml.Controls;
 using AppUIBasics.ControlPages;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
@@ -103,13 +104,11 @@ namespace AppUIBasics
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
 
-            // remove the solid-colored backgrounds behind the caption controls and system back button
+            // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            

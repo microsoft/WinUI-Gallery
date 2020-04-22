@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
-namespace AppUIBasics.Common
+namespace AppUIBasics.Helper
 {
     /// <summary>
     /// Class providing functionality around switching and restoring theme settings

@@ -1,4 +1,4 @@
-﻿using AppUIBasics.Common;
+using AppUIBasics.Helper;
 using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
@@ -48,7 +48,7 @@ namespace AppUIBasics.Behaviors
 
         private bool GetScrollViewer()
         {
-            scrollViewer = Common.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
+            scrollViewer = Helper.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
             if (scrollViewer != null)
             {
                 scrollViewer.ViewChanging += ScrollViewer_ViewChanging;
