@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace AppUIBasics.Common
+namespace AppUIBasics.Helper
 {
     public static class UIHelper
     {

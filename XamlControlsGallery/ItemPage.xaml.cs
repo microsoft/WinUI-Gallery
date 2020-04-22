@@ -7,7 +7,6 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
 using AppUIBasics.Data;
 using System;
 using System.Linq;
@@ -25,6 +24,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System.Reflection;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
