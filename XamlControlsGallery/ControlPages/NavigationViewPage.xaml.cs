@@ -175,6 +175,13 @@ namespace AppUIBasics.ControlPages
 
         private void NavigationView_SelectionChanged8(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
+            /* NOTE: for this function to work, every NavigationView must follow the same naming convention: nvSample# (i.e. nvSample3),
+            and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
+
+            // Get the sample number
+            string sampleNum = (sender.Name).Substring(8);
+            Debug.Print("num: " + sampleNum + "\n");
+
             if (args.IsSettingsSelected)
             {
                 contentFrame8.Navigate(typeof(SampleSettingsPage));

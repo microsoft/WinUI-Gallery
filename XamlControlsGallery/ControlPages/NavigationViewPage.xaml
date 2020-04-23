@@ -25,7 +25,7 @@
         </converters:MenuItemTemplateSelector>
     </Page.Resources>
 
-    <Grid x:Name="rootGrid">
+    <StackPanel>
         <!-- For the top nav collapsing to left hamburger sample -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -42,7 +42,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <!-- Example on how to override NavView acrylic -->
-        <Grid.Resources>
+        <StackPanel.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
                     <ResourceDictionary x:Key="Light">
@@ -66,23 +66,9 @@
                     </ResourceDictionary>
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
-        </Grid.Resources>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <local:ControlExample Grid.Row="0" 
-                              HeaderText="NavigationView with default PaneDisplayMode" 
+        </StackPanel.Resources>
+        
+        <local:ControlExample HeaderText="NavigationView with default PaneDisplayMode" 
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               XamlSource="NavigationView\NavigationViewSample1.txt"
@@ -115,8 +101,7 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample Grid.Row="1" 
-                              HeaderText="NavigationView with PaneDisplayMode set to Top"
+        <local:ControlExample HeaderText="NavigationView with PaneDisplayMode set to Top"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               XamlSource="NavigationView\NavigationViewSample2.txt"
@@ -150,8 +135,7 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample Grid.Row="2" 
-                              HeaderText="NavigationView that switches pane orientation based on window width"
+        <local:ControlExample HeaderText="NavigationView that switches pane orientation based on window width"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               XamlSource="NavigationView\NavigationViewSample3.txt" 
@@ -183,8 +167,7 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample Grid.Row="3" 
-                              HeaderText="Tying selection and focus - Tabs"
+        <local:ControlExample HeaderText="Tying selection and focus - Tabs"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               XamlSource="NavigationView\NavigationViewSample4_xaml.txt"
@@ -214,8 +197,7 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample Grid.Row="4" 
-                              HeaderText="Data binding"
+        <local:ControlExample HeaderText="Data binding"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch"
                               XamlSource="NavigationView\NavigationViewSample5_xaml.txt"
@@ -242,8 +224,57 @@
             </Grid>
         </local:ControlExample>
 
-        <local:ControlExample Grid.Row="7"  
-                              HeaderText="API in action"
+        <local:ControlExample HeaderText="Hierarchical NavigationView"
+                              VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch" 
+                              XamlSource="NavigationView\NavigationViewSample8_xaml.txt">
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
+                    <RadioButton x:Name="nvSample8Left" GroupName="hierachicalGroup" Content="Left mode" Checked="panePositionLeft_Checked" IsChecked="True"/>
+                    <RadioButton x:Name="nvSample8Top" GroupName="hierachicalGroup" Content="Top mode" Checked="panePositionTop_Checked"/>
+                    <RadioButton x:Name="nvSample8LeftCompact" GroupName="hierachicalGroup" Content="LeftCompact mode" Checked="panePositionLeftCompact_Checked"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="WrapWholeWords"
+                           Margin="0,0,0,12"
+                           Grid.Row="0"
+                           Text="NavigationView supports hierarchy in Left, LeftCompact, and Top display modes. Note that Left or Top mode works best if your parent items should navigate to specific pages, rather than just serve as headings. To expand the sub-menu without selecting the parent item, click the chevron. Choose between the three modes to see how each works." />
+
+                <muxc:NavigationView x:Name="nvSample8" Grid.Row="1" Height="460"
+                                        PaneDisplayMode="Left" 
+                                        IsTabStop="False" 
+                                        SelectionChanged="NavigationView_SelectionChanged8">
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
+                        <muxc:NavigationViewItem Content="Parent Item 1" Icon="Contact" ToolTipService.ToolTip="Parent Item 1" Tag="SamplePage2">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Child A" Icon="Mail" ToolTipService.ToolTip="Child 1" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Child B" Icon="Calendar" ToolTipService.ToolTip="Child 2" Tag="SamplePage4"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem Content="Parent Item 2" Icon="Page2" ToolTipService.ToolTip="Parent Item 2" SelectsOnInvoked="False">
+                            <muxc:NavigationViewItem.MenuItems>
+                                <muxc:NavigationViewItem Content="Child C" Icon="NewFolder" ToolTipService.ToolTip="Child 1" Tag="SamplePage5"/>
+                                <muxc:NavigationViewItem Content="Child D" Icon="OpenLocal" ToolTipService.ToolTip="Child 2" Tag="SamplePage6"/>
+                            </muxc:NavigationViewItem.MenuItems>
+                        </muxc:NavigationViewItem>
+                    </muxc:NavigationView.MenuItems>
+                    <Frame x:Name="contentFrame8" />
+                </muxc:NavigationView>
+            </Grid>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="PaneDisplay" Value="{x:Bind nvSample8.PaneDisplayMode, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="API in action"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 
                               WebViewHeight="250" >
@@ -379,56 +410,5 @@
                 <local:ControlExampleSubstitution x:Name="navViewASB" Key="NavViewASB"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-
-        <local:ControlExample Grid.Row="10" 
-                              HeaderText="Hierarchical NavigationView"
-                              VerticalAlignment="Top" 
-                              HorizontalContentAlignment="Stretch" 
-                              XamlSource="NavigationView\NavigationViewSample8_xaml.txt"
-                              WebViewHeight="400">
-            <local:ControlExample.Options>
-                <StackPanel>
-                    <RadioButton x:Name="nvSample8Left" Content="Left mode" Checked="panePositionLeft_Checked" IsChecked="True"/>
-                    <RadioButton x:Name="nvSample8Top" Content="Top mode" Checked="panePositionTop_Checked"/>
-                    <RadioButton x:Name="nvSample8LeftCompact" Content="LeftCompact mode" Checked="panePositionLeftCompact_Checked"/>
-                </StackPanel>
-            </local:ControlExample.Options>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock TextWrapping="WrapWholeWords"
-                           Margin="0,0,0,12"
-                           Grid.Row="0"
-                           Text="NavigationView supports hierarchy in Left, LeftCompact, and Top display modes. Note that Left or Top mode works best if your parent items should navigate to specific pages, rather than just serve as headings. To expand the sub-menu without selecting the parent item, click the chevron. Choose between the three modes to see how each works." />
-
-                <muxc:NavigationView x:Name="nvSample8" Grid.Row="1" Height="460"
-                                        PaneDisplayMode="Left" 
-                                        IsTabStop="False" 
-                                        SelectionChanged="NavigationView_SelectionChanged8">
-                    <muxc:NavigationView.MenuItems>
-                        <muxc:NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
-                        <muxc:NavigationViewItem Content="Parent Item 1" Icon="Save" ToolTipService.ToolTip="Parent Item 1" Tag="SamplePage2">
-                            <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Child A" Icon="Refresh" ToolTipService.ToolTip="Child 1" Tag="SamplePage3"/>
-                                <muxc:NavigationViewItem Content="Child B" Icon="Download" ToolTipService.ToolTip="Child 2" Tag="SamplePage4"/>
-                            </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Parent Item 2" Icon="Calendar" ToolTipService.ToolTip="Parent Item 2" Tag="SamplePage7">
-                            <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Child C" Icon="Page" ToolTipService.ToolTip="Child 1" Tag="SamplePage5"/>
-                                <muxc:NavigationViewItem Content="Child D" Icon="Mail" ToolTipService.ToolTip="Child 2" Tag="SamplePage6"/>
-                            </muxc:NavigationViewItem.MenuItems>
-                        </muxc:NavigationViewItem>
-                    </muxc:NavigationView.MenuItems>
-                    <Frame Margin="0,0,0,0" x:Name="contentFrame8" />
-                </muxc:NavigationView>
-            </Grid>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="PaneDisplay" Value="{x:Bind nvSample8.PaneDisplayMode, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
-    </Grid>
+    </StackPanel>
 </Page>

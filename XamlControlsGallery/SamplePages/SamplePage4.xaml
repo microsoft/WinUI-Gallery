@@ -22,10 +22,6 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!--<Grid MinHeight="100" Grid.ColumnSpan="3" Margin="5">
-            <TextBlock Text="Sample Page 3" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" />
-        </Grid>-->
-
                 <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" MinHeight="{StaticResource TileHeight}" Background="DarkSalmon" Margin="5" />
                 <Grid Grid.Row="1" Grid.Column="1" MinHeight="{StaticResource TileHeight}" Background="DarkRed" Margin="5" />
                 <Grid Grid.Row="1" Grid.Column="2" MinHeight="{StaticResource TileHeight}" Background="LightCoral" Margin="5" />
