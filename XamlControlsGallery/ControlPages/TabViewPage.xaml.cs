@@ -230,7 +230,7 @@ namespace AppUIBasics.ControlPages
                     overlayMode = TabViewCloseButtonOverlayMode.Auto;
                     break;
                 case "OnHover":
-                    overlayMode = TabViewCloseButtonOverlayMode.OnHover;
+                    overlayMode = TabViewCloseButtonOverlayMode.OnPointerOver;
                     break;
                 case "Always":
                     overlayMode = TabViewCloseButtonOverlayMode.Always;
