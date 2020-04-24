@@ -244,25 +244,39 @@
 
                 <TextBlock TextWrapping="WrapWholeWords"
                            Margin="0,0,0,12"
-                           Grid.Row="0"
-                           Text="NavigationView supports hierarchy in Left, LeftCompact, and Top display modes. Note that Left or Top mode works best if your parent items should navigate to specific pages, rather than just serve as headings. To expand the sub-menu without selecting the parent item, click the chevron. Choose between the three modes to see how each works." />
-
+                           Grid.Row="0"/>
+                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                    <Paragraph>NavigationView supports hierarchy in Left, LeftCompact, and Top display modes.
+                        <LineBreak/>
+                    </Paragraph>
+                    <Paragraph>
+                        In the example below, the "Account" tab navigates to its own page while "Document options" only opens up its subtree of items. This is done by setting the SelectsOnInvoked property to false on the Document options NavigationView Item.
+                    <LineBreak />
+                    </Paragraph>
+                    <Paragraph>
+                        In both Top and Left modes, clicking the arrows on NavigationViewItems will expand or collapse the subtree. Clicking or tapping elsewhere on the NavigationViewItem will collapse or expand the subtree.
+                    <LineBreak />
+                    </Paragraph>
+                    <Paragraph>
+                        Switch between the three pane display modes on the right.
+                    </Paragraph>
+                </RichTextBlock>
                 <muxc:NavigationView x:Name="nvSample8" Grid.Row="1" Height="460"
                                         PaneDisplayMode="Left" 
                                         IsTabStop="False" 
                                         SelectionChanged="NavigationView_SelectionChanged8">
                     <muxc:NavigationView.MenuItems>
                         <muxc:NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="Home" Tag="SamplePage1"/>
-                        <muxc:NavigationViewItem Content="Parent Item 1" Icon="Contact" ToolTipService.ToolTip="Parent Item 1" Tag="SamplePage2">
+                        <muxc:NavigationViewItem Content="Account" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Child A" Icon="Mail" ToolTipService.ToolTip="Child 1" Tag="SamplePage3"/>
-                                <muxc:NavigationViewItem Content="Child B" Icon="Calendar" ToolTipService.ToolTip="Child 2" Tag="SamplePage4"/>
+                                <muxc:NavigationViewItem Content="Mail" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                                <muxc:NavigationViewItem Content="Calendar" Icon="Calendar" ToolTipService.ToolTip="Calendar" Tag="SamplePage4"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem Content="Parent Item 2" Icon="Page2" ToolTipService.ToolTip="Parent Item 2" SelectsOnInvoked="False">
+                        <muxc:NavigationViewItem Content="Document options" Icon="Page2" ToolTipService.ToolTip="Document options" SelectsOnInvoked="False">
                             <muxc:NavigationViewItem.MenuItems>
-                                <muxc:NavigationViewItem Content="Child C" Icon="NewFolder" ToolTipService.ToolTip="Child 1" Tag="SamplePage5"/>
-                                <muxc:NavigationViewItem Content="Child D" Icon="OpenLocal" ToolTipService.ToolTip="Child 2" Tag="SamplePage6"/>
+                                <muxc:NavigationViewItem Content="Create new" Icon="NewFolder" ToolTipService.ToolTip="Create new" Tag="SamplePage5"/>
+                                <muxc:NavigationViewItem Content="Upload file" Icon="OpenLocal" ToolTipService.ToolTip="Upload file" Tag="SamplePage6"/>
                             </muxc:NavigationViewItem.MenuItems>
                         </muxc:NavigationViewItem>
                     </muxc:NavigationView.MenuItems>
