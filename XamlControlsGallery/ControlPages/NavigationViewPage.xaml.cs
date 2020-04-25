@@ -1,4 +1,4 @@
-﻿using AppUIBasics.SamplePages;
+using AppUIBasics.SamplePages;
 using AppUIBasics.Common;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -32,6 +32,7 @@ namespace AppUIBasics.ControlPages
             nvSample5.SelectedItem = nvSample5.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             nvSample6.SelectedItem = nvSample6.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             nvSample7.SelectedItem = nvSample7.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
+            nvSample8.SelectedItem = nvSample8.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
             Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
@@ -166,6 +167,30 @@ namespace AppUIBasics.ControlPages
             }
         }
 
+        private void NavigationView_SelectionChanged8(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+        {
+            /* NOTE: for this function to work, every NavigationView must follow the same naming convention: nvSample# (i.e. nvSample3),
+            and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
+
+            // Get the sample number
+            string sampleNum = (sender.Name).Substring(8);
+            Debug.Print("num: " + sampleNum + "\n");
+
+            if (args.IsSettingsSelected)
+            {
+                contentFrame8.Navigate(typeof(SampleSettingsPage));
+            }
+            else
+            {
+                var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+                string selectedItemTag = ((string)selectedItem.Tag);
+                sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+                string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                Type pageType = Type.GetType(pageName);
+                contentFrame8.Navigate(pageType);
+            }
+        }
+
         private void databindHeader_Checked(object sender, RoutedEventArgs e)
         {
             Categories = new ObservableCollection<CategoryBase>()
@@ -272,22 +297,50 @@ namespace AppUIBasics.ControlPages
 
         private void panePositionLeft_Checked(object sender, RoutedEventArgs e)
         {
-            if ((sender as RadioButton).IsChecked == true && nvSample != null)
+            if ((sender as RadioButton).IsChecked == true)
             {
-                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
-                nvSample.IsPaneOpen = true;
-                FooterStackPanel.Orientation = Orientation.Vertical;
+                if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
+                {
+                    nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample.IsPaneOpen = true;
+                    FooterStackPanel.Orientation = Orientation.Vertical;
+                }
+                else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
+                {
+                    nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample8.IsPaneOpen = true;
+                }
             }
         }
 
 
         private void panePositionTop_Checked(object sender, RoutedEventArgs e)
         {
-            if ((sender as RadioButton).IsChecked == true && nvSample != null)
+            if ((sender as RadioButton).IsChecked == true)
             {
-                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
-                nvSample.IsPaneOpen = false;
-                FooterStackPanel.Orientation = Orientation.Horizontal;
+                if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
+                {
+                    nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample.IsPaneOpen = false;
+                    FooterStackPanel.Orientation = Orientation.Horizontal;
+                }
+                else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
+                {
+                    nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample8.IsPaneOpen = false;
+                }
+            }
+        }
+
+        private void panePositionLeftCompact_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((sender as RadioButton).IsChecked == true)
+            {
+                if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
+                {
+                    nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                    nvSample8.IsPaneOpen = false;
+                }
             }
         }
 

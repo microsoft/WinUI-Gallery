@@ -1,7 +1,7 @@
 <!-- XAML Code: -->
-<muxc:ItemsRepeaterScrollHost>
+<ItemsRepeaterScrollHost>
     <ScrollViewer>
-        <muxc:ItemsRepeater x:Name="VariedImageSizeRepeater" 
+        <ItemsRepeater x:Name="VariedImageSizeRepeater" 
 			    ItemTemplate="{StaticResource RecipeTemplate}">
 	    
            <!-- IMPORTANT: This ItemsRepeater uses a custom-created layout 
@@ -9,12 +9,12 @@
   		the full source code for this layout in the file 
 		VariedImageSizeLayout.cs in the XAML Controls Gallery repo. -->
 
-            <muxc:ItemsRepeater.Layout>
+            <ItemsRepeater.Layout>
                 <common:VariedImageSizeLayout Width="200" />
-            </muxc:ItemsRepeater.Layout>
-        </muxc:ItemsRepeater>
+            </ItemsRepeater.Layout>
+        </ItemsRepeater>
     </ScrollViewer>
-</muxc:ItemsRepeaterScrollHost>
+</ItemsRepeaterScrollHost>
 
 <!-- DataTemplate used: -->
 <!-- This repeater holds Recipe objects, which is a custom class defined in 
