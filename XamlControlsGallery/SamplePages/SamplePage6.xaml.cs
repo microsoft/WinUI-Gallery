@@ -2,9 +2,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.SamplePages
 {
-    public sealed partial class SamplePage3 : Page
+    public sealed partial class SamplePage6 : Page
     {
-        public SamplePage3()
+        public SamplePage6()
         {
             this.InitializeComponent();
         }

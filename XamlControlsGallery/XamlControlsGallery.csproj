@@ -261,6 +261,7 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample8_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
@@ -618,6 +619,15 @@
     </Compile>
     <Compile Include="SamplePages\SamplePage3.xaml.cs">
       <DependentUpon>SamplePage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage5.xaml.cs">
+      <DependentUpon>SamplePage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage6.xaml.cs">
+      <DependentUpon>SamplePage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage7.xaml.cs">
+      <DependentUpon>SamplePage7.xaml</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\SampleSettingsPage.xaml.cs">
       <DependentUpon>SampleSettingsPage.xaml</DependentUpon>
@@ -1116,13 +1126,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SamplePages\SamplePage3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SamplePages\SamplePage4.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SamplePages\SamplePage3.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="SamplePages\SamplePage5.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SamplePages\SampleSettingsPage.xaml">
       <SubType>Designer</SubType>
