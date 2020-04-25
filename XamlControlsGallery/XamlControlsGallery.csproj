@@ -610,9 +610,6 @@
     <Compile Include="SamplePages\SamplePage1.xaml.cs">
       <DependentUpon>SamplePage1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SamplePages\SamplePage7.xaml.cs">
-      <DependentUpon>SamplePage7.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SamplePages\SamplePage2.xaml.cs">
       <DependentUpon>SamplePage2.xaml</DependentUpon>
     </Compile>
@@ -622,8 +619,15 @@
     <Compile Include="SamplePages\SamplePage3.xaml.cs">
       <DependentUpon>SamplePage3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SamplePages\SamplePage5.cs" />
-    <Compile Include="SamplePages\SamplePage6.cs" />
+    <Compile Include="SamplePages\SamplePage5.xaml.cs">
+      <DependentUpon>SamplePage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage6.xaml.cs">
+      <DependentUpon>SamplePage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage7.xaml.cs">
+      <DependentUpon>SamplePage7.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SamplePages\SampleSettingsPage.xaml.cs">
       <DependentUpon>SampleSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -1117,11 +1121,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SamplePages\SamplePage7.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="SamplePages\SamplePage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SamplePage3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1129,15 +1133,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SamplePages\SamplePage3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SamplePages\SamplePage5.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SamplePages\SamplePage6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage7.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
