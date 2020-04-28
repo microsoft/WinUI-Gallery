@@ -41,7 +41,6 @@ namespace AppUIBasics
         public VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
-        private PageHeader _header;
         private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
@@ -66,7 +65,7 @@ namespace AppUIBasics
         {
             get
             {
-                return _header ?? (_header = UIHelper.GetDescendantsOfType<PageHeader>(NavigationViewControl).FirstOrDefault());
+                return UIHelper.GetDescendantsOfType<PageHeader>(NavigationViewControl).FirstOrDefault();
             }
         }
 
