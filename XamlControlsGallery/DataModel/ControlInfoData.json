@@ -1031,7 +1031,7 @@
           "Docs": [
             {
               "Title": "ProgressBar - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.ProgressBar"
+              "Uri": "https://docs.microsoft.com/uwp/api/Microsoft.UI.Xaml.Controls.ProgressBar"
             },
             {
               "Title": "Guidelines",
@@ -1053,7 +1053,7 @@
           "Docs": [
             {
               "Title": "ProgressRing - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.progressring"
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.progressring"
             },
             {
               "Title": "Guidelines",
