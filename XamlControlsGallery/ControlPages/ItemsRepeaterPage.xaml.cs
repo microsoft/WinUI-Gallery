@@ -342,7 +342,9 @@ namespace AppUIBasics.ControlPages
         }
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
-            VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+#if WINUI_PRERELEASE
+             VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+#endif
         }
 
         public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
