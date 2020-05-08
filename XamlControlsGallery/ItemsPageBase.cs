@@ -63,7 +63,7 @@ namespace AppUIBasics
                 //gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
             }
 
-            this.Frame.Navigate(typeof(ItemPage), _itemId);
+            this.Frame.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)
