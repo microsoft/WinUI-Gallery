@@ -327,3 +327,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/XamlControlsGallery/testcert.pfx
