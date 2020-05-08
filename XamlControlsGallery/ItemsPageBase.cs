@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -60,7 +60,7 @@ namespace AppUIBasics
 
             if (gridView.ContainerFromItem(item) is GridViewItem)
             {
-                gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
+                //gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
             }
 
             this.Frame.Navigate(typeof(ItemPage), _itemId);

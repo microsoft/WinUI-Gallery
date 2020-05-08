@@ -160,11 +160,11 @@ namespace AppUIBasics
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
                 if (item.IsNew && NavigationRootPage.Current.CheckNewControlSelected())
                 {
-                    PlayConnectedAnimation();
+                    //PlayConnectedAnimation();
                     return;
                 }
 
-                PlayConnectedAnimation();
+                //PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
