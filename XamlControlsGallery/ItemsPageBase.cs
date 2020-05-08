@@ -58,11 +58,6 @@ namespace AppUIBasics
 
             _itemId = item.UniqueId;
 
-            if (gridView.ContainerFromItem(item) is GridViewItem)
-            {
-                //gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
-            }
-
             this.Frame.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
         }
 
@@ -96,19 +91,6 @@ namespace AppUIBasics
                     if (NavigationRootPage.Current.IsFocusSupported)
                     {
                         ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
-                    }
-
-                    ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
-
-                    if (animation != null)
-                    {
-                        // Setup the "basic" configuration if the API is present. 
-                        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                        {
-                            animation.Configuration = new BasicConnectedAnimationConfiguration();
-                        }
-
-                        await gridView.TryStartConnectedAnimationAsync(animation, item, "controlRoot");
                     }
                 }
             }

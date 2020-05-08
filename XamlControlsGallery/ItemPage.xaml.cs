@@ -158,37 +158,9 @@ namespace AppUIBasics
                 }
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
-                if (item.IsNew && NavigationRootPage.Current.CheckNewControlSelected())
-                {
-                    //PlayConnectedAnimation();
-                    return;
-                }
-
-                //PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
-        }
-
-        void PlayConnectedAnimation()
-        {
-            if (NavigationRootPage.Current.PageHeader != null)
-            {
-                var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
-
-                if (connectedAnimation != null)
-                {
-                    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-
-                    // Setup the "basic" configuration if the API is present. 
-                    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                    {
-                        connectedAnimation.Configuration = new BasicConnectedAnimationConfiguration();
-                    }
-
-                    connectedAnimation.TryStart(target, new UIElement[] { descriptionText });
-                }
-            }
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -202,14 +174,6 @@ namespace AppUIBasics
         {
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
-
-            // Disable temporarily while investigating this crash.
-            //Reverse Connected Animation
-            //if (e.SourcePageType != typeof(ItemPage))
-            //{
-            //    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-            //    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
-            //}
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
