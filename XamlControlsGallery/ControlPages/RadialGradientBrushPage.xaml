@@ -55,12 +55,12 @@
                         <x:String>RelativeToBoundingBox</x:String>
                         <x:String>Absolute</x:String>
                     </ComboBox>
-                    <Slider x:Name="CenterXSlider" Header="Center.X" Grid.Row="1" ValueChanged="OnSliderValueChanged"/>
-                    <Slider x:Name="CenterYSlider" Header="Center.Y" Grid.Row="1" Grid.Column="1" ValueChanged="OnSliderValueChanged"/>
-                    <Slider x:Name="RadiusXSlider" Header="RadiusX" Grid.Row="2" ValueChanged="OnSliderValueChanged"/>
-                    <Slider x:Name="RadiusYSlider" Header="RadiusY" Grid.Row="2" Grid.Column="1" ValueChanged="OnSliderValueChanged"/>
-                    <Slider x:Name="OriginXSlider" Header="GradientOrigin.X" Grid.Row="3" ValueChanged="OnSliderValueChanged"/>
-                    <Slider x:Name="OriginYSlider" Header="GradientOrigin.Y" Grid.Row="3" Grid.Column="1" ValueChanged="OnSliderValueChanged"/>
+                    <Slider x:Name="CenterXSlider" Header="Center.X" Grid.Row="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="CenterYSlider" Header="Center.Y" Grid.Row="1" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="RadiusXSlider" Header="RadiusX" Grid.Row="2" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="RadiusYSlider" Header="RadiusY" Grid.Row="2" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="OriginXSlider" Header="GradientOrigin.X" Grid.Row="3" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="OriginYSlider" Header="GradientOrigin.Y" Grid.Row="3" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
                     <ComboBox
                         x:Name="SpreadMethodComboBox"
                         Margin="0,10,0,0"
