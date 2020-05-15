@@ -12,6 +12,7 @@ using ColorCode;
 using ColorCode.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
@@ -259,6 +260,9 @@ namespace AppUIBasics
         {
             // Trim out stray blank lines at start and end.
             sampleString = sampleString.TrimStart('\n').TrimEnd();
+
+            // Also trim out spaces at the end of each line
+            sampleString = string.Join('\n', sampleString.Split('\n').Select(s => s.TrimEnd()));
 
             // Perform any applicable substitutions.
             sampleString = SubstitutionPattern.Replace(sampleString, match =>
