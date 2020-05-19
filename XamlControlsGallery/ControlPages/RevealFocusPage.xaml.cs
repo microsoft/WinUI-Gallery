@@ -9,14 +9,17 @@
 //*********************************************************
 using System;
 using Windows.Foundation.Metadata;
-using Windows.UI;
+using Microsoft.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class RevealFocusPage : Page
     {
         public RevealFocusPage()
@@ -58,7 +61,6 @@ namespace AppUIBasics.ControlPages
             primaryBrushText.Value = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
             primaryColorKeyText.Value = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
-            FocusVisualKindSubstitution.Value = "HighVisibility";
         }
 
         // DEMO ONLY: Change focus visual mode to reveal focus
@@ -71,7 +73,6 @@ namespace AppUIBasics.ControlPages
                 primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
                 primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
-                FocusVisualKindSubstitution.Value = "Reveal";
             }
         }
 
@@ -129,10 +130,14 @@ namespace AppUIBasics.ControlPages
     {
         public static Thickness IntToThickness(double UniformLength)
         {
+#if USING_CSWINRT
             return new Thickness(UniformLength);
+#else
+            return ThicknessHelper.FromUniformLength(UniformLength);
+#endif
         }
 
-        public static SolidColorBrush ColorToBrush(Color color)
+        public static SolidColorBrush ColorToBrush(Windows.UI.Color color)
         {
             return new SolidColorBrush(color);
         }

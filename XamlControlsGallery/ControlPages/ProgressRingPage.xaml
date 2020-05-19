@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -16,12 +16,11 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample HeaderText="An indeterminate progress ring.">
 
-            <controls:ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
 
             <local:ControlExample.Options>
                 <StackPanel>

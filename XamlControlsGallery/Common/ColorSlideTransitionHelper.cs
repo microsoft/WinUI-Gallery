@@ -12,9 +12,9 @@
 using System;
 using System.Numerics;
 using Windows.Foundation;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Hosting;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Hosting;
 
 namespace AppUIBasics.Common
 {

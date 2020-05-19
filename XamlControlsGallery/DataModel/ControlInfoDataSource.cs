@@ -9,13 +9,17 @@
 //*********************************************************
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Storage;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using AppUIBasics.Common;
+
+#if USING_CSWINRT
+using System.Collections.ObjectModel;
+#endif
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -32,7 +36,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string subtitle, string imagePath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
+        public ControlInfoDataItem(String uniqueId, String title, String subtitle, String imagePath, String badgeString, String description, String content, bool isNew, bool isUpdated, bool isPreview)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -61,6 +65,8 @@ namespace AppUIBasics.Data
         public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
         public ObservableCollection<string> RelatedControls { get; private set; }
 
+        public bool IncludedInBuild { get; set; }
+
         public override string ToString()
         {
             return this.Title;
@@ -84,7 +90,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string description)
+        public ControlInfoDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -187,16 +193,16 @@ namespace AppUIBasics.Data
                 }
             }
 
-            Uri dataUri = new Uri("ms-appx:///DataModel/ControlInfoData.json");
-
-            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
-            string jsonText = await FileIO.ReadTextAsync(file);
+            string jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
 
             JsonObject jsonObject = JsonObject.Parse(jsonText);
             JsonArray jsonArray = jsonObject["Groups"].GetArray();
 
             lock (_lock)
             {
+                var loader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+                string pageRoot = loader.GetString("PageStringRoot");
+
                 foreach (JsonValue groupValue in jsonArray)
                 {
                     JsonObject groupObject = groupValue.GetObject();
@@ -239,6 +245,12 @@ namespace AppUIBasics.Data
                                                                 isNew,
                                                                 isUpdated,
                                                                 isPreview);
+
+                        {
+                            string pageString = pageRoot + item.UniqueId + "Page";
+                            Type pageType = Type.GetType(pageString);
+                            item.IncludedInBuild = pageType != null;
+                        }
 
                         if (itemObject.ContainsKey("Docs"))
                         {

@@ -1,16 +1,20 @@
 using System;
+using Windows.Foundation.Metadata;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+
+#if USING_CSWINRT
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using ICommand = System.Windows.Input.ICommand;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
     public class ListItemData
     {
-        public string Text { get; set; }
+        public String Text { get; set; }
         public ICommand Command { get; set; }
     }
 

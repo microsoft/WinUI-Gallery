@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
 {
@@ -28,7 +28,7 @@ namespace AppUIBasics
         /// </summary>
         private bool _ignorePropertyChange;
 
-        #region public double ItemHeight
+        #region public float ItemHeight
         /// <summary>
         /// Gets or sets the height of the layout area for each item that is
         /// contained in a <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" />.
@@ -39,9 +39,9 @@ namespace AppUIBasics
         /// default value is <see cref="F:System.Double.NaN" />.
         /// </value>
         //[TypeConverter(typeof(LengthConverter))]
-        public double ItemHeight
+        public float ItemHeight
         {
-            get { return (double)GetValue(ItemHeightProperty); }
+            get { return (float)GetValue(ItemHeightProperty); }
             set { SetValue(ItemHeightProperty, value); }
         }
 
@@ -58,12 +58,12 @@ namespace AppUIBasics
         public static readonly DependencyProperty ItemHeightProperty =
             DependencyProperty.Register(
                 "ItemHeight",
-                typeof(double),
+                typeof(float),
                 typeof(WrapPanel),
-                new PropertyMetadata(double.NaN, OnItemHeightOrWidthPropertyChanged));
-        #endregion public double ItemHeight
+                new PropertyMetadata(float.NaN, OnItemHeightOrWidthPropertyChanged));
+        #endregion public float ItemHeight
 
-        #region public double ItemWidth
+        #region public float ItemWidth
         /// <summary>
         /// Gets or sets the width of the layout area for each item that is
         /// contained in a <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" />.
@@ -74,9 +74,9 @@ namespace AppUIBasics
         /// The default value is <see cref="F:System.Double.NaN" />.
         /// </value>
         //[TypeConverter(typeof(LengthConverter))]
-        public double ItemWidth
+        public float ItemWidth
         {
-            get { return (double)GetValue(ItemWidthProperty); }
+            get { return (float)GetValue(ItemWidthProperty); }
             set { SetValue(ItemWidthProperty, value); }
         }
 
@@ -93,19 +93,19 @@ namespace AppUIBasics
         public static readonly DependencyProperty ItemWidthProperty =
             DependencyProperty.Register(
                 "ItemWidth",
-                typeof(double),
+                typeof(float),
                 typeof(WrapPanel),
                 new PropertyMetadata(double.NaN, OnItemHeightOrWidthPropertyChanged));
-        #endregion public double ItemWidth
+#endregion public float ItemWidth
 
-        #region public Orientation Orientation
+#region public Orientation Orientation
         /// <summary>
         /// Gets or sets the direction in which child elements are arranged.
         /// </summary>
         /// <value>
-        /// One of the <see cref="T:Windows.UI.Xaml.Controls.Orientation" />
+        /// One of the <see cref="T:Microsoft.UI.Xaml.Controls.Orientation" />
         /// values.  The default is
-        /// <see cref="F:Windows.UI.Xaml.Controls.Orientation.Horizontal" />.
+        /// <see cref="F:Microsoft.UI.Xaml.Controls.Orientation.Horizontal" />.
         /// </value>
         public Orientation Orientation
         {
@@ -166,7 +166,7 @@ namespace AppUIBasics
             // Orientation affects measuring.
             source.InvalidateMeasure();
         }
-        #endregion public Orientation Orientation
+#endregion public Orientation Orientation
 
         /// <summary>
         /// Initializes a new instance of the
@@ -187,7 +187,7 @@ namespace AppUIBasics
         private static void OnItemHeightOrWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             WrapPanel source = (WrapPanel)d;
-            double value = (double)e.NewValue;
+            float value = (float)e.NewValue;
 
             // Ignore the change if requested
             if (source._ignorePropertyChange)
@@ -198,11 +198,11 @@ namespace AppUIBasics
 
             // Validate the length (which must either be NaN or a positive,
             // finite number)
-            if (!double.IsNaN(value) && ((value <= 0.0) || double.IsPositiveInfinity(value)))
+            if (!float.IsNaN(value) && ((value <= 0.0) || float.IsPositiveInfinity(value)))
             {
                 // Reset the property to its original state before throwing
                 source._ignorePropertyChange = true;
-                source.SetValue(e.Property, (double)e.OldValue);
+                source.SetValue(e.Property, (float)e.OldValue);
 
                 string message = string.Format(
                     CultureInfo.InvariantCulture,
@@ -219,7 +219,7 @@ namespace AppUIBasics
         /// Measures the child elements of a
         /// <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" /> in anticipation
         /// of arranging them during the
-        /// <see cref="Windows.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
+        /// <see cref="Microsoft.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
         /// pass.
         /// </summary>
         /// <param name="constraint">
@@ -240,13 +240,13 @@ namespace AppUIBasics
             Orientation o = Orientation;
             OrientedSize lineSize = new OrientedSize(o);
             OrientedSize totalSize = new OrientedSize(o);
-            OrientedSize maximumSize = new OrientedSize(o, constraint.Width, constraint.Height);
+            OrientedSize maximumSize = new OrientedSize(o, (float)constraint.Width, (float)constraint.Height);
 
             // Determine the constraints for individual items
-            double itemWidth = ItemWidth;
-            double itemHeight = ItemHeight;
-            bool hasFixedWidth = !double.IsNaN(itemWidth);
-            bool hasFixedHeight = !double.IsNaN(itemHeight);
+            float itemWidth = ItemWidth;
+            float itemHeight = ItemHeight;
+            bool hasFixedWidth = !float.IsNaN(itemWidth);
+            bool hasFixedHeight = !float.IsNaN(itemHeight);
             Size itemSize = new Size(
                 hasFixedWidth ? itemWidth : constraint.Width,
                 hasFixedHeight ? itemHeight : constraint.Height);
@@ -258,8 +258,8 @@ namespace AppUIBasics
                 element.Measure(itemSize);
                 OrientedSize elementSize = new OrientedSize(
                     o,
-                    hasFixedWidth ? itemWidth : element.DesiredSize.Width,
-                    hasFixedHeight ? itemHeight : element.DesiredSize.Height);
+                    hasFixedWidth ? itemWidth : (float)element.DesiredSize.Width,
+                    hasFixedHeight ? itemHeight : (float)element.DesiredSize.Height);
 
                 // If this element falls of the edge of the line
                 if (NumericExtensions.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
@@ -322,17 +322,17 @@ namespace AppUIBasics
             // or a column depending on the orientation.
             Orientation o = Orientation;
             OrientedSize lineSize = new OrientedSize(o);
-            OrientedSize maximumSize = new OrientedSize(o, finalSize.Width, finalSize.Height);
+            OrientedSize maximumSize = new OrientedSize(o, (float)finalSize.Width, (float)finalSize.Height);
 
             // Determine the constraints for individual items
-            double itemWidth = ItemWidth;
-            double itemHeight = ItemHeight;
-            bool hasFixedWidth = !itemWidth.IsNaN();
-            bool hasFixedHeight = !itemHeight.IsNaN();
-            double indirectOffset = 0;
-            double? directDelta = (o == Orientation.Horizontal) ?
-                (hasFixedWidth ? (double?)itemWidth : null) :
-                (hasFixedHeight ? (double?)itemHeight : null);
+            float itemWidth = ItemWidth;
+            float itemHeight = ItemHeight;
+            bool hasFixedWidth = !float.IsNaN(itemWidth);
+            bool hasFixedHeight = !float.IsNaN(itemHeight);
+            float indirectOffset = 0;
+            float? directDelta = (o == Orientation.Horizontal) ?
+                (hasFixedWidth ? (float?)itemWidth : null) :
+                (hasFixedHeight ? (float?)itemHeight : null);
 
             // Measure each of the Children.  We will process the elements one
             // line at a time, just like during measure, but we will wait until
@@ -349,8 +349,8 @@ namespace AppUIBasics
                 // Get the size of the element
                 OrientedSize elementSize = new OrientedSize(
                     o,
-                    hasFixedWidth ? itemWidth : element.DesiredSize.Width,
-                    hasFixedHeight ? itemHeight : element.DesiredSize.Height);
+                    hasFixedWidth ? itemWidth : (float)element.DesiredSize.Width,
+                    hasFixedHeight ? itemHeight : (float)element.DesiredSize.Height);
 
                 // If this element falls of the edge of the line
                 if (NumericExtensions.IsGreaterThan(lineSize.Direct + elementSize.Direct, maximumSize.Direct))
@@ -411,9 +411,9 @@ namespace AppUIBasics
         /// <param name="indirectGrowth">
         /// Shared indirect growth of the elements on this line.
         /// </param>
-        private void ArrangeLine(int lineStart, int lineEnd, double? directDelta, double indirectOffset, double indirectGrowth)
+        private void ArrangeLine(int lineStart, int lineEnd, float? directDelta, float indirectOffset, float indirectGrowth)
         {
-            double directOffset = 0.0;
+            float directOffset = 0.0f;
 
             Orientation o = Orientation;
             bool isHorizontal = o == Orientation.Horizontal;
@@ -423,11 +423,11 @@ namespace AppUIBasics
             {
                 // Get the size of the element
                 UIElement element = children[index];
-                OrientedSize elementSize = new OrientedSize(o, element.DesiredSize.Width, element.DesiredSize.Height);
+                OrientedSize elementSize = new OrientedSize(o, (float)element.DesiredSize.Width, (float)element.DesiredSize.Height);
 
                 // Determine if we should use the element's desired size or the
                 // fixed item width or height
-                double directGrowth = directDelta != null ?
+                float directGrowth = directDelta != null ?
                     directDelta.Value :
                     elementSize.Direct;
 

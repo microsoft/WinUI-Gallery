@@ -4,24 +4,23 @@
       xmlns:local="using:AppUIBasics"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     
     <Page.Resources>
-        <muxc:CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
+        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
             <AppBarButton Label="Share" Icon="Share" ToolTipService.ToolTip="Share" Click="OnElementClicked" />
             <AppBarButton Label="Save" Icon="Save" ToolTipService.ToolTip="Save" Click="OnElementClicked" />
             <AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="OnElementClicked" />
-            <muxc:CommandBarFlyout.SecondaryCommands>
+            <CommandBarFlyout.SecondaryCommands>
                 <AppBarButton Label="Resize" Click="OnElementClicked" />
                 <AppBarButton Label="Move" Click="OnElementClicked" />
-            </muxc:CommandBarFlyout.SecondaryCommands>
-        </muxc:CommandBarFlyout>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
     </Page.Resources>
     
     <StackPanel>
-        <local:ControlExample HeaderText="CommandBarFlyout for commands on an in-app object" XamlSource="CommandBarFlyout/CommandBarFlyoutSample1_xaml.txt"
-                              CSharpSource="CommandBarFlyout/CommandBarFlyoutSample1_cs.txt">
+        <local:ControlExample HeaderText="CommandBarFlyout for commands on an in-app object" XamlSource="CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt"
+                              CSharpSource="CommandBarFlyout\CommandBarFlyoutSample1_cs.txt">
             <StackPanel>
                 <TextBlock Text="Click or right click the image to open a CommandBarFlyout" />
                 <Button x:Name="myImageButton" AutomationProperties.Name="mountain" Padding="0" Margin="0,12"

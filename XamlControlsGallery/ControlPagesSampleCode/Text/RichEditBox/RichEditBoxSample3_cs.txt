@@ -1,6 +1,5 @@
 ﻿private Color currentColor = Colors.Black;
 private string LastFormattedText = "";
-private int LastRawTextLength = 0;
 
 private async void OpenButton_Click(object sender, RoutedEventArgs e)
 {
@@ -74,13 +73,13 @@ private void ColorButton_Click(object sender, RoutedEventArgs e)
 {
     // Extract the color of the button that was clicked.
     Button clickedColor = (Button)sender;
-    var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-    var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+    var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+    var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
     editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
     fontColorButton.Flyout.Hide();
-    editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+    editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
     currentColor = color;
 }
 
@@ -115,12 +114,6 @@ private void FindBoxRemoveHighlights()
 
 private void Editor_GotFocus(object sender, RoutedEventArgs e)
 {
-    editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
-    if (currentRawText.Length != LastRawTextLength)
-    {
-        // User used cut or paste from action command, skip the event
-        return;
-    }
     // reset colors to correct defaults for Focused state
     ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
     SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -152,11 +145,6 @@ private void Editor_GotFocus(object sender, RoutedEventArgs e)
 
 private void Editor_LosingFocus(object sender, RoutedEventArgs e)
 {
-    // Save text length to determine text length change
-    editor.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
-    LastRawTextLength = lastRawText.Length; 
-            
-    // Save formatted to restore formatting upon regaining focus
     editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
 }
 

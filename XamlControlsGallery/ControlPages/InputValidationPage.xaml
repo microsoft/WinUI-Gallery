@@ -1,71 +1,202 @@
-﻿<Page
+﻿<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
     x:Class="AppUIBasics.ControlPages.InputValidationPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:AppUIBasics"
-    x:Name="RootPanel"
-    Margin="0,16,0,0"
-    d:DesignHeight="250"
-    d:DesignWidth="1000"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <StackPanel.Resources>
-            <DataTemplate x:Key="ValidationErrorTemplate">
-                <ItemsControl
-                            Grid.ColumnSpan="6" Grid.Row="2"
-                            ItemsSource="{Binding Path=(Validation.Errors), Mode=OneWay}"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Left"
-                            Margin="0,0,0,-25"
-                            FontSize="12"
-                            Foreground="#C50500">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate x:DataType="ValidationError">
-                            <StackPanel Orientation="Horizontal" Spacing="5">
-                                <Border Background="#C50500" Margin="3" CornerRadius="10" Width="12" Height="12" VerticalAlignment="Top">
-                                    <TextBlock Text="!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <TextBlock Text="{Binding ErrorMessage, Mode=OneWay}"
-                                        Foreground="#C50500"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </DataTemplate>
-        </StackPanel.Resources>
-        <local:ControlExample x:Name="Example1" HeaderText="Adding Input Validation to a control" >
-            <StackPanel>
-                <TextBlock x:Name="HeaderBlock" Text="Compact Spacing" FontSize="18"/>
-                <TextBox Header="First Name:" x:Name="txtfirstName" />
-                <TextBox Header="Last Name:" x:Name="txtLastName"  />
-                <PasswordBox Header="Password:" />
-                <PasswordBox Header="Confrim Password:" />
-                <DatePicker Header="Date Of Birth" />
-                <TextBox 
-                x:Name="mailvalidation"
-                Header="Email:"
-                PlaceholderText="Email address"
-                Validation.IsRequired="True"
-                TextChanged="mailvalidation_TextChanged"
-                Width="400"
-                />
-            </StackPanel>
+    <local:ControlExample x:Name="Example1" >
+        <Grid>
+            <Rectangle
+            x:Name="Backdrop"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            AutomationProperties.AccessibilityView="Raw"
+            
+            IsHitTestVisible="True"
+            />
+            <!-- Fill="{ThemeResource CategorySelectorBackdropBrush}" -->
+            <!-- Fill="#CC000000" (Default/Dark value - light has different) -->
+            <!-- Tapped="{x:Bind Path=ViewModel.OnLightDismiss, Mode=OneWay}" -->
 
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;TextBox Name="mailvalidation"
-    Header="Email:"
-    Validation.IsRequired="True"
-    UpdateSourceTrigger=PropertyChanged,
-    Mode=TwoWay}&gt;
-</x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-    </StackPanel>
+            <Grid
+            x:Name="PurchaseForm"
+            Width="548"
+            Margin="24,24,24,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            >
+                <!-- Background="{ThemeResource PurchaseBackdropBrush}" -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <ScrollViewer
+                Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalScrollBarVisibility="Disabled"
+                HorizontalScrollMode="Disabled"
+                VerticalScrollBarVisibility="Auto"
+                VerticalScrollMode="Auto">
+                    <StackPanel Margin="24,18,24,8">
+                        <TextBlock
+                        x:Uid="AddCreditOrDebitCardCaption"
+                        Margin="0,0,0,16"
+                        Text="Add a credit or debit card"
+                        Style="{StaticResource SubtitleTextBlockStyle}"                        
+                         />
+                        <TextBox
+                        x:Name="CardHolderNameField"
+                        x:Uid="CardHolderNameField"
+                        Margin="0,0,0,16"
+                        HorizontalAlignment="Stretch"
+                        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="Cardholder name"
+                        PlaceholderText="Enter name">
+                        </TextBox>
+                        <TextBox
+                        x:Name="CardNumberField"
+                        x:Uid="CardNumberField"
+                        Margin="0,0,0,16"
+                        HorizontalAlignment="Stretch"
+                        Text="{x:Bind ViewModel.CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="Card number"
+                        PlaceholderText="Enter card number"/>
+                        <Grid Margin="0,0,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="4" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox
+                            x:Uid="CreditCardExpirationDateMonthSelector"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            Header="Expiration date"
+                            PlaceholderText="MM"
+                            SelectedValue="{x:Bind ViewModel.CardExpirationMonth, Mode=TwoWay}">
+                                <x:String>01</x:String>
+                                <x:String>02</x:String>
+                                <x:String>03</x:String>
+                                <x:String>04</x:String>
+                                <x:String>05</x:String>
+                                <x:String>06</x:String>
+                                <x:String>07</x:String>
+                                <x:String>08</x:String>
+                                <x:String>09</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                            </ComboBox>
+                            <ComboBox
+                            x:Uid="CreditCardExpirationDateYearSelector"
+                            Grid.Column="2"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            IsEditable="True"
+                            Header="Expiration date"
+                            PlaceholderText="YYYY"
+                            SelectedValue="{x:Bind ViewModel.CardExpirationYear, Mode=TwoWay}">
+                                <x:String>2018</x:String>
+                                <x:String>2019</x:String>
+                                <x:String>2020</x:String>
+                                <x:String>2021</x:String>
+                                <x:String>2022</x:String>
+                                <x:String>2023</x:String>
+                                <x:String>2024</x:String>
+                                <x:String>2025</x:String>
+                                <x:String>2026</x:String>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Margin="0,0,0,24">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="4" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <PasswordBox
+                            x:Uid="CCVField"
+                            HorizontalAlignment="Stretch"
+                            MaxLength="4"
+                            Header="CCV"
+                            PlaceholderText="XXXX"
+                            Password="{x:Bind ViewModel.CCV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            PasswordChar="•" />
+                            
+                            <!-- Disabling this because it doesn't do anything yet
+                            <HyperlinkButton
+                            x:Uid="CCVExplanationPromptCaption"
+                            Grid.Column="2"
+                            Margin="4,0,0,5"
+                            VerticalAlignment="Bottom"
+                            Content="What's this?"/>-->
+                        
+                        </Grid>
+                        <TextBox
+                        x:Uid="AddressField"
+                        Margin="0,0,0,16"
+                        HorizontalAlignment="Stretch"
+                        Text="{x:Bind ViewModel.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="Address"
+                        PlaceholderText="Enter address"/>
+                        <TextBox
+                        x:Uid="CityField"
+                        Margin="0,0,0,16"
+                        HorizontalAlignment="Stretch"
+                        Text="{x:Bind ViewModel.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Header="City"
+                        PlaceholderText="Enter city"/>
+                        <Grid Margin="0,0,0,24">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="4" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Uid="StateSelector" HorizontalAlignment="Stretch" Header="State" PlaceholderText="Enter state"/>
+                            <TextBox
+                            x:Name="ZipCodeField"
+                            x:Uid="ZipCodeField"
+                            Grid.Column="2"
+                            HorizontalAlignment="Stretch"
+                            Text="{x:Bind ViewModel.Zip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Header="ZIP"
+                            PlaceholderText="Enter zip code"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+                <Grid Grid.Row="1" Margin="24,4,24,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                    x:Uid="PurchaseFlowCancelButton"
+                    Height="36"
+                    HorizontalAlignment="Stretch"
+                    Content="Cancel"
+                     />
+                    <!-- Click="{x:Bind Path=ViewModel.OnCancel}" -->
+                    <Button
+                    x:Uid="PurchaseFlowNextButton"
+                    Grid.Column="2"
+                    Height="36"
+                    HorizontalAlignment="Stretch"
+                    Content="Next"
+                    Style="{StaticResource AccentButtonStyle}"
+                     />
+                </Grid>
+            </Grid>
+        </Grid>
+    </local:ControlExample>
 </Page>

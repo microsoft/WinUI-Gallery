@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 using LayoutContext = Microsoft.UI.Xaml.Controls.LayoutContext;
 using VirtualizingLayout = Microsoft.UI.Xaml.Controls.VirtualizingLayout;
@@ -16,14 +16,14 @@ namespace AppUIBasics.Common
 
         // We'll cache copies of the dependency properties to avoid calling GetValue during layout since that
         // can be quite expensive due to the number of times we'd end up calling these.
-        private double _rowSpacing;
-        private double _colSpacing;
+        private float _rowSpacing;
+        private float _colSpacing;
         private Size _minItemSize = Size.Empty;
 
         /// <summary>
         /// Gets or sets the size of the whitespace gutter to include between rows
         /// </summary>
-        public double RowSpacing
+        public float RowSpacing
         {
             get { return _rowSpacing; }
             set { SetValue(RowSpacingProperty, value); }
@@ -32,14 +32,14 @@ namespace AppUIBasics.Common
         public static readonly DependencyProperty RowSpacingProperty =
             DependencyProperty.Register(
                 "RowSpacing",
-                typeof(double),
+                typeof(float),
                 typeof(ActivityFeedLayout),
                 new PropertyMetadata(0, OnPropertyChanged));
 
         /// <summary>
         /// Gets or sets the size of the whitespace gutter to include between items on the same row
         /// </summary>
-        public double ColumnSpacing
+        public float ColumnSpacing
         {
             get { return _colSpacing; }
             set { SetValue(ColumnSpacingProperty, value); }
@@ -48,7 +48,7 @@ namespace AppUIBasics.Common
         public static readonly DependencyProperty ColumnSpacingProperty =
             DependencyProperty.Register(
                 "ColumnSpacing",
-                typeof(double),
+                typeof(float),
                 typeof(ActivityFeedLayout),
                 new PropertyMetadata(0, OnPropertyChanged));
 
@@ -70,11 +70,11 @@ namespace AppUIBasics.Common
             var layout = obj as ActivityFeedLayout;
             if (args.Property == RowSpacingProperty)
             {
-                layout._rowSpacing = (double)args.NewValue;
+                layout._rowSpacing = (float)args.NewValue;
             }
             else if (args.Property == ColumnSpacingProperty)
             {
-                layout._colSpacing = (double)args.NewValue;
+                layout._colSpacing = (float)args.NewValue;
             }
             else if (args.Property == MinItemSizeProperty)
             {
@@ -88,15 +88,16 @@ namespace AppUIBasics.Common
             layout.InvalidateMeasure();
         }
 
-        #endregion
+#endregion
 
-        #region Setup / teardown
+#region Setup / teardown
 
         protected override void InitializeForContextCore(VirtualizingLayoutContext context)
         {
             base.InitializeForContextCore(context);
 
-            if (!(context.LayoutState is ActivityFeedLayoutState state))
+            var state = context.LayoutState as ActivityFeedLayoutState;
+            if (state == null)
             {
                 // Store any state we might need since (in theory) the layout could be in use by multiple 
                 // elements simultaneously
@@ -113,16 +114,20 @@ namespace AppUIBasics.Common
             context.LayoutState = null;
         }
 
-        #endregion
+#endregion
 
-        #region Layout
+#region Layout
 
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {
             if (this.MinItemSize == Size.Empty)
             {
                 var firstElement = context.GetOrCreateElementAt(0);
+#if USING_CSWINRT
+                firstElement.Measure(new Size(float.PositiveInfinity, float.PositiveInfinity));
+#else
                 firstElement.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+#endif
 
                 // setting the member value directly to skip invalidating layout
                 this._minItemSize = firstElement.DesiredSize;
@@ -146,7 +151,7 @@ namespace AppUIBasics.Common
             state.FirstRealizedIndex = firstRowIndex * 3;
 
             // ideal item width that will expand/shrink to fill available space
-            double desiredItemWidth = Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
+            float desiredItemWidth = (float)Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
 
             // Foreach item between the first and last index, 
             //     Call GetElementOrCreateElementAt which causes an element to either be realized or retrieved 
@@ -159,7 +164,7 @@ namespace AppUIBasics.Common
             // created because it isn't until after our MeasureOverride completes that the unused elements 
             // will be recycled and available to use.  We could avoid this by choosing to track the first/last
             // index from the previous layout pass.  The diff between the previous range and current range 
-            // would represent the elements that we can preemptively make available for re-use by calling 
+            // would represent the elements that we can pre-emptively make available for re-use by calling 
             // context.RecycleElement(element).
             for (int rowIndex = firstRowIndex; rowIndex < lastRowIndex; rowIndex++)
             {
@@ -207,7 +212,7 @@ namespace AppUIBasics.Common
         #endregion
         #region Helper methods
 
-        private Rect[] CalculateLayoutBoundsForRow(int rowIndex, double desiredItemWidth)
+        private Rect[] CalculateLayoutBoundsForRow(int rowIndex, float desiredItemWidth)
         {
             var boundsForRow = new Rect[3];
 
@@ -243,7 +248,7 @@ namespace AppUIBasics.Common
             return boundsForRow;
         }
 
-        #endregion
+#endregion
     }
 
     internal class ActivityFeedLayoutState

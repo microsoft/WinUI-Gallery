@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Common;
 using AppUIBasics.Data;
 using System;
 using System.Linq;
@@ -15,18 +16,15 @@ using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
 using System.Reflection;
-using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
@@ -101,7 +99,7 @@ namespace AppUIBasics
 
         private void OnToggleTheme()
         {
-            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
+            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? App.ActualTheme : _currentElementTheme.Value;
             var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
             SetControlExamplesTheme(newTheme);
         }
@@ -131,7 +129,7 @@ namespace AppUIBasics
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((string)e.Parameter);
+            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)e.Parameter);
 
             if (item != null)
             {
@@ -147,25 +145,69 @@ namespace AppUIBasics
 
                 if (pageType != null)
                 {
-                    // Pagetype is not null!
-                    // So lets generate the github links and set them!
-                    var gitHubBaseURI = "https://github.com/microsoft/Xaml-Controls-Gallery/tree/master/XamlControlsGallery/ControlPages/";
-                    var pageName = pageType.Name + ".xaml";
-                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
-                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
-
                     this.contentFrame.Navigate(pageType);
                 }
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
+                if (item.IsNew && NavigationRootPage.Current.CheckNewControlSelected())
+                {
+                    PlayConnectedAnimation();
+                    return;
+                }
+
+                ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((String)e.Parameter);
+                var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
+                if (menuItem != null)
+                {
+                    menuItem.IsSelected = true;
+                }
+
+                PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
         }
 
+        protected override void OnKeyDown(KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Escape)
+            {
+                this.Item = null;
+                if (this.contentFrame.CanGoBack)
+                {
+                    this.contentFrame.GoBack();
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(AllControlsPage));
+                }
+            }
+        }
+
+        void PlayConnectedAnimation()
+        {
+            if (NavigationRootPage.Current.PageHeader != null)
+            {
+                var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
+
+                if (connectedAnimation != null)
+                {
+                    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
+
+                    // Setup the "basic" configuration if the API is present. 
+                    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+                    {
+                        connectedAnimation.Configuration = new BasicConnectedAnimationConfiguration();
+                    }
+
+                    connectedAnimation.TryStart(target, new UIElement[] { subTitleText });
+                }
+            }
+        }
+
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            SetControlExamplesTheme(ThemeHelper.ActualTheme);
+            SetControlExamplesTheme(App.ActualTheme);
 
             base.OnNavigatingFrom(e);
         }
@@ -175,13 +217,23 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
+            // Reverse Connected Animation
+            if (e.SourcePageType != typeof(ItemPage))
+            {
+                var target = NavigationRootPage.Current.PageHeader.TitlePanel;
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
+            }
+
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
             Frame contentFrameAsFrame = contentFrame as Frame;
             Page innerPage = contentFrameAsFrame.Content as Page;
-            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            if (innerPage != null)
+            {
+                MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                dynMethod.Invoke(innerPage, new object[] { e });
+            }
 
             base.OnNavigatedFrom(e);
         }

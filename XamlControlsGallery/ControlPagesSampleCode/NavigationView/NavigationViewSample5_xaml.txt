@@ -1,15 +1,15 @@
-﻿<muxc:NavigationView x:Name="nvSample" 
+﻿<NavigationView x:Name="nvSample" 
                 MenuItemTemplateSelector="{StaticResource selector}" 
                 MenuItemSource="{x:Bind Categories, Mode=OneWay}" />
  
 <local:MenuItemTemplateSelector x:Key="selector"> 
     <local:MenuItemTemplateSelector.ItemTemplate> 
         <DataTemplate x:DataType="local:Category" > 
-            <muxc:NavigationViewItem Content="{x:Bind Name}" TooltipService.ToolTip="{x:Bind Tooltip}"> 
-                <muxc:NavigationViewItem.Icon> 
+            <NavigationViewItem Content="{x:Bind Name}" TooltipService.ToolTip="{x:Bind Tooltip}"> 
+                <NavigationViewItem.Icon> 
                     <SymbolIcon Symbol="{x:Bind Glyph}" /> 
-                </muxc:NavigationViewItem.Icon> 
-            </muxc:NavigationViewItem>
+                </NavigationViewItem.Icon> 
+            </NavigationViewItem>
         </DataTemplate> 
     </local:MenuItemTemplateSelector.ItemTemplate > 
 </local:MenuItemTemplateSelector> 

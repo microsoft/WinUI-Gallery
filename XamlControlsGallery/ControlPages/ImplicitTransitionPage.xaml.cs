@@ -1,11 +1,11 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System;
+﻿using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls.Primitives;
 
 namespace AppUIBasics.ControlPages
 {
@@ -20,9 +20,6 @@ namespace AppUIBasics.ControlPages
 
         void SetupImplicitTransitionsIfAPIAvailable()
         {
-            // If the API is not present, simply no-op.
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             OpacityRectangle.OpacityTransition = new ScalarTransition();
             RotationRectangle.RotationTransition = new ScalarTransition();
             ScaleRectangle.ScaleTransition = new Vector3Transition();
@@ -33,26 +30,55 @@ namespace AppUIBasics.ControlPages
 
         private void OpacityButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-            var customValue = OpacityNumberBox.Value;
-            OpacityRectangle.Opacity = customValue;
-            OpacityValue.Value = customValue;
+            var customValue = 0.0;
+            try
+            {
+                customValue = Convert.ToDouble(OpacityTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                GenerateErrorFlyout(OpacityTextBox);
+                return;
+            }
+
+            if (customValue >= 0.0 && customValue <= 1.0)
+            {
+                OpacityRectangle.Opacity = customValue;
+                OpacityValue.Value = customValue;
+            }
+            else
+            {
+                GenerateErrorFlyout(OpacityTextBox, "Input must be between 0 and 1");
+            }
         }
         private void RotationButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
-            RotationRectangle.Rotation = (float)RotationNumberBox.Value;
+            float customValue = 0;
+            try
+            {
+                customValue = (float)Convert.ToDouble(RotationTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                GenerateErrorFlyout(RotationTextBox);
+                return;
+            }
+
+            if (customValue >= 0.0 && customValue <= 360.0)
+            {
+                RotationRectangle.Rotation = customValue;
+            }
+            else
+            {
+                RotationRectangle.Rotation = 0;
+                GenerateErrorFlyout(RotationTextBox, "Input must be between 0 and 360");
+            }
+            RotationValue.Value = RotationRectangle.Rotation;
         }
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var _scaleTransition = ScaleRectangle.ScaleTransition;
 
             _scaleTransition.Components = ((ScaleX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
@@ -63,22 +89,42 @@ namespace AppUIBasics.ControlPages
 
             if (sender != null && (sender as Button).Tag != null)
             {
-                customValue = (float)Convert.ToDouble((sender as Button).Tag);
+                try
+                {
+                    customValue = (float)Convert.ToDouble((sender as Button).Tag);
+                }
+                catch (FormatException)
+                {
+                    GenerateErrorFlyout(sender as Button);
+                    return;
+                }
             }
             else
             {
-                customValue = (float)ScaleNumberBox.Value;
+                try
+                {
+                    customValue = (float)Convert.ToDouble(ScaleTextBox.Text);
+                }
+                catch (FormatException)
+                {
+                    GenerateErrorFlyout(ScaleTextBox);
+                    return;
+                }
             }
 
-            ScaleRectangle.Scale = new Vector3(customValue);
-            ScaleValue.Value = customValue;
+            if (customValue > 0.0 && customValue <= 5)
+            {
+                ScaleRectangle.Scale = new Vector3(customValue);
+                ScaleValue.Value = customValue;
+            }
+            else
+            {
+                GenerateErrorFlyout(ScaleTextBox, "The number must be between 0 (not equal to 0) and 5 ");
+            }
         }
 
         private void TranslateButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-
             var _translationTransition = TranslateRectangle.TranslationTransition;
 
             _translationTransition.Components = ((TranslateX.IsChecked == true) ? Vector3TransitionComponents.X : 0) |
@@ -88,34 +134,74 @@ namespace AppUIBasics.ControlPages
             float customValue;
             if (sender != null && (sender as Button).Tag != null)
             {
-                customValue = (float)Convert.ToDouble((sender as Button).Tag);
+                try
+                {
+                    customValue = (float)Convert.ToDouble((sender as Button).Tag);
+                }
+                catch (FormatException)
+                {
+                    GenerateErrorFlyout(sender as Button);
+                    return;
+                }
             }
             else
             {
-                customValue = (float)TranslationNumberBox.Value;
+                try
+                {
+
+                    customValue = (float)Convert.ToDouble(TranslationTextBox.Text);
+                }
+                catch (FormatException)
+                {
+                    GenerateErrorFlyout(TranslationTextBox);
+                    return;
+                }
             }
 
-            TranslateRectangle.Translation = new Vector3(customValue);
-            TranslationValue.Value = customValue;
+            if (customValue >= 0.0 && customValue <= 200.0)
+            {
+                TranslateRectangle.Translation = new Vector3(customValue);
+                TranslationValue.Value = customValue;
+            }
+            else
+            {
+                GenerateErrorFlyout(TranslationTextBox, "THe input must be between 0 and 200");
+            }
         }
 
-        private void NumberBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        /// <summary>
+        /// Generates a flyout for the given element. 
+        /// If no message is specified the default message "The input must be a number" will be used.
+        /// </summary>
+        /// <param name="element">The element to apply the flyout to</param>
+        /// <param name="message">The message that will be displayed</param>
+        private void GenerateErrorFlyout(FrameworkElement element, string message = "The input must be a number")
+        {
+            Flyout formatFlyout = new Flyout();
+            formatFlyout.Content = new TextBlock();
+            formatFlyout.FlyoutPresenterStyle = FlyoutPresenterStyle;
+            (formatFlyout.Content as TextBlock).Text = message;
+            formatFlyout.Placement = FlyoutPlacementMode.Top;
+            formatFlyout.ShowAt(element);
+            (formatFlyout.Content as TextBlock).Focus(FocusState.Programmatic);
+        }
+        private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                if ((string)(sender as NumberBox).Header == "Opacity (0.0 to 1.0)")
+                if ((String)(sender as TextBox).Header == "Opacity (0.0 to 1.0)")
                 {
                     OpacityButton_Click(null, null);
                 }
-                if ((string)(sender as NumberBox).Header == "Rotation (0.0 to 360.0)")
+                if ((String)(sender as TextBox).Header == "Rotation (0.0 to 360.0)")
                 {
                     RotationButton_Click(null, null);
                 }
-                if ((string)(sender as NumberBox).Header == "Scale (0.0 to 5.0)")
+                if ((String)(sender as TextBox).Header == "Scale (0.0 to 5.0)")
                 {
                     ScaleButton_Click(null, null);
                 }
-                if ((string)(sender as NumberBox).Header == "Translation (0.0 to 200.0)")
+                if ((String)(sender as TextBox).Header == "Translation (0.0 to 200.0)")
                 {
                     TranslateButton_Click(null, null);
                 }
@@ -124,16 +210,14 @@ namespace AppUIBasics.ControlPages
 
         private void BackgroundButton_Click(object sender, RoutedEventArgs e)
         {
-            // If the implicit animation API is not present, simply no-op. 
-            if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            if ((BrushPresenter.Background as SolidColorBrush).Color == Windows.UI.Colors.Blue)
+            if ((BrushPresenter.Background as SolidColorBrush).Color == Microsoft.UI.Colors.Blue)
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
             }
             else
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Blue);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue);
             }
         }
 
