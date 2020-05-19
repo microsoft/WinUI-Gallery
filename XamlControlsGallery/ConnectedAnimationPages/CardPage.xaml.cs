@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using Windows.Foundation.Metadata;
 
 namespace AppUIBasics.ConnectedAnimationPages
@@ -56,7 +56,8 @@ namespace AppUIBasics.ConnectedAnimationPages
             ConnectedAnimation animation = null;
 
             // Get the collection item corresponding to the clicked item.
-            if (collection.ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            var container = collection.ContainerFromItem(e.ClickedItem) as GridViewItem;
+            if (container != null)
             {
                 // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
                 _storedItem = Convert.ToInt32(container.Content);

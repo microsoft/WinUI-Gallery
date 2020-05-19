@@ -1,31 +1,39 @@
 ﻿using AppUIBasics.Common;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
+
+#if USING_CSWINRT
+using System.Collections.ObjectModel;
+#endif
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class SplitViewPage : Page
     {
         private ObservableCollection<NavLink> _navLinks =  new ObservableCollection<NavLink>()
         {
-            new NavLink() { Label = "People", Symbol = Windows.UI.Xaml.Controls.Symbol.People  },
-            new NavLink() { Label = "Globe", Symbol = Windows.UI.Xaml.Controls.Symbol.Globe },
-            new NavLink() { Label = "Message", Symbol = Windows.UI.Xaml.Controls.Symbol.Message },
-            new NavLink() { Label = "Mail", Symbol = Windows.UI.Xaml.Controls.Symbol.Mail },
+            new NavLink() { Label = "People", Symbol = Symbol.People  },
+            new NavLink() { Label = "Globe", Symbol = Symbol.Globe },
+            new NavLink() { Label = "Message", Symbol = Symbol.Message },
+            new NavLink() { Label = "Mail", Symbol = Symbol.Mail },
         };
 
         public ObservableCollection<NavLink> NavLinks
@@ -40,7 +48,7 @@ namespace AppUIBasics.ControlPages
 
         private void togglePaneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.Current.Bounds.Width >= 640)
+            if (App.CurrentWindow.Bounds.Width >= 640)
             {
                 if (splitView.IsPaneOpen)
                 {

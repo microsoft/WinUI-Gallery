@@ -1,0 +1,23 @@
+<Project>
+    <PropertyGroup>
+            <!-- The NuGet version of WinUI to build against. -->
+            <WinUIPackageVersion>3.0.0-preview1.200515.3</WinUIPackageVersion>
+        
+            <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
+            <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
+       
+            <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
+            <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+            <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
+
+            <!-- For Desktop, the .NET 5 SDK automatically includes every .cs file in the project directory.  It normally
+                 also excludes items under the obj/bin folders based on the value of BaseIntermediateOutputPath/BaseOutputPath.
+                 However, because we overwrite those to output to subdirectories, the outputs of the UWP XamlControlsGallery
+                 are erroneously included.  Explicitly exclude them here -->
+            <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
+
+            <IntDir>$(BaseIntermediateOutputPath)</IntDir>
+            <OutDir>$(BaseOutputPath)</OutDir>
+    </PropertyGroup>
+        
+</Project>

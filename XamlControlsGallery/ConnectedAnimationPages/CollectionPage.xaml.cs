@@ -1,8 +1,8 @@
 ﻿using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.ControlPages;
 using Windows.Foundation.Metadata;
 
@@ -48,7 +48,8 @@ namespace AppUIBasics.ConnectedAnimationPages
         private void collection_ItemClick(object sender, ItemClickEventArgs e)
         {
             // Get the collection item corresponding to the clicked item.
-            if (collection.ContainerFromItem(e.ClickedItem) is ListViewItem container)
+            var container = collection.ContainerFromItem(e.ClickedItem) as ListViewItem;
+            if (container != null)
             {
                 // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
                 _storeditem = container.Content as CustomDataObject;

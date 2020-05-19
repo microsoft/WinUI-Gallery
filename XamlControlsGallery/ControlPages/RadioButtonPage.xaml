@@ -13,7 +13,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <RelativePanel HorizontalAlignment="Left">
         <local:ControlExample x:Name="Example1"
@@ -23,22 +22,24 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <muxc:RadioButtons Header="Options:">
+                <StackPanel>
                     <!-- A RadioButton group. -->
+                    <TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}" />
                     <RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked" />
                     <RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked" />
                     <RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked" />
-                </muxc:RadioButtons>
+                </StackPanel>
                 <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"
                         VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/>
             </Grid>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:RadioButtons Header="Options"&gt;
+&lt;StackPanel&gt;
+    &lt;TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
     &lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;
     &lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;
     &lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;
-&lt;/muxc:RadioButtons&gt;
+&lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -46,31 +47,33 @@
                 RelativePanel.Below="Example1">
             <StackPanel x:Name="Control2" Grid.Row="4">
                 <StackPanel>
+                    <TextBlock Text="Background" Style="{ThemeResource BaseTextBlockStyle}" />
                     <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
                             HorizontalScrollBarVisibility="Hidden">
-                        <muxc:RadioButtons MaxColumns="4" Header="Background">
-                            <RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" />
-                            <RadioButton Content="Yellow" Tag="Yellow" 
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton Content="Green" Tag="Green" GroupName="BGColor" Checked="BGRadioButton_Checked" />
+                            <RadioButton Content="Yellow" Tag="Yellow" GroupName="BGColor"
                                     Checked="BGRadioButton_Checked" Margin="8,0"/>
-                            <RadioButton Content="Blue" Tag="Blue" Checked="BGRadioButton_Checked" />
-                            <RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked"
+                            <RadioButton Content="Blue" Tag="Blue" GroupName="BGColor" Checked="BGRadioButton_Checked" />
+                            <RadioButton Content="White" Tag="White" GroupName="BGColor" Checked="BGRadioButton_Checked"
                                     IsChecked="True" Margin="8,0"/>
-                        </muxc:RadioButtons>
+                        </StackPanel>
                     </ScrollViewer>
                 </StackPanel>
                 <StackPanel>
+                    <TextBlock Text="BorderBrush" Style="{ThemeResource BaseTextBlockStyle}" />
                     <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
                             HorizontalScrollBarVisibility="Hidden">
-                        <muxc:RadioButtons MaxColumns="4" Header="BorderBrush">
-                            <RadioButton Content="Green" Tag="Green"
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton Content="Green" Tag="Green" GroupName="BorderBrush"
                                     Checked="BorderRadioButton_Checked" />
-                            <RadioButton Content="Yellow" Tag="Yellow"
+                            <RadioButton Content="Yellow" Tag="Yellow" GroupName="BorderBrush"
                                     Checked="BorderRadioButton_Checked" IsChecked="True" Margin="8,0"/>
-                            <RadioButton Content="Blue" Tag="Blue"
+                            <RadioButton Content="Blue" Tag="Blue" GroupName="BorderBrush"
                                     Checked="BorderRadioButton_Checked" />
-                            <RadioButton Content="White" Tag="White"
+                            <RadioButton Content="White" Tag="White" GroupName="BorderBrush"
                                     Checked="BorderRadioButton_Checked" Margin="8,0"/>
-                        </muxc:RadioButtons>
+                        </StackPanel>
                     </ScrollViewer>
                 </StackPanel>
                 <Border x:Name="Control2Output" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
@@ -79,18 +82,20 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel&gt;
-    &lt;muxc:RadioButtons MaxColumns="4" Header="Background"&gt;
-        &lt;RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="Yellow" Tag="Yellow" Checked="BGRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="Blue" Tag="Blue" Checked="BGRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked"/&gt;
-    &lt;/muxc:RadioButtons&gt;
-    &lt;muxc:RadioButtons MaxColumns="4" Header="BorderBrush"&gt;
-        &lt;RadioButton Content="Green" Tag="Green" Checked="BorderRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="Yellow" Tag="Yellow" Checked="BorderRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="Blue" Tag="Blue" Checked="BorderRadioButton_Checked"/&gt;
-        &lt;RadioButton Content="White" Tag="White" Checked="BorderRadioButton_Checked"/&gt;
-    &lt;/muxc:RadioButtons&gt;
+    &lt;StackPanel Orientation="Horizontal"&gt;
+        &lt;TextBlock Text="Background" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
+        &lt;RadioButton Content="Green" Tag="Green" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Blue" Tag="Blue" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="White" Tag="White" GroupName="BGColor" Checked="BGRadioButton_Checked"/&gt;
+    &lt;/StackPanel  Orientation="Horizontal"&gt;
+    &lt;StackPanel Orientation="Horizontal"&gt;
+        &lt;TextBlock Text="BorderBrush" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
+        &lt;RadioButton Content="Green" Tag="Green" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Yellow" Tag="Yellow" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="Blue" Tag="Blue" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+        &lt;RadioButton Content="White" Tag="White" GroupName="BorderBrush" Checked="BorderRadioButton_Checked"/&gt;
+    &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>

@@ -1,0 +1,9 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../')))"/>
+  <PropertyGroup>
+    <!-- We need the PRI index name to be the same in XamlControlsGallery.Desktop as it is in XamlControlsGallery,
+         so we'll set it to be empty so we can reuse the same code in both places. -->
+    <PriIndexName />
+  </PropertyGroup>
+    
+</Project>

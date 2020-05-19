@@ -13,23 +13,21 @@ using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
-using Windows.UI;
+using Microsoft.UI;
 using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
-        private Color currentColor = Colors.Black;
+        private Windows.UI.Color currentColor = Colors.Black;
         // String used to restore the colors when the focus gets reenabled
         // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
         private string LastFormattedText = "";
-        private int LastRawTextLength = 0;
-
         public RichEditBoxPage()
         {
             this.InitializeComponent();
@@ -40,10 +38,8 @@ namespace AppUIBasics.ControlPages
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
             if (myFlyout.Target == REBCustom)
             {
-                AppBarButton myButton = new AppBarButton
-                {
-                    Command = new StandardUICommand(StandardUICommandKind.Share)
-                };
+                AppBarButton myButton = new AppBarButton();
+                myButton.Command = new StandardUICommand(StandardUICommandKind.Share);
                 myFlyout.PrimaryCommands.Add(myButton);
             }
         }
@@ -51,10 +47,10 @@ namespace AppUIBasics.ControlPages
         private async void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             // Open a text file.
-            Windows.Storage.Pickers.FileOpenPicker open = new Windows.Storage.Pickers.FileOpenPicker
-            {
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary
-            };
+            Windows.Storage.Pickers.FileOpenPicker open =
+                new Windows.Storage.Pickers.FileOpenPicker();
+            open.SuggestedStartLocation =
+                Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
             Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
@@ -72,10 +68,8 @@ namespace AppUIBasics.ControlPages
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            FileSavePicker savePicker = new FileSavePicker
-            {
-                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-            };
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
             // Dropdown of file types the user can save the file as
             savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
@@ -122,13 +116,13 @@ namespace AppUIBasics.ControlPages
         {
             // Extract the color of the button that was clicked.
             Button clickedColor = (Button)sender;
-            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-            var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+            var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
             editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
             fontColorButton.Flyout.Hide();
-            editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+            editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
             currentColor = color;
         }
 
@@ -136,8 +130,8 @@ namespace AppUIBasics.ControlPages
         {
             FindBoxRemoveHighlights();
 
-            Color highlightBackgroundColor = (Color)App.Current.Resources["SystemColorHighlightColor"];
-            Color highlightForegroundColor = (Color)App.Current.Resources["SystemColorHighlightTextColor"];
+            Windows.UI.Color highlightBackgroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightColor"];
+            Windows.UI.Color highlightForegroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightTextColor"];
 
             string textToFind = findBox.Text;
             if (textToFind != null)
@@ -163,13 +157,6 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
-            editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
-            if (currentRawText.Length != LastRawTextLength)
-            {
-                // User used cut or paste from action command, skip the event
-                return;
-            }
-            
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -183,7 +170,7 @@ namespace AppUIBasics.ControlPages
             }
             // saving selection span
             var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character) - 1;
-            if(caretPosition <= 0)
+            if (caretPosition <= 0)
             {
                 // User has not entered text, prevent invalid values and just set index to 1
                 caretPosition = 1;
@@ -202,10 +189,6 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_LosingFocus(object sender, RoutedEventArgs e)
         {
-            // Save text length to determine text length change
-            editor.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
-            LastRawTextLength = lastRawText.Length; 
-            
             editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
 

@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -17,7 +17,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A Border around a TextBlock.">
@@ -52,7 +51,8 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <muxc:RadioButtons Header="Background">
+                        <StackPanel>
+                            <TextBlock Margin="0,8" Text="Background" />
 
                             <RadioButton
                                 Checked="BGRadioButton_Checked"
@@ -74,9 +74,9 @@
                                 Content="White"
                                 GroupName="BGColor"
                                 IsChecked="True" />
-                        </muxc:RadioButtons>
-                        
-                        <muxc:RadioButtons Grid.Column="1" Header="BorderBrush">
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Margin="0,8" Text="BorderBrush" />
 
                             <RadioButton
                                 Checked="RadioButton_Checked"
@@ -98,7 +98,7 @@
                                 Checked="RadioButton_Checked"
                                 Content="White"
                                 GroupName="BorderBrush" />
-                        </muxc:RadioButtons>
+                        </StackPanel>
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Options>

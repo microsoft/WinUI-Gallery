@@ -39,7 +39,7 @@
                                                   Value= "IsEnabled=&quot;False&quot; "/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample HeaderText="A RepeatButton with Reveal style applied.">
+        <!--local:ControlExample HeaderText="A RepeatButton with Reveal style applied.">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <RepeatButton Style="{StaticResource RepeatButtonRevealStyle}" Content="Click and hold" Click="RepeatButtonReveal_Click"/>
@@ -51,7 +51,7 @@
                     &lt;RepeatButton Style="{StaticResource RepeatButtonRevealStyle}" Content="Button"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-        </local:ControlExample>
+        </-->
 
     </StackPanel>
 </Page>

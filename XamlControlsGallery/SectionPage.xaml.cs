@@ -9,7 +9,7 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {

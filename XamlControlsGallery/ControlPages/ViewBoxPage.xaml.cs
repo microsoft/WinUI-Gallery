@@ -7,12 +7,17 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class ViewBoxPage : Page
     {
         public ViewBoxPage()
@@ -22,7 +27,9 @@ namespace AppUIBasics.ControlPages
 
         private void StretchDirectionButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is RadioButton rb && Control1 != null)
+            RadioButton rb = sender as RadioButton;
+
+            if (rb != null && Control1 != null)
             {
                 string direction = rb.Tag.ToString();
                 switch (direction)
@@ -42,7 +49,9 @@ namespace AppUIBasics.ControlPages
 
         private void StretchButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is RadioButton rb && Control1 != null)
+            RadioButton rb = sender as RadioButton;
+
+            if (rb != null && Control1 != null)
             {
                 string stretch = rb.Tag.ToString();
                 switch (stretch)

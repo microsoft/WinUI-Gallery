@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -7,13 +7,18 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class AppBarSeparatorPage : Page
     {
         AppBarToggleButton compactButton = null;
@@ -39,17 +44,15 @@ namespace AppUIBasics.ControlPages
             // Add compact button to the command bar. It provides functionality specific
             // to this page, and is removed when leaving the page.
 
-            CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
-            separator = new AppBarSeparator();
-            appBar.PrimaryCommands.Insert(0, separator);
+                CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+                separator = new AppBarSeparator();
+                appBar.PrimaryCommands.Insert(0, separator);
 
-            compactButton = new AppBarToggleButton
-            {
-                Icon = new SymbolIcon(Symbol.FontSize),
-                Label = "IsCompact"
-            };
-            compactButton.Click += CompactButton_Click;
-            appBar.PrimaryCommands.Insert(0, compactButton);
+                compactButton = new AppBarToggleButton();
+                compactButton.Icon = new SymbolIcon(Symbol.FontSize);
+                compactButton.Label = "IsCompact";
+                compactButton.Click += CompactButton_Click;
+                appBar.PrimaryCommands.Insert(0, compactButton);
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
@@ -58,7 +61,8 @@ namespace AppUIBasics.ControlPages
             // the CommandBar sets the IsCompact property automatically. You only set it
             // yourself if the control in not in a CommandBar.
 
-            if (sender is ToggleButton toggle && toggle.IsChecked != null)
+            ToggleButton toggle = sender as ToggleButton;
+            if (toggle != null && toggle.IsChecked != null)
             {
                 foreach (ICommandBarElement element in Control1.Children)
                 {

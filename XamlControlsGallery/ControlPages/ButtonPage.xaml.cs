@@ -7,11 +7,17 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class ButtonPage : Page
     {
         public ButtonPage()
@@ -21,7 +27,9 @@ namespace AppUIBasics.ControlPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button b)
+            Button b = sender as Button;
+
+            if (b != null)
             {
                 string name = b.Name;
 

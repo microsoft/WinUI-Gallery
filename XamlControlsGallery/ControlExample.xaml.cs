@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -7,20 +7,22 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Helper;
+using AppUIBasics.Common;
 using ColorCode;
 using ColorCode.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Markup;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Xaml.Media;
+using System.Reflection;
 
 namespace AppUIBasics
 {
@@ -112,10 +114,10 @@ namespace AppUIBasics
             set { SetValue(XamlProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri XamlSource
+        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public string XamlSource
         {
-            get { return (Uri)GetValue(XamlSourceProperty); }
+            get { return (string)GetValue(XamlSourceProperty); }
             set { SetValue(XamlSourceProperty, value); }
         }
 
@@ -126,10 +128,10 @@ namespace AppUIBasics
             set { SetValue(CSharpProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri CSharpSource
+        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public string CSharpSource
         {
-            get { return (Uri)GetValue(CSharpSourceProperty); }
+            get { return (string)GetValue(CSharpSourceProperty); }
             set { SetValue(CSharpSourceProperty, value); }
         }
 
@@ -140,24 +142,31 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength(1, GridUnitType.Star)));
+        private static readonly GridLength defaultExampleHeight =
+#if USING_CSWINRT
+            new GridLength(1, GridUnitType.Star);
+#else
+            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
+#endif
+
+        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
         public GridLength ExampleHeight
         {
             get { return (GridLength)GetValue(ExampleHeightProperty); }
             set { SetValue(ExampleHeightProperty, value); }
         }
 
-        public static readonly DependencyProperty WebViewHeightProperty = DependencyProperty.Register("WebViewHeight", typeof(int), typeof(ControlExample), new PropertyMetadata(400));
-        public int WebViewHeight
+        public static readonly DependencyProperty WebViewHeightProperty = DependencyProperty.Register("WebViewHeight", typeof(Int32), typeof(ControlExample), new PropertyMetadata(400));
+        public Int32 WebViewHeight
         {
-            get { return (int)GetValue(WebViewHeightProperty); }
+            get { return (Int32)GetValue(WebViewHeightProperty); }
             set { SetValue(WebViewHeightProperty, value); }
         }
 
-        public static readonly DependencyProperty WebViewWidthProperty = DependencyProperty.Register("WebViewWidth", typeof(int), typeof(ControlExample), new PropertyMetadata(800));
-        public int WebViewWidth
+        public static readonly DependencyProperty WebViewWidthProperty = DependencyProperty.Register("WebViewWidth", typeof(Int32), typeof(ControlExample), new PropertyMetadata(800));
+        public Int32 WebViewWidth
         {
-            get { return (int)GetValue(WebViewWidthProperty); }
+            get { return (Int32)GetValue(WebViewWidthProperty); }
             set { SetValue(WebViewWidthProperty, value); }
         }
 
@@ -194,21 +203,6 @@ namespace AppUIBasics
             }
         }
 
-        private Uri GetDerivedSource(Uri rawSource)
-        {
-            Uri derivedSource = null;
-
-            // Get the full path of the source string
-            string concatString = "";
-            for (int i = 2; i < rawSource.Segments.Length; i++)
-            {
-                concatString += rawSource.Segments[i];
-            }
-            derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), concatString);
-
-            return derivedSource;
-        }
-
         private enum SyntaxHighlightLanguage { Xml, CSharp };
 
         private void XamlPresenter_Loaded(object sender, RoutedEventArgs e)
@@ -227,9 +221,9 @@ namespace AppUIBasics
             GenerateSyntaxHighlightedContent(CSharpPresenter, CSharp, CSharpSource, Languages.CSharp);
         }
 
-        private void GenerateSyntaxHighlightedContent(ContentPresenter presenter, string sampleString, Uri sampleUri, ILanguage highlightLanguage)
+        private void GenerateSyntaxHighlightedContent(ContentPresenter presenter, string sampleString, string sampleUri, ILanguage highlightLanguage)
         {
-            if (!string.IsNullOrEmpty(sampleString))
+            if (!String.IsNullOrEmpty(sampleString))
             {
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
@@ -239,15 +233,12 @@ namespace AppUIBasics
             }
         }
 
-        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, ILanguage highlightLanguage)
+        private async void FormatAndRenderSampleFromFile(string source, ContentPresenter presenter, ILanguage highlightLanguage)
         {
-            if (source != null && source.AbsolutePath.EndsWith("txt"))
+            if (source != null && System.IO.Path.GetExtension(source) == ".txt")
             {
-                Uri derivedSource = GetDerivedSource(source);
-                var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
-                string sampleString = await FileIO.ReadTextAsync(file);
-
-                FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
+                string sampleSource = await FileLoader.LoadText(Path.Combine("ControlPagesSampleCode", source));
+                FormatAndRenderSampleFromString(sampleSource, presenter, highlightLanguage);
             }
             else
             {
@@ -256,13 +247,10 @@ namespace AppUIBasics
         }
 
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
-        private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
+        private void FormatAndRenderSampleFromString(String sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
         {
             // Trim out stray blank lines at start and end.
             sampleString = sampleString.TrimStart('\n').TrimEnd();
-
-            // Also trim out spaces at the end of each line
-            sampleString = string.Join('\n', sampleString.Split('\n').Select(s => s.TrimEnd()));
 
             // Perform any applicable substitutions.
             sampleString = SubstitutionPattern.Replace(sampleString, match =>
@@ -277,66 +265,70 @@ namespace AppUIBasics
                 throw new KeyNotFoundException(match.Groups[1].Value);
             });
 
-            var sampleCodeRTB = new RichTextBlock {FontFamily = new FontFamily("Consolas")};
+            var sampleCodeRTB = new RichTextBlock();
+            sampleCodeRTB.FontFamily = new FontFamily("Consolas");
 
-            var formatter = GenerateRichTextFormatter();
-            formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleCodeRTB;
+            //var formatter = GenerateRichTextFormatter();
+            //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
+            presenter.Content = sampleString; // sampleCodeRTB;
         }
 
-        private RichTextBlockFormatter GenerateRichTextFormatter()
-        {
-            var formatter = new RichTextBlockFormatter(ThemeHelper.ActualTheme);
+        // TODO: RichTextBlockFormatter is coming from a nuget package that is built against Windows.UI.Xaml
+        // Hence it cannot be used in a Microsoft.UI.Xaml project. The package is ColorCode.UWP
 
-            if (ThemeHelper.ActualTheme == ElementTheme.Dark)
-            {
-                UpdateFormatterDarkThemeColors(formatter);
-            }
+        //private RichTextBlockFormatter GenerateRichTextFormatter()
+        //{
+        //    var formatter = new RichTextBlockFormatter(App.ActualTheme);
 
-            return formatter;
-        }
+        //    if (App.ActualTheme == ElementTheme.Dark)
+        //    {
+        //        UpdateFormatterDarkThemeColors(formatter);
+        //    }
 
-        private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
-        {
-            // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttribute]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeQuotes]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeValue]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.HtmlComment]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlDelimiter]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlName]);
+        //    return formatter;
+        //}
 
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
-            {
-                Foreground = "#FF87CEFA",
-                ReferenceName = "xmlAttribute"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
-            {
-                Foreground = "#FFFFA07A",
-                ReferenceName = "xmlAttributeQuotes"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
-            {
-                Foreground = "#FFFFA07A",
-                ReferenceName = "xmlAttributeValue"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
-            {
-                Foreground = "#FF6B8E23",
-                ReferenceName = "htmlComment"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
-            {
-                Foreground = "#FF808080",
-                ReferenceName = "xmlDelimiter"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
-            {
-                Foreground = "#FF5F82E8",
-                ReferenceName = "xmlName"
-            });
-        }
+        //private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
+        //{
+        //    // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttribute]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeQuotes]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeValue]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.HtmlComment]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlDelimiter]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlName]);
+
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
+        //    {
+        //        Foreground = "#FF87CEFA",
+        //        ReferenceName = "xmlAttribute"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
+        //    {
+        //        Foreground = "#FFFFA07A",
+        //        ReferenceName = "xmlAttributeQuotes"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
+        //    {
+        //        Foreground = "#FFFFA07A",
+        //        ReferenceName = "xmlAttributeValue"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
+        //    {
+        //        Foreground = "#FF6B8E23",
+        //        ReferenceName = "htmlComment"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
+        //    {
+        //        Foreground = "#FF808080",
+        //        ReferenceName = "xmlDelimiter"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
+        //    {
+        //        Foreground = "#FF5F82E8",
+        //        ReferenceName = "xmlName"
+        //    });
+        //}
 
         private void SampleCode_ActualThemeChanged(FrameworkElement sender, object args)
         {

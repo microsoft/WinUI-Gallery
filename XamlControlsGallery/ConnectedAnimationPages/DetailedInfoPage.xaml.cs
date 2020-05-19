@@ -1,8 +1,8 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.ControlPages;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Animation;
 
 namespace AppUIBasics.ConnectedAnimationPages
 {

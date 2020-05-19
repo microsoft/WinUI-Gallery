@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -35,19 +34,19 @@
                             Margin="0, 20, 0, 20">
 
                         <!--  AnimatedVisualPlayer  -->
-                        <muxc:AnimatedVisualPlayer x:Name="Player"
+                        <AnimatedVisualPlayer x:Name="Player"
                                                           AutoPlay="False">
 
                             <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
-                            <animatedvisuals:LottieLogo1/>
+                            <!--<animatedvisuals:LottieLogo1/>-->
 
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
-                            <muxc:AnimatedVisualPlayer.FallbackContent>
+                            <AnimatedVisualPlayer.FallbackContent>
                                 <DataTemplate>
                                     <Image Source="/Assets/LottieLogo1.png"/>
                                 </DataTemplate>
-                            </muxc:AnimatedVisualPlayer.FallbackContent>
-                        </muxc:AnimatedVisualPlayer>
+                            </AnimatedVisualPlayer.FallbackContent>
+                        </AnimatedVisualPlayer>
                     </Border>
 
                     <!--  Playback Buttons  -->
@@ -107,9 +106,9 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String  xml:space="preserve">
-&lt;muxc:AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
+&lt;AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
     &lt;animatedvisuals:LottieLogo1/&gt;
-&lt;/muxc:AnimatedVisualPlayer&gt;
+&lt;/AnimatedVisualPlayer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

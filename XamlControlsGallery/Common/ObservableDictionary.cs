@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation.Collections;
@@ -28,7 +28,11 @@ namespace AppUIBasics.Common
 
         private void InvokeMapChanged(CollectionChange change, string key)
         {
-            MapChanged?.Invoke(this, new ObservableDictionaryChangedEventArgs(change, key));
+            var eventHandler = MapChanged;
+            if (eventHandler != null)
+            {
+                eventHandler(this, new ObservableDictionaryChangedEventArgs(change, key));
+            }
         }
 
         public void Add(string key, object value)
@@ -54,7 +58,8 @@ namespace AppUIBasics.Common
 
         public bool Remove(KeyValuePair<string, object> item)
         {
-            if (this._dictionary.TryGetValue(item.Key, out object currentValue) &&
+            object currentValue;
+            if (this._dictionary.TryGetValue(item.Key, out currentValue) &&
                 Object.Equals(item.Value, currentValue) && this._dictionary.Remove(item.Key))
             {
                 this.InvokeMapChanged(CollectionChange.ItemRemoved, item.Key);
