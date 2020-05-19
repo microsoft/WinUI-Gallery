@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -32,7 +32,7 @@
 &lt;FlipView MaxWidth="400" Height="270"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
-    &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/rainer.jpg" AutomationProperties.Name="Rainier"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" AutomationProperties.Name="Sunset"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" AutomationProperties.Name="Valley"/&gt;
 &lt;/FlipView&gt;
@@ -66,7 +66,7 @@
                 <x:String xml:space="preserve">
 &lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
     &lt;FlipView.ItemTemplate&gt;
-        &lt;DataTemplate x:DataType="data:ControlInfoDataItem"&gt;
+        &lt;DataTemplate x:DataType="data:ControlInfoDataItem""&gt;
             &lt;Grid&gt;
                 &lt;Image Height="120" Source="{x:Bind ImagePath}" Stretch="Uniform" VerticalAlignment="Top"/&gt;
                 &lt;Border Background="#A5FFFFFF" Height="60" VerticalAlignment="Bottom"&gt;

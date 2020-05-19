@@ -1,8 +1,7 @@
-<Page x:Class="AppUIBasics.ControlPages.ImagePage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Page x:Class="AppUIBasics.ControlPages.ImagePage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxc="using:Microsoft.UI.Xaml.Controls" mc:Ignorable="d">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A basic image from a local file.">
 
@@ -40,7 +39,8 @@
             <Image x:Name="StretchImage" Stretch="None" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" />
 
             <local:ControlExample.Options>
-                <muxc:RadioButtons Header="Image stretch mode">
+                <StackPanel>
+                    <TextBlock Margin="0,0,0,8" Text="Image stretch mode" />
                     <RadioButton x:Name="StretchNone" Content="None" GroupName="ImageStretch" IsChecked="True"
                         Checked="ImageStretch_Checked" />
                     <RadioButton x:Name="StretchFill" Content="Fill" GroupName="ImageStretch"
@@ -49,7 +49,7 @@
                         Checked="ImageStretch_Checked" />
                     <RadioButton x:Name="StretchUniformToFill" Content="UniformToFill" GroupName="ImageStretch"
                         Checked="ImageStretch_Checked" />
-                </muxc:RadioButtons>
+                </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>

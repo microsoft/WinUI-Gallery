@@ -1,4 +1,4 @@
-﻿Compositor _compositor = Window.Current.Compositor;
+﻿Compositor _compositor = App.CurrentWindow.Compositor;
 SpringVector3NaturalMotionAnimation _springAnimation;
 
 private void CreateOrUpdateSpringAnimation(float finalValue)

@@ -1,0 +1,11 @@
+<Project>
+    <!-- This file exists as a workaround to a NuGet bug where NuGet doesn't respect Conditional Includes of items
+         and always tries to include them.
+         (some discussion here: https://stackoverflow.com/questions/48590270/packagereference-condition-is-ignored)
+         Instead of conditionally including the PackageReference, we can conditionally import a file with the reference.-->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.WinUI">
+            <Version>$(WinUIPackageVersion)</Version>
+        </PackageReference>
+    </ItemGroup>
+</Project>

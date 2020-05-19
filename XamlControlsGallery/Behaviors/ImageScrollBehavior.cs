@@ -1,11 +1,10 @@
-using AppUIBasics.Helper;
-using Microsoft.Xaml.Interactivity;
+﻿using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
 using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.Behaviors
 {
@@ -48,7 +47,7 @@ namespace AppUIBasics.Behaviors
 
         private bool GetScrollViewer()
         {
-            scrollViewer = Helper.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
+            scrollViewer = Common.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
             if (scrollViewer != null)
             {
                 scrollViewer.ViewChanging += ScrollViewer_ViewChanging;
@@ -78,7 +77,7 @@ namespace AppUIBasics.Behaviors
             }
             else
             {
-                if (ThemeHelper.ActualTheme != ElementTheme.Dark)
+                if (App.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
                     Color foreground = new Color() { A = _alpha };

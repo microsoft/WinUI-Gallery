@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -11,29 +11,26 @@
 -->
 <Page x:Class="AppUIBasics.ControlPages.ProgressBarPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:local="using:AppUIBasics"
-        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        mc:Ignorable="d">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="An indeterminate progress bar.">
 
-            <muxc:ProgressBar Width="130" IsIndeterminate="True" VerticalAlignment="Top" Margin="10,10,0,0"
+            <ProgressBar Width="130" IsIndeterminate="True" VerticalAlignment="Top" Margin="10,10,0,0"
                 ShowPaused="{x:Bind PausedRB.IsChecked.Value, Mode=OneWay}"
                 ShowError="{x:Bind ErrorRB.IsChecked.Value, Mode=OneWay}" />
 
             <local:ControlExample.Options>
-                <muxc:RadioButtons Header="Progress state">
-                    <RadioButton x:Name="RunningRB" Content="Running" IsChecked="True" />
-                    <RadioButton x:Name="PausedRB" Content="Paused" />
-                    <RadioButton x:Name="ErrorRB" Content="Error" />
-                </muxc:RadioButtons>
+                <StackPanel>
+                    <RadioButton x:Name="RunningRB" GroupName="ProgressState" Content="Running" IsChecked="True" />
+                    <RadioButton x:Name="PausedRB" GroupName="ProgressState" Content="Paused" />
+                    <RadioButton x:Name="ErrorRB" GroupName="ProgressState" Content="Error" />
+                </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;muxc:ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
+                    &lt;ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -44,14 +41,13 @@
 
         <local:ControlExample HeaderText="A determinate progress bar.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <muxc:ProgressBar Width="130" x:Name="ProgressBar2"/>
+                <ProgressBar Width="130" x:Name="ProgressBar2" />
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
-                <TextBlock x:Name="ProgressLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" ValueChanged="ProgressValue_ValueChanged"/>
+                <RepeatButton Content="Click and hold" Click="RepeatButton_Click" />
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;muxc:ProgressBar Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                    &lt;ProgressBar Width="130" Value="$(DeterminateProgressValue)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>

@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,15 +10,20 @@
 using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
+
+#if USING_CSWINRT
+using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace AppUIBasics
 {
@@ -49,6 +54,12 @@ namespace AppUIBasics
             {
                 container.XYFocusDown = container;
             }
+
+            var item = args.Item as ControlInfoDataItem;
+            if (item != null)
+            {
+                args.ItemContainer.IsEnabled = item.IncludedInBuild;
+            }
         }
 
         protected void OnItemGridViewItemClick(object sender, ItemClickEventArgs e)
@@ -58,7 +69,12 @@ namespace AppUIBasics
 
             _itemId = item.UniqueId;
 
-            this.Frame.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+            if (gridView.ContainerFromItem(item) is GridViewItem)
+            {
+                gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
+            }
+
+            this.Frame.Navigate(typeof(ItemPage), _itemId);
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)
@@ -92,6 +108,19 @@ namespace AppUIBasics
                     {
                         ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
                     }
+
+                    ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
+
+                    if (animation != null)
+                    {
+                        // Setup the "basic" configuration if the API is present. 
+                        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+                        {
+                            animation.Configuration = new BasicConnectedAnimationConfiguration();
+                        }
+
+                        await gridView.TryStartConnectedAnimationAsync(animation, item, "controlRoot");
+                    }
                 }
             }
         }
@@ -113,7 +142,7 @@ namespace AppUIBasics
             }
         }
 
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
         {
             if (Equals(storage, value)) return false;
 

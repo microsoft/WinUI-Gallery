@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
 {
@@ -37,13 +37,13 @@ namespace AppUIBasics
         /// <summary>
         /// The size dimension that grows directly with layout placement.
         /// </summary>
-        private double _direct;
+        public float _direct;
 
         /// <summary>
         /// Gets or sets the size dimension that grows directly with layout
         /// placement.
         /// </summary>
-        public double Direct
+        public float Direct
         {
             get { return _direct; }
             set { _direct = value; }
@@ -53,13 +53,13 @@ namespace AppUIBasics
         /// The size dimension that grows indirectly with the maximum value of
         /// the layout row or column.
         /// </summary>
-        private double _indirect;
+        public float _indirect;
 
         /// <summary>
         /// Gets or sets the size dimension that grows indirectly with the
         /// maximum value of the layout row or column.
         /// </summary>
-        public double Indirect
+        public float Indirect
         {
             get { return _indirect; }
             set { _indirect = value; }
@@ -68,7 +68,7 @@ namespace AppUIBasics
         /// <summary>
         /// Gets or sets the width of the size.
         /// </summary>
-        public double Width
+        public float Width
         {
             get
             {
@@ -92,7 +92,7 @@ namespace AppUIBasics
         /// <summary>
         /// Gets or sets the height of the size.
         /// </summary>
-        public double Height
+        public float Height
         {
             get
             {
@@ -118,7 +118,7 @@ namespace AppUIBasics
         /// </summary>
         /// <param name="orientation">Orientation of the structure.</param>
         public OrientedSize(Orientation orientation) :
-            this(orientation, 0.0, 0.0)
+            this(orientation, 0.0f, 0.0f)
         {
         }
 
@@ -128,13 +128,13 @@ namespace AppUIBasics
         /// <param name="orientation">Orientation of the structure.</param>
         /// <param name="width">Un-oriented width of the structure.</param>
         /// <param name="height">Un-oriented height of the structure.</param>
-        public OrientedSize(Orientation orientation, double width, double height)
+        public OrientedSize(Orientation orientation, float width, float height)
         {
             _orientation = orientation;
 
             // All fields must be initialized before we access the this pointer
-            _direct = 0.0;
-            _indirect = 0.0;
+            _direct = 0.0f;
+            _indirect = 0.0f;
 
             Width = width;
             Height = height;

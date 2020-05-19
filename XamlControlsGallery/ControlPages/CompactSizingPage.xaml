@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -17,7 +17,6 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     x:Name="compactPage"
     mc:Ignorable="d">
 
@@ -26,10 +25,11 @@
             <Frame x:Name="ContentFrame" />
 
             <local:ControlExample.Options>
-                <muxc:RadioButtons Header="Fluent Standard and Compact Sizing">
+                <StackPanel>
+                    <TextBlock Text="Fluent Standard and Compact Sizing" />
                     <RadioButton Content="Standard" Tag="StandardSize" GroupName="ControlSize" Checked="Standard_Checked" IsChecked="True" />
                     <RadioButton Content="Compact" Tag="CompactSize" GroupName="ControlSize" Checked="Compact_Checked" />
-                </muxc:RadioButtons>
+                </StackPanel>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>

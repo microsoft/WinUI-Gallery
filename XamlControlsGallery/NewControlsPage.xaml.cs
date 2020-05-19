@@ -9,9 +9,12 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
+
+#if USING_CSWINRT
 using System.Collections.ObjectModel;
+#endif
 
 namespace AppUIBasics
 {

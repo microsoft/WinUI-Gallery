@@ -7,13 +7,18 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class RadioButtonPage : Page
     {
         public RadioButtonPage()
@@ -23,7 +28,9 @@ namespace AppUIBasics.ControlPages
 
         private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is RadioButton rb && Control2Output != null)
+            RadioButton rb = sender as RadioButton;
+
+            if (rb != null && Control2Output != null)
             {
                 string colorName = rb.Tag.ToString();
                 switch (colorName)
@@ -46,7 +53,9 @@ namespace AppUIBasics.ControlPages
 
         private void BorderRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is RadioButton rb && Control2Output != null)
+            RadioButton rb = sender as RadioButton;
+
+            if (rb != null && Control2Output != null)
             {
                 string colorName = rb.Tag.ToString();
                 switch (colorName)

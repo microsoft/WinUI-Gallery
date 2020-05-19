@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -17,8 +17,7 @@
     xmlns:common="using:AppUIBasics.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-      mc:Ignorable="d">
+    mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A StackPanel control.">
 
@@ -36,10 +35,11 @@
             </StackPanel>
 
             <local:ControlExample.Options>
-                <muxc:RadioButtons x:Name="OrientationGroup" Header="Orientation">
+                <StackPanel x:Name="OrientationGroup">
+                    <TextBlock Text="Orientation" Margin="0,0,0,8" />
                     <RadioButton Content="Horizontal" Tag="Horizontal" Checked="RadioButton_Checked" />
                     <RadioButton Content="Vertical" Tag="Vertical" Checked="RadioButton_Checked" IsChecked="True" />
-                </muxc:RadioButtons>
+                </StackPanel>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
