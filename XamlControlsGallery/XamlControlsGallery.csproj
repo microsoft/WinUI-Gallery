@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -16,27 +16,29 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateThumbprint>
-    </PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>testcert.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>$(ProjectRoot)\build\MSTest.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <RuntimeIdentifiers>win10-x86; win10-x86-aot; win10-x64; win10-x64-aot</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup>
     <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
-    <IsWinUIPrerelease>False</IsWinUIPrerelease>
+    <DisableWin2DPlatformCheck>true</DisableWin2DPlatformCheck>
+    <IsWinUIAlpha Condition="'$(IsWinUIAlpha)' == ''">true</IsWinUIAlpha>
+    <WindowsKitsPath Condition="'$(IsWinUIAlpha)' == 'true'">WinUI-Alpha-Projects-Don-t-Use-SDK-Xaml-Tools</WindowsKitsPath>
   </PropertyGroup>
+
+  <Import Project="Common.props" />
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -47,7 +49,7 @@
     <OutputPath>bin\ARM\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
     <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -59,7 +61,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -70,7 +72,7 @@
     <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
     <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -81,8 +83,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_APP;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -93,7 +95,7 @@
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
     <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
+    <NoWarn>;2008;8305</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -101,15 +103,11 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  <PropertyGroup Condition="$(IsWinUIPrerelease) == 'True'">
-    <DefineConstants>$DefineConstants;WINUI_PRERELEASE</DefineConstants>
-  </PropertyGroup>
   <ItemGroup>
-    <Content Include="..\SharedContent\cs\Default.rd.xml">
+    <Content Include="Assets\WinUI3Preview.png" />
+    <Content Include="SharedContent\cs\Default.rd.xml">
       <Link>Properties\Default.rd.xml</Link>
     </Content>
-    <Content Include="Assets\LottieLogo1.png" />
-    <Content Include="Assets\NumberBox.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
     <Content Include="Assets\SampleMedia\grapes.jpg" />
@@ -141,7 +139,6 @@
     <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
     <Content Include="Assets\InnerPage_Banner.jpg" />
-    <Content Include="Assets\MapControl.png" />
     <Content Include="Assets\MenuBar.png" />
     <Content Include="Assets\NavigationView.png" />
     <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
@@ -181,11 +178,6 @@
     <Content Include="Assets\Tiles\LargeTile.scale-200.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-400.png" />
     <Content Include="Assets\MainPage_Banner.jpg" />
-    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-16.png" />
-    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-24.png" />
-    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-256.png" />
-    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-32.png" />
-    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-48.png" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-16.png" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-24.png" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-256.png" />
@@ -232,33 +224,15 @@
     <Content Include="Assets\TreeView.png" />
     <Content Include="Assets\updated.png" />
     <Content Include="Assets\WebView.png" />
-    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
-    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Simple.txt" />
-    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample3_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
-    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
@@ -274,10 +248,6 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
-    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample8_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
-    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
@@ -301,30 +271,27 @@
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Behaviors\ImageScrollBehavior.cs" />
+    <Compile Include="CollectionsInterop.cs" />
+    <!--Compile Include="Behaviors\ImageScrollBehavior.cs" /-->
     <Compile Include="Common\ActivityFeedLayout.cs" />
     <Compile Include="Common\BooleanToValueConverter.cs" />
     <Compile Include="Common\Category.cs" />
-    <Compile Include="Common\DefaultElementAnimator.cs" Condition="$(IsWinUIPrerelease) == 'True'" />
     <Compile Include="Common\DeviceFamilyTrigger.cs" />
     <Compile Include="Common\DoubleToThicknessConverter.cs" />
+    <Compile Include="Common\FileLoader.cs" />
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
-    <Compile Include="Helper\NavigationHelper.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\OrientedSize.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="Helper\NavigationOrientationHelper.cs" />
-    <Compile Include="Helper\ThemeHelper.cs" />
-    <Compile Include="Helper\UIHelper.cs" />
-    <Compile Include="Common\VariedImageSizeLayout.cs" />
+    <Compile Include="Common\UIHelper.cs" />
     <Compile Include="Common\WrapPanel.cs" />
     <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
@@ -338,12 +305,14 @@
     <Compile Include="ControlExample.xaml.cs">
       <DependentUpon>ControlExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
-      <DependentUpon>AutomationPropertiesPage.xaml</DependentUpon>
+    <Compile Include="ControlPages\InputValidationPage.xaml.cs">
+      <DependentUpon>InputValidationPage.xaml</DependentUpon>
     </Compile>
+    <!--
     <Compile Include="ControlPages\AcrylicPage.xaml.cs">
       <DependentUpon>AcrylicPage.xaml</DependentUpon>
     </Compile>
+-->
     <Compile Include="ControlPages\AnimatedVisualPlayerPage.xaml.cs">
       <DependentUpon>AnimatedVisualPlayerPage.xaml</DependentUpon>
     </Compile>
@@ -358,9 +327,6 @@
     </Compile>
     <Compile Include="ControlPages\AppBarToggleButtonPage.xaml.cs">
       <DependentUpon>AppBarToggleButtonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ControlPages\RadialGradientBrushPage.xaml.cs">
-      <DependentUpon>RadialGradientBrushPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\ConnectedAnimationPage.xaml.cs">
       <DependentUpon>ConnectedAnimationPage.xaml</DependentUpon>
@@ -443,12 +409,6 @@
     <Compile Include="ControlPages\ImplicitTransitionPage.xaml.cs">
       <DependentUpon>ImplicitTransitionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\InkCanvasPage.xaml.cs">
-      <DependentUpon>InkCanvasPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ControlPages\InkToolbarPage.xaml.cs">
-      <DependentUpon>InkToolbarPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\ItemsRepeaterPage.xaml.cs">
       <DependentUpon>ItemsRepeaterPage.xaml</DependentUpon>
     </Compile>
@@ -458,9 +418,9 @@
     <Compile Include="ControlPages\ListViewPage.xaml.cs">
       <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\MediaPlayerElementPage.xaml.cs">
+    <!--Compile Include="ControlPages\MediaPlayerElementPage.xaml.cs">
       <DependentUpon>MediaPlayerElementPage.xaml</DependentUpon>
-    </Compile>
+    </Compile-->
     <Compile Include="ControlPages\MenuBarPage.xaml.cs">
       <DependentUpon>MenuBarPage.xaml</DependentUpon>
     </Compile>
@@ -476,14 +436,11 @@
     <Compile Include="ControlPages\TabViewPage.xaml.cs">
       <DependentUpon>TabViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\NumberBoxPage.xaml.cs">
-      <DependentUpon>NumberBoxPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
       <DependentUpon>TeachingTipPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\WebViewPage.xaml.cs">
-      <DependentUpon>WebViewPage.xaml</DependentUpon>
+    <Compile Include="ControlPages\WebView2Page.xaml.cs">
+      <DependentUpon>WebView2Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\ParallaxViewPage.xaml.cs">
       <DependentUpon>ParallaxViewPage.xaml</DependentUpon>
@@ -518,12 +475,12 @@
     <Compile Include="ControlPages\RepeatButtonPage.xaml.cs">
       <DependentUpon>RepeatButtonPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\RevealFocusPage.xaml.cs">
+    <!--Compile Include="ControlPages\RevealFocusPage.xaml.cs">
       <DependentUpon>RevealFocusPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\RevealPage.xaml.cs">
       <DependentUpon>RevealPage.xaml</DependentUpon>
-    </Compile>
+    </Compile-->
     <Compile Include="ControlPages\RichEditBoxPage.xaml.cs">
       <DependentUpon>RichEditBoxPage.xaml</DependentUpon>
     </Compile>
@@ -598,6 +555,7 @@
       <DependentUpon>XamlUICommandPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\ControlInfoDataSource.cs" />
+    <Compile Include="IdleSynchronizer.cs" />
     <Compile Include="ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
@@ -633,15 +591,6 @@
     <Compile Include="SamplePages\SamplePage3.xaml.cs">
       <DependentUpon>SamplePage3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SamplePages\SamplePage5.xaml.cs">
-      <DependentUpon>SamplePage5.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SamplePages\SamplePage6.xaml.cs">
-      <DependentUpon>SamplePage6.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SamplePages\SamplePage7.xaml.cs">
-      <DependentUpon>SamplePage7.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SamplePages\SampleSettingsPage.xaml.cs">
       <DependentUpon>SampleSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -665,17 +614,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-    <AppxManifest Include="Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
+    <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Assets\AutoSuggestBox.png" />
     <Content Include="Assets\CalendarView.png" />
     <Content Include="Assets\ContentDialog.png" />
     <Content Include="Assets\Image.png" />
-    <Content Include="Assets\InkCanvas.png" />
     <Content Include="Assets\MediaElement.png" />
     <Content Include="Assets\ninegrid.gif" />
     <Content Include="Assets\Pivot.png" />
@@ -755,17 +700,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlPages\AutomationPropertiesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlPages\RadialGradientBrushPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\CompactSizingPage.xaml">
       <SubType>Designer</SubType>
@@ -779,23 +716,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlPages\InkToolbarPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ControlPages\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlPages\NumberBoxPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\TeachingTipPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\WebViewPage.xaml">
+    <Page Include="ControlPages\WebView2Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -807,14 +736,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\InputValidationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <!--
     <Page Include="ControlPages\AcrylicPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+-->
     <Page Include="ControlPages\AppBarButtonPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -923,10 +858,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlPages\InkCanvasPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ControlPages\ItemsRepeaterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -939,10 +870,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\MediaPlayerElementPage.xaml">
+    <!--Page Include="ControlPages\MediaPlayerElementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </Page-->
     <Page Include="ControlPages\MenuBarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1003,14 +934,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\RevealFocusPage.xaml">
+    <!--Page Include="ControlPages\RevealFocusPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlPages\RevealPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </Page-->
     <Page Include="ControlPages\RichEditBoxPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1139,25 +1070,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SamplePages\SamplePage3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SamplePages\SamplePage4.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SamplePages\SamplePage5.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="SamplePages\SamplePage3.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SamplePages\SamplePage6.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SamplePages\SamplePage7.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="SamplePages\SampleSettingsPage.xaml">
       <SubType>Designer</SubType>
@@ -1189,37 +1108,26 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ColorCode.UWP">
-      <Version>2.0.5</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.9</Version>
+      <Version>6.2.8</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.0</Version>
+    <PackageReference Include="ColorCode.UWP">
+      <Version>$(ColorCodeVersion)</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+    <!--  This package cannot be used since it is compiled against Windows.UI.Xaml 
+      PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
-    </PackageReference>
+    </PackageReference-->
     <PackageReference Include="Win2D.uwp">
-      <Version>1.23.0</Version>
-    </PackageReference>
+      <Version>$(Win2DUWPVersion)</Version>
+    </PackageReference>      
   </ItemGroup>
-  <ItemGroup>
-    <None Include=".editorconfig" />
-    <None Include="testcert.pfx" />
-    <None Include="XamlControlsGallery_TemporaryKey.pfx" />
-  </ItemGroup>
-  <ItemGroup />
+    
+  <!-- Add a reference to the Microsoft.WinUI NuGet if needed. -->
+  <Import Project="ConditionalPackages.props" Condition="'$(WinUIPackageVersion)' != ''"/>
+    
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

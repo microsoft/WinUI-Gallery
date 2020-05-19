@@ -5,13 +5,13 @@
     CommandBarFlyout1.ShowAt(Image1, myOption);
 }
 
-private void MyImageButton_ContextRequested(Windows.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
+private void MyImageButton_ContextRequested(Microsoft.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
 {
     // always show a context menu in standard mode
     ShowMenu(false);
 }
 
-private void MyImageButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
 {
     ShowMenu((sender as Button).IsPointerOver);
 }

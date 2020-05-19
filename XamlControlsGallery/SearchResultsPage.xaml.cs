@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -9,15 +9,19 @@
 //*********************************************************
 using AppUIBasics.Common;
 using AppUIBasics.Data;
-using AppUIBasics.Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
+
+#if USING_CSWINRT
+using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace AppUIBasics
 {
@@ -153,12 +157,12 @@ namespace AppUIBasics
     /// </summary>
     public sealed class Filter : INotifyPropertyChanged
     {
-        private string _name;
+        private String _name;
         private int _count;
         private bool? _active;
         private List<ControlInfoDataItem> _items;
 
-        public Filter(string name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
+        public Filter(String name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
         {
             this.Name = name;
             this.Count = count;
@@ -166,7 +170,7 @@ namespace AppUIBasics
             this.Items = controlInfoList;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             return Description;
         }
@@ -177,7 +181,7 @@ namespace AppUIBasics
             set { this.SetProperty(ref _items, value); }
         }
 
-        public string Name
+        public String Name
         {
             get { return _name; }
             set { if (this.SetProperty(ref _name, value)) this.NotifyPropertyChanged(nameof(Description)); }
@@ -195,9 +199,9 @@ namespace AppUIBasics
             set { this.SetProperty(ref _active, value); }
         }
 
-        public string Description
+        public String Description
         {
-            get { return string.Format("{0} ({1})", _name, _count); }
+            get { return String.Format("{0} ({1})", _name, _count); }
         }
 
         /// <summary>
@@ -217,7 +221,7 @@ namespace AppUIBasics
         /// support CallerMemberName.</param>
         /// <returns>True if the value was changed, false if the existing value matched the
         /// desired value.</returns>
-        private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
         {
             if (object.Equals(storage, value)) return false;
 

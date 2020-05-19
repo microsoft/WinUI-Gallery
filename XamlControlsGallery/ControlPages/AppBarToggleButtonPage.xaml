@@ -97,7 +97,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample HeaderText="An AppBarToggleButton with Reveal style applied.">
+        <!--ControlExample HeaderText="An AppBarToggleButton with Reveal style applied.">
             <local:ControlExample.Example>
                 <AppBarToggleButton Style="{StaticResource AppBarToggleButtonRevealStyle}" Icon="Shuffle" Label="Shuffle" />
             </local:ControlExample.Example>
@@ -106,6 +106,6 @@
                     &lt;AppBarToggleButton Style="{StaticResource AppBarToggleButtonRevealStyle}" Icon="Shuffle" Label="Shuffle" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-        </local:ControlExample>
+        </-->
     </StackPanel>
 </Page>

@@ -1,0 +1,134 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
+  
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+    <DefineConstants>USING_CSWINRT</DefineConstants>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64</Platforms>
+    <NoWarn>8305</NoWarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifier Condition="'$(Platform)' == 'Win32'">win-x86</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(Platform)' != 'Win32'">win-$(Platform)</RuntimeIdentifier>
+    
+    <!-- If we prepend the PRI initial path, that will put "XamlControlsGallery.Desktop" as the prefix to
+         resource URIs, which will be inconsistent with the resource URIs in the UWP version of this application.
+         To allow a larger amount of code-sharing, we'll prevent us from doing that. -->
+    <AppxPrependPriInitialPath>false</AppxPrependPriInitialPath>
+    
+    <!-- We only have a single target framework, and we already have different output paths for different
+         runtime identifiers in the form of the "x86chk", etc. directory in the BuildOutput\obj path.
+         As such, we don't need to append these to the our OutputPath directory. -->
+    <IgnoreTargetFramework>true</IgnoreTargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+    <Import Project="Common.props" />
+
+  <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
+       just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
+       in the WinUI repo, or the next ItemGroup below when standalone. -->
+  <ItemGroup>
+    <PackageReference Include="ColorCode.Core"/>
+    <PackageReference Include="Win2d.uwp">
+      <!-- This package isn't compatible with .NET 5 - we only include it so we can consume its WinMD
+           to make a C#/WinRT projection.  So we'll exclude everything and reference its WinMD manually. -->
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
+    <Manifest Include="$(ApplicationManifest)" />
+    <PackageReference Include="Microsoft.VCRTForwarders.140" />
+    <PackageReference Include="Microsoft.WinUI" Condition="'$(WinUIPackageVersion)' != ''" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)"/>
+    <PackageReference Update="Win2d.uwp" Version="$(Win2DUWPVersion)" />
+    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6"/>
+    <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="CollectionsInterop.cs" />
+    <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
+    <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
+    <Compile Remove="ControlPages\AcrylicPage.xaml.cs" />
+    <Compile Remove="ControlPages\MediaPlayerElementPage.xaml.cs" />
+    <Compile Remove="ControlPages\RevealFocusPage.xaml.cs" />
+    <Compile Remove="ControlPages\RevealPage.xaml.cs" />
+    <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
+    <Page Remove="ControlPages\AcrylicPage.xaml" />
+    <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
+    <Page Remove="ControlPages\RevealFocusPage.xaml" />
+    <Page Remove="ControlPages\RevealPage.xaml" />
+    <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\**\*.*" />
+    <Content Include="ControlPagesSampleCode\**\*.*" />
+    <None Remove="ControlPages\AcrylicPage.xaml" />
+    <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
+    <None Remove="ControlPages\RevealFocusPage.xaml" />
+    <None Remove="ControlPages\RevealPage.xaml" />
+    <Content Include="DataModel\ControlInfoData.json" />
+    <Content Include="Common\ReadMe.txt" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+
+  <UsingTask TaskName="FixWUXReferences" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <CsWinrtFile Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Code Type="Fragment" Language="cs">
+<![CDATA[
+          string fileContents = System.IO.File.ReadAllText(CsWinrtFile);
+          fileContents = fileContents.Replace("Windows.UI.Xaml", "Microsoft.UI.Xaml");
+          System.IO.File.WriteAllText(CsWinrtFile, fileContents);
+]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="GenerateWin2DProjection" BeforeTargets="XamlPreCompile;CoreCompile">
+    <PropertyGroup>
+      <CsWinrtExe>$(CsWinRTPath)\cswinrt.exe</CsWinrtExe>
+      <CsWinRTVerbosity>high</CsWinRTVerbosity>
+      <CsWinRTResponseFile>$(IntermediateOutputPath)cswinrt_platform.rsp</CsWinRTResponseFile>
+      <CsWinRTCommand>$(CsWinrtExe) %40"$(CsWinRTResponseFile)"</CsWinRTCommand>
+    </PropertyGroup>
+    <ItemGroup>
+      <WinMDsToUse Include="@(WinUIWinMDReferences)" Condition="'$(UseLocalWinUIBuild)' == 'true'" />
+      <WinMDsToUse Include="$(PkgMicrosoft_WinUI)\lib\uap10.0\*.winmd" Condition="'$(UseLocalWinUIBuild)' != 'true'" />
+    </ItemGroup>
+    <PropertyGroup>
+      <CsWinRTParams>
+-verbose
+-in 10.0.18362.0
+-in @(WinMDsToUse->'"%(FullPath)"', ' ')
+-in "$(NugetPackageDirectory)\win2d.uwp\$(Win2DUWPVersion)\lib\uap10.0\Microsoft.Graphics.Canvas.winmd"
+-out "$(GeneratedFilesDir.TrimEnd('\'))"
+-exclude Microsoft
+-exclude Windows
+-include Microsoft.Graphics.Canvas
+      </CsWinRTParams>
+    </PropertyGroup>
+    <MakeDir Directories="$(GeneratedFilesDir)" Condition="!Exists('$(GeneratedFilesDir)')" />
+    <WriteLinesToFile File="$(CsWinRTResponseFile)" Lines="$(CsWinRTParams)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <Message Text="$(CsWinRTCommand)" Importance="$(CsWinRTVerbosity)" />
+    <Exec Command="$(CsWinRTCommand)" />
+    <FixWUXReferences CsWinrtFile="$(GeneratedFilesDir)\Microsoft.Graphics.Canvas.cs" />
+    <FixWUXReferences CsWinrtFile="$(GeneratedFilesDir)\Microsoft.Graphics.Canvas.UI.Xaml.cs" />
+    <ItemGroup>
+      <Compile Include="$(GeneratedFilesDir)\*.cs" Exclude="@(Compile)" />
+    </ItemGroup>
+  </Target>
+</Project>

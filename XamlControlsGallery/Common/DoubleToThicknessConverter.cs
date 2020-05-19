@@ -1,6 +1,6 @@
 ﻿using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Data;
 
 namespace AppUIBasics.Common
 {
@@ -10,7 +10,13 @@ namespace AppUIBasics.Common
         {
             if (value is double?)
             {
-                return new Thickness((double)value);
+                var val = (double)value;
+
+#if USING_CSWINRT
+                return new Thickness(val);
+#else
+                return ThicknessHelper.FromUniformLength(val);
+#endif
             }
             return false;
         }

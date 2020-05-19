@@ -63,9 +63,9 @@
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
+            <!--interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
-            </interactivity:Interaction.Behaviors>
+            </-->
 
             <GridView.Header>
                 <Grid Margin="-12,0,-12,24" Height="250">
@@ -74,17 +74,19 @@
                         Height="250"
                         Margin="0,0,0,0"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="350">
+                        VerticalShift="0">
                         <Image
+                            Margin="0,0"
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.jpg"
+                            VerticalAlignment="Center"
+                            Source="Assets/WinUI3Preview.png"
                             Stretch="UniformToFill" />
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" Visibility="Collapsed" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
+                               Style="{StaticResource NarrowHeaderTextBlockStyle}"
                                Text="{StaticResource NewControlsName}"/>
                 </Grid>
             </GridView.Header>
@@ -107,8 +109,7 @@
             FontSize="42"
             Padding="24,34,12,12"
             Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
-            IsHitTestVisible="False"
-            ShadowOpacity="1"/>
+            IsHitTestVisible="False"/>
     </Grid>
     
 </local:ItemsPageBase>

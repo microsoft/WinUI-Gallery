@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,12 +10,18 @@
 using System;
 using System.Collections.Generic;
 using Windows.Foundation.Metadata;
-using Windows.UI;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace AppUIBasics.ControlPages
 {
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class ComboBoxPage : Page
     {
         public List<Tuple<string, FontFamily>> Fonts { get; } = new List<Tuple<string, FontFamily>>()
@@ -53,7 +59,7 @@ namespace AppUIBasics.ControlPages
         private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string colorName = e.AddedItems[0].ToString();
-            Color color;
+            Windows.UI.Color color;
             switch (colorName)
             {
                 case "Yellow":
@@ -68,16 +74,18 @@ namespace AppUIBasics.ControlPages
                 case "Red":
                     color = Colors.Red;
                     break;
+                default:
+                    throw new Exception($"Invalid argument: {colorName}");
             }
             Control1Output.Fill = new SolidColorBrush(color);
         }
 
-        private void Combo2_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Combo2_Loaded(object sender, RoutedEventArgs e)
         {
             Combo2.SelectedIndex = 2;
         }
 
-        private void Combo3_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Combo3_Loaded(object sender, RoutedEventArgs e)
         {
             Combo3.SelectedIndex = 2;
 
@@ -104,12 +112,10 @@ namespace AppUIBasics.ControlPages
                 // If the item is invalid, reject it and revert the text. 
                 sender.Text = sender.SelectedValue.ToString();
 
-                var dialog = new ContentDialog
-                {
-                    Content = "The font size must be a number between 8 and 100.",
-                    CloseButtonText = "Close",
-                    DefaultButton = ContentDialogButton.Close
-                };
+                var dialog = new ContentDialog();
+                dialog.Content = "The font size must be a number between 8 and 100.";
+                dialog.CloseButtonText = "Close";
+                dialog.DefaultButton = ContentDialogButton.Close;
                 var task = dialog.ShowAsync();
             }
 

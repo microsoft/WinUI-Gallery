@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -9,7 +9,6 @@
 //*********************************************************
 using AppUIBasics.Common;
 using AppUIBasics.Data;
-using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -21,11 +20,11 @@ using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.System.Profile;
-using Windows.UI;
+using Microsoft.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {
@@ -34,7 +33,68 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-        
+        private const string SelectedAppThemeKey = "SelectedAppTheme";
+
+        /// <summary>
+        /// Gets the current actual theme of the app based on the requested theme of the
+        /// root element, or if that value is Default, the requested theme of the Application.
+        /// </summary>
+        public static ElementTheme ActualTheme
+        {
+            get
+            {
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                {
+                    if (rootElement.RequestedTheme != ElementTheme.Default)
+                    {
+                        return rootElement.RequestedTheme;
+                    }
+                }
+
+                return GetEnum<ElementTheme>(Current.RequestedTheme.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets (with LocalSettings persistence) the RequestedTheme of the root element.
+        /// </summary>
+        public static ElementTheme RootTheme
+        {
+            get
+            {
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                {
+                    return rootElement.RequestedTheme;
+                }
+
+                return ElementTheme.Default;
+            }
+            set
+            {
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                {
+                    rootElement.RequestedTheme = value;
+                }
+
+                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
+            }
+        }
+
+#if USING_CSWINRT
+        private static Window currentWindow;
+#endif
+        public static Window CurrentWindow
+        {
+            get
+            {
+#if USING_CSWINRT
+                return currentWindow;
+#else
+                return Window.Current;
+#endif
+            }
+        }
+
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -42,6 +102,7 @@ namespace AppUIBasics
         public App()
         {
             this.InitializeComponent();
+
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
@@ -56,7 +117,7 @@ namespace AppUIBasics
         {
             ElementSoundPlayer.State = ElementSoundPlayerState.On;
 
-            if(!withSpatial)
+            if (!withSpatial)
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             else
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
@@ -90,8 +151,12 @@ namespace AppUIBasics
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs args)
+        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+#if USING_CSWINRT
+            currentWindow = new Window();
+#endif
+
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached)
             //{
@@ -105,23 +170,26 @@ namespace AppUIBasics
 #endif
             //draw into the title bar
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            
-            await EnsureWindow(args);
+
+#if USING_CSWINRT
+            // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.
+            EnsureWindow();
+#else
+            EnsureWindow(args.UWPLaunchActivatedEventArgs);
+#endif
         }
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
         {
-            
+
         }
 
-        protected async override void OnActivated(IActivatedEventArgs args)
+        protected override void OnActivated(IActivatedEventArgs args)
         {
-            await EnsureWindow(args);
-
-            base.OnActivated(args);
+            EnsureWindow(args);
         }
 
-        private async Task EnsureWindow(IActivatedEventArgs args)
+        private async void EnsureWindow(IActivatedEventArgs args = null)
         {
             // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
             // We'll never need to do this again.
@@ -129,73 +197,82 @@ namespace AppUIBasics
 
             Frame rootFrame = GetRootFrame();
 
-            ThemeHelper.Initialize();
+            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
+
+            if (savedTheme != null)
+            {
+                RootTheme = GetEnum<ElementTheme>(savedTheme);
+            }
 
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
 
-            if (args.Kind == ActivationKind.Launch)
+            if (args != null)
             {
-                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (args.Kind == ActivationKind.Launch)
                 {
-                    try
+                    if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                     {
-                        await SuspensionManager.RestoreAsync();
+                        try
+                        {
+                            await SuspensionManager.RestoreAsync();
+                        }
+                        catch (SuspensionManagerException)
+                        {
+                            //Something went wrong restoring state.
+                            //Assume there is no state and continue
+                        }
                     }
-                    catch (SuspensionManagerException)
+
+                    targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
+                }
+                else if (args.Kind == ActivationKind.Protocol)
+                {
+                    Match match;
+
+                    string targetId = string.Empty;
+
+                    switch (((ProtocolActivatedEventArgs)args).Uri?.AbsolutePath)
                     {
-                        //Something went wrong restoring state.
-                        //Assume there is no state and continue
+                        case string s when IsMatching(s, "/category/(.*)"):
+                            targetId = match.Groups[1]?.ToString();
+                            if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
+                            {
+                                targetPageType = typeof(SectionPage);
+                            }
+                            break;
+
+                        case string s when IsMatching(s, "/item/(.*)"):
+                            targetId = match.Groups[1]?.ToString();
+                            if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
+                            {
+                                targetPageType = typeof(ItemPage);
+                            }
+                            break;
                     }
-                }
 
-                targetPageArguments = ((LaunchActivatedEventArgs)args).Arguments;
-            }
-            else if (args.Kind == ActivationKind.Protocol)
-            {
-                Match match;
+                    targetPageArguments = targetId;
 
-                string targetId = string.Empty;
-
-                switch (((ProtocolActivatedEventArgs)args).Uri?.AbsolutePath)
-                {
-                    case string s when IsMatching(s, "/category/(.*)"):
-                        targetId = match.Groups[1]?.ToString();
-                        if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
-                        {
-                            targetPageType = typeof(SectionPage);
-                        }
-                        break;
-
-                    case string s when IsMatching(s, "/item/(.*)"):
-                        targetId = match.Groups[1]?.ToString();
-                        if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
-                        {
-                            targetPageType = typeof(ItemPage);
-                        }
-                        break;
-                }
-
-                targetPageArguments = targetId;
-
-                bool IsMatching(string parent, string expression)
-                {
-                    match = Regex.Match(parent, expression);
-                    return match.Success;
+                    bool IsMatching(string parent, string expression)
+                    {
+                        match = Regex.Match(parent, expression);
+                        return match.Success;
+                    }
                 }
             }
 
             rootFrame.Navigate(targetPageType, targetPageArguments);
-            ((Microsoft.UI.Xaml.Controls.NavigationViewItem)(((NavigationRootPage)(Window.Current.Content)).NavigationView.MenuItems[0])).IsSelected = true;
+            ((Microsoft.UI.Xaml.Controls.NavigationViewItem)(((NavigationRootPage)(App.CurrentWindow.Content)).NavigationView.MenuItems[0])).IsSelected = true;
 
             // Ensure the current window is active
-            Window.Current.Activate();
+           CurrentWindow.Activate();
         }
 
         private Frame GetRootFrame()
         {
             Frame rootFrame;
-            if (!(Window.Current.Content is NavigationRootPage rootPage))
+            NavigationRootPage rootPage = CurrentWindow.Content as NavigationRootPage;
+            if (rootPage == null)
             {
                 rootPage = new NavigationRootPage();
                 rootFrame = (Frame)rootPage.FindName("rootFrame");
@@ -207,7 +284,7 @@ namespace AppUIBasics
                 rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Window.Current.Content = rootPage;
+                CurrentWindow.Content = rootPage;
             }
             else
             {
