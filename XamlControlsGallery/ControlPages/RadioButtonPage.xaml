@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -48,13 +48,15 @@
                 <StackPanel>
                     <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
                             HorizontalScrollBarVisibility="Hidden">
-                        <muxc:RadioButtons MaxColumns="4" Header="Background">
-                            <RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" />
+                        <muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="3">
+                            <RadioButton Content="Green" Tag="Green"
+                                    Checked="BGRadioButton_Checked" />
                             <RadioButton Content="Yellow" Tag="Yellow" 
                                     Checked="BGRadioButton_Checked" Margin="8,0"/>
-                            <RadioButton Content="Blue" Tag="Blue" Checked="BGRadioButton_Checked" />
-                            <RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked"
-                                    IsChecked="True" Margin="8,0"/>
+                            <RadioButton Content="Blue" Tag="Blue"
+                                    Checked="BGRadioButton_Checked" />
+                            <RadioButton Content="White" Tag="White"
+                                    Checked="BGRadioButton_Checked" Margin="8,0"/>
                         </muxc:RadioButtons>
                     </ScrollViewer>
                 </StackPanel>
