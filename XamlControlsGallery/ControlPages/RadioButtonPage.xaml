@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -46,32 +46,23 @@
                 RelativePanel.Below="Example1">
             <StackPanel x:Name="Control2" Grid.Row="4">
                 <StackPanel>
-                    <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
-                            HorizontalScrollBarVisibility="Hidden">
-                        <muxc:RadioButtons MaxColumns="4" Header="Background">
-                            <RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" />
-                            <RadioButton Content="Yellow" Tag="Yellow" 
-                                    Checked="BGRadioButton_Checked" Margin="8,0"/>
-                            <RadioButton Content="Blue" Tag="Blue" Checked="BGRadioButton_Checked" />
-                            <RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked"
-                                    IsChecked="True" Margin="8,0"/>
-                        </muxc:RadioButtons>
-                    </ScrollViewer>
+                    <muxc:RadioButtons MaxColumns="4" Header="Background">
+                        <RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" />
+                        <RadioButton Content="Yellow" Tag="Yellow" 
+                                Checked="BGRadioButton_Checked" Margin="8,0"/>
+                        <RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked"
+                                IsChecked="True" Margin="8,0"/>
+                    </muxc:RadioButtons>
                 </StackPanel>
                 <StackPanel>
-                    <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
-                            HorizontalScrollBarVisibility="Hidden">
-                        <muxc:RadioButtons MaxColumns="4" Header="BorderBrush">
-                            <RadioButton Content="Green" Tag="Green"
-                                    Checked="BorderRadioButton_Checked" />
-                            <RadioButton Content="Yellow" Tag="Yellow"
-                                    Checked="BorderRadioButton_Checked" IsChecked="True" Margin="8,0"/>
-                            <RadioButton Content="Blue" Tag="Blue"
-                                    Checked="BorderRadioButton_Checked" />
-                            <RadioButton Content="White" Tag="White"
-                                    Checked="BorderRadioButton_Checked" Margin="8,0"/>
-                        </muxc:RadioButtons>
-                    </ScrollViewer>
+                    <muxc:RadioButtons MaxColumns="4" Header="BorderBrush">
+                        <RadioButton Content="Green" Tag="Green"
+                                Checked="BorderRadioButton_Checked" />
+                        <RadioButton Content="Yellow" Tag="Yellow"
+                                Checked="BorderRadioButton_Checked" IsChecked="True" Margin="8,0"/>
+                        <RadioButton Content="White" Tag="White"
+                                Checked="BorderRadioButton_Checked" Margin="8,0"/>
+                    </muxc:RadioButtons>
                 </StackPanel>
                 <Border x:Name="Control2Output" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
                         Height="50" Margin="0,10,0,10" />
