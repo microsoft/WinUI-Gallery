@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -46,7 +46,9 @@
                 RelativePanel.Below="Example1">
             <StackPanel x:Name="Control2" Grid.Row="4">
                 <StackPanel>
-                    <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
+                    <ScrollViewer VerticalScrollMode="Disabled"
+                            VerticalScrollBarVisibility="Hidden"
+                            HorizontalScrollMode="Auto"
                             HorizontalScrollBarVisibility="Hidden">
                         <muxc:RadioButtons MaxColumns="4" Header="Background">
                             <RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" />
@@ -59,7 +61,9 @@
                     </ScrollViewer>
                 </StackPanel>
                 <StackPanel>
-                    <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollMode="Auto"
+                    <ScrollViewer VerticalScrollMode="Disabled"
+                            VerticalScrollBarVisibility="Hidden"
+                            HorizontalScrollMode="Auto"
                             HorizontalScrollBarVisibility="Hidden">
                         <muxc:RadioButtons MaxColumns="4" Header="BorderBrush">
                             <RadioButton Content="Green" Tag="Green"
