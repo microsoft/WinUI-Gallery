@@ -1,14 +1,16 @@
 using System;
+using System.Collections.ObjectModel;
+using AppUIBasics.SamplePages;
+using AppUIBasics.TabViewPages;
+using Microsoft.UI.Xaml.Controls;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Controls;
-using AppUIBasics.SamplePages;
-using Windows.ApplicationModel.Core;
-using Windows.UI.Xaml;
-using Windows.UI.ViewManagement;
-using Windows.UI.Core;
-using AppUIBasics.TabViewPages;
-using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -26,8 +28,35 @@ namespace AppUIBasics.ControlPages
         public TabViewPage()
         {
             this.InitializeComponent();
+            Loaded += TabViewPage_Loaded;
 
             InitializeDataBindingSampleData();
+        }
+
+        private void TabViewPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Remove all the AddDeleteThemeTransition/ContentThemeTransition instances in the inner ListView's ItemContainerTransitions
+            // for the TabViewItemsSourceSample TabView to avoid attempting to reparent a tab's content while it is still parented during
+            // a tab reordering user gesture. This is only required because the TabViewItem' contents are databound to UIElements.
+            // If the TabViewItem's DataContext were purely data, this would not be necessary (here it includes a Frame though). With
+            // System animations turned on, those UIElements are still parented to the old item container as the tab is being dropped in
+            // its new location. Without animations, the old item container is already put into the recycling pool and picked as the new
+            // container. Its ContentControl.Content is kept unchanged and no reparenting is attempted. 
+            var tabViewItemsSourceSampleRoot = VisualTreeHelper.GetChild(TabViewItemsSourceSample, 0) as FrameworkElement;
+            var tabViewItemsSourceSampleListView = tabViewItemsSourceSampleRoot.FindName("TabListView") as ListView;
+
+            for (int i = 0; i < tabViewItemsSourceSampleListView.ItemContainerTransitions.Count;)
+            {
+                if (tabViewItemsSourceSampleListView.ItemContainerTransitions[i] is AddDeleteThemeTransition ||
+                    tabViewItemsSourceSampleListView.ItemContainerTransitions[i] is ContentThemeTransition)
+                {
+                    tabViewItemsSourceSampleListView.ItemContainerTransitions.RemoveAt(i);
+                }
+                else
+                {
+                    i++;
+                }
+            }
         }
 
         #region SharedTabViewLogic
