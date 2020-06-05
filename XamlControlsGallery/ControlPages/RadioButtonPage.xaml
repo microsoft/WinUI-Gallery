@@ -47,13 +47,11 @@
             <StackPanel x:Name="Control2" Grid.Row="4">
                 <StackPanel>
                 </StackPanel>
-                    <muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="3">
+                    <muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="2">
                         <RadioButton Content="Green" Tag="Green"
                                 Checked="BGRadioButton_Checked" />
                         <RadioButton Content="Yellow" Tag="Yellow" 
                                 Checked="BGRadioButton_Checked" Margin="8,0"/>
-                        <RadioButton Content="Blue" Tag="Blue"
-                                Checked="BGRadioButton_Checked" />
                         <RadioButton Content="White" Tag="White"
                                 Checked="BGRadioButton_Checked" Margin="8,0"/>
                     </muxc:RadioButtons>
