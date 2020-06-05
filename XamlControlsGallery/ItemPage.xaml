@@ -69,7 +69,6 @@
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
-                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
@@ -93,7 +92,6 @@
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
-                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
