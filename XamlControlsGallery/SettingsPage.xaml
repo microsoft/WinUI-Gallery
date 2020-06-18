@@ -57,7 +57,7 @@
                 </StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
                 <muxc:RadioButtons x:Name="navigationLocation" Margin="0,10,0,0"
-                        Header="Navigation control location" SelectionChanged="navigationLocation_SelectionChanged">
+                        Header="Navigation location" SelectionChanged="navigationLocation_SelectionChanged">
                     <RadioButton Content="Left"/>
                     <RadioButton Content="Top"/>
                 </muxc:RadioButtons>
