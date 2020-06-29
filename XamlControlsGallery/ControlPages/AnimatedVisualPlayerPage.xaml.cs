@@ -1,4 +1,5 @@
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
@@ -75,12 +76,14 @@ namespace AppUIBasics.ControlPages
                 PlayIcon.Visibility = Visibility.Collapsed;
                 PauseIcon.Visibility = Visibility.Visible;
                 ToolTipService.SetToolTip(PlayPauseButton, "Pause");
+                PlayPauseButton.SetValue(AutomationProperties.NameProperty, "Pause");
             }
             else
             {
                 PlayIcon.Visibility = Visibility.Visible;
                 PauseIcon.Visibility = Visibility.Collapsed;
                 ToolTipService.SetToolTip(PlayPauseButton, "Play");
+                PlayPauseButton.SetValue(AutomationProperties.NameProperty, "Play");
             }
         }
     }

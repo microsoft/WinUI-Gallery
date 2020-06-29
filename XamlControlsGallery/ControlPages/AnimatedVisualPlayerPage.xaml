@@ -91,7 +91,7 @@
                             Click="ReverseButton_Click"
                             ToolTipService.ToolTip="Reverse"
                             AutomationProperties.Name="Reverse">
-                            <SymbolIcon Symbol="Back" />
+                            <FontIcon Glyph="&#xEB9E;" />
                         </Button>
                     </Grid>
 
