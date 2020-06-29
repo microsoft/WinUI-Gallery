@@ -36,7 +36,6 @@
 
                         <!--  AnimatedVisualPlayer  -->
                         <muxc:AnimatedVisualPlayer x:Name="Player"
-                                                   
                                                    AutoPlay="False">
 
                             <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
