@@ -1,3 +1,4 @@
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
@@ -35,7 +36,11 @@ namespace AppUIBasics.ControlPages
             if (!Player.IsPlaying)
             {
                 // Play the animation at the currently specified playback rate.
-                _ = Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false);
+                Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false).GetAwaiter().OnCompleted(
+                    () => {
+                        SetIsPlayingIndicator(false);
+                    }
+                );
                 SetIsPlayingIndicator(true);
             }
         }
@@ -62,7 +67,11 @@ namespace AppUIBasics.ControlPages
                 else
                 {
                     Player.PlaybackRate = 1;
-                    _ = Player.PlayAsync(fromProgress:0, toProgress: 1, looped: false);
+                    Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false).GetAwaiter().OnCompleted(
+                        () => {
+                            SetIsPlayingIndicator(false);
+                        }
+                    );
                     wasPaused = false;
                 }
                 SetIsPlayingIndicator(true);
