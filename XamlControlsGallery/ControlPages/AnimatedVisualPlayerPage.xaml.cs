@@ -28,20 +28,18 @@ namespace AppUIBasics.ControlPages
             // Set reverse playback rate.
             // NOTE: This property is live, which means it takes effect even if the animation is playing.
             Player.PlaybackRate = -1;
-            EnsurePlaying();
+            StartAnimation();
         }
 
-        private void EnsurePlaying()
+        private async void StartAnimation()
         {
             if (!Player.IsPlaying)
             {
                 // Play the animation at the currently specified playback rate.
-                Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false).GetAwaiter().OnCompleted(
-                    () => {
-                        SetIsPlayingIndicator(false);
-                    }
-                );
+                Player.PlaybackRate = 1;
                 SetIsPlayingIndicator(true);
+                await Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false);
+                SetIsPlayingIndicator(false);
             }
         }
 
@@ -61,20 +59,14 @@ namespace AppUIBasics.ControlPages
                 if(wasPaused)
                 {
                     Player.Resume();
-                    wasPaused = false;
+                    SetIsPlayingIndicator(true);
                 }
                 // Not playing, start animation now
                 else
                 {
-                    Player.PlaybackRate = 1;
-                    Player.PlayAsync(fromProgress: 0, toProgress: 1, looped: false).GetAwaiter().OnCompleted(
-                        () => {
-                            SetIsPlayingIndicator(false);
-                        }
-                    );
-                    wasPaused = false;
+                    StartAnimation();
                 }
-                SetIsPlayingIndicator(true);
+                wasPaused = false;
             }
         }
 
