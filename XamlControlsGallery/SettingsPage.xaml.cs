@@ -46,13 +46,13 @@ namespace AppUIBasics
                 soundToggle.IsOn = true;
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
                 spatialSoundBox.IsChecked = true;
-            if (NavigationRootPage.Current.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top)
+            if (NavigationRootPage.Current.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
             {
-                navigationLocation.SelectedIndex = 1;
+                navigationLocation.SelectedIndex = 0;
             }
             else
             {
-                navigationLocation.SelectedIndex = 0;
+                navigationLocation.SelectedIndex = 1;
             }
         }
 
