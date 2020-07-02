@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
@@ -35,7 +35,7 @@ namespace AppUIBasics.ControlPages
         {
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-            var customValue = OpacityNumberBox.Value;
+            var customValue = EnsureValueIsNumber(OpacityNumberBox);
             OpacityRectangle.Opacity = customValue;
             OpacityValue.Value = customValue;
         }
@@ -46,7 +46,7 @@ namespace AppUIBasics.ControlPages
 
             RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
-            RotationRectangle.Rotation = (float)RotationNumberBox.Value;
+            RotationRectangle.Rotation = EnsureValueIsNumber(RotationNumberBox);
         }
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +67,7 @@ namespace AppUIBasics.ControlPages
             }
             else
             {
-                customValue = (float)ScaleNumberBox.Value;
+                customValue = EnsureValueIsNumber(ScaleNumberBox);
             }
 
             ScaleRectangle.Scale = new Vector3(customValue);
@@ -92,7 +92,7 @@ namespace AppUIBasics.ControlPages
             }
             else
             {
-                customValue = (float)TranslationNumberBox.Value;
+                customValue = EnsureValueIsNumber(TranslationNumberBox);
             }
 
             TranslateRectangle.Translation = new Vector3(customValue);
@@ -135,6 +135,15 @@ namespace AppUIBasics.ControlPages
             {
                 BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Blue);
             }
+        }
+
+        private float EnsureValueIsNumber(NumberBox numberBox)
+        {
+            if(double.IsNaN(numberBox.Value))
+            {
+                numberBox.Value = 0;
+            }
+            return (float)numberBox.Value;
         }
 
         private void ThemeButton_Click(object sender, RoutedEventArgs e)
