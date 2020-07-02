@@ -1,7 +1,7 @@
 <Page
     x:Class="AppUIBasics.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
@@ -56,9 +56,11 @@
                     <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
                 </StackPanel>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
-                <StackPanel Margin="0,10,0,0">
-                    <ToggleSwitch x:Name="navigationToggle" Header="Navigation control location" Toggled="navigationToggle_Toggled" OffContent="Left" OnContent="Top" Margin="0,0,0,4" />
-                </StackPanel>
+                <muxc:RadioButtons x:Name="navigationLocation" Margin="0,10,0,0"
+                        Header="Navigation position" SelectionChanged="navigationLocation_SelectionChanged">
+                    <RadioButton Content="Left"/>
+                    <RadioButton Content="Top"/>
+                </muxc:RadioButtons>
                 <TextBlock
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"
