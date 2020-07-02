@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -48,11 +48,19 @@
                               HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <RelativePanel Margin="0,0,0,20" HorizontalAlignment="Stretch">
                 <RelativePanel.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0" />
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Margin" Value="0,0,8,0" />
-                    </Style>
+                    <ResourceDictionary>
+                        <Style TargetType="Button">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Margin" Value="0,0,8,0" />
+                        </Style>
+                    
+                        <ResourceDictionary.ThemeDictionaries>
+                            <ResourceDictionary x:Key="HighContrast">
+                                <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SystemColorHighlightColor" />
+                            </ResourceDictionary>
+                        </ResourceDictionary.ThemeDictionaries>
+                    </ResourceDictionary>
                 </RelativePanel.Resources>
                 <Button x:Name="openFileButton" Click="OpenButton_Click" AutomationProperties.Name="Open file" ToolTipService.ToolTip="Open file">
                     <Button.Content>
