@@ -41,6 +41,13 @@
 &lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="isOn" IsEnabled="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}"
+                                                  Value= "True"/>
+                <local:ControlExampleSubstitution Key="isOff" IsEnabled="{x:Bind ToggleSwitch2.IsOn.Equals(x:False), Mode=OneWay}"
+                                                  Value= "False"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
