@@ -144,7 +144,7 @@ namespace AppUIBasics
 
         private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            NavigationOrientationHelper.IsLeftMode = !navigationToggle.IsOn;
+            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
         }
 
         private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)
