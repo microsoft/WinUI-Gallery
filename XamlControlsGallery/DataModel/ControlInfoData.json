@@ -1027,7 +1027,7 @@
           "ImagePath": "ms-appx:///Assets/ProgressBar.png",
           "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsPreview": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ProgressBar - API",
@@ -1049,7 +1049,7 @@
           "ImagePath": "ms-appx:///Assets/ProgressRing.png",
           "Description": "Use a ProgressRing to show that the app is performing ongoing work that blocks user interaction.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ProgressRing - API",
