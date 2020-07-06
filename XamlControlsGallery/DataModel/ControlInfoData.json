@@ -994,7 +994,7 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
       "Subtitle": "",
-      "ImagePath": "",
+      "ImagePath": "ms-appx:///Assets/ProgressRing.png",
       "Description": "",
       "Items": [
         {
