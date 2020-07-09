@@ -424,6 +424,11 @@ namespace AppUIBasics
                 }
             }
         }
+
+        private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        {
+            controlsSearchBox.Focus(FocusState.Programmatic);
+        }
     }
 
 
