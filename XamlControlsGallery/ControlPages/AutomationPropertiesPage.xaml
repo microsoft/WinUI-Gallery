@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -13,12 +13,10 @@
     x:Class="AppUIBasics.ControlPages.AutomationPropertiesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:AppUIBasics.Common"
     xmlns:local="using:AppUIBasics"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
         <TextBlock Margin="0,8,0,0" Text="To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow" 
