@@ -138,7 +138,12 @@
                     PlaceholderText="Search"
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                    MinWidth="200"
+                    KeyboardAcceleratorPlacementMode="Hidden"
                     TextChanged="OnControlsSearchBoxTextChanged">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="F" Invoked="CtrlF_Invoked" />
+                    </AutoSuggestBox.KeyboardAccelerators>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 

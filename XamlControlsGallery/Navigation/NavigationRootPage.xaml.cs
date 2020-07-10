@@ -396,6 +396,11 @@ namespace AppUIBasics
             }
         }
 
+        private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        {
+            controlsSearchBox.Focus(FocusState.Programmatic);
+        }
+
 #region Helpers for test automation
 
         private static string _error = string.Empty;
