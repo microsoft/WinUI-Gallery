@@ -15,7 +15,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <Page.Resources>
         <Style TargetType="TextBlock" x:Key="CustomTextBlockStyle">
-            <Setter Property="Foreground" Value="{ThemeResource SystemAccentColor}"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontStyle" Value="Italic"/>
         </Style>
     </Page.Resources>
@@ -38,7 +38,7 @@
                 <x:String xml:space="preserve">
 &lt;Page.Resources&gt;
     &lt;Style TargetType="TextBlock" x:Key="CustomTextBlockStyle"&gt;
-        &lt;Setter Property="Foreground" Value="{ThemeResource SystemAccentColor}"/&gt;
+        &lt;Setter Property="FontFamily" Value="Comic Sans MS"/&gt;
         &lt;Setter Property="FontStyle" Value="Italic"/&gt;
     &lt;/Style&gt;
 &lt;Page.Resources&gt;
