@@ -1043,7 +1043,7 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
       "Subtitle": "",
-      "ImagePath": "",
+      "ImagePath": "",
       "Description": "",
       "Items": [
         {
@@ -1100,7 +1100,7 @@
           "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ProgressRing - API",
