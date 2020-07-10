@@ -994,7 +994,7 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
       "Subtitle": "",
-      "ImagePath": "ms-appx:///Assets/NavigationViewItemIcons/ProgressIcon.png",
+      "ImagePath": "",
       "Description": "",
       "Items": [
         {
