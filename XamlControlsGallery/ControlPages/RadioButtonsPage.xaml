@@ -22,12 +22,12 @@
     <StackPanel>
         <local:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
             <StackPanel>
-                <muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="1" SelectionChanged="BackgroundColor_SelectionChanged">
+                <muxc:RadioButtons x:Name="BackgroundRadioButtons" MaxColumns="3" Header="Background" SelectedIndex="0" SelectionChanged="BackgroundColor_SelectionChanged">
                     <x:String>Green</x:String>
                     <x:String>Yellow</x:String>
                     <x:String>White</x:String>
                 </muxc:RadioButtons>
-                <muxc:RadioButtons MaxColumns="4" Header="Border" SelectedIndex="2" SelectionChanged="BorderBrush_SelectionChanged">
+                <muxc:RadioButtons x:Name="BorderRadioButtons" MaxColumns="3" Header="Border" SelectedIndex="1" SelectionChanged="BorderBrush_SelectionChanged">
                     <x:String>Green</x:String>
                     <x:String>Yellow</x:String>
                     <x:String>White</x:String>
@@ -37,20 +37,22 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="1" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
-        &lt;x:String&gt;Green&lt;/x:String&gt;
-        &lt;x:String&gt;Yellow&lt;/x:String&gt;
-        &lt;x:String&gt;White&lt;/x:String&gt;
-    &lt;/muxc:RadioButtons&gt;
-    &lt;muxc:RadioButtons MaxColumns="4" Header="Border" SelectedIndex="2" SelectionChanged="BorderBrush_SelectionChanged"&gt;
-        &lt;x:String&gt;Green&lt;/x:String&gt;
-        &lt;x:String&gt;Yellow&lt;/x:String&gt;
-        &lt;x:String&gt;White&lt;/x:String&gt;
-    &lt;/muxc:RadioButtons&gt;
-&lt;/StackPanel&gt;
+&lt;muxc:RadioButtons x:Name="BackgroundRadioButtons" SelectedIndex="$(BackgroundRadioButtonsSubstitution)"  MaxColumns="3" Header="Background" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/muxc:RadioButtons&gt;
+&lt;muxc:RadioButtons x:Name="BorderRadioButtons" SelectedIndex="$(BorderRadioButtonsSubstitution)" MaxColumns="3" Header="Border" SelectionChanged="BorderBrush_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/muxc:RadioButtons&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
