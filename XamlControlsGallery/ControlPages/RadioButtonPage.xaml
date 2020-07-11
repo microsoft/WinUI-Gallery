@@ -13,33 +13,25 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1"
-                HeaderText="A group of radio buttons implicitly grouped by their parent container.">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <!-- A RadioButton group. -->
-                    <TextBlock Text="Options:"/>
-                    <RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked" />
-                    <RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked" />
-                    <RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked" />
-                </StackPanel>
-                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"
-                        VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/>
-            </Grid>
+        <local:ControlExample HeaderText="A group of RadioButton controls in a RadioButtons group.">
+            <StackPanel>
+                <muxc:RadioButtons Header="Options:">
+                    <RadioButton Content="Option 1" Checked="RadioButton_Checked" />
+                    <RadioButton Content="Option 2" Checked="RadioButton_Checked" />
+                    <RadioButton Content="Option 3" Checked="RadioButton_Checked" />
+                </muxc:RadioButtons>
+                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,8" />
+            </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;TextBlock Text="Options:"/&gt;
-    &lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;
-    &lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;
-    &lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;
-&lt;/StackPanel&gt;
+&lt;muxc:RadioButtons&gt;
+    &lt;RadioButton Content="Option 1" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 2" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 3" Checked="RadioButton_Checked"/&gt;
+&lt;/muxc:RadioButtons&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
