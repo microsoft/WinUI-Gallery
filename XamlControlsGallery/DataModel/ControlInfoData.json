@@ -1354,7 +1354,7 @@
           "UniqueId": "RadioButtons",
           "Title": "RadioButtons",
           "Subtitle": "A control that displays a group of related RadioButton controls with keyboarding and accessibility support.",
-          "ImagePath": "ms-appx:///Assets/RadioButton.png",
+          "ImagePath": "ms-appx:///Assets/RadioButtons.png",
           "Description": "A control that displays a group of related RadioButton controls with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
