@@ -19,7 +19,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <RelativePanel HorizontalAlignment="Left">
+    <StackPanel>
         <local:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
             <StackPanel>
                 <muxc:RadioButtons MaxColumns="4" Header="Background" SelectedIndex="1" SelectionChanged="BackgroundColor_SelectionChanged">
@@ -52,5 +52,5 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-    </RelativePanel>
+    </StackPanel>
 </Page>

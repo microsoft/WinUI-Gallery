@@ -894,9 +894,9 @@
         {
           "UniqueId": "RadioButton",
           "Title": "RadioButton",
-          "Subtitle": "A control that allows a user to select a single option from a group of options. When radio buttons are grouped together they are mutually exclusive.",
+          "Subtitle": "A control that allows a user to select a single option from a group of options.",
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
-          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options.",
+          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
@@ -1353,9 +1353,9 @@
                 {
           "UniqueId": "RadioButtons",
           "Title": "RadioButtons",
-          "Subtitle": "A control that displays a group of related RadioButton controls.",
+          "Subtitle": "A control that displays a group of related RadioButton controls with keyboarding and accessibility support.",
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
-          "Description": "A control that displays a group of related RadioButton controls.",
+          "Description": "A control that displays a group of related RadioButton controls with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
