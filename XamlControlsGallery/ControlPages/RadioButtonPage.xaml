@@ -27,7 +27,7 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:RadioButtons&gt;
+&lt;muxc:RadioButtons Header="Options:"&gt;
     &lt;RadioButton Content="Option 1" Checked="RadioButton_Checked"/&gt;
     &lt;RadioButton Content="Option 2" Checked="RadioButton_Checked"/&gt;
     &lt;RadioButton Content="Option 3" Checked="RadioButton_Checked"/&gt;
