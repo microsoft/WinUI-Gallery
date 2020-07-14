@@ -299,6 +299,10 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
+        <!-- 
+        
+        Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes XCG to crash
+        
         <local:ControlExample HeaderText="Complete TabView windowing sample" x:Name="LaunchExample">
             <local:ControlExample.Example>
                 <Button Content="Click here to launch the sample" Click="TabViewWindowingButton_Click"/>
@@ -309,6 +313,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-
+        -->
+        
     </StackPanel>
 </Page>

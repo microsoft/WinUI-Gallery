@@ -79,7 +79,7 @@
             <!-- Automation Helpers -->
             <!-- These are not visible, but are used via UIA. They are fundamental to the operation of our test automation, so they should not be collapsed since 
                                 that prevents them from showing up in the UIA tree.-->
-            <Button x:Name="GoBackInvokerButton" AutomationProperties.AutomationId="__GoBackInvoker" Style="{StaticResource AutomationHelperStyle}" />
+            <Button x:Name="GoBackInvokerButton" AutomationProperties.AutomationId="__GoBackInvoker" Style="{StaticResource AutomationHelperStyle}" Click="GoBackInvokerButton_Click" />
             <Button x:Name="CloseAppInvokerButton" AutomationProperties.AutomationId="__CloseAppInvoker" Style="{StaticResource AutomationHelperStyle}" Click="CloseAppInvokerButton_Click"/>
             <Button x:Name="WaitForIdleInvokerButton"  AutomationProperties.AutomationId="__WaitForIdleInvoker" Style="{StaticResource AutomationHelperStyle}"  Click="WaitForIdleInvokerButton_Click"/>
             <CheckBox x:Name="_idleStateEnteredCheckBox" AutomationProperties.AutomationId="__IdleStateEnteredCheckBox" Style="{StaticResource AutomationHelperStyle}" />
@@ -120,7 +120,7 @@
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" />
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating" />
         </NavigationView>
     </Grid>
 </Page>

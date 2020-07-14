@@ -27,7 +27,13 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters />
+                    <!-- XAML_BEHAVIORS_REMOVED
+                        Until the XamlBehaviors are updated to work with lifted XAML, just use the smallHeaderText all the time.
+                    -->
+                    <VisualState.Setters>
+                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
+                        <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowLayout">
                     <VisualState.StateTriggers>
@@ -59,9 +65,11 @@
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
-            <!--interactivity:Interaction.Behaviors>
+            <!-- XAML_BEVHAVIORS_REMOVED
+            <interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
-            </-->
+            </interactivity:Interaction.Behaviors>
+            -->
 
             <GridView.Header>
                 <Grid Margin="-24,0,0,24">

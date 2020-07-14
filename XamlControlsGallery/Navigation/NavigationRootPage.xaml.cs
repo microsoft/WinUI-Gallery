@@ -73,9 +73,9 @@ namespace AppUIBasics
             get
             {
 #if USING_CSWINRT
-                return "Win32 XAML Controls Gallery (WinUI 3 Preview 1)";
+                return "Win32 XAML Controls Gallery (WinUI 3 Preview 2)";
 #else
-                return "UWP XAML Controls Gallery (WinUI 3 Preview 1)";
+                return "UWP XAML Controls Gallery (WinUI 3 Preview 2)";
 #endif
             }
         }
@@ -279,7 +279,15 @@ namespace AppUIBasics
                 bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
                 PageHeader?.UpdateBackground(isFilteredPage);
             }
+
+            TestContentLoadedCheckBox.IsChecked = true;
         }
+
+        private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            TestContentLoadedCheckBox.IsChecked = false;
+        }
+
         private void CloseTeachingTips()
         {
             if (Current?.PageHeader != null)
@@ -415,7 +423,15 @@ namespace AppUIBasics
             Application.Current.Exit();
         }
 
-#endregion
+        private void GoBackInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            if(this.rootFrame.CanGoBack)
+            {
+                this.rootFrame.GoBack();
+            }
+        }
+
+        #endregion
     }
 
 
