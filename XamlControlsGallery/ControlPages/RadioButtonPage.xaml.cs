@@ -21,19 +21,9 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void Option1RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            Control1Output.Text = "You selected option 1.";
-        }
-
-        private void Option2RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            Control1Output.Text = "You selected option 2.";
-        }
-
-        private void Option3RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            Control1Output.Text = "You selected option 3.";
+            Control1Output.Text = string.Format("You selected {0}", (sender as RadioButton).Content.ToString());
         }
     }
 }

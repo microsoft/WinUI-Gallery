@@ -110,6 +110,7 @@
     </Content>
     <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\NumberBox.png" />
+    <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
     <Content Include="Assets\SampleMedia\grapes.jpg" />
