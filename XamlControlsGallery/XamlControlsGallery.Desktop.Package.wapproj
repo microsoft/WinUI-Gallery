@@ -82,7 +82,7 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -117,5 +117,9 @@
   </PropertyGroup>
 
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
-  <Import Project="build\Microsoft.WinUI.AppX.targets" />
+  
+  <PropertyGroup>
+    <AppxTargetsLocation Condition="'$(AppxTargetsLocation)'==''">$(MSBuildThisFileDirectory)build\</AppxTargetsLocation>
+  </PropertyGroup>
+  <Import Project="$(AppxTargetsLocation)Microsoft.WinUI.AppX.targets" Condition="Exists('$(AppxTargetsLocation)Microsoft.WinUI.AppX.targets')" />
 </Project>

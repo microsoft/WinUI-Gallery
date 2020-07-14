@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
             <!-- The NuGet version of WinUI to build against. -->
-            <WinUIPackageVersion>3.0.0-preview1.200515.3</WinUIPackageVersion>
+            <WinUIPackageVersion>3.0.0-preview2.200713.0</WinUIPackageVersion>
         
             <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
             <GeneratedFilesDir>obj\generated</GeneratedFilesDir>

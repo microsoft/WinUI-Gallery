@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace AppUIBasics
         public ObservableCollection(IList<T> list) : base(list.ToList()) { }
         public ObservableCollection(IEnumerable<T> collection) : base(collection.ToList()) { }
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event Microsoft.UI.Xaml.Interop.NotifyCollectionChangedEventHandler CollectionChanged;
 
         public void Move(int oldIndex, int newIndex)
         {
@@ -69,7 +70,7 @@ namespace AppUIBasics
 
             base.ClearItems();
             OnCollectionChanged(
-                System.Collections.Specialized.NotifyCollectionChangedAction.Reset,
+                NotifyCollectionChangedAction.Reset,
                 null, oldItems, 0, 0);
         }
 
@@ -82,7 +83,7 @@ namespace AppUIBasics
 
             base.InsertItem(index, item);
             OnCollectionChanged(
-                System.Collections.Specialized.NotifyCollectionChangedAction.Add,
+                NotifyCollectionChangedAction.Add,
                 newItem, null, index, 0);
         }
 
@@ -98,7 +99,7 @@ namespace AppUIBasics
             base.RemoveAt(oldIndex);
             base.InsertItem(newIndex, item);
             OnCollectionChanged(
-                System.Collections.Specialized.NotifyCollectionChangedAction.Move,
+                NotifyCollectionChangedAction.Move,
                 newItem, oldItem, newIndex, oldIndex);
         }
 
@@ -111,7 +112,7 @@ namespace AppUIBasics
 
             base.RemoveItem(index);
             OnCollectionChanged(
-                System.Collections.Specialized.NotifyCollectionChangedAction.Remove,
+                NotifyCollectionChangedAction.Remove,
                 null, oldItem, 0, index);
         }
 
@@ -126,21 +127,21 @@ namespace AppUIBasics
 
             base.SetItem(index, item);
             OnCollectionChanged(
-                System.Collections.Specialized.NotifyCollectionChangedAction.Replace,
+                NotifyCollectionChangedAction.Replace,
                 newItem, oldItem, index, index);
         }
 
         protected virtual void OnCollectionChanged(
-            System.Collections.Specialized.NotifyCollectionChangedAction action,
+            NotifyCollectionChangedAction action,
             IBindableVector newItems,
             IBindableVector oldItems,
             int newIndex,
             int oldIndex)
         {
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(action, newItems, oldItems, newIndex, oldIndex));
+            OnCollectionChanged(new Microsoft.UI.Xaml.Interop.NotifyCollectionChangedEventArgs(action, newItems, oldItems, newIndex, oldIndex));
         }
 
-        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        protected virtual void OnCollectionChanged(Microsoft.UI.Xaml.Interop.NotifyCollectionChangedEventArgs e)
         {
             using (BlockReentrancy())
             {

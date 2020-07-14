@@ -9,6 +9,7 @@
 //*********************************************************
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -42,6 +43,17 @@ namespace AppUIBasics.ControlPages
             if (NavigationRootPage.Current?.PageHeader != null)
             {
                 NavigationRootPage.Current.PageHeader.TeachingTip3.IsOpen = true;
+            }
+        }
+
+        protected override void OnKeyDown(KeyRoutedEventArgs e)
+        {
+            // The non-light dismiss Teaching tips do not handle the escape key, however we do not want the page to navigate away while they are open, so we will mark these key events as
+
+            // handled while these tips are open.
+            if (e.Key == Windows.System.VirtualKey.Escape && (NavigationRootPage.Current.PageHeader.TeachingTip3.IsOpen || NavigationRootPage.Current.PageHeader.TeachingTip1.IsOpen))
+            {
+                e.Handled = true;
             }
         }
     }

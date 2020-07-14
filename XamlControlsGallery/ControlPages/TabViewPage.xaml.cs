@@ -31,7 +31,8 @@ namespace AppUIBasics.ControlPages
 
             #if USING_CSWINRT
             // Launching isn't supported yet on Desktop
-            this.LaunchExample.Visibility = Visibility.Collapsed;
+            // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes XCG to crash
+            //this.LaunchExample.Visibility = Visibility.Collapsed;
             #endif
 
             InitializeDataBindingSampleData();
