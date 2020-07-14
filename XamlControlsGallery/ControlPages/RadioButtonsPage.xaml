@@ -15,19 +15,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:AppUIBasics" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="using:AppUIBasics"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <RelativePanel HorizontalAlignment="Left">
+    <StackPanel>
         <local:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
             <StackPanel>
-                <RadioButtons MaxColumns="4" Header="Background" SelectedIndex="1" SelectionChanged="BackgroundColor_SelectionChanged">
+                <RadioButtons x:Name="BackgroundRadioButtons" MaxColumns="3" Header="Background" SelectedIndex="0" SelectionChanged="BackgroundColor_SelectionChanged">
                     <x:String>Green</x:String>
                     <x:String>Yellow</x:String>
                     <x:String>White</x:String>
                 </RadioButtons>
-                <RadioButtons MaxColumns="4" Header="Border" SelectedIndex="2" SelectionChanged="BorderBrush_SelectionChanged">
+                <RadioButtons x:Name="BorderRadioButtons" MaxColumns="3" Header="Border" SelectedIndex="1" SelectionChanged="BorderBrush_SelectionChanged">
                     <x:String>Green</x:String>
                     <x:String>Yellow</x:String>
                     <x:String>White</x:String>
@@ -37,20 +37,22 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;RadioButtons MaxColumns="4" Header="Background" SelectedIndex="1" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
-        &lt;x:String&gt;Green&lt;/x:String&gt;
-        &lt;x:String&gt;Yellow&lt;/x:String&gt;
-        &lt;x:String&gt;White&lt;/x:String&gt;
-    &lt;/RadioButtons&gt;
-    &lt;RadioButtons MaxColumns="4" Header="Border" SelectedIndex="2" SelectionChanged="BorderBrush_SelectionChanged"&gt;
-        &lt;x:String&gt;Green&lt;/x:String&gt;
-        &lt;x:String&gt;Yellow&lt;/x:String&gt;
-        &lt;x:String&gt;White&lt;/x:String&gt;
-    &lt;/RadioButtons&gt;
-&lt;/StackPanel&gt;
+&lt;RadioButtons x:Name="BackgroundRadioButtons" SelectedIndex="$(BackgroundRadioButtonsSubstitution)"  MaxColumns="3" Header="Background" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/RadioButtons&gt;
+&lt;RadioButtons x:Name="BorderRadioButtons" SelectedIndex="$(BorderRadioButtonsSubstitution)" MaxColumns="3" Header="Border" SelectionChanged="BorderBrush_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/RadioButtons&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
-    </RelativePanel>
+    </StackPanel>
 </Page>

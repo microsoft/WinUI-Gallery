@@ -25,6 +25,7 @@
     <Content Include="Assets\ProgressRing.png" />
     <Content Include="Assets\PullToRefresh.png" />
     <Content Include="Assets\RatingControl.png" />
+    <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\Reveal.png" />
     <Content Include="Assets\RevealFocus.png" />
     <Content Include="Assets\Sound.png" />
@@ -76,6 +77,7 @@
     <Content Include="Assets\PasswordBox.png" />
     <Content Include="Assets\ProgressBar.png" />
     <Content Include="Assets\RadioButton.png" />
+    <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\RichEditBox.png" />
     <Content Include="Assets\RichTextBlock.png" />
     <Content Include="Assets\ScrollViewer.png" />
@@ -209,6 +211,7 @@
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
@@ -220,7 +223,6 @@
     <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSimple.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
     <Content Include="Common\ReadMe.txt" />
