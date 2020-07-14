@@ -69,12 +69,7 @@ namespace AppUIBasics
 
             _itemId = item.UniqueId;
 
-            if (gridView.ContainerFromItem(item) is GridViewItem)
-            {
-                gridView.PrepareConnectedAnimation("controlAnimation", item, "controlRoot");
-            }
-
-            this.Frame.Navigate(typeof(ItemPage), _itemId);
+            this.Frame.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)

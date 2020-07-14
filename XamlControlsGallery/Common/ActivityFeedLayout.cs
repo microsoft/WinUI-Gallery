@@ -16,14 +16,14 @@ namespace AppUIBasics.Common
 
         // We'll cache copies of the dependency properties to avoid calling GetValue during layout since that
         // can be quite expensive due to the number of times we'd end up calling these.
-        private float _rowSpacing;
-        private float _colSpacing;
+        private double _rowSpacing;
+        private double _colSpacing;
         private Size _minItemSize = Size.Empty;
 
         /// <summary>
         /// Gets or sets the size of the whitespace gutter to include between rows
         /// </summary>
-        public float RowSpacing
+        public double RowSpacing
         {
             get { return _rowSpacing; }
             set { SetValue(RowSpacingProperty, value); }
@@ -32,14 +32,14 @@ namespace AppUIBasics.Common
         public static readonly DependencyProperty RowSpacingProperty =
             DependencyProperty.Register(
                 "RowSpacing",
-                typeof(float),
+                typeof(double),
                 typeof(ActivityFeedLayout),
                 new PropertyMetadata(0, OnPropertyChanged));
 
         /// <summary>
         /// Gets or sets the size of the whitespace gutter to include between items on the same row
         /// </summary>
-        public float ColumnSpacing
+        public double ColumnSpacing
         {
             get { return _colSpacing; }
             set { SetValue(ColumnSpacingProperty, value); }
@@ -48,7 +48,7 @@ namespace AppUIBasics.Common
         public static readonly DependencyProperty ColumnSpacingProperty =
             DependencyProperty.Register(
                 "ColumnSpacing",
-                typeof(float),
+                typeof(double),
                 typeof(ActivityFeedLayout),
                 new PropertyMetadata(0, OnPropertyChanged));
 
@@ -70,11 +70,11 @@ namespace AppUIBasics.Common
             var layout = obj as ActivityFeedLayout;
             if (args.Property == RowSpacingProperty)
             {
-                layout._rowSpacing = (float)args.NewValue;
+                layout._rowSpacing = (double)args.NewValue;
             }
             else if (args.Property == ColumnSpacingProperty)
             {
-                layout._colSpacing = (float)args.NewValue;
+                layout._colSpacing = (double)args.NewValue;
             }
             else if (args.Property == MinItemSizeProperty)
             {
@@ -151,7 +151,7 @@ namespace AppUIBasics.Common
             state.FirstRealizedIndex = firstRowIndex * 3;
 
             // ideal item width that will expand/shrink to fill available space
-            float desiredItemWidth = (float)Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
+            double desiredItemWidth = Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
 
             // Foreach item between the first and last index, 
             //     Call GetElementOrCreateElementAt which causes an element to either be realized or retrieved 
@@ -212,7 +212,7 @@ namespace AppUIBasics.Common
         #endregion
         #region Helper methods
 
-        private Rect[] CalculateLayoutBoundsForRow(int rowIndex, float desiredItemWidth)
+        private Rect[] CalculateLayoutBoundsForRow(int rowIndex, double desiredItemWidth)
         {
             var boundsForRow = new Rect[3];
 

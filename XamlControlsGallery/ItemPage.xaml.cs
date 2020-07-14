@@ -149,11 +149,6 @@ namespace AppUIBasics
                 }
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
-                if (item.IsNew && NavigationRootPage.Current.CheckNewControlSelected())
-                {
-                    PlayConnectedAnimation();
-                    return;
-                }
 
                 ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((String)e.Parameter);
                 var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
@@ -161,8 +156,6 @@ namespace AppUIBasics
                 {
                     menuItem.IsSelected = true;
                 }
-
-                PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
@@ -180,27 +173,6 @@ namespace AppUIBasics
                 else
                 {
                     this.Frame.Navigate(typeof(AllControlsPage));
-                }
-            }
-        }
-
-        void PlayConnectedAnimation()
-        {
-            if (NavigationRootPage.Current.PageHeader != null)
-            {
-                var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
-
-                if (connectedAnimation != null)
-                {
-                    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-
-                    // Setup the "basic" configuration if the API is present. 
-                    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                    {
-                        connectedAnimation.Configuration = new BasicConnectedAnimationConfiguration();
-                    }
-
-                    connectedAnimation.TryStart(target, new UIElement[] { subTitleText });
                 }
             }
         }

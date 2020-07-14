@@ -21,15 +21,6 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Storyboard x:Name="PopOutStoryboard">
-            <PopOutThemeAnimation SpeedRatio="2" TargetName="seeAlsoPanel" />
-        </Storyboard>
-        <Storyboard x:Name="PopInStoryboard">
-            <PopInThemeAnimation FromVerticalOffset="150" SpeedRatio=".3" TargetName="seeAlsoPanel" />
-        </Storyboard>
-    </Page.Resources>
-
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -75,7 +66,6 @@
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
-                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
@@ -97,7 +87,6 @@
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
-                        <Setter Target="RelatedControlsPanel.(Grid.RowSpan)" Value="3" />
                         <Setter Target="RelatedControlsPanel.(Grid.Column)" Value="2" />
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
