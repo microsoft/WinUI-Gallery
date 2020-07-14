@@ -37,13 +37,13 @@ namespace AppUIBasics
         /// <summary>
         /// The size dimension that grows directly with layout placement.
         /// </summary>
-        public float _direct;
+        public double _direct;
 
         /// <summary>
         /// Gets or sets the size dimension that grows directly with layout
         /// placement.
         /// </summary>
-        public float Direct
+        public double Direct
         {
             get { return _direct; }
             set { _direct = value; }
@@ -53,13 +53,13 @@ namespace AppUIBasics
         /// The size dimension that grows indirectly with the maximum value of
         /// the layout row or column.
         /// </summary>
-        public float _indirect;
+        public double _indirect;
 
         /// <summary>
         /// Gets or sets the size dimension that grows indirectly with the
         /// maximum value of the layout row or column.
         /// </summary>
-        public float Indirect
+        public double Indirect
         {
             get { return _indirect; }
             set { _indirect = value; }
@@ -68,7 +68,7 @@ namespace AppUIBasics
         /// <summary>
         /// Gets or sets the width of the size.
         /// </summary>
-        public float Width
+        public double Width
         {
             get
             {
@@ -92,7 +92,7 @@ namespace AppUIBasics
         /// <summary>
         /// Gets or sets the height of the size.
         /// </summary>
-        public float Height
+        public double Height
         {
             get
             {
@@ -118,7 +118,7 @@ namespace AppUIBasics
         /// </summary>
         /// <param name="orientation">Orientation of the structure.</param>
         public OrientedSize(Orientation orientation) :
-            this(orientation, 0.0f, 0.0f)
+            this(orientation, 0.0, 0.0)
         {
         }
 
@@ -128,13 +128,13 @@ namespace AppUIBasics
         /// <param name="orientation">Orientation of the structure.</param>
         /// <param name="width">Un-oriented width of the structure.</param>
         /// <param name="height">Un-oriented height of the structure.</param>
-        public OrientedSize(Orientation orientation, float width, float height)
+        public OrientedSize(Orientation orientation, double width, double height)
         {
             _orientation = orientation;
 
             // All fields must be initialized before we access the this pointer
-            _direct = 0.0f;
-            _indirect = 0.0f;
+            _direct = 0.0;
+            _indirect = 0.0;
 
             Width = width;
             Height = height;

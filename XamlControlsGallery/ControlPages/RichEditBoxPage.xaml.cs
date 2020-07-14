@@ -13,18 +13,18 @@ using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
-using Microsoft.UI;
-using Windows.UI.Text;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Windows.UI;
 
 namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
-        private Windows.UI.Color currentColor = Colors.Black;
+        private Windows.UI.Color currentColor = Microsoft.UI.Colors.Black;
         // String used to restore the colors when the focus gets reenabled
         // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
         private string LastFormattedText = "";
@@ -61,7 +61,8 @@ namespace AppUIBasics.ControlPages
                     await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
                 {
                     // Load the file into the Document property of the RichEditBox.
-                    editor.Document.LoadFromStream(Windows.UI.Text.TextSetOptions.FormatRtf, randAccStream);
+                    editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+                    editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
                 }
             }
         }
@@ -87,7 +88,7 @@ namespace AppUIBasics.ControlPages
                 using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
                     await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
                 {
-                    editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                    editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
                 }
 
                 // Let Windows know that we're finished changing the file so the 
@@ -175,7 +176,7 @@ namespace AppUIBasics.ControlPages
                 // User has not entered text, prevent invalid values and just set index to 1
                 caretPosition = 1;
             }
-            var selectionLength = editor.Document.Selection.Length;
+            var selectionLength = Math.Abs(editor.Document.Selection.Length);
             // restoring text styling, unintentionally sets caret position at beginning of text
             editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
             // restoring selection position

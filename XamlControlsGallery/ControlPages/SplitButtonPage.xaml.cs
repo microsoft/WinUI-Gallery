@@ -1,5 +1,5 @@
 ﻿using Microsoft.UI;
-using Windows.UI.Text;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -18,7 +18,7 @@ namespace AppUIBasics.ControlPages
         public SplitButtonPage()
         {
             this.InitializeComponent();
-            myRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None,
+            myRichEditBox.Document.SetText(TextSetOptions.None,
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
         }

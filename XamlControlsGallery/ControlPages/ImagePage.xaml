@@ -80,5 +80,16 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        
+        <local:ControlExample x:Name="Example5" HeaderText="An SVG image.">
+
+            <Image Source="/Assets/SampleMedia/MirrorPCConsent.svg" Height="100" />
+
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;Image Source="/Assets/SampleMedia/MirrorPCConsent.svg" Height="100" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
     </StackPanel>
 </Page>
