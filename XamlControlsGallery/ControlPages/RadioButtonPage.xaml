@@ -14,157 +14,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
-    <RelativePanel HorizontalAlignment="Left">
-        <local:ControlExample x:Name="Example1"
-                HeaderText="A group of radio buttons implicitly grouped by their parent container.">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <!-- A RadioButton group. -->
-                    <TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}" />
-                    <RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked" />
-                    <RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked" />
-                    <RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked" />
-                </StackPanel>
-                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"
-                        VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/>
-            </Grid>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;TextBlock Text="Options:" Style="{ThemeResource BaseTextBlockStyle}"/&gt;
-    &lt;RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked"/&gt;
-    &lt;RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked"/&gt;
-    &lt;RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked"/&gt;
-&lt;/StackPanel&gt;
-&lt;TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"
-        VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-private void Option1RadioButton_Checked(object sender, RoutedEventArgs e)
-{
-    Control1Output.Text = "You selected option 1.";
-}
-
-private void Option2RadioButton_Checked(object sender, RoutedEventArgs e)
-{
-    Control1Output.Text = "You selected option 2.";
-}
-
-private void Option3RadioButton_Checked(object sender, RoutedEventArgs e)
-{
-    Control1Output.Text = "You selected option 3.";
-}
-                </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
-        <local:ControlExample HeaderText="Two groups of radio buttons explicitly grouped by GroupName."
-                RelativePanel.Below="Example1">
-            <StackPanel x:Name="Control2" Grid.Row="4">
-                <StackPanel>
-                    <RadioButtons MaxColumns="4" Header="Background" SelectedIndex="2">
-                        <RadioButton Content="Green" Tag="Green"
-                                Checked="BGRadioButton_Checked" />
-                        <RadioButton Content="Yellow" Tag="Yellow" 
-                                Checked="BGRadioButton_Checked" Margin="8,0"/>
-                        <RadioButton Content="White" Tag="White"
-                                Checked="BGRadioButton_Checked" Margin="8,0"/>
-                    </RadioButtons>
-                </StackPanel>
-                <StackPanel>
-                    <RadioButtons MaxColumns="4" Header="BorderBrush">
-                        <RadioButton Content="Green" Tag="Green"
-                                Checked="BorderRadioButton_Checked" />
-                        <RadioButton Content="Yellow" Tag="Yellow"
-                                Checked="BorderRadioButton_Checked" IsChecked="True" Margin="8,0"/>
-                        <RadioButton Content="White" Tag="White"
-                                Checked="BorderRadioButton_Checked" Margin="8,0"/>
-                    </RadioButtons>
-                </StackPanel>
-                <Border x:Name="Control2Output" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
-                        Height="50" Margin="0,10,0,10" />
+    <StackPanel>
+        <local:ControlExample HeaderText="A group of RadioButton controls in a RadioButtons group.">
+            <StackPanel>
+                <RadioButtons Header="Options:">
+                    <RadioButton Content="Option 1" Checked="RadioButton_Checked" />
+                    <RadioButton Content="Option 2" Checked="RadioButton_Checked" />
+                    <RadioButton Content="Option 3" Checked="RadioButton_Checked" />
+                </RadioButtons>
+                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,8" />
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;StackPanel&gt;
-        &lt;RadioButtons MaxColumns="4" Header="Background" SelectedIndex="2"&gt;
-	    &lt;RadioButton Content="Green" Tag="Green" Checked="BGRadioButton_Checked" /&gt;
-	    &lt;RadioButton Content="Yellow" Tag="Yellow" Checked="BGRadioButton_Checked" Margin="8,0"/&gt;
-	    &lt;RadioButton Content="White" Tag="White" Checked="BGRadioButton_Checked" Margin="8,0"/&gt;
-        &lt;/RadioButtons&gt;
-    &lt;/StackPanel&gt;
-    &lt;StackPanel&gt;
-        &lt;RadioButtons MaxColumns="4" Header="BorderBrush"&gt;
-	    &lt;RadioButton Content="Green" Tag="Green" Checked="BorderRadioButton_Checked" /&gt;
-	    &lt;RadioButton Content="Yellow" Tag="Yellow" Checked="BorderRadioButton_Checked" IsChecked="True" Margin="8,0"/&gt;
-	    &lt;RadioButton Content="White" Tag="White" Checked="BorderRadioButton_Checked" Margin="8,0"/&gt;
-        &lt;/RadioButtons&gt;
-    &lt;/StackPanel&gt;
-&lt;/StackPanel&gt;
-
-&lt;Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
-        Height="50" Margin="0,10,0,10" /&gt;
+&lt;RadioButtons Header="Options:"&gt;
+    &lt;RadioButton Content="Option 1" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 2" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 3" Checked="RadioButton_Checked"/&gt;
+&lt;/RadioButtons&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
-{
-    RadioButton rb = sender as RadioButton;
-
-    if (rb != null &#38;&#38; Control2Output != null)
-    {
-        string colorName = rb.Tag.ToString();
-        switch (colorName)
-        {
-            case "Yellow":
-                Control2Output.Background = new SolidColorBrush(Colors.Yellow);
-                break;
-            case "Green":
-                Control2Output.Background = new SolidColorBrush(Colors.Green);
-                break;
-            case "Blue":
-                Control2Output.Background = new SolidColorBrush(Colors.Blue);
-                break;
-            case "White":
-                Control2Output.Background = new SolidColorBrush(Colors.White);
-                break;
-        }
-    }
-}
-
-private void BorderRadioButton_Checked(object sender, RoutedEventArgs e)
-{
-    RadioButton rb = sender as RadioButton;
-
-    if (rb != null &#38;&#38; Control2Output != null)
-    {
-        string colorName = rb.Tag.ToString();
-        switch (colorName)
-        {
-            case "Yellow":
-                Control2Output.BorderBrush = new SolidColorBrush(Colors.Gold);
-                break;
-            case "Green":
-                Control2Output.BorderBrush = new SolidColorBrush(Colors.DarkGreen);
-                break;
-            case "Blue":
-                Control2Output.BorderBrush = new SolidColorBrush(Colors.DarkBlue);
-                break;
-            case "White":
-                Control2Output.BorderBrush = new SolidColorBrush(Colors.White);
-                break;
-        }
-    }
-}
-                </x:String>
-            </local:ControlExample.CSharp>
         </local:ControlExample>
-    </RelativePanel>
+    </StackPanel>
 </Page>
