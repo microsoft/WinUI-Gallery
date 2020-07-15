@@ -12,6 +12,7 @@ using ColorCode;
 using ColorCode.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
@@ -369,18 +370,43 @@ namespace AppUIBasics
             var pixelBuffer = await rtb.GetPixelsAsync();
             var pixels = pixelBuffer.ToArray();
 
+            //XamlSource has a pretty good name, if it's available
+            string imageName = "screenshot.png";
+            if (XamlSource != null)
+            {
+                string xamlSource = XamlSource.LocalPath;
+                string fileName = Path.GetFileNameWithoutExtension(xamlSource);
+                if (!String.IsNullOrWhiteSpace(fileName))
+                {
+                    imageName = fileName + ".png";
+                }
+            }
+            else if (!String.IsNullOrWhiteSpace(Name))
+            {
+                // If not, cobble together the page name and this name.
+                UIElement uie = this;
+                while (uie != null && !(uie is Page))
+                {
+                    uie = VisualTreeHelper.GetParent(uie) as UIElement;
+                }
+                if (uie != null)
+                {
+                    imageName = uie.GetType().Name + "_" + Name + ".png";
+                }
+            }
+
             var displayInformation = DisplayInformation.GetForCurrentView();
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("testImage" + ".png", CreationCollisionOption.ReplaceExisting);
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(imageName, CreationCollisionOption.ReplaceExisting);
             using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
             {
                 var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
                 encoder.SetPixelData(BitmapPixelFormat.Bgra8,
-                                     BitmapAlphaMode.Premultiplied,
-                                     (uint)rtb.PixelWidth,
-                                     (uint)rtb.PixelHeight,
-                                     displayInformation.RawDpiX,
-                                     displayInformation.RawDpiY,
-                                     pixels);
+                    BitmapAlphaMode.Premultiplied,
+                    (uint)rtb.PixelWidth,
+                    (uint)rtb.PixelHeight,
+                    displayInformation.RawDpiX,
+                    displayInformation.RawDpiY,
+                    pixels);
                 await encoder.FlushAsync();
             }
         }
