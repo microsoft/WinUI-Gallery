@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -22,6 +22,7 @@ namespace AppUIBasics
     {
         
         public Action ToggleThemeAction { get; set; }
+        public Action ToggleScreenshotModeAction { get; set; }
 
         public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
         public TeachingTip TeachingTip2 => ToggleThemeTeachingTip2;
@@ -141,6 +142,11 @@ namespace AppUIBasics
             bindSizeAnimation.SetReferenceParameter("hostVisual", hostVisual);
 
             shadowVisual.StartAnimation("Size", bindSizeAnimation);
+        }
+
+        public void OnScreenshotButtonClick(object sender, RoutedEventArgs e)
+        {
+            ToggleScreenshotModeAction?.Invoke();
         }
     }
 }
