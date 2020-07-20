@@ -18,7 +18,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollViewer.">
 
-            <ScrollViewer x:Name="Control1" Height="270" ZoomMode="Disabled" IsVerticalScrollChainingEnabled="True"
+            <ScrollViewer x:Name="Control1" Height="270" ZoomMode="Disabled" IsTabStop="True" IsVerticalScrollChainingEnabled="True"
                     ManipulationCompleted="Control1_ManipulationCompleted" VerticalAlignment="Top"
                     HorizontalAlignment="Left">
                 <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="None" HorizontalAlignment="Left"
@@ -103,7 +103,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollViewer Height="270" ZoomMode="$(ZoomMode)"
-            IsVerticalScrollChainingEnabled="True"
+            IsTabStop="True" IsVerticalScrollChainingEnabled="True"
             ManipulationCompleted="Control1_ManipulationCompleted"
             HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
             VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
