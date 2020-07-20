@@ -105,7 +105,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollViewer Height="270" ZoomMode="$(ZoomMode)"
-            IsVerticalScrollChainingEnabled="True"
+            IsTabStop="True" IsVerticalScrollChainingEnabled="True"
             ManipulationCompleted="Control1_ManipulationCompleted"
             HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
             VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
