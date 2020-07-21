@@ -52,9 +52,11 @@
                 <VisualState x:Name="ScreenshotMode">
                     <VisualState.Setters>
                         <Setter Target="CodeScrollViewer.Visibility" Value="Collapsed"/>
-                        <Setter Target="ExampleContainer.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}"/>
+                        <Setter Target="ControlPresenter.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}"/>
                         <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center"/>
-                        <Setter Target="ScreenshotButton.Visibility" Value="Visible"/>
+                        <Setter Target="ScreenshotControls.Visibility" Value="Visible"/>
+
+                        <Setter Target="ExampleContainer.Background" Value="Gray"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -141,13 +143,19 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <Button
-                x:Name="ScreenshotButton"
-                Grid.Row="2"
-                Visibility="Collapsed"
-                Content="Take Screenshot"
-                HorizontalAlignment="Left"
-                Click="ScreenshotButton_Click"/>
+            <StackPanel x:Name="ScreenshotControls" Grid.Row="2" Orientation="Horizontal" Spacing="6" Visibility="Collapsed">
+                <Button
+                    x:Name="ScreenshotButton"
+                    Content="Take Screenshot"
+                    HorizontalAlignment="Left"
+                    Click="ScreenshotButton_Click"/>
+
+                <Button
+                    x:Name="ScreenshotDelayButton"
+                    Content="Take Screenshot With Delay"
+                    HorizontalAlignment="Left"
+                    Click="ScreenshotDelayButton_Click"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

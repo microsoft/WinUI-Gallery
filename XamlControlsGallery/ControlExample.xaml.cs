@@ -16,17 +16,18 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
-using Windows.Security.Cryptography;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Media.AppRecording;
 
 namespace AppUIBasics
 {
@@ -362,16 +363,73 @@ namespace AppUIBasics
             TakeScreenshot();
         }
 
-        private async void TakeScreenshot()
+        private void ScreenshotDelayButton_Click(object sender, RoutedEventArgs e)
         {
-            RenderTargetBitmap rtb = new RenderTargetBitmap();
-            await rtb.RenderAsync(ControlPresenter);
+            TakeScreenshotWithDelay();
+        }
 
-            var pixelBuffer = await rtb.GetPixelsAsync();
-            var pixels = pixelBuffer.ToArray();
+        public async void TakeScreenshotWithDelay()
+        {
+            await Task.Delay(3000);
 
-            //XamlSource has a pretty good name, if it's available
-            string imageName = "screenshot.png";
+            bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
+            if (isAppRecordingPresent)
+            {
+                var manager = AppRecordingManager.GetDefault();
+                if (manager.GetStatus().CanRecord)
+                {
+                    var result = await manager.SaveScreenshotToFilesAsync(
+                        ApplicationData.Current.LocalFolder,
+                        "appScreenshot",
+                        AppRecordingSaveScreenshotOption.HdrContentVisible,
+                        manager.SupportedScreenshotMediaEncodingSubtypes);
+
+                    if (result.Succeeded)
+                    {
+                        // open it back up
+                        var screenshotFile = await ApplicationData.Current.LocalFolder.GetFileAsync("appScreenshot.png");
+                        using (var stream = await screenshotFile.OpenAsync(FileAccessMode.Read))
+                        {
+                            var decoder = await BitmapDecoder.CreateAsync(stream);
+
+                            // where is the control in the picture?
+                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
+                            Point pos = t.TransformPoint(new Point(0, 0));
+
+                            // crop it
+                            var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
+                                X = (uint)pos.X + 1,
+                                Y = (uint)pos.Y + 1,
+                                Width = (uint)ControlPresenter.ActualWidth,
+                                Height = (uint)ControlPresenter.ActualHeight } };
+
+                            var softwareBitmap = await decoder.GetSoftwareBitmapAsync(
+                                decoder.BitmapPixelFormat,
+                                BitmapAlphaMode.Ignore,
+                                transform,
+                                ExifOrientationMode.IgnoreExifOrientation,
+                                ColorManagementMode.DoNotColorManage);
+
+                            // save it
+                            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
+                            using (var outStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                            {
+                                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outStream);
+                                encoder.SetSoftwareBitmap(softwareBitmap);
+                                await encoder.FlushAsync();
+                            }
+                        }
+
+                        // delete intermediate file
+                        await screenshotFile.DeleteAsync();
+                    }
+                }
+            }
+        }
+
+        string GetBestScreenshotName()
+        {
+            string imageName = "Screenshot.png";
             if (XamlSource != null)
             {
                 string xamlSource = XamlSource.LocalPath;
@@ -394,11 +452,22 @@ namespace AppUIBasics
                     imageName = uie.GetType().Name + "_" + Name + ".png";
                 }
             }
+            return imageName;
+        }
 
-            var displayInformation = DisplayInformation.GetForCurrentView();
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(imageName, CreationCollisionOption.ReplaceExisting);
+        // ### Not sure if I should keep this or just replace everything with the other method.
+        private async void TakeScreenshot()
+        {
+            RenderTargetBitmap rtb = new RenderTargetBitmap();
+            await rtb.RenderAsync(ControlPresenter);
+
+            var pixelBuffer = await rtb.GetPixelsAsync();
+            var pixels = pixelBuffer.ToArray();
+
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
             using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
             {
+                var displayInformation = DisplayInformation.GetForCurrentView();
                 var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
                 encoder.SetPixelData(BitmapPixelFormat.Bgra8,
                     BitmapAlphaMode.Premultiplied,
@@ -407,6 +476,7 @@ namespace AppUIBasics
                     displayInformation.RawDpiX,
                     displayInformation.RawDpiY,
                     pixels);
+
                 await encoder.FlushAsync();
             }
         }
