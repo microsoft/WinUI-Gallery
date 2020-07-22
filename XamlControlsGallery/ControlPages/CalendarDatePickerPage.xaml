@@ -1,8 +1,15 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.CalendarDatePickerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Thickness x:Key="ControlElementScreenshotModePadding">150,67,150,390</Thickness>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="CalendarDatePicker with a header and placeholder text.">
             <local:ControlExample.Example>

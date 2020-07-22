@@ -370,7 +370,13 @@ namespace AppUIBasics
 
         public async void TakeScreenshotWithDelay()
         {
-            await Task.Delay(3000);
+            // 3 second countdown
+            for (int i = 3; i > 0; i--)
+            {
+                ScreenshotStatusTextBlock.Text = i.ToString();
+                await Task.Delay(1000);
+            }
+            ScreenshotStatusTextBlock.Text = "Image captured";
 
             bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
             if (isAppRecordingPresent)
@@ -425,6 +431,9 @@ namespace AppUIBasics
                     }
                 }
             }
+
+            await Task.Delay(1000);
+            ScreenshotStatusTextBlock.Text = "";
         }
 
         string GetBestScreenshotName()
@@ -464,7 +473,7 @@ namespace AppUIBasics
             var pixelBuffer = await rtb.GetPixelsAsync();
             var pixels = pixelBuffer.ToArray();
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
+            var file = await UIHelper.ScreenshotStorageFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
             using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
             {
                 var displayInformation = DisplayInformation.GetForCurrentView();

@@ -38,7 +38,6 @@ namespace AppUIBasics
         private Compositor _compositor;
         private ControlInfoDataItem _item;
         private ElementTheme? _currentElementTheme;
-        private bool _screenshotMode;
 
         public ControlInfoDataItem Item
         {
@@ -65,7 +64,6 @@ namespace AppUIBasics
         {
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
-            NavigationRootPage.Current.PageHeader.ToggleScreenshotModeAction = OnToggleScreenshotMode;
 
             if (NavigationRootPage.Current.IsFocusSupported)
             {
@@ -75,6 +73,19 @@ namespace AppUIBasics
             _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
             UpdateSeeAlsoPanelVerticalTranslationAnimation();
+
+            if (UIHelper.IsScreenshotMode)
+            {
+                var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+
+                if (controlExamples != null)
+                {
+                    foreach (var controlExample in controlExamples)
+                    {
+                        VisualStateManager.GoToState(controlExample, "ScreenshotMode", false);
+                    }
+                }
+            }
         }
 
         private void UpdateSeeAlsoPanelVerticalTranslationAnimation()
@@ -106,21 +117,6 @@ namespace AppUIBasics
             var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
             var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
             SetControlExamplesTheme(newTheme);
-        }
-
-        private void OnToggleScreenshotMode()
-        {
-            _screenshotMode = !_screenshotMode;
-
-            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
-
-            if (controlExamples != null)
-            {
-                foreach (var controlExample in controlExamples)
-                {
-                    VisualStateManager.GoToState(controlExample, _screenshotMode ? "ScreenshotMode" : "NormalMode", false);
-                }
-            }
         }
 
         private void SetControlExamplesTheme(ElementTheme theme)

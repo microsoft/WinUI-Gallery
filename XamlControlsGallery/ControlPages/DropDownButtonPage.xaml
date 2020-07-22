@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <ResourceDictionary>
-            <Thickness x:Key="ControlElementScreenshotModePadding">67,67,67,140</Thickness>
+            <Thickness x:Key="ControlElementScreenshotModePadding">67,67,67,160</Thickness>
         </ResourceDictionary>
     </Page.Resources>
     

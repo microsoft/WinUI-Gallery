@@ -45,6 +45,7 @@
                     <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
                     <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
                 </StackPanel>
+                
                 <TextBlock
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"
@@ -55,12 +56,25 @@
                     <CheckBox x:Name="spatialSoundBox" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Spatial Audio"/>
                     <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
                 </StackPanel>
+                
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
                 <muxc:RadioButtons x:Name="navigationLocation" Margin="0,10,0,0"
                         Header="Navigation position" SelectionChanged="navigationLocation_SelectionChanged">
                     <RadioButton Content="Left"/>
                     <RadioButton Content="Top"/>
                 </muxc:RadioButtons>
+
+                <TextBlock
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    FontWeight="Normal"
+                    Text="Screenshots" />
+                <StackPanel Margin="0,10,0,0">
+                    <ToggleSwitch x:Name="screenshotModeToggle" Header="Screenshot mode" Toggled="screenshotModeToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
+                    <Button Content="Set screenshot folder" Click="FolderButton_Click"/>
+                    <TextBlock x:Name="screenshotFolderTextBlock" IsTextSelectionEnabled="True"/>
+                </StackPanel>
+                
                 <TextBlock
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"

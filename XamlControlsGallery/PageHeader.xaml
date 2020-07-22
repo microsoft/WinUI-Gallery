@@ -115,15 +115,6 @@
                             </muxc:TeachingTip>
                         </AppBarButton.Resources>
                     </AppBarButton>
-
-                    <AppBarButton
-                        x:Name="ScreenshotModeButton"
-                        Click="OnScreenshotButtonClick"
-                        Label="Toggle Screenshot Mode">
-                        <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE771;" Margin="0,-2,0,0" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
                 </CommandBar>
             </Border>
         </Grid>

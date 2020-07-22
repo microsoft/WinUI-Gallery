@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
@@ -7,6 +8,9 @@ namespace AppUIBasics.Helper
 {
     public static class UIHelper
     {
+        public static bool IsScreenshotMode { get; set; }
+        public static StorageFolder ScreenshotStorageFolder { get; set; } = ApplicationData.Current.LocalFolder;
+
         public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
         {
             return start.GetDescendants().OfType<T>();

@@ -143,7 +143,7 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <StackPanel x:Name="ScreenshotControls" Grid.Row="2" Orientation="Horizontal" Spacing="6" Visibility="Collapsed">
+            <StackPanel x:Name="ScreenshotControls" Grid.Row="2" Orientation="Horizontal" Spacing="6" Margin="0,6,0,0" Visibility="Collapsed">
                 <Button
                     x:Name="ScreenshotButton"
                     Content="Take Screenshot"
@@ -155,6 +155,8 @@
                     Content="Take Screenshot With Delay"
                     HorizontalAlignment="Left"
                     Click="ScreenshotDelayButton_Click"/>
+
+                <TextBlock x:Name="ScreenshotStatusTextBlock" VerticalAlignment="Center" Margin="0,0,0,1"/>
             </StackPanel>
         </Grid>
     </Grid>
