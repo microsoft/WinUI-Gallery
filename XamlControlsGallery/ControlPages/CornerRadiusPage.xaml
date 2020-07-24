@@ -8,21 +8,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-
     <StackPanel>
         <TextBlock IsTextSelectionEnabled="True">
             <LineBreak />
-            <Run Text="For UI elements like basic controls like buttons that users see on screen at all times," />
-            <Run Text="the default radius value we use for these UI elements is" />
+            <Run Text="For basic UI elements like buttons that users see on screen at all times," />
+            <Run Text="the default radius value is" />
             <Run FontWeight="bold" Text="2px" />
             <Run Text="." />
             <LineBreak />
             <LineBreak />
             <Run Text="For transient UI elements that appear on screen temporarily, like MenuFlyout, or elements that overlay other UI, like TabView tabs," />
             <LineBreak />
-            <Run Text="the default radius value we use for these UI elements is" />
+            <Run Text="the default radius value we use for is" />
             <Run FontWeight="Bold" Text="4px" />
             <Run Text="." />
+        </TextBlock>
+        <TextBlock>
+            <Run Text="These demos require Windows 10 Version 1809 or later to work properly. To set a conditional namespace, check out our" />
+            <Hyperlink
+                NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/conditional-xaml#:~:text=%20Conditional%20XAML%20%201%20Conditional%20namespaces.%20To,conditional%20XAML%2C%20but%20you%20can%20also...%20More%20"
+                TextDecorations="None"
+                ToolTipService.ToolTip="https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/conditional-xaml#:~:text=%20Conditional%20XAML%20%201%20Conditional%20namespaces.%20To,conditional%20XAML%2C%20but%20you%20can%20also...%20More%20">
+                <Run Text="docs" />
+            </Hyperlink>
         </TextBlock>
         <local:ControlExample
             x:Name="Example1"

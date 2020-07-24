@@ -1927,6 +1927,25 @@
               "Uri": "https://docs.microsoft.com/windows/uwp/design/style/spacing"
             }
           ]
+        },
+        {
+          "UniqueId": "CornerRadius",
+          "Title": "CornerRadius",
+          "Subtitle": "Round Corners",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "You may set CornerRadius property starting in WinUI 2.2. It sets round corners to your control",
+          "Content": "You may set CornerRadius property starting in Windows 10 1809. It sets round corners for your UI element.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Corner radius",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/style/rounded-corner"
+            }
+          ],
+          "RelatedControls": [
+            "Button",
+            "TabView"
+          ]
         }
       ]
     },
@@ -2315,37 +2334,6 @@
           ],
           "RelatedControls": [
             "ScrollViewer"
-          ]
-        }
-      ]
-    },
-    {
-      "UniqueId": "TipDocs",
-      "Title": "Tips and Guides",
-      "Subtitle": "",
-      "ImagePath": "",
-      "Description": "",
-      "Items": [
-        {
-          "UniqueId": "CornerRadius",
-          "Title": "CornerRadius",
-          "Subtitle": "Round Corners",
-          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
-          "Description": "You may set CornerRadius property starting in WinUI 2.2. It sets round corners to your control",
-          "Content": "You may set CornerRadius property starting in WinUI 2.2. It sets round",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "ParallaxView - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Parallaxview"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/motion/parallax"
-            }
-          ],
-          "RelatedControls": [
-
           ]
         }
       ]
