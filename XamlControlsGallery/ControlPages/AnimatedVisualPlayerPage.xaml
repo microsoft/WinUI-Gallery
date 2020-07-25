@@ -51,7 +51,6 @@
                     </Border>
 
                     <!--  Playback Buttons  -->
-                    <!--  Playback Buttons  -->
                     <Grid Width="400"
                       VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
@@ -83,7 +82,7 @@
                             <SymbolIcon Symbol="Stop" />
                         </Button>
 
-                        <!--  Normal/Reverse play  -->
+                        <!--  Forward/Reverse play  -->
                         <Button x:Name="DirectionButton"
                             Grid.Column="2"
                             Margin="10"
