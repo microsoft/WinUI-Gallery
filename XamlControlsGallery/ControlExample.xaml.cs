@@ -377,105 +377,11 @@ namespace AppUIBasics
             TakeScreenshotWithDelay();
         }
 
-        public async void TakeScreenshotWithDelay()
-        {
-            // 3 second countdown
-            for (int i = 3; i > 0; i--)
-            {
-                ScreenshotStatusTextBlock.Text = i.ToString();
-                await Task.Delay(1000);
-            }
-            ScreenshotStatusTextBlock.Text = "Image captured";
-
-            bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
-            if (isAppRecordingPresent)
-            {
-                var manager = AppRecordingManager.GetDefault();
-                if (manager.GetStatus().CanRecord)
-                {
-                    var result = await manager.SaveScreenshotToFilesAsync(
-                        ApplicationData.Current.LocalFolder,
-                        "appScreenshot",
-                        AppRecordingSaveScreenshotOption.HdrContentVisible,
-                        manager.SupportedScreenshotMediaEncodingSubtypes);
-
-                    if (result.Succeeded)
-                    {
-                        // open it back up
-                        var screenshotFile = await ApplicationData.Current.LocalFolder.GetFileAsync("appScreenshot.png");
-                        using (var stream = await screenshotFile.OpenAsync(FileAccessMode.Read))
-                        {
-                            var decoder = await BitmapDecoder.CreateAsync(stream);
-
-                            // where is the control in the picture?
-                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
-                            Point pos = t.TransformPoint(new Point(0, 0));
-
-                            // crop it
-                            var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
-                                X = (uint)pos.X + 1,
-                                Y = (uint)pos.Y + 1,
-                                Width = (uint)ControlPresenter.ActualWidth,
-                                Height = (uint)ControlPresenter.ActualHeight } };
-
-                            var softwareBitmap = await decoder.GetSoftwareBitmapAsync(
-                                decoder.BitmapPixelFormat,
-                                BitmapAlphaMode.Ignore,
-                                transform,
-                                ExifOrientationMode.IgnoreExifOrientation,
-                                ColorManagementMode.DoNotColorManage);
-
-                            // save it
-                            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
-                            using (var outStream = await file.OpenAsync(FileAccessMode.ReadWrite))
-                            {
-                                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outStream);
-                                encoder.SetSoftwareBitmap(softwareBitmap);
-                                await encoder.FlushAsync();
-                            }
-                        }
-
-                        // delete intermediate file
-                        await screenshotFile.DeleteAsync();
-                    }
-                }
-            }
-
-            await Task.Delay(1000);
-            ScreenshotStatusTextBlock.Text = "";
-        }
-
-        string GetBestScreenshotName()
-        {
-            string imageName = "Screenshot.png";
-            if (XamlSource != null)
-            {
-                string xamlSource = XamlSource.LocalPath;
-                string fileName = Path.GetFileNameWithoutExtension(xamlSource);
-                if (!String.IsNullOrWhiteSpace(fileName))
-                {
-                    imageName = fileName + ".png";
-                }
-            }
-            else if (!String.IsNullOrWhiteSpace(Name))
-            {
-                // If not, cobble together the page name and this name.
-                UIElement uie = this;
-                while (uie != null && !(uie is Page))
-                {
-                    uie = VisualTreeHelper.GetParent(uie) as UIElement;
-                }
-                if (uie != null)
-                {
-                    imageName = uie.GetType().Name + "_" + Name + ".png";
-                }
-            }
-            return imageName;
-        }
-
-        // ### Not sure if I should keep this or just replace everything with the other method.
         private async void TakeScreenshot()
         {
+            // Using RTB doesn't capture popups; but in the non-delay case, that probably isn't necessary.
+            // This method seems more robust than using AppRecordingManager and also will work on non-desktop devices.
+
             RenderTargetBitmap rtb = new RenderTargetBitmap();
             await rtb.RenderAsync(ControlPresenter);
 
@@ -497,6 +403,96 @@ namespace AppUIBasics
 
                 await encoder.FlushAsync();
             }
+        }
+
+        public async void TakeScreenshotWithDelay()
+        {
+            // 3 second countdown
+            for (int i = 3; i > 0; i--)
+            {
+                ScreenshotStatusTextBlock.Text = i.ToString();
+                await Task.Delay(1000);
+            }
+            ScreenshotStatusTextBlock.Text = "Image captured";
+
+            // AppRecordingManager is desktop-only, and its use here is quite hacky,
+            // but it is able to capture popups (though not theme shadows).
+
+            bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
+            if (isAppRecordingPresent)
+            {
+                var manager = AppRecordingManager.GetDefault();
+                if (manager.GetStatus().CanRecord)
+                {
+                    var result = await manager.SaveScreenshotToFilesAsync(
+                        ApplicationData.Current.LocalFolder,
+                        "appScreenshot",
+                        AppRecordingSaveScreenshotOption.HdrContentVisible,
+                        manager.SupportedScreenshotMediaEncodingSubtypes);
+
+                    if (result.Succeeded)
+                    {
+                        // Open the screenshot back up
+                        var screenshotFile = await ApplicationData.Current.LocalFolder.GetFileAsync("appScreenshot.png");
+                        using (var stream = await screenshotFile.OpenAsync(FileAccessMode.Read))
+                        {
+                            var decoder = await BitmapDecoder.CreateAsync(stream);
+
+                            // Find the control in the picture
+                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
+                            Point pos = t.TransformPoint(new Point(0, 0));
+
+                            // Crop the screenshot to the control area
+                            var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
+                                X = (uint)pos.X + 1, // Rounding from double to int requires that we indent 1px
+                                Y = (uint)pos.Y + 1,
+                                Width = (uint)ControlPresenter.ActualWidth,
+                                Height = (uint)ControlPresenter.ActualHeight } };
+
+                            var softwareBitmap = await decoder.GetSoftwareBitmapAsync(
+                                decoder.BitmapPixelFormat,
+                                BitmapAlphaMode.Ignore,
+                                transform,
+                                ExifOrientationMode.IgnoreExifOrientation,
+                                ColorManagementMode.DoNotColorManage);
+
+                            // Save the cropped picture
+                            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
+                            using (var outStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                            {
+                                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outStream);
+                                encoder.SetSoftwareBitmap(softwareBitmap);
+                                await encoder.FlushAsync();
+                            }
+                        }
+
+                        // Delete intermediate file
+                        await screenshotFile.DeleteAsync();
+                    }
+                }
+            }
+
+            await Task.Delay(1000);
+            ScreenshotStatusTextBlock.Text = "";
+        }
+
+        string GetBestScreenshotName()
+        {
+            string imageName = "Screenshot.png";
+            if (!String.IsNullOrWhiteSpace(Name))
+            {
+                // Put together the page name and the control example name
+                UIElement uie = this;
+                while (uie != null && !(uie is Page))
+                {
+                    uie = VisualTreeHelper.GetParent(uie) as UIElement;
+                }
+                if (uie != null)
+                {
+                    imageName = uie.GetType().Name + "_" + Name + ".png";
+                }
+            }
+            return imageName;
         }
 
         private void ControlPaddingChangedCallback(DependencyObject sender, DependencyProperty dp)
