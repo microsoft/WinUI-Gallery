@@ -479,7 +479,17 @@ namespace AppUIBasics
         string GetBestScreenshotName()
         {
             string imageName = "Screenshot.png";
-            if (!String.IsNullOrWhiteSpace(Name))
+            if (XamlSource != null)
+            {
+                // Most of them don't have this, but the xaml source name is a really good file name
+                string xamlSource = XamlSource.LocalPath;
+                string fileName = Path.GetFileNameWithoutExtension(xamlSource);
+                if (!String.IsNullOrWhiteSpace(fileName))
+                {
+                    imageName = fileName + ".png";
+                }
+            }
+            else if (!String.IsNullOrWhiteSpace(Name))
             {
                 // Put together the page name and the control example name
                 UIElement uie = this;
