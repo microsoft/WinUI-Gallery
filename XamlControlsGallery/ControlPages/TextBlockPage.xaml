@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -13,6 +13,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="CustomTextBlockStyle">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
+    </Page.Resources>
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple TextBlock.">
             <local:ControlExample.Example>
@@ -26,11 +32,18 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A TextBlock with a style applied.">
             <local:ControlExample.Example>
-                <TextBlock Text="I am a styled TextBlock." Style="{StaticResource OutputTextBlockStyle}" />
+                <TextBlock Text="I am a styled TextBlock." Style="{StaticResource CustomTextBlockStyle}" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;TextBlock Text="I am a styled TextBlock" Style="{StaticResource OutputTextBlockStyle}" /&gt;
+                <x:String xml:space="preserve">
+&lt;Page.Resources&gt;
+    &lt;Style TargetType="TextBlock" x:Key="CustomTextBlockStyle"&gt;
+        &lt;Setter Property="FontFamily" Value="Comic Sans MS"/&gt;
+        &lt;Setter Property="FontStyle" Value="Italic"/&gt;
+    &lt;/Style&gt;
+&lt;Page.Resources&gt;
+
+&lt;TextBlock Text="I am a styled TextBlock" Style="{StaticResource CustomTextBlockStyle}"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

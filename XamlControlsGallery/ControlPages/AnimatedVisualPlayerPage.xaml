@@ -70,8 +70,8 @@
                                 <SymbolIcon x:Name="PauseIcon" Symbol="Pause" Visibility="Collapsed"/>
                             </StackPanel>
                         </Button>
-                        
-                        <!--  Stop/Reset -->
+
+                        <!-- Reset -->
                         <Button x:Name="StopButton"
                             Grid.Column="1"
                             Margin="10"
@@ -79,18 +79,21 @@
                             Click="StopButton_Click"
                             ToolTipService.ToolTip="Stop"
                             AutomationProperties.Name="Stop">
-                            <SymbolIcon Symbol="Previous" />
+                            <SymbolIcon Symbol="Stop" />
                         </Button>
-                        
-                        <!--  Reverse  -->
-                        <Button x:Name="ReverseButton"
+
+                        <!--  Forward/Reverse play  -->
+                        <Button x:Name="DirectionButton"
                             Grid.Column="2"
                             Margin="10"
                             HorizontalAlignment="Stretch"
-                            Click="ReverseButton_Click"
+                            Click="DirectionButton_Click"
                             ToolTipService.ToolTip="Reverse"
                             AutomationProperties.Name="Reverse">
-                            <FontIcon Glyph="&#xEB9E;" />
+                            <StackPanel>
+                                <FontIcon x:Name="BackwardArrow" Glyph="&#xF0B0;" />
+                                <FontIcon x:Name="ForwardArrow" Glyph="&#xF0AF;" Visibility="Collapsed"/>
+                            </StackPanel>
                         </Button>
                     </Grid>
 

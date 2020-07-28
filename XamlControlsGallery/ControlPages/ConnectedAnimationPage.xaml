@@ -29,8 +29,8 @@
                     <Button Content="Navigate" Click="NavigateButton_Click" HorizontalAlignment="Stretch" />
 
                     <contract7Present:TextBlock Text="Configurations" Style="{ThemeResource BaseTextBlockStyle}" Margin="0,6" />
-                    <muxccontract7Present:RadioButtons x:Name="ConfigurationPanel">
-                        <contract7Present:RadioButton Content="Default" IsChecked="True" />
+                    <muxccontract7Present:RadioButtons x:Name="ConfigurationPanel" SelectedIndex="0">
+                        <contract7Present:RadioButton Content="Default" />
                         <contract7Present:RadioButton Content="Gravity" />
                         <contract7Present:RadioButton Content="Direct" />
                         <contract7Present:RadioButton Content="Basic" />
