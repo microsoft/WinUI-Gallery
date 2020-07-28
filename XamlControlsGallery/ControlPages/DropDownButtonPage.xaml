@@ -10,12 +10,6 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <Thickness x:Key="ControlElementScreenshotModePadding">67,67,67,160</Thickness>
-        </ResourceDictionary>
-    </Page.Resources>
-    
     <StackPanel>
         <local:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
             <StackPanel x:Name="Control1" Orientation="Horizontal">

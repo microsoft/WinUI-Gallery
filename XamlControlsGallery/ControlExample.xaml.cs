@@ -193,6 +193,8 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
             Substitutions = new List<ControlExampleSubstitution>();
+
+            ControlPresenter.RegisterPropertyChangedCallback(ContentPresenter.PaddingProperty, ControlPaddingChangedCallback);
         }
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)
@@ -494,6 +496,40 @@ namespace AppUIBasics
                     pixels);
 
                 await encoder.FlushAsync();
+            }
+        }
+
+        private void ControlPaddingChangedCallback(DependencyObject sender, DependencyProperty dp)
+        {
+            ControlPaddingBox.Text = ControlPresenter.Padding.ToString();
+        }
+
+        private void ControlPaddingBox_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter && !String.IsNullOrWhiteSpace(ControlPaddingBox.Text))
+            {
+                // Evaluate the text as padding
+                string[] strs = ControlPaddingBox.Text.Split(new char[] { ' ', ',' });
+                double[] nums = new double[4];
+                for (int i = 0; i < strs.Length; i++)
+                {
+                    nums[i] = Double.Parse(strs[i]);
+                }
+
+                switch (nums.Length)
+                {
+                    case 1:
+                        ControlPresenter.Padding = new Thickness(nums[0]);
+                        break;
+
+                    case 2:
+                        ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[0], nums[1]);
+                        break;
+
+                    case 4:
+                        ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[2], nums[3]);
+                        break;
+                }
             }
         }
     }
