@@ -18,20 +18,15 @@
     <RelativePanel HorizontalAlignment="Left">
         <local:ControlExample x:Name="Example1"
                 HeaderText="A group of radio buttons implicitly grouped by their parent container.">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <muxc:RadioButtons Header="Options:">
-                    <!-- A RadioButton group. -->
-                    <RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked" />
-                    <RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked" />
-                    <RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked" />
-                </muxc:RadioButtons>
-                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"
-                        VerticalAlignment="Center" Grid.Column="1" Margin="8,0"/>
-            </Grid>
+            <muxc:RadioButtons Header="Options:">
+                <!-- A RadioButton group. -->
+                <RadioButton x:Name="Option1RadioButton" Content="Option 1" Checked="Option1RadioButton_Checked" />
+                <RadioButton x:Name="Option2RadioButton" Content="Option 2" Checked="Option2RadioButton_Checked" />
+                <RadioButton x:Name="Option3RadioButton" Content="Option 3" Checked="Option3RadioButton_Checked" />
+            </muxc:RadioButtons>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;muxc:RadioButtons Header="Options"&gt;

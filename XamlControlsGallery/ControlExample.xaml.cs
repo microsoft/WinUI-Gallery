@@ -105,6 +105,13 @@ namespace AppUIBasics
             set { SetValue(ExampleProperty, value); }
         }
 
+        public static readonly DependencyProperty OutputProperty = DependencyProperty.Register("Output", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        public object Output
+        {
+            get { return GetValue(OutputProperty); }
+            set { SetValue(OutputProperty, value); }
+        }
+
         public static readonly DependencyProperty OptionsProperty = DependencyProperty.Register("Options", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
         public object Options
         {

@@ -96,6 +96,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
+                    <ColumnDefinition />
                     <ColumnDefinition Width="Auto" MaxWidth="320" />
                 </Grid.ColumnDefinitions>
 
@@ -109,10 +110,26 @@
                     HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
                     Content="{x:Bind Example}" />
 
+                <!--  Output Display  -->
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Column="1"
+                    Margin="0,12,12,12"
+                    Padding="16"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Stretch"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
+                    <TextBlock Text="Output:"/>
+                    <ContentPresenter
+                        x:Name="OutputPresenter"
+                        Content="{x:Bind Output}" />
+                </StackPanel>
+
                 <!--  Options Display  -->
                 <ContentPresenter
                     x:Name="OptionsPresenter"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Margin="0,12,12,12"
                     Padding="16"
                     HorizontalAlignment="Stretch"
