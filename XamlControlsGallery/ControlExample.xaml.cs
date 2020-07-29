@@ -28,6 +28,7 @@ using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Media.AppRecording;
+using Windows.ApplicationModel.Core;
 
 namespace AppUIBasics
 {
@@ -446,6 +447,12 @@ namespace AppUIBasics
                             // Find the control in the picture
                             GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
                             Point pos = t.TransformPoint(new Point(0, 0));
+;
+                            if (!CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar)
+                            {
+                                // Add the height of the title bar, which I really wish was programmatically available anywhere.
+                                pos.Y += 32.0;
+                            }
 
                             // Crop the screenshot to the control area
                             var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
