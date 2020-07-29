@@ -56,7 +56,7 @@
                         <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center"/>
                         <Setter Target="ScreenshotControls.Visibility" Value="Visible"/>
 
-                        <Setter Target="ExampleContainer.Background" Value="Gray"/>
+                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

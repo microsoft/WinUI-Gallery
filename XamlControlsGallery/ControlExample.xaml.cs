@@ -419,7 +419,12 @@ namespace AppUIBasics
             // but it is able to capture popups (though not theme shadows).
 
             bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
-            if (isAppRecordingPresent)
+            if (!isAppRecordingPresent)
+            {
+                // Better than doing nothing
+                TakeScreenshot();
+            }
+            else
             {
                 var manager = AppRecordingManager.GetDefault();
                 if (manager.GetStatus().CanRecord)

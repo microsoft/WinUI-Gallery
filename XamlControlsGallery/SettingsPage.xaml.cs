@@ -58,8 +58,7 @@ namespace AppUIBasics
             }
 
             screenshotModeToggle.IsOn = UIHelper.IsScreenshotMode;
-            screenshotFolderTextBlock.Text = UIHelper.ScreenshotStorageFolder.Path;
-
+            screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -145,14 +144,19 @@ namespace AppUIBasics
         {
             FolderPicker folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            folderPicker.FileTypeFilter.Add(".png");
+            folderPicker.FileTypeFilter.Add(".png"); // meaningless, but you have to have something
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
 
             if (folder != null)
             {
                 UIHelper.ScreenshotStorageFolder = folder;
-                screenshotFolderTextBlock.Text = UIHelper.ScreenshotStorageFolder.Path;
+                screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
             }
+        }
+
+        private async void screenshotFolderLink_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
     }
 }
