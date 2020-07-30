@@ -456,10 +456,10 @@ namespace AppUIBasics
 
                             // Crop the screenshot to the control area
                             var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
-                                X = (uint)pos.X + 1, // Rounding from double to int requires that we indent 1px
-                                Y = (uint)pos.Y + 1,
-                                Width = (uint)ControlPresenter.ActualWidth,
-                                Height = (uint)ControlPresenter.ActualHeight } };
+                                X = (uint)(Math.Ceiling(pos.X)) + 1, // Avoid the 1px window border
+                                Y = (uint)(Math.Ceiling(pos.Y)) + 1,
+                                Width = (uint)ControlPresenter.ActualWidth - 1, // Rounding issues -- this avoids capturing the control border
+                                Height = (uint)ControlPresenter.ActualHeight - 1} };
 
                             var softwareBitmap = await decoder.GetSoftwareBitmapAsync(
                                 decoder.BitmapPixelFormat,
