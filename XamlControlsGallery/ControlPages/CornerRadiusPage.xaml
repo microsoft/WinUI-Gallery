@@ -30,7 +30,7 @@
             <Button contract7Present:CornerRadius="5" Content="MyButton" />
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button CornerRadius=&quot;5&quot; Content=&quot;MyButton&quot;/&gt;
+                    &lt;Button conditionalNameSpace:CornerRadius=&quot;5&quot; Content=&quot;MyButton&quot;/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -41,7 +41,7 @@
             <Button contract7Present:CornerRadius="0" Content="MyButton" />
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button CornerRadius=&quot;0&quot; Content=&quot;MyButton&quot;/&gt;
+                    &lt;Button conditionalNameSpace:CornerRadius=&quot;0&quot; Content=&quot;MyButton&quot;/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -51,6 +51,8 @@
         <local:ControlExample MinimumUniversalAPIContract="7">
             <Button contract7Present:CornerRadius="5,5,0,0" Content="CornerRadius: 5,5,0,0" />
         </local:ControlExample>
+
+        <TextBlock Text="CornerRadius values for Overlay controls, such as content dialogs, flyouts and other popups can be set in App.xaml with property OverlayCornerRadius ."/>
 
         <TextBlock>
             <Run Text="For more, visit " />

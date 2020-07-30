@@ -1933,8 +1933,8 @@
           "Title": "CornerRadius",
           "Subtitle": "Round Corners",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
-          "Description": "You may set CornerRadius property starting in WinUI 2.2. It sets round corners to your control",
-          "Content": "You may set CornerRadius property starting in Windows 10 1809. It sets round corners for your UI element.",
+          "Description": "You may set CornerRadius property starting in WinUI 2.2 (Minimum version Windows 10 1809). It sets round corners for your UI element.",
+          "Content": "You may set CornerRadius property starting in WinUI 2.2 (Minimum version Windows 10 1809). It sets round corners for your UI element.",
           "IsNew": true,
           "Docs": [
             {
