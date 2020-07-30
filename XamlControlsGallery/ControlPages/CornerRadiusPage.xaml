@@ -48,11 +48,16 @@
         <local:ControlExample MinimumUniversalAPIContract="7">
             <Button contract7Present:CornerRadius="5,0,5,0" Content="CornerRadius: 5,0,5,0" />
         </local:ControlExample>
-        <local:ControlExample MinimumUniversalAPIContract="7">
-            <Button contract7Present:CornerRadius="5,5,0,0" Content="CornerRadius: 5,5,0,0" />
+        <local:ControlExample HeaderText="A textbox with CornerRadius" MinimumUniversalAPIContract="7">
+            <TextBox contract7Present:CornerRadius="10" Header="A textbox with CornerRadius" />
+                <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;TextBox conditionalNameSpace:CornerRadius&quot;10&quot; Header=&quot;A textbox with CornerRadius&quot; /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <TextBlock Text="CornerRadius values for Overlay controls, such as content dialogs, flyouts and other popups can be set in App.xaml with property OverlayCornerRadius ."/>
+        <TextBlock Text="CornerRadius values for Overlay controls, such as content dialogs, flyouts and other popups can be set in App.xaml with property OverlayCornerRadius ." />
 
         <TextBlock>
             <Run Text="For more, visit " />
