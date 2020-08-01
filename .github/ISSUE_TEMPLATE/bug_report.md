@@ -30,6 +30,7 @@ Gallery version (found on Settings page):
 
 Windows 10 version:
 - [ ] Insider Build (xxxxx)
+- [ ] May 2020 Update (19041)
 - [ ] November 2019 Update (18363)
 - [ ] May 2019 Update (18362)
 - [ ] October 2018 Update (17763)

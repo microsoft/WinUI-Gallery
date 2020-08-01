@@ -894,12 +894,11 @@
         {
           "UniqueId": "RadioButton",
           "Title": "RadioButton",
-          "Subtitle": "A control that allows a user to select a single option from a group of options. When radio buttons are grouped together they are mutually exclusive.",
+          "Subtitle": "A control that allows a user to select a single option from a group of options.",
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
-          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options.",
+          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsPreview": true,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -912,6 +911,7 @@
           ],
           "RelatedControls": [
             "CheckBox",
+            "RadioButtons",
             "ToggleSwitch",
             "ToggleButton"
           ]
@@ -994,7 +994,7 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
       "Subtitle": "",
-      "ImagePath": "",
+      "ImagePath": "",
       "Description": "",
       "Items": [
         {
@@ -1027,7 +1027,7 @@
           "ImagePath": "ms-appx:///Assets/ProgressBar.png",
           "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsPreview": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ProgressBar - API",
@@ -1049,7 +1049,7 @@
           "ImagePath": "ms-appx:///Assets/ProgressRing.png",
           "Description": "Use a ProgressRing to show that the app is performing ongoing work that blocks user interaction.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ProgressRing - API",
@@ -1348,6 +1348,31 @@
             "StackPanel",
             "VariableSizedWrapGrid",
             "RelativePanel"
+          ]
+        },
+                {
+          "UniqueId": "RadioButtons",
+          "Title": "RadioButtons",
+          "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
+          "ImagePath": "ms-appx:///Assets/RadioButtons.png",
+          "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
+          "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "RadioButtons - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.radiobuttons?view=winui-2.4"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/radio-button"
+            }
+          ],
+          "RelatedControls": [
+            "CheckBox",
+            "RadioButton",
+            "ToggleSwitch",
+            "ToggleButton"
           ]
         },
         {
@@ -1793,6 +1818,25 @@
           ],
           "RelatedControls": [
             "Reveal"
+          ]
+        },
+        {
+          "UniqueId": "RadialGradientBrush",
+          "Title": "RadialGradientBrush",
+          "Subtitle": "A brush to show radial gradients",
+          "ImagePath": "ms-appx:///Assets/Canvas.png",
+          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
+          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "RadialGradientBrush - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
+            }
+          ],
+          "RelatedControls": [
+            "Acrylic",
+            "ColorPaletteResources"
           ]
         },
         {
@@ -2271,25 +2315,6 @@
           ],
           "RelatedControls": [
             "ScrollViewer"
-          ]
-        },
-        {
-          "UniqueId": "RadialGradientBrush",
-          "Title": "RadialGradientBrush",
-          "Subtitle": "A brush to show radial gradients",
-          "ImagePath": "ms-appx:///Assets/Canvas.png",
-          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
-          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "RadialGradientBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
-            }
-          ],
-          "RelatedControls": [
-            "Acrylic",
-            "ColorPaletteResources"
           ]
         }
       ]

@@ -46,8 +46,14 @@ namespace AppUIBasics
                 soundToggle.IsOn = true;
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
                 spatialSoundBox.IsChecked = true;
-            if (NavigationRootPage.Current.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top)
-                navigationToggle.IsOn = true;
+            if (NavigationRootPage.Current.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+            {
+                navigationLocation.SelectedIndex = 0;
+            }
+            else
+            {
+                navigationLocation.SelectedIndex = 1;
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -108,7 +114,7 @@ namespace AppUIBasics
 
         private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            NavigationOrientationHelper.IsLeftMode = !navigationToggle.IsOn;
+            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
         }
 
         private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
@@ -117,6 +123,11 @@ namespace AppUIBasics
             {
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
+        }
+
+        private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
         }
     }
 }

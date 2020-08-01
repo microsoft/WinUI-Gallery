@@ -35,9 +35,15 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;ToggleSwitch Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" /&gt;
+                    &lt;ToggleSwitch Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="$(isOn)$(isOff)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="isOn" IsEnabled="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}"
+                                                  Value= "True"/>
+                <local:ControlExampleSubstitution Key="isOff" IsEnabled="{x:Bind ToggleSwitch2.IsOn.Equals(x:False), Mode=OneWay}"
+                                                  Value= "False"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
