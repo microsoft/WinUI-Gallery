@@ -378,6 +378,7 @@ namespace AppUIBasics
                                         // In Topmode, the child is not visible, so set parent as selected
                                         // Everything else does not work unfortunately
                                         NavigationView.SelectedItem = item;
+                                        item.StartBringIntoView();
                                     }
                                     else
                                     {
@@ -387,6 +388,7 @@ namespace AppUIBasics
                                         NavigationView.UpdateLayout();
                                         // Set selected item
                                         NavigationView.SelectedItem = child;
+                                        child.StartBringIntoView();
                                     }
                                     // Set to true to also skip out of outer for loop
                                     changedSelection = true;
