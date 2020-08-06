@@ -526,28 +526,42 @@ namespace AppUIBasics
         {
             if (e.Key == Windows.System.VirtualKey.Enter && !String.IsNullOrWhiteSpace(ControlPaddingBox.Text))
             {
-                // Evaluate the text as padding
-                string[] strs = ControlPaddingBox.Text.Split(new char[] { ' ', ',' });
-                double[] nums = new double[4];
-                for (int i = 0; i < strs.Length; i++)
+                EvaluatePadding();
+            }
+        }
+
+        private void ControlPaddingBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            EvaluatePadding();
+        }
+
+        private void EvaluatePadding()
+        {
+            // Evaluate the text in the ControlPaddingBox as padding
+            string[] strs = ControlPaddingBox.Text.Split(new char[] { ' ', ',' });
+            double[] nums = new double[4];
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (!Double.TryParse(strs[i], out nums[i]))
                 {
-                    nums[i] = Double.Parse(strs[i]);
+                    //  Bad format
+                    return;
                 }
+            }
 
-                switch (nums.Length)
-                {
-                    case 1:
-                        ControlPresenter.Padding = new Thickness(nums[0]);
-                        break;
+            switch (nums.Length)
+            {
+                case 1:
+                    ControlPresenter.Padding = new Thickness(nums[0]);
+                    break;
 
-                    case 2:
-                        ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[0], nums[1]);
-                        break;
+                case 2:
+                    ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[0], nums[1]);
+                    break;
 
-                    case 4:
-                        ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[2], nums[3]);
-                        break;
-                }
+                case 4:
+                    ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[2], nums[3]);
+                    break;
             }
         }
     }
