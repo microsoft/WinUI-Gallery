@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -39,6 +39,14 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
             // Add first item to inverted list so it's not empty
             AddItemToEnd();
+            BaseExample.Loaded += BaseExample_Loaded;
+        }
+
+        private void BaseExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Set focus so the first item of the listview has focus
+            // instead of some item which is not visible on page load
+            BaseExample.Focus(FocusState.Programmatic);
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
