@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -24,7 +24,7 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
-        private Color currentColor = Colors.Gray;
+        private Color currentColor = Colors.Green;
 
         public RichEditBoxPage()
         {

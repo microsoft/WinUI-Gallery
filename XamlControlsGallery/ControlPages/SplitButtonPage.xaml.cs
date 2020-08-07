@@ -1,4 +1,4 @@
-﻿using Windows.UI;
+using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -8,7 +8,7 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class SplitButtonPage : Page
     {
-        private Color currentColor = Colors.Gray;
+        private Color currentColor = Colors.Green;
 
         public SplitButtonPage()
         {
