@@ -149,11 +149,6 @@
                                         <Rectangle Fill="Gray"/>
                                     </Button.Content>
                                 </Button>
-                                <Button Click="ColorButton_Click" AutomationProperties.Name="Black">
-                                    <Button.Content>
-                                        <Rectangle Fill="Black"/>
-                                    </Button.Content>
-                                </Button>
                             </VariableSizedWrapGrid>
                         </Flyout>
                     </muxc:DropDownButton.Flyout>

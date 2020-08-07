@@ -24,7 +24,7 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
-        private Color currentColor = Colors.Black;
+        private Color currentColor = Colors.Gray;
 
         public RichEditBoxPage()
         {
@@ -160,18 +160,12 @@ namespace AppUIBasics.ControlPages
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
             editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
-            if (currentRawText.Length != LastRawTextLength)
-            {
-                // User used cut or paste from action command, skip the event
-                return;
-            }
             
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
-            SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
 
-            if (background != null && foreground != null)
+            if (background != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
             }
