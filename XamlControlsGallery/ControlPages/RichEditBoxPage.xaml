@@ -163,9 +163,8 @@
                              RelativePanel.Below="openFileButton" 
                              RelativePanel.AlignLeftWithPanel="True" 
                              RelativePanel.AlignRightWithPanel="True" 
-                             TextChanging="Editor_TextChanging"
-                             GotFocus="Editor_GotFocus"
-                             LosingFocus="Editor_LosingFocus"/>
+                             TextChanged="Editor_TextChanged"
+                             GotFocus="Editor_GotFocus"/>
                 <StackPanel Orientation="Horizontal" 
                             RelativePanel.Below="editor" 
                             RelativePanel.AlignLeftWith="editor" 
