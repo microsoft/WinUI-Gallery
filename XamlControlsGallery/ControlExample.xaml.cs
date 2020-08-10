@@ -511,7 +511,16 @@ namespace AppUIBasics
                 }
                 if (uie != null)
                 {
-                    imageName = uie.GetType().Name + "_" + Name + ".png";
+                    string name = Name;
+                    if (name.Equals("RootPanel"))
+                    {
+                        // This is the default name for the example; add an index on the end to disambiguate
+                        imageName = uie.GetType().Name + "_" + ((Panel)this.Parent).Children.IndexOf(this).ToString() + ".png";
+                    }
+                    else
+                    {
+                        imageName = uie.GetType().Name + "_" + name + ".png";
+                    }
                 }
             }
             return imageName;
