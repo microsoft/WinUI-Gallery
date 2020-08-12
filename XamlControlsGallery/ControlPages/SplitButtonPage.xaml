@@ -81,7 +81,7 @@
 
             </Grid>
             <local:ControlExample.Options>
-                <RichEditBox x:Name="myRichEditBox" MinWidth="240" MinHeight="96" 
+                <RichEditBox x:Name="myRichEditBox" Width="240" MinHeight="96" 
                              PlaceholderText="Type something here" 
                              TextChanged="MyRichEditBox_TextChanged"/>
             </local:ControlExample.Options>
