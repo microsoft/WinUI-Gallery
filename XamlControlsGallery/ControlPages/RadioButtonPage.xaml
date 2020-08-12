@@ -22,8 +22,10 @@
                     <RadioButton Content="Option 2" Checked="RadioButton_Checked" />
                     <RadioButton Content="Option 3" Checked="RadioButton_Checked" />
                 </RadioButtons>
-                <TextBlock x:Name="Control1Output" Text="Select an option." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,8" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control1Output" Text="Select an option." />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;RadioButtons Header="Options:"&gt;

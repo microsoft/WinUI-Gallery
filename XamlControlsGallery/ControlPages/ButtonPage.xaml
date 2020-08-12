@@ -18,13 +18,12 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple Button with text content.">
             <local:ControlExample.Example>
-                <RelativePanel>
-                    <Button x:Name="Button1" Content="Button" Click="Button_Click"
-                            IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
-                    <TextBlock x:Name="Control1Output" Margin="8,0,0,0" FontFamily="Global User Interface"
-                            RelativePanel.RightOf="Button1" RelativePanel.AlignVerticalCenterWith="Button1" />
-                </RelativePanel>
+                <Button x:Name="Button1" Content="Standard XAML button" Click="Button_Click"
+                    IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
             </local:ControlExample.Example>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control1Output" FontFamily="Global User Interface"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Options>
                 <StackPanel>
                     <CheckBox x:Name="DisableButton1" Content="Disable button" />
@@ -47,9 +46,11 @@
                     <Button x:Name="Button2" Click="Button_Click" Width="50" Height="50" AutomationProperties.Name="Pie">
                         <Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/>
                     </Button>
-                    <TextBlock x:Name="Control2Output" Margin="8,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control2Output"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;
