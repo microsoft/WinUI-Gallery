@@ -96,7 +96,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" MaxWidth="320" />
                     <ColumnDefinition Width="Auto" MaxWidth="320" />
                 </Grid.ColumnDefinitions>
 
