@@ -16,10 +16,6 @@
                               XamlSource="Buttons\SplitButton\SplitButtonSample1.txt"
                               WebViewHeight="150">
             <Grid x:Name="Control1" ColumnSpacing="24">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
 
                 <muxc:SplitButton x:Name="myColorButton" AutomationProperties.Name="Font color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Click="myColorButton_Click">
                     <Rectangle x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Fill="Green" Margin="0"/>
@@ -83,10 +79,12 @@
                     </muxc:SplitButton.Flyout>
                 </muxc:SplitButton>
 
-                <RichEditBox x:Name="myRichEditBox" Grid.Column="1" MinWidth="240" MinHeight="96" 
+            </Grid>
+            <local:ControlExample.Options>
+                <RichEditBox x:Name="myRichEditBox" Width="240" MinHeight="96" 
                              PlaceholderText="Type something here" 
                              TextChanged="MyRichEditBox_TextChanged"/>
-            </Grid>
+            </local:ControlExample.Options>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="A SplitButton with RevealStyle applied" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
