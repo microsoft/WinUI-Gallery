@@ -47,6 +47,20 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+
+            <VisualStateGroup>
+                <VisualState x:Name="NormalMode"/>
+                <VisualState x:Name="ScreenshotMode">
+                    <VisualState.Setters>
+                        <Setter Target="CodeScrollViewer.Visibility" Value="Collapsed"/>
+                        <Setter Target="ControlPresenter.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}"/>
+                        <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="ScreenshotControls.Visibility" Value="Visible"/>
+
+                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
@@ -68,6 +82,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Grid
@@ -83,6 +98,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" MaxWidth="320" />
                     <ColumnDefinition Width="Auto" MaxWidth="320" />
                 </Grid.ColumnDefinitions>
 
@@ -132,6 +148,7 @@
 
             <!--  XAML display  -->
             <ScrollViewer
+                x:Name="CodeScrollViewer"
                 Grid.Row="1"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -152,6 +169,25 @@
                         Margin="16,20" />
                 </StackPanel>
             </ScrollViewer>
+
+            <StackPanel x:Name="ScreenshotControls" Grid.Row="2" Orientation="Horizontal" Spacing="6" Margin="0,6,0,0" Visibility="Collapsed">
+                <Button
+                    x:Name="ScreenshotButton"
+                    Content="Take Screenshot"
+                    HorizontalAlignment="Left"
+                    Click="ScreenshotButton_Click"/>
+
+                <Button
+                    x:Name="ScreenshotDelayButton"
+                    Content="Take Screenshot With Delay"
+                    HorizontalAlignment="Left"
+                    Click="ScreenshotDelayButton_Click"/>
+
+                <TextBlock x:Name="ScreenshotStatusTextBlock" VerticalAlignment="Center" Margin="0,0,0,1"/>
+
+                <TextBlock Text="Padding:" VerticalAlignment="Center" Margin="5,0,5,1"/>
+                <TextBox x:Name="ControlPaddingBox" Width="150" KeyUp="ControlPaddingBox_KeyUp" LostFocus="ControlPaddingBox_LostFocus"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

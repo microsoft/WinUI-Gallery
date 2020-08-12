@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -23,8 +23,10 @@
                 <ToggleButton x:Name="Toggle1" Content="ToggleButton"
                     IsEnabled="{x:Bind DisableToggle1.IsChecked.Value.Equals(x:False), Mode=OneWay}"
                     Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" />
-                <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control1Output"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Options>
                 <StackPanel>
                     <CheckBox x:Name="DisableToggle1" Content="Disable ToggleButton" />
@@ -45,8 +47,10 @@
                 <ToggleButton  x:Name="ToggleReveal" Content="ToggleButton"
                               Style="{StaticResource ToggleButtonRevealStyle}"
                               Checked="ToggleButtonReveal_Checked" Unchecked="ToggleButtonReveal_Unchecked" />
-                <TextBlock x:Name="ControlRevealOutput" Margin="8,0,0,0" VerticalAlignment="Center" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="ControlRevealOutput"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String>
                     &lt;ToggleButton Content="ToggleButton" Style="{StaticResource ToggleButtonRevealStyle}"/&gt;

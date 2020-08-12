@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -17,9 +17,10 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider1" AutomationProperties.Name="simple slider" Width="200" />
-                <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String>
                     &lt;Slider AutomationProperties.Name="simple slider" Width="200"/&gt;
@@ -30,9 +31,10 @@
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <Slider x:Name="Slider2" Header="Control header" Width="200" Minimum="500" Maximum="1000"
                         LargeChange="100" StepFrequency="10" SmallChange="10" Value="800"/>
-                <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Slider Width="200" Minimum="500" Maximum="1000" StepFrequency="10"
@@ -43,9 +45,10 @@
         <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
-                <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String>
                     &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
@@ -56,9 +59,10 @@
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider4" Width="100" Height="100" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
                         Maximum="50" Minimum="-50" AutomationProperties.Name="vertical slider"/>
-                <TextBlock Style="{StaticResource OutputTextBlockStyle}"
-                        Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
             </StackPanel>
+            <local:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Slider AutomationProperties.Name="vertical slider" Width="100" Orientation="Vertical"

@@ -9,9 +9,11 @@
 //*********************************************************
 using AppUIBasics.Common;
 using AppUIBasics.Helper;
-using Microsoft.Graphics.Canvas.Effects;
 using System;
 using System.Linq;
+using Windows.ApplicationModel.Core;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.System;
 using Microsoft.UI;
 using Windows.UI.ViewManagement;
@@ -45,6 +47,13 @@ namespace AppUIBasics
                 soundToggle.IsOn = true;
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
                 spatialSoundBox.IsChecked = true;
+
+#if UNIVERSAL
+            screenshotModeToggle.IsOn = UIHelper.IsScreenshotMode;
+            screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
+#else
+            ScreenshotSettingsGrid.Visibility = Visibility.Collapsed;
+#endif
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -134,12 +143,41 @@ namespace AppUIBasics
             NavigationOrientationHelper.IsLeftMode = !navigationToggle.IsOn;
         }
 
+        private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            UIHelper.IsScreenshotMode = screenshotModeToggle.IsOn;
+        }
+
         private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (soundToggle.IsOn == true)
             {
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
+        }
+
+        private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
+        }
+
+        private async void FolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            FolderPicker folderPicker = new FolderPicker();
+            folderPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            folderPicker.FileTypeFilter.Add(".png"); // meaningless, but you have to have something
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+
+            if (folder != null)
+            {
+                UIHelper.ScreenshotStorageFolder = folder;
+                screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
+            }
+        }
+
+        private async void screenshotFolderLink_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
     }
 }

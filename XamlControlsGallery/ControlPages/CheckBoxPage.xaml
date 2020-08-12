@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -19,9 +19,11 @@
                 <StackPanel Orientation="Horizontal">
                     <!-- A two-state CheckBox. -->
                     <CheckBox Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" />
-                    <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control1Output"/>
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CheckBox Content="Two-state CheckBox"
@@ -35,9 +37,11 @@
                 <StackPanel Orientation="Horizontal">
                     <CheckBox Content="Three-state CheckBox" IsThreeState="True" Indeterminate="Control2_Indeterminate"
                             Checked="Control2_Checked" Unchecked="Control2_Unchecked" />
-                    <TextBlock x:Name="Control2Output" Margin="8,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.Output>
+                <TextBlock x:Name="Control2Output" />
+            </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CheckBox Content="Three-state CheckBox"
