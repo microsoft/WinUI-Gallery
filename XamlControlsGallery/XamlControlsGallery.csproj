@@ -512,8 +512,8 @@
     <Compile Include="ControlPages\RadioButtonPage.xaml.cs">
       <DependentUpon>RadioButtonPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\RatingsControlPage.xaml.cs">
-      <DependentUpon>RatingsControlPage.xaml</DependentUpon>
+    <Compile Include="ControlPages\RatingControlPage.xaml.cs">
+      <DependentUpon>RatingControlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\RelativePanelPage.xaml.cs">
       <DependentUpon>RelativePanelPage.xaml</DependentUpon>
@@ -998,7 +998,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\RatingsControlPage.xaml">
+    <Page Include="ControlPages\RatingControlPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
