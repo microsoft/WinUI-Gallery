@@ -18,5 +18,18 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private async void ShowDialog_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ContentDialog CornerRadiusDialog = new ContentDialog
+            {
+                Title = "I'm a dialog!",
+                Content = "CornerRadius: 10",
+                CloseButtonText = "OK",
+                CornerRadius = new Windows.UI.Xaml.CornerRadius(10)
+            };
+            CornerRadiusDialog.DefaultButton = ContentDialogButton.Close;
+            await CornerRadiusDialog.ShowAsync();
+        }
     }
 }

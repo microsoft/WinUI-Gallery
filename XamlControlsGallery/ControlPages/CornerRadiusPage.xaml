@@ -1,15 +1,14 @@
-<Page
-    x:Class="AppUIBasics.ControlPages.CornerRadiusPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:AppUIBasics"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+<Page x:Class="AppUIBasics.ControlPages.CornerRadiusPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:AppUIBasics"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
     <StackPanel>
-        <TextBlock IsTextSelectionEnabled="True">
+        <TextBlock IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords">
             <LineBreak />
             <Run Text="For basic UI elements like buttons that users see on screen at all times," />
             <Run Text="the default radius value is" />
@@ -19,52 +18,67 @@
             <LineBreak />
             <Run Text="For transient UI elements that appear on screen temporarily, like MenuFlyout, or elements that overlay other UI, like TabView tabs," />
             <LineBreak />
-            <Run Text="the default radius value we use for is" />
+            <Run Text="the default radius value is" />
             <Run FontWeight="Bold" Text="4px" />
             <Run Text="." />
         </TextBlock>
-        <local:ControlExample
-            x:Name="Example1"
-            HeaderText="A button with CornerRadius"
-            MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="A button with CornerRadius" MinimumUniversalAPIContract="7">
             <Button contract7Present:CornerRadius="5" Content="MyButton" />
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button conditionalNameSpace:CornerRadius=&quot;5&quot; Content=&quot;MyButton&quot;/&gt;
+                    &lt;Button contract7Present:CornerRadius=&quot;5&quot; Content=&quot;MyButton&quot;/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample
-            x:Name="Example2"
-            HeaderText="A button without CornerRadius"
-            MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="A button without CornerRadius" MinimumUniversalAPIContract="7">
             <Button contract7Present:CornerRadius="0" Content="MyButton" />
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Button conditionalNameSpace:CornerRadius=&quot;0&quot; Content=&quot;MyButton&quot;/&gt;
+                    &lt;Button contract7Present:CornerRadius=&quot;0&quot; Content=&quot;MyButton&quot;/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="Button with CornerRadius on only some corners" MinimumUniversalAPIContract="7">
             <Button contract7Present:CornerRadius="5,0,5,0" Content="CornerRadius: 5,0,5,0" />
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;Button contract7Present:CornerRadius=&quot;5,0,5,0&quot; Content=&quot;CornerRadius: 5,0,5,0&quot; /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample HeaderText="A textbox with CornerRadius" MinimumUniversalAPIContract="7">
-            <TextBox contract7Present:CornerRadius="10" Header="A textbox with CornerRadius" />
-                <local:ControlExample.Xaml>
+            <local:ControlExample.Example>
+                <TextBox contract7Present:CornerRadius="10" Header="A textbox with CornerRadius" />
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;TextBox conditionalNameSpace:CornerRadius&quot;10&quot; Header=&quot;A textbox with CornerRadius&quot; /&gt;
+                    &lt;TextBox contract7Present:CornerRadius=&quot;10&quot; Header=&quot;A textbox with CornerRadius&quot; /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <TextBlock Text="CornerRadius values for Overlay controls, such as content dialogs, flyouts and other popups can be set in App.xaml with property OverlayCornerRadius ." />
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="CornerRadius values for Overlay controls, such as content dialogs, flyouts and other popups can be set in App.xaml with property OverlayCornerRadius or in the code (as shown below)." />
+
+        <local:ControlExample HeaderText="A content dialog with CornerRadius">
+            <Button Click="ShowDialog_Click" Content="Show Contentdialog" />
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+ContentDialog CornerRadiusDialog = new ContentDialog
+{
+Title = &quot;I'm a dialog!&quot;,
+Content = &quot;CornerRadius: 10&quot;,
+CornerRadius = new Windows.UI.Xaml.CornerRadius(10)
+};
+CornerRadiusDialog.DefaultButton = ContentDialogButton.Close;
+                    </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
 
         <TextBlock>
             <Run Text="For more, visit " />
-            <Hyperlink
-                NavigateUri="https://docs.microsoft.com/windows/uwp/design/style/rounded-corner"
-                TextDecorations="None"
-                ToolTipService.ToolTip="https://docs.microsoft.com/windows/uwp/design/style/rounded-corner">
+            <Hyperlink NavigateUri="https://docs.microsoft.com/windows/uwp/design/style/rounded-corner"
+                       TextDecorations="None"
+                       ToolTipService.ToolTip="https://docs.microsoft.com/windows/uwp/design/style/rounded-corner">
                 <Run Text="https://docs.microsoft.com/windows/uwp/design/style/rounded-corner" />
             </Hyperlink>
             <Run Text="." />
