@@ -35,8 +35,11 @@ To obtain information about Windows 10 development, go to the [Windows Dev Cente
 
 To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
 
-To contact the authors, please reach out to ControlsGallery@microsoft.com
+## 🐞 Found a bug? Want a new sample?
 
+If you find a bug **within the Xaml Controls Gallery** or want to request a new sample, please [file an issue](https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose).
+
+If you find a bug **within your app (not in the Xaml Controls Gallery)** and need help, please [file an issue on the WinUI repo](https://github.com/microsoft/microsoft-ui-xaml/issues/new/choose).
 
 
 ## Related topics

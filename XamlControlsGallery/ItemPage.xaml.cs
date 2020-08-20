@@ -73,6 +73,19 @@ namespace AppUIBasics
             _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
             UpdateSeeAlsoPanelVerticalTranslationAnimation();
+
+            if (UIHelper.IsScreenshotMode)
+            {
+                var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+
+                if (controlExamples != null)
+                {
+                    foreach (var controlExample in controlExamples)
+                    {
+                        VisualStateManager.GoToState(controlExample, "ScreenshotMode", false);
+                    }
+                }
+            }
         }
 
         private void UpdateSeeAlsoPanelVerticalTranslationAnimation()

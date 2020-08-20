@@ -90,23 +90,17 @@
                             <Rectangle Fill="Gray"/>
                         </Button.Content>
                     </Button>
-                    <Button Click="ColorButton_Click" AutomationProperties.Name="Black">
-                        <Button.Content>
-                            <Rectangle Fill="Black"/>
-                        </Button.Content>
-                    </Button>
                 </VariableSizedWrapGrid>
             </Flyout>
         </muxc:DropDownButton.Flyout>
     </muxc:DropDownButton>
 
-    <RichEditBox x:Name="editor" Height="200" 
-                 RelativePanel.Below="openFileButton" 
-                 RelativePanel.AlignLeftWithPanel="True" 
-                 RelativePanel.AlignRightWithPanel="True"
-                 TextChanging="Editor_TextChanging"
-                 GotFocus="Editor_GotFocus"
-                 LosingFocus="Editor_LosingFocus"/>
+    <RichEditBox x:Name="editor" Height="200" AutomationProperties.Name="Custom editor"
+                    RelativePanel.Below="openFileButton" 
+                    RelativePanel.AlignLeftWithPanel="True" 
+                    RelativePanel.AlignRightWithPanel="True" 
+                    TextChanged="Editor_TextChanged"
+                    GotFocus="Editor_GotFocus"/>
     <StackPanel Orientation="Horizontal" 
                 RelativePanel.Below="editor" 
                 RelativePanel.AlignLeftWith="editor" 

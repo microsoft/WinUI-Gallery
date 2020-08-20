@@ -24,11 +24,7 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {
-        private Color currentColor = Colors.Black;
-        // String used to restore the colors when the focus gets reenabled
-        // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
-        private string LastFormattedText = "";
-        private int LastRawTextLength = 0;
+        private Color currentColor = Colors.Green;
 
         public RichEditBoxPage()
         {
@@ -164,49 +160,15 @@ namespace AppUIBasics.ControlPages
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
             editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
-            if (currentRawText.Length != LastRawTextLength)
-            {
-                // User used cut or paste from action command, skip the event
-                return;
-            }
             
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
-            SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
 
-            editor.Document.ApplyDisplayUpdates();
-
-            if (background != null && foreground != null)
+            if (background != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
             }
-            // saving selection span
-            var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character) - 1;
-            if(caretPosition <= 0)
-            {
-                // User has not entered text, prevent invalid values and just set index to 1
-                caretPosition = 1;
-            }
-            var selectionLength = editor.Document.Selection.Length;
-            // restoring text styling, unintentionally sets caret position at beginning of text
-            editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
-            // restoring selection position
-            editor.Document.Selection.SetIndex(TextRangeUnit.Character, caretPosition, false);
-            editor.Document.Selection.SetRange(caretPosition, caretPosition + selectionLength);
-            // Editor might have gained focus because user changed color.
-            // Change selection color
-            // Note that only way to regain with selection containing text is using the change color button
-            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-        }
-
-        private void Editor_LosingFocus(object sender, RoutedEventArgs e)
-        {
-            // Save text length to determine text length change
-            editor.Document.GetText(TextGetOptions.UseCrlf, out string lastRawText);
-            LastRawTextLength = lastRawText.Length; 
-            
-            editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -244,13 +206,9 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Editor_TextChanging(object sender, RichEditBoxTextChangingEventArgs e)
+        private void Editor_TextChanged(object sender, RoutedEventArgs e)
         {
-            // Fix bug where selected text would get colored when editor loses focus
-            if (FocusManager.GetFocusedElement() == editor)
-            {
-                editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-            }
+            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
         }
     }
 }
