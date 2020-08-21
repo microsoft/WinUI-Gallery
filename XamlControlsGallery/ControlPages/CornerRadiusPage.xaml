@@ -65,9 +65,9 @@
                 <x:String xml:space="preserve">
 ContentDialog CornerRadiusDialog = new ContentDialog
 {
-Title = &quot;I'm a dialog!&quot;,
-Content = &quot;CornerRadius: 10&quot;,
-CornerRadius = new Windows.UI.Xaml.CornerRadius(10)
+    Title = &quot;I'm a dialog!&quot;,
+    Content = &quot;CornerRadius: 10&quot;,
+    CornerRadius = new Windows.UI.Xaml.CornerRadius(10)
 };
 CornerRadiusDialog.DefaultButton = ContentDialogButton.Close;
                     </x:String>
