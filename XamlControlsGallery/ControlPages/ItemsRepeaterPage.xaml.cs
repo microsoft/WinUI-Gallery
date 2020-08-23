@@ -283,7 +283,12 @@ namespace AppUIBasics.ControlPages
         {
             Button SelectedItem = GetSelectedItemFromViewport() as Button;
             // Update corresponding rectangle with selected color
-            colorRectangle.Fill = SelectedItem.Background;
+            // In case of scrolling VERY fast, the item we are updating our view for might already be recycled and thus null.
+            // Check if our SelectedItem actually exists, otherwise we would crash.
+            if(SelectedItem != null)
+            {
+                colorRectangle.Fill = SelectedItem.Background;
+            }
         }
 
         // Find centerpoint of ScrollViewer
