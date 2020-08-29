@@ -8,5 +8,10 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private void RatingControl1_ValueChanged(Microsoft.UI.Xaml.Controls.RatingControl sender, object args)
+        {
+            RatingControl1.Caption = "Your rating";
+        }
     }
 }
