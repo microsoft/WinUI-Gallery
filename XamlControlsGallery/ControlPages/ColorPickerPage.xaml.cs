@@ -1,4 +1,3 @@
-using System.Linq;
 using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
