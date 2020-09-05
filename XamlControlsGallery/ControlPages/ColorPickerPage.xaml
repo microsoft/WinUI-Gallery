@@ -27,7 +27,13 @@
                                     IsEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}" />
                     <CheckBox Content="IsAlphaTextInputVisible" x:Name="alphaTextInput"
                                     IsEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}" IsChecked="True" />
-                    <StackPanel Margin="0,24,0,0">
+                    <muxc:RadioButtons x:Name="ColorSpectrumShapeRadioButtons"
+                            Header="Colorspectrum shape" SelectedIndex="0"
+                            SelectionChanged="ColorSpectrumShapeRadioButtons_SelectionChanged">
+                        <x:String>Box</x:String>
+                        <x:String>Ring</x:String>
+                    </muxc:RadioButtons>
+                    <StackPanel Margin="0,12,0,0">
                         <TextBlock Text="ColorPicker applied on a Rectangle" />
                         <Rectangle x:Name="previewRect" Height="100" Margin="0,12,0,0" StrokeThickness="1"
                                         Stroke="{ThemeResource TextControlBorderBrush}">
@@ -36,12 +42,6 @@
                             </Rectangle.Fill>
                         </Rectangle>
                     </StackPanel>
-                    <muxc:RadioButtons x:Name="ColorSpectrumShapeRadioButtons"
-                            Header="Colorspectrum shape" SelectedIndex="0"
-                            SelectionChanged="ColorSpectrumShapeRadioButtons_SelectionChanged">
-                        <x:String>Box</x:String>
-                        <x:String>Ring</x:String>
-                    </muxc:RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
 
