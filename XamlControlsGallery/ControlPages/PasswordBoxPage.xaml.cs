@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -34,6 +34,18 @@ namespace AppUIBasics.ControlPages
                     Control1Output.Text = string.Empty;
                     Control1Output.Visibility = Visibility.Collapsed;
                 }
+            }
+        }
+
+        private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (revealModeCheckBox.IsChecked == true)
+            {
+                passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Visible;
+            }
+            else
+            {
+                passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Hidden;
             }
         }
     }
