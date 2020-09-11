@@ -110,11 +110,11 @@
 
         <local:ControlExample HeaderText="Accent style applied to Button.">
             <local:ControlExample.Example>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Button"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String >
-                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Button" /&gt;
+                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
