@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.AcrylicPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -60,6 +60,13 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <RichTextBlock>
+            <Paragraph>
+                Acrylic Brush might fall back to SolidColorbrush in certain scenarios.
+                If you can't see the Acrylic effect, please refer to
+                <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/windows/uwp/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptibility documentation</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
         <local:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example1Grid" MinWidth="320" Height="200">
