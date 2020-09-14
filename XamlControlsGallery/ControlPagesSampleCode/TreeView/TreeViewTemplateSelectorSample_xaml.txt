@@ -20,11 +20,11 @@
         </TreeViewItem>
     </DataTemplate>
 
-    <local:ExplorerItemTemplateSelector x:Key="ExpolrerItemTemplateSelector"
+    <controlpages:ExplorerItemTemplateSelector x:Key="ExplorerItemTemplateSelector"
         FolderTemplate="{StaticResource FolderTemplate}"
         FileTemplate="{StaticResource FileTemplate}" />
 </Page.Resources>
 
 <TreeView ItemsSource="{x:Bind DataSource}" 
-                   ItemTemplateSelector="{StaticResource ExpolrerItemTemplateSelector}" />
+                   ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" />
 
