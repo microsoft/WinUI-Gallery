@@ -17,7 +17,7 @@
     <StackPanel>
         <RichTextBlock>
             <Paragraph>
-                    Reveal lightning might fall back to SolidColorbrush in certain scenarios such as battery saving modes or when running on low end hardware.
+                    Reveal highlight might fall back to SolidColorbrush in certain scenarios such as battery saving modes or when running on low end hardware.
             </Paragraph>
         </RichTextBlock>
         <local:ControlExample x:Name="Example1" HeaderText="Reveal by default">
