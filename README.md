@@ -17,7 +17,8 @@ description: Demonstrates the usage of all XAML/WinUI controls in an interactive
 
 [![Build Status](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_apis/build/status/XAML%20Controls%20%20Gallery%20-%20CI%20Tests?branchName=master)](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_build/latest?definitionId=2&branchName=master)
 
-Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Library](https://docs.microsoft.com/windows/apps/winui/winui2/) APIs.
+Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Library](https://docs.microsoft.com/windows/apps/winui/) APIs.
+
 
 ## The XAML Controls Gallery shows how to:
 
