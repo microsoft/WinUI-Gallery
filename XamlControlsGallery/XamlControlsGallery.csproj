@@ -554,8 +554,8 @@
     <Compile Include="ControlPages\StackPanelPage.xaml.cs">
       <DependentUpon>StackPanelPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\SwipePage.xaml.cs">
-      <DependentUpon>SwipePage.xaml</DependentUpon>
+    <Compile Include="ControlPages\SwipeControlPage.xaml.cs">
+      <DependentUpon>SwipeControlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\TextBlockPage.xaml.cs">
       <DependentUpon>TextBlockPage.xaml</DependentUpon>
@@ -1050,7 +1050,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\SwipePage.xaml">
+    <Page Include="ControlPages\SwipeControlPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
