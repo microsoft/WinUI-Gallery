@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppUIBasics.ControlPages.MenuBarPage" 
+<Page x:Class="AppUIBasics.ControlPages.MenuBarPage" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
       xmlns:local="using:AppUIBasics"
@@ -14,7 +14,7 @@
                               XamlSource="MenuBar\MenuBarSample1.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText" Text="" />
-                <muxc:MenuBar>
+                <muxc:MenuBar x:Name="Example1">
                     <muxc:MenuBarItem Title="File">
                         <MenuFlyoutItem x:Name="o1" Text="New" Click="OnElementClicked"/>
                         <MenuFlyoutItem x:Name="o2" Text="Open" Click="OnElementClicked"/>
@@ -40,7 +40,7 @@
                               XamlSource="Menubar\MenuBarSample3.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText1" Text="" />
-                <muxc:MenuBar>
+                <muxc:MenuBar x:Name="Example2">
                     <muxc:MenuBarItem Title="File">
                         <MenuFlyoutItem x:Name ="t2" Text="New" Click="OnElementClicked">
                             <MenuFlyoutItem.KeyboardAccelerators>
@@ -103,7 +103,7 @@
                               XamlSource="MenuBar\MenuBarSample2.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText2" Text="" />
-                <muxc:MenuBar>
+                <muxc:MenuBar x:Name="Example3">
                     <muxc:MenuBarItem Title="File">
                         <MenuFlyoutSubItem Text="New">
                             <MenuFlyoutItem x:Name="z1" Text="Plain Text Document" Click="OnElementClicked"/>
