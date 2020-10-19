@@ -148,7 +148,7 @@ namespace AppUIBasics.ControlPages
             }
             if(suitableItems.Count == 0)
             {
-                suitableItems.Add("No items found");
+                suitableItems.Add("No results found");
             }
             sender.ItemsSource = suitableItems;
         }
