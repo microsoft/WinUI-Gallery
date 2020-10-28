@@ -224,6 +224,53 @@
             </Grid>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="NavigationView with Footer Menu Items"
+                              VerticalAlignment="Top" 
+                              HorizontalContentAlignment="Stretch"
+                              XamlSource="NavigationView\NavigationViewSample9_xaml.txt"
+                              WebViewHeight="950">
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
+                    <RadioButton x:Name="nvSample9Left" GroupName="FooterGroup" Content="Left mode" Checked="panePositionLeft_Checked" IsChecked="True"/>
+                    <RadioButton x:Name="nvSample9Top" GroupName="FooterGroup" Content="Top mode" Checked="panePositionTop_Checked"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="WrapWholeWords" 
+                           Margin="0,0,0,12"
+                           Text="You can add clickable menu items to the footer of your NavigationView that participate in the same selection model as items in the main menu. In Top PaneDisplayMode, these items will appear aligned to the right of the NavigationView. In Left PaneDisplayMode, these items will appear aligned to the bottom of the NavigationView. " />
+
+                <muxc:NavigationView x:Name="nvSample9" 
+                                            Grid.Row="1" 
+                                            Height="460"
+                                            Header="This is Header Text" 
+                                            PaneDisplayMode="Left" 
+                                            IsTabStop="False" 
+                                            SelectionChanged="NavigationView_SelectionChanged9"
+                                            IsSettingsVisible="False">
+                    <muxc:NavigationView.MenuItems>
+                        <muxc:NavigationViewItem Content="Calendar" Tag="SamplePage1" Icon="Calendar" />
+                        <muxc:NavigationViewItem Content="Camera" Tag="SamplePage2" Icon="Camera" />
+                        <muxc:NavigationViewItem Content="Notepad" Tag="SamplePage3" Icon="Edit" />
+                    </muxc:NavigationView.MenuItems>
+                    <muxc:NavigationView.FooterMenuItems>
+                        <muxc:NavigationViewItem Content="Profile" Tag="SamplePage4" Icon="Contact" />
+                        <muxc:NavigationViewItem Content="Delete" Tag="SamplePage5" Icon="Delete" />
+                    </muxc:NavigationView.FooterMenuItems>
+                    <Frame Margin="0,0,0,0" x:Name="contentFrame9" />
+                </muxc:NavigationView>
+            </Grid>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="PaneDisplay" Value="{x:Bind nvSample9.PaneDisplayMode, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="Hierarchical NavigationView"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch" 

@@ -1,0 +1,19 @@
+<muxc:NavigationView x:Name="nvSample9" 
+                            Grid.Row="1" 
+                            Height="460"
+                            Header="This is Header Text" 
+                            PaneDisplayMode="$(PaneDisplay)" 
+                            IsTabStop="False" 
+                            SelectionChanged="NavigationView_SelectionChanged9"
+                            IsSettingsVisible="False">
+    <muxc:NavigationView.MenuItems>
+        <muxc:NavigationViewItem Content="Calendar" Tag="SamplePage1" Icon="Calendar" />
+        <muxc:NavigationViewItem Content="Camera" Tag="SamplePage2" Icon="Camera" />
+        <muxc:NavigationViewItem Content="Notepad" Tag="SamplePage3" Icon="Edit" />
+    </muxc:NavigationView.MenuItems>
+    <muxc:NavigationView.FooterMenuItems>
+        <muxc:NavigationViewItem Content="Profile" Tag="SamplePage4" Icon="Contact" />
+        <muxc:NavigationViewItem Content="Delete" Tag="SamplePage5" Icon="Delete" />
+    </muxc:NavigationView.FooterMenuItems>
+    <Frame Margin="0,0,0,0" x:Name="contentFrame9" />
+</muxc:NavigationView>
