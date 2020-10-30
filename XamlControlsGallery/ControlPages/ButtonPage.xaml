@@ -60,12 +60,12 @@
         </local:ControlExample>
         <local:ControlExample HeaderText="Wrapping Buttons with large content">
             <StackPanel MaxWidth="500">
-                <TextBlock Text="The following buttons have content that would get clipped if we are not wrapping the buttons properly." Margin="0,0,0,8" TextWrapping="Wrap"/>
-                <TextBlock Text="The first option to mitigate cut of content is to place them underneath each other:" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                <TextBlock Text="The following buttons' content may get clipped if we don't pay careful attention to their layout containers." Margin="0,0,0,8" TextWrapping="Wrap"/>
+                <TextBlock Text="One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:" Margin="0,0,0,8" TextWrapping="Wrap"/>
                 <Button HorizontalAlignment="Stretch" Margin="0,0,0,5">This is some text that is too long and will get cut off</Button>
                 <Button HorizontalAlignment="Stretch">This is another text that would result in being cut off</Button>
 
-                <TextBlock Text="Another option is to increase the height of the buttons:" Margin="0,8,0,8"/>
+                <TextBlock Text="Another option is to explicitly wrap the Button's content" Margin="0,8,0,8"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button MaxWidth="240" Margin="0,0,8,0" Height="60">
                         <TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/>
