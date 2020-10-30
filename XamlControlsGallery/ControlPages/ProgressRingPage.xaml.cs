@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -31,5 +31,17 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
+        private void ProgressValue_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            // Value might be NaN, which is not valid as value, thus we need to handle changes ourselves
+            if (!sender.Value.IsNaN())
+            {
+                ProgressRing2.Value = sender.Value;
+            }
+            else
+            {
+                sender.Value = 0;
+            }
+        }
     }
 }

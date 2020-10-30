@@ -110,6 +110,52 @@
     </Content>
     <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\NumberBox.png" />
+    <Content Include="Assets\pager.png" />
+    <Content Include="Assets\PagerControlSampleImages\3pears-1323727.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\a-branch-of-flowers-1641742.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\a-set-of-bugambilia-flower-1641740.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\alpine-climbing-1405845.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\apples-1324784.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\autumn-1-1382513.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\autumn-2-1382506.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\balloon-contest-1417733.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\barcalona-airport-arrival-1240880.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\bay-lrt-station-1626400.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\bed-post-1530404.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\black-fly-1641767.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\black-jaguar-1402097.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\blank-sign-bullet-holes-1447150.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\blue-water-sailing-1-1437302.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\bluebells-2007-1374105.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\broken-wall-1641738.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\bugambilia-close-up-1641758.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\bugambilia-fuchsia-1641739.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\burning-tree-1377053.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\butterfly-on-a-flower-1641762.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\cat-1364386.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\cat-cartoon-art-1641753.png" />
+    <Content Include="Assets\PagerControlSampleImages\cat-yoga-1640067.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\cat-yoga-2-1640068.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\cemetery-1404186.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\champagne-with-citron-1325320.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\chicken-breast-with-kimchi-1640070.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\chopped-wood-in-forest-sky-and-trees-1641726.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\close-squirrel-1381764.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\close-up-macro-of-kiwi-fruit-1641725.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\close-up-pine-cone-macro-1641724.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\clouds-1371838.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\coffee-1559191.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\coloured-paper-1421280.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\coming-home-1371162.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\daisy-s-1375598.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\dandelion-37-1388001.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\deer-in-wild-1641752.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\double-bass-1423720.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\dragon-fly-1391358.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\dragonfly-1641761.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\dragonfly-on-a-leaf-1641769.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\droplets-1395002.jpg" />
+    <Content Include="Assets\PagerControlSampleImages\eagle-1523807.jpg" />
     <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
@@ -315,6 +361,9 @@
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\PagerControl.xaml.cs">
+      <DependentUpon>PagerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
       <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
     </Compile>
@@ -620,6 +669,7 @@
     <Compile Include="PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PagerControlSample\ImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamplePages\SampleCompactSizingPage.xaml.cs">
       <DependentUpon>SampleCompactSizingPage.xaml</DependentUpon>
@@ -763,6 +813,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PagerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1201,6 +1255,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+      <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.5.0-prerelease.201027002</Version>

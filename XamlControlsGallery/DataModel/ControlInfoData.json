@@ -1586,6 +1586,25 @@
             "NavigationView",
             "ListView"
           ]
+        },
+        {
+          "UniqueId": "PagerControl",
+          "Title": "Pager Control",
+          "Subtitle": "Provides a way to navigate between pages of content.",
+          "ImagePath": "ms-appx:///Assets/pager.png",
+          "Description": "A Pager allows you to add the UI component that an end user can use to navigate through pages of content. This control does not manage the data being presented in the layout view.",
+          "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PagerControlPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Pager - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pager"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/pager"
+            }
+          ]
         }
       ]
     },
