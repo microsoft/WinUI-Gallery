@@ -77,7 +77,7 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel MaxWidth="500"&gt;
+&lt;StackPanel&gt;
     &lt;TextBlock Text="The following buttons have content that would get clipped if we are not wrapping the buttons properly." Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
     &lt;TextBlock Text="The first option to mitigate cut of content is to place them underneath each other:" Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
     &lt;Button HorizontalAlignment="Stretch" Margin="0,0,0,5"&gt;This is some text that is too long and will get cut off&lt;/Button&gt;
@@ -85,10 +85,10 @@
 
     &lt;TextBlock Text="Another option is to increase the height of the buttons:" Margin="0,8,0,8"/&gt;
     &lt;StackPanel Orientation="Horizontal" HorizontalAlignment="Center"&gt;
-        &lt;Button MaxWidth="240" Margin="0,0,8,0" Height="60"&gt;
+        &lt;Button MaxWidth="240" Margin="0,0,8,0"&gt;
             &lt;TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/&gt;
         &lt;/Button&gt;
-        &lt;Button MaxWidth="240" Height="60"&gt;
+        &lt;Button MaxWidth="240"&gt;
             &lt;TextBlock Text="This is another text that would result in being cut off" TextWrapping="WrapWholeWords"/&gt;
         &lt;/Button&gt;
     &lt;/StackPanel&gt;
