@@ -231,9 +231,11 @@
                               WebViewHeight="950">
             <local:ControlExample.Options>
                 <StackPanel>
-                    <TextBlock Text="PanePosition:" Margin="0,12,0,0"/>
-                    <RadioButton x:Name="nvSample9Left" GroupName="FooterGroup" Content="Left mode" Checked="panePositionLeft_Checked" IsChecked="True"/>
-                    <RadioButton x:Name="nvSample9Top" GroupName="FooterGroup" Content="Top mode" Checked="panePositionTop_Checked"/>
+                    <muxc:RadioButtons Header="Pane position:"
+                                       SelectedIndex="0">
+                        <RadioButton x:Name="nvSample9Left" Content="Left mode" Checked="panePositionLeft_Checked"/>
+                        <RadioButton x:Name="nvSample9Top" Content="Top mode" Checked="panePositionTop_Checked"/>
+                    </muxc:RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
             <Grid>

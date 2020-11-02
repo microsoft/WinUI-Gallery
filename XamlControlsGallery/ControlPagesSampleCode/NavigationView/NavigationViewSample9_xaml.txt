@@ -1,9 +1,6 @@
 <muxc:NavigationView x:Name="nvSample9" 
-                            Grid.Row="1" 
-                            Height="460"
                             Header="This is Header Text" 
                             PaneDisplayMode="$(PaneDisplay)" 
-                            IsTabStop="False" 
                             SelectionChanged="NavigationView_SelectionChanged9"
                             IsSettingsVisible="False">
     <muxc:NavigationView.MenuItems>
@@ -15,5 +12,5 @@
         <muxc:NavigationViewItem Content="Profile" Tag="SamplePage4" Icon="Contact" />
         <muxc:NavigationViewItem Content="Delete" Tag="SamplePage5" Icon="Delete" />
     </muxc:NavigationView.FooterMenuItems>
-    <Frame Margin="0,0,0,0" x:Name="contentFrame9" />
+    <Frame x:Name="contentFrame9" />
 </muxc:NavigationView>

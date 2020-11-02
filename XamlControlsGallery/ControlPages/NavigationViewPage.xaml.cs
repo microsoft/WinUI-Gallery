@@ -200,18 +200,11 @@ namespace AppUIBasics.ControlPages
 
         private void NavigationView_SelectionChanged9(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            if (args.IsSettingsSelected)
-            {
-                contentFrame9.Navigate(typeof(SampleSettingsPage));
-            }
-            else
-            {
-                var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
-                string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
-                Type pageType = Type.GetType(pageName);
+            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
+            Type pageType = Type.GetType(pageName);
 
-                contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
-            }
+            contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
         }
 
         private void databindHeader_Checked(object sender, RoutedEventArgs e)
