@@ -4,13 +4,14 @@
                             SelectionChanged="NavigationView_SelectionChanged9"
                             IsSettingsVisible="False">
     <muxc:NavigationView.MenuItems>
-        <muxc:NavigationViewItem Content="Calendar" Tag="SamplePage1" Icon="Calendar" />
-        <muxc:NavigationViewItem Content="Camera" Tag="SamplePage2" Icon="Camera" />
-        <muxc:NavigationViewItem Content="Notepad" Tag="SamplePage3" Icon="Edit" />
-    </muxc:NavigationView.MenuItems>
-    <muxc:NavigationView.FooterMenuItems>
-        <muxc:NavigationViewItem Content="Profile" Tag="SamplePage4" Icon="Contact" />
-        <muxc:NavigationViewItem Content="Delete" Tag="SamplePage5" Icon="Delete" />
-    </muxc:NavigationView.FooterMenuItems>
+                        <muxc:NavigationViewItem Content="Browse" Tag="SamplePage1" Icon="Library" />
+                        <muxc:NavigationViewItem Content="Track an Order" Tag="SamplePage2" Icon="Map" />
+                        <muxc:NavigationViewItem Content="Order History" Tag="SamplePage3" Icon="Tag" />
+                    </muxc:NavigationView.MenuItems>
+                    <muxc:NavigationView.FooterMenuItems>
+                        <muxc:NavigationViewItem Content="Account" Tag="SamplePage4" Icon="Contact" />
+                        <muxc:NavigationViewItem Content="Your Cart" Tag="SamplePage5" Icon="Shop" />
+                        <muxc:NavigationViewItem Content="Help" Tag="SamplePage5" Icon="Help" />
+                    </muxc:NavigationView.FooterMenuItems>
     <Frame x:Name="contentFrame9" />
 </muxc:NavigationView>
