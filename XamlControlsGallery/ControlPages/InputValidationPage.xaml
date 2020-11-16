@@ -50,28 +50,23 @@
                 VerticalScrollMode="Auto">
                     <StackPanel Margin="24,18,24,8">
                         <TextBlock
-                        x:Uid="AddCreditOrDebitCardCaption"
+                        x:Uid="InputValidationPage_AddCreditOrDebitCardCaption"
                         Margin="0,0,0,16"
-                        Text="Add a credit or debit card"
                         Style="{StaticResource SubtitleTextBlockStyle}"                        
                          />
                         <TextBox
                         x:Name="CardHolderNameField"
-                        x:Uid="CardHolderNameField"
+                        x:Uid="InputValidationPage_CardHolderNameField"
                         Margin="0,0,0,16"
                         HorizontalAlignment="Stretch"
-                        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Header="Cardholder name"
-                        PlaceholderText="Enter name">
+                        Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         </TextBox>
                         <TextBox
                         x:Name="CardNumberField"
-                        x:Uid="CardNumberField"
+                        x:Uid="InputValidationPage_CardNumberField"
                         Margin="0,0,0,16"
                         HorizontalAlignment="Stretch"
-                        Text="{x:Bind ViewModel.CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Header="Card number"
-                        PlaceholderText="Enter card number"/>
+                        Text="{x:Bind ViewModel.CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Grid Margin="0,0,0,16">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -79,11 +74,9 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <ComboBox
-                            x:Uid="CreditCardExpirationDateMonthSelector"
+                            x:Uid="InputValidationPage_CreditCardExpirationDateMonthSelector"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Bottom"
-                            Header="Expiration date"
-                            PlaceholderText="MM"
                             SelectedValue="{x:Bind ViewModel.CardExpirationMonth, Mode=TwoWay}">
                                 <x:String>01</x:String>
                                 <x:String>02</x:String>
@@ -99,13 +92,11 @@
                                 <x:String>12</x:String>
                             </ComboBox>
                             <ComboBox
-                            x:Uid="CreditCardExpirationDateYearSelector"
+                            x:Uid="InputValidationPage_CreditCardExpirationDateYearSelector"
                             Grid.Column="2"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Bottom"
                             IsEditable="True"
-                            Header="Expiration date"
-                            PlaceholderText="YYYY"
                             SelectedValue="{x:Bind ViewModel.CardExpirationYear, Mode=TwoWay}">
                                 <x:String>2018</x:String>
                                 <x:String>2019</x:String>
@@ -125,52 +116,46 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <PasswordBox
-                            x:Uid="CCVField"
+                            x:Uid="InputValidationPage_CCVField"
                             HorizontalAlignment="Stretch"
                             MaxLength="4"
-                            Header="CCV"
-                            PlaceholderText="XXXX"
                             Password="{x:Bind ViewModel.CCV, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             PasswordChar="•" />
-                            
+
                             <!-- Disabling this because it doesn't do anything yet
                             <HyperlinkButton
-                            x:Uid="CCVExplanationPromptCaption"
+                            x:Uid="InputValidationPage_CCVExplanationPromptCaption"
                             Grid.Column="2"
                             Margin="4,0,0,5"
                             VerticalAlignment="Bottom"
                             Content="What's this?"/>-->
-                        
+
                         </Grid>
                         <TextBox
-                        x:Uid="AddressField"
+                        x:Uid="InputValidationPage_AddressField"
                         Margin="0,0,0,16"
                         HorizontalAlignment="Stretch"
-                        Text="{x:Bind ViewModel.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Header="Address"
-                        PlaceholderText="Enter address"/>
+                        Text="{x:Bind ViewModel.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox
-                        x:Uid="CityField"
+                        x:Uid="InputValidationPage_CityField"
                         Margin="0,0,0,16"
                         HorizontalAlignment="Stretch"
-                        Text="{x:Bind ViewModel.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Header="City"
-                        PlaceholderText="Enter city"/>
+                        Text="{x:Bind ViewModel.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Grid Margin="0,0,0,24">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="4" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Uid="StateSelector" HorizontalAlignment="Stretch" Header="State" PlaceholderText="Enter state"/>
+                            <TextBox 
+                                x:Uid="InputValidationPage_StateSelector" 
+                                HorizontalAlignment="Stretch" />
                             <TextBox
                             x:Name="ZipCodeField"
-                            x:Uid="ZipCodeField"
+                            x:Uid="InputValidationPage_ZipCodeField"
                             Grid.Column="2"
                             HorizontalAlignment="Stretch"
-                            Text="{x:Bind ViewModel.Zip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            Header="ZIP"
-                            PlaceholderText="Enter zip code"/>
+                            Text="{x:Bind ViewModel.Zip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </StackPanel>
                 </ScrollViewer>
@@ -181,20 +166,16 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Button
-                    x:Uid="PurchaseFlowCancelButton"
+                    x:Uid="InputValidationPage_PurchaseFlowCancelButton"
                     Height="36"
-                    HorizontalAlignment="Stretch"
-                    Content="Cancel"
-                     />
+                    HorizontalAlignment="Stretch" />
                     <!-- Click="{x:Bind Path=ViewModel.OnCancel}" -->
                     <Button
-                    x:Uid="PurchaseFlowNextButton"
+                    x:Uid="InputValidationPage_PurchaseFlowNextButton"
                     Grid.Column="2"
                     Height="36"
                     HorizontalAlignment="Stretch"
-                    Content="Next"
-                    Style="{StaticResource AccentButtonStyle}"
-                     />
+                    Style="{StaticResource AccentButtonStyle}" />
                 </Grid>
             </Grid>
         </Grid>

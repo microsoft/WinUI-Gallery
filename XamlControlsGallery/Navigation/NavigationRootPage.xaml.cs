@@ -13,21 +13,23 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
+using Windows.Foundation;
+using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
-using Windows.System;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
+using Microsoft.System;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation.Metadata;
-using Microsoft.UI;
-using Windows.Foundation;
 
 namespace AppUIBasics
 {
@@ -36,7 +38,7 @@ namespace AppUIBasics
         public static NavigationRootPage Current;
         public static Frame RootFrame = null;
 
-        public VirtualKey ArrowKey;
+        public Windows.System.VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
         private PageHeader _header;
@@ -73,9 +75,9 @@ namespace AppUIBasics
             get
             {
 #if USING_CSWINRT
-                return "Win32 XAML Controls Gallery (WinUI 3 Preview 2)";
+                return "Win32 XAML Controls Gallery (WinUI 3 Preview 3)";
 #else
-                return "UWP XAML Controls Gallery (WinUI 3 Preview 2)";
+                return "UWP XAML Controls Gallery (WinUI 3 Preview 3)";
 #endif
             }
         }
@@ -108,7 +110,9 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
+#if !DESKTOP
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
+#endif
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
@@ -431,7 +435,39 @@ namespace AppUIBasics
             }
         }
 
-        #endregion
+        private void WaitForDebuggerInvokerButton_Click(object sender, RoutedEventArgs e)
+        {
+            DebuggerAttachedCheckBox.IsChecked = false;
+
+            var dispatcherQueue = Microsoft.System.DispatcherQueue.GetForCurrentThread();
+
+            var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
+            {
+                while (!IsDebuggerPresent())
+                {
+                    Thread.Sleep(1000);
+                }
+
+                DebugBreak();
+
+                dispatcherQueue.TryEnqueue(
+                    DispatcherQueuePriority.Low,
+                    new DispatcherQueueHandler(() =>
+                {
+                    DebuggerAttachedCheckBox.IsChecked = true;
+                }));
+            });
+
+            var asyncAction = Windows.System.Threading.ThreadPool.RunAsync(workItem);
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern bool IsDebuggerPresent();
+
+        [DllImport("kernel32.dll")]
+        private static extern void DebugBreak();
+
+#endregion
     }
 
 
