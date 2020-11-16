@@ -59,7 +59,7 @@ namespace AppUIBasics
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
             var currentTheme = App.RootTheme.ToString();
-            (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
+           ((RadioButton)ThemePanel.Children.FirstOrDefault(c => (c as RadioButton)?.Tag?.ToString() == currentTheme)).IsChecked = true;
         }
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)

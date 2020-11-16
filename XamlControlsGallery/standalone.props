@@ -1,8 +1,12 @@
 <Project>
     <PropertyGroup>
-            <!-- The NuGet version of WinUI to build against. -->
-            <WinUIPackageVersion>3.0.0-preview2.200713.0</WinUIPackageVersion>
-        
+            <!-- The NuGet versions of dependencies to build against. -->
+            <WinUIPackageVersion>3.0.0-preview3.*</WinUIPackageVersion>
+
+            <Win2DUWPVersion>1.25.0</Win2DUWPVersion>
+            <ColorCodeVersion>2.0.5</ColorCodeVersion>
+            <MicrosoftCsWinRTPackageVersion>1.0.1</MicrosoftCsWinRTPackageVersion>
+
             <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
             <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
        
@@ -19,5 +23,4 @@
             <IntDir>$(BaseIntermediateOutputPath)</IntDir>
             <OutDir>$(BaseOutputPath)</OutDir>
     </PropertyGroup>
-        
 </Project>

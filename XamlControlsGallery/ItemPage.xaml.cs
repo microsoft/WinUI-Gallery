@@ -136,7 +136,7 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                var loader = ResourceLoader.GetForCurrentView();
+                var loader = ResourceLoader.GetForViewIndependentUse();
 
                 string pageRoot = loader.GetString("PageStringRoot");
 
@@ -151,7 +151,7 @@ namespace AppUIBasics
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
 
                 ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((String)e.Parameter);
-                var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().FirstOrDefault(m => m.Tag?.ToString() == group.UniqueId);
+                var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)NavigationRootPage.Current.NavigationView.MenuItems.FirstOrDefault(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
                 if (menuItem != null)
                 {
                     menuItem.IsSelected = true;

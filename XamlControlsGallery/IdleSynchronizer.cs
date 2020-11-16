@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
-using Windows.UI.Core;
+using Microsoft.System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
@@ -15,6 +15,8 @@ namespace AppUIBasics
     class IdleSynchronizer
     {
         const uint s_idleTimeoutMs = 100000;
+        const int s_defaultWaitForEventMs = 10000;
+        
         const string s_hasAnimationsHandleName = "HasAnimations";
         const string s_animationsCompleteHandleName = "AnimationsComplete";
         const string s_hasDeferredAnimationOperationsHandleName = "HasDeferredAnimationOperations";
@@ -25,7 +27,7 @@ namespace AppUIBasics
         const string s_hasBuildTreeWorksHandleName = "HasBuildTreeWorks";
         const string s_buildTreeServiceDrainedHandleName = "BuildTreeServiceDrained";
 
-        private CoreDispatcher m_coreDispatcher = null;
+        private DispatcherQueue m_dispatcherQueue = null;
 
         private Handle m_hasAnimationsHandle;
         private Handle m_animationsCompleteHandle;
@@ -73,26 +75,31 @@ namespace AppUIBasics
             return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), threadId, eventNamePrefix);
         }
 
-        private Handle OpenNamedEvent(CoreDispatcher dispatcher, string eventNamePrefix)
+        private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
         {
-            return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcher), eventNamePrefix);
+            return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
         }
 
-        private uint GetUIThreadId(CoreDispatcher dispatcher)
+        private uint GetUIThreadId(DispatcherQueue dispatcherQueue)
         {
             uint threadId = 0;
-            if (dispatcher.HasThreadAccess)
+            if (dispatcherQueue.HasThreadAccess)
             {
                 threadId = NativeMethods.GetCurrentThreadId();
             }
             else
             {
-                dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    new DispatchedHandler(() =>
+                AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
+            
+                dispatcherQueue.TryEnqueue(
+                    DispatcherQueuePriority.Normal,
+                    new DispatcherQueueHandler(() =>
                     {
                         threadId = NativeMethods.GetCurrentThreadId();
-                    })).AsTask().Wait();
+                        threadIdReceivedEvent.Set();
+                    }));
+                    
+                threadIdReceivedEvent.WaitOne(s_defaultWaitForEventMs);
             }
 
             return threadId;
@@ -106,7 +113,7 @@ namespace AppUIBasics
             {
                 if (instance == null)
                 {
-                    instance = new IdleSynchronizer(CoreApplication.MainView.Dispatcher);
+                    throw new Exception("Init() must be called on the UI thread before retrieving Instance.");
                 }
 
                 return instance;
@@ -116,18 +123,30 @@ namespace AppUIBasics
         public string Log { get; set; }
         public int TickCountBegin { get; set; }
 
-        public IdleSynchronizer(CoreDispatcher dispatcher)
+        private IdleSynchronizer(DispatcherQueue dispatcherQueue)
         {
-            m_coreDispatcher = dispatcher;
-            m_hasAnimationsHandle = OpenNamedEvent(m_coreDispatcher, s_hasAnimationsHandleName);
-            m_animationsCompleteHandle = OpenNamedEvent(m_coreDispatcher, s_animationsCompleteHandleName);
-            m_hasDeferredAnimationOperationsHandle = OpenNamedEvent(m_coreDispatcher, s_hasDeferredAnimationOperationsHandleName);
-            m_deferredAnimationOperationsCompleteHandle = OpenNamedEvent(m_coreDispatcher, s_deferredAnimationOperationsCompleteHandleName);
-            m_rootVisualResetHandle = OpenNamedEvent(m_coreDispatcher, s_rootVisualResetHandleName);
-            m_imageDecodingIdleHandle = OpenNamedEvent(m_coreDispatcher, s_imageDecodingIdleHandleName);
-            m_fontDownloadsIdleHandle = OpenNamedEvent(m_coreDispatcher, s_fontDownloadsIdleHandleName);
-            m_hasBuildTreeWorksHandle = OpenNamedEvent(m_coreDispatcher, s_hasBuildTreeWorksHandleName);
-            m_buildTreeServiceDrainedHandle = OpenNamedEvent(m_coreDispatcher, s_buildTreeServiceDrainedHandleName);
+            m_dispatcherQueue = dispatcherQueue;
+            m_hasAnimationsHandle = OpenNamedEvent(m_dispatcherQueue, s_hasAnimationsHandleName);
+            m_animationsCompleteHandle = OpenNamedEvent(m_dispatcherQueue, s_animationsCompleteHandleName);
+            m_hasDeferredAnimationOperationsHandle = OpenNamedEvent(m_dispatcherQueue, s_hasDeferredAnimationOperationsHandleName);
+            m_deferredAnimationOperationsCompleteHandle = OpenNamedEvent(m_dispatcherQueue, s_deferredAnimationOperationsCompleteHandleName);
+            m_rootVisualResetHandle = OpenNamedEvent(m_dispatcherQueue, s_rootVisualResetHandleName);
+            m_imageDecodingIdleHandle = OpenNamedEvent(m_dispatcherQueue, s_imageDecodingIdleHandleName);
+            m_fontDownloadsIdleHandle = OpenNamedEvent(m_dispatcherQueue, s_fontDownloadsIdleHandleName);
+            m_hasBuildTreeWorksHandle = OpenNamedEvent(m_dispatcherQueue, s_hasBuildTreeWorksHandleName);
+            m_buildTreeServiceDrainedHandle = OpenNamedEvent(m_dispatcherQueue, s_buildTreeServiceDrainedHandleName);
+        }
+        
+        public static void Init()
+        {
+            DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            
+            if (dispatcherQueue == null)
+            {
+                throw new Exception("Init() must be called on the UI thread.");
+            }
+            
+            instance = new IdleSynchronizer(dispatcherQueue);
         }
 
         public static void Wait()
@@ -159,6 +178,8 @@ namespace AppUIBasics
 
         public void AddLog(string message)
         {
+            System.Diagnostics.Debug.WriteLine(message);
+
             if (Log != null && Log != "LOG: ")
             {
                 Log += "; ";
@@ -173,7 +194,7 @@ namespace AppUIBasics
             logMessage = string.Empty;
             string errorString = string.Empty;
 
-            if (m_coreDispatcher.HasThreadAccess)
+            if (m_dispatcherQueue.HasThreadAccess)
             {
                 return "Cannot wait for UI thread idle from the UI thread.";
             }
@@ -208,9 +229,12 @@ namespace AppUIBasics
 
                 // At this point, we know that the UI thread is idle - now we need to make sure
                 // that XAML isn't animating anything.
+                // TODO 27870237: Remove this #if once BuildTreeServiceDrained is properly signaled in WinUI desktop apps.
+#if !USING_CSWINRT
                 errorString = WaitForBuildTreeServiceWork(out hadBuildTreeWork);
                 if (errorString.Length > 0) { return errorString; }
                 AddLog("After WaitForBuildTreeServiceWork");
+#endif
 
                 // The AnimationsComplete handle sometimes is never set in RS1,
                 // so we'll skip waiting for animations to complete
@@ -283,23 +307,25 @@ namespace AppUIBasics
 
         void WaitForIdleDispatcher()
         {
-            bool isDispatcherIdle = false;
             AutoResetEvent shouldContinueEvent = new AutoResetEvent(false);
 
-            while (!isDispatcherIdle)
+            // DispatcherQueueTimer runs at below idle priority, so we can use it to ensure that we only raise the event when we're idle.
+            var timer = m_dispatcherQueue.CreateTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(0);
+            timer.IsRepeating = false;
+            
+            TypedEventHandler<DispatcherQueueTimer,object> tickHandler = null;
+            
+            tickHandler = (sender, args) =>
             {
-                IAsyncAction action = m_coreDispatcher.RunIdleAsync(new IdleDispatchedHandler((IdleDispatchedHandlerArgs args) =>
-                {
-                    isDispatcherIdle = args.IsDispatcherIdle;
-                }));
+                timer.Tick -= tickHandler;
+                shouldContinueEvent.Set();
+            };
 
-                action.Completed = new AsyncActionCompletedHandler((IAsyncAction, AsyncStatus) =>
-                {
-                    shouldContinueEvent.Set();
-                });
+            timer.Tick += tickHandler;
 
-                shouldContinueEvent.WaitOne(10000);
-            }
+            timer.Start();
+            shouldContinueEvent.WaitOne(s_defaultWaitForEventMs);
         }
 
         string WaitForBuildTreeServiceWork(out bool hadBuildTreeWork)
@@ -317,16 +343,22 @@ namespace AppUIBasics
                 {
                     return "Failed to reset BuildTreeServiceDrained handle.";
                 }
+                
+                AutoResetEvent layoutUpdatedEvent = new AutoResetEvent(false);
 
-                m_coreDispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    new DispatchedHandler(() =>
+                m_dispatcherQueue.TryEnqueue(
+                    DispatcherQueuePriority.Normal,
+                    new DispatcherQueueHandler(() =>
                     {
                         if (App.CurrentWindow != null && App.CurrentWindow.Content != null)
                         {
                             App.CurrentWindow.Content.UpdateLayout();
                         }
-                    })).AsTask().Wait();
+                        
+                        layoutUpdatedEvent.Set();
+                    }));
+                    
+                layoutUpdatedEvent.WaitOne(s_defaultWaitForEventMs);
 
                 // This will be signaled if and only if Jupiter plans to at some point in the near
                 // future set the BuildTreeServiceDrained event.
@@ -338,15 +370,18 @@ namespace AppUIBasics
                 }
 
                 hasBuildTreeWork = (waitResult == NativeMethods.WAIT_OBJECT_0);
+                AddLog("HasBuildTreeWork? " + hasBuildTreeWork);
 
                 if (hasBuildTreeWork)
                 {
+                    AddLog("Waiting for BuildTreeService to finish...");
                     waitResult = NativeMethods.WaitForSingleObject(m_buildTreeServiceDrainedHandle.NativeHandle, 10000);
 
                     if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
                     {
                         return "Wait for build tree service failed";
                     }
+                    AddLog("BuildTreeService drained");
                 }
             }
 
@@ -441,23 +476,26 @@ namespace AppUIBasics
 
         private void SynchronouslyTickUIThread(uint ticks)
         {
-            AutoResetEvent tickCompleteEvent = new AutoResetEvent(false);
-
             for (uint i = 0; i < ticks; i++)
             {
-                m_coreDispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    new DispatchedHandler(() =>
+                AutoResetEvent tickCompleteEvent = new AutoResetEvent(false);
+                    
+                m_dispatcherQueue.TryEnqueue(
+                    DispatcherQueuePriority.Normal,
+                    new DispatcherQueueHandler(() =>
                     {
                         EventHandler<object> renderingHandler = null;
 
                         renderingHandler = (object sender, object args) =>
                         {
                             CompositionTarget.Rendering -= renderingHandler;
+                            tickCompleteEvent.Set();
                         };
 
                         CompositionTarget.Rendering += renderingHandler;
-                    })).AsTask().Wait();
+                    }));
+                    
+                tickCompleteEvent.WaitOne(s_defaultWaitForEventMs);
             }
         }
 

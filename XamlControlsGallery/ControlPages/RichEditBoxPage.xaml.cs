@@ -19,11 +19,24 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI;
+using System.Runtime.InteropServices;
+#if USING_CSWINRT
+using WinRT;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
+    [ComImport, System.Runtime.InteropServices.Guid("3E68D4BD-7135-4D10-8018-9FB6D9F33FA1"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IInitializeWithWindow
+    {
+        void Initialize([In] IntPtr hwnd);
+    }
+
     public sealed partial class RichEditBoxPage : Page
     {
+        [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
+        public static extern IntPtr GetActiveWindow();
+
         private Windows.UI.Color currentColor = Microsoft.UI.Colors.Black;
         // String used to restore the colors when the focus gets reenabled
         // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
@@ -47,13 +60,21 @@ namespace AppUIBasics.ControlPages
         private async void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             // Open a text file.
-            Windows.Storage.Pickers.FileOpenPicker open =
-                new Windows.Storage.Pickers.FileOpenPicker();
-            open.SuggestedStartLocation =
-                Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            FileOpenPicker open = new FileOpenPicker();
+            open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
-            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
+#if USING_CSWINRT
+            // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
+            if (Window.Current == null)
+            {
+                IInitializeWithWindow initializeWithWindowWrapper = open.As<IInitializeWithWindow>();
+                IntPtr hwnd = GetActiveWindow();
+                initializeWithWindowWrapper.Initialize(hwnd);
+            }
+#endif
+
+            StorageFile file = await open.PickSingleFileAsync();
 
             if (file != null)
             {
@@ -77,6 +98,16 @@ namespace AppUIBasics.ControlPages
 
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
+
+#if USING_CSWINRT
+            // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
+            if (Window.Current == null)
+            {
+                IInitializeWithWindow initializeWithWindowWrapper = savePicker.As<IInitializeWithWindow>();
+                IntPtr hwnd = GetActiveWindow();
+                initializeWithWindowWrapper.Initialize(hwnd);
+            }
+#endif
 
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
@@ -231,7 +262,7 @@ namespace AppUIBasics.ControlPages
         private void Editor_TextChanging(object sender, RichEditBoxTextChangingEventArgs e)
         {
             // Fix bug where selected text would get colored when editor loses focus
-            if (FocusManager.GetFocusedElement() == editor)
+            if (FocusManager.GetFocusedElement() as RichEditBox == editor)
             {
                 editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
             }

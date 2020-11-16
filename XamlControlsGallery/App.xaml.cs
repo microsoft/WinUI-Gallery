@@ -153,6 +153,8 @@ namespace AppUIBasics
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            IdleSynchronizer.Init();
+
 #if USING_CSWINRT
             currentWindow = new Window();
 #endif
@@ -168,8 +170,11 @@ namespace AppUIBasics
                 this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;
             }
 #endif
-            //draw into the title bar
+//draw into the title bar
+
+#if !DESKTOP
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+#endif
 
 #if USING_CSWINRT
             // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.

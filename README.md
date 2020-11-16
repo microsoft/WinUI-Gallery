@@ -29,7 +29,7 @@ Shows all of the XAML controls in an interactive format. This app is the interac
 
 ## Further information
 
->**Note**: The Xaml Controls Gallery requires Visual Studio [2017](http://go.microsoft.com/fwlink/?LinkID=532422) or [2019](https://visualstudio.microsoft.com/vs/) to build and Windows 10 to execute.
+>**Note**: The WinUI 3 Xaml Controls Gallery requires [Visual Studio 16.9 Preview 1](https://visualstudio.microsoft.com/vs/preview/) or later to build and Windows 10 to execute.  Also ensure that you've completed the prerequisite steps from the [installation instructions for WinUI 3 Preview 3](https://aka.ms/winui3/preview3).
 
 To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 

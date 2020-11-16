@@ -29,7 +29,7 @@ namespace AppUIBasics
             base.OnNavigatedTo(e);
             var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)e.Parameter);
 
-            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItemBase>().Single(i => (string)i.Tag == group.UniqueId);
+            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)NavigationRootPage.Current.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
 
