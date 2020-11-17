@@ -175,7 +175,9 @@ namespace AppUIBasics.Common
     public class RootFrameNavigationHelper
     {
         private Frame Frame { get; set; }
+#if !USING_CSWINRT
         SystemNavigationManager systemNavigationManager;
+#endif
         private Microsoft.UI.Xaml.Controls.NavigationView CurrentNavView { get; set; }
 
         /// <summary>
@@ -249,6 +251,7 @@ namespace AppUIBasics.Common
             return navigated;
         }
 
+#if !USING_CSWINRT
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (!e.Handled)
@@ -256,16 +259,20 @@ namespace AppUIBasics.Common
                 e.Handled = TryGoBack();
             }
         }
+#endif
 
         private void UpdateBackButton()
         {
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
             {
                 this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
-            } else
+            }
+#if !USING_CSWINRT
+            else
             {
                 systemNavigationManager.AppViewBackButtonVisibility = this.Frame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
+#endif
             
         }
 
@@ -288,11 +295,10 @@ namespace AppUIBasics.Common
                 (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
                 (int)virtualKey == 166 || (int)virtualKey == 167))
             {
-                var coreWindow = CoreWindow.GetForCurrentThread();
                 var downState = CoreVirtualKeyStates.Down;
-                bool menuKey = (coreWindow.GetKeyState(VirtualKey.Menu) & downState) == downState;
-                bool controlKey = (coreWindow.GetKeyState(VirtualKey.Control) & downState) == downState;
-                bool shiftKey = (coreWindow.GetKeyState(VirtualKey.Shift) & downState) == downState;
+                bool menuKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
+                bool controlKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
+                bool shiftKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
                 bool noModifiers = !menuKey && !controlKey && !shiftKey;
                 bool onlyAlt = menuKey && !controlKey && !shiftKey;
 
