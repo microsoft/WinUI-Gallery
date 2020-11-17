@@ -39,5 +39,14 @@
             </local:ControlExample.Substitutions>
 
         </local:ControlExample>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;muxc:ProgressRing Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="DeterminateProgressValue" Value="{x:Bind ProgressRing2.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
     </StackPanel>
 </Page>
