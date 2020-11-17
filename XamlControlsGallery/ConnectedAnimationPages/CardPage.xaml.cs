@@ -28,6 +28,7 @@ namespace AppUIBasics.ConnectedAnimationPages
         private async void BackButton_Click(object sender, RoutedEventArgs e)
         {
             ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("backwardsAnimation", destinationElement);
+            SmokeGrid.Children.Remove(destinationElement);
 
             // Collapse the smoke when the animation completes.
             animation.Completed += Animation_Completed;
@@ -49,6 +50,7 @@ namespace AppUIBasics.ConnectedAnimationPages
         private void Animation_Completed(ConnectedAnimation sender, object args)
         {
             SmokeGrid.Visibility = Visibility.Collapsed;
+            SmokeGrid.Children.Add(destinationElement);
         }
 
         private void TipsGrid_ItemClick(object sender, ItemClickEventArgs e)

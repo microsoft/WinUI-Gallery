@@ -91,11 +91,12 @@
                             Source="Assets/WinUI3Preview.png"
                             Stretch="UniformToFill" />
                     </ParallaxView>
+                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <Rectangle Height="60" Visibility="Collapsed" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
+                               x:Uid="NewControlsPage_SmallHeader"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"
-                               Text="{StaticResource NewControlsName}"/>
+                               Style="{StaticResource NarrowHeaderTextBlockStyle}"/>
                 </Grid>
             </GridView.Header>
 
@@ -111,7 +112,6 @@
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
-            Title="{StaticResource NewControlsName}"
             VerticalAlignment="Top"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="42"

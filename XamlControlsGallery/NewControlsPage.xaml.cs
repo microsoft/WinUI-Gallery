@@ -27,7 +27,7 @@ namespace AppUIBasics
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
+            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)NavigationRootPage.Current.NavigationView.MenuItems.First();
             menuItem.IsSelected = true;
             NavigationRootPage.Current.NavigationView.Header = string.Empty;
 

@@ -2,16 +2,6 @@
   <PropertyGroup>
     <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
     <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
-
-    <!-- The version of Win2D.UWP to use.  We need an MSBuild property since XamlControlsGallery.Desktop modifies the CSWinRT projections from the package in a target-->
-    <Win2DUWPVersion>1.25.0</Win2DUWPVersion>
-      
-    <!-- The version of ColorCode to use. -->
-    <ColorCodeVersion>2.0.5</ColorCodeVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.wapproj'">
-    <PathToXAMLWinRTImplementations>XamlControlsGallery.Desktop\</PathToXAMLWinRTImplementations>
   </PropertyGroup>
     
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />

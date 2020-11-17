@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using NotifyCollectionChangedAction = Microsoft.UI.Xaml.Interop.NotifyCollectionChangedAction;
+
 namespace AppUIBasics
 {
     // .NET collection types are tightly coupled with WUX types - e.g., ObservableCollection<T>
@@ -149,7 +151,9 @@ namespace AppUIBasics
             }
         }
 
+#pragma warning disable 0067 // PropertyChanged is never used, raising a warning, but it's needed to implement INotifyPropertyChanged.
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore 0067
     }
 
     public class TestBindableVector<T> : IList<T>, IBindableVector

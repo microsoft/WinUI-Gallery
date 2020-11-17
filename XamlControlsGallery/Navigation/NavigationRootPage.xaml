@@ -86,7 +86,7 @@
             <TextBox x:Name="_errorReportingTextBox" AutomationProperties.AutomationId="__ErrorReportingTextBox" Style="{StaticResource AutomationHelperStyle}" />
             <TextBox x:Name="_logReportingTextBox" AutomationProperties.AutomationId="__LogReportingTextBox" Style="{StaticResource AutomationHelperStyle}" />
             <CheckBox x:Name="ViewScalingCheckBox" AutomationProperties.AutomationId="__ViewScalingCheckBox" Style="{StaticResource AutomationHelperStyle}" />
-            <Button x:Name="WaitForDebuggerInvokerButton" AutomationProperties.AutomationId="__WaitForDebuggerInvoker" Style="{StaticResource AutomationHelperStyle}" />
+            <Button x:Name="WaitForDebuggerInvokerButton" AutomationProperties.AutomationId="__WaitForDebuggerInvoker" Style="{StaticResource AutomationHelperStyle}" Click="WaitForDebuggerInvokerButton_Click" />
             <CheckBox x:Name="DebuggerAttachedCheckBox" AutomationProperties.AutomationId="__DebuggerAttachedCheckBox" Style="{StaticResource AutomationHelperStyle}" />
             <TextBox x:Name="UnhandledExceptionReportingTextBox" AutomationProperties.AutomationId="__UnhandledExceptionReportingTextBox" Style="{StaticResource AutomationHelperStyle}" AcceptsReturn="True" />
             <CheckBox x:Name="TestContentLoadedCheckBox" IsChecked="False" AutomationProperties.AutomationId="__TestContentLoadedCheckBox" Content="TestContentLoadedCheckbox"  Style="{StaticResource AutomationHelperStyle}" />

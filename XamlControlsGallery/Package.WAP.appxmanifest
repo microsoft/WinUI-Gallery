@@ -6,15 +6,16 @@
     xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
     xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
     IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.XAMLControlsGallery.Desktop.WinUI3Prev2" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.27.0" />
+  <Identity Name="Microsoft.XAMLControlsGallery.Desktop.WinUI3Prev3" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.27.0" />
   <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Win32 XAML Controls Gallery (WinUI 3 Preview 2)</DisplayName>
+    <DisplayName>Win32 XAML Controls Gallery (WinUI 3 Preview 3)</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
     <Logo>Assets\Tiles\StoreLogo-sdk.png</Logo>
+    <uap:SupportedUsers>multiple</uap:SupportedUsers>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17134.0" MaxVersionTested="10.0.18362.0" />
     <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17134.0" MaxVersionTested="10.0.18362.0" />
   </Dependencies>
   <Resources>
@@ -22,7 +23,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
-      <uap:VisualElements DisplayName="Win32 XAML Controls Gallery (WinUI 3 Preview 2)" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="Xaml Controls Gallery  (WinUI 3 Preview 2)" BackgroundColor="#00b2f0">
+      <uap:VisualElements DisplayName="Win32 XAML Controls Gallery (WinUI 3 Preview 3)" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="Xaml Controls Gallery  (WinUI 3 Preview 3)" BackgroundColor="#00b2f0">
         <uap:DefaultTile Square310x310Logo="Assets\Tiles\LargeTile.png" Wide310x150Logo="Assets\Tiles\WideTile.png" Square71x71Logo="Assets\Tiles\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -40,7 +41,7 @@
         </uap3:Extension>
         <uap:Extension Category="windows.protocol">
           <uap:Protocol Name="xamlcontrolsgallery">
-            <uap:DisplayName>Win32 XAML Controls Gallery (WinUI 3 Preview 2)</uap:DisplayName>
+            <uap:DisplayName>Win32 XAML Controls Gallery (WinUI 3 Preview 3)</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
       </Extensions>
