@@ -227,8 +227,7 @@
         <local:ControlExample HeaderText="NavigationView with Footer Menu Items"
                               VerticalAlignment="Top" 
                               HorizontalContentAlignment="Stretch"
-                              XamlSource="NavigationView\NavigationViewSample9_xaml.txt"
-                              WebViewHeight="950">
+                              XamlSource="NavigationView\NavigationViewSample9_xaml.txt">
             <local:ControlExample.Options>
                 <StackPanel>
                     <muxc:RadioButtons Header="Pane position:"
