@@ -33,6 +33,7 @@ namespace AppUIBasics.ControlPages
             nvSample6.SelectedItem = nvSample6.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             nvSample7.SelectedItem = nvSample7.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
             nvSample8.SelectedItem = nvSample8.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
+            nvSample9.SelectedItem = nvSample9.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
             Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
@@ -191,6 +192,15 @@ namespace AppUIBasics.ControlPages
             }
         }
 
+        private void NavigationView_SelectionChanged9(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+        {
+            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
+            Type pageType = Type.GetType(pageName);
+
+            contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
+        }
+
         private void databindHeader_Checked(object sender, RoutedEventArgs e)
         {
             Categories = new ObservableCollection<CategoryBase>()
@@ -310,6 +320,11 @@ namespace AppUIBasics.ControlPages
                     nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
                     nvSample8.IsPaneOpen = true;
                 }
+                else if ((sender as RadioButton).Name == "nvSample9Left" && nvSample9 != null)
+                {
+                    nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                    nvSample9.IsPaneOpen = true;
+                }
             }
         }
 
@@ -328,6 +343,11 @@ namespace AppUIBasics.ControlPages
                 {
                     nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
                     nvSample8.IsPaneOpen = false;
+                }
+                else if ((sender as RadioButton).Name == "nvSample9Top" && nvSample9 != null)
+                {
+                    nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                    nvSample9.IsPaneOpen = false;
                 }
             }
         }
