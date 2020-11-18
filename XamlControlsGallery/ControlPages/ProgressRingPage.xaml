@@ -20,9 +20,7 @@
     mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample HeaderText="An indeterminate progress ring.">
-
             <muxc:ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="130" Width="130" VerticalAlignment="Top" Margin="10,10,0,0"/>
-
             <local:ControlExample.Options>
                 <StackPanel>
                     <ToggleSwitch x:Name="ProgressToggle" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" />
@@ -36,7 +34,6 @@
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
-
         </local:ControlExample>
         <local:ControlExample HeaderText="A determinate progress ring.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
