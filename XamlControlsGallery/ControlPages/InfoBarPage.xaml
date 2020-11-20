@@ -13,12 +13,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)" xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A closable InfoBar with options to change its Severity.">
             <local:ControlExample.Example>
-                <controls:InfoBar x:Name="TestInfoBar1" AutomationProperties.Name="TestInfoBar1"
+                <muxc:InfoBar x:Name="TestInfoBar1"
                 IsOpen="True"
                 Title="Title"
                 Message="Essential app message for your users to be informed of, acknowledge, or take action on."
@@ -27,8 +27,8 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel> 
-                    <CheckBox x:Name="IsOpenCheckBox1" AutomationProperties.Name="IsOpenCheckBox1" Content="Is Open" IsChecked="{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}"/>
-                    <ComboBox x:Name="SeverityComboBox" AutomationProperties.Name="SeverityComboBox" Header="Severity" SelectionChanged="SeverityComboBox_SelectionChanged" SelectedValue="Informational">
+                    <CheckBox x:Name="IsOpenCheckBox1" Content="Is Open" IsChecked="{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}"/>
+                    <ComboBox x:Name="SeverityComboBox" Header="Severity" SelectionChanged="SeverityComboBox_SelectionChanged" SelectedValue="Informational">
                         <x:String>Informational</x:String>
                         <x:String>Success</x:String>
                         <x:String>Warning</x:String>
@@ -39,7 +39,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InfoBar 
+&lt;muxc:InfoBar 
     IsOpen="$(IsOpen)"
     Severity="$(Severity)"
     Title="Title"
@@ -53,9 +53,7 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A closable InfoBar with a long or short message and various buttons">
             <local:ControlExample.Example>
-                <controls:InfoBar x:Name="TestInfoBar2" AutomationProperties.Name="TestInfoBar2"
-                IsOpen="True"
-                Title="Title" />
+                <muxc:InfoBar x:Name="TestInfoBar2" IsOpen="True" Title="Title" />
             </local:ControlExample.Example>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="IsOpen" Value="{ x:Bind IsOpenCheckBox2.IsChecked.Value, Mode=OneWay}" />
@@ -64,12 +62,12 @@
             </local:ControlExample.Substitutions>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="IsOpenCheckBox2" AutomationProperties.Name="IsOpenCheckBox2" Content="Is Open" IsChecked="{x:Bind TestInfoBar2.IsOpen, Mode=TwoWay}"/>
-                    <ComboBox x:Name="MessageComboBox" AutomationProperties.Name="MessageComboBox" Header="Message Length" SelectionChanged="MessageComboBox_SelectionChanged" SelectedIndex="1">
+                    <CheckBox x:Name="IsOpenCheckBox2" Content="Is Open" IsChecked="{x:Bind TestInfoBar2.IsOpen, Mode=TwoWay}"/>
+                    <ComboBox x:Name="MessageComboBox" Header="Message Length" SelectionChanged="MessageComboBox_SelectionChanged" SelectedIndex="1">
                         <ComboBoxItem Content="Short" />
                         <ComboBoxItem Content="Long" />
                     </ComboBox>
-                    <ComboBox x:Name="ActionButtonComboBox" AutomationProperties.Name="ActionButtonComboBox" Header="Action Button" SelectionChanged="ActionButtonComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBox x:Name="ActionButtonComboBox" Header="Action Button" SelectionChanged="ActionButtonComboBox_SelectionChanged" SelectedIndex="0">
                         <ComboBoxItem Content="None" />
                         <ComboBoxItem Content="Button" />
                         <ComboBoxItem Content="Hyperlink" />
@@ -78,17 +76,18 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InfoBar 
+&lt;muxc:InfoBar 
     IsOpen="$(IsOpen)"
     Title="Title"
-    Message="$(DisplayMessage)"
-    $(DisplayButton)/&gt;
+    Message="$(DisplayMessage)" &gt;
+    $(DisplayButton)
+&lt;/muxc:InfoBar&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A closable InfoBar with options to display the close button and icon">
             <local:ControlExample.Example>
-                <controls:InfoBar x:Name="TestInfoBar3" AutomationProperties.Name="TestInfoBar3"
+                <muxc:InfoBar x:Name="TestInfoBar3"
                     IsOpen="True"
                     IsIconVisible="True"
                     IsClosable="True"
@@ -97,14 +96,14 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="IsOpenCheckBox3" AutomationProperties.Name="IsOpenCheckBox3" Content="Is Open" IsChecked="{x:Bind TestInfoBar3.IsOpen, Mode=TwoWay}"/>
-                    <CheckBox x:Name="IsIconVisibleCheckBox" AutomationProperties.Name="IsIconVisibleCheckBox" Content="Is Icon Visible" IsChecked="{x:Bind TestInfoBar3.IsIconVisible, Mode=TwoWay}"/>
-                    <CheckBox x:Name="IsClosableCheckBox" AutomationProperties.Name="IsClosableCheckBox" Content="Is Closable" IsChecked="{x:Bind TestInfoBar3.IsClosable, Mode=TwoWay}"/>
+                    <CheckBox x:Name="IsOpenCheckBox3" Content="Is Open" IsChecked="{x:Bind TestInfoBar3.IsOpen, Mode=TwoWay}"/>
+                    <CheckBox x:Name="IsIconVisibleCheckBox" Content="Is Icon Visible" IsChecked="{x:Bind TestInfoBar3.IsIconVisible, Mode=TwoWay}"/>
+                    <CheckBox x:Name="IsClosableCheckBox" Content="Is Closable" IsChecked="{x:Bind TestInfoBar3.IsClosable, Mode=TwoWay}"/>
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InfoBar 
+&lt;muxc:InfoBar 
     IsOpen="$(IsOpen)"
     IsIconVisible="$(IsIconVisible)"                    
     IsClosable="$(IsClosable)"

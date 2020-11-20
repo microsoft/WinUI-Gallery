@@ -23,8 +23,6 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class InfoBarPage : Page
     {
-        private string LONG_MESSAGE = "A long essential app message for your users to be informed of, acknowledge, or take action on. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus dolor vitae justo rutrum, ut lobortis nibh mattis. Aenean id elit commodo, semper felis nec.";
-
         public InfoBarPage()
         {
             this.InitializeComponent();
@@ -32,7 +30,7 @@ namespace AppUIBasics.ControlPages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            DisplayMessage.Value = LONG_MESSAGE;
+            DisplayMessage.Value = "A long essential app message...";
             DisplayButton.Value = string.Empty;
         }
 
@@ -67,14 +65,14 @@ namespace AppUIBasics.ControlPages
 
             if (MessageComboBox.SelectedIndex == 0) // short
             {
-                string shortMessage = "A short essential app message for your users to be informed of, acknowledge, or take action on.";
+                string shortMessage = "A short essential app message.";
                 TestInfoBar2.Message = shortMessage;
                 DisplayMessage.Value = shortMessage;
             }
             else if (MessageComboBox.SelectedIndex == 1) //long
             {
-                TestInfoBar2.Message = LONG_MESSAGE;
-                DisplayMessage.Value = LONG_MESSAGE;
+                TestInfoBar2.Message = @"A long essential app message for your users to be informed of, acknowledge, or take action on. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus dolor vitae justo rutrum, ut lobortis nibh mattis. Aenean id elit commodo, semper felis nec.";
+                DisplayMessage.Value = "A long essential app message...";
             }
         }
 
@@ -92,10 +90,9 @@ namespace AppUIBasics.ControlPages
                 var button = new Button();
                 button.Content = "Action";
                 TestInfoBar2.ActionButton = button;
-                DisplayButton.Value = @"<controls:InfoBar.ActionButton>
-            <Button Content='Action'
-                Click='InfoBarButton_Click' />
-    </controls:InfoBar.ActionButton> ";
+                DisplayButton.Value = @"<muxc:InfoBar.ActionButton>
+            <Button Content=""Action"" Click=""InfoBarButton_Click"" />
+    </muxc:InfoBar.ActionButton> ";
 
             }
             else if (ActionButtonComboBox.SelectedIndex == 2) // hyperlink
@@ -104,11 +101,9 @@ namespace AppUIBasics.ControlPages
                 link.NavigateUri = new Uri("http://www.microsoft.com/");
                 link.Content = "Informational link";
                 TestInfoBar2.ActionButton = link;
-                DisplayButton.Value = @"<controls:InfoBar.ActionButton>
-        <HyperlinkButton Content='Informational link'
-            NavigateUri='https://www.example.com'
-            Click='InfoBarHyperlinkButton_Click' />
-    </controls:InfoBar.ActionButton>";
+                DisplayButton.Value = @"<muxc:InfoBar.ActionButton>
+            <HyperlinkButton Content=""Informational link"" NavigateUri=""https://www.example.com"" />
+    </muxc:InfoBar.ActionButton>";
             }
         }
     }
