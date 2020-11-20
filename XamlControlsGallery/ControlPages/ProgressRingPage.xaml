@@ -20,7 +20,7 @@
     mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample HeaderText="An indeterminate progress ring.">
-            <muxc:ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="130" Width="130" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <muxc:ProgressRing IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
             <local:ControlExample.Options>
                 <StackPanel>
                     <ToggleSwitch x:Name="ProgressToggle" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" />
@@ -37,7 +37,7 @@
         </local:ControlExample>
         <local:ControlExample HeaderText="A determinate progress ring.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <muxc:ProgressRing Width="130" x:Name="ProgressRing2" IsIndeterminate="False"/>
+                <muxc:ProgressRing Width="60" x:Name="ProgressRing2" IsIndeterminate="False"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
                 <TextBlock x:Name="ProgressLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" ValueChanged="ProgressValue_ValueChanged" VerticalAlignment="Center"/>
