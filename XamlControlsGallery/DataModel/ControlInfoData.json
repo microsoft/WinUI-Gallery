@@ -1045,9 +1045,9 @@
         {
           "UniqueId": "ProgressRing",
           "Title": "ProgressRing",
-          "Subtitle": "Shows that the app is performing ongoing work that blocks user interaction.",
+          "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that does block user interaction.",
           "ImagePath": "ms-appx:///Assets/ProgressRing.png",
-          "Description": "Use a ProgressRing to show that the app is performing ongoing work that blocks user interaction.",
+          "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
