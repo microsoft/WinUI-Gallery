@@ -1070,6 +1070,29 @@
           ]
         },
         {
+          "UniqueId": "InfoBar",
+          "Title": "InfoBar",
+          "Subtitle": "An inline message to display app-wide status change information",
+          "ImagePath": "ms-appx:///Assets/MenuBar.png",
+          "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
+          "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "InfoBar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.infobar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/infobar"
+            }
+          ],
+          "RelatedControls": [
+            "TeachingTip",
+            "ContentDialog"
+          ]
+        },
+        {
           "UniqueId": "ProgressBar",
           "Title": "ProgressBar",
           "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction.",
