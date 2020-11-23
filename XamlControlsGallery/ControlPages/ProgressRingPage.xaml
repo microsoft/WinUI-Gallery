@@ -39,11 +39,12 @@
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <muxc:ProgressRing Width="60" x:Name="ProgressRing2" IsIndeterminate="False"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
-                <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}" Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" Header="Progress" ValueChanged="ProgressValue_ValueChanged" VerticalAlignment="Center"/>
+                <muxc:NumberBox x:Name="ProgressValue" AutomationProperties.Name="Progress amount" Value="0"
+                                Minimum="0" Maximum="100" SpinButtonPlacementMode="Inline" Header="Progress" ValueChanged="ProgressValue_ValueChanged" VerticalAlignment="Center"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;muxc:ProgressRing Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                    &lt;muxc:ProgressRing Width="130" Value="$(DeterminateProgressValue)" "IsIndeterminate="False"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
