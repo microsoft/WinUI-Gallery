@@ -79,5 +79,37 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample x:Name="Example3" HeaderText="Vertical FlipView">
+            <local:ControlExample.Example>
+                <FlipView MaxWidth="400" Height="270">
+                    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/>
+                    <Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/>
+                    <Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/>
+                    <Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" AutomationProperties.Name="Sunset"/>
+                    <Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" AutomationProperties.Name="Valley"/>
+                    <FlipView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </FlipView.ItemsPanel>
+                </FlipView>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;FlipView MaxWidth="400" Height="270"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" AutomationProperties.Name="Sunset"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" AutomationProperties.Name="Valley"/&gt;
+        &lt;FlipView.ItemsPanel &gt;
+            &lt;ItemsPanelTemplate&gt;
+                &lt;VirtualizingStackPanel Orientation="Vertical"/&gt;
+            &lt;/ItemsPanelTemplate&gt;
+        &lt;/FlipView.ItemsPanel&gt;
+&lt;FlipView&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>
