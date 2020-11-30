@@ -602,7 +602,7 @@
           "Title": "TimePicker",
           "Subtitle": "A configurable control that lets a user pick a time value.",
           "ImagePath": "ms-appx:///Assets/TimePicker.png",
-          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for month, day, and and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
+          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for hour, minute, and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>TimePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "Docs": [
