@@ -185,8 +185,9 @@
 
                 <TextBlock x:Name="ScreenshotStatusTextBlock" VerticalAlignment="Center" Margin="0,0,0,1"/>
 
-                <TextBlock Text="Padding:" VerticalAlignment="Center" Margin="5,0,5,1"/>
-                <TextBox x:Name="ControlPaddingBox" Width="150" KeyUp="ControlPaddingBox_KeyUp" LostFocus="ControlPaddingBox_LostFocus"/>
+                <TextBlock x:Name="PaddingLabel" Text="Padding:" VerticalAlignment="Center" Margin="5,0,5,1"/>
+                <TextBox x:Name="ControlPaddingBox" AutomationProperties.LabeledBy="{x:Bind PaddingLabel}"
+                    Width="150" KeyUp="ControlPaddingBox_KeyUp" LostFocus="ControlPaddingBox_LostFocus"/>
             </StackPanel>
         </Grid>
     </Grid>
