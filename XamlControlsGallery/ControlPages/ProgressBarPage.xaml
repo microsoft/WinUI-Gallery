@@ -51,6 +51,7 @@
                     AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}"
                     Minimum="0"
                     Maximum="100"
+                    Value="0"
                     SpinButtonPlacementMode="Inline"
                     ValueChanged="ProgressValue_ValueChanged"/>
             </StackPanel>
