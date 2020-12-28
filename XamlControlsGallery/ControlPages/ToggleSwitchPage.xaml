@@ -34,11 +34,11 @@
                 <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="130"/>
             </StackPanel>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                    &lt;ToggleSwitch Header=&quot;Toggle work&quot; OffContent=&quot;Do work&quot; OnContent=&quot;Working&quot; IsOn=&quot;$(isOn)$(isOff)&quot; /&gt;
-                    &lt;ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;130&quot;/&gt;
-                    &lt;/StackPanel&gt;
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+    &lt;ToggleSwitch Header=&quot;Toggle work&quot; OffContent=&quot;Do work&quot; OnContent=&quot;Working&quot; IsOn=&quot;$(isOn)$(isOff)&quot; /&gt;
+    &lt;ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;130&quot;/&gt;
+&lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
 
