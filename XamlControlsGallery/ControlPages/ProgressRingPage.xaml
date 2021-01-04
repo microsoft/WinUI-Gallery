@@ -47,7 +47,7 @@
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;ProgressRing Width="130" Value="$(DeterminateProgressValue)" "IsIndeterminate="False"/&gt;
+                    &lt;ProgressRing Width="130" Value="$(DeterminateProgressValue)" IsIndeterminate="False"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
