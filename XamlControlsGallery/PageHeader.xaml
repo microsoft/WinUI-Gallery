@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -75,6 +75,14 @@
                     IsOpen="False"
                     IsSticky="False"
                     Visibility="Collapsed">
+                    <AppBarButton
+                        x:Name="CopyLinkButton"
+                        Click="OnCopyLinkButtonClick"
+                        Label="Copy Link to Sample">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE8C8;" Margin="0,-2,0,0" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
                     <AppBarButton
                         x:Name="ThemeButton"
                         Click="OnThemeButtonClick"

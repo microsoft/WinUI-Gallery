@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -20,7 +20,7 @@ namespace AppUIBasics
 {
     public sealed partial class PageHeader : UserControl
     {
-        
+        public Action CopyLinkAction { get; set; }
         public Action ToggleThemeAction { get; set; }
 
         public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
@@ -94,6 +94,11 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
             this.InitializeDropShadow(ShadowHost, TitleTextBlock.GetAlphaMask());
+        }
+
+        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
+        {
+            CopyLinkAction?.Invoke();
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)

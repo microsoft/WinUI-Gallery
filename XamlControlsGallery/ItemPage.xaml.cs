@@ -7,26 +7,19 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
 using System;
-using System.Linq;
 using System.Numerics;
+using System.Reflection;
+using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.System;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using System.Reflection;
-using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
@@ -62,7 +55,9 @@ namespace AppUIBasics
 
         public void SetInitialVisuals()
         {
+            NavigationRootPage.Current.NavigationViewLoaded = OnNavigationViewLoaded;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = OnCopyLink;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
 
             if (NavigationRootPage.Current.IsFocusSupported)
@@ -110,6 +105,16 @@ namespace AppUIBasics
             {
                 targetPanelVisual.StopAnimation("Translation.Y");
             }
+        }
+
+        private void OnNavigationViewLoaded()
+        {
+            NavigationRootPage.Current.EnsureNavigationSelection(this.Item.UniqueId);
+        }
+
+        private void OnCopyLink()
+        {
+            ProtocolActivationClipboardHelper.Copy(this.Item);
         }
 
         private void OnToggleTheme()
@@ -185,7 +190,9 @@ namespace AppUIBasics
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            NavigationRootPage.Current.NavigationViewLoaded = null;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
