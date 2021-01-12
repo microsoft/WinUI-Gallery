@@ -18,7 +18,7 @@
             <Grid x:Name="Control1" ColumnSpacing="24">
 
                 <muxc:SplitButton x:Name="myColorButton" AutomationProperties.Name="Font color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Click="myColorButton_Click">
-                    <Rectangle x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Fill="Green" Margin="0"/>
+                    <Border x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Background="Green" Margin="0" CornerRadius="4,0,0,4"/>
                     <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
                             <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3">
@@ -26,12 +26,15 @@
                                     <Style TargetType="Rectangle">
                                         <Setter Property="Width" Value="{StaticResource SwatchSize}"/>
                                         <Setter Property="Height" Value="{StaticResource SwatchSize}"/>
+                                        <Setter Property="RadiusX" Value="4"/>
+                                        <Setter Property="RadiusY" Value="4"/>
                                     </Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Padding" Value="0"/>
                                         <Setter Property="MinWidth" Value="0"/>
                                         <Setter Property="MinHeight" Value="0"/>
                                         <Setter Property="Margin" Value="6"/>
+                                        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
                                     </Style>
                                 </VariableSizedWrapGrid.Resources>
                                 <Button Click="ColorButton_Click" AutomationProperties.Name="Red">
@@ -87,9 +90,9 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A SplitButton with RevealStyle applied" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
+        <local:ControlExample HeaderText="A SplitButton with text" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
             <local:ControlExample.Example>
-                <muxc:SplitButton AutomationProperties.Name="Font color with reveal" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top" Style="{ThemeResource SplitButtonRevealStyle}">
+                <muxc:SplitButton AutomationProperties.Name="Font color" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
                     Choose color
                     <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
@@ -98,12 +101,15 @@
                                     <Style TargetType="Rectangle">
                                         <Setter Property="Width" Value="{StaticResource SwatchSize}"/>
                                         <Setter Property="Height" Value="{StaticResource SwatchSize}"/>
+                                        <Setter Property="RadiusX" Value="4"/>
+                                        <Setter Property="RadiusY" Value="4"/>
                                     </Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Padding" Value="0"/>
                                         <Setter Property="MinWidth" Value="0"/>
                                         <Setter Property="MinHeight" Value="0"/>
                                         <Setter Property="Margin" Value="6"/>
+                                        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
                                     </Style>
                                 </VariableSizedWrapGrid.Resources>
                                 <Button Click="RevealColorButton_Click" AutomationProperties.Name="Red">

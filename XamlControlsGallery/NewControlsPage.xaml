@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -62,7 +62,8 @@
             KeyDown="OnItemGridViewKeyDown"
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
-            SelectionMode="None">
+            SelectionMode="None"
+            CornerRadius="{StaticResource ControlCornerRadius}">
             <interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
             </interactivity:Interaction.Behaviors>

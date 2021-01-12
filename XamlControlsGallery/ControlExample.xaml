@@ -87,9 +87,9 @@
             <Grid
                 x:Name="ExampleContainer"
                 x:FieldModifier="Public"
-                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                Background="{ThemeResource SolidBackgroundFillColorBaseBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
@@ -106,7 +106,7 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Padding="12"
-                    Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
+                    Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
                     HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
                     Content="{x:Bind Example}" />
 
@@ -118,7 +118,7 @@
                     Padding="16"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
                     Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
                     <TextBlock Text="Output:"/>
                     <ContentPresenter
@@ -134,7 +134,7 @@
                     Padding="16"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     Content="{x:Bind Options}"
                     Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
             </Grid>
@@ -143,7 +143,9 @@
             <ScrollViewer
                 x:Name="CodeScrollViewer"
                 Grid.Row="1"
-                Background="{ThemeResource SystemControlPageBackgroundListLowBrush}"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,0,1,1"
                 HorizontalScrollBarVisibility="Auto"
                 HorizontalScrollMode="Auto"
                 VerticalScrollBarVisibility="Disabled"

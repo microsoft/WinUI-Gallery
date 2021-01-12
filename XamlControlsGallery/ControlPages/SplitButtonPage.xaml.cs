@@ -28,7 +28,7 @@ namespace AppUIBasics.ControlPages
             var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
-            CurrentColor.Fill = new SolidColorBrush(color);
+            CurrentColor.Background = new SolidColorBrush(color);
 
             myColorButton.Flyout.Hide();
             myRichEditBox.Focus(Windows.UI.Xaml.FocusState.Keyboard);

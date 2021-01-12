@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -74,7 +74,7 @@
 
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
             <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
-                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4">
+                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="{StaticResource ControlCornerRadius}">
                     <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                     <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
                 </StackPanel>
@@ -346,7 +346,7 @@ source code for the XAML Controls Gallery. -->
 sent or received, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
     &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
-        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="4"&gt;
+        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="{StaticResource ControlCornerRadius}"&gt;
             &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
             &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/&gt;
         &lt;/StackPanel&gt;

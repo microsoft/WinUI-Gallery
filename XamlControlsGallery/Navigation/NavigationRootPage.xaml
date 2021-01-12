@@ -94,7 +94,7 @@
                 </AutoSuggestBox>
             </muxc:NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" />
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" CornerRadius="{StaticResource ControlCornerRadius}"/>
         </muxc:NavigationView>
     </Grid>
 </Page>
