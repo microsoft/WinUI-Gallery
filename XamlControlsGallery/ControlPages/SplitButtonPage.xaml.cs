@@ -41,8 +41,8 @@ namespace AppUIBasics.ControlPages
         }
         private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {
-            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)sender.Content;
-            var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+            var border = (Border)sender.Content;
+            var color = ((Windows.UI.Xaml.Media.SolidColorBrush)border.Background).Color;
 
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
             currentColor = color;
