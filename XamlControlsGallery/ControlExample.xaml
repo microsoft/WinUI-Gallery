@@ -89,7 +89,7 @@
                 x:FieldModifier="Public"
                 BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
                 BorderThickness="1"
-                Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                Background="{ThemeResource ControlExampleDisplayBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
@@ -106,7 +106,9 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Padding="12"
-                    Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
+                    BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
+                    BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
+                    Background="{ThemeResource ControlExampleDisplayBrush}"
                     HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
                     Content="{x:Bind Example}" />
 
