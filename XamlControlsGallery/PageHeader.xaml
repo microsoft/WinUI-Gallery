@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,8 @@
     x:Name="headerControl"
     Background="Transparent"
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
-    FontSize="24">
+    FontSize="24"
+    HighContrastAdjustment="Auto">
 
     <Grid>
         <VisualStateManager.VisualStateGroups>
