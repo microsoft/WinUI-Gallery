@@ -16,7 +16,8 @@
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    NavigationCacheMode="Enabled">
+    NavigationCacheMode="Enabled"
+    HighContrastAdjustment="None">
 
     <!--  This grid acts as a root panel for the page.  -->
     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
