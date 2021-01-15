@@ -1218,12 +1218,12 @@
           "IsNew": true,
           "Docs": [
             {
-              "Title": "PipsPager - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
+              "Title": "NYI PipsPager - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls"
             },
             {
-              "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/pipspager"
+              "Title": "NYI Guidance",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/"
             }
           ],
           "RelatedControls": [

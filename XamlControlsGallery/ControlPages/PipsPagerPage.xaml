@@ -53,9 +53,7 @@
                     <FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}">
                         <FlipView.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Stretch="UniformToFill" />
-                                </Grid>
+                                <Image Source="{Binding}"/>
                             </DataTemplate>
                         </FlipView.ItemTemplate>
                     </FlipView>
@@ -71,9 +69,7 @@
     &lt;FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}"&gt;
         &lt;FlipView.ItemTemplate&gt;
             &lt;DataTemplate&gt;
-                &lt;Grid&gt;
-                    &lt;Image Source="{Binding}" Stretch="UniformToFill" /&gt;
-                &lt;/Grid&gt;
+                &lt;Image Source="{Binding}" /&gt;
             &lt;/DataTemplate&gt;
         &lt;/FlipView.ItemTemplate&gt;
     &lt;/FlipView&gt;
