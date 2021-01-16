@@ -10,9 +10,44 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="PipsPager with options to change its orientation and button visibility.">
+        <local:ControlExample x:Name="Example1" HeaderText="PipsPager integrated with a FlipView">
             <local:ControlExample.Example>
-                <muxc:PipsPager x:Name="TestPipsPager1"/>
+                <StackPanel>
+                    <FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Image Source="{x:Bind Mode=OneWay}"/>
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                    <muxc:PipsPager x:Name="FlipViewPipsPager"
+                        HorizontalAlignment="Center"
+                        Margin="0, 10, 0, 0"
+                        NumberOfPages="{x:Bind Pictures.Count}"
+                        SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" />
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve"> 
+&lt;StackPanel&gt;
+    &lt;FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}"&gt;
+        &lt;FlipView.ItemTemplate&gt;
+            &lt;DataTemplate x:DataType="x:String"&gt;
+                &lt;Image Source="{x:Bind Mode=OneWay}" /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/FlipView.ItemTemplate&gt;
+    &lt;/FlipView&gt;
+    &lt;muxc:PipsPager x:Name="FlipViewPipsPager"
+        Margin="140, 10, 0, 0"
+        NumberOfPages="{x:Bind Pictures.Count}"
+        SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" /&gt;
+&lt;/StackPanel&gt;
+                </x:String >
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        <local:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
+            <local:ControlExample.Example>
+                <muxc:PipsPager x:Name="TestPipsPager2"/>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
@@ -45,41 +80,6 @@
                 <local:ControlExampleSubstitution Key="PrevButton" Value="{x:Bind PrevButtonComboBox.SelectedValue, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="NextButton" Value="{x:Bind NextButtonComboBox.SelectedValue, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example2" HeaderText="PipsPager integrated with a FlipView">
-            <local:ControlExample.Example>
-                <StackPanel>
-                    <FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}">
-                        <FlipView.ItemTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding}"/>
-                            </DataTemplate>
-                        </FlipView.ItemTemplate>
-                    </FlipView>
-                    <muxc:PipsPager x:Name="FlipViewPipsPager"
-                              Margin="140, 10, 0, 0"
-                              NumberOfPages="{x:Bind Pictures.Count}"
-                              SelectedPageIndex="{Binding ElementName=Gallery, Path=SelectedIndex, Mode=TwoWay}" />
-                </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve"> 
-&lt;StackPanel&gt;
-    &lt;FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}"&gt;
-        &lt;FlipView.ItemTemplate&gt;
-            &lt;DataTemplate&gt;
-                &lt;Image Source="{Binding}" /&gt;
-            &lt;/DataTemplate&gt;
-        &lt;/FlipView.ItemTemplate&gt;
-    &lt;/FlipView&gt;
-    &lt;muxc:PipsPager x:Name="FlipViewPipsPager"
-        Margin="140, 10, 0, 0"
-        NumberOfPages="{x:Bind Pictures.Count}"
-        SelectedPageIndex="{Binding ElementName=Gallery, Path=SelectedIndex, Mode=TwoWay}" /&gt;
-&lt;/StackPanel&gt;
-                </x:String >
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>

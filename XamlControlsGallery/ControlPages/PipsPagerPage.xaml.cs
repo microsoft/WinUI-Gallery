@@ -24,65 +24,59 @@ namespace AppUIBasics.ControlPages
 
         private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TestPipsPager1 == null) return;
-
             string orientation = e.AddedItems[0].ToString();
 
             switch (orientation)
             {
                 case "Vertical":
-                    TestPipsPager1.Orientation = Orientation.Vertical;
+                    TestPipsPager2.Orientation = Orientation.Vertical;
                     break;
 
                 case "Horizontal":
                 default:
-                    TestPipsPager1.Orientation = Orientation.Horizontal;
+                    TestPipsPager2.Orientation = Orientation.Horizontal;
                     break;
             }
         }
 
         private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (TestPipsPager1 == null) return;
-
+        { 
             string prevButtonVisibility = e.AddedItems[0].ToString();
 
             switch (prevButtonVisibility)
             {
                 case "Visible":
-                    TestPipsPager1.PreviousButtonVisibility = PipsPagerButtonVisibility.Visible;
+                    TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Visible;
                     break;
 
                 case "VisibleOnPointerOver":
-                    TestPipsPager1.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
+                    TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
                     break;
 
                 case "Collapsed":
                 default:
-                    TestPipsPager1.PreviousButtonVisibility = PipsPagerButtonVisibility.Collapsed;
+                    TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Collapsed;
                     break;
             }
         }
 
         private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TestPipsPager1 == null) return;
-
             string nextButtonVisibility = e.AddedItems[0].ToString();
 
             switch (nextButtonVisibility)
             {
                 case "Visible":
-                    TestPipsPager1.NextButtonVisibility = PipsPagerButtonVisibility.Visible;
+                    TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Visible;
                     break;
 
                 case "VisibleOnPointerOver":
-                    TestPipsPager1.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
+                    TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
                     break;
 
                 case "Collapsed":
                 default:
-                    TestPipsPager1.NextButtonVisibility = PipsPagerButtonVisibility.Collapsed;
+                    TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Collapsed;
                     break;
             }
         }
