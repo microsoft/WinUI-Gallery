@@ -16,7 +16,8 @@
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    NavigationCacheMode="Enabled">
+    NavigationCacheMode="Enabled"
+    HighContrastAdjustment="None">
 
     <Page.Resources>
         <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true"/>
