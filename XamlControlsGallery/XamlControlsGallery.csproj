@@ -318,6 +318,9 @@
     <Compile Include="ControlPages\InfoBarPage.xaml.cs">
       <DependentUpon>InfoBarPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\PipsPagerPage.xaml.cs">
+      <DependentUpon>PipsPagerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
       <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
     </Compile>
@@ -770,6 +773,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\InfoBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PipsPagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
