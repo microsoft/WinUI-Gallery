@@ -239,6 +239,8 @@
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
@@ -315,6 +317,9 @@
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\ContentDialogContent.xaml.cs">
+      <DependentUpon>ContentDialogContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\InfoBarPage.xaml.cs">
       <DependentUpon>InfoBarPage.xaml</DependentUpon>
     </Compile>
@@ -769,6 +774,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\ContentDialogContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ControlPages\InfoBarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1210,7 +1219,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.6.0-prerelease.210113001</Version>
+      <Version>2.6.0-pr.210119005</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>

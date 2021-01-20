@@ -25,14 +25,14 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <StaticResource x:Key="HomePageBackgroundBrush" ResourceKey="ApplicationPageBackgroundThemeBrush" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <StaticResource x:Key="HomePageBackgroundBrush" ResourceKey="ApplicationPageBackgroundThemeBrush" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
