@@ -58,6 +58,45 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample HeaderText="Wrapping Buttons with large content">
+            <StackPanel>
+                <TextBlock Text="The following buttons' content may get clipped if we don't pay careful attention to their layout containers." Margin="0,0,0,8" TextWrapping="Wrap"/>
+                <TextBlock Text="One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                <Button HorizontalAlignment="Stretch" Margin="0,0,0,5">This is some text that is too long and will get cut off</Button>
+                <Button HorizontalAlignment="Stretch">This is another text that would result in being cut off</Button>
+
+                <TextBlock Text="Another option is to explicitly wrap the Button's content" Margin="0,8,0,8"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button MaxWidth="240" Margin="0,0,8,0">
+                        <TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/>
+                    </Button>
+                    <Button MaxWidth="240">
+                        <TextBlock Text="This is another text that would result in being cut off" TextWrapping="WrapWholeWords"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;TextBlock Text="The following buttons' content may get clipped if we don't pay careful attention to their layout containers." Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
+    &lt;TextBlock Text="One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:" Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
+    &lt;Button HorizontalAlignment="Stretch" Margin="0,0,0,5"&gt;This is some text that is too long and will get cut off&lt;/Button&gt;
+    &lt;Button HorizontalAlignment="Stretch"&gt;This is another text that would result in being cut off&lt;/Button&gt;
+
+    &lt;TextBlock Text="Another option is to explicitly wrap the Button's content" Margin="0,8,0,8"/&gt;
+    &lt;StackPanel Orientation="Horizontal" HorizontalAlignment="Center"&gt;
+        &lt;Button MaxWidth="240" Margin="0,0,8,0"&gt;
+            &lt;TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/&gt;
+        &lt;/Button&gt;
+        &lt;Button MaxWidth="240"&gt;
+            &lt;TextBlock Text="This is another text that would result in being cut off" TextWrapping="WrapWholeWords"/&gt;
+        &lt;/Button&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="Reveal style applied to Button.">
             <local:ControlExample.Example>
                 <Button Style="{StaticResource ButtonRevealStyle}" Content="Reveal style button"/>
@@ -70,11 +109,11 @@
         </local:ControlExample>
         <local:ControlExample HeaderText="Accent style applied to Button.">
             <local:ControlExample.Example>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Button"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String >
-                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Button" /&gt;
+                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
