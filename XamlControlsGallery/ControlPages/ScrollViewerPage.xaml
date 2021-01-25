@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -45,11 +45,11 @@
                     <TextBlock Text="ZoomMode" VerticalAlignment="Center" Margin="0,0,10,0" />
 
                     <ComboBox Grid.Column="1" x:Name="zoomCombo" SelectionChanged="ZoomModeComboBox_SelectionChanged" HorizontalAlignment="Stretch" AutomationProperties.Name="zoom mode">
-                        <ComboBoxItem>Enabled</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">Disabled</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">Enabled</ComboBoxItem>
+                        <ComboBoxItem>Disabled</ComboBoxItem>
                     </ComboBox>
 
-                    <Slider Grid.Row="1" Grid.ColumnSpan="2" x:Name="ZoomSlider" Header="Zoom" IsEnabled="False"
+                    <Slider Grid.Row="1" Grid.ColumnSpan="2" x:Name="ZoomSlider" Header="Zoom" IsEnabled="True"
                         Maximum="{x:Bind Control1.MaxZoomFactor, Mode=OneWay}"
                         Minimum="{x:Bind Control1.MinZoomFactor, Mode=OneWay}"
                         Value="1"

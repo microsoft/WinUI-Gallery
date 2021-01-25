@@ -256,7 +256,8 @@
           "ImagePath": "ms-appx:///Assets/MenuFlyout.png",
           "Description": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
           "Content": "<p>Look at the <i>MenuFlyoutPage.xaml</i> file in Visual Studio to see the full code.</p>",
-          "IsNew": false,
+          "IsNew": true,
+          "IsUPdated":  false,
           "Docs": [
             {
               "Title": "MenuFlyout - API",
@@ -716,6 +717,7 @@
           "ImagePath": "ms-appx:///Assets/Button.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -901,7 +903,8 @@
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "IsNew":  true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -974,7 +977,7 @@
           "ImagePath": "ms-appx:///Assets/ToggleSwitch.png",
           "Description": "Use ToggleSwitch controls to present users with exactly two mutually exclusive options (like on/off), where choosing an option results in an immediate commit. A toggle switch should have a single label.",
           "Content": "<p>Look at the <i>ToggleSwitchPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ToggleSwitch - API",
@@ -1031,7 +1034,8 @@
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
           "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
           "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "InfoBar - API",
@@ -1131,8 +1135,8 @@
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
           "Content": "<p>Look at the <i>ContentDialog.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated":  false,
+          "IsNew": false,
+          "IsUpdated":  true,
           "Docs": [
             {
               "Title": "ContentDialog - API",
@@ -1157,8 +1161,8 @@
           "ImagePath": "ms-appx:///Assets/Flyout.png",
           "Description": "A Flyout displays lightweight UI that is either information, or requires user interaction. Unlike a dialog, a Flyout can be light dismissed by clicking or tapping off of it. Use it to collect input from the user, show more details about an item, or ask the user to confirm an action.",
           "Content": "<p>Look at the <i>FlyoutPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Flyout - API",
@@ -1241,7 +1245,7 @@
           "ImagePath": "ms-appx:///Assets/ScrollViewer.png",
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1410,7 +1414,7 @@
           "ImagePath": "ms-appx:///Assets/RadioButtons.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "RadioButtons - API",
@@ -2071,8 +2075,8 @@
           "ImagePath": "ms-appx:///Assets/RichEditBox.png",
           "Description": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
           "Content": "<p>On this page, you can type into the <b>RichTextBox</b> control and save it as a RichTextFormat (.rtf) document, or load an existing .rtf document. You can format the text as <b>Bold</b> or <u>Underlined</u>, and change the text color.</p><p>Look at the <i>RichEditBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew":  true,
-          "IsUpdated": false,
+          "IsNew":  false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RichEditBox - API",
@@ -2150,8 +2154,8 @@
           "ImagePath": "ms-appx:///Assets/TextBox.png",
           "Description": "Use a TextBox to let a user enter simple text input in your app. You can add a header and placeholder text to let the user know what the TextBox is for, and you can customize it in other ways.",
           "Content": "<p>Look at the <i>TextBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "TextBox - API",
