@@ -2,6 +2,7 @@ using System;
 using AppUIBasics.Data;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 
 namespace AppUIBasics.Helper
 {
@@ -10,6 +11,24 @@ namespace AppUIBasics.Helper
     /// </summary>
     public static class ProtocolActivationClipboardHelper
     {
+        private const string ShowCopyLinkTeachingTipKey = "ShowCopyLinkTeachingTip";
+
+        public static bool ShowCopyLinkTeachingTip
+        {
+            get
+            {
+                object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
+                if (valueFromSettings == null)
+                {
+                    ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = true;
+                    valueFromSettings = true;
+                }
+                return (bool)valueFromSettings;
+            }
+
+            set => ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
+        }
+
         public static void Copy(ControlInfoDataItem item)
         {
             var uri = new Uri($"xamlcontrolsgallery://item/{item.UniqueId}", UriKind.Absolute);

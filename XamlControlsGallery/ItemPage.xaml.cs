@@ -59,6 +59,7 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
             NavigationRootPage.Current.PageHeader.CopyLinkAction = OnCopyLink;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
+            NavigationRootPage.Current.PageHeader.ResetCopyLinkButton();
 
             if (NavigationRootPage.Current.IsFocusSupported)
             {

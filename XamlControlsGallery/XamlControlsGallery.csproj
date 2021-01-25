@@ -108,6 +108,7 @@
     <Content Include="..\SharedContent\cs\Default.rd.xml">
       <Link>Properties\Default.rd.xml</Link>
     </Content>
+    <Content Include="Assets\CopyLinkTeachingTip.png" />
     <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\NumberBox.png" />
     <Content Include="Assets\RadioButtons.png" />

@@ -158,5 +158,10 @@ namespace AppUIBasics
         {
             await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
+
+        private void OnResetTeachingTipsButtonClick(object sender, RoutedEventArgs e)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
+        }
     }
 }

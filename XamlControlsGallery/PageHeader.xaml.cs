@@ -9,12 +9,13 @@
 //*********************************************************
 
 using System;
+using AppUIBasics.Helper;
+using Microsoft.UI.Xaml.Controls;
+using Windows.UI;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Composition;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI;
 
 namespace AppUIBasics
 {
@@ -94,16 +95,38 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
             this.InitializeDropShadow(ShadowHost, TitleTextBlock.GetAlphaMask());
+            this.ResetCopyLinkButton();
         }
 
         private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
         {
-            CopyLinkAction?.Invoke();
+            this.CopyLinkAction?.Invoke();
+
+            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+            {
+                this.CopyLinkButtonTeachingTip.IsOpen = true;
+            }
+
+            this.CopyLinkButton.Label = "Copied to Clipboard";
+            this.CopyLinkButtonIcon.Glyph = "\uE73E";
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+        }
+
+        public void ResetCopyLinkButton()
+        {
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
+            this.CopyLinkButton.Label = "Generate Link to Page";
+            this.CopyLinkButtonIcon.Glyph = "\uE71B";
+        }
+
+        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
         }
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)

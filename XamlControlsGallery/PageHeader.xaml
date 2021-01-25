@@ -75,13 +75,25 @@
                     IsOpen="False"
                     IsSticky="False"
                     Visibility="Collapsed">
-                    <AppBarButton
-                        x:Name="CopyLinkButton"
-                        Click="OnCopyLinkButtonClick"
-                        Label="Copy Link to Sample">
+                    <AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
                         <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE8C8;" Margin="0,-2,0,0" />
+                            <FontIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Glyph="&#xE71B;" />
                         </AppBarButton.Icon>
+                        <AppBarButton.Resources>
+                            <muxc:TeachingTip
+                                x:Name="CopyLinkButtonTeachingTip"
+                                Title="Quickly reference this sample!"
+                                PreferredPlacement="Bottom"
+                                Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
+                                ActionButtonContent="Don't show again"
+                                ActionButtonClick="OnCopyDontShowAgainButtonClick"
+                                CloseButtonContent="Got it!"
+                                Target="{x:Bind CopyLinkButton}">
+                                <muxc:TeachingTip.HeroContent>
+                                    <Image Source="/Assets/CopyLinkTeachingTip.png" />
+                                </muxc:TeachingTip.HeroContent>
+                            </muxc:TeachingTip>
+                        </AppBarButton.Resources>
                     </AppBarButton>
                     <AppBarButton
                         x:Name="ThemeButton"
