@@ -108,7 +108,7 @@ namespace AppUIBasics
             }
 
             this.CopyLinkButton.Label = "Copied to Clipboard";
-            this.CopyLinkButtonIcon.Glyph = "\uE73E";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Accept;
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace AppUIBasics
         {
             this.CopyLinkButtonTeachingTip.IsOpen = false;
             this.CopyLinkButton.Label = "Generate Link to Page";
-            this.CopyLinkButtonIcon.Glyph = "\uE71B";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Link;
         }
 
         private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)

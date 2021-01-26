@@ -77,7 +77,7 @@
                     Visibility="Collapsed">
                     <AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
                         <AppBarButton.Icon>
-                            <FontIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Glyph="&#xE71B;" />
+                            <SymbolIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Symbol="Link" />
                         </AppBarButton.Icon>
                         <AppBarButton.Resources>
                             <muxc:TeachingTip
