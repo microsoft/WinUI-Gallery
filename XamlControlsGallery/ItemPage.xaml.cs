@@ -60,8 +60,11 @@ namespace AppUIBasics
 
         public void SetInitialVisuals()
         {
+            NavigationRootPage.Current.NavigationViewLoaded = OnNavigationViewLoaded;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = OnCopyLink;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
+            NavigationRootPage.Current.PageHeader.ResetCopyLinkButton();
 
             if (NavigationRootPage.Current.IsFocusSupported)
             {
@@ -108,6 +111,16 @@ namespace AppUIBasics
             {
                 targetPanelVisual.StopAnimation("Translation.Y");
             }
+        }
+
+        private void OnNavigationViewLoaded()
+        {
+            NavigationRootPage.Current.EnsureNavigationSelection(this.Item.UniqueId);
+        }
+
+        private void OnCopyLink()
+        {
+            ProtocolActivationClipboardHelper.Copy(this.Item);
         }
 
         private void OnToggleTheme()
@@ -201,7 +214,9 @@ namespace AppUIBasics
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            NavigationRootPage.Current.NavigationViewLoaded = null;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
             // Disable temporarily while investigating this crash.

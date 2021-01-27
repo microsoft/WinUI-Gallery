@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -7,16 +7,19 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using System;
+using AppUIBasics.Helper;
+using Microsoft.UI;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
+using System;
 
 namespace AppUIBasics
 {
     public sealed partial class PageHeader : UserControl
     {
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
-
+        public Action CopyLinkAction { get; set; }
         public Action ToggleThemeAction { get; set; }
 
         public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
@@ -28,6 +31,9 @@ namespace AppUIBasics
             get { return GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
         }
+
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
 
         public double BackgroundColorOpacity
         {
@@ -64,17 +70,44 @@ namespace AppUIBasics
         public PageHeader()
         {
             this.InitializeComponent();
+            this.InitializeDropShadow(ShadowHost, TitleTextBlock.GetAlphaMask());
+            this.ResetCopyLinkButton();
         }
-
 
         public void UpdateBackground(bool isFilteredPage)
         {
             VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
         }
 
+        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.CopyLinkAction?.Invoke();
+
+            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+            {
+                this.CopyLinkButtonTeachingTip.IsOpen = true;
+            }
+
+            this.CopyLinkButton.Label = "Copied to Clipboard";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Accept;
+        }
+
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+        }
+
+        public void ResetCopyLinkButton()
+        {
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
+            this.CopyLinkButton.Label = "Generate Link to Page";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Link;
+        }
+
+        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
         }
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)

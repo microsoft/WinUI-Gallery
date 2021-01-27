@@ -109,7 +109,8 @@
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            ItemInvoked="OnNavigationViewItemInvoked">
+            ItemInvoked="OnNavigationViewItemInvoked"
+            Loaded="OnNavigationViewControlLoaded">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
