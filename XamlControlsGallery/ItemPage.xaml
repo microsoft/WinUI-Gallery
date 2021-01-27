@@ -21,7 +21,6 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
 
-
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
