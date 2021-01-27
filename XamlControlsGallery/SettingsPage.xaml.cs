@@ -165,6 +165,11 @@ namespace AppUIBasics
             await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
 
+        private void OnResetTeachingTipsButtonClick(object sender, RoutedEventArgs e)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
+        }
+
         private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
             this.Frame.Navigate(typeof(ItemPage), "Sound");

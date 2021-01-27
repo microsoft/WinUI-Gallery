@@ -75,6 +75,26 @@
                     IsOpen="False"
                     IsSticky="False"
                     Visibility="Collapsed">
+                    <AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
+                        <AppBarButton.Icon>
+                            <SymbolIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Symbol="Link" />
+                        </AppBarButton.Icon>
+                        <AppBarButton.Resources>
+                            <TeachingTip
+                                x:Name="CopyLinkButtonTeachingTip"
+                                Title="Quickly reference this sample!"
+                                PreferredPlacement="Bottom"
+                                Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
+                                ActionButtonContent="Don't show again"
+                                ActionButtonClick="OnCopyDontShowAgainButtonClick"
+                                CloseButtonContent="Got it!"
+                                Target="{x:Bind CopyLinkButton}">
+                                <TeachingTip.HeroContent>
+                                    <Image Source="/Assets/CopyLinkTeachingTip.png" />
+                                </TeachingTip.HeroContent>
+                            </TeachingTip>
+                        </AppBarButton.Resources>
+                    </AppBarButton>
                     <AppBarButton
                         x:Name="ThemeButton"
                         Click="OnThemeButtonClick"
