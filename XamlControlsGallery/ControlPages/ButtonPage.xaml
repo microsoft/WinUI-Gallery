@@ -39,10 +39,11 @@
                                                   Value= "IsEnabled=&quot;False&quot; "/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
+        
         <local:ControlExample x:Name="Example2" HeaderText="A Button with graphical content.">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Button2" Click="Button_Click" Width="50" Height="50" Background="Transparent" AutomationProperties.Name="Pie">
+                    <Button x:Name="Button2" Click="Button_Click" Width="50" Height="50" AutomationProperties.Name="Pie">
                         <Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/>
                     </Button>
                 </StackPanel>
