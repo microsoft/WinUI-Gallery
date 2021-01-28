@@ -80,6 +80,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarButton.png",
           "Description": "App bar buttons differ from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Use the <b>Label</b> and <b>Icon</b> properties to define the content of the app bar buttons. Set the <b>Label</b> property to a string to specify the text label. The label is shown by default but is hidden when the button is in its compact state, so you also need to specify a meaningful icon. To do that, set the button's <b>Icon</b> property to an element derived from the <b>IconElement</b> class. Four kinds of icon elements are provided:</p><p><b>FontIcon</b> - The icon is based on a glyph from the specified font family.</p><p><b>BitmapIcon</b> - The icon is based on a bitmap image file with the specified Uri.</p><p><b>PathIcon</b> - The icon is based on Path data.</p><p><b>SymbolIcon</b> - The icon is based on a predefined list of glyphs from the Segoe UI Symbol font.</p><p>Look at the <i>AppBarButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew":  true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -116,6 +117,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons and separators on this page change.</p><p>When the <b>IsCompact</b> property is true, the padding around the <b>AppBarSeparator</b> is reduced.</p><p>Look at the <i>AppBarSeparatorPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -140,6 +142,7 @@
           "ImagePath": "ms-appx:///Assets/AppBarToggleButton.png",
           "Description": "An AppBarToggleButton looks like an AppBarButton, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Look at the <i>AppBarToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew":  true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -180,6 +183,7 @@
           "ImagePath": "ms-appx:///Assets/CommandBar.png",
           "Description": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
           "Content": "<p>The bottom app bar on this page is a <b>CommandBar</b> control.</p><p>Add secondary commands and then resize the app to see how the <b>CommandBar</b> automatically adapts to different widths.</p><p>This <b>CommandBar</b> element is in the ItemPage so it can be shared across all control pages in the app. Look at the <i>ItemPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
