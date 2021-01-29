@@ -47,7 +47,7 @@
             <SemanticZoom x:Name="Control1" Height="500">
                 <SemanticZoom.ZoomedInView>
                     <GridView ItemsSource="{x:Bind cvsGroups.View}" ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" GotFocus="List_GotFocus"
-                        ItemTemplate="{StaticResource ZoomedInTemplate}">
+                              ItemTemplate="{StaticResource ZoomedInTemplate}">
                         <GridView.GroupStyle>
                             <GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" />
                         </GridView.GroupStyle>
