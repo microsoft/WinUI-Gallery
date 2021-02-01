@@ -7,29 +7,26 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
-using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
+using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
+using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System;
 using Windows.System.Profile;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Foundation.Metadata;
-using Windows.UI;
 using muxc = Microsoft.UI.Xaml.Controls;
-using AppUIBasics.ControlPages;
-using AppUIBasics.Helper;
 
 namespace AppUIBasics
 {
@@ -50,6 +47,8 @@ namespace AppUIBasics
         {
             get { return NavigationViewControl; }
         }
+
+        public Action NavigationViewLoaded { get; set; }
 
         public DeviceType DeviceFamily { get; set; }
 
@@ -136,16 +135,49 @@ namespace AppUIBasics
             return _newControlsMenuItem.IsSelected;
         }
 
+        public void EnsureNavigationSelection(string id)
+        {
+            foreach (object rawGroup in this.NavigationView.MenuItems)
+            {
+                if (rawGroup is muxc.NavigationViewItem group)
+                {
+                    foreach (object rawItem in group.MenuItems)
+                    {
+                        if (rawItem is muxc.NavigationViewItem item)
+                        {
+                            if ((string)item.Tag == id)
+                            {
+                                group.IsExpanded = true;
+                                NavigationView.SelectedItem = item;
+                                item.IsSelected = true;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void AddNavigationMenuItems()
         {
             foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title))
             {
                 var itemGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImagePath) };
+
+                var groupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {group.Title} Samples", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
+                groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
+
                 AutomationProperties.SetName(itemGroup, group.Title);
 
                 foreach (var item in group.Items)
                 {
                     var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImagePath) };
+
+                    var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
+                    itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                    itemInGroup.ContextFlyout = new MenuFlyout() { Items = { itemInGroupMenuFlyoutItem } };
+
                     itemGroup.MenuItems.Add(itemInGroup);
                     AutomationProperties.SetName(itemInGroup, item.Title);
                 }
@@ -172,6 +204,19 @@ namespace AppUIBasics
             NavigationViewControl.MenuItems.Insert(2, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
 
             _newControlsMenuItem.Loaded += OnNewControlsMenuItemLoaded;
+        }
+
+        private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
+        {
+            switch ((sender as MenuFlyoutItem).Tag)
+            {
+                case ControlInfoDataItem item:
+                    ProtocolActivationClipboardHelper.Copy(item);
+                    return;
+                case ControlInfoDataGroup group:
+                    ProtocolActivationClipboardHelper.Copy(group);
+                    return;
+            }
         }
 
         private static IconElement GetIcon(string imagePath)
@@ -213,6 +258,12 @@ namespace AppUIBasics
         private void OnGamepadAdded(object sender, Gamepad e)
         {
             _isGamePadConnected = Gamepad.Gamepads.Any();
+        }
+
+        private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
+        {
+            // Delay necessary to ensure NavigationView visual state can match navigation
+            Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

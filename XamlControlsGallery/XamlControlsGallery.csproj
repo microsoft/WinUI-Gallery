@@ -107,6 +107,7 @@
     <Content Include="..\SharedContent\cs\Default.rd.xml">
       <Link>Properties\Default.rd.xml</Link>
     </Content>
+    <Content Include="Assets\CopyLinkTeachingTip.png" />
     <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\NumberBox.png" />
     <Content Include="Assets\RadioButtons.png" />
@@ -329,6 +330,7 @@
     <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
       <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ProtocolActivationClipboardHelper.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />

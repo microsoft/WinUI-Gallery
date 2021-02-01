@@ -2,7 +2,7 @@
 and creating another ItemsRepeater (innerRepeater below) inside the outer one's DataTemplate. Below is 
 the outer ItemsRepeater definition and the DataTemplate it uses. -->
                     
-<ScrollViewer>
+<ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
     <muxc:ItemsRepeater 
         x:Name="outerRepeater"
         VerticalAlignment="Top"
