@@ -63,8 +63,7 @@
             KeyDown="OnItemGridViewKeyDown"
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
-            SelectionMode="None"
-            CornerRadius="{StaticResource ControlCornerRadius}">
+            SelectionMode="None">
             <interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
             </interactivity:Interaction.Behaviors>

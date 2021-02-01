@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -16,6 +16,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
     <StackPanel>
@@ -31,13 +32,13 @@
         <local:ControlExample HeaderText="A ToggleSwitch with custom header and content.">
             <StackPanel Orientation="Horizontal">
                 <ToggleSwitch x:Name="ToggleSwitch2" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True"/>
-                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="130"/>
+                <muxc:ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="32"/>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
     &lt;ToggleSwitch Header=&quot;Toggle work&quot; OffContent=&quot;Do work&quot; OnContent=&quot;Working&quot; IsOn=&quot;$(isOn)$(isOff)&quot; /&gt;
-    &lt;ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;130&quot;/&gt;
+    &lt;muxc:ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;32&quot;/&gt;
 &lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>

@@ -233,7 +233,8 @@
           "ImagePath": "ms-appx:///Assets/CommandBarFlyout.png",
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "CommandBarFlyout - API",
@@ -260,8 +261,8 @@
           "ImagePath": "ms-appx:///Assets/MenuFlyout.png",
           "Description": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
           "Content": "<p>Look at the <i>MenuFlyoutPage.xaml</i> file in Visual Studio to see the full code.</p>",
-          "IsNew": true,
-          "IsUPdated":  false,
+          "IsNew": false,
+          "IsUPdated": true,
           "Docs": [
             {
               "Title": "MenuFlyout - API",
@@ -721,8 +722,8 @@
           "ImagePath": "ms-appx:///Assets/Button.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RepeatButton - API",
@@ -907,8 +908,8 @@
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew":  true,
-          "IsUpdated": false,
+          "IsNew":  false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -1225,7 +1226,8 @@
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
           "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "NYI PipsPager - API",
@@ -1249,7 +1251,8 @@
           "ImagePath": "ms-appx:///Assets/ScrollViewer.png",
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1359,11 +1362,11 @@
           "IsNew": true,
           "Docs": [
             {
-              "Title": "FlipView - API",
+              "Title": "N/A",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.flipview"
             },
             {
-              "Title": "Guidelines",
+              "Title": "N/A",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/flipview"
             }
           ],
@@ -1442,7 +1445,8 @@
           "ImagePath": "ms-appx:///Assets/RadioButtons.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButtons - API",
