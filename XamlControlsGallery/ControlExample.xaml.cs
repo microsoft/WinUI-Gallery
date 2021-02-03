@@ -84,7 +84,7 @@ namespace AppUIBasics
             {
                 return string.Empty;
             }
-            
+
             return value.ToString();
         }
     }
@@ -134,7 +134,7 @@ namespace AppUIBasics
             set { SetValue(XamlSourceProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
         public string CSharp
         {
             get { return (string)GetValue(CSharpProperty); }
@@ -358,7 +358,7 @@ namespace AppUIBasics
         private void SampleCode_ActualThemeChanged(FrameworkElement sender, object args)
         {
             // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
-            // Therefore we need to re-format the REB to use the correct colors. 
+            // Therefore we need to re-format the REB to use the correct colors.
 
             GenerateAllSyntaxHighlightedContent();
         }
