@@ -1356,24 +1356,24 @@
           "UniqueId": "Expander",
           "Title": "Expander",
           "Subtitle": "A container with a header that can be expanded to show a body with more content.",
-          "ImagePath": "ms-appx:///Assets/FlipView.png",
-          "Description": "The Expander has a header and can expand to show a body with more content.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
           "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
           "IsNew": true,
           "Docs": [
             {
-              "Title": "N/A",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.flipview"
+              "Title": "Expander - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls.expander"
             },
             {
-              "Title": "N/A",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/flipview"
+              "Title": "NYI - Guidelines",
+              "Uri": "https://docs.microsoft.com/en-us/windows/uwp/design/layout/layout-panels"
             }
           ],
           "RelatedControls": [
-            "GridView",
-            "ListView",
-            "SemanticZoom"
+            "Flyout",
+            "ItemsRepeater",
+            "SplitView"
           ]
         },
         {
