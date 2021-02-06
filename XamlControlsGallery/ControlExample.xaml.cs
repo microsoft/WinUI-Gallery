@@ -138,7 +138,7 @@ namespace AppUIBasics
             set { SetValue(XamlSourceProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
         public string CSharp
         {
             get { return (string)GetValue(CSharpProperty); }
