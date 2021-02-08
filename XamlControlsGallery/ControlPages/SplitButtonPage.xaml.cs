@@ -50,7 +50,10 @@ namespace AppUIBasics.ControlPages
 
         private void MyRichEditBox_TextChanged(object sender, RoutedEventArgs e)
         {
-            myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
+            if(myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor != currentColor)
+            {
+                myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
+            }
         }
 
     }
