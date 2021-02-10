@@ -1694,7 +1694,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml-specs/blob/master/active/WebView2/WebView2_spec.md"
+              "Uri": "https://docs.microsoft.com/microsoft-edge/webview2/gettingstarted/winui"
             },
             {
               "Title": "Examples",
