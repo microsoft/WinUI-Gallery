@@ -28,7 +28,6 @@
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Win2d.uwp" />
-    <PackageReference Include="Microsoft.VCRTForwarders.140" />
     <PackageReference Include="Microsoft.WinUI" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <!--
@@ -36,6 +35,13 @@
       We only need this while we are generating the projection for Win2D
     -->
     <PackageReference Include="Microsoft.Net.Compilers.Toolset" />
+    <!-- 
+    System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
+    CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
+    addresses those vulnerabilites, we need to pull it in ourselves.
+    -->
+    <PackageReference Include="System.Private.Uri" />
+
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -47,6 +53,7 @@
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
+    <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
   
   <ItemGroup>
