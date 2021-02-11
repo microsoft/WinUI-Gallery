@@ -16,7 +16,6 @@
                              AllowDropTabs="True"
                              CanDragTabs="True"
                              CanReorderTabs="True"
-                             TabDroppedOutside="Tabs_TabDroppedOutside"
                              TabStripDragOver="Tabs_TabStripDragOver"
                              TabStripDrop="Tabs_TabStripDrop"
                              TabDragStarting="Tabs_TabDragStarting" >

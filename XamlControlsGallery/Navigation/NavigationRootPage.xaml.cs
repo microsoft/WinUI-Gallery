@@ -75,9 +75,9 @@ namespace AppUIBasics
             get
             {
 #if USING_CSWINRT
-                return "Win32 XAML Controls Gallery (WinUI 3 Preview 3)";
+                return "Desktop XAML Controls Gallery (WinUI 3 Preview 4)";
 #else
-                return "UWP XAML Controls Gallery (WinUI 3 Preview 3)";
+                return "UWP XAML Controls Gallery (WinUI 3 Preview 4)";
 #endif
             }
         }
@@ -237,18 +237,18 @@ namespace AppUIBasics
             _isGamePadConnected = Gamepad.Gamepads.Any();
         }
 
-        private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
-            if (args.IsSettingsInvoked)
+            if (args.IsSettingsSelected)
             {
                 rootFrame.Navigate(typeof(SettingsPage));
             }
             else
             {
-                var invokedItem = args.InvokedItemContainer;
+                var invokedItem = args.SelectedItemContainer;
 
                 if (invokedItem == _allControlsMenuItem)
                 {
@@ -467,7 +467,7 @@ namespace AppUIBasics
         [DllImport("kernel32.dll")]
         private static extern void DebugBreak();
 
-#endregion
+        #endregion
     }
 
 

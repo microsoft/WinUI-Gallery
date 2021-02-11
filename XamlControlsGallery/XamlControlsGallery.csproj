@@ -909,7 +909,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>$(MicrosoftNETCoreUniversalWindowsPlatformVersion)</Version>
     </PackageReference>
     <PackageReference Include="ColorCode.UWP">
       <Version>$(ColorCodeVersion)</Version>

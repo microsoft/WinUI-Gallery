@@ -116,6 +116,7 @@ namespace AppUIBasics.ControlPages
                 dialog.Content = "The font size must be a number between 8 and 100.";
                 dialog.CloseButtonText = "Close";
                 dialog.DefaultButton = ContentDialogButton.Close;
+                dialog.XamlRoot = sender.XamlRoot;
                 var task = dialog.ShowAsync();
             }
 
