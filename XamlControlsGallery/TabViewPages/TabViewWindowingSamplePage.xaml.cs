@@ -12,8 +12,6 @@ namespace AppUIBasics.TabViewPages
 {
     public sealed partial class TabViewWindowingSamplePage : Page
     {
-        AppWindow RootAppWindow = null;
-
         private const string DataIdentifier = "MyTabItem";
         public TabViewWindowingSamplePage()
         {
@@ -22,19 +20,12 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
         }
 
-        private async void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+        private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
             // If there are no more tabs, close the window.
             if (sender.TabItems.Count == 0)
             {
-                if (RootAppWindow != null)
-                {
-                    await RootAppWindow.CloseAsync();
-                }
-                else
-                {
-                    App.CurrentWindow.Close();
-                }
+                App.CurrentWindow.Close();
             }
         }
 
@@ -42,50 +33,31 @@ namespace AppUIBasics.TabViewPages
         {
             base.OnNavigatedTo(e);
 
-            SetupWindow(null);
+            SetupWindow();
         }
 
-        void SetupWindow(AppWindow window)
+        void SetupWindow()
         {
-            if (window == null)
+        
+            // Main Window -- add some default items
+            for (int i = 0; i < 3; i++)
             {
-                // Main Window -- add some default items
-                for (int i = 0; i < 3; i++)
-                {
-                    Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new MyTabContentControl() { DataContext = $"Page {i}" } });
-                }
+                Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new MyTabContentControl() { DataContext = $"Page {i}" } });
+            }
 
-                Tabs.SelectedIndex = 0;
+            Tabs.SelectedIndex = 0;
 
-                // Extend into the titlebar
-                var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-                coreTitleBar.ExtendViewIntoTitleBar = true;
+#if !DESKTOP
+            // Extend into the titlebar
+            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
 
-                coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
+            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
 
-#if !USING_CSWINRT
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
 #endif
-            }
-            else
-            {
-                // Secondary AppWindows --- keep track of the window
-                RootAppWindow = window;
-
-                // Extend into the titlebar
-                window.TitleBar.ExtendsContentIntoTitleBar = true;
-                window.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
-                window.TitleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
-
-                // Due to a bug in AppWindow, we cannot follow the same pattern as CoreWindow when setting the min width.
-                // Instead, set a hardcoded number. 
-                CustomDragRegion.MinWidth = 188;
-
-                // Bug 23797226: Need a version of AppWindowFrame.DragRegionVisuals for MUX [XamlControlsGallery] 
-                // window.Frame.DragRegionVisuals.Add(CustomDragRegion);
-            }
         }
 
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
@@ -116,23 +88,6 @@ namespace AppUIBasics.TabViewPages
         public void AddTabToTabs(TabViewItem tab)
         {
             Tabs.TabItems.Add(tab);
-        }
-
-        // Create a new Window once the Tab is dragged outside.
-        private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
-        {
-            AppWindow newWindow = await AppWindow.TryCreateAsync();
-
-            var newPage = new TabViewWindowingSamplePage();
-            newPage.SetupWindow(newWindow);
-
-            // Bug 23808988: ElementCompositionPreview.SetAppWindowContent requires WUC type[XamlControlsGallery]
-            // ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
-
-            Tabs.TabItems.Remove(args.Tab);
-            newPage.AddTabToTabs(args.Tab);
-
-            await newWindow.TryShowAsync();
         }
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)

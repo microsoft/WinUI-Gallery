@@ -1,15 +1,16 @@
 <Project>
     <PropertyGroup>
             <!-- The NuGet versions of dependencies to build against. -->
-            <WinUIPackageVersion>3.0.0-preview3.*</WinUIPackageVersion>
+            <WinUIPackageVersion>3.0.0-preview4.*</WinUIPackageVersion>
 
+            <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
             <Win2DUWPVersion>1.25.0</Win2DUWPVersion>
             <ColorCodeVersion>2.0.5</ColorCodeVersion>
-            <MicrosoftCsWinRTPackageVersion>1.0.1</MicrosoftCsWinRTPackageVersion>
+            <MicrosoftCsWinRTPackageVersion>1.1.0</MicrosoftCsWinRTPackageVersion>
 
             <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
             <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
-       
+
             <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
             <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
             <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
