@@ -50,7 +50,7 @@ namespace AppUIBasics.ControlPages
                     break;
 
                 case "VisibleOnPointerOver":
-                    TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
+                    TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
                     break;
 
                 case "Collapsed":
@@ -71,7 +71,7 @@ namespace AppUIBasics.ControlPages
                     break;
 
                 case "VisibleOnPointerOver":
-                    TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnHover;
+                    TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
                     break;
 
                 case "Collapsed":
