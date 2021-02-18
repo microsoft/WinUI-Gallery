@@ -89,20 +89,20 @@
                 <Setter Property="ZoomMode" Value="Disabled" />
             </Style>
 
-            <Style x:Key="GridViewItemStyle" TargetType="GridViewItem">
+            <Style x:Key="GridViewItemStyle" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                 <Setter Property="Margin" Value="0,0,12,12" />
             </Style>
 
-            <Style x:Key="IndentedGridViewItemStyle" TargetType="GridViewItem">
+            <Style x:Key="IndentedGridViewItemStyle" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                 <Setter Property="Margin" Value="12,0,0,12" />
             </Style>
 
-            <Style x:Key="GridViewItemStyleSmall" TargetType="GridViewItem">
+            <Style x:Key="GridViewItemStyleSmall" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                 <Setter Property="Margin" Value="0,0,0,12" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
 
-            <Style x:Key="IndentedGridViewItemStyleSmall" TargetType="GridViewItem">
+            <Style x:Key="IndentedGridViewItemStyleSmall" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                 <Setter Property="Margin" Value="12,0,12,12" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
