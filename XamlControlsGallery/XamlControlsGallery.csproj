@@ -16,8 +16,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>
-    </PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>XamlControlsGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -26,7 +25,7 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>0DF87BD39CE9617A7CF5A03F663C0C1C420237CD</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>5DCEAF08DDC89F0B72B5184899DFDF73702C259C</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
@@ -319,6 +318,9 @@
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\BreadcrumbPage.xaml.cs">
+      <DependentUpon>BreadcrumbPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\ContentDialogContent.xaml.cs">
       <DependentUpon>ContentDialogContent.xaml</DependentUpon>
     </Compile>
@@ -780,6 +782,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\BreadcrumbPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
