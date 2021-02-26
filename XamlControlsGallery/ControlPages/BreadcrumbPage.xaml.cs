@@ -9,7 +9,7 @@ namespace AppUIBasics.ControlPages
     public BreadcrumbPage()
         {
             this.InitializeComponent();
-            Breadcrumb1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images" };
+            BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
         }
     }
 }

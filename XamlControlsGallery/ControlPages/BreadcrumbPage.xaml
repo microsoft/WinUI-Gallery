@@ -16,13 +16,13 @@
       xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A Breadcrumb control">
+        <local:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
             <local:ControlExample.Example>
-                <muxc:Breadcrumb x:Name="Breadcrumb1"/>
+                <muxc:BreadcrumbBar x:Name="BreadcrumbBar1"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:Breadcrumb x:Name="Breadcrumb1"/&gt;
+&lt;muxc:BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
