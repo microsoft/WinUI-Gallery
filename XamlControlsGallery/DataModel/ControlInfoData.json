@@ -667,8 +667,8 @@
           "ImagePath": "ms-appx:///Assets/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
           "Content": "",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "DropDownButton - API",
@@ -831,8 +831,8 @@
           "ImagePath": "ms-appx:///Assets/CheckBox.png",
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "CheckBox - API",
@@ -1066,7 +1066,8 @@
           "ImagePath": "ms-appx:///Assets/ProgressBar.png",
           "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ProgressBar - API",
@@ -1604,12 +1605,12 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "Breadcrumb",
-          "Title": "Breadcrumb",
+          "UniqueId": "BreadcrumbBar",
+          "Title": "BreadcrumbBar",
           "Subtitle": "Shows the trail of navigation taken to the current location.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
-          "Description": "The Breadcrumb control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
-          "Content": "<p>Look at the <i>BreadcrumbPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
+          "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
             {
