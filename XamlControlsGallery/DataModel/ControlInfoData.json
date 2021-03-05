@@ -775,7 +775,8 @@
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "SplitButton - API",
