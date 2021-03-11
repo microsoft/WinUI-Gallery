@@ -16,11 +16,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 
-#if USING_CSWINRT
 using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -135,12 +131,7 @@ namespace AppUIBasics.ControlPages
         */
     }
 
-    public class PurchaseViewModel : INotifyPropertyChanged
-#if USING_CSWINRT
-        , System.ComponentModel.INotifyDataErrorInfo
-#else 
-        , Microsoft.UI.Xaml.Data.INotifyDataErrorInfo
-#endif
+    public class PurchaseViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         public PurchaseViewModel()
         {
@@ -326,11 +317,7 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-#if USING_CSWINRT
         public event EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> ErrorsChanged;
-#else
-        public event EventHandler<Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs> ErrorsChanged;
-#endif
 
         private void OnPropertyChanged(object value, string propertyName)
         {
@@ -393,11 +380,7 @@ namespace AppUIBasics.ControlPages
             }
 
             errors.AddRange(results);
-#if USING_CSWINRT
             ErrorsChanged?.Invoke(this, new System.ComponentModel.DataErrorsChangedEventArgs(propertyName));
-#else
-            ErrorsChanged?.Invoke(this, new Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
-#endif
         }
 
         private void ClearErrors(string propertyName)
@@ -405,19 +388,11 @@ namespace AppUIBasics.ControlPages
             if (_errors.TryGetValue(propertyName, out var errors))
             {
                 errors.Clear();
-#if USING_CSWINRT
                 ErrorsChanged?.Invoke(this, new System.ComponentModel.DataErrorsChangedEventArgs(propertyName));
-#else
-                ErrorsChanged?.Invoke(this, new Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
-#endif
             }
         }
 
-#if USING_CSWINRT
         public IEnumerable GetErrors(string propertyName)
-#else
-        public IEnumerable<object> GetErrors(string propertyName)
-#endif
         {
             return _errors[propertyName];
         }

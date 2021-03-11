@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
-  
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
-    <DefineConstants>USING_CSWINRT;DESKTOP</DefineConstants>
+    <DefineConstants>DESKTOP</DefineConstants>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
     <NoWarn>8305</NoWarn>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <EnablePreviewMsixTooling>false</EnablePreviewMsixTooling>
     <NoWarn>
       0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
       8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -27,52 +27,65 @@
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" />
-    <PackageReference Include="Win2d.uwp" />
+    <!-- Win2D.WinUI is not public yet -->
+    <!-- <PackageReference Include="Win2d.winui" /> -->
     <PackageReference Include="Microsoft.WinUI" />
-    <PackageReference Include="Microsoft.Windows.CsWinRT" />
+    <Manifest Include="$(ApplicationManifest)" />
+
     <!--
-      Temporary package ref so we have access to the old function pointer syntax.
-      We only need this while we are generating the projection for Win2D
-    -->
-    <PackageReference Include="Microsoft.Net.Compilers.Toolset" />
-    <!-- 
     System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
     CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
     addresses those vulnerabilites, we need to pull it in ourselves.
     -->
     <PackageReference Include="System.Private.Uri" />
-
-    <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)" />
-    <!-- When updating to the winui3 compatible win2d, remove GenerateWin2DProjection and FixWUXReferences targets -->
-    <PackageReference Update="Win2d.uwp" Version="$(Win2DUWPVersion)" />
+    <!-- Win2D.WinUI is not public yet -->
+    <!-- <PackageReference Update="Win2d.winui" Version="$(Win2DWinUIVersion)" /> -->
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
-  
+
+  <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
+    <PackageReference Remove="Microsoft.WinUI" />
+    <PackageReference Include="Microsoft.ProjectReunion" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageReference Update="Microsoft.ProjectReunion" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
+  </ItemGroup>
+
   <ItemGroup>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+
     <Compile Remove="CollectionsInterop.cs" />
     <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-    <Compile Remove="ControlPages\AcrylicPage.xaml.cs" />
     <Compile Remove="ControlPages\MediaPlayerElementPage.xaml.cs" />
+    <Compile Remove="ControlPages\PivotPage.xaml.cs" />
     <Compile Remove="ControlPages\RevealFocusPage.xaml.cs" />
     <Compile Remove="ControlPages\RevealPage.xaml.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
-    <Page Remove="ControlPages\AcrylicPage.xaml" />
+    <Compile Remove="ControlPages\InputValidationPage.xaml.cs" Condition="'$(MUXFinalRelease)'=='true'" />
+    <!-- Win2D.WinUI is not public yet, and LottieLogo1.cs and  depends on it -->
+    <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
+    <Compile Remove="ControlPages\AnimatedVisualPlayerPage.xaml.cs" />
+
     <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
+    <Page Remove="ControlPages\PivotPage.xaml" />
     <Page Remove="ControlPages\RevealFocusPage.xaml" />
     <Page Remove="ControlPages\RevealPage.xaml" />
     <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
+    <Page Remove="ControlPages\InputValidationPage.xaml" Condition="'$(MUXFinalRelease)'=='true'" />
+
+    <!-- Win2D.WinUI is not public yet, and AnimatedVisualPlayerPage.xaml depends on it -->
+    <Page Remove="ControlPages\AnimatedVisualPlayerPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="ControlPages\AcrylicPage.xaml" />
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <None Remove="ControlPages\RevealFocusPage.xaml" />
     <None Remove="ControlPages\RevealPage.xaml" />
@@ -80,44 +93,4 @@
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
-  <PropertyGroup>
-    <CSWinRTIncludes>
-      Microsoft.Graphics.Canvas
-    </CSWinRTIncludes>
-  </PropertyGroup>
-  
-  <UsingTask TaskName="FixWUXReferences" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
-    <ParameterGroup>
-      <CsWinrtFiles ParameterType="System.String[]" Required="true" />
-    </ParameterGroup>
-    <Task>
-      <Using Namespace="System" />
-      <Using Namespace="System.IO" />
-      <Code Type="Fragment" Language="cs">
-<![CDATA[
-          foreach (string csWinrtFile in CsWinrtFiles)
-          {
-              string fileContents = System.IO.File.ReadAllText(csWinrtFile);
-              fileContents = fileContents.Replace("Windows.UI.Xaml", "Microsoft.UI.Xaml");
-              System.IO.File.WriteAllText(csWinrtFile, fileContents);
-          }
-]]>
-      </Code>
-    </Task>
-  </UsingTask>
-  <Target Name="FixWin2DProjection" AfterTargets="CsWinRTGenerateProjection" BeforeTargets="XamlPreCompile;CoreCompile">
-    <FixWUXReferences CsWinrtFiles="$(GeneratedFilesDir)\Microsoft.Graphics.Canvas.cs;$(GeneratedFilesDir)\Microsoft.Graphics.Canvas.UI.Xaml.cs" />
-  </Target>
-
-    <!-- Standalone CSWinRT specific properties -->
-    <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <!-- TODO: Remove this when https://github.com/microsoft/CsWinRT/issues/530 is fixed and we've picked up a new version. -->
-        <CoreCompileDependsOn Condition="'$(CsWinRTExe)' != ''">
-            $(CoreCompileDependsOn);
-            CsWinRTIncludeProjection
-        </CoreCompileDependsOn>
-
-        <!-- ensure this is set for cswinrt -->
-        <CsWinRTWindowsMetadata>10.0.18362.0</CsWinRTWindowsMetadata>
-    </PropertyGroup>
 </Project>

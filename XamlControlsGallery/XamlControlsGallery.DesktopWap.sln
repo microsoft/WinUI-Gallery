@@ -8,27 +8,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlControlsGallery.Desktop.Package", "XamlControlsGallery.Desktop.Package.wapproj", "{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlControlsGallery.DesktopWap.Package", "XamlControlsGallery.DesktopWap.Package.wapproj", "{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlControlsGallery.Desktop", "XamlControlsGallery.Desktop.csproj", "{D78F3B56-340D-44F0-9AF1-320D473BA611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlControlsGallery.DesktopWap", "XamlControlsGallery.DesktopWap.csproj", "{D78F3B56-340D-44F0-9AF1-320D473BA611}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|ARM = Debug|ARM
 		Debug|arm64 = Debug|arm64
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|ARM = Release|ARM
 		Release|arm64 = Release|arm64
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|ARM.ActiveCfg = Debug|ARM
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|ARM.Build.0 = Debug|ARM
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|ARM.Deploy.0 = Debug|ARM
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|arm64.ActiveCfg = Debug|arm64
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|arm64.Build.0 = Debug|arm64
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|arm64.Deploy.0 = Debug|arm64
@@ -41,9 +36,6 @@ Global
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|x86.ActiveCfg = Debug|x86
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|x86.Build.0 = Debug|x86
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Debug|x86.Deploy.0 = Debug|x86
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|ARM.ActiveCfg = Release|ARM
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|ARM.Build.0 = Release|ARM
-		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|ARM.Deploy.0 = Release|ARM
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|arm64.ActiveCfg = Release|arm64
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|arm64.Build.0 = Release|arm64
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|arm64.Deploy.0 = Release|arm64
@@ -56,7 +48,6 @@ Global
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|x86.ActiveCfg = Release|x86
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|x86.Build.0 = Release|x86
 		{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}.Release|x86.Deploy.0 = Release|x86
-		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|ARM.ActiveCfg = Debug|x86
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|arm64.ActiveCfg = Debug|arm64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|arm64.Build.0 = Debug|arm64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|Win32.ActiveCfg = Debug|x86
@@ -65,7 +56,6 @@ Global
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|x64.Build.0 = Debug|x64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|x86.ActiveCfg = Debug|x86
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|x86.Build.0 = Debug|x86
-		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Release|ARM.ActiveCfg = Release|x86
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Release|arm64.ActiveCfg = Release|arm64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Release|arm64.Build.0 = Release|arm64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Release|Win32.ActiveCfg = Release|x86

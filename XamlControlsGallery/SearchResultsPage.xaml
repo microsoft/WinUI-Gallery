@@ -9,12 +9,6 @@
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Style TargetType="PivotItem">
-            <Setter Property="Margin" Value="0" />
-        </Style>
-    </Page.Resources>
-
      <Grid Background="{ThemeResource HomePageBackgroundBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ResultStates">
@@ -22,7 +16,7 @@
                 <!--  When there are no results, the results panel is replaced with an informational TextBlock  -->
                 <VisualState x:Name="NoResultsFound">
                     <VisualState.Setters>
-                        <Setter Target="resultsPivot.Visibility" Value="Collapsed" />
+                        <Setter Target="resultsNavView.Visibility" Value="Collapsed" />
                         <Setter Target="noResultsTextBlock.Visibility" Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
@@ -38,68 +32,45 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="resultsPivot.Margin" Value="0" />
+                        <Setter Target="resultsNavView.Margin" Value="0" />
+                        <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
+                        <Setter Target="resultsGridView.Padding" Value="12,0" />
+                        <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="noResultsTextBlock.Margin" Value="14,14,0,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
-        <Pivot
-            x:Name="resultsPivot"
+        
+        <NavigationView
+            x:Name="resultsNavView"
             Margin="12,0,0,0"
-            ItemsSource="{x:Bind Filters, Mode=OneWay}"
-            Loaded="OnResultsPivotLoaded">
-            <Pivot.HeaderTemplate>
-                <DataTemplate x:DataType="local:Filter">
-                    <TextBlock Text="{x:Bind Description}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-            <Pivot.ItemTemplate>
-                <DataTemplate x:DataType="local:Filter">
-                    <UserControl>
-                        <GridView
-                            x:Name="resultsGridView"
-                            AutomationProperties.AutomationId="ResultsGridView"
-                            Margin="12,24,0,0"
-                            Padding="0,0,0,36"
-                            AutomationProperties.Name="Search Results"
-                            ContainerContentChanging="OnItemGridViewContainerContentChanging"
-                            IsItemClickEnabled="True"
-                            IsSwipeEnabled="False"
-                            ItemClick="OnItemGridViewItemClick"
-                            ItemContainerStyle="{StaticResource GridViewItemStyle}"
-                            ItemTemplate="{StaticResource ControlItemTemplate}"
-                            ItemsSource="{x:Bind Items}"
-                            KeyDown="OnItemGridViewKeyDown"
-                            Loaded="OnItemGridViewLoaded"
-                            SizeChanged="OnItemGridViewSizeChanged"
-                            SelectionMode="None"
-                            TabIndex="1">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup>
-                                    <VisualState x:Name="WideLayout">
-                                        <VisualState.StateTriggers>
-                                            <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                                        </VisualState.StateTriggers>
-                                    </VisualState>
-                                    <VisualState x:Name="NarrowLayout">
-                                        <VisualState.StateTriggers>
-                                            <AdaptiveTrigger MinWindowWidth="0" />
-                                        </VisualState.StateTriggers>
-                                        <VisualState.Setters>
-                                            <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
-                                            <Setter Target="resultsGridView.Padding" Value="12,0" />
-                                            <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </GridView>
-                    </UserControl>
-                </DataTemplate>
-            </Pivot.ItemTemplate>
-        </Pivot>
+            PaneDisplayMode="Top"
+            IsSettingsVisible="False"
+            MenuItemsSource="{x:Bind Filters, Mode=OneWay}"
+            Loaded="OnResultsNavViewLoaded"
+            SelectionChanged="OnResultsNavViewSelectionChanged">
+            <UserControl>
+                <GridView
+                    x:Name="resultsGridView"
+                    AutomationProperties.AutomationId="ResultsGridView"
+                    Margin="12,24,0,0"
+                    Padding="0,0,0,36"
+                    AutomationProperties.Name="Search Results"
+                    ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                    IsItemClickEnabled="True"
+                    IsSwipeEnabled="False"
+                    ItemClick="OnItemGridViewItemClick"
+                    ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                    ItemTemplate="{StaticResource ControlItemTemplate}"
+                    ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
+                    KeyDown="OnItemGridViewKeyDown"
+                    Loaded="OnItemGridViewLoaded"
+                    SizeChanged="OnItemGridViewSizeChanged"
+                    SelectionMode="None"
+                    TabIndex="1" />
+            </UserControl>
+        </NavigationView>
 
         <TextBlock
             x:Name="noResultsTextBlock"

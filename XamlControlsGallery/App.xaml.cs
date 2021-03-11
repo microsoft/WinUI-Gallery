@@ -80,14 +80,14 @@ namespace AppUIBasics
             }
         }
 
-#if USING_CSWINRT
+#if DESKTOP
         private static Window currentWindow;
 #endif
         public static Window CurrentWindow
         {
             get
             {
-#if USING_CSWINRT
+#if DESKTOP
                 return currentWindow;
 #else
                 return Window.Current;
@@ -103,9 +103,11 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
+#if MUX_PRERELEASE
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
+#endif
 
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
             {
@@ -132,6 +134,7 @@ namespace AppUIBasics
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
+#if MUX_PRERELEASE
         private void App_Resuming(object sender, object e)
         {
             switch (NavigationRootPage.RootFrame?.Content)
@@ -145,6 +148,7 @@ namespace AppUIBasics
                     break;
             }
         }
+#endif
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -155,7 +159,7 @@ namespace AppUIBasics
         {
             IdleSynchronizer.Init();
 
-#if USING_CSWINRT
+#if DESKTOP
             currentWindow = new Window();
 #endif
 
@@ -176,7 +180,7 @@ namespace AppUIBasics
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
 #endif
 
-#if USING_CSWINRT
+#if DESKTOP
             // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.
             EnsureWindow();
 #else
@@ -189,10 +193,12 @@ namespace AppUIBasics
 
         }
 
+#if MUX_PRERELEASE
         protected override void OnActivated(IActivatedEventArgs args)
         {
             EnsureWindow(args);
         }
+#endif
 
         private async void EnsureWindow(IActivatedEventArgs args = null)
         {
@@ -309,6 +315,7 @@ namespace AppUIBasics
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
+#if MUX_PRERELEASE
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -322,5 +329,6 @@ namespace AppUIBasics
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
+#endif // MUX_PRERELEASE
     }
 }

@@ -20,9 +20,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI;
 using System.Runtime.InteropServices;
-#if USING_CSWINRT
 using WinRT;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -64,7 +62,7 @@ namespace AppUIBasics.ControlPages
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
-#if USING_CSWINRT
+#if DESKTOP
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
@@ -99,7 +97,7 @@ namespace AppUIBasics.ControlPages
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
 
-#if USING_CSWINRT
+#if DESKTOP
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {

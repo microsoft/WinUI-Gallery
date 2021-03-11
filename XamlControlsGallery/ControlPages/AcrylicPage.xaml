@@ -77,7 +77,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
+        <!--<local:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example2Grid" Width="320" Height="200">
                     <Grid>
@@ -93,7 +93,7 @@
                     &lt;Rectangle Fill="{ThemeResource SystemControlAcrylicWindowBrush}" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-        </local:ControlExample>
+        </local:ControlExample>-->
         <local:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example3Grid" MinWidth="320" MinHeight="200">
@@ -145,7 +145,7 @@
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
+        <!--<local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example4Grid" MinWidth="320" MinHeight="200">
                     <Grid.ColumnDefinitions>
@@ -196,7 +196,7 @@
                 <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
-        </local:ControlExample>
+        </local:ControlExample>-->
 
         <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
             <local:ControlExample.Example>
