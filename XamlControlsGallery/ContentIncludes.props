@@ -225,6 +225,5 @@
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
 </Project>

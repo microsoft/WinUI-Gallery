@@ -12,11 +12,7 @@ namespace AppUIBasics.Common
             {
                 var val = (double)value;
 
-#if USING_CSWINRT
                 return new Thickness(val);
-#else
-                return ThicknessHelper.FromUniformLength(val);
-#endif
             }
             return false;
         }

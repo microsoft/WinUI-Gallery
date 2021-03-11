@@ -64,7 +64,7 @@ namespace AppUIBasics
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
-#if !USING_CSWINRT
+#if !DESKTOP
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
