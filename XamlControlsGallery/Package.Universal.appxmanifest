@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.XAMLControlsGallery.WinUI3Preview4" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.22.0" />
+  <Identity Name="Microsoft.XAMLControlsGallery.UWP.WinUI3Preview" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.22.0" />
   <mp:PhoneIdentity PhoneProductId="c8049b5d-eada-4613-9fb7-b4cbb780f468" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>UWP XAML Controls Gallery (WinUI 3 Preview 4)</DisplayName>
+    <DisplayName>XAML Controls Gallery (WinUI 3 Preview)</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
     <Logo>Assets\Tiles\StoreLogo-sdk.png</Logo>
   </Properties>
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17134.0" MaxVersionTested="10.0.18362.0" />
-  </Dependencies>
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="XamlControlsSample.App">
-      <uap:VisualElements DisplayName="UWP XAML Controls Gallery (WinUI 3 Preview 4)" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="Xaml Controls Gallery  (WinUI 3 Preview 4)" BackgroundColor="#00b2f0">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="UWP XAML Controls Gallery (WinUI 3 Preview)" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="Xaml Controls Gallery  (WinUI 3 Preview)" BackgroundColor="#00b2f0">
         <uap:DefaultTile Square310x310Logo="Assets\Tiles\LargeTile.png" Wide310x150Logo="Assets\Tiles\WideTile.png" Square71x71Logo="Assets\Tiles\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -33,7 +30,7 @@
         </uap3:Extension>
         <uap:Extension Category="windows.protocol">
           <uap:Protocol Name="xamlcontrolsgallery">
-            <uap:DisplayName>UWP XAML Controls Gallery (WinUI 3 Preview 4)</uap:DisplayName>
+            <uap:DisplayName>XAML Controls Gallery (WinUI 3 Preview)</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
       </Extensions>

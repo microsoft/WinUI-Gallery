@@ -1,10 +1,11 @@
 <Project>
     <PropertyGroup>
             <!-- The NuGet versions of dependencies to build against. -->
-            <WinUIPackageVersion>3.0.0-preview4.*</WinUIPackageVersion>
+            <!-- <WinUIPackageVersion>3.0.0-preview4.*</WinUIPackageVersion> -->
+            <ProjectReunionPackageVersion>0.5.0-prerelease</ProjectReunionPackageVersion>
 
             <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
-            <Win2DUWPVersion>1.25.0</Win2DUWPVersion>
+            <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
             <ColorCodeVersion>2.0.5</ColorCodeVersion>
             <MicrosoftCsWinRTPackageVersion>1.1.0</MicrosoftCsWinRTPackageVersion>
 

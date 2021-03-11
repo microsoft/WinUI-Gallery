@@ -17,11 +17,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-#if USING_CSWINRT
 using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics
 {
@@ -31,7 +27,7 @@ namespace AppUIBasics
     public sealed partial class SearchResultsPage : ItemsPageBase
     {
         private IEnumerable<Filter> _filters;
-        private int? _pivotIndex;
+        private Filter _selectedFilter;
         string _queryText;
 
         public IEnumerable<Filter> Filters
@@ -60,17 +56,20 @@ namespace AppUIBasics
         {
             base.OnNavigatingFrom(e);
 
-            _pivotIndex = resultsPivot.SelectedIndex != -1 ? resultsPivot.SelectedIndex : default(int?);
+            _selectedFilter = (Filter)resultsNavView.SelectedItem;
         }
 
-        private void OnResultsPivotLoaded(object sender, RoutedEventArgs e)
+        private void OnResultsNavViewLoaded(object sender, RoutedEventArgs e)
         {
-            if (NavigationRootPage.Current.DeviceFamily == DeviceType.Xbox)
-            {
-                resultsPivot.IsHeaderItemsCarouselEnabled = false;
-            }
+            resultsNavView.Focus(FocusState.Programmatic);
+        }
 
-            resultsPivot.Focus(FocusState.Programmatic);
+        private void OnResultsNavViewSelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                _selectedFilter = (Filter)e.SelectedItem;
+            }
         }
 
         private void BuildFilterList(string queryText)
@@ -126,19 +125,16 @@ namespace AppUIBasics
                     Filters = filterList;
 
                     // Check to see if the current query matches the last
-                    if (_queryText == queryText)
+                    if (_queryText == queryText && _selectedFilter != null)
                     {
-                        // If so try to restore any previously selected pivot item
-                        if (_pivotIndex != null)
-                        {
-                            resultsPivot.SelectedIndex = _pivotIndex.Value;
-                        }
+                        // If so try to restore any previously selected nav view item
+                        resultsNavView.SelectedItem = Filters.Where(f => f.Name == _selectedFilter.Name).SingleOrDefault();
                     }
                     else
                     {
-                        // Otherwise reset query text and pivot index
+                        // Otherwise reset query text and nav view filter
                         _queryText = queryText;
-                        _pivotIndex = null;
+                        resultsNavView.SelectedItem = Filters.FirstOrDefault();
                     }
 
                     VisualStateManager.GoToState(this, "ResultsFound", false);

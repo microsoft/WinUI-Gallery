@@ -17,9 +17,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.Common;
 
-#if USING_CSWINRT
 using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
