@@ -74,10 +74,10 @@ namespace AppUIBasics
         {
             get
             {
-#if USING_CSWINRT
-                return "Desktop XAML Controls Gallery (WinUI 3 Preview 4)";
+#if DESKTOP
+                return "Desktop XAML Controls Gallery (WinUI 3 Preview)";
 #else
-                return "UWP XAML Controls Gallery (WinUI 3 Preview 4)";
+                return "UWP XAML Controls Gallery (WinUI 3 Preview)";
 #endif
             }
         }
@@ -86,7 +86,7 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
-#if USING_CSWINRT
+#if DESKTOP
             AppTitleBar.Visibility = Visibility.Collapsed;
             App.CurrentWindow.Title = AppTitleText;
 #endif
@@ -116,7 +116,7 @@ namespace AppUIBasics
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
-#if !USING_CSWINRT
+#if !DESKTOP
             // remove the solid-colored backgrounds behind the caption controls and system back button
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)

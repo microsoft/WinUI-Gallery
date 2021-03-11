@@ -142,12 +142,7 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        private static readonly GridLength defaultExampleHeight =
-#if USING_CSWINRT
-            new GridLength(1, GridUnitType.Star);
-#else
-            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
-#endif
+        private static readonly GridLength defaultExampleHeight = new GridLength(1, GridUnitType.Star);
 
         public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
         public GridLength ExampleHeight

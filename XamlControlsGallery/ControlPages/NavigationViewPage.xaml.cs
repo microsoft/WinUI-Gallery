@@ -8,9 +8,7 @@ using System.Linq;
 using Windows.System;
 using Microsoft.UI.Xaml.Automation;
 
-#if USING_CSWINRT
 using System.Collections.ObjectModel;
-#endif
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 

@@ -8,9 +8,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Core;
 using AppUIBasics.TabViewPages;
 
-#if USING_CSWINRT
 using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -29,7 +27,7 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            #if USING_CSWINRT
+            #if DESKTOP
             // Launching isn't supported yet on Desktop
             // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes XCG to crash
             //this.LaunchExample.Visibility = Visibility.Collapsed;
