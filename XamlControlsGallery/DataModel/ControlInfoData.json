@@ -117,8 +117,8 @@
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons and separators on this page change.</p><p>When the <b>IsCompact</b> property is true, the padding around the <b>AppBarSeparator</b> is reduced.</p><p>Look at the <i>AppBarSeparatorPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "AppBarSeparator - API",
@@ -183,8 +183,8 @@
           "ImagePath": "ms-appx:///Assets/CommandBar.png",
           "Description": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
           "Content": "<p>The bottom app bar on this page is a <b>CommandBar</b> control.</p><p>Add secondary commands and then resize the app to see how the <b>CommandBar</b> automatically adapts to different widths.</p><p>This <b>CommandBar</b> element is in the ItemPage so it can be shared across all control pages in the app. Look at the <i>ItemPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "CommandBar - API",
@@ -364,6 +364,7 @@
           "ImagePath": "ms-appx:///Assets/GridView.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -413,6 +414,7 @@
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -879,8 +881,8 @@
           "ImagePath": "ms-appx:///Assets/ComboBox.png",
           "Description": "Use a ComboBox when you need to conserve on-screen space and when users select only one option at a time. A ComboBox shows only the currently selected item.",
           "Content": "",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ComboBox - API",
@@ -1067,8 +1069,8 @@
           "ImagePath": "ms-appx:///Assets/ProgressBar.png",
           "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ProgressBar - API",
@@ -1612,7 +1614,8 @@
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUPdated": true,
           "Docs": [
             {
               "Title": "NYI Breadcrumb - API",
