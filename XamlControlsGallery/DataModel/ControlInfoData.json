@@ -1045,8 +1045,8 @@
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
           "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
           "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "InfoBar - API",
