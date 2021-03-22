@@ -75,9 +75,9 @@ namespace AppUIBasics
             get
             {
 #if DESKTOP
-                return "Desktop XAML Controls Gallery (WinUI 3 Preview)";
+                return "WinUI 3 Controls Gallery";
 #else
-                return "UWP XAML Controls Gallery (WinUI 3 Preview)";
+                return "WinUI 3 Controls Gallery (UWP)";
 #endif
             }
         }
