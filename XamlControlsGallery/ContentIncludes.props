@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <Content Include="Assets\WinUI3Preview.png" />
+    <Content Include="Assets\WinUI3Hero.png" />
     <Content Include="Assets\AcrylicBrush.png" />
     <Content Include="Assets\Animations.png" />
     <Content Include="Assets\CalenderDatePicker.png" />
