@@ -88,7 +88,7 @@
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Source="Assets/WinUI3Preview.png"
+                            Source="Assets/WinUI3Hero.png"
                             Stretch="UniformToFill" />
                     </ParallaxView>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />

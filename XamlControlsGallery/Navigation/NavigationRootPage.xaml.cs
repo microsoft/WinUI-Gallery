@@ -316,7 +316,7 @@ namespace AppUIBasics
                             // Idea: check for every word entered (separated by space) if it is in the name, 
                             // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
                             // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
-                            bool flag = true;
+                            bool flag = item.IncludedInBuild;
                             foreach (string queryToken in querySplit)
                             {
                                 // Check if token is not in string
