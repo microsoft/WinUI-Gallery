@@ -2126,7 +2126,7 @@
           "IsNew": false,
           "IsUpdated": false,
           "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
-          "Content": "<p>Look at the <i>XamlCompInterop.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>XamlCompInteropPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
             {
               "Title": "Quickstart: Motion",
