@@ -75,6 +75,9 @@
     <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Remove="ControlPages\AnimatedVisualPlayerPage.xaml.cs" />
 
+    <!-- Disabled until Reunion builds Microsoft.WinUI.dll against CSWinRT 1.1.4 -->
+    <Compile Remove="ControlPages\XamlCompInteropPage.xaml.cs" />
+
     <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Page Remove="ControlPages\PivotPage.xaml" />
     <Page Remove="ControlPages\RevealFocusPage.xaml" />
@@ -84,6 +87,9 @@
 
     <!-- Win2D.WinUI is not public yet, and AnimatedVisualPlayerPage.xaml depends on it -->
     <Page Remove="ControlPages\AnimatedVisualPlayerPage.xaml" />
+
+    <!-- Disabled until Reunion builds Microsoft.WinUI.dll against CSWinRT 1.1.4 -->
+    <Page Remove="ControlPages\XamlCompInteropPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
