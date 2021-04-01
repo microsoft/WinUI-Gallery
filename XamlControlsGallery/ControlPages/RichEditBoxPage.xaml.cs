@@ -45,7 +45,7 @@ namespace AppUIBasics.ControlPages
             }
             else
             {
-                muxc::CommandBarFlyout muxFlyout = sender as muxc::CommandBarFlyout;
+                muxc.CommandBarFlyout muxFlyout = sender as muxc.CommandBarFlyout;
                 if (muxFlyout != null && muxFlyout.Target == REBCustom)
                 {
                     AppBarButton myButton = new AppBarButton
