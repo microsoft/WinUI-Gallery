@@ -19,7 +19,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Mux = Windows.UI.Xaml.Controls;
+using muxc = Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
@@ -45,8 +45,7 @@ namespace AppUIBasics.ControlPages
             }
             else
             {
-                Mux::CommandBarFlyout muxFlyout = sender as Mux::CommandBarFlyout;
-
+                muxc::CommandBarFlyout muxFlyout = sender as muxc::CommandBarFlyout;
                 if (muxFlyout != null && muxFlyout.Target == REBCustom)
                 {
                     AppBarButton myButton = new AppBarButton
