@@ -1,0 +1,6 @@
+﻿<Button x:Name="ImageExample1" Width="100">
+    <StackPanel Orientation="Vertical">
+        <muxc:ImageIcon Source="/Assets/strawberry.png"/>
+        <TextBlock Text="Click Here" TextAlignment="Center"/>
+    </StackPanel>
+</Button>

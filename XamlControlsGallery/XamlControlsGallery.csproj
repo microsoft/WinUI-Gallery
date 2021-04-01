@@ -245,6 +245,13 @@
     <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\SymbolIconSample_1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\PathIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\FontIconSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
@@ -319,6 +326,9 @@
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\AnimatedIconPage.xaml.cs">
+      <DependentUpon>AnimatedIconPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\BreadcrumbBarPage.xaml.cs">
       <DependentUpon>BreadcrumbBarPage.xaml</DependentUpon>
     </Compile>
@@ -327,6 +337,9 @@
     </Compile>
     <Compile Include="ControlPages\ExpanderPage.xaml.cs">
       <DependentUpon>ExpanderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\IconControlsPage.xaml.cs">
+      <DependentUpon>IconControlsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\InfoBarPage.xaml.cs">
       <DependentUpon>InfoBarPage.xaml</DependentUpon>
@@ -778,6 +791,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\AnimatedIconPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\AutomationPropertiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -797,6 +814,10 @@
     <Page Include="ControlPages\ExpanderPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\IconControlsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlPages\InfoBarPage.xaml">
       <SubType>Designer</SubType>

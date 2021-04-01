@@ -1,0 +1,6 @@
+﻿ <Button x:Name="ExampleButton1">
+    <StackPanel>
+        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
+        <TextBlock Text="Select a color"/>
+    </StackPanel>
+ </Button>

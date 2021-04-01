@@ -1,0 +1,6 @@
+﻿<Button x:Name="ImageExample2">
+    <StackPanel Orientation="Vertical">
+        <muxc:ImageIcon Source="https://raw.githubusercontent.com/DiemenDesign/LibreICONS/master/svg-color/libre-camera-panorama.svg" Width="50"/>
+        <TextBlock Text="Click Here"/>
+    </StackPanel>
+</Button>
