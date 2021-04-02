@@ -245,6 +245,7 @@
     <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Icons\SymbolIconSample_1_xaml.txt" />
@@ -338,8 +339,8 @@
     <Compile Include="ControlPages\ExpanderPage.xaml.cs">
       <DependentUpon>ExpanderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlPages\IconControlsPage.xaml.cs">
-      <DependentUpon>IconControlsPage.xaml</DependentUpon>
+    <Compile Include="ControlPages\IconElementPage.xaml.cs">
+      <DependentUpon>IconElementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\InfoBarPage.xaml.cs">
       <DependentUpon>InfoBarPage.xaml</DependentUpon>
@@ -815,7 +816,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlPages\IconControlsPage.xaml">
+    <Page Include="ControlPages\IconElementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

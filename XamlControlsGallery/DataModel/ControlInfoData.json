@@ -1971,12 +1971,12 @@
           ]
         },
         {
-          "UniqueId": "IconControls",
-          "Title": "IconControls",
+          "UniqueId": "IconElement",
+          "Title": "IconElement",
           "Subtitle": "Represents icon controls that use different image types as its content.",
           "ImagePath": "ms-appx:///Assets/Image.png",
           "Description": "Represents icon controls that use different image types as its content.",
-          "Content": "<p>Look at the <i>IconControlsPage.xaml</i> and <i>IconControlsPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
             {
@@ -2005,7 +2005,7 @@
             }
           ],
           "RelatedControls": [
-            "AnimatedIcon"
+            "AnimatedIcon", "AppBarButton", "MenuFlyoutItem"
           ]
         },
         {
