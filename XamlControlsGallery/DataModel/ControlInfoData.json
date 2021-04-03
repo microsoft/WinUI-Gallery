@@ -1977,7 +1977,7 @@
           "ImagePath": "ms-appx:///Assets/Image.png",
           "Description": "Represents icon controls that use different image types as its content.",
           "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "BitmapIcon - API",

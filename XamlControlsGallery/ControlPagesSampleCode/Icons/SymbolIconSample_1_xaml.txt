@@ -1,4 +1,4 @@
-﻿<Button x:Name="AcceptButton">
+﻿<Button Name="AcceptButton">
     <StackPanel>
         <SymbolIcon Symbol="Accept"/>
         <TextBlock Text="Accept"/>
