@@ -1944,6 +1944,71 @@
           ]
         },
         {
+          "UniqueId": "AnimatedIcon",
+          "Title": "AnimatedIcon",
+          "Subtitle": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "ImagePath": "ms-appx:///Assets/Animations.png",
+          "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AnimatedIcon - API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedicon"
+            },
+            {
+              "Title": "AnimatedIcon - Guidance ",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/animated-icon"
+            },
+            {
+              "Title": "Lottie Overview",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie"
+            },
+            {
+              "Title": "Lottie Windows - GitHub",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            }
+          ]
+        },
+        {
+          "UniqueId": "IconElement",
+          "Title": "IconElement",
+          "Subtitle": "Represents icon controls that use different image types as its content.",
+          "ImagePath": "ms-appx:///Assets/Image.png",
+          "Description": "Represents icon controls that use different image types as its content.",
+          "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "BitmapIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.bitmapicon"
+            },
+            {
+              "Title": "FontIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon"
+            },
+            {
+              "Title": "ImageIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.imageicon"
+            },
+            {
+              "Title": "PathIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pathicon"
+            },
+            {
+              "Title": "SymbolIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.symbolicon"
+            },
+            {
+              "Title": "Icon Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/icons"
+            }
+          ],
+          "RelatedControls": [
+            "AnimatedIcon", "AppBarButton", "MenuFlyoutItem"
+          ]
+        },
+        {
           "UniqueId": "RadialGradientBrush",
           "Title": "RadialGradientBrush",
           "Subtitle": "A brush to show radial gradients",
