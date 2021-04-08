@@ -265,7 +265,7 @@ namespace AppUIBasics
 
             //var formatter = GenerateRichTextFormatter();
             //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleString; // sampleCodeRTB;
+            presenter.Content = new TextBlock() { Text = sampleString, FontFamily = new FontFamily("Consolas"), IsTextSelectionEnabled = true }; // sampleCodeRTB;
         }
 
         // TODO: RichTextBlockFormatter is coming from a nuget package that is built against Windows.UI.Xaml
