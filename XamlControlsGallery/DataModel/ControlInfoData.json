@@ -1690,7 +1690,7 @@
           "Docs": [
             {
               "Title": "WebView2 - API",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml-specs/blob/master/active/WebView2/WebView2_spec.md#api-notes"
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.webview2?view=winui-3.0"
             },
             {
               "Title": "Guidelines",
@@ -1698,7 +1698,7 @@
             },
             {
               "Title": "Examples",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml-specs/blob/master/active/WebView2/WebView2_spec.md#examples"
+              "Uri": "https://github.com/MicrosoftEdge/WebView2Samples"
             }
           ]
         }
