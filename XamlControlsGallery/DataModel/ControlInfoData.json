@@ -1690,7 +1690,7 @@
           "Docs": [
             {
               "Title": "WebView2 - API",
-              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls.webview2?view=winui-3.0"
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.webview2?view=winui-3.0"
             },
             {
               "Title": "Guidelines",
