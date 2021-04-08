@@ -22,8 +22,5 @@
                  However, because we overwrite those to output to subdirectories, the outputs of the UWP XamlControlsGallery
                  are erroneously included.  Explicitly exclude them here -->
             <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
-
-            <IntDir>$(BaseIntermediateOutputPath)</IntDir>
-            <OutDir>$(BaseOutputPath)</OutDir>
     </PropertyGroup>
 </Project>
