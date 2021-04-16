@@ -10,6 +10,10 @@
        Determine if building standalone by conditioning on the MuxCustomBuildTasksPackageVersion property, which only exists in the WinUI repo -->
   <PropertyGroup Condition="'$(MuxCustomBuildTasksPackageVersion)' != ''">
     <IsInWinUIRepo>true</IsInWinUIRepo>
+
+    <!-- We want to binplace the XamlControlsGallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
+         overwrite each other. -->
+    <BinplaceSymbolsToSubdir>true</BinplaceSymbolsToSubdir>
   </PropertyGroup>
 
     <!--
