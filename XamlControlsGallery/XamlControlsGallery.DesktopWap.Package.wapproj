@@ -2,10 +2,6 @@
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0'">
     <VisualStudioVersion>15.0</VisualStudioVersion>
-    <!-- Name of the certificate used to sign XamlControlsGallery for publishing in the store.
-           This obviously isn't checked in with the repo, but can be dropped into the folder
-           to light-up official publishing-->
-    <OfficialCert>testcert.pfx</OfficialCert>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x86">
@@ -48,14 +44,10 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>XamlControlsGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>XamlControlsGallery.DesktopWap</AppxBundleNameForOutput>
-    <PackageCertificateKeyFile>testcert.pfx</PackageCertificateKeyFile>
     <PathToXamlWinRTImplementations>XamlControlsGallery.DesktopWap\</PathToXamlWinRTImplementations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="Exists('$(OfficialCert)')">
-    <PackageCertificateKeyFile>$(OfficialCert)</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
@@ -114,9 +106,6 @@
     <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[$(ProjectReunionWinUIPackageVersion)]" GeneratePathProperty="true">
       <ExcludeAssets>all</ExcludeAssets>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="XamlControlsGallery.DesktopWap.Package_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <Import Project="$(Microsoft_ProjectReunion_AppXReference_props)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
