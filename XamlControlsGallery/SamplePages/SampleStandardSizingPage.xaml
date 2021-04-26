@@ -19,7 +19,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel x:Name="CompactPanel" Spacing="16">
-            <TextBlock x:Name="HeaderBlock" Text="Compact Size" FontSize="18"/>
+            <TextBlock x:Name="HeaderBlock" Text="Normal Size" FontSize="18"/>
             <TextBox Header="First Name:" x:Name="firstName" />
             <TextBox Header="Last Name:" x:Name="lastName"  />
             <PasswordBox Header="Password:" x:Name="password"/>
