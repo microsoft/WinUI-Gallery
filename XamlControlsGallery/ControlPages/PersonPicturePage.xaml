@@ -28,7 +28,7 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) /&gt;
+                    &lt;muxc:PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
