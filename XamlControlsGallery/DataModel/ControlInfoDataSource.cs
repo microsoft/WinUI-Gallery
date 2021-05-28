@@ -17,7 +17,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using AppUIBasics.Common;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -121,7 +123,7 @@ namespace AppUIBasics.Data
     {
         private static readonly object _lock = new object();
 
-        #region Singleton
+#region Singleton
 
         private static ControlInfoDataSource _instance;
 
@@ -140,7 +142,7 @@ namespace AppUIBasics.Data
 
         private ControlInfoDataSource() { }
 
-        #endregion
+#endregion
 
         private IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
         public IList<ControlInfoDataGroup> Groups

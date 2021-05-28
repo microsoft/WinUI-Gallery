@@ -4,20 +4,22 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
-    <DefineConstants>MSIX</DefineConstants>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
-    <NoWarn>8305</NoWarn>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <EnablePreviewMsixTooling>false</EnablePreviewMsixTooling>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <NoWarn>
-      0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
-      8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
+      0108;       <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
+      8305        <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
     </NoWarn>
     <MSBuildWarningsAsMessages>
-      WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
+      WMC1501       <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
     </MSBuildWarningsAsMessages>
+
+    <WindowsPackageType>MSIX</WindowsPackageType>
+    <PackageCertificateKeyFile>$(ProjectRoot)\build\MSTest.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
 
   <Import Project="Common.props" />
@@ -44,15 +46,18 @@
     this version so users run the risk of getting version conflicts with winrt.runtime v1.1
     from .NET SDK Ref v.13 -->
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
+
   </ItemGroup>
+
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)" />
+
     <!-- Win2D.WinUI is not public yet -->
     <!-- <PackageReference Update="Win2d.winui" Version="$(Win2DWinUIVersion)" /> -->
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
     <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
-     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
+    <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
@@ -67,8 +72,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-
     <Compile Remove="CollectionsInterop.cs" />
     <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
@@ -77,10 +80,9 @@
     <Compile Remove="ControlPages\RevealPage.xaml.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
     <Compile Remove="ControlPages\InputValidationPage.xaml.cs" Condition="'$(MUXFinalRelease)'=='true'" />
-    <!-- Win2D.WinUI is not public yet, and LottieLogo1.cs and  depends on it -->
+    <!-- Win2D.WinUI is not public yet, and LottieLogo1.cs and AnimatedVisualPlayerPage.xaml.cs depend on it -->
     <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
     <Compile Remove="ControlPages\AnimatedVisualPlayerPage.xaml.cs" />
-
     <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Page Remove="ControlPages\RevealFocusPage.xaml" />
     <Page Remove="ControlPages\RevealPage.xaml" />
@@ -95,11 +97,6 @@
     <None Remove="ControlPages\RevealFocusPage.xaml" />
     <None Remove="ControlPages\RevealPage.xaml" />
     <Content Remove="@(Content)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <Page Remove="ControlPages\PivotPage.xaml" />
-    <Compile Remove="ControlPages\PivotPage.xaml.cs" />
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 

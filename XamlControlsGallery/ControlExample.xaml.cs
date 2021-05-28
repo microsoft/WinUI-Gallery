@@ -78,7 +78,7 @@ namespace AppUIBasics
             {
                 return string.Empty;
             }
-            
+
             return value.ToString();
         }
     }
@@ -142,7 +142,12 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        private static readonly GridLength defaultExampleHeight = new GridLength(1, GridUnitType.Star);
+        private static readonly GridLength defaultExampleHeight =
+#if !UNIVERSAL
+            new GridLength(1, GridUnitType.Star);
+#else
+            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
+#endif
 
         public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
         public GridLength ExampleHeight
@@ -265,7 +270,7 @@ namespace AppUIBasics
 
             //var formatter = GenerateRichTextFormatter();
             //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleString; // sampleCodeRTB;
+            presenter.Content = new TextBlock() { Text = sampleString, FontFamily = new FontFamily("Consolas"), IsTextSelectionEnabled = true }; // sampleCodeRTB;
         }
 
         // TODO: RichTextBlockFormatter is coming from a nuget package that is built against Windows.UI.Xaml
@@ -328,7 +333,7 @@ namespace AppUIBasics
         private void SampleCode_ActualThemeChanged(FrameworkElement sender, object args)
         {
             // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
-            // Therefore we need to re-format the REB to use the correct colors. 
+            // Therefore we need to re-format the REB to use the correct colors.
 
             GenerateAllSyntaxHighlightedContent();
         }

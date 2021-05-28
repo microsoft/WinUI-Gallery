@@ -3,8 +3,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using mux = Microsoft.UI.Xaml.Controls;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238

@@ -4,8 +4,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ICommand = System.Windows.Input.ICommand;
+#endif
 
 namespace AppUIBasics.ControlPages
 {

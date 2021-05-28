@@ -8,7 +8,9 @@ using System.Linq;
 using Windows.System;
 using Microsoft.UI.Xaml.Automation;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -98,7 +100,7 @@ namespace AppUIBasics.ControlPages
                     contentFrame2.Navigate(pageType);
                 }
             }
-            
+
             CameFromGridChange = false;
         }
 
@@ -168,7 +170,7 @@ namespace AppUIBasics.ControlPages
                 contentFrame7.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
             }
         }
- 
+
         private void databindHeader_Checked(object sender, RoutedEventArgs e)
         {
             Categories = new ObservableCollection<CategoryBase>()
