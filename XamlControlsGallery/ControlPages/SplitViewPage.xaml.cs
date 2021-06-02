@@ -15,7 +15,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 

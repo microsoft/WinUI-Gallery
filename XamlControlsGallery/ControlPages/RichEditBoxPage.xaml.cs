@@ -20,7 +20,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI;
 using System.Runtime.InteropServices;
+
+#if !UNIVERSAL
 using WinRT;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -62,7 +65,7 @@ namespace AppUIBasics.ControlPages
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
-#if DESKTOP
+#if !UNIVERSAL
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
@@ -97,7 +100,7 @@ namespace AppUIBasics.ControlPages
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
 
-#if DESKTOP
+#if !UNIVERSAL
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
@@ -110,7 +113,7 @@ namespace AppUIBasics.ControlPages
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
-                // Prevent updates to the remote version of the file until we 
+                // Prevent updates to the remote version of the file until we
                 // finish making changes and call CompleteUpdatesAsync.
                 CachedFileManager.DeferUpdates(file);
                 // write to file
@@ -120,7 +123,7 @@ namespace AppUIBasics.ControlPages
                     editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
                 }
 
-                // Let Windows know that we're finished changing the file so the 
+                // Let Windows know that we're finished changing the file so the
                 // other app can update the remote version of the file.
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
                 if (status != FileUpdateStatus.Complete)

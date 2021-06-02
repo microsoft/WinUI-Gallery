@@ -64,7 +64,7 @@ namespace AppUIBasics
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
-#if !DESKTOP
+#if UNIVERSAL
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
@@ -122,7 +122,7 @@ namespace AppUIBasics
                 spatialSoundBox.IsChecked = false;
 
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;                
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
         }
 

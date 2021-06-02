@@ -12,7 +12,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.System;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -59,7 +61,7 @@ namespace AppUIBasics.ControlPages
                 Image ptrImage = new Image();
                 AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
                 // Checking light theme
-                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
+                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
                     && !accessibilitySettings.HighContrast)
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
@@ -86,7 +88,11 @@ namespace AppUIBasics.ControlPages
                 lv2.Width = 200;
                 lv2.Height = 200;
 
+#if !UNIVERSAL
                 lv2.BorderThickness = new Thickness(1);
+#else
+                lv2.BorderThickness = ThicknessHelper.FromUniformLength(1);
+#endif
 
                 lv2.HorizontalAlignment = HorizontalAlignment.Center;
                 lv2.BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"];
