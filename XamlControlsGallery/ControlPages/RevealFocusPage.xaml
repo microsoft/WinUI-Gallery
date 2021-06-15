@@ -198,7 +198,6 @@
                             VerticalAlignment="Center"/>
                         <Button x:Name="primaryColorPickerButton"
                                 Grid.Column="1"
-                                AutomationProperties.Name="{x:Bind myPrimaryColorPicker.Color}"
                                 Background="{x:Bind local2:MyConverters.ColorToBrush(myPrimaryColorPicker.Color), Mode=OneWay}"
                                 Flyout="{StaticResource myPrimaryColorPickerFlyout}"
                                 Height="40"
@@ -211,7 +210,6 @@
                             VerticalAlignment="Center"/>
                         <Button x:Name="secondaryColorPickerButton" 
                                 Grid.Column="1" Grid.Row="1"
-                                AutomationProperties.Name="{x:Bind myPrimaryColorPicker.Color}"
                                 Background="{x:Bind local2:MyConverters.ColorToBrush(mySecondaryColorPicker.Color), Mode=OneWay}"
                                 Flyout="{StaticResource mySecondaryColorPickerFlyout}"
                                 Height="40"
