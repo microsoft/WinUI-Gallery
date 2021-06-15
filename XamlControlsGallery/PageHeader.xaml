@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,7 +8,8 @@
     Padding="{x:Bind HeaderPadding, Mode=OneWay}"
     Background="Transparent"
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
-    FontSize="24">
+    FontSize="24"
+    HighContrastAdjustment="Auto">
 
     <Grid>
         <VisualStateManager.VisualStateGroups>
@@ -75,6 +76,26 @@
                     IsOpen="False"
                     IsSticky="False"
                     Visibility="Collapsed">
+                    <AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
+                        <AppBarButton.Icon>
+                            <SymbolIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Symbol="Link" />
+                        </AppBarButton.Icon>
+                        <AppBarButton.Resources>
+                            <muxc:TeachingTip
+                                x:Name="CopyLinkButtonTeachingTip"
+                                Title="Quickly reference this sample!"
+                                PreferredPlacement="Bottom"
+                                Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
+                                ActionButtonContent="Don't show again"
+                                ActionButtonClick="OnCopyDontShowAgainButtonClick"
+                                CloseButtonContent="Got it!"
+                                Target="{x:Bind CopyLinkButton}">
+                                <muxc:TeachingTip.HeroContent>
+                                    <Image Source="/Assets/CopyLinkTeachingTip.png" />
+                                </muxc:TeachingTip.HeroContent>
+                            </muxc:TeachingTip>
+                        </AppBarButton.Resources>
+                    </AppBarButton>
                     <AppBarButton
                         x:Name="ThemeButton"
                         Click="OnThemeButtonClick"

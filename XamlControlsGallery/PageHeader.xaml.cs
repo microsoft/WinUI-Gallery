@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -9,18 +9,19 @@
 //*********************************************************
 
 using System;
+using AppUIBasics.Helper;
+using Microsoft.UI.Xaml.Controls;
+using Windows.UI;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Composition;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI;
 
 namespace AppUIBasics
 {
     public sealed partial class PageHeader : UserControl
     {
-        
+        public Action CopyLinkAction { get; set; }
         public Action ToggleThemeAction { get; set; }
 
         public TeachingTip TeachingTip1 => ToggleThemeTeachingTip1;
@@ -94,11 +95,38 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
             this.InitializeDropShadow(ShadowHost, TitleTextBlock.GetAlphaMask());
+            this.ResetCopyLinkButton();
+        }
+
+        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.CopyLinkAction?.Invoke();
+
+            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+            {
+                this.CopyLinkButtonTeachingTip.IsOpen = true;
+            }
+
+            this.CopyLinkButton.Label = "Copied to Clipboard";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Accept;
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+        }
+
+        public void ResetCopyLinkButton()
+        {
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
+            this.CopyLinkButton.Label = "Generate Link to Page";
+            this.CopyLinkButtonIcon.Symbol = Symbol.Link;
+        }
+
+        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
         }
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)

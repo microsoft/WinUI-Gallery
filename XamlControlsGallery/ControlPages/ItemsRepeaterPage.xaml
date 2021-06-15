@@ -101,7 +101,8 @@
 
     <StackPanel>
         <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto" 
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
                           MaxHeight="500">
@@ -221,7 +222,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
 
         <local:ControlExample HeaderText="Laying out nested ItemsRepeaters"
                               XamlSource="ItemsRepeater/ItemsRepeaterNestedSample_xaml.txt">
-            <ScrollViewer>
+            <ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
                 <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
                                            ItemTemplate ="{StaticResource CategoryTemplate}">

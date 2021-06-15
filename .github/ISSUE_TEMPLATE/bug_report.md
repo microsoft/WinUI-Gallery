@@ -23,10 +23,13 @@ Steps to reproduce the behavior:
 <!-- If applicable, add screenshots here to help explain your problem -->
 
 **Version Info**
-<!-- Please enter the Gallery version, OS version(s), and form factor(s) -->
+- [ ] App downloaded from Store 
+    - If so, which version? (Found on the Settings page of the app.)
+- [ ] App built locally from source 
+  - If so, which branch? (WinUI 3 versions are built off the winui3preview branch)
 
-Gallery version (found on Settings page): 
-<!-- [e.g. 1.2.3.0] -->
+**Additional context**
+<!-- Enter any other applicable info here -->
 
 Windows 10 version:
 - [ ] Insider Build (xxxxx)
@@ -46,5 +49,3 @@ Device form factor:
 - [ ] Surface Hub
 - [ ] IoT
 
-**Additional context**
-<!-- Enter any other applicable info here -->
