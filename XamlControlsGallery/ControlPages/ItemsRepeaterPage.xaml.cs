@@ -11,6 +11,7 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
+using Windows.UI.Xaml.Automation.Peers;
 
 namespace AppUIBasics.ControlPages
 {
@@ -385,6 +386,11 @@ namespace AppUIBasics.ControlPages
                 filteredTypes.OrderBy(i => i.IngList.Count());
             // Re-initialize MyItemsSource object with this newly filtered data
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
+
+            var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
+
+            peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
+
         }
     }
 
