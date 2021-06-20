@@ -5,6 +5,8 @@ using System.Collections.Specialized;
 using System.Linq;
 using AppUIBasics.Common;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 
@@ -26,6 +28,8 @@ namespace AppUIBasics.ControlPages
 
         private double AnimatedBtnHeight;
         private Thickness AnimatedBtnMargin;
+        private Button LastSelectedColorButton;
+
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
@@ -261,6 +265,8 @@ namespace AppUIBasics.ControlPages
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
             colorRectangle.Fill = senderBtn.Background;
+
+            SetUIANamesForSelectedEntry(senderBtn);
         }
 
 
@@ -296,9 +302,12 @@ namespace AppUIBasics.ControlPages
             AnimatedBtnMargin = AnimatedBtn.Margin;
         }
 
-        private void Animated_ScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        private void Animated_ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
             Button SelectedItem = GetSelectedItemFromViewport() as Button;
+
+            SetUIANamesForSelectedEntry(SelectedItem);
+
             // Update corresponding rectangle with selected color
             // In case of scrolling VERY fast, the item we are updating our view for might already be recycled and thus null.
             // Check if our SelectedItem actually exists, otherwise we would crash.
@@ -306,6 +315,17 @@ namespace AppUIBasics.ControlPages
             {
                 colorRectangle.Fill = SelectedItem.Background;
             }
+        }
+
+        private void SetUIANamesForSelectedEntry(Button selectedItem)
+        {
+            if (LastSelectedColorButton != null && LastSelectedColorButton.Content is string content)
+            {
+                AutomationProperties.SetName(LastSelectedColorButton, content);
+            }
+
+            AutomationProperties.SetName(selectedItem, (string)selectedItem.Content + " , selected");
+            LastSelectedColorButton = selectedItem;
         }
 
         // Find centerpoint of ScrollViewer
@@ -406,7 +426,6 @@ namespace AppUIBasics.ControlPages
             var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
 
             peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
-
         }
     }
 
