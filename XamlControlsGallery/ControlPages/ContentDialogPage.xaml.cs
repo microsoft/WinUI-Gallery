@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,6 +28,12 @@ namespace AppUIBasics.ControlPages
 
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = this.XamlRoot;
+            dialog.Title = "Save your work?";
+            dialog.PrimaryButtonText = "Save";
+            dialog.SecondaryButtonText = "Don't Save";
+            dialog.CloseButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Content = new ContentDialogContent();
 
             var result = await dialog.ShowAsync();
 

@@ -60,6 +60,248 @@ namespace AppUIBasics.ControlPages
                 }
             }
         }
+
+        //===================================================================================================================
+        // Drag/Drop Example
+        //===================================================================================================================
+
+        private void Source_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+            // Prepare a string with one dragged item per line
+            StringBuilder items = new StringBuilder();
+            foreach (Contact item in e.Items)
+            {
+                if (items.Length > 0) { items.AppendLine(); }
+                if (item.ToString() != null)
+                {
+                    // Append name from contact object onto data string
+                    items.Append(item.ToString() + " " + item.Company);
+                }
+            }
+            // Set the content of the DataPackage
+            e.Data.SetText(items.ToString());
+
+            e.Data.RequestedOperation = DataPackageOperation.Move;
+
+        }
+
+        private void Target_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Move;
+        }
+
+        private void Source_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Move;
+        }
+
+        private async void ListView_Drop(object sender, DragEventArgs e)
+        {
+            ListView target = (ListView)sender;
+
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                DragOperationDeferral def = e.GetDeferral();
+                string s = await e.DataView.GetTextAsync();
+                string[] items = s.Split('\n');
+                foreach (string item in items)
+                {
+
+                    // Create Contact object from string, add to existing target ListView
+                    string[] info = item.Split(" ", 3);
+                    Contact temp = new Contact(info[0], info[1], info[2]);
+
+                    // Find the insertion index:
+                    Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
+
+                    // Find which ListView is the target, find height of first item
+                    ListViewItem sampleItem;
+                    if (target.Name == "DragDropListView")
+                    {
+                        sampleItem = (ListViewItem)DragDropListView2.ContainerFromIndex(0);
+                    }
+                    // Only other case is target = DragDropListView2
+                    else
+                    {
+                        sampleItem = (ListViewItem)DragDropListView.ContainerFromIndex(0);
+                    }
+
+                    // Adjust ItemHeight for margins
+                    double itemHeight = sampleItem.ActualHeight + sampleItem.Margin.Top + sampleItem.Margin.Bottom;
+
+                    // Find index based on dividing number of items by height of each item
+                    int index = Math.Min(target.Items.Count - 1, (int)(pos.Y / itemHeight));
+
+                    // Find the item that we want to drop
+                    ListViewItem targetItem = (ListViewItem)target.ContainerFromIndex(index); ;
+
+                    // Figure out if to insert above or below
+                    Windows.Foundation.Point positionInItem = e.GetPosition(targetItem);
+                    if (positionInItem.Y > itemHeight / 2)
+                    {
+                        index++;
+                    }
+
+                    // Don't go out of bounds
+                    index = Math.Min(target.Items.Count, index);
+
+                    // Find correct source list
+                    if (target.Name == "DragDropListView")
+                    {
+                        // Find the ItemsSource for the target ListView and insert
+                        contacts1.Insert(index, temp);
+                        //Go through source list and remove the items that are being moved
+                        foreach (Contact contact in DragDropListView2.Items)
+                        {
+                            if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                            {
+                                contacts2.Remove(contact);
+                                break;
+                            }
+                        }
+                    }
+                    else if (target.Name == "DragDropListView2")
+                    {
+                        contacts2.Insert(index, temp);
+                        foreach (Contact contact in DragDropListView.Items)
+                        {
+                            if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                            {
+                                contacts1.Remove(contact);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                e.AcceptedOperation = DataPackageOperation.Move;
+                def.Complete();
+            }
+        }
+
+        private void Target_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+            if (e.Items.Count == 1)
+            {
+                // Prepare ListViewItem to be moved
+                Contact tmp = (Contact)e.Items[0];
+
+                e.Data.SetText(tmp.FirstName + " " + tmp.LastName + " " + tmp.Company);
+                e.Data.RequestedOperation = DataPackageOperation.Move;
+            }
+        }
+
+        private void Target_DragEnter(object sender, DragEventArgs e)
+        {
+            // We don't want to show the Move icon
+            e.DragUIOverride.IsGlyphVisible = false;
+        }
+
+        //===================================================================================================================
+        // Grouped Headers Example
+        //===================================================================================================================
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (StickySwitch != null)
+            {
+                if (StickySwitch.IsOn == true)
+                {
+                    stackPanelObj.AreStickyGroupHeadersEnabled = true;
+                }
+                else
+                {
+                    stackPanelObj.AreStickyGroupHeadersEnabled = false;
+                }
+            }
+        }
+
+        private void StackPanel_loaded(object sender, RoutedEventArgs e)
+        {
+            stackPanelObj = sender as ItemsStackPanel;
+        }
+
+        //===================================================================================================================
+        // Filtered List Example
+        //===================================================================================================================
+        private void Remove_NonMatching(IEnumerable<Contact> filteredData)
+        {
+            for (int i = contacts3Filtered.Count - 1; i >= 0; i--)
+            {
+                var item = contacts3Filtered[i];
+                // If contact is not in the filtered argument list, remove it from the ListView's source.
+                if (!filteredData.Contains(item))
+                {
+                    contacts3Filtered.Remove(item);
+                }
+            }
+        }
+
+        private void AddBack_Contacts(IEnumerable<Contact> filteredData)
+        // When a user hits backspace, more contacts may need to be added back into the list
+        {
+            foreach (var item in filteredData)
+            {
+                // If item in filtered list is not currently in ListView's source collection, add it back in
+                if (!contacts3Filtered.Contains(item))
+                {
+                    contacts3Filtered.Add(item);
+                }
+            }
+        }
+
+        private void OnFilterChanged(object sender, TextChangedEventArgs args)
+        {
+            // Linq query that selects only items that return True after being passed through Filter function
+            var filtered = contacts3.Where(contact => Filter(contact));
+            Remove_NonMatching(filtered);
+            AddBack_Contacts(filtered);
+        }
+
+        private bool Filter(Contact contact)
+        {
+            // When the text in any filter is changed, contact list is ran through all three filters to make sure
+            // they can properly interact with each other (i.e. they can all be applied at the same time).
+
+            return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+                   contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        //===================================================================================================================
+        // Inverted List Example
+        //===================================================================================================================
+
+        private void AddItemToEnd()
+        {
+            InvertedListView.Items.Add(
+                new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Right)
+                );
+        }
+
+        private void MessageReceived(object sender, RoutedEventArgs e)
+        {
+            InvertedListView.Items.Add(
+                new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
+                );
+        }
+    }
+
+    public class Message
+    {
+        public string MsgText { get; private set; }
+        public DateTime MsgDateTime { get; private set; }
+        public HorizontalAlignment MsgAlignment { get; set; }
+        public Message(string text, DateTime dateTime, HorizontalAlignment align)
+        {
+            MsgText = text;
+            MsgDateTime = dateTime;
+            MsgAlignment = align;
+        }
+
+        public override string ToString()
+        {
+            return MsgDateTime.ToString() + " " + MsgText;
+        }
     }
 
     public class Contact

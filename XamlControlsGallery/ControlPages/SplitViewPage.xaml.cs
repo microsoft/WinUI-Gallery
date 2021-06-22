@@ -1,4 +1,3 @@
-﻿using AppUIBasics.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +22,7 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class SplitViewPage : Page
     {
-        private ObservableCollection<NavLink> _navLinks =  new ObservableCollection<NavLink>()
+        private ObservableCollection<NavLink> _navLinks = new ObservableCollection<NavLink>()
         {
             new NavLink() { Label = "People", Symbol = Symbol.People  },
             new NavLink() { Label = "Globe", Symbol = Symbol.Globe },
@@ -62,6 +61,11 @@ namespace AppUIBasics.ControlPages
             }
         }
 
+        private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            content.Text = (e.ClickedItem as NavLink).Label + " Page";
+        }
+
         private void PanePlacement_Toggled(object sender, RoutedEventArgs e)
         {
             var ts = sender as ToggleSwitch;
@@ -73,11 +77,6 @@ namespace AppUIBasics.ControlPages
             {
                 splitView.PanePlacement = SplitViewPanePlacement.Left;
             }
-        }
-
-        private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            content.Text = (e.ClickedItem as NavLink).Label + " Page";
         }
 
         private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

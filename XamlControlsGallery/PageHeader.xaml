@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     x:Name="headerControl"
-    Padding="12,0,12,0"
     Background="Transparent"
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
     FontSize="24">
@@ -41,20 +40,22 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Rectangle x:Name="NarrowBackground" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Visibility="Collapsed" />
+        <Rectangle x:Name="NarrowBackground" Visibility="Collapsed" />
 
         <Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />
         
-        <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top" MinHeight="66">
+        <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid x:Name="pageTitle"
                 Background="Transparent"
-                VerticalAlignment="Bottom">
+                Height="40"
+                VerticalAlignment="Top">
+                <!-- <Canvas x:Name="ShadowHost" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/> -->
                 <TextBlock x:Name="TitleTextBlock"
-                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Style="{StaticResource TitleTextBlockStyle}"
                     VerticalAlignment="Center"
                     FontSize="{Binding ElementName=headerControl, Path=FontSize}"
                     Foreground="{Binding ElementName=headerControl, Path=Foreground}"
@@ -62,9 +63,10 @@
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
             </Grid>
-            <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Bottom">
+            <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">
                 <CommandBar
                     x:Name="topCommandBar"
+                    Height="40"
                     Margin="0,0,12,0"
                     Background="Transparent"
                     ClosedDisplayMode="Compact"

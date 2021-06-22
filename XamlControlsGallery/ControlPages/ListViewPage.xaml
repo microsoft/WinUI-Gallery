@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -83,6 +83,20 @@
                            Margin="0,12,0,0"/>
             </Grid>
         </DataTemplate>
+
+        <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
+            <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
+                <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{ThemeResource SystemColorHighlightColor}" CornerRadius="{StaticResource ControlCornerRadius}">
+                    <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+                    <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local1:Contact">
+            <TextBlock Text="{x:Bind Name}" x:Phase="1" Margin="0,5,0,5"/>
+        </DataTemplate>
+
     </Page.Resources>
     <StackPanel>
         <local:ControlExample HeaderText="A Simple ListView with Selection support">
@@ -197,6 +211,20 @@
         &lt;/ItemsPanelTemplate &gt;
     &lt;/ListView.ItemsPanel&gt;
 &lt;/ListView&gt;
+
+&lt;!-- Data template used: --&gt;
+&lt;!-- The data template is bound to a custom DataType called Message. --&gt;
+&lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
+sent or received, and those values are bound in the DataTemplate.--&gt;
+&lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
+    &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
+        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="{StaticResource ControlCornerRadius}"&gt;
+            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/DataTemplate&gt;
+
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

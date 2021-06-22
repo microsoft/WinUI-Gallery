@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:ControlExample HeaderText="Use a natural motion composition animation on a UIElement"  Loaded="NaturalMotionExample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt">
+    <StackPanel>
+        <local:ControlExample HeaderText="Use a natural motion composition animation on a UIElement"  Loaded="NaturalMotionExample_Loaded" MinimumUniversalAPIContract="7" CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt">
             <StackPanel VerticalAlignment="Stretch">
                 <TextBlock Text="Hover over the button to animate its scale." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,0,12"  />
                 <Button Content="Item" Width="100" Height="50" PointerEntered="element_PointerEntered" PointerExited="element_PointerExited" />
