@@ -54,16 +54,13 @@ namespace AppUIBasics.ControlPages
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
         {
-            // NOTE: If you use AppBarButton and AppBarSeparator controls in a CommandBar,
-            // the CommandBar sets the IsCompact property automatically. You only set it
-            // yourself if the control in not in a CommandBar.
-
-            if (sender is ToggleButton toggle && toggle.IsChecked != null)
+            if ((sender as AppBarToggleButton).IsChecked == true)
             {
-                foreach (ICommandBarElement element in Control1.Children)
-                {
-                    element.IsCompact = (bool)toggle.IsChecked;
-                }
+                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Collapsed;
+            }
+            else
+            {
+                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Bottom;
             }
         }
     }

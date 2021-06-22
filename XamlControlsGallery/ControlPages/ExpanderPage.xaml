@@ -1,0 +1,78 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page x:Class="AppUIBasics.ControlPages.ExpanderPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
+    
+    <StackPanel>
+        <local:ControlExample x:Name="Example1" HeaderText="An Expander with text in the header and content areas">
+            <local:ControlExample.Example>
+                <muxc:Expander x:Name="Expander1" IsExpanded="False" ExpandDirection="Down" Header="This text is in the header" Content="This is in the content"/>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <ComboBox x:Name="ExpandDirectionComboBox" Header="ExpandDirection" SelectionChanged="ExpandDirectionComboBox_SelectionChanged" SelectedValue="Down">
+                        <x:String>Down</x:String>
+                        <x:String>Up</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:Expander
+     IsExpanded="$(IsExpanded)"
+     ExpandDirection="$(ExpandDirection)" 
+     Header="This text is in the header"
+     Content="This is in the content"/&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsExpanded" Value="{x:Bind Expander1.IsExpanded, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="ExpandDirection" Value="{ x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+        
+        <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
+            <local:ControlExample.Example>
+                <muxc:Expander x:Name="Expander2">
+                    <muxc:Expander.Header>
+                        <ToggleButton Content ="This is a ToggleButton in the header"/>
+                    </muxc:Expander.Header>
+                    <muxc:Expander.Content>
+                        <Grid>
+                            <Button Margin="15" Content="This is a Button in the content"/>
+                        </Grid>
+                    </muxc:Expander.Content>
+                </muxc:Expander>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:Expander x:Name="Expander2" &gt;
+    &lt;muxc:Expander.Header&gt;
+        &lt;ToggleButton Content ="This is a ToggleButton in the header" /&gt;
+    &lt;/muxc:Expander.Header&gt;
+    &lt;muxc:Expander.Content&gt;
+        &lt;Grid&gt;
+            &lt;Button Margin="15" Content="This is a Button in the content" /&gt;
+        &lt;/Grid&gt;
+    &lt;/muxc:Expander.Content&gt;
+&lt;/muxc:Expander&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

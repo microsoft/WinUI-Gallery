@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -19,26 +19,30 @@
         <local:ControlExample HeaderText="AppBarButtons separated by AppBarSeparators.">
             <local:ControlExample.Example>
                 <ScrollViewer VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Hidden">
-                    <StackPanel x:Name="Control1" Orientation="Horizontal">
-                        <AppBarButton Icon="AttachCamera" Label="Attach Camera" />
-                        <AppBarSeparator />
-                        <AppBarButton Icon="Like" Label="Like" />
-                        <AppBarButton Icon="Dislike" Label="Dislike" />
-                        <AppBarSeparator />
-                        <AppBarButton Icon="Orientation" Label="Orientation" />
-                    </StackPanel>
+                    <CommandBar x:Name="Control1">
+                        <CommandBar.PrimaryCommands>
+                            <AppBarButton Icon="AttachCamera" Label="Attach Camera" />
+                            <AppBarSeparator />
+                            <AppBarButton Icon="Like" Label="Like" />
+                            <AppBarButton Icon="Dislike" Label="Dislike" />
+                            <AppBarSeparator />
+                            <AppBarButton Icon="Orientation" Label="Orientation" />
+                        </CommandBar.PrimaryCommands>
+                    </CommandBar>
                 </ScrollViewer>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel Orientation="Horizontal"&gt;
-    &lt;AppBarButton Icon="AttachCamera" Label="Attach Camera"/&gt;
-    &lt;AppBarSeparator /&gt;
-    &lt;AppBarButton Icon="Like" Label="Like"/&gt;
-    &lt;AppBarButton Icon="Dislike" Label="Dislike"/&gt;
-    &lt;AppBarSeparator /&gt;
-    &lt;AppBarButton Icon="Orientation" Label="Orientation"/&gt;
-&lt;/StackPanel&gt;
+&lt;CommandBar&gt;
+    &lt;CommandBar.PrimaryCommands&gt;
+        &lt;AppBarButton Icon="AttachCamera" Label="Attach Camera"/&gt;
+        &lt;AppBarSeparator /&gt;
+        &lt;AppBarButton Icon="Like" Label="Like"/&gt;
+        &lt;AppBarButton Icon="Dislike" Label="Dislike"/&gt;
+        &lt;AppBarSeparator /&gt;
+        &lt;AppBarButton Icon="Orientation" Label="Orientation"/&gt;
+    &lt;/CommandBar.PrimaryCommands&gt;
+&lt;/CommandBar&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

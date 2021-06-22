@@ -21,7 +21,7 @@
     x:Name="compactPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <local:ControlExample x:Name="Example1" HeaderText="Compact Sizing for controls" Loaded="Example1_Loaded">
             <Frame x:Name="ContentFrame" />
 

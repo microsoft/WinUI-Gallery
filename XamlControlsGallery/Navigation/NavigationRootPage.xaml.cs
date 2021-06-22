@@ -24,7 +24,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using muxc = Microsoft.UI.Xaml.Controls;
 
@@ -101,7 +100,6 @@ namespace AppUIBasics
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
-
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
@@ -109,7 +107,7 @@ namespace AppUIBasics
                 NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
             };
 
-            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            
+            NavigationViewControl.RegisterPropertyChangedCallback(muxc.NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -225,7 +223,7 @@ namespace AppUIBasics
                         (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
                         (IconElement)new FontIcon()
                         {
-                            FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                           // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath
                         };
         }
