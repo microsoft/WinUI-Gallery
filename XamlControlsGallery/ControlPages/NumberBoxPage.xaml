@@ -33,13 +33,15 @@
         <local:ControlExample HeaderText="A NumberBox with a spin button." 
                               XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
             <local:ControlExample.Example>
-              <NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+                <NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
                               VerticalAlignment="Top"
                               Header="Enter an integer:" 
                               Value="10" 
                               SpinButtonPlacementMode="Compact" 
                               SmallChange="10"
-                              LargeChange="100" />
+                              LargeChange="100"
+                              AutomationProperties.Name="NumberBox with spin button">
+                </NumberBox>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <RadioButtons x:Name="SpinButtonPlacementGroup" Header="SpinButton placement">

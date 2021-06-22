@@ -18,7 +18,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Windows.UI;
+using Microsoft.UI;
 using System.Runtime.InteropServices;
 
 #if !UNIVERSAL
@@ -37,7 +37,7 @@ namespace AppUIBasics.ControlPages
     {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
         public static extern IntPtr GetActiveWindow();
-        private Color currentColor = Microsoft.UI.Colors.Green;
+        private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
 
         public RichEditBoxPage()
         {
@@ -47,12 +47,25 @@ namespace AppUIBasics.ControlPages
         private void Menu_Opening(object sender, object e)
         {
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
-            if (myFlyout.Target == REBCustom)
+            if (myFlyout != null && myFlyout.Target == REBCustom)
             {
                 AppBarButton myButton = new AppBarButton();
                 myButton.Command = new StandardUICommand(StandardUICommandKind.Share);
                 myFlyout.PrimaryCommands.Add(myButton);
             }
+            else
+            {
+                CommandBarFlyout muxFlyout = sender as CommandBarFlyout;
+                if (muxFlyout != null && muxFlyout.Target == REBCustom)
+                {
+                    AppBarButton myButton = new AppBarButton
+                    {
+                        Command = new StandardUICommand(StandardUICommandKind.Share)
+                    };
+                    muxFlyout.PrimaryCommands.Add(myButton);
+                }
+            }
+
         }
 
         private async void OpenButton_Click(object sender, RoutedEventArgs e)

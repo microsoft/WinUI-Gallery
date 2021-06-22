@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -31,11 +31,14 @@
         <local:ControlExample HeaderText="A ToggleSwitch with custom header and content.">
             <StackPanel Orientation="Horizontal">
                 <ToggleSwitch x:Name="ToggleSwitch2" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True"/>
-                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="130"/>
+                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="32"/>
             </StackPanel>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;ToggleSwitch Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" /&gt;
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+    &lt;ToggleSwitch Header=&quot;Toggle work&quot; OffContent=&quot;Do work&quot; OnContent=&quot;Working&quot; IsOn=&quot;$(isOn)$(isOff)&quot; /&gt;
+    &lt;ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;32&quot;/&gt;
+&lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

@@ -55,7 +55,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="12,0,12,36"
+            Padding="40,0,12,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -76,7 +76,7 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-12,0,-12,24" Height="250">
+                <Grid Margin="-40,0,-12,-100" Height="220">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -87,12 +87,12 @@
                             Margin="0,0"
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
                             Source="Assets/WinUI3Hero.png"
-                            Stretch="UniformToFill" />
+                            Stretch="Uniform" />
                     </ParallaxView>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <Rectangle Height="60" Visibility="Collapsed" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
+
                     <TextBlock x:Name="smallHeaderText"
                                x:Uid="NewControlsPage_SmallHeader"
                                Visibility="Collapsed"
@@ -104,7 +104,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource HomePageBackgroundBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -113,10 +113,10 @@
 
         <local:PageHeader x:Name="pageHeader"
             VerticalAlignment="Top"
-            Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="42"
-            Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
+            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"/>
     </Grid>
     

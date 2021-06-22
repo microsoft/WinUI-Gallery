@@ -66,7 +66,7 @@ namespace AppUIBasics.Behaviors
             {
                 VisualStateManager.GoToState(header, "DefaultForeground", false);
                 header.BackgroundColorOpacity = 0;
-                header.FontSize = 42;
+                header.FontSize = 28;
                 header.Foreground = new SolidColorBrush(Colors.White);
                 header.AcrylicOpacity = 0.3;
             }

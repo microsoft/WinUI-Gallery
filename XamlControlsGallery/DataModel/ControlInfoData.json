@@ -1039,7 +1039,7 @@
           "ImagePath": "ms-appx:///Assets/Button.png",
           "Description": "The AutomationProperties attributes provide functionality around accessible components.",
           "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "AutomationProperties - API",
@@ -1223,6 +1223,31 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "PipsPager",
+          "Title": "PipsPager",
+          "Subtitle": "A control to let the user navigate through a paginated collection when the page numbers do not need to be visually known.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
+          "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "PipsPager - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/pipspager"
+            }
+          ],
+          "RelatedControls": [
+            "ScrollViewer",
+            "FlipView",
+            "ItemsRepeater"
+          ]
+        },
+        {
           "UniqueId": "ScrollViewer",
           "Title": "ScrollViewer",
           "Subtitle": "A container control that lets the user pan and zoom its content.",
@@ -1334,6 +1359,30 @@
           ]
         },
         {
+          "UniqueId": "Expander",
+          "Title": "Expander",
+          "Subtitle": "A container with a header that can be expanded to show a body with more content.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
+          "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Expander - API",
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.expander"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/expander"
+            }
+          ],
+          "RelatedControls": [
+            "Flyout",
+            "ItemsRepeater",
+            "SplitView"
+          ]
+        },
+        {
           "UniqueId": "ItemsRepeater",
           "Title": "ItemsRepeater",
           "Subtitle": "A flexible, primitive control for data-driven layouts.",
@@ -1389,14 +1438,15 @@
             "RelativePanel"
           ]
         },
-                {
+        {
           "UniqueId": "RadioButtons",
           "Title": "RadioButtons",
           "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "ImagePath": "ms-appx:///Assets/RadioButtons.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButtons - API",
@@ -1554,6 +1604,31 @@
       "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "BreadcrumbBar",
+          "Title": "BreadcrumbBar",
+          "Subtitle": "Shows the trail of navigation taken to the current location.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
+          "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
+          "IsUPdated": true,
+          "Docs": [
+            {
+              "Title": "BreadcrumbBar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.breadcrumbbar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/breadcrumbbar"
+            }
+          ],
+          "RelatedControls": [
+            "NavigationView",
+            "Pivot",
+            "TabView"
+          ]
+        },
         {
           "UniqueId": "NavigationView",
           "Title": "NavigationView",
@@ -1781,38 +1856,90 @@
             }
           ],
           "RelatedControls": [
-            "Reveal"
           ]
         },
         {
-          "UniqueId": "Reveal",
-          "Title": "Reveal",
-          "Subtitle": "A material that changes color near the mouse.",
-          "ImagePath": "ms-appx:///Assets/Reveal.png",
-          "Description": "A material that changes color near the mouse.",
-          "Content": "",
-          "IsNew": false,
-          "IsUpdated": false,
+          "UniqueId": "AnimatedIcon",
+          "Title": "AnimatedIcon",
+          "Subtitle": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "ImagePath": "ms-appx:///Assets/Animations.png",
+          "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "Docs": [
             {
-              "Title": "RevealBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealbrush"
+              "Title": "AnimatedIcon - API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedicon"
             },
             {
-              "Title": "RevealBackgroundBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealbackgroundbrush"
+              "Title": "AnimatedIcon - Guidance ",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/animated-icon"
             },
             {
-              "Title": "RevealBorderBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealborderbrush"
+              "Title": "Lottie Overview",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie"
             },
             {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/reveal"
+              "Title": "Lottie Windows - GitHub",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            }
+          ]
+        },
+        {
+          "UniqueId": "IconElement",
+          "Title": "IconElement",
+          "Subtitle": "Represents icon controls that use different image types as its content.",
+          "ImagePath": "ms-appx:///Assets/Image.png",
+          "Description": "Represents icon controls that use different image types as its content.",
+          "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "BitmapIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.bitmapicon"
+            },
+            {
+              "Title": "FontIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon"
+            },
+            {
+              "Title": "ImageIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.imageicon"
+            },
+            {
+              "Title": "PathIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pathicon"
+            },
+            {
+              "Title": "SymbolIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.symbolicon"
+            },
+            {
+              "Title": "Icon Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/icons"
             }
           ],
           "RelatedControls": [
-            "Acrylic"
+            "AnimatedIcon", "AppBarButton", "MenuFlyoutItem"
+          ]
+        },
+        {
+          "UniqueId": "RadialGradientBrush",
+          "Title": "RadialGradientBrush",
+          "Subtitle": "A brush to show radial gradients",
+          "ImagePath": "ms-appx:///Assets/Canvas.png",
+          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
+          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
+          "IsNew": false,
+          "Docs": [
+            {
+              "Title": "RadialGradientBrush - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
+            }
+          ],
+          "RelatedControls": [
+            "Acrylic",
+            "ColorPaletteResources"
           ]
         },
         {
@@ -1835,7 +1962,6 @@
             }
           ],
           "RelatedControls": [
-            "Reveal"
           ]
         },
         {
@@ -1919,7 +2045,7 @@
           "ImagePath": "ms-appx:///Assets/NumberBox.png",
           "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "NumberBox - API",

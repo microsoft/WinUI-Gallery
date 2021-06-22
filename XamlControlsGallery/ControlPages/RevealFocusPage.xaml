@@ -32,8 +32,7 @@
                 <RelativePanel>
                     <ColorPicker x:Name="myPrimaryColorPicker"
                          IsColorChannelTextInputVisible="False"
-                         IsHexInputVisible="False"
-                         Color="{StaticResource SystemAltHighColor}"/>
+                         IsHexInputVisible="False"/>
 
                     <Grid RelativePanel.Below="myPrimaryColorPicker"
                           RelativePanel.AlignLeftWithPanel="True"

@@ -1,4 +1,4 @@
-﻿<muxc:NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+﻿<NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
     Header="Enter an integer:" 
     Value="1" 
     SpinButtonPlacementMode="Compact" 

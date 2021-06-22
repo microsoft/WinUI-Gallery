@@ -26,7 +26,9 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid x:Name="rootPanel" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid
+        x:Name="rootPanel"
+        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -104,10 +106,9 @@
         <!--  Content Region  -->
         <ScrollViewer
             x:Name="svPanel"
-
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="24,0,0,0" SizeChanged="OnContentRootSizeChanged">
+            <Grid x:Name="contentRoot" Padding="56,0,12,36" SizeChanged="OnContentRootSizeChanged">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="contentColumn" />
                     <ColumnDefinition x:Name="rightMargin" Width="20" />

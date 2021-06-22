@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -36,9 +36,7 @@ namespace AppUIBasics.ControlPages
                     case "Button2":
                         Control2Output.Text = "You clicked: " + name;
                         break;
-                    case "Button3":
-                        Control3Output.Text = "You clicked: " + name;
-                        break;
+                    
                 }
             }
         }
