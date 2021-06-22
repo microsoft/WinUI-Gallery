@@ -36,7 +36,27 @@
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
-
+        </local:ControlExample>
+        <local:ControlExample HeaderText="A determinate progress ring.">
+            <StackPanel x:Name="Control2" Orientation="Horizontal">
+                <ProgressRing Width="60" Height="60" x:Name="ProgressRing2" AutomationProperties.Name="Progress image" IsIndeterminate="False" Margin="0,0,60,0"/>
+                <NumberBox x:Name="ProgressValue"
+                                AutomationProperties.Name="Progress amount"
+                                Value="0" Minimum="0" Maximum="100"
+                                SpinButtonPlacementMode="Inline"
+                                MinWidth="120"
+                                Header="Progress"
+                                ValueChanged="ProgressValue_ValueChanged"
+                                VerticalAlignment="Center"/>
+            </StackPanel>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;ProgressRing Width="60" Height="60" Value="$(DeterminateProgressValue)" IsIndeterminate="False"/&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="DeterminateProgressValue" Value="{x:Bind ProgressRing2.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
