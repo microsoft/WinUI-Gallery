@@ -20,7 +20,7 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="An Expander with text in the header and content areas">
             <local:ControlExample.Example>
-                <muxc:Expander x:Name="Expander1" IsExpanded="False" ExpandDirection="Down" Header="This text is in the header" Content="This is in the content"/>
+                <muxc:Expander x:Name="Expander1" IsExpanded="False" ExpandDirection="Down" Header="This text is in the header" Content="This is in the content" VerticalAlignment="Top"/>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <StackPanel>
@@ -35,7 +35,8 @@
                 <x:String xml:space="preserve">
 &lt;muxc:Expander
      IsExpanded="$(IsExpanded)"
-     ExpandDirection="$(ExpandDirection)" 
+     ExpandDirection="$(ExpandDirection)"
+     VerticalAlignment="$(VerticalAlignment)"
      Header="This text is in the header"
      Content="This is in the content"/&gt;
                 </x:String>
@@ -43,6 +44,7 @@
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="IsExpanded" Value="{x:Bind Expander1.IsExpanded, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="ExpandDirection" Value="{ x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="VerticalAlignment" Value="{ x:Bind Expander1.VerticalAlignment, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
         
