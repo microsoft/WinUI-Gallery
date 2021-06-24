@@ -7,23 +7,30 @@ private Windows.UI.Xaml.Thickness AnimatedBtnMargin;
 
 private void InitializeData()
 {
-    IList<string> colors = new List<String>();
-    colors.Add("BlueViolet");
-    colors.Add("BurlyWood");
-    colors.Add("Crimson");
-    colors.Add("DarkCyan");
-    colors.Add("DarkSalmon");
-    colors.Add("MediumAquamarine");
-    colors.Add("DodgerBlue");
-    colors.Add("Firebrick");
-    colors.Add("Goldenrod");
-    colors.Add("Orange");
-    colors.Add("PaleVioletRed");
-    colors.Add("Lime");
-    colors.Add("MediumOrchid");
-    colors.Add("SeaGreen");
-    colors.Add("SandyBrown");
-    colors.Add("SteelBlue");
+
+    IList<string> colors = new List<String>()
+    {
+        "Blue",
+        "BlueViolet",
+        "Crimson",
+        "DarkCyan",
+        "DarkGoldenrod",
+        "DarkMagenta",
+        "DarkOliveGreen",
+        "DarkRed",
+        "DarkSlateBlue",
+        "DeepPink",
+        "IndianRed",
+        "MediumSlateBlue",
+        "Maroon",
+        "MidnightBlue",
+        "Peru",
+        "SaddleBrown",
+        "SteelBlue",
+        "OrangeRed",
+        "Firebrick",
+        "DarkKhaki"
+    };
 
     animatedScrollRepeater.ItemsSource = colors;
     animatedScrollRepeater.ElementPrepared += OnElementPrepared;

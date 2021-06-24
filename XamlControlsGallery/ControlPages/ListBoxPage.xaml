@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -17,7 +17,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="A ListBox with items defined inline and its width set.">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <ListBox x:Name="ListBox1" SelectionChanged="ColorListBox_SelectionChanged" Width="200">
+                    <ListBox x:Name="ListBox1" SelectionChanged="ColorListBox_SelectionChanged" Width="200" HighContrastAdjustment="Auto">
                         <x:String>Blue</x:String>
                         <x:String>Green</x:String>
                         <x:String>Red</x:String>
@@ -41,7 +41,7 @@
             <local:ControlExample.Example>
                 <StackPanel>
                     <ListBox x:Name="ListBox2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1"
-                            SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded" />
+                            SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded" HighContrastAdjustment="Auto"/>
                     <TextBlock x:Name="Control2Output" Text="You can set the font used for this text."
                             FontFamily="{x:Bind (FontFamily)ListBox2.SelectedValue, Mode=OneWay}"
                             Style="{StaticResource OutputTextBlockStyle}" />

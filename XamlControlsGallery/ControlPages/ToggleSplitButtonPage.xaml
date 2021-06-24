@@ -21,6 +21,7 @@
                                     <Setter Property="MinWidth" Value="0"/>
                                     <Setter Property="MinHeight" Value="0"/>
                                     <Setter Property="Margin" Value="6"/>
+                                    <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
                                 </Style>
                             </StackPanel.Resources>
                             <Button Click="BulletButton_Click" AutomationProperties.Name="Bulleted list">

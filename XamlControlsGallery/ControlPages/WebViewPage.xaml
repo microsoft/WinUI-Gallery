@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -20,7 +20,7 @@
         which may be a different language than the app is using. This was quite confusing to see and was not intuitive.-->
     <local:ControlExample HeaderText="A simple WebView " HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
         <local:ControlExample.Example>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />

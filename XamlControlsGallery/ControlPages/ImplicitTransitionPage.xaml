@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.ImplicitTransitionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,7 +13,7 @@
             <Setter Property="TabNavigation" Value="Cycle"/>
         </Style>
     </Page.Resources>
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
         <local:ControlExample HeaderText="Automatically animate changes to Opacity" MinimumUniversalAPIContract="7">
             <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
 
