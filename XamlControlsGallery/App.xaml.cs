@@ -80,14 +80,14 @@ namespace AppUIBasics
             }
         }
 
-#if DESKTOP
+#if !UNIVERSAL
         private static Window currentWindow;
 #endif
         public static Window CurrentWindow
         {
             get
             {
-#if DESKTOP
+#if !UNIVERSAL
                 return currentWindow;
 #else
                 return Window.Current;
@@ -159,7 +159,7 @@ namespace AppUIBasics
         {
             IdleSynchronizer.Init();
 
-#if DESKTOP
+#if !UNIVERSAL
             currentWindow = new Window();
 #endif
 
@@ -176,11 +176,11 @@ namespace AppUIBasics
 #endif
 //draw into the title bar
 
-#if !DESKTOP
+#if UNIVERSAL
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
 #endif
 
-#if DESKTOP
+#if !UNIVERSAL
             // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.
             EnsureWindow();
 #else

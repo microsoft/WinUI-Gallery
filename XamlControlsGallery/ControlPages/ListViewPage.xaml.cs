@@ -17,7 +17,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.Common;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -62,12 +64,12 @@ namespace AppUIBasics.ControlPages
 
     public class Contact
     {
-        #region Properties
+#region Properties
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Company { get; private set; }
         public string Name => FirstName + " " + LastName;
-        #endregion
+#endregion
 
         public Contact(string firstName, string lastName, string company)
         {
@@ -76,7 +78,7 @@ namespace AppUIBasics.ControlPages
             Company = company;
         }
 
-        #region Public Methods
+#region Public Methods
         public async static Task<ObservableCollection<Contact>> GetContactsAsync()
         {
             IList<string> lines = await FileLoader.LoadLines("Assets/Contacts.txt");
@@ -105,7 +107,7 @@ namespace AppUIBasics.ControlPages
         {
             return Name;
         }
-        #endregion
+#endregion
     }
 
     public class GroupInfoList : List<object>

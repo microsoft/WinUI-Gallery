@@ -29,7 +29,7 @@
                 <TextBlock TextWrapping="Wrap" Margin="0,0,0,12">
                 WebView2 is powered by the Chromium engine.
                 </TextBlock>
-                <controls:WebView2 x:Name="MyWebView2" Source="https://github.com/microsoft/microsoft-ui-xaml/issues/1658" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" />
+                <controls:WebView2 x:Name="MyWebView2" Source="https://microsoft.github.io/microsoft-ui-xaml/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" />
             </Grid>
         </local:ControlExample.Example>
     </local:ControlExample>

@@ -8,7 +8,9 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Core;
 using AppUIBasics.TabViewPages;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -27,16 +29,16 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            #if DESKTOP
+#if !UNIVERSAL
             // Launching isn't supported yet on Desktop
             // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes XCG to crash
             //this.LaunchExample.Visibility = Visibility.Collapsed;
-            #endif
+#endif
 
             InitializeDataBindingSampleData();
         }
 
-        #region SharedTabViewLogic
+#region SharedTabViewLogic
         private void TabView_Loaded(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 3; i++)
@@ -82,9 +84,9 @@ namespace AppUIBasics.ControlPages
 
             return newItem;
         }
-        #endregion
+#endregion
 
-        #region ItemsSourceSample
+#region ItemsSourceSample
         private void InitializeDataBindingSampleData()
         {
             myDatas = new ObservableCollection<MyData>();
@@ -129,12 +131,12 @@ namespace AppUIBasics.ControlPages
 
         private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            // Remove the requested MyData object from the collection. 
+            // Remove the requested MyData object from the collection.
             myDatas.Remove(args.Item as MyData);
         }
-        #endregion
+#endregion
 
-        #region KeyboardAcceleratorSample
+#region KeyboardAcceleratorSample
         private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             var senderTabView = args.Element as TabView;
@@ -202,7 +204,7 @@ namespace AppUIBasics.ControlPages
 
             args.Handled = true;
         }
-        #endregion
+#endregion
 
         private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

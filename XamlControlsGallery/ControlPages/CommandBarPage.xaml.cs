@@ -11,7 +11,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
+#if !UNIVERSAL
 using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -130,7 +134,7 @@ namespace AppUIBasics.ControlPages
             while (PrimaryCommandBar.SecondaryCommands.Count > 1)
             {
                 PrimaryCommandBar.SecondaryCommands.RemoveAt(PrimaryCommandBar.SecondaryCommands.Count - 1);
-            }                
+            }
             MultipleButtons = false;
         }
 
