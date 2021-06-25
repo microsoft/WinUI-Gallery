@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -21,7 +21,7 @@
             </Style>
         </StackPanel.Resources>
 
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
             <local:ControlExample x:Name="Example1" HeaderText="Swipe right to reveal actions">
                 <local:ControlExample.Example>
                     <Border>

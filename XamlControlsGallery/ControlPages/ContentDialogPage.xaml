@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.ContentDialogPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,35 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A basic content dialog with content.">
+        <local:ControlExample x:Name="Example1" HeaderText="A basic content dialog with content."
+            CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
+            XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="ShowDialog" Content="Show dialog" Click="ShowDialog_Click" />
-                    <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" FontFamily="Global User Interface" />
+                    <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
             </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;ContentDialog
-        x:Class="AppUIBasics.ControlPages.ContentDialogExample"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    
-        Title="Save your work?"
-        PrimaryButtonText="Save"
-        SecondaryButtonText="Don't Save"
-        CloseButtonText="Cancel"
-        DefaultButton="Primary"&gt;
-    
-    &lt;StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch"&gt;
-        &lt;CheckBox Content="Upload your content to the cloud."/&gt;
-        &lt;TextBlock Text="Lorem ipsum dolor sit amet, adipisicing elit." 
-            TextWrapping="Wrap" /&gt;
-    &lt;/StackPanel&gt;
-    
-&lt;/ContentDialog&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>

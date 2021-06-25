@@ -19,6 +19,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
@@ -34,7 +35,7 @@ namespace AppUIBasics.ControlPages
         private void Menu_Opening(object sender, object e)
         {
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
-            if (myFlyout.Target == REBCustom)
+            if (myFlyout != null && myFlyout.Target == REBCustom)
             {
                 AppBarButton myButton = new AppBarButton
                 {
@@ -42,6 +43,19 @@ namespace AppUIBasics.ControlPages
                 };
                 myFlyout.PrimaryCommands.Add(myButton);
             }
+            else
+            {
+                muxc.CommandBarFlyout muxFlyout = sender as muxc.CommandBarFlyout;
+                if (muxFlyout != null && muxFlyout.Target == REBCustom)
+                {
+                    AppBarButton myButton = new AppBarButton
+                    {
+                        Command = new StandardUICommand(StandardUICommandKind.Share)
+                    };
+                    muxFlyout.PrimaryCommands.Add(myButton);
+                }
+            }
+
         }
 
         private async void OpenButton_Click(object sender, RoutedEventArgs e)

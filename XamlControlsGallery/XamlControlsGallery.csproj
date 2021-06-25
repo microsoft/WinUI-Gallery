@@ -16,21 +16,21 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateThumbprint>
-    </PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>testcert.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>XamlControlsGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
-    <IsWinUIPrerelease>True</IsWinUIPrerelease>
+    <IsWinUIPrerelease>False</IsWinUIPrerelease>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +65,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -88,6 +89,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -110,6 +114,7 @@
     </Content>
     <Content Include="Assets\CopyLinkTeachingTip.png" />
     <Content Include="Assets\LottieLogo1.png" />
+    <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\NumberBox.png" />
     <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
@@ -181,7 +186,6 @@
     <Content Include="Assets\Tiles\LargeTile.scale-150.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-200.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-400.png" />
-    <Content Include="Assets\MainPage_Banner.jpg" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-16.png" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-24.png" />
     <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-256.png" />
@@ -241,8 +245,18 @@
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\SymbolIconSample_1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\PathIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\FontIconSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
@@ -317,8 +331,26 @@
     <Compile Include="Common\LanguageList.cs" />
     <Compile Include="Common\MenuItemTemplateSelector.cs" />
     <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\AnimatedIconPage.xaml.cs">
+      <DependentUpon>AnimatedIconPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\BreadcrumbBarPage.xaml.cs">
+      <DependentUpon>BreadcrumbBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ContentDialogContent.xaml.cs">
+      <DependentUpon>ContentDialogContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ExpanderPage.xaml.cs">
+      <DependentUpon>ExpanderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\IconElementPage.xaml.cs">
+      <DependentUpon>IconElementPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\InfoBarPage.xaml.cs">
       <DependentUpon>InfoBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PipsPagerPage.xaml.cs">
+      <DependentUpon>PipsPagerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
       <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
@@ -764,6 +796,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\AnimatedIconPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\AutomationPropertiesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -772,7 +808,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\BreadcrumbBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ContentDialogContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ExpanderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\IconElementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\InfoBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PipsPagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1213,7 +1269,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.6.0-prerelease.210315002</Version>
+      <Version>2.6.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
@@ -1224,7 +1280,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="testcert.pfx" />
     <None Include="XamlControlsGallery_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

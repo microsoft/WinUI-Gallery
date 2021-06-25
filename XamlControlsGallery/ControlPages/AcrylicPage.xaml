@@ -75,12 +75,12 @@
                         <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
-                    <Rectangle Fill="{ThemeResource SystemControlAcrylicElementBrush}" Margin="12" />
+                    <Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" Margin="12" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Rectangle Fill="{ThemeResource SystemControlAcrylicElementBrush}" /&gt;
+                    &lt;Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -92,12 +92,12 @@
                         <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
-                    <Rectangle Fill="{ThemeResource SystemControlAcrylicWindowBrush}" Margin="12" />
+                    <Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" Margin="12" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Rectangle Fill="{ThemeResource SystemControlAcrylicWindowBrush}" /&gt;
+                    &lt;Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

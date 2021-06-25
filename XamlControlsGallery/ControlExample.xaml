@@ -7,6 +7,7 @@
     xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
@@ -25,7 +26,7 @@
         </Storyboard>
     </UserControl.Resources>
 
-    <Grid x:Name="rootGrid" Loaded="rootGrid_Loaded">
+    <Grid x:Name="rootGrid" Loaded="rootGrid_Loaded" >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="IntermediateLayout">
@@ -77,7 +78,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" CornerRadius="8">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
@@ -87,8 +88,9 @@
             <Grid
                 x:Name="ExampleContainer"
                 x:FieldModifier="Public"
-                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
+                CornerRadius="8,8,0,0"
                 Background="{ThemeResource ControlExampleDisplayBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -105,8 +107,9 @@
                     x:Name="ControlPresenter"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
+                    CornerRadius="8,8,0,0"
                     Padding="12"
-                    BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
                     Background="{ThemeResource ControlExampleDisplayBrush}"
                     HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
@@ -118,9 +121,10 @@
                     Grid.Column="1"
                     Margin="0,12,12,12"
                     Padding="16"
+                    CornerRadius="8"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Background="{ThemeResource ControlExampleDisplayBrush}"
                     Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
                     <TextBlock Text="Output:"/>
                     <ContentPresenter
@@ -132,11 +136,12 @@
                 <ContentPresenter
                     x:Name="OptionsPresenter"
                     Grid.Column="2"
+                    CornerRadius="8"
                     Margin="0,12,12,12"
                     Padding="16"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     Content="{x:Bind Options}"
                     Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
             </Grid>
@@ -145,9 +150,12 @@
             <ScrollViewer
                 x:Name="CodeScrollViewer"
                 Grid.Row="1"
-                Background="{ThemeResource SystemControlPageBackgroundListLowBrush}"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,0,1,1"
                 HorizontalScrollBarVisibility="Auto"
                 HorizontalScrollMode="Auto"
+                contract7Present:CornerRadius="0,0,8,8"
                 VerticalScrollBarVisibility="Disabled"
                 VerticalScrollMode="Disabled">
                 <StackPanel>
