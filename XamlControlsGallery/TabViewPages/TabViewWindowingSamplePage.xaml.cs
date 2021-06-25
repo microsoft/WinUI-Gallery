@@ -38,7 +38,7 @@ namespace AppUIBasics.TabViewPages
 
         void SetupWindow()
         {
-        
+
             // Main Window -- add some default items
             for (int i = 0; i < 3; i++)
             {
@@ -47,7 +47,7 @@ namespace AppUIBasics.TabViewPages
 
             Tabs.SelectedIndex = 0;
 
-#if !DESKTOP
+#if UNIVERSAL
             // Extend into the titlebar
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
@@ -65,7 +65,7 @@ namespace AppUIBasics.TabViewPages
             // To ensure that the tabs in the titlebar are not occluded by shell
             // content, we must ensure that we account for left and right overlays.
             // In LTR layouts, the right inset includes the caption buttons and the
-            // drag region, which is flipped in RTL. 
+            // drag region, which is flipped in RTL.
 
             // The SystemOverlayLeftInset and SystemOverlayRightInset values are
             // in terms of physical left and right. Therefore, we need to flip
@@ -98,7 +98,7 @@ namespace AppUIBasics.TabViewPages
             // ... set the drag data to the tab...
             args.Data.Properties.Add(DataIdentifier, firstItem);
 
-            // ... and indicate that we can move it 
+            // ... and indicate that we can move it
             args.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
@@ -110,7 +110,7 @@ namespace AppUIBasics.TabViewPages
             object obj;
             if (e.DataView.Properties.TryGetValue(DataIdentifier, out obj))
             {
-                // Ensure that the obj property is set before continuing. 
+                // Ensure that the obj property is set before continuing.
                 if (obj == null)
                 {
                     return;

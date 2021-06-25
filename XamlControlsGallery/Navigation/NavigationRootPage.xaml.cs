@@ -22,7 +22,7 @@ using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -74,7 +74,7 @@ namespace AppUIBasics
         {
             get
             {
-#if DESKTOP
+#if !UNIVERSAL
                 return "WinUI 3 Controls Gallery";
 #else
                 return "WinUI 3 Controls Gallery (UWP)";
@@ -86,7 +86,7 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
-#if DESKTOP
+#if !UNIVERSAL
             AppTitleBar.Visibility = Visibility.Collapsed;
             App.CurrentWindow.Title = AppTitleText;
 #endif
@@ -110,13 +110,13 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-#if !DESKTOP
+#if UNIVERSAL
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
 #endif
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
-#if !DESKTOP
+#if UNIVERSAL
             // remove the solid-colored backgrounds behind the caption controls and system back button
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
@@ -313,7 +313,7 @@ namespace AppUIBasics
                     var matchingItems = group.Items.Where(
                         item =>
                         {
-                            // Idea: check for every word entered (separated by space) if it is in the name, 
+                            // Idea: check for every word entered (separated by space) if it is in the name,
                             // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
                             // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
                             bool flag = item.IncludedInBuild;
@@ -439,7 +439,7 @@ namespace AppUIBasics
         {
             DebuggerAttachedCheckBox.IsChecked = false;
 
-            var dispatcherQueue = Microsoft.System.DispatcherQueue.GetForCurrentThread();
+            var dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
             var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
             {

@@ -13,7 +13,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+#if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
+
 namespace AppUIBasics.ControlPages
 {
     /// <summary>

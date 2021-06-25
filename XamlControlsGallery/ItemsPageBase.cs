@@ -18,7 +18,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
+#if !UNIVERSAL
 using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace AppUIBasics
 {
@@ -103,7 +107,7 @@ namespace AppUIBasics
 
                     if (animation != null)
                     {
-                        // Setup the "basic" configuration if the API is present. 
+                        // Setup the "basic" configuration if the API is present.
                         if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
                         {
                             animation.Configuration = new BasicConnectedAnimationConfiguration();
