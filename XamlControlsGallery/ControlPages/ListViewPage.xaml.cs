@@ -329,24 +329,11 @@ namespace AppUIBasics.ControlPages
         public string MsgText { get; private set; }
         public DateTime MsgDateTime { get; private set; }
         public HorizontalAlignment MsgAlignment { get; set; }
-        public SolidColorBrush BgColor { get; set; }
         public Message(string text, DateTime dateTime, HorizontalAlignment align)
         {
             MsgText = text;
             MsgDateTime = dateTime;
             MsgAlignment = align;
-
-            // If received message, use accent background
-            if (MsgAlignment == HorizontalAlignment.Left)
-            {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
-            }
-
-            // If sent message, use light gray
-            else if (MsgAlignment == HorizontalAlignment.Right)
-            {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlErrorTextForegroundBrush"];
-            }
         }
 
         public override string ToString()

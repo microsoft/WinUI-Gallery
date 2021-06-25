@@ -192,9 +192,12 @@ namespace AppUIBasics
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             NavigationRootPage.Current.NavigationViewLoaded = null;
-            NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
-            NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
+            if (NavigationRootPage.Current.PageHeader != null)
+            {
+                NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+                NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
+                NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
+            }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145

@@ -1,17 +1,13 @@
-using AppUIBasics.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Reflection;
 using System.Linq;
-using Windows.UI;
+using AppUIBasics.Common;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Automation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -25,8 +21,6 @@ namespace AppUIBasics.ControlPages
         public List<Recipe> staticRecipeData;
         private bool IsSortDescending = false;
 
-        private Button LastSelectedColorButton;
-
         private double AnimatedBtnHeight;
         private Thickness AnimatedBtnMargin;
         public ItemsRepeaterPage()
@@ -36,6 +30,29 @@ namespace AppUIBasics.ControlPages
             repeater2.ItemsSource = Enumerable.Range(0, 500);
         }
 
+        public List<String> ColorList = new List<String>()
+        {
+                "Blue",
+                "BlueViolet",
+                "Crimson",
+                "DarkCyan",
+                "DarkGoldenrod",
+                "DarkMagenta",
+                "DarkOliveGreen",
+                "DarkRed",
+                "DarkSlateBlue",
+                "DeepPink",
+                "IndianRed",
+                "MediumSlateBlue",
+                "Maroon",
+                "MidnightBlue",
+                "Peru",
+                "SaddleBrown",
+                "SteelBlue",
+                "OrangeRed",
+                "Firebrick",
+                "DarkKhaki"
+        };
         private void InitializeData()
         {
             if (BarItems == null)
@@ -84,8 +101,9 @@ namespace AppUIBasics.ControlPages
             SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
 
-            // Initialize list of colors for animatedScrollRepeater
-            animatedScrollRepeater.ItemsSource = GetColors();
+
+            animatedScrollRepeater.ItemsSource = ColorList;
+
             animatedScrollRepeater.ElementPrepared += OnElementPrepared;
 
             // Initialize custom MyItemsSource object with new recipe data
@@ -104,15 +122,15 @@ namespace AppUIBasics.ControlPages
 
         private ObservableCollection<string> GetVegetables()
         {
-            return new ObservableCollection<string>{"Broccoli","Spinach","Sweet potato","Cauliflower","Onion", "Brussels sprouts","Carrots"};
+            return new ObservableCollection<string> { "Broccoli", "Spinach", "Sweet potato", "Cauliflower", "Onion", "Brussels sprouts", "Carrots" };
         }
         private ObservableCollection<string> GetGrains()
         {
-            return new ObservableCollection<string>{"Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley"};
+            return new ObservableCollection<string> { "Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley" };
         }
         private ObservableCollection<string> GetProteins()
         {
-            return new ObservableCollection<string>{"Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs"};
+            return new ObservableCollection<string> { "Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs" };
         }
 
         // ==========================================================================
@@ -136,10 +154,11 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void RadioBtn_Click(object sender, RoutedEventArgs e)
+        private void RadioBtn_Click(object sender, SelectionChangedEventArgs e)
         {
             string itemTemplateKey = string.Empty;
-            var layoutKey = ((FrameworkElement)sender).Tag as string;
+            var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
+            var layoutKey = ((FrameworkElement)selected).Tag as string;
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
             {
@@ -161,8 +180,7 @@ namespace AppUIBasics.ControlPages
                 layout.Value = layoutKey;
                 itemTemplateKey = "VerticalBarTemplate";
 
-                repeater.MaxWidth = 6000;
-
+	                repeater.MaxWidth = 6000;
                 SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""HorizontalStackLayout"" Orientation=""Horizontal"" Spacing=""8""/> ";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""l:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
@@ -175,9 +193,7 @@ namespace AppUIBasics.ControlPages
             {
                 layout.Value = layoutKey;
                 itemTemplateKey = "CircularTemplate";
-
                 repeater.MaxWidth = 540;
-
                 SampleCodeLayout.Value = @"<muxc:UniformGridLayout x:Name=""UniformGridLayout"" MinRowSpacing=""8"" MinColumnSpacing=""8""/>";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l:Bar"">
     <Grid>
@@ -191,21 +207,16 @@ namespace AppUIBasics.ControlPages
             repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
-
             elementGenerator.Value = itemTemplateKey;
         }
-
         // ==========================================================================
         // Virtualizing, scrollable list of items laid out by ItemsRepeater
         // ==========================================================================
         private void LayoutBtn_Click(object sender, RoutedEventArgs e)
         {
             string layoutKey = ((FrameworkElement)sender).Tag as string;
-
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-
             layout2.Value = layoutKey;
-
             if (layoutKey == "UniformGridLayout2")
             {
                 SampleCodeLayout2.Value = @"<muxc:UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
@@ -217,23 +228,11 @@ namespace AppUIBasics.ControlPages
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
             }
         }
-
+        
         // ==========================================================================
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
-
-        private IList<string> GetColors()
-        {
-            // Initialize list of colors for animated scrolling sample
-            IList<string> colors = (typeof(Colors).GetRuntimeProperties().Select(c => c.ToString())).ToList();
-            for (int i = 0; i < colors.Count(); i++)
-            {
-                colors[i] = colors[i].Substring(17);
-
-            }
-
-            return colors;
-
+        
         }
         private void Animated_GotItem(object sender, RoutedEventArgs e)
         {
@@ -345,7 +344,7 @@ namespace AppUIBasics.ControlPages
                                             {
                                                 Num = k,
                                                 Name = "Recipe " + k.ToString(),
-                                                Color = GetColors()[(k % 100) + 1]
+                                                Color = ColorList[rnd.Next(0, 19)]
                                             }));
 
             foreach (Recipe rec in tempList)
@@ -367,7 +366,7 @@ namespace AppUIBasics.ControlPages
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
 #if WINUI_PRERELEASE
-             VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
+            VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
 #endif
         }
 
@@ -493,8 +492,9 @@ namespace AppUIBasics.ControlPages
         public List<string> IngList { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-        public int NumIngredients {
-            get 
+        public int NumIngredients
+        {
+            get
             {
                 return IngList.Count();
             }
@@ -514,7 +514,7 @@ namespace AppUIBasics.ControlPages
                                                          "Feta Cheese",
                                                          "Parmesan Cheese",
                                                          "Breadcrumbs"};
-            for (int i =0; i < rndNum.Next(0,4); i++)
+            for (int i = 0; i < rndNum.Next(0, 4); i++)
             {
                 string newIng = extras[rndIng.Next(0, 6)];
                 if (!IngList.Contains(newIng))
@@ -581,14 +581,14 @@ namespace AppUIBasics.ControlPages
 
         public int IndexFromKey(string key)
         {
-           foreach (Recipe item in inner)
-           {
+            foreach (Recipe item in inner)
+            {
                 if (item.Num.ToString() == key)
                 {
                     return inner.IndexOf(item);
                 }
-           }
-           return -1;
+            }
+            return -1;
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -39,19 +39,6 @@
                                                   Value= "IsEnabled=&quot;False&quot; "/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample HeaderText="A RepeatButton with Reveal style applied.">
-            <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal">
-                    <RepeatButton Style="{StaticResource RepeatButtonRevealStyle}" Content="Click and hold" Click="RepeatButtonReveal_Click"/>
-                    <TextBlock x:Name="ControlRevealOutput" Margin="8,0,0,0" VerticalAlignment="Center" />
-                </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;RepeatButton Style="{StaticResource RepeatButtonRevealStyle}" Content="Button"/&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
+        
     </StackPanel>
 </Page>

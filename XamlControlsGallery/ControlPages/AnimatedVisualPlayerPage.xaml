@@ -7,8 +7,7 @@
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
         <local:ControlExample x:Name="AnimatedVisualPlayerExample" 
@@ -64,7 +63,8 @@
                                 Grid.Column="0"
                                 Margin="10"
                                 HorizontalAlignment="Stretch"
-                                Click="PlayPauseButton_Click">
+                                Click="PlayPauseButton_Click"
+                                AutomationProperties.Name="Play">
                             <StackPanel>
                                 <SymbolIcon x:Name="PlayIcon" Symbol="Play"/>
                                 <SymbolIcon x:Name="PauseIcon" Symbol="Pause" Visibility="Collapsed"/>

@@ -1,26 +1,13 @@
-﻿using AppUIBasics.Common;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI;
 
 namespace AppUIBasics.ControlPages
 {
     public sealed partial class SplitViewPage : Page
     {
-        private ObservableCollection<NavLink> _navLinks =  new ObservableCollection<NavLink>()
+        private ObservableCollection<NavLink> _navLinks = new ObservableCollection<NavLink>()
         {
             new NavLink() { Label = "People", Symbol = Windows.UI.Xaml.Controls.Symbol.People  },
             new NavLink() { Label = "Globe", Symbol = Windows.UI.Xaml.Controls.Symbol.Globe },
@@ -59,6 +46,11 @@ namespace AppUIBasics.ControlPages
             }
         }
 
+        private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            content.Text = (e.ClickedItem as NavLink).Label + " Page";
+        }
+
         private void PanePlacement_Toggled(object sender, RoutedEventArgs e)
         {
             var ts = sender as ToggleSwitch;
@@ -70,11 +62,6 @@ namespace AppUIBasics.ControlPages
             {
                 splitView.PanePlacement = SplitViewPanePlacement.Left;
             }
-        }
-
-        private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            content.Text = (e.ClickedItem as NavLink).Label + " Page";
         }
 
         private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
