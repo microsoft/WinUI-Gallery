@@ -1,10 +1,12 @@
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../')))"/>
-   <PropertyGroup Condition="'$(WindowsPackageType)' != ''">
-      <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
-      <DefineConstants>$(WindowsPackageType.ToUpper())</DefineConstants>
-      <AppxPackageName>XamlControlsGallery.$(WindowsPackageType)</AppxPackageName>
-   </PropertyGroup>
+  <PropertyGroup Condition="'$(WindowsPackageType)' != ''">
+    <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
+    <DefineConstants>$(DefineConstants);$(WindowsPackageType.ToUpper())</DefineConstants>
+    <PackageNameSuffix Condition="'$(WindowsPackageType)' != 'MSIX'">$(WindowsPackageType)</PackageNameSuffix>
+    <PackageNameSuffix Condition="'$(WindowsPackageType)' == 'MSIX'">Desktop</PackageNameSuffix>
+    <AppxPackageName>XamlControlsGallery.$(PackageNameSuffix)</AppxPackageName>
+  </PropertyGroup>
 
   <ItemGroup Condition="'$(WindowsPackageType)' != ''">
     <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">

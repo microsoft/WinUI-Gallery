@@ -20,7 +20,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI;
 using System.Runtime.InteropServices;
+
+#if !UNIVERSAL
 using WinRT;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -34,11 +37,8 @@ namespace AppUIBasics.ControlPages
     {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
         public static extern IntPtr GetActiveWindow();
+        private Color currentColor = Microsoft.UI.Colors.Green;
 
-        private Windows.UI.Color currentColor = Microsoft.UI.Colors.Black;
-        // String used to restore the colors when the focus gets reenabled
-        // See #144 for more info https://github.com/microsoft/Xaml-Controls-Gallery/issues/144
-        private string LastFormattedText = "";
         public RichEditBoxPage()
         {
             this.InitializeComponent();
@@ -62,7 +62,7 @@ namespace AppUIBasics.ControlPages
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
-#if DESKTOP
+#if !UNIVERSAL
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
@@ -81,7 +81,6 @@ namespace AppUIBasics.ControlPages
                 {
                     // Load the file into the Document property of the RichEditBox.
                     editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
-                    editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
                 }
             }
         }
@@ -97,7 +96,7 @@ namespace AppUIBasics.ControlPages
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
 
-#if DESKTOP
+#if !UNIVERSAL
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
@@ -110,7 +109,7 @@ namespace AppUIBasics.ControlPages
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
-                // Prevent updates to the remote version of the file until we 
+                // Prevent updates to the remote version of the file until we
                 // finish making changes and call CompleteUpdatesAsync.
                 CachedFileManager.DeferUpdates(file);
                 // write to file
@@ -120,7 +119,7 @@ namespace AppUIBasics.ControlPages
                     editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
                 }
 
-                // Let Windows know that we're finished changing the file so the 
+                // Let Windows know that we're finished changing the file so the
                 // other app can update the remote version of the file.
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
                 if (status != FileUpdateStatus.Complete)
@@ -190,36 +189,11 @@ namespace AppUIBasics.ControlPages
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
-            SolidColorBrush foreground = (SolidColorBrush)App.Current.Resources["TextControlForegroundFocused"];
 
-            editor.Document.ApplyDisplayUpdates();
-
-            if (background != null && foreground != null)
+            if (background != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
             }
-            // saving selection span
-            var caretPosition = editor.Document.Selection.GetIndex(TextRangeUnit.Character) - 1;
-            if (caretPosition <= 0)
-            {
-                // User has not entered text, prevent invalid values and just set index to 1
-                caretPosition = 1;
-            }
-            var selectionLength = Math.Abs(editor.Document.Selection.Length);
-            // restoring text styling, unintentionally sets caret position at beginning of text
-            editor.Document.SetText(TextSetOptions.FormatRtf, LastFormattedText);
-            // restoring selection position
-            editor.Document.Selection.SetIndex(TextRangeUnit.Character, caretPosition, false);
-            editor.Document.Selection.SetRange(caretPosition, caretPosition + selectionLength);
-            // Editor might have gained focus because user changed color.
-            // Change selection color
-            // Note that only way to regain with selection containing text is using the change color button
-            editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-        }
-
-        private void Editor_LosingFocus(object sender, RoutedEventArgs e)
-        {
-            editor.Document.GetText(TextGetOptions.FormatRtf, out LastFormattedText);
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -257,10 +231,9 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Editor_TextChanging(object sender, RichEditBoxTextChangingEventArgs e)
+        private void Editor_TextChanged(object sender, RoutedEventArgs e)
         {
-            // Fix bug where selected text would get colored when editor loses focus
-            if (FocusManager.GetFocusedElement() as RichEditBox == editor)
+            if (editor.Document.Selection.CharacterFormat.ForegroundColor != currentColor)
             {
                 editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
             }
