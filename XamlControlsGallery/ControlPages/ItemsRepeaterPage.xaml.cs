@@ -179,8 +179,7 @@ namespace AppUIBasics.ControlPages
             {
                 layout.Value = layoutKey;
                 itemTemplateKey = "VerticalBarTemplate";
-
-	                repeater.MaxWidth = 6000;
+                repeater.MaxWidth = 6000;
                 SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""HorizontalStackLayout"" Orientation=""Horizontal"" Spacing=""8""/> ";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""l:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
@@ -209,6 +208,7 @@ namespace AppUIBasics.ControlPages
             repeater.ItemsSource = BarItems;
             elementGenerator.Value = itemTemplateKey;
         }
+
         // ==========================================================================
         // Virtualizing, scrollable list of items laid out by ItemsRepeater
         // ==========================================================================
@@ -228,12 +228,10 @@ namespace AppUIBasics.ControlPages
                           RowSpacing=""12"" MinItemSize=""80, 108""/>";
             }
         }
-        
+
         // ==========================================================================
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
-        
-        }
         private void Animated_GotItem(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
@@ -403,6 +401,10 @@ namespace AppUIBasics.ControlPages
                 filteredTypes.OrderBy(i => i.IngList.Count());
             // Re-initialize MyItemsSource object with this newly filtered data
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
+
+            var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
+
+            peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
         }
     }
 
