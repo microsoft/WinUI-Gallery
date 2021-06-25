@@ -16,7 +16,11 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 
+#if !UNIVERSAL
 using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -317,7 +321,7 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        public event EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> ErrorsChanged;
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         private void OnPropertyChanged(object value, string propertyName)
         {
@@ -380,7 +384,7 @@ namespace AppUIBasics.ControlPages
             }
 
             errors.AddRange(results);
-            ErrorsChanged?.Invoke(this, new System.ComponentModel.DataErrorsChangedEventArgs(propertyName));
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
         private void ClearErrors(string propertyName)
@@ -388,11 +392,15 @@ namespace AppUIBasics.ControlPages
             if (_errors.TryGetValue(propertyName, out var errors))
             {
                 errors.Clear();
-                ErrorsChanged?.Invoke(this, new System.ComponentModel.DataErrorsChangedEventArgs(propertyName));
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
             }
         }
 
+#if !UNIVERSAL
         public IEnumerable GetErrors(string propertyName)
+#else
+        public IEnumerable<object> GetErrors(string propertyName)
+#endif
         {
             return _errors[propertyName];
         }

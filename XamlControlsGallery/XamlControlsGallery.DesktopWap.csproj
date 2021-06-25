@@ -4,7 +4,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
-    <DefineConstants>DESKTOP</DefineConstants>
+    <DefineConstants>MSIX</DefineConstants>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
     <NoWarn>8305</NoWarn>
@@ -39,13 +39,12 @@
     -->
     <PackageReference Include="System.Private.Uri" />
 
-    <!-- 
-    Explicit C#/WinRT reference to get winrt.runtime v1.2.2; We didn't do SDK update with 
-    this version so users run the risk of getting version conflicts with winrt.runtime v1.1 
+    <!--
+    Explicit C#/WinRT reference to get winrt.runtime v1.2.2; We didn't do SDK update with
+    this version so users run the risk of getting version conflicts with winrt.runtime v1.1
     from .NET SDK Ref v.13 -->
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)" />
     <!-- Win2D.WinUI is not public yet -->

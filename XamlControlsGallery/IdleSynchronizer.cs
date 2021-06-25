@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
@@ -16,7 +16,7 @@ namespace AppUIBasics
     {
         const uint s_idleTimeoutMs = 100000;
         const int s_defaultWaitForEventMs = 10000;
-        
+
         const string s_hasAnimationsHandleName = "HasAnimations";
         const string s_animationsCompleteHandleName = "AnimationsComplete";
         const string s_hasDeferredAnimationOperationsHandleName = "HasDeferredAnimationOperations";
@@ -90,7 +90,7 @@ namespace AppUIBasics
             else
             {
                 AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
-            
+
                 dispatcherQueue.TryEnqueue(
                     DispatcherQueuePriority.Normal,
                     new DispatcherQueueHandler(() =>
@@ -98,7 +98,7 @@ namespace AppUIBasics
                         threadId = NativeMethods.GetCurrentThreadId();
                         threadIdReceivedEvent.Set();
                     }));
-                    
+
                 threadIdReceivedEvent.WaitOne(s_defaultWaitForEventMs);
             }
 
@@ -136,16 +136,16 @@ namespace AppUIBasics
             m_hasBuildTreeWorksHandle = OpenNamedEvent(m_dispatcherQueue, s_hasBuildTreeWorksHandleName);
             m_buildTreeServiceDrainedHandle = OpenNamedEvent(m_dispatcherQueue, s_buildTreeServiceDrainedHandleName);
         }
-        
+
         public static void Init()
         {
             DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-            
+
             if (dispatcherQueue == null)
             {
                 throw new Exception("Init() must be called on the UI thread.");
             }
-            
+
             instance = new IdleSynchronizer(dispatcherQueue);
         }
 
@@ -230,7 +230,7 @@ namespace AppUIBasics
                 // At this point, we know that the UI thread is idle - now we need to make sure
                 // that XAML isn't animating anything.
                 // TODO 27870237: Remove this #if once BuildTreeServiceDrained is properly signaled in WinUI desktop apps.
-#if !DESKTOP
+#if UNIVERSAL
                 errorString = WaitForBuildTreeServiceWork(out hadBuildTreeWork);
                 if (errorString.Length > 0) { return errorString; }
                 AddLog("After WaitForBuildTreeServiceWork");
@@ -313,9 +313,9 @@ namespace AppUIBasics
             var timer = m_dispatcherQueue.CreateTimer();
             timer.Interval = TimeSpan.FromMilliseconds(0);
             timer.IsRepeating = false;
-            
+
             TypedEventHandler<DispatcherQueueTimer,object> tickHandler = null;
-            
+
             tickHandler = (sender, args) =>
             {
                 timer.Tick -= tickHandler;
@@ -343,7 +343,7 @@ namespace AppUIBasics
                 {
                     return "Failed to reset BuildTreeServiceDrained handle.";
                 }
-                
+
                 AutoResetEvent layoutUpdatedEvent = new AutoResetEvent(false);
 
                 m_dispatcherQueue.TryEnqueue(
@@ -354,10 +354,10 @@ namespace AppUIBasics
                         {
                             App.CurrentWindow.Content.UpdateLayout();
                         }
-                        
+
                         layoutUpdatedEvent.Set();
                     }));
-                    
+
                 layoutUpdatedEvent.WaitOne(s_defaultWaitForEventMs);
 
                 // This will be signaled if and only if Jupiter plans to at some point in the near
@@ -479,7 +479,7 @@ namespace AppUIBasics
             for (uint i = 0; i < ticks; i++)
             {
                 AutoResetEvent tickCompleteEvent = new AutoResetEvent(false);
-                    
+
                 m_dispatcherQueue.TryEnqueue(
                     DispatcherQueuePriority.Normal,
                     new DispatcherQueueHandler(() =>
@@ -494,7 +494,7 @@ namespace AppUIBasics
 
                         CompositionTarget.Rendering += renderingHandler;
                     }));
-                    
+
                 tickCompleteEvent.WaitOne(s_defaultWaitForEventMs);
             }
         }

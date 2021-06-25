@@ -10,8 +10,8 @@
 
     <Page.Resources>
         <RevealBorderBrush x:Key="LightBorders" TargetTheme="Dark" Color="Transparent"/>
-        <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" BackgroundSource="Backdrop" TintOpacity="0.45" TintColor="#ff8ff0fb" FallbackColor="#ff8ff0fb"/>
-        <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush_dark" BackgroundSource="Backdrop" TintOpacity="0.45" TintColor="#ff0E5A5C" FallbackColor="#ff0E5A5C"/>
+        <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" TintOpacity="0.45" TintColor="#ff8ff0fb" FallbackColor="#ff8ff0fb"/>
+        <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush_dark" TintOpacity="0.45" TintColor="#ff0E5A5C" FallbackColor="#ff0E5A5C"/>
     </Page.Resources>
 
     <StackPanel>

@@ -175,7 +175,7 @@ namespace AppUIBasics.Common
     public class RootFrameNavigationHelper
     {
         private Frame Frame { get; set; }
-#if !DESKTOP
+#if UNIVERSAL
         SystemNavigationManager systemNavigationManager;
 #endif
         private Microsoft.UI.Xaml.Controls.NavigationView CurrentNavView { get; set; }
@@ -195,7 +195,7 @@ namespace AppUIBasics.Common
             };
             this.CurrentNavView = currentNavView;
 
-#if !DESKTOP
+#if UNIVERSAL
             // Handle keyboard and mouse navigation requests
             this.systemNavigationManager = SystemNavigationManager.GetForCurrentView();
             systemNavigationManager.BackRequested += SystemNavigationManager_BackRequested;
@@ -207,7 +207,7 @@ namespace AppUIBasics.Common
                 CurrentNavView.BackRequested += NavView_BackRequested;
             }
 
-#if !DESKTOP
+#if UNIVERSAL
             // Listen to the window directly so we will respond to hotkeys regardless
             // of which element has focus.
             CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated +=
@@ -236,7 +236,7 @@ namespace AppUIBasics.Common
                 this.Frame.GoBack();
                 navigated = true;
             }
-            
+
             return navigated;
         }
 
@@ -251,7 +251,7 @@ namespace AppUIBasics.Common
             return navigated;
         }
 
-#if !DESKTOP
+#if UNIVERSAL
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (!e.Handled)
@@ -267,7 +267,7 @@ namespace AppUIBasics.Common
             {
                 this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
             }
-#if !DESKTOP
+#if UNIVERSAL
             else
             {
                 systemNavigationManager.AppViewBackButtonVisibility = this.Frame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;

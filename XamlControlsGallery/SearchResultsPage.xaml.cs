@@ -17,7 +17,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
+#if !UNIVERSAL
 using System.ComponentModel;
+#else
+using Microsoft.UI.Xaml.Data;
+#endif
 
 namespace AppUIBasics
 {
@@ -87,7 +91,7 @@ namespace AppUIBasics
                     var matchingItems =
                         group.Items.Where(item =>
                         {
-                            // Idea: check for every word entered (separated by space) if it is in the name, 
+                            // Idea: check for every word entered (separated by space) if it is in the name,
                             // e.g. for query "split button" the only result should "SplitButton" since its the only query to contain "split" and "button"
                             // If any of the sub tokens is not in the string, we ignore the item. So the search gets more precise with more words
                             bool flag = true;

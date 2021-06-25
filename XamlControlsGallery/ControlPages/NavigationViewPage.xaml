@@ -46,7 +46,6 @@
                     <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="myBrush" Color="{StaticResource SystemBaseHighColor}" />
                         <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                                      BackgroundSource="Backdrop"
                                       TintColor="White"
                                       TintOpacity="0.8"
                                       FallbackColor="#F2F2F2" />
@@ -54,7 +53,6 @@
                     <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="myBrush" Color="{StaticResource SystemBaseHighColor}" />
                         <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                                      BackgroundSource="Backdrop"
                                       TintColor="#1F1F1F"
                                       TintOpacity="0.8"
                                       FallbackColor="#1F1F1F" />

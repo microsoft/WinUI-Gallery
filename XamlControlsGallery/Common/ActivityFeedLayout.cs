@@ -99,7 +99,7 @@ namespace AppUIBasics.Common
             var state = context.LayoutState as ActivityFeedLayoutState;
             if (state == null)
             {
-                // Store any state we might need since (in theory) the layout could be in use by multiple 
+                // Store any state we might need since (in theory) the layout could be in use by multiple
                 // elements simultaneously
                 // In reality for the Xbox Activity Feed there's probably only a single instance.
                 context.LayoutState = new ActivityFeedLayoutState();
@@ -123,14 +123,18 @@ namespace AppUIBasics.Common
             if (this.MinItemSize == Size.Empty)
             {
                 var firstElement = context.GetOrCreateElementAt(0);
+#if !UNIVERSAL
                 firstElement.Measure(new Size(float.PositiveInfinity, float.PositiveInfinity));
+#else
+                firstElement.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+#endif
 
                 // setting the member value directly to skip invalidating layout
                 this._minItemSize = firstElement.DesiredSize;
             }
 
-            // Determine which rows need to be realized.  We know every row will have the same height and 
-            // only contain 3 items.  Use that to determine the index for the first and last item that 
+            // Determine which rows need to be realized.  We know every row will have the same height and
+            // only contain 3 items.  Use that to determine the index for the first and last item that
             // will be within that realization rect.
             var firstRowIndex = Math.Max(
                 (int)(context.RealizationRect.Y / (this.MinItemSize.Height + this.RowSpacing)) - 1,
@@ -149,18 +153,18 @@ namespace AppUIBasics.Common
             // ideal item width that will expand/shrink to fill available space
             double desiredItemWidth = Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
 
-            // Foreach item between the first and last index, 
-            //     Call GetElementOrCreateElementAt which causes an element to either be realized or retrieved 
+            // Foreach item between the first and last index,
+            //     Call GetElementOrCreateElementAt which causes an element to either be realized or retrieved
             //       from a recycle pool
             //     Measure the element using an appropriate size
-            // 
-            // Any element that was previously realized which we don't retrieve in this pass (via a call to 
-            // GetElementOrCreateAt) will be automatically cleared and set aside for later re-use.  
+            //
+            // Any element that was previously realized which we don't retrieve in this pass (via a call to
+            // GetElementOrCreateAt) will be automatically cleared and set aside for later re-use.
             // Note: While this work fine, it does mean that more elements than are required may be
-            // created because it isn't until after our MeasureOverride completes that the unused elements 
+            // created because it isn't until after our MeasureOverride completes that the unused elements
             // will be recycled and available to use.  We could avoid this by choosing to track the first/last
-            // index from the previous layout pass.  The diff between the previous range and current range 
-            // would represent the elements that we can pre-emptively make available for re-use by calling 
+            // index from the previous layout pass.  The diff between the previous range and current range
+            // would represent the elements that we can pre-emptively make available for re-use by calling
             // context.RecycleElement(element).
             for (int rowIndex = firstRowIndex; rowIndex < lastRowIndex; rowIndex++)
             {
@@ -180,7 +184,7 @@ namespace AppUIBasics.Common
                 }
             }
 
-            // Calculate and return the size of all the content (realized or not) by figuring out 
+            // Calculate and return the size of all the content (realized or not) by figuring out
             // what the bottom/right position of the last item would be.
             var extentHeight = ((int)(context.ItemCount / 3) - 1) * (this.MinItemSize.Height + this.RowSpacing) + this.MinItemSize.Height;
 

@@ -12,7 +12,11 @@ namespace AppUIBasics.Common
             {
                 var val = (double)value;
 
+#if !UNIVERSAL
                 return new Thickness(val);
+#else
+                return ThicknessHelper.FromUniformLength(val);
+#endif
             }
             return false;
         }
