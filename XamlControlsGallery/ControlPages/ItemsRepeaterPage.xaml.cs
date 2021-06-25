@@ -394,6 +394,11 @@ namespace AppUIBasics.ControlPages
                 filteredTypes.OrderBy(i => i.IngList.Count());
             // Re-initialize MyItemsSource object with this newly filtered data
             filteredRecipeData.InitializeCollection(sortedFilteredTypes);
+
+            var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
+
+            peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
+
         }
     }
 
