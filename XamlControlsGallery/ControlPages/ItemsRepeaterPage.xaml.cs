@@ -179,9 +179,7 @@ namespace AppUIBasics.ControlPages
             {
                 layout.Value = layoutKey;
                 itemTemplateKey = "VerticalBarTemplate";
-
                 repeater.MaxWidth = 6000;
-
                 SampleCodeLayout.Value = @"<muxc:StackLayout x:Name=""HorizontalStackLayout"" Orientation=""Horizontal"" Spacing=""8""/> ";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""l:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
@@ -194,9 +192,7 @@ namespace AppUIBasics.ControlPages
             {
                 layout.Value = layoutKey;
                 itemTemplateKey = "CircularTemplate";
-
                 repeater.MaxWidth = 540;
-
                 SampleCodeLayout.Value = @"<muxc:UniformGridLayout x:Name=""UniformGridLayout"" MinRowSpacing=""8"" MinColumnSpacing=""8""/>";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l:Bar"">
     <Grid>
@@ -210,7 +206,6 @@ namespace AppUIBasics.ControlPages
             repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
             repeater.ItemsSource = BarItems;
-
             elementGenerator.Value = itemTemplateKey;
         }
 
@@ -220,11 +215,8 @@ namespace AppUIBasics.ControlPages
         private void LayoutBtn_Click(object sender, RoutedEventArgs e)
         {
             string layoutKey = ((FrameworkElement)sender).Tag as string;
-
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-
             layout2.Value = layoutKey;
-
             if (layoutKey == "UniformGridLayout2")
             {
                 SampleCodeLayout2.Value = @"<muxc:UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
@@ -240,7 +232,6 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
-
         private void Animated_GotItem(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
@@ -253,6 +244,8 @@ namespace AppUIBasics.ControlPages
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
             colorRectangle.Fill = senderBtn.Background;
+
+            SetUIANamesForSelectedEntry(senderBtn);
         }
 
 
@@ -288,9 +281,12 @@ namespace AppUIBasics.ControlPages
             AnimatedBtnMargin = AnimatedBtn.Margin;
         }
 
-        private void Animated_ScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        private void Animated_ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
             Button SelectedItem = GetSelectedItemFromViewport() as Button;
+
+            SetUIANamesForSelectedEntry(SelectedItem);
+
             // Update corresponding rectangle with selected color
             // In case of scrolling VERY fast, the item we are updating our view for might already be recycled and thus null.
             // Check if our SelectedItem actually exists, otherwise we would crash.
@@ -298,6 +294,17 @@ namespace AppUIBasics.ControlPages
             {
                 colorRectangle.Fill = SelectedItem.Background;
             }
+        }
+
+        private void SetUIANamesForSelectedEntry(Button selectedItem)
+        {
+            if (LastSelectedColorButton != null && LastSelectedColorButton.Content is string content)
+            {
+                AutomationProperties.SetName(LastSelectedColorButton, content);
+            }
+
+            AutomationProperties.SetName(selectedItem, (string)selectedItem.Content + " , selected");
+            LastSelectedColorButton = selectedItem;
         }
 
         // Find centerpoint of ScrollViewer
@@ -398,7 +405,6 @@ namespace AppUIBasics.ControlPages
             var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
 
             peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
-
         }
     }
 
