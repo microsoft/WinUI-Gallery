@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using AppUIBasics.Common;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
+using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
 
@@ -23,6 +24,8 @@ namespace AppUIBasics.ControlPages
 
         private double AnimatedBtnHeight;
         private Thickness AnimatedBtnMargin;
+        private Button LastSelectedColorButton;
+
         public ItemsRepeaterPage()
         {
             this.InitializeComponent();
