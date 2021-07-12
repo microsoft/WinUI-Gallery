@@ -55,7 +55,7 @@ namespace AppUIBasics.TabViewPages
                 // Main Window -- add some default items
                 for (int i = 0; i < 3; i++)
                 {
-                    Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new MyTabContentControl() { DataContext = $"Page {i}" } });
+                    Tabs.TabItems.Add(CreateNewTVI($"Item {i}", $"Page {i}"));
                 }
 
                 Tabs.SelectedIndex = 0;
@@ -123,6 +123,12 @@ namespace AppUIBasics.TabViewPages
         // Create a new Window once the Tab is dragged outside.
         private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
+            MoveTabToNewWindow(args.Tab);
+        }
+
+        private async void MoveTabToNewWindow(TabViewItem tab)
+        {
+
             // AppWindow was introduced in Windows 10 version 18362 (ApiContract version 8). 
             // If the app is running on a version earlier than 18362, simply no-op.
             // If your app needs to support multiple windows on earlier versions of Win10, you can use CoreWindow/ApplicationView.
@@ -139,8 +145,8 @@ namespace AppUIBasics.TabViewPages
 
             ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
 
-            Tabs.TabItems.Remove(args.Tab);
-            newPage.AddTabToTabs(args.Tab);
+            Tabs.TabItems.Remove(tab);
+            newPage.AddTabToTabs(tab);
 
             await newWindow.TryShowAsync();
         }
@@ -222,7 +228,40 @@ namespace AppUIBasics.TabViewPages
 
         private void Tabs_AddTabButtonClick(TabView sender, object args)
         {
-            sender.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = "New Item", Content = new MyTabContentControl() { DataContext = "New Item" } });
+            sender.TabItems.Add(CreateNewTVI("New Item", "New Item"));
+        }
+
+
+        private TabViewItem CreateNewTVI(string header, string dataContext)
+        {
+            var newTab = new TabViewItem()
+            {
+                IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource()
+                {
+                    Symbol = Symbol.Placeholder
+                },
+                Header = header,
+                Content = new MyTabContentControl()
+                {
+                    DataContext = dataContext
+                }
+            };
+
+            var contextFlyout = new MenuFlyout();
+            var moveToNewWindowFlyout = new MenuFlyoutItem();
+
+            moveToNewWindowFlyout.Text = "Move to new window";
+            moveToNewWindowFlyout.Click += MoveToNewWindowFlyout_Click;
+            contextFlyout.Items.Add(moveToNewWindowFlyout);
+
+            newTab.ContextFlyout = contextFlyout;
+
+            void MoveToNewWindowFlyout_Click(object _sender, RoutedEventArgs e)
+            {
+                MoveTabToNewWindow(newTab);
+            }
+
+            return newTab;
         }
 
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
