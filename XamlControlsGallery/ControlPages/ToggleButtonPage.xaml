@@ -42,20 +42,5 @@
                                                   Value= "IsEnabled=&quot;False&quot; "/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample HeaderText="A ToggleButton with Reveal style applied.">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                <ToggleButton  x:Name="ToggleReveal" Content="ToggleButton"
-                              Style="{StaticResource ToggleButtonRevealStyle}"
-                              Checked="ToggleButtonReveal_Checked" Unchecked="ToggleButtonReveal_Unchecked" />
-            </StackPanel>
-            <local:ControlExample.Output>
-                <TextBlock x:Name="ControlRevealOutput"/>
-            </local:ControlExample.Output>
-            <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;ToggleButton Content="ToggleButton" Style="{StaticResource ToggleButtonRevealStyle}"/&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
     </StackPanel>
 </Page>

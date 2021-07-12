@@ -47,14 +47,14 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="24,0,0,36"
+            Padding="40,0,0,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
             IsItemClickEnabled="True"
             IsSwipeEnabled="False"
             ItemClick="OnItemGridViewItemClick"
-            ItemContainerStyle="{StaticResource GridViewItemStyle}"
+            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             KeyDown="OnItemGridViewKeyDown"
@@ -66,7 +66,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-24,0,0,24">
+                <Grid Margin="-40,0,0,-60"  Height="220">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -76,10 +76,10 @@
                         <Image
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.jpg"
-                            Stretch="UniformToFill" />
+                            Source="Assets/MainPage_Banner.png"
+                            Stretch="Uniform" />
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                Visibility="Collapsed"
                                Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
@@ -91,11 +91,11 @@
         <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource ControlsName}"
             VerticalAlignment="Top"
-            Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="42"
-            Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" 
+            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"              
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
-            ShadowOpacity="1"/>
+            ShadowOpacity="0"/>
     </Grid>
 </local:ItemsPageBase>
