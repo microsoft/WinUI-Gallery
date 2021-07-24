@@ -44,7 +44,7 @@
         <Rectangle x:Name="NarrowBackground" Visibility="Collapsed" />
 
         <Rectangle x:Name="WideBackground" Fill="{Binding ElementName=headerControl, Path=Background}" Opacity="{Binding ElementName=headerControl, Path=BackgroundColorOpacity}" />
-        
+
         <Grid x:Name="headerRoot" Padding="{Binding ElementName=headerControl, Path=Padding}" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -52,7 +52,7 @@
             </Grid.ColumnDefinitions>
             <Grid x:Name="pageTitle"
                 Background="Transparent"
-                Height="40"
+                Height="44"
                 VerticalAlignment="Top">
                 <!-- <Canvas x:Name="ShadowHost" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/> -->
                 <TextBlock x:Name="TitleTextBlock"
@@ -67,7 +67,7 @@
             <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">
                 <CommandBar
                     x:Name="topCommandBar"
-                    Height="40"
+                    Height="44"
                     Margin="0,0,12,0"
                     Background="Transparent"
                     ClosedDisplayMode="Compact"
