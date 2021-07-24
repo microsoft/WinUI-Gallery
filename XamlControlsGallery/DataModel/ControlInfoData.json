@@ -1240,10 +1240,6 @@
             {
               "Title": "PipsPager - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
-            },
-            {
-              "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/pipspager"
             }
           ],
           "RelatedControls": [
