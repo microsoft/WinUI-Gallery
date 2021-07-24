@@ -1372,10 +1372,6 @@
             {
               "Title": "Expander - API",
               "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.expander"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/expander"
             }
           ],
           "RelatedControls": [
