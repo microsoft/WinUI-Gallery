@@ -95,7 +95,7 @@
                         <Run FontStyle="Italic">git clone https://github.com/Microsoft/Xaml-Controls-Gallery</Run>
                     </Paragraph>
                 </RichTextBlock>
-                <TextBlock Margin="0,10,0,0">
+                <TextBlock Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     Version: 
                     <Run Text="{x:Bind Version}" FontWeight="Bold" />
                 </TextBlock>
