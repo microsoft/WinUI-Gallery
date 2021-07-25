@@ -58,7 +58,7 @@ namespace AppUIBasics
             }
 
             screenshotModeToggle.IsOn = UIHelper.IsScreenshotMode;
-            screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
+            screenshotFolderLinkContent.Text = UIHelper.ScreenshotStorageFolder.Path;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
