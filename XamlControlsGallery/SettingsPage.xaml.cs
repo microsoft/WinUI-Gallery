@@ -164,5 +164,10 @@ namespace AppUIBasics
         {
             await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
+
+        private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            this.Frame.Navigate(typeof(ItemPage), "Sound");
+        }
     }
 }
