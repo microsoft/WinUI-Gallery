@@ -75,9 +75,7 @@
                     <ToggleSwitch x:Name="screenshotModeToggle" Header="Screenshot mode" Toggled="screenshotModeToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
                     <Button Content="Set screenshot folder" Click="FolderButton_Click" Margin="0,4,0,0"/>
 
-                    <HyperlinkButton x:Name="screenshotFolderLink" Margin="0,4,0,0" Click="screenshotFolderLink_Click">
-                        <TextBlock x:Name="screenshotFolderLinkContent" TextWrapping="Wrap"/>
-                    </HyperlinkButton>
+                    <HyperlinkButton x:Name="screenshotFolderLink" Margin="0,4,0,0" Click="screenshotFolderLink_Click"/>
                 </StackPanel>
 
                 <TextBlock
@@ -97,7 +95,7 @@
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
                         This app is the interactive companion to the
-                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>.
+                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink> .
                     </Paragraph>
                     <Paragraph Margin="0,10,0,0">
                         Source code:
