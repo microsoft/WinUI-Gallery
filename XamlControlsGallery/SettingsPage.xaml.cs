@@ -163,5 +163,10 @@ namespace AppUIBasics
         {
             ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
         }
+
+        private void soundPageHyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            this.Frame.Navigate(typeof(ItemPage), "Sound");
+        }
     }
 }
