@@ -1957,6 +1957,10 @@
               "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedicon"
             },
             {
+              "Title": "AnimatedIcon - Guidance",
+              "Uri": "https://docs.microsoft.com/en-us/windows/apps/design/controls/animated-icon"
+            },
+            {
               "Title": "Lottie Overview",
               "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie"
             },
