@@ -1153,7 +1153,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.tooltip"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tooltips"
             }
           ],
@@ -1274,8 +1274,8 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
             },
             {
-              "Title": "Guidance",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/pipspager"
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/pipspager"
             }
           ],
           "RelatedControls": [
@@ -1299,7 +1299,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.scrollviewer"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/scroll-controls"
             }
           ],
@@ -1516,7 +1516,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.relativepanel"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1570,7 +1570,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.stackpanel"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1597,7 +1597,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.variablesizedwrapgrid"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1731,7 +1731,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
             },
             {
@@ -1913,7 +1913,7 @@
               "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedicon"
             },
             {
-              "Title": "AnimatedIcon - Guidance ",
+              "Title": "AnimatedIcon - Guidelines ",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/style/animated-icon"
             },
             {
