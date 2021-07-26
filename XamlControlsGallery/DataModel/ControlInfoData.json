@@ -1240,7 +1240,12 @@
             {
               "Title": "PipsPager - API",
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/pipspager"
             }
+            
           ],
           "RelatedControls": [
             "ScrollViewer",
@@ -1368,6 +1373,10 @@
             {
               "Title": "Expander - API",
               "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.expander"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/expander"
             }
           ],
           "RelatedControls": [
