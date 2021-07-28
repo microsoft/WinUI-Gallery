@@ -58,7 +58,7 @@ namespace AppUIBasics
             }
 
             screenshotModeToggle.IsOn = UIHelper.IsScreenshotMode;
-            screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
+            screenshotFolderLinkContent.Text = UIHelper.ScreenshotStorageFolder.Path;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -162,6 +162,11 @@ namespace AppUIBasics
         private void OnResetTeachingTipsButtonClick(object sender, RoutedEventArgs e)
         {
             ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
+        }
+
+        private void soundPageHyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            this.Frame.Navigate(typeof(ItemPage), "Sound");
         }
     }
 }
