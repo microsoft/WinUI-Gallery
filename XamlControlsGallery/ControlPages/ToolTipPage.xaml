@@ -41,10 +41,10 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TextBlock Text="TextBlock with an offset ToolTip."/&gt;
-    &lt;ToolTipService.ToolTip/&gt;
+&lt;TextBlock Text="TextBlock with an offset ToolTip."&gt;
+    &lt;ToolTipService.ToolTip&gt;
         &lt;ToolTip Content="Offset ToolTip." VerticalOffset="-80"/&gt;
-    &lt;/ToolTipService.ToolTip/&gt;
+    &lt;/ToolTipService.ToolTip&gt;
 &lt;/TextBlock&gt;
                 </x:String>
             </local:ControlExample.Xaml>
@@ -62,9 +62,9 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
-    &lt;ToolTipService.ToolTip/&gt;
+    &lt;ToolTipService.ToolTip&gt;
         &lt;ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/&gt;
-    &lt;/ToolTipService.ToolTip/&gt;
+    &lt;/ToolTipService.ToolTip&gt;
 &lt;/Image&gt;
                     </x:String>
             </local:ControlExample.Xaml>
