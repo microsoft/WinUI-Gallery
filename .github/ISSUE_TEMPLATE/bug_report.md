@@ -26,13 +26,15 @@ Steps to reproduce the behavior:
 - [ ] App downloaded from Store 
     - If so, which version? (Found on the Settings page of the app.)
 - [ ] App built locally from source 
-  - If so, which branch? (WinUI 3 versions are built off the winui3preview branch)
+  - If so, which branch? (WinUI 3 versions are built off the winui3 branch)
 
 **Additional context**
 <!-- Enter any other applicable info here -->
 
 Windows version:
 - [ ] Insider Build (xxxxx)
+- [ ] May 2021 Update (19043)
+- [ ] October 2020 Update (19042)
 - [ ] May 2020 Update (19041)
 - [ ] November 2019 Update (18363)
 - [ ] May 2019 Update (18362)
