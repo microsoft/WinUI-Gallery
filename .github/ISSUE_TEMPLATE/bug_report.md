@@ -31,7 +31,7 @@ Steps to reproduce the behavior:
 **Additional context**
 <!-- Enter any other applicable info here -->
 
-Windows 10 version:
+Windows version:
 - [ ] Insider Build (xxxxx)
 - [ ] May 2020 Update (19041)
 - [ ] November 2019 Update (18363)
