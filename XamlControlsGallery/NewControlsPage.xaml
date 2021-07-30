@@ -40,6 +40,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
+                        <Setter Target="itemGridView.Margin" Value="0,-34,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
@@ -69,7 +70,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-40,0,-12,-100" Height="220">
+                <Grid Margin="-40,0,-12,-100" Height="218">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
