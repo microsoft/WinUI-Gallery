@@ -95,8 +95,10 @@
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                x:Uid="NewControlsPage_SmallHeader"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"/>
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               Margin="94,24,0,0" />
                 </Grid>
             </GridView.Header>
 
@@ -104,7 +106,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource HomePageBackgroundBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -113,11 +115,12 @@
 
         <local:PageHeader x:Name="pageHeader"
             VerticalAlignment="Top"
+            Foreground="{ThemeResource PageHeaderForegroundBrush}"
             Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="42"
-            Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
-            IsHitTestVisible="False"/>
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
+            IsHitTestVisible="False"
+            ShadowOpacity="0"/>
     </Grid>
     
 </local:ItemsPageBase>

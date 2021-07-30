@@ -90,9 +90,11 @@
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
-                               x:Uid="AllControlsPage_SmallHeader"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}" />
+                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Text="{StaticResource ControlsName}"
+                               Margin="84,24,0,0" />
                 </Grid>
             </GridView.Header>
         </GridView>
