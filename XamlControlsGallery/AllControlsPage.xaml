@@ -66,7 +66,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-40,0,0,-60"  Height="220">
+                <Grid Margin="-40,0,0,-60"  Height="230">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
