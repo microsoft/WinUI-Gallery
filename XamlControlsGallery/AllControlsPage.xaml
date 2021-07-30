@@ -103,7 +103,7 @@
             x:Uid="AllControlsPage_PageHeader"
             VerticalAlignment="Top"
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
-            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
