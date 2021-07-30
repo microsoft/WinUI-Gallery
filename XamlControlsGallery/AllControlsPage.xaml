@@ -81,9 +81,11 @@
                     </ParallaxView>
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
-                               Text="{StaticResource ControlsName}"/>
+                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Text="{StaticResource ControlsName}"
+                               Margin="84,24,0,0" />
                 </Grid>
             </GridView.Header>
         </GridView>

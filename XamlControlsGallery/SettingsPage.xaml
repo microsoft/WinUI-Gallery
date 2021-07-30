@@ -29,16 +29,15 @@
         <ScrollViewer
             x:Name="contentSV"
             Grid.Row="1"
-            Padding="20,0,0,0"
+            Padding="56,0,0,0"
             IsTabStop="False"
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <StackPanel HorizontalAlignment="Left">
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Margin="0,4,0,0"
-                    FontWeight="Normal"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Margin="0,12,0,0"
                     Text="Theme Mode" />
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
@@ -47,17 +46,16 @@
                 </StackPanel>
                 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Sound" />
                 <StackPanel Margin="0,10,0,0">
                     <ToggleSwitch x:Name="soundToggle" Header="Controls provide audible feedback" Toggled="soundToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
                     <CheckBox x:Name="spatialSoundBox" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Spatial Audio"/>
                     <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
                 </StackPanel>
-                
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
+
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,40,0,0" Text="Navigation Style" />
                 <muxc:RadioButtons x:Name="navigationLocation" Margin="0,10,0,0"
                         Header="Navigation position" SelectionChanged="navigationLocation_SelectionChanged">
                     <RadioButton Content="Left"/>
@@ -67,9 +65,8 @@
                 
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Screenshots" />
                 <StackPanel Margin="0,10,0,0">
                     <ToggleSwitch x:Name="screenshotModeToggle" Header="Screenshot mode" Toggled="screenshotModeToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
@@ -79,18 +76,16 @@
                 </StackPanel>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Teaching Tips" />
                 <StackPanel Margin="0,10,0,0">
                     <Button Content="Reset the &quot;Generate Link to Page&quot; Teaching Tip" Click="OnResetTeachingTipsButtonClick" Margin="0,4,0,0"/>
                 </StackPanel>
                 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="About" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
@@ -112,9 +107,8 @@
                 </TextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Found a bug? Want a new sample?" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
@@ -139,9 +133,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Dependencies and References" />
                 <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,10,0,0">
                     <Paragraph Margin="0,10,0,10">
@@ -159,9 +152,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Companion apps" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
@@ -179,9 +171,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Disclaimer" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,50" IsTextSelectionEnabled="True">
                     <Paragraph>THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</Paragraph>
