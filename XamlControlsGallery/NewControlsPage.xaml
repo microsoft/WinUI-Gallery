@@ -40,6 +40,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
+                        <Setter Target="itemGridView.Margin" Value="0,-80,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
@@ -69,7 +70,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-40,0,-12,-100" Height="220">
+                <Grid Margin="-40,0,-12,-100" Height="190">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -84,9 +85,11 @@
                     </ParallaxView>
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
-                               Text="{StaticResource NewControlsName}"/>
+                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Text="{StaticResource NewControlsName}"
+                               Margin="94,24,0,0" />
                 </Grid>
             </GridView.Header>
 
@@ -94,7 +97,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource HomePageBackgroundBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,34,0,0"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -105,7 +108,7 @@
             Title="{StaticResource NewControlsName}"
             VerticalAlignment="Top"
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
-            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
