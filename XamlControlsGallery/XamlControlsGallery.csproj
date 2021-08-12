@@ -29,9 +29,9 @@
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" />
-    <!-- Win2D.WinUI is not public yet -->
-    <!-- <PackageReference Include="Win2d.winui" /> -->
+    <PackageReference Include="Win2d.winui" />
     <PackageReference Include="Microsoft.WinUI" />
+    <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
@@ -46,14 +46,11 @@
     this version so users run the risk of getting version conflicts with winrt.runtime v1.1
     from .NET SDK Ref v.13 -->
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
-
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)" />
-
-    <!-- Win2D.WinUI is not public yet -->
-    <!-- <PackageReference Update="Win2d.winui" Version="$(Win2DWinUIVersion)" /> -->
+    <PackageReference Update="Win2d.winui" Version="$(Win2DWinUIVersion)" />
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
     <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
@@ -80,17 +77,11 @@
     <Compile Remove="ControlPages\RevealPage.xaml.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
     <Compile Remove="ControlPages\InputValidationPage.xaml.cs" Condition="'$(MUXFinalRelease)'=='true'" />
-    <!-- Win2D.WinUI is not public yet, and LottieLogo1.cs and AnimatedVisualPlayerPage.xaml.cs depend on it -->
-    <Compile Remove="AnimatedVisuals\LottieLogo1.cs" />
-    <Compile Remove="ControlPages\AnimatedVisualPlayerPage.xaml.cs" />
     <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Page Remove="ControlPages\RevealFocusPage.xaml" />
     <Page Remove="ControlPages\RevealPage.xaml" />
     <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
     <Page Remove="ControlPages\InputValidationPage.xaml" Condition="'$(MUXFinalRelease)'=='true'" />
-
-    <!-- Win2D.WinUI is not public yet, and AnimatedVisualPlayerPage.xaml depends on it -->
-    <Page Remove="ControlPages\AnimatedVisualPlayerPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />

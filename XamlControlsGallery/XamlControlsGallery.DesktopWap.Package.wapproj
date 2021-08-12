@@ -88,10 +88,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.ProjectReunion" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
         <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[$(ProjectReunionWinUIPackageVersion)]" GeneratePathProperty="true">
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="[$(ProjectReunionWinUIPackageVersion)]" GeneratePathProperty="true">
         <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>

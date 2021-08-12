@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 

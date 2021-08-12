@@ -22,7 +22,7 @@ using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -439,7 +439,7 @@ namespace AppUIBasics
         {
             DebuggerAttachedCheckBox.IsChecked = false;
 
-            var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+            var dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
             var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
             {

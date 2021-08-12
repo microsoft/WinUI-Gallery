@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.System;
+using Microsoft.UI.Dispatching;
 
 #if !UNIVERSAL
 using System.Collections.ObjectModel;

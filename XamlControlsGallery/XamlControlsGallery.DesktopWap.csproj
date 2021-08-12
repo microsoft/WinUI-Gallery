@@ -30,6 +30,7 @@
     <!-- Win2D.WinUI is not public yet -->
     <!-- <PackageReference Include="Win2d.winui" /> -->
     <PackageReference Include="Microsoft.WinUI" />
+    <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
@@ -59,11 +60,12 @@
 
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
     <PackageReference Remove="Microsoft.WinUI" />
-    <PackageReference Include="Microsoft.ProjectReunion" />
+    <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.ProjectReunion" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
