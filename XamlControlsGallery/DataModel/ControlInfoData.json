@@ -2455,6 +2455,37 @@
           ]
         }
       ]
+    },
+    {
+      "UniqueId": "MultipleWindows",
+      "Title": "Windows",
+      "Subtitle": "",
+      "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+      "Description": "",
+      "Items": [
+        {
+          "UniqueId": "CreateMultipleWindows",
+          "Title": "Create Multiple Windows",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "With Windows App SDK 1.0 we are allowing creation of single threaded multiple top level Xaml windows in Desktop apps",
+          "Content": "<p>Look at the <i>CreateMultipleWindows.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "MultipleWindow - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            },
+            {
+              "Title": "Guidance",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            }
+          ],
+          "RelatedControls": [           
+          ]
+        }
+      ]
     }
   ]
 }
