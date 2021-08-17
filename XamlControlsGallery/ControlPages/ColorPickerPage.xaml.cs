@@ -21,5 +21,18 @@ namespace AppUIBasics.ControlPages
                     break;
             }
         }
+
+        private void ColorSpectrumOrientationRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ColorSpectrumOrientationRadioButtons.SelectedItem)
+            {
+                case "Vertical":
+                    colorPicker.Orientation = Orientation.Vertical;
+                    break;
+                default:
+                    colorPicker.Orientation = Orientation.Horizontal;
+                    break;
+            }
+        }
     }
 }
