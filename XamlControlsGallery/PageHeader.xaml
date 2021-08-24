@@ -61,7 +61,7 @@
                     Style="{StaticResource TitleTextBlockStyle}"
                     VerticalAlignment="Center"
                     FontSize="{Binding ElementName=headerControl, Path=FontSize}"
-                    Foreground="{Binding ElementName=headerControl, Path=Foreground}"
+                    Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"
                     Text="{x:Bind Title, Mode=OneWay}"
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
