@@ -28,6 +28,7 @@ namespace AppUIBasics.ControlPages
 
         public VirtualKey ArrowKey;
 
+
         public ObservableCollection<CategoryBase> Categories { get; set; }
 
         public NavigationViewPage()
@@ -42,11 +43,11 @@ namespace AppUIBasics.ControlPages
             nvSample9.SelectedItem = nvSample9.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
 
             Categories = new ObservableCollection<CategoryBase>();
-            Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
+            CategoryWithBadgeValue firstCategory = new CategoryWithBadgeValue { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1", Value = -1 };
             Categories.Add(firstCategory);
-            Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });
-            Categories.Add(new Category { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" });
-            Categories.Add(new Category { Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 4" });
+            Categories.Add(new CategoryWithBadgeValue { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2", Value = 2 });
+            Categories.Add(new CategoryWithBadgeValue { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3", Value = 10 });
+            Categories.Add(new CategoryWithBadgeValue { Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 4", Value = 100 });
             nvSample4.SelectedItem = firstCategory;
 
             setASBSubstitutionString();

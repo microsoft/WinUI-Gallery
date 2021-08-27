@@ -12,13 +12,16 @@
     <Page.Resources>
         <converters:MenuItemTemplateSelector x:Key="selector" >
             <converters:MenuItemTemplateSelector.ItemTemplate>
-                <DataTemplate x:DataType="converters:Category">
+                <DataTemplate x:DataType="converters:CategoryWithBadgeValue">
                     <muxc:NavigationViewItem 
                                 Content="{x:Bind Name}"
                                 ToolTipService.ToolTip="{x:Bind Tooltip}">
                         <muxc:NavigationViewItem.Icon>
                             <SymbolIcon Symbol="{x:Bind Glyph}" />
                         </muxc:NavigationViewItem.Icon>
+                        <muxc:NavigationViewItem.InfoBadge>
+                            <muxc:InfoBadge Value="{x:Bind Value}"/>
+                        </muxc:NavigationViewItem.InfoBadge>
                     </muxc:NavigationViewItem>
                 </DataTemplate>
             </converters:MenuItemTemplateSelector.ItemTemplate>
