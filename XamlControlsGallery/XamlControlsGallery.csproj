@@ -107,6 +107,9 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);8305</NoWarn>
+  </PropertyGroup>
   <PropertyGroup Condition="$(IsWinUIPrerelease) == 'True'">
     <DefineConstants>$DefineConstants;WINUI_PRERELEASE</DefineConstants>
   </PropertyGroup>
