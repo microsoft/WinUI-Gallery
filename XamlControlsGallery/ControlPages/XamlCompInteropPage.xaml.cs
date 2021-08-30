@@ -17,7 +17,7 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        Compositor _compositor = App.CurrentWindow.Compositor;
+        Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
         private SpringVector3NaturalMotionAnimation _springAnimation;
 
         private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e)

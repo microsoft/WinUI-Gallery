@@ -47,15 +47,15 @@ namespace AppUIBasics.ControlPages
 
         private void createNewWindow_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new Window();
+            var newWindow = WindowHelper.CreateWindow();
             var rootPage = new NavigationRootPage();
+            rootPage.RequestedTheme = App.RootTheme;
             newWindow.Content = rootPage;
             newWindow.Activate();
 
             var targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
-            var rootFrame = (Frame)rootPage.FindName("rootFrame");
-            rootFrame.Navigate(targetPageType, targetPageArguments);
+            rootPage.Navigate(targetPageType, targetPageArguments);
         }
     }
 }

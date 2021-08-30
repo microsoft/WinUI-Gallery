@@ -350,9 +350,12 @@ namespace AppUIBasics
                     DispatcherQueuePriority.Normal,
                     new DispatcherQueueHandler(() =>
                     {
-                        if (App.CurrentWindow != null && App.CurrentWindow.Content != null)
+                        foreach (Window window in WindowHelper.ActiveWindows)
                         {
-                            App.CurrentWindow.Content.UpdateLayout();
+                            if (window.Content != null)
+                            {
+                                window.Content.UpdateLayout();
+                            }
                         }
 
                         layoutUpdatedEvent.Set();

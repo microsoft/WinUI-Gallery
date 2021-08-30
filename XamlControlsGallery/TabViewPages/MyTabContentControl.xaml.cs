@@ -10,6 +10,12 @@ namespace AppUIBasics.TabViewPages
         public MyTabContentControl()
         {
             this.InitializeComponent();
+
+#if !UNIVERSAL
+            DesktopTextBlock.Visibility = Visibility.Visible;
+            UwpTextBlock1.Visibility = Visibility.Collapsed;
+            UwpTextBlock2.Visibility = Visibility.Collapsed;
+#endif
         }
     }
 }
