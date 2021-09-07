@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -16,7 +16,7 @@ namespace AppUIBasics.ConnectedAnimationPages
         {
             this.InitializeComponent();
 
-            // Ensure that the MainPage is only created                                          once, and cached during navigation.
+            // Ensure that the MainPage is only created once, and cached during navigation.
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
             collection.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
