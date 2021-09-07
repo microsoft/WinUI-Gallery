@@ -67,7 +67,7 @@
 
         <local:ControlExample x:Name="Example2" HeaderText="Different InfoBadge Styles" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal" contract5Present:Spacing="20">
+                <StackPanel Orientation="Horizontal" contract5Present:Spacing="20" HorizontalAlignment="Center">
                     <muxc:InfoBadge x:Name="infoBadge2" Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"/>
                     <muxc:InfoBadge x:Name="infoBadge3" Style="{StaticResource AttentionValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10"/>
                     <muxc:InfoBadge x:Name="infoBadge4" Style="{StaticResource AttentionDotInfoBadgeStyle}" VerticalAlignment="Center"/>
@@ -100,7 +100,7 @@
 
         <local:ControlExample x:Name="Example3" HeaderText="Placing an InfoBadge Inside Another Control" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
-                <Button Padding="0" Width="200" Height="60" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Button Padding="0" Width="200" Height="60" HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
                         <SymbolIcon Symbol="Sync" HorizontalAlignment="Center" />
                         <muxc:InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -131,6 +131,26 @@
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="Style" Value="{x:Bind InfoBadgeStyleComboBox.SelectedValue, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example4" HeaderText="InfoBadge with Dynamic Value" HorizontalContentAlignment="Stretch" >
+            <local:ControlExample.Example>
+                <muxc:InfoBadge x:Name="DynamicInfoBadge"
+                                HorizontalAlignment="Center"
+                                Value="{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}" />
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Options>
+                <StackPanel Width="130">
+                    <muxc:NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" SpinButtonPlacementMode="Inline"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:InfoBadge Value="{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>
