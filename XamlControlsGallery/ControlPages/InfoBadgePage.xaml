@@ -44,7 +44,7 @@
                 
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel Width="130">
+                <StackPanel Width="160">
                     <ToggleSwitch x:Name="ToggleInfoBadgeOpacity" Header="InfoBadge Opacity" Toggled="ToggleInfoBadgeOpacity_Toggled" IsOn="True"/>
                     <ComboBox x:Name="NavigationViewDisplayMode" Header="Display Mode" SelectionChanged="NavigationViewDisplayMode_SelectionChanged" SelectedValue="LeftExpanded">
                         <x:String>LeftExpanded</x:String>
@@ -75,7 +75,7 @@
 
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel Width="130">
+                <StackPanel Width="160">
                     <ComboBox x:Name="InfoBadgeStyleComboBox" Header="Styles" SelectionChanged="InfoBadgeStyleComboBox_SelectionChanged" SelectedValue="Attention">
                         <x:String>Attention</x:String>
                         <x:String>Informational</x:String>
@@ -141,7 +141,7 @@
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
-                <StackPanel Width="130">
+                <StackPanel Width="160">
                     <muxc:NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" SpinButtonPlacementMode="Inline"/>
                 </StackPanel>
             </local:ControlExample.Options>
