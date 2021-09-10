@@ -336,6 +336,9 @@
     <Compile Include="ControlPages\AnimatedIconPage.xaml.cs">
       <DependentUpon>AnimatedIconPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlPages\InfoBadgePage.xaml.cs">
+      <DependentUpon>InfoBadgePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlPages\BreadcrumbBarPage.xaml.cs">
       <DependentUpon>BreadcrumbBarPage.xaml</DependentUpon>
     </Compile>
@@ -810,6 +813,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ControlPages\InfoBadgePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlPages\BreadcrumbBarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1271,7 +1278,7 @@
       <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.7.0-prerelease.210816001</Version>
+      <Version>2.7.0-prerelease.210827001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.0</Version>
