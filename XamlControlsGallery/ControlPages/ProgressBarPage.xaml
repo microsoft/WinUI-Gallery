@@ -49,6 +49,7 @@
                 <NumberBox
                     x:Name="ProgressValue"
                     AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}"
+                    AutomationProperties.Name="NumberBox controlling ProgressBar2 value"
                     Minimum="0"
                     Maximum="100"
                     Value="0"
