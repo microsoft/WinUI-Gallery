@@ -13,7 +13,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:l="using:AppUIBasics.ControlPages"
       mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
@@ -26,6 +28,55 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        
+
+        <local:ControlExample x:Name="Example2" HeaderText="BreadCrumbBar Control with Custom DataTemplate">
+            <local:ControlExample.Example>
+                <muxc:BreadcrumbBar x:Name="BreadcrumbBar2">
+                    <muxc:BreadcrumbBar.ItemTemplate>
+                        <DataTemplate x:DataType="l:Foo">
+                            <muxc:BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}">
+                                <muxc:BreadcrumbBarItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </muxc:BreadcrumbBarItem.ContentTemplate>
+                            </muxc:BreadcrumbBarItem>
+                        </DataTemplate>
+                    </muxc:BreadcrumbBar.ItemTemplate>
+                </muxc:BreadcrumbBar>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">    
+&lt;muxc:BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
+    &lt;muxc:BreadcrumbBar.ItemTemplate&gt;
+        &lt;DataTemplate x:DataType="l:Foo"&gt;
+            &lt;muxc:BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}"&gt;
+                &lt;muxc:BreadcrumbBarItem.ContentTemplate&gt;
+                    &lt;DataTemplate&gt;
+                        &lt;TextBlock Text="{Binding Name}" /&gt;
+                    &lt;/DataTemplate&gt;
+                &lt;/muxc:BreadcrumbBarItem.ContentTemplate&gt;
+            &lt;/muxc:BreadcrumbBarItem&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/muxc:BreadcrumbBar.ItemTemplate&gt;
+&lt;/muxc:BreadcrumbBar&gt;
+                    </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public class Foo
+    {
+        public string Name { get; set; }
+    }
+
+BreadcrumbBar2.ItemsSource = new List&lt;Foo&gt;
+{
+    new Foo { Name = "Home"},
+    new Foo { Name = "Folder1" },
+    new Foo { Name = "Folder2" }
+};
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
     </StackPanel>
 </Page>
