@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using AppUIBasics.Common;
@@ -9,10 +10,6 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
-
-#if !UNIVERSAL
-using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -261,7 +258,10 @@ namespace AppUIBasics.ControlPages
                 VerticalAlignmentRatio = 0.5,
                 AnimationDesired = true,
             });
+        }
 
+        private void Animated_ClickItem(object sender, RoutedEventArgs e)
+        {
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
             colorRectangle.Fill = senderBtn.Background;
@@ -300,21 +300,6 @@ namespace AppUIBasics.ControlPages
             Button AnimatedBtn = sender as Button;
             AnimatedBtnHeight = AnimatedBtn.ActualHeight;
             AnimatedBtnMargin = AnimatedBtn.Margin;
-        }
-
-        private void Animated_ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            Button SelectedItem = GetSelectedItemFromViewport() as Button;
-
-            SetUIANamesForSelectedEntry(SelectedItem);
-
-            // Update corresponding rectangle with selected color
-            // In case of scrolling VERY fast, the item we are updating our view for might already be recycled and thus null.
-            // Check if our SelectedItem actually exists, otherwise we would crash.
-            if(SelectedItem != null)
-            {
-                colorRectangle.Fill = SelectedItem.Background;
-            }
         }
 
         private void SetUIANamesForSelectedEntry(Button selectedItem)
