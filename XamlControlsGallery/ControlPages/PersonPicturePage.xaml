@@ -12,7 +12,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="Select different looks for the person picture.">
 
             <local:ControlExample.Example>
-                <PersonPicture x:Name="personPicture" Height="300"
+                <muxc:PersonPicture x:Name="personPicture" Height="300"
                 VerticalAlignment="Top"
                 ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://docs.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}"
                 DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
@@ -28,7 +28,7 @@
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) /&gt;
+                    &lt;muxc:PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
