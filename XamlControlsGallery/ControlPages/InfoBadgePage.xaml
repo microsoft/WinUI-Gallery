@@ -135,8 +135,7 @@
 
         <local:ControlExample x:Name="Example4" HeaderText="InfoBadge with Dynamic Value" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
-                <muxc:InfoBadge x:Name="DynamicInfoBadge"
-                                HorizontalAlignment="Center"/>
+                <muxc:InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center"/>
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
@@ -157,7 +156,7 @@
                 <x:String xml:space="preserve">
 private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
 {
-    if((int)args.NewValue>= -1)
+    if((int)args.NewValue >= -1)
     {
         DynamicInfoBadge.Value = (int)args.NewValue;
     }

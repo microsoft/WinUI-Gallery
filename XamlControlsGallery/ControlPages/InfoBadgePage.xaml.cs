@@ -81,7 +81,7 @@ namespace AppUIBasics.ControlPages
 
         private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
         {
-            if((int)args.NewValue>= -1)
+            if((int)args.NewValue >= -1)
             {
                 DynamicInfoBadge.Value = (int)args.NewValue;
             }
