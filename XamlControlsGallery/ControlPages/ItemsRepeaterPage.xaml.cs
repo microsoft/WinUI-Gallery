@@ -250,7 +250,7 @@ namespace AppUIBasics.ControlPages
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
 
-        private void Animated_GotItem(object sender, RoutedEventArgs e)
+        private void OnAnimatedItemGotFocus(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
             item.StartBringIntoView(new BringIntoViewOptions()
@@ -260,7 +260,7 @@ namespace AppUIBasics.ControlPages
             });
         }
 
-        private void Animated_ClickItem(object sender, RoutedEventArgs e)
+        private void OnAnimatedItemClicked(object sender, RoutedEventArgs e)
         {
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
