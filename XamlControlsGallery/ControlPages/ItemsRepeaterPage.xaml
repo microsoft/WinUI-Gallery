@@ -247,8 +247,8 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                             <DataTemplate x:DataType="x:String">
                             <Button Content="{x:Bind}"
                                         Background="{x:Bind}"
-                                        Click="Animated_ClickItem" 
-                                        GotFocus="Animated_GotItem" 
+                                        Click="OnAnimatedItemClicked"
+                                        GotFocus="OnAnimatedItemGotFocus"
                                         HorizontalAlignment="Stretch"
                                         Loaded="GetButtonSize"
                                         Foreground="{ThemeResource TextFillColorInverseBrush}">
