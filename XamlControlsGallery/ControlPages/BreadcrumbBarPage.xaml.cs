@@ -12,16 +12,16 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
             BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
 
-            BreadcrumbBar2.ItemsSource = new List<Foo>
+            BreadcrumbBar2.ItemsSource = new List<Folder>
             {
-                new Foo { Name = "Home"},
-                new Foo { Name = "Folder1" },
-                new Foo { Name = "Folder2" }
+                new Folder { Name = "Home"},
+                new Folder { Name = "Folder1" },
+                new Folder { Name = "Folder2" }
             };
         }
     }
 
-    public class Foo
+    public class Folder
     {
         public string Name { get; set; }
     }
