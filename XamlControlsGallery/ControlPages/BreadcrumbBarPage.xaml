@@ -32,7 +32,7 @@
             <local:ControlExample.Example>
                 <BreadcrumbBar x:Name="BreadcrumbBar2">
                     <BreadcrumbBar.ItemTemplate>
-                        <DataTemplate x:DataType="l:Foo">
+                        <DataTemplate x:DataType="l:Folder">
                             <BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}">
                                 <BreadcrumbBarItem.ContentTemplate>
                                     <DataTemplate>
@@ -48,7 +48,7 @@
                 <x:String xml:space="preserve">
 &lt;BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
     &lt;BreadcrumbBar.ItemTemplate&gt;
-        &lt;DataTemplate x:DataType="l:Foo"&gt;
+        &lt;DataTemplate x:DataType="l:Folder"&gt;
             &lt;BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}"&gt;
                 &lt;BreadcrumbBarItem.ContentTemplate&gt;
                     &lt;DataTemplate&gt;
@@ -63,16 +63,16 @@
             </local:ControlExample.Xaml>
             <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-public class Foo
+public class Folder
     {
         public string Name { get; set; }
     }
 
-BreadcrumbBar2.ItemsSource = new List&lt;Foo&gt;
+BreadcrumbBar2.ItemsSource = new List&lt;Folder&gt;
 {
-    new Foo { Name = "Home"},
-    new Foo { Name = "Folder1" },
-    new Foo { Name = "Folder2" }
+    new Folder { Name = "Home"},
+    new Folder { Name = "Folder1" },
+    new Folder { Name = "Folder2" }
 };
                 </x:String>
             </local:ControlExample.CSharp>
