@@ -9,7 +9,6 @@
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
     FontSize="24"
     HighContrastAdjustment="Auto">
-
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -36,7 +35,6 @@
                 <VisualState x:Name="DefaultForeground" />
                 <VisualState x:Name="AlternateForeground">
                     <VisualState.Setters>
-                        <Setter Target="TitleTextBlock.Foreground" Value="Transparent" />
                         <Setter Target="ShadowHost.Opacity" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -61,7 +59,7 @@
                     Style="{StaticResource TitleTextBlockStyle}"
                     VerticalAlignment="Center"
                     FontSize="{Binding ElementName=headerControl, Path=FontSize}"
-                    Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"
+                    Foreground="{Binding ElementName=headerControl, Path=Foreground}"
                     Text="{x:Bind Title, Mode=OneWay}"
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />

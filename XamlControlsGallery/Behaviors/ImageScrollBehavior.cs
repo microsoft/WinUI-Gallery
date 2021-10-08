@@ -68,7 +68,6 @@ namespace AppUIBasics.Behaviors
                 VisualStateManager.GoToState(header, "DefaultForeground", false);
                 header.BackgroundColorOpacity = 0;
                 header.FontSize = 28;
-                header.Foreground = new SolidColorBrush(Colors.White);
                 header.AcrylicOpacity = 0.3;
             }
             else if (verticalOffset > scrollViewerThresholdValue)
@@ -81,9 +80,6 @@ namespace AppUIBasics.Behaviors
                 if (ThemeHelper.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
-                    Color foreground = new Color() { A = _alpha };
-                    foreground.R = foreground.G = foreground.B = (byte)((verticalOffset > _alpha) ? 0 : (_alpha - verticalOffset));
-                    header.Foreground = new SolidColorBrush(foreground);
                 }
                 else
                 {
