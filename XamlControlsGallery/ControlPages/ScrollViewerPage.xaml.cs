@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -39,11 +39,9 @@ namespace AppUIBasics.ControlPages
                             ZoomSlider.Value = 1;
                             ZoomSlider.IsEnabled = false;
                             break;
-                        default: // Disabled
-                            Control1.ZoomMode = ZoomMode.Disabled;
-                            Control1.ChangeView(null, null, (float)1.0);
-                            ZoomSlider.Value = 1;
-                            ZoomSlider.IsEnabled = false;
+                        default: // Enabled
+                            Control1.ZoomMode = ZoomMode.Enabled;
+                            ZoomSlider.IsEnabled = true;
                             break;
                     }
                 }

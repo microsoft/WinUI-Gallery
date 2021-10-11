@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,6 +12,7 @@ using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
@@ -23,7 +24,6 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            // DEMO ONLY: Initialize Color rectangles
             if (Spring2018 && Application.Current.FocusVisualKind == FocusVisualKind.Reveal)
             {
                 RevealFocus.IsChecked = true;
@@ -40,7 +40,6 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        // DEMO ONLY: Change focus visual mode to high visibility
         private void HighVisibility_Checked(object sender, RoutedEventArgs e)
         {
             if (exampleButton.ActualTheme == ElementTheme.Light)
@@ -61,7 +60,6 @@ namespace AppUIBasics.ControlPages
             FocusVisualKindSubstitution.Value = "HighVisibility";
         }
 
-        // DEMO ONLY: Change focus visual mode to reveal focus
         private void RevealFocus_Checked(object sender, RoutedEventArgs e)
         {
             if (Spring2018)
@@ -84,11 +82,14 @@ namespace AppUIBasics.ControlPages
 
         private void confirmColor_Click(object sender, RoutedEventArgs e)
         {
-            // DEMO ONLY: Set colors of the buttons to the selected color in ColorPicker
+            AutomationProperties.SetName(primaryColorPickerButton,
+                "Select primary color, currently selected: " + ColorHelper.ToDisplayName(myPrimaryColorPicker.Color) + " , " + myPrimaryColorPicker.Color.ToString());
+            AutomationProperties.SetName(secondaryColorPickerButton,
+                "Select secondary color, currently selected: " + ColorHelper.ToDisplayName(mySecondaryColorPicker.Color) + " , " + mySecondaryColorPicker.Color.ToString());
+
             primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
             secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);
 
-            // DEMO ONLY: Close the Flyout.
             primaryColorPickerButton.Flyout.Hide();
             secondaryColorPickerButton.Flyout.Hide();
         }
@@ -136,6 +137,5 @@ namespace AppUIBasics.ControlPages
         {
             return new SolidColorBrush(color);
         }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,7 +24,14 @@ namespace AppUIBasics.ControlPages
 
         private async void ShowDialog_Click(object sender, RoutedEventArgs e)
         {
-            ContentDialogExample dialog = new ContentDialogExample();
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = "Save your work?";
+            dialog.PrimaryButtonText = "Save";
+            dialog.SecondaryButtonText = "Don't Save";
+            dialog.CloseButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Content = new ContentDialogContent();
+
             var result = await dialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
