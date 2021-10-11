@@ -101,7 +101,8 @@
 
     <StackPanel>
         <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto" 
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
                           MaxHeight="500">
@@ -115,20 +116,17 @@
                     <Button x:Name="AddBtn" Content="Add Item" Click="AddBtn_Click" MinWidth="150"/>
                     <Button x:Name="DeleteBtn" Content="Remove Item" Click="DeleteBtn_Click" MinWidth="150"/>
 
-                    <muxc:RadioButtons Header="Layout">
+                    <muxc:RadioButtons Header="Layout" SelectionChanged="RadioBtn_Click">
                         <RadioButton x:Name="VStackBtn" 
                                      Content="StackLayout - Vertical"
-                                     Click="RadioBtn_Click"
                                      Tag="VerticalStackLayout"
                                      IsChecked="True"/>
                         <RadioButton x:Name="HStackBtn"
                                      Content="StackLayout - Horizontal"
-                                     Tag="HorizontalStackLayout"
-                                     Click="RadioBtn_Click"/>
+                                     Tag="HorizontalStackLayout"/>
                         <RadioButton x:Name="HGridBtn"
                                      Content="UniformGridLayout"
-                                     Tag="UniformGridLayout"
-                                     Click="RadioBtn_Click"/>
+                                     Tag="UniformGridLayout"/>
                     </muxc:RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
@@ -221,7 +219,7 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
 
         <local:ControlExample HeaderText="Laying out nested ItemsRepeaters"
                               XamlSource="ItemsRepeater/ItemsRepeaterNestedSample_xaml.txt">
-            <ScrollViewer>
+            <ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
                 <muxc:ItemsRepeater x:Name="outerRepeater"
                                            VerticalAlignment="Top"
                                            ItemTemplate ="{StaticResource CategoryTemplate}">
@@ -244,18 +242,18 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <ScrollViewer x:Name="Animated_ScrollViewer" 
                               Grid.Column="0"
                               Height="175"
-                              Width="250"
-                              ViewChanging="Animated_ScrollViewer_ViewChanging">
+                              Width="250">
                     <muxc:ItemsRepeater x:Name="animatedScrollRepeater">
                             <DataTemplate x:DataType="x:String">
-                                <Button Content="{x:Bind}"
+                            <Button Content="{x:Bind}"
                                         Background="{x:Bind}"
-                                        Click="Animated_GotItem" 
-                                        GotFocus="Animated_GotItem" 
+                                        Click="OnAnimatedItemClicked"
+                                        GotFocus="OnAnimatedItemGotFocus"
                                         HorizontalAlignment="Stretch"
                                         Loaded="GetButtonSize"
-                                        Foreground="{StaticResource SystemBaseHighColor}"/>
-                            </DataTemplate>
+                                        Foreground="{ThemeResource TextFillColorInverseBrush}">
+                            </Button>
+                        </DataTemplate>
                     </muxc:ItemsRepeater>
                 </ScrollViewer>
 

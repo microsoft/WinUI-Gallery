@@ -21,13 +21,14 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
 
-
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid x:Name="rootPanel" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid
+        x:Name="rootPanel"
+        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -109,10 +110,9 @@
         <!--  Content Region  -->
         <ScrollViewer
             x:Name="svPanel"
-
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="24,0,0,0" SizeChanged="OnContentRootSizeChanged">
+            <Grid x:Name="contentRoot" Padding="56,0,12,36" SizeChanged="OnContentRootSizeChanged">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="contentColumn" />
                     <ColumnDefinition x:Name="rightMargin" Width="20" />
@@ -140,7 +140,7 @@
                     Grid.RowSpan="2"
                     Grid.Column="2"
                     Width="280"
-                    Margin="0,0,24,24">
+                    Margin="0,12,10,24">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -153,10 +153,11 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4">
                         <TextBlock
                             x:Name="SourceHeader"
                             x:Uid="SourceHeader"
+                            Margin="0,0,0,12"
                             Style="{ThemeResource SubtitleTextBlockStyle}"
                             Text="View page code on GitHub"/>
                         <HyperlinkButton
@@ -166,20 +167,19 @@
                         </HyperlinkButton>
                         <HyperlinkButton
                             x:Name="PageCodeGitHubLink"
-                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}"
-                            Margin="0,12,0,0">
+                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
                             <TextBlock Text="C# source code"/>
                         </HyperlinkButton>
                     </StackPanel>
 
-                    <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,24">
                         <TextBlock
                             x:Name="docHeader"
                             x:Uid="DocHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
                         <ItemsControl
                             x:Name="DocsList"
-                            Margin="0,12,0,0"
                             IsTabStop="False"
                             ItemsSource="{x:Bind Item.Docs}">
                             <ItemsControl.ItemsPanel>
@@ -197,10 +197,11 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
 
                         <ItemsControl
@@ -252,6 +253,7 @@
                         <TextBlock
                             x:Name="feedbackHeader"
                             x:Uid="FeedbackHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
                         <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose" 
                                          ToolTipService.ToolTip="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">

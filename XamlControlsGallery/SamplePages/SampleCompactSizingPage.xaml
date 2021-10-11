@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -24,11 +24,11 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Spacing="4">
             <TextBlock x:Name="HeaderBlock" Text="Compact Size" FontSize="18"/>
-            <TextBox Header="First Name:" x:Name="txtfirstName" />
-            <TextBox Header="Last Name:" x:Name="txtLastName"  />
-            <PasswordBox Header="Password:" />
-            <PasswordBox Header="Confirm Password:" />
-            <DatePicker Header="Pick a date" />
+            <TextBox Header="First Name:" x:Name="firstName" />
+            <TextBox Header="Last Name:" x:Name="lastName"  />
+            <PasswordBox Header="Password:" x:Name="password"/>
+            <PasswordBox Header="Confirm Password:" x:Name="confirmPassword"/>
+            <DatePicker Header="Pick a date" x:Name="chosenDate"/>
         </StackPanel>
     </Grid>
 </Page>

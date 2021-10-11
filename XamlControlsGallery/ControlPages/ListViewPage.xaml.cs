@@ -152,36 +152,37 @@ namespace AppUIBasics.ControlPages
                     // Find the insertion index:
                     Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
 
-                    // Find which ListView is the target, find height of first item
-                    ListViewItem sampleItem;
-                    if (target.Name == "DragDropListView")
+                    // If the target ListView has items in it, use the heigh of the first item
+                    //      to find the insertion index.
+                    int index = 0;
+                    if (target.Items.Count != 0)
                     {
-                        sampleItem = (ListViewItem)DragDropListView2.ContainerFromIndex(0);
+                        // Get a reference to the first item in the ListView
+                        ListViewItem sampleItem = (ListViewItem)target.ContainerFromIndex(0);
+
+                        // Adjust itemHeight for margins
+                        double itemHeight = sampleItem.ActualHeight + sampleItem.Margin.Top + sampleItem.Margin.Bottom;
+
+                        // Find index based on dividing number of items by height of each item
+                        index = Math.Min(target.Items.Count - 1, (int)(pos.Y / itemHeight));
+
+                        // Find the item being dropped on top of.
+                        ListViewItem targetItem = (ListViewItem)target.ContainerFromIndex(index);
+
+                        // If the drop position is more than half-way down the item being dropped on
+                        //      top of, increment the insertion index so the dropped item is inserted
+                        //      below instead of above the item being dropped on top of.
+                        Windows.Foundation.Point positionInItem = e.GetPosition(targetItem);
+                        if (positionInItem.Y > itemHeight / 2)
+                        {
+                            index++;
+                        }
+
+                        // Don't go out of bounds
+                        index = Math.Min(target.Items.Count, index);
                     }
-                    // Only other case is target = DragDropListView2
-                    else
-                    {
-                        sampleItem = (ListViewItem)DragDropListView.ContainerFromIndex(0);
-                    }
-
-                    // Adjust ItemHeight for margins
-                    double itemHeight = sampleItem.ActualHeight + sampleItem.Margin.Top + sampleItem.Margin.Bottom;
-
-                    // Find index based on dividing number of items by height of each item
-                    int index = Math.Min(target.Items.Count - 1, (int)(pos.Y / itemHeight));
-
-                    // Find the item that we want to drop
-                    ListViewItem targetItem = (ListViewItem)target.ContainerFromIndex(index); ;
-
-                    // Figure out if to insert above or below
-                    Windows.Foundation.Point positionInItem = e.GetPosition(targetItem);
-                    if (positionInItem.Y > itemHeight / 2)
-                    {
-                        index++;
-                    }
-
-                    // Don't go out of bounds
-                    index = Math.Min(target.Items.Count, index);
+                    // Only other case is if the target ListView has no items (the dropped item will be
+                    //      the first). In that case, the insertion index will remain zero.
 
                     // Find correct source list
                     if (target.Name == "DragDropListView")
@@ -329,24 +330,11 @@ namespace AppUIBasics.ControlPages
         public string MsgText { get; private set; }
         public DateTime MsgDateTime { get; private set; }
         public HorizontalAlignment MsgAlignment { get; set; }
-        public SolidColorBrush BgColor { get; set; }
         public Message(string text, DateTime dateTime, HorizontalAlignment align)
         {
             MsgText = text;
             MsgDateTime = dateTime;
             MsgAlignment = align;
-
-            // If received message, use accent background
-            if (MsgAlignment == HorizontalAlignment.Left)
-            {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
-            }
-
-            // If sent message, use light gray
-            else if (MsgAlignment == HorizontalAlignment.Right)
-            {
-                BgColor = (SolidColorBrush)Application.Current.Resources["SystemControlErrorTextForegroundBrush"];
-            }
         }
 
         public override string ToString()
