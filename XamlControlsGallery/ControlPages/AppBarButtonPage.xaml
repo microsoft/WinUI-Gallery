@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -91,6 +91,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        
         <local:ControlExample x:Name="Example5" HeaderText="An AppBarButton with a KeyboardAccelerator">
             <StackPanel Orientation="Horizontal">
                 <AppBarButton x:Name="Button5" Icon="Save" Label="Save" Click="AppBarButton_Click">
@@ -110,15 +111,6 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample HeaderText="An AppBarButton with Reveal style.">
-            <local:ControlExample.Example>
-                <AppBarButton Style="{StaticResource AppBarButtonRevealStyle}" Icon="Add" Label="Add item" />
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;AppBarButton Style="{StaticResource AppBarButtonRevealStyle}" Icon="Add" Label="Add item" /&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+        
     </StackPanel>
 </Page>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppUIBasics.ControlPages.StandardUICommandPage" 
+<Page x:Class="AppUIBasics.ControlPages.StandardUICommandPage" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
       xmlns:local="using:AppUIBasics"
@@ -8,7 +8,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
     <Page.Resources>
-        <Style x:Key="HorizontalSwipe" TargetType="ListViewItem" BasedOn="{StaticResource ListViewItemRevealStyle}">
+        <Style x:Key="HorizontalSwipe" TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}">
             <Setter Property="Height" Value="60"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -24,7 +24,7 @@
                               HorizontalContentAlignment="Stretch"
                               MinimumUniversalAPIContract="7"
                               Loaded="ControlExample_Loaded">
-            <Grid x:Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid x:Name="rootGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />

@@ -7,22 +7,19 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AppUIBasics.Common;
+using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
-using Windows.Storage;
 using Windows.System.Profile;
-using Windows.UI;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -166,18 +163,26 @@ namespace AppUIBasics
 
                 string targetId = string.Empty;
 
-                switch (((ProtocolActivatedEventArgs)args).Uri?.AbsolutePath)
+                switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
                 {
-                    case string s when IsMatching(s, "/category/(.*)"):
-                        targetId = match.Groups[1]?.ToString();
-                        if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
+                    case string s when IsMatching(s, "(/*)category/(.*)"):
+                        targetId = match.Groups[2]?.ToString();
+                        if (targetId == "AllControls")
+                        {
+                            targetPageType = typeof(AllControlsPage);
+                        }
+                        else if (targetId == "NewControls")
+                        {
+                            targetPageType = typeof(NewControlsPage);
+                        }
+                        else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
                         {
                             targetPageType = typeof(SectionPage);
                         }
                         break;
 
-                    case string s when IsMatching(s, "/item/(.*)"):
-                        targetId = match.Groups[1]?.ToString();
+                    case string s when IsMatching(s, "(/*)item/(.*)"):
+                        targetId = match.Groups[2]?.ToString();
                         if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
                         {
                             targetPageType = typeof(ItemPage);
@@ -195,7 +200,15 @@ namespace AppUIBasics
             }
 
             rootFrame.Navigate(targetPageType, targetPageArguments);
-            ((Microsoft.UI.Xaml.Controls.NavigationViewItem)(((NavigationRootPage)(Window.Current.Content)).NavigationView.MenuItems[0])).IsSelected = true;
+
+            if (targetPageType == typeof(NewControlsPage))
+            {
+                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)Window.Current.Content).NavigationView.MenuItems[0]).IsSelected = true;
+            }
+            else if (targetPageType == typeof(ItemPage))
+            {
+                NavigationRootPage.Current.EnsureNavigationSelection(targetPageArguments);
+            }
 
             // Ensure the current window is active
             Window.Current.Activate();

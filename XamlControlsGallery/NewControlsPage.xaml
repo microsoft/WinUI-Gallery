@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -16,7 +16,8 @@
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    NavigationCacheMode="Enabled">
+    NavigationCacheMode="Enabled"
+    HighContrastAdjustment="None">
 
     <Page.Resources>
         <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true"/>
@@ -39,6 +40,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
+                        <Setter Target="itemGridView.Margin" Value="0,-80,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
@@ -49,7 +51,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="12,0,12,36"
+            Padding="40,0,12,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -68,7 +70,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-12,0,-12,24" Height="250">
+                <Grid Margin="-40,0,-12,-100" Height="190">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -78,14 +80,16 @@
                         <Image
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.jpg"
-                            Stretch="UniformToFill" />
+                            Source="Assets/MainPage_Banner.png"
+                            Stretch="Uniform" />
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource NarrowHeaderTextBlockStyle}"                               
-                               Text="{StaticResource NewControlsName}"/>
+                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Text="{StaticResource NewControlsName}"
+                               Margin="94,24,0,0" />
                 </Grid>
             </GridView.Header>
 
@@ -93,7 +97,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,34,0,0"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -103,12 +107,12 @@
         <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource NewControlsName}"
             VerticalAlignment="Top"
+            Foreground="{ThemeResource PageHeaderForegroundBrush}"
             Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="42"
-            Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}"
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
-            ShadowOpacity="1"/>
+            ShadowOpacity="0"/>
     </Grid>
     
 </local:ItemsPageBase>

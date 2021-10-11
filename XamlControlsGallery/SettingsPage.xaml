@@ -1,9 +1,9 @@
-<Page
+ <Page
     x:Class="AppUIBasics.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition />
@@ -29,16 +29,15 @@
         <ScrollViewer
             x:Name="contentSV"
             Grid.Row="1"
-            Padding="20,0,0,0"
+            Padding="56,0,0,0"
             IsTabStop="False"
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <StackPanel HorizontalAlignment="Left">
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Margin="0,4,0,0"
-                    FontWeight="Normal"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Margin="0,12,0,0"
                     Text="Theme Mode" />
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
@@ -47,44 +46,55 @@
                 </StackPanel>
                 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Sound" />
                 <StackPanel Margin="0,10,0,0">
                     <ToggleSwitch x:Name="soundToggle" Header="Controls provide audible feedback" Toggled="soundToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
                     <CheckBox x:Name="spatialSoundBox" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Spatial Audio"/>
-                    <TextBlock Text="See the Sound page for how to enable sound in your app!" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0"/>
+                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0">
+                        See the <Hyperlink x:Name="soundPageHyperlink" Click="soundPageHyperlink_Click">Sound page</Hyperlink> for how to enable sound in your app!
+                    </TextBlock>
                 </StackPanel>
-                
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Navigation Style" />
+
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,40,0,0" Text="Navigation Style" />
                 <muxc:RadioButtons x:Name="navigationLocation" Margin="0,10,0,0"
                         Header="Navigation position" SelectionChanged="navigationLocation_SelectionChanged">
                     <RadioButton Content="Left"/>
                     <RadioButton Content="Top"/>
                 </muxc:RadioButtons>
 
+                
+
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Screenshots" />
                 <StackPanel Margin="0,10,0,0">
                     <ToggleSwitch x:Name="screenshotModeToggle" Header="Screenshot mode" Toggled="screenshotModeToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
                     <Button Content="Set screenshot folder" Click="FolderButton_Click" Margin="0,4,0,0"/>
 
-                    <HyperlinkButton x:Name="screenshotFolderLink" Margin="0,4,0,0" Click="screenshotFolderLink_Click"/>
+                    <HyperlinkButton x:Name="screenshotFolderLink" Margin="0,4,0,0" Click="screenshotFolderLink_Click">
+                        <TextBlock x:Name="screenshotFolderLinkContent" TextWrapping="Wrap"/>
+                    </HyperlinkButton>
+                </StackPanel>
+
+                <TextBlock
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Margin="0,40,0,0"
+                    Text="Teaching Tips" />
+                <StackPanel Margin="0,10,0,0">
+                    <Button Content="Reset the &quot;Generate Link to Page&quot; Teaching Tip" Click="OnResetTeachingTipsButtonClick" Margin="0,4,0,0"/>
                 </StackPanel>
                 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="About" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
                         This app is the interactive companion to the
-                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink> .
+                        <Hyperlink NavigateUri="https://developer.microsoft.com/windows/apps/design">Fluent Design System web site</Hyperlink>.
                     </Paragraph>
                     <Paragraph Margin="0,10,0,0">
                         Source code:
@@ -95,15 +105,14 @@
                         <Run FontStyle="Italic">git clone https://github.com/Microsoft/Xaml-Controls-Gallery</Run>
                     </Paragraph>
                 </RichTextBlock>
-                <TextBlock Margin="0,10,0,0">
+                <TextBlock Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     Version: 
                     <Run Text="{x:Bind Version}" FontWeight="Bold" />
                 </TextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Found a bug? Want a new sample?" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
@@ -128,9 +137,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Dependencies and References" />
                 <RichTextBlock IsTextSelectionEnabled="True" MaxWidth="840" Margin="0,10,0,0">
                     <Paragraph Margin="0,10,0,10">
@@ -148,9 +156,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Companion apps" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
@@ -168,9 +175,8 @@
                 </RichTextBlock>
 
                 <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="Disclaimer" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,50" IsTextSelectionEnabled="True">
                     <Paragraph>THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</Paragraph>

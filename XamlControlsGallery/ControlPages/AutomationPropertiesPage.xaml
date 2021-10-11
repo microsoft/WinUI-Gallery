@@ -16,8 +16,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:AppUIBasics.Common"
     xmlns:local="using:AppUIBasics"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
     <StackPanel>
         <TextBlock Margin="0,8,0,0" Text="To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow" 
                    TextWrapping="WrapWholeWords"/>
