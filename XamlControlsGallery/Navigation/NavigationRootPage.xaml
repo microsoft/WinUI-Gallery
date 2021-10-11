@@ -14,18 +14,42 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:local="using:AppUIBasics">
+    xmlns:local="using:AppUIBasics"
+    HighContrastAdjustment="None"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
     <Page.Resources>
-        <DataTemplate x:Key="NavigationViewHeaderTemplate">
-            <local:PageHeader
-                Title="{Binding}"
-                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                BackgroundColorOpacity="1" />
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush"/>
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="HighContrast">
+                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="{ThemeResource SystemColorWindowColor}" />
+                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemColorWindowColor}" />
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="NavigationViewHeaderTemplate">
+                        <local:PageHeader
+                            Title="{Binding}"
+                            Background="Transparent"
+                            BackgroundColorOpacity="1" />
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -76,7 +100,8 @@
             PaneOpening="NavigationViewControl_PaneOpened"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            ItemInvoked="OnNavigationViewItemInvoked">
+            ItemInvoked="OnNavigationViewItemInvoked"
+            Loaded="OnNavigationViewControlLoaded">
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
@@ -94,7 +119,7 @@
                 </AutoSuggestBox>
             </muxc:NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" />
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated"/>
         </muxc:NavigationView>
     </Grid>
 </Page>

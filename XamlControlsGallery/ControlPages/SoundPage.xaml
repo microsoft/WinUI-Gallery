@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -28,7 +28,7 @@ ElementSoundPlayer.State = ElementSoundPlayerState.On;
         <local:ControlExample x:Name="Example2" HeaderText="Toggling Spatial Audio">
             <StackPanel Orientation="Vertical">
                 <CheckBox x:Name="spatialAudioBox" IsEnabled="False" Content="Enable Spatial Audio" Checked="spatialAudioBox_Checked" Unchecked="spatialAudioBox_Unchecked"/>
-                <TextBlock Margin="0,5,0,0" Text="Can only enable spatial audio when sound is on!" Foreground="Red" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic"/>
+                <TextBlock Margin="0,5,0,0" Text="Can only enable spatial audio when sound is on!" Foreground="{ThemeResource SystemColorHotlightColor}" Style="{ThemeResource CaptionTextBlockStyle}" FontStyle="Italic"/>
             </StackPanel>
             <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">

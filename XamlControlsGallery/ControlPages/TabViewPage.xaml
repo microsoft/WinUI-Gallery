@@ -8,8 +8,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:samplepages="using:AppUIBasics.SamplePages"
     xmlns:local1="using:AppUIBasics.ControlPages"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <StackPanel>
         <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs" CSharpSource="TabView\TabViewBasicSample_cs.txt">

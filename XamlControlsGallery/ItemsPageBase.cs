@@ -104,10 +104,14 @@ namespace AppUIBasics
             {
                 if (GetIsNarrowLayoutState())
                 {
-                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right;
+                    double wrapGridPadding = 88;
+                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Center;
+
+                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right - wrapGridPadding;
                 }
                 else
                 {
+                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Left;
                     wrapGrid.ItemWidth = double.NaN;
                 }
             }
