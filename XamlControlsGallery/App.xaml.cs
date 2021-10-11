@@ -71,18 +71,24 @@ namespace AppUIBasics
         private async void App_Resuming(object sender, object e)
         {
             // We are being resumed, so lets restore our state!
-            await SuspensionManager.RestoreAsync();
-
-            switch (NavigationRootPage.RootFrame?.Content)
+            try
             {
-                case ItemPage itemPage:
-                    itemPage.SetInitialVisuals();
-                    break;
-                case NewControlsPage newControlsPage:
-                case AllControlsPage allControlsPage:
-                    NavigationRootPage.Current.NavigationView.AlwaysShowHeader = false;
-                    break;
+                await SuspensionManager.RestoreAsync();
             }
+            finally
+            {
+                switch (NavigationRootPage.RootFrame?.Content)
+                {
+                    case ItemPage itemPage:
+                        itemPage.SetInitialVisuals();
+                        break;
+                    case NewControlsPage _:
+                    case AllControlsPage _:
+                        NavigationRootPage.Current.NavigationView.AlwaysShowHeader = false;
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
