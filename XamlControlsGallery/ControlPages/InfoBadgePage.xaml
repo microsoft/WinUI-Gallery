@@ -135,22 +135,34 @@
 
         <local:ControlExample x:Name="Example4" HeaderText="InfoBadge with Dynamic Value" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
-                <muxc:InfoBadge x:Name="DynamicInfoBadge"
-                                HorizontalAlignment="Center"
-                                Value="{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}" />
+                <muxc:InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center"/>
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
                 <StackPanel Width="160">
-                    <muxc:NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" SpinButtonPlacementMode="Inline"/>
+                    <muxc:NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" Minimum="-1"
+                        SpinButtonPlacementMode="Inline" ValueChanged="ValueNumberBox_ValueChanged"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;muxc:InfoBadge Value="{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}" /&gt;
+&lt;muxc:NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" Minimum="-1"
+    SpinButtonPlacementMode="Inline" ValueChanged="ValueNumberBox_ValueChanged" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+{
+    if((int)args.NewValue >= -1)
+    {
+        DynamicInfoBadge.Value = (int)args.NewValue;
+    }
+}
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </Page>
