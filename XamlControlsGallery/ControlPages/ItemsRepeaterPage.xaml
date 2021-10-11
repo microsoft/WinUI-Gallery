@@ -242,14 +242,13 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                 <ScrollViewer x:Name="Animated_ScrollViewer" 
                               Grid.Column="0"
                               Height="175"
-                              Width="250"
-                              ViewChanged="Animated_ScrollViewer_ViewChanged">
+                              Width="250">
                     <muxc:ItemsRepeater x:Name="animatedScrollRepeater">
                             <DataTemplate x:DataType="x:String">
                             <Button Content="{x:Bind}"
                                         Background="{x:Bind}"
-                                        Click="Animated_GotItem" 
-                                        GotFocus="Animated_GotItem" 
+                                        Click="OnAnimatedItemClicked"
+                                        GotFocus="OnAnimatedItemGotFocus"
                                         HorizontalAlignment="Stretch"
                                         Loaded="GetButtonSize"
                                         Foreground="{ThemeResource TextFillColorInverseBrush}">
