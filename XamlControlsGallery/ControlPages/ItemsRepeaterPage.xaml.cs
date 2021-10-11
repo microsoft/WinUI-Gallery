@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using AppUIBasics.Common;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Automation.Peers;
@@ -235,7 +236,7 @@ namespace AppUIBasics.ControlPages
         // ==========================================================================
         // Animated Scrolling ItemsRepeater with Content Sample
         // ==========================================================================
-        private void Animated_GotItem(object sender, RoutedEventArgs e)
+        private void OnAnimatedItemGotFocus(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
             item.StartBringIntoView(new BringIntoViewOptions()
@@ -243,7 +244,10 @@ namespace AppUIBasics.ControlPages
                 VerticalAlignmentRatio = 0.5,
                 AnimationDesired = true,
             });
+        }
 
+        private void OnAnimatedItemClicked(object sender, RoutedEventArgs e)
+        {
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
             colorRectangle.Fill = senderBtn.Background;
@@ -282,21 +286,6 @@ namespace AppUIBasics.ControlPages
             Button AnimatedBtn = sender as Button;
             AnimatedBtnHeight = AnimatedBtn.ActualHeight;
             AnimatedBtnMargin = AnimatedBtn.Margin;
-        }
-
-        private void Animated_ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            Button SelectedItem = GetSelectedItemFromViewport() as Button;
-
-            SetUIANamesForSelectedEntry(SelectedItem);
-
-            // Update corresponding rectangle with selected color
-            // In case of scrolling VERY fast, the item we are updating our view for might already be recycled and thus null.
-            // Check if our SelectedItem actually exists, otherwise we would crash.
-            if(SelectedItem != null)
-            {
-                colorRectangle.Fill = SelectedItem.Background;
-            }
         }
 
         private void SetUIANamesForSelectedEntry(Button selectedItem)
