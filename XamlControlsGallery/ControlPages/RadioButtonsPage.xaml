@@ -46,8 +46,54 @@
     &lt;x:String&gt;Yellow&lt;/x:String&gt;
     &lt;x:String&gt;White&lt;/x:String&gt;
 &lt;/muxc:RadioButtons&gt;
+
+&lt;Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
+        Height="50" Margin="0,10,0,10" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void BackgroundColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (ControlOutput != null &#38;&#38; sender is RadioButtons rb)
+    {
+        string colorName = rb.SelectedItem as string;
+        switch (colorName)
+        {
+            case "Yellow":
+                ControlOutput.Background = new SolidColorBrush(Colors.Yellow);
+                break;
+            case "Green":
+                ControlOutput.Background = new SolidColorBrush(Colors.Green);
+                break;
+            case "White":
+                ControlOutput.Background = new SolidColorBrush(Colors.White);
+                break;
+        }
+    }
+}
+
+private void BorderBrush_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (ControlOutput != null &#38;&#38; sender is RadioButtons rb)
+    {
+        string colorName = rb.SelectedItem as string;
+        switch (colorName)
+        {
+            case "Yellow":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.Gold);
+                break;
+            case "Green":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.DarkGreen);
+                break;
+            case "White":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.White);
+                break;
+        }
+    }
+}
+                </x:String>
+            </local:ControlExample.CSharp>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
