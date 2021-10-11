@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -73,6 +73,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        
         <local:ControlExample x:Name="Example4" HeaderText="A three-state AppBarToggleButton with a path icon.">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
@@ -97,15 +98,6 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample HeaderText="An AppBarToggleButton with Reveal style applied.">
-            <local:ControlExample.Example>
-                <AppBarToggleButton Style="{StaticResource AppBarToggleButtonRevealStyle}" Icon="Shuffle" Label="Shuffle" />
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;AppBarToggleButton Style="{StaticResource AppBarToggleButtonRevealStyle}" Icon="Shuffle" Label="Shuffle" /&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+        
     </StackPanel>
 </Page>

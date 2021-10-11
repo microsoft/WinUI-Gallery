@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -47,11 +47,12 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example4" HeaderText="A multi-line TextBox with spell checking and custom selection highlight color.">
             <TextBox TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" SelectionHighlightColor="Green" 
-                     AutomationProperties.Name="multi-line TextBox"/>
+                     AutomationProperties.Name="multi-line TextBox" MinWidth="400" />
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TextBox AutomationProperties.Name="multi-line TextBox"
-    TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" SelectionHighlightColor="Green" &gt;
+    TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True"
+    SelectionHighlightColor="Green" MinWidth="400" &gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
