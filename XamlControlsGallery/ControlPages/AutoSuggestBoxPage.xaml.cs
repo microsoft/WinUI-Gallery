@@ -133,24 +133,29 @@ namespace AppUIBasics.ControlPages
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            var suitableItems = new List<string>();
-            var splitText = sender.Text.ToLower().Split(" ");
-            foreach(var cat in Cats)
+            // Since selecting an item will also change the text,
+            // only listen to changes caused by user entering text.
+            if(args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                var found = splitText.All((key)=>
+                var suitableItems = new List<string>();
+                var splitText = sender.Text.ToLower().Split(" ");
+                foreach(var cat in Cats)
                 {
-                    return cat.ToLower().Contains(key);
-                });
-                if(found)
-                {
-                    suitableItems.Add(cat);
+                    var found = splitText.All((key)=>
+                    {
+                        return cat.ToLower().Contains(key);
+                    });
+                    if(found)
+                    {
+                        suitableItems.Add(cat);
+                    }
                 }
+                if(suitableItems.Count == 0)
+                {
+                    suitableItems.Add("No results found");
+                }
+                sender.ItemsSource = suitableItems;
             }
-            if(suitableItems.Count == 0)
-            {
-                suitableItems.Add("No results found");
-            }
-            sender.ItemsSource = suitableItems;
         }
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
