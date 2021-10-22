@@ -8,7 +8,6 @@
     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
     FontSize="24"
     HighContrastAdjustment="Auto">
-
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
