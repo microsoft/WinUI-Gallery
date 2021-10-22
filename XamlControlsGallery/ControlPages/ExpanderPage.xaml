@@ -75,5 +75,30 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <local:ControlExample HeaderText="Modifying Expanders content alignment">
+            <local:ControlExample.Example>
+                <Expander Width="500" HorizontalContentAlignment="Left" Padding="0">
+                    <Expander.Header>
+                        <ToggleButton Content ="This ToggleButton is centered" HorizontalAlignment="Center"/>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <Button Margin="4" Content="This Button is left aligned"/>
+                    </Expander.Content>
+                </Expander>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Expander Width="500" HorizontalContentAlignment="Left" Padding="0"&gt;
+    &lt;Expander.Header&gt;
+        &lt;ToggleButton Content="This ToggleButton is centered" HorizontalAlignment="Center"/&gt;
+    &lt;/Expander.Header&gt;
+    &lt;Expander.Content&gt;
+        &lt;Button Margin="4" Content="This Button is left aligned"/&gt;
+    &lt;/Expander.Content&gt;
+&lt;/Expander&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
     </StackPanel>
 </Page>
