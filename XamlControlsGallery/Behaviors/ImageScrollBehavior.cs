@@ -13,9 +13,10 @@ namespace AppUIBasics.Behaviors
     {
         private const int _opacityMaxValue = 250;
         private const int _alpha = 255;
-        private const int _maxFontSize = 42;
-        private const int _minFontSize = 24;
-        private const int scrollViewerThresholdValue = 190;
+        private const int _maxFontSize = 28;
+        private const int _minFontSize = 10;
+        private const int scrollViewerThresholdValue = 85;
+
         private ScrollViewer scrollViewer;
         private ListViewBase listGridView;
 
@@ -80,6 +81,9 @@ namespace AppUIBasics.Behaviors
                 if (ThemeHelper.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
+                    Color foreground = new Color() { A = (byte)((verticalOffset > scrollViewerThresholdValue) ? 0 : (_alpha * (1 - (verticalOffset / scrollViewerThresholdValue)))) };
+                    foreground.R = foreground.G = foreground.B = 0;
+                    header.Foreground = new SolidColorBrush(foreground);
                 }
                 else
                 {
