@@ -12,7 +12,7 @@
         <local:ControlExample x:Name="Example1" HeaderText="Basic InkCanvas with InkToolbar.">
             <StackPanel BorderBrush="Gray" BorderThickness="1">
                 <InkToolbar x:Name="inkToolbar" TargetInkCanvas="{x:Bind inkCanvas}"/>
-                <Grid Width="300" Height="300" Background="{ThemeResource SystemChromeWhiteColor}">
+                <Grid Width="300" Height="300" Background="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
                     <InkCanvas x:Name="inkCanvas"/>
                 </Grid>
             </StackPanel>

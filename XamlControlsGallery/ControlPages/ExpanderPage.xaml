@@ -47,7 +47,7 @@
                 <local:ControlExampleSubstitution Key="VerticalAlignment" Value="{ x:Bind Expander1.VerticalAlignment, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        
+
         <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
             <local:ControlExample.Example>
                 <muxc:Expander x:Name="Expander2">
@@ -65,12 +65,37 @@
                 <x:String xml:space="preserve">
 &lt;muxc:Expander x:Name="Expander2" &gt;
     &lt;muxc:Expander.Header&gt;
-        &lt;ToggleButton Content ="This is a ToggleButton in the header" /&gt;
+        &lt;ToggleButton Content="This is a ToggleButton in the header"/&gt;
     &lt;/muxc:Expander.Header&gt;
     &lt;muxc:Expander.Content&gt;
         &lt;Grid&gt;
-            &lt;Button Margin="15" Content="This is a Button in the content" /&gt;
+            &lt;Button Margin="15" Content="This is a Button in the content"/&gt;
         &lt;/Grid&gt;
+    &lt;/muxc:Expander.Content&gt;
+&lt;/muxc:Expander&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="Modifying Expanders content alignment">
+            <local:ControlExample.Example>
+                <muxc:Expander Width="500" HorizontalContentAlignment="Left" Padding="0">
+                    <muxc:Expander.Header>
+                        <ToggleButton Content ="This ToggleButton is centered" HorizontalAlignment="Center"/>
+                    </muxc:Expander.Header>
+                    <muxc:Expander.Content>
+                        <Button Margin="4" Content="This Button is left aligned"/>
+                    </muxc:Expander.Content>
+                </muxc:Expander>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;muxc:Expander Width="500" HorizontalContentAlignment="Left" Padding="0"&gt;
+    &lt;muxc:Expander.Header&gt;
+        &lt;ToggleButton Content="This ToggleButton is centered" HorizontalAlignment="Center"/&gt;
+    &lt;/muxc:Expander.Header&gt;
+    &lt;muxc:Expander.Content&gt;
+        &lt;Button Margin="4" Content="This Button is left aligned"/&gt;
     &lt;/muxc:Expander.Content&gt;
 &lt;/muxc:Expander&gt;
                 </x:String>
