@@ -22,7 +22,11 @@
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Spacing="4">
+        <StackPanel Spacing="8">
+            <StackPanel.Resources>
+                <Thickness x:Key="TextBoxTopHeaderMargin">0,2,0,2</Thickness>
+                <Thickness x:Key="PasswordBoxTopHeaderMargin">0,2,0,2</Thickness>
+            </StackPanel.Resources>
             <TextBlock x:Name="HeaderBlock" Text="Compact Size" FontSize="18"/>
             <TextBox Header="First Name:" x:Name="firstName" />
             <TextBox Header="Last Name:" x:Name="lastName"  />
