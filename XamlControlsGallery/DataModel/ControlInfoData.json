@@ -1895,7 +1895,7 @@
         {
           "UniqueId": "Sound",
           "Title": "Sound",
-          "Subtitle": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
+          "Subtitle": "An API that enables 2D and 3D UI sounds on all XAML controls.",
           "ImagePath": "ms-appx:///Assets/Sound.png",
           "Description": "Sound is enabled by default for UWP apps running on Xbox, but can be set to always play on all devices if desired. Sound may also be put into Spatial Audio mode for a more immersive 10ft experience.",
           "Content": "<p>Look at the <i>SoundPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
