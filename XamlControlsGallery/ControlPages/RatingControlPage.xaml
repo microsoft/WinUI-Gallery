@@ -10,6 +10,8 @@
             <StackPanel VerticalAlignment="Top">
                 <muxc:RatingControl x:Name="RatingControl1" AutomationProperties.Name="Simple RatingControl"
                     IsClearEnabled="{x:Bind clearEnabledCheck.IsChecked.Value, Mode=OneWay}"
+                    Caption="312 ratings"
+                    ValueChanged="RatingControl1_ValueChanged"
                     IsReadOnly="{x:Bind readOnlyCheck.IsChecked.Value, Mode=OneWay}" HorizontalAlignment="Left" />
             </StackPanel>
 
@@ -26,13 +28,15 @@
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;muxc:RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="$(IsClearEnabled)" IsReadOnly="$(IsReadOnly)" /&gt;
+                <x:String xml:space="preserve">
+&lt;muxc:RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="$(IsClearEnabled)"
+    IsReadOnly="$(IsReadOnly)" Caption="$(Caption)"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="IsClearEnabled" Value="{x:Bind clearEnabledCheck.IsChecked, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="IsReadOnly" Value="{x:Bind readOnlyCheck.IsChecked, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Caption" x:Name="SampleCodeCaption" Value="{x:Bind RatingControl1.Caption,Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
