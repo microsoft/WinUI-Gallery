@@ -392,72 +392,78 @@ namespace AppUIBasics
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 bool changedSelection = false;
-                foreach(object rawItem in NavigationView.MenuItems)
-                {
-                    // Check if we encountered the separator
-                    if(!(rawItem is muxc.NavigationViewItem))
-                    {
-                        // Skipping this item
-                        continue;
-                    }
-
-                    var item = rawItem as muxc.NavigationViewItem;
-
-                    // Check if we are this category
-                    if((string)item.Content == infoDataItem.Title)
-                    {
-                        NavigationView.SelectedItem = item;
-                        changedSelection = true;
-                    }
-                    // We are not :(
-                    else
-                    {
-                        // Maybe one of our items is? ಠಿ_ಠ
-                        if(item.MenuItems.Count != 0)
-                        {
-                            foreach(muxc.NavigationViewItem child in item.MenuItems)
-                            {
-                                if((string)child.Content == infoDataItem.Title)
-                                {
-                                    // We are the item corresponding to the selected one, update selection!
-
-                                    // Deal with differences in displaymodes
-                                    if(NavigationView.PaneDisplayMode == muxc.NavigationViewPaneDisplayMode.Top)
-                                    {
-                                        // In Topmode, the child is not visible, so set parent as selected
-                                        // Everything else does not work unfortunately
-                                        NavigationView.SelectedItem = item;
-                                        item.StartBringIntoView();
-                                    }
-                                    else
-                                    {
-                                        // Expand so we animate
-                                        item.IsExpanded = true;
-                                        // Ensure parent is expanded so we actually show the selection indicator
-                                        NavigationView.UpdateLayout();
-                                        // Set selected item
-                                        NavigationView.SelectedItem = child;
-                                        child.StartBringIntoView();
-                                    }
-                                    // Set to true to also skip out of outer for loop
-                                    changedSelection = true;
-                                    // Break out of child iteration for loop
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    // We updated selection, break here!
-                    if(changedSelection)
-                    {
-                        break;
-                    }
-                }
+                EnsureItemIsVisibleInNavigation(infoDataItem.Title);
                 NavigationRootPage.RootFrame.Navigate(typeof(ItemPage), itemId);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
                 NavigationRootPage.RootFrame.Navigate(typeof(SearchResultsPage), args.QueryText);
+            }
+        }
+
+        public void EnsureItemIsVisibleInNavigation(string name)
+        {
+            bool changedSelection = false;
+            foreach (object rawItem in NavigationView.MenuItems)
+            {
+                // Check if we encountered the separator
+                if (!(rawItem is muxc.NavigationViewItem))
+                {
+                    // Skipping this item
+                    continue;
+                }
+
+                var item = rawItem as muxc.NavigationViewItem;
+
+                // Check if we are this category
+                if ((string)item.Content == name)
+                {
+                    NavigationView.SelectedItem = item;
+                    changedSelection = true;
+                }
+                // We are not :/
+                else
+                {
+                    // Maybe one of our items is? ಠಿ_ಠ
+                    if (item.MenuItems.Count != 0)
+                    {
+                        foreach (muxc.NavigationViewItem child in item.MenuItems)
+                        {
+                            if ((string)child.Content == name)
+                            {
+                                // We are the item corresponding to the selected one, update selection!
+
+                                // Deal with differences in displaymodes
+                                if (NavigationView.PaneDisplayMode == muxc.NavigationViewPaneDisplayMode.Top)
+                                {
+                                    // In Topmode, the child is not visible, so set parent as selected
+                                    // Everything else does not work unfortunately
+                                    NavigationView.SelectedItem = item;
+                                    item.StartBringIntoView();
+                                }
+                                else
+                                {
+                                    // Expand so we animate
+                                    item.IsExpanded = true;
+                                    // Ensure parent is expanded so we actually show the selection indicator
+                                    NavigationView.UpdateLayout();
+                                    // Set selected item
+                                    NavigationView.SelectedItem = child;
+                                    child.StartBringIntoView();
+                                }
+                                // Set to true to also skip out of outer for loop
+                                changedSelection = true;
+                                // Break out of child iteration for loop
+                                break;
+                            }
+                        }
+                    }
+                }
+                // We updated selection, break here!
+                if (changedSelection)
+                {
+                    break;
+                }
             }
         }
 

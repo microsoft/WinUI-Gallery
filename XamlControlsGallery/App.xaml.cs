@@ -68,18 +68,27 @@ namespace AppUIBasics
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
-        private void App_Resuming(object sender, object e)
+        private async void App_Resuming(object sender, object e)
         {
-            switch (NavigationRootPage.RootFrame?.Content)
+            // We are being resumed, so lets restore our state!
+            try
             {
-                case ItemPage itemPage:
-                    itemPage.SetInitialVisuals();
-                    break;
-                case NewControlsPage newControlsPage:
-                case AllControlsPage allControlsPage:
-                    NavigationRootPage.Current.NavigationView.AlwaysShowHeader = false;
-                    break;
+                await SuspensionManager.RestoreAsync();
             }
+            finally
+            {
+                switch (NavigationRootPage.RootFrame?.Content)
+                {
+                    case ItemPage itemPage:
+                        itemPage.SetInitialVisuals();
+                        break;
+                    case NewControlsPage _:
+                    case AllControlsPage _:
+                        NavigationRootPage.Current.NavigationView.AlwaysShowHeader = false;
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -128,24 +137,30 @@ namespace AppUIBasics
 
             ThemeHelper.Initialize();
 
+            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated
+                    || args.PreviousExecutionState == ApplicationExecutionState.Suspended)
+            {
+                try
+                {
+                    await SuspensionManager.RestoreAsync();
+                }
+                catch (SuspensionManagerException)
+                {
+                    //Something went wrong restoring state.
+                    //Assume there is no state and continue
+                }
+
+                Window.Current.Activate();
+
+                UpdateNavigationBasedOnSelectedPage(rootFrame);
+                return;
+            }
+
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
 
             if (args.Kind == ActivationKind.Launch)
             {
-                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    try
-                    {
-                        await SuspensionManager.RestoreAsync();
-                    }
-                    catch (SuspensionManagerException)
-                    {
-                        //Something went wrong restoring state.
-                        //Assume there is no state and continue
-                    }
-                }
-
                 targetPageArguments = ((LaunchActivatedEventArgs)args).Arguments;
             }
             else if (args.Kind == ActivationKind.Protocol)
@@ -205,6 +220,22 @@ namespace AppUIBasics
             Window.Current.Activate();
         }
 
+        private static void UpdateNavigationBasedOnSelectedPage(Frame rootFrame)
+        {
+            // Check if we brought back an ItemPage
+            if (rootFrame.Content is ItemPage itemPage)
+            {
+                // We did, so bring the selected item back into view
+                string name = itemPage.Item.Title;
+                if (Window.Current.Content is NavigationRootPage nav)
+                {
+                    // Finally brings back into view the correct item.
+                    // But first: Update page layout!
+                    nav.EnsureItemIsVisibleInNavigation(name);
+                }
+            }
+        }
+
         private Frame GetRootFrame()
         {
             Frame rootFrame;
@@ -251,6 +282,7 @@ namespace AppUIBasics
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             await SuspensionManager.SaveAsync();
+            UpdateNavigationBasedOnSelectedPage(GetRootFrame());
             deferral.Complete();
         }
     }
