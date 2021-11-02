@@ -11,10 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using AppUIBasics.Helper;
 using ColorCode;
 using ColorCode.Common;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
+using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -51,6 +55,9 @@ namespace AppUIBasics.Controls
             set { SetValue(SubstitutionsProperty, value); }
         }
 
+        private string actualCode = "";
+        private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+
         public SampleCodePresenter()
         {
             this.InitializeComponent();
@@ -58,7 +65,7 @@ namespace AppUIBasics.Controls
 
         private static void OnDependencyPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
         {
-            if(target is SampleCodePresenter presenter)
+            if (target is SampleCodePresenter presenter)
             {
                 presenter.ReevaluateVisibility();
             }
@@ -66,7 +73,7 @@ namespace AppUIBasics.Controls
 
         private void ReevaluateVisibility()
         {
-            if(Code.Length == 0 && CodeSourceFile == null)
+            if (Code.Length == 0 && CodeSourceFile == null)
             {
                 Visibility = Visibility.Collapsed;
             }
@@ -143,7 +150,6 @@ namespace AppUIBasics.Controls
             }
         }
 
-        private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
         private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
         {
             // Trim out stray blank lines at start and end.
@@ -164,6 +170,8 @@ namespace AppUIBasics.Controls
                 }
                 throw new KeyNotFoundException(match.Groups[1].Value);
             });
+
+            actualCode = sampleString;
 
             var sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
 
@@ -224,6 +232,25 @@ namespace AppUIBasics.Controls
                 Foreground = "#FF5F82E8",
                 ReferenceName = "xmlName"
             });
+        }
+
+        private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataPackage package = new DataPackage();
+            package.SetText(actualCode);
+            Clipboard.SetContent(package);
+
+            VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
+
+            // Automatically close teachingtip after 1 seconds
+            if (DispatcherQueue.GetForCurrentThread() != null)
+            {
+                DispatcherQueue.GetForCurrentThread().TryEnqueue(async () =>
+                {
+                    await Task.Delay(1000);
+                    VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
+                });
+            }
         }
     }
 }
