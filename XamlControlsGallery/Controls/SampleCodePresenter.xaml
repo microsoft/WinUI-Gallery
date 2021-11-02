@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="AppUIBasics.Controls.SampleCodePresenter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ActualThemeChanged="SampleCodePresenter_ActualThemeChanged"
+    Loaded="SampleCodePresenter_Loaded">
+
+    <Grid>
+        <ScrollViewer
+                x:Name="CodeScrollViewer"
+                HorizontalScrollBarVisibility="Auto"
+                HorizontalScrollMode="Auto"
+                VerticalScrollBarVisibility="Disabled"
+                VerticalScrollMode="Disabled">
+            <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded"/>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
