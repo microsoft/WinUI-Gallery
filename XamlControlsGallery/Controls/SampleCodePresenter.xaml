@@ -36,6 +36,6 @@
         </Button>
 
         <controls:TeachingTip x:Name="CopyConfirmationTeachingTip" x:Load="False" Visibility="Collapsed"
-            Target="{x:Bind CopyCodeButton}" Subtitle="Successfully copied sample code!" IsLightDismissEnabled="True"/>
+            Target="{x:Bind CopyCodeButton}" Subtitle="Copied!" IsLightDismissEnabled="True"/>
     </Grid>
 </UserControl>
