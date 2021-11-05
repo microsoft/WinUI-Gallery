@@ -23,8 +23,10 @@ Steps to reproduce the behavior:
 <!-- If applicable, add screenshots here to help explain your problem -->
 
 **Version Info**
-- [ ] App downloaded from Store 
-    - If so, which version? (Found on the Settings page of the app.)
+- [ ] Xaml Controls Gallery - Downloaded from Store
+    - If so, which version? (1.2.x -- Found on the Settings page of the app.)
+- [ ] WinUI 3 Controls Gallery - Downloaded from Store 
+    - If so, which version? (1.3.x -- Found on the Settings page of the app.)
 - [ ] App built locally from source 
   - If so, which branch? (WinUI 3 versions are built off the winui3 branch)
 
