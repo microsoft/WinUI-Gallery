@@ -25,6 +25,9 @@ namespace AppUIBasics.ControlPages
         private static RefreshContainer rc2;
         private RefreshVisualizer rv2;
 
+        private int items1AddedCount = 0;
+        private int items2AddedCount = 0;
+
         private Deferral RefreshCompletionDeferral1
         {
             get;
@@ -151,7 +154,7 @@ namespace AppUIBasics.ControlPages
 
         private void Timer1_TickImpl()
         {
-            items1.Insert(0, "NewControl");
+            items1.Insert(0, "NewControl " + items1AddedCount++);
             timer1.Stop();
             if (this.RefreshCompletionDeferral1 != null)
             {
@@ -163,7 +166,7 @@ namespace AppUIBasics.ControlPages
 
         private void Timer2_TickImpl()
         {
-            items2.Insert(0, "New Friend");
+            items2.Insert(0, "New Friend " + items2AddedCount++);
             timer2.Stop();
             if (this.RefreshCompletionDeferral2 != null)
             {

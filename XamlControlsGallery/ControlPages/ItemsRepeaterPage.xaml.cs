@@ -162,6 +162,11 @@ namespace AppUIBasics.ControlPages
         {
             string itemTemplateKey = string.Empty;
             var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
+            if(selected == null)
+            {
+                // No point in continuing if selected element is null
+                return;
+            }
             var layoutKey = ((FrameworkElement)selected).Tag as string;
 
             if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name

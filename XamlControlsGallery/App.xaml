@@ -26,7 +26,7 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
+                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="Black"/>
                     <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
@@ -44,7 +44,7 @@
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
+                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
                     <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
                     <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
