@@ -117,7 +117,7 @@
                 <x:String xml:space="preserve">
 &lt;Button Padding="0" Width="200" Height="60" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"&gt;
     &lt;Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto"&gt;
-        &lt;SymbolIcon Symbol="Sync" HorizontalAlignment="Center"InfoBadgeStyle}" /&gt;
+        &lt;SymbolIcon Symbol="Sync" HorizontalAlignment="Center" Style={StaticResource InfoBadgeStyle}" /&gt;
         &lt;muxc:InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top"/&gt;
             &lt;muxc:InfoBadge.IconSource&gt;
                 &lt;muxc:FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xF13C;" /&gt;
