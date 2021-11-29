@@ -363,6 +363,9 @@
     <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
       <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SampleCodePresenter.xaml.cs">
+      <DependentUpon>SampleCodePresenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helper\ProtocolActivationClipboardHelper.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
     <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
@@ -384,7 +387,7 @@
     <Compile Include="ConnectedAnimationPages\DetailedInfoPage.xaml.cs">
       <DependentUpon>DetailedInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlExample.xaml.cs">
+    <Compile Include="Controls\ControlExample.xaml.cs">
       <DependentUpon>ControlExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
@@ -892,7 +895,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlExample.xaml">
+    <Page Include="Controls\ControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1187,6 +1190,10 @@
     <Page Include="ControlPages\XamlUICommandPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SampleCodePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ItemPage.xaml">
       <Generator>MSBuild:Compile</Generator>

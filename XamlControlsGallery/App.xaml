@@ -122,6 +122,7 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
 
+            <x:Double x:Key="TeachingTipMinWidth">50</x:Double>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
