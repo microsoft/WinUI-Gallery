@@ -131,10 +131,10 @@ namespace AppUIBasics
             set { SetValue(XamlProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
-        public string XamlSource
+        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        public Uri XamlSource
         {
-            get { return (string)GetValue(XamlSourceProperty); }
+            get { return (Uri)GetValue(XamlSourceProperty); }
             set { SetValue(XamlSourceProperty, value); }
         }
 
@@ -145,10 +145,10 @@ namespace AppUIBasics
             set { SetValue(CSharpProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
-        public string CSharpSource
+        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        public Uri CSharpSource
         {
-            get { return (string)GetValue(CSharpSourceProperty); }
+            get { return (Uri)GetValue(CSharpSourceProperty); }
             set { SetValue(CSharpSourceProperty, value); }
         }
 
@@ -159,14 +159,7 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        private static readonly GridLength defaultExampleHeight =
-#if !UNIVERSAL
-            new GridLength(1, GridUnitType.Star);
-#else
-            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
-#endif
-
-        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
+        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength(1, GridUnitType.Star)));
         public GridLength ExampleHeight
         {
             get { return (GridLength)GetValue(ExampleHeightProperty); }
@@ -201,6 +194,8 @@ namespace AppUIBasics
             set { SetValue(MinimumUniversalAPIContractProperty, value); }
         }
 
+        private ILanguage CSharpLanguage = Languages.CSharp;
+
         public ControlExample()
         {
             this.InitializeComponent();
@@ -211,11 +206,6 @@ namespace AppUIBasics
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (var substitution in Substitutions)
-            {
-                substitution.ValueChanged += OnValueChanged;
-            }
-
             if (MinimumUniversalAPIContract != 0 && !(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", (ushort)MinimumUniversalAPIContract)))
             {
                 ErrorTextBlock.Visibility = Visibility.Visible;
@@ -223,146 +213,6 @@ namespace AppUIBasics
         }
 
         private enum SyntaxHighlightLanguage { Xml, CSharp };
-
-        private void XamlPresenter_Loaded(object sender, RoutedEventArgs e)
-        {
-            GenerateSyntaxHighlightedContent(sender as ContentPresenter, Xaml as string, XamlSource, Languages.Xml);
-        }
-
-        private void CSharpPresenter_Loaded(object sender, RoutedEventArgs e)
-        {
-            GenerateSyntaxHighlightedContent(sender as ContentPresenter, CSharp, CSharpSource, Languages.CSharp);
-        }
-
-        private void GenerateAllSyntaxHighlightedContent()
-        {
-            GenerateSyntaxHighlightedContent(XamlPresenter, Xaml as string, XamlSource, Languages.Xml);
-            GenerateSyntaxHighlightedContent(CSharpPresenter, CSharp, CSharpSource, Languages.CSharp);
-        }
-
-        private void GenerateSyntaxHighlightedContent(ContentPresenter presenter, string sampleString, string sampleUri, ILanguage highlightLanguage)
-        {
-            if (!string.IsNullOrEmpty(sampleString))
-            {
-                FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
-            }
-            else
-            {
-                FormatAndRenderSampleFromFile(sampleUri, presenter, highlightLanguage);
-            }
-        }
-
-        private async void FormatAndRenderSampleFromFile(string source, ContentPresenter presenter, ILanguage highlightLanguage)
-        {
-            if (source != null && System.IO.Path.GetExtension(source) == ".txt")
-            {
-                string sampleSource = await FileLoader.LoadText(Path.Combine("ControlPagesSampleCode", source));
-                FormatAndRenderSampleFromString(sampleSource, presenter, highlightLanguage);
-            }
-            else
-            {
-                presenter.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
-        private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
-        {
-            // Trim out stray blank lines at start and end.
-            sampleString = sampleString.TrimStart('\n').TrimEnd();
-
-            // Also trim out spaces at the end of each line
-            sampleString = string.Join('\n', sampleString.Split('\n').Select(s => s.TrimEnd()));
-
-            // Perform any applicable substitutions.
-            sampleString = SubstitutionPattern.Replace(sampleString, match =>
-            {
-                foreach (var substitution in Substitutions)
-                {
-                    if (substitution.Key == match.Groups[1].Value)
-                    {
-                        return substitution.ValueAsString();
-                    }
-                }
-                throw new KeyNotFoundException(match.Groups[1].Value);
-            });
-
-            var sampleCodeRTB = new RichTextBlock {FontFamily = new FontFamily("Consolas")};
-
-            //var formatter = GenerateRichTextFormatter();
-            //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = new TextBlock() { Text = sampleString, FontFamily = new FontFamily("Consolas"), IsTextSelectionEnabled = true }; // sampleCodeRTB;
-        }
-
-        // TODO: RichTextBlockFormatter is coming from a nuget package that is built against Windows.UI.Xaml
-        // Hence it cannot be used in a Microsoft.UI.Xaml project. The package is ColorCode.UWP
-
-        //private RichTextBlockFormatter GenerateRichTextFormatter()
-        //{
-        //    var formatter = new RichTextBlockFormatter(App.ActualTheme);
-
-        //    if (App.ActualTheme == ElementTheme.Dark)
-        //    {
-        //        UpdateFormatterDarkThemeColors(formatter);
-        //    }
-
-        //    return formatter;
-        //}
-
-        //private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
-        //{
-        //    // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttribute]);
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeQuotes]);
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeValue]);
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.HtmlComment]);
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlDelimiter]);
-        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlName]);
-
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
-        //    {
-        //        Foreground = "#FF87CEFA",
-        //        ReferenceName = "xmlAttribute"
-        //    });
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
-        //    {
-        //        Foreground = "#FFFFA07A",
-        //        ReferenceName = "xmlAttributeQuotes"
-        //    });
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
-        //    {
-        //        Foreground = "#FFFFA07A",
-        //        ReferenceName = "xmlAttributeValue"
-        //    });
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
-        //    {
-        //        Foreground = "#FF6B8E23",
-        //        ReferenceName = "htmlComment"
-        //    });
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
-        //    {
-        //        Foreground = "#FF808080",
-        //        ReferenceName = "xmlDelimiter"
-        //    });
-        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
-        //    {
-        //        Foreground = "#FF5F82E8",
-        //        ReferenceName = "xmlName"
-        //    });
-        //}
-
-        private void SampleCode_ActualThemeChanged(FrameworkElement sender, object args)
-        {
-            // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
-            // Therefore we need to re-format the REB to use the correct colors.
-
-            GenerateAllSyntaxHighlightedContent();
-        }
-
-        private void OnValueChanged(ControlExampleSubstitution sender, object e)
-        {
-            GenerateAllSyntaxHighlightedContent();
-        }
 
         private void ScreenshotButton_Click(object sender, RoutedEventArgs e)
         {
@@ -422,6 +272,7 @@ namespace AppUIBasics
             }
             else
             {
+#if !UNIVERSAL
                 var manager = AppRecordingManager.GetDefault();
                 if (manager.GetStatus().CanRecord)
                 {
@@ -440,7 +291,7 @@ namespace AppUIBasics
                             var decoder = await BitmapDecoder.CreateAsync(stream);
 
                             // Find the control in the picture
-                            GeneralTransform t = ControlPresenter.TransformToVisual(App.CurrentWindow.Content);
+                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
                             Point pos = t.TransformPoint(new Point(0, 0));
 
                             if (!CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar)
@@ -477,6 +328,7 @@ namespace AppUIBasics
                         await screenshotFile.DeleteAsync();
                     }
                 }
+#endif
             }
 
             await Task.Delay(1000);
@@ -489,7 +341,7 @@ namespace AppUIBasics
             if (XamlSource != null)
             {
                 // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = new Uri("ms-appx:///" + Path.Combine("ControlPagesSampleCode", XamlSource)).LocalPath;
+                string xamlSource = XamlSource.LocalPath;
                 string fileName = Path.GetFileNameWithoutExtension(xamlSource);
                 if (!String.IsNullOrWhiteSpace(fileName))
                 {
