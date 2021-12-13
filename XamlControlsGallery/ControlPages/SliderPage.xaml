@@ -28,10 +28,9 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        
         <local:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
-            <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <Slider x:Name="Slider2" Header="Control header" Width="200" Minimum="500" Maximum="1000"
-                        LargeChange="100" StepFrequency="10" SmallChange="10" Value="800" Margin="0,0,10,0"/>
+            <local:ControlExample.Options>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -45,22 +44,30 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Minimum:" Margin="0,5,0,0" Grid.Row="0" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Margin="10,5,0,0" Value="500" SpinButtonPlacementMode="Compact" ValueChanged="MinimumValue_ValueChanged"/>
+                    <TextBlock Text="Minimum:" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0"/>
+                    <muxc:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Margin="10,-5,0,0" Value="500" SpinButtonPlacementMode="Compact"/>
 
-                    <TextBlock Text="Maximum:" Margin="0,5,0,0" Grid.Row="1" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" Value="1000" SpinButtonPlacementMode="Compact" ValueChanged="MaximumValue_ValueChanged"/>
+                    <TextBlock Text="Maximum:" Margin="0,7,0,0" Grid.Row="1" Grid.Column="0"/>
+                    <muxc:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" Value="1000" SpinButtonPlacementMode="Compact"/>
 
                     <TextBlock Text="StepFrequency:" Margin="0,5,0,0" Grid.Row="2" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" ValueChanged="StepFrequencyValue_ValueChanged"/>
+                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact"/>
 
                     <TextBlock Text="SmallChange:" Margin="0,5,0,0" Grid.Row="3" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" ValueChanged="SmallChangeValue_ValueChanged"/>
+                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact"/>
 
                     <TextBlock Text="LargeChange:" Margin="0,5,0,0" Grid.Row="4" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" ValueChanged="LargeChangeValue_ValueChanged"/>
+                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact"/>
                 </Grid>
-            </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Example>
+                <StackPanel x:Name="Control2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Slider x:Name="Slider2" Header="Control header" Width="200" Minimum="{x:Bind MinimumValue.Value, Mode=OneWay}"
+                            Maximum="{x:Bind MaximumValue.Value, Mode=OneWay}" LargeChange="{x:Bind LargeChangeValue.Value, Mode=OneWay}"
+                            StepFrequency="{x:Bind StepFrequencyValue.Value, Mode=OneWay}" SmallChange="{x:Bind SmallChangeValue.Value, Mode=OneWay}"
+                            Value="800" Margin="0,0,10,0"/>
+                </StackPanel>
+            </local:ControlExample.Example>
             <local:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
             </local:ControlExample.Output>
@@ -79,6 +86,7 @@
                 <local:ControlExampleSubstitution Key="Value" Value="{x:Bind Slider2.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
+        
         <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
