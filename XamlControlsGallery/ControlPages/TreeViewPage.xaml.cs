@@ -199,22 +199,6 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private bool m_isSelected;
-        public bool IsSelected
-        {
-            get { return m_isSelected; }
-
-            set
-            {
-                if (m_isSelected != value)
-                {
-                    m_isSelected = value;
-                    NotifyPropertyChanged("IsSelected");
-                }
-            }
-
-        }
-
         private void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
