@@ -45,19 +45,19 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock x:Name="MinimumLabel" Text="Minimum:" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Margin="10,-5,0,0" Value="500" SpinButtonPlacementMode="Compact" AutomationProperties.LabeledBy="{x:Bind MinimumLabel}"/>
+                    <muxc:NumberBox x:Name="MinimumValue" Grid.Row="0" Grid.Column="1" Margin="10,-5,0,0" Value="500" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind MinimumValue.Name}"/>
 
                     <TextBlock x:Name="MaximumLabel" Text="Maximum:" Margin="0,7,0,0" Grid.Row="1" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" Value="1000" SpinButtonPlacementMode="Compact" AutomationProperties.LabeledBy="{x:Bind MaximumLabel}"/>
+                    <muxc:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" Value="1000" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind MaximumValue.Name}"/>
 
                     <TextBlock x:Name="StepFrequencyLabel" Text="StepFrequency:" Margin="0,5,0,0" Grid.Row="2" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.LabeledBy="{x:Bind StepFrequencyLabel}"/>
+                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind StepFrequencyValue.Name}"/>
 
                     <TextBlock x:Name="SmallChangeLabel" Text="SmallChange:" Margin="0,5,0,0" Grid.Row="3" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.LabeledBy="{x:Bind SmallChangeLabel}"/>
+                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind SmallChangeLabel.Name}"/>
 
                     <TextBlock x:Name="LargeChangeLabel" Text="LargeChange:" Margin="0,5,0,0" Grid.Row="4" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" AutomationProperties.LabeledBy="{x:Bind LargeChangeLabel}"/>
+                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind LargeChangeLabel.Name}"/>
                 </Grid>
             </local:ControlExample.Options>
             <local:ControlExample.Example>
