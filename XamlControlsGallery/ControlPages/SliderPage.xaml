@@ -54,10 +54,10 @@
                     <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind StepFrequencyValue.Name}"/>
 
                     <TextBlock x:Name="SmallChangeLabel" Text="SmallChange:" Margin="0,5,0,0" Grid.Row="3" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind SmallChangeLabel.Name}"/>
+                    <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind SmallChangeValue.Name}"/>
 
                     <TextBlock x:Name="LargeChangeLabel" Text="LargeChange:" Margin="0,5,0,0" Grid.Row="4" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind LargeChangeLabel.Name}"/>
+                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" AutomationProperties.Name="{x:Bind LargeChangeValue.Name}"/>
                 </Grid>
             </local:ControlExample.Options>
             <local:ControlExample.Example>
