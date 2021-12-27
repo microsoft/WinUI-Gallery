@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -32,13 +32,14 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string subtitle, string imagePath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
+        public ControlInfoDataItem(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
+            this.ImageIconPath = imageIconPath;
             this.BadgeString = badgeString;
             this.Content = content;
             this.IsNew = isNew;
@@ -53,6 +54,7 @@ namespace AppUIBasics.Data
         public string Subtitle { get; private set; }
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
+        public string ImageIconPath { get; private set; }
         public string BadgeString { get; private set; }
         public string Content { get; private set; }
         public bool IsNew { get; private set; }
@@ -84,13 +86,14 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string description)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
+            this.ImageIconPath = imageIconPath;
             this.Items = new ObservableCollection<ControlInfoDataItem>();
         }
 
@@ -99,6 +102,7 @@ namespace AppUIBasics.Data
         public string Subtitle { get; private set; }
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
+        public string ImageIconPath { get; private set; }
         public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
@@ -204,6 +208,7 @@ namespace AppUIBasics.Data
                                                                           groupObject["Title"].GetString(),
                                                                           groupObject["Subtitle"].GetString(),
                                                                           groupObject["ImagePath"].GetString(),
+                                                                          groupObject["ImageIconPath"].GetString(),
                                                                           groupObject["Description"].GetString());
 
                     foreach (JsonValue itemValue in groupObject["Items"].GetArray())
@@ -233,6 +238,7 @@ namespace AppUIBasics.Data
                                                                 itemObject["Title"].GetString(),
                                                                 itemObject["Subtitle"].GetString(),
                                                                 itemObject["ImagePath"].GetString(),
+                                                                itemObject["ImageIconPath"].GetString(),
                                                                 badgeString,
                                                                 itemObject["Description"].GetString(),
                                                                 itemObject["Content"].GetString(),
