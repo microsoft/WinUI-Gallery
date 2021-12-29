@@ -201,6 +201,8 @@
     <Content Include="Assets\ControlImages\Checkbox.png" />
     <Content Include="Assets\ControlImages\ComboBox.png" />
     <Content Include="Assets\ControlImages\CommandBar.png" />
+    <Content Include="Assets\ControlImages\CommandBarFlyout.png" />
+    <Content Include="Assets\ControlImages\ContentDialog.png" />
     <Content Include="Assets\ControlImages\DropDownButton.png" />
     <Content Include="Assets\ControlImages\Expander.png" />
     <Content Include="Assets\ControlImages\GridView.png" />
@@ -212,6 +214,7 @@
     <Content Include="Assets\ControlImages\NavigationView.png" />
     <Content Include="Assets\ControlImages\PipsPager.png" />
     <Content Include="Assets\ControlImages\RadioButton.png" />
+    <Content Include="Assets\ControlImages\ScrollViewer.png" />
     <Content Include="Assets\ControlImages\Slider.png" />
     <Content Include="Assets\ControlImages\SplitButton.png" />
     <Content Include="Assets\ControlImages\ToggleButton.png" />
