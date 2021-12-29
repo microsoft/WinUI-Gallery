@@ -54,7 +54,7 @@ namespace AppUIBasics
                 switch (item.Key.ToString())
                 {
                     case "New":
-                        item.Title = "Recently Added Samples";
+                        item.Title = "What's New";
                         break;
                     case "Updated":
                         item.Title = "Recently Updated Samples";

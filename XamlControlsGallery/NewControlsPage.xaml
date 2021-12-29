@@ -14,6 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     NavigationCacheMode="Enabled"
@@ -40,8 +41,11 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
-                        <Setter Target="itemGridView.Margin" Value="0,-80,0,0" />
+                        <Setter Target="itemGridView.Margin" Value="0,-64,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
+                        <Setter Target="HeaderTileOuterGrid.Margin" Value="94,0,94,0" />
+                        <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
+                        <Setter Target="learnMore.Margin" Value="64,24,0,0" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
                         <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
@@ -49,7 +53,9 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
+        <StackPanel>
+            
+        </StackPanel>
         <GridView x:Name="itemGridView"
             Padding="40,0,12,36"
             AutomationProperties.AutomationId="ItemGridView"
@@ -70,7 +76,7 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-40,0,-12,-100" Height="190">
+                <Grid Margin="-40,0,-40,0">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -84,24 +90,45 @@
                             Stretch="Uniform" />
                     </ParallaxView>
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
-                    <TextBlock x:Name="smallHeaderText"
+                    
+                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="54,110,0,0">
+                        <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
                                Text="{StaticResource NewControlsName}"
-                               Margin="94,24,0,0" />
+                               Margin="0,60,0,20" />
+                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
+                            <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Margin="0,0,12,12"/>
+                            <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Margin="0,0,12,12"/>
+                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Margin="0,0,12,12"/>
+                        </VariableSizedWrapGrid>
+                    </StackPanel>
                 </Grid>
+                
             </GridView.Header>
 
             <GridView.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,34,0,0"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,24,0,0"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </GridView.GroupStyle>
+
+            <GridView.Footer>
+                <Grid x:Name="learnMore" VerticalAlignment="Bottom" Height="200" Margin="16,34,48,0">
+                    <StackPanel>
+                        <TextBlock x:Name="LearnMore" Text="Learn More" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,12" />
+                        <HyperlinkButton Content="Developer Center"/>
+                        <HyperlinkButton Content="Getting Started"/>
+                        <HyperlinkButton Content="App Code Samples"/>
+                        <HyperlinkButton Content="Windows Template Studio"/>
+                    </StackPanel>
+                </Grid>
+            </GridView.Footer>
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
@@ -114,5 +141,5 @@
             IsHitTestVisible="False"
             ShadowOpacity="0"/>
     </Grid>
-    
+  
 </local:ItemsPageBase>

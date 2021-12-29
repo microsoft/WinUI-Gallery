@@ -218,6 +218,8 @@
     <Content Include="Assets\ControlImages\ToggleSplitButton.png" />
     <Content Include="Assets\ControlImages\ToggleSwitch.png" />
     <Content Include="Assets\CopyLinkTeachingTip.png" />
+    <Content Include="Assets\gettingStarted.png" />
+    <Content Include="Assets\githubTile.png" />
     <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
@@ -252,6 +254,7 @@
     <Content Include="Assets\NavigationViewItemIcons\ObjectQuickAnimation.png" />
     <Content Include="Assets\NavigationViewItemIcons\PickerIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\TextIcon.png" />
+    <Content Include="Assets\style-1x.png" />
     <Content Include="Assets\SunBlack.png" />
     <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\TabViewIcons\cmd.png" />
@@ -430,6 +433,9 @@
     </Compile>
     <Compile Include="Controls\SampleCodePresenter.xaml.cs">
       <DependentUpon>SampleCodePresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderTiles.xaml.cs">
+      <DependentUpon>HeaderTiles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\ProtocolActivationClipboardHelper.cs" />
     <Compile Include="Helper\NavigationHelper.cs" />
@@ -1214,6 +1220,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SampleCodePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderTiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
