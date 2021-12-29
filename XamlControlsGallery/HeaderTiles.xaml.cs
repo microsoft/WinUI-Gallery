@@ -41,6 +41,16 @@ namespace AppUIBasics
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(HeaderTiles), new PropertyMetadata(null));
 
+        public string Link
+        {
+            get { return (string)GetValue(LinkProperty); }
+            set { SetValue(LinkProperty, value); }
+        }
+
+        public static readonly DependencyProperty LinkProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(HeaderTiles), new PropertyMetadata(null));
+
+
         public HeaderTiles()
         {
             this.InitializeComponent();
@@ -48,7 +58,7 @@ namespace AppUIBasics
 
         private void Element_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            CreateOrUpdateSpringAnimation(1.05f);
+            CreateOrUpdateSpringAnimation(1.1f);
             (sender as UIElement).CenterPoint = new Vector3(70, 40, 1f);
             (sender as UIElement).StartAnimation(_springAnimation);
         }

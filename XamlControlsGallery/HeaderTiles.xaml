@@ -9,8 +9,32 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
-        <Button Height="80" Width="140" Padding="-1">
+    <Grid Margin="0,0,12,12">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Light">
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="Dark">
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{ThemeResource ControlStrokeColorDefault}"/>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="HighContrast">
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource SystemColorButtonTextColor}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource SystemColorButtonTextColor}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPressed" Color="{ThemeResource SystemColorButtonTextColor}"/>
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushDisabled" Color="{ThemeResource SystemColorButtonTextColor}"/>
+                    </ResourceDictionary>
+                </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <HyperlinkButton Height="80" Width="140" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
             <Grid>
                 <Image
                     Source="{x:Bind Source, Mode=OneWay}"
@@ -35,6 +59,6 @@
                                TextWrapping="Wrap" />
                 </Border>
             </Grid>
-        </Button>
+        </HyperlinkButton>
     </Grid>
 </UserControl>

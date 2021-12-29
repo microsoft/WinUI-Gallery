@@ -91,7 +91,7 @@
                     </ParallaxView>
                     <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     
-                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="54,110,0,0">
+                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="54,140,0,0">
                         <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
@@ -99,9 +99,9 @@
                                Text="{StaticResource NewControlsName}"
                                Margin="0,60,0,20" />
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
-                            <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Margin="0,0,12,12"/>
-                            <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Margin="0,0,12,12"/>
-                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Margin="0,0,12,12"/>
+                            <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
+                            <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
+                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>
@@ -122,10 +122,9 @@
                 <Grid x:Name="learnMore" VerticalAlignment="Bottom" Height="200" Margin="16,34,48,0">
                     <StackPanel>
                         <TextBlock x:Name="LearnMore" Text="Learn More" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,12" />
-                        <HyperlinkButton Content="Developer Center"/>
-                        <HyperlinkButton Content="Getting Started"/>
-                        <HyperlinkButton Content="App Code Samples"/>
-                        <HyperlinkButton Content="Windows Template Studio"/>
+                        <HyperlinkButton Content="Developer Center" NavigateUri="https://developer.microsoft.com/en-us/windows/"/>
+                        <HyperlinkButton Content="App Code Samples" NavigateUri="https://docs.microsoft.com/en-us/windows/apps/get-started/samples"/>
+                        <HyperlinkButton Content="Windows Template Studio" NavigateUri="https://github.com/microsoft/WindowsTemplateStudio"/>
                     </StackPanel>
                 </Grid>
             </GridView.Footer>
