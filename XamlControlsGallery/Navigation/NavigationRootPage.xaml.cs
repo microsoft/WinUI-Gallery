@@ -472,7 +472,7 @@ namespace AppUIBasics
             UpdateAppTitleMargin(sender);
         }
 
-        private void NavigationViewControl_PaneOpened(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
+        private void NavigationViewControl_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
         {
             UpdateAppTitleMargin(sender);
         }
