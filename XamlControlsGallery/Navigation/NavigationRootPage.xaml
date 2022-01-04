@@ -106,7 +106,7 @@
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
-            PaneOpening="NavigationViewControl_PaneOpened"
+            PaneOpening="NavigationViewControl_PaneOpening"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             ItemInvoked="OnNavigationViewItemInvoked"
