@@ -51,7 +51,7 @@
                     <muxc:NumberBox x:Name="MaximumValue" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" Value="1000" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Maximum" AutomationProperties.AccessibilityView="Raw"/>
 
                     <TextBlock x:Name="StepFrequencyLabel" Text="StepFrequency:" Margin="0,5,0,0" Grid.Row="2" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Step Frequency" AutomationProperties.AccessibilityView="Raw"/>
+                    <muxc:NumberBox x:Name="StepFrequencyValue" Grid.Row="2" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Step Frequency" AutomationProperties.AccessibilityView="Raw" Minimum="1"/>
 
                     <TextBlock x:Name="SmallChangeLabel" Text="SmallChange:" Margin="0,5,0,0" Grid.Row="3" Grid.Column="0"/>
                     <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Small Change" AutomationProperties.AccessibilityView="Raw"/>
@@ -87,16 +87,16 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
         
-        <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
+        <local:ControlExample x:Name="Example3" HeaderText="A Slider with snapping tick marks.">
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
+                <Slider x:Name="Slider3" Width="290" SnapsTo="Ticks" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
             </StackPanel>
             <local:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
+                    &lt;Slider AutomationProperties.Name="Slider with ticks" SnapsTo="Ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
