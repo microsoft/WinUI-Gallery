@@ -18,7 +18,7 @@
                     <Border x:Name="CurrentColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Background="Green" Margin="0" CornerRadius="4,0,0,4"/>
                     <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <GridView>
+                            <GridView ItemClick="GridView_ItemClick" IsItemClickEnabled="True">
                                 <GridView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
@@ -31,55 +31,16 @@
                                         <Setter Property="RadiusX" Value="4"/>
                                         <Setter Property="RadiusY" Value="4"/>
                                     </Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Padding" Value="0"/>
-                                        <Setter Property="MinWidth" Value="0"/>
-                                        <Setter Property="MinHeight" Value="0"/>
-                                        <Setter Property="Margin" Value="6"/>
-                                        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
-                                    </Style>
                                 </GridView.Resources>
                                 <GridView.Items>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Red">
-                                        <Button.Content>
-                                            <Rectangle Fill="Red"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Orange">
-                                        <Button.Content>
-                                            <Rectangle Fill="Orange"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Yellow">
-                                        <Button.Content>
-                                            <Rectangle Fill="Yellow"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Green">
-                                        <Button.Content>
-                                            <Rectangle Fill="Green"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Blue">
-                                        <Button.Content>
-                                            <Rectangle Fill="Blue"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Indigo">
-                                        <Button.Content>
-                                            <Rectangle Fill="Indigo"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Violet">
-                                        <Button.Content>
-                                            <Rectangle Fill="Violet"/>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Click="ColorButton_Click" AutomationProperties.Name="Gray">
-                                        <Button.Content>
-                                            <Rectangle Fill="Gray"/>
-                                        </Button.Content>
-                                    </Button>
+                                    <Rectangle Fill="Red"/>
+                                    <Rectangle Fill="Orange"/>
+                                    <Rectangle Fill="Yellow"/>
+                                    <Rectangle Fill="Green"/>
+                                    <Rectangle Fill="Blue"/>
+                                    <Rectangle Fill="Indigo"/>
+                                    <Rectangle Fill="Violet"/>
+                                    <Rectangle Fill="Gray"/>
                                 </GridView.Items>
                             </GridView>
 
