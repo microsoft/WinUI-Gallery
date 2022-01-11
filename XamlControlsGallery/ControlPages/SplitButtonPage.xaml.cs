@@ -27,10 +27,6 @@ namespace AppUIBasics.ControlPages
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
             CurrentColor.Background = new SolidColorBrush(color);
 
-            //if (myColorButton.Flyout.IsOpen)
-            //{
-            //    myColorButton.Flyout.Hide
-            //}
             myColorButton.Flyout.Hide();
             myRichEditBox.Focus(Windows.UI.Xaml.FocusState.Keyboard);
             currentColor = color;
