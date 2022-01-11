@@ -1,8 +1,9 @@
-﻿using Microsoft.UI;
+using Microsoft.UI;
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 
 namespace AppUIBasics.ControlPages
@@ -21,13 +22,10 @@ namespace AppUIBasics.ControlPages
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
         }
 
-        private void ColorButton_Click(object sender, RoutedEventArgs e)
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Extract the color of the button that was clicked.
-            Button clickedColor = (Button)sender;
-            var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
-
+            var rect = (Rectangle)e.ClickedItem;
+            var color = ((SolidColorBrush)rect.Fill).Color;
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
             CurrentColor.Background = new SolidColorBrush(color);
 
