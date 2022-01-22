@@ -83,7 +83,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer 
+&lt;ScrollViewer 
                ContentOrientation="$(ContentOrientation)"
                Height="$(Height)"/&gt;
 
@@ -112,7 +112,7 @@
         &lt;Border BorderBrush="Black" Width="240" Height="180"/&gt;
     &lt;/VariableSizedWrapGrid&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
 
@@ -336,7 +336,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer ContentOrientation="None"
+&lt;ScrollViewer ContentOrientation="None"
                    IgnoredInputKind="$(IgnoredInputKind)"&gt;
 
     &lt;Image Source="$(ImageUri)"
@@ -344,7 +344,7 @@
            HorizontalAlignment="Left"
            VerticalAlignment="Top"/&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
            
@@ -502,7 +502,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer ContentOrientation="None"
+&lt;ScrollViewer ContentOrientation="None"
                    ScrollAnimationStarting="Scroller_ScrollAnimationStarting"
                    ZoomAnimationStarting="Scroller_ZoomAnimationStarting"
                    Height="$(Height)"/&gt;
@@ -512,7 +512,7 @@
            HorizontalAlignment="Left"
            VerticalAlignment="Top"/&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
            
