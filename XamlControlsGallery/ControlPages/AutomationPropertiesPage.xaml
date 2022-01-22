@@ -17,7 +17,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:AppUIBasics.Common"
     xmlns:local="using:AppUIBasics"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
@@ -49,7 +48,7 @@
                         Laborum pariatur nemo for veritatis yet explicabo eaque or esse. Ipsum ullam omnis so sed nequeporro but magna.</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="FontSizeLabel" VerticalAlignment="Center" FontSize="16" Margin="0,0,8,0" Text="Font size of text"/>
-                        <muxc:NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
+                        <NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
@@ -60,7 +59,7 @@
     &lt;TextBlock x:Name="FontSizeLabel" Margin="0,0,8,0" Text="Font size of text"/&gt;
                     
     &lt;!-- This NumberBox is labeled by the TextBlock above --&gt;
-    &lt;muxc:NumberBox x:Name="FontSizeNumberBox" AutomationProperties.LabeledBy="{x:Bind FontSizeLabel}"
+    &lt;NumberBox x:Name="FontSizeNumberBox" AutomationProperties.LabeledBy="{x:Bind FontSizeLabel}"
                     Minimum="10" Maximum="32"/&gt;
 &lt;/StackPanel&gt;
                 </x:String>
