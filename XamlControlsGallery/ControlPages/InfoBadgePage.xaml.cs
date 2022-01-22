@@ -32,7 +32,7 @@ namespace AppUIBasics.ControlPages
 
                 case "LeftCompact":
                     nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
-                    nvSample1.IsPaneOpen = true;
+                    nvSample1.IsPaneOpen = false;
                     break;
 
                 case "Top":
