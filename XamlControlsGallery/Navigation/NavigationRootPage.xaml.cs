@@ -122,32 +122,6 @@ namespace AppUIBasics
                 NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
             };
 
-                var currentTheme = App.RootTheme.ToString();
-                bool darkTheme = false;
-
-                switch (currentTheme)
-                {
-                    case "Dark":
-                        darkTheme = true;
-                        break;
-                    case "Default":
-                        if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                        {
-                            darkTheme = true;
-                        }
-                        break;
-                }
-                if (darkTheme)
-                {
-                    titleBar.ButtonForegroundColor = Colors.White;
-                }
-                else
-                {
-                    titleBar.ButtonForegroundColor = Colors.Black;
-                }
-            };
-#endif
-
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
         }
 

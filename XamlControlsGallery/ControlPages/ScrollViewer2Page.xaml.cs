@@ -7,14 +7,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 
 using muxc = Microsoft.UI.Xaml.Controls;
 
@@ -347,7 +347,7 @@ namespace AppUIBasics.ControlPages
             }
 
             Thickness childMargin = contentAsFE.Margin;
-            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
+            Visual scrollerVisual = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
             double childWidth = double.IsNaN(contentAsFE.Width) ? contentAsFE.ActualWidth : contentAsFE.Width;
             float minPosX = 0.0f;
             float extentWidth = Math.Max(0.0f, (float)(childWidth + childMargin.Left + childMargin.Right));
@@ -380,7 +380,7 @@ namespace AppUIBasics.ControlPages
             }
 
             Thickness childMargin = contentAsFE.Margin;
-            Visual scrollerVisual = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
+            Visual scrollerVisual = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(scroller4);
             double childHeight = double.IsNaN(contentAsFE.Height) ? contentAsFE.ActualHeight : contentAsFE.Height;
             float minPosY = 0.0f;
             float extentHeight = Math.Max(0.0f, (float)(childHeight + childMargin.Top + childMargin.Bottom));
