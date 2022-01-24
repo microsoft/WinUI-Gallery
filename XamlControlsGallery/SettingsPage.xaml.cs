@@ -16,11 +16,15 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
 using Microsoft.UI;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+
+#if UNIVERSAL
+using Windows.UI.ViewManagement;
+#endif
 
 namespace AppUIBasics
 {
