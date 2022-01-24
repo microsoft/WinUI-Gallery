@@ -16,7 +16,7 @@ private async void OpenButton_Click(object sender, RoutedEventArgs e)
             await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
         {
             // Load the file into the Document property of the RichEditBox.
-            editor.Document.LoadFromStream(Windows.UI.Text.TextSetOptions.FormatRtf, randAccStream);
+            editor.Document.LoadFromStream(Microsoft.UI.Text.TextSetOptions.FormatRtf, randAccStream);
         }
     }
 }
@@ -42,7 +42,7 @@ private async void SaveButton_Click(object sender, RoutedEventArgs e)
         using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
             await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
         {
-            editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+            editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
         }
 
         // Let Windows know that we're finished changing the file so the 
