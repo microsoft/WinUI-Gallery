@@ -1,8 +1,13 @@
 using System;
 using Windows.Storage;
 using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+
+#if UNIVERSAL
 using Windows.UI.ViewManagement;
+using Windows.System;
+#endif
 
 
 namespace AppUIBasics.Helper

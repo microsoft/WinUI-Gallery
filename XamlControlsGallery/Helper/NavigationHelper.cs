@@ -7,11 +7,17 @@ using System.Windows.Input;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using AppUIBasics.Common;
+
+#if UNIVERSAL
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+#endif
 
 namespace AppUIBasics.Helper
 {

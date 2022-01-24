@@ -5,9 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
-using Windows.UI;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+#if UNIVERSAL
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
+#endif
 
 namespace AppUIBasics.Helper
 {
