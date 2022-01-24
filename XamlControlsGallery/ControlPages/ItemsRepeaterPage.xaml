@@ -142,7 +142,7 @@
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
-&lt;ScrollViewer/&gt;
+&lt;/ScrollViewer&gt;
                     
 &lt;!-- The Layout specifications used: --&gt;
                     
