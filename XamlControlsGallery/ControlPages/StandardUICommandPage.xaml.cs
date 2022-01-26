@@ -62,7 +62,7 @@ namespace AppUIBasics.ControlPages
 
         private void ListViewSwipeContainer_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            if (e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Pen)
+            if (e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Pen)
             {
                 VisualStateManager.GoToState(sender as Control, "HoverButtonsShown", true);
             }
