@@ -61,7 +61,7 @@ namespace AppUIBasics.ControlPages
             PrimaryCommandBar.IsSticky = false;
         }
 
-        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var selectedFlyoutItem = sender as AppBarButton;
             SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
