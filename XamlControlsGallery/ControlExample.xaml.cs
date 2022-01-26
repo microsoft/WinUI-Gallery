@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Common;
 using AppUIBasics.Helper;
 using ColorCode;
 using ColorCode.Common;
@@ -17,15 +18,20 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
+#if !UNIVERSAL
+using Windows.Media.AppRecording;
+#endif
 using Windows.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.Reflection;
 
 namespace AppUIBasics
@@ -406,7 +412,6 @@ namespace AppUIBasics
 
             // AppRecordingManager is desktop-only, and its use here is quite hacky,
             // but it is able to capture popups (though not theme shadows).
-
             bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
             if (!isAppRecordingPresent)
             {
@@ -435,7 +440,7 @@ namespace AppUIBasics
                             // Find the control in the picture
                             GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
                             Point pos = t.TransformPoint(new Point(0, 0));
-;
+
                             if (!CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar)
                             {
                                 // Add the height of the title bar, which I really wish was programmatically available anywhere.

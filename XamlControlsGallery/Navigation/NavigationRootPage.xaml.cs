@@ -9,14 +9,18 @@
 //*********************************************************
 using AppUIBasics.Common;
 using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
+using Windows.Foundation;
+using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
@@ -26,6 +30,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
