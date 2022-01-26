@@ -62,7 +62,7 @@ namespace AppUIBasics.ControlPages
             DragDropListView.ItemsSource = contacts1;
 
             contacts2.Add(new Contact("John", "Doe", "ABC Printers"));
-            contacts2.Add(new Contact("Jane", "Doe", "XYZ Refridgerators"));
+            contacts2.Add(new Contact("Jane", "Doe", "XYZ Refrigerators"));
             contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
             DragDropListView2.ItemsSource = contacts2;
 
