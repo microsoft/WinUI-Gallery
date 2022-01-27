@@ -52,8 +52,8 @@
 
         <local:ControlExample HeaderText="An Image with a ToolTip using PlacementRect." MinimumUniversalAPIContract="7">
             <local:ControlExample.Example>
-                <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" >
-                    <ToolTipService.ToolTip >
+                <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266">
+                    <ToolTipService.ToolTip>
                             <ToolTip Content="Non-occluding ToolTip."  Placement="Right"
                                 contract7Present:PlacementRect="0,0,400,266" AutomationProperties.FullDescription="Non-occluding tooltip"/>
                     </ToolTipService.ToolTip>
@@ -61,7 +61,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266" /&gt;
+&lt;Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266"&gt;
     &lt;ToolTipService.ToolTip&gt;
         &lt;ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/&gt;
     &lt;/ToolTipService.ToolTip&gt;

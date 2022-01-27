@@ -25,6 +25,5 @@ namespace AppUIBasics.ControlPages
             _clicks += 1;
             Control1Output.Text = "Number of clicks: " + _clicks;
         }
-
     }
 }

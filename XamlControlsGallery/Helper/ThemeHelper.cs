@@ -9,7 +9,6 @@ using Windows.UI.ViewManagement;
 using Windows.System;
 #endif
 
-
 namespace AppUIBasics.Helper
 {
     /// <summary>
