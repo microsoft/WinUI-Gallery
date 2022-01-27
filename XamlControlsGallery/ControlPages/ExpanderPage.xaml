@@ -34,7 +34,7 @@
                 <x:String xml:space="preserve">
 &lt;Expander
      IsExpanded="$(IsExpanded)"
-     ExpandDirection="$(ExpandDirection)" 
+     ExpandDirection="$(ExpandDirection)"
      Header="This text is in the header"
      Content="This is in the content"/&gt;
                 </x:String>
@@ -44,7 +44,7 @@
                 <local:ControlExampleSubstitution Key="ExpandDirection" Value="{ x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        
+
         <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
             <local:ControlExample.Example>
                 <Expander x:Name="Expander2">
@@ -62,11 +62,11 @@
                 <x:String xml:space="preserve">
 &lt;Expander x:Name="Expander2" &gt;
     &lt;Expander.Header&gt;
-        &lt;ToggleButton Content ="This is a ToggleButton in the header" /&gt;
+        &lt;ToggleButton Content ="This is a ToggleButton in the header"/&gt;
     &lt;/Expander.Header&gt;
     &lt;Expander.Content&gt;
         &lt;Grid&gt;
-            &lt;Button Margin="15" Content="This is a Button in the content" /&gt;
+            &lt;Button Margin="15" Content="This is a Button in the content"/&gt;
         &lt;/Grid&gt;
     &lt;/Expander.Content&gt;
 &lt;/Expander&gt;

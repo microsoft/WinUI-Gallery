@@ -88,9 +88,9 @@ namespace AppUIBasics.Common
             layout.InvalidateMeasure();
         }
 
-#endregion
+        #endregion
 
-#region Setup / teardown
+        #region Setup / teardown
 
         protected override void InitializeForContextCore(VirtualizingLayoutContext context)
         {
@@ -113,9 +113,9 @@ namespace AppUIBasics.Common
             context.LayoutState = null;
         }
 
-#endregion
+        #endregion
 
-#region Layout
+        #region Layout
 
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {
@@ -247,7 +247,7 @@ namespace AppUIBasics.Common
             return boundsForRow;
         }
 
-#endregion
+        #endregion
     }
 
     internal class ActivityFeedLayoutState

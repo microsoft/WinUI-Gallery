@@ -13,7 +13,7 @@
                 IsHexInputVisible="{x:Bind hexInput.IsChecked.Value, Mode=OneWay}"
                 IsAlphaEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}"
                 IsAlphaSliderVisible="{x:Bind alphaSlider.IsChecked.Value, Mode=OneWay}"
-                IsAlphaTextInputVisible="{x:Bind alphaTextInput.IsChecked.Value, Mode=OneWay}" />
+                IsAlphaTextInputVisible="{x:Bind alphaTextInput.IsChecked.Value, Mode=OneWay}"/>
 
             <local:ControlExample.Options>
                 <StackPanel Width="250" Margin="0,-5,0,0">

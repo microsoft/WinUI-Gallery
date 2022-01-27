@@ -100,7 +100,7 @@
 
     <StackPanel>
         <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" 
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
                           HorizontalScrollMode="Auto" 
                           IsVerticalScrollChainingEnabled="False"
                           MaxHeight="500">
