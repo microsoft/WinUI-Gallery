@@ -18,12 +18,12 @@ namespace AppUIBasics.ControlPages
                 case "Down":
                 default:
                     Expander1.ExpandDirection = Microsoft.UI.Xaml.Controls.ExpandDirection.Down;
-                    Expander1.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+                    Expander1.VerticalAlignment = Microsoft.UI.Xaml.VerticalAlignment.Top;
                     break;
 
                 case "Up":
                     Expander1.ExpandDirection = Microsoft.UI.Xaml.Controls.ExpandDirection.Up;
-                    Expander1.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Bottom;
+                    Expander1.VerticalAlignment = Microsoft.UI.Xaml.VerticalAlignment.Bottom;
                     break;   
             }
         }

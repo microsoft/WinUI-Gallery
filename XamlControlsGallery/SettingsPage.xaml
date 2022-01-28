@@ -80,15 +80,6 @@
                     Style="{StaticResource TitleTextBlockStyle}"
                     Margin="0,40,0,0"
                     FontWeight="Normal"
-                    Text="Teaching Tips" />
-                <StackPanel Margin="0,10,0,0">
-                    <Button Content="Reset the &quot;Generate Link to Page&quot; Teaching Tip" Click="OnResetTeachingTipsButtonClick" Margin="0,4,0,0"/>
-                </StackPanel>
-
-                <TextBlock
-                    Style="{StaticResource TitleTextBlockStyle}"
-                    Margin="0,40,0,0"
-                    FontWeight="Normal"
                     Text="About" />
                 <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True">
                     <Paragraph>
