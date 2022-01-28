@@ -22,7 +22,7 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var selectedFlyoutItem = sender as MenuFlyoutItem;
             string exampleNumber = selectedFlyoutItem.Name.Substring(0, 1);
