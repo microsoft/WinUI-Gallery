@@ -106,7 +106,6 @@
     <Content Include="Assets\NavigationViewItemIcons\NewControlsIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\ObjectQuickAnimation.png" />
     <Content Include="Assets\NavigationViewItemIcons\PickerIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\ProgressIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\TextIcon.png" />
     <Content Include="Assets\SampleMedia\MirrorPCConsent.svg" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
@@ -178,6 +177,7 @@
     <Content Include="Assets\Tiles\widelogo.scale-140.png" />
     <Content Include="Assets\Tiles\widelogo.scale-180.png" />
     <Content Include="Assets\Tiles\WideLogo.scale-80.png" />
+    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />

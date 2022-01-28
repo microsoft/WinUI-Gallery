@@ -40,7 +40,7 @@ namespace AppUIBasics
         public static NavigationRootPage Current;
         public static Frame RootFrame = null;
 
-        public VirtualKey ArrowKey;
+        public Windows.System.VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
         private PageHeader _header;
@@ -72,6 +72,19 @@ namespace AppUIBasics
             }
         }
 
+        public string AppTitleText
+        {
+            get
+            {
+#if !UNIVERSAL
+                return "WinUI 3 Controls Gallery";
+#else
+                return "WinUI 3 Controls Gallery (UWP)";
+#endif
+            }
+        }
+
+
         public NavigationRootPage()
         {
             this.InitializeComponent();
@@ -99,9 +112,9 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-            Window.Current.SetTitleBar(AppTitleBar);
-
+#if UNIVERSAL
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
+#endif
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
@@ -432,11 +445,11 @@ namespace AppUIBasics
             {
                 if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
-                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
+//                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
                 }
                 else
                 {
-                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
+//                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
                 }
             }
         }
