@@ -86,6 +86,7 @@ namespace AppUIBasics.Controls
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
             ReevaluateVisibility();
+            VisualStateManager.GoToState(this, IsCSharpSample ? "CSharpSample" : "XAMLSample", false);
             foreach (var substitution in Substitutions)
             {
                 substitution.ValueChanged += OnValueChanged;
