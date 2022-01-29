@@ -28,7 +28,7 @@ namespace AppUIBasics.Helper
         {
             get
             {
-                if (Window.Current.Content is FrameworkElement rootElement)
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
                 {
                     if (rootElement.RequestedTheme != ElementTheme.Default)
                     {
@@ -47,7 +47,7 @@ namespace AppUIBasics.Helper
         {
             get
             {
-                if (Window.Current.Content is FrameworkElement rootElement)
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
                 {
                     return rootElement.RequestedTheme;
                 }
@@ -56,7 +56,7 @@ namespace AppUIBasics.Helper
             }
             set
             {
-                if (Window.Current.Content is FrameworkElement rootElement)
+                if (App.CurrentWindow.Content is FrameworkElement rootElement)
                 {
                     rootElement.RequestedTheme = value;
                 }
@@ -69,7 +69,7 @@ namespace AppUIBasics.Helper
         public static void Initialize()
         {
             // Save reference as this might be null when the user is in another app
-            CurrentApplicationWindow = Window.Current;
+            CurrentApplicationWindow = App.CurrentWindow;
             string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
 
             if (savedTheme != null)

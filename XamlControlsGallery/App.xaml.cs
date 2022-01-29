@@ -45,7 +45,7 @@ namespace AppUIBasics
 #if !UNIVERSAL
                 return currentWindow;
 #else
-                return Window.Current;
+                return App.CurrentWindow;
 #endif
             }
         }
@@ -58,7 +58,7 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
@@ -89,7 +89,7 @@ namespace AppUIBasics
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         private void App_Resuming(object sender, object e)
         {
             switch (NavigationRootPage.RootFrame?.Content)
@@ -148,7 +148,7 @@ namespace AppUIBasics
 
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         protected override void OnActivated(IActivatedEventArgs args)
         {
             EnsureWindow(args);
@@ -265,7 +265,7 @@ namespace AppUIBasics
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -279,6 +279,6 @@ namespace AppUIBasics
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
-#endif // MUX_PRERELEASE
+#endif // WINUI_PRERELEASE
     }
 }
