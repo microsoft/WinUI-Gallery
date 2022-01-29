@@ -440,7 +440,7 @@ namespace AppUIBasics
                             var decoder = await BitmapDecoder.CreateAsync(stream);
 
                             // Find the control in the picture
-                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
+                            GeneralTransform t = ControlPresenter.TransformToVisual(App.CurrentWindow.Content);
                             Point pos = t.TransformPoint(new Point(0, 0));
 
                             if (!CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar)
