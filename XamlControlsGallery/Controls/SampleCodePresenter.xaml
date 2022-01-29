@@ -9,7 +9,25 @@
     Loaded="SampleCodePresenter_Loaded">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="SampleProgrammingLanguageState">
+                <VisualState x:Name="XAMLSample">
+                    <VisualState.Setters>
+                        <Setter Target="SampleHeader.Text" Value="XAML"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="CSharpSample">
+                    <VisualState.Setters>
+                        <Setter Target="SampleHeader.Text" Value="C#"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            
             <VisualStateGroup x:Name="ConfirmDialogGroups">
                 <VisualState x:Name="ConfirmationDialogHidden"/>
                 <VisualState x:Name="ConfirmationDialogVisible">
@@ -21,15 +39,17 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="SampleHeader"/>
         <ScrollViewer
                 x:Name="CodeScrollViewer" Padding="0,4,32,10"
-                HorizontalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto" Grid.Row="1"
                 HorizontalScrollMode="Auto"
                 VerticalScrollBarVisibility="Disabled"
                 VerticalScrollMode="Disabled">
             <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded"/>
         </ScrollViewer>
-        <Button x:Name="CopyCodeButton" AutomationProperties.Name="Copy sample code"
+        <Button x:Name="CopyCodeButton" Grid.Row="1"
+                AutomationProperties.Name="Copy sample code"
                 ToolTipService.ToolTip="Copy sample code" VerticalAlignment="Top"
                 HorizontalAlignment="Right" Click="CopyCodeButton_Click" Padding="4">
             <FontIcon Glyph="&#xE8C8;" FontSize="16"/>
