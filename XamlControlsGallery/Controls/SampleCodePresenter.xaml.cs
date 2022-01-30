@@ -19,9 +19,9 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.Controls
 {
@@ -241,11 +241,12 @@ namespace AppUIBasics.Controls
             Clipboard.SetContent(package);
 
             VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
+            Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
             // Automatically close teachingtip after 1 seconds
-            if (DispatcherQueue.GetForCurrentThread() != null)
+            if (dispatcherQueue != null)
             {
-                DispatcherQueue.GetForCurrentThread().TryEnqueue(async () =>
+                dispatcherQueue.TryEnqueue(async () =>
                 {
                     await Task.Delay(1000);
                     VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
