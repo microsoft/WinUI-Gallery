@@ -41,14 +41,14 @@
         </VisualStateManager.VisualStateGroups>
         <TextBlock x:Name="SampleHeader"/>
         <ScrollViewer
-                x:Name="CodeScrollViewer" Padding="0,4,32,10"
+                x:Name="CodeScrollViewer" Padding="0,4,0,10"
                 HorizontalScrollBarVisibility="Auto" Grid.Row="1"
                 HorizontalScrollMode="Auto"
                 VerticalScrollBarVisibility="Disabled"
                 VerticalScrollMode="Disabled">
             <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded"/>
         </ScrollViewer>
-        <Button x:Name="CopyCodeButton" Grid.Row="1"
+        <Button x:Name="CopyCodeButton" Grid.Row="0"
                 AutomationProperties.Name="Copy sample code"
                 ToolTipService.ToolTip="Copy sample code" VerticalAlignment="Top"
                 HorizontalAlignment="Right" Click="CopyCodeButton_Click" Padding="4">

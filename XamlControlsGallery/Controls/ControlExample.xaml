@@ -60,6 +60,15 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+
+            <VisualStateGroup x:Name="SampleCodeSeparatorStates">
+                <VisualState x:Name="SeparatorCollapsed"/>
+                <VisualState x:Name="SeparatorVisible">
+                    <VisualState.Setters>
+                        <Setter Target="SampleCodeSeparator.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
@@ -154,12 +163,14 @@
                     <TextBlock Text="Source code"/>
                 </muxc:Expander.Header>
                 
-                <StackPanel x:DefaultBindMode="OneWay" Spacing="4">
+                <StackPanel x:DefaultBindMode="OneWay">
                     <controls:SampleCodePresenter
                         x:Name="XamlPresenter"
                         Code="{x:Bind Xaml}"
                         CodeSourceFile="{x:Bind XamlSource}"
                         Substitutions="{x:Bind Substitutions}"/>
+                    <Border x:Name="SampleCodeSeparator" Visibility="Collapsed" Margin="0,20"
+                        BorderThickness="1" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                     <controls:SampleCodePresenter
                         x:Name="CSharpPresenter"
                         Code="{x:Bind CSharp}"
