@@ -56,7 +56,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="12,0,12,36"
+            Padding="40,0,12,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -77,7 +77,7 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-12,0,-12,24" Height="250">
+                <Grid Margin="-40,0,-12,-100" Height="220">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -104,7 +104,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource HomePageBackgroundBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>

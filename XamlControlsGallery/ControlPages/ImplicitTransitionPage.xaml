@@ -12,8 +12,8 @@
             <Setter Property="TabNavigation" Value="Cycle"/>
         </Style>
     </Page.Resources>
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <local:ControlExample HeaderText="Automatically animate changes to Opacity" >
+    <StackPanel>
+        <local:ControlExample HeaderText="Automatically animate changes to Opacity" MinimumUniversalAPIContract="7">
             <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
 
             <local:ControlExample.Options>
