@@ -10,6 +10,7 @@
     <Content Include="Assets\CompactSizing.png" />
     <Content Include="Assets\ConnectedAnimations.png" />
     <Content Include="Assets\Contacts.txt" />
+    <Content Include="Assets\CopyLinkTeachingTip.png" />
     <Content Include="Assets\DefaultIcon.png" />
     <Content Include="Assets\DropdownButton.png" />
     <Content Include="Assets\EasingFunctions.png" />
@@ -35,7 +36,7 @@
     <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\Swipe.png" />
     <Content Include="Assets\TeachingTip.png" />
-    <Content Include="Assets\MainPage_Banner.jpg" />
+    <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\TimingDuration.png" />
     <Content Include="Assets\ToggleSplitButton.png" />
     <Content Include="Assets\Transitions.png" />

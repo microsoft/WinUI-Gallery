@@ -52,7 +52,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="24,0,0,36"
+            Padding="40,0,0,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -73,7 +73,7 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-24,0,0,24">
+                <Grid Margin="-40,0,0,-60"  Height="220">
                     <ParallaxView
                         x:Name="headerImageView"
                         Height="250"
@@ -84,12 +84,11 @@
                             Margin="0,0"
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Source="Assets/WinUI3Hero.png"
-                            Stretch="UniformToFill" />
+                            Source="Assets/MainPage_Banner.png"
+                            Stretch="Uniform" />
                     </ParallaxView>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <Rectangle Height="60" Visibility="Collapsed" VerticalAlignment="Top" Fill="{StaticResource HeroImageGradientBrush}"/>
+                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
                                x:Uid="AllControlsPage_SmallHeader"
                                Visibility="Collapsed"
@@ -101,10 +100,11 @@
         <local:PageHeader x:Name="pageHeader"
             x:Uid="AllControlsPage_PageHeader"
             VerticalAlignment="Top"
-            Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="42"
-            Padding="24,34,12,12"
-            Foreground="{StaticResource SystemControlForegroundChromeWhiteBrush}" 
-            IsHitTestVisible="False" />
+            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
+            IsHitTestVisible="False"
+            ShadowOpacity="0"/>
     </Grid>
 </local:ItemsPageBase>

@@ -30,7 +30,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
@@ -86,7 +85,6 @@ namespace AppUIBasics
             }
         }
 
-
         public NavigationRootPage()
         {
             this.InitializeComponent();
@@ -120,8 +118,7 @@ namespace AppUIBasics
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
-
-            // remove the solid-colored backgrounds behind the caption controls and system back button
+            // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
@@ -130,7 +127,7 @@ namespace AppUIBasics
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             };
 
-            NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));            
+            NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -246,7 +243,7 @@ namespace AppUIBasics
                         (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
                         (IconElement)new FontIcon()
                         {
-                            FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                           // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath
                         };
         }
