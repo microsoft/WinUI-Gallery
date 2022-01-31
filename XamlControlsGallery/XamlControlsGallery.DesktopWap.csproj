@@ -26,7 +26,7 @@
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
-    <PackageReference Include="ColorCode.Core" />
+    <PackageReference Include="ColorCode.WinUI" />
     <!-- Win2D.WinUI is not public yet -->
     <!-- <PackageReference Include="Win2d.winui" /> -->
     <PackageReference Include="Microsoft.WinUI" />
@@ -46,7 +46,7 @@
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="ColorCode.Core" Version="$(ColorCodeVersion)" />
+    <PackageReference Update="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
     <!-- Win2D.WinUI is not public yet -->
     <!-- <PackageReference Update="Win2d.winui" Version="$(Win2DWinUIVersion)" /> -->
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />

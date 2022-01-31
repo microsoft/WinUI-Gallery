@@ -5,7 +5,7 @@
     <ProjectReunionWinUIPackageVersion>0.8.2</ProjectReunionWinUIPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.12</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
-    <ColorCodeVersion>2.0.5</ColorCodeVersion>
+    <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <MicrosoftCsWinRTPackageVersion>1.2.5</MicrosoftCsWinRTPackageVersion>
     <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
