@@ -182,8 +182,6 @@ namespace AppUIBasics
                 }
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
-
-                PlayConnectedAnimation();
             }
 
             base.OnNavigatedTo(e);
@@ -219,13 +217,12 @@ namespace AppUIBasics
             NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
-            // Disable temporarily while investigating this crash.
             //Reverse Connected Animation
-            //if (e.SourcePageType != typeof(ItemPage))
-            //{
-            //    var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-            //    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
-            //}
+            if (e.SourcePageType != typeof(ItemPage))
+            {
+                var target = NavigationRootPage.Current.PageHeader.TitlePanel;
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
+            }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
             // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145

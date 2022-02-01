@@ -42,7 +42,6 @@ namespace AppUIBasics
         public Windows.System.VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
-        private PageHeader _header;
         private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
@@ -69,7 +68,7 @@ namespace AppUIBasics
         {
             get
             {
-                return _header ?? (_header = UIHelper.GetDescendantsOfType<PageHeader>(NavigationViewControl).FirstOrDefault());
+                return UIHelper.GetDescendantsOfType<PageHeader>(NavigationViewControl).FirstOrDefault();
             }
         }
 
@@ -122,9 +121,8 @@ namespace AppUIBasics
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
+
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
@@ -351,9 +349,6 @@ namespace AppUIBasics
             else
             {
                 NavigationViewControl.AlwaysShowHeader = true;
-
-                bool isFilteredPage = e.SourcePageType == typeof(SectionPage) || e.SourcePageType == typeof(SearchResultsPage);
-                PageHeader?.UpdateBackground(isFilteredPage);
             }
 
             TestContentLoadedCheckBox.IsChecked = true;

@@ -2,14 +2,20 @@ using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using AppUIBasics.SamplePages;
+using AppUIBasics.Helper;
 using Windows.ApplicationModel.Core;
 using Microsoft.UI.Xaml;
-using Windows.UI.ViewManagement;
-using Windows.UI.Core;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Dispatching;
 using AppUIBasics.TabViewPages;
 
 #if !UNIVERSAL
 using System.Collections.ObjectModel;
+#endif
+
+#if UNIVERSAL
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 #endif
 
 namespace AppUIBasics.ControlPages
@@ -247,6 +253,7 @@ namespace AppUIBasics.ControlPages
             TabView4.CloseButtonOverlayMode = overlayMode;
         }
 
+#if UNIVERSAL
         private async void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
@@ -263,5 +270,10 @@ namespace AppUIBasics.ControlPages
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
+#else
+        private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+        }
+#endif
     }
 }

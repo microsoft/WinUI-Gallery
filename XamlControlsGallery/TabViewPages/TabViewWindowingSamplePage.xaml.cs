@@ -104,17 +104,17 @@ namespace AppUIBasics.TabViewPages
                 return;
             }
 
-            AppWindow newWindow = await AppWindow.TryCreateAsync();
+            //AppWindow newWindow = await AppWindow.TryCreateAsync();
 
-            var newPage = new TabViewWindowingSamplePage();
-            newPage.SetupWindow(newWindow);
+            //var newPage = new TabViewWindowingSamplePage();
+            //newPage.SetupWindow(newWindow);
 
-            ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
+            //ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
 
-            Tabs.TabItems.Remove(args.Tab);
-            newPage.AddTabToTabs(args.Tab);
+            //Tabs.TabItems.Remove(args.Tab);
+            //newPage.AddTabToTabs(args.Tab);
 
-            await newWindow.TryShowAsync();
+            //await newWindow.TryShowAsync();
         }
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
