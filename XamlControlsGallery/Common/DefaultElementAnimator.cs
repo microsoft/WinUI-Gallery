@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml.Hosting;
 
 namespace AppUIBasics.Common
 {
+#if WINUI_PRERELEASE
     public class DefaultElementAnimator : ElementAnimator
     {
         private const double DefaultAnimationDurationInMs = 300.0;
@@ -124,4 +125,5 @@ namespace AppUIBasics.Common
             visual.StartAnimation("TransformMatrix._41_42", offsetAnimation);
         }
     }
+#endif
 }

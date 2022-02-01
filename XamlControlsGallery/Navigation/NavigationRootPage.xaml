@@ -20,7 +20,7 @@
         <DataTemplate x:Key="NavigationViewHeaderTemplate">
             <local:PageHeader
                 Title="{Binding}"
-                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                Background="Transparent"
                 BackgroundColorOpacity="1" />
         </DataTemplate>
     </Page.Resources>

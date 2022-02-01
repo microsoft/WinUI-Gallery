@@ -19,7 +19,9 @@ namespace AppUIBasics.Helper
         private const string SelectedAppThemeKey = "SelectedAppTheme";
         private static Window CurrentApplicationWindow;
         // Keep reference so it does not get optimized/garbage collected
+#if UNIVERSAL
         private static UISettings uiSettings;
+#endif
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
         /// root element, or if that value is Default, the requested theme of the Application.
@@ -77,11 +79,14 @@ namespace AppUIBasics.Helper
                 RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
             }
 
+#if UNIVERSAL
             // Registering to color changes, thus we notice when user changes theme system wide
             uiSettings = new UISettings();
             uiSettings.ColorValuesChanged += UiSettings_ColorValuesChanged;
+#endif
         }
 
+#if UNIVERSAL
         private static void UiSettings_ColorValuesChanged(UISettings sender, object args)
         {
             // Make sure we have a reference to our window so we dispatch a UI change
@@ -94,6 +99,7 @@ namespace AppUIBasics.Helper
                         });
             }
         }
+#endif
 
         public static bool IsDarkTheme()
         {
@@ -106,6 +112,7 @@ namespace AppUIBasics.Helper
 
         public static void UpdateSystemCaptionButtonColors()
         {
+#if UNIVERSAL
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
             if (ThemeHelper.IsDarkTheme())
@@ -116,6 +123,7 @@ namespace AppUIBasics.Helper
             {
                 titleBar.ButtonForegroundColor = Colors.Black;
             }
+#endif
         }
     }
 }

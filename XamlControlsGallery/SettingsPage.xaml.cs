@@ -80,15 +80,15 @@ namespace AppUIBasics
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
-#if UNIVERSAL
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
+#if UNIVERSAL
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+#endif
 
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
             }
-#endif
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)

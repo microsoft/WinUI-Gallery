@@ -42,24 +42,28 @@ namespace AppUIBasics.Helper
 
         public static void UpdateTitleBar(bool isLeftMode)
         {
+#if UNIVERSAL
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
 
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
+#endif
             if (isLeftMode)
             {
                 NavigationRootPage.Current.NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
+#if UNIVERSAL
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+#endif
             }
             else
             {
                 NavigationRootPage.Current.NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+#if UNIVERSAL
                 var userSettings = new UISettings();
                 titleBar.ButtonBackgroundColor = userSettings.GetColorValue(UIColorType.Accent);
                 titleBar.ButtonInactiveBackgroundColor = userSettings.GetColorValue(UIColorType.Accent);
+#endif
             }
         }
-
     }
 }
