@@ -231,7 +231,7 @@ namespace AppUIBasics
 
             if (targetPageType == typeof(NewControlsPage))
             {
-                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)Window.Current.Content).NavigationView.MenuItems[0]).IsSelected = true;
+                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.CurrentWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }
             else if (targetPageType == typeof(ItemPage))
             {
