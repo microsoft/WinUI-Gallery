@@ -9,8 +9,9 @@ trigger:
 pool:
   vmImage: 'windows-2019'
 
-parameters:
-  solution: '**/*.sln'
+variables:
+  solutionXCG: '**/XamlControlsGallery.sln'
+  solutionUITests: '**/UITests.sln'
   buildPlatform: 'x64'
   buildConfiguration: 'Debug'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
@@ -19,7 +20,7 @@ stages:
   - stage: Build
     jobs:
       - job:
-        displayName: Build ${{parameters.buildConfiguration}} ${{parameters.buildPlatform}}
+        displayName: Build $(buildConfiguration) $(buildPlatform)
         steps:
         - task: NuGetToolInstaller@1
           displayName: Install NuGet 5.8.0
@@ -29,25 +30,31 @@ stages:
         - task: NuGetCommand@2
           displayName: Restore packages
           inputs:
-            restoreSolution: '${{parameters.solution}}'
+            restoreSolution: '$(solutionXCG)'
 
         - task: VSBuild@1
           inputs:
-            platform: ${{parameters.buildPlatform}}
-            solution: '${{parameters.solution}}'
-            configuration: '${{parameters.buildConfiguration}}'
-            msbuildArgs: '/p:AppxBundlePlatforms="${{parameters.buildPlatform}}" /p:AppxPackageDir="${{parameters.appxPackageDir}}" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
+            platform: $(buildPlatform)
+            solution: '$(solutionXCG)'
+            configuration: '$(buildConfiguration)'
+            msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
+
+        - task: VSBuild@1
+          inputs:
+            platform: $(buildPlatform)
+            solution: '$(solutionUITests)'
+            configuration: '$(buildConfiguration)'
         
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(System.DefaultWorkingDirectory)\artifacts\${{parameters.buildConfiguration}}'
-            artifact: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+            targetPath: '$(System.DefaultWorkingDirectory)\XAMLControlsGallery\bin\$(buildConfiguration)\buildPlatform'
+            artifact: 'uitests_$(buildConfiguration)_$(buildPlatform)'
             publishLocation: 'pipeline'
             
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(Build.ArtifactStagingDirectory)\AppxPackages\'
-            artifact: 'appxbundles_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+            artifact: 'appxbundles_$(buildConfiguration)_$(buildPlatform)'
             publishLocation: 'pipeline'
 
   
@@ -55,7 +62,7 @@ stages:
     dependsOn: Build
     jobs:
       - job: 
-        displayName: Interaction tests ${{parameters.buildConfiguration}} ${{parameters.buildPlatform}}
+        displayName: Interaction tests $(buildConfiguration) $(buildPlatform)
         steps:
           - task: NuGetToolInstaller@1
             displayName: Install NuGet 5.8.0
@@ -65,25 +72,25 @@ stages:
           - task: NuGetCommand@2
             displayName: Restore packages
             inputs:
-              restoreSolution: '${{parameters.solution}}'
+              restoreSolution: '$(solutionUITests)'
 
           - task: DownloadPipelineArtifact@2
             inputs:
               buildType: 'current'
-              artifactName: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
-              targetPath: '$(System.DefaultWorkingDirectory)\artifacts\${{parameters.buildConfiguration}}'
+              artifactName: 'uitests_$(buildConfiguration)_$(buildPlatform)'
+              targetPath: '$(System.DefaultWorkingDirectory)\artifacts\$(buildConfiguration)'
           
           - task: DownloadPipelineArtifact@2
             inputs:
               buildType: 'current'
-              artifactName: 'appxbundles_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+              artifactName: 'appxbundles_$(buildConfiguration)_$(buildPlatform)'
               targetPath: '$(System.DefaultWorkingDirectory)\appxbundles'
 
           - task: DownloadBuildArtifacts@0
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              artifactName: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+              artifactName: 'artifacts_$(buildConfiguration)_$(buildPlatform)'
               downloadPath: '$(System.DefaultWorkingDirectory)\appxbundles'
 
           - task: PowerShell@2
