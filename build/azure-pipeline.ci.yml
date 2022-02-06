@@ -1,0 +1,120 @@
+# Universal Windows Platform
+# Build a Universal Windows Platform project using Visual Studio.
+# Add steps that test and distribute an app, save build artifacts, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-2019'
+
+parameters:
+  solution: '**/*.sln'
+  buildPlatform: 'x64'
+  buildConfiguration: 'Debug'
+  appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+
+stages:
+  - stage: Build
+    jobs:
+      - job:
+        displayName: Build ${{parameters.buildConfiguration}} ${{parameters.buildPlatform}}
+        steps:
+        - task: NuGetToolInstaller@1
+          displayName: Install NuGet 5.8.0
+          inputs:
+            versionSpec: 5.8.0
+
+        - task: NuGetCommand@2
+          displayName: Restore packages
+          inputs:
+            restoreSolution: '${{parameters.solution}}'
+
+        - task: VSBuild@1
+          inputs:
+            platform: ${{parameters.buildPlatform}}
+            solution: '${{parameters.solution}}'
+            configuration: '${{parameters.buildConfiguration}}'
+            msbuildArgs: '/p:AppxBundlePlatforms="${{parameters.buildPlatform}}" /p:AppxPackageDir="${{parameters.appxPackageDir}}" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
+        
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: '$(System.DefaultWorkingDirectory)\artifacts\${{parameters.buildConfiguration}}'
+            artifact: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+            publishLocation: 'pipeline'
+            
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: '$(Build.ArtifactStagingDirectory)\AppxPackages\'
+            artifact: 'appxbundles_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+            publishLocation: 'pipeline'
+
+  
+  - stage: Testing
+    dependsOn: Build
+    jobs:
+      - job: 
+        displayName: Interaction tests ${{parameters.buildConfiguration}} ${{parameters.buildPlatform}}
+        steps:
+          - task: NuGetToolInstaller@1
+            displayName: Install NuGet 5.8.0
+            inputs:
+              versionSpec: 5.8.0
+
+          - task: NuGetCommand@2
+            displayName: Restore packages
+            inputs:
+              restoreSolution: '${{parameters.solution}}'
+
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+              targetPath: '$(System.DefaultWorkingDirectory)\artifacts\${{parameters.buildConfiguration}}'
+          
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'appxbundles_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+              targetPath: '$(System.DefaultWorkingDirectory)\appxbundles'
+
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'artifacts_${{parameters.buildConfiguration}}_${{parameters.buildPlatform}}'
+              downloadPath: '$(System.DefaultWorkingDirectory)\appxbundles'
+
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Find correct folder and run app install script.
+                cd ./appxbundles
+
+                $AppBundle = Get-ChildItem -Filter XamlControlsGallery -Name
+                echo $AppBundle
+                cd $AppBundle
+                ./Add-AppDevPackage.ps1 -Force
+              errorActionPreference: 'continue'
+              failOnStderr: true
+              workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+          - task: Windows Application Driver@0
+            inputs:
+              OperationType: 'Start'
+              AgentResolution: '1080p'
+
+          - task: VSTest@2
+            inputs:
+              testSelector: 'testAssemblies'
+              testAssemblyVer2: |
+                **\bin\Debug\net5.0\UITests.dll
+                !**\*TestAdapter.dll
+                !**\obj\**
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+
+          - task: Windows Application Driver@0
+            inputs:
+              OperationType: 'Stop'
