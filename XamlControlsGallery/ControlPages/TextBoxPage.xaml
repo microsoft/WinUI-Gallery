@@ -34,14 +34,14 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="A read-only TextBox with various properties set.">
             <TextBox Text="I am super excited to be here!" IsReadOnly="True" FontFamily="Arial" FontSize="24"
-                     FontStyle="Italic" CharacterSpacing="200" Foreground="#669DFF" 
+                     FontStyle="Italic" CharacterSpacing="200" Foreground="#5178BE" 
                      AutomationProperties.Name="customized TextBox"/>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TextBox Text="I am super excited to be here!"
     AutomationProperties.Name="customized TextBox" IsReadOnly="True"
     FontFamily="Arial" FontSize="24" FontStyle="Italic"
-    CharacterSpacing="200" Foreground="#669DFF" /&gt;
+    CharacterSpacing="200" Foreground="#5178BE" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
