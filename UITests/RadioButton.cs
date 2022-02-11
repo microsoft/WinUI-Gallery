@@ -54,10 +54,10 @@ namespace UITests
             var radioButtonEventOutput = session.FindElementByAccessibilityId("Control1Output");
 
             radioButtonElement1.Click();
-            Assert.AreEqual("You selected option 1.", radioButtonEventOutput.Text);
+            Assert.AreEqual("You selected Option 1", radioButtonEventOutput.Text);
 
             radioButtonElement2.Click();
-            Assert.AreEqual("You selected option 2.", radioButtonEventOutput.Text);
+            Assert.AreEqual("You selected Option 2", radioButtonEventOutput.Text);
         }
 
         [TestMethod]
