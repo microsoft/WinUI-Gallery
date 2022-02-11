@@ -118,6 +118,7 @@ stages:
                 **\UITests.dll
                 !**\*TestAdapter.dll
                 !**\obj\**
+                !**\ref\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
 
           - task: Windows Application Driver@0
