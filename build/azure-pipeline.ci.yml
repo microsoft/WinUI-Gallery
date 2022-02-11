@@ -115,7 +115,7 @@ stages:
             inputs:
               testSelector: 'testAssemblies'
               testAssemblyVer2: |
-                **\bin\Debug\net5.0\UITests.dll
+                **\UITests.dll
                 !**\*TestAdapter.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
