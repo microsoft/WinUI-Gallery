@@ -96,9 +96,9 @@ stages:
               targetType: 'inline'
               script: |
                 # Find correct folder and run app install script.
-                cd ./appxbundles/XamlControlsGallery_1.2.22.0_$(buildConfiguration)_Test
+                cd ./appxbundles
 
-                $AppBundle = Get-ChildItem -Filter XamlControlsGallery -Name
+                $AppBundle = Get-ChildItem -Filter XamlControlsGallery*Test -Name
                 echo $AppBundle
                 cd $AppBundle
                 ./Add-AppDevPackage.ps1 -Force
