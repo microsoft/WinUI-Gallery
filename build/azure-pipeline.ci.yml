@@ -39,6 +39,11 @@ stages:
             configuration: '$(buildConfiguration)'
             msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
 
+        - task: NuGetCommand@2
+          displayName: Restore packages
+          inputs:
+            restoreSolution: '$(solutionUITests)'
+
         - task: VSBuild@1
           inputs:
             platform: "Any CPU"
