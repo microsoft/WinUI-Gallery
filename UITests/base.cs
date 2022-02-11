@@ -27,15 +27,15 @@ namespace UITests
     {
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 #if DEBUG
-        private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery.Debug_8wekyb3d8bbwe!App";
+        private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery.Debug_s9y1p3hwd5qda!App";
 #else
-        private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery_8wekyb3d8bbwe!App";
+        private const string AppUIBasicAppId = "Microsoft.XAMLControlsGallery_s9y1p3hwd5qda!App";
 #endif
         protected static WindowsDriver<WindowsElement> session = null;
 
         public static void Setup(TestContext context)
         {
-    
+
             if (session == null)
             {
                 AppiumOptions appiumOptions = new AppiumOptions();
@@ -46,9 +46,9 @@ namespace UITests
                     session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
                 }
                 catch
-                {  }
-                Thread.Sleep(125000);
-               if (session == null)
+                { }
+                Thread.Sleep(10000);
+                if (session == null)
                 {
                     session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
                 }
