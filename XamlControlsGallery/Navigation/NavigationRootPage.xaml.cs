@@ -135,6 +135,7 @@ namespace AppUIBasics
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
+            App.appTitlebar = AppTitleBar;
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -148,11 +149,6 @@ namespace AppUIBasics
             //ensure the custom title bar does not overlap window caption controls
             Thickness currMargin = AppTitleBar.Margin;
             AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
-        }
-
-        public string GetAppTitleFromSystem()
-        {
-            return Windows.ApplicationModel.Package.Current.DisplayName;
         }
 
         public bool CheckNewControlSelected()

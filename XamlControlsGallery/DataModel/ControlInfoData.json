@@ -2469,7 +2469,7 @@
           "Subtitle": "",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "With Windows App SDK 1.0 we are allowing creation of single threaded multiple top level Xaml windows in Desktop apps",
-          "Content": "<p>Look at the <i>CreateMultipleWindows.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>CreateMultipleWindowsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
           "Docs": [
@@ -2478,11 +2478,33 @@
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             }
           ],
-          "RelatedControls": [           
+          "RelatedControls": [
+          ]
+        },
+        {
+          "UniqueId": "CustomTitlebar",
+          "Title": "Titlebar",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
+          "Content": "<p>Look at the <i>CustomTitlebarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "Titlebar - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window.extendscontentintotitlebar?view=winui-3.0"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            }
+          ],
+          "RelatedControls": [
           ]
         }
       ]
