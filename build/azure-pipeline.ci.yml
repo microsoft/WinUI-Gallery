@@ -20,7 +20,7 @@ stages:
   - stage: Build
     jobs:
       - job:
-        displayName: Build $(buildConfiguration) $(buildPlatform)
+        displayName: Build ${{buildConfiguration}} ${{buildPlatform}}
         steps:
         - task: NuGetToolInstaller@1
           displayName: Install NuGet 5.8.0
@@ -67,7 +67,7 @@ stages:
     dependsOn: Build
     jobs:
       - job: 
-        displayName: Interaction tests $(buildConfiguration) $(buildPlatform)
+        displayName: Interaction tests ${{buildConfiguration}} ${{buildPlatform}}
         steps:
           - task: NuGetToolInstaller@1
             displayName: Install NuGet 5.8.0
