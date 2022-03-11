@@ -56,6 +56,13 @@ namespace AppUIBasics
             screenshotFolderLinkContent.Text = UIHelper.ScreenshotStorageFolder.Path;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            NavigationRootPage.Current.NavigationView.Header = "Settings";
+        }
+
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
             var currentTheme = ThemeHelper.RootTheme.ToString();
