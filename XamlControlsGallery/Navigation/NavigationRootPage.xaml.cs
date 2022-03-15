@@ -264,19 +264,12 @@ namespace AppUIBasics
             Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void OnNavigationViewItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
-            if(args.InvokedItemContainer.IsSelected)
-            {
-                // Clicked on an item that is already selected,
-                // Avoid navigating to the same page again causing movement.
-                return;
-            }
-
-            if (args.IsSettingsInvoked)
+            if (args.IsSettingsSelected)
             {
                 if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
                 {
@@ -285,16 +278,16 @@ namespace AppUIBasics
             }
             else
             {
-                var invokedItem = args.InvokedItemContainer;
+                var selectedItem = args.SelectedItemContainer;
 
-                if (invokedItem == _allControlsMenuItem)
+                if (selectedItem == _allControlsMenuItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
                     {
                         rootFrame.Navigate(typeof(AllControlsPage));
                     }
                 }
-                else if (invokedItem == _newControlsMenuItem)
+                else if (selectedItem == _newControlsMenuItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
@@ -303,14 +296,14 @@ namespace AppUIBasics
                 }
                 else
                 {
-                    if (invokedItem.DataContext is ControlInfoDataGroup)
+                    if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
-                        var itemId = ((ControlInfoDataGroup)invokedItem.DataContext).UniqueId;
+                        var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
                         rootFrame.Navigate(typeof(SectionPage), itemId);
                     }
-                    else if (invokedItem.DataContext is ControlInfoDataItem)
+                    else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
-                        var item = (ControlInfoDataItem)invokedItem.DataContext;
+                        var item = (ControlInfoDataItem)selectedItem.DataContext;
                         rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
                     }
 
