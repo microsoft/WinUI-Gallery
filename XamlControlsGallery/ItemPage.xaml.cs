@@ -7,11 +7,12 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
 using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
@@ -24,7 +25,6 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
-using System.Reflection;
 
 namespace AppUIBasics
 {
@@ -60,8 +60,11 @@ namespace AppUIBasics
 
         public void SetInitialVisuals()
         {
+            NavigationRootPage.Current.NavigationViewLoaded = OnNavigationViewLoaded;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = OnCopyLink;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
+            NavigationRootPage.Current.PageHeader.ResetCopyLinkButton();
 
             if (NavigationRootPage.Current.IsFocusSupported)
             {
@@ -71,6 +74,19 @@ namespace AppUIBasics
             _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
             UpdateSeeAlsoPanelVerticalTranslationAnimation();
+
+            if (UIHelper.IsScreenshotMode)
+            {
+                var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+
+                if (controlExamples != null)
+                {
+                    foreach (var controlExample in controlExamples)
+                    {
+                        VisualStateManager.GoToState(controlExample, "ScreenshotMode", false);
+                    }
+                }
+            }
         }
 
         private void UpdateSeeAlsoPanelVerticalTranslationAnimation()
@@ -97,9 +113,19 @@ namespace AppUIBasics
             }
         }
 
+        private void OnNavigationViewLoaded()
+        {
+            NavigationRootPage.Current.EnsureNavigationSelection(this.Item.UniqueId);
+        }
+
+        private void OnCopyLink()
+        {
+            ProtocolActivationClipboardHelper.Copy(this.Item);
+        }
+
         private void OnToggleTheme()
         {
-            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? App.ActualTheme : _currentElementTheme.Value;
+            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
             var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
             SetControlExamplesTheme(newTheme);
         }
@@ -129,7 +155,7 @@ namespace AppUIBasics
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)e.Parameter);
+            var item = await ControlInfoDataSource.Instance.GetItemAsync((string)e.Parameter);
 
             if (item != null)
             {
@@ -145,17 +171,17 @@ namespace AppUIBasics
 
                 if (pageType != null)
                 {
+                    // Pagetype is not null!
+                    // So lets generate the github links and set them!
+                    var gitHubBaseURI = "https://github.com/microsoft/Xaml-Controls-Gallery/tree/master/XamlControlsGallery/ControlPages/";
+                    var pageName = pageType.Name + ".xaml";
+                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
+                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
+
                     this.contentFrame.Navigate(pageType);
                 }
 
                 NavigationRootPage.Current.NavigationView.Header = item?.Title;
-
-                ControlInfoDataGroup group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync((String)e.Parameter);
-                var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)NavigationRootPage.Current.NavigationView.MenuItems.FirstOrDefault(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
-                if (menuItem != null)
-                {
-                    menuItem.IsSelected = true;
-                }
             }
 
             base.OnNavigatedTo(e);
@@ -179,17 +205,19 @@ namespace AppUIBasics
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            SetControlExamplesTheme(App.ActualTheme);
+            SetControlExamplesTheme(ThemeHelper.ActualTheme);
 
             base.OnNavigatingFrom(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            NavigationRootPage.Current.NavigationViewLoaded = null;
             NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+            NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
             NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
 
-            // Reverse Connected Animation
+            //Reverse Connected Animation
             if (e.SourcePageType != typeof(ItemPage))
             {
                 var target = NavigationRootPage.Current.PageHeader.TitlePanel;

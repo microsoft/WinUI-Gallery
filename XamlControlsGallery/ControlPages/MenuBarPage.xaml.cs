@@ -13,18 +13,31 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MenuBarPage : Page
     {
         public MenuBarPage()
         {
             this.InitializeComponent();
+        }
+
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            var selectedFlyoutItem = sender as MenuFlyoutItem;
+            string exampleNumber = selectedFlyoutItem.Name.Substring(0, 1);
+            if(exampleNumber == "o")
+            {
+                SelectedOptionText.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+            }
+            else if(exampleNumber == "t")
+            {
+                SelectedOptionText1.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+            }
+            else if(exampleNumber == "z")
+            {
+                SelectedOptionText2.Text = "You clicked: " + (sender as MenuFlyoutItem).Text;
+            }
         }
     }
 }

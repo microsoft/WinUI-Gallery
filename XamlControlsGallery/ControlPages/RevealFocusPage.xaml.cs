@@ -10,16 +10,13 @@
 using System;
 using Windows.Foundation.Metadata;
 using Microsoft.UI;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class RevealFocusPage : Page
     {
         public RevealFocusPage()
@@ -61,6 +58,7 @@ namespace AppUIBasics.ControlPages
             primaryBrushText.Value = "{StaticResource SystemControlFocusVisualPrimaryBrush}";
             primaryColorKeyText.Value = "SystemControlFocusVisualPrimaryBrush";
             Application.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
+            FocusVisualKindSubstitution.Value = "HighVisibility";
         }
 
         // DEMO ONLY: Change focus visual mode to reveal focus
@@ -73,6 +71,7 @@ namespace AppUIBasics.ControlPages
                 primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
                 primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
                 Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
+                FocusVisualKindSubstitution.Value = "Reveal";
             }
         }
 

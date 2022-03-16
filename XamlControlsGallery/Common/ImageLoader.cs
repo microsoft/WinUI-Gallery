@@ -24,8 +24,7 @@ namespace AppUIBasics.Common
 
         private async static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var image = d as Image;
-            if (image != null)
+            if (d is Image image)
             {
                 var item = await ControlInfoDataSource.Instance.GetItemAsync(e.NewValue?.ToString());
                 if (item?.ImagePath != null)

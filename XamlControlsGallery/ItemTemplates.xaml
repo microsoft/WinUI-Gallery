@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     x:Class="AppUIBasics.ItemTemplates"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,10 +8,13 @@
         <UserControl>
             <Grid
                 x:Name="controlRoot"
-                Width="345"
-                Height="140"
-                Padding="12"
-                Background="{ThemeResource SystemControlBackgroundListLowBrush}">
+                Width="360"
+                Height="90"
+                Padding="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="LayoutVisualStates">
                         <VisualState x:Name="WideLayout">
@@ -37,39 +40,42 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Image
-                    x:Name="gridImage"
-                    Width="36"
-                    VerticalAlignment="Top"
-                    AutomationProperties.Name="{x:Bind Title}"
-                    Source="{x:Bind ImagePath}"
-                    Stretch="Uniform" />
+
+                <Grid Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}" Width="70" CornerRadius="{ThemeResource ControlCornerRadius}">
+                    <Image
+                        x:Name="gridImage"
+                        Width="45"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="{x:Bind Title}"
+                        Source="{x:Bind ImagePath}"
+                        Stretch="Uniform" />
+                </Grid>
+                
 
                 <RelativePanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,6,0,0">
                     <TextBlock
                         x:Name="titleText"
-                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
                         Text="{x:Bind Title}"
-                        Foreground="{ThemeResource SystemControlForegroundAccentBrush}"
                         TextLineBounds="TrimToCapHeight"
                         TextWrapping="NoWrap" />
                     <TextBlock
-                        Style="{StaticResource BodyTextBlockStyle}"
-                        Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                        Margin="0,4,16,0"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Margin="0,2,8,0"
                         RelativePanel.Below="titleText"
-                        Text="{x:Bind Description}"
+                        Text="{x:Bind Subtitle}"
                         TextTrimming="CharacterEllipsis" />
                 </RelativePanel>
 
                 <Grid
-                    Margin="-12"
+                    Margin="0"
                     Grid.Column="2"
                     VerticalAlignment="Top"
+                    CornerRadius="{StaticResource ControlCornerRadius}"
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" >
 
-                    <Rectangle Fill="{ThemeResource SystemAccentColor}" Opacity=".5" />
-                    <TextBlock Text="{x:Bind BadgeString}" Margin="8,2,8,4" />
+                    <Ellipse Fill="{ThemeResource SystemAccentColorDark1}" Width="12" Height="12"/>
                 </Grid>
             </Grid>
         </UserControl>

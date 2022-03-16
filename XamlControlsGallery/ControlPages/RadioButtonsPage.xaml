@@ -1,0 +1,103 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="AppUIBasics.ControlPages.RadioButtonsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:AppUIBasics"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <local:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
+            <StackPanel>
+                <RadioButtons x:Name="BackgroundRadioButtons" MaxColumns="3" Header="Background" SelectedIndex="0" SelectionChanged="BackgroundColor_SelectionChanged">
+                    <x:String>Green</x:String>
+                    <x:String>Yellow</x:String>
+                    <x:String>White</x:String>
+                </RadioButtons>
+                <RadioButtons x:Name="BorderRadioButtons" MaxColumns="3" Header="Border" SelectedIndex="1" SelectionChanged="BorderBrush_SelectionChanged">
+                    <x:String>Green</x:String>
+                    <x:String>Yellow</x:String>
+                    <x:String>White</x:String>
+                </RadioButtons>
+                <Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
+                        Height="50" Margin="0,10,0,10" />
+            </StackPanel>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RadioButtons x:Name="BackgroundRadioButtons" SelectedIndex="$(BackgroundRadioButtonsSubstitution)"  MaxColumns="3" Header="Background" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/RadioButtons&gt;
+&lt;RadioButtons x:Name="BorderRadioButtons" SelectedIndex="$(BorderRadioButtonsSubstitution)" MaxColumns="3" Header="Border" SelectionChanged="BorderBrush_SelectionChanged"&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+    &lt;x:String&gt;White&lt;/x:String&gt;
+&lt;/RadioButtons&gt;
+
+&lt;Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
+        Height="50" Margin="0,10,0,10" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void BackgroundColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (ControlOutput != null &#38;&#38; sender is RadioButtons rb)
+    {
+        string colorName = rb.SelectedItem as string;
+        switch (colorName)
+        {
+            case "Yellow":
+                ControlOutput.Background = new SolidColorBrush(Colors.Yellow);
+                break;
+            case "Green":
+                ControlOutput.Background = new SolidColorBrush(Colors.Green);
+                break;
+            case "White":
+                ControlOutput.Background = new SolidColorBrush(Colors.White);
+                break;
+        }
+    }
+}
+
+private void BorderBrush_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (ControlOutput != null &#38;&#38; sender is RadioButtons rb)
+    {
+        string colorName = rb.SelectedItem as string;
+        switch (colorName)
+        {
+            case "Yellow":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.Gold);
+                break;
+            case "Green":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.DarkGreen);
+                break;
+            case "White":
+                ControlOutput.BorderBrush = new SolidColorBrush(Colors.White);
+                break;
+        }
+    }
+}
+                </x:String>
+            </local:ControlExample.CSharp>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

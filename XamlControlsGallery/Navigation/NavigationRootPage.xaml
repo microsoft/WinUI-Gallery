@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -13,13 +13,14 @@
     x:Class="AppUIBasics.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics">
+    xmlns:local="using:AppUIBasics"
+    HighContrastAdjustment="None">
 
     <Page.Resources>
         <DataTemplate x:Key="NavigationViewHeaderTemplate">
             <local:PageHeader
                 Title="{Binding}"
-                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                Background="Transparent"
                 BackgroundColorOpacity="1" />
         </DataTemplate>
     </Page.Resources>
@@ -104,10 +105,12 @@
             Header=" "
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
-            PaneOpening="NavigationViewControl_PaneOpened"
+            IsTitleBarAutoPaddingEnabled="False"
+            PaneOpening="NavigationViewControl_PaneOpening"
             PaneClosing="NavigationViewControl_PaneClosing"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            SelectionChanged="OnNavigationViewSelectionChanged">
+            SelectionChanged="OnNavigationViewSelectionChanged"
+            Loaded="OnNavigationViewControlLoaded">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
@@ -116,11 +119,16 @@
                     PlaceholderText="Search"
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                    MinWidth="200"
+                    KeyboardAcceleratorPlacementMode="Hidden"
                     TextChanged="OnControlsSearchBoxTextChanged">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="F" Invoked="CtrlF_Invoked" />
+                    </AutoSuggestBox.KeyboardAccelerators>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating" />
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating"/>
         </NavigationView>
     </Grid>
 </Page>

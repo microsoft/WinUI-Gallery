@@ -1,0 +1,144 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="AppUIBasics.ControlPages.AutomationPropertiesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:AppUIBasics.Common"
+    xmlns:local="using:AppUIBasics">
+    <StackPanel>
+        <TextBlock Margin="0,8,0,0" Text="To start the Narrator app, press Windows logo key + Ctrl + Enter. To navigate through text, press Caps + Left/Right arrow" 
+                   TextWrapping="WrapWholeWords"/>
+
+        <!-- AutomationProperties.Name sample -->
+        <local:ControlExample HeaderText="Enabling alternate text for controls">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <Image AutomationProperties.Name="Image of treetops" Source="/Assets/SampleMedia/treetops.jpg" Height="100" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- This image will be announced as "Image of treetops,Image" --&gt;
+&lt;Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" 
+       AutomationProperties.Name="Image of treetops"/&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- AutomationProperties.LabeledBy sample-->
+        <local:ControlExample HeaderText="Providing a label for another control">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock x:Name="FontSizeChangingTextBlock" TextWrapping="WrapWholeWords" Margin="0,8,0,8">Cat ipsum dolor sit amet, incidunt. Ratione. 
+                        Ipsa omnis dolor rem or vel. Ipsa elit quaerat sequi, nequeporro nisi qui. Vel autem. 
+                        Laborum pariatur nemo for veritatis yet explicabo eaque or esse. Ipsum ullam omnis so sed nequeporro but magna.</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="FontSizeLabel" VerticalAlignment="Center" FontSize="16" Margin="0,0,8,0" Text="Font size of text"/>
+                        <NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation="Horizontal"&gt;
+    &lt;TextBlock x:Name="FontSizeLabel" Margin="0,0,8,0" Text="Font size of text"/&gt;
+                    
+    &lt;!-- This NumberBox is labeled by the TextBlock above --&gt;
+    &lt;NumberBox x:Name="FontSizeNumberBox" AutomationProperties.LabeledBy="{x:Bind FontSizeLabel}"
+                    Minimum="10" Maximum="32"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            
+        </local:ControlExample>
+        
+        <!-- AutomationProperties.AccessibilityView sample-->
+        <local:ControlExample HeaderText="Modifying accessibility view of custom templates">
+            <local:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/>
+                    <TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0">This is some demo text. The image on the right is just for decoration and serves no informational purpose. 
+                        To prevent Narrator and other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.</TextBlock>
+                </StackPanel>
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation="Horizontal"&gt;
+    &lt;!-- The image is not necessary for screen readers as it does not contain any information. 
+         Thus we remove it from the content visual tree with AccessibilityView="Raw" --&gt;
+    &lt;Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0"&gt;This is some demo text.
+                    The image on the right is just for decoration and serves no informational purpose. 
+                    To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        
+        <!-- AutomationProperties.HeadingLevel sample-->
+        <local:ControlExample HeaderText="Writing semantic XAML with heading levels">
+            <local:ControlExample.Example>
+                <StackPanel MaxWidth="500">
+                    <!-- Just some cat/bacon/lorem ipsums for content-->
+                    <TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
+                    <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Lorem ipsum</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus. 
+                        Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.</TextBlock>
+                    
+                    <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Cat ipsum</TextBlock>
+                    <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Standard</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">Mice litter kitter kitty litty little kitten big roar roar feed me 
+                        but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.</TextBlock>
+                    <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Cat breeds</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat. 
+                        Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.</TextBlock>
+                    
+                    <TextBlock AutomationProperties.HeadingLevel="2" FontSize="22">Bacon ipsum</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">Bacon ipsum dolor amet meatball nulla labore, 
+                        tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.</TextBlock>
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel MaxWidth="500"&gt;
+    &lt;!-- Here is the main header for the whole text. It gets HeadingLevel 1 --&gt;
+    &lt;TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26"&gt;Lorem ipsums&lt;/TextBlock&gt;
+    &lt;!-- The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2--&gt;
+    &lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Lorem ipsum&lt;/TextBlock&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus. 
+                    Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.&lt;/TextBlock&gt;
+    
+    &lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Cat ipsum&lt;/TextBlock&gt;
+    &lt;!-- This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3 --&gt;
+    &lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Standard&lt;/TextBlock&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords">Mice litter kitter kitty litty little kitten big roar roar feed me 
+                    but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.&lt;/TextBlock&gt;
+    &lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Cat breeds&lt;/TextBlock&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords">Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat. 
+                    Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.&lt;/TextBlock&gt;
+    
+    &lt;TextBlock AutomationProperties.HeadingLevel="2" FontSize="22"&gt;Bacon ipsum&lt;/TextBlock&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords">Bacon ipsum dolor amet meatball nulla labore, 
+                    tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.&lt;/TextBlock&gt;
+&lt;/StackPanel&gt;                
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+    </StackPanel>
+
+</Page>

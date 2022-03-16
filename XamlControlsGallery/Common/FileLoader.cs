@@ -15,6 +15,7 @@ namespace AppUIBasics.Common
         {
             Uri sourceUri = new Uri("ms-appx:///" + relativeFilePath);
             var file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
+
             return await FileIO.ReadTextAsync(file);
         }
 

@@ -1,12 +1,12 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <ProjectReunionPackageVersion>0.8.2</ProjectReunionPackageVersion>
-    <ProjectReunionWinUIPackageVersion>0.8.2</ProjectReunionWinUIPackageVersion>
-    <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.12</MicrosoftNETCoreUniversalWindowsPlatformVersion>
+    <ProjectReunionPackageVersion>1.0.0</ProjectReunionPackageVersion>
+    <ProjectReunionWinUIPackageVersion>1.0.0</ProjectReunionWinUIPackageVersion>
+    <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
-    <ColorCodeVersion>2.0.5</ColorCodeVersion>
-    <MicrosoftCsWinRTPackageVersion>1.2.5</MicrosoftCsWinRTPackageVersion>
+    <ColorCodeVersion>2.0.13</ColorCodeVersion>
+    <MicrosoftCsWinRTPackageVersion>1.4.1</MicrosoftCsWinRTPackageVersion>
     <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->

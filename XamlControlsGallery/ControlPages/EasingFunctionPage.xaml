@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Name="pageRoot"
     x:Class="AppUIBasics.ControlPages.EasingFunctionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -129,9 +129,11 @@
                 <StackPanel>
                     <ComboBox x:Name="EasingComboBox" AutomationProperties.Name="Easing type" ItemsSource="{x:Bind EasingFunctions}" 
                               DisplayMemberPath="Name" SelectedValuePath="EasingFunctionBase" Loaded="EasingComboBox_Loaded"/>
-                    <RadioButton x:Name="easeOutRB" Content="EaseOut" IsChecked="True" />
-                    <RadioButton x:Name="easeInRB" Content="EaseIn" />
-                    <RadioButton x:Name="easeInOutRB" Content="EaseInOut" />
+                    <RadioButtons>
+                        <RadioButton x:Name="easeOutRB" Content="EaseOut" IsChecked="True" />
+                        <RadioButton x:Name="easeInRB" Content="EaseIn" />
+                        <RadioButton x:Name="easeInOutRB" Content="EaseInOut" />
+                    </RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
             <Grid>

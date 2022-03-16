@@ -88,16 +88,15 @@ namespace AppUIBasics.Common
             layout.InvalidateMeasure();
         }
 
-#endregion
+        #endregion
 
-#region Setup / teardown
+        #region Setup / teardown
 
         protected override void InitializeForContextCore(VirtualizingLayoutContext context)
         {
             base.InitializeForContextCore(context);
 
-            var state = context.LayoutState as ActivityFeedLayoutState;
-            if (state == null)
+            if (!(context.LayoutState is ActivityFeedLayoutState state))
             {
                 // Store any state we might need since (in theory) the layout could be in use by multiple
                 // elements simultaneously
@@ -114,9 +113,9 @@ namespace AppUIBasics.Common
             context.LayoutState = null;
         }
 
-#endregion
+        #endregion
 
-#region Layout
+        #region Layout
 
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {
@@ -248,7 +247,7 @@ namespace AppUIBasics.Common
             return boundsForRow;
         }
 
-#endregion
+        #endregion
     }
 
     internal class ActivityFeedLayoutState

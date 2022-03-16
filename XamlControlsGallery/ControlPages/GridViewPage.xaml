@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -65,7 +65,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ImageOverlayTemplate" x:DataType="local1:CustomDataObject">
-            <Grid Width="100">
+            <Grid Width="100" AutomationProperties.Name="{x:Bind Title}">
                 <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill"/>
                 <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
                     <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
@@ -120,65 +120,29 @@
 
             <local:ControlExample.Options>
                 <StackPanel>
-                    <Grid HorizontalAlignment="Left" Margin="0,20,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                    <StackPanel.Resources>
+                        <Style x:Key="DefaultNumberBoxStyle" TargetType="NumberBox">
+                            <Setter Property="SpinButtonPlacementMode" Value="Inline" />
+                            <Setter Property="SmallChange" Value="1" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="MaxWidth" Value="250" />
+                            <Setter Property="Margin" Value="0,0,0,16" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Columns" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="ColSpace" PlaceholderText="{x:Bind ActualColSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                TextChanged="StyledGrid_ChangeCol"/>
-                        <RepeatButton x:Name="ColSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseColSpace" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="ColSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseColSpace" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
+                    <NumberBox x:Name="ColumnSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between columns" AutomationProperties.Name="Space between columns"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
-                    <Grid HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                    <NumberBox x:Name="RowSpace" Minimum="0" Maximum="100" Value="5"
+                                    Header="Space between rows" AutomationProperties.Name="Space between rows"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Space Between Rows" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="RowSpace" PlaceholderText="{x:Bind ActualRowSpace, Mode=TwoWay}"  Margin="0,0,5,10" 
-                                 TextChanged="StyledGrid_ChangeRow"/>
-                        <RepeatButton x:Name="RowSpacesDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseRowSpace" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="RowSpacesInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseRowSpace" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <Grid HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Max # of Items Before Wrapping" Width="150" TextWrapping="Wrap" Margin="0,0,0,5" HorizontalAlignment="Left"/>
-                        <TextBox Grid.Row="1" Grid.Column="0" Width="100" x:Name="MaxItems" PlaceholderText="{x:Bind ActualMaxItems, Mode=TwoWay}"  
-                                 Margin="0,0,5,10" TextChanged="StyledGrid_ChangeMaxItems" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="MaxItemsDec" Grid.Row="1" Grid.Column="1" Content="-" FontSize="15" Width="30" Click="StyledGrid_DecreaseMaxItems" 
-                                Margin="0,0,5,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                        <RepeatButton x:Name="MaxItemsInc" Grid.Row="1" Grid.Column="2" Content="+" FontSize="15" Width="30" Click="StyledGrid_IncreaseMaxItems" 
-                                Margin="0,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                    </Grid>
+                    <NumberBox x:Name="WrapItemCount" Minimum="1" Maximum="8" Value="3"
+                                    Header="Maximum number of items before wrapping"
+                                    AutomationProperties.Name="Maximum number of items before wrapping"
+                                    Style="{ThemeResource DefaultNumberBoxStyle}" ValueChanged="NumberBox_ValueChanged" />
 
                 </StackPanel>
             </local:ControlExample.Options>
@@ -230,9 +194,9 @@ The data template is defined to display a CustomDataObject object (same type as 
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColSpace.PlaceholderText, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.PlaceholderText, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind MaxItems.PlaceholderText, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="ColMargin" Value="{x:Bind ColumnSpace.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="RowMargin" Value="{x:Bind RowSpace.Value, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="MaxItems" Value="{x:Bind WrapItemCount.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
@@ -262,8 +226,7 @@ The data template is defined to display a CustomDataObject object (same type as 
             </Grid>
             <local:ControlExample.Options>
                 <StackPanel x:Name="Control2">
-                    <StackPanel>
-                        <TextBlock Margin="0,0,0,10" Text="ItemTemplate" />
+                    <RadioButtons Header="ItemTemplate">
                         <RadioButton
                             Checked="ItemTemplate_Checked"
                             Content="Image"
@@ -285,6 +248,8 @@ The data template is defined to display a CustomDataObject object (same type as 
                             Content="Text"
                             GroupName="Template"
                             Tag="TextTemplate" />
+                    </RadioButtons>
+                    <StackPanel>
                         <ToggleButton Margin="0,8,0,0" Click="FlowDirectionCheckBox_Click" Content="Reverse FlowDirection" />
                         <TextBlock Margin="0,18,0,10" Text="GridView Properties" />
                         <TextBlock TextWrapping="Wrap" FontSize="13" MaxWidth="150"> In order to drag, drop, and reorder items within the GridView, make sure the last three boxes are checked below.<LineBreak/></TextBlock>
@@ -321,7 +286,7 @@ The data template is defined to display a CustomDataObject object (same type as 
     SelectionMode="$(SelectionMode)"
     SelectionChanged="ContentGridView_SelectionChanged"
     ItemClick="ContentGridView_ItemClick" 
-    FlowDirection="$(FlowDirec)"/&gt;
+    FlowDirection="$(FlowDirection)"/&gt;
 
 &lt;!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
 to handle the events of when a selection changes on the GridView and when an item is clicked. --&gt;
@@ -339,7 +304,7 @@ $(DisplayDT)
                 <local:ControlExampleSubstitution Key="CanDropItems" Value="{x:Bind ContentGridView.AllowDrop, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="CanReorderItems" Value="{x:Bind ContentGridView.CanReorderItems, Mode=OneWay}" />
                 <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ContentGridView.SelectionMode, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="FlowDirec" Value="{x:Bind ContentGridView.FlowDirection, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="FlowDirection" Value="{x:Bind ContentGridView.FlowDirection, Mode=OneWay}" />
                 <local:ControlExampleSubstitution x:Name="DisplayDT" Key="DisplayDT" />
 
             </local:ControlExample.Substitutions>

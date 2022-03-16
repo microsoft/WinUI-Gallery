@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,13 +12,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AppBarToggleButtonPage : Page
     {
         AppBarToggleButton compactButton = null;
@@ -44,21 +39,22 @@ namespace AppUIBasics.ControlPages
             // Add compact button to the command bar. It provides functionality specific
             // to this page, and is removed when leaving the page.
 
-                CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
-                separator = new AppBarSeparator();
-                appBar.PrimaryCommands.Insert(0, separator);
+            CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            separator = new AppBarSeparator();
+            appBar.PrimaryCommands.Insert(0, separator);
 
-                compactButton = new AppBarToggleButton();
-                compactButton.Icon = new SymbolIcon(Symbol.FontSize);
-                compactButton.Label = "IsCompact";
-                compactButton.Click += CompactButton_Click;
-                appBar.PrimaryCommands.Insert(0, compactButton);
+            compactButton = new AppBarToggleButton
+            {
+                Icon = new SymbolIcon(Symbol.FontSize),
+                Label = "IsCompact"
+            };
+            compactButton.Click += CompactButton_Click;
+            appBar.PrimaryCommands.Insert(0, compactButton);
         }
 
         private void CompactButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButton toggle = sender as ToggleButton;
-            if (toggle != null && toggle.IsChecked != null)
+            if (sender is ToggleButton toggle && toggle.IsChecked != null)
             {
                 Button1.IsCompact =
                 Button2.IsCompact =
@@ -69,9 +65,7 @@ namespace AppUIBasics.ControlPages
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            AppBarToggleButton b = sender as AppBarToggleButton;
-
-            if (b != null)
+            if (sender is AppBarToggleButton b)
             {
                 string name = b.Name;
 

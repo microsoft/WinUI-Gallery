@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,22 +10,16 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ToggleButtonPage : Page
     {
         public ToggleButtonPage()
         {
             this.InitializeComponent();
 
-            // Set initial outpput value.
+            // Set initial output value.
             Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
-            // ControlRevealOutput.Text = (bool)ToggleReveal.IsChecked ? "On" : "Off";
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -37,17 +31,5 @@ namespace AppUIBasics.ControlPages
         {
             Control1Output.Text = "Off";
         }
-
-        /* 
-        private void ToggleButtonReveal_Checked(object sender, RoutedEventArgs e)
-        {
-            ControlRevealOutput.Text = "On";
-        }
-
-        private void ToggleButtonReveal_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ControlRevealOutput.Text = "Off";
-        }
-        */
     }
 }

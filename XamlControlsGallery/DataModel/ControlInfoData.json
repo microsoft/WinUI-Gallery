@@ -26,7 +26,7 @@
         {
           "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
-          "Subtitle": "An object which is used to define the look and feel of a given command",
+          "Subtitle": "An object which is used to define the look and feel of a given command.",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls.",
           "Content": "",
@@ -52,7 +52,7 @@
         {
           "UniqueId": "StandardUICommand",
           "Title": "StandardUICommand",
-          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'.",
           "ImagePath": "ms-appx:///Assets/AppBarSeparator.png",
           "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls. E.g. Save, Open, Copy, Paste, etc.",
           "Content": "",
@@ -208,7 +208,7 @@
           "Title": "MenuBar",
           "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "ImagePath": "ms-appx:///Assets/MenuBar.png",
-          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window",
+          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
           "Content": "",
           "IsNew": false,
           "IsUpdated": true,
@@ -232,7 +232,7 @@
         {
           "UniqueId": "CommandBarFlyout",
           "Title": "CommandBarFlyout",
-          "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands",
+          "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands.",
           "ImagePath": "ms-appx:///Assets/CommandBarFlyout.png",
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
           "Content": "",
@@ -345,7 +345,7 @@
           "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "FlipView - API",
@@ -365,7 +365,7 @@
         {
           "UniqueId": "GridView",
           "Title": "GridView",
-          "Subtitle": "Presents a collection of items in rows and columns that can scroll horizontally.",
+          "Subtitle": "A control that presents a collection of items in rows and columns.",
           "ImagePath": "ms-appx:///Assets/GridView.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -416,7 +416,7 @@
         {
           "UniqueId": "ListView",
           "Title": "ListView",
-          "Subtitle": "Presents a collection of items in a list that can scroll vertically.",
+          "Subtitle": "A control that presents a collection of items in a vertical list.",
           "ImagePath": "ms-appx:///Assets/ListView.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -428,20 +428,34 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.listview"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/listview-and-gridview"
+            },
+            {
+              "Title": "Drag and Drop - Full Sample",
+              "Uri": "https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/XamlDragAndDrop"
+            },
+            {
+              "Title": "CollectionViewSource - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Data.CollectionViewSource#see-also"
+            },
+            {
+              "Title": "Filtering collections and lists through user input",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/listview-filtering"
+            },
+            {
               "Title": "Inverted Lists",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/inverted-lists"
             },
             {
               "Title": "Inverted Lists - Full Sample",
               "Uri": "https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlBottomUpList"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/lists"
             }
+
           ],
           "RelatedControls": [
             "GridView",
+            "StandardUICommand",
             "FlipView",
             "SemanticZoom"
           ]
@@ -451,7 +465,7 @@
           "Title": "PullToRefresh",
           "Subtitle": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
           "ImagePath": "ms-appx:///Assets/PullToRefresh.png",
-          "Description": "PullToRefresh Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
+          "Description": "PullToRefresh lets a user pull down on a list of data using touch in order to retrieve more data. PullToRefresh is widely used on devices with a touch screen.",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
@@ -581,7 +595,7 @@
         {
           "UniqueId": "DatePicker",
           "Title": "DatePicker",
-          "Subtitle": "A configurable control that lets a user pick a date value.",
+          "Subtitle": "A control that lets a user pick a date value.",
           "ImagePath": "ms-appx:///Assets/DatePicker.png",
           "Description": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>DatePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -608,7 +622,7 @@
           "Title": "TimePicker",
           "Subtitle": "A configurable control that lets a user pick a time value.",
           "ImagePath": "ms-appx:///Assets/TimePicker.png",
-          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for month, day, and and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
+          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for hour, minute, and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>TimePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
@@ -680,7 +694,7 @@
         {
           "UniqueId": "DropDownButton",
           "Title": "DropDownButton",
-          "Subtitle": "A control that drops down a flyout of choices from which one can be chosen",
+          "Subtitle": "A button that displays a flyout of choices when clicked.",
           "ImagePath": "ms-appx:///Assets/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
           "Content": "",
@@ -789,7 +803,7 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
-          "Subtitle": "The splitbutton is a dropdown button, but with an addition execution hit target",
+          "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target",
           "Content": "",
@@ -871,7 +885,7 @@
         {
           "UniqueId": "ColorPicker",
           "Title": "ColorPicker",
-          "Subtitle": "A selectable color spectrum.",
+          "Subtitle": "A control that displays a selectable color spectrum.",
           "ImagePath": "ms-appx:///Assets/ColorPicker.png",
           "Description": "A selectable color spectrum.",
           "Content": "",
@@ -926,11 +940,12 @@
         {
           "UniqueId": "RadioButton",
           "Title": "RadioButton",
-          "Subtitle": "A control that allows a user to select a single option from a group of options. When radio buttons are grouped together they are mutually exclusive.",
+          "Subtitle": "A control that allows a user to select a single option from a group of options.",
           "ImagePath": "ms-appx:///Assets/RadioButton.png",
-          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options.",
+          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -943,6 +958,7 @@
           ],
           "RelatedControls": [
             "CheckBox",
+            "RadioButtons",
             "ToggleSwitch",
             "ToggleButton"
           ]
@@ -1027,9 +1043,55 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
       "Subtitle": "",
-      "ImagePath": "",
+      "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "AutomationProperties",
+          "Title": "AutomationProperties",
+          "Subtitle": "Attributes that help with writing accessible XAML.",
+          "ImagePath": "ms-appx:///Assets/Button.png",
+          "Description": "The AutomationProperties attributes provide functionality around accessible components.",
+          "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
+          "IsNew": false,
+          "Docs": [
+            {
+              "Title": "AutomationProperties - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.automation.automationproperties"
+            },
+            {
+              "Title": "Accessibility Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/accessibility/accessibility"
+            }
+          ],
+          "RelatedControls": [
+            "TextBlock",
+            "Image"
+          ]
+        },
+        {
+          "UniqueId": "InfoBar",
+          "Title": "InfoBar",
+          "Subtitle": "An inline message to display app-wide status change information",
+          "ImagePath": "ms-appx:///Assets/MenuBar.png",
+          "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
+          "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "InfoBar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.infobar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/infobar"
+            }
+          ],
+          "RelatedControls": [
+            "TeachingTip",
+            "ContentDialog"
+          ]
+        },
         {
           "UniqueId": "ProgressBar",
           "Title": "ProgressBar",
@@ -1056,12 +1118,12 @@
         {
           "UniqueId": "ProgressRing",
           "Title": "ProgressRing",
-          "Subtitle": "Shows that the app is performing ongoing work that blocks user interaction.",
+          "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that does block user interaction.",
           "ImagePath": "ms-appx:///Assets/ProgressRing.png",
-          "Description": "Use a ProgressRing to show that the app is performing ongoing work that blocks user interaction.",
+          "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ProgressRing - API",
@@ -1091,7 +1153,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.tooltip"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tooltips"
             }
           ],
@@ -1198,6 +1260,31 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "PipsPager",
+          "Title": "PipsPager",
+          "Subtitle": "A control to let the user navigate through a paginated collection when the page numbers do not need to be visually known.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
+          "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "PipsPager - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pipspager"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/pipspager"
+            }
+          ],
+          "RelatedControls": [
+            "ScrollViewer",
+            "FlipView",
+            "ItemsRepeater"
+          ]
+        },
+        {
           "UniqueId": "ScrollViewer",
           "Title": "ScrollViewer",
           "Subtitle": "A container control that lets the user pan and zoom its content.",
@@ -1212,7 +1299,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.scrollviewer"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/scroll-controls"
             }
           ],
@@ -1309,6 +1396,30 @@
           ]
         },
         {
+          "UniqueId": "Expander",
+          "Title": "Expander",
+          "Subtitle": "A container with a header that can be expanded to show a body with more content.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
+          "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Expander - API",
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.expander"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/expander"
+            }
+          ],
+          "RelatedControls": [
+            "Flyout",
+            "ItemsRepeater",
+            "SplitView"
+          ]
+        },
+        {
           "UniqueId": "ItemsRepeater",
           "Title": "ItemsRepeater",
           "Subtitle": "A flexible, primitive control for data-driven layouts.",
@@ -1325,6 +1436,14 @@
             {
               "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/items-repeater"
+            },
+            {
+              "Title": "StackLayout - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.stacklayout?view=winui-2.3"
+            },
+            {
+              "Title": "UniformGridLayout - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.uniformgridlayout?view=winui-2.3"
             }
           ],
           "RelatedControls": [
@@ -1365,6 +1484,32 @@
           ]
         },
         {
+          "UniqueId": "RadioButtons",
+          "Title": "RadioButtons",
+          "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
+          "ImagePath": "ms-appx:///Assets/RadioButtons.png",
+          "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
+          "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "RadioButtons - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.radiobuttons?view=winui-2.4"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/radio-button"
+            }
+          ],
+          "RelatedControls": [
+            "CheckBox",
+            "RadioButton",
+            "ToggleSwitch",
+            "ToggleButton"
+          ]
+        },
+        {
           "UniqueId": "RelativePanel",
           "Title": "RelativePanel",
           "Subtitle": "A panel that uses relationships between elements to define layout.",
@@ -1379,7 +1524,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.relativepanel"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1433,7 +1578,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.stackpanel"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1460,7 +1605,7 @@
               "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.variablesizedwrapgrid"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/layout-panels"
             }
           ],
@@ -1504,6 +1649,31 @@
       "ImagePath": "",
       "Description": "",
       "Items": [
+        {
+          "UniqueId": "BreadcrumbBar",
+          "Title": "BreadcrumbBar",
+          "Subtitle": "Shows the trail of navigation taken to the current location.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
+          "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
+          "IsUPdated": true,
+          "Docs": [
+            {
+              "Title": "BreadcrumbBar - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.breadcrumbbar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/breadcrumbbar"
+            }
+          ],
+          "RelatedControls": [
+            "NavigationView",
+            "Pivot",
+            "TabView"
+          ]
+        },
         {
           "UniqueId": "NavigationView",
           "Title": "NavigationView",
@@ -1556,7 +1726,7 @@
         {
           "UniqueId": "TabView",
           "Title": "TabView",
-          "Subtitle": "TabView provides the user with a collection of tabs that can be used to display several documents.",
+          "Subtitle": "A control that displays a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "Content": "",
@@ -1569,8 +1739,12 @@
               "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.tabview?view=winui-2.2"
             },
             {
-              "Title": "Guidance",
+              "Title": "Guidelines",
               "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/tab-view"
+            },
+            {
+              "Title": "Show multiple views for an app",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views"
             }
           ],
           "RelatedControls": [
@@ -1661,7 +1835,7 @@
         {
           "UniqueId": "Sound",
           "Title": "Sound",
-          "Subtitle": "A C#-only API that enables 2D and 3D UI sounds on all UWP controls.",
+          "Subtitle": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
           "ImagePath": "ms-appx:///Assets/Sound.png",
           "Description": "Sound is enabled by default for UWP apps running on Xbox, but can be set to always play on all devices if desired. Sound may also be put into Spatial Audio mode for a more immersive 10ft experience.",
           "Content": "<p>Look at the <i>SoundPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
@@ -1731,38 +1905,90 @@
             }
           ],
           "RelatedControls": [
-            "Reveal"
           ]
         },
         {
-          "UniqueId": "Reveal",
-          "Title": "Reveal",
-          "Subtitle": "A material that changes color near the mouse.",
-          "ImagePath": "ms-appx:///Assets/Reveal.png",
-          "Description": "A material that changes color near the mouse.",
-          "Content": "",
-          "IsNew": false,
-          "IsUpdated": false,
+          "UniqueId": "AnimatedIcon",
+          "Title": "AnimatedIcon",
+          "Subtitle": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "ImagePath": "ms-appx:///Assets/Animations.png",
+          "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
+          "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "Docs": [
             {
-              "Title": "RevealBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealbrush"
-            },
-            {
-              "Title": "RevealBackgroundBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealbackgroundbrush"
-            },
-            {
-              "Title": "RevealBorderBrush - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.revealborderbrush"
+              "Title": "AnimatedIcon - API",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedicon"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/reveal"
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/animated-icon"
+            },
+            {
+              "Title": "Lottie Overview",
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/animations/lottie"
+            },
+            {
+              "Title": "Lottie Windows - GitHub",
+              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+            }
+          ]
+        },
+        {
+          "UniqueId": "IconElement",
+          "Title": "IconElement",
+          "Subtitle": "Represents icon controls that use different image types as its content.",
+          "ImagePath": "ms-appx:///Assets/Image.png",
+          "Description": "Represents icon controls that use different image types as its content.",
+          "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "BitmapIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.bitmapicon"
+            },
+            {
+              "Title": "FontIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon"
+            },
+            {
+              "Title": "ImageIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.imageicon"
+            },
+            {
+              "Title": "PathIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.pathicon"
+            },
+            {
+              "Title": "SymbolIcon - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.symbolicon"
+            },
+            {
+              "Title": "Icon Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/style/icons"
             }
           ],
           "RelatedControls": [
-            "Acrylic"
+            "AnimatedIcon", "AppBarButton", "MenuFlyoutItem"
+          ]
+        },
+        {
+          "UniqueId": "RadialGradientBrush",
+          "Title": "RadialGradientBrush",
+          "Subtitle": "A brush to show radial gradients",
+          "ImagePath": "ms-appx:///Assets/Canvas.png",
+          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
+          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
+          "IsNew": false,
+          "Docs": [
+            {
+              "Title": "RadialGradientBrush - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.media.RadialGradientBrush"
+            }
+          ],
+          "RelatedControls": [
+            "Acrylic",
+            "ColorPaletteResources"
           ]
         },
         {
@@ -1785,13 +2011,12 @@
             }
           ],
           "RelatedControls": [
-            "Reveal"
           ]
         },
         {
           "UniqueId": "ColorPaletteResources",
           "Title": "ColorPaletteResources",
-          "Subtitle": "",
+          "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
           "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
           "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
           "Content": "",
@@ -1863,6 +2088,31 @@
           ]
         },
         {
+          "UniqueId": "NumberBox",
+          "Title": "NumberBox",
+          "Subtitle": "A text control used for numeric input and evaluation of algebraic equations.",
+          "ImagePath": "ms-appx:///Assets/NumberBox.png",
+          "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
+          "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
+          "Docs": [
+            {
+              "Title": "NumberBox - API",
+              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.numberbox"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/number-box"
+            }
+          ],
+          "RelatedControls": [
+            "TextBox",
+            "TextBlock",
+            "RichTextBlock",
+            "RichEditBox"
+          ]
+        },
+        {
           "UniqueId": "PasswordBox",
           "Title": "PasswordBox",
           "Subtitle": "A control for entering passwords.",
@@ -1908,6 +2158,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBox",
             "RichTextBlock",
             "TextBlock"
@@ -1933,6 +2184,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBlock",
             "TextBox",
             "PasswordBox",
@@ -1959,6 +2211,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBox",
             "RichTextBlock",
             "PasswordBox",
@@ -1985,6 +2238,7 @@
             }
           ],
           "RelatedControls": [
+            "NumberBox",
             "TextBlock",
             "RichTextBlock",
             "PasswordBox",

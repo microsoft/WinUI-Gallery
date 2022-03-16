@@ -18,7 +18,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Windows.UI;
+using Microsoft.UI;
 using System.Runtime.InteropServices;
 
 #if !UNIVERSAL
@@ -37,7 +37,7 @@ namespace AppUIBasics.ControlPages
     {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
         public static extern IntPtr GetActiveWindow();
-        private Color currentColor = Microsoft.UI.Colors.Green;
+        private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
 
         public RichEditBoxPage()
         {
@@ -47,12 +47,27 @@ namespace AppUIBasics.ControlPages
         private void Menu_Opening(object sender, object e)
         {
             CommandBarFlyout myFlyout = sender as CommandBarFlyout;
-            if (myFlyout.Target == REBCustom)
+            if (myFlyout != null && myFlyout.Target == REBCustom)
             {
-                AppBarButton myButton = new AppBarButton();
-                myButton.Command = new StandardUICommand(StandardUICommandKind.Share);
+                AppBarButton myButton = new AppBarButton
+                {
+                    Command = new StandardUICommand(StandardUICommandKind.Share)
+                };
                 myFlyout.PrimaryCommands.Add(myButton);
             }
+            else
+            {
+                CommandBarFlyout muxFlyout = sender as CommandBarFlyout;
+                if (muxFlyout != null && muxFlyout.Target == REBCustom)
+                {
+                    AppBarButton myButton = new AppBarButton
+                    {
+                        Command = new StandardUICommand(StandardUICommandKind.Share)
+                    };
+                    muxFlyout.PrimaryCommands.Add(myButton);
+                }
+            }
+
         }
 
         private async void OpenButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +79,7 @@ namespace AppUIBasics.ControlPages
 
 #if !UNIVERSAL
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-            if (Window.Current == null)
+            if (App.CurrentWindow == null)
             {
                 IInitializeWithWindow initializeWithWindowWrapper = open.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
@@ -87,8 +102,10 @@ namespace AppUIBasics.ControlPages
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            FileSavePicker savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            FileSavePicker savePicker = new FileSavePicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
 
             // Dropdown of file types the user can save the file as
             savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
@@ -98,7 +115,7 @@ namespace AppUIBasics.ControlPages
 
 #if !UNIVERSAL
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-            if (Window.Current == null)
+            if (App.CurrentWindow == null)
             {
                 IInitializeWithWindow initializeWithWindowWrapper = savePicker.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
@@ -186,6 +203,8 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
+            editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
+            
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
             SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];

@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -9,6 +9,7 @@
 //*********************************************************
 using AppUIBasics.Common;
 using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -18,10 +19,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
-using Windows.Storage;
 using Windows.System.Profile;
-using Microsoft.UI;
-using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -33,52 +31,6 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-        private const string SelectedAppThemeKey = "SelectedAppTheme";
-
-        /// <summary>
-        /// Gets the current actual theme of the app based on the requested theme of the
-        /// root element, or if that value is Default, the requested theme of the Application.
-        /// </summary>
-        public static ElementTheme ActualTheme
-        {
-            get
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    if (rootElement.RequestedTheme != ElementTheme.Default)
-                    {
-                        return rootElement.RequestedTheme;
-                    }
-                }
-
-                return GetEnum<ElementTheme>(Current.RequestedTheme.ToString());
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets (with LocalSettings persistence) the RequestedTheme of the root element.
-        /// </summary>
-        public static ElementTheme RootTheme
-        {
-            get
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    return rootElement.RequestedTheme;
-                }
-
-                return ElementTheme.Default;
-            }
-            set
-            {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
-                {
-                    rootElement.RequestedTheme = value;
-                }
-
-                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
-            }
-        }
 
 #if !UNIVERSAL
         private static Window currentWindow;
@@ -90,7 +42,7 @@ namespace AppUIBasics
 #if !UNIVERSAL
                 return currentWindow;
 #else
-                return Window.Current;
+                return App.CurrentWindow;
 #endif
             }
         }
@@ -103,7 +55,7 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
@@ -134,7 +86,7 @@ namespace AppUIBasics
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         private void App_Resuming(object sender, object e)
         {
             switch (NavigationRootPage.RootFrame?.Content)
@@ -193,7 +145,7 @@ namespace AppUIBasics
 
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         protected override void OnActivated(IActivatedEventArgs args)
         {
             EnsureWindow(args);
@@ -208,12 +160,7 @@ namespace AppUIBasics
 
             Frame rootFrame = GetRootFrame();
 
-            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
-
-            if (savedTheme != null)
-            {
-                RootTheme = GetEnum<ElementTheme>(savedTheme);
-            }
+            ThemeHelper.Initialize();
 
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
@@ -243,18 +190,26 @@ namespace AppUIBasics
 
                     string targetId = string.Empty;
 
-                    switch (((ProtocolActivatedEventArgs)args).Uri?.AbsolutePath)
+                    switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
                     {
-                        case string s when IsMatching(s, "/category/(.*)"):
-                            targetId = match.Groups[1]?.ToString();
-                            if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
+                        case string s when IsMatching(s, "(/*)category/(.*)"):
+                            targetId = match.Groups[2]?.ToString();
+                            if (targetId == "AllControls")
+                            {
+                                targetPageType = typeof(AllControlsPage);
+                            }
+                            else if (targetId == "NewControls")
+                            {
+                                targetPageType = typeof(NewControlsPage);
+                            }
+                            else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
                             {
                                 targetPageType = typeof(SectionPage);
                             }
                             break;
 
-                        case string s when IsMatching(s, "/item/(.*)"):
-                            targetId = match.Groups[1]?.ToString();
+                        case string s when IsMatching(s, "(/*)item/(.*)"):
+                            targetId = match.Groups[2]?.ToString();
                             if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
                             {
                                 targetPageType = typeof(ItemPage);
@@ -273,7 +228,15 @@ namespace AppUIBasics
             }
 
             rootFrame.Navigate(targetPageType, targetPageArguments);
-            ((Microsoft.UI.Xaml.Controls.NavigationViewItem)(((NavigationRootPage)(App.CurrentWindow.Content)).NavigationView.MenuItems[0])).IsSelected = true;
+
+            if (targetPageType == typeof(NewControlsPage))
+            {
+                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.CurrentWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
+            }
+            else if (targetPageType == typeof(ItemPage))
+            {
+                NavigationRootPage.Current.EnsureNavigationSelection(targetPageArguments);
+            }
 
             // Ensure the current window is active
            CurrentWindow.Activate();
@@ -315,7 +278,7 @@ namespace AppUIBasics
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-#if MUX_PRERELEASE
+#if WINUI_PRERELEASE
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -329,6 +292,6 @@ namespace AppUIBasics
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
-#endif // MUX_PRERELEASE
+#endif // WINUI_PRERELEASE
     }
 }

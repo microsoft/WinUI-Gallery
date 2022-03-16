@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -17,13 +17,8 @@ using System.ComponentModel;
 using Microsoft.UI.Xaml.Data;
 #endif
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
     {
         private bool multipleButtons = false;
@@ -45,8 +40,7 @@ namespace AppUIBasics.ControlPages
 
         public void OnPropertyChanged(string PropertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
 
         public CommandBarPage()
@@ -67,6 +61,12 @@ namespace AppUIBasics.ControlPages
             PrimaryCommandBar.IsSticky = false;
         }
 
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            var selectedFlyoutItem = sender as AppBarButton;
+            SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
+        }
+
         private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
         {
             // Add compact button to the command bar. It provides functionality specific
@@ -84,9 +84,11 @@ namespace AppUIBasics.ControlPages
                 });
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-                newButton = new AppBarButton();
-                newButton.Icon = new SymbolIcon(Symbol.Delete);
-                newButton.Label = "Button 2";
+                newButton = new AppBarButton
+                {
+                    Icon = new SymbolIcon(Symbol.Delete),
+                    Label = "Button 2"
+                };
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
                 newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {

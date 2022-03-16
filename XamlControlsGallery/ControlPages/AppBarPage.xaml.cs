@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,13 +12,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AppBarPage : Page
     {
         public AppBarPage()
@@ -46,8 +41,7 @@ namespace AppUIBasics.ControlPages
         {
             ButtonBase b = (ButtonBase)sender;
 
-            Frame rootFrame = App.CurrentWindow.Content as Frame;
-            if (rootFrame != null && b.Tag != null)
+            if (App.CurrentWindow.Content is Frame rootFrame && b.Tag != null)
             {
                 if (b.Tag.ToString() == "Home")
                 {
@@ -62,13 +56,13 @@ namespace AppUIBasics.ControlPages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Button homeButton = AppBarContentPanel.Children[0] as Button;
-
-            if (homeButton != null && homeButton.Tag.ToString() != "Home")
+            if (AppBarContentPanel.Children[0] is Button homeButton && homeButton.Tag.ToString() != "Home")
             {
-                homeButton = new Button();
-                homeButton.Content = "Home";
-                homeButton.Tag = "Home";
+                homeButton = new Button
+                {
+                    Content = "Home",
+                    Tag = "Home"
+                };
                 homeButton.Click += NavBarButton_Click;
 
                 AppBarContentPanel.Children.Insert(0, homeButton);
@@ -88,9 +82,7 @@ namespace AppUIBasics.ControlPages
 
         private void RemoveHomeButton()
         {
-            Button homeButton = AppBarContentPanel.Children[0] as Button;
-
-            if (homeButton != null && homeButton.Tag.ToString() == "Home")
+            if (AppBarContentPanel.Children[0] is Button homeButton && homeButton.Tag.ToString() == "Home")
             {
                 homeButton.Click -= NavBarButton_Click;
                 AppBarContentPanel.Children.RemoveAt(0);

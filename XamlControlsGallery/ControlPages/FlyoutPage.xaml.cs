@@ -12,13 +12,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class FlyoutPage : Page
     {
         public FlyoutPage()
@@ -28,8 +23,7 @@ namespace AppUIBasics.ControlPages
 
         private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
         {
-            Flyout f = this.Control1.Flyout as Flyout;
-            if (f != null)
+            if (this.Control1.Flyout is Flyout f)
             {
                 f.Hide();
             }

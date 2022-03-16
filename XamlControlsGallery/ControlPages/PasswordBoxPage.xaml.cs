@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,13 +10,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class PasswordBoxPage : Page
     {
         public PasswordBoxPage()
@@ -26,9 +21,7 @@ namespace AppUIBasics.ControlPages
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordBox pb = sender as PasswordBox;
-
-            if (pb != null)
+            if (sender is PasswordBox pb)
             {
                 if (string.IsNullOrEmpty(pb.Password) || pb.Password == "Password")
                 {
@@ -41,6 +34,18 @@ namespace AppUIBasics.ControlPages
                     Control1Output.Text = string.Empty;
                     Control1Output.Visibility = Visibility.Collapsed;
                 }
+            }
+        }
+
+        private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (revealModeCheckBox.IsChecked == true)
+            {
+                passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Visible;
+            }
+            else
+            {
+                passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Hidden;
             }
         }
     }

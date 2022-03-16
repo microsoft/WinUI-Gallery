@@ -1,7 +1,8 @@
-﻿using Microsoft.Xaml.Interactivity;
+using AppUIBasics.Helper;
+using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
-using Windows.UI;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -12,9 +13,10 @@ namespace AppUIBasics.Behaviors
     {
         private const int _opacityMaxValue = 250;
         private const int _alpha = 255;
-        private const int _maxFontSize = 42;
-        private const int _minFontSize = 24;
-        private const int scrollViewerThresholdValue = 190;
+        private const int _maxFontSize = 28;
+        private const int _minFontSize = 10;
+        private const int scrollViewerThresholdValue = 85;
+
         private ScrollViewer scrollViewer;
         private ListViewBase listGridView;
 
@@ -47,7 +49,7 @@ namespace AppUIBasics.Behaviors
 
         private bool GetScrollViewer()
         {
-            scrollViewer = Common.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
+            scrollViewer = Helper.UIHelper.GetDescendantsOfType<ScrollViewer>(AssociatedObject).FirstOrDefault();
             if (scrollViewer != null)
             {
                 scrollViewer.ViewChanging += ScrollViewer_ViewChanging;
@@ -66,8 +68,7 @@ namespace AppUIBasics.Behaviors
             {
                 VisualStateManager.GoToState(header, "DefaultForeground", false);
                 header.BackgroundColorOpacity = 0;
-                header.FontSize = 42;
-                header.Foreground = new SolidColorBrush(Colors.White);
+                header.FontSize = 28;
                 header.AcrylicOpacity = 0.3;
             }
             else if (verticalOffset > scrollViewerThresholdValue)
@@ -77,11 +78,11 @@ namespace AppUIBasics.Behaviors
             }
             else
             {
-                if (App.ActualTheme != ElementTheme.Dark)
+                if (ThemeHelper.ActualTheme != ElementTheme.Dark)
                 {
                     VisualStateManager.GoToState(header, "DefaultForeground", false);
-                    Color foreground = new Color() { A = _alpha };
-                    foreground.R = foreground.G = foreground.B = (byte)((verticalOffset > _alpha) ? 0 : (_alpha - verticalOffset));
+                    Color foreground = new Color() { A = (byte)((verticalOffset > scrollViewerThresholdValue) ? 0 : (_alpha * (1 - (verticalOffset / scrollViewerThresholdValue)))) };
+                    foreground.R = foreground.G = foreground.B = 0;
                     header.Foreground = new SolidColorBrush(foreground);
                 }
                 else

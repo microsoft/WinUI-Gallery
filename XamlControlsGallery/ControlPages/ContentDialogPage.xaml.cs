@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,13 +13,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ContentDialogPage : Page
     {
         public ContentDialogPage()
@@ -33,6 +28,12 @@ namespace AppUIBasics.ControlPages
 
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = this.XamlRoot;
+            dialog.Title = "Save your work?";
+            dialog.PrimaryButtonText = "Save";
+            dialog.SecondaryButtonText = "Don't Save";
+            dialog.CloseButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Content = new ContentDialogContent();
 
             var result = await dialog.ShowAsync();
 
