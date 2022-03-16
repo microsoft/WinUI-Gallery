@@ -1,28 +1,25 @@
-﻿using System;
+using AppUIBasics.Helper;
+using System;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Microsoft.UI.Composition;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Dispatching;
 
 #if !UNIVERSAL
 using System.Collections.ObjectModel;
 #endif
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class PullToRefreshPage : Page
     {
         private ObservableCollection<string> items1 = new ObservableCollection<string>();
@@ -32,6 +29,9 @@ namespace AppUIBasics.ControlPages
         private Visual visualizerContentVisual;
         private static RefreshContainer rc2;
         private RefreshVisualizer rv2;
+
+        private int items1AddedCount = 0;
+        private int items2AddedCount = 0;
 
         private Deferral RefreshCompletionDeferral1
         {
@@ -61,7 +61,7 @@ namespace AppUIBasics.ControlPages
                 Image ptrImage = new Image();
                 AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
                 // Checking light theme
-                if ((App.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
+                if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
                     && !accessibilitySettings.HighContrast)
                 {
                     ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
@@ -84,18 +84,14 @@ namespace AppUIBasics.ControlPages
                 rv2.Content = ptrImage;
                 rc2.Visualizer = rv2;
 
-                ListView lv2 = new ListView();
-                lv2.Width = 200;
-                lv2.Height = 200;
-
-#if !UNIVERSAL
-                lv2.BorderThickness = new Thickness(1);
-#else
-                lv2.BorderThickness = ThicknessHelper.FromUniformLength(1);
-#endif
-
-                lv2.HorizontalAlignment = HorizontalAlignment.Center;
-                lv2.BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"];
+                ListView lv2 = new ListView
+                {
+                    Width = 200,
+                    Height = 200,
+                    BorderThickness = new Thickness(1),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"]
+                };
 
 
                 rc2.Content = lv2;
@@ -163,7 +159,7 @@ namespace AppUIBasics.ControlPages
 
         private void Timer1_TickImpl()
         {
-            items1.Insert(0, "NewControl");
+            items1.Insert(0, "NewControl " + items1AddedCount++);
             timer1.Stop();
             if (this.RefreshCompletionDeferral1 != null)
             {
@@ -175,7 +171,7 @@ namespace AppUIBasics.ControlPages
 
         private void Timer2_TickImpl()
         {
-            items2.Insert(0, "New Friend");
+            items2.Insert(0, "New Friend " + items2AddedCount++);
             timer2.Stop();
             if (this.RefreshCompletionDeferral2 != null)
             {

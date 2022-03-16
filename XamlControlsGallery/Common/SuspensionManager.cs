@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,8 +62,7 @@ namespace AppUIBasics.Common
                 // Save the navigation state for all registered frames
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame))
+                    if (weakFrameReference.TryGetTarget(out Frame frame))
                     {
                         SaveFrameNavigationState(frame);
                     }
@@ -100,7 +99,7 @@ namespace AppUIBasics.Common
         /// completes.</returns>
         public static async Task RestoreAsync()
         {
-            _sessionState = new Dictionary<String, Object>();
+            _sessionState = new Dictionary<string, object>();
 
             try
             {
@@ -116,8 +115,7 @@ namespace AppUIBasics.Common
                 // Restore any registered frames to their saved state
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame))
+                    if (weakFrameReference.TryGetTarget(out Frame frame))
                     {
                         frame.ClearValue(FrameSessionStateProperty);
                         RestoreFrameNavigationState(frame);
@@ -148,7 +146,7 @@ namespace AppUIBasics.Common
         /// <see cref="SuspensionManager"/></param>
         /// <param name="sessionStateKey">A unique key into <see cref="SessionState"/> used to
         /// store navigation-related information.</param>
-        public static void RegisterFrame(Frame frame, String sessionStateKey)
+        public static void RegisterFrame(Frame frame, string sessionStateKey)
         {
             if (frame.GetValue(FrameSessionStateKeyProperty) != null)
             {
@@ -180,11 +178,10 @@ namespace AppUIBasics.Common
         {
             // Remove session state and remove the frame from the list of frames whose navigation
             // state will be saved (along with any weak references that are no longer reachable)
-            SessionState.Remove((String)frame.GetValue(FrameSessionStateKeyProperty));
+            SessionState.Remove((string)frame.GetValue(FrameSessionStateKeyProperty));
             _registeredFrames.RemoveAll((weakFrameReference) =>
             {
-                Frame testFrame;
-                return !weakFrameReference.TryGetTarget(out testFrame) || testFrame == frame;
+                return !weakFrameReference.TryGetTarget(out Frame testFrame) || testFrame == frame;
             });
         }
 
@@ -201,26 +198,26 @@ namespace AppUIBasics.Common
         /// <param name="frame">The instance for which session state is desired.</param>
         /// <returns>A collection of state subject to the same serialization mechanism as
         /// <see cref="SessionState"/>.</returns>
-        public static Dictionary<String, Object> SessionStateForFrame(Frame frame)
+        public static Dictionary<string, object> SessionStateForFrame(Frame frame)
         {
-            var frameState = (Dictionary<String, Object>)frame.GetValue(FrameSessionStateProperty);
+            var frameState = (Dictionary<string, object>)frame.GetValue(FrameSessionStateProperty);
 
             if (frameState == null)
             {
-                var frameSessionKey = (String)frame.GetValue(FrameSessionStateKeyProperty);
+                var frameSessionKey = (string)frame.GetValue(FrameSessionStateKeyProperty);
                 if (frameSessionKey != null)
                 {
                     // Registered frames reflect the corresponding session state
                     if (!_sessionState.ContainsKey(frameSessionKey))
                     {
-                        _sessionState[frameSessionKey] = new Dictionary<String, Object>();
+                        _sessionState[frameSessionKey] = new Dictionary<string, object>();
                     }
-                    frameState = (Dictionary<String, Object>)_sessionState[frameSessionKey];
+                    frameState = (Dictionary<string, object>)_sessionState[frameSessionKey];
                 }
                 else
                 {
                     // Frames that aren't registered have transient state
-                    frameState = new Dictionary<String, Object>();
+                    frameState = new Dictionary<string, object>();
                 }
                 frame.SetValue(FrameSessionStateProperty, frameState);
             }
@@ -232,7 +229,7 @@ namespace AppUIBasics.Common
             var frameState = SessionStateForFrame(frame);
             if (frameState.ContainsKey("Navigation"))
             {
-                frame.SetNavigationState((String)frameState["Navigation"]);
+                frame.SetNavigationState((string)frameState["Navigation"]);
             }
         }
 

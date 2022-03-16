@@ -44,7 +44,6 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>XamlControlsGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>XamlControlsGallery.DesktopWap</AppxBundleNameForOutput>
-    <PathToXamlWinRTImplementations>XamlControlsGallery.DesktopWap\</PathToXamlWinRTImplementations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
@@ -86,13 +85,15 @@
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
+
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.ProjectReunion" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
         <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[$(ProjectReunionWinUIPackageVersion)]" GeneratePathProperty="true">
-        <IncludeAssets>build</IncludeAssets>
+
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194">
+      <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />

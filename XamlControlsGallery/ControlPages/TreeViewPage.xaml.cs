@@ -10,14 +10,8 @@ using System.ComponentModel;
 using Microsoft.UI.Xaml.Data;
 #endif
 
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TreeViewPage : Page
     {
         mux.TreeViewNode personalFolder;
@@ -177,7 +171,7 @@ namespace AppUIBasics.ControlPages
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public enum ExplorerItemType { Folder, File };
-        public String Name { get; set; }
+        public string Name { get; set; }
         public ExplorerItemType Type { get; set; }
         private ObservableCollection<ExplorerItem> m_children;
         public ObservableCollection<ExplorerItem> Children
@@ -210,28 +204,9 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private bool m_isSelected;
-        public bool IsSelected
+        private void NotifyPropertyChanged(string propertyName)
         {
-            get { return m_isSelected; }
-
-            set
-            {
-                if (m_isSelected != value)
-                {
-                    m_isSelected = value;
-                    NotifyPropertyChanged("IsSelected");
-                }
-            }
-
-        }
-
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

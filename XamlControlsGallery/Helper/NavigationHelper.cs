@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,13 +7,19 @@ using System.Windows.Input;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using AppUIBasics.Common;
 
-namespace AppUIBasics.Common
+#if UNIVERSAL
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+#endif
+
+namespace AppUIBasics.Helper
 {
     /// <summary>
     /// NavigationHelper aids in navigation between pages. It manages
@@ -75,7 +81,7 @@ namespace AppUIBasics.Common
 
         #region Process lifetime management
 
-        private String _pageKey;
+        private string _pageKey;
 
         /// <summary>
         /// Handle this event to populate the page using content passed
@@ -116,20 +122,14 @@ namespace AppUIBasics.Common
                 }
 
                 // Pass the navigation parameter to the new page
-                if (this.LoadState != null)
-                {
-                    this.LoadState(this, new LoadStateEventArgs(e.Parameter, null));
-                }
+                this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
             }
             else
             {
                 // Pass the navigation parameter and preserved page state to the page, using
                 // the same strategy for loading suspended state and recreating pages discarded
                 // from cache
-                if (this.LoadState != null)
-                {
-                    this.LoadState(this, new LoadStateEventArgs(e.Parameter, (Dictionary<String, Object>)frameState[this._pageKey]));
-                }
+                this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>)frameState[this._pageKey]));
             }
         }
 
@@ -143,11 +143,8 @@ namespace AppUIBasics.Common
         public void OnNavigatedFrom(NavigationEventArgs e)
         {
             var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
-            var pageState = new Dictionary<String, Object>();
-            if (this.SaveState != null)
-            {
-                this.SaveState(this, new SaveStateEventArgs(pageState));
-            }
+            var pageState = new Dictionary<string, object>();
+            this.SaveState?.Invoke(this, new SaveStateEventArgs(pageState));
             frameState[_pageKey] = pageState;
         }
 
@@ -207,14 +204,14 @@ namespace AppUIBasics.Common
                 CurrentNavView.BackRequested += NavView_BackRequested;
             }
 
-#if UNIVERSAL
-            // Listen to the window directly so we will respond to hotkeys regardless
-            // of which element has focus.
-            CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated +=
-                CoreDispatcher_AcceleratorKeyActivated;
-            CoreWindow.GetForCurrentThread().PointerPressed +=
-                this.CoreWindow_PointerPressed;
-#endif
+// #if UNIVERSAL
+//             // Listen to the window directly so we will respond to hotkeys regardless
+//             // of which element has focus.
+//             CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated +=
+//                 CoreDispatcher_AcceleratorKeyActivated;
+//             CoreWindow.GetForCurrentThread().PointerPressed +=
+//                 this.CoreWindow_PointerPressed;
+// #endif
         }
 
         private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
@@ -276,74 +273,74 @@ namespace AppUIBasics.Common
 
         }
 
-        /// <summary>
-        /// Invoked on every keystroke, including system keys such as Alt key combinations.
-        /// Used to detect keyboard navigation between pages even when the page itself
-        /// doesn't have focus.
-        /// </summary>
-        /// <param name="sender">Instance that triggered the event.</param>
-        /// <param name="e">Event data describing the conditions that led to the event.</param>
-        private void CoreDispatcher_AcceleratorKeyActivated(CoreDispatcher sender,
-            AcceleratorKeyEventArgs e)
-        {
-            var virtualKey = e.VirtualKey;
+        // /// <summary>
+        // /// Invoked on every keystroke, including system keys such as Alt key combinations.
+        // /// Used to detect keyboard navigation between pages even when the page itself
+        // /// doesn't have focus.
+        // /// </summary>
+        // /// <param name="sender">Instance that triggered the event.</param>
+        // /// <param name="e">Event data describing the conditions that led to the event.</param>
+        // private void CoreDispatcher_AcceleratorKeyActivated(DispatcherQueue sender,
+        //     AcceleratorKeyEventArgs e)
+        // {
+        //     var virtualKey = e.VirtualKey;
 
-            // Only investigate further when Left, Right, or the dedicated Previous or Next keys
-            // are pressed
-            if ((e.EventType == CoreAcceleratorKeyEventType.SystemKeyDown ||
-                e.EventType == CoreAcceleratorKeyEventType.KeyDown) &&
-                (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
-                (int)virtualKey == 166 || (int)virtualKey == 167))
-            {
-                var downState = CoreVirtualKeyStates.Down;
-                bool menuKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
-                bool controlKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
-                bool shiftKey = (Microsoft.UI.Input.KeyboardInput.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
-                bool noModifiers = !menuKey && !controlKey && !shiftKey;
-                bool onlyAlt = menuKey && !controlKey && !shiftKey;
+        //     // Only investigate further when Left, Right, or the dedicated Previous or Next keys
+        //     // are pressed
+        //     if ((e.EventType == CoreAcceleratorKeyEventType.SystemKeyDown ||
+        //         e.EventType == CoreAcceleratorKeyEventType.KeyDown) &&
+        //         (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
+        //         (int)virtualKey == 166 || (int)virtualKey == 167))
+        //     {
+        //         var downState = CoreVirtualKeyStates.Down;
+        //         bool menuKey = (Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
+        //         bool controlKey = (Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
+        //         bool shiftKey = (Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
+        //         bool noModifiers = !menuKey && !controlKey && !shiftKey;
+        //         bool onlyAlt = menuKey && !controlKey && !shiftKey;
 
-                if (((int)virtualKey == 166 && noModifiers) ||
-                    (virtualKey == VirtualKey.Left && onlyAlt))
-                {
-                    // When the previous key or Alt+Left are pressed navigate back
-                    e.Handled = TryGoBack();
-                }
-                else if (((int)virtualKey == 167 && noModifiers) ||
-                    (virtualKey == VirtualKey.Right && onlyAlt))
-                {
-                    // When the next key or Alt+Right are pressed navigate forward
-                    e.Handled = TryGoForward();
-                }
-            }
-        }
+        //         if (((int)virtualKey == 166 && noModifiers) ||
+        //             (virtualKey == VirtualKey.Left && onlyAlt))
+        //         {
+        //             // When the previous key or Alt+Left are pressed navigate back
+        //             e.Handled = TryGoBack();
+        //         }
+        //         else if (((int)virtualKey == 167 && noModifiers) ||
+        //             (virtualKey == VirtualKey.Right && onlyAlt))
+        //         {
+        //             // When the next key or Alt+Right are pressed navigate forward
+        //             e.Handled = TryGoForward();
+        //         }
+        //     }
+        // }
 
-        /// <summary>
-        /// Invoked on every mouse click, touch screen tap, or equivalent interaction.
-        /// Used to detect browser-style next and previous mouse button clicks
-        /// to navigate between pages.
-        /// </summary>
-        /// <param name="sender">Instance that triggered the event.</param>
-        /// <param name="e">Event data describing the conditions that led to the event.</param>
-        private void CoreWindow_PointerPressed(CoreWindow sender,
-            PointerEventArgs e)
-        {
-            var properties = e.CurrentPoint.Properties;
+        // /// <summary>
+        // /// Invoked on every mouse click, touch screen tap, or equivalent interaction.
+        // /// Used to detect browser-style next and previous mouse button clicks
+        // /// to navigate between pages.
+        // /// </summary>
+        // /// <param name="sender">Instance that triggered the event.</param>
+        // /// <param name="e">Event data describing the conditions that led to the event.</param>
+        // private void CoreWindow_PointerPressed(CoreWindow sender,
+        //     PointerEventArgs e)
+        // {
+        //     var properties = e.CurrentPoint.Properties;
 
-            // Ignore button chords with the left, right, and middle buttons
-            if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed ||
-                properties.IsMiddleButtonPressed)
-                return;
+        //     // Ignore button chords with the left, right, and middle buttons
+        //     if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed ||
+        //         properties.IsMiddleButtonPressed)
+        //         return;
 
-            // If back or foward are pressed (but not both) navigate appropriately
-            bool backPressed = properties.IsXButton1Pressed;
-            bool forwardPressed = properties.IsXButton2Pressed;
-            if (backPressed ^ forwardPressed)
-            {
-                e.Handled = true;
-                if (backPressed) this.TryGoBack();
-                if (forwardPressed) this.TryGoForward();
-            }
-        }
+        //     // If back or forward are pressed (but not both) navigate appropriately
+        //     bool backPressed = properties.IsXButton1Pressed;
+        //     bool forwardPressed = properties.IsXButton2Pressed;
+        //     if (backPressed ^ forwardPressed)
+        //     {
+        //         e.Handled = true;
+        //         if (backPressed) this.TryGoBack();
+        //         if (forwardPressed) this.TryGoForward();
+        //     }
+        // }
     }
 
     /// <summary>
@@ -361,28 +358,28 @@ namespace AppUIBasics.Common
     public class LoadStateEventArgs : EventArgs
     {
         /// <summary>
-        /// The parameter value passed to <see cref="Frame.Navigate(Type, Object)"/>
+        /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
         /// when this page was initially requested.
         /// </summary>
-        public Object NavigationParameter { get; private set; }
+        public object NavigationParameter { get; private set; }
         /// <summary>
         /// A dictionary of state preserved by this page during an earlier
         /// session.  This will be null the first time a page is visited.
         /// </summary>
-        public Dictionary<string, Object> PageState { get; private set; }
+        public Dictionary<string, object> PageState { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
         /// </summary>
         /// <param name="navigationParameter">
-        /// The parameter value passed to <see cref="Frame.Navigate(Type, Object)"/>
+        /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
         /// when this page was initially requested.
         /// </param>
         /// <param name="pageState">
         /// A dictionary of state preserved by this page during an earlier
         /// session.  This will be null the first time a page is visited.
         /// </param>
-        public LoadStateEventArgs(Object navigationParameter, Dictionary<string, Object> pageState)
+        public LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState)
             : base()
         {
             this.NavigationParameter = navigationParameter;
@@ -397,13 +394,13 @@ namespace AppUIBasics.Common
         /// <summary>
         /// An empty dictionary to be populated with serializable state.
         /// </summary>
-        public Dictionary<string, Object> PageState { get; private set; }
+        public Dictionary<string, object> PageState { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SaveStateEventArgs"/> class.
         /// </summary>
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
-        public SaveStateEventArgs(Dictionary<string, Object> pageState)
+        public SaveStateEventArgs(Dictionary<string, object> pageState)
             : base()
         {
             this.PageState = pageState;

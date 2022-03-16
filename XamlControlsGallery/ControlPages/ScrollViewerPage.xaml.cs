@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,13 +12,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.ControlPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ScrollViewerPage : Page
     {
         public ScrollViewerPage()
@@ -30,8 +25,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null && ZoomSlider != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -45,11 +39,9 @@ namespace AppUIBasics.ControlPages
                             ZoomSlider.Value = 1;
                             ZoomSlider.IsEnabled = false;
                             break;
-                        default: // Disabled
-                            Control1.ZoomMode = ZoomMode.Disabled;
-                            Control1.ChangeView(null, null, (float)1.0);
-                            ZoomSlider.Value = 1;
-                            ZoomSlider.IsEnabled = false;
+                        default: // Enabled
+                            Control1.ZoomMode = ZoomMode.Enabled;
+                            ZoomSlider.IsEnabled = true;
                             break;
                     }
                 }
@@ -68,8 +60,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -94,8 +85,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -123,8 +113,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
@@ -149,8 +138,7 @@ namespace AppUIBasics.ControlPages
         {
             if (Control1 != null)
             {
-                ComboBox cb = sender as ComboBox;
-                if (cb != null)
+                if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {

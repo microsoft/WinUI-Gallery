@@ -5,7 +5,6 @@
     xmlns:local="using:AppUIBasics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxcontrols="using:Microsoft.UI.Xaml.Controls"
     xmlns:l="using:AppUIBasics.ControlPages"
     xmlns:common="using:AppUIBasics.Common"
     mc:Ignorable="d" FontFamily="Segoe UI">
@@ -83,7 +82,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer 
+&lt;ScrollViewer 
                ContentOrientation="$(ContentOrientation)"
                Height="$(Height)"/&gt;
 
@@ -112,7 +111,7 @@
         &lt;Border BorderBrush="Black" Width="240" Height="180"/&gt;
     &lt;/VariableSizedWrapGrid&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
 
@@ -125,7 +124,7 @@
 
         <local:ControlExample HeaderText="Image content inside of a ScrollViewer.">
 
-            <muxcontrols:ScrollViewer x:Name="scroller2"
+            <ScrollViewer x:Name="scroller2"
                                       ContentOrientation="None"
                                       MaxZoomFactor="5"
                                       MinZoomFactor="0.1"
@@ -140,7 +139,7 @@
                                       KeyDown="Scroller_HandleKeyDown">
                 <Image x:Name="image" Source="{StaticResource BitmapImageSource}" Stretch="None" HorizontalAlignment="Left"
                         VerticalAlignment="Top" />
-            </muxcontrols:ScrollViewer>
+            </ScrollViewer>
 
             <local:ControlExample.Options>
                 <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
@@ -286,7 +285,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Selectively ignore input">
-            <muxcontrols:ScrollViewer x:Name="scroller3"
+            <ScrollViewer x:Name="scroller3"
                                       ContentOrientation="None"
                                       MaxZoomFactor="5"
                                       MinZoomFactor="0.1"
@@ -301,7 +300,7 @@
                        Stretch="None"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top" />
-            </muxcontrols:ScrollViewer>
+            </ScrollViewer>
 
             <local:ControlExample.Options>
                 <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
@@ -336,7 +335,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer ContentOrientation="None"
+&lt;ScrollViewer ContentOrientation="None"
                    IgnoredInputKind="$(IgnoredInputKind)"&gt;
 
     &lt;Image Source="$(ImageUri)"
@@ -344,7 +343,7 @@
            HorizontalAlignment="Left"
            VerticalAlignment="Top"/&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
            
@@ -357,7 +356,7 @@
         
         <local:ControlExample HeaderText="Customize the default animation used for panning and zooming.">
 
-            <muxcontrols:ScrollViewer x:Name="scroller4"
+            <ScrollViewer x:Name="scroller4"
                                       ContentOrientation="None"
                                       ScrollAnimationStarting="Scroller4_ScrollAnimationStarting"
                                       ZoomAnimationStarting="Scroller4_ZoomAnimationStarting"
@@ -372,7 +371,7 @@
                        Loaded="Sample4_ImageLoaded"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top" />
-            </muxcontrols:ScrollViewer>
+            </ScrollViewer>
 
             <local:ControlExample.Options>
                 <Grid MinWidth="200" RowSpacing="8" ColumnSpacing="8">
@@ -502,7 +501,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;muxc:ScrollViewer ContentOrientation="None"
+&lt;ScrollViewer ContentOrientation="None"
                    ScrollAnimationStarting="Scroller_ScrollAnimationStarting"
                    ZoomAnimationStarting="Scroller_ZoomAnimationStarting"
                    Height="$(Height)"/&gt;
@@ -512,7 +511,7 @@
            HorizontalAlignment="Left"
            VerticalAlignment="Top"/&gt;
 
-&lt;/muxc:ScrollViewer&gt;
+&lt;/ScrollViewer&gt;
                 </x:String>
             </local:ControlExample.Xaml>
            

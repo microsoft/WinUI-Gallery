@@ -6,8 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
         <local:ControlExample x:Name="AnimatedVisualPlayerExample" 
@@ -17,7 +16,7 @@
                     <!-- Text -->
                     <TextBlock TextWrapping="WrapWholeWords">
                         This AnimatedVisualPlayer consumes an animation created using 
-                        Adobe AfterEffects and translated into Windows.UI.Composition objects using 
+                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using 
                         <Hyperlink NavigateUri="https://aka.ms/lottie">
                            Lottie-Windows
                         </Hyperlink>.
@@ -58,15 +57,18 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <!--  Play  -->
-                        <Button x:Name="PlayButton"
-                            Grid.Column="0"
-                            Margin="10"
-                            HorizontalAlignment="Stretch"
-                            Click="PlayButton_Click"
-                            ToolTipService.ToolTip="Play"
-                            AutomationProperties.Name="Play">
-                            <SymbolIcon Symbol="Play" />
+
+                        <!-- Play/Pause -->
+                        <Button x:Name="PlayPauseButton"
+                                Grid.Column="0"
+                                Margin="10"
+                                HorizontalAlignment="Stretch"
+                                Click="PlayPauseButton_Click"
+                                AutomationProperties.Name="Play">
+                            <StackPanel>
+                                <SymbolIcon x:Name="PlayIcon" Symbol="Play"/>
+                                <SymbolIcon x:Name="PauseIcon" Symbol="Pause" Visibility="Collapsed"/>
+                            </StackPanel>
                         </Button>
                         <!--  Pause  -->
                         <ToggleButton x:Name="PauseButton"

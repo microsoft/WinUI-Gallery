@@ -1,0 +1,62 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page x:Class="AppUIBasics.ControlPages.NumberBoxPage" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:local="using:AppUIBasics"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
+
+    <StackPanel HorizontalAlignment="Left">
+        <local:ControlExample HeaderText="A NumberBox that evaluates expressions." 
+                              XamlSource="NumberBox/NumberBoxSample1_xaml.txt">
+            <local:ControlExample.Example>
+                <NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="A NumberBox with a spin button." 
+                              XamlSource="NumberBox/NumberBoxSample2_xaml.txt">
+            <local:ControlExample.Example>
+                <NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
+                              VerticalAlignment="Top"
+                              Header="Enter an integer:" 
+                              Value="10" 
+                              SpinButtonPlacementMode="Compact" 
+                              SmallChange="10"
+                              LargeChange="100"
+                              AutomationProperties.Name="NumberBox with spin button">
+                </NumberBox>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <RadioButtons x:Name="SpinButtonPlacementGroup" Header="SpinButton placement">
+                    <RadioButton Content="Inline" Tag="Inline" Checked="RadioButton_Checked" />
+                    <RadioButton Content="Compact" Tag="Compact" Checked="RadioButton_Checked" IsChecked="True" />
+                </RadioButtons>
+            </local:ControlExample.Options>
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="A formatted NumberBox that rounds to the nearest 0.25." 
+                              XamlSource="NumberBox/NumberBoxSample3_xaml.txt"
+                              CSharpSource="NumberBox/NumberBoxSample3_cs.txt">
+            <local:ControlExample.Example>
+                <NumberBox x:Name="FormattedNumberBox" Header="Enter a dollar amount:" PlaceholderText="0.00" />
+            </local:ControlExample.Example>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

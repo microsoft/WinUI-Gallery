@@ -1,0 +1,89 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page x:Class="AppUIBasics.ControlPages.RadialGradientBrushPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:media="using:Microsoft.UI.Xaml.Media"
+      xmlns:local="using:AppUIBasics">
+    <StackPanel>
+        <local:ControlExample
+            HeaderText="RadialGradientBrush Sample"
+            XamlSource="Brushes\RadialGradientBrushSample_xaml.txt">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Rectangle x:Name="Rect" Width="200" Height="200">
+                    <Rectangle.Fill>
+                        <media:RadialGradientBrush
+                                x:Name="RadialGradientBrushExample"
+                                MappingMode="RelativeToBoundingBox"
+                                Center="0.25,0.25"
+                                RadiusX=".5" RadiusY=".5"
+                                GradientOrigin="0.5,.25"
+                                SpreadMethod="Pad">
+                            <GradientStop Color="Yellow" Offset="0.0" />
+                            <GradientStop Color="Blue" Offset="1" />
+                        </media:RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox
+                        x:Name="MappingModeComboBox"
+                        Header="MappingMode"
+                        SelectedValue="RelativeToBoundingBox"
+                        Grid.ColumnSpan="2">
+                        <x:String>RelativeToBoundingBox</x:String>
+                        <x:String>Absolute</x:String>
+                    </ComboBox>
+                    <Slider x:Name="CenterXSlider" Header="Center.X" Grid.Row="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="CenterYSlider" Header="Center.Y" Grid.Row="1" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="RadiusXSlider" Header="RadiusX" Grid.Row="2" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="RadiusYSlider" Header="RadiusY" Grid.Row="2" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="OriginXSlider" Header="GradientOrigin.X" Grid.Row="3" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <Slider x:Name="OriginYSlider" Header="GradientOrigin.Y" Grid.Row="3" Grid.Column="1" ValueChanged="OnSliderValueChanged" SmallChange="0.05"/>
+                    <ComboBox
+                        x:Name="SpreadMethodComboBox"
+                        Margin="0,10,0,0"
+                        Header="SpreadMethod"
+                        SelectedValue="Pad"
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2">
+                        <x:String>Pad</x:String>
+                        <x:String>Reflect</x:String>
+                        <x:String>Repeat</x:String>
+                    </ComboBox>
+                </Grid>
+            </local:ControlExample.Options>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SpreadMethod" Value="{x:Bind SpreadMethodComboBox.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="MappingMode" Value="{x:Bind MappingModeComboBox.SelectedValue, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CenterX" Value="{x:Bind CenterXSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="CenterY" Value="{x:Bind CenterYSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="RadiusX" Value="{x:Bind RadiusXSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="RadiusY" Value="{x:Bind RadiusYSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="OriginX" Value="{x:Bind OriginXSlider.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="OriginY" Value="{x:Bind OriginYSlider.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

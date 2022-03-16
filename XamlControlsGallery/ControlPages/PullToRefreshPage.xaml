@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppUIBasics.ControlPages.PullToRefreshPage"
+<Page x:Class="AppUIBasics.ControlPages.PullToRefreshPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="using:AppUIBasics"
@@ -9,8 +9,8 @@
 
 
         <ScrollViewer>
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <local:ControlExample x:Name="Example1" HeaderText="Basic Pull-To-Refresh">
+        <StackPanel>
+            <local:ControlExample x:Name="Example1" HeaderText="Basic PullToRefresh">
                 <local:ControlExample.Example>
                     <Grid>
                         <contract6Present:RefreshContainer VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="rc" contract6Present:RefreshRequested="rc_RefreshRequested">
@@ -53,7 +53,7 @@ private void WorkCompleted()
                 </local:ControlExample.CSharp>
             </local:ControlExample>
 
-            <local:ControlExample x:Name="Example2" HeaderText="Custom Icon Pull-To-Refresh">
+            <local:ControlExample x:Name="Example2" HeaderText="Custom Icon PullToRefresh">
                 <local:ControlExample.Example>
                     <Grid x:Name="Ex2Grid">
                         <Grid.RowDefinitions>

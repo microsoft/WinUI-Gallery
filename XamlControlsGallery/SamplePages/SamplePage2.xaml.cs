@@ -36,8 +36,7 @@ namespace AppUIBasics.SamplePages
 
         private void AddContentPanelAnimations()
         {
-            ContentPanel.Transitions = new TransitionCollection();
-            ContentPanel.Transitions.Add(new EntranceThemeTransition());
+            ContentPanel.Transitions = new TransitionCollection {new EntranceThemeTransition()};
         }
     }
 }

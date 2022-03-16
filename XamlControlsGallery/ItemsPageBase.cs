@@ -127,16 +127,20 @@ namespace AppUIBasics
             {
                 if (GetIsNarrowLayoutState())
                 {
-                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right;
+                    double wrapGridPadding = 88;
+                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Center;
+
+                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right - wrapGridPadding;
                 }
                 else
                 {
+                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Left;
                     wrapGrid.ItemWidth = double.NaN;
                 }
             }
         }
 
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (Equals(storage, value)) return false;
 

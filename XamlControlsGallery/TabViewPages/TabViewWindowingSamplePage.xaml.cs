@@ -1,12 +1,14 @@
-﻿using System;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
+using System;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.UI.ViewManagement;
-using Windows.UI.WindowManagement;
+using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Windowing;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics.TabViewPages
 {
@@ -90,6 +92,31 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItems.Add(tab);
         }
 
+        // Create a new Window once the Tab is dragged outside.
+        private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
+        {
+            // AppWindow was introduced in Windows 10 version 18362 (ApiContract version 8). 
+            // If the app is running on a version earlier than 18362, simply no-op.
+            // If your app needs to support multiple windows on earlier versions of Win10, you can use CoreWindow/ApplicationView.
+            // More information about showing multiple views can be found here: https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views
+            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+            {
+                return;
+            }
+
+            //AppWindow newWindow = await AppWindow.TryCreateAsync();
+
+            //var newPage = new TabViewWindowingSamplePage();
+            //newPage.SetupWindow(newWindow);
+
+            //ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
+
+            //Tabs.TabItems.Remove(args.Tab);
+            //newPage.AddTabToTabs(args.Tab);
+
+            //await newWindow.TryShowAsync();
+        }
+
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
         {
             // We can only drag one tab at a time, so grab the first one...
@@ -107,8 +134,7 @@ namespace AppUIBasics.TabViewPages
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView
 
-            object obj;
-            if (e.DataView.Properties.TryGetValue(DataIdentifier, out obj))
+            if (e.DataView.Properties.TryGetValue(DataIdentifier, out object obj))
             {
                 // Ensure that the obj property is set before continuing.
                 if (obj == null)
@@ -124,7 +150,7 @@ namespace AppUIBasics.TabViewPages
                     // First we need to get the position in the List to drop to
                     var index = -1;
 
-                    // Determine which items in the list our pointer is inbetween.
+                    // Determine which items in the list our pointer is between.
                     for (int i = 0; i < destinationTabView.TabItems.Count; i++)
                     {
                         var item = destinationTabView.ContainerFromIndex(i) as TabViewItem;

@@ -166,7 +166,7 @@ namespace AppUIBasics
             // Orientation affects measuring.
             source.InvalidateMeasure();
         }
-#endregion public Orientation Orientation
+        #endregion public Orientation Orientation
 
         /// <summary>
         /// Initializes a new instance of the

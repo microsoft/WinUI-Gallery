@@ -14,7 +14,7 @@ namespace AppUIBasics.ControlPages
 {
     public class ListItemData
     {
-        public String Text { get; set; }
+        public string Text { get; set; }
         public ICommand Command { get; set; }
     }
 
@@ -62,7 +62,7 @@ namespace AppUIBasics.ControlPages
 
         private void ListViewSwipeContainer_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            if (e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Pen)
+            if (e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Pen)
             {
                 VisualStateManager.GoToState(sender as Control, "HoverButtonsShown", true);
             }

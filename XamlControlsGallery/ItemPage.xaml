@@ -26,7 +26,9 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid x:Name="rootPanel" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid
+        x:Name="rootPanel"
+        d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/ControlinfoData.json, Type=data:ControlInfoDataSource}}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -42,7 +44,7 @@
                 <VisualState x:Name="NormalFrameContent" />
                 <VisualState x:Name="WideFrameContent">
                     <VisualState.Setters>
-                        <Setter Target="contentFrame.Width" Value="1000" />
+                        <Setter Target="contentFrame.Width" Value="1028" />
                         <Setter Target="contentFrame.HorizontalAlignment" Value="Left" />
                     </VisualState.Setters>
                 </VisualState>
@@ -62,7 +64,9 @@
                         <Setter Target="seeAlsoPanel.(Grid.Row)" Value="3" />
                         <Setter Target="seeAlsoPanel.(Grid.Column)" Value="0" />
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
-                        
+
+                        <Setter Target="SourcePanel.(Grid.ColumnSpan)" Value="1" />
+
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
@@ -70,7 +74,7 @@
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
-                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="2" />
                         <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
@@ -84,6 +88,8 @@
                         <Setter Target="seeAlsoPanel.(Grid.Column)" Value="0" />
                         <Setter Target="seeAlsoPanel.(Grid.ColumnSpan)" Value="3" />
 
+                        <Setter Target="SourcePanel.(Grid.ColumnSpan)" Value="1" />
+
                         <Setter Target="DocumentationPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="RelatedControlsPanel.(Grid.Row)" Value="0" />
@@ -91,7 +97,7 @@
                         <Setter Target="RelatedControlsPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="FeedbackPanel.(Grid.Row)" Value="1" />
-                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="0" />
+                        <Setter Target="FeedbackPanel.(Grid.Column)" Value="2" />
                         <Setter Target="FeedbackPanel.(Grid.ColumnSpan)" Value="1" />
 
                         <Setter Target="rightMargin.Width" Value="0" />
@@ -104,10 +110,9 @@
         <!--  Content Region  -->
         <ScrollViewer
             x:Name="svPanel"
-
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="24,0,0,0" SizeChanged="OnContentRootSizeChanged">
+            <Grid x:Name="contentRoot" Padding="56,0,12,36" SizeChanged="OnContentRootSizeChanged">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="contentColumn" />
                     <ColumnDefinition x:Name="rightMargin" Width="20" />
@@ -121,11 +126,11 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock
-                    x:Name="subTitleText"
+                    x:Name="descriptionText"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Grid.ColumnSpan="2"
                     Margin="0,5,24,0"
-                    Text="{x:Bind Item.Subtitle}" />
+                    Text="{x:Bind Item.Description}" />
 
                 <Frame x:Name="contentFrame" Grid.Row="1" />
 
@@ -135,8 +140,9 @@
                     Grid.RowSpan="2"
                     Grid.Column="2"
                     Width="280"
-                    Margin="0,0,24,24">
+                    Margin="0,12,10,24">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -147,14 +153,33 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="DocumentationPanel" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4">
+                        <TextBlock
+                            x:Name="SourceHeader"
+                            x:Uid="SourceHeader"
+                            Margin="0,0,0,12"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                            Text="View page code on GitHub"/>
+                        <HyperlinkButton
+                            x:Name="PageMarkupGitHubLink"
+                            ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                            <TextBlock Text="XAML source code"/>
+                        </HyperlinkButton>
+                        <HyperlinkButton
+                            x:Name="PageCodeGitHubLink"
+                            ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
+                            <TextBlock Text="C# source code"/>
+                        </HyperlinkButton>
+                    </StackPanel>
+
+                    <StackPanel x:Name="DocumentationPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,24">
                         <TextBlock
                             x:Name="docHeader"
                             x:Uid="DocHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
                         <ItemsControl
                             x:Name="DocsList"
-                            Margin="0,12,0,0"
                             IsTabStop="False"
                             ItemsSource="{x:Bind Item.Docs}">
                             <ItemsControl.ItemsPanel>
@@ -172,10 +197,11 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,40">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
 
                         <ItemsControl
@@ -223,10 +249,11 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="FeedbackPanel" Grid.Row="2" Grid.ColumnSpan="3">
+                    <StackPanel x:Name="FeedbackPanel" Grid.Row="3" Grid.ColumnSpan="3">
                         <TextBlock
                             x:Name="feedbackHeader"
                             x:Uid="FeedbackHeader"
+                            Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
                         <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose" 
                                          ToolTipService.ToolTip="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,18 +13,28 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace AppUIBasics.SamplePages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SampleStandardSizingPage : Page
     {
+        public TextBox FirstName => firstName;
+        public TextBox LastName => lastName;
+        public PasswordBox Password => password;
+        public PasswordBox ConfirmPassword => confirmPassword;
+        public DatePicker ChosenDate => chosenDate;
+
         public SampleStandardSizingPage()
         {
             this.InitializeComponent();
+        }
+
+        public void CopyState(SampleCompactSizingPage page)
+        {
+            FirstName.Text = page.FirstName.Text;
+            LastName.Text = page.LastName.Text;
+            Password.Password = page.Password.Password;
+            ConfirmPassword.Password = page.ConfirmPassword.Password;
+            ChosenDate.Date = page.ChosenDate.Date;
         }
     }
 }
