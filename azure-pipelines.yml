@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- pull/872
+- master
 
 pool:
   vmImage: 'windows-latest'
