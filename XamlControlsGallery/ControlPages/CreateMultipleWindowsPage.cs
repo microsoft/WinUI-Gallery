@@ -8,6 +8,7 @@
 //
 //*********************************************************
 using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -49,7 +50,7 @@ namespace AppUIBasics.ControlPages
         {
             var newWindow = WindowHelper.CreateWindow();
             var rootPage = new NavigationRootPage();
-            rootPage.RequestedTheme = App.RootTheme;
+            rootPage.RequestedTheme = ThemeHelper.RootTheme;
             newWindow.Content = rootPage;
             newWindow.Activate();
 

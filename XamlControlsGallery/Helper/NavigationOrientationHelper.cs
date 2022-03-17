@@ -20,27 +20,24 @@ namespace AppUIBasics.Helper
 
         private const string IsLeftModeKey = "NavigationIsOnLeftMode";
 
-        public static bool IsLeftMode
+        public static bool IsLeftMode()
         {
-            get
+            var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
+            if(valueFromSettings == null)
             {
-                var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
-                if(valueFromSettings == null)
-                {
-                    ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
-                    valueFromSettings = true;
-                }
-                return (bool)valueFromSettings;
+                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
+                valueFromSettings = true;
             }
-
-            set
-            {
-                UpdateTitleBar(value);
-                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = value;
-            }
+            return (bool)valueFromSettings;
         }
 
-        public static void UpdateTitleBar(bool isLeftMode)
+        public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
+        {
+            UpdateTitleBarForElement(isLeftMode, element);
+            ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
+        }
+
+        public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
         {
 #if UNIVERSAL
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
@@ -49,7 +46,7 @@ namespace AppUIBasics.Helper
 #endif
             if (isLeftMode)
             {
-                NavigationRootPage.Current.NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
+                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
 #if UNIVERSAL
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
@@ -57,7 +54,7 @@ namespace AppUIBasics.Helper
             }
             else
             {
-                NavigationRootPage.Current.NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
 #if UNIVERSAL
                 var userSettings = new UISettings();
                 titleBar.ButtonBackgroundColor = userSettings.GetColorValue(UIColorType.Accent);

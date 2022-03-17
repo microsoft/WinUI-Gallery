@@ -33,16 +33,20 @@ namespace AppUIBasics
     {
 
 #if !UNIVERSAL
-        private static Window currentWindow;
+        private static Window startupWindow;
 #endif
-        public static Window CurrentWindow
+        // Get the initial window created for this app
+        // On UWP, this is simply Window.Current
+        // On Desktop, multiple Windows may be created, and the StartupWindow may have already
+        // been closed.
+        public static Window StartupWindow
         {
             get
             {
-#if !UNIVERSAL
-                return currentWindow;
+#if UNIVERSAL
+                return Window.Current;
 #else
-                return App.CurrentWindow;
+                return startupWindow;
 #endif
             }
         }
@@ -89,16 +93,19 @@ namespace AppUIBasics
 #if WINUI_PRERELEASE
         private void App_Resuming(object sender, object e)
         {
-            switch (NavigationRootPage.RootFrame?.Content)
+#if UNIVERSAL
+            NavigationRootPage navigationRootPage = (NavigationRootPage)Window.Current.Content;
+            switch (navigationRootPage.RootFrame?.Content)
             {
                 case ItemPage itemPage:
                     itemPage.SetInitialVisuals();
                     break;
                 case NewControlsPage newControlsPage:
                 case AllControlsPage allControlsPage:
-                    NavigationRootPage.Current.NavigationView.AlwaysShowHeader = false;
+                    navigationRootPage.NavigationView.AlwaysShowHeader = false;
                     break;
             }
+#endif
         }
 #endif
 
@@ -111,8 +118,10 @@ namespace AppUIBasics
         {
             IdleSynchronizer.Init();
 
-#if !UNIVERSAL
-            currentWindow = new Window();
+#if UNIVERSAL
+            WindowHelper.TrackWindow(Window.Current);
+#else
+            startupWindow = WindowHelper.CreateWindow();
 #endif
 
 #if DEBUG
@@ -227,25 +236,26 @@ namespace AppUIBasics
                 }
             }
 
-            rootFrame.Navigate(targetPageType, targetPageArguments);
+            NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
+            rootPage.Navigate(targetPageType, targetPageArguments);
 
             if (targetPageType == typeof(NewControlsPage))
             {
-                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.CurrentWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
+                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }
             else if (targetPageType == typeof(ItemPage))
             {
-                NavigationRootPage.Current.EnsureNavigationSelection(targetPageArguments);
+                NavigationRootPage.GetForElement(this).EnsureNavigationSelection(targetPageArguments);
             }
 
             // Ensure the current window is active
-           CurrentWindow.Activate();
+           StartupWindow.Activate();
         }
 
         private Frame GetRootFrame()
         {
             Frame rootFrame;
-            NavigationRootPage rootPage = CurrentWindow.Content as NavigationRootPage;
+            NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
             if (rootPage == null)
             {
                 rootPage = new NavigationRootPage();
@@ -258,7 +268,7 @@ namespace AppUIBasics
                 rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                CurrentWindow.Content = rootPage;
+                StartupWindow.Content = rootPage;
             }
             else
             {
