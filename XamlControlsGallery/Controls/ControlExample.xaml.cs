@@ -276,8 +276,13 @@ namespace AppUIBasics
                 var manager = AppRecordingManager.GetDefault();
                 if (manager.GetStatus().CanRecord)
                 {
+#if !UNPACKAGED
+                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+#else
+                    StorageFolder localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
+#endif
                     var result = await manager.SaveScreenshotToFilesAsync(
-                        ApplicationData.Current.LocalFolder,
+                        localFolder,
                         "appScreenshot",
                         AppRecordingSaveScreenshotOption.HdrContentVisible,
                         manager.SupportedScreenshotMediaEncodingSubtypes);
@@ -285,7 +290,7 @@ namespace AppUIBasics
                     if (result.Succeeded)
                     {
                         // Open the screenshot back up
-                        var screenshotFile = await ApplicationData.Current.LocalFolder.GetFileAsync("appScreenshot.png");
+                        var screenshotFile = await localFolder.GetFileAsync("appScreenshot.png");
                         using (var stream = await screenshotFile.OpenAsync(FileAccessMode.Read))
                         {
                             var decoder = await BitmapDecoder.CreateAsync(stream);
@@ -315,7 +320,7 @@ namespace AppUIBasics
                                 ColorManagementMode.DoNotColorManage);
 
                             // Save the cropped picture
-                            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
+                            var file = await localFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
                             using (var outStream = await file.OpenAsync(FileAccessMode.ReadWrite))
                             {
                                 BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outStream);
@@ -341,7 +346,7 @@ namespace AppUIBasics
             if (XamlSource != null)
             {
                 // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = XamlSource.LocalPath;
+                string xamlSource = new Uri("ms-appx:///" + Path.Combine("ControlPagesSampleCode", XamlSource)).LocalPath;
                 string fileName = Path.GetFileNameWithoutExtension(xamlSource);
                 if (!String.IsNullOrWhiteSpace(fileName))
                 {
