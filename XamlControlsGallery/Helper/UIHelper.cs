@@ -9,7 +9,11 @@ namespace AppUIBasics.Helper
     public static class UIHelper
     {
         public static bool IsScreenshotMode { get; set; }
+#if !UNPACKAGED
         public static StorageFolder ScreenshotStorageFolder { get; set; } = ApplicationData.Current.LocalFolder;
+#else
+        public static StorageFolder ScreenshotStorageFolder { get; set; } = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
+#endif
 
         public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
         {
