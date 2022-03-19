@@ -1,7 +1,9 @@
-﻿using System.Linq;
+using System.Linq;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -49,6 +51,20 @@ namespace AppUIBasics.ControlPages
         {
             Rectangle shape = CustomAcrylicShapeLumin;
             ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
+        }
+
+        private void Grid_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+        {
+            var requestedElement = sender as FrameworkElement;
+
+            if (args.TryGetPosition(requestedElement, out Point point))
+            {
+                //sharedFlyout.ShowAt(requestedElement, point);
+            }
+            else
+            {
+                //sharedFlyout.ShowAt(requestedElement);
+            }
         }
     }
 }
