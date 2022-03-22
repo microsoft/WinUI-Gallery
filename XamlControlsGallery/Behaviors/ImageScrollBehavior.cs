@@ -15,7 +15,7 @@ namespace AppUIBasics.Behaviors
         private const int _alpha = 255;
         private const int _maxFontSize = 28;
         private const int _minFontSize = 10;
-        private const int scrollViewerThresholdValue = 85;
+        private const int scrollViewerThresholdValue = 100;
 
         private ScrollViewer scrollViewer;
         private ListViewBase listGridView;

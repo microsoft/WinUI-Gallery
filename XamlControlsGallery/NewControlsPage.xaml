@@ -57,7 +57,7 @@
             
         </StackPanel>
         <GridView x:Name="itemGridView"
-            Padding="40,0,12,36"
+            Margin="31,0,0,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -76,29 +76,31 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="-40,0,-40,0">
+                <Grid Margin="12,39,43,0">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Height="250"
-                        Margin="0,0,0,0"
+                        Margin="0,-124,0,0"
+                        Height="256"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="350">
-                        <Image
-                            x:Name="headerImage"
-                            HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.png"
-                            Stretch="Uniform" />
+                        VerticalShift="0">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                            <Image
+                                x:Name="headerImage"
+                                HorizontalAlignment="Center"
+                                Source="Assets/MainPage_Banner.png"
+                                Stretch="Fill" />
+                        </Grid>
+                        
                     </ParallaxView>
-                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
-                    
-                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="54,140,0,0">
+
+                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="0,0,0,0">
                         <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
                                Text="{StaticResource NewControlsName}"
                                Margin="0,60,0,20" />
-                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
+                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,292,0,0">
                             <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
                             <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
                             <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
@@ -112,7 +114,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,24,0,0"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,32,0,0" />
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -132,6 +134,7 @@
 
         <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource NewControlsName}"
+            Margin="44,92"
             VerticalAlignment="Top"
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
             Background="{ThemeResource HomePageBackgroundBrush}"
