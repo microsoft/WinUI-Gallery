@@ -86,6 +86,7 @@
 
             <x:String x:Key="ControlsName">All controls</x:String>
             <x:String x:Key="NewControlsName">Windows UI Controls Gallery</x:String>
+            <x:String x:Key="WinUIVersion">SDK XX</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />

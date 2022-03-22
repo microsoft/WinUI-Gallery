@@ -38,6 +38,15 @@ namespace AppUIBasics
         public static readonly DependencyProperty TitleProperty = 
             DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
 
+        public object Subtitle
+        {
+            get { return GetValue(SubtitleProperty); }
+            set { SetValue(SubtitleProperty, value); }
+        }
+
+        public static readonly DependencyProperty SubtitleProperty =
+            DependencyProperty.Register("Subtitle", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
+
 
         public Thickness HeaderPadding
         {

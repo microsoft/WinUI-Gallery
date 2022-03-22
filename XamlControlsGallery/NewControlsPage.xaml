@@ -134,6 +134,7 @@
 
         <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource NewControlsName}"
+            Subtitle="{StaticResource WinUIVersion}"
             Margin="44,92"
             VerticalAlignment="Top"
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
