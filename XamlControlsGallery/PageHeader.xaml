@@ -36,6 +36,7 @@
                 <VisualState x:Name="AlternateForeground">
                     <VisualState.Setters>
                         <Setter Target="TitleTextBlock.Foreground" Value="Transparent" />
+                        <Setter Target="SubtitleTextBlock.Foreground" Value="Transparent" />
                         <Setter Target="ShadowHost.Opacity" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>

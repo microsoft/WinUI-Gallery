@@ -56,20 +56,6 @@ namespace AppUIBasics
             this.InitializeComponent();
         }
 
-        private void Element_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            CreateOrUpdateSpringAnimation(1.1f);
-            (sender as UIElement).CenterPoint = new Vector3(70, 40, 1f);
-            (sender as UIElement).StartAnimation(_springAnimation);
-        }
-
-        private void Element_PointerExited(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            CreateOrUpdateSpringAnimation(1.0f);
-            (sender as UIElement).CenterPoint = new Vector3(70, 40, 1f);
-            (sender as UIElement).StartAnimation(_springAnimation);
-        }
-
         private void CreateOrUpdateSpringAnimation(float finalValue)
         {
             if (_springAnimation == null)
