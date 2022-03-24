@@ -58,7 +58,7 @@
                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                VerticalAlignment="Center"
                                TextWrapping="Wrap" />
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" FontSize="16" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12" FontSize="16"/>
                 </Grid>
             </Grid>
         </HyperlinkButton>
