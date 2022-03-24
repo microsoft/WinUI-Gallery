@@ -84,7 +84,9 @@
                         Height="256"
                         Source="{x:Bind itemGridView}"
                         VerticalAlignment="Top">
-                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}"
+                              BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                              BorderThickness="1">
                             <Image
                                 x:Name="headerImage"
                                 HorizontalAlignment="Center"
@@ -94,19 +96,18 @@
                         
                     </ParallaxView>
 
-                    <TextBlock x:Name="smallHeaderText"
+                    <StackPanel Orientation="Vertical" Margin="32,40,0,20">
+                        <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
-                               Text="{StaticResource NewControlsName}"
-                               Margin="32,40,0,20" />
-                    <TextBlock x:Name="smallHeaderSubtitleText"
+                               Text="{StaticResource NewControlsName}"/>
+                        <TextBlock x:Name="smallHeaderSubtitleText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource SubtitleTextBlockStyle}"                               
-                               Text="{StaticResource WinUIVersion}"
-                               Margin="32,120,0,20" />
-
+                               Text="{StaticResource WinUIVersion}"/>
+                    </StackPanel>
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
                             <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
