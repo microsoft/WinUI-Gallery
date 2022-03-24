@@ -42,13 +42,15 @@
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
                         <Setter Target="itemGridView.Margin" Value="0,-64,0,0" />
-                        <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
-                        <Setter Target="HeaderTileOuterGrid.Margin" Value="94,0,94,0" />
+                        <Setter Target="HeaderGrid.Margin" Value="60,0,60,0" />
+                        <Setter Target="headerImageView.Height" Value="180" />
+                        <Setter Target="HeaderTileGrid.Margin" Value="0,212,0,0" />
                         <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
                         <Setter Target="learnMore.Margin" Value="64,24,0,0" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
                         <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
+                        <Setter Target="smallHeaderSubtitleText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -76,13 +78,12 @@
             </interactivity:Interaction.Behaviors>
 
             <GridView.Header>
-                <Grid Margin="12,39,43,0">
+                <Grid x:Name="HeaderGrid" Margin="12,39,43,0">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Margin="0,-181,0,0"
                         Height="256"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="0">
+                        VerticalAlignment="Top">
                         <Grid CornerRadius="{StaticResource ControlCornerRadius}">
                             <Image
                                 x:Name="headerImage"
@@ -98,7 +99,13 @@
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
                                Text="{StaticResource NewControlsName}"
-                               Margin="0,60,0,20" />
+                               Margin="32,40,0,20" />
+                    <TextBlock x:Name="smallHeaderSubtitleText"
+                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
+                               Visibility="Collapsed"
+                               Style="{StaticResource SubtitleTextBlockStyle}"                               
+                               Text="{StaticResource WinUIVersion}"
+                               Margin="32,120,0,20" />
 
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
