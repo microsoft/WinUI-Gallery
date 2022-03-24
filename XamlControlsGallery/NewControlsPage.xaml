@@ -79,7 +79,7 @@
                 <Grid Margin="12,39,43,0">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Margin="0,-186,0,0"
+                        Margin="0,-181,0,0"
                         Height="256"
                         Source="{x:Bind itemGridView}"
                         VerticalShift="0">
@@ -101,7 +101,7 @@
                                Margin="0,60,0,20" />
 
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
-                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,292,0,0">
+                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
                             <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
                             <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
                             <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
