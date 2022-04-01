@@ -22,25 +22,25 @@ namespace AppUIBasics.ControlPages
 
         private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
-            if (NavigationRootPage.Current?.PageHeader != null)
+            if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
             {
-                NavigationRootPage.Current.PageHeader.TeachingTip1.IsOpen = true;
+                NavigationRootPage.GetForElement(this).PageHeader.TeachingTip1.IsOpen = true;
             }
         }
 
         private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            if (NavigationRootPage.Current?.PageHeader != null)
+            if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
             {
-                NavigationRootPage.Current.PageHeader.TeachingTip2.IsOpen = true;
+                NavigationRootPage.GetForElement(this).PageHeader.TeachingTip2.IsOpen = true;
             }
         }
 
         private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            if (NavigationRootPage.Current?.PageHeader != null)
+            if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
             {
-                NavigationRootPage.Current.PageHeader.TeachingTip3.IsOpen = true;
+                NavigationRootPage.GetForElement(this).PageHeader.TeachingTip3.IsOpen = true;
             }
         }
 
@@ -49,7 +49,7 @@ namespace AppUIBasics.ControlPages
             // The non-light dismiss Teaching tips do not handle the escape key, however we do not want the page to navigate away while they are open, so we will mark these key events as
 
             // handled while these tips are open.
-            if (e.Key == Windows.System.VirtualKey.Escape && (NavigationRootPage.Current.PageHeader.TeachingTip3.IsOpen || NavigationRootPage.Current.PageHeader.TeachingTip1.IsOpen))
+            if (e.Key == Windows.System.VirtualKey.Escape && (NavigationRootPage.GetForElement(this).PageHeader.TeachingTip3.IsOpen || NavigationRootPage.GetForElement(this).PageHeader.TeachingTip1.IsOpen))
             {
                 e.Handled = true;
             }

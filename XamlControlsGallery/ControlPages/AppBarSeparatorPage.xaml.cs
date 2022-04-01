@@ -28,7 +28,7 @@ namespace AppUIBasics.ControlPages
 
         private void AppBarSeparatorPage_Unloaded(object sender, RoutedEventArgs e)
         {
-            CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            CommandBar appBar = NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar;
             compactButton.Click -= CompactButton_Click;
             appBar.PrimaryCommands.Remove(compactButton);
             appBar.PrimaryCommands.Remove(separator);
@@ -39,7 +39,7 @@ namespace AppUIBasics.ControlPages
             // Add compact button to the command bar. It provides functionality specific
             // to this page, and is removed when leaving the page.
 
-            CommandBar appBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            CommandBar appBar = NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar;
             separator = new AppBarSeparator();
             appBar.PrimaryCommands.Insert(0, separator);
 

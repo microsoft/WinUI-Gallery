@@ -1,0 +1,4 @@
+﻿// no UIElement is set for titlebar, fallback titlebar is created
+Window window = App.MainWindow;
+window.ExtendsContentIntoTitleBar = true;
+window.SetTitleBar(null);  // this line is optional as by it is null by default

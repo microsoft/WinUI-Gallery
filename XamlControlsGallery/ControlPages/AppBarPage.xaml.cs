@@ -23,7 +23,7 @@ namespace AppUIBasics.ControlPages
 
         private void topAppBar_Opened(object sender, object e)
         {
-            CommandBar headerTopAppBar = NavigationRootPage.Current.PageHeader.TopCommandBar;
+            CommandBar headerTopAppBar = NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar;
             headerTopAppBar.IsOpen = false;
         }
 
@@ -41,15 +41,16 @@ namespace AppUIBasics.ControlPages
         {
             ButtonBase b = (ButtonBase)sender;
 
-            if (App.CurrentWindow.Content is Frame rootFrame && b.Tag != null)
+            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
+            if (navigationRootPage != null && b.Tag != null)
             {
                 if (b.Tag.ToString() == "Home")
                 {
-                    rootFrame.Navigate(typeof(AppUIBasics.AllControlsPage));
+                    navigationRootPage.Navigate(typeof(AppUIBasics.AllControlsPage));
                 }
                 else
                 {
-                    rootFrame.Navigate(typeof(SectionPage), b.Tag.ToString());
+                    navigationRootPage.Navigate(typeof(SectionPage), b.Tag.ToString());
                 }
             }
         }

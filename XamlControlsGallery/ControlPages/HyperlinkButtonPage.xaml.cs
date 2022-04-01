@@ -21,7 +21,7 @@ namespace AppUIBasics.ControlPages
 
         private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationRootPage.RootFrame.Navigate(typeof(ItemPage), "ToggleButton");
+            NavigationRootPage.GetForElement(this).Frame.Navigate(typeof(ItemPage), "ToggleButton");
         }
     }
 }

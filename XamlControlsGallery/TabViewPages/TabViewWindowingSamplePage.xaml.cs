@@ -27,7 +27,7 @@ namespace AppUIBasics.TabViewPages
             // If there are no more tabs, close the window.
             if (sender.TabItems.Count == 0)
             {
-                App.CurrentWindow.Close();
+                WindowHelper.GetWindowForElement(this).Close();
             }
         }
 

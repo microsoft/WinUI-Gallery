@@ -27,11 +27,13 @@ namespace AppUIBasics
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)e.Parameter);
+            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
+            NavigationRootPage navigationRootPage = args.NavigationRootPage;
+            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)args.Parameter);
 
-            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)NavigationRootPage.Current.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
+            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;
-            NavigationRootPage.Current.NavigationView.Header = menuItem.Content;
+            navigationRootPage.NavigationView.Header = menuItem.Content;
 
             Items = group.Items.OrderBy(i => i.Title).ToList();
         }

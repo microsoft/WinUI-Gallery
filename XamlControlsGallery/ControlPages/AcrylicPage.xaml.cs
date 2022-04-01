@@ -27,7 +27,7 @@ namespace AppUIBasics.ControlPages
         {
             //Rectangle shape = (sender == OpacitySliderInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
             Rectangle shape = CustomAcrylicShapeInApp;
-            if (sender == OpacitySliderLumin)
+            if ((Slider)sender == OpacitySliderLumin)
                 shape = CustomAcrylicShapeLumin;
 
             ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;

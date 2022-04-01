@@ -30,11 +30,14 @@ namespace AppUIBasics.Helper
         {
             get
             {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                foreach (Window window in WindowHelper.ActiveWindows)
                 {
-                    if (rootElement.RequestedTheme != ElementTheme.Default)
+                    if (window.Content is FrameworkElement rootElement)
                     {
-                        return rootElement.RequestedTheme;
+                        if (rootElement.RequestedTheme != ElementTheme.Default)
+                        {
+                            return rootElement.RequestedTheme;
+                        }
                     }
                 }
 
@@ -49,18 +52,24 @@ namespace AppUIBasics.Helper
         {
             get
             {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                foreach (Window window in WindowHelper.ActiveWindows)
                 {
-                    return rootElement.RequestedTheme;
+                    if (window.Content is FrameworkElement rootElement)
+                    {
+                        return rootElement.RequestedTheme;
+                    }
                 }
 
                 return ElementTheme.Default;
             }
             set
             {
-                if (App.CurrentWindow.Content is FrameworkElement rootElement)
+                foreach (Window window in WindowHelper.ActiveWindows)
                 {
-                    rootElement.RequestedTheme = value;
+                    if (window.Content is FrameworkElement rootElement)
+                    {
+                        rootElement.RequestedTheme = value;
+                    }
                 }
 
                 ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
@@ -70,15 +79,16 @@ namespace AppUIBasics.Helper
 
         public static void Initialize()
         {
+#if !UNPACKAGED
             // Save reference as this might be null when the user is in another app
-            CurrentApplicationWindow = App.CurrentWindow;
+            CurrentApplicationWindow = App.StartupWindow;
             string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
 
             if (savedTheme != null)
             {
                 RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
             }
-
+#endif
 #if UNIVERSAL
             // Registering to color changes, thus we notice when user changes theme system wide
             uiSettings = new UISettings();
