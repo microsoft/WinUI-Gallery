@@ -18,22 +18,9 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class CreateMultipleWindowsPage : Page
     {
-        private IEnumerable<ControlInfoDataGroup> _groups;
-
         public CreateMultipleWindowsPage()
         {
             this.InitializeComponent();
-        }
-        public IEnumerable<ControlInfoDataGroup> Groups
-        {
-            get { return this._groups; }
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            _groups = ControlInfoDataSource.Instance.Groups;
         }
 
         private void List_GotFocus(object sender, RoutedEventArgs e)

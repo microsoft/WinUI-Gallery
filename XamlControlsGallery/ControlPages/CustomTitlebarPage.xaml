@@ -37,8 +37,8 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="10">
                             <Button x:Name="customTitlebar" Click="customTitlebar_Click"></Button>
                         <TextBlock> Background Color </TextBlock>
-                        <SplitButton x:Name="myBgColorButton" AutomationProperties.Name="Foreground color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
-                            <Border x:Name="CurrentBgColor" Width="{StaticResource SwatchSize}"
+                        <SplitButton x:Name="myBgColorButton" AutomationProperties.Name="Background color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
+                            <Border x:Name="BackgroundColorElement" Width="{StaticResource SwatchSize}"
                                     Height="{StaticResource SwatchSize}" Background="Transparent" Margin="0" CornerRadius="4,0,0,4"/>
                             <SplitButton.Flyout>
                                 <Flyout Placement="Auto">
@@ -112,8 +112,8 @@
                         </SplitButton>
                          
                         <TextBlock> Foreground Color</TextBlock>
-                        <SplitButton x:Name="myFgColorButton" AutomationProperties.Name="Background color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
-                            <Border x:Name="CurrentFgColor" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Background="Black" Margin="0" CornerRadius="4,0,0,4"/>
+                        <SplitButton x:Name="myFgColorButton" AutomationProperties.Name="Foreground color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
+                            <Border x:Name="ForegroundColorElement" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Background="Black" Margin="0" CornerRadius="4,0,0,4"/>
                             <SplitButton.Flyout>
                                 <Flyout Placement="Auto">
                                     <GridView>

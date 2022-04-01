@@ -96,7 +96,7 @@ namespace AppUIBasics.ControlPages
             var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
             var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
-            CurrentBgColor.Background = new SolidColorBrush(color);
+            BackgroundColorElement.Background = new SolidColorBrush(color);
 
             currentBgColor = color;
             UpdateTitlebarColor();
@@ -110,7 +110,7 @@ namespace AppUIBasics.ControlPages
             var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
             var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
-            CurrentFgColor.Background = new SolidColorBrush(color);
+            ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
             UpdateTitlebarColor();
