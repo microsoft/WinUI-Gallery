@@ -133,7 +133,7 @@ namespace AppUIBasics
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction?.Invoke();
+            NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction?.Invoke();
         }
 
         /// <summary>

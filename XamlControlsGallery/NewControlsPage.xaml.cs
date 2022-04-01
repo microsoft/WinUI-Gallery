@@ -27,9 +27,10 @@ namespace AppUIBasics
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)NavigationRootPage.Current.NavigationView.MenuItems.First();
+            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
+            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
             menuItem.IsSelected = true;
-            NavigationRootPage.Current.NavigationView.Header = string.Empty;
+            args.NavigationRootPage.NavigationView.Header = string.Empty;
 
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
             itemsCVS.Source = FormatData();

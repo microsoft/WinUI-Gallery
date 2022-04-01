@@ -262,9 +262,9 @@ namespace AppUIBasics.ControlPages
             {
                 Frame frame = new Frame();
                 frame.Navigate(typeof(TabViewWindowingSamplePage), null);
-                App.CurrentWindow.Content = frame;
+                Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
-                App.CurrentWindow.Activate();
+                Window.Current.Activate();
 
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
@@ -273,6 +273,13 @@ namespace AppUIBasics.ControlPages
 #else
         private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
+            var newWindow = WindowHelper.CreateWindow();
+
+            Frame frame = new Frame();
+            frame.RequestedTheme = ThemeHelper.RootTheme;
+            frame.Navigate(typeof(TabViewWindowingSamplePage), null);
+            newWindow.Content = frame;
+            newWindow.Activate();
         }
 #endif
     }

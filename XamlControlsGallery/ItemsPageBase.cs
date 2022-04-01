@@ -68,7 +68,7 @@ namespace AppUIBasics
 
             _itemId = item.UniqueId;
 
-            this.Frame.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)
@@ -78,7 +78,7 @@ namespace AppUIBasics
                 var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up);
                 if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
                 {
-                    NavigationRootPage.Current.PageHeader.Focus(FocusState.Programmatic);
+                    NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace AppUIBasics
                 {
                     gridView.ScrollIntoView(item);
 
-                    if (NavigationRootPage.Current.IsFocusSupported)
+                    if (NavigationRootPage.GetForElement(this).IsFocusSupported)
                     {
                         ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
                     }

@@ -79,7 +79,7 @@ namespace AppUIBasics.ControlPages
 
 #if !UNIVERSAL
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-            if (App.CurrentWindow == null)
+            if (Window.Current == null)
             {
                 IInitializeWithWindow initializeWithWindowWrapper = open.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
@@ -115,7 +115,7 @@ namespace AppUIBasics.ControlPages
 
 #if !UNIVERSAL
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-            if (App.CurrentWindow == null)
+            if (Window.Current == null)
             {
                 IInitializeWithWindow initializeWithWindowWrapper = savePicker.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();

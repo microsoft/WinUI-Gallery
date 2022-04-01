@@ -2455,6 +2455,59 @@
           ]
         }
       ]
+    },
+    {
+      "UniqueId": "MultipleWindows",
+      "Title": "Windows",
+      "Subtitle": "",
+      "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+      "Description": "",
+      "Items": [
+        {
+          "UniqueId": "CreateMultipleWindows",
+          "Title": "Create Multiple Windows",
+          "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
+          "Content": "<p>Look at the <i>CreateMultipleWindowsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "MultipleWindow - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            }
+          ],
+          "RelatedControls": [
+          ]
+        },
+        {
+          "UniqueId": "CustomTitlebar",
+          "Title": "Titlebar",
+          "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
+          "ImagePath": "ms-appx:///Assets/DefaultIcon.png",
+          "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
+          "Content": "<p>Look at the <i>CustomTitlebarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "Titlebar - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window.extendscontentintotitlebar?view=winui-3.0"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
+            }
+          ],
+          "RelatedControls": [
+          ]
+        }
+      ]
     }
   ]
 }

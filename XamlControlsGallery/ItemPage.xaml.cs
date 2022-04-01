@@ -55,18 +55,22 @@ namespace AppUIBasics
         private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
         {
             // Notifying the pageheader that this Itempage was unloaded
-            NavigationRootPage.Current.PageHeader.Event_ItemPage_Unloaded(sender, e);
+            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
+            if (navigationRootPage != null)
+            {
+                navigationRootPage.PageHeader.Event_ItemPage_Unloaded(sender, e);
+            }
         }
 
         public void SetInitialVisuals()
         {
-            NavigationRootPage.Current.NavigationViewLoaded = OnNavigationViewLoaded;
-            NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
-            NavigationRootPage.Current.PageHeader.CopyLinkAction = OnCopyLink;
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction = OnToggleTheme;
-            NavigationRootPage.Current.PageHeader.ResetCopyLinkButton();
+            NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar.Visibility = Visibility.Visible;
+            NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction = OnToggleTheme;
+            NavigationRootPage.GetForElement(this).NavigationViewLoaded = OnNavigationViewLoaded;
+            NavigationRootPage.GetForElement(this).PageHeader.CopyLinkAction = OnCopyLink;
+            NavigationRootPage.GetForElement(this).PageHeader.ResetCopyLinkButton();
 
-            if (NavigationRootPage.Current.IsFocusSupported)
+            if (NavigationRootPage.GetForElement(this).IsFocusSupported)
             {
                 this.Focus(FocusState.Programmatic);
             }
@@ -115,7 +119,7 @@ namespace AppUIBasics
 
         private void OnNavigationViewLoaded()
         {
-            NavigationRootPage.Current.EnsureNavigationSelection(this.Item.UniqueId);
+            NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
         }
 
         private void OnCopyLink()
@@ -150,12 +154,13 @@ namespace AppUIBasics
         {
             ButtonBase b = (ButtonBase)sender;
 
-            this.Frame.Navigate(typeof(ItemPage), b.DataContext.ToString());
+            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), b.DataContext.ToString());
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((string)e.Parameter);
+            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
+            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)args.Parameter);
 
             if (item != null)
             {
@@ -178,10 +183,11 @@ namespace AppUIBasics
                     PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
                     PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
 
+                    System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
 
-                NavigationRootPage.Current.NavigationView.Header = item?.Title;
+                args.NavigationRootPage.NavigationView.Header = item?.Title;
             }
 
             base.OnNavigatedTo(e);
@@ -198,7 +204,7 @@ namespace AppUIBasics
                 }
                 else
                 {
-                    this.Frame.Navigate(typeof(AllControlsPage));
+                    NavigationRootPage.GetForElement(this).Navigate(typeof(AllControlsPage));
                 }
             }
         }
@@ -212,16 +218,20 @@ namespace AppUIBasics
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            NavigationRootPage.Current.NavigationViewLoaded = null;
-            NavigationRootPage.Current.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
-            NavigationRootPage.Current.PageHeader.CopyLinkAction = null;
-            NavigationRootPage.Current.PageHeader.ToggleThemeAction = null;
+            NavigationRootPage.GetForElement(this).NavigationViewLoaded = null;
+            NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+            NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction = null;
+            NavigationRootPage.GetForElement(this).PageHeader.CopyLinkAction = null;
 
-            //Reverse Connected Animation
+            // Reverse Connected Animation
             if (e.SourcePageType != typeof(ItemPage))
             {
-                var target = NavigationRootPage.Current.PageHeader.TitlePanel;
-                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", target);
+                PageHeader pageHeader = NavigationRootPage.GetForElement(this).PageHeader;
+
+                if (pageHeader.Visibility == Visibility.Visible)
+                {
+                    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", pageHeader.TitlePanel);
+                }
             }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page

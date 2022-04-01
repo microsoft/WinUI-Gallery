@@ -50,11 +50,12 @@ namespace AppUIBasics
         {
             base.OnNavigatedTo(e);
 
-            var queryText = e.Parameter?.ToString().ToLower();
+            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
+            var queryText = args.Parameter?.ToString().ToLower();
 
             BuildFilterList(queryText);
 
-            NavigationRootPage.Current.NavigationView.Header = "Search";
+            args.NavigationRootPage.NavigationView.Header = "Search";
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -119,7 +120,7 @@ namespace AppUIBasics
                 {
                     // Display informational text when there are no search results.
                     VisualStateManager.GoToState(this, "NoResultsFound", false);
-                    var textbox = NavigationRootPage.Current.PageHeader?.GetDescendantsOfType<AutoSuggestBox>().FirstOrDefault();
+                    var textbox = NavigationRootPage.GetForElement(this).PageHeader?.GetDescendantsOfType<AutoSuggestBox>().FirstOrDefault();
                     textbox?.Focus(FocusState.Programmatic);
                 }
                 else

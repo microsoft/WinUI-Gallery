@@ -63,8 +63,8 @@ namespace AppUIBasics
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            NavigationRootPage.Current.NavigationView.Header = "Settings";
+            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
+            args.NavigationRootPage.NavigationView.Header = "Settings";
         }
 
         private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
@@ -83,11 +83,32 @@ namespace AppUIBasics
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
 #if UNIVERSAL
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
+#else
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
 #endif
-
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
+                if (selectedTheme == "Dark")
+                {
+                    SetTitleBarButtonForegroundColor(Colors.White);
+                }
+                else if (selectedTheme == "Light")
+                {
+                    SetTitleBarButtonForegroundColor(Colors.Black);
+                }
+                else
+                {
+                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                    {
+                        SetTitleBarButtonForegroundColor(Colors.White);
+                    }
+                    else
+                    {
+                        SetTitleBarButtonForegroundColor(Colors.Black);
+                    }
+                }
             }
         }
 
@@ -95,7 +116,7 @@ namespace AppUIBasics
         {
             if (e.Key == VirtualKey.Up)
             {
-                NavigationRootPage.Current.PageHeader.Focus(FocusState.Programmatic);
+                NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
             }
         }
         private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
@@ -125,7 +146,7 @@ namespace AppUIBasics
 
         private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
+            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
         }
 
         private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)
@@ -143,7 +164,7 @@ namespace AppUIBasics
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
+            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
         }
 
         private async void FolderButton_Click(object sender, RoutedEventArgs e)

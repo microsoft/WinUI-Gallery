@@ -36,16 +36,25 @@ namespace AppUIBasics
 {
     public sealed partial class NavigationRootPage : Page
     {
-        public static NavigationRootPage Current;
-        public static Frame RootFrame = null;
-
         public Windows.System.VirtualKey ArrowKey;
+        public Frame RootFrame { get { return rootFrame; }}
 
         private RootFrameNavigationHelper _navHelper;
         private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
+
+        public static NavigationRootPage GetForElement(object obj)
+        {
+            UIElement element = (UIElement)obj;
+            Window window = WindowHelper.GetWindowForElement(element);
+            if (window != null)
+            {
+                return (NavigationRootPage)window.Content;
+            }
+            return null;
+        }
 
         public Microsoft.UI.Xaml.Controls.NavigationView NavigationView
         {
@@ -96,8 +105,6 @@ namespace AppUIBasics
 
             SetDeviceFamily();
             AddNavigationMenuItems();
-            Current = this;
-            RootFrame = rootFrame;
 
             this.GotFocus += (object sender, RoutedEventArgs e) =>
             {
@@ -121,17 +128,20 @@ namespace AppUIBasics
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                NavigationOrientationHelper.UpdateTitleBar(NavigationOrientationHelper.IsLeftMode);
-
+                NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
+#if !UNIVERSAL
+                WindowHelper.GetWindowForElement(this).Title = AppTitleText;
+#endif
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
+            App.appTitlebar = AppTitleBar;
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
         {
             var navigationView = sender as NavigationView;
-            NavigationRootPage.Current.AppTitleBar.Visibility = navigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
+            NavigationRootPage.GetForElement(this).AppTitleBar.Visibility = navigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
         }
 
         void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
@@ -141,14 +151,22 @@ namespace AppUIBasics
             AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
         }
 
-        public string GetAppTitleFromSystem()
-        {
-            return Windows.ApplicationModel.Package.Current.DisplayName;
-        }
-
         public bool CheckNewControlSelected()
         {
             return _newControlsMenuItem.IsSelected;
+        }
+
+        // Wraps a call to RootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
+        // Please call this function rather than RootFrame.Navigate to navigate the RootFrame.
+        public void Navigate(
+            Type pageType,
+            object targetPageArguments = null,
+            Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
+        {
+            NavigationRootPageArgs args = new NavigationRootPageArgs();
+            args.NavigationRootPage = this;
+            args.Parameter = targetPageArguments;
+            rootFrame.Navigate(pageType, args, navigationTransitionInfo);
         }
 
         public void EnsureNavigationSelection(string id)
@@ -291,7 +309,7 @@ namespace AppUIBasics
             {
                 if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
                 {
-                    rootFrame.Navigate(typeof(SettingsPage));
+                    Navigate(typeof(SettingsPage));
                 }
             }
             else
@@ -302,14 +320,14 @@ namespace AppUIBasics
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
                     {
-                        rootFrame.Navigate(typeof(AllControlsPage));
+                        Navigate(typeof(AllControlsPage));
                     }
                 }
                 else if (selectedItem == _newControlsMenuItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
-                        rootFrame.Navigate(typeof(NewControlsPage));
+                        Navigate(typeof(NewControlsPage));
                     }
                 }
                 else
@@ -317,12 +335,12 @@ namespace AppUIBasics
                     if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
                         var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                        rootFrame.Navigate(typeof(SectionPage), itemId);
+                        Navigate(typeof(SectionPage), itemId);
                     }
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
+                        Navigate(typeof(ItemPage), item.UniqueId);
                     }
 
                 }
@@ -354,10 +372,10 @@ namespace AppUIBasics
 
         private void CloseTeachingTips()
         {
-            if (Current?.PageHeader != null)
+            if (PageHeader != null)
             {
-                Current.PageHeader.TeachingTip1.IsOpen = false;
-                Current.PageHeader.TeachingTip3.IsOpen = false;
+                PageHeader.TeachingTip1.IsOpen = false;
+                PageHeader.TeachingTip3.IsOpen = false;
             }
         }
 
@@ -409,11 +427,11 @@ namespace AppUIBasics
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
             {
                 var itemId = (args.ChosenSuggestion as ControlInfoDataItem).UniqueId;
-                NavigationRootPage.RootFrame.Navigate(typeof(ItemPage), itemId);
+                Navigate(typeof(ItemPage), itemId);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
-                NavigationRootPage.RootFrame.Navigate(typeof(SearchResultsPage), args.QueryText);
+                Navigate(typeof(SearchResultsPage), args.QueryText);
             }
         }
 
@@ -577,6 +595,12 @@ namespace AppUIBasics
         private static extern void DebugBreak();
 
         #endregion
+    }
+
+    public class NavigationRootPageArgs
+    {
+        public NavigationRootPage NavigationRootPage;
+        public object Parameter;
     }
 
     public enum DeviceType
