@@ -384,7 +384,6 @@ namespace AppUIBasics
             {
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
-                bool changedSelection = false;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
                 NavigationRootPage.RootFrame.Navigate(typeof(ItemPage), itemId);
             }
