@@ -77,7 +77,7 @@ namespace AppUIBasics
             }
         }
 
-        protected async void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
+        protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
         {
             if (_itemId != null)
             {

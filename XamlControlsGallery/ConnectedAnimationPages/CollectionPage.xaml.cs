@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -42,6 +42,9 @@ namespace AppUIBasics.ConnectedAnimationPages
 
                     await collection.TryStartConnectedAnimationAsync(animation, _storeditem, "connectedElement");
                 }
+
+                // Set focus on the list
+                collection.Focus(FocusState.Programmatic);
             }
         }
 

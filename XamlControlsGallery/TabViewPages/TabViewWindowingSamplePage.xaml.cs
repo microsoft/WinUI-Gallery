@@ -121,7 +121,7 @@ namespace AppUIBasics.TabViewPages
         }
 
         // Create a new Window once the Tab is dragged outside.
-        private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
+        private void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
             MoveTabToNewWindow(args.Tab);
         }
@@ -163,7 +163,7 @@ namespace AppUIBasics.TabViewPages
             args.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
-        private async void Tabs_TabStripDrop(object sender, DragEventArgs e)
+        private void Tabs_TabStripDrop(object sender, DragEventArgs e)
         {
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView
