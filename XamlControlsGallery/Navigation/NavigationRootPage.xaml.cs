@@ -30,6 +30,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
@@ -148,7 +149,7 @@ namespace AppUIBasics
         {
             //ensure the custom title bar does not overlap window caption controls
             Thickness currMargin = AppTitleBar.Margin;
-            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
+            AppTitleBar.Margin = new Thickness() { Left = currMargin.Left, Top = currMargin.Top, Right = coreTitleBar.SystemOverlayRightInset, Bottom = currMargin.Bottom };
         }
 
         public bool CheckNewControlSelected()
@@ -206,7 +207,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImagePath) };
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImagePath) };
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
@@ -424,14 +425,83 @@ namespace AppUIBasics
 
         private void OnControlsSearchBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
             {
-                var itemId = (args.ChosenSuggestion as ControlInfoDataItem).UniqueId;
-                Navigate(typeof(ItemPage), itemId);
+                var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
+                var itemId = infoDataItem.UniqueId;
+                EnsureItemIsVisibleInNavigation(infoDataItem.Title);
+                navigationRootPage.RootFrame.Navigate(typeof(ItemPage), itemId);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
-                Navigate(typeof(SearchResultsPage), args.QueryText);
+                navigationRootPage.RootFrame.Navigate(typeof(SearchResultsPage), args.QueryText);
+            }
+        }
+
+        public void EnsureItemIsVisibleInNavigation(string name)
+        {
+            bool changedSelection = false;
+            foreach (object rawItem in NavigationView.MenuItems)
+            {
+                // Check if we encountered the separator
+                if (!(rawItem is NavigationViewItem))
+                {
+                    // Skipping this item
+                    continue;
+                }
+
+                var item = rawItem as NavigationViewItem;
+
+                // Check if we are this category
+                if ((string)item.Content == name)
+                {
+                    NavigationView.SelectedItem = item;
+                    changedSelection = true;
+                }
+                // We are not :/
+                else
+                {
+                    // Maybe one of our items is? ??_?
+                    if (item.MenuItems.Count != 0)
+                    {
+                        foreach (NavigationViewItem child in item.MenuItems)
+                        {
+                            if ((string)child.Content == name)
+                            {
+                                // We are the item corresponding to the selected one, update selection!
+
+                                // Deal with differences in displaymodes
+                                if (NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
+                                {
+                                    // In Topmode, the child is not visible, so set parent as selected
+                                    // Everything else does not work unfortunately
+                                    NavigationView.SelectedItem = item;
+                                    item.StartBringIntoView();
+                                }
+                                else
+                                {
+                                    // Expand so we animate
+                                    item.IsExpanded = true;
+                                    // Ensure parent is expanded so we actually show the selection indicator
+                                    NavigationView.UpdateLayout();
+                                    // Set selected item
+                                    NavigationView.SelectedItem = child;
+                                    child.StartBringIntoView();
+                                }
+                                // Set to true to also skip out of outer for loop
+                                changedSelection = true;
+                                // Break out of child iteration for loop
+                                break;
+                            }
+                        }
+                    }
+                }
+                // We updated selection, break here!
+                if (changedSelection)
+                {
+                    break;
+                }
             }
         }
 
@@ -450,12 +520,12 @@ namespace AppUIBasics
             Thickness currMargin = AppTitleBar.Margin;
             if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
             {
-                AppTitleBar.Margin = new Thickness((sender.CompactPaneLength * 2), currMargin.Top, currMargin.Right, currMargin.Bottom);
+                AppTitleBar.Margin = new Thickness() { Left = (sender.CompactPaneLength * 2), Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
 
             }
             else
             {
-                AppTitleBar.Margin = new Thickness(sender.CompactPaneLength, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                AppTitleBar.Margin = new Thickness() { Left = sender.CompactPaneLength, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
             }
 
             UpdateAppTitleMargin(sender);
@@ -487,11 +557,11 @@ namespace AppUIBasics
                 if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
                          sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
-                    AppTitle.Margin = new Thickness(smallLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                    AppTitle.Margin = new Thickness() { Left = smallLeftIndent, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
                 }
                 else
                 {
-                    AppTitle.Margin = new Thickness(largeLeftIndent, currMargin.Top, currMargin.Right, currMargin.Bottom);
+                    AppTitle.Margin = new Thickness() { Left = largeLeftIndent, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
                 }
             }
         }
@@ -502,11 +572,11 @@ namespace AppUIBasics
             {
                 if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
                 {
-//                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
+                    PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
                 }
                 else
                 {
-//                    Current.PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
+                    PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
                 }
             }
         }

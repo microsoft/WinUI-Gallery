@@ -76,6 +76,19 @@ namespace AppUIBasics
         {
             var currentTheme = ThemeHelper.RootTheme.ToString();
             (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
+
+            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
+            if (navigationRootPage != null)
+            {
+                if(navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+                {
+                    navigationLocation.SelectedIndex = 0;
+                }
+                else
+                {
+                    navigationLocation.SelectedIndex = 1;
+                }
+            }
         }
 
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
