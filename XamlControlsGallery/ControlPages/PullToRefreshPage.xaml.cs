@@ -88,7 +88,7 @@ namespace AppUIBasics.ControlPages
                 {
                     Width = 200,
                     Height = 200,
-                    BorderThickness = new Thickness(1),
+                    BorderThickness = new Thickness() { Left = 1, Top = 1, Right = 1, Bottom = 1 },
                     HorizontalAlignment = HorizontalAlignment.Center,
                     BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"]
                 };

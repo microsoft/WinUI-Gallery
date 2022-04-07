@@ -37,7 +37,7 @@ namespace AppUIBasics
         /// <summary>
         /// The size dimension that grows directly with layout placement.
         /// </summary>
-        public double _direct;
+        private double _direct;
 
         /// <summary>
         /// Gets or sets the size dimension that grows directly with layout
@@ -53,7 +53,7 @@ namespace AppUIBasics
         /// The size dimension that grows indirectly with the maximum value of
         /// the layout row or column.
         /// </summary>
-        public double _indirect;
+        private double _indirect;
 
         /// <summary>
         /// Gets or sets the size dimension that grows indirectly with the
