@@ -200,9 +200,7 @@ namespace AppUIBasics.Data
 
             lock (_lock)
             {
-                var loader = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse();
-                string pageRoot = loader.GetString("PageStringRoot");
-
+                string pageRoot = "AppUIBasics.ControlPages.";
                 foreach (JsonValue groupValue in jsonArray)
                 {
                     JsonObject groupObject = groupValue.GetObject();
