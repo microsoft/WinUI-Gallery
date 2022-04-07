@@ -55,7 +55,7 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+    <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>

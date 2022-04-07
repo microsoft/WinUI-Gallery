@@ -1,0 +1,17 @@
+<Project>
+<!-- Hack to get around issues with missing tasks in .net core -->
+  <Target Name="GetInstalledSDKLocations"
+      Condition="'@(SDKReference)' != ''"
+      DependsOnTargets="$(GetInstalledSDKLocationsDependsOn)"
+      Returns="@(InstalledSDKLocations)">
+    <ItemGroup>
+    </ItemGroup>
+  </Target>
+  <Target
+      Name="ResolveSDKReferences"
+      Returns="@(ResolvedSDKReference)"
+      DependsOnTargets="$(ResolveSDKReferencesDependsOn)">
+    <ItemGroup>
+    </ItemGroup>
+  </Target>
+</Project>
