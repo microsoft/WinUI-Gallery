@@ -94,7 +94,7 @@
         </Grid>
 
         <!-- Don't set IsTitleBarAutoPaddingEnabled, since it should only be set false when we're using Window.SetTitleBar(), which isn't currently available.
-             Restore by re-applying https://github.com/microsoft/Xaml-Controls-Gallery/pull/198 -->
+             Restore by re-applying https://github.com/microsoft/WinUI-Gallery/pull/198 -->
         <NavigationView
             Canvas.ZIndex="0"
             x:Name="NavigationViewControl"

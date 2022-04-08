@@ -9,8 +9,8 @@
     <StackPanel>
         <RichTextBlock>
             <Paragraph>See the full sample on GitHub:
-                <Hyperlink NavigateUri="https://github.com/Microsoft/Xaml-Controls-Gallery">
-                    https://github.com/Microsoft/Xaml-Controls-Gallery
+                <Hyperlink NavigateUri="https://github.com/Microsoft/WinUI-Gallery">
+                    https://github.com/Microsoft/WinUI-Gallery
                 </Hyperlink>
             </Paragraph>
         </RichTextBlock>
