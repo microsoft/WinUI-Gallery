@@ -1,4 +1,4 @@
-﻿using Windows.Foundation.Metadata;
+using Windows.Foundation.Metadata;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -45,7 +45,8 @@ namespace AppUIBasics.ControlPages
 
         private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            ShowMenu((sender as Button).IsPointerOver);
+            // show in Transient mode.
+            ShowMenu(true);
         }
     }
 }
