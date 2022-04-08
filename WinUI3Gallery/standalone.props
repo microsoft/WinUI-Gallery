@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <!-- The NuGet versions of dependencies to build against. -->
+    <ProjectReunionPackageVersion>1.0.1</ProjectReunionPackageVersion>
+    <ProjectReunionWinUIPackageVersion>1.0.0</ProjectReunionWinUIPackageVersion>
+    <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
+    <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
+    <ColorCodeVersion>2.0.13</ColorCodeVersion>
+    <MicrosoftCsWinRTPackageVersion>1.5.0</MicrosoftCsWinRTPackageVersion>
+    <!-- Where to place the files generated from CSWinRT from WinUI3Gallery.Desktop.-->
+    <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
+    <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
+    <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <!-- 
+         For Desktop, the .NET 5 SDK automatically includes every .cs file in the project directory.  It normally
+         also excludes items under the obj/bin folders based on the value of BaseIntermediateOutputPath/BaseOutputPath.
+         However, because we overwrite those to output to subdirectories, the outputs of the UWP WinUI Gallery
+         are erroneously included.  Explicitly exclude them here
+    -->
+    <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>

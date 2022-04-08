@@ -1,0 +1,13 @@
+<Project>
+    <!-- This file is similar to Directory.Build.props, in that it contains properties common to all WinUI Gallery projects.
+         However, this props file is imported directly in the projects themselves,
+         since Directory.Build.props is imported before some key MSBuild properties are set which we need here.  In general, common properties
+         should go in Directory.Build.props instead of here, this just contains special cases. -->
+
+    <!-- When building outside the WinUI repo, configure the NugetPackageDirectory property it normally sets.  This value is based
+         off of the NuGetPackageRoot property set in the auto-generated NuGet props.  Unfortunately, the auto-generated props
+         are imported after Directory.Build.props, so we can't assign it there -->
+    <PropertyGroup Condition="'$(NugetPackageDirectory)' == '' AND '$(IsInWinUIRepo)' != 'true' ">
+        <NugetPackageDirectory>$(NuGetPackageRoot)</NugetPackageDirectory>
+    </PropertyGroup>
+</Project>
