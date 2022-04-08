@@ -93,28 +93,17 @@ namespace AppUIBasics.TabViewPages
         }
 
         // Create a new Window once the Tab is dragged outside.
-        private async void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
+        private void Tabs_TabDroppedOutside(TabView sender, TabViewTabDroppedOutsideEventArgs args)
         {
-            // AppWindow was introduced in Windows 10 version 18362 (ApiContract version 8). 
-            // If the app is running on a version earlier than 18362, simply no-op.
-            // If your app needs to support multiple windows on earlier versions of Win10, you can use CoreWindow/ApplicationView.
-            // More information about showing multiple views can be found here: https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views
-            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                return;
-            }
+            var newPage = new TabViewWindowingSamplePage();
 
-            //AppWindow newWindow = await AppWindow.TryCreateAsync();
+            Tabs.TabItems.Remove(args.Tab);
+            newPage.AddTabToTabs(args.Tab);
 
-            //var newPage = new TabViewWindowingSamplePage();
-            //newPage.SetupWindow(newWindow);
+            var newWindow = WindowHelper.CreateWindow();
+            newWindow.Content = newPage;
 
-            //ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
-
-            //Tabs.TabItems.Remove(args.Tab);
-            //newPage.AddTabToTabs(args.Tab);
-
-            //await newWindow.TryShowAsync();
+            newWindow.Activate();
         }
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)
