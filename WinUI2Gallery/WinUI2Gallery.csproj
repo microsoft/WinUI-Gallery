@@ -1299,7 +1299,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="XamlControlsGallery_TemporaryKey.pfx" />
+    <None Include="WinUI2Gallery_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
