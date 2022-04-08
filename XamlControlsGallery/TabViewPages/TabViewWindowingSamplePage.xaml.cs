@@ -20,6 +20,14 @@ namespace AppUIBasics.TabViewPages
             this.InitializeComponent();
 
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
+
+            Loaded += TabViewWindowingSamplePage_Loaded;
+        }
+
+        private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            var currentWindow = WindowHelper.GetWindowForElement(this);
+            currentWindow.ExtendsContentIntoTitleBar = true;
         }
 
         private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
@@ -49,6 +57,7 @@ namespace AppUIBasics.TabViewPages
 
             Tabs.SelectedIndex = 0;
 
+
 #if UNIVERSAL
             // Extend into the titlebar
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -59,7 +68,7 @@ namespace AppUIBasics.TabViewPages
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
-#endif
+#endif            
         }
 
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
@@ -101,6 +110,7 @@ namespace AppUIBasics.TabViewPages
             newPage.AddTabToTabs(args.Tab);
 
             var newWindow = WindowHelper.CreateWindow();
+            newWindow.ExtendsContentIntoTitleBar = true;
             newWindow.Content = newPage;
 
             newWindow.Activate();
