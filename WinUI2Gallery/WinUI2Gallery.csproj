@@ -1,0 +1,1320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{136731F8-E0F5-4BF4-A71E-44AEC1B0B664}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppUIBasics</RootNamespace>
+    <AssemblyName>AppUIBasics</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
+    <AppxOSMinVersionReplaceManifestVersion>false</AppxOSMinVersionReplaceManifestVersion>
+    <AppxOSMaxVersionTestedReplaceManifestVersion>false</AppxOSMaxVersionTestedReplaceManifestVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>XamlControlsGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
+    <IsWinUIPrerelease>True</IsWinUIPrerelease>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);8305</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(IsWinUIPrerelease) == 'True'">
+    <DefineConstants>$DefineConstants;WINUI_PRERELEASE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\SharedContent\cs\Default.rd.xml">
+      <Link>Properties\Default.rd.xml</Link>
+    </Content>
+    <Content Include="Assets\CopyLinkTeachingTip.png" />
+    <Content Include="Assets\LottieLogo1.png" />
+    <Content Include="Assets\MainPage_Banner.png" />
+    <Content Include="Assets\NumberBox.png" />
+    <Content Include="Assets\RadioButtons.png" />
+    <Content Include="Assets\SampleMedia\cliff.jpg" />
+    <Content Include="Assets\SampleMedia\fishes.wmv" />
+    <Content Include="Assets\SampleMedia\grapes.jpg" />
+    <Content Include="Assets\SampleMedia\ladybug.wmv" />
+    <Content Include="Assets\SampleMedia\LandscapeImage1.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage2.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage3.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage4.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage5.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage6.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage7.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage8.jpg" />
+    <Content Include="Assets\SampleMedia\rainier.jpg" />
+    <Content Include="Assets\SampleMedia\sunset.jpg" />
+    <Content Include="Assets\SampleMedia\treetops.jpg" />
+    <Content Include="Assets\SampleMedia\valley.jpg" />
+    <Content Include="Assets\AcrylicBrush.png" />
+    <Content Include="Assets\Animations.png" />
+    <Content Include="Assets\CalenderDatePicker.png" />
+    <Content Include="Assets\CoffeeCup.png" />
+    <Content Include="Assets\ColorPicker.png" />
+    <Content Include="Assets\CommandBarFlyout.png" />
+    <Content Include="Assets\CompactSizing.png" />
+    <Content Include="Assets\ConnectedAnimations.png" />
+    <Content Include="Assets\Contacts.txt" />
+    <Content Include="Assets\DefaultIcon.png" />
+    <Content Include="Assets\DropdownButton.png" />
+    <Content Include="Assets\EasingFunctions.png" />
+    <Content Include="Assets\file.png" />
+    <Content Include="Assets\folder.png" />
+    <Content Include="Assets\InnerPage_Banner.jpg" />
+    <Content Include="Assets\MapControl.png" />
+    <Content Include="Assets\MenuBar.png" />
+    <Content Include="Assets\NavigationView.png" />
+    <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\ButtonsIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\CollectionIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\CommandingIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\FlyoutIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\LayoutIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\MediaIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\NewControlsIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\ObjectQuickAnimation.png" />
+    <Content Include="Assets\NavigationViewItemIcons\PickerIcon.png" />
+    <Content Include="Assets\NavigationViewItemIcons\TextIcon.png" />
+    <Content Include="Assets\new.png" />
+    <Content Include="Assets\ParallaxView.png" />
+    <Content Include="Assets\PersonPicture.png" />
+    <Content Include="Assets\preview.png" />
+    <Content Include="Assets\ProgressRing.png" />
+    <Content Include="Assets\PullToRefresh.png" />
+    <Content Include="Assets\RatingControl.png" />
+    <Content Include="Assets\Reveal.png" />
+    <Content Include="Assets\RevealFocus.png" />
+    <Content Include="Assets\Sound.png" />
+    <Content Include="Assets\SplitButton.png" />
+    <Content Include="Assets\StoryboardAnimation.png" />
+    <Content Include="Assets\SunBlack.png" />
+    <Content Include="Assets\SunWhite.png" />
+    <Content Include="Assets\Swipe.png" />
+    <Content Include="Assets\TabViewIcons\cmd.png" />
+    <Content Include="Assets\TabViewIcons\linux.png" />
+    <Content Include="Assets\TabViewIcons\powershell.png" />
+    <Content Include="Assets\TeachingTip.png" />
+    <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
+    <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
+    <Content Include="Assets\Tiles\LargeTile.scale-150.png" />
+    <Content Include="Assets\Tiles\LargeTile.scale-200.png" />
+    <Content Include="Assets\Tiles\LargeTile.scale-400.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.scale-100.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.scale-125.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.scale-150.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.scale-200.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.scale-400.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.targetsize-16.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.targetsize-24.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.targetsize-256.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.targetsize-32.png" />
+    <Content Include="Assets\Tiles\SmallTile-sdk.targetsize-48.png" />
+    <Content Include="Assets\Tiles\SmallTile.scale-100.png" />
+    <Content Include="Assets\Tiles\SmallTile.scale-125.png" />
+    <Content Include="Assets\Tiles\SmallTile.scale-150.png" />
+    <Content Include="Assets\Tiles\SmallTile.scale-200.png" />
+    <Content Include="Assets\Tiles\SmallTile.scale-400.png" />
+    <Content Include="Assets\Tiles\splash-sdk.scale-100.png" />
+    <Content Include="Assets\Tiles\splash-sdk.scale-125.png" />
+    <Content Include="Assets\Tiles\splash-sdk.scale-150.png" />
+    <Content Include="Assets\Tiles\splash-sdk.scale-200.png" />
+    <Content Include="Assets\Tiles\splash-sdk.scale-400.png" />
+    <Content Include="Assets\Tiles\squaretile-sdk.scale-100.png" />
+    <Content Include="Assets\Tiles\squaretile-sdk.scale-125.png" />
+    <Content Include="Assets\Tiles\squaretile-sdk.scale-150.png" />
+    <Content Include="Assets\Tiles\squaretile-sdk.scale-200.png" />
+    <Content Include="Assets\Tiles\squaretile-sdk.scale-400.png" />
+    <Content Include="Assets\Tiles\StoreLogo-sdk.scale-100.png" />
+    <Content Include="Assets\Tiles\StoreLogo-sdk.scale-125.png" />
+    <Content Include="Assets\Tiles\StoreLogo-sdk.scale-150.png" />
+    <Content Include="Assets\Tiles\StoreLogo-sdk.scale-200.png" />
+    <Content Include="Assets\Tiles\StoreLogo-sdk.scale-400.png" />
+    <Content Include="Assets\Tiles\WideTile.scale-100.png" />
+    <Content Include="Assets\Tiles\WideTile.scale-125.png" />
+    <Content Include="Assets\Tiles\WideTile.scale-150.png" />
+    <Content Include="Assets\Tiles\WideTile.scale-200.png" />
+    <Content Include="Assets\Tiles\WideTile.scale-400.png" />
+    <Content Include="Assets\TimingDuration.png" />
+    <Content Include="Assets\ToggleSplitButton.png" />
+    <Content Include="Assets\Transitions.png" />
+    <Content Include="Assets\TreeView.png" />
+    <Content Include="Assets\updated.png" />
+    <Content Include="Assets\WebView.png" />
+    <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Simple.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\SplitButton\SplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\GridView\GridViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\AnimatedIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\SymbolIconSample_1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\PathIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\ImageIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Icons\FontIconSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
+    <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample3.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample5_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_cs.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample5_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample1.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample2.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample3.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample8_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample9_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\StandardUICommand\StandardUICommandSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\StandardUICommand\StandardUICommandSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSimple.txt" />
+    <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimatedVisuals\LottieLogo1.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Behaviors\ImageScrollBehavior.cs" />
+    <Compile Include="Common\ActivityFeedLayout.cs" />
+    <Compile Include="Common\BooleanToValueConverter.cs" />
+    <Compile Include="Common\Category.cs" />
+    <Compile Include="Common\DefaultElementAnimator.cs" Condition="$(IsWinUIPrerelease) == 'True'" />
+    <Compile Include="Common\DeviceFamilyTrigger.cs" />
+    <Compile Include="Common\DoubleToThicknessConverter.cs" />
+    <Compile Include="Common\LanguageList.cs" />
+    <Compile Include="Common\MenuItemTemplateSelector.cs" />
+    <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="ControlPages\AnimatedIconPage.xaml.cs">
+      <DependentUpon>AnimatedIconPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\InfoBadgePage.xaml.cs">
+      <DependentUpon>InfoBadgePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\BreadcrumbBarPage.xaml.cs">
+      <DependentUpon>BreadcrumbBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ContentDialogContent.xaml.cs">
+      <DependentUpon>ContentDialogContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ExpanderPage.xaml.cs">
+      <DependentUpon>ExpanderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\IconElementPage.xaml.cs">
+      <DependentUpon>IconElementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\InfoBarPage.xaml.cs">
+      <DependentUpon>InfoBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PipsPagerPage.xaml.cs">
+      <DependentUpon>PipsPagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RadioButtonsPage.xaml.cs">
+      <DependentUpon>RadioButtonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SampleCodePresenter.xaml.cs">
+      <DependentUpon>SampleCodePresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ProtocolActivationClipboardHelper.cs" />
+    <Compile Include="Helper\NavigationHelper.cs" />
+    <Compile Include="Common\NullableBooleanToBooleanConverter.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\OrientedSize.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Helper\NavigationOrientationHelper.cs" />
+    <Compile Include="Helper\ThemeHelper.cs" />
+    <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="Common\VariedImageSizeLayout.cs" />
+    <Compile Include="Common\WrapPanel.cs" />
+    <Compile Include="ConnectedAnimationPages\CardPage.xaml.cs">
+      <DependentUpon>CardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectedAnimationPages\CollectionPage.xaml.cs">
+      <DependentUpon>CollectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectedAnimationPages\DetailedInfoPage.xaml.cs">
+      <DependentUpon>DetailedInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlExample.xaml.cs">
+      <DependentUpon>ControlExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AutomationPropertiesPage.xaml.cs">
+      <DependentUpon>AutomationPropertiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AcrylicPage.xaml.cs">
+      <DependentUpon>AcrylicPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AnimatedVisualPlayerPage.xaml.cs">
+      <DependentUpon>AnimatedVisualPlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AppBarButtonPage.xaml.cs">
+      <DependentUpon>AppBarButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AppBarPage.xaml.cs">
+      <DependentUpon>AppBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AppBarSeparatorPage.xaml.cs">
+      <DependentUpon>AppBarSeparatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AppBarToggleButtonPage.xaml.cs">
+      <DependentUpon>AppBarToggleButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RadialGradientBrushPage.xaml.cs">
+      <DependentUpon>RadialGradientBrushPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ConnectedAnimationPage.xaml.cs">
+      <DependentUpon>ConnectedAnimationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\AutoSuggestBoxPage.xaml.cs">
+      <DependentUpon>AutoSuggestBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\BorderPage.xaml.cs">
+      <DependentUpon>BorderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ButtonPage.xaml.cs">
+      <DependentUpon>ButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CalendarDatePickerPage.xaml.cs">
+      <DependentUpon>CalendarDatePickerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CalendarViewPage.xaml.cs">
+      <DependentUpon>CalendarViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CanvasPage.xaml.cs">
+      <DependentUpon>CanvasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CheckBoxPage.xaml.cs">
+      <DependentUpon>CheckBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ColorPickerPage.xaml.cs">
+      <DependentUpon>ColorPickerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ColorPaletteResourcesPage.xaml.cs">
+      <DependentUpon>ColorPaletteResourcesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ComboBoxPage.xaml.cs">
+      <DependentUpon>ComboBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CommandBarFlyoutPage.xaml.cs">
+      <DependentUpon>CommandBarFlyoutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CommandBarPage.xaml.cs">
+      <DependentUpon>CommandBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\CompactSizingPage.xaml.cs">
+      <DependentUpon>CompactSizingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ContentDialogExample.xaml.cs">
+      <DependentUpon>ContentDialogExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ContentDialogPage.xaml.cs">
+      <DependentUpon>ContentDialogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\DataGridPage.xaml.cs">
+      <DependentUpon>DataGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\DatePickerPage.xaml.cs">
+      <DependentUpon>DatePickerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\DropDownButtonPage.xaml.cs">
+      <DependentUpon>DropDownButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\EasingFunctionPage.xaml.cs">
+      <DependentUpon>EasingFunctionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\FlipViewPage.xaml.cs">
+      <DependentUpon>FlipViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\FlyoutPage.xaml.cs">
+      <DependentUpon>FlyoutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\GridPage.xaml.cs">
+      <DependentUpon>GridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\GridViewPage.xaml.cs">
+      <DependentUpon>GridViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\HyperlinkButtonPage.xaml.cs">
+      <DependentUpon>HyperlinkButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ImagePage.xaml.cs">
+      <DependentUpon>ImagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ImplicitTransitionPage.xaml.cs">
+      <DependentUpon>ImplicitTransitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\InkCanvasPage.xaml.cs">
+      <DependentUpon>InkCanvasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\InkToolbarPage.xaml.cs">
+      <DependentUpon>InkToolbarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ItemsRepeaterPage.xaml.cs">
+      <DependentUpon>ItemsRepeaterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ListBoxPage.xaml.cs">
+      <DependentUpon>ListBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ListViewPage.xaml.cs">
+      <DependentUpon>ListViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\MediaPlayerElementPage.xaml.cs">
+      <DependentUpon>MediaPlayerElementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\MenuBarPage.xaml.cs">
+      <DependentUpon>MenuBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\MenuFlyoutPage.xaml.cs">
+      <DependentUpon>MenuFlyoutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\NavigationViewPage.xaml.cs">
+      <DependentUpon>NavigationViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PageTransitionPage.xaml.cs">
+      <DependentUpon>PageTransitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TabViewPage.xaml.cs">
+      <DependentUpon>TabViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\NumberBoxPage.xaml.cs">
+      <DependentUpon>NumberBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TeachingTipPage.xaml.cs">
+      <DependentUpon>TeachingTipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\WebViewPage.xaml.cs">
+      <DependentUpon>WebViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ParallaxViewPage.xaml.cs">
+      <DependentUpon>ParallaxViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PasswordBoxPage.xaml.cs">
+      <DependentUpon>PasswordBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PersonPicturePage.xaml.cs">
+      <DependentUpon>PersonPicturePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PivotPage.xaml.cs">
+      <DependentUpon>PivotPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ProgressBarPage.xaml.cs">
+      <DependentUpon>ProgressBarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ProgressRingPage.xaml.cs">
+      <DependentUpon>ProgressRingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\PullToRefreshPage.xaml.cs">
+      <DependentUpon>PullToRefreshPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RadioButtonPage.xaml.cs">
+      <DependentUpon>RadioButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RatingControlPage.xaml.cs">
+      <DependentUpon>RatingControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RelativePanelPage.xaml.cs">
+      <DependentUpon>RelativePanelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RepeatButtonPage.xaml.cs">
+      <DependentUpon>RepeatButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RevealFocusPage.xaml.cs">
+      <DependentUpon>RevealFocusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RevealPage.xaml.cs">
+      <DependentUpon>RevealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RichEditBoxPage.xaml.cs">
+      <DependentUpon>RichEditBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\RichTextBlockPage.xaml.cs">
+      <DependentUpon>RichTextBlockPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ScrollViewerPage.xaml.cs">
+      <DependentUpon>ScrollViewerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SemanticZoomPage.xaml.cs">
+      <DependentUpon>SemanticZoomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SliderPage.xaml.cs">
+      <DependentUpon>SliderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SoundPage.xaml.cs">
+      <DependentUpon>SoundPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SplitButtonPage.xaml.cs">
+      <DependentUpon>SplitButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SplitViewPage.xaml.cs">
+      <DependentUpon>SplitViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\StackPanelPage.xaml.cs">
+      <DependentUpon>StackPanelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\SwipeControlPage.xaml.cs">
+      <DependentUpon>SwipeControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TextBlockPage.xaml.cs">
+      <DependentUpon>TextBlockPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TextBoxPage.xaml.cs">
+      <DependentUpon>TextBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ThemeTransitionPage.xaml.cs">
+      <DependentUpon>ThemeTransitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TimePickerPage.xaml.cs">
+      <DependentUpon>TimePickerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ToggleButtonPage.xaml.cs">
+      <DependentUpon>ToggleButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ToggleSplitButtonPage.xaml.cs">
+      <DependentUpon>ToggleSplitButtonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ToggleSwitchPage.xaml.cs">
+      <DependentUpon>ToggleSwitchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ToolTipPage.xaml.cs">
+      <DependentUpon>ToolTipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\TreeViewPage.xaml.cs">
+      <DependentUpon>TreeViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\StandardUICommandPage.xaml.cs">
+      <DependentUpon>StandardUICommandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\VariableSizedWrapGridPage.xaml.cs">
+      <DependentUpon>VariableSizedWrapGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\ViewBoxPage.xaml.cs">
+      <DependentUpon>ViewBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NullToVisibilityConverter.cs" />
+    <Compile Include="ControlPages\XamlCompInteropPage.xaml.cs">
+      <DependentUpon>XamlCompInteropPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPages\XamlUICommandPage.xaml.cs">
+      <DependentUpon>XamlUICommandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ControlInfoDataSource.cs" />
+    <Compile Include="ItemPage.xaml.cs">
+      <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemTemplates.xaml.cs">
+      <DependentUpon>ItemTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllControlsPage.xaml.cs">
+      <DependentUpon>AllControlsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationRootPage.xaml.cs">
+      <DependentUpon>NavigationRootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewControlsPage.xaml.cs">
+      <DependentUpon>NewControlsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsPageBase.cs" />
+    <Compile Include="PageHeader.xaml.cs">
+      <DependentUpon>PageHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplePages\SampleCompactSizingPage.xaml.cs">
+      <DependentUpon>SampleCompactSizingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage1.xaml.cs">
+      <DependentUpon>SamplePage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage2.xaml.cs">
+      <DependentUpon>SamplePage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage4.xaml.cs">
+      <DependentUpon>SamplePage4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage3.xaml.cs">
+      <DependentUpon>SamplePage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage5.xaml.cs">
+      <DependentUpon>SamplePage5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage6.xaml.cs">
+      <DependentUpon>SamplePage6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SamplePage7.xaml.cs">
+      <DependentUpon>SamplePage7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SampleSettingsPage.xaml.cs">
+      <DependentUpon>SampleSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SampleStandardSizingPage.xaml.cs">
+      <DependentUpon>SampleStandardSizingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SectionPage.xaml.cs">
+      <DependentUpon>SectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabViewPages\MyTabContentControl.xaml.cs">
+      <DependentUpon>MyTabContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabViewPages\TabViewWindowingSamplePage.xaml.cs">
+      <DependentUpon>TabViewWindowingSamplePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <AppxManifest Include="Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="Assets\AutoSuggestBox.png" />
+    <Content Include="Assets\CalendarView.png" />
+    <Content Include="Assets\ContentDialog.png" />
+    <Content Include="Assets\Image.png" />
+    <Content Include="Assets\InkCanvas.png" />
+    <Content Include="Assets\MediaElement.png" />
+    <Content Include="Assets\ninegrid.gif" />
+    <Content Include="Assets\Pivot.png" />
+    <Content Include="Assets\RelativePanel.png" />
+    <Content Include="Assets\SplitView.png" />
+    <Content Include="Assets\Tiles\Tile_General.png" />
+    <Content Include="Assets\Windows_Desktop.png" />
+    <Content Include="ControlPagesSampleCode\Text\RichEditBox\RichEditBoxSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
+    <Content Include="DataModel\ControlInfoData.json" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AppBar.png" />
+    <Content Include="Assets\AppBarButton.png" />
+    <Content Include="Assets\AppBarSeparator.png" />
+    <Content Include="Assets\AppBarToggleButton.png" />
+    <Content Include="Assets\Border.png" />
+    <Content Include="Assets\Button.png" />
+    <Content Include="Assets\Canvas.png" />
+    <Content Include="Assets\CheckBox.png" />
+    <Content Include="Assets\ComboBox.png" />
+    <Content Include="Assets\CommandBar.png" />
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\DatePicker.png" />
+    <Content Include="Assets\FlipView.png" />
+    <Content Include="Assets\Flyout.png" />
+    <Content Include="Assets\Grid.png" />
+    <Content Include="Assets\GridView.png" />
+    <Content Include="Assets\HyperlinkButton.png" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\ListBox.png" />
+    <Content Include="Assets\ListView.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\MenuFlyout.png" />
+    <Content Include="Assets\PasswordBox.png" />
+    <Content Include="Assets\ProgressBar.png" />
+    <Content Include="Assets\RadioButton.png" />
+    <Content Include="Assets\RichEditBox.png" />
+    <Content Include="Assets\RichTextBlock.png" />
+    <Content Include="Assets\ScrollViewer.png" />
+    <Content Include="Assets\SemanticZoom.png" />
+    <Content Include="Assets\SettingsFlyout.png" />
+    <Content Include="Assets\Slices.png" />
+    <Content Include="Assets\Slices2.png" />
+    <Content Include="Assets\Slider.png" />
+    <Content Include="Assets\StackPanel.png" />
+    <Content Include="Assets\TextBlock.png" />
+    <Content Include="Assets\TextBox.png" />
+    <Content Include="Assets\TimePicker.png" />
+    <Content Include="Assets\ToggleButton.png" />
+    <Content Include="Assets\ToggleSwitch.png" />
+    <Content Include="Assets\ToolTip.png" />
+    <Content Include="Assets\VariableSizedWrapGrid.png" />
+    <Content Include="Assets\ViewBox.png" />
+    <Content Include="Assets\Tiles\widelogo.scale-100.png" />
+    <Content Include="Assets\Tiles\widelogo.scale-140.png" />
+    <Content Include="Assets\Tiles\widelogo.scale-180.png" />
+    <Content Include="Assets\Tiles\WideLogo.scale-80.png" />
+    <Content Include="Common\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="ConnectedAnimationPages\CardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectedAnimationPages\CollectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectedAnimationPages\DetailedInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AnimatedIconPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AutomationPropertiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AnimatedVisualPlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\InfoBadgePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\BreadcrumbBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ContentDialogContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ExpanderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\IconElementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\InfoBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PipsPagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RadialGradientBrushPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\CompactSizingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\DataGridPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\DropDownButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\InkToolbarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RadioButtonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\TabViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\NumberBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\TeachingTipPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\WebViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\SplitButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ImplicitTransitionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ControlExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AcrylicPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\AppBarButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\AppBarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\AppBarSeparatorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\AppBarToggleButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ConnectedAnimationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\AutoSuggestBoxPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\BorderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\CalendarDatePickerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\CalendarViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\CanvasPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\CheckBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ColorPickerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ColorPaletteResourcesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ComboBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\CommandBarFlyoutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\CommandBarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ContentDialogExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ContentDialogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\DatePickerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\EasingFunctionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\FlipViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\FlyoutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\GridPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\GridViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\HyperlinkButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ImagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\InkCanvasPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ItemsRepeaterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ListBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ListViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\MediaPlayerElementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\MenuBarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\MenuFlyoutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\NavigationViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PageTransitionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ParallaxViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PasswordBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\PersonPicturePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\PivotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ProgressBarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ProgressRingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\PullToRefreshPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RadioButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RatingControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RelativePanelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RepeatButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RevealFocusPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RevealPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\RichEditBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\RichTextBlockPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ScrollViewerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\SemanticZoomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\SliderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\SoundPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\SplitViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\StackPanelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\SwipeControlPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\TextBlockPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\TextBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ThemeTransitionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\TimePickerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ToggleButtonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ToggleSplitButtonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\ToggleSwitchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ToolTipPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\TreeViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\StandardUICommandPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\VariableSizedWrapGridPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\ViewBoxPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlPages\XamlCompInteropPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlPages\XamlUICommandPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SampleCodePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllControlsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Navigation\NavigationRootPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewControlsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SampleCompactSizingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SamplePage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SamplePage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SamplePage3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SamplePage4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SamplePage7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SamplePages\SampleSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SamplePages\SampleStandardSizingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchResultsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabViewPages\MyTabContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabViewPages\TabViewWindowingSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ColorCode.UWP">
+      <Version>2.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.8.0-prerelease.220118001</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Win2D.uwp">
+      <Version>1.23.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="XamlControlsGallery_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
