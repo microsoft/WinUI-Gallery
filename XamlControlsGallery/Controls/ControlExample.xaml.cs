@@ -346,7 +346,7 @@ namespace AppUIBasics
             if (XamlSource != null)
             {
                 // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = new Uri("ms-appx:///" + Path.Combine("ControlPagesSampleCode", XamlSource)).LocalPath;
+                string xamlSource = new Uri("ms-appx:///" + Path.Combine("ControlPagesSampleCode", XamlSource.LocalPath)).LocalPath;
                 string fileName = Path.GetFileNameWithoutExtension(xamlSource);
                 if (!String.IsNullOrWhiteSpace(fileName))
                 {
