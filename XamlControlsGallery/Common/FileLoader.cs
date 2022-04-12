@@ -13,8 +13,13 @@ namespace AppUIBasics.Common
     {
         public static async Task<string> LoadText(string relativeFilePath)
         {
+#if UNPACKAGED
+            var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
+            var file = await StorageFile.GetFileFromPathAsync(sourcePath);
+#else
             Uri sourceUri = new Uri("ms-appx:///" + relativeFilePath);
             var file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
+#endif
 
             return await FileIO.ReadTextAsync(file);
         }

@@ -6,6 +6,7 @@
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
+    <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22563-preview</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
     <MicrosoftCsWinRTPackageVersion>1.5.0</MicrosoftCsWinRTPackageVersion>
     <!-- Where to place the files generated from CSWinRT from XamlControlsGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
