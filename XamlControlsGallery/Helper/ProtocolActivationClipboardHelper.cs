@@ -13,10 +13,13 @@ namespace AppUIBasics.Helper
     {
         private const string ShowCopyLinkTeachingTipKey = "ShowCopyLinkTeachingTip";
 
+        private static bool _showCopyLinkTeachingTip = true;
+
         public static bool ShowCopyLinkTeachingTip
         {
             get
             {
+#if !UNPACKAGED
                 object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
                 if (valueFromSettings == null)
                 {
@@ -24,9 +27,16 @@ namespace AppUIBasics.Helper
                     valueFromSettings = true;
                 }
                 return (bool)valueFromSettings;
+#else
+                return _showCopyLinkTeachingTip;
+#endif
             }
 
+#if !UNPACKAGED
             set => ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
+#else
+            set => _showCopyLinkTeachingTip = value;
+#endif
         }
 
         public static void Copy(ControlInfoDataItem item)

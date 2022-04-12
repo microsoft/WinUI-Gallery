@@ -20,8 +20,11 @@ namespace AppUIBasics.Helper
 
         private const string IsLeftModeKey = "NavigationIsOnLeftMode";
 
+        private static bool _isLeftMode = true;
+
         public static bool IsLeftMode()
         {
+#if !UNPACKAGED
             var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
             if(valueFromSettings == null)
             {
@@ -29,12 +32,19 @@ namespace AppUIBasics.Helper
                 valueFromSettings = true;
             }
             return (bool)valueFromSettings;
+#else
+            return _isLeftMode;
+#endif
         }
 
         public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
         {
             UpdateTitleBarForElement(isLeftMode, element);
+#if !UNPACKAGED
             ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
+#else
+            _isLeftMode = isLeftMode;
+#endif
         }
 
         public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)

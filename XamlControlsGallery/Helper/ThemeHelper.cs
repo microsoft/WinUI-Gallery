@@ -72,7 +72,9 @@ namespace AppUIBasics.Helper
                     }
                 }
 
+#if !UNPACKAGED
                 ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
+#endif
                 UpdateSystemCaptionButtonColors();
             }
         }
