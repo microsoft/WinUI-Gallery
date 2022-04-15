@@ -28,6 +28,8 @@ namespace AppUIBasics.TabViewPages
         {
             var currentWindow = WindowHelper.GetWindowForElement(this);
             currentWindow.ExtendsContentIntoTitleBar = true;
+            currentWindow.SetTitleBar(CustomDragRegion);
+            CustomDragRegion.MinWidth = 188;
         }
 
         private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)

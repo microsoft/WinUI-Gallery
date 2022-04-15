@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabView x:Name="Tabs" 
