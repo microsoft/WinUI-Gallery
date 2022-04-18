@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.ControlPages.AnimatedVisualPlayerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -36,8 +36,11 @@
                         <AnimatedVisualPlayer x:Name="Player"
                                                           AutoPlay="False">
 
-                            <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
-                            <!--<animatedvisuals:LottieLogo1/>-->
+                            <AnimatedVisualPlayer.Source>
+                                <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs -->
+                                <animatedvisuals:LottieLogo1/>
+                            </AnimatedVisualPlayer.Source>
+
 
                             <!-- Fallback since Lottie-Windows is only supported on OS version 17763 and above -->
                             <AnimatedVisualPlayer.FallbackContent>
@@ -58,17 +61,15 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <!-- Play/Pause -->
-                        <Button x:Name="PlayPauseButton"
-                                Grid.Column="0"
-                                Margin="10"
-                                HorizontalAlignment="Stretch"
-                                Click="PlayPauseButton_Click"
-                                AutomationProperties.Name="Play">
-                            <StackPanel>
-                                <SymbolIcon x:Name="PlayIcon" Symbol="Play"/>
-                                <SymbolIcon x:Name="PauseIcon" Symbol="Pause" Visibility="Collapsed"/>
-                            </StackPanel>
+                        <!--  Play  -->
+                        <Button x:Name="PlayButton"
+                            Grid.Column="0"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            Click="PlayButton_Click"
+                            ToolTipService.ToolTip="Play"
+                            AutomationProperties.Name="Play">
+                            <SymbolIcon Symbol="Play" />
                         </Button>
                         <!--  Pause  -->
                         <ToggleButton x:Name="PauseButton"
