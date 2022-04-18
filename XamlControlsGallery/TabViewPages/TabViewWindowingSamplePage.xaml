@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AppUIBasics.TabViewPages.TabViewWindowingSamplePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabView x:Name="Tabs" 
@@ -16,6 +17,7 @@
                              AllowDropTabs="True"
                              CanDragTabs="True"
                              CanReorderTabs="True"
+                             TabDroppedOutside="Tabs_TabDroppedOutside"
                              TabStripDragOver="Tabs_TabStripDragOver"
                              TabStripDrop="Tabs_TabStripDrop"
                              TabDragStarting="Tabs_TabDragStarting" >
