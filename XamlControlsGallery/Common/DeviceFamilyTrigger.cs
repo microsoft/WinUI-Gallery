@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml;
 
 namespace AppUIBasics
 {
-    // https://docs.microsoft.com/windows/uwp/input-and-devices/designing-for-tv#custom-visual-state-trigger-for-xbox
+    // https://docs.microsoft.com/windows/apps/design/devices/designing-for-tv#custom-visual-state-trigger-for-xbox
     class DeviceFamilyTrigger : StateTriggerBase
     {
         private string _actualDeviceFamily;

@@ -95,11 +95,6 @@ namespace AppUIBasics
             this.ResetCopyLinkButton();
         }
 
-        public void UpdateBackground(bool isFilteredPage)
-        {
-            VisualStateManager.GoToState(this, isFilteredPage ? "FilteredPage" : "NonFilteredPage", false);
-        }
-
         private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
         {
             this.CopyLinkAction?.Invoke();
