@@ -7,13 +7,12 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
 using System;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using Windows.ApplicationModel.Resources;
+using AppUIBasics.Data;
+using AppUIBasics.Helper;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.System;
@@ -167,10 +166,7 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                var loader = ResourceLoader.GetForViewIndependentUse();
-
-                string pageRoot = loader.GetString("PageStringRoot");
-
+                string pageRoot = "AppUIBasics.ControlPages.";
                 string pageString = pageRoot + item.UniqueId + "Page";
                 Type pageType = Type.GetType(pageString);
 

@@ -29,9 +29,11 @@ namespace AppUIBasics.ControlPages
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
             CurrentColor.Background = new SolidColorBrush(color);
 
-            myColorButton.Flyout.Hide();
             myRichEditBox.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
             currentColor = color;
+
+            // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
+            Task.Delay(10).ContinueWith(_ => myColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
         }
         
         private void RevealColorButton_Click(object sender, RoutedEventArgs e)
