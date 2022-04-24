@@ -7,16 +7,13 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
 using AppUIBasics.Helper;
 using System;
 using System.Linq;
-using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
 using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -95,7 +92,6 @@ namespace AppUIBasics
         {
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
 #if UNIVERSAL
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
 #else
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
@@ -155,11 +151,6 @@ namespace AppUIBasics
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
-        }
-
-        private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
-        {
-            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
         }
 
         private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)
