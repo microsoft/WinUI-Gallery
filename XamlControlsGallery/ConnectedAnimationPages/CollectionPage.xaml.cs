@@ -42,6 +42,9 @@ namespace AppUIBasics.ConnectedAnimationPages
 
                     await collection.TryStartConnectedAnimationAsync(animation, _storeditem, "connectedElement");
                 }
+
+                // Set focus on the list
+                collection.Focus(FocusState.Programmatic);
             }
         }
 

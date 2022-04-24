@@ -12,6 +12,13 @@ namespace AppUIBasics.ConnectedAnimationPages
         public DetailedInfoPage()
         {
             this.InitializeComponent();
+            GoBackButton.Loaded += GoBackButton_Loaded;
+        }
+
+        private void GoBackButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            // When we land in page, put focus on the back button
+            GoBackButton.Focus(FocusState.Programmatic);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
