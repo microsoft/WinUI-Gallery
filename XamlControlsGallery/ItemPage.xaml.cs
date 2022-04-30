@@ -214,19 +214,23 @@ namespace AppUIBasics
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            NavigationRootPage.GetForElement(this).NavigationViewLoaded = null;
-            NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
-            NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction = null;
-            NavigationRootPage.GetForElement(this).PageHeader.CopyLinkAction = null;
-
-            // Reverse Connected Animation
-            if (e.SourcePageType != typeof(ItemPage))
+            var navigationRootPage = NavigationRootPage.GetForElement(this);
+            if (navigationRootPage != null)
             {
-                PageHeader pageHeader = NavigationRootPage.GetForElement(this).PageHeader;
+                navigationRootPage.NavigationViewLoaded = null;
+                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
+                navigationRootPage.PageHeader.ToggleThemeAction = null;
+                navigationRootPage.PageHeader.CopyLinkAction = null;
 
-                if (pageHeader.Visibility == Visibility.Visible)
+                // Reverse Connected Animation
+                if (e.SourcePageType != typeof(ItemPage))
                 {
-                    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", pageHeader.TitlePanel);
+                    PageHeader pageHeader = navigationRootPage.PageHeader;
+
+                    if (pageHeader.Visibility == Visibility.Visible)
+                    {
+                        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", pageHeader.TitlePanel);
+                    }
                 }
             }
 
