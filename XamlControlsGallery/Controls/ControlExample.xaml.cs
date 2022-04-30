@@ -194,14 +194,21 @@ namespace AppUIBasics
             set { SetValue(MinimumUniversalAPIContractProperty, value); }
         }
 
-        private ILanguage CSharpLanguage = Languages.CSharp;
-
         public ControlExample()
         {
             this.InitializeComponent();
             Substitutions = new List<ControlExampleSubstitution>();
 
             ControlPresenter.RegisterPropertyChangedCallback(ContentPresenter.PaddingProperty, ControlPaddingChangedCallback);
+            this.Loaded += ControlExample_Loaded;
+        }
+
+        private void ControlExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(!XamlPresenter.IsEmpty && !CSharpPresenter.IsEmpty)
+            {
+                VisualStateManager.GoToState(this, "SeparatorVisible", false);
+            }
         }
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)
