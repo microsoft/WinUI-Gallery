@@ -20,7 +20,9 @@ namespace AppUIBasics.Helper
 
         private const string IsLeftModeKey = "NavigationIsOnLeftMode";
 
+#if UNPACKAGED
         private static bool _isLeftMode = true;
+#endif
 
         public static bool IsLeftMode()
         {

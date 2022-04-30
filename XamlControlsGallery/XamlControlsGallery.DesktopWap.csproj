@@ -81,7 +81,7 @@
     <Page Remove="ControlPages\RevealPage.xaml" />
     <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
     <Page Remove="ControlPages\InputValidationPage.xaml" />
-    
+
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
