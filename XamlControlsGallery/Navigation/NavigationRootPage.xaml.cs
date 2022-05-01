@@ -38,7 +38,6 @@ namespace AppUIBasics
     public sealed partial class NavigationRootPage : Page
     {
         public Windows.System.VirtualKey ArrowKey;
-        public Frame RootFrame { get { return rootFrame; }}
 
         private RootFrameNavigationHelper _navHelper;
         private bool _isGamePadConnected;
@@ -157,8 +156,8 @@ namespace AppUIBasics
             return _newControlsMenuItem.IsSelected;
         }
 
-        // Wraps a call to RootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
-        // Please call this function rather than RootFrame.Navigate to navigate the RootFrame.
+        // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
+        // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
         public void Navigate(
             Type pageType,
             object targetPageArguments = null,
@@ -169,6 +168,24 @@ namespace AppUIBasics
             args.Parameter = targetPageArguments;
             rootFrame.Navigate(pageType, args, navigationTransitionInfo);
         }
+
+#if WINUI_PRERELEASE
+        public void App_Resuming()
+        {
+#if UNIVERSAL
+            switch (rootFrame?.Content)
+            {
+                case ItemPage itemPage:
+                    itemPage.SetInitialVisuals();
+                    break;
+                case NewControlsPage newControlsPage:
+                case AllControlsPage allControlsPage:
+                    NavigationView.AlwaysShowHeader = false;
+                    break;
+            }
+#endif
+        }
+#endif
 
         public void EnsureNavigationSelection(string id)
         {
@@ -425,17 +442,16 @@ namespace AppUIBasics
 
         private void OnControlsSearchBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
             {
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                navigationRootPage.RootFrame.Navigate(typeof(ItemPage), itemId);
+                Navigate(typeof(ItemPage), itemId);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
-                navigationRootPage.RootFrame.Navigate(typeof(SearchResultsPage), args.QueryText);
+                Navigate(typeof(SearchResultsPage), args.QueryText);
             }
         }
 
@@ -462,7 +478,7 @@ namespace AppUIBasics
                 // We are not :/
                 else
                 {
-                    // Maybe one of our items is? ??_?
+                    // Maybe one of our items is?
                     if (item.MenuItems.Count != 0)
                     {
                         foreach (NavigationViewItem child in item.MenuItems)
