@@ -42,7 +42,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="12,0,12,36" />
-                        <Setter Target="itemGridView.Margin" Value="0,-80,0,0" />
+                        <Setter Target="itemGridView.Margin" Value="0,-44,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
