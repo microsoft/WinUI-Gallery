@@ -97,15 +97,9 @@ namespace AppUIBasics
         {
 #if UNIVERSAL
             NavigationRootPage navigationRootPage = (NavigationRootPage)Window.Current.Content;
-            switch (navigationRootPage.RootFrame?.Content)
+            if (navigationRootPage != null)
             {
-                case ItemPage itemPage:
-                    itemPage.SetInitialVisuals();
-                    break;
-                case NewControlsPage newControlsPage:
-                case AllControlsPage allControlsPage:
-                    navigationRootPage.NavigationView.AlwaysShowHeader = false;
-                    break;
+                navigationRootPage.App_Resuming();
             }
 #endif
         }
