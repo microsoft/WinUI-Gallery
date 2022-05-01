@@ -13,7 +13,9 @@ namespace AppUIBasics.Helper
     {
         private const string ShowCopyLinkTeachingTipKey = "ShowCopyLinkTeachingTip";
 
+#if UNPACKAGED
         private static bool _showCopyLinkTeachingTip = true;
+#endif
 
         public static bool ShowCopyLinkTeachingTip
         {

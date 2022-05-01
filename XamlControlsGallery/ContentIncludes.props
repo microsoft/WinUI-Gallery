@@ -26,7 +26,6 @@
     <Content Include="Assets\ProgressRing.png" />
     <Content Include="Assets\PullToRefresh.png" />
     <Content Include="Assets\RatingControl.png" />
-    <Content Include="Assets\RadioButtons.png" />
     <Content Include="Assets\Reveal.png" />
     <Content Include="Assets\RevealFocus.png" />
     <Content Include="Assets\Sound.png" />

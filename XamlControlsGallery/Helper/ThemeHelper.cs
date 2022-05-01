@@ -105,7 +105,7 @@ namespace AppUIBasics.Helper
             if (CurrentApplicationWindow != null)
             {
                 // Dispatch on UI thread so that we have a current appbar to access and change
-                CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+                _ = CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
                         {
                             UpdateSystemCaptionButtonColors();
                         });
