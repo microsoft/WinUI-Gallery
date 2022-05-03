@@ -56,8 +56,8 @@
 
             <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1.5">
                 <GradientStop Offset="0" Color="Transparent"/>
-                <GradientStop Offset="0.5" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
-                <GradientStop Offset="1" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
+                <GradientStop Offset="0.5" Color="{ThemeResource LayerFillColorDefault}"/>
+                <GradientStop Offset="1" Color="{ThemeResource LayerFillColorDefault}"/>
             </LinearGradientBrush>
 
             <!--  Application-specific resources  -->
