@@ -63,15 +63,19 @@ namespace AppUIBasics
 
         public void SetInitialVisuals()
         {
-            NavigationRootPage.GetForElement(this).PageHeader.TopCommandBar.Visibility = Visibility.Visible;
-            NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction = OnToggleTheme;
-            NavigationRootPage.GetForElement(this).NavigationViewLoaded = OnNavigationViewLoaded;
-            NavigationRootPage.GetForElement(this).PageHeader.CopyLinkAction = OnCopyLink;
-            NavigationRootPage.GetForElement(this).PageHeader.ResetCopyLinkButton();
-
-            if (NavigationRootPage.GetForElement(this).IsFocusSupported)
+            var navigationRootPage = NavigationRootPage.GetForElement(this);
+            if (navigationRootPage != null)
             {
-                this.Focus(FocusState.Programmatic);
+                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
+                navigationRootPage.PageHeader.ToggleThemeAction = OnToggleTheme;
+                navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
+                navigationRootPage.PageHeader.CopyLinkAction = OnCopyLink;
+                navigationRootPage.PageHeader.ResetCopyLinkButton();
+
+                if (navigationRootPage.IsFocusSupported)
+                {
+                    this.Focus(FocusState.Programmatic);
+                }
             }
 
             _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
