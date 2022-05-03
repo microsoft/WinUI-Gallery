@@ -55,6 +55,8 @@ namespace AppUIBasics.Controls
             set { SetValue(SubstitutionsProperty, value); }
         }
 
+        public bool IsEmpty => Code.Length == 0 && CodeSourceFile == null;
+
         private string actualCode = "";
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
 
