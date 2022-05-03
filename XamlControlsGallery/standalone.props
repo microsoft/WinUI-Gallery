@@ -4,7 +4,7 @@
     <ProjectReunionPackageVersion>1.1-preview3</ProjectReunionPackageVersion>
     <ProjectReunionWinUIPackageVersion>1.1-preview3</ProjectReunionWinUIPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
-    <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
+    <GraphicsWin2DVersion>1.0.3.1</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22563-preview</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
     <MicrosoftCsWinRTPackageVersion>1.6.1</MicrosoftCsWinRTPackageVersion>

@@ -6,7 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <local:ControlExample x:Name="AnimatedVisualPlayerExample" 
