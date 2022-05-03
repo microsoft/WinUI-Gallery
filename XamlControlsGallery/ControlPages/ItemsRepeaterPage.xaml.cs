@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -26,6 +27,7 @@ namespace AppUIBasics.ControlPages
         private double AnimatedBtnHeight;
         private Thickness AnimatedBtnMargin;
         private Button LastSelectedColorButton;
+        private int PreviouslyFocusedAnimatedScrollRepeaterIndex = -1;
 
         public ItemsRepeaterPage()
         {
@@ -162,7 +164,7 @@ namespace AppUIBasics.ControlPages
         {
             string itemTemplateKey = string.Empty;
             var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
-            if(selected == null)
+            if (selected == null)
             {
                 // No point in continuing if selected element is null
                 return;
@@ -253,11 +255,28 @@ namespace AppUIBasics.ControlPages
         private void OnAnimatedItemGotFocus(object sender, RoutedEventArgs e)
         {
             var item = sender as FrameworkElement;
+
+            // Store the last focused Index so we can land back on it when focus leaves
+            // and comes back to the repeater.
+            PreviouslyFocusedAnimatedScrollRepeaterIndex = animatedScrollRepeater.GetElementIndex(sender as UIElement);
+
             item.StartBringIntoView(new BringIntoViewOptions()
             {
                 VerticalAlignmentRatio = 0.5,
                 AnimationDesired = true,
             });
+        }
+        private void OnAnimatedScrollRepeaterGettingFocus(UIElement sender, GettingFocusEventArgs args)
+        {
+            // If we have a previously focused index and focus moving from outside the repeater to inside,
+            // then we can pick the previously focused index and land on that item again.
+            var lastFocus = args.OldFocusedElement as UIElement;
+            if (PreviouslyFocusedAnimatedScrollRepeaterIndex != -1 &&
+                lastFocus != null && animatedScrollRepeater.GetElementIndex(lastFocus) == -1)
+            {
+                var item = animatedScrollRepeater.TryGetElement(PreviouslyFocusedAnimatedScrollRepeaterIndex);
+                args.NewFocusedElement = item;
+            }
         }
 
         private void OnAnimatedItemClicked(object sender, RoutedEventArgs e)
@@ -411,6 +430,31 @@ namespace AppUIBasics.ControlPages
             var peer = FrameworkElementAutomationPeer.FromElement(VariedImageSizeRepeater);
 
             peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
+        }
+
+        private void OnAnimatedScrollRepeaterKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Handled != true)
+            {
+                var targetIndex = -1;
+                if (e.Key == Windows.System.VirtualKey.Home)
+                {
+                    targetIndex = PreviouslyFocusedAnimatedScrollRepeaterIndex != 0 ? 0 : -1;
+                }
+                else if (e.Key == Windows.System.VirtualKey.End)
+                {
+                    targetIndex = PreviouslyFocusedAnimatedScrollRepeaterIndex != animatedScrollRepeater.ItemsSourceView.Count - 1 ?
+                        animatedScrollRepeater.ItemsSourceView.Count - 1 : -1;
+                }
+
+                if (targetIndex != -1)
+                {
+                    var element = animatedScrollRepeater.GetOrCreateElement(targetIndex);
+                    element.StartBringIntoView();
+                    (element as Control).Focus(FocusState.Programmatic);
+                    e.Handled = true;
+                }
+            }
         }
     }
 
