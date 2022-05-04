@@ -2083,6 +2083,28 @@
               "Uri": "https://docs.microsoft.com/windows/apps/design/style/spacing"
             }
           ]
+        },
+        {
+          "UniqueId": "SystemBackdrops",
+          "Title": "System Backdrops (Mica/Acrylic)",
+          "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
+          "ImagePath": "ms-appx:///Assets/SystemBackdrops.png",
+          "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. Applying a backdrop currently requires a bunch of app code, but this will be easier in a future release.",
+          "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "MicaController - API",
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.composition.systembackdrops.micacontroller"
+            },
+            {
+              "Title": "DesktopAcrylicController - API",
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
+            }
+          ],
+          "RelatedControls": [
+          ]
         }
       ]
     },

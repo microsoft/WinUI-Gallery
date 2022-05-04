@@ -1,8 +1,8 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <ProjectReunionPackageVersion>1.0.3</ProjectReunionPackageVersion>
-    <ProjectReunionWinUIPackageVersion>1.0.0</ProjectReunionWinUIPackageVersion>
+    <ProjectReunionPackageVersion>1.1-preview3</ProjectReunionPackageVersion>
+    <ProjectReunionWinUIPackageVersion>1.1-preview3</ProjectReunionWinUIPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <Win2DWinUIVersion>0.1.0.3</Win2DWinUIVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
