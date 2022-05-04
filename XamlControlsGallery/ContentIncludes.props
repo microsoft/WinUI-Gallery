@@ -34,6 +34,7 @@
     <Content Include="Assets\SunBlack.png" />
     <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\Swipe.png" />
+    <Content Include="Assets\SystemBackdrops.png" />
     <Content Include="Assets\TeachingTip.png" />
     <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\TimingDuration.png" />
@@ -234,6 +235,9 @@
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
