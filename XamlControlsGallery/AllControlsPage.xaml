@@ -42,7 +42,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="12,0,12,36" />
-                        <Setter Target="itemGridView.Margin" Value="0,-80,0,0" />
+                        <Setter Target="itemGridView.Margin" Value="0,-44,0,0" />
                         <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="pageHeader.Visibility" Value="Collapsed" />
@@ -53,7 +53,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="40,0,0,36"
+            Padding="31,0,0,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -74,11 +74,11 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-40,0,0,-60"  Height="230">
+                <Grid Margin="12,39,43,0"  Height="230">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Height="250"
-                        Margin="0,0,0,0"
+                        Height="256"
+                        Margin="0,0,0,28"
                         Source="{x:Bind itemGridView}"
                         VerticalShift="0">
                         <Image
@@ -94,8 +94,8 @@
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
-                               Text="{StaticResource ControlsName}"
-                               Margin="84,24,0,0" />
+                               Text="{StaticResource NewControlsName}"
+                               Margin="0,60,0,20" />
                 </Grid>
             </GridView.Header>
         </GridView>
@@ -103,6 +103,7 @@
         <local:PageHeader x:Name="pageHeader"
             x:Uid="AllControlsPage_PageHeader"
             VerticalAlignment="Top"
+            Margin="44,92"              
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
