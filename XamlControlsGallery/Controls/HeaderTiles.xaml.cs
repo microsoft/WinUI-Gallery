@@ -18,10 +18,11 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace XamlControlsGallery.DesktopWap
+namespace AppUIBasics.Controls
 {
     public sealed partial class HeaderTiles : UserControl
     {
+        Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
         private SpringVector3NaturalMotionAnimation _springAnimation;
 
         public string Title
@@ -75,10 +76,9 @@ namespace XamlControlsGallery.DesktopWap
         {
             if (_springAnimation == null)
             {
-                Compositor compositor = Window.Current.Compositor;
-                if (compositor != null)
+                if (_compositor != null)
                 {
-                    _springAnimation = compositor.CreateSpringVector3Animation();
+                    _springAnimation = _compositor.CreateSpringVector3Animation();
                     _springAnimation.Target = "Scale";
                 }
             }

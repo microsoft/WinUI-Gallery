@@ -83,13 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
-    <None Remove="HeaderTiles.xaml" />
     <Content Remove="@(Content)" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Update="HeaderTiles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 

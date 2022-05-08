@@ -207,12 +207,6 @@ namespace AppUIBasics.Data
 
                     JsonObject groupObject = groupValue.GetObject();
 
-                    if (!groupObject.Keys.Contains("ImageIconPath"))
-                    {
-
-                    }
-
-
                     ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
                                                                           groupObject["Title"].GetString(),
                                                                           groupObject["Subtitle"].GetString(),

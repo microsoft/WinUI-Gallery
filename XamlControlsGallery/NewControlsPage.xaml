@@ -15,7 +15,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity" xmlns:local1="using:XamlControlsGallery.DesktopWap"
+    xmlns:controls="using:AppUIBasics.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     NavigationCacheMode="Enabled"
     HighContrastAdjustment="None">
 
@@ -98,13 +99,13 @@
                         <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Style="{StaticResource TitleTextBlockStyle}"
                                Text="{StaticResource NewControlsName}"
                                Margin="0,60,0,20" />
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
-                            <local1:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
-                            <local1:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
-                            <local1:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
+                            <controls:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
+                            <controls:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
+                            <controls:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>

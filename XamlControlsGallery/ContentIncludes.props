@@ -3,7 +3,7 @@
     <Content Include="Assets\WinUI3Hero.png" />
     <Content Include="Assets\ControlIcons\AcrylicBrushIcon.png" />
     <Content Include="Assets\ControlIcons\AnimationsIcon.png" />
-    <Content Include="Assets\ControlIcons\CalenderDatePickerIcon.png" />
+    <Content Include="Assets\ControlIcons\CalendarDatePickerIcon.png" />
     <Content Include="Assets\CoffeeCup.png" />
     <Content Include="Assets\ControlIcons\ColorPickerIcon.png" />
     <Content Include="Assets\ControlIcons\CommandBarFlyoutIcon.png" />

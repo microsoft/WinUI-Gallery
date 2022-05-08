@@ -35,6 +35,7 @@
           "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Guidelines",
@@ -61,6 +62,7 @@
           "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls. E.g. Save, Open, Copy, Paste, etc.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Guidelines",
@@ -222,6 +224,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuBarIcon.png",
           "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
           "Content": "",
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -249,7 +252,7 @@
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "CommandBarFlyout - API",
@@ -359,6 +362,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/FlipViewIcon.png",
           "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -384,7 +388,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/GridViewIcon.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -437,8 +441,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListViewIcon.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ListView - API",
@@ -509,6 +513,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TreeViewIcon.png",
           "Description": "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items. ",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -530,6 +535,7 @@
           "Description": "The DataGrid control provides a flexible way to display a collection of data in rows and columns.",
           "Content": "The DataGrid control presents data in a customizable table of rows and columns.",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "DataGrid - API",
@@ -541,7 +547,7 @@
             },
             {
               "Title": "Windows Community Toolkit",
-              "Uri": "https://docs.microsoft.com/windows/communitytoolkit/"
+              "Uri": "https://docs.microsoft.com/windows/communitytoolkit"
             }
           ],
           "RelatedControls": [
@@ -564,7 +570,7 @@
           "Title": "CalendarDatePicker",
           "Subtitle": "A control that lets users pick a date value using a calendar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CalendarDatePicker.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/CalenderDatePickerIcon.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/CalendarDatePickerIcon.png",
           "Description": "A control that lets users pick a date value using a calendar.",
           "Content": "",
           "IsNew": false,
@@ -593,14 +599,15 @@
           "Description": "CalendarView shows a larger view for showing and selecting dates.  DatePicker by contrast has a compact view with inline selection.",
           "Content": "<p>Look at the <i>CalendarView.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "CalendarView - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.calendarview"
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.calendarview"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/calendar-view"
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/calendar-view"
             }
           ],
           "RelatedControls": [
@@ -618,6 +625,7 @@
           "Description": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>DatePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "DatePicker - API",
@@ -643,6 +651,7 @@
           "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for hour, minute, and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>TimePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "TimePicker - API",
@@ -692,7 +701,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
           "Description": "The Button control provides a Click event to respond to user input from a touch, mouse, keyboard, stylus, or other input device. You can put different kinds of content in a button, such as text or an image, or you can restyle a button to give it a new look.",
           "Content": "<p>The main purpose of a <b>Button</b> is to make something happen when a user clicks it. There are two ways you can make something happen:</p><ul><li>Handle the <b>Click</b> event.</li><li>Bind the <b>Command</b> property to an ICommand implementation that describes the command logic.</li></ul><p>Buttons often have only simple string content, but you can use any object as content. You can also change the style and template to give them any look you want.</p><p>Look at the <i>ButtonPage.xaml</i> file in Visual Studio to see the custom button style and template definitions used on this page.</p>",
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Button - API",
@@ -723,11 +733,11 @@
           "Docs": [
             {
               "Title": "DropDownButton - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.dropdownbutton"
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.dropdownbutton"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/buttons"
+              "Uri": "https://docs.microsoft.com/windows/apps/design/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -802,6 +812,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ToggleButtonIcon.png",
           "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p><b>ToggleButton</b> is used as a base class for similar controls like <b>CheckBox</b> and <b>RadioButton</b>. It can be used on its own, but don't use it if a <b>CheckBox</b>, <b>RadioButton</b>, or <b>ToggleSwitch</b> would convey your intent better.</p><p>Look at the <i>ToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -889,7 +900,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CheckBoxIcon.png",
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -916,6 +927,7 @@
           "Description": "A selectable color spectrum.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ColorPicker - API",
@@ -972,7 +984,7 @@
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -1049,7 +1061,7 @@
           "Description": "Use ToggleSwitch controls to present users with exactly two mutually exclusive options (like on/off), where choosing an option results in an immediate commit. A toggle switch should have a single label.",
           "Content": "<p>Look at the <i>ToggleSwitchPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ToggleSwitch - API",
@@ -1085,7 +1097,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
           "Description": "The AutomationProperties attributes provide functionality around accessible components.",
           "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "AutomationProperties - API",
@@ -1159,6 +1171,7 @@
           "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ProgressRing - API",
@@ -1218,7 +1231,7 @@
           "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
           "Content": "<p>Look at the <i>ContentDialog.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ContentDialog - API",
@@ -1273,6 +1286,7 @@
           "Description": "The XAML TeachingTip Control provides a way for your app to guide and inform users in your application with a non-invasive and content rich notification. TeachingTip can be used for bringing focus to a new or important feature, teaching users how to perform a task, or enhancing the user workflow by providing contextually relevant information to their task at hand.",
           "Content": "<p>Look at the <i>TeachingTip.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "TeachingTip - API",
@@ -1307,7 +1321,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
           "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -1334,7 +1348,7 @@
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1363,6 +1377,7 @@
           "Description": "The SemanticZoom lets you show grouped data in two different ways, and is useful for quickly navigating through large sets of data.",
           "Content": "<p>Look at the <i>SemanticZoomPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "SemanticZoom - API",
@@ -1397,6 +1412,7 @@
           "Description": "Use a Border control to draw a boundary line, background, or both, around another object. A Border can contain only one child object.",
           "Content": "<p>A <b>Border</b> can contain only one child object. If you want to put a border around multiple objects, first wrap them in a container object such as <b>StackPanel</b> and make the <b>StackPanel</b> the child of the <b>Border</b>.</p><p>You can change the appearance of a <b>Border</b> by setting basic properties:</p><ul><li>Width/Height</li><li>BorderBrush</li><li>BorderThickness</li><li>Background</li></ul><p></p><p>Most of the control pages in this app have XAML blocks to show basic usage. The appearance of the XAML blocks is defined by a Border control. Look at the <i>CodeBorderStyle</i> resource in App.xaml to see the <b>Style</b> that's applied to the Borders.</p><p>Look at the <i>BorderPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Border - API",
@@ -1420,6 +1436,7 @@
           "Description": "The Canvas provides absolute positioning of controls or content. Content is positioned relative to the Canvas using the Canvas.Top and Canvas.Left attached properties.",
           "Content": "<p>Items are positioned on the <b>Canvas</b> using the <b>Canvas.Top</b> and <b>Canvas.Left</b> attached properties. Use the sliders to change these properties for the red rectangle and see how it moves around.</p><p>To see the effect of the <b>ZIndex</b> attached property, make sure the red rectangle is overlapping the other rectangles.</p><p>Look at the <i>CanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Canvas - API",
@@ -1446,7 +1463,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
           "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "Expander - API",
@@ -1472,6 +1489,7 @@
           "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
           "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ItemsRepeater - API",
@@ -1505,6 +1523,7 @@
           "Description": "The Grid is used to arrange controls and content in rows and columns. Content is positioned in the grid using Grid.Row and Grid.Column attached properties.",
           "Content": "<p>Look at the <i>GridPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Grid - API",
@@ -1535,8 +1554,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RadioButtonsIcon.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RadioButtons - API",
@@ -1563,6 +1582,7 @@
           "Description": "Use a RelativePanel to layout elements by defining the relationships between elements and in relation to the panel.",
           "Content": "<p>Look at the <i>RelativePanelPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RelativePanel - API",
@@ -1590,6 +1610,7 @@
           "Description": "Use a SplitView to display content, such as navigation options, in a pane on the side.  There are multiple options for displaying the pane, namely CompactOverlay, Compact, Overlay, Inline.  If you are looking for a reference to the hamburger pattern, please see the links in the documentation below.",
           "Content": "<p>Look at the <i>SplitViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "SplitView - API",
@@ -1617,6 +1638,7 @@
           "Description": "A StackPanel is used to arrange items in a line, either horizontally or vertically.",
           "Content": "<p>Look at the <i>StackPanelPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "StackPanel - API",
@@ -1672,6 +1694,7 @@
           "Description": "Use a ViewBox control scale content up or down to a specified size.",
           "Content": "<p>Look at the <i>ViewBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Viewbox - API",
@@ -1704,8 +1727,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUPdated": true,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "BreadcrumbBar - API",
@@ -1755,7 +1778,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PivotIcon.png",
           "Description": "A Pivot allows you to show a collection of items from different sources in a tabbed view.",
           "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PivotPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
-          "IsNew": false,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Pivot - API",
@@ -1781,7 +1805,7 @@
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "IsPreview": false,
           "Docs": [
             {
@@ -1854,6 +1878,7 @@
           "Description": "You can use an Image control to show and scale images.",
           "Content": "<p>Look at the <i>ImagePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Image - API",
@@ -1878,6 +1903,7 @@
           "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "MediaPlayerElement - API",
@@ -1901,6 +1927,7 @@
           "Description": "Displays the picture of a person/contact.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "PersonPicture - API",
@@ -1924,6 +1951,7 @@
           "Description": "Sound is enabled by default for UWP apps running on Xbox, but can be set to always play on all devices if desired. Sound may also be put into Spatial Audio mode for a more immersive 10ft experience.",
           "Content": "<p>Look at the <i>SoundPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Sound - API",
@@ -1943,7 +1971,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
           "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2000,7 +2028,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "Docs": [
             {
               "Title": "AnimatedIcon - API",
@@ -2028,7 +2056,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ImageIcon.png",
           "Description": "Represents icon controls that use different image types as its content.",
           "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "BitmapIcon - API",
@@ -2069,7 +2097,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CanvasIcon.png",
           "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
           "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "RadialGradientBrush - API",
@@ -2089,7 +2117,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RevealFocusIcon.png",
           "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
           "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Reveal Focus - API",
@@ -2111,6 +2140,7 @@
           "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Theme Editor (GitHub)",
@@ -2135,6 +2165,7 @@
           "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
           "Content": "",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Spacing",
@@ -2146,7 +2177,8 @@
           "UniqueId": "SystemBackdrops",
           "Title": "System Backdrops (Mica/Acrylic)",
           "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
-          "ImagePath": "ms-appx:///Assets/SystemBackdrops.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/SystemBackdropsIcon.png",
           "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. Applying a backdrop currently requires a bunch of app code, but this will be easier in a future release.",
           "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
           "IsNew": true,
@@ -2183,6 +2215,7 @@
           "Description": "A text control that makes suggestions to users as they type. The app is notified when text has been changed by the user and is responsible for providing relevant suggestions for this control to display.",
           "Content": "<p>Look at the <i>AutoSuggestBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "AutoSuggestBox - API",
@@ -2207,7 +2240,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/NumberBoxIcon.png",
           "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "NumberBox - API",
@@ -2234,6 +2267,7 @@
           "Description": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
           "Content": "<p>Look at the <i>PasswordBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "PasswordBox - API",
@@ -2287,7 +2321,7 @@
           "Description": "RichTextBlock provides more advanced formatting features than the TextBlock control. You can apply character and paragraph formatting to the text in the RichTextBlock. For example, you can apply Bold, Italic, and Underline to any portion of the text in the control. You can use linked text containers (a RichTextBlock linked to RichTextBlockOverflow elements) to create advanced page layouts.",
           "Content": "<p>Change the width of the app to see how the <b>RichTextBlock</b> overflows into additional columns as the app gets narrower.</p><p>Look at the <i>RichTextBlockPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RichTextBlock - API",
@@ -2315,6 +2349,7 @@
           "Description": "TextBlock is the primary control for displaying read-only text in your app. You typically display text by setting the Text property to a simple string. You can also display a series of strings in Run elements and give each different formatting.",
           "Content": "<p>Look at the <i>TextBlockPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "TextBlock - API",
@@ -2381,6 +2416,7 @@
           "Description": "Connected animations continue elements during page navigation and help the user maintain their context between views.",
           "Content": "<p>Look at the <i>ConnectedAnimationPage.xaml</i> and <i>ConnectedAnimationPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ConnectedAnimation - API",
@@ -2413,6 +2449,7 @@
           "Description": "Easing is a way to manipulate the velocity of an object as it animates.",
           "Content": "<p>Look at the <i>EasingFunctionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "EasingFunctionBase - API",
@@ -2442,6 +2479,7 @@
           "Description": "Page transitions provide visual feedback about the relationship between pages.",
           "Content": "<p>Look at the <i>PageTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "NavigationThemeTransition - API",
@@ -2470,6 +2508,7 @@
           "Description": "Theme transitions are pre-packaged, easy-to-apply animations.",
           "Content": "<p>Look at the <i>ThemeTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Transitions - API",
@@ -2493,9 +2532,10 @@
           "UniqueId": "XamlCompInterop",
           "Title": "Animation interop",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
-          "IsNew": false,
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/StoryboardAnimationIcon.png",
+          "IsNew": false,
+          "IsUpdated": false,
           "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
           "Content": "<p>Look at the <i>XamlCompInteropPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
@@ -2525,8 +2565,9 @@
           "Title": "Implicit Transitions",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ImplicitTransition.png",
-          "IsNew": false,
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TransitionsIcon.png",
+          "IsNew": false,
+          "IsUpdated": false,
           "Description": "Use Implicit Transitions to automatically animate changes to properties.",
           "Content": "<p>Look at the <i>ImplicitTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
@@ -2556,7 +2597,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ParallaxViewIcon.png",
           "Description": "A container control that provides the parallax effect when scrolling.",
           "Content": "",
-          "IsNew": false,
+          "IsNew": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ParallaxView - API",
