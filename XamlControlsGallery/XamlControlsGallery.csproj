@@ -327,6 +327,7 @@
     <Content Include="Assets\style-1x.png" />
     <Content Include="Assets\SunBlack.png" />
     <Content Include="Assets\SunWhite.png" />
+    <Content Include="Assets\template_studio.png" />
     <Content Include="Assets\TabViewIcons\cmd.png" />
     <Content Include="Assets\TabViewIcons\linux.png" />
     <Content Include="Assets\TabViewIcons\powershell.png" />

@@ -98,7 +98,7 @@
             Title="{StaticResource ControlsName}"
             Margin="44,92"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Foreground="Black"
             Background="{ThemeResource HomePageBackgroundBrush}"              
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"

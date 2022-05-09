@@ -84,9 +84,7 @@
                         Height="256"
                         Source="{x:Bind itemGridView}"
                         VerticalAlignment="Top">
-                        <Grid CornerRadius="{StaticResource ControlCornerRadius}"
-                              BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                              BorderThickness="1">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
                             <Image
                                 x:Name="headerImage"
                                 HorizontalAlignment="Center"
@@ -112,7 +110,8 @@
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
                             <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
                             <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
-                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
+                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/WinUI-Gallery"/>
+                            <local:HeaderTiles Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>
@@ -146,7 +145,7 @@
             Subtitle="{StaticResource WinUIVersion}"
             Margin="44,92"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Foreground="Black"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"

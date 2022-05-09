@@ -34,26 +34,20 @@
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        <HyperlinkButton Height="140" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
+        <HyperlinkButton Height="150" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90" />
+                    <RowDefinition Height="102" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Image
                     Source="{x:Bind Source, Mode=OneWay}"
                     Stretch="UniformToFill"
                     HorizontalAlignment="Center"/>
-                
-                <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" >
-                    <Grid.Background>
-                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="Transparent" Offset="0.0" />
-                            <GradientStop Color="{ThemeResource SolidBackgroundFillColorSecondary}" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Grid.Background>
+
+                <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <TextBlock Text="{x:Bind Title, Mode=OneWay}"
-                               Margin="23,0"
+                               Margin="16,0"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                VerticalAlignment="Center"
