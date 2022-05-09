@@ -84,8 +84,7 @@
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
 
-            <x:String x:Key="ControlsName">All controls</x:String>
-            <x:String x:Key="NewControlsName">Windows UI Controls Gallery</x:String>
+            <x:String x:Key="AppTitleName">WinUI 2 Gallery</x:String>
             <x:String x:Key="WinUIVersion">SDK X.X</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">

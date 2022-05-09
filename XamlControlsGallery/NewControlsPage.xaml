@@ -99,7 +99,7 @@
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
-                               Text="{StaticResource NewControlsName}"/>
+                               Text="{StaticResource AppTitleName}"/>
                         <TextBlock x:Name="smallHeaderSubtitleText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
@@ -141,7 +141,7 @@
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
-            Title="{StaticResource NewControlsName}"
+            Title="{StaticResource AppTitleName}"
             Subtitle="{StaticResource WinUIVersion}"
             Margin="44,92"
             VerticalAlignment="Top"

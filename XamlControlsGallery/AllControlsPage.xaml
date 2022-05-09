@@ -88,14 +88,14 @@
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
                                Style="{StaticResource TitleTextBlockStyle}"                               
-                               Text="{StaticResource NewControlsName}"
+                               Text="{StaticResource AppTitleName}"
                                Margin="0,60,0,20" />
                 </Grid>
             </GridView.Header>
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
-            Title="{StaticResource ControlsName}"
+            Title= "All controls"
             Margin="44,92"
             VerticalAlignment="Top"
             Foreground="Black"
