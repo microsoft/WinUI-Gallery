@@ -19,7 +19,7 @@
     <Page.Resources>
         <DataTemplate x:Key="IconTextTemplate" x:DataType="data:ControlInfoDataItem">
             <RelativePanel>
-                <Image x:Name="image" Height="36" Width="36" Margin="0,8,0,8" Source="{x:Bind ImagePath}" Stretch="UniformToFill" />
+                <Image x:Name="image" Height="36" Width="36" Margin="0,8,0,8" Source="{x:Bind ImageIconPath}" Stretch="UniformToFill" />
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="8,8,0,0" RelativePanel.RightOf="image">
                     <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}" />
                     <TextBlock Text="{x:Bind Subtitle}" Margin="0,4,8,0" Style="{StaticResource BodyTextBlockStyle}" />

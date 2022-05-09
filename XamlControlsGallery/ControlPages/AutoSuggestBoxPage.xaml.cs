@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -238,7 +238,7 @@ namespace AppUIBasics.ControlPages
             {
                 ControlDetails.Visibility = Visibility.Visible;
 
-                BitmapImage image = new BitmapImage(new Uri(control.ImagePath));
+                BitmapImage image = new BitmapImage(new Uri(control.ImageIconPath));
                 ControlImage.Source = image;
 
                 ControlTitle.Text = control.Title;
