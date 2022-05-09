@@ -85,7 +85,6 @@
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Content Remove="@(Content)" />
   </ItemGroup>
-  </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
 </Project>
