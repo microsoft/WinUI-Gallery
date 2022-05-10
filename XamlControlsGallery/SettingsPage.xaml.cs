@@ -92,6 +92,7 @@ namespace AppUIBasics
         {
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
 #if UNIVERSAL
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
 #else
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
