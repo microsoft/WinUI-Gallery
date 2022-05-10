@@ -72,6 +72,7 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\ControlIcons\ListBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ListViewIcon.png" />
+    <Content Include="Assets\LottieLogo1.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\ControlIcons\MenuFlyoutIcon.png" />
     <Content Include="Assets\ControlIcons\PasswordBoxIcon.png" />
