@@ -31,11 +31,11 @@
     &lt;FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}"&gt;
         &lt;FlipView.ItemTemplate&gt;
             &lt;DataTemplate x:DataType="x:String"&gt;
-                &lt;Image Source="{x:Bind Mode=OneWay}" /&gt;
+                &lt;Image Source="{x:Bind Mode=OneTime}" /&gt;
             &lt;/DataTemplate&gt;
         &lt;/FlipView.ItemTemplate&gt;
     &lt;/FlipView&gt;
-    &lt;PipsPager x:Name="FlipViewPipsPager"                   
+    &lt;PipsPager x:Name="FlipViewPipsPager"
         HorizontalAlignment="Center"
         Margin="0, 12, 0, 0"
         NumberOfPages="{x:Bind Pictures.Count}"
