@@ -63,7 +63,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="40,0,12,36"
+            Margin="31,0,0,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -77,6 +77,7 @@
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
+            
             <!-- XAML_BEVHAVIORS_REMOVED
             <interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
@@ -98,15 +99,15 @@
                                 Stretch="Fill" />
                         </Grid>
                     </ParallaxView>
-                    <StackPanel Orientation="Vertical" Margin="32,40,0,20">
+                    <StackPanel Orientation="Vertical" Margin="50,80,0,20">
                         <TextBlock x:Name="smallHeaderText"
-                            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+                            Foreground="Black"
                             Visibility="Collapsed"
                             Style="{StaticResource TitleTextBlockStyle}"                               
                             Text="{StaticResource AppTitleName}"/>
                         <TextBlock x:Name="smallHeaderSubtitleText"
-                            Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                            Visibility="Collapsed"
+                            Foreground="Black"
+                            Visibility="Visible"
                             Style="{StaticResource SubtitleTextBlockStyle}"                               
                             Text="{StaticResource WinUIVersion}"/>
                     </StackPanel>
@@ -116,7 +117,7 @@
                             <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
                             <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
                             <controls:HeaderTile Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
-                            <controls:HeaderTiles Title="Template Studio" Source="/Assets/githubTile.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
+                            <controls:HeaderTile Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>
@@ -126,7 +127,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,24,0,0"/>
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,32,0,0"/>
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
@@ -145,8 +146,11 @@
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
+            Title="{StaticResource AppTitleName}"
+            Subtitle="{StaticResource WinUIVersion}"
+            Margin="44,92"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Foreground="Black"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
