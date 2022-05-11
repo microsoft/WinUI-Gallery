@@ -32,30 +32,26 @@
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        <HyperlinkButton Height="80" Width="140" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
+        <HyperlinkButton Height="150" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="102" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
                 <Image
                     Source="{x:Bind Source, Mode=OneWay}"
                     Stretch="UniformToFill"
-                    HorizontalAlignment="Center"
-                    PointerEntered="Element_PointerEntered"
-                    PointerExited="Element_PointerExited"/>
-                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" FontSize="16" Foreground="{ThemeResource TextFillColorTertiaryBrush}"/>
-                <Border Height="48" Opacity="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" >
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="Transparent" Offset="0.0" />
-                            <GradientStop Color="{ThemeResource SolidBackgroundFillColorSecondary}" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.Background>
+                    HorizontalAlignment="Center"/>
+
+                <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                     <TextBlock Text="{x:Bind Title, Mode=OneWay}"
-                               Margin="0,0,0,-18"
+                               Margin="16,0"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                TextWrapping="Wrap" />
-                </Border>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12" FontSize="16"/>
+                </Grid>
             </Grid>
         </HyperlinkButton>
     </Grid>

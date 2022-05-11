@@ -48,10 +48,15 @@
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
                         <Setter Target="itemGridView.Margin" Value="0,-64,0,0" />
-                        <Setter Target="headerImageView.Margin" Value="-12,0,-12,12" />
-                        <Setter Target="HeaderTileOuterGrid.Margin" Value="94,0,94,0" />
+                        <Setter Target="HeaderGrid.Margin" Value="60,0,60,0" />
+                        <Setter Target="headerImageView.Height" Value="180" />
+                        <Setter Target="HeaderTileGrid.Margin" Value="0,212,0,0" />
                         <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
                         <Setter Target="learnMore.Margin" Value="64,24,0,0" />
+                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
+                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
+                        <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
+                        <Setter Target="smallHeaderSubtitleText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -79,33 +84,39 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-40,0,-40,0">
+                <Grid x:Name="HeaderGrid" Margin="12,39,43,0">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Height="250"
-                        Margin="0,0,0,0"
+                        Height="256"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="0">
-                        <Image
-                            Margin="0,0"
-                            x:Name="headerImage"
-                            HorizontalAlignment="Center"
-                            Source="Assets/WinUI3Hero.png"
-                            Stretch="Uniform" />
+                        VerticalAlignment="Top">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                            <Image
+                                x:Name="headerImage"
+                                HorizontalAlignment="Center"
+                                Source="Assets/MainPage_Banner.png"
+                                Stretch="Fill" />
+                        </Grid>
                     </ParallaxView>
-                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
-                    <StackPanel x:Name="HeaderTileOuterGrid" Margin="54,140,0,0">
+                    <StackPanel Orientation="Vertical" Margin="32,40,0,20">
                         <TextBlock x:Name="smallHeaderText"
-                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                               Visibility="Collapsed"
-                               Style="{StaticResource TitleTextBlockStyle}"
-                               Text="{StaticResource NewControlsName}"
-                               Margin="0,60,0,20" />
-                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
+                            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+                            Visibility="Collapsed"
+                            Style="{StaticResource TitleTextBlockStyle}"                               
+                            Text="{StaticResource AppTitleName}"/>
+                        <TextBlock x:Name="smallHeaderSubtitleText"
+                            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+                            Visibility="Collapsed"
+                            Style="{StaticResource SubtitleTextBlockStyle}"                               
+                            Text="{StaticResource WinUIVersion}"/>
+                    </StackPanel>
+                
+                    <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
+                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
                             <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
                             <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
                             <controls:HeaderTile Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
+                            <controls:HeaderTiles Title="Template Studio" Source="/Assets/githubTile.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>
