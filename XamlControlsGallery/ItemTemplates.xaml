@@ -29,8 +29,8 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
+                                <Setter Target="controlRoot.Width" Value="400" />
+                                <Setter Target="controlRoot.Height" Value="100" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
