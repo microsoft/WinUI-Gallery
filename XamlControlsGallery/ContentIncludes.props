@@ -194,6 +194,7 @@
     <Content Include="Assets\gettingStarted.png" />
     <Content Include="Assets\githubTile.png" />
     <Content Include="Assets\style-1x.png" />
+    <Content Include="Assets\template_studio.png" />
     <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\ButtonsIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\CollectionIcon.png" />
