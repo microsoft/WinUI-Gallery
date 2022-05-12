@@ -60,7 +60,7 @@
             <TextBlock x:Name="AppTitle"
                        Text="{x:Bind AppTitleText}"
                        VerticalAlignment="Top"
-                       Margin="0,8,0,0"
+                       Margin="0,15,0,0"
                        Style="{StaticResource CaptionTextBlockStyle}" />
         </Border>
 
