@@ -94,6 +94,7 @@ namespace AppUIBasics.SamplePages
             }
             this.Activated -= Window_Activated;
             this.Closed -= Window_Closed;
+            ((FrameworkElement)this.Content).ActualThemeChanged -= Window_ThemeChanged;
             m_configurationSource = null;
 
             if (type == BackdropType.Mica)
@@ -133,15 +134,11 @@ namespace AppUIBasics.SamplePages
                 m_configurationSource = new Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration();
                 this.Activated += Window_Activated;
                 this.Closed += Window_Closed;
+                ((FrameworkElement)this.Content).ActualThemeChanged += Window_ThemeChanged;
 
                 // Initial configuration state.
                 m_configurationSource.IsInputActive = true;
-                switch (((FrameworkElement)this.Content).ActualTheme)
-                {
-                case ElementTheme.Dark:    m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
-                case ElementTheme.Light:   m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Light; break;
-                case ElementTheme.Default: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Default; break;
-                }
+                SetConfigurationSourceTheme();
 
                 m_micaController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
 
@@ -163,15 +160,11 @@ namespace AppUIBasics.SamplePages
                 m_configurationSource = new Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration();
                 this.Activated += Window_Activated;
                 this.Closed += Window_Closed;
+                ((FrameworkElement)this.Content).ActualThemeChanged += Window_ThemeChanged;
 
                 // Initial configuration state.
                 m_configurationSource.IsInputActive = true;
-                switch (((FrameworkElement)this.Content).ActualTheme)
-                {
-                case ElementTheme.Dark:    m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
-                case ElementTheme.Light:   m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Light; break;
-                case ElementTheme.Default: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Default; break;
-                }
+                SetConfigurationSourceTheme();
 
                 m_acrylicController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
 
@@ -206,6 +199,24 @@ namespace AppUIBasics.SamplePages
             }
             this.Activated -= Window_Activated;
             m_configurationSource = null;
+        }
+
+        private void Window_ThemeChanged(FrameworkElement sender, object args)
+        {
+            if (m_configurationSource != null)
+            {
+                SetConfigurationSourceTheme();
+            }
+        }
+
+        private void SetConfigurationSourceTheme()
+        {
+            switch (((FrameworkElement)this.Content).ActualTheme)
+            {
+                case ElementTheme.Dark:    m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Dark; break;
+                case ElementTheme.Light:   m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Light; break;
+                case ElementTheme.Default: m_configurationSource.Theme = Microsoft.UI.Composition.SystemBackdrops.SystemBackdropTheme.Default; break;
+            }
         }
 
         void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
