@@ -41,10 +41,10 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Grid Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}" Width="70" CornerRadius="{ThemeResource ControlCornerRadius}">
+                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
                     <Image
                         x:Name="gridImage"
-                        Width="45"
+                        Width="48"
                         VerticalAlignment="Center"
                         AutomationProperties.Name="{x:Bind Title}"
                         Source="{x:Bind ImagePath}"
