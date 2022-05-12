@@ -89,12 +89,11 @@
                         </Grid>
                     </ParallaxView>
                     <TextBlock x:Name="smallHeaderText"
-                            Foreground="Black"
-                            Visibility="Collapsed"
-                            Style="{StaticResource TitleTextBlockStyle}"                               
-                            Text="{StaticResource ControlsName}"
+                        Foreground="Black"
+                        Visibility="Collapsed"
+                        Style="{StaticResource TitleTextBlockStyle}"                               
+                        Text="{StaticResource ControlsName}"
                         Margin="50,50,0,20"/>
-
                 </Grid>
             </GridView.Header>
         </GridView>
