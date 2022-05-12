@@ -363,7 +363,7 @@
           "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "FlipView - API",
@@ -389,7 +389,7 @@
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "GridView - API",
@@ -927,7 +927,7 @@
           "Description": "A selectable color spectrum.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ColorPicker - API",
@@ -984,7 +984,7 @@
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -1097,7 +1097,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
           "Description": "The AutomationProperties attributes provide functionality around accessible components.",
           "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "AutomationProperties - API",
@@ -1231,7 +1232,7 @@
           "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
           "Content": "<p>Look at the <i>ContentDialog.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ContentDialog - API",
@@ -1489,7 +1490,7 @@
           "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
           "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ItemsRepeater - API",
@@ -1554,7 +1555,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RadioButtonsIcon.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -1727,7 +1728,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -1778,7 +1779,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PivotIcon.png",
           "Description": "A Pivot allows you to show a collection of items from different sources in a tabbed view.",
           "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PivotPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -1971,7 +1972,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
           "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
           "Content": "",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2018,7 +2019,8 @@
               "Uri": "https://docs.microsoft.com/windows/apps/design/style/acrylic"
             }
           ],
-          "RelatedControls": []
+          "RelatedControls": [
+          ]
         },
         {
           "UniqueId": "AnimatedIcon",
@@ -2028,7 +2030,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "AnimatedIcon - API",
@@ -2097,7 +2099,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CanvasIcon.png",
           "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
           "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RadialGradientBrush - API",
@@ -2117,7 +2120,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RevealFocusIcon.png",
           "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
           "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2129,7 +2132,8 @@
               "Uri": "https://docs.microsoft.com/windows/apps/design/style/reveal-focus"
             }
           ],
-          "RelatedControls": []
+          "RelatedControls": [
+          ]
         },
         {
           "UniqueId": "ColorPaletteResources",
@@ -2240,7 +2244,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/NumberBoxIcon.png",
           "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "NumberBox - API",
@@ -2267,7 +2272,7 @@
           "Description": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
           "Content": "<p>Look at the <i>PasswordBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "PasswordBox - API",
@@ -2294,7 +2299,7 @@
           "Description": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
           "Content": "<p>On this page, you can type into the <b>RichTextBox</b> control and save it as a RichTextFormat (.rtf) document, or load an existing .rtf document. You can format the text as <b>Bold</b> or <u>Underlined</u>, and change the text color.</p><p>Look at the <i>RichEditBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "RichEditBox - API",
@@ -2597,7 +2602,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ParallaxViewIcon.png",
           "Description": "A container control that provides the parallax effect when scrolling.",
           "Content": "",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2643,7 +2648,8 @@
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             }
           ],
-          "RelatedControls": []
+          "RelatedControls": [
+          ]
         },
         {
           "UniqueId": "CustomTitlebar",
@@ -2665,7 +2671,8 @@
               "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.window?view=winui-3.0-preview"
             }
           ],
-          "RelatedControls": []
+          "RelatedControls": [
+          ]
         }
       ]
     }

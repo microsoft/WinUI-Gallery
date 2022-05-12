@@ -3,6 +3,7 @@
     <!-- The NuGet versions of dependencies to build against. -->
     <ProjectReunionPackageVersion>1.1-preview3</ProjectReunionPackageVersion>
     <ProjectReunionWinUIPackageVersion>1.1-preview3</ProjectReunionWinUIPackageVersion>
+    <SamplesTargetFrameworkMoniker>net6.0-windows10.0.18362.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.3.1</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
@@ -20,5 +21,8 @@
          are erroneously included.  Explicitly exclude them here
     -->
     <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '15.0'">
+      <SamplesTargetFrameworkMoniker>net5.0-windows10.0.18362.0</SamplesTargetFrameworkMoniker>
   </PropertyGroup>
 </Project>
