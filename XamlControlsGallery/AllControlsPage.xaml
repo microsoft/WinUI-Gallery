@@ -53,7 +53,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <GridView x:Name="itemGridView"
-            Padding="40,0,0,36"
+            Padding="31,0,0,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -74,28 +74,26 @@
             -->
 
             <GridView.Header>
-                <Grid Margin="-40,0,0,-60"  Height="230">
+                <Grid x:Name="HeaderGrid" Margin="12,39,43,30">
                     <ParallaxView
                         x:Name="headerImageView"
-                        Height="250"
-                        Margin="0,0,0,0"
+                        Height="200"
                         Source="{x:Bind itemGridView}"
-                        VerticalShift="0">
-                        <Image
-                            Margin="0,0"
-                            x:Name="headerImage"
-                            HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.png"
-                            Stretch="Uniform" />
+                        VerticalAlignment="Top">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                            <Image
+                                x:Name="headerImage"
+                                HorizontalAlignment="Center"
+                                Source="Assets/MainPage_Banner.png"
+                                Stretch="UniformToFill" />
+                        </Grid>
                     </ParallaxView>
-                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <Rectangle Height="60" VerticalAlignment="Bottom" Fill="{StaticResource HeroImageGradientBrush}"/>
                     <TextBlock x:Name="smallHeaderText"
-                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                               Visibility="Collapsed"
-                               Style="{StaticResource TitleTextBlockStyle}"
-                               Text="{StaticResource ControlsName}"
-                               Margin="84,24,0,0" />
+                        Foreground="Black"
+                        Visibility="Collapsed"
+                        Style="{StaticResource TitleTextBlockStyle}"                               
+                        Text="{StaticResource ControlsName}"
+                        Margin="50,50,0,20"/>
                 </Grid>
             </GridView.Header>
         </GridView>
@@ -103,7 +101,8 @@
         <local:PageHeader x:Name="pageHeader"
             Title="{StaticResource ControlsName}"
             VerticalAlignment="Top"
-            Foreground="{ThemeResource PageHeaderForegroundBrush}"
+            Margin="44,92"
+            Foreground="black"
             Background="{ThemeResource HomePageBackgroundBrush}"
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
