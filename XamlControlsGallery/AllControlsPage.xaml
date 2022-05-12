@@ -93,7 +93,7 @@
                     <TextBlock x:Name="smallHeaderText"
                                Foreground="{ThemeResource PageHeaderForegroundBrush}"
                                Visibility="Collapsed"
-                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Style="{StaticResource TitleTextBlockStyle}"
                                Text="{StaticResource ControlsName}"
                                Margin="84,24,0,0" />
                 </Grid>
@@ -101,7 +101,7 @@
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
-            x:Uid="AllControlsPage_PageHeader"
+            Title="{StaticResource ControlsName}"
             VerticalAlignment="Top"
             Foreground="{ThemeResource PageHeaderForegroundBrush}"
             Background="{ThemeResource HomePageBackgroundBrush}"
