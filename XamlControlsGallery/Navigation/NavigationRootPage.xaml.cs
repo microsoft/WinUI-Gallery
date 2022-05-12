@@ -135,7 +135,9 @@ namespace AppUIBasics
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
-            App.appTitlebar = AppTitleBar;
+            var window = App.StartupWindow;
+            window.ExtendsContentIntoTitleBar = true;
+            window.SetTitleBar(AppTitleBar);
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
