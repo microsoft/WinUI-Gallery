@@ -7,14 +7,11 @@ namespace AppUIBasics.ControlPages
     {
         public List<string> Pictures = new List<string>()
         {
-            "Assets/SampleMedia/LandscapeImage1.jpg",
-            "Assets/SampleMedia/LandscapeImage2.jpg",
-            "Assets/SampleMedia/LandscapeImage3.jpg",
-            "Assets/SampleMedia/LandscapeImage4.jpg",
-            "Assets/SampleMedia/LandscapeImage5.jpg",
-            "Assets/SampleMedia/LandscapeImage6.jpg",
-            "Assets/SampleMedia/LandscapeImage7.jpg",
-            "Assets/SampleMedia/LandscapeImage8.jpg",
+            "ms-appx:///Assets/SampleMedia/cliff.jpg",
+            "ms-appx:///Assets/SampleMedia/grapes.jpg",
+            "ms-appx:///Assets/SampleMedia/rainier.jpg",
+            "ms-appx:///Assets/SampleMedia/sunset.jpg",
+            "ms-appx:///Assets/SampleMedia/valley.jpg",
         };
         public PipsPagerPage()
         {
