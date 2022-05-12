@@ -48,7 +48,6 @@
                         <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
                         <Setter Target="learnMore.Margin" Value="64,24,0,0" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
-                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
                         <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
                         <Setter Target="smallHeaderSubtitleText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
@@ -70,12 +69,11 @@
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
             KeyDown="OnItemGridViewKeyDown"
-            Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
+            <!--<interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
-            </interactivity:Interaction.Behaviors>
+            </interactivity:Interaction.Behaviors>-->
 
             <GridView.Header>
                 <Grid x:Name="HeaderGrid" Margin="12,39,43,0">
@@ -94,15 +92,15 @@
                         
                     </ParallaxView>
 
-                    <StackPanel Orientation="Vertical" Margin="32,40,0,20">
+                    <StackPanel Orientation="Vertical" Margin="60,90,0,40">
                         <TextBlock x:Name="smallHeaderText"
-                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                               Visibility="Collapsed"
+                               Foreground="Black"
+                               Visibility="Visible"
                                Style="{StaticResource TitleTextBlockStyle}"                               
                                Text="{StaticResource AppTitleName}"/>
                         <TextBlock x:Name="smallHeaderSubtitleText"
-                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                               Visibility="Collapsed"
+                               Foreground="Black"
+                               Visibility="Visible"
                                Style="{StaticResource SubtitleTextBlockStyle}"                               
                                Text="{StaticResource WinUIVersion}"/>
                     </StackPanel>
@@ -140,7 +138,7 @@
             </GridView.Footer>
         </GridView>
 
-        <local:PageHeader x:Name="pageHeader"
+        <!--<local:PageHeader x:Name="pageHeader"
             Title="{StaticResource AppTitleName}"
             Subtitle="{StaticResource WinUIVersion}"
             Margin="44,92"
@@ -150,7 +148,7 @@
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
-            ShadowOpacity="0"/>
+            ShadowOpacity="0"/>-->
     </Grid>
   
 </local:ItemsPageBase>

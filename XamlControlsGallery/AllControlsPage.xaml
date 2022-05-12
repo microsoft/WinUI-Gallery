@@ -62,16 +62,16 @@
             Loaded="OnItemGridViewLoaded"
             SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None">
-            <interactivity:Interaction.Behaviors>
+            <!--<interactivity:Interaction.Behaviors>
                 <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
-            </interactivity:Interaction.Behaviors>
+            </interactivity:Interaction.Behaviors>-->
 
             <GridView.Header>
                 <Grid Margin="12,39,43,0">
                     <ParallaxView
                         x:Name="headerImageView"
                         Margin="0,0,0,28"
-                        Height="256"
+                        Height="200"
                         Source="{x:Bind itemGridView}"
                         VerticalShift="0">
                         <Grid CornerRadius="{StaticResource ControlCornerRadius}">
@@ -85,16 +85,16 @@
                     </ParallaxView>
 
                     <TextBlock x:Name="smallHeaderText"
-                               Foreground="{ThemeResource PageHeaderForegroundBrush}"
-                               Visibility="Collapsed"
+                               Foreground="Black"
+                               Visibility="Visible"
                                Style="{StaticResource TitleTextBlockStyle}"                               
-                               Text="{StaticResource AppTitleName}"
-                               Margin="0,60,0,20" />
+                               Text="All controls"
+                               Margin="50,50,0,20" />
                 </Grid>
             </GridView.Header>
         </GridView>
 
-        <local:PageHeader x:Name="pageHeader"
+        <!--<local:PageHeader x:Name="pageHeader"
             Title= "All controls"
             Margin="44,92"
             VerticalAlignment="Top"
@@ -103,6 +103,6 @@
             FontSize="28"
             Padding="{ThemeResource NavigationViewHeaderMargin}"
             IsHitTestVisible="False"
-            ShadowOpacity="0"/>
+            ShadowOpacity="0"/>-->
     </Grid>
 </local:ItemsPageBase>
