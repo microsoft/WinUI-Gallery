@@ -53,6 +53,7 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundlePlatforms>$(Platform)</AppxBundlePlatforms>
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>

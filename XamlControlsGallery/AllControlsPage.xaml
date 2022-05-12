@@ -99,7 +99,7 @@
         </GridView>
 
         <local:PageHeader x:Name="pageHeader"
-            x:Uid="AllControlsPage_PageHeader"
+            Title="{StaticResource ControlsName}"
             VerticalAlignment="Top"
             Margin="44,92"
             Foreground="black"
