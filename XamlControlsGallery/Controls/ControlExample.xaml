@@ -158,11 +158,11 @@
             <muxc:Expander Grid.Row="1" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
                 contract7Present:CornerRadius="0,0,8,8"
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                
+
                 <muxc:Expander.Header>
                     <TextBlock Text="Source code"/>
                 </muxc:Expander.Header>
-                
+
                 <StackPanel x:DefaultBindMode="OneWay">
                     <controls:SampleCodePresenter
                         x:Name="XamlPresenter"
