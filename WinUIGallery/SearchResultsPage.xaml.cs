@@ -120,7 +120,7 @@ namespace AppUIBasics
                 {
                     // Display informational text when there are no search results.
                     VisualStateManager.GoToState(this, "NoResultsFound", false);
-                    var textbox = NavigationRootPage.GetForElement(this).PageHeader?.GetDescendantsOfType<AutoSuggestBox>().FirstOrDefault();
+                    var textbox = NavigationRootPage.GetForElement(this)?.PageHeader?.GetDescendantsOfType<AutoSuggestBox>().FirstOrDefault();
                     textbox?.Focus(FocusState.Programmatic);
                 }
                 else
