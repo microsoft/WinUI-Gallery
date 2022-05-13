@@ -128,7 +128,7 @@
                         <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery/issues/new?template=sample_request.md">New Sample Request</Hyperlink>
                     </Paragraph>
                     <Paragraph>
-                        If you found a bug in your app (not in the WinUI 3 Gallery) and need help, file an issue on the WinUI GitHub:
+                        If you found a bug in your app (not in the WinUI Gallery) and need help, file an issue on the WinUI GitHub:
                     </Paragraph>
                     <Paragraph Margin="0,10,0,10">
                         <Hyperlink NavigateUri="https://github.com/microsoft/microsoft-ui-xaml/issues/new/choose">New WinUI Bug Report</Hyperlink>

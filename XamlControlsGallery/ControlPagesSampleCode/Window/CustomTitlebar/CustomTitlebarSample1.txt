@@ -1,6 +1,6 @@
 ﻿// UIElement set as titlebar
 <Border x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top">
-    <TextBlock x:Name="AppTitle" Text="WinUI 3 Gallery" VerticalAlignment="Top" Margin="0,8,0,0" />
+    <TextBlock x:Name="AppTitle" Text="{StaticResource AppTitleName}" VerticalAlignment="Top" Margin="0,8,0,0" />
 </Border>
 
 // C# code to set AppTitleBar uielement as titlebar
