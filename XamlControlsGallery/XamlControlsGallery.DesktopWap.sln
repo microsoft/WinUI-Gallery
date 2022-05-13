@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlControlsGallery.DesktopWap.Package", "XamlControlsGallery.DesktopWap.Package.wapproj", "{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "WinUIGallery.DesktopWap.Package", "WinUIGallery.DesktopWap.Package.wapproj", "{4C7B20D7-5F5C-440E-8DA3-B19A328CC8BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlControlsGallery.DesktopWap", "XamlControlsGallery.DesktopWap.csproj", "{D78F3B56-340D-44F0-9AF1-320D473BA611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIGallery.DesktopWap", "WinUIGallery.DesktopWap.csproj", "{D78F3B56-340D-44F0-9AF1-320D473BA611}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
