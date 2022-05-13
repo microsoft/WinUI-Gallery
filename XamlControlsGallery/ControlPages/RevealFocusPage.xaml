@@ -97,7 +97,7 @@
         </local:ControlExample>
 
         <TextBlock Margin="0,16,0,0" TextWrapping="WrapWholeWords">
-            <Bold>NOTE:</Bold> Choosing the <Bold>Reveal Focus</Bold> radio button will change the focus visuals that "UseSystemFocusVisuals" in the entire XAML Controls Gallery app.
+            <Bold>NOTE:</Bold> Choosing the <Bold>Reveal Focus</Bold> radio button will change the focus visuals that "UseSystemFocusVisuals" in the entire WinUI 3 Gallery app.
             Reveal focus should be used on Xbox only. Apps should use high visibility focus rectangles across all other form factors.
         </TextBlock>
 
