@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.WinUI3ControlsGallery.Desktop" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.6.0" />
+  <Identity Name="Microsoft.WinUI3Gallery.Desktop" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.6.0" />
   <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>WinUI 3 Controls Gallery</DisplayName>
+    <DisplayName>WinUI 3 Gallery</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
     <Logo>Assets\Tiles\StoreLogo-sdk.png</Logo>
     <uap:SupportedUsers>multiple</uap:SupportedUsers>
@@ -13,7 +13,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
-      <uap:VisualElements DisplayName="WinUI 3 Controls Gallery" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="WinUI 3 Controls Gallery" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="WinUI 3 Gallery" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="WinUI 3 Gallery" BackgroundColor="transparent">
         <uap:DefaultTile Square310x310Logo="Assets\Tiles\LargeTile.png" Wide310x150Logo="Assets\Tiles\WideTile.png" Square71x71Logo="Assets\Tiles\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -30,8 +30,8 @@
           </uap3:AppUriHandler>
         </uap3:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="xamlcontrolsgallery">
-            <uap:DisplayName>WinUI 3 Controls Gallery</uap:DisplayName>
+          <uap:Protocol Name="winui3gallery">
+            <uap:DisplayName>WinUI 3 Gallery</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
       </Extensions>

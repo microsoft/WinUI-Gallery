@@ -37,7 +37,7 @@ namespace AppUIBasics.ControlPages
 
 #if !UNIVERSAL
             // Launching isn't supported yet on Desktop
-            // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes XCG to crash
+            // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes app to crash
             //this.LaunchExample.Visibility = Visibility.Collapsed;
 #endif
 

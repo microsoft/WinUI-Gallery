@@ -86,9 +86,9 @@ namespace AppUIBasics
             get
             {
 #if !UNIVERSAL
-                return "WinUI 3 Controls Gallery";
+                return "WinUI 3 Gallery";
 #else
-                return "WinUI 3 Controls Gallery (UWP)";
+                return "WinUI 3 Gallery (UWP)";
 #endif
             }
         }
