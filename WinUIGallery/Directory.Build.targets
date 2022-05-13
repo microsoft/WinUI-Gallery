@@ -1,0 +1,13 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../')))"/>
+  <PropertyGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
+    <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
+    <AppxPackageName>WinUIGallery.Desktop</AppxPackageName>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
+    <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <Import Project="net6.override.targets" Condition="'$(MSBuildRuntimeType)' == 'Core'" />
+</Project>

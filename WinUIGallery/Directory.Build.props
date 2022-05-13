@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
+    <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
+  </PropertyGroup>
+    
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
+
+  <!-- When building standalone, WinUI Gallery needs to do some extra things that are done implicitly in the WinUI repo.
+       Determine if building standalone by conditioning on the MuxCustomBuildTasksPackageVersion property, which only exists in the WinUI repo -->
+  <PropertyGroup Condition="'$(MuxCustomBuildTasksPackageVersion)' != ''">
+    <IsInWinUIRepo>true</IsInWinUIRepo>
+
+    <!-- We want to binplace the WinUI Gallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
+         overwrite each other. -->
+    <BinplaceSymbolsToSubdir>true</BinplaceSymbolsToSubdir>
+  </PropertyGroup>
+
+    <!--
+         When building in the WinUI repo, we likely only have one current flavor built, either x86 or x64, and won't have locally built bits to support both.
+         In that case, we only build an appx for the current flavor.  If we're not in the WinUI repo or specify we have all flavors built with BuildAllAppFlavors,
+         we will build both the x86 and x64 flavors into the same appx.
+    -->
+  <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true' AND '$(BuildAllAppFlavors)' == ''">
+    <BuildAllAppFlavors>true</BuildAllAppFlavors>
+  </PropertyGroup>
+    
+  <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
+  <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true'"/>
+</Project>
