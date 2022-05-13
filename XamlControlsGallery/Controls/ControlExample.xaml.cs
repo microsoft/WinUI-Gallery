@@ -159,7 +159,14 @@ namespace AppUIBasics
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(new GridLength(1, GridUnitType.Star)));
+        private static readonly GridLength defaultExampleHeight =
+#if !UNIVERSAL
+            new GridLength(1, GridUnitType.Star);
+#else
+            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
+#endif
+
+        public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
         public GridLength ExampleHeight
         {
             get { return (GridLength)GetValue(ExampleHeightProperty); }
@@ -420,15 +427,15 @@ namespace AppUIBasics
             switch (nums.Length)
             {
                 case 1:
-                    ControlPresenter.Padding = new Thickness(nums[0]);
+                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[0], Right = nums[0], Bottom = nums[0] };
                     break;
 
                 case 2:
-                    ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[0], nums[1]);
+                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[1], Right = nums[0], Bottom = nums[1] };
                     break;
 
                 case 4:
-                    ControlPresenter.Padding = new Thickness(nums[0], nums[1], nums[2], nums[3]);
+                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[1], Right = nums[2], Bottom = nums[3] };
                     break;
             }
         }
