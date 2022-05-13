@@ -150,7 +150,7 @@ private void InitializeData()
 private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
 {   
     // This function calls a custom animator called DefaultElementAnimator.
-    // See the WinUI 3 Gallery source code for full implementation in DefaultElementAnimator.cs
+    // See the WinUI Gallery source code for full implementation in DefaultElementAnimator.cs
     VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() 
 					? new DefaultElementAnimator() : null;
 }
