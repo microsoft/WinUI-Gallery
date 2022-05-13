@@ -48,7 +48,7 @@ public class Recipe
 /* To hold the recipe items, a data source class was created called MyItemsSource. The class
    inherits from IList and IKeyIndexMapping interfaces, basically creating a collection class 
    that can easily filter and sort its items. Important methods are shown below, but full source
-   code can be found in XCG repo. See the linked ItemsRepeater guidance documentation as
+   code can be found in WinUI Gallery repo. See the linked ItemsRepeater guidance documentation as
    well for a full tutorial on how to implement this type of class. */
 
 public class MyItemsSource : IList, 
@@ -150,7 +150,7 @@ private void InitializeData()
 private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
 {   
     // This function calls a custom animator called DefaultElementAnimator.
-    // See the XCG source code for full implementation in DefaultElementAnimator.cs
+    // See the WinUI 2 Gallery source code for full implementation in DefaultElementAnimator.cs
     VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() 
 					? new DefaultElementAnimator() : null;
 }
