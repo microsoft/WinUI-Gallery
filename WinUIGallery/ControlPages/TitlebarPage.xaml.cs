@@ -36,12 +36,12 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CustomTitlebarPage : Page
+    public sealed partial class TitlebarPage : Page
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = Colors.Black;
 
-        public CustomTitlebarPage()
+        public TitlebarPage()
         {
             this.InitializeComponent();
             UpdateTitlebarColor();
