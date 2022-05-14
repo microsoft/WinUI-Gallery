@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.WinUIGallery.Desktop" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.6.0" />
+  <Identity Name="Microsoft.WinUI3ControlsGallery.Desktop" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.6.0" />
   <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WinUI 3 Gallery</DisplayName>
@@ -26,6 +26,7 @@
       <Extensions>
         <uap3:Extension Category="windows.appUriHandler">
           <uap3:AppUriHandler>
+            <uap3:Host Name="winuigallery.com" />
             <uap3:Host Name="xamlcontrolsgallery.com" />
           </uap3:AppUriHandler>
         </uap3:Extension>
