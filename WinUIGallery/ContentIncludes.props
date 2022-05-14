@@ -361,8 +361,8 @@
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Window\CreateWindowSample1.txt" />
-    <Content Include="ControlPagesSampleCode\Window\CustomTitlebar\CustomTitlebarSample1.txt" />
-    <Content Include="ControlPagesSampleCode\Window\CustomTitlebar\CustomTitlebarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Window\Titlebar\TitlebarSample1.txt" />
+    <Content Include="ControlPagesSampleCode\Window\Titlebar\TitlebarSample2.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
   </ItemGroup>

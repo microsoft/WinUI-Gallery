@@ -2652,13 +2652,13 @@
           ]
         },
         {
-          "UniqueId": "CustomTitlebar",
+          "UniqueId": "Titlebar",
           "Title": "Titlebar",
           "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
-          "Content": "<p>Look at the <i>CustomTitlebarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>TitlebarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "IsUpdated": false,
           "Docs": [
