@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-    <PackageReference Include="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
+    <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
     <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
