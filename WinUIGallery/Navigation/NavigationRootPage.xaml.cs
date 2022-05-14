@@ -136,7 +136,7 @@ namespace AppUIBasics
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
 
-            // Set the titlebar to be custom. This is also referenced by the CustomTitlebarPage
+            // Set the titlebar to be custom. This is also referenced by the TitlebarPage
             App.appTitlebar = AppTitleBar;
 #if !UNIVERSAL
             var window = App.StartupWindow;
