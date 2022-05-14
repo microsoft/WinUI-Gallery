@@ -99,6 +99,7 @@
                                 Stretch="Fill" />
                         </Grid>
                     </ParallaxView>
+                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <StackPanel Orientation="Vertical" Margin="50,80,0,20">
                         <TextBlock x:Name="smallHeaderText"
                             Foreground="Black"
