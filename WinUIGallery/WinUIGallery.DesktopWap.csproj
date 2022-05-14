@@ -86,5 +86,9 @@
     <Content Remove="@(Content)" />
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
+  <ItemGroup>
+    <Content Remove="ControlPagesSampleCode\Window\Titlebar\TitlebarSample1.txt" />
+    <Content Remove="ControlPagesSampleCode\Window\Titlebar\TitlebarSample2.txt" />
+  </ItemGroup>
 
 </Project>
