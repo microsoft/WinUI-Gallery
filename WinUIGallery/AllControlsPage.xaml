@@ -88,6 +88,7 @@
                                 Stretch="UniformToFill" />
                         </Grid>
                     </ParallaxView>
+                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <TextBlock x:Name="smallHeaderText"
                         Foreground="Black"
                         Visibility="Collapsed"
