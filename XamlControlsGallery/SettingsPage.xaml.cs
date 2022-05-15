@@ -7,17 +7,12 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
 using AppUIBasics.Helper;
-using Microsoft.Graphics.Canvas.Effects;
 using System;
 using System.Linq;
-using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
-using Windows.UI;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -77,8 +72,6 @@ namespace AppUIBasics
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
@@ -115,11 +108,6 @@ namespace AppUIBasics
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
             }
-        }
-
-        private void navigationToggle_Toggled(object sender, RoutedEventArgs e)
-        {
-            NavigationOrientationHelper.IsLeftMode = navigationLocation.SelectedIndex == 0;
         }
 
         private void screenshotModeToggle_Toggled(object sender, RoutedEventArgs e)

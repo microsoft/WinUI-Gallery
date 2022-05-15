@@ -55,6 +55,8 @@ namespace AppUIBasics.Controls
             set { SetValue(SubstitutionsProperty, value); }
         }
 
+        public bool IsEmpty => Code.Length == 0 && CodeSourceFile == null;
+
         private string actualCode = "";
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
 
@@ -86,6 +88,7 @@ namespace AppUIBasics.Controls
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
             ReevaluateVisibility();
+            VisualStateManager.GoToState(this, IsCSharpSample ? "CSharpSample" : "XAMLSample", false);
             foreach (var substitution in Substitutions)
             {
                 substitution.ValueChanged += OnValueChanged;

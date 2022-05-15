@@ -47,7 +47,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">    
-&lt;muxc:BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
+&lt;muxc:BreadcrumbBar x:Name="BreadcrumbBar1"&gt;
     &lt;muxc:BreadcrumbBar.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="l:Folder"&gt;
             &lt;muxc:BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}"&gt;

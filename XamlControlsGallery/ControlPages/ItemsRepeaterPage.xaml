@@ -31,15 +31,15 @@
         </DataTemplate>
 
         <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
-            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemChromeLowColor}">
-                <TextBlock Text="{x:Bind}"/>
-            </Button>
+            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <TextBlock Text="{x:Bind}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
-            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
-                <TextBlock Text="{x:Bind}"/>
-            </Button>
+            <Border  Background="{ThemeResource SystemControlBackgroundAccentBrush}" >
+                <TextBlock Text="{x:Bind}"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}"/>
+            </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
@@ -143,7 +143,7 @@
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
-&lt;ScrollViewer/&gt;
+&lt;/ScrollViewer&gt;
                     
 &lt;!-- The Layout specifications used: --&gt;
                     
@@ -243,8 +243,10 @@ the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and Ma
                               Grid.Column="0"
                               Height="175"
                               Width="250">
-                    <muxc:ItemsRepeater x:Name="animatedScrollRepeater">
-                            <DataTemplate x:DataType="x:String">
+                    <muxc:ItemsRepeater x:Name="animatedScrollRepeater"
+                                        GettingFocus="OnAnimatedScrollRepeaterGettingFocus"
+                                        KeyDown="OnAnimatedScrollRepeaterKeyDown">
+                        <DataTemplate x:DataType="x:String">
                             <Button Content="{x:Bind}"
                                         Background="{x:Bind}"
                                         Click="OnAnimatedItemClicked"

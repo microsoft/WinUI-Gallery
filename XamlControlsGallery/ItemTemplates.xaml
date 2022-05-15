@@ -77,6 +77,7 @@
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" >
                     <muxc:InfoBadge Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"/>
 
+                    <Ellipse Fill="{ThemeResource SystemAccentColorDark1}" Width="12" Height="12"/>
                 </Grid>
             </Grid>
         </UserControl>
