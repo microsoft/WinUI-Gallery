@@ -53,7 +53,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
-            <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
+            <CornerRadius x:Key="ControlCornerRadius">8</CornerRadius>
 
             <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1.5">
                 <GradientStop Offset="0" Color="Transparent"/>
@@ -84,8 +84,8 @@
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
 
-            <x:String x:Key="ControlsName">All controls</x:String>
-            <x:String x:Key="NewControlsName">What's New</x:String>
+            <x:String x:Key="AppTitleName">WinUI 2 Gallery</x:String>
+            <x:String x:Key="WinUIVersion">SDK 2.8</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />

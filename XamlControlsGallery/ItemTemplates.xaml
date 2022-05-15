@@ -2,7 +2,8 @@
     x:Class="AppUIBasics.ItemTemplates"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:data="using:AppUIBasics.Data">
+    xmlns:data="using:AppUIBasics.Data"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <DataTemplate x:Key="ControlItemTemplate" x:DataType="data:ControlInfoDataItem">
         <UserControl>
@@ -28,8 +29,8 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
+                                <Setter Target="controlRoot.Width" Value="400" />
+                                <Setter Target="controlRoot.Height" Value="100" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -41,10 +42,10 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Grid Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}" Width="70" CornerRadius="{ThemeResource ControlCornerRadius}">
+                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
                     <Image
                         x:Name="gridImage"
-                        Width="45"
+                        Width="48"
                         VerticalAlignment="Center"
                         AutomationProperties.Name="{x:Bind Title}"
                         Source="{x:Bind ImagePath}"
@@ -74,6 +75,7 @@
                     VerticalAlignment="Top"
                     CornerRadius="{StaticResource ControlCornerRadius}"
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" >
+                    <muxc:InfoBadge Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"/>
 
                     <Ellipse Fill="{ThemeResource SystemAccentColorDark1}" Width="12" Height="12"/>
                 </Grid>

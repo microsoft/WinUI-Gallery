@@ -1,4 +1,4 @@
-﻿using AppUIBasics.Data;
+using AppUIBasics.Data;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,9 +27,9 @@ namespace AppUIBasics.Common
             if (d is Image image)
             {
                 var item = await ControlInfoDataSource.Instance.GetItemAsync(e.NewValue?.ToString());
-                if (item?.ImagePath != null)
+                if (item?.ImageIconPath != null)
                 {
-                    Uri imageUri = new Uri(item.ImagePath, UriKind.Absolute);
+                    Uri imageUri = new Uri(item.ImageIconPath, UriKind.Absolute);
                     BitmapImage imageBitmap = new BitmapImage(imageUri);
                     image.Source = imageBitmap;
                 }

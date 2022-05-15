@@ -36,6 +36,7 @@
                 <VisualState x:Name="AlternateForeground">
                     <VisualState.Setters>
                         <Setter Target="TitleTextBlock.Foreground" Value="Transparent" />
+                        <Setter Target="SubtitleTextBlock.Foreground" Value="Transparent" />
                         <Setter Target="ShadowHost.Opacity" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -51,9 +52,9 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid x:Name="pageTitle"
+            <StackPanel x:Name="pageTitle"
                 Background="Transparent"
-                Height="44"
+                Height="80"
                 VerticalAlignment="Top">
                 <Canvas x:Name="ShadowHost" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/>
                 <TextBlock x:Name="TitleTextBlock"
@@ -64,7 +65,14 @@
                     Text="{x:Bind Title, Mode=OneWay}"
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
-            </Grid>
+                <TextBlock x:Name="SubtitleTextBlock"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    VerticalAlignment="Center"
+                    Foreground="{Binding ElementName=headerControl, Path=Foreground}"
+                    Text="{x:Bind Subtitle, Mode=OneWay}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="NoWrap" />
+            </StackPanel>
             <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">
                 <CommandBar
                     x:Name="topCommandBar"
