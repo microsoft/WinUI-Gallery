@@ -27,7 +27,7 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="winui2gallery">
+          <uap:Protocol Name="winuigallery">
             <uap:DisplayName>WinUI 2 Gallery</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
