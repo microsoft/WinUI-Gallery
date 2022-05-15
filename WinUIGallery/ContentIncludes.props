@@ -33,7 +33,6 @@
     <Content Include="Assets\SunBlack.png" />
     <Content Include="Assets\SunWhite.png" />
     <Content Include="Assets\ControlIcons\SwipeIcon.png" />
-    <Content Include="Assets\ControlIcons\SystemBackdropsIcon.png" />
     <Content Include="Assets\ControlIcons\TeachingTipIcon.png" />
     <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\ControlIcons\TimingDurationIcon.png" />
@@ -333,9 +332,6 @@
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />
