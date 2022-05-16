@@ -199,7 +199,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Full code to implement dragging and dropping between lists can be found in the 
-source code for the XAML Controls Gallery. -->
+source code for the WinUI Gallery. -->
 
 &lt;!-- The following properties should be added to the ListView definitions to build this sample. --&gt;
 &lt;ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"

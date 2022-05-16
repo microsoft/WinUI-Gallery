@@ -31,13 +31,13 @@ namespace AppUIBasics.Helper
 
         public static void Copy(ControlInfoDataItem item)
         {
-            var uri = new Uri($"xamlcontrolsgallery://item/{item.UniqueId}", UriKind.Absolute);
+            var uri = new Uri($"winuigallery://item/{item.UniqueId}", UriKind.Absolute);
             ProtocolActivationClipboardHelper.Copy(uri, $"{Package.Current.DisplayName} - {item.Title} Sample");
         }
 
         public static void Copy(ControlInfoDataGroup group)
         {
-            var uri = new Uri($"xamlcontrolsgallery://category/{group.UniqueId}", UriKind.Absolute);
+            var uri = new Uri($"winuigallery://category/{group.UniqueId}", UriKind.Absolute);
             ProtocolActivationClipboardHelper.Copy(uri, $"{Package.Current.DisplayName} - {group.Title} Samples");
         }
 

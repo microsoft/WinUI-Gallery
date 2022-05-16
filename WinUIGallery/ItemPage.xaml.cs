@@ -168,7 +168,7 @@ namespace AppUIBasics
                 {
                     // Pagetype is not null!
                     // So lets generate the github links and set them!
-                    var gitHubBaseURI = "https://github.com/microsoft/Xaml-Controls-Gallery/tree/master/XamlControlsGallery/ControlPages/";
+                    var gitHubBaseURI = "https://github.com/microsoft/WinUI-Gallery/tree/winui2/WinUIGallery/ControlPages/";
                     var pageName = pageType.Name + ".xaml";
                     PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
                     PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
@@ -200,7 +200,7 @@ namespace AppUIBasics
             }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
-            // See this PR for more information: https://github.com/microsoft/Xaml-Controls-Gallery/pull/145
+            // See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
             Frame contentFrameAsFrame = contentFrame as Frame;
             Page innerPage = contentFrameAsFrame.Content as Page;
             MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",

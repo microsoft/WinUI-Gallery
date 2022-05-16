@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"  xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6" IgnorableNamespaces="uap mp uap3 uap6">
-  <Identity Name="Microsoft.XAMLControlsGallery" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.22.0" />
-  <mp:PhoneIdentity PhoneProductId="5103861a-e76c-42b7-aea1-03093f3cf4bb" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="Microsoft.WinUI2Gallery.Debug" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.22.0" />
+  <mp:PhoneIdentity PhoneProductId="1DE51B2F-78B7-4c23-9045-66DD91CDFE62" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>XAML Controls Gallery</DisplayName>
+    <DisplayName>WinUI 2 Gallery (Debug)</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
     <Logo>Assets\Tiles\StoreLogo-sdk.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="XamlControlsSample.App">
-      <uap:VisualElements DisplayName="XAML Controls Gallery" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="Xaml Controls Gallery" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="WinUI 2 Gallery (Debug)" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="WinUI 2 Gallery (Debug)" BackgroundColor="transparent">
         <uap:DefaultTile Square310x310Logo="Assets\Tiles\LargeTile.png" Wide310x150Logo="Assets\Tiles\WideTile.png" Square71x71Logo="Assets\Tiles\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -23,17 +23,17 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png"/>
+        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png" />
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="xamlcontrolsgallery">
-            <uap:DisplayName>XAML Controls Gallery</uap:DisplayName>
+          <uap:Protocol Name="winuigallery">
+            <uap:DisplayName>WinUI 2 Gallery (Debug)</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
         <uap3:Extension Category="windows.appUriHandler">
           <uap3:AppUriHandler>
-            <uap3:Host Name="xamlcontrolsgallery.com" />
+            <uap3:Host Name="winuigallery.com" />
           </uap3:AppUriHandler>
         </uap3:Extension>
       </Extensions>

@@ -255,8 +255,8 @@
                             x:Uid="FeedbackHeader"
                             Margin="0,0,0,12"
                             Style="{StaticResource SubtitleTextBlockStyle}" />
-                        <HyperlinkButton NavigateUri="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose" 
-                                         ToolTipService.ToolTip="https://github.com/microsoft/Xaml-Controls-Gallery/issues/new/choose">
+                        <HyperlinkButton NavigateUri="https://github.com/microsoft/WinUI-Gallery/issues/new/choose" 
+                                         ToolTipService.ToolTip="https://github.com/microsoft/WinUI-Gallery/issues/new/choose">
                             <TextBlock x:Uid="FeedbackLink" />
                         </HyperlinkButton>
                     </StackPanel>
