@@ -33,7 +33,7 @@
         </uap:Extension>
         <uap3:Extension Category="windows.appUriHandler">
           <uap3:AppUriHandler>
-            <uap3:Host Name="xamlcontrolsgallery.com" />
+            <uap3:Host Name="winuigallery.com" />
           </uap3:AppUriHandler>
         </uap3:Extension>
       </Extensions>
