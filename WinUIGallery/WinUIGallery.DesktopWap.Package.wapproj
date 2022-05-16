@@ -57,6 +57,7 @@
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+    <PackageCertificateKeyFile>C:\Users\gregwoo\OneDrive - Microsoft\Documents\XCG\testcert.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -86,13 +87,11 @@
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
-
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
-        <IncludeAssets>build</IncludeAssets>
+      <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
