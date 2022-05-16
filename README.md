@@ -11,15 +11,15 @@ statusNotificationTargets:
 description: Demonstrates the usage of all XAML/WinUI controls in an interactive format.
 ---
 
-# XAML Controls Gallery
+# WinUI Gallery
 
-![Xaml Gallery Screenshot](README_Images/XamlGalleryLanding.PNG)
+![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
 
 [![Build Status](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_apis/build/status/XAML%20Controls%20%20Gallery%20-%20CI%20Tests?branchName=master)](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_build/latest?definitionId=2&branchName=master)
 
 Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Toolkit](https://docs.microsoft.com/uwp/toolkits/winui/) APIs.
 
-## The XAML Controls Gallery shows how to:
+## The WinUI Gallery shows how to:
 
 - **Specify XAML controls in markup:** Each control page shows the markup used to create each example.
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [Windows UI Toolkit](https://docs.microsoft.com/uwp/toolkits/winui/) controls like NavigationView, SwipeControl, and more.
@@ -29,7 +29,7 @@ Shows all of the XAML controls in an interactive format. This app is the interac
 
 ## Further information
 
->**Note**: The WinUI 3 Xaml Controls Gallery requires [Visual Studio 16.9 Preview 1](https://visualstudio.microsoft.com/vs/preview/) or later to build and Windows 10 to execute.  Also ensure that you've completed the prerequisite steps from the [installation instructions for WinUI 3 Preview 4](https://aka.ms/winui3/preview4).
+>**Note**: The WinUI 3 Gallery requires [Visual Studio 16.9 Preview 1](https://visualstudio.microsoft.com/vs/preview/) or later to build and Windows 10 to execute.  Also ensure that you've completed the prerequisite steps from the [installation instructions for WinUI 3 Preview 4](https://aka.ms/winui3/preview4).
 
 To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 
