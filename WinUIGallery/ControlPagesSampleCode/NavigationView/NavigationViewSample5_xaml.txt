@@ -1,6 +1,6 @@
 ﻿<NavigationView x:Name="nvSample" 
                 MenuItemTemplateSelector="{StaticResource selector}" 
-                MenuItemSource="{x:Bind Categories, Mode=OneWay}" />
+                MenuItemsSource="{x:Bind Categories, Mode=OneWay}" />
  
 <local:MenuItemTemplateSelector x:Key="selector"> 
     <local:MenuItemTemplateSelector.ItemTemplate> 
