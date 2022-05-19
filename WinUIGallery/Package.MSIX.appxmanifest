@@ -31,7 +31,7 @@
           </uap3:AppUriHandler>
         </uap3:Extension>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="winuigallery">
+          <uap:Protocol Name="winui3gallery">
             <uap:DisplayName>WinUI 3 Gallery</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
