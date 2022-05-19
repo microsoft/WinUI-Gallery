@@ -178,64 +178,64 @@ namespace AppUIBasics.Controls
 
             var sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
 
-            var formatter = GenerateRichTextFormatter();
-            formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleCodeRTB;
+            //var formatter = GenerateRichTextFormatter();
+            //formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
+            presenter.Content = new TextBlock() { Text = sampleString, FontFamily = new FontFamily("Consolas"), IsTextSelectionEnabled = true }; // sampleCodeRTB;
         }
 
-        private RichTextBlockFormatter GenerateRichTextFormatter()
-        {
-            var formatter = new RichTextBlockFormatter(ThemeHelper.ActualTheme);
+        //private RichTextBlockFormatter GenerateRichTextFormatter()
+        //{
+        //    var formatter = new RichTextBlockFormatter(ThemeHelper.ActualTheme);
 
-            if (ThemeHelper.ActualTheme == ElementTheme.Dark)
-            {
-                UpdateFormatterDarkThemeColors(formatter);
-            }
+        //    if (ThemeHelper.ActualTheme == ElementTheme.Dark)
+        //    {
+        //        UpdateFormatterDarkThemeColors(formatter);
+        //    }
 
-            return formatter;
-        }
+        //    return formatter;
+        //}
 
-        private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
-        {
-            // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttribute]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeQuotes]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeValue]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.HtmlComment]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlDelimiter]);
-            formatter.Styles.Remove(formatter.Styles[ScopeName.XmlName]);
+        //private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
+        //{
+        //    // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttribute]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeQuotes]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlAttributeValue]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.HtmlComment]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlDelimiter]);
+        //    formatter.Styles.Remove(formatter.Styles[ScopeName.XmlName]);
 
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
-            {
-                Foreground = "#FF87CEFA",
-                ReferenceName = "xmlAttribute"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
-            {
-                Foreground = "#FFFFA07A",
-                ReferenceName = "xmlAttributeQuotes"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
-            {
-                Foreground = "#FFFFA07A",
-                ReferenceName = "xmlAttributeValue"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
-            {
-                Foreground = "#FF6B8E23",
-                ReferenceName = "htmlComment"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
-            {
-                Foreground = "#FF808080",
-                ReferenceName = "xmlDelimiter"
-            });
-            formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
-            {
-                Foreground = "#FF5F82E8",
-                ReferenceName = "xmlName"
-            });
-        }
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttribute)
+        //    {
+        //        Foreground = "#FF87CEFA",
+        //        ReferenceName = "xmlAttribute"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeQuotes)
+        //    {
+        //        Foreground = "#FFFFA07A",
+        //        ReferenceName = "xmlAttributeQuotes"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlAttributeValue)
+        //    {
+        //        Foreground = "#FFFFA07A",
+        //        ReferenceName = "xmlAttributeValue"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.HtmlComment)
+        //    {
+        //        Foreground = "#FF6B8E23",
+        //        ReferenceName = "htmlComment"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlDelimiter)
+        //    {
+        //        Foreground = "#FF808080",
+        //        ReferenceName = "xmlDelimiter"
+        //    });
+        //    formatter.Styles.Add(new ColorCode.Styling.Style(ScopeName.XmlName)
+        //    {
+        //        Foreground = "#FF5F82E8",
+        //        ReferenceName = "xmlName"
+        //    });
+        //}
 
         private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {

@@ -7,7 +7,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Windowing;
 using AppUIBasics.Helper;
 
 namespace AppUIBasics.TabViewPages

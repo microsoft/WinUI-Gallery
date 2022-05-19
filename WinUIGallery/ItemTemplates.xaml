@@ -11,8 +11,8 @@
                 Width="360"
                 Height="90"
                 Padding="8"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource ControlCornerRadius}">
                 <VisualStateManager.VisualStateGroups>
@@ -61,7 +61,7 @@
                         TextWrapping="NoWrap" />
                     <TextBlock
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                         Margin="0,2,8,0"
                         RelativePanel.Below="titleText"
                         Text="{x:Bind Subtitle}"

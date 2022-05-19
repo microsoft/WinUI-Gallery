@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.ControlExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -56,7 +56,7 @@
                         <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center"/>
                         <Setter Target="ScreenshotControls.Visibility" Value="Visible"/>
 
-                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}"/>
+                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource CardBackgroundFillColorDefault}"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -96,7 +96,7 @@
             <Grid
                 x:Name="ExampleContainer"
                 x:FieldModifier="Public"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
                 BorderThickness="1"
                 CornerRadius="8,8,0,0"
                 Background="{ThemeResource ControlExampleDisplayBrush}">
@@ -149,36 +149,27 @@
                     Padding="16"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
                     Content="{x:Bind Options}"
                     Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
             </Grid>
 
             <!--  Sample code display  -->
-            <muxc:Expander Grid.Row="1" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-                contract7Present:CornerRadius="0,0,8,8"
-                HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-
-                <muxc:Expander.Header>
-                    <TextBlock Text="Source code"/>
-                </muxc:Expander.Header>
-
-                <StackPanel x:DefaultBindMode="OneWay">
-                    <controls:SampleCodePresenter
-                        x:Name="XamlPresenter"
-                        Code="{x:Bind Xaml}"
-                        CodeSourceFile="{x:Bind XamlSource}"
-                        Substitutions="{x:Bind Substitutions}"/>
-                    <Border x:Name="SampleCodeSeparator" Visibility="Collapsed" Margin="0,20"
-                        BorderThickness="1" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
-                    <controls:SampleCodePresenter
-                        x:Name="CSharpPresenter"
-                        Code="{x:Bind CSharp}"
-                        CodeSourceFile="{x:Bind CSharpSource}"
-                        Substitutions="{x:Bind Substitutions}"
-                        IsCSharpSample="true"/>
-                </StackPanel>
-            </muxc:Expander>
+            <StackPanel x:DefaultBindMode="OneWay">
+                <controls:SampleCodePresenter
+                    x:Name="XamlPresenter"
+                    Code="{x:Bind Xaml}"
+                    CodeSourceFile="{x:Bind XamlSource}"
+                    Substitutions="{x:Bind Substitutions}"/>
+                <Border x:Name="SampleCodeSeparator" Visibility="Collapsed" Margin="0,20"
+                    BorderThickness="1" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                <controls:SampleCodePresenter
+                    x:Name="CSharpPresenter"
+                    Code="{x:Bind CSharp}"
+                    CodeSourceFile="{x:Bind CSharpSource}"
+                    Substitutions="{x:Bind Substitutions}"
+                    IsCSharpSample="true"/>
+            </StackPanel>
 
             <StackPanel x:Name="ScreenshotControls" Grid.Row="2" Orientation="Horizontal" Spacing="6" Margin="0,6,0,0" Visibility="Collapsed">
                 <Button

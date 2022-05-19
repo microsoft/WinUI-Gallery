@@ -43,11 +43,11 @@
                     Stretch="UniformToFill"
                     HorizontalAlignment="Center"/>
 
-                <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <TextBlock Text="{x:Bind Title, Mode=OneWay}"
                                Margin="16,0"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
-                               Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                               Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                                VerticalAlignment="Center"
                                TextWrapping="Wrap" />
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12" FontSize="16"/>

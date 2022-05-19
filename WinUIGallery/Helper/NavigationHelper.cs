@@ -8,7 +8,6 @@ using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
 using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;

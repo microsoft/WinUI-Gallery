@@ -5,7 +5,6 @@ using AppUIBasics.SamplePages;
 using AppUIBasics.Helper;
 using Windows.ApplicationModel.Core;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Dispatching;
 using AppUIBasics.TabViewPages;
 

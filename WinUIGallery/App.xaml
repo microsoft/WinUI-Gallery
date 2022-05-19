@@ -31,6 +31,10 @@
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
                     <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+
+                    <!-- Add for forward compatibility -->
+                    <Color x:Key="ControlStrokeColorDefault">#12FFFFFF</Color>
+                    <Color x:Key="ControlStrokeColorSecondary">#18FFFFFF</Color>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
@@ -40,6 +44,10 @@
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
                     <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+
+                    <!-- Add for forward compatibility -->
+                    <Color x:Key="ControlStrokeColorDefault">#0F000000</Color>
+                    <Color x:Key="ControlStrokeColorSecondary">#29000000</Color>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
@@ -49,6 +57,10 @@
                     <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
                     <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+
+                    <!-- Add for forward compatibility -->
+                    <Color x:Key="ControlStrokeColorDefault">#FF0000</Color>
+                    <Color x:Key="ControlStrokeColorSecondary">#FF0000</Color>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -85,12 +97,12 @@
 
             <x:String x:Key="ControlsName">All controls</x:String>
             <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
-            <x:String x:Key="WinUIVersion">WinAppSDK 1.1</x:String>
+            <x:String x:Key="WinUIVersion">WinAppSDK 0.8</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />
             </Style>
-           
+
             <Style x:Name="NarrowHeaderTextBlockStyle" BasedOn="{StaticResource HeaderTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource SystemControlForegroundChromeWhiteBrush}"/>
                 <Setter Property="VerticalAlignment" Value="Top"/>
@@ -120,6 +132,32 @@
             <Style x:Key="IndentedGridViewItemStyleSmall" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                 <Setter Property="Margin" Value="12,0,12,12" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
+
+            <!-- Style Items to add to 0.8 for forward compatiblity -->
+            <Style x:Key="BodyStrongTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="DefaultGridViewItemStyle" TargetType="GridViewItem">
+                <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="Background" Value="{ThemeResource GridViewItemBackground}" />
+                <Setter Property="Foreground" Value="{ThemeResource GridViewItemForeground}" />
+                <Setter Property="TabNavigation" Value="Local" />
+                <Setter Property="IsHoldingEnabled" Value="True" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Margin" Value="0,0,4,4" />
+                <Setter Property="MinWidth" Value="{ThemeResource GridViewItemMinWidth}" />
+                <Setter Property="MinHeight" Value="{ThemeResource GridViewItemMinHeight}" />
+                <Setter Property="AllowDrop" Value="True" />
+                <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+                <Setter Property="FocusVisualMargin" Value="-3" />
+                <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource GridViewItemFocusVisualPrimaryBrush}" />
+                <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+                <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource GridViewItemFocusVisualSecondaryBrush}" />
+                <Setter Property="FocusVisualSecondaryThickness" Value="1" />
             </Style>
 
             <x:Double x:Key="TeachingTipMinWidth">50</x:Double>

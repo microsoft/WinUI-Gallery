@@ -44,6 +44,7 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>WinUIGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
+    <PathToXamlWinRTImplementations>WinUIGallery.DesktopWap\</PathToXamlWinRTImplementations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
@@ -53,10 +54,8 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundlePlatforms>$(Platform)</AppxBundlePlatforms>
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -86,21 +85,27 @@
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
-
   </ItemGroup>
+  <!-- Project Reunion specific logic -->
+  <PropertyGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
+    <!--PackageReference.GeneratePathProperty does not support NUGET_PACKAGES env var...-->
+    <NuGetPackageRoot Condition="'$(NuGetPackageRoot)'==''">$(NUGET_PACKAGES)</NuGetPackageRoot>
+    <NuGetPackageRoot Condition="'$(NuGetPackageRoot)'==''">$(UserProfile)\.nuget\packages</NuGetPackageRoot>
+    <PkgMicrosoft_ProjectReunion Condition="'$(PkgMicrosoft_ProjectReunion)'==''">$([MSBuild]::NormalizeDirectory('$(NuGetPackageRoot)', 'Microsoft.ProjectReunion', '$(ProjectReunionPackageVersion)'))</PkgMicrosoft_ProjectReunion>
+    <PkgMicrosoft_ProjectReunion Condition="!Exists($(PkgMicrosoft_ProjectReunion))">$(SolutionDir)packages\Microsoft.ProjectReunion.$(ProjectReunionPackageVersion)\</PkgMicrosoft_ProjectReunion>
+    <PkgMicrosoft_ProjectReunion_WinUI Condition="'$(PkgMicrosoft_ProjectReunion_WinUI)'==''">$([MSBuild]::NormalizeDirectory('$(NuGetPackageRoot)', 'Microsoft.ProjectReunion.WinUI', '$(ProjectReunionWinUIPackageVersion)'))</PkgMicrosoft_ProjectReunion_WinUI>
+    <PkgMicrosoft_ProjectReunion_WinUI Condition="!Exists($(PkgMicrosoft_ProjectReunion_WinUI))">$(SolutionDir)packages\Microsoft.ProjectReunion.WinUI.$(ProjectReunionWinUIPackageVersion)\</PkgMicrosoft_ProjectReunion_WinUI>
+    <Microsoft_ProjectReunion_AppXReference_props>$([MSBuild]::NormalizeDirectory('$(PkgMicrosoft_ProjectReunion)', 'build'))Microsoft.ProjectReunion.AppXReference.props</Microsoft_ProjectReunion_AppXReference_props>
+    <EntryPointProjectUniqueName>WinUIGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
+  </PropertyGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
-        <IncludeAssets>build</IncludeAssets>
+    <PackageReference Include="Microsoft.ProjectReunion" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
+      <ExcludeAssets>all</ExcludeAssets>
     </PackageReference>
-
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194">
-      <IncludeAssets>build</IncludeAssets>
+    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[$(ProjectReunionWinUIPackageVersion)]" GeneratePathProperty="true">
+      <ExcludeAssets>all</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
-  <!-- WinUI 3 NuGet-specific logic-->
-  <PropertyGroup Condition="'$(WinUIPackageVersion)' != ''">
-    <AppxTargetsLocation Condition="'$(AppxTargetsLocation)'==''">$(MSBuildThisFileDirectory)build\</AppxTargetsLocation>
-  </PropertyGroup>
-  <Import Project="$(AppxTargetsLocation)Microsoft.WinUI.AppX.targets" Condition="Exists('$(AppxTargetsLocation)Microsoft.WinUI.AppX.targets') AND '$(WinUIPackageVersion)' != ''" />
+  <Import Project="$(Microsoft_ProjectReunion_AppXReference_props)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
 </Project>

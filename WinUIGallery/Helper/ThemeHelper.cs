@@ -1,7 +1,6 @@
 using System;
 using Windows.Storage;
 using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 
 #if UNIVERSAL
