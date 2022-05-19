@@ -43,7 +43,7 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 [Get started with Windows 10 apps](https://docs.microsoft.com/windows/uwp/get-started/)  
 
-[Install a prebuilt version of this app from Microsoft Store](https://www.microsoft.com/store/productId/9MSVH128X2ZT). Each control page in the application has links to relevant Microsoft Docs for that control.
+[Install a prebuilt version of this app from Microsoft Store](https://www.microsoft.com/store/productId/9P3JFPWWDZRC). Each control page in the application has links to relevant Microsoft Docs for that control.
 
 [Windows UI Library (WinUI)](https://docs.microsoft.com/uwp/toolkits/winui/)
 
