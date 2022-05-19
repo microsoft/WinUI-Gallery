@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"  xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6" IgnorableNamespaces="uap mp uap3 uap6">
-  <Identity Name="Microsoft.WinUI2Gallery.Debug" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.22.0" />
+  <Identity Name="Microsoft.XAMLControlsGallery.Debug" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.24.0" />
   <mp:PhoneIdentity PhoneProductId="1DE51B2F-78B7-4c23-9045-66DD91CDFE62" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WinUI 2 Gallery (Debug)</DisplayName>
@@ -27,7 +27,7 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="winuigallery">
+          <uap:Protocol Name="winui2gallery">
             <uap:DisplayName>WinUI 2 Gallery (Debug)</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
