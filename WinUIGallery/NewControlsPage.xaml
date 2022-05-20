@@ -114,7 +114,7 @@
                     </StackPanel>
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
-                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/apps/get-started/?tabs=net-maui"/>
+                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/apps/get-started/"/>
                             <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
                             <controls:HeaderTile Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
                             <controls:HeaderTile Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
