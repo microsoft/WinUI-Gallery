@@ -1127,7 +1127,7 @@
           "Docs": [
             {
               "Title": "InfoBar - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.infobar"
+              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.infobar"
             },
             {
               "Title": "Guidelines",
@@ -1850,7 +1850,7 @@
           "Docs": [
             {
               "Title": "AnimatedVisualPlayer - API",
-              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+              "Uri": "https://www.docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.animatedvisualplayer"
             },
             {
               "Title": "Full Samples",
@@ -1866,7 +1866,7 @@
             },
             {
               "Title": "Lottie Windows - GitHub",
-              "Uri": "https://www.docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+              "Uri": "https://github.com/CommunityToolkit/Lottie-Windows"
             }
           ]
         },
