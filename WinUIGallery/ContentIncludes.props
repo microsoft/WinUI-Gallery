@@ -305,6 +305,7 @@
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\ItemsRepeater\ItemsRepeaterSampleBars_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewGroupedHeaderSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample1_xaml.txt" />
