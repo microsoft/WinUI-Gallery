@@ -27,7 +27,8 @@
     
     <StackPanel>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
-                              CSharpSource="Window\Titlebar\TitlebarSample1.txt">
+                              CSharpSource="Window\Titlebar\TitlebarSample1_cs.txt"
+                              XamlSource="Window\Titlebar\TitlebarSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">

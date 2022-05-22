@@ -1,29 +1,27 @@
-﻿Compositor _compositor = App.CurrentWindow.Compositor;
-SpringVector3NaturalMotionAnimation _springAnimation;
+﻿private SpringVector3NaturalMotionAnimation _springAnimation;
 
+private void OnElementPointerEntered(object sender, PointerRoutedEventArgs e)
+{
+    CreateOrUpdateSpringAnimation(1.5f);
+    (sender as UIElement)?.StartAnimation(_springAnimation);
+}
+private void OnElementPointerExited(object sender, PointerRoutedEventArgs e)
+{
+    CreateOrUpdateSpringAnimation(1.0f);
+    (sender as UIElement)?.StartAnimation(_springAnimation);
+}
 private void CreateOrUpdateSpringAnimation(float finalValue)
 {
-    if (_springAnimation == null)
+    if (_springAnimation is null)
     {
-        _springAnimation = _compositor.CreateSpringVector3Animation();
-        _springAnimation.Target = "Scale";
+        // In WinUI3, the Compositor is exposed by the Window object.
+        // Make sure "this" references to the Window
+        Compositor compositor = this.Compositor;
+        if (compositor is not null)
+        {
+            _springAnimation = compositor.CreateSpringVector3Animation();
+            _springAnimation.Target = "Scale";
+        }
     }
-
     _springAnimation.FinalValue = new Vector3(finalValue);
-}
-
-private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
-{
-    // Scale up to 1.5
-    CreateOrUpdateSpringAnimation(1.5f);
-
-    (sender as UIElement).StartAnimation(_springAnimation);
-}
-
-private void element_PointerExited(object sender, PointerRoutedEventArgs e)
-{
-    // Scale back down to 1.0
-    CreateOrUpdateSpringAnimation(1.0f);
-
-    (sender as UIElement).StartAnimation(_springAnimation);
 }

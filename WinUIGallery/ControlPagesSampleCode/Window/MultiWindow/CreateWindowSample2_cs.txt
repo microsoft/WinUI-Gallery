@@ -1,4 +1,4 @@
-﻿// C# code to create a new window
+﻿// C# code to create a new window of the WinUI3 Gallery
 var newWindow = WindowHelper.CreateWindow();
 var rootPage = new NavigationRootPage();
 rootPage.RequestedTheme = ThemeHelper.RootTheme;

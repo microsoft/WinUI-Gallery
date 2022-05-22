@@ -97,7 +97,7 @@ namespace AppUIBasics.ControlPages
             // Set sample code to display on page's initial load
             SampleCodeLayout.Value = @"<StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
 
-            SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
+            SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""local:Bar"">
     <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
         <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}"" 
                    Height=""24"" HorizontalAlignment=""Left""/> 
@@ -180,11 +180,11 @@ namespace AppUIBasics.ControlPages
 
                 SampleCodeLayout.Value = @"<StackLayout x:Name=""VerticalStackLayout"" Orientation=""Vertical"" Spacing=""8""/>";
                 SampleCodeDT.Value = @"<DataTemplate x:Key=""HorizontalBarTemplate"" x:DataType=""l:Bar"">
-    <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
-        <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}""
-                   Height=""24"" HorizontalAlignment=""Left""/> 
-    </Border>
-</DataTemplate>";
+        <Border Background=""{ThemeResource SystemChromeLowColor}"" Width=""{x:Bind MaxLength}"" >
+            <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Width=""{x:Bind Length}""
+                       Height=""24"" HorizontalAlignment=""Left""/> 
+        </Border>
+    </DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
             {
@@ -194,12 +194,12 @@ namespace AppUIBasics.ControlPages
                 repeater.MaxWidth = 6000;
 
                 SampleCodeLayout.Value = @"<StackLayout x:Name=""HorizontalStackLayout"" Orientation=""Horizontal"" Spacing=""8""/> ";
-                SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""l:Bar"">
-    <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
-        <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Height}"" 
-                   Width=""48"" VerticalAlignment=""Top""/>
-    </Border>
-</DataTemplate>";
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""VerticalBarTemplate"" x:DataType=""local:Bar"">
+        <Border Background=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxHeight}"">
+            <Rectangle Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Height}"" 
+                       Width=""48"" VerticalAlignment=""Top""/>
+        </Border>
+    </DataTemplate>";
             }
             else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
             {
@@ -209,14 +209,14 @@ namespace AppUIBasics.ControlPages
                 repeater.MaxWidth = 540;
 
                 SampleCodeLayout.Value = @"<UniformGridLayout x:Name=""UniformGridLayout"" MinRowSpacing=""8"" MinColumnSpacing=""8""/>";
-                SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""l:Bar"">
-    <Grid>
-        <Ellipse Fill=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxDiameter}"" 
-                 Width=""{x:Bind MaxDiameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
-        <Ellipse Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Diameter}"" 
-                 Width=""{x:Bind Diameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
-    </Grid>
-</DataTemplate>";
+                SampleCodeDT.Value = @"<DataTemplate x:Key=""CircularTemplate"" x:DataType=""local:Bar"">
+        <Grid>
+            <Ellipse Fill=""{ThemeResource SystemChromeLowColor}"" Height=""{x:Bind MaxDiameter}"" 
+                     Width=""{x:Bind MaxDiameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
+            <Ellipse Fill=""{ThemeResource SystemAccentColor}"" Height=""{x:Bind Diameter}"" 
+                     Width=""{x:Bind Diameter}"" VerticalAlignment=""Center"" HorizontalAlignment=""Center""/>
+        </Grid>
+    </DataTemplate>";
             }
             repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
             repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;

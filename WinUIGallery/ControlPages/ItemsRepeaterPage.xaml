@@ -99,7 +99,9 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
+        <local:ControlExample
+            CSharpSource="ItemsRepeater/ItemsRepeaterSampleBars_cs.txt"
+            HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
             <ScrollViewer HorizontalScrollBarVisibility="Auto"
                           VerticalScrollBarVisibility="Auto" 
                           HorizontalScrollMode="Auto" 
@@ -129,7 +131,6 @@
                     </RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
-
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 
@@ -138,22 +139,20 @@
         HorizontalScrollMode="Auto" 
         IsVerticalScrollChainingEnabled="False"
         MaxHeight="500"&gt;
+
+    &lt;ScrollViewer.Resources&gt;
+    &lt;!-- The ItemsRepeater's layout used: --&gt;
+    $(SampleCodeLayout)     
+    &lt;!-- The ItemsRepeater's DataTemplate used: $(ElementGenerator)--&gt;
+    $(SampleCodeDT) 
+    &lt;/ScrollViewer.Resources&gt;
+                    
     &lt;ItemsRepeater
         ItemsSource="{x:Bind BarItems}"
         Layout="{StaticResource $(Layout)}"
         ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
 &lt;/ScrollViewer&gt;
                     
-&lt;!-- The Layout specifications used: --&gt;
-                    
-$(SampleCodeLayout)     
-                    
-&lt;!-- The DataTemplate used: $(ElementGenerator)--&gt;
-                    
-$(SampleCodeDT)                    
-                    
-&lt;!-- The ItemsSource used is a list of custom-class Bar objects called BarItems. Bar objects have 
-the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and MaxDiameter. --&gt;
     </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>

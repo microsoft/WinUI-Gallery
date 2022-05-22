@@ -360,9 +360,11 @@
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\Window\CreateWindowSample1.txt" />
-    <Content Include="ControlPagesSampleCode\Window\Titlebar\TitlebarSample1.txt" />
     <Content Include="ControlPagesSampleCode\Window\Titlebar\TitlebarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Window\Titlebar\TitleBarSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Window\Titlebar\TitleBarSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Window\MultiWindow\CreateWindowSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Window\MultiWindow\CreateWindowSample2_cs.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
   </ItemGroup>

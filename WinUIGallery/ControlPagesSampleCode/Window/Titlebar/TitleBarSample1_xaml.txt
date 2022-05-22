@@ -1,0 +1,7 @@
+﻿<!-- This UIElement will be set as the TitleBar of your Window -->
+<Border x:Name="CustomTitleBar" Height="30">
+    <TextBlock VerticalAlignment="Center" 
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Margin="20,0"
+                Text="{x:Bind Title}"/>
+</Border>

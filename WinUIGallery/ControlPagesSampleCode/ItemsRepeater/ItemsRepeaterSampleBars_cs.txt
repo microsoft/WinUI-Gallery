@@ -1,0 +1,40 @@
+﻿   public class Bar
+   {
+        public Bar(double length, int maxLength)
+        {
+            Length = length;
+            MaxLength = maxLength;
+
+            Height = length / 4;
+            MaxHeight = maxLength / 4;
+
+            Diameter = length / 6;
+            MaxDiameter = maxLength / 6;
+        }
+        public double Length { get; }
+        public int MaxLength { get; }
+        public double Height { get; }
+        public double MaxHeight { get; }
+        public double Diameter { get; }
+        public double MaxDiameter { get; }
+    }
+    
+    public class BarChart
+    {
+        public ObservableCollection<Bar> BarItems { get; } = new();
+        public void AddBar(int diameter, int maxDiameter)
+        {
+            BarItems.Add(new Bar(diameter, maxDiameter));
+        }
+        public void LoadRandomBars(int numBars)
+        {
+            BarItems.Clear();
+
+            Random random = new();
+            int maxLength = 425;
+            for (int i = 0; i < numBars; i++)
+            {
+                BarItems.Add(new Bar(random.Next(maxLength), maxLength));
+            }
+        }
+    }
