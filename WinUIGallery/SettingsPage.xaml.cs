@@ -18,6 +18,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+using WinRT;
+using System.Runtime.InteropServices;
 
 #if UNIVERSAL
 using Windows.UI.ViewManagement;
@@ -88,6 +90,12 @@ namespace AppUIBasics
             }
         }
 
+        [ComImport, Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        private interface IWindowNative
+        {
+            IntPtr WindowHandle { get; }
+        };
+
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
@@ -95,7 +103,8 @@ namespace AppUIBasics
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
 #else
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
+            var res = Microsoft.UI.Xaml.Application.Current.Resources;
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
 #endif
             if (selectedTheme != null)
             {
@@ -120,6 +129,22 @@ namespace AppUIBasics
                     }
                 }
             }
+
+            // to trigger repaint tracking task id 38044406
+            var native = App.StartupWindow.As<IWindowNative>();
+            var hwnd = native.WindowHandle;
+            var activeWindow = Win32.GetActiveWindow();
+            if (hwnd == activeWindow)
+            {
+                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
+                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
+            }
+            else
+            {
+                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
+                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
+            }
+
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
