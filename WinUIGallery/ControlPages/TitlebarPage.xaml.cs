@@ -25,6 +25,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT;
 using System.Runtime.InteropServices;
+using WinUIGallery.DesktopWap.Helper;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -48,12 +49,6 @@ namespace AppUIBasics.ControlPages
             UpdateButtonText();
         }
 
-
-        [ComImport, Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        private interface IWindowNative
-        {
-            IntPtr WindowHandle { get; }
-        };
 
         private void SetTitlebar(UIElement titlebar)
         {
@@ -126,20 +121,7 @@ namespace AppUIBasics.ControlPages
             res["WindowCaptionForeground"] = currentFgColor;
             //res["WindowCaptionForegroundDisabled"] = currentFgColor;
 
-            // to trigger repaint tracking task id 38044406
-            var native = App.StartupWindow.As<IWindowNative>();
-            var hwnd = native.WindowHandle;
-            var activeWindow = Win32.GetActiveWindow();
-            if (hwnd == activeWindow)
-            {
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
-            }
-            else
-            {
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
-            }
+            TitlebarHelper.triggerTitleBarRepaint();
         }
 
         private void customTitlebar_Click(object sender, RoutedEventArgs e)
