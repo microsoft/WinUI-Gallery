@@ -18,6 +18,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+using WinRT;
+using System.Runtime.InteropServices;
+using WinUIGallery.DesktopWap.Helper;
 
 #if UNIVERSAL
 using Windows.UI.ViewManagement;
@@ -95,7 +98,8 @@ namespace AppUIBasics
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
 #else
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
+            var res = Microsoft.UI.Xaml.Application.Current.Resources;
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
 #endif
             if (selectedTheme != null)
             {
@@ -120,6 +124,9 @@ namespace AppUIBasics
                     }
                 }
             }
+
+            TitlebarHelper.triggerTitleBarRepaint();
+
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
