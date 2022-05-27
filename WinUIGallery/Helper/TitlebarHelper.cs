@@ -21,17 +21,10 @@ namespace WinUIGallery.DesktopWap.Helper
     internal class TitlebarHelper
     {
 
-        [ComImport, Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        private interface IWindowNative
-        {
-            IntPtr WindowHandle { get; }
-        };
-
         public static void triggerTitleBarRepaint()
         {
             // to trigger repaint tracking task id 38044406
-            var native = AppUIBasics.App.StartupWindow.As<IWindowNative>();
-            var hwnd = native.WindowHandle;
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(AppUIBasics.App.StartupWindow);
             var activeWindow = AppUIBasics.Win32.GetActiveWindow();
             if (hwnd == activeWindow)
             {
