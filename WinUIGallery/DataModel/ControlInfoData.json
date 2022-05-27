@@ -2658,7 +2658,7 @@
           "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
-          "Content": "<p>Look at the <i>TitlebarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "IsUpdated": false,
           "Docs": [
