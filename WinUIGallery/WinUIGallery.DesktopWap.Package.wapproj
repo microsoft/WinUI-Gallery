@@ -38,7 +38,7 @@
   <Import Project="common.props" />
   <PropertyGroup>
     <ProjectGuid>4c7b20d7-5f5c-440e-8da3-b19a328cc8bd</ProjectGuid>
-    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.22000.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
@@ -86,13 +86,11 @@
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
-
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
-        <IncludeAssets>build</IncludeAssets>
+      <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>

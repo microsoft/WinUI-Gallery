@@ -32,6 +32,10 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Windowing;
+using WinRT.Interop;
+using Windows.ApplicationModel;
+using System.IO;
 
 namespace AppUIBasics
 {
@@ -130,7 +134,12 @@ namespace AppUIBasics
             {
                 NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
 #if !UNIVERSAL
-                WindowHelper.GetWindowForElement(this).Title = AppTitleText;
+                var window = WindowHelper.GetWindowForElement(this);
+                window.Title = AppTitleText;
+                var windowId = Win32Interop.GetWindowIdFromWindow(WindowNative.GetWindowHandle(window));
+                var appWindow = AppWindow.GetFromWindowId(windowId);
+                var iconPath = Package.Current.InstalledLocation.Path + @"\Assets\Tiles\WindowIcon.ico";
+                appWindow.SetIcon(iconPath);
 #endif
             };
 

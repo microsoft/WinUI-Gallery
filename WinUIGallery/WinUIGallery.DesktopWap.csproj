@@ -82,8 +82,12 @@
 
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\Tiles\WindowIcon.ico" />
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Content Remove="@(Content)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Tiles\WindowIcon.ico" />
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
