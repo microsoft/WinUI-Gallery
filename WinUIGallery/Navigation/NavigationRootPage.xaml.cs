@@ -37,6 +37,8 @@ namespace AppUIBasics
 {
     public sealed partial class NavigationRootPage : Page
     {
+        public static NavigationRootPage Current;
+        public static Frame RootFrame = null;
         public Windows.System.VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
@@ -105,6 +107,8 @@ namespace AppUIBasics
 
             SetDeviceFamily();
             AddNavigationMenuItems();
+            Current = this;
+            RootFrame = rootFrame;
 
             this.GotFocus += (object sender, RoutedEventArgs e) =>
             {

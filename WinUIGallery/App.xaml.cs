@@ -139,7 +139,7 @@ namespace AppUIBasics
 
 #if !UNIVERSAL
             // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.
-            EnsureWindow();
+            EnsureWindow(args.UWPLaunchActivatedEventArgs);
 #else
             EnsureWindow(args.UWPLaunchActivatedEventArgs);
 #endif
@@ -156,8 +156,7 @@ namespace AppUIBasics
             EnsureWindow(args);
         }
 #endif
-
-        private async void EnsureWindow(IActivatedEventArgs args = null)
+        private async Task EnsureWindow(IActivatedEventArgs args)
         {
             // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
             // We'll never need to do this again.
@@ -167,86 +166,195 @@ namespace AppUIBasics
 
             ThemeHelper.Initialize();
 
+            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated
+                    || args.PreviousExecutionState == ApplicationExecutionState.Suspended)
+            {
+                try
+                {
+                    await SuspensionManager.RestoreAsync();
+                }
+                catch (SuspensionManagerException)
+                {
+                    //Something went wrong restoring state.
+                    //Assume there is no state and continue
+                }
+
+                Window.Current.Activate();
+
+                UpdateNavigationBasedOnSelectedPage(rootFrame);
+                return;
+            }
+
             Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
 
-            if (args != null)
+            if (args.Kind == ActivationKind.Launch)
             {
-                if (args.Kind == ActivationKind.Launch)
-                {
-                    if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                    {
-                        try
-                        {
-                            await SuspensionManager.RestoreAsync();
-                        }
-                        catch (SuspensionManagerException)
-                        {
-                            //Something went wrong restoring state.
-                            //Assume there is no state and continue
-                        }
-                    }
+                targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
+            }
+            else if (args.Kind == ActivationKind.Protocol)
+            {
+                Match match;
 
-                    targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
+                string targetId = string.Empty;
+
+                switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
+                {
+                    case string s when IsMatching(s, "(/*)category/(.*)"):
+                        targetId = match.Groups[2]?.ToString();
+                        if (targetId == "AllControls")
+                        {
+                            targetPageType = typeof(AllControlsPage);
+                        }
+                        else if (targetId == "NewControls")
+                        {
+                            targetPageType = typeof(NewControlsPage);
+                        }
+                        else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
+                        {
+                            targetPageType = typeof(SectionPage);
+                        }
+                        break;
+
+                    case string s when IsMatching(s, "(/*)item/(.*)"):
+                        targetId = match.Groups[2]?.ToString();
+                        if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
+                        {
+                            targetPageType = typeof(ItemPage);
+                        }
+                        break;
                 }
-                else if (args.Kind == ActivationKind.Protocol)
+
+                targetPageArguments = targetId;
+
+                bool IsMatching(string parent, string expression)
                 {
-                    Match match;
-
-                    string targetId = string.Empty;
-
-                    switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
-                    {
-                        case string s when IsMatching(s, "(/*)category/(.*)"):
-                            targetId = match.Groups[2]?.ToString();
-                            if (targetId == "AllControls")
-                            {
-                                targetPageType = typeof(AllControlsPage);
-                            }
-                            else if (targetId == "NewControls")
-                            {
-                                targetPageType = typeof(NewControlsPage);
-                            }
-                            else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
-                            {
-                                targetPageType = typeof(SectionPage);
-                            }
-                            break;
-
-                        case string s when IsMatching(s, "(/*)item/(.*)"):
-                            targetId = match.Groups[2]?.ToString();
-                            if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
-                            {
-                                targetPageType = typeof(ItemPage);
-                            }
-                            break;
-                    }
-
-                    targetPageArguments = targetId;
-
-                    bool IsMatching(string parent, string expression)
-                    {
-                        match = Regex.Match(parent, expression);
-                        return match.Success;
-                    }
+                    match = Regex.Match(parent, expression);
+                    return match.Success;
                 }
             }
 
-            NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
-            rootPage.Navigate(targetPageType, targetPageArguments);
+            rootFrame.Navigate(targetPageType, targetPageArguments);
 
             if (targetPageType == typeof(NewControlsPage))
             {
-                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
+                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)Window.Current.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }
             else if (targetPageType == typeof(ItemPage))
             {
-                NavigationRootPage.GetForElement(this).EnsureNavigationSelection(targetPageArguments);
+                NavigationRootPage.Current.EnsureNavigationSelection(targetPageArguments);
             }
 
             // Ensure the current window is active
-           StartupWindow.Activate();
+            Window.Current.Activate();
         }
+
+        private static void UpdateNavigationBasedOnSelectedPage(Frame rootFrame)
+        {
+            // Check if we brought back an ItemPage
+            if (rootFrame.Content is ItemPage itemPage)
+            {
+                // We did, so bring the selected item back into view
+                string name = itemPage.Item.Title;
+                if (Window.Current.Content is NavigationRootPage nav)
+                {
+                    // Finally brings back into view the correct item.
+                    // But first: Update page layout!
+                    nav.EnsureItemIsVisibleInNavigation(name);
+                }
+            }
+        }
+
+        //private async void EnsureWindow(IActivatedEventArgs args)
+        //{
+        //    // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
+        //    // We'll never need to do this again.
+        //    await ControlInfoDataSource.Instance.GetGroupsAsync();
+
+        //    Frame rootFrame = GetRootFrame();
+
+        //    ThemeHelper.Initialize();
+
+        //    Type targetPageType = typeof(NewControlsPage);
+        //    string targetPageArguments = string.Empty;
+
+        //    if (args != null)
+        //    {
+        //        if (args.Kind == ActivationKind.Launch)
+        //        {
+        //            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+        //            {
+        //                try
+        //                {
+        //                    await SuspensionManager.RestoreAsync();
+        //                }
+        //                catch (SuspensionManagerException)
+        //                {
+        //                    //Something went wrong restoring state.
+        //                    //Assume there is no state and continue
+        //                }
+        //            }
+
+        //            targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
+        //        }
+        //        else if (args.Kind == ActivationKind.Protocol)
+        //        {
+        //            Match match;
+
+        //            string targetId = string.Empty;
+
+        //            switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
+        //            {
+        //                case string s when IsMatching(s, "(/*)category/(.*)"):
+        //                    targetId = match.Groups[2]?.ToString();
+        //                    if (targetId == "AllControls")
+        //                    {
+        //                        targetPageType = typeof(AllControlsPage);
+        //                    }
+        //                    else if (targetId == "NewControls")
+        //                    {
+        //                        targetPageType = typeof(NewControlsPage);
+        //                    }
+        //                    else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
+        //                    {
+        //                        targetPageType = typeof(SectionPage);
+        //                    }
+        //                    break;
+
+        //                case string s when IsMatching(s, "(/*)item/(.*)"):
+        //                    targetId = match.Groups[2]?.ToString();
+        //                    if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
+        //                    {
+        //                        targetPageType = typeof(ItemPage);
+        //                    }
+        //                    break;
+        //            }
+
+        //            targetPageArguments = targetId;
+
+        //            bool IsMatching(string parent, string expression)
+        //            {
+        //                match = Regex.Match(parent, expression);
+        //                return match.Success;
+        //            }
+        //        }
+        //    }
+
+        //    NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
+        //    rootPage.Navigate(targetPageType, targetPageArguments);
+
+        //    if (targetPageType == typeof(NewControlsPage))
+        //    {
+        //        ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
+        //    }
+        //    else if (targetPageType == typeof(ItemPage))
+        //    {
+        //        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(targetPageArguments);
+        //    }
+
+        //    // Ensure the current window is active
+        //   StartupWindow.Activate();
+        //}
 
         private Frame GetRootFrame()
         {
