@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 
 namespace WinUIGallery.DesktopWap.Helper
 {
-    internal class TitlebarHelper
+    internal class TitleBarHelper
     {
 
         public static void triggerTitleBarRepaint()

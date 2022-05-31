@@ -125,7 +125,7 @@ namespace AppUIBasics
                 }
             }
 
-            TitlebarHelper.triggerTitleBarRepaint();
+            TitleBarHelper.triggerTitleBarRepaint();
 
         }
 
