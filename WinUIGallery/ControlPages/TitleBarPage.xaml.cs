@@ -37,20 +37,20 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TitlebarPage : Page
+    public sealed partial class TitleBarPage : Page
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = Colors.Black;
 
-        public TitlebarPage()
+        public TitleBarPage()
         {
             this.InitializeComponent();
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
             UpdateButtonText();
         }
 
 
-        private void SetTitlebar(UIElement titlebar)
+        private void SetTitleBar(UIElement titlebar)
         {
             var window = App.StartupWindow;
             if (!window.ExtendsContentIntoTitleBar)
@@ -65,7 +65,7 @@ namespace AppUIBasics.ControlPages
 
             }
             UpdateButtonText();
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
         }
 
         private void UpdateButtonText()
@@ -73,13 +73,13 @@ namespace AppUIBasics.ControlPages
             var window = App.StartupWindow;
             if (window.ExtendsContentIntoTitleBar)
             {
-                customTitlebar.Content = "Reset to system Titlebar";
-                defaultTitlebar.Content = "Reset to system Titlebar";
+                customTitleBar.Content = "Reset to system TitleBar";
+                defaultTitleBar.Content = "Reset to system TitleBar";
             }
             else
             {
-                customTitlebar.Content = "Set Custom Titlebar";
-                defaultTitlebar.Content = "Set Fallback Custom Titlebar";
+                customTitleBar.Content = "Set Custom TitleBar";
+                defaultTitleBar.Content = "Set Fallback Custom TitleBar";
             }
 
         }
@@ -94,7 +94,7 @@ namespace AppUIBasics.ControlPages
             BackgroundColorElement.Background = new SolidColorBrush(color);
 
             currentBgColor = color;
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
 
         }
 
@@ -108,12 +108,12 @@ namespace AppUIBasics.ControlPages
             ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
 
         }
 
 
-        private void UpdateTitlebarColor()
+        private void UpdateTitleBarColor()
         {
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             res["WindowCaptionBackground"] = currentBgColor;
@@ -121,16 +121,16 @@ namespace AppUIBasics.ControlPages
             res["WindowCaptionForeground"] = currentFgColor;
             //res["WindowCaptionForegroundDisabled"] = currentFgColor;
 
-            TitlebarHelper.triggerTitleBarRepaint();
+            TitleBarHelper.triggerTitleBarRepaint();
         }
 
-        private void customTitlebar_Click(object sender, RoutedEventArgs e)
+        private void customTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            SetTitlebar(App.appTitlebar);
+            SetTitleBar(App.appTitleBar);
         }
-        private void defaultTitlebar_Click(object sender, RoutedEventArgs e)
+        private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            SetTitlebar(null);
+            SetTitleBar(null);
         }
     }
 }

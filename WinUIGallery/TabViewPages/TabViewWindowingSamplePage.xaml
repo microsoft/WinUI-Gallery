@@ -21,7 +21,7 @@
                              TabStripDrop="Tabs_TabStripDrop"
                              TabDragStarting="Tabs_TabDragStarting" >
             <TabView.TabStripHeader>
-                <Grid x:Name="ShellTitlebarInset" Background="Transparent" />
+                <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
             </TabView.TabStripHeader>
             <TabView.TabStripFooter>
                 <Grid x:Name="CustomDragRegion" Background="Transparent" />
