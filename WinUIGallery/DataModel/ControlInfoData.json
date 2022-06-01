@@ -2001,7 +2001,7 @@
       "Items": [
         {
           "UniqueId": "Acrylic",
-          "Title": "Acrylic",
+          "Title": "AcrylicBrush",
           "Subtitle": "A translucent material recommended for panel backgrounds.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AcrylicBrushIcon.png",
@@ -2011,7 +2011,7 @@
           "IsUpdated": false,
           "Docs": [
             {
-              "Title": "Acrylic - API",
+              "Title": "AcrylicBrush - API",
               "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.xaml.media.acrylicbrush"
             },
             {
@@ -2020,6 +2020,7 @@
             }
           ],
           "RelatedControls": [
+            "SystemBackdrops"
           ]
         },
         {
