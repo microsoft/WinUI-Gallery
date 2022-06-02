@@ -15,9 +15,7 @@ description: Demonstrates the usage of all XAML/WinUI controls in an interactive
 
 ![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
 
-[![Build Status](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_apis/build/status/XAML%20Controls%20%20Gallery%20-%20CI%20Tests?branchName=master)](https://dev.azure.com/stmoy/Xaml%20Controls%20Gallery/_build/latest?definitionId=2&branchName=master)
-
-Shows all of the XAML controls in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of both UWP Xaml APIs and [Windows UI Toolkit](https://docs.microsoft.com/uwp/toolkits/winui/) APIs.
+Shows all of the XAML UI components in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/uwp/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/en-us/windows/apps/winui/) APIs. 
 
 ## The WinUI Gallery shows how to:
 
@@ -31,7 +29,7 @@ Shows all of the XAML controls in an interactive format. This app is the interac
 
 >**Note**: The WinUI 3 Gallery requires [Visual Studio 16.9 Preview 1](https://visualstudio.microsoft.com/vs/preview/) or later to build and Windows 10 to execute.  Also ensure that you've completed the prerequisite steps from the [installation instructions for WinUI 3 Preview 4](https://aka.ms/winui3/preview4).
 
-To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
+To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 
 To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
 
@@ -41,15 +39,17 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ## Related topics
 
-[Get started with Windows 10 apps](https://docs.microsoft.com/windows/uwp/get-started/)  
+[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
 
 [Install a prebuilt version of this app from Microsoft Store](https://www.microsoft.com/store/productId/9P3JFPWWDZRC). Each control page in the application has links to relevant Microsoft Docs for that control.
 
-[Windows UI Library (WinUI)](https://docs.microsoft.com/uwp/toolkits/winui/)
+[Windows UI Library (WinUI)](https://docs.microsoft.com/windows/apps/winui)
+
+[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
 ## Related samples
 
 [RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
 [Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
 [Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)  
-[Universal Windows Platform (UWP) Samples](https://github.com/Microsoft/Windows-universal-samples/tree/dev)
+[WinUI Samples](https://github.com/microsoft/WinUI-Samples)
