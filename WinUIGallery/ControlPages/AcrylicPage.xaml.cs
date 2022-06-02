@@ -17,15 +17,14 @@ namespace AppUIBasics.ControlPages
 
         private void AcrylicPage_Loaded(object sender, RoutedEventArgs e)
         {
-            /*ColorSelector.SelectedIndex = */ColorSelectorInApp.SelectedIndex = 0;
-            /*FallbackColorSelector.SelectedIndex = */FallbackColorSelectorInApp.SelectedIndex = 0;
-            /*OpacitySlider.Value = */OpacitySliderInApp.Value = OpacitySliderLumin.Value = 0.8;
+            ColorSelectorInApp.SelectedIndex = 0;
+            FallbackColorSelectorInApp.SelectedIndex = 0;
+            OpacitySliderInApp.Value = OpacitySliderLumin.Value = 0.8;
             LuminositySlider.Value = 0.8;
         }
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            //Rectangle shape = (sender == OpacitySliderInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
             Rectangle shape = CustomAcrylicShapeInApp;
             if ((Slider)sender == OpacitySliderLumin)
                 shape = CustomAcrylicShapeLumin;
@@ -35,7 +34,6 @@ namespace AppUIBasics.ControlPages
 
         private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Rectangle shape = (sender == ColorSelectorInApp) ? CustomAcrylicShapeInApp : CustomAcrylicShape;
             Rectangle shape = CustomAcrylicShapeInApp;
             ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
         }
