@@ -51,5 +51,4 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 [RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
 [Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
-[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)  
-[WinUI Samples](https://github.com/microsoft/WinUI-Samples)
+[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
