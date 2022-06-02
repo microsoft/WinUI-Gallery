@@ -39,11 +39,11 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ## Related topics
 
-[Get started with Windows 11 apps](https://docs.microsoft.com/en-us/windows/apps/get-started/?tabs=net-maui)  
+[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
 
 [Install a prebuilt version of this app from Microsoft Store](https://www.microsoft.com/store/productId/9P3JFPWWDZRC). Each control page in the application has links to relevant Microsoft Docs for that control.
 
-[Windows UI Library (WinUI)](https://docs.microsoft.com/en-us/windows/apps/winui/)
+[Windows UI Library (WinUI)](https://docs.microsoft.com/windows/apps/winui)
 
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
