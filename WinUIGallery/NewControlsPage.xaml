@@ -114,8 +114,8 @@
                     </StackPanel>
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
-                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/apps/get-started/"/>
-                            <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
+                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/windows/apps/get-started/"/>
+                            <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/windows/apps/design/"/>
                             <controls:HeaderTile Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
                             <controls:HeaderTile Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
                         </VariableSizedWrapGrid>
@@ -137,8 +137,8 @@
                 <Grid x:Name="learnMore" VerticalAlignment="Bottom" Height="200" Margin="16,34,48,0">
                     <StackPanel>
                         <TextBlock x:Name="LearnMore" Text="Learn More" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,12" />
-                        <HyperlinkButton Content="Developer Center" NavigateUri="https://developer.microsoft.com/en-us/windows/"/>
-                        <HyperlinkButton Content="App Code Samples" NavigateUri="https://docs.microsoft.com/en-us/windows/apps/get-started/samples"/>
+                        <HyperlinkButton Content="Developer Center" NavigateUri="https://developer.microsoft.com/windows/"/>
+                        <HyperlinkButton Content="App Code Samples" NavigateUri="https://docs.microsoft.com/windows/apps/get-started/samples"/>
                         <HyperlinkButton Content="Windows Template Studio" NavigateUri="https://github.com/microsoft/WindowsTemplateStudio"/>
                     </StackPanel>
                 </Grid>
