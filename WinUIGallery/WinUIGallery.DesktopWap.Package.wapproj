@@ -86,14 +86,12 @@
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
-
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
-        <IncludeAssets>build</IncludeAssets>
+      <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194">
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
