@@ -1,14 +1,14 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <ProjectReunionPackageVersion>1.1</ProjectReunionPackageVersion>
-    <ProjectReunionWinUIPackageVersion>1.1</ProjectReunionWinUIPackageVersion>
+    <ProjectReunionPackageVersion>1.1.0</ProjectReunionPackageVersion>
+    <ProjectReunionWinUIPackageVersion>1.1.0</ProjectReunionWinUIPackageVersion>
     <SamplesTargetFrameworkMoniker>net6.0-windows10.0.18362.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.3.1</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22563-preview</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
-    <MicrosoftCsWinRTPackageVersion>1.6.1</MicrosoftCsWinRTPackageVersion>
+    <MicrosoftCsWinRTPackageVersion>1.6.4</MicrosoftCsWinRTPackageVersion>
     <!-- Where to place the files generated from CSWinRT from WinUIGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
