@@ -77,7 +77,10 @@
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.WAP.appxmanifest">
+    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <AppxManifest Include="Package.WAP.Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
