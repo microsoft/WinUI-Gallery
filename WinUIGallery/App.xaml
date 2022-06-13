@@ -64,6 +64,8 @@
             <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
             <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
 
+            <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
+
             <x:String x:Key="AppTitleName">WinUI 2 Gallery</x:String>
             <x:String x:Key="WinUIVersion">SDK 2.8</x:String>
 
