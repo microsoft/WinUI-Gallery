@@ -28,15 +28,21 @@ Steps to reproduce the behavior:
 Gallery version (found on Settings page): 
 <!-- [e.g. 1.2.3.0] -->
 
-Windows 10 version:
+WinUI version:
+- [ ] WinUI3 / WinAppSDK 1.1
+- [ ] WinUI3 / WinAppSDK 1.0
+- [ ] WinUI2
+
+Windows 11 version:
 - [ ] Insider Build (xxxxx)
-- [ ] November 2019 Update (18363)
-- [ ] May 2019 Update (18362)
-- [ ] October 2018 Update (17763)
-- [ ] April 2018 Update (17134)
-- [ ] Fall Creators Update (16299)
-- [ ] Creators Update (15063)
-- [ ] Anniversary Update (14393)
+- [ ] Windows 11 22H2 (22621)
+- [ ] Windows 11 21H2 (22000)
+
+Windows 10 version:
+- [ ] November 2021 Update/21H2 (19044)
+- [ ] May 2021 Update/21H1 (19043)
+- [ ] October 2020 Update/20H2 (19042)
+- [ ] October 2018 Update/RS5 (17763)
 
 Device form factor:
 - [ ] Desktop
