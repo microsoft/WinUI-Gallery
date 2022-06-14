@@ -26,40 +26,22 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="Black"/>
                     <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
                     <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
                     <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
-                    <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
                     <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
-            <CornerRadius x:Key="ControlCornerRadius">8</CornerRadius>
-
-            <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1.5">
-                <GradientStop Offset="0" Color="Transparent"/>
-                <GradientStop Offset="0.5" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
-                <GradientStop Offset="1" Color="{ThemeResource LayerFillColorDefaultBrush}"/>
-            </LinearGradientBrush>
+            <x:Double x:Key="TeachingTipMinWidth">50</x:Double>
 
             <!--  Application-specific resources  -->
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
@@ -121,8 +103,6 @@
                 <Setter Property="Margin" Value="12,0,12,12" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
-
-            <x:Double x:Key="TeachingTipMinWidth">50</x:Double>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
