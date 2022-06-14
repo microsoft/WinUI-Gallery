@@ -33,8 +33,6 @@ namespace AppUIBasics
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
-        private NavigationRootPage navigationRootPage;
-
         public string Version
         {
             get
@@ -67,7 +65,6 @@ namespace AppUIBasics
             base.OnNavigatedTo(e);
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             args.NavigationRootPage.NavigationView.Header = "Settings";
-            navigationRootPage = args.NavigationRootPage;
         }
 
         private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
@@ -208,7 +205,7 @@ namespace AppUIBasics
 
         private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = navigationRootPage });
+            this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
         }
     }
 }
