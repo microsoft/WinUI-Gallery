@@ -26,7 +26,7 @@
 
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel Width="130"> 
+                <StackPanel Width="150"> 
                     <CheckBox x:Name="IsOpenCheckBox1" Content="Is Open" IsChecked="{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}"/>
                     <ComboBox x:Name="SeverityComboBox" Header="Severity" HorizontalAlignment="Stretch" SelectionChanged="SeverityComboBox_SelectionChanged" SelectedValue="Informational">
                         <x:String>Informational</x:String>
@@ -61,7 +61,7 @@
                 <local:ControlExampleSubstitution x:Name="DisplayButton" Key="DisplayButton" Value=""/>
             </local:ControlExample.Substitutions>
             <local:ControlExample.Options>
-                <StackPanel Width="130">
+                <StackPanel Width="150">
                     <CheckBox x:Name="IsOpenCheckBox2" Content="Is Open" IsChecked="{x:Bind TestInfoBar2.IsOpen, Mode=TwoWay}"/>
                     <ComboBox x:Name="MessageComboBox" Header="Message Length" HorizontalAlignment="Stretch" SelectionChanged="MessageComboBox_SelectionChanged" SelectedIndex="1">
                         <ComboBoxItem Content="Short" />
@@ -95,7 +95,7 @@
                     Message="Essential app message for your users to be informed of, acknowledge, or take action on." />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel Width="130">
+                <StackPanel Width="150">
                     <CheckBox x:Name="IsOpenCheckBox3" Content="Is Open" IsChecked="{x:Bind TestInfoBar3.IsOpen, Mode=TwoWay}"/>
                     <CheckBox x:Name="IsIconVisibleCheckBox" Content="Is Icon Visible" IsChecked="{x:Bind TestInfoBar3.IsIconVisible, Mode=TwoWay}"/>
                     <CheckBox x:Name="IsClosableCheckBox" Content="Is Closable" IsChecked="{x:Bind TestInfoBar3.IsClosable, Mode=TwoWay}"/>
