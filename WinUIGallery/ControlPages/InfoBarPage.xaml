@@ -26,9 +26,9 @@
 
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel> 
+                <StackPanel Width="130"> 
                     <CheckBox x:Name="IsOpenCheckBox1" Content="Is Open" IsChecked="{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}"/>
-                    <ComboBox x:Name="SeverityComboBox" Header="Severity" SelectionChanged="SeverityComboBox_SelectionChanged" SelectedValue="Informational">
+                    <ComboBox x:Name="SeverityComboBox" Header="Severity" HorizontalAlignment="Stretch" SelectionChanged="SeverityComboBox_SelectionChanged" SelectedValue="Informational">
                         <x:String>Informational</x:String>
                         <x:String>Success</x:String>
                         <x:String>Warning</x:String>
@@ -61,13 +61,13 @@
                 <local:ControlExampleSubstitution x:Name="DisplayButton" Key="DisplayButton" Value=""/>
             </local:ControlExample.Substitutions>
             <local:ControlExample.Options>
-                <StackPanel>
+                <StackPanel Width="130">
                     <CheckBox x:Name="IsOpenCheckBox2" Content="Is Open" IsChecked="{x:Bind TestInfoBar2.IsOpen, Mode=TwoWay}"/>
-                    <ComboBox x:Name="MessageComboBox" Header="Message Length" SelectionChanged="MessageComboBox_SelectionChanged" SelectedIndex="1">
+                    <ComboBox x:Name="MessageComboBox" Header="Message Length" HorizontalAlignment="Stretch" SelectionChanged="MessageComboBox_SelectionChanged" SelectedIndex="1">
                         <ComboBoxItem Content="Short" />
                         <ComboBoxItem Content="Long" />
                     </ComboBox>
-                    <ComboBox x:Name="ActionButtonComboBox" Header="Action Button" SelectionChanged="ActionButtonComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBox x:Name="ActionButtonComboBox" Header="Action Button" HorizontalAlignment="Stretch" SelectionChanged="ActionButtonComboBox_SelectionChanged" SelectedIndex="0">
                         <ComboBoxItem Content="None" />
                         <ComboBoxItem Content="Button" />
                         <ComboBoxItem Content="Hyperlink" />
@@ -95,7 +95,7 @@
                     Message="Essential app message for your users to be informed of, acknowledge, or take action on." />
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <StackPanel>
+                <StackPanel Width="130">
                     <CheckBox x:Name="IsOpenCheckBox3" Content="Is Open" IsChecked="{x:Bind TestInfoBar3.IsOpen, Mode=TwoWay}"/>
                     <CheckBox x:Name="IsIconVisibleCheckBox" Content="Is Icon Visible" IsChecked="{x:Bind TestInfoBar3.IsIconVisible, Mode=TwoWay}"/>
                     <CheckBox x:Name="IsClosableCheckBox" Content="Is Closable" IsChecked="{x:Bind TestInfoBar3.IsClosable, Mode=TwoWay}"/>
