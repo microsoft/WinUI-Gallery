@@ -80,7 +80,7 @@ namespace AppUIBasics
             NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                if(navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+                if (navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
                 {
                     navigationLocation.SelectedIndex = 0;
                 }
@@ -205,7 +205,7 @@ namespace AppUIBasics
 
         private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            this.Frame.Navigate(typeof(ItemPage), "Sound");
+            this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
         }
     }
 }

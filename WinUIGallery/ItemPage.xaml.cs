@@ -188,6 +188,7 @@ namespace AppUIBasics
                 }
 
                 args.NavigationRootPage.NavigationView.Header = item?.Title;
+                args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
             }
 
             base.OnNavigatedTo(e);
