@@ -2191,11 +2191,11 @@
           "Docs": [
             {
               "Title": "MicaController - API",
-              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.composition.systembackdrops.micacontroller"
+              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.micacontroller"
             },
             {
               "Title": "DesktopAcrylicController - API",
-              "Uri": "https://docs.microsoft.com/windows/winui/api/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
+              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
             }
           ],
           "RelatedControls": [
