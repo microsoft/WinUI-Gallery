@@ -80,7 +80,7 @@
     <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <AppxManifest Include="Package.WAP.Debug.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
+    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
