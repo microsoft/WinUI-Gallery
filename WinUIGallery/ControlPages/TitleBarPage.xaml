@@ -11,7 +11,7 @@
 -->
 
 <Page
-    x:Class="AppUIBasics.ControlPages.TitlebarPage"
+    x:Class="AppUIBasics.ControlPages.TitleBarPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,16 +27,16 @@
     
     <StackPanel>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
-                              CSharpSource="Window\Titlebar\TitlebarSample1_cs.txt"
-                              XamlSource="Window\Titlebar\TitlebarSample1_xaml.txt">
+                              CSharpSource="Window\TitleBar\TitleBarSample1_cs.txt"
+                              XamlSource="Window\TitleBar\TitleBarSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
-                        User can set a top-level UIElement (defined as appTitlebar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar. <LineBreak></LineBreak>
+                        User can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar. <LineBreak></LineBreak>
                         The Background and Foreground Color dropdowns set the foreground and background of titlebar and caption buttons respectively.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="10">
-                        <Button x:Name="customTitlebar" Click="customTitlebar_Click"></Button>
+                        <Button x:Name="customTitleBar" Click="customTitleBar_Click"></Button>
                         <TextBlock> Background Color </TextBlock>
                         <SplitButton x:Name="myBgColorButton" AutomationProperties.Name="Background color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
                             <Border x:Name="BackgroundColorElement" Width="{StaticResource SwatchSize}"
@@ -192,19 +192,19 @@
 
         </local:ControlExample>
         <local:ControlExample HeaderText="Fallback titlebar when no user defined titlebar is set"
-                              CSharpSource="Window\Titlebar\TitlebarSample2.txt">
+                              CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
                         WinUI provides a fallback titlebar in case where user doesn't want to provide a uielement for setting the titlebar.
                         A small horizontal section next to min/max/close caption buttons is chosen as the fallback titlebar.
                          <LineBreak></LineBreak>
-                        It can be applied by just calling ExtendsContentIntoTitleBar api only and not calling SetTitlebar afterwards. It can also be manually triggered by calling SetTitlebar api with null arument.
+                        It can be applied by just calling ExtendsContentIntoTitleBar api only and not calling SetTitleBar afterwards. It can also be manually triggered by calling SetTitleBar api with null arument.
                         <LineBreak></LineBreak>
                         Use the Color dropdown controls in the section above to change color of the fallback titlebar.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="20">
-                        <Button x:Name="defaultTitlebar" Click="defaultTitlebar_Click"></Button>
+                        <Button x:Name="defaultTitleBar" Click="defaultTitleBar_Click"></Button>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>

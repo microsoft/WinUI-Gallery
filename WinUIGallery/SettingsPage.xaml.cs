@@ -18,6 +18,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+using WinRT;
+using System.Runtime.InteropServices;
+using WinUIGallery.DesktopWap.Helper;
 
 #if UNIVERSAL
 using Windows.UI.ViewManagement;
@@ -77,7 +80,7 @@ namespace AppUIBasics
             NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                if(navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+                if (navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
                 {
                     navigationLocation.SelectedIndex = 0;
                 }
@@ -95,7 +98,8 @@ namespace AppUIBasics
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
 #else
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => {};
+            var res = Microsoft.UI.Xaml.Application.Current.Resources;
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
 #endif
             if (selectedTheme != null)
             {
@@ -120,6 +124,9 @@ namespace AppUIBasics
                     }
                 }
             }
+
+            TitleBarHelper.triggerTitleBarRepaint();
+
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
@@ -198,7 +205,7 @@ namespace AppUIBasics
 
         private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            this.Frame.Navigate(typeof(ItemPage), "Sound");
+            this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
         }
     }
 }

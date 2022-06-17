@@ -12,6 +12,17 @@ code-behind. See the C# code below for more details on how to create/bind to a g
             <ItemsStackPanel AreStickyGroupHeadersEnabled="$(AreStickyGroupHeadersEnabled)"/>
         </ItemsPanelTemplate>
     </ListView.ItemsPanel>
+    <ListView.GroupStyle>
+        <GroupStyle >
+            <GroupStyle.HeaderTemplate>
+                <DataTemplate x:DataType="local1:GroupInfoList">
+                    <Border AutomationProperties.Name="{x:Bind Key}">
+                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                    </Border>
+                </DataTemplate>
+            </GroupStyle.HeaderTemplate>
+        </GroupStyle>
+    </ListView.GroupStyle>
 </ListView>
                     
 <!-- Data template used is same as above examples. -->

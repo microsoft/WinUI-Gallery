@@ -25,6 +25,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT;
 using System.Runtime.InteropServices;
+using WinUIGallery.DesktopWap.Helper;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -36,26 +37,20 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TitlebarPage : Page
+    public sealed partial class TitleBarPage : Page
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = Colors.Black;
 
-        public TitlebarPage()
+        public TitleBarPage()
         {
             this.InitializeComponent();
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
             UpdateButtonText();
         }
 
 
-        [ComImport, Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        private interface IWindowNative
-        {
-            IntPtr WindowHandle { get; }
-        };
-
-        private void SetTitlebar(UIElement titlebar)
+        private void SetTitleBar(UIElement titlebar)
         {
             var window = App.StartupWindow;
             if (!window.ExtendsContentIntoTitleBar)
@@ -70,7 +65,7 @@ namespace AppUIBasics.ControlPages
 
             }
             UpdateButtonText();
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
         }
 
         private void UpdateButtonText()
@@ -78,13 +73,13 @@ namespace AppUIBasics.ControlPages
             var window = App.StartupWindow;
             if (window.ExtendsContentIntoTitleBar)
             {
-                customTitlebar.Content = "Reset to system Titlebar";
-                defaultTitlebar.Content = "Reset to system Titlebar";
+                customTitleBar.Content = "Reset to system TitleBar";
+                defaultTitleBar.Content = "Reset to system TitleBar";
             }
             else
             {
-                customTitlebar.Content = "Set Custom Titlebar";
-                defaultTitlebar.Content = "Set Fallback Custom Titlebar";
+                customTitleBar.Content = "Set Custom TitleBar";
+                defaultTitleBar.Content = "Set Fallback Custom TitleBar";
             }
 
         }
@@ -99,7 +94,7 @@ namespace AppUIBasics.ControlPages
             BackgroundColorElement.Background = new SolidColorBrush(color);
 
             currentBgColor = color;
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
 
         }
 
@@ -113,12 +108,12 @@ namespace AppUIBasics.ControlPages
             ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
-            UpdateTitlebarColor();
+            UpdateTitleBarColor();
 
         }
 
 
-        private void UpdateTitlebarColor()
+        private void UpdateTitleBarColor()
         {
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             res["WindowCaptionBackground"] = currentBgColor;
@@ -126,29 +121,16 @@ namespace AppUIBasics.ControlPages
             res["WindowCaptionForeground"] = currentFgColor;
             //res["WindowCaptionForegroundDisabled"] = currentFgColor;
 
-            // to trigger repaint tracking task id 38044406
-            var native = App.StartupWindow.As<IWindowNative>();
-            var hwnd = native.WindowHandle;
-            var activeWindow = Win32.GetActiveWindow();
-            if (hwnd == activeWindow)
-            {
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
-            }
-            else
-            {
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_ACTIVE, IntPtr.Zero);
-                Win32.SendMessage(hwnd, Win32.WM_ACTIVATE, Win32.WA_INACTIVE, IntPtr.Zero);
-            }
+            TitleBarHelper.triggerTitleBarRepaint();
         }
 
-        private void customTitlebar_Click(object sender, RoutedEventArgs e)
+        private void customTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            SetTitlebar(App.appTitlebar);
+            SetTitleBar(App.appTitleBar);
         }
-        private void defaultTitlebar_Click(object sender, RoutedEventArgs e)
+        private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            SetTitlebar(null);
+            SetTitleBar(null);
         }
     }
 }

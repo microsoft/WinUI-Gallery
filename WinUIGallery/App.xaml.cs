@@ -51,7 +51,7 @@ namespace AppUIBasics
             }
         }
 
-        public static UIElement appTitlebar = null;
+        public static UIElement appTitleBar = null;
 
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code

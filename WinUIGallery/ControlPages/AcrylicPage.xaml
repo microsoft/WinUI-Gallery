@@ -12,7 +12,6 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
                     <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
-                    <media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush"  TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
                     <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" TintOpacity="0.8" TintColor="SkyBlue" FallbackColor="SkyBlue"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
@@ -152,62 +151,10 @@
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
+
+        <local:ControlExample x:Name="Example4" HeaderText="Luminosity with in-app Acrylic.">
             <local:ControlExample.Example>
-                <Grid x:Name="Example4Grid" MinWidth="320" MinHeight="200">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="252"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                    </Grid>
-                    <Rectangle x:Name="CustomAcrylicShape" Margin="12" Fill="{ThemeResource CustomAcrylicBackgroundBrush}"/>
-                </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
-                <StackPanel>
-                    <TextBlock Text="Tint Opacity :" Margin="0,0,0,12"/>
-                    <Slider x:Name="OpacitySlider" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.001" StepFrequency="0.001" 
-                            HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint opacity"/>
-                    <TextBlock Text="Tint Color :" Margin="0,12"/>
-                    <ComboBox x:Name="ColorSelector" SelectionChanged="ColorSelector_SelectionChanged" ItemTemplate="{StaticResource ColorTemplate}"
-                              AutomationProperties.Name="tint color">
-                        <SolidColorBrush Color="Black"/>
-                        <SolidColorBrush Color="Red"/>
-                        <SolidColorBrush Color="Blue"/>
-                    </ComboBox>
-                    <TextBlock Text="Fallback Color :" Margin="0,12,0,12"/>
-                    <ComboBox x:Name="FallbackColorSelector" SelectionChanged="FallbackColorSelector_SelectionChanged" ItemTemplate="{StaticResource ColorTemplate}"
-                              AutomationProperties.Name="fallback color">
-                        <SolidColorBrush Color="Green"/>
-                        <SolidColorBrush Color="Yellow"/>
-                    </ComboBox>
-                </StackPanel>
-            </local:ControlExample.Options>
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Rectangle Fill="{ThemeResource CustomAcrylicBackgroundBrush}" /&gt;
-
-&lt;ResourceDictionary x:Key="Default"&gt;
-    &lt;media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop"
-        TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
-&lt;/ResourceDictionary&gt;
-</x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelector.SelectedItem, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
-
-        <local:ControlExample x:Name="Example5" HeaderText="Luminosity with in-app Acrylic.">
-            <local:ControlExample.Example>
-                <Grid x:Name="Example5Grid" MinWidth="652" MinHeight="200">
+                <Grid x:Name="Example4Grid" MinWidth="652" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="252"/>

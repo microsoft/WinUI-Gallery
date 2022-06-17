@@ -97,16 +97,16 @@ namespace AppUIBasics.TabViewPages
             if (FlowDirection == FlowDirection.LeftToRight)
             {
                 CustomDragRegion.MinWidth = sender.SystemOverlayRightInset;
-                ShellTitlebarInset.MinWidth = sender.SystemOverlayLeftInset;
+                ShellTitleBarInset.MinWidth = sender.SystemOverlayLeftInset;
             }
             else
             {
                 CustomDragRegion.MinWidth = sender.SystemOverlayLeftInset;
-                ShellTitlebarInset.MinWidth = sender.SystemOverlayRightInset;
+                ShellTitleBarInset.MinWidth = sender.SystemOverlayRightInset;
             }
 
             // Ensure that the height of the custom regions are the same as the titlebar.
-            CustomDragRegion.Height = ShellTitlebarInset.Height = sender.Height;
+            CustomDragRegion.Height = ShellTitleBarInset.Height = sender.Height;
         }
 
         public void AddTabToTabs(TabViewItem tab)

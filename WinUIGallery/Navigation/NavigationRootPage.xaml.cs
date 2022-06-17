@@ -136,8 +136,8 @@ namespace AppUIBasics
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
 
-            // Set the titlebar to be custom. This is also referenced by the TitlebarPage
-            App.appTitlebar = AppTitleBar;
+            // Set the titlebar to be custom. This is also referenced by the TitleBarPage
+            App.appTitleBar = AppTitleBar;
 #if !UNIVERSAL
             var window = App.StartupWindow;
             window.ExtendsContentIntoTitleBar = true;
@@ -231,7 +231,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImageIconPath) };
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item};
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
