@@ -1,3 +1,3 @@
-﻿Window window = new(); // This is the window that will be have a custom title bar
+﻿Window window = new(); // This is the window that will have a custom title bar
 window.ExtendsContentIntoTitleBar = true;  // Enable the custom titlebar
 window.SetTitleBar(AppTitleBar);  // Set the UIElement that will act as titlebar

@@ -2635,7 +2635,7 @@
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "Description": "In a Desktop app you can create a Window explicitly. You can create more than one Window in a single thread; creating windows in separated threads is not supported yet.",
+          "Description": "In a Desktop app you can create a Window explicitly. You can create more than one Window in a single thread; creating windows in separate threads is not supported yet.",
           "Content": "<p>Look at the <i>CreateMultipleWindowsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "IsUpdated": false,

@@ -25,7 +25,7 @@
                               CSharpSource="Window\MultiWindow\CreateWindowSample1_cs.txt">
 
             <StackPanel Spacing="10">
-                <TextBlock Text="This sample demonstrates how to create a Window object using just the new operrator. Click on the button to create as many windows as you wish."/>
+                <TextBlock Text="This sample demonstrates how to create a Window object using just the new operator. Click on the button to create as many windows as you wish."/>
                 <Button Click="createNewWindowSample1_Click">Create Window</Button>
             </StackPanel>
         </local:ControlExample>
@@ -34,7 +34,7 @@
                               CSharpSource="Window\MultiWindow\CreateWindowSample2_cs.txt">
 
             <StackPanel Spacing="10">
-                <TextBlock Text="This sample creates a new instance of the WinUI Gallery in a separated window. Click on the button to create as many windows as you wish."/>
+                <TextBlock Text="This sample creates a new instance of the WinUI Gallery in a separate window. Click on the button to create as many windows as you wish."/>
                 <Button x:Name="Control1" Click="createNewWindow_Click">Create Window</Button>
             </StackPanel>
       
