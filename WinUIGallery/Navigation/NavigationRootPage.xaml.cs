@@ -85,8 +85,12 @@ namespace AppUIBasics
         {
             get
             {
-#if !UNIVERSAL
+#if !UNIVERSAL && DEBUG
+                return "WinUI 3 Gallery Dev";
+#elif !UNIVERSAL
                 return "WinUI 3 Gallery";
+#elif DEBUG
+                return "WinUI 3 Gallery Dev (UWP)";
 #else
                 return "WinUI 3 Gallery (UWP)";
 #endif
