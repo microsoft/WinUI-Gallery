@@ -60,7 +60,7 @@ private void Window_ThemeChanged(FrameworkElement sender, object args)
     }
 }
 
-private void SetConfigurationSourceTheme();
+private void SetConfigurationSourceTheme()
 {
     switch (((FrameworkElement)this.Content).ActualTheme)
     {
