@@ -55,17 +55,13 @@
 
                     <TextBlock x:Name="SmallChangeLabel" Text="SmallChange:" Margin="0,5,0,0" Grid.Row="3" Grid.Column="0"/>
                     <muxc:NumberBox x:Name="SmallChangeValue" Grid.Row="3" Grid.Column="1" Margin="10,5,0,0" Value="10" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Small Change" AutomationProperties.AccessibilityView="Raw"/>
-
-                    <TextBlock x:Name="LargeChangeLabel" Text="LargeChange:" Margin="0,5,0,0" Grid.Row="4" Grid.Column="0"/>
-                    <muxc:NumberBox x:Name="LargeChangeValue" Grid.Row="4" Grid.Column="1" Margin="10,5,0,0" Value="100" SpinButtonPlacementMode="Compact" AutomationProperties.Name="Large Change" AutomationProperties.AccessibilityView="Raw"/>
                 </Grid>
             </local:ControlExample.Options>
             <local:ControlExample.Example>
                 <StackPanel x:Name="Control2" Orientation="Horizontal" VerticalAlignment="Center">
                     <Slider x:Name="Slider2" Header="Control header" Width="200" Minimum="{x:Bind MinimumValue.Value, Mode=OneWay}"
-                            Maximum="{x:Bind MaximumValue.Value, Mode=OneWay}" LargeChange="{x:Bind LargeChangeValue.Value, Mode=OneWay}"
-                            StepFrequency="{x:Bind StepFrequencyValue.Value, Mode=OneWay}" SmallChange="{x:Bind SmallChangeValue.Value, Mode=OneWay}"
-                            Value="800" Margin="0,0,10,0"/>
+                            Maximum="{x:Bind MaximumValue.Value, Mode=OneWay}" StepFrequency="{x:Bind StepFrequencyValue.Value, Mode=OneWay}"
+                            SmallChange="{x:Bind SmallChangeValue.Value, Mode=OneWay}" Value="800" Margin="0,0,10,0"/>
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
@@ -74,7 +70,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Slider Width="200" Minimum="$(MinimumValue)" Maximum="$(MaximumValue)" StepFrequency="$(StepFrequencyValue)"
-        SmallChange="$(SmallChangeValue)" LargeChange="$(LargeChangeValue)" Value="$(Value)" /&gt;
+        SmallChange="$(SmallChangeValue)" Value="$(Value)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
@@ -82,7 +78,6 @@
                 <local:ControlExampleSubstitution Key="MaximumValue" Value="{x:Bind MaximumValue.Value, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="StepFrequencyValue" Value="{x:Bind StepFrequencyValue.Value, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="SmallChangeValue" Value="{x:Bind SmallChangeValue.Value, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="LargeChangeValue" Value="{x:Bind LargeChangeValue.Value, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="Value" Value="{x:Bind Slider2.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
