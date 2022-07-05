@@ -13,7 +13,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
             <StackPanel Orientation="Horizontal">
@@ -28,7 +27,7 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        
+
         <local:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
             <local:ControlExample.Options>
                 <Grid>
@@ -81,17 +80,17 @@
                 <local:ControlExampleSubstitution Key="Value" Value="{x:Bind Slider2.Value, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        
-        <local:ControlExample x:Name="Example3" HeaderText="A Slider with snapping tick marks.">
+
+        <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider3" Width="290" SnapsTo="Ticks" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
+                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
             </StackPanel>
             <local:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Slider AutomationProperties.Name="Slider with ticks" SnapsTo="Ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
+                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
