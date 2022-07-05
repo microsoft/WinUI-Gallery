@@ -1,0 +1,108 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Application
+    x:Class="AppUIBasics.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:local="using:AppUIBasics"
+    xmlns:common="using:AppUIBasics.Common">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:ItemTemplates />
+                <winui:XamlControlsResources ControlsResourcesVersion="Version2"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                    <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <x:Double x:Key="TeachingTipMinWidth">50</x:Double>
+
+            <!--  Application-specific resources  -->
+            <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
+            <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+            <common:NullToVisibilityConverter x:Key="inverseNullToVisibilityConverter" NonNullValue="Collapsed" NullValue="Visible" />
+            <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
+            <common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
+
+            <!--  Breakpoints  -->
+            <x:Double x:Key="Breakpoint640Plus">641</x:Double>
+
+            <Thickness x:Key="PageHeaderDefaultPadding">0</Thickness>
+            <Thickness x:Key="PageHeaderMinimalPadding">-4,0,12,0</Thickness>
+
+            <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
+
+            <!-- L-Pattern Overwriting resources -->
+            <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+            <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
+            <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
+            <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
+
+            <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
+
+            <x:String x:Key="AppTitleName">WinUI 2 Gallery</x:String>
+            <x:String x:Key="WinUIVersion">SDK 2.8</x:String>
+
+            <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+                <Setter Property="Margin" Value="8,8,0,0" />
+            </Style>
+           
+            <Style x:Name="NarrowHeaderTextBlockStyle" BasedOn="{StaticResource HeaderTextBlockStyle}" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource SystemControlForegroundChromeWhiteBrush}"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Margin" Value="36,12,0,0"/>
+            </Style>
+            
+            <Style x:Key="ControlPageScrollStyle" TargetType="ScrollViewer">
+                <Setter Property="VerticalScrollMode" Value="Auto" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="ZoomMode" Value="Disabled" />
+            </Style>
+
+            <Style x:Key="GridViewItemStyle" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                <Setter Property="Margin" Value="0,0,12,12" />
+            </Style>
+
+            <Style x:Key="IndentedGridViewItemStyle" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                <Setter Property="Margin" Value="12,0,0,12" />
+            </Style>
+
+            <Style x:Key="GridViewItemStyleSmall" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                <Setter Property="Margin" Value="0,0,0,12" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
+
+            <Style x:Key="IndentedGridViewItemStyleSmall" TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
+                <Setter Property="Margin" Value="12,0,12,12" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

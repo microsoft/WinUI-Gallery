@@ -27,13 +27,13 @@ Shows all of the XAML controls in an interactive format. This app is the interac
 
 - **Basic layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
-- **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
+- **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent version of Windows.
 
 ## Further information
 
 >**Note**: The Xaml Controls Gallery requires Visual Studio [2017](http://go.microsoft.com/fwlink/?LinkID=532422) or [2019](https://visualstudio.microsoft.com/vs/) to build and Windows 10 to execute.
 
-To obtain information about Windows 10 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
+To obtain information about Windows 10 & 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 
 To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
 

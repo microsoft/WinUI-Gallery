@@ -1,0 +1,154 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<local:ItemsPageBase
+    x:Class="AppUIBasics.NewControlsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppUIBasics"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:behavior="using:AppUIBasics.Behaviors"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    NavigationCacheMode="Enabled"
+    HighContrastAdjustment="None">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true"/>
+    </Page.Resources>
+
+    <!--  This grid acts as a root panel for the page.  -->
+    <Grid Background="{ThemeResource HomePageBackgroundBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's window size  -->
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters />
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="itemGridView.Padding" Value="0,0,0,36" />
+                        <Setter Target="itemGridView.Margin" Value="0,-64,0,0" />
+                        <Setter Target="HeaderGrid.Margin" Value="60,0,60,0" />
+                        <Setter Target="headerImageView.Height" Value="180" />
+                        <Setter Target="HeaderTileGrid.Margin" Value="0,212,0,0" />
+                        <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
+                        <Setter Target="learnMore.Margin" Value="64,24,0,0" />
+                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
+                        <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
+                        <Setter Target="smallHeaderSubtitleText.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel>
+            
+        </StackPanel>
+        <GridView x:Name="itemGridView"
+            Margin="31,0,0,0"
+            AutomationProperties.AutomationId="ItemGridView"
+            AutomationProperties.Name="Items In Group"
+            ContainerContentChanging="OnItemGridViewContainerContentChanging"
+            IsItemClickEnabled="True"
+            IsSwipeEnabled="False"
+            ItemClick="OnItemGridViewItemClick"
+            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
+            ItemTemplate="{StaticResource ControlItemTemplate}"
+            ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
+            KeyDown="OnItemGridViewKeyDown"
+            SizeChanged="OnItemGridViewSizeChanged"
+            SelectionMode="None">
+            <!--<interactivity:Interaction.Behaviors>
+                <behavior:ImageScrollBehavior TargetControl="{Binding ElementName=pageHeader}" />
+            </interactivity:Interaction.Behaviors>-->
+
+            <GridView.Header>
+                <Grid x:Name="HeaderGrid" Margin="12,39,43,0">
+                    <ParallaxView
+                        x:Name="headerImageView"
+                        Height="256"
+                        Source="{x:Bind itemGridView}"
+                        VerticalAlignment="Top">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                            <Image
+                                x:Name="headerImage"
+                                HorizontalAlignment="Center"
+                                Source="Assets/MainPage_Banner.png"
+                                Stretch="Fill" />
+                        </Grid>
+                        
+                    </ParallaxView>
+
+                    <StackPanel Orientation="Vertical" Margin="60,90,0,40">
+                        <TextBlock x:Name="smallHeaderText"
+                               Foreground="Black"
+                               Visibility="Visible"
+                               Style="{StaticResource TitleTextBlockStyle}"                               
+                               Text="{StaticResource AppTitleName}"/>
+                        <TextBlock x:Name="smallHeaderSubtitleText"
+                               Foreground="Black"
+                               Visibility="Visible"
+                               Style="{StaticResource SubtitleTextBlockStyle}"                               
+                               Text="{StaticResource WinUIVersion}"/>
+                    </StackPanel>
+                    <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
+                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
+                            <local:HeaderTiles Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/en-us/windows/uwp/get-started/"/>
+                            <local:HeaderTiles Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/en-us/windows/apps/design/"/>
+                            <local:HeaderTiles Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/WinUI-Gallery"/>
+                            <local:HeaderTiles Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
+                        </VariableSizedWrapGrid>
+                    </StackPanel>
+                </Grid>
+                
+            </GridView.Header>
+
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="local:GroupInfoList">
+                            <TextBlock x:Name="pageSubtitle" Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"  Margin="4,32,0,0" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+
+            <GridView.Footer>
+                <Grid x:Name="learnMore" VerticalAlignment="Bottom" Height="200" Margin="16,34,48,0">
+                    <StackPanel>
+                        <TextBlock x:Name="LearnMore" Text="Learn More" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,12" />
+                        <HyperlinkButton Content="Developer Center" NavigateUri="https://developer.microsoft.com/en-us/windows/"/>
+                        <HyperlinkButton Content="App Code Samples" NavigateUri="https://docs.microsoft.com/en-us/windows/apps/get-started/samples"/>
+                        <HyperlinkButton Content="Windows Template Studio" NavigateUri="https://github.com/microsoft/WindowsTemplateStudio"/>
+                    </StackPanel>
+                </Grid>
+            </GridView.Footer>
+        </GridView>
+
+        <!--<local:PageHeader x:Name="pageHeader"
+            Title="{StaticResource AppTitleName}"
+            Subtitle="{StaticResource WinUIVersion}"
+            Margin="44,92"
+            VerticalAlignment="Top"
+            Foreground="Black"
+            Background="{ThemeResource HomePageBackgroundBrush}"
+            FontSize="28"
+            Padding="{ThemeResource NavigationViewHeaderMargin}"
+            IsHitTestVisible="False"
+            ShadowOpacity="0"/>-->
+    </Grid>
+  
+</local:ItemsPageBase>
