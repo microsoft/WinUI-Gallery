@@ -32,7 +32,7 @@
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        <HyperlinkButton Height="150" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}">
+        <HyperlinkButton Height="150" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}" AutomationProperties.LabeledBy="{Binding ElementName=TitleText}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="102" />
@@ -44,7 +44,7 @@
                     HorizontalAlignment="Center"/>
 
                 <Grid Height="48" Opacity="1" Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                    <TextBlock Text="{x:Bind Title, Mode=OneWay}"
+                    <TextBlock x:Name="TitleText" Text="{x:Bind Title, Mode=OneWay}"
                                Margin="16,0"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
