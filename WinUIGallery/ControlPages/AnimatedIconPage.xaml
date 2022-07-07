@@ -20,7 +20,7 @@
                         </Hyperlink>.
                         For guidance on how to properly structure your animation file see the AnimatedIcon Guidance page.<LineBreak></LineBreak>
                     </TextBlock>
-                    <Button PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited" Width="75">
+                    <Button PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited" Width="75" AutomationProperties.Name="AnimatedIcon Example">
                         <AnimatedIcon x:Name="SearchAnimatedIcon">
                             <AnimatedIcon.Source>
                                 <animatedvisuals:AnimatedFindVisualSource/>
