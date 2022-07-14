@@ -19,7 +19,8 @@
         <local:ControlExample x:Name="Example1" HeaderText="A simple Button with text content.">
             <local:ControlExample.Example>
                 <Button x:Name="Button1" Content="Standard XAML button" Click="Button_Click"
-                    IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
+                        AutomationProperties.Name="Standard XAML"
+                        IsEnabled="{x:Bind DisableButton1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
             </local:ControlExample.Example>
             <local:ControlExample.Output>
                 <TextBlock x:Name="Control1Output" FontFamily="Global User Interface"/>
@@ -110,7 +111,7 @@
 
         <local:ControlExample HeaderText="Accent style applied to Button.">
             <local:ControlExample.Example>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button" AutomationProperties.Name="Accent style"/>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String >
