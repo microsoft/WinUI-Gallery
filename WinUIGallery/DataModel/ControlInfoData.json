@@ -380,7 +380,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/GridViewIcon.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -432,7 +432,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListViewIcon.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -869,7 +869,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CheckBoxIcon.png",
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2016,6 +2016,35 @@
             }
           ],
           "RelatedControls": [
+            "WebView2",
+            "MediaPlayerElement"
+          ]
+        },
+        {
+          "UniqueId": "WebView2",
+          "Title": "WebView2",
+          "Subtitle": "A control that hosts HTML content in an app.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
+          "Description": "A control that hosts HTML content in an app.",
+          "Content": "",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "WebView2 - API",
+              "Uri": "https://docs.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls.webview2"
+            },
+            {
+              "Title": "Getting Started",
+              "Uri": "https://docs.microsoft.com/en-us/microsoft-edge/webview2/get-started/winui2"
+            },
+            {
+              "Title": "Full Sample",
+              "Uri": "https://github.com/MicrosoftEdge/WebView2Samples/tree/main/SampleApps/webview2_sample_uwp"
+            }
+          ],
+          "RelatedControls": [
+            "WebView",
             "MediaPlayerElement"
           ]
         }
