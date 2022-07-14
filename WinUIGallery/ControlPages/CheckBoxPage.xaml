@@ -18,7 +18,7 @@
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <!-- A two-state CheckBox. -->
-                    <CheckBox Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" />
+                    <CheckBox Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" AutomationProperties.Name="Two-state" />
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
@@ -36,7 +36,8 @@
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <CheckBox Content="Three-state CheckBox" IsThreeState="True" Indeterminate="Control2_Indeterminate"
-                            Checked="Control2_Checked" Unchecked="Control2_Unchecked" />
+                              Checked="Control2_Checked" Unchecked="Control2_Unchecked"
+                              AutomationProperties.Name="Three-state"/>
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
