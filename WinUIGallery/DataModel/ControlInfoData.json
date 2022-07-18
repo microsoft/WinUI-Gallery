@@ -1995,10 +1995,10 @@
         {
           "UniqueId": "WebView",
           "Title": "WebView",
-          "Subtitle": "A control that hosts HTML content in an app.",
+          "Subtitle": "A control that hosts HTML content in a Surface Hub or Xbox app.",
           "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
-          "Description": "A control that hosts HTML content in an app.",
+          "Description": "A control that hosts HTML content in a Surface Hub or Xbox app.",
           "Content": "",
           "IsNew": false,
           "Docs": [
