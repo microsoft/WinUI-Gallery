@@ -59,7 +59,7 @@
 
         <local:ControlExample HeaderText="A SplitButton with text" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
             <local:ControlExample.Example>
-                <SplitButton AutomationProperties.Name="Font color" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
+                <SplitButton AutomationProperties.Name="Font color with text" x:Name="myColorButtonReveal" Padding="5" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
                     Choose color
                     <SplitButton.Flyout>
                         <Flyout Placement="Bottom">
