@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -26,29 +26,29 @@ namespace AppUIBasics.ControlPages
             SetCheckedState();
         }
 
-        private void Control1_Checked(object sender, RoutedEventArgs e)
+        private void TwoState_Checked(object sender, RoutedEventArgs e)
         {
-            Control1Output.Text = "You checked the box.";
+            TwoStateOutput.Text = "You checked the box.";
         }
 
-        private void Control1_Unchecked(object sender, RoutedEventArgs e)
+        private void TwoState_Unchecked(object sender, RoutedEventArgs e)
         {
-            Control1Output.Text = "You unchecked the box.";
+            TwoStateOutput.Text = "You unchecked the box.";
         }
 
-        private void Control2_Checked(object sender, RoutedEventArgs e)
+        private void ThreeState_Checked(object sender, RoutedEventArgs e)
         {
-            Control2Output.Text = "CheckBox is checked.";
+            ThreeStateOutput.Text = "CheckBox is checked.";
         }
 
-        private void Control2_Unchecked(object sender, RoutedEventArgs e)
+        private void ThreeState_Unchecked(object sender, RoutedEventArgs e)
         {
-            Control2Output.Text = "CheckBox is unchecked.";
+            ThreeStateOutput.Text = "CheckBox is unchecked.";
         }
 
-        private void Control2_Indeterminate(object sender, RoutedEventArgs e)
+        private void ThreeState_Indeterminate(object sender, RoutedEventArgs e)
         {
-            Control2Output.Text = "CheckBox state is indeterminate.";
+            ThreeStateOutput.Text = "CheckBox state is indeterminate.";
         }
 
         #region SelectAllMethods
