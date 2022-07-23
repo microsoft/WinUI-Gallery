@@ -64,8 +64,8 @@
                     Text="{x:Bind Title, Mode=OneWay}"
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
-                <TextBlock x:Name="NamespaceTextBlock" Grid.Row="1" Text="Microsoft.UI.Xaml.Controls"
-                    Style="{StaticResource SubtitleTextBlockStyle}" FontSize="16" FontStyle="Italic"
+                <TextBlock x:Name="NamespaceTextBlock" Grid.Row="1" Text="{x:Bind ApiNamespace, Mode=OneWay}"
+                Style="{StaticResource SubtitleTextBlockStyle}" FontSize="16" FontStyle="Italic"
                     Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
             <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">

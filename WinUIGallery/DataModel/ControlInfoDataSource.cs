@@ -13,9 +13,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Data.Json;
-using Windows.Storage;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
 using AppUIBasics.Common;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -33,10 +30,12 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
+
+            this.ApiNamespace = apiNamespace;
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
@@ -52,6 +51,7 @@ namespace AppUIBasics.Data
 
         public string UniqueId { get; private set; }
         public string Title { get; private set; }
+        public string ApiNamespace { get; private set; }
         public string Subtitle { get; private set; }
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
@@ -239,6 +239,7 @@ namespace AppUIBasics.Data
 
                         var item = new ControlInfoDataItem(itemObject["UniqueId"].GetString(),
                                                                 itemObject["Title"].GetString(),
+                                                                itemObject["ApiNamespace"].GetString(),
                                                                 itemObject["Subtitle"].GetString(),
                                                                 itemObject["ImagePath"].GetString(),
                                                                 itemObject["ImageIconPath"].GetString(),
@@ -263,7 +264,6 @@ namespace AppUIBasics.Data
                                 item.Docs.Add(new ControlInfoDocLink(docObject["Title"].GetString(), docObject["Uri"].GetString()));
                             }
                         }
-
                         if (itemObject.ContainsKey("RelatedControls"))
                         {
                             foreach (JsonValue relatedControlValue in itemObject["RelatedControls"].GetArray())
