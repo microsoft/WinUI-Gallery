@@ -52,7 +52,6 @@
             </Grid.ColumnDefinitions>
             <Grid x:Name="pageTitle"
                 Background="Transparent"
-                Height="70"
                 RowDefinitions="Auto,Auto"
                 VerticalAlignment="Top">
                 <Canvas x:Name="ShadowHost" Grid.RowSpan="2" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/>
