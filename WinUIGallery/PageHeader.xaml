@@ -64,7 +64,9 @@
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
                 <TextBlock x:Name="NamespaceTextBlock" Grid.Row="1" Text="{x:Bind ApiNamespace, Mode=OneWay}"
-                Style="{StaticResource SubtitleTextBlockStyle}" FontSize="16" FontStyle="Italic"
+                    Visibility="{x:Bind ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    FontSize="16" FontStyle="Italic"
                     Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
             <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">
