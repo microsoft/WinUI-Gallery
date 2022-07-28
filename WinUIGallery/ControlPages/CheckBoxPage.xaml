@@ -18,37 +18,38 @@
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <!-- A two-state CheckBox. -->
-                    <CheckBox Content="Two-state CheckBox" Checked="Control1_Checked" Unchecked="Control1_Unchecked" />
+                    <CheckBox Content="Two-state CheckBox" Checked="TwoState_Checked" Unchecked="TwoState_Unchecked" AutomationProperties.Name="Two-state" />
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
-                <TextBlock x:Name="Control1Output"/>
+                <TextBlock x:Name="TwoStateOutput"/>
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CheckBox Content="Two-state CheckBox"
-          Checked="Control1_Checked"
-          Unchecked="Control1_Unchecked" /&gt;
+          Checked="TwoState_Checked"
+          Unchecked="TwoState_Unchecked" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A 3-state CheckBox." RelativePanel.Below="Example1">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="Three-state CheckBox" IsThreeState="True" Indeterminate="Control2_Indeterminate"
-                            Checked="Control2_Checked" Unchecked="Control2_Unchecked" />
+                    <CheckBox Content="Three-state CheckBox" IsThreeState="True" Indeterminate="ThreeState_Indeterminate"
+                              Checked="ThreeState_Checked" Unchecked="ThreeState_Unchecked"
+                              AutomationProperties.Name="Three-state"/>
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
-                <TextBlock x:Name="Control2Output" />
+                <TextBlock x:Name="ThreeStateOutput" />
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;CheckBox Content="Three-state CheckBox"
           IsThreeState="True"
-          Checked="Control2_Checked"
-          Unchecked="Control2_Unchecked"
-          Indeterminate="Control2_Indeterminate" /&gt;
+          Checked="ThreeState_Checked"
+          Unchecked="ThreeState_Unchecked"
+          Indeterminate="ThreeState_Indeterminate" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
