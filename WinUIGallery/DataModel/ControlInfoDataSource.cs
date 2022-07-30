@@ -89,10 +89,11 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
+            this.ApiNamespace = apiNamespace;
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
@@ -106,6 +107,7 @@ namespace AppUIBasics.Data
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
         public string ImageIconPath { get; private set; }
+        public string ApiNamespace { get; private set; } = "";
         public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
@@ -209,6 +211,7 @@ namespace AppUIBasics.Data
 
                     ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
                                                                           groupObject["Title"].GetString(),
+                                                                          groupObject["ApiNamespace"].GetString(),
                                                                           groupObject["Subtitle"].GetString(),
                                                                           groupObject["ImagePath"].GetString(),
                                                                           groupObject["ImageIconPath"].GetString(),

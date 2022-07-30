@@ -3,6 +3,7 @@
     {
       "UniqueId": "NewControls",
       "Title": "Home",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -12,6 +13,7 @@
     {
       "UniqueId": "AllControls",
       "Title": "All controls",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -21,6 +23,7 @@
     {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -359,6 +362,7 @@
     {
       "UniqueId": "Collections",
       "Title": "Collections",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -577,6 +581,7 @@
     {
       "UniqueId": "DateAndTime",
       "Title": "Date and Time",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -693,6 +698,7 @@
     {
       "UniqueId": "BasicInput",
       "Title": "Basic Input",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1120,6 +1126,7 @@
     {
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1259,6 +1266,7 @@
     {
       "UniqueId": "DialogsAndFlyouts",
       "Title": "Dialogs and Flyouts",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1353,6 +1361,7 @@
     {
       "UniqueId": "Scrolling",
       "Title": "Scrolling",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1446,6 +1455,7 @@
     {
       "UniqueId": "Layout",
       "Title": "Layout",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1773,6 +1783,7 @@
     {
       "UniqueId": "Navigation",
       "Title": "Navigation",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1895,6 +1906,7 @@
     {
       "UniqueId": "Media",
       "Title": "Media",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2062,6 +2074,7 @@
     {
       "UniqueId": "Styles",
       "Title": "Styles",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2282,6 +2295,7 @@
     {
       "UniqueId": "Text",
       "Title": "Text",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2491,6 +2505,7 @@
     {
       "UniqueId": "Motion",
       "Title": "Motion",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2714,6 +2729,7 @@
     {
       "UniqueId": "MultipleWindows",
       "Title": "Windows",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
       "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
