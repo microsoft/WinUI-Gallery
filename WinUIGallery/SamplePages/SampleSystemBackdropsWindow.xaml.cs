@@ -59,6 +59,7 @@ namespace AppUIBasics.SamplePages
         public enum BackdropType
         {
             Mica,
+            MicaAlt,
             DesktopAcrylic,
             DefaultColor,
         }
@@ -111,6 +112,20 @@ namespace AppUIBasics.SamplePages
                     tbChangeStatus.Text += "  Mica isn't supported. Trying Acrylic.";
                 }
             }
+            if (type == BackdropType.MicaAlt)
+            {
+                if (TrySetMicaAltBackdrop())
+                {
+                    tbCurrentBackdrop.Text = "MicaAlt";
+                    m_currentBackdrop = type;
+                }
+                else
+                {
+                    // MicaAlt isn't supported. Try Acrylic.
+                    type = BackdropType.DesktopAcrylic;
+                    tbChangeStatus.Text += "  Mica isn't supported. Trying Acrylic.";
+                }
+            }
             if (type == BackdropType.DesktopAcrylic)
             {
                 if (TrySetAcrylicBackdrop())
@@ -126,7 +141,7 @@ namespace AppUIBasics.SamplePages
             }
         }
 
-        bool TrySetMicaBackdrop()
+        bool TrySetMicaBackdrop(bool isMicaAlt)
         {
             if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
             {
@@ -141,7 +156,16 @@ namespace AppUIBasics.SamplePages
                 SetConfigurationSourceTheme();
 
                 m_micaController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
-
+                
+                if (isMicaAlt)
+                {
+                   m_micaController.Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt;
+                }
+                else
+                {
+                   m_micaController.Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
+                }
+                
                 // Enable the system backdrop.
                 // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
                 m_micaController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
@@ -150,6 +174,16 @@ namespace AppUIBasics.SamplePages
             }
 
             return false; // Mica is not supported on this system
+        }
+
+        bool TrySetMicaAltBackdrop()
+        {
+            return TrySetMicaBackdrop(true)
+        }
+        
+        bool TrySetMicaBackdrop()
+        {
+            return TrySetMicaBackdrop(false)
         }
 
         bool TrySetAcrylicBackdrop()
@@ -224,7 +258,8 @@ namespace AppUIBasics.SamplePages
             BackdropType newType;
             switch (m_currentBackdrop)
             {
-                case BackdropType.Mica:           newType = BackdropType.DesktopAcrylic; break;
+                case BackdropType.Mica:           newType = BackdropType.MicaAlt; break;
+                case BackdropType.MicaAlt:           newType = BackdropType.DesktopAcrylic; break;
                 case BackdropType.DesktopAcrylic: newType = BackdropType.DefaultColor; break;
                 default:
                 case BackdropType.DefaultColor:   newType = BackdropType.Mica; break;
