@@ -1,4 +1,4 @@
-﻿using Windows.Foundation.Metadata;
+using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -100,7 +100,7 @@ namespace AppUIBasics.SamplePages
 
             if (type == BackdropType.Mica)
             {
-                if (TrySetMicaBackdrop())
+                if (TrySetMicaBackdrop(false))
                 {
                     tbCurrentBackdrop.Text = "Mica";
                     m_currentBackdrop = type;
@@ -114,7 +114,7 @@ namespace AppUIBasics.SamplePages
             }
             if (type == BackdropType.MicaAlt)
             {
-                if (TrySetMicaAltBackdrop())
+                if (TrySetMicaBackdrop(true))
                 {
                     tbCurrentBackdrop.Text = "MicaAlt";
                     m_currentBackdrop = type;
@@ -123,7 +123,7 @@ namespace AppUIBasics.SamplePages
                 {
                     // MicaAlt isn't supported. Try Acrylic.
                     type = BackdropType.DesktopAcrylic;
-                    tbChangeStatus.Text += "  Mica isn't supported. Trying Acrylic.";
+                    tbChangeStatus.Text += "  MicaAlt isn't supported. Trying Acrylic.";
                 }
             }
             if (type == BackdropType.DesktopAcrylic)
@@ -141,7 +141,7 @@ namespace AppUIBasics.SamplePages
             }
         }
 
-        bool TrySetMicaBackdrop(bool isMicaAlt)
+        bool TrySetMicaBackdrop(bool useMicaAlt)
         {
             if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
             {
@@ -157,7 +157,7 @@ namespace AppUIBasics.SamplePages
 
                 m_micaController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
                 
-                if (isMicaAlt)
+                if (useMicaAlt)
                 {
                    m_micaController.Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt;
                 }
@@ -174,16 +174,6 @@ namespace AppUIBasics.SamplePages
             }
 
             return false; // Mica is not supported on this system
-        }
-
-        bool TrySetMicaAltBackdrop()
-        {
-            return TrySetMicaBackdrop(true)
-        }
-        
-        bool TrySetMicaBackdrop()
-        {
-            return TrySetMicaBackdrop(false)
         }
 
         bool TrySetAcrylicBackdrop()
