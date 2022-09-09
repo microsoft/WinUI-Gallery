@@ -1,4 +1,4 @@
-using Windows.Foundation.Metadata;
+﻿using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -249,7 +249,7 @@ namespace AppUIBasics.SamplePages
             switch (m_currentBackdrop)
             {
                 case BackdropType.Mica:           newType = BackdropType.MicaAlt; break;
-                case BackdropType.MicaAlt:           newType = BackdropType.DesktopAcrylic; break;
+                case BackdropType.MicaAlt:        newType = BackdropType.DesktopAcrylic; break;
                 case BackdropType.DesktopAcrylic: newType = BackdropType.DefaultColor; break;
                 default:
                 case BackdropType.DefaultColor:   newType = BackdropType.Mica; break;
