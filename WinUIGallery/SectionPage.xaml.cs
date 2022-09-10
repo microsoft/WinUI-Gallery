@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -33,7 +33,7 @@ namespace AppUIBasics
 
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;
-            navigationRootPage.NavigationView.Header = menuItem.Content;
+            navigationRootPage.NavigationView.Header = group;
 
             Items = group.Items.OrderBy(i => i.Title).ToList();
         }

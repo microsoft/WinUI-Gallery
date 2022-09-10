@@ -63,6 +63,7 @@
             <!--  Application-specific resources  -->
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+            <common:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter"/>
             <common:NullToVisibilityConverter x:Key="inverseNullToVisibilityConverter" NonNullValue="Collapsed" NullValue="Visible" />
             <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
             <common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />

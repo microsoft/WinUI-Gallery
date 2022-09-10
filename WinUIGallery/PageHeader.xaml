@@ -52,9 +52,9 @@
             </Grid.ColumnDefinitions>
             <Grid x:Name="pageTitle"
                 Background="Transparent"
-                Height="40"
+                RowDefinitions="Auto,Auto"
                 VerticalAlignment="Top">
-                <Canvas x:Name="ShadowHost" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/>
+                <Canvas x:Name="ShadowHost" Grid.RowSpan="2" Opacity="{x:Bind ShadowOpacity, Mode=OneWay}"/>
                 <TextBlock x:Name="TitleTextBlock"
                     Style="{StaticResource TitleTextBlockStyle}"
                     VerticalAlignment="Center"
@@ -63,6 +63,12 @@
                     Text="{x:Bind Title, Mode=OneWay}"
                     TextTrimming="CharacterEllipsis"
                     TextWrapping="NoWrap" />
+                <TextBlock x:Name="NamespaceTextBlock" Grid.Row="1" Text="{x:Bind ApiNamespace, Mode=OneWay}"
+                    Visibility="{x:Bind ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Margin="0,0,0,6"
+                    FontSize="14" FontStyle="Italic"
+                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
             <Border x:Name="commandBarBorder" Grid.Column="1" VerticalAlignment="Top">
                 <CommandBar
