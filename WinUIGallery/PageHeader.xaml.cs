@@ -36,6 +36,15 @@ namespace AppUIBasics
             DependencyProperty.Register("Title", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
 
 
+        public string ApiNamespace
+        {
+            get { return (string)GetValue(ApiNamespaceProperty); }
+            set { SetValue(ApiNamespaceProperty, value); }
+        }
+
+        public static readonly DependencyProperty ApiNamespaceProperty =
+            DependencyProperty.Register("ApiNamespace", typeof(string), typeof(PageHeader), new PropertyMetadata(null));
+
         public object Subtitle
         {
             get { return GetValue(SubtitleProperty); }

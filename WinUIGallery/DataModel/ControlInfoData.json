@@ -3,6 +3,7 @@
     {
       "UniqueId": "NewControls",
       "Title": "Home",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -12,6 +13,7 @@
     {
       "UniqueId": "AllControls",
       "Title": "All controls",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -21,6 +23,7 @@
     {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -29,6 +32,7 @@
         {
           "UniqueId": "XamlUICommand",
           "Title": "XamlUICommand",
+          "ApiNamespace": "Microsoft.UI.Xaml.Input",
           "Subtitle": "An object which is used to define the look and feel of a given command.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
@@ -56,6 +60,7 @@
         {
           "UniqueId": "StandardUICommand",
           "Title": "StandardUICommand",
+          "ApiNamespace": "Microsoft.UI.Xaml.Input",
           "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
@@ -83,6 +88,7 @@
         {
           "UniqueId": "AppBarButton",
           "Title": "AppBarButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that's styled for use in a CommandBar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarButtonIcon.png",
@@ -125,6 +131,7 @@
         {
           "UniqueId": "AppBarSeparator",
           "Title": "AppBarSeparator",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A vertical line that's used to visually separate groups of commands in an app bar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
@@ -151,6 +158,7 @@
         {
           "UniqueId": "AppBarToggleButton",
           "Title": "AppBarToggleButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that can be on, off, or indeterminate like a CheckBox, and is styled for use in an app bar or other specialized UI.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarToggleButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarToggleButtonIcon.png",
@@ -193,6 +201,7 @@
         {
           "UniqueId": "CommandBar",
           "Title": "CommandBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A toolbar for displaying application-specific commands that handles layout and resizing of its contents.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CommandBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CommandBarIcon.png",
@@ -219,6 +228,7 @@
         {
           "UniqueId": "MenuBar",
           "Title": "MenuBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MenuBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuBarIcon.png",
@@ -246,6 +256,7 @@
         {
           "UniqueId": "CommandBarFlyout",
           "Title": "CommandBarFlyout",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CommandBarFlyout.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CommandBarFlyoutIcon.png",
@@ -275,6 +286,7 @@
         {
           "UniqueId": "MenuFlyout",
           "Title": "MenuFlyout",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Shows a contextual list of simple commands or options.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MenuFlyout.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuFlyoutIcon.png",
@@ -314,6 +326,7 @@
         {
           "UniqueId": "SwipeControl",
           "Title": "SwipeControl",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Touch gesture for quick menu actions on items.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SwipeControl.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SwipeIcon.png",
@@ -349,6 +362,7 @@
     {
       "UniqueId": "Collections",
       "Title": "Collections",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -357,6 +371,7 @@
         {
           "UniqueId": "FlipView",
           "Title": "FlipView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Presents a collection of items that the user can flip through, one item at a time.",
           "ImagePath": "ms-appx:///Assets/ControlImages/FlipView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/FlipViewIcon.png",
@@ -383,6 +398,7 @@
         {
           "UniqueId": "GridView",
           "Title": "GridView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that presents a collection of items in rows and columns.",
           "ImagePath": "ms-appx:///Assets/ControlImages/GridView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/GridViewIcon.png",
@@ -409,6 +425,7 @@
         {
           "UniqueId": "ListBox",
           "Title": "ListBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that presents an inline list of items that the user can select from.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ListBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListBoxIcon.png",
@@ -436,6 +453,7 @@
         {
           "UniqueId": "ListView",
           "Title": "ListView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that presents a collection of items in a vertical list.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListViewIcon.png",
@@ -483,6 +501,7 @@
         {
           "UniqueId": "PullToRefresh",
           "Title": "PullToRefresh",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PullToRefresh.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PullToRefreshIcon.png",
@@ -508,6 +527,7 @@
         {
           "UniqueId": "TreeView",
           "Title": "TreeView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "The  TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TreeView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TreeViewIcon.png",
@@ -529,6 +549,7 @@
         {
           "UniqueId": "DataGrid",
           "Title": "DataGrid",
+          "ApiNamespace": "",
           "Subtitle": "The DataGrid control presents data in a customizable table of rows and columns.",
           "ImagePath": "ms-appx:///Assets/ControlImages/GridView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/GridViewIcon.png",
@@ -560,6 +581,7 @@
     {
       "UniqueId": "DateAndTime",
       "Title": "Date and Time",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -568,6 +590,7 @@
         {
           "UniqueId": "CalendarDatePicker",
           "Title": "CalendarDatePicker",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that lets users pick a date value using a calendar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CalendarDatePicker.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CalendarDatePickerIcon.png",
@@ -593,6 +616,7 @@
         {
           "UniqueId": "CalendarView",
           "Title": "CalendarView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that presents a calendar for a user to choose a date from.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CalendarView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CalendarViewIcon.png",
@@ -619,6 +643,7 @@
         {
           "UniqueId": "DatePicker",
           "Title": "DatePicker",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that lets a user pick a date value.",
           "ImagePath": "ms-appx:///Assets/ControlImages/DatePicker.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DatePickerIcon.png",
@@ -645,6 +670,7 @@
         {
           "UniqueId": "TimePicker",
           "Title": "TimePicker",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A configurable control that lets a user pick a time value.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TimePicker.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TimePickerIcon.png",
@@ -672,6 +698,7 @@
     {
       "UniqueId": "BasicInput",
       "Title": "Basic Input",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -680,6 +707,7 @@
         {
           "UniqueId": "InputValidation",
           "Title": "InputValidation",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TextBoxIcon.png",
@@ -696,6 +724,7 @@
         {
           "UniqueId": "Button",
           "Title": "Button",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that responds to user input and raises a Click event.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
@@ -723,6 +752,7 @@
         {
           "UniqueId": "DropDownButton",
           "Title": "DropDownButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that displays a flyout of choices when clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/DropDownButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DropDownButtonIcon.png",
@@ -753,6 +783,7 @@
         {
           "UniqueId": "HyperlinkButton",
           "Title": "HyperlinkButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that appears as hyperlink text, and can navigate to a URI or handle a Click event.",
           "ImagePath": "ms-appx:///Assets/ControlImages/HyperlinkButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/HyperlinkButtonIcon.png",
@@ -780,6 +811,7 @@
         {
           "UniqueId": "RepeatButton",
           "Title": "RepeatButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
           "Subtitle": "A button that raises its Click event repeatedly from the time it's pressed until it's released.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
@@ -807,6 +839,7 @@
         {
           "UniqueId": "ToggleButton",
           "Title": "ToggleButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
           "Subtitle": "A button that can be switched between two states like a CheckBox.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ToggleButtonIcon.png",
@@ -836,6 +869,7 @@
         {
           "UniqueId": "SplitButton",
           "Title": "SplitButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SplitButtonIcon.png",
@@ -866,6 +900,7 @@
         {
           "UniqueId": "ToggleSplitButton",
           "Title": "ToggleSplitButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A version of the SplitButton where the activation target toggles on/off.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleSplitButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ToggleSplitButtonIcon.png",
@@ -895,6 +930,7 @@
         {
           "UniqueId": "CheckBox",
           "Title": "CheckBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that a user can select or clear.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CheckBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CheckBoxIcon.png",
@@ -921,6 +957,7 @@
         {
           "UniqueId": "ColorPicker",
           "Title": "ColorPicker",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that displays a selectable color spectrum.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPicker.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ColorPickerIcon.png",
@@ -945,6 +982,7 @@
         {
           "UniqueId": "ComboBox",
           "Title": "ComboBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A drop-down list of items a user can select from.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ComboBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ComboBoxIcon.png",
@@ -978,6 +1016,7 @@
         {
           "UniqueId": "RadioButton",
           "Title": "RadioButton",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that allows a user to select a single option from a group of options.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RadioButtonIcon.png",
@@ -1005,6 +1044,7 @@
         {
           "UniqueId": "RatingControl",
           "Title": "RatingControl",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Rate something 1 to 5 stars.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RatingControl.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RatingControlIcon.png",
@@ -1029,6 +1069,7 @@
         {
           "UniqueId": "Slider",
           "Title": "Slider",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that lets the user select from a range of values by moving a Thumb control along a track.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Slider.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SliderIcon.png",
@@ -1055,6 +1096,7 @@
         {
           "UniqueId": "ToggleSwitch",
           "Title": "ToggleSwitch",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A switch that can be toggled between 2 states.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleSwitch.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ToggleSwitchIcon.png",
@@ -1084,6 +1126,7 @@
     {
       "UniqueId": "StatusAndInfo",
       "Title": "Status and Info",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1092,6 +1135,7 @@
         {
           "UniqueId": "AutomationProperties",
           "Title": "AutomationProperties",
+          "ApiNamespace": "Microsoft.UI.Xaml.Automation",
           "Subtitle": "Attributes that help with writing accessible XAML.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
@@ -1117,6 +1161,7 @@
         {
           "UniqueId": "InfoBar",
           "Title": "InfoBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An inline message to display app-wide status change information",
           "ImagePath": "ms-appx:///Assets/ControlImages/InfoBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuBarIcon.png",
@@ -1142,6 +1187,7 @@
         {
           "UniqueId": "ProgressBar",
           "Title": "ProgressBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ProgressBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ProgressBarIcon.png",
@@ -1166,6 +1212,7 @@
         {
           "UniqueId": "ProgressRing",
           "Title": "ProgressRing",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Shows the apps progress on a task, or that the app is performing ongoing work that does block user interaction.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ProgressRing.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ProgressRingIcon.png",
@@ -1190,6 +1237,7 @@
         {
           "UniqueId": "ToolTip",
           "Title": "ToolTip",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Displays information for an element in a pop-up window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ToolTip.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ToolTipIcon.png",
@@ -1218,6 +1266,7 @@
     {
       "UniqueId": "DialogsAndFlyouts",
       "Title": "Dialogs and Flyouts",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1226,6 +1275,7 @@
         {
           "UniqueId": "ContentDialog",
           "Title": "ContentDialog",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A dialog box that can be customized to contain any XAML content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ContentDialog.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1253,6 +1303,7 @@
         {
           "UniqueId": "Flyout",
           "Title": "Flyout",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Shows contextual information and enables user interaction.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Flyout.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/FlyoutIcon.png",
@@ -1281,6 +1332,7 @@
         {
           "UniqueId": "TeachingTip",
           "Title": "TeachingTip",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A content-rich flyout for guiding users and enabling teaching moments.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TeachingTip.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TeachingTipIcon.png",
@@ -1309,6 +1361,7 @@
     {
       "UniqueId": "Scrolling",
       "Title": "Scrolling",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1317,6 +1370,7 @@
         {
           "UniqueId": "PipsPager",
           "Title": "PipsPager",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to let the user navigate through a paginated collection when the page numbers do not need to be visually known.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PipsPager.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1343,6 +1397,7 @@
         {
           "UniqueId": "ScrollViewer",
           "Title": "ScrollViewer",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that lets the user pan and zoom its content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ScrollViewer.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ScrollViewerIcon.png",
@@ -1361,7 +1416,7 @@
             }
           ],
           "RelatedControls": [
-            "ViewBox",
+            "Viewbox",
             "Canvas",
             "Grid",
             "StackPanel",
@@ -1372,6 +1427,7 @@
         {
           "UniqueId": "SemanticZoom",
           "Title": "SemanticZoom",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Lets the user zoom between two different views of a collection, making it easier to navigate through large collections of items.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SemanticZoom.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1399,6 +1455,7 @@
     {
       "UniqueId": "Layout",
       "Title": "Layout",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1407,6 +1464,7 @@
         {
           "UniqueId": "Border",
           "Title": "Border",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that draws a boundary line, background, or both, around another object.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Border.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/BorderIcon.png",
@@ -1431,6 +1489,7 @@
         {
           "UniqueId": "Canvas",
           "Title": "Canvas",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A layout panel that supports absolute positioning of child elements relative to the top left corner of the canvas.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Canvas.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CanvasIcon.png",
@@ -1459,6 +1518,7 @@
         {
           "UniqueId": "Expander",
           "Title": "Expander",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container with a header that can be expanded to show a body with more content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Expander.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1484,6 +1544,7 @@
         {
           "UniqueId": "ItemsRepeater",
           "Title": "ItemsRepeater",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A flexible, primitive control for data-driven layouts.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListViewIcon.png",
@@ -1518,6 +1579,7 @@
         {
           "UniqueId": "Grid",
           "Title": "Grid",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A layout panel that supports arranging child elements in rows and columns. ",
           "ImagePath": "ms-appx:///Assets/ControlImages/Grid.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/GridIcon.png",
@@ -1550,6 +1612,7 @@
         {
           "UniqueId": "RadioButtons",
           "Title": "RadioButtons",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RadioButtonsIcon.png",
@@ -1577,6 +1640,7 @@
         {
           "UniqueId": "RelativePanel",
           "Title": "RelativePanel",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A panel that uses relationships between elements to define layout.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RelativePanel.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RelativePanelIcon.png",
@@ -1599,12 +1663,13 @@
             "StackPanel",
             "Border",
             "Canvas",
-            "ViewBox"
+            "Viewbox"
           ]
         },
         {
           "UniqueId": "SplitView",
           "Title": "SplitView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container that has 2 content areas, with multiple display options for the pane.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SplitViewIcon.png",
@@ -1633,6 +1698,7 @@
         {
           "UniqueId": "StackPanel",
           "Title": "StackPanel",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A layout panel that arranges child elements into a single line that can be oriented horizontally or vertically.",
           "ImagePath": "ms-appx:///Assets/ControlImages/StackPanel.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/StackPanelIcon.png",
@@ -1661,6 +1727,7 @@
         {
           "UniqueId": "VariableSizedWrapGrid",
           "Title": "VariableSizedWrapGrid",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A layout panel that supports arranging child elements in rows and columns. Each child element can span multiple rows and columns.",
           "ImagePath": "ms-appx:///Assets/ControlImages/VariableSizedWrapGrid.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/VariableSizedWrapGridIcon.png",
@@ -1687,19 +1754,20 @@
           ]
         },
         {
-          "UniqueId": "ViewBox",
-          "Title": "ViewBox",
+          "UniqueId": "Viewbox",
+          "Title": "Viewbox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that scales its content to a specified size.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ViewBox.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Viewbox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ViewBoxIcon.png",
-          "Description": "Use a ViewBox control scale content up or down to a specified size.",
+          "Description": "Use a Viewbox control scale content up or down to a specified size.",
           "Content": "<p>Look at the <i>ViewBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
               "Title": "Viewbox - API",
-              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.viewbox"
+              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.Viewbox"
             }
           ],
           "RelatedControls": [
@@ -1715,6 +1783,7 @@
     {
       "UniqueId": "Navigation",
       "Title": "Navigation",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1723,6 +1792,7 @@
         {
           "UniqueId": "BreadcrumbBar",
           "Title": "BreadcrumbBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Shows the trail of navigation taken to the current location.",
           "ImagePath": "ms-appx:///Assets/ControlImages/BreadcrumbBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1749,6 +1819,7 @@
         {
           "UniqueId": "NavigationView",
           "Title": "NavigationView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "ImagePath": "ms-appx:///Assets/ControlImages/NavigationView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/NavigationViewIcon.png",
@@ -1774,6 +1845,7 @@
         {
           "UniqueId": "Pivot",
           "Title": "Pivot",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Presents information from different sources in a tabbed view.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PivotIcon.png",
@@ -1800,6 +1872,7 @@
         {
           "UniqueId": "TabView",
           "Title": "TabView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that displays a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TabView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -1833,6 +1906,7 @@
     {
       "UniqueId": "Media",
       "Title": "Media",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -1841,6 +1915,7 @@
         {
           "UniqueId": "AnimatedVisualPlayer",
           "Title": "AnimatedVisualPlayer",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An element to render and control playback of motion graphics.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedVisualPlayer.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
@@ -1873,6 +1948,7 @@
         {
           "UniqueId": "Image",
           "Title": "Image",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to display image content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Image.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ImageIcon.png",
@@ -1898,6 +1974,7 @@
         {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to display video and image content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MediaElementIcon.png",
@@ -1922,6 +1999,7 @@
         {
           "UniqueId": "PersonPicture",
           "Title": "PersonPicture",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Displays the picture of a person/contact.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PersonPicture.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PersonPictureIcon.png",
@@ -1946,6 +2024,7 @@
         {
           "UniqueId": "Sound",
           "Title": "Sound",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Sound.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SoundIcon.png",
@@ -1967,6 +2046,7 @@
         {
           "UniqueId": "WebView2",
           "Title": "WebView2",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
           "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/WebViewIcon.png",
@@ -1994,6 +2074,7 @@
     {
       "UniqueId": "Styles",
       "Title": "Styles",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2002,6 +2083,7 @@
         {
           "UniqueId": "Acrylic",
           "Title": "AcrylicBrush",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "A translucent material recommended for panel backgrounds.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AcrylicBrushIcon.png",
@@ -2026,6 +2108,7 @@
         {
           "UniqueId": "AnimatedIcon",
           "Title": "AnimatedIcon",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedIcon.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
@@ -2054,6 +2137,7 @@
         {
           "UniqueId": "IconElement",
           "Title": "IconElement",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Represents icon controls that use different image types as its content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Image.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ImageIcon.png",
@@ -2095,6 +2179,7 @@
         {
           "UniqueId": "RadialGradientBrush",
           "Title": "RadialGradientBrush",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "A brush to show radial gradients",
           "ImagePath": "ms-appx:///Assets/ControlImages/Canvas.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CanvasIcon.png",
@@ -2116,6 +2201,7 @@
         {
           "UniqueId": "RevealFocus",
           "Title": "Reveal Focus",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Customize the style of your focus rectangles.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RevealFocus.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RevealFocusIcon.png",
@@ -2139,6 +2225,7 @@
         {
           "UniqueId": "ColorPaletteResources",
           "Title": "ColorPaletteResources",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -2164,6 +2251,7 @@
         {
           "UniqueId": "CompactSizing",
           "Title": "Compact Sizing",
+          "ApiNamespace": "",
           "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/CompactSizingIcon.png",
@@ -2181,6 +2269,7 @@
         {
           "UniqueId": "SystemBackdrops",
           "Title": "System Backdrops (Mica/Acrylic)",
+          "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
           "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SystemBackdropsIcon.png",
@@ -2206,6 +2295,7 @@
     {
       "UniqueId": "Text",
       "Title": "Text",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2214,6 +2304,7 @@
         {
           "UniqueId": "AutoSuggestBox",
           "Title": "AutoSuggestBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to provide suggestions as a user is typing.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AutoSuggestBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AutoSuggestBoxIcon.png",
@@ -2240,6 +2331,7 @@
         {
           "UniqueId": "NumberBox",
           "Title": "NumberBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A text control used for numeric input and evaluation of algebraic equations.",
           "ImagePath": "ms-appx:///Assets/ControlImages/NumberBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/NumberBoxIcon.png",
@@ -2267,6 +2359,7 @@
         {
           "UniqueId": "PasswordBox",
           "Title": "PasswordBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control for entering passwords.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PasswordBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/PasswordBoxIcon.png",
@@ -2294,6 +2387,7 @@
         {
           "UniqueId": "RichEditBox",
           "Title": "RichEditBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A rich text editing control that supports formatted text, hyperlinks, and other rich content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RichEditBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RichEditBoxIcon.png",
@@ -2321,6 +2415,7 @@
         {
           "UniqueId": "RichTextBlock",
           "Title": "RichTextBlock",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that displays formatted text, hyperlinks, inline images, and other rich content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RichTextBlock.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/RichTextBlockIcon.png",
@@ -2349,6 +2444,7 @@
         {
           "UniqueId": "TextBlock",
           "Title": "TextBlock",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A lightweight control for displaying small amounts of text.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBlock.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TextBlockIcon.png",
@@ -2377,6 +2473,7 @@
         {
           "UniqueId": "TextBox",
           "Title": "TextBox",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A single-line or multi-line plain text field.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TextBoxIcon.png",
@@ -2408,6 +2505,7 @@
     {
       "UniqueId": "Motion",
       "Title": "Motion",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
@@ -2416,6 +2514,7 @@
         {
           "UniqueId": "ConnectedAnimation",
           "Title": "Connected Animation",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Connected animations continue elements during page navigation and help the user maintain their context between views.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ConnectedAnimation.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ConnectedAnimationsIcon.png",
@@ -2449,6 +2548,7 @@
         {
           "UniqueId": "EasingFunction",
           "Title": "Easing Functions",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Easing is a way to manipulate the velocity of an object as it animates.",
           "ImagePath": "ms-appx:///Assets/ControlImages/EasingFunction.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/EasingFunctionsIcon.png",
@@ -2479,6 +2579,7 @@
         {
           "UniqueId": "PageTransition",
           "Title": "Page Transitions",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Page transitions provide visual feedback about the relationship between pages.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PageTransition.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TransitionsIcon.png",
@@ -2508,6 +2609,7 @@
         {
           "UniqueId": "ThemeTransition",
           "Title": "Theme Transitions",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Theme transitions are pre-packaged, easy-to-apply animations.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ThemeTransition.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TransitionsIcon.png",
@@ -2537,6 +2639,7 @@
         {
           "UniqueId": "XamlCompInterop",
           "Title": "Animation interop",
+          "ApiNamespace": "",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/StoryboardAnimationIcon.png",
@@ -2569,6 +2672,7 @@
         {
           "UniqueId": "ImplicitTransition",
           "Title": "Implicit Transitions",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ImplicitTransition.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/TransitionsIcon.png",
@@ -2598,6 +2702,7 @@
         {
           "UniqueId": "ParallaxView",
           "Title": "ParallaxView",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that provides the parallax effect when scrolling.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ParallaxView.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ParallaxViewIcon.png",
@@ -2624,6 +2729,7 @@
     {
       "UniqueId": "MultipleWindows",
       "Title": "Windows",
+      "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
       "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -2632,6 +2738,7 @@
         {
           "UniqueId": "CreateMultipleWindows",
           "Title": "Create Multiple Windows",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -2655,6 +2762,7 @@
         {
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
+          "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",

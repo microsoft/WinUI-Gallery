@@ -19,7 +19,8 @@
     <Page.Resources>
         <DataTemplate x:Key="NavigationViewHeaderTemplate">
             <local:PageHeader
-                Title="{Binding}"
+                Title="{Binding Title}"
+                ApiNamespace="{Binding ApiNamespace}"
                 Background="Transparent"
                 BackgroundColorOpacity="1" />
         </DataTemplate>

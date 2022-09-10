@@ -187,7 +187,7 @@ namespace AppUIBasics
                     this.contentFrame.Navigate(pageType);
                 }
 
-                args.NavigationRootPage.NavigationView.Header = item?.Title;
+                args.NavigationRootPage.NavigationView.Header = item;
                 args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
             }
 
