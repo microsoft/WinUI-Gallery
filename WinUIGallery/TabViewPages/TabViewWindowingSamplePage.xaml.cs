@@ -69,19 +69,6 @@ namespace AppUIBasics.TabViewPages
             }
 
             Tabs.SelectedIndex = 0;
-
-
-#if UNIVERSAL
-            // Extend into the titlebar
-            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
-
-            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-
-            var titleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
-#endif
         }
 
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)

@@ -9,9 +9,6 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 
-#if UNIVERSAL
-using Windows.UI.ViewManagement;
-#endif
 
 namespace AppUIBasics.Helper
 {
@@ -51,27 +48,13 @@ namespace AppUIBasics.Helper
 
         public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
         {
-#if UNIVERSAL
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
-
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-#endif
             if (isLeftMode)
             {
                 NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
-#if UNIVERSAL
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-#endif
             }
             else
             {
                 NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
-#if UNIVERSAL
-                var userSettings = new UISettings();
-                titleBar.ButtonBackgroundColor = userSettings.GetColorValue(UIColorType.Accent);
-                titleBar.ButtonInactiveBackgroundColor = userSettings.GetColorValue(UIColorType.Accent);
-#endif
             }
         }
     }

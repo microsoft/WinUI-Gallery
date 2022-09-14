@@ -12,17 +12,13 @@ using AppUIBasics.Data;
 using AppUIBasics.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-#if !UNIVERSAL
-using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics
 {

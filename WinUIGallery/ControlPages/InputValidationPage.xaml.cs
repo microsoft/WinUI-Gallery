@@ -15,12 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
-
-#if !UNIVERSAL
 using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -396,11 +391,7 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-#if !UNIVERSAL
         public IEnumerable GetErrors(string propertyName)
-#else
-        public IEnumerable<object> GetErrors(string propertyName)
-#endif
         {
             return _errors[propertyName];
         }

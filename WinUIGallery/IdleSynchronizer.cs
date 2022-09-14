@@ -231,11 +231,6 @@ namespace AppUIBasics
                 // At this point, we know that the UI thread is idle - now we need to make sure
                 // that XAML isn't animating anything.
                 // TODO 27870237: Remove this #if once BuildTreeServiceDrained is properly signaled in WinUI desktop apps.
-#if UNIVERSAL
-                errorString = WaitForBuildTreeServiceWork(out hadBuildTreeWork);
-                if (errorString.Length > 0) { return errorString; }
-                AddLog("After WaitForBuildTreeServiceWork");
-#endif
 
                 // The AnimationsComplete handle sometimes is never set in RS1,
                 // so we'll skip waiting for animations to complete
