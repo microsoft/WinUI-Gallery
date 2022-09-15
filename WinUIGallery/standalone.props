@@ -7,8 +7,8 @@
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.3.1</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
-    <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22563-preview</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
-    <MicrosoftCsWinRTPackageVersion>1.6.4</MicrosoftCsWinRTPackageVersion>
+    <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.1</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
+    <MicrosoftCsWinRTPackageVersion>2.0.0</MicrosoftCsWinRTPackageVersion>
     <!-- Where to place the files generated from CSWinRT from WinUIGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
