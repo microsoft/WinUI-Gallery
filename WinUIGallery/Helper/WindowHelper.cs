@@ -11,7 +11,7 @@
 using Microsoft.UI.Xaml;
 using System.Collections.Generic;
 
-namespace AppUIBasics
+namespace AppUIBasics.Helper
 {
     // Helper class to allow the app to find the Window that contains an
     // arbitrary UIElement (GetWindowForElement).  To do this, we keep track
