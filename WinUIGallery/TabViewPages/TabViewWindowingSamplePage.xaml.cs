@@ -141,7 +141,7 @@ namespace AppUIBasics.TabViewPages
             args.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
-        private void Tabs_TabStripDrop(object sender, DragEventArgs e)
+        private async void Tabs_TabStripDrop(object sender, DragEventArgs e)
         {
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView
@@ -175,22 +175,35 @@ namespace AppUIBasics.TabViewPages
                     }
 
                     // The TabView can only be in one tree at a time. Before moving it to the new TabView, remove it from the old.
-                    var destinationTabViewListView = ((obj as TabViewItem).Parent as TabViewListView);
-                    destinationTabViewListView.Items.Remove(obj);
+                    // Note that this call can happen on a different thread if moving across windows. So make sure you call methods on
+                    // the same thread as where the UI Elements were created.
 
+                    object header = null;
+                    object dataContext = null;
+                    var element = (obj as UIElement);
+                    await element.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        var tabItem = obj as TabViewItem;
+                        var destinationTabViewListView = (tabItem.Parent as TabViewListView);
+                        destinationTabViewListView.Items.Remove(obj);
+                        header = tabItem.Header;
+                        dataContext = (tabItem.Content as MyTabContentControl).DataContext;
+                    });
+
+                    var insertedItem = CreateNewTVI(header.ToString(), dataContext.ToString());
                     if (index < 0)
                     {
                         // We didn't find a transition point, so we're at the end of the list
-                        destinationItems.Add(obj);
+                        destinationItems.Add(insertedItem);
                     }
                     else if (index < destinationTabView.TabItems.Count)
                     {
                         // Otherwise, insert at the provided index.
-                        destinationItems.Insert(index, obj);
+                        destinationItems.Insert(index, insertedItem);
                     }
 
                     // Select the newly dragged tab
-                    destinationTabView.SelectedItem = obj;
+                    destinationTabView.SelectedItem = insertedItem;
                 }
             }
         }
