@@ -1,26 +1,6 @@
 {
   "Groups": [
     {
-      "UniqueId": "NewControls",
-      "Title": "Home",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": []
-    },
-    {
-      "UniqueId": "AllControls",
-      "Title": "All controls",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": []
-    },
-    {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
       "ApiNamespace": "",

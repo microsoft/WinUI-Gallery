@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.ControlExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -176,7 +176,7 @@
                         Code="{x:Bind CSharp}"
                         CodeSourceFile="{x:Bind CSharpSource}"
                         Substitutions="{x:Bind Substitutions}"
-                        IsCSharpSample="true"/>
+                        SampleType="CSharp"/>
                 </StackPanel>
             </muxc:Expander>
 

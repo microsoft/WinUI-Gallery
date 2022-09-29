@@ -32,6 +32,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap.DesignGuidancePages;
 
 namespace AppUIBasics
 {
@@ -42,8 +43,6 @@ namespace AppUIBasics
         private RootFrameNavigationHelper _navHelper;
         private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
-        private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
-        private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
 
         public static NavigationRootPage GetForElement(object obj)
         {
@@ -164,7 +163,7 @@ namespace AppUIBasics
 
         public bool CheckNewControlSelected()
         {
-            return _newControlsMenuItem.IsSelected;
+            return NewControlsItem.IsSelected;
         }
 
         // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
@@ -246,27 +245,9 @@ namespace AppUIBasics
                 }
 
                 NavigationViewControl.MenuItems.Add(itemGroup);
-
-                if (group.UniqueId == "AllControls")
-                {
-                    this._allControlsMenuItem = itemGroup;
-                }
-                else if (group.UniqueId == "NewControls")
-                {
-                    this._newControlsMenuItem = itemGroup;
-                }
             }
 
-            // Move "What's New" and "All Controls" to the top of the NavigationView
-            NavigationViewControl.MenuItems.Remove(_allControlsMenuItem);
-            NavigationViewControl.MenuItems.Remove(_newControlsMenuItem);
-            NavigationViewControl.MenuItems.Insert(0, _allControlsMenuItem);
-            NavigationViewControl.MenuItems.Insert(0, _newControlsMenuItem);
-
-            // Separate the All/New items from the rest of the categories.
-            NavigationViewControl.MenuItems.Insert(2, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
-
-            _newControlsMenuItem.Loaded += OnNewControlsMenuItemLoaded;
+            NewControlsItem.Loaded += OnNewControlsMenuItemLoaded;
         }
 
         private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -345,18 +326,32 @@ namespace AppUIBasics
             {
                 var selectedItem = args.SelectedItemContainer;
 
-                if (selectedItem == _allControlsMenuItem)
+                if (selectedItem == AllControlsItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
                     {
                         Navigate(typeof(AllControlsPage));
                     }
                 }
-                else if (selectedItem == _newControlsMenuItem)
+                else if (selectedItem == NewControlsItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
                         Navigate(typeof(NewControlsPage));
+                    }
+                }
+                else if (selectedItem == DesignGuidanceItem)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
+                    {
+                        //Navigate(typeof(DesignGuidancePage));
+                    }
+                }
+                else if (selectedItem == DesignGuidanceIconsPageItem)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(IconsPage))
+                    {
+                        Navigate(typeof(IconsPage));
                     }
                 }
                 else
@@ -382,7 +377,8 @@ namespace AppUIBasics
             CloseTeachingTips();
 
             if (e.SourcePageType == typeof(AllControlsPage) ||
-                e.SourcePageType == typeof(NewControlsPage))
+                e.SourcePageType == typeof(NewControlsPage) ||
+                e.SourcePageType == typeof(IconsPage))
             {
                 NavigationViewControl.AlwaysShowHeader = false;
             }

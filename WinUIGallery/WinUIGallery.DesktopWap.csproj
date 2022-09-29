@@ -83,7 +83,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
+    <None Remove="DataModel\IconsData.json" />
+    <None Remove="DesignGuidancePages\IconsPage.xaml" />
     <Content Remove="@(Content)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModel\IconsData.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DesignGuidancePages\IconsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
