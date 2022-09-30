@@ -214,7 +214,7 @@ namespace AppUIBasics.Controls
             var formatter = GenerateRichTextFormatter();
             if (SampleType == SampleCodePresenterType.Inline)
             {
-                CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas"), Text = actualCode, IsTextSelectionEnabled = true };
+                CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
                 CodeScrollViewer.UpdateLayout();
             }
             else

@@ -84,7 +84,7 @@
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="datamodel:IconData">
                                 <Grid x:DefaultBindMode="OneWay"
-                                    HorizontalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch" ToolTipService.ToolTip="{Binding Name}"
                                     MinWidth="80" MaxWidth="280" MinHeight="120">
 
                                     <Grid.RowDefinitions>
@@ -100,7 +100,7 @@
 
                                     <!-- Icon name/descriptor -->
                                     <TextBlock Text="{Binding Name}" Margin="5,0,5,0" x:Name="IconName" Grid.Row="2"
-                                        HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="12"/>
+                                        HorizontalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>

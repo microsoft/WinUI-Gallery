@@ -37,6 +37,8 @@
                     <VisualState.Setters>
                         <Setter Target="SampleHeader.Visibility" Value="Collapsed"/>
                         <Setter Target="CodeScrollViewer.(Grid.Row)" Value="0"/>
+                        <Setter Target="CodeScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+                        <Setter Target="CodeScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
                         <Setter Target="CopyCodeButton.(Grid.Column)" Value="1"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -56,7 +58,7 @@
         <TextBlock x:Name="SampleHeader"/>
         <ScrollViewer
                 x:Name="CodeScrollViewer" Padding="0,4,0,4"
-                HorizontalScrollBarVisibility="Auto" Grid.Row="1"
+                HorizontalScrollBarVisibility="Auto"  Grid.Row="1"
                 HorizontalScrollMode="Auto"
                 VerticalScrollBarVisibility="Disabled"
                 VerticalScrollMode="Disabled">
