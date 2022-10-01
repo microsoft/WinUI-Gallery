@@ -57,15 +57,14 @@
                                             </Style>
                                         </GridView.Resources>
                                         <GridView.Items>
-                                            <Rectangle Fill="Transparent"/>
-                                            <Rectangle Fill="Red"/>
-                                            <Rectangle Fill="Orange"/>
-                                            <Rectangle Fill="Yellow"/>
-                                            <Rectangle Fill="Green"/>
-                                            <Rectangle Fill="Blue"/>
-                                            <Rectangle Fill="White"/>
-                                            <Rectangle Fill="Black"/>
-                                        </GridView.Items>
+                                            <Rectangle Fill="Transparent" AutomationProperties.Name="Transparent"/>
+                                            <Rectangle Fill="Red" AutomationProperties.Name="Red"/>
+                                            <Rectangle Fill="Orange" AutomationProperties.Name="Orange"/>
+                                            <Rectangle Fill="Yellow" AutomationProperties.Name="Yellow"/>
+                                            <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
+                                            <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
+                                            <Rectangle Fill="White" AutomationProperties.Name="White"/>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>                                        </GridView.Items>
                                     </GridView>
 
                                 </Flyout>
@@ -92,14 +91,14 @@
                                             </Style>
                                         </GridView.Resources>
                                         <GridView.Items>
-                                            <Rectangle Fill="Transparent"/>
-                                            <Rectangle Fill="Red"/>
-                                            <Rectangle Fill="Orange"/>
-                                            <Rectangle Fill="Yellow"/>
-                                            <Rectangle Fill="Green"/>
-                                            <Rectangle Fill="Blue"/>
-                                            <Rectangle Fill="White"/>
-                                            <Rectangle Fill="Black"/>
+                                            <Rectangle Fill="Transparent" AutomationProperties.Name="Transparent"/>
+                                            <Rectangle Fill="Red" AutomationProperties.Name="Red"/>
+                                            <Rectangle Fill="Orange" AutomationProperties.Name="Orange"/>
+                                            <Rectangle Fill="Yellow" AutomationProperties.Name="Yellow"/>
+                                            <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
+                                            <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
+                                            <Rectangle Fill="White" AutomationProperties.Name="White"/>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>
                                         </GridView.Items>
                                     </GridView>
 
