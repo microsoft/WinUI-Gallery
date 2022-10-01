@@ -26,6 +26,8 @@ using Windows.Foundation.Collections;
 using WinRT;
 using System.Runtime.InteropServices;
 using WinUIGallery.DesktopWap.Helper;
+using Microsoft.UI.Xaml.Shapes;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -84,42 +86,38 @@ namespace AppUIBasics.ControlPages
 
         }
 
-        private void BgColorButton_Click(object sender, RoutedEventArgs e)
+        private void BgGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Extract the color of the button that was clicked.
-            Button clickedColor = (Button)sender;
-            var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
-
+            var rect = (Rectangle)e.ClickedItem;
+            var color = ((SolidColorBrush)rect.Fill).Color;
             BackgroundColorElement.Background = new SolidColorBrush(color);
 
             currentBgColor = color;
             UpdateTitleBarColor();
 
+            // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
+            Task.Delay(10).ContinueWith(_ => myBgColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void FgColorButton_Click(object sender, RoutedEventArgs e)
+        private void FgGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Extract the color of the button that was clicked.
-            Button clickedColor = (Button)sender;
-            var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+            var rect = (Rectangle)e.ClickedItem;
+            var color = ((SolidColorBrush)rect.Fill).Color;
 
             ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
             UpdateTitleBarColor();
 
+            // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
+            Task.Delay(10).ContinueWith(_ => myFgColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
         }
-
 
         private void UpdateTitleBarColor()
         {
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             res["WindowCaptionBackground"] = currentBgColor;
-            //res["WindowCaptionBackgroundDisabled"] = currentBgColor;
             res["WindowCaptionForeground"] = currentFgColor;
-            //res["WindowCaptionForegroundDisabled"] = currentFgColor;
 
             TitleBarHelper.triggerTitleBarRepaint();
         }
