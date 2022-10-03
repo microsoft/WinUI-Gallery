@@ -124,8 +124,8 @@ namespace AppUIBasics
                     }
                 }
             }
-
-            TitleBarHelper.triggerTitleBarRepaint();
+            var window = WindowHelper.GetWindowForElement(this);
+            TitleBarHelper.triggerTitleBarRepaint(window);
 
         }
 

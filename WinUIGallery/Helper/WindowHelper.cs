@@ -50,6 +50,19 @@ namespace AppUIBasics.Helper
             return null;
         }
 
+        static public UIElement FindElementByName(UIElement element, string name)
+        {
+            if (element.XamlRoot != null && element.XamlRoot.Content != null)
+            {
+                var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
+                if (ele != null)
+                {
+                    return ele as UIElement;
+                }
+            }
+            return null;
+        }
+
         static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
         static private List<Window> _activeWindows = new List<Window>();

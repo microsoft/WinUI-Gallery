@@ -50,9 +50,6 @@ namespace AppUIBasics
 #endif
             }
         }
-
-        public static UIElement appTitleBar = null;
-
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
