@@ -17,7 +17,10 @@ namespace AppUIBasics.Helper
     public static class ThemeHelper
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
+
+#if !UNPACKAGED
         private static Window CurrentApplicationWindow;
+#endif
         // Keep reference so it does not get optimized/garbage collected
 #if UNIVERSAL
         private static UISettings uiSettings;

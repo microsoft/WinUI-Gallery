@@ -290,10 +290,10 @@ namespace AppUIBasics
                 var manager = AppRecordingManager.GetDefault();
                 if (manager.GetStatus().CanRecord)
                 {
-#if !UNPACKAGED
-                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-#else
+#if UNPACKAGED
                     StorageFolder localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
+#else
+                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
 #endif
                     var result = await manager.SaveScreenshotToFilesAsync(
                         localFolder,
