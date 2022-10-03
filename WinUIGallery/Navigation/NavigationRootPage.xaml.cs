@@ -136,17 +136,12 @@ namespace AppUIBasics
 #if !UNIVERSAL
                 WindowHelper.GetWindowForElement(this).Title = AppTitleText;
 #endif
+                var window = WindowHelper.GetWindowForElement(sender as UIElement);
+                window.ExtendsContentIntoTitleBar = true;
+                window.SetTitleBar(this.AppTitleBar);
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
-
-            // Set the titlebar to be custom. This is also referenced by the TitleBarPage
-            App.appTitleBar = AppTitleBar;
-#if !UNIVERSAL
-            var window = App.StartupWindow;
-            window.ExtendsContentIntoTitleBar = true;
-            window.SetTitleBar(AppTitleBar);
-#endif
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
