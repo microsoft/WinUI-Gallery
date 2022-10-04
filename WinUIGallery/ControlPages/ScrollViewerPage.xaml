@@ -20,7 +20,7 @@
 
             <!-- There's a known issue with zooming where we get into a layout cycle if we specify a height but not a width.
                  As a workaround for now, set an explicit height/width to match the natural size of the image. -->
-            <ScrollViewer x:Name="Control1" Height="266" Width="400" ZoomMode="Disabled" IsVerticalScrollChainingEnabled="True"
+            <ScrollViewer x:Name="Control1" Height="266" Width="400" ZoomMode="Enabled" IsTabStop="True" IsVerticalScrollChainingEnabled="True"
                     ManipulationCompleted="Control1_ManipulationCompleted" VerticalAlignment="Top"
                     HorizontalAlignment="Left">
                 <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="None" HorizontalAlignment="Left"
