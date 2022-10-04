@@ -24,7 +24,7 @@
     <Page.Resources>
         <x:Double x:Key="SwatchSize">32</x:Double>
     </Page.Resources>
-    
+
     <StackPanel>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
                               CSharpSource="Window\TitleBar\TitleBarSample1.txt">
@@ -36,13 +36,13 @@
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="10">
                         <Button x:Name="customTitleBar" Click="customTitleBar_Click"></Button>
-                        <TextBlock> Background Color </TextBlock>
+                        <TextBlock> Background Color</TextBlock>
                         <SplitButton x:Name="myBgColorButton" AutomationProperties.Name="Background color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
                             <Border x:Name="BackgroundColorElement" Width="{StaticResource SwatchSize}"
                                     Height="{StaticResource SwatchSize}" Background="Transparent" Margin="0" CornerRadius="4,0,0,4"/>
                             <SplitButton.Flyout>
                                 <Flyout Placement="Auto">
-                                    <GridView>
+                                    <GridView ItemClick="BgGridView_ItemClick" IsItemClickEnabled="True">
                                         <GridView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
@@ -55,68 +55,28 @@
                                                 <Setter Property="RadiusX" Value="4"/>
                                                 <Setter Property="RadiusY" Value="4"/>
                                             </Style>
-                                            <Style TargetType="Button">
-                                                <Setter Property="Padding" Value="0"/>
-                                                <Setter Property="MinWidth" Value="0"/>
-                                                <Setter Property="MinHeight" Value="0"/>
-                                                <Setter Property="Margin" Value="6"/>
-                                                <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
-                                            </Style>
                                         </GridView.Resources>
                                         <GridView.Items>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Transparent">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Transparent"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Red">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Red"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Orange">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Orange"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Yellow">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Yellow"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Green">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Green"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Blue">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Blue"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Indigo">
-                                                <Button.Content>
-                                                    <Rectangle Fill="White"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="BgColorButton_Click" AutomationProperties.Name="Violet">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Black"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </GridView.Items>
+                                            <Rectangle Fill="Transparent" AutomationProperties.Name="Transparent"/>
+                                            <Rectangle Fill="Red" AutomationProperties.Name="Red"/>
+                                            <Rectangle Fill="Orange" AutomationProperties.Name="Orange"/>
+                                            <Rectangle Fill="Yellow" AutomationProperties.Name="Yellow"/>
+                                            <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
+                                            <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
+                                            <Rectangle Fill="White" AutomationProperties.Name="White"/>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>                                        </GridView.Items>
                                     </GridView>
 
                                 </Flyout>
                             </SplitButton.Flyout>
                         </SplitButton>
-                         
+
                         <TextBlock> Foreground Color</TextBlock>
                         <SplitButton x:Name="myFgColorButton" AutomationProperties.Name="Foreground color" Padding="0" MinHeight="0" MinWidth="0" VerticalAlignment="Top">
                             <Border x:Name="ForegroundColorElement" Width="{StaticResource SwatchSize}" Height="{StaticResource SwatchSize}" Background="Black" Margin="0" CornerRadius="4,0,0,4"/>
                             <SplitButton.Flyout>
                                 <Flyout Placement="Auto">
-                                    <GridView>
+                                    <GridView ItemClick="FgGridView_ItemClick" IsItemClickEnabled="True">
                                         <GridView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal"/>
@@ -129,55 +89,16 @@
                                                 <Setter Property="RadiusX" Value="4"/>
                                                 <Setter Property="RadiusY" Value="4"/>
                                             </Style>
-                                            <Style TargetType="Button">
-                                                <Setter Property="Padding" Value="0"/>
-                                                <Setter Property="MinWidth" Value="0"/>
-                                                <Setter Property="MinHeight" Value="0"/>
-                                                <Setter Property="Margin" Value="6"/>
-                                                <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
-                                            </Style>
                                         </GridView.Resources>
                                         <GridView.Items>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Transparent">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Transparent"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Red">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Red"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Orange">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Orange"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Yellow">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Yellow"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Green">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Green"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Blue">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Blue"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Indigo">
-                                                <Button.Content>
-                                                    <Rectangle Fill="White"/>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button Click="FgColorButton_Click" AutomationProperties.Name="Violet">
-                                                <Button.Content>
-                                                    <Rectangle Fill="Black"/>
-                                                </Button.Content>
-                                            </Button>
+                                            <Rectangle Fill="Transparent" AutomationProperties.Name="Transparent"/>
+                                            <Rectangle Fill="Red" AutomationProperties.Name="Red"/>
+                                            <Rectangle Fill="Orange" AutomationProperties.Name="Orange"/>
+                                            <Rectangle Fill="Yellow" AutomationProperties.Name="Yellow"/>
+                                            <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
+                                            <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
+                                            <Rectangle Fill="White" AutomationProperties.Name="White"/>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>
                                         </GridView.Items>
                                     </GridView>
 
@@ -187,7 +108,7 @@
 
                     </StackPanel>
                 </StackPanel>
-                </local:ControlExample.Example>
+            </local:ControlExample.Example>
 
         </local:ControlExample>
         <local:ControlExample HeaderText="Fallback titlebar when no user defined titlebar is set"
