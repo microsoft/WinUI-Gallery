@@ -21,10 +21,10 @@ namespace WinUIGallery.DesktopWap.Helper
     internal class TitleBarHelper
     {
 
-        public static void triggerTitleBarRepaint()
+        public static void triggerTitleBarRepaint(Window window)
         {
             // to trigger repaint tracking task id 38044406
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(AppUIBasics.App.StartupWindow);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
             var activeWindow = AppUIBasics.Win32.GetActiveWindow();
             if (hwnd == activeWindow)
             {

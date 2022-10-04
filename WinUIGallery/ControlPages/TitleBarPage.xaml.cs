@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Helper;
 using System;
 using Microsoft;
 using System.Collections.Generic;
@@ -47,14 +48,17 @@ namespace AppUIBasics.ControlPages
         public TitleBarPage()
         {
             this.InitializeComponent();
-            UpdateTitleBarColor();
-            UpdateButtonText();
+            Loaded += (object sender, RoutedEventArgs e) =>
+            {
+                (sender as TitleBarPage).UpdateTitleBarColor();
+                UpdateButtonText();
+            };
         }
 
 
         private void SetTitleBar(UIElement titlebar)
         {
-            var window = App.StartupWindow;
+            var window = WindowHelper.GetWindowForElement(this as UIElement);
             if (!window.ExtendsContentIntoTitleBar)
             {
                 window.ExtendsContentIntoTitleBar = true;
@@ -70,9 +74,9 @@ namespace AppUIBasics.ControlPages
             UpdateTitleBarColor();
         }
 
-        private void UpdateButtonText()
+        public void UpdateButtonText()
         {
-            var window = App.StartupWindow;
+            var window = WindowHelper.GetWindowForElement(this as UIElement);
             if (window.ExtendsContentIntoTitleBar)
             {
                 customTitleBar.Content = "Reset to system TitleBar";
@@ -113,18 +117,23 @@ namespace AppUIBasics.ControlPages
             Task.Delay(10).ContinueWith(_ => myFgColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void UpdateTitleBarColor()
+
+        public void UpdateTitleBarColor()
         {
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
-            res["WindowCaptionBackground"] = currentBgColor;
-            res["WindowCaptionForeground"] = currentFgColor;
+            var titleBarElement = WindowHelper.FindElementByName(this, "AppTitleBar");
 
-            TitleBarHelper.triggerTitleBarRepaint();
+            (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // changing titlebar uielement's color
+            res["WindowCaptionForeground"] = currentFgColor;
+            //res["WindowCaptionForegroundDisabled"] = currentFgColor; //optional to set disabled state colors
+            var window = WindowHelper.GetWindowForElement(this);
+            TitleBarHelper.triggerTitleBarRepaint(window);
         }
 
         private void customTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            SetTitleBar(App.appTitleBar);
+            UIElement titleBarElement = WindowHelper.FindElementByName(sender as UIElement, "AppTitleBar");
+            SetTitleBar(titleBarElement);
         }
         private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {

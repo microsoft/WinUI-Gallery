@@ -75,7 +75,11 @@ namespace AppUIBasics
         {
             if (e.Key == VirtualKey.Up)
             {
-                var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up);
+                FindNextElementOptions options = new FindNextElementOptions
+                {
+                    SearchRoot = this.XamlRoot.Content
+                };
+                var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up, options);
                 if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
                 {
                     NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
