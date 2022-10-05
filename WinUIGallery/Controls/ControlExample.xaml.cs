@@ -23,9 +23,7 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
-#if !UNIVERSAL
 using Windows.Media.AppRecording;
-#endif
 using Windows.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -160,11 +158,7 @@ namespace AppUIBasics
         }
 
         private static readonly GridLength defaultExampleHeight =
-#if !UNIVERSAL
             new GridLength(1, GridUnitType.Star);
-#else
-            new GridLength { Value = 1, GridUnitType = GridUnitType.Star };
-#endif
 
         public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
         public GridLength ExampleHeight
@@ -286,7 +280,6 @@ namespace AppUIBasics
             }
             else
             {
-#if !UNIVERSAL
                 var manager = AppRecordingManager.GetDefault();
                 if (manager.GetStatus().CanRecord)
                 {
@@ -347,7 +340,6 @@ namespace AppUIBasics
                         await screenshotFile.DeleteAsync();
                     }
                 }
-#endif
             }
 
             await Task.Delay(1000);
