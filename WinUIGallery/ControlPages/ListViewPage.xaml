@@ -234,7 +234,7 @@ source code for the WinUI Gallery. -->
                 HorizontalAlignment="Left">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <ItemsStackPanel x:Name="GroupedStackPanel" AreStickyGroupHeadersEnabled="False" Loaded="StackPanel_loaded" />
+                            <ItemsStackPanel x:Name="GroupedStackPanel" AreStickyGroupHeadersEnabled="False" Loaded="StackPanel_loaded"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
 
@@ -242,8 +242,8 @@ source code for the WinUI Gallery. -->
                         <GroupStyle >
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate x:DataType="local1:GroupInfoList">
-                                    <Border AutomationProperties.Name="{x:Bind Key}">
-                                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                                    <Border AutomationProperties.AccessibilityView="Raw">
+                                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}" AutomationProperties.AccessibilityView="Raw"/>
                                     </Border>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>

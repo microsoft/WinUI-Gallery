@@ -16,8 +16,8 @@ code-behind. See the C# code below for more details on how to create/bind to a g
         <GroupStyle >
             <GroupStyle.HeaderTemplate>
                 <DataTemplate x:DataType="local1:GroupInfoList">
-                    <Border AutomationProperties.Name="{x:Bind Key}">
-                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
+                    <Border AutomationProperties.AccessibilityView="Raw">
+                        <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}" AutomationProperties.AccessibilityView="Raw"/>
                     </Border>
                 </DataTemplate>
             </GroupStyle.HeaderTemplate>
