@@ -28,6 +28,11 @@ public class GroupInfoList : List<object>
     {
     }
     public object Key { get; set; }
+
+    public override string ToString()
+    {
+        return "Group " + Key.ToString();
+    }
 }
 
 // Contact class definition:
