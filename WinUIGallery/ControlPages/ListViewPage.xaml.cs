@@ -397,5 +397,10 @@ namespace AppUIBasics.ControlPages
         {
         }
         public object Key { get; set; }
+
+        public override string ToString()
+        {
+            return "Group " + Key.ToString();
+        }
     }
 }

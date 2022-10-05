@@ -48,6 +48,9 @@ namespace AppUIBasics.Helper
 
         public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
         {
+            var window = WindowHelper.GetWindowForElement(element);
+            window.ExtendsContentIntoTitleBar = isLeftMode;
+
             if (isLeftMode)
             {
                 NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
