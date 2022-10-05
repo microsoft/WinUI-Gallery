@@ -27,12 +27,6 @@ using WinRT;
 
 namespace AppUIBasics.ControlPages
 {
-    [ComImport, System.Runtime.InteropServices.Guid("3E68D4BD-7135-4D10-8018-9FB6D9F33FA1"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IInitializeWithWindow
-    {
-        void Initialize([In] IntPtr hwnd);
-    }
-
     public sealed partial class RichEditBoxPage : Page
     {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
@@ -81,9 +75,8 @@ namespace AppUIBasics.ControlPages
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
-                IInitializeWithWindow initializeWithWindowWrapper = open.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
-                initializeWithWindowWrapper.Initialize(hwnd);
+                WinRT.Interop.InitializeWithWindow.Initialize(open, hwnd);
             }
 #endif
 
@@ -117,9 +110,8 @@ namespace AppUIBasics.ControlPages
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
-                IInitializeWithWindow initializeWithWindowWrapper = savePicker.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
-                initializeWithWindowWrapper.Initialize(hwnd);
+                WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
             }
 #endif
 
