@@ -55,6 +55,9 @@ namespace AppUIBasics.Helper
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
 
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+#else
+            var window = WindowHelper.GetWindowForElement(element);
+            window.ExtendsContentIntoTitleBar = isLeftMode;
 #endif
             if (isLeftMode)
             {
