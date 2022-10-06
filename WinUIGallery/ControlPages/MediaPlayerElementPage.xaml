@@ -20,7 +20,7 @@
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
             <local:ControlExample.Example>
-                <MediaElement Source="ms-appx:///Assets/SampleMedia/fishes.wmv" MaxWidth="400" AutoPlay="True" />
+                <MediaPlayerElement Source="ms-appx:///Assets/SampleMedia/fishes.wmv" MaxWidth="400" AutoPlay="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
