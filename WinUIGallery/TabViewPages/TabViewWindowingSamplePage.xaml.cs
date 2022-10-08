@@ -237,20 +237,6 @@ namespace AppUIBasics.TabViewPages
                 }
             };
 
-            var contextFlyout = new MenuFlyout();
-            var moveToNewWindowFlyout = new MenuFlyoutItem();
-
-            moveToNewWindowFlyout.Text = "Move to new window";
-            //moveToNewWindowFlyout.Click += MoveToNewWindowFlyout_Click;
-            contextFlyout.Items.Add(moveToNewWindowFlyout);
-
-            newTab.ContextFlyout = contextFlyout;
-
-            //void MoveToNewWindowFlyout_Click(object _sender, RoutedEventArgs e)
-            //{
-            //    MoveTabToNewWindow(newTab);
-            //}
-
             return newTab;
         }
 
@@ -265,7 +251,8 @@ namespace AppUIBasics.TabViewPages
 
         private void Tabs_AddTabButtonClick(TabView sender, object args)
         {
-            sender.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = "New Item", Content = new MyTabContentControl() { DataContext = "New Item" } });
+            var tab = CreateNewTVI("New Item", "New Item");
+            sender.TabItems.Add(tab);
         }
 
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
