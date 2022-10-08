@@ -9,6 +9,11 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Windowing;
 using AppUIBasics.Helper;
+using System.Threading;
+using Microsoft.UI.Dispatching;
+using System.Threading.Tasks;
+using Windows.System;
+using DispatcherQueueHandler = Microsoft.UI.Dispatching.DispatcherQueueHandler;
 
 namespace AppUIBasics.TabViewPages
 {
@@ -181,14 +186,23 @@ namespace AppUIBasics.TabViewPages
                     object header = null;
                     object dataContext = null;
                     var element = (obj as UIElement);
-                    await element.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                    {
-                        var tabItem = obj as TabViewItem;
-                        var destinationTabViewListView = (tabItem.Parent as TabViewListView);
-                        destinationTabViewListView.Items.Remove(obj);
-                        header = tabItem.Header;
-                        dataContext = (tabItem.Content as MyTabContentControl).DataContext;
-                    });
+
+                    var taskCompletionSource = new TaskCompletionSource();
+
+                    element.DispatcherQueue.TryEnqueue(
+                        Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal,
+                        new DispatcherQueueHandler(() =>
+                        {
+                            var tabItem = obj as TabViewItem;
+                            var destinationTabViewListView = (tabItem.Parent as TabViewListView);
+                            destinationTabViewListView.Items.Remove(obj);
+                            header = tabItem.Header;
+                            dataContext = (tabItem.Content as MyTabContentControl).DataContext;
+
+                            taskCompletionSource.SetResult();
+                        }));
+
+                    await taskCompletionSource.Task;
 
                     var insertedItem = CreateNewTVI(header.ToString(), dataContext.ToString());
                     if (index < 0)
@@ -206,6 +220,38 @@ namespace AppUIBasics.TabViewPages
                     destinationTabView.SelectedItem = insertedItem;
                 }
             }
+        }
+
+        private TabViewItem CreateNewTVI(string header, string dataContext)
+        {
+            var newTab = new TabViewItem()
+            {
+                IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource()
+                {
+                    Symbol = Symbol.Placeholder
+                },
+                Header = header,
+                Content = new MyTabContentControl()
+                {
+                    DataContext = dataContext
+                }
+            };
+
+            var contextFlyout = new MenuFlyout();
+            var moveToNewWindowFlyout = new MenuFlyoutItem();
+
+            moveToNewWindowFlyout.Text = "Move to new window";
+            //moveToNewWindowFlyout.Click += MoveToNewWindowFlyout_Click;
+            contextFlyout.Items.Add(moveToNewWindowFlyout);
+
+            newTab.ContextFlyout = contextFlyout;
+
+            //void MoveToNewWindowFlyout_Click(object _sender, RoutedEventArgs e)
+            //{
+            //    MoveTabToNewWindow(newTab);
+            //}
+
+            return newTab;
         }
 
         // This method prevents the TabView from handling things that aren't text (ie. files, images, etc.)
