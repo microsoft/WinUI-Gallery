@@ -179,7 +179,7 @@ namespace AppUIBasics.TabViewPages
                         }
                     }
 
-                    // The TabView can only be in one tree at a time. Before moving it to the new TabView, remove it from the old.
+                    // The TabViewItem can only be in one tree at a time. Before moving it to the new TabView, remove it from the old.
                     // Note that this call can happen on a different thread if moving across windows. So make sure you call methods on
                     // the same thread as where the UI Elements were created.
 
