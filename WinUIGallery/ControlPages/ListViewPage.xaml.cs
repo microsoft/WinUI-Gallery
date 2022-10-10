@@ -155,7 +155,7 @@ namespace AppUIBasics.ControlPages
                     // Find the insertion index:
                     Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
 
-                    // If the target ListView has items in it, use the heigh of the first item
+                    // If the target ListView has items in it, use the height of the first item
                     //      to find the insertion index.
                     int index = 0;
                     if (target.Items.Count != 0)
