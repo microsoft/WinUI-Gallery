@@ -9,6 +9,11 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Windowing;
 using AppUIBasics.Helper;
+using System.Threading;
+using Microsoft.UI.Dispatching;
+using System.Threading.Tasks;
+using Windows.System;
+using DispatcherQueueHandler = Microsoft.UI.Dispatching.DispatcherQueueHandler;
 
 namespace AppUIBasics.TabViewPages
 {
@@ -141,7 +146,7 @@ namespace AppUIBasics.TabViewPages
             args.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
-        private void Tabs_TabStripDrop(object sender, DragEventArgs e)
+        private async void Tabs_TabStripDrop(object sender, DragEventArgs e)
         {
             // This event is called when we're dragging between different TabViews
             // It is responsible for handling the drop of the item into the second TabView
@@ -174,25 +179,65 @@ namespace AppUIBasics.TabViewPages
                         }
                     }
 
-                    // The TabView can only be in one tree at a time. Before moving it to the new TabView, remove it from the old.
-                    var destinationTabViewListView = ((obj as TabViewItem).Parent as TabViewListView);
-                    destinationTabViewListView.Items.Remove(obj);
+                    // The TabViewItem can only be in one tree at a time. Before moving it to the new TabView, remove it from the old.
+                    // Note that this call can happen on a different thread if moving across windows. So make sure you call methods on
+                    // the same thread as where the UI Elements were created.
 
+                    object header = null;
+                    object dataContext = null;
+                    var element = (obj as UIElement);
+
+                    var taskCompletionSource = new TaskCompletionSource();
+
+                    element.DispatcherQueue.TryEnqueue(
+                        Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal,
+                        new DispatcherQueueHandler(() =>
+                        {
+                            var tabItem = obj as TabViewItem;
+                            var destinationTabViewListView = (tabItem.Parent as TabViewListView);
+                            destinationTabViewListView.Items.Remove(obj);
+                            header = tabItem.Header;
+                            dataContext = (tabItem.Content as MyTabContentControl).DataContext;
+
+                            taskCompletionSource.SetResult();
+                        }));
+
+                    await taskCompletionSource.Task;
+
+                    var insertedItem = CreateNewTVI(header.ToString(), dataContext.ToString());
                     if (index < 0)
                     {
                         // We didn't find a transition point, so we're at the end of the list
-                        destinationItems.Add(obj);
+                        destinationItems.Add(insertedItem);
                     }
                     else if (index < destinationTabView.TabItems.Count)
                     {
                         // Otherwise, insert at the provided index.
-                        destinationItems.Insert(index, obj);
+                        destinationItems.Insert(index, insertedItem);
                     }
 
                     // Select the newly dragged tab
-                    destinationTabView.SelectedItem = obj;
+                    destinationTabView.SelectedItem = insertedItem;
                 }
             }
+        }
+
+        private TabViewItem CreateNewTVI(string header, string dataContext)
+        {
+            var newTab = new TabViewItem()
+            {
+                IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource()
+                {
+                    Symbol = Symbol.Placeholder
+                },
+                Header = header,
+                Content = new MyTabContentControl()
+                {
+                    DataContext = dataContext
+                }
+            };
+
+            return newTab;
         }
 
         // This method prevents the TabView from handling things that aren't text (ie. files, images, etc.)
@@ -206,7 +251,8 @@ namespace AppUIBasics.TabViewPages
 
         private void Tabs_AddTabButtonClick(TabView sender, object args)
         {
-            sender.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = "New Item", Content = new MyTabContentControl() { DataContext = "New Item" } });
+            var tab = CreateNewTVI("New Item", "New Item");
+            sender.TabItems.Add(tab);
         }
 
         private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
