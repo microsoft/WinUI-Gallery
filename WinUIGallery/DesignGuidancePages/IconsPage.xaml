@@ -23,152 +23,142 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid Padding="30">
+        <StackPanel Spacing="10" Padding="30">
+            <TextBlock Text="Icons" FontSize="28" FontWeight="SemiBold"/>
+            <RichTextBlock>
+                <Paragraph>
+                    With the release of Windows 11,
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                    is the recommended symbol icon font.
+                </Paragraph>
+                <Paragraph/>
+                <Paragraph FontSize="16" FontWeight="Bold">How do I get the font?</Paragraph>
+                <Paragraph>
+                    Windows 11: There's nothing you need to do, the font comes with Windows.
+                    <LineBreak />
+                    On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                </Paragraph>
+            </RichTextBlock>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            <TextBlock Text="Fluent Icons Library" FontSize="16" FontWeight="Bold"/>
+            <Grid MaxWidth="800" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel>
-                <TextBlock Text="Icons" FontSize="28" FontWeight="SemiBold" Margin="0,10"/>
-                <RichTextBlock>
-                    <Paragraph>
-                        With the release of Windows 11,
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                        is the recommended symbol icon font.
-                    </Paragraph>
-                    <Paragraph/>
-                    <Paragraph FontSize="16" FontWeight="Bold">How do I get the font?</Paragraph>
-                    <Paragraph>
-                        Windows 11: There's nothing you need to do, the font comes with Windows.
-                        <LineBreak />
-                        On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts">here</Hyperlink>.
-                    </Paragraph>
-                </RichTextBlock>
-            </StackPanel>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="500"/>
+                </Grid.RowDefinitions>
 
-            <core:ControlExample Grid.Row="1" HeaderText="Icons" MaxWidth="900"
-                Height="500" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Grid CornerRadius="5" BorderThickness="1" MaxWidth="500"
-                    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <TextBox PlaceholderText="Search icons" Width="200"
+                        HorizontalAlignment="Left" Margin="4,10"
+                        TextChanged="SearchTextBox_TextChanged"/>
 
-                    <StackPanel>
-                        <TextBox PlaceholderText="Search icons" Width="200"
-                            HorizontalAlignment="Left" Margin="14,10"
-                            TextChanged="SearchTextBox_TextChanged"/>
-                    </StackPanel>
-
-                    <Rectangle HorizontalAlignment="Stretch" Grid.Row="1"
-                        Height="1" Fill="{ThemeResource ControlStrongStrokeColorDefaultBrush}"/>
-
-                    <GridView x:Name="ItemsGridView" Padding="12,10" SelectedIndex="0"
+                <GridView x:Name="ItemsGridView" SelectedIndex="0"
                         AutomationProperties.Name="Icons" SelectionMode="Single"
                         HorizontalAlignment="Stretch" Grid.Row="2">
-                        <GridView.ItemContainerStyle>
-                            <Style TargetType="GridViewItem">
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="Margin" Value="4"/>
-                                <Setter Property="MinHeight" Value="120" />
-                                <Setter Property="MaxWidth" Value="120" />
-                                <Setter Property="Background" Value="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"/>
-                            </Style>
-                        </GridView.ItemContainerStyle>
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="4"/>
+                            <Setter Property="MinHeight" Value="120" />
+                            <Setter Property="MaxWidth" Value="120" />
+                            <Setter Property="Background" Value="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
 
-                        <GridView.ItemTemplate>
-                            <DataTemplate x:DataType="datamodel:IconData">
-                                <Grid x:DefaultBindMode="OneWay"
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="datamodel:IconData">
+                            <Grid x:DefaultBindMode="OneWay"
                                     HorizontalAlignment="Stretch" ToolTipService.ToolTip="{Binding Name}"
                                     MinWidth="80" MaxWidth="280" MinHeight="120">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <!-- Icon -->
-                                    <Viewbox Grid.Row="1" Height="40" Width="40" Margin="0,0,0,10">
-                                        <FontIcon Glyph="{Binding Character}" Grid.Row="1"
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!-- Icon -->
+                                <Viewbox Grid.Row="1" Height="40" Width="40" Margin="0,0,0,10">
+                                    <FontIcon Glyph="{Binding Character}" Grid.Row="1"
                                             FontFamily="{StaticResource SymbolThemeFontFamily}"/>
-                                    </Viewbox>
+                                </Viewbox>
 
-                                    <!-- Icon name/descriptor -->
-                                    <TextBlock Text="{Binding Name}" Margin="5,0,5,0" x:Name="IconName" Grid.Row="2"
+                                <!-- Icon name/descriptor -->
+                                <TextBlock Text="{Binding Name}" Margin="5,0,5,0" x:Name="IconName" Grid.Row="2"
                                         HorizontalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
-                                </Grid>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
-                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
 
-                <core:ControlExample.Options>
-                    <ScrollViewer VerticalAlignment="Stretch" VerticalScrollMode="Enabled" Padding="0,0,10,0">
-                        <Grid DataContext="{x:Bind ItemsGridView}" Width="300">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*" MinHeight="55"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                <Grid Grid.RowSpan="3" Grid.Column="1"
+                    DataContext="{x:Bind ItemsGridView}" Width="300" Padding="0,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.ColumnSpan="2" Spacing="8" Margin="0,0,0,10" Orientation="Horizontal">
-                                <FontIcon Glyph="{Binding SelectedItem.Character}" FontSize="36" Margin="5"
-                                    FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <TextBlock FontSize="26" Text="{Binding SelectedItem.Name}" VerticalAlignment="Center"/>
 
-                                <TextBlock Text="{Binding SelectedItem.Name}" VerticalAlignment="Center"/>
-                            </StackPanel>
 
-                            <TextBlock Text="Icon-Name" Grid.Column="0" Grid.Row="1"/>
-                            <controls:SampleCodePresenter Grid.Column="1" Grid.Row="1" Style="{StaticResource CodeValuePresenterStyle}"
+                        <Grid Height="80" HorizontalAlignment="Center">
+                            <FontIcon Glyph="{Binding SelectedItem.Character}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
+                                            Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"
+                                            FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <TextBlock Text="Icon-Name" Grid.Column="0" Grid.Row="1"/>
+                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="1" Style="{StaticResource CodeValuePresenterStyle}"
                                 SampleType="Inline" Code="{Binding SelectedItem.Name, Mode=OneWay}" />
 
-                            <TextBlock Text="Unicode point" Grid.Column="0" Grid.Row="2"/>
-                            <controls:SampleCodePresenter Grid.Column="1" Grid.Row="2" Style="{StaticResource CodeValuePresenterStyle}"
+                    <TextBlock Text="Unicode point" Grid.Column="0" Grid.Row="2"/>
+                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="2" Style="{StaticResource CodeValuePresenterStyle}"
                                 SampleType="Inline" Code="{Binding SelectedItem.Code, Mode=OneWay}" />
 
-                            <TextBlock Text="Code glyph" Grid.Column="0" Grid.Row="3"/>
-                            <controls:SampleCodePresenter Grid.Column="1" Grid.Row="3" Style="{StaticResource CodeValuePresenterStyle}"
+                    <TextBlock Text="Code glyph" Grid.Column="0" Grid.Row="3"/>
+                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="3" Style="{StaticResource CodeValuePresenterStyle}"
                                 SampleType="Inline" Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" />
 
-                            <TextBlock Text="Text glyph" Grid.Column="0" Grid.Row="4"/>
-                            <controls:SampleCodePresenter Grid.Column="1" Grid.Row="4" Style="{StaticResource CodeValuePresenterStyle}"
+                    <TextBlock Text="Text glyph" Grid.Column="0" Grid.Row="4"/>
+                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="4" Style="{StaticResource CodeValuePresenterStyle}"
                                     SampleType="Inline" Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" />
 
-                            <TextBlock Text="Color" Grid.Row="5"/>
-                            <RadioButtons x:Name="ColorRadioButtons" Grid.ColumnSpan="2" Grid.Row="6" MaxColumns="4">
-                                <RadioButton Content="Black" MinWidth="50" Tag="Red"/>
-                                <RadioButton Content="Red" MinWidth="50" Tag="Red"/>
-                                <RadioButton Content="Blue" MinWidth="50" Tag="Red"/>
-                            </RadioButtons>
+                    <TextBlock Text="Color" Grid.Row="5"/>
+                    <RadioButtons x:Name="ColorRadioButtons" Grid.ColumnSpan="2" Grid.Row="6" MaxColumns="4">
+                        <RadioButton Content="Black" MinWidth="50" Tag="Red"/>
+                        <RadioButton Content="Red" MinWidth="50" Tag="Red"/>
+                        <RadioButton Content="Blue" MinWidth="50" Tag="Red"/>
+                    </RadioButtons>
 
-                            <TextBlock Text="FontSize" Grid.Row="7" VerticalAlignment="Center"/>
-                            <StackPanel Grid.Column="1" Grid.Row="7" Spacing="8" Orientation="Horizontal">
-                                <TextBlock Text="{x:Bind FontsizeSlider.Value, Mode=OneWay}" VerticalAlignment="Center"/>
-                                <Slider x:Name="FontsizeSlider" Minimum="12" Maximum="50" Width="100" VerticalAlignment="Center"/>
-                            </StackPanel>
+                    <TextBlock Text="FontSize" Grid.Row="7" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" Grid.Row="7" Spacing="8" Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind FontsizeSlider.Value, Mode=OneWay}" VerticalAlignment="Center"/>
+                        <Slider x:Name="FontsizeSlider" Minimum="12" Maximum="50" Width="100" VerticalAlignment="Center"/>
+                    </StackPanel>
 
-                            <FontIcon Glyph="{Binding SelectedItem.Character}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
-                                    Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"
-                                    FontFamily="{StaticResource SymbolThemeFontFamily}"/>
-                        </Grid>
-                    </ScrollViewer>
-                </core:ControlExample.Options>
-            </core:ControlExample>
-        </Grid>
+                </Grid>
+            </Grid>
+            <Expander>
+                <Expander.Header>
+                    <TextBlock Text="Source code"/>
+                </Expander.Header>
+            </Expander>
+        </StackPanel>
     </ScrollViewer>
 </core:ItemsPageBase>
