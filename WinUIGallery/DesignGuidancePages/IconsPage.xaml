@@ -57,46 +57,41 @@
                         HorizontalAlignment="Left" Margin="4,10"
                         TextChanged="SearchTextBox_TextChanged"/>
 
-                <GridView x:Name="ItemsGridView" SelectedIndex="0"
-                        AutomationProperties.Name="Icons" SelectionMode="Single"
-                        HorizontalAlignment="Stretch" Grid.Row="2">
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                            <Setter Property="Margin" Value="4"/>
-                            <Setter Property="MinHeight" Value="120" />
-                            <Setter Property="MaxWidth" Value="120" />
-                            <Setter Property="Background" Value="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"/>
-                        </Style>
-                    </GridView.ItemContainerStyle>
+                <ScrollViewer AutomationProperties.Name="Icons"
+                            HorizontalAlignment="Stretch" Grid.Row="2">
+                    <ItemsRepeater x:Name="IconsRepeater" Width="500">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MaximumRowsOrColumns="4" Orientation="Horizontal"/>
+                        </ItemsRepeater.Layout>
 
-                    <GridView.ItemTemplate>
-                        <DataTemplate x:DataType="datamodel:IconData">
-                            <Grid x:DefaultBindMode="OneWay"
-                                    HorizontalAlignment="Stretch" ToolTipService.ToolTip="{Binding Name}"
-                                    MinWidth="80" MaxWidth="280" MinHeight="120">
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:DefaultBindMode="OneWay" PointerPressed="Icons_TemplatePointerPressed"
+                                        HorizontalAlignment="Stretch" ToolTipService.ToolTip="{Binding Name}"
+                                        Background="{ThemeResource ControlFillColorSecondaryBrush}" Margin="4" CornerRadius="5"
+                                        MinWidth="80" MaxWidth="280" MinHeight="120">
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <!-- Icon -->
-                                <Viewbox Grid.Row="1" Height="40" Width="40" Margin="0,0,0,10">
-                                    <FontIcon Glyph="{Binding Character}" Grid.Row="1"
-                                            FontFamily="{StaticResource SymbolThemeFontFamily}"/>
-                                </Viewbox>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <!-- Icon -->
+                                    <Viewbox Grid.Row="1" Height="40" Width="40" Margin="0,0,0,10">
+                                        <FontIcon Glyph="{Binding Character}" Grid.Row="1"
+                                                FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                                    </Viewbox>
 
-                                <!-- Icon name/descriptor -->
-                                <TextBlock Text="{Binding Name}" Margin="5,0,5,0" x:Name="IconName" Grid.Row="2"
-                                        HorizontalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
-                            </Grid>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
+                                    <!-- Icon name/descriptor -->
+                                    <TextBlock Text="{Binding Name}" Margin="5,0,5,0" x:Name="IconName" Grid.Row="2"
+                                            HorizontalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="12"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </ScrollViewer>
 
-                <Grid Grid.RowSpan="3" Grid.Column="1"
-                    DataContext="{x:Bind ItemsGridView}" Width="300" Padding="0,0,10,0">
+                <Grid Grid.RowSpan="3" Grid.Column="1" Width="300" Padding="0,0,10,0" DataContext="{x:Bind}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -113,11 +108,11 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.ColumnSpan="2">
-                        <TextBlock FontSize="26" Text="{Binding SelectedItem.Name}" VerticalAlignment="Center"/>
+                        <TextBlock FontSize="26" Text="{Binding SelectedItem.Name, Mode=OneWay}" VerticalAlignment="Center"/>
 
 
                         <Grid Height="80" HorizontalAlignment="Center">
-                            <FontIcon Glyph="{Binding SelectedItem.Character}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
+                            <FontIcon Glyph="{Binding SelectedItem.Character, Mode=OneWay}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
                                             Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"
                                             FontFamily="{StaticResource SymbolThemeFontFamily}"/>
                         </Grid>

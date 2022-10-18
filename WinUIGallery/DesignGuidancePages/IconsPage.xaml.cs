@@ -26,12 +26,25 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
     {
         public ObservableCollection<IconData> FilteredItems = new ObservableCollection<IconData>();
 
+
+        public IconData SelectedItem
+        {
+            get { return (IconData)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register("SelectedItem", typeof(IconData), typeof(IconsPage), new PropertyMetadata(null));
+
+
+
         public IconsPage()
         {
             // Fill filtered items
             IconsDataSource.Icons.ForEach(item => FilteredItems.Add(item));
             this.InitializeComponent();
-            ItemsGridView.Loaded += ItemsGridView_Loaded;
+            IconsRepeater.Loaded += ItemsGridView_Loaded;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,7 +62,8 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
             {
                 _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.High, () =>
                 {
-                    ItemsGridView.ItemsSource = FilteredItems;
+                    IconsRepeater.ItemsSource = FilteredItems;
+                    SelectedItem = FilteredItems[0];
                 });
             });
         }
@@ -75,6 +89,13 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
                     FilteredItems.Add(item);
                 }
             }
+            SelectedItem = FilteredItems[0];
+        }
+
+        private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            var itemIndex = IconsRepeater.GetElementIndex(sender as UIElement);
+            SelectedItem = FilteredItems[itemIndex != -1 ? itemIndex : 0];
         }
     }
 }
