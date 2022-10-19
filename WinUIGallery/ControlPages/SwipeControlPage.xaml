@@ -26,8 +26,8 @@
                 <local:ControlExample.Example>
                     <Border>
                         <Border.Resources>
-                            <FontIconSource x:Key="AcceptIcon" Glyph="&#xE10B;"/>
-                            <FontIconSource x:Key="FlagIcon" Glyph="&#xE129;"/>
+                            <FontIconSource x:Key="AcceptIcon" Glyph="&#xE8FB;"/>
+                            <FontIconSource x:Key="FlagIcon" Glyph="&#xE7C1;"/>
 
                             <SwipeItems x:Key="left" Mode="Reveal">
                                 <SwipeItem Background="{ThemeResource ButtonBackgroundThemeBrush}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" Text="Accept" IconSource="{StaticResource AcceptIcon}"
@@ -45,8 +45,8 @@
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
-        &lt;FontIconSource x:Key="AcceptIcon" Glyph="&amp;#xE10B;"/&gt;
-        &lt;FontIconSource x:Key="FlagIcon" Glyph="&amp;#xE129;"/&gt;
+        &lt;FontIconSource x:Key="AcceptIcon" Glyph="&amp;#xE8FB;"/&gt;
+        &lt;FontIconSource x:Key="FlagIcon" Glyph="&amp;#xE7C1;"/&gt;
 
         &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
             &lt;SwipeItem Text="Accept" IconSource="{StaticResource AcceptIcon}" Invoked="Accept_ItemInvoked"/&gt;
@@ -83,7 +83,7 @@
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
-        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE107;"/&gt;
+        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE74D;"/&gt;
         &lt;SwipeItems x:Key="right" Mode="Execute"&gt;
             &lt;SwipeItem Text="Archive" IconSource="{StaticResource ArchiveIcon}"
                        BehaviorOnInvoked="Close" Invoked="DeleteOne_ItemInvoked"/&gt;
@@ -106,7 +106,7 @@
                          <ListView.Resources>
                              <FontIconSource x:Key="ReplyAllIcon" Glyph="&#xE8C2;"/>
                              <FontIconSource x:Key="ReadIcon" Glyph="&#xE8C3;"/>
-                             <FontIconSource x:Key="DeleteIcon" Glyph="&#xE107;"/>
+                             <FontIconSource x:Key="DeleteIcon" Glyph="&#xE74D;"/>
 
                              <SwipeItems x:Key="left" Mode="Reveal">
                                  <SwipeItem Text="Reply All" IconSource="{StaticResource ReplyAllIcon}"
@@ -137,7 +137,7 @@
     &lt;ListView.Resources&gt;
         &lt;FontIconSource x:Key="ReplyAllIcon" Glyph="&amp;#xE8C2;"/&gt;
         &lt;FontIconSource x:Key="ReadIcon" Glyph="&amp;#xE8C3;"/&gt;
-        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE107;"/&gt;
+        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE74D;"/&gt;
 
         &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
             &lt;SwipeItem Text="Reply All" IconSource="{StaticResource ReplyAllIcon}"
@@ -170,7 +170,7 @@
                 <local:ControlExample.Example>
                     <Border>
                         <Border.Resources>
-                            <FontIconSource x:Key="LockIcon" Glyph="&#xE8D7;"/>
+                            <FontIconSource x:Key="LockIcon" Glyph="&#xE72E;"/>
                             <LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5">
                                 <GradientStop Color="#ff8990f9" Offset="0.0"/>
                                 <GradientStop Color="#ff5b66fb" Offset="0.5"/>
@@ -190,7 +190,7 @@
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
-        &lt;FontIconSource x:Key="LockIcon" Glyph="&amp;#xE107;"/&gt;
+        &lt;FontIconSource x:Key="LockIcon" Glyph="&amp;#xE72E;"/&gt;
         &lt;LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5"&gt;
             &lt;GradientStop Color="#ff8990f9" Offset="0.0"/&gt;
             &lt;GradientStop Color="#ff5b66fb" Offset="0.5"/&gt;
@@ -203,7 +203,7 @@
     &lt;/Border.Resources&gt;
     &lt;SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"
         RightItems="{StaticResource right}"
-        Width="300" Margin="12" Height="68"&gt;
+        Width="500" Margin="12" Height="68"&gt;
         &lt;TextBlock Text="Swipe Left" Margin="12"
                    HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
     &lt;/SwipeControl&gt;
