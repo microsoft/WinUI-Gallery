@@ -100,7 +100,10 @@ namespace AppUIBasics
         public string HeaderText
         {
             get { return (string)GetValue(HeaderTextProperty); }
-            set { SetValue(HeaderTextProperty, value); }
+            set {
+                SetValue(HeaderTextProperty, value);
+                HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
+            }
         }
 
         public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register("Example", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
@@ -216,6 +219,8 @@ namespace AppUIBasics
             {
                 VisualStateManager.GoToState(this, "SeparatorVisible", false);
             }
+            HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
+
         }
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)

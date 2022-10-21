@@ -84,6 +84,7 @@
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <None Remove="DataModel\IconsData.json" />
+    <None Remove="DesignGuidancePages\AccessibilityScreenReaderPage.xaml" />
     <None Remove="DesignGuidancePages\IconsPage.xaml" />
     <Content Remove="@(Content)" />
   </ItemGroup>
@@ -91,6 +92,9 @@
     <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DesignGuidancePages\AccessibilityScreenReaderPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="DesignGuidancePages\IconsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

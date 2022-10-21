@@ -354,6 +354,13 @@ namespace AppUIBasics
                         Navigate(typeof(IconsPage));
                     }
                 }
+                else if (selectedItem == ScreenReaderPage)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(AccessibilityScreenReaderPage))
+                    {
+                        Navigate(typeof(AccessibilityScreenReaderPage));
+                    }
+                }
                 else
                 {
                     if (selectedItem.DataContext is ControlInfoDataGroup)

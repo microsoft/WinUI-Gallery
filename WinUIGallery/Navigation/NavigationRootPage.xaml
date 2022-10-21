@@ -131,9 +131,13 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NewControlsItem" Content="Home" Icon="Home"/>
                 <NavigationViewItem x:Name="AllControlsItem" Content="All apps" Icon="AllApps"/>
-                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design Guidance" Icon="Home">
+                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design Guidance">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB3C;" />
+                    </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem x:Name="DesignGuidanceIconsPageItem" Content="Icons"/>
+                        <NavigationViewItem x:Name="ScreenReaderPage" Content="Accessibility - Screen Reader"/>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
