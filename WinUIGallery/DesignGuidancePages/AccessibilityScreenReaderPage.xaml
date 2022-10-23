@@ -37,12 +37,12 @@
                     <LineBreak />
                     If the control's content is a string, an accessible name is automatically determined from the visible
                     text. However, elements such as images or input fields need to have a custom accessible name. Here
-                    are a few examples of how to add I-JIA names:
+                    are a few examples of how to add UIA names:
                 </Paragraph>
             </RichTextBlock>
 
             <TextBlock Text="Setting an accessible name" Style="{StaticResource SubHeaderTextStyle}"/>
-            <!-- ***** Listview example ***** -->
+             <!-- ***** Listview example ***** -->
             <core:ControlExample>
                 <core:ControlExample.Example>
                     <ListView Margin="20" Width="300" AutomationProperties.Name="Contacts" HorizontalAlignment="Left">

@@ -84,6 +84,8 @@
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <None Remove="DataModel\IconsData.json" />
+    <None Remove="DesignGuidancePages\AccessibilityColorContrastPage.xaml" />
+    <None Remove="DesignGuidancePages\AccessibilityKeyboardPage.xaml" />
     <None Remove="DesignGuidancePages\AccessibilityScreenReaderPage.xaml" />
     <None Remove="DesignGuidancePages\IconsPage.xaml" />
     <Content Remove="@(Content)" />
@@ -92,6 +94,14 @@
     <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DesignGuidancePages\AccessibilityColorContrastPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DesignGuidancePages\AccessibilityKeyboardPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DesignGuidancePages\AccessibilityScreenReaderPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

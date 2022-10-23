@@ -68,7 +68,7 @@
                             <DataTemplate>
                                 <Grid x:DefaultBindMode="OneWay" PointerPressed="Icons_TemplatePointerPressed"
                                         HorizontalAlignment="Stretch" ToolTipService.ToolTip="{Binding Name}"
-                                        Background="{ThemeResource ControlFillColorPrimaryBrush}" Margin="4" CornerRadius="5"
+                                        Background="{ThemeResource ControlFillColorSecondaryBrush}" Margin="4" CornerRadius="5"
                                         MinWidth="80" MaxWidth="280" MinHeight="120">
 
                                     <Grid.RowDefinitions>

@@ -325,7 +325,6 @@ namespace AppUIBasics
             else
             {
                 var selectedItem = args.SelectedItemContainer;
-
                 if (selectedItem == AllControlsItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
@@ -354,11 +353,25 @@ namespace AppUIBasics
                         Navigate(typeof(IconsPage));
                     }
                 }
-                else if (selectedItem == ScreenReaderPage)
+                else if (selectedItem == AccessibilityScreenReaderPage)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AccessibilityScreenReaderPage))
                     {
                         Navigate(typeof(AccessibilityScreenReaderPage));
+                    }
+                }
+                else if (selectedItem == AccessibilityKeyboardPage)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(AccessibilityKeyboardPage))
+                    {
+                        Navigate(typeof(AccessibilityKeyboardPage));
+                    }
+                }
+                else if (selectedItem == AccessibilityContrastPage)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(AccessibilityColorContrastPage))
+                    {
+                        Navigate(typeof(AccessibilityColorContrastPage));
                     }
                 }
                 else

@@ -137,7 +137,9 @@
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem x:Name="DesignGuidanceIconsPageItem" Content="Icons"/>
-                        <NavigationViewItem x:Name="ScreenReaderPage" Content="Accessibility - Screen Reader"/>
+                        <NavigationViewItem x:Name="AccessibilityScreenReaderPage" Content="Accessibility - Screen Reader"/>
+                        <NavigationViewItem x:Name="AccessibilityKeyboardPage" Content="Accessibility - Keyboard"/>
+                        <NavigationViewItem x:Name="AccessibilityContrastPage" Content="Accessibility - Contrast"/>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator />
