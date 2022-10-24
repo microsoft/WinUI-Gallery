@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:datamodel="using:WinUIGallery.DesktopWap.DataModel"
-    xmlns:core="using:AppUIBasics" xmlns:controls="using:AppUIBasics.Controls"
+    xmlns:core="using:AppUIBasics" xmlns:controls="using:AppUIBasics.Controls" xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource HomePageBackgroundBrush}">
 
@@ -57,38 +57,11 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Text color" FontWeight="Bold"/>
-                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Spacing="8">
-                    <SplitButton Padding="0">
-                        <Rectangle x:Name="TextColorPreview" Fill="Black" Height="30" Width="50"/>
-                        <SplitButton.Flyout>
-                            <Flyout Opened="TextColorPickerFlyout_Opened">
-                                <ColorPicker x:Name="TextColorPicker"
-                                            ColorChanged="TextColorPicker_ColorChanged"
-                                            IsMoreButtonVisible="False"
-                                            IsHexInputVisible="False"
-                                            IsColorChannelTextInputVisible="False"/>
-                            </Flyout>
-                        </SplitButton.Flyout>
-                    </SplitButton>
-                    <TextBox x:Name="TextColorHex" TextChanged="TextColorHex_TextChanged" Text="#000000" Width="110"/>
-                </StackPanel>
+
+                <controls1:InlineColorPicker x:Name="TextColorPicker" Grid.Column="0" Grid.Row="1" Width="200" Color="Black" ColorChanged="TextColorPicker_ColorChanged"/>
 
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="Background color" FontWeight="Bold"/>
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Spacing="8">
-                    <SplitButton Padding="0">
-                        <Rectangle x:Name="BackgroundColorPreview" Fill="White" Height="30" Width="50"/>
-                        <SplitButton.Flyout>
-                            <Flyout Opened="BackgroundColorPickerFlyout_Opened">
-                                <ColorPicker x:Name="BackgroundColorPicker"
-                                            ColorChanged="BackgroundColorPicker_ColorChanged"
-                                            IsMoreButtonVisible="False"
-                                            IsHexInputVisible="False"
-                                            IsColorChannelTextInputVisible="False"/>
-                            </Flyout>
-                        </SplitButton.Flyout>
-                    </SplitButton>
-                    <TextBox x:Name="BackgroundColorHex" TextChanged="BackgroundColorHex_TextChanged" Text="#FFFFFF" Width="110"/>
-                </StackPanel>
+                <controls1:InlineColorPicker x:Name="BackgroundColorPicker" Grid.Column="1" Grid.Row="1" Width="200" ColorChanged="BackgroundColorPicker_ColorChanged"/>
 
                 <TextBlock Grid.Column="3" Text="Contrast"/>
                 <TextBlock Grid.Column="3" Grid.Row="1" x:Name="ContrastRatioPresenter" Text="21:1"/>
@@ -145,32 +118,32 @@
                     </Grid>
 
                     <!-- Preview -->
-                    <Grid Grid.Column="1" Background="{x:Bind BackgroundColorPreview.Fill,Mode=OneWay}" Padding="8">
+                    <Grid Grid.Column="1" Background="{x:Bind BackgroundColorPicker.ColorBrush,Mode=OneWay}" Padding="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Foreground="{x:Bind TextColorPreview.Fill,Mode=OneWay}" Text="The quick brown fox jumped over the lazy fox." VerticalAlignment="Center"/>
+                        <TextBlock Foreground="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}" Text="The quick brown fox jumped over the lazy fox." VerticalAlignment="Center"/>
 
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBlock Foreground="{x:Bind TextColorPreview.Fill,Mode=OneWay}" FontSize="14" FontWeight="Bold" Text="The quick brown fox jumped over the lazy fox."/>
-                            <TextBlock Foreground="{x:Bind TextColorPreview.Fill,Mode=OneWay}" FontSize="18" Text="The quick brown fox jumped over the lazy fox."/>
+                            <TextBlock Foreground="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}" FontSize="14" FontWeight="Bold" Text="The quick brown fox jumped over the lazy fox."/>
+                            <TextBlock Foreground="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}" FontSize="18" Text="The quick brown fox jumped over the lazy fox."/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" Spacing="8">
                             <Grid>
-                                <Rectangle RadiusX="4" RadiusY="4" Fill="{x:Bind TextColorPreview.Fill,Mode=OneWay}" Width="30" Height="30"/>
+                                <Rectangle RadiusX="4" RadiusY="4" Fill="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}" Width="30" Height="30"/>
                                 <FontIcon Glyph="&#xE73E;" Foreground="White"/>
                             </Grid>
 
                             <Grid>
-                                <Rectangle RadiusX="15" RadiusY="50" Fill="{x:Bind TextColorPreview.Fill,Mode=OneWay}" Width="50" Height="30"/>
+                                <Rectangle RadiusX="15" RadiusY="50" Fill="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}" Width="50" Height="30"/>
                                 <Ellipse Fill="White" HorizontalAlignment="Right" VerticalAlignment="Center"
                                     Margin="0,0,5,0" Height="15" Width="15"/>
                             </Grid>
-                            <FontIcon Glyph="&#xE735;" FontSize="20" Foreground="{x:Bind TextColorPreview.Fill,Mode=OneWay}"/>
+                            <FontIcon Glyph="&#xE735;" FontSize="20" Foreground="{x:Bind TextColorPicker.ColorBrush,Mode=OneWay}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

@@ -68,9 +68,9 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
             });
         }
 
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs args)
+        private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            Filter((sender as TextBox).Text);
+            Filter((sender as AutoSuggestBox).Text);
         }
         
         public void Filter(string search)
@@ -94,8 +94,33 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
 
         private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)
         {
+            var oldIndex = FilteredItems.IndexOf(SelectedItem);
+            var previousItem = IconsRepeater.TryGetElement(oldIndex);
+            if(previousItem != null)
+            {
+                MoveToSelectionState(previousItem, false);
+            }
+
             var itemIndex = IconsRepeater.GetElementIndex(sender as UIElement);
             SelectedItem = FilteredItems[itemIndex != -1 ? itemIndex : 0];
+            MoveToSelectionState(sender as UIElement, true);
+        }
+
+        private static void MoveToSelectionState(UIElement previousItem, bool isSelected)
+        {
+            VisualStateManager.GoToState(previousItem as Control, isSelected ? "Selected" : "Default", false);
+        }
+
+        private void IconsRepeater_ElementIndexChanged(ItemsRepeater sender, ItemsRepeaterElementIndexChangedEventArgs args)
+        {
+            var newItem = FilteredItems[args.NewIndex];
+            MoveToSelectionState(args.Element, newItem == SelectedItem);
+        }
+
+        private void IconsRepeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
+        {
+            var newItem = FilteredItems[args.Index];
+            MoveToSelectionState(args.Element, newItem == SelectedItem);
         }
     }
 }

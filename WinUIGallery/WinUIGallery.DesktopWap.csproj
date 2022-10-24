@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
+    <None Remove="Controls\InlineColorPicker.xaml" />
     <None Remove="DataModel\IconsData.json" />
     <None Remove="DesignGuidancePages\AccessibilityColorContrastPage.xaml" />
     <None Remove="DesignGuidancePages\AccessibilityKeyboardPage.xaml" />
@@ -92,6 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataModel\IconsData.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\InlineColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="DesignGuidancePages\AccessibilityColorContrastPage.xaml">

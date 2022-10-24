@@ -25,55 +25,11 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             args.NavigationRootPage.NavigationView.Header = string.Empty;
         }
-
-        // Text color
-        private void TextColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
-        {
-            TextColorPreview.Fill = new SolidColorBrush(args.NewColor);
-            TextColorHex.Text = args.NewColor.ToString().Replace("#FF", "#");
-        }
-
-        private void TextColorPickerFlyout_Opened(object sender, object e)
-        {
-            TextColorPicker.Color = ((SolidColorBrush)TextColorPreview.Fill).Color;
-        }
-
-        private void TextColorHex_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                TextColorPreview.Fill = GetSolidColorBrush(TextColorHex.Text);
-                RecalculateContrastRatio();
-            }
-            catch (Exception) { }
-        }
-
-        // Background color
-        private void BackgroundColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
-        {
-            BackgroundColorPreview.Fill = new SolidColorBrush(args.NewColor);
-            BackgroundColorHex.Text = args.NewColor.ToString().Replace("#FF", "#");
-        }
-
-        private void BackgroundColorPickerFlyout_Opened(object sender, object e)
-        {
-            BackgroundColorPicker.Color = ((SolidColorBrush)BackgroundColorPreview.Fill).Color;
-        }
-
-        private void BackgroundColorHex_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                BackgroundColorPreview.Fill = GetSolidColorBrush(BackgroundColorHex.Text);
-                RecalculateContrastRatio();
-            }
-            catch (Exception) { }
-        }
-
+        
         private void RecalculateContrastRatio()
         {
-            var textColor = ((SolidColorBrush)TextColorPreview.Fill).Color;
-            var backgroundColor = ((SolidColorBrush)BackgroundColorPreview.Fill).Color;
+            var textColor = TextColorPicker.Color;
+            var backgroundColor = BackgroundColorPicker.Color;
 
             var ratio = CalculateContrastRatio(textColor, backgroundColor);
             ContrastRatioPresenter.Text = Math.Round(ratio, 2).ToString() + ":1";
@@ -129,6 +85,16 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
             var g = gSRGB <= 0.04045 ? gSRGB / 12.92 : Math.Pow(((gSRGB + 0.055) / 1.055), 2.4);
             var b = bSRGB <= 0.04045 ? bSRGB / 12.92 : Math.Pow(((bSRGB + 0.055) / 1.055), 2.4);
             return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        private void BackgroundColorPicker_ColorChanged(object sender, Color e)
+        {
+            RecalculateContrastRatio();
+        }
+
+        private void TextColorPicker_ColorChanged(object sender, Color e)
+        {
+            RecalculateContrastRatio();
         }
     }
 }
