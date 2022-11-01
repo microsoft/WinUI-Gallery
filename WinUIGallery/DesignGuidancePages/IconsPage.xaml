@@ -80,107 +80,126 @@
             </RichTextBlock>
 
             <TextBlock Text="Fluent Icons Library" FontSize="16" FontWeight="Bold"/>
-            <Grid MaxWidth="800" HorizontalAlignment="Left" Background="{ThemeResource ControlOnImageFillColorSecondary}"
-                Padding="12" CornerRadius="4">
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
-                <Grid Background="{ThemeResource ControlSolidFillColorDefaultBrush}" CornerRadius="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="300"/>
-                    </Grid.RowDefinitions>
-
-                    <AutoSuggestBox PlaceholderText="Search icons" Width="200"
-                            HorizontalAlignment="Left" Margin="10" QueryIcon="Find"
-                            TextChanged="SearchTextBox_TextChanged"/>
-
-                    <Border Grid.Row="1" HorizontalAlignment="Stretch" Height="2" Background="{ThemeResource ControlOnImageFillColorSecondary}"/>
-
-                    <ScrollViewer AutomationProperties.Name="Icons" Padding="8"
-                                HorizontalAlignment="Stretch" Grid.Row="2">
-                        <ItemsRepeater x:Name="IconsRepeater" HorizontalAlignment="Stretch"
-                            ItemTemplate="{StaticResource IconTemplate}"
-                            ElementIndexChanged="IconsRepeater_ElementIndexChanged"
-                            ElementPrepared="IconsRepeater_ElementPrepared">
-                            <ItemsRepeater.Layout>
-                                <UniformGridLayout Orientation="Horizontal"/>
-                            </ItemsRepeater.Layout>
-                        </ItemsRepeater>
-                    </ScrollViewer>
-                </Grid>
-
-
-                <Grid Grid.Column="2" Width="300" Padding="10" ColumnSpacing="10"
-                    CornerRadius="4" DataContext="{x:Bind}" Background="{ThemeResource ControlSolidFillColorDefaultBrush}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid MaxWidth="800" HorizontalAlignment="Left" Background="{ThemeResource ControlOnImageFillColorSecondary}"
+                    Padding="12" CornerRadius="4">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="300"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.ColumnSpan="2">
-                        <TextBlock FontSize="26" Text="{Binding SelectedItem.Name, Mode=OneWay}" VerticalAlignment="Center"/>
 
+                    <Grid Background="{ThemeResource ControlSolidFillColorDefaultBrush}" CornerRadius="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="300"/>
+                        </Grid.RowDefinitions>
 
-                        <Grid Height="80" HorizontalAlignment="Center">
-                            <FontIcon Glyph="{Binding SelectedItem.Character, Mode=OneWay}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
-                                Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"
-                                Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"/>
-                        </Grid>
-                    </StackPanel>
+                        <AutoSuggestBox PlaceholderText="Search icons" Width="200"
+                                HorizontalAlignment="Left" Margin="10" QueryIcon="Find"
+                                TextChanged="SearchTextBox_TextChanged"/>
 
-                    <TextBlock Text="Color" Grid.Row="1" VerticalAlignment="Center"/>
-                    <controls1:InlineColorPicker x:Name="IconColorPicker" Grid.Row="1" Grid.Column="1" Color="Black"/>
+                        <Border Grid.Row="1" HorizontalAlignment="Stretch" Height="2" Background="{ThemeResource ControlOnImageFillColorSecondary}"/>
 
-                    <TextBlock Text="FontSize" Grid.Row="2" VerticalAlignment="Center"/>
-                    <Grid Grid.Column="1" Grid.Row="2" ColumnSpacing="8">
+                        <ScrollViewer AutomationProperties.Name="Icons" Padding="8"
+                                    HorizontalAlignment="Stretch" Grid.Row="2">
+                            <ItemsRepeater x:Name="IconsRepeater" HorizontalAlignment="Stretch"
+                                ItemTemplate="{StaticResource IconTemplate}"
+                                ElementIndexChanged="IconsRepeater_ElementIndexChanged"
+                                ElementPrepared="IconsRepeater_ElementPrepared">
+                                <ItemsRepeater.Layout>
+                                    <UniformGridLayout Orientation="Horizontal"/>
+                                </ItemsRepeater.Layout>
+                            </ItemsRepeater>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <Grid Grid.Column="2" Width="300" Padding="10" ColumnSpacing="10"
+                        CornerRadius="4" DataContext="{x:Bind}" Background="{ThemeResource ControlSolidFillColorDefaultBrush}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{x:Bind FontsizeSlider.Value, Mode=OneWay}" VerticalAlignment="Center" Width="30"/>
-                        <Slider x:Name="FontsizeSlider" Grid.Column="1" Minimum="12" Value="24" Maximum="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                        <StackPanel Grid.ColumnSpan="2">
+                            <TextBlock FontSize="26" Text="{Binding SelectedItem.Name, Mode=OneWay}" VerticalAlignment="Center"/>
+
+
+                            <Grid Height="80" HorizontalAlignment="Center">
+                                <FontIcon Glyph="{Binding SelectedItem.Character, Mode=OneWay}" FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
+                                    Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"
+                                    Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Text="Color" Grid.Row="1" VerticalAlignment="Center"/>
+                        <controls1:InlineColorPicker x:Name="IconColorPicker" Grid.Row="1" Grid.Column="1" Color="Black"/>
+
+                        <TextBlock Text="FontSize" Grid.Row="2" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="1" Grid.Row="2" ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind FontsizeSlider.Value, Mode=OneWay}" VerticalAlignment="Center" Width="30"/>
+                            <Slider x:Name="FontsizeSlider" Grid.Column="1" Minimum="12" Value="24" Maximum="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <TextBlock Text="Icon-Name" Grid.Column="0" Grid.Row="4"/>
+                        <controls:SampleCodePresenter Grid.Column="1" Grid.Row="4" Style="{StaticResource CodeValuePresenterStyle}"
+                                    SampleType="Inline" Code="{Binding SelectedItem.Name, Mode=OneWay}" />
+
+                        <TextBlock Text="Unicode point" Grid.Column="0" Grid.Row="5"/>
+                        <controls:SampleCodePresenter Grid.Column="1" Grid.Row="5" Style="{StaticResource CodeValuePresenterStyle}"
+                                    SampleType="Inline" Code="{Binding SelectedItem.Code, Mode=OneWay}" />
+
+                        <TextBlock Text="Code glyph" Grid.Column="0" Grid.Row="6"/>
+                        <controls:SampleCodePresenter Grid.Column="1" Grid.Row="6" Style="{StaticResource CodeValuePresenterStyle}"
+                                    SampleType="Inline" Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" />
+
+                        <TextBlock Text="Text glyph" Grid.Column="0" Grid.Row="7"/>
+                        <controls:SampleCodePresenter Grid.Column="1" Grid.Row="7" Style="{StaticResource CodeValuePresenterStyle}"
+                                        SampleType="Inline" Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" />
                     </Grid>
-
-                    <TextBlock Text="Icon-Name" Grid.Column="0" Grid.Row="4"/>
-                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="4" Style="{StaticResource CodeValuePresenterStyle}"
-                                SampleType="Inline" Code="{Binding SelectedItem.Name, Mode=OneWay}" />
-
-                    <TextBlock Text="Unicode point" Grid.Column="0" Grid.Row="5"/>
-                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="5" Style="{StaticResource CodeValuePresenterStyle}"
-                                SampleType="Inline" Code="{Binding SelectedItem.Code, Mode=OneWay}" />
-
-                    <TextBlock Text="Code glyph" Grid.Column="0" Grid.Row="6"/>
-                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="6" Style="{StaticResource CodeValuePresenterStyle}"
-                                SampleType="Inline" Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" />
-
-                    <TextBlock Text="Text glyph" Grid.Column="0" Grid.Row="7"/>
-                    <controls:SampleCodePresenter Grid.Column="1" Grid.Row="7" Style="{StaticResource CodeValuePresenterStyle}"
-                                    SampleType="Inline" Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" />
                 </Grid>
+                <Expander Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,20,0,0"
+                    HorizontalContentAlignment="Stretch">
+                    <Expander.Header>
+                        <TextBlock Text="Source code"/>
+                    </Expander.Header>
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <controls:SampleCodePresenter x:Name="XAMLCodePresenter" HorizontalAlignment="Stretch" />
+
+                        <Border Margin="0,20"
+                            BorderThickness="1" BorderBrush="{ThemeResource ControlAltFillColorQuarternaryBrush}"/>
+
+                        <controls:SampleCodePresenter x:Name="CSharpCodePresenter" HorizontalAlignment="Stretch" SampleType="CSharp"/>
+                    </StackPanel>
+                </Expander>
             </Grid>
-            <Expander>
-                <Expander.Header>
-                    <TextBlock Text="Source code"/>
-                </Expander.Header>
-            </Expander>
         </StackPanel>
     </ScrollViewer>
 </core:ItemsPageBase>

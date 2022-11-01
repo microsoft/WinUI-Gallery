@@ -30,8 +30,12 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
         public IconData SelectedItem
         {
             get { return (IconData)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            set {
+                SetValue(SelectedItemProperty, value);
+                SetSampleCodePresenterCode(value);
+            }
         }
+
 
         // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedItemProperty =
@@ -64,8 +68,15 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
                 {
                     IconsRepeater.ItemsSource = FilteredItems;
                     SelectedItem = FilteredItems[0];
+                    SetSampleCodePresenterCode(FilteredItems[0]);
                 });
             });
+        }
+        private void SetSampleCodePresenterCode(IconData value)
+        {
+            XAMLCodePresenter.Code = $"<FontIcon Glyph=\"{value.CodeGlyph}\" />";
+
+            CSharpCodePresenter.Code = $"FontIcon icon = new FontIcon();" + Environment.NewLine + "icon.Glyph = \"" + value.CodeGlyph + "\";";
         }
 
         private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
