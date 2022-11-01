@@ -5,7 +5,7 @@
     <ProjectReunionWinUIPackageVersion>1.2.220930.4-preview2</ProjectReunionWinUIPackageVersion>
     <SamplesTargetFrameworkMoniker>net6.0-windows10.0.18362.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
-    <GraphicsWin2DVersion>1.0.3.1</GraphicsWin2DVersion>
+    <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.1</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
     <MicrosoftCsWinRTPackageVersion>2.0.0</MicrosoftCsWinRTPackageVersion>
