@@ -19,28 +19,29 @@ namespace AppUIBasics.ControlPages
         public ScrollViewerPage()
         {
             this.InitializeComponent();
+            ScrollViewerControl.ZoomToFactor((float)2.0);
         }
 
         private void ZoomModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null && ZoomSlider != null)
+            if (ScrollViewerControl != null && ZoomSlider != null)
             {
                 if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Enabled
-                            Control1.ZoomMode = ZoomMode.Enabled;
+                            ScrollViewerControl.ZoomMode = ZoomMode.Enabled;
                             ZoomSlider.IsEnabled = true;
                             break;
                         case 1: // Disabled
-                            Control1.ZoomMode = ZoomMode.Disabled;
-                            Control1.ChangeView(null, null, (float)1.0);
+                            ScrollViewerControl.ZoomMode = ZoomMode.Disabled;
+                            ScrollViewerControl.ChangeView(null, null, (float)1.0);
                             ZoomSlider.Value = 1;
                             ZoomSlider.IsEnabled = false;
                             break;
                         default: // Enabled
-                            Control1.ZoomMode = ZoomMode.Enabled;
+                            ScrollViewerControl.ZoomMode = ZoomMode.Enabled;
                             ZoomSlider.IsEnabled = true;
                             break;
                     }
@@ -50,31 +51,31 @@ namespace AppUIBasics.ControlPages
 
         private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ScrollViewerControl != null)
             {
-                Control1.ChangeView(null, null, (float)e.NewValue);
+                ScrollViewerControl.ChangeView(null, null, (float)e.NewValue);
             }
         }
 
         private void hsmCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Auto
-                            Control1.HorizontalScrollMode = ScrollMode.Auto;
+                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Auto;
                             break;
                         case 1: //Enabled
-                            Control1.HorizontalScrollMode = ScrollMode.Enabled;
+                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Enabled;
                             break;
                         case 2: // Disabled
-                            Control1.HorizontalScrollMode = ScrollMode.Disabled;
+                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Disabled;
                             break;
                         default:
-                            Control1.HorizontalScrollMode = ScrollMode.Enabled;
+                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Enabled;
                             break;
                     }
                 }
@@ -83,26 +84,26 @@ namespace AppUIBasics.ControlPages
 
         private void hsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Auto
-                            Control1.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
                             break;
                         case 1: //Visible
-                            Control1.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                             break;
                         case 2: // Hidden
-                            Control1.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
                             break;
                         case 3: // Disabled
-                            Control1.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
                             break;
                         default:
-                            Control1.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
                             break;
                     }
                 }
@@ -111,23 +112,23 @@ namespace AppUIBasics.ControlPages
 
         private void vsmCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Auto
-                            Control1.VerticalScrollMode = ScrollMode.Auto;
+                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Auto;
                             break;
                         case 1: //Enabled
-                            Control1.VerticalScrollMode = ScrollMode.Enabled;
+                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Enabled;
                             break;
                         case 2: // Disabled
-                            Control1.VerticalScrollMode = ScrollMode.Disabled;
+                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Disabled;
                             break;
                         default:
-                            Control1.VerticalScrollMode = ScrollMode.Enabled;
+                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Enabled;
                             break;
                     }
                 }
@@ -136,26 +137,26 @@ namespace AppUIBasics.ControlPages
 
         private void vsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            if (Control1 != null)
+            if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
                     switch (cb.SelectedIndex)
                     {
                         case 0: // Auto
-                            Control1.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                             break;
                         case 1: //Visible
-                            Control1.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
                             break;
                         case 2: // Hidden
-                            Control1.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
                             break;
                         case 3: // Disabled
-                            Control1.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
                             break;
                         default:
-                            Control1.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
                             break;
                     }
                 }
@@ -164,25 +165,25 @@ namespace AppUIBasics.ControlPages
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (Grid.GetColumnSpan(Control1) == 1)
+            if (Grid.GetColumnSpan(ScrollViewerControl) == 1)
             {
-                Control1.Width = (e.NewSize.Width / 2) - 50;
+                ScrollViewerControl.Width = (e.NewSize.Width / 2) - 50;
             }
             else
             {
-                Control1.Width = e.NewSize.Width - 50;
+                ScrollViewerControl.Width = e.NewSize.Width - 50;
             }
 
         }
 
-        private void Control1_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
-            ZoomSlider.Value = Control1.ZoomFactor;
+            ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
         }
 
-        private void Control1_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            ZoomSlider.Value = Control1.ZoomFactor;
+            ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
         }
     }
 }
