@@ -74,7 +74,7 @@ namespace WinUIGallery.DesktopWap.DesignGuidancePages
         }
         private void SetSampleCodePresenterCode(IconData value)
         {
-            XAMLCodePresenter.Code = $"<FontIcon Glyph=\"{value.CodeGlyph}\" />";
+            XAMLCodePresenter.Code = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
 
             CSharpCodePresenter.Code = $"FontIcon icon = new FontIcon();" + Environment.NewLine + "icon.Glyph = \"" + value.CodeGlyph + "\";";
         }
