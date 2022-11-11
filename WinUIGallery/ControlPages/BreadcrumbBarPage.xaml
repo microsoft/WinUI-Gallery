@@ -26,6 +26,11 @@
 &lt;BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="BreadCrumbBar Control with Custom DataTemplate">
@@ -44,6 +49,11 @@
                     </BreadcrumbBar.ItemTemplate>
                 </BreadcrumbBar>
             </local:ControlExample.Example>
+
+            <local:ControlExample.Options>
+                <Button Content="Reset sample" Click="ResetSampleButton_Click"/>
+            </local:ControlExample.Options>
+
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;BreadcrumbBar x:Name="BreadcrumbBar1"&gt;
@@ -64,16 +74,26 @@
             <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 public class Folder
-    {
-        public string Name { get; set; }
-    }
-
-BreadcrumbBar2.ItemsSource = new List&lt;Folder&gt;
 {
-    new Folder { Name = "Home"},
-    new Folder { Name = "Folder1" },
-    new Folder { Name = "Folder2" }
+    public string Name { get; set; }
+}
+
+BreadcrumbBar2.ItemsSource = new ObservableCollection&lt;Folder&gt;{
+        new Folder { Name = "Home"},
+        new Folder { Name = "Folder1" },
+        new Folder { Name = "Folder2" },
+        new Folder { Name = "Folder3" },
 };
+BreadcrumbBar2.ItemClicked += BreadcrumbBar2_ItemClicked;
+
+private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+{
+    var items = BreadcrumbBar2.ItemsSource as ObservableCollection&lt;Folder&gt;
+    for (int i = items.Count - 1; i >= args.Index + 1; i--)
+    {
+        items.RemoveAt(i);
+    }
+}
                 </x:String>
             </local:ControlExample.CSharp>
         </local:ControlExample>
