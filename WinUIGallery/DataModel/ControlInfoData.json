@@ -1404,7 +1404,7 @@
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1800,7 +1800,7 @@
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "BreadcrumbBar - API",
@@ -2211,7 +2211,7 @@
           "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
           "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Reveal Focus - API",
