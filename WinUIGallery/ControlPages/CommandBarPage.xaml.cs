@@ -10,12 +10,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-
-#if !UNIVERSAL
 using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics.ControlPages
 {

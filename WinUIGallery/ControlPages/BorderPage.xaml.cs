@@ -24,11 +24,7 @@ namespace AppUIBasics.ControlPages
 
         private void ThicknessSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-#if !UNIVERSAL
             if (Control1 != null) Control1.BorderThickness = new Thickness(e.NewValue);
-#else
-            if (Control1 != null) Control1.BorderThickness = ThicknessHelper.FromUniformLength(e.NewValue);
-#endif
         }
 
         private void BGRadioButton_Checked(object sender, RoutedEventArgs e)

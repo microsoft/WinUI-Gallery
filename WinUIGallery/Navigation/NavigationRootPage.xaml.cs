@@ -85,14 +85,10 @@ namespace AppUIBasics
         {
             get
             {
-#if !UNIVERSAL && DEBUG
+#if DEBUG
                 return "WinUI 3 Gallery Dev";
-#elif !UNIVERSAL
-                return "WinUI 3 Gallery";
-#elif DEBUG
-                return "WinUI 3 Gallery Dev (UWP)";
 #else
-                return "WinUI 3 Gallery (UWP)";
+                return "WinUI 3 Gallery";
 #endif
             }
         }
@@ -122,10 +118,6 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-#if UNIVERSAL
-            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
-#endif
-
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
@@ -133,9 +125,7 @@ namespace AppUIBasics
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
                 NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
-#if !UNIVERSAL
                 WindowHelper.GetWindowForElement(this).Title = AppTitleText;
-#endif
                 var window = WindowHelper.GetWindowForElement(sender as UIElement);
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(this.AppTitleBar);
@@ -174,24 +164,6 @@ namespace AppUIBasics
             args.Parameter = targetPageArguments;
             rootFrame.Navigate(pageType, args, navigationTransitionInfo);
         }
-
-#if WINUI_PRERELEASE
-        public void App_Resuming()
-        {
-#if UNIVERSAL
-            switch (rootFrame?.Content)
-            {
-                case ItemPage itemPage:
-                    itemPage.SetInitialVisuals();
-                    break;
-                case NewControlsPage newControlsPage:
-                case AllControlsPage allControlsPage:
-                    NavigationView.AlwaysShowHeader = false;
-                    break;
-            }
-#endif
-        }
-#endif
 
         public void EnsureNavigationSelection(string id)
         {
