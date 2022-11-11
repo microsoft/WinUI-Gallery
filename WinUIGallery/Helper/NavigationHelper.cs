@@ -14,10 +14,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.Common;
 
-#if UNIVERSAL
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-#endif
 
 namespace AppUIBasics.Helper
 {
@@ -172,9 +168,6 @@ namespace AppUIBasics.Helper
     public class RootFrameNavigationHelper
     {
         private Frame Frame { get; set; }
-#if UNIVERSAL
-        SystemNavigationManager systemNavigationManager;
-#endif
         private Microsoft.UI.Xaml.Controls.NavigationView CurrentNavView { get; set; }
 
         /// <summary>
@@ -192,26 +185,11 @@ namespace AppUIBasics.Helper
             };
             this.CurrentNavView = currentNavView;
 
-#if UNIVERSAL
-            // Handle keyboard and mouse navigation requests
-            this.systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested += SystemNavigationManager_BackRequested;
-#endif
-
             // must register back requested on navview
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
             {
                 CurrentNavView.BackRequested += NavView_BackRequested;
             }
-
-// #if UNIVERSAL
-//             // Listen to the window directly so we will respond to hotkeys regardless
-//             // of which element has focus.
-//             CoreWindow.GetForCurrentThread().Dispatcher.AcceleratorKeyActivated +=
-//                 CoreDispatcher_AcceleratorKeyActivated;
-//             CoreWindow.GetForCurrentThread().PointerPressed +=
-//                 this.CoreWindow_PointerPressed;
-// #endif
         }
 
         private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
@@ -248,29 +226,12 @@ namespace AppUIBasics.Helper
             return navigated;
         }
 
-#if UNIVERSAL
-        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (!e.Handled)
-            {
-                e.Handled = TryGoBack();
-            }
-        }
-#endif
-
         private void UpdateBackButton()
         {
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
             {
                 this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
             }
-#if UNIVERSAL
-            else
-            {
-                systemNavigationManager.AppViewBackButtonVisibility = this.Frame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-            }
-#endif
-
         }
 
         // /// <summary>

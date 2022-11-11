@@ -27,10 +27,11 @@
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
-    <PackageReference Include="ColorCode.WinUI" />
+    <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
     <PackageReference Include="Microsoft.WinUI" />
     <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
@@ -39,20 +40,14 @@
     addresses those vulnerabilites, we need to pull it in ourselves.
     -->
     <PackageReference Include="System.Private.Uri" />
-
-    <!--
-    Explicit C#/WinRT reference to get winrt.runtime v1.2.2; We didn't do SDK update with
-    this version so users run the risk of getting version conflicts with winrt.runtime v1.1
-    from .NET SDK Ref v.13 -->
-    <PackageReference Include="Microsoft.Windows.CsWinRT" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
+    <PackageReference Remove="ColorCode.Core" />
+    <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
     <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
-    <PackageReference Update="Microsoft.Net.Compilers.Toolset" Version="3.8.0-4.20472.6" />
     <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
-     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
+    <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
@@ -72,17 +67,17 @@
 
     <Compile Remove="CollectionsInterop.cs" />
     <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-    <Compile Remove="ControlPages\MediaPlayerElementPage.xaml.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
     <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
 
-    <Page Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
     <Page Remove="ControlPages\InputValidationPage.xaml" />
 
+    <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
+    <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+    <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="ControlPages\MediaPlayerElementPage.xaml" />
     <Content Remove="@(Content)" />
   </ItemGroup>
   <Import Project="ContentIncludes.props" />

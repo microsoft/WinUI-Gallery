@@ -16,7 +16,6 @@ namespace AppUIBasics.Common
     public class VariedImageSizeLayout : VirtualizingLayout
     {
         public double Width { get; set; } = 150;
-#if !UNIVERSAL
         protected override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, NotifyCollectionChangedEventArgs args)
         {
             // The data collection has changed, so the bounds of all the indices are not valid anymore. 
@@ -26,7 +25,6 @@ namespace AppUIBasics.Common
             cachedBoundsInvalid = true;
             InvalidateMeasure();
         }
-#endif
 
         protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
         {

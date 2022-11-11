@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using System;
 using System.Runtime.InteropServices; // For DllImport
 using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
 
@@ -19,9 +20,9 @@ namespace AppUIBasics.SamplePages
         }
         
         [DllImport("CoreMessaging.dll")]
-        private static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
+        private static unsafe extern int CreateDispatcherQueueController(DispatcherQueueOptions options, IntPtr* instance);
 
-        object m_dispatcherQueueController = null;
+        IntPtr m_dispatcherQueueController = IntPtr.Zero;
         public void EnsureWindowsSystemDispatcherQueueController()
         {
             if (Windows.System.DispatcherQueue.GetForCurrentThread() != null)
@@ -30,14 +31,19 @@ namespace AppUIBasics.SamplePages
                 return;
             }
 
-            if (m_dispatcherQueueController == null)
+            if (m_dispatcherQueueController == IntPtr.Zero)
             {
                 DispatcherQueueOptions options;
                 options.dwSize = Marshal.SizeOf(typeof(DispatcherQueueOptions));
                 options.threadType = 2;    // DQTYPE_THREAD_CURRENT
                 options.apartmentType = 2; // DQTAT_COM_STA
 
-                CreateDispatcherQueueController(options, ref m_dispatcherQueueController);
+                unsafe
+                {
+                    IntPtr dispatcherQueueController;
+                    CreateDispatcherQueueController(options, &dispatcherQueueController);
+                    m_dispatcherQueueController = dispatcherQueueController;
+                }
             }
         }
     }

@@ -8,15 +8,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Dispatching;
 using AppUIBasics.TabViewPages;
-
-#if !UNIVERSAL
 using System.Collections.ObjectModel;
-#endif
-
-#if UNIVERSAL
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
@@ -35,11 +27,9 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-#if !UNIVERSAL
             // Launching isn't supported yet on Desktop
             // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes app to crash
             //this.LaunchExample.Visibility = Visibility.Collapsed;
-#endif
 
             InitializeDataBindingSampleData();
         }
@@ -253,24 +243,6 @@ namespace AppUIBasics.ControlPages
             TabView4.CloseButtonOverlayMode = overlayMode;
         }
 
-#if UNIVERSAL
-        private async void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-        {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(TabViewWindowingSamplePage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-        }
-#else
         private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var newWindow = WindowHelper.CreateWindow();
@@ -281,6 +253,5 @@ namespace AppUIBasics.ControlPages
             newWindow.Content = frame;
             newWindow.Activate();
         }
-#endif
     }
 }

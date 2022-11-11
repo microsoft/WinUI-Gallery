@@ -2,15 +2,12 @@ using AppUIBasics.SamplePages;
 using AppUIBasics.Common;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Microsoft.UI.Xaml;
 using System.Linq;
 using Windows.System;
 using Microsoft.UI.Xaml.Automation;
-
-#if !UNIVERSAL
-using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {

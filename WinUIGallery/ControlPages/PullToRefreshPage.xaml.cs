@@ -1,5 +1,6 @@
 using AppUIBasics.Helper;
 using System;
+using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.UI.Core;
@@ -13,10 +14,6 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
-
-#if !UNIVERSAL
-using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {

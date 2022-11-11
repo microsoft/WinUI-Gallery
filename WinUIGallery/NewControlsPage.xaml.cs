@@ -11,10 +11,7 @@ using AppUIBasics.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
-
-#if !UNIVERSAL
 using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics
 {

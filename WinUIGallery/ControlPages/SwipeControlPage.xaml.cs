@@ -11,10 +11,7 @@ using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-
-#if !UNIVERSAL
 using System.Collections.ObjectModel;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
