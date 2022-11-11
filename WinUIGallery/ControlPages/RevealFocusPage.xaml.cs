@@ -129,11 +129,7 @@ namespace AppUIBasics.ControlPages
     {
         public static Thickness IntToThickness(double UniformLength)
         {
-#if !UNIVERSAL
             return new Thickness(UniformLength);
-#else
-            return ThicknessHelper.FromUniformLength(UniformLength);
-#endif
         }
 
         public static SolidColorBrush ColorToBrush(Windows.UI.Color color)

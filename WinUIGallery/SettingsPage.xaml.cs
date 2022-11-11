@@ -22,10 +22,6 @@ using WinRT;
 using System.Runtime.InteropServices;
 using WinUIGallery.DesktopWap.Helper;
 
-#if UNIVERSAL
-using Windows.UI.ViewManagement;
-#endif
-
 namespace AppUIBasics
 {
     /// <summary>
@@ -52,12 +48,7 @@ namespace AppUIBasics
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
                 spatialSoundBox.IsChecked = true;
 
-#if UNIVERSAL
-            screenshotModeToggle.IsOn = UIHelper.IsScreenshotMode;
-            screenshotFolderLink.Content = UIHelper.ScreenshotStorageFolder.Path;
-#else
             ScreenshotSettingsGrid.Visibility = Visibility.Collapsed;
-#endif
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -94,13 +85,9 @@ namespace AppUIBasics
         private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
-#if UNIVERSAL
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { titleBar.ButtonForegroundColor = color; };
-#else
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
-#endif
+
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);

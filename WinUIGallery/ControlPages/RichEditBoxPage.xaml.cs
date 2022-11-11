@@ -20,19 +20,10 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
 using System.Runtime.InteropServices;
-
-#if !UNIVERSAL
 using WinRT;
-#endif
 
 namespace AppUIBasics.ControlPages
 {
-    [ComImport, System.Runtime.InteropServices.Guid("3E68D4BD-7135-4D10-8018-9FB6D9F33FA1"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IInitializeWithWindow
-    {
-        void Initialize([In] IntPtr hwnd);
-    }
-
     public sealed partial class RichEditBoxPage : Page
     {
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
@@ -77,15 +68,12 @@ namespace AppUIBasics.ControlPages
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
 
-#if !UNIVERSAL
             // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
-                IInitializeWithWindow initializeWithWindowWrapper = open.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
-                initializeWithWindowWrapper.Initialize(hwnd);
+                WinRT.Interop.InitializeWithWindow.Initialize(open, hwnd);
             }
-#endif
 
             StorageFile file = await open.PickSingleFileAsync();
 
@@ -113,15 +101,12 @@ namespace AppUIBasics.ControlPages
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
 
-#if !UNIVERSAL
             // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
             if (Window.Current == null)
             {
-                IInitializeWithWindow initializeWithWindowWrapper = savePicker.As<IInitializeWithWindow>();
                 IntPtr hwnd = GetActiveWindow();
-                initializeWithWindowWrapper.Initialize(hwnd);
+                WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
             }
-#endif
 
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)

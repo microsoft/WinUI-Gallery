@@ -83,11 +83,7 @@ namespace AppUIBasics.ControlPages
 
             for (int i = 0; i < value; i++)
             {
-#if !UNIVERSAL
                 Thickness thickness = new Thickness(5.0);
-#else
-                Thickness thickness = ThicknessHelper.FromUniformLength(5.0);
-#endif
                 EntranceStackPanel.Children.Add(new Rectangle() { Width = 50, Height = 50, Margin = thickness, Fill = new SolidColorBrush(Microsoft.UI.Colors.LightBlue) });
             }
         }

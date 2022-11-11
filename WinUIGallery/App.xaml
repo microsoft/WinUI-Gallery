@@ -86,7 +86,7 @@
 
             <x:String x:Key="ControlsName">All controls</x:String>
             <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
-            <x:String x:Key="WinUIVersion">WinAppSDK 1.1</x:String>
+            <x:String x:Key="WinUIVersion">WinAppSDK 1.2</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />

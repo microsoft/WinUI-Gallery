@@ -122,11 +122,7 @@ namespace AppUIBasics.Common
             if (this.MinItemSize == Size.Empty)
             {
                 var firstElement = context.GetOrCreateElementAt(0);
-#if !UNIVERSAL
                 firstElement.Measure(new Size(float.PositiveInfinity, float.PositiveInfinity));
-#else
-                firstElement.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-#endif
 
                 // setting the member value directly to skip invalidating layout
                 this._minItemSize = firstElement.DesiredSize;

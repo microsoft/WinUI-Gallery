@@ -32,9 +32,8 @@ namespace AppUIBasics
     sealed partial class App : Application
     {
 
-#if !UNIVERSAL
         private static Window startupWindow;
-#endif
+
         // Get the initial window created for this app
         // On UWP, this is simply Window.Current
         // On Desktop, multiple Windows may be created, and the StartupWindow may have already
@@ -43,11 +42,7 @@ namespace AppUIBasics
         {
             get
             {
-#if UNIVERSAL
-                return Window.Current;
-#else
                 return startupWindow;
-#endif
             }
         }
         /// <summary>
@@ -89,19 +84,6 @@ namespace AppUIBasics
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
-#if WINUI_PRERELEASE
-        private void App_Resuming(object sender, object e)
-        {
-#if UNIVERSAL
-            NavigationRootPage navigationRootPage = (NavigationRootPage)Window.Current.Content;
-            if (navigationRootPage != null)
-            {
-                navigationRootPage.App_Resuming();
-            }
-#endif
-        }
-#endif
-
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -111,11 +93,7 @@ namespace AppUIBasics
         {
             IdleSynchronizer.Init();
 
-#if UNIVERSAL
-            WindowHelper.TrackWindow(Window.Current);
-#else
             startupWindow = WindowHelper.CreateWindow();
-#endif
 
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached)
@@ -128,18 +106,8 @@ namespace AppUIBasics
                 this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;
             }
 #endif
-//draw into the title bar
 
-#if UNIVERSAL
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-#endif
-
-#if !UNIVERSAL
-            // args.UWPLaunchActivatedEventArgs throws an InvalidCastException in desktop apps.
             EnsureWindow();
-#else
-            EnsureWindow(args.UWPLaunchActivatedEventArgs);
-#endif
         }
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)

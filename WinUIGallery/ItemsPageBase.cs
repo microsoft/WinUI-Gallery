@@ -18,11 +18,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
-#if !UNIVERSAL
 using System.ComponentModel;
-#else
-using Microsoft.UI.Xaml.Data;
-#endif
 
 namespace AppUIBasics
 {

@@ -4,11 +4,6 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 
-#if UNIVERSAL
-using Windows.UI.ViewManagement;
-using Windows.System;
-#endif
-
 namespace AppUIBasics.Helper
 {
     /// <summary>
@@ -20,10 +15,6 @@ namespace AppUIBasics.Helper
 
 #if !UNPACKAGED
         private static Window CurrentApplicationWindow;
-#endif
-        // Keep reference so it does not get optimized/garbage collected
-#if UNIVERSAL
-        private static UISettings uiSettings;
 #endif
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
@@ -78,7 +69,6 @@ namespace AppUIBasics.Helper
 #if !UNPACKAGED
                 ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
 #endif
-                UpdateSystemCaptionButtonColors();
             }
         }
 
@@ -94,27 +84,7 @@ namespace AppUIBasics.Helper
                 RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
             }
 #endif
-#if UNIVERSAL
-            // Registering to color changes, thus we notice when user changes theme system wide
-            uiSettings = new UISettings();
-            uiSettings.ColorValuesChanged += UiSettings_ColorValuesChanged;
-#endif
         }
-
-#if UNIVERSAL
-        private static void UiSettings_ColorValuesChanged(UISettings sender, object args)
-        {
-            // Make sure we have a reference to our window so we dispatch a UI change
-            if (CurrentApplicationWindow != null)
-            {
-                // Dispatch on UI thread so that we have a current appbar to access and change
-                _ = CurrentApplicationWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
-                        {
-                            UpdateSystemCaptionButtonColors();
-                        });
-            }
-        }
-#endif
 
         public static bool IsDarkTheme()
         {
@@ -123,22 +93,6 @@ namespace AppUIBasics.Helper
                 return Application.Current.RequestedTheme == ApplicationTheme.Dark;
             }
             return RootTheme == ElementTheme.Dark;
-        }
-
-        public static void UpdateSystemCaptionButtonColors()
-        {
-#if UNIVERSAL
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            if (ThemeHelper.IsDarkTheme())
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-            }
-#endif
         }
     }
 }
