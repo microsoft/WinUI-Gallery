@@ -114,11 +114,11 @@
                     </StackPanel>
                     <StackPanel x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
                         <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal" Margin="0,287,0,0">
-                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/windows/apps/get-started/"/>
-                            <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/windows/apps/design/"/>
-                            <controls:HeaderTile Title="WinUI Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
-                            <controls:HeaderTile Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
-                            <controls:HeaderTile Title="Community Toolkit" Source="/Assets/toolkit.png" Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ"/>
+                            <controls:HeaderTile Title="Getting Started" Source="/Assets/HomeHeaderTiles/gettingStarted.png" Link="https://docs.microsoft.com/windows/apps/get-started/"/>
+                            <controls:HeaderTile Title="Windows Design" Source="/Assets/HomeHeaderTiles/style-1x.png" Link="https://docs.microsoft.com/windows/apps/design/"/>
+                            <controls:HeaderTile Title="WinUI Repo" Source="/Assets/HomeHeaderTiles/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
+                            <controls:HeaderTile Title="Template Studio" Source="/Assets/HomeHeaderTiles/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
+                            <controls:HeaderTile Title="Community Toolkit" Source="/Assets/HomeHeaderTiles/toolkit.png" Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ"/>
                         </VariableSizedWrapGrid>
                     </StackPanel>
                 </Grid>
