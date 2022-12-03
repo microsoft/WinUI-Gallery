@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -27,6 +27,30 @@ namespace AppUIBasics.ControlPages
             {
                 f.Hide();
             }
+        }
+
+        private FlyoutShowMode _showMode = FlyoutShowMode.Auto;
+        public FlyoutShowMode ShowMode
+        {
+            get => _showMode;
+            set
+            {
+                CustomFlyout.ShowMode = value;
+                _showMode = value;
+            }
+        }
+
+        private void FlyoutShowModeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (e.AddedItems[0].ToString())
+            {
+                case "Auto": ShowMode = FlyoutShowMode.Auto; break;
+                case "Standard": ShowMode = FlyoutShowMode.Standard; break;
+                case "Transient": ShowMode = FlyoutShowMode.Transient; break;
+                default: ShowMode = FlyoutShowMode.TransientWithDismissOnPointerMoveAway;
+                    break;
+            }
+
         }
     }
 }
