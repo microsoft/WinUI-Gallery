@@ -80,6 +80,14 @@
   <ItemGroup>
     <Content Remove="@(Content)" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="ControlPages\ClipboardPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ControlPages\ClipboardPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
 </Project>
