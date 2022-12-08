@@ -16,9 +16,9 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
-    public sealed partial class EllipsePage : Page
+    public sealed partial class ShapePage : Page
     {
-        public EllipsePage()
+        public ShapePage()
         {
             this.InitializeComponent();
         }
