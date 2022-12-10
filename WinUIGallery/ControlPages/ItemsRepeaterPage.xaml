@@ -135,13 +135,13 @@
 
 &lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
 &lt;ScrollViewer HorizontalScrollBarVisibility="Auto" 
-        HorizontalScrollMode="Auto" 
-        IsVerticalScrollChainingEnabled="False"
-        MaxHeight="500"&gt;
+              HorizontalScrollMode="Auto" 
+              IsVerticalScrollChainingEnabled="False"
+              MaxHeight="500"&gt;
     &lt;ItemsRepeater
-        ItemsSource="{x:Bind BarItems}"
-        Layout="{StaticResource $(Layout)}"
-        ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+               ItemsSource="{x:Bind BarItems}"
+               Layout="{StaticResource $(Layout)}"
+               ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
 &lt;/ScrollViewer&gt;
                     
 &lt;!-- The Layout specifications used: --&gt;
@@ -152,10 +152,53 @@ $(SampleCodeLayout)
                     
 $(SampleCodeDT)                    
                     
-&lt;!-- The ItemsSource used is a list of custom-class Bar objects called BarItems. Bar objects have 
-the following attributes: Height, MaxHeight, Length, MaxLength, Diameter, and MaxDiameter. --&gt;
     </x:String>
             </local:ControlExample.Xaml>
+
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// The ItemsSource used is a list of custom-class Bar objects called BarItems
+
+public class Bar
+{
+    public Bar(double length, int max)
+    {
+        Length = length;
+        MaxLength = max;
+
+        Height = length / 4;
+        MaxHeight = max / 4;
+
+        Diameter = length / 6;
+        MaxDiameter = max / 6;
+    }
+    public double Length { get; set; }
+    public int MaxLength { get; set; }
+
+    public double Height { get; set; }
+    public double MaxHeight { get; set; }
+
+    public double Diameter { get; set; }
+    public double MaxDiameter { get; set; }
+}
+
+public ObservableCollection&lt;Bar&gt; BarItems;
+private int MaxLength = 425;
+
+private void InitializeData()
+{
+    if (BarItems == null)
+    {
+        BarItems = new ObservableCollection&lt;Bar&gt;();
+    }
+    BarItems.Add(new Bar(300, this.MaxLength));
+    BarItems.Add(new Bar(25, this.MaxLength));
+    BarItems.Add(new Bar(175, this.MaxLength));
+}
+                    </x:String>
+            </local:ControlExample.CSharp>
+
+
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution x:Name="layout" Key="Layout" Value="VerticalStackLayout" />
                 <local:ControlExampleSubstitution x:Name="elementGenerator" Key="ElementGenerator" Value="HorizontalBarTemplate" />
