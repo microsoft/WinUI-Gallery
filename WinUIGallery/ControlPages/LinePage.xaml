@@ -47,9 +47,9 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Line Stroke="SteelBlue"
-         X1="$(Slider1)" Y1="$(Slider2)"
-         X2="$(Slider3)" Y2="$(Slider4)"
-         StrokeThickness="$(Slider5)"/&gt;
+      X1="$(Slider1)" Y1="$(Slider2)"
+      X2="$(Slider3)" Y2="$(Slider4)"
+      StrokeThickness="$(Slider5)"/&gt;
                 </x:String>
 
             </local:ControlExample.Xaml>
@@ -94,7 +94,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Polyline Stroke="Black" StrokeThickness="$(Slider1)"
-             Points="10,100 60,40 200,40 250,100"/&gt;
+          Points="10,100 60,40 200,40 250,100"/&gt;
                 </x:String>
 
             </local:ControlExample.Xaml>
@@ -134,11 +134,12 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Path Stroke="DarkGoldenRod" StrokeThickness="$(Slider1)"
-         Data="M 10,100 C 100,25 300,250 400,75 H 200"/&gt;
-
 &lt;!-- The first segment is a cubic Bezier curve that begins at Point #1 and ends at Point #4, which is drawn by using Point #2 and 3 as the two control points. This segment is indicated by the "C" command in the Data attribute string. --&gt;
 &lt;!-- The second segment begins with an absolute horizontal line command "H", which specifies a line drawn from the preceding subpath endpoint (Point #4) to a new endpoint (Point #5). Because it's a horizontal line command, the value specified is an x-coordinate. --&gt;
+                    
+&lt;Path Stroke="DarkGoldenRod" StrokeThickness="$(Slider1)"
+      Data="M 10,100 C 100,25 300,250 400,75 H 200"/&gt;
+
                       </x:String>
 
             </local:ControlExample.Xaml>
