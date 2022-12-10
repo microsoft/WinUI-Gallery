@@ -27,7 +27,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="ExpressionAnimation on an Ellipse element" Loaded="ExpressionSample_Loaded" CSharpSource="Motion/AnimationInterop/AnimationInteropSample2_cs.txt">
+        <local:ControlExample HeaderText="ExpressionAnimation on an Ellipse element" Loaded="ExpressionSample_Loaded" XamlSource="Motion/AnimationInterop/AnimationInteropSample2_xaml.txt" CSharpSource="Motion/AnimationInterop/AnimationInteropSample2_cs.txt">
             <StackPanel Height="200">
                 <TextBlock Text="Hover over the square to animate its scale. Notice that the ellipse also animates." Style="{ThemeResource BodyTextBlockStyle}"   />
                 <TextBlock Text="The scale of the circle is inversely related to the scale of the square." Margin="0,0,0,12" />

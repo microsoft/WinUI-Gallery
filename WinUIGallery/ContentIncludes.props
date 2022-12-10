@@ -356,6 +356,7 @@
     <Content Include="ControlPagesSampleCode\StandardUICommand\StandardUICommandSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSimple.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_cs.txt" />
