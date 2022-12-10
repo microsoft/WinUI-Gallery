@@ -85,8 +85,8 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Rectangle Fill="SteelBlue" Height="$(Slider1)" Width="$(Slider2)"
-Stroke="Black" StrokeThickness="$(Slider3)"
-RadiusY="$(Slider4)" RadiusX="$(Slider5)"/&gt;
+              Stroke="Black" StrokeThickness="$(Slider3)"
+              RadiusY="$(Slider4)" RadiusX="$(Slider5)"/&gt;
                 </x:String>
 
             </local:ControlExample.Xaml>
@@ -132,7 +132,7 @@ RadiusY="$(Slider4)" RadiusX="$(Slider5)"/&gt;
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Polygon Fill="SteelBlue" Points="10,100 60,40 200,40 250,100"
-StrokeThickness="$(Slider1)" Stroke="Black"/&gt;
+            StrokeThickness="$(Slider1)" Stroke="Black"/&gt;
                 </x:String>
 
             </local:ControlExample.Xaml>

@@ -22,24 +22,5 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
-
-
-        //private void List_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    //Control1.StartBringIntoView();
-        //}
-
-        //private void createNewWindow_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var newWindow = WindowHelper.CreateWindow();
-        //    var rootPage = new NavigationRootPage();
-        //    rootPage.RequestedTheme = ThemeHelper.RootTheme;
-        //    newWindow.Content = rootPage;
-        //    newWindow.Activate();
-
-        //    var targetPageType = typeof(NewControlsPage);
-        //    string targetPageArguments = string.Empty;
-        //    rootPage.Navigate(targetPageType, targetPageArguments);
-        //}
     }
 }

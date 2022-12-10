@@ -2278,7 +2278,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "Basic shapes are intended for decorative rendering or for compositing non-interactive parts of controls.",
           "Content": "<p>Look at the <i>ShapePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2303,7 +2303,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "Draws a straight line between two points.",
           "Content": "<p>Look at the <i>LinePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
