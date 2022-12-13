@@ -29,7 +29,7 @@ namespace AppUIBasics.ControlPages
             VisualStateManager.GoToState(this, "ConfirmationClipboardVisible", false);
             Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
-            // Automatically close teachingtip after 2 seconds
+            // Automatically hide the confirmation text after 2 seconds
             if (dispatcherQueue != null)
             {
                 dispatcherQueue.TryEnqueue(async () =>
