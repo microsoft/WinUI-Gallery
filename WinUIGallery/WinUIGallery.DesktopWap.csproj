@@ -80,6 +80,19 @@
   <ItemGroup>
     <Content Remove="@(Content)" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="ControlPages\LinePage.xaml" />
+    <None Remove="ControlPages\ShapePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ControlPages\LinePage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ControlPages\ShapePage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
 </Project>
