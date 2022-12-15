@@ -1,0 +1,145 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="AppUIBasics.ControlPages.ShapePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppUIBasics"
+    xmlns:data="using:AppUIBasics.Data"
+    xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
+    mc:Ignorable="d">
+
+    <StackPanel>
+
+
+        <!-- ELLIPSE SAMPLE -->
+        <local:ControlExample x:Name="Example1" HeaderText="Ellipse">
+
+            <Ellipse
+                     Fill="SteelBlue"
+                     Height="{x:Bind slider1.Value, Mode=TwoWay}"
+                     Width="{x:Bind slider2.Value, Mode=TwoWay}"
+                     StrokeThickness="{x:Bind slider3.Value, Mode=TwoWay}"
+                     Stroke="Black"/>
+
+            <local:ControlExample.Options>
+                <StackPanel Width="220">
+                    <Slider x:Name="slider1" Header="Height" Minimum="100" Maximum="150" 
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="slider2" Header="Width" Minimum="100" Maximum="150"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="slider3" Header="Stroke Thickness" Minimum="2" Maximum="10"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String>
+                    &lt;Ellipse Fill="SteelBlue" Height="$(Slider1)" Width="$(Slider2)" StrokeThickness="$(Slider3)" Stroke="Black"/&gt;
+                </x:String>
+
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind slider1.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider2" Value="{x:Bind slider2.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider3" Value="{x:Bind slider3.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+        <!-- RECTANGLE SAMPLE -->
+        <local:ControlExample x:Name="Example2" HeaderText="Rectangle">
+            <Rectangle Fill="SteelBlue"
+           Height="{x:Bind recSlider1.Value, Mode=TwoWay}"
+           Width="{x:Bind recSlider2.Value, Mode=TwoWay}"
+           Stroke="Black"
+           StrokeThickness="{x:Bind recSlider3.Value, Mode=TwoWay}"
+           RadiusY="{x:Bind recSlider4.Value, Mode=TwoWay}"
+           RadiusX="{x:Bind recSlider5.Value, Mode=TwoWay}"/>
+
+            <local:ControlExample.Options>
+                <StackPanel Width="220">
+                    <Slider x:Name="recSlider1" Header="Height" Minimum="100" Maximum="150" 
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="recSlider2" Header="Width" Minimum="100" Maximum="150"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="recSlider3" Header="Stroke Thickness" Minimum="2" Maximum="10"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="recSlider4" Header="Radius Y" Minimum="0" Maximum="100"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                    <Slider x:Name="recSlider5" Header="Radius X" Minimum="0" Maximum="100"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Rectangle Fill="SteelBlue" Height="$(Slider1)" Width="$(Slider2)"
+           Stroke="Black" StrokeThickness="$(Slider3)"
+           RadiusY="$(Slider4)" RadiusX="$(Slider5)"/&gt;
+                </x:String>
+
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind recSlider1.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider2" Value="{x:Bind recSlider2.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider3" Value="{x:Bind recSlider3.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider4" Value="{x:Bind recSlider4.Value, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="Slider5" Value="{x:Bind recSlider5.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+
+        </local:ControlExample>
+
+        <!-- POLYGON SAMPLE -->
+        <local:ControlExample x:Name="Example3" HeaderText="Polygon">
+
+
+            <Canvas Width="320" Height="200">
+                <StackPanel>
+                    <TextBlock Margin="0,0,0,15">
+                    A polygon is a connected series of lines that form a closed shape.
+                    </TextBlock>
+                    <Polygon Fill="SteelBlue"
+            Points="10,100 60,40 200,40 250,100" StrokeThickness="{x:Bind polySlider1.Value, Mode=TwoWay}" Stroke="Black" />
+                </StackPanel>
+                <TextBlock Text="Point #1: (10,100)" Canvas.ZIndex="1" Canvas.Left="0" Canvas.Top="150" Visibility="{x:Bind ToggleSwitchPoly.IsOn,Mode=OneWay}"/>
+                <TextBlock Text="Point #2: (60,40)" Canvas.ZIndex="1" Canvas.Left="50" Canvas.Top="40" Visibility="{x:Bind ToggleSwitchPoly.IsOn, Mode=OneWay}"/>
+                <TextBlock Text="Point #3: (200,40)" Canvas.ZIndex="1" Canvas.Left="200" Canvas.Top="40" Visibility="{x:Bind ToggleSwitchPoly.IsOn, Mode=OneWay}"/>
+                <TextBlock Text="Point #4: (250,100)" Canvas.ZIndex="1" Canvas.Left="240" Canvas.Top="150" Visibility="{x:Bind ToggleSwitchPoly.IsOn, Mode=OneWay}"/>
+            </Canvas>
+
+
+
+
+            <local:ControlExample.Options>
+                <StackPanel Width="220">
+                    <ToggleSwitch x:Name="ToggleSwitchPoly" Header="Show points" IsOn="False" />
+                    <Slider x:Name="polySlider1" Header="Stroke Thickness" Minimum="2" Maximum="10"
+                        StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
+                </StackPanel>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Polygon Fill="SteelBlue" Points="10,100 60,40 200,40 250,100"
+         StrokeThickness="$(Slider1)" Stroke="Black"/&gt;
+                </x:String>
+
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind polySlider1.Value, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
+
+    </StackPanel>
+</Page>
