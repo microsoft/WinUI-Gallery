@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <ProjectReunionPackageVersion>1.2.221209.1</ProjectReunionPackageVersion>
+    <WindowsAppSdkPackageVersion>1.2.221209.1</WindowsAppSdkPackageVersion>
     <ProjectReunionWinUIPackageVersion>1.2.221209.1</ProjectReunionWinUIPackageVersion>
     <SamplesTargetFrameworkMoniker>net6.0-windows10.0.18362.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
@@ -19,8 +19,6 @@
          are erroneously included.  Explicitly exclude them here
     -->
     <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <!-- Where to place the files generated from CSWinRT from WinUIGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
   </PropertyGroup>

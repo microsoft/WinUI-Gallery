@@ -49,10 +49,9 @@
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
-    <PackageReference Include="Microsoft.WinUI" />
-    <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <Manifest Include="$(ApplicationManifest)" />
 
@@ -64,24 +63,14 @@
     <PackageReference Include="System.Private.Uri" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
     <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
     <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
-    <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
-    <PackageReference Remove="Microsoft.WinUI" />
-    <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
