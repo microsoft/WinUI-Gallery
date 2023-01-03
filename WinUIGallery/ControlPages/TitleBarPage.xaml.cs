@@ -29,6 +29,8 @@ using System.Runtime.InteropServices;
 using WinUIGallery.DesktopWap.Helper;
 using Microsoft.UI.Xaml.Shapes;
 using System.Threading.Tasks;
+using Microsoft.UI.Windowing;
+using System.ComponentModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -40,10 +42,17 @@ namespace AppUIBasics.ControlPages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TitleBarPage : Page
+    public sealed partial class TitleBarPage : Page, INotifyPropertyChanged
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = Colors.Black;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string PropertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
 
         public TitleBarPage()
         {
@@ -63,12 +72,13 @@ namespace AppUIBasics.ControlPages
             {
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(titlebar);
+                IsDefaultTitleBar = false;
             }
             else
             {
                 window.ExtendsContentIntoTitleBar = false;
                 window.SetTitleBar(null);
-
+                IsDefaultTitleBar = true;
             }
             UpdateButtonText();
             UpdateTitleBarColor();
@@ -130,6 +140,22 @@ namespace AppUIBasics.ControlPages
             TitleBarHelper.triggerTitleBarRepaint(window);
         }
 
+        private bool _isDefaultTitleBar = false;
+        public bool IsDefaultTitleBar
+        {
+            get => _isDefaultTitleBar;
+            set
+            {
+                _isDefaultTitleBar = value;
+                OnPropertyChanged("IsDefaultTitleBar");
+                if(!value)
+                {
+                    HasTitleBar = true;
+                    HasBorder = true;
+                }
+            }
+        }
+
         private void customTitleBar_Click(object sender, RoutedEventArgs e)
         {
             UIElement titleBarElement = WindowHelper.FindElementByName(sender as UIElement, "AppTitleBar");
@@ -138,6 +164,38 @@ namespace AppUIBasics.ControlPages
         private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
             SetTitleBar(null);
+        }
+
+        public OverlappedPresenter Presenter
+        {
+            get => AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(WinRT.Interop.WindowNative.GetWindowHandle(WindowHelper.GetWindowForElement(this as UIElement)))).Presenter as OverlappedPresenter;
+        }
+
+        private bool _hasBorder = true;
+        private bool _hasTitleBar = true;
+        public bool HasBorder
+        {
+            get => _hasBorder;
+            set
+            {
+                _hasBorder = value;
+                Presenter.SetBorderAndTitleBar(value, _hasTitleBar);
+            }
+        }
+        public bool HasTitleBar
+        {
+            get=> _hasTitleBar;
+            set
+            {
+                _hasTitleBar = value;
+                if (_hasTitleBar)
+                {
+                    HasBorder = true;
+                    OnPropertyChanged("HasBorder");
+                }
+                Presenter.SetBorderAndTitleBar(_hasBorder, value);
+                OnPropertyChanged("HasTitleBar");
+            }
         }
     }
 }

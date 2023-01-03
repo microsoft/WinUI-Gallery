@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
     <DefineConstants>MSIX</DefineConstants>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
@@ -81,8 +81,22 @@
     <Content Remove="@(Content)" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_cs.txt" />
+    <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_xaml.txt" />
+    <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample2_cs.txt" />
     <None Remove="ControlPages\LinePage.xaml" />
     <None Remove="ControlPages\ShapePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample2_cs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ControlPages\LinePage.xaml">

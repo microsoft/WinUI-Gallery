@@ -1,0 +1,2 @@
+var presenter = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(WinRT.Interop.WindowNative.GetWindowHandle(WindowHelper.GetWindowForElement(this as UIElement)))).Presenter as OverlappedPresenter;
+presenter.SetBorderAndTitleBar(hasBorder, hasTitleBar);

@@ -17,17 +17,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:AppUIBasics"
+    xmlns:common="using:AppUIBasics.Common"
     xmlns:data="using:AppUIBasics.Data"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
 
     <Page.Resources>
         <x:Double x:Key="SwatchSize">32</x:Double>
+        <common:NegationConverter x:Key="NegationConverter"/>
     </Page.Resources>
 
     <StackPanel>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
-                              CSharpSource="Window\TitleBar\TitleBarSample1.txt">
+                              CSharpSource="Window\TitleBar\TitleBarSample1_cs.txt"
+                              XamlSource="Window\TitleBar\TitleBarSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
@@ -64,7 +67,8 @@
                                             <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
                                             <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
                                             <Rectangle Fill="White" AutomationProperties.Name="White"/>
-                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>                                        </GridView.Items>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>
+                                        </GridView.Items>
                                     </GridView>
 
                                 </Flyout>
@@ -109,10 +113,9 @@
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
-
         </local:ControlExample>
         <local:ControlExample HeaderText="Fallback titlebar when no user defined titlebar is set"
-                              CSharpSource="Window\TitleBar\TitleBarSample2.txt">
+                              CSharpSource="Window\TitleBar\TitleBarSample2_cs.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
@@ -128,6 +131,24 @@
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="System titlebar customization"
+                              CSharpSource="Window\TitleBar\TitleBarSample3_cs.txt">
+            <local:ControlExample.Example>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    The OverlappedPresenter is the default presenter for AppWindow, and has more options for customizing the system provided title bar.
+                    Set the title bar to system default to enable these options.
+                </TextBlock>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <CheckBox Content="Is Maximizable" IsChecked="{x:Bind Presenter.IsMaximizable, Mode=TwoWay}" IsEnabled="{x:Bind IsDefaultTitleBar, Mode=OneWay}"/>
+                    <CheckBox Content="Is Minimizable" IsChecked="{x:Bind Presenter.IsMinimizable, Mode=TwoWay}" IsEnabled="{x:Bind IsDefaultTitleBar, Mode=OneWay}"/>
+                    <CheckBox Content="Has border" IsChecked="{x:Bind HasBorder,Mode=TwoWay}" IsEnabled="{x:Bind HasTitleBar, Converter={StaticResource NegationConverter}, Mode=OneWay}"/>
+                    <CheckBox Content="Has titlebar" IsChecked="{x:Bind HasTitleBar, Mode=TwoWay}" IsEnabled="{x:Bind IsDefaultTitleBar, Mode=OneWay}"/>
+                </StackPanel>
+            </local:ControlExample.Options>
         </local:ControlExample>
     </StackPanel>
 </Page>
