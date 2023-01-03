@@ -177,7 +177,7 @@
 
                 <TextBlock TextWrapping="WrapWholeWords"
                            Margin="0,0,0,12"
-                           Text="For the tabs pattern, ensure that you unify selection and focus by setting the SelectionFollowsFocus property to True. If using a Frame to swap out content, then navigating between items shouldn't be recorded into the Frame's navigation stack. Please see the C# in the sample below to understand how to do this." />
+                           Text="For the tabs pattern, ensure that you unify selection and focus by setting the SelectionFollowsFocus property to Enabled. If using a Frame to swap out content, then navigating between items shouldn't be recorded into the Frame's navigation stack. Please see the C# in the sample below to understand how to do this." />
 
                 <NavigationView x:Name="nvSample7" Grid.Row="1" Height="460"
                                             PaneDisplayMode="Top" SelectionFollowsFocus="Enabled"  SelectionChanged="NavigationView_SelectionChanged7"
