@@ -358,7 +358,11 @@
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample1_cs.txt" />
-    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSimple.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />
