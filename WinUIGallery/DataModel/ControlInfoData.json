@@ -2810,7 +2810,7 @@
           "IsUpdated": false,
           "Docs": [
             {
-              "Title": "MultipleWindow - API",
+              "Title": "Clipboard - API",
               "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
             }
           ],

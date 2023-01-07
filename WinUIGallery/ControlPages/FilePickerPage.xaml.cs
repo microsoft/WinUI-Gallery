@@ -7,6 +7,8 @@ using System.Xml.Linq;
 using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
@@ -46,7 +48,19 @@ namespace AppUIBasics.ControlPages
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                OutputTextBlock1.Text = "Picked file: " + file.Name;
+                // Creating the text for the Texblock
+                Span span = new Span();
+                Run run1 = new Run();
+                run1.Text = "Picked file: ";
+
+                // Adding the name of the picked file in bold
+                Run run2 = new Run();
+                run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
+                run2.Text = file.Name;
+                
+                span.Inlines.Add(run1);
+                span.Inlines.Add(run2);
+                OutputTextBlock1.Inlines.Add(span);     
             }
             else
             {
@@ -79,7 +93,19 @@ namespace AppUIBasics.ControlPages
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                OutputTextBlock2.Text = "Picked photo: " + file.Name;
+                // Creating the text for the Texblock
+                Span span = new Span();
+                Run run1 = new Run();
+                run1.Text = "Picked photo: ";
+
+                // Adding the name of the picked file in bold
+                Run run2 = new Run();
+                run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
+                run2.Text = file.Name;
+
+                span.Inlines.Add(run1);
+                span.Inlines.Add(run2);
+                OutputTextBlock2.Inlines.Add(span);
             }
             else
             {
@@ -111,12 +137,23 @@ namespace AppUIBasics.ControlPages
             IReadOnlyList<StorageFile> files = await openPicker.PickMultipleFilesAsync();
             if (files.Count > 0)
             {
-                StringBuilder output = new StringBuilder("Picked files:\n");
+                // Creating the text for the Texblock
+                Span span = new Span();
+                Run run1 = new Run();
+                run1.Text = "Picked files:\n";
+                span.Inlines.Add(run1);
+
+                // Adding the names of the picked files in bold
                 foreach (StorageFile file in files)
                 {
-                    output.Append(file.Name + "\n");
+                    Run runTemp = new Run();
+                    runTemp.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
+                    runTemp.Text = file.Name + "\n";
+
+                    span.Inlines.Add(runTemp);
                 }
-                OutputTextBlock3.Text = output.ToString();
+
+                OutputTextBlock3.Inlines.Add(span);
             }
             else
             {
@@ -148,7 +185,20 @@ namespace AppUIBasics.ControlPages
             if (folder != null)
             {
                 StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", folder);
-                OutputTextBlock4.Text = "Picked folder: " + folder.Name;
+
+                // Creating the text for the Texblock
+                Span span = new Span();
+                Run run1 = new Run();
+                run1.Text = "Picked folder: ";
+
+                // Adding the name of the picked file in bold
+                Run run2 = new Run();
+                run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
+                run2.Text = folder.Name;
+
+                span.Inlines.Add(run1);
+                span.Inlines.Add(run2);
+                OutputTextBlock4.Inlines.Add(span);
             }
             else
             {
