@@ -7,23 +7,16 @@
       xmlns:muxccontract7Present="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
       mc:Ignorable="d">
     <StackPanel>
-        <RichTextBlock>
-            <Paragraph>See the full sample on GitHub:
-                <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery">
-                    https://github.com/microsoft/WinUI-Gallery
-                </Hyperlink>
-            </Paragraph>
-        </RichTextBlock>
 
-        <local:ControlExample HeaderText="A connected animation between a list page and a detail page">
+        <local:ControlExample HeaderText="A connected animation between a list page and a detail page" XamlSource="Motion/ConnectedAnimation/ConnectedAnimationSample1_xaml.txt" CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample1_cs.txt">
             <Frame x:Name="CollectionContentFrame" MinWidth="500" Height="750" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A connected animation between elements on the same page">
+        <local:ControlExample HeaderText="A connected animation between elements on the same page" XamlSource="Motion/ConnectedAnimation/ConnectedAnimationSample2_xaml.txt" CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample2_cs.txt">
             <Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A simple connected animation" CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSimple.txt">
+        <local:ControlExample HeaderText="A simple connected animation" CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample3_cs.txt">
             <local:ControlExample.Options>
                 <StackPanel>
                     <Button Content="Navigate" Click="NavigateButton_Click" HorizontalAlignment="Stretch" />

@@ -13,11 +13,15 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            ContentFrame.Navigate(typeof(SamplePage1));
-
+            // For 1st sample
             CollectionContentFrame.Navigate(typeof(ConnectedAnimationPages.CollectionPage));
 
+            // For 2nd sample
             CardFrame.Navigate(typeof(ConnectedAnimationPages.CardPage));
+
+            // For 3rd sample
+            ContentFrame.Navigate(typeof(SamplePage1));
+            
         }
 
         private ConnectedAnimationConfiguration GetConfiguration()
