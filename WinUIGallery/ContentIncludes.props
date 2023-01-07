@@ -114,6 +114,7 @@
     <Content Include="Assets\ControlImages\CalendarView.png" />
     <Content Include="Assets\ControlImages\Canvas.png" />
     <Content Include="Assets\ControlImages\Checkbox.png" />
+    <Content Include="Assets\ControlImages\Clipboard.png" />
     <Content Include="Assets\ControlImages\ColorPaletteResources.png" />
     <Content Include="Assets\ControlImages\ColorPicker.png" />
     <Content Include="Assets\ControlImages\ComboBox.png" />
@@ -128,6 +129,7 @@
     <Content Include="Assets\ControlImages\DropDownButton.png" />
     <Content Include="Assets\ControlImages\EasingFunction.png" />
     <Content Include="Assets\ControlImages\Expander.png" />
+    <Content Include="Assets\ControlImages\FilePicker.png" />
     <Content Include="Assets\ControlImages\FlipView.png" />
     <Content Include="Assets\ControlImages\Flyout.png" />
     <Content Include="Assets\ControlImages\Grid.png" />
