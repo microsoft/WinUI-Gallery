@@ -21,9 +21,9 @@
     var file = await openPicker.PickSingleFileAsync();
     if (file != null)
     {
-        OutputTextBlock1.Text = "Picked file: " + file.Name;
+        PickAFileOutputTextBlock.Text = "Picked file: " + file.Name;
     }
     else
     {
-        OutputTextBlock1.Text = "Operation cancelled.";
+        PickAFileOutputTextBlock.Text = "Operation cancelled.";
 }

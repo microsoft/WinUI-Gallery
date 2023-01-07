@@ -29,7 +29,7 @@
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                         <Button x:Name="PickAFileButton" Content="Open a file"
                                 Click="PickAFileButton_Click" Margin="0,0,0,10"/>
-                        <TextBlock x:Name="OutputTextBlock1" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                        <TextBlock x:Name="PickAFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
@@ -47,7 +47,7 @@
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                         <Button x:Name="PickAPhotoButton" Content="Open a picture"
                                 Click="PickAPhotoButton_Click" Margin="0,0,0,10"/>
-                        <TextBlock x:Name="OutputTextBlock2" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                        <TextBlock x:Name="PickAPhotoOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
@@ -65,7 +65,7 @@
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                         <Button x:Name="PickFilesButton" Content="Open multiple files"
                                 Click="PickFilesButton_Click" Margin="0,0,0,10"/>
-                        <TextBlock x:Name="OutputTextBlock3" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                        <TextBlock x:Name="PickFilesOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
@@ -83,7 +83,7 @@
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                         <Button x:Name="PickFolderButton" Content="Open a folder"
                                 Click="PickFolderButton_Click" Margin="0,0,0,10"/>
-                        <TextBlock x:Name="OutputTextBlock4" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                        <TextBlock x:Name="PickFolderOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
@@ -110,7 +110,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="SaveToAFileButton" Content="Save a file" Width="90"
                                 Click="SaveFileButton_Click" Margin="0,0,0,10"/>
-                        <TextBlock x:Name="OutputTextBlock5" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                        <TextBlock x:Name="SaveFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>

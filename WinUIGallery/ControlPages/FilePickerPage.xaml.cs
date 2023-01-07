@@ -28,7 +28,7 @@ namespace AppUIBasics.ControlPages
         private async void PickAFileButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear previous returned file name, if it exists, between iterations of this scenario
-            OutputTextBlock1.Text = "";
+            PickAFileOutputTextBlock.Text = "";
 
             // Create a file picker
             var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -60,17 +60,17 @@ namespace AppUIBasics.ControlPages
                 
                 span.Inlines.Add(run1);
                 span.Inlines.Add(run2);
-                OutputTextBlock1.Inlines.Add(span);     
+                PickAFileOutputTextBlock.Inlines.Add(span);     
             }
             else
             {
-                OutputTextBlock1.Text = "Operation cancelled.";
+                PickAFileOutputTextBlock.Text = "Operation cancelled.";
             }
         }
         private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear previous returned file name, if it exists, between iterations of this scenario
-            OutputTextBlock2.Text = "";
+            PickAPhotoOutputTextBlock.Text = "";
 
             // Create a file picker
             var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -105,18 +105,18 @@ namespace AppUIBasics.ControlPages
 
                 span.Inlines.Add(run1);
                 span.Inlines.Add(run2);
-                OutputTextBlock2.Inlines.Add(span);
+                PickAPhotoOutputTextBlock.Inlines.Add(span);
             }
             else
             {
-                OutputTextBlock2.Text = "Operation cancelled.";
+                PickAPhotoOutputTextBlock.Text = "Operation cancelled.";
             }
         }
 
         private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear previous returned file name, if it exists, between iterations of this scenario
-            OutputTextBlock3.Text = "";
+            PickFilesOutputTextBlock.Text = "";
 
             // Create a file picker
             var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -153,18 +153,18 @@ namespace AppUIBasics.ControlPages
                     span.Inlines.Add(runTemp);
                 }
 
-                OutputTextBlock3.Inlines.Add(span);
+                PickFilesOutputTextBlock.Inlines.Add(span);
             }
             else
             {
-                OutputTextBlock3.Text = "Operation cancelled.";
+                PickFilesOutputTextBlock.Text = "Operation cancelled.";
             }
         }
 
         private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear previous returned file name, if it exists, between iterations of this scenario
-            OutputTextBlock4.Text = "";
+            PickFolderOutputTextBlock.Text = "";
 
             // Create a folder picker
             FolderPicker openPicker = new Windows.Storage.Pickers.FolderPicker();
@@ -198,18 +198,18 @@ namespace AppUIBasics.ControlPages
 
                 span.Inlines.Add(run1);
                 span.Inlines.Add(run2);
-                OutputTextBlock4.Inlines.Add(span);
+                PickFolderOutputTextBlock.Inlines.Add(span);
             }
             else
             {
-                OutputTextBlock4.Text = "Operation cancelled.";
+                PickFolderOutputTextBlock.Text = "Operation cancelled.";
             }
         }
 
         private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear previous returned file name, if it exists, between iterations of this scenario
-            OutputTextBlock5.Text = "";
+            SaveFileOutputTextBlock.Text = "";
 
             // Create a file picker
             FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
@@ -255,20 +255,20 @@ namespace AppUIBasics.ControlPages
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
                 if (status == FileUpdateStatus.Complete)
                 {
-                    OutputTextBlock5.Text = "File " + file.Name + " was saved.";
+                    SaveFileOutputTextBlock.Text = "File " + file.Name + " was saved.";
                 }
                 else if (status == FileUpdateStatus.CompleteAndRenamed)
                 {
-                    OutputTextBlock5.Text = "File " + file.Name + " was renamed and saved.";
+                    SaveFileOutputTextBlock.Text = "File " + file.Name + " was renamed and saved.";
                 }
                 else
                 {
-                    OutputTextBlock5.Text = "File " + file.Name + " couldn't be saved.";
+                    SaveFileOutputTextBlock.Text = "File " + file.Name + " couldn't be saved.";
                 }
             }
             else
             {
-                OutputTextBlock5.Text = "Operation cancelled.";
+                SaveFileOutputTextBlock.Text = "Operation cancelled.";
             }
         }
 

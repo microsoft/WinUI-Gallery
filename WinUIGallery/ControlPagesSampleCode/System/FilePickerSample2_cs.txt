@@ -1,7 +1,7 @@
 ﻿private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
 {
     // Clear previous returned file name, if it exists, between iterations of this scenario
-    OutputTextBlock2.Text = "";
+    PickAPhotoOutputTextBlock.Text = "";
 
     // Create a file picker
     var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -24,10 +24,10 @@
     var file = await openPicker.PickSingleFileAsync();
     if (file != null)
     {
-        OutputTextBlock2.Text = "Picked photo: " + file.Name;
+        PickAPhotoOutputTextBlock.Text = "Picked photo: " + file.Name;
     }
     else
     {
-        OutputTextBlock2.Text = "Operation cancelled.";
+        PickAPhotoOutputTextBlock.Text = "Operation cancelled.";
     }
 }

@@ -1,7 +1,7 @@
 ﻿private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
 {
     // Clear previous returned file name, if it exists, between iterations of this scenario
-    OutputTextBlock3.Text = "";
+    PickFilesOutputTextBlock.Text = "";
 
     // Create a file picker
     var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -27,10 +27,10 @@
         {
             output.Append(file.Name + "\n");
         }
-        OutputTextBlock3.Text = output.ToString();
+        PickFilesOutputTextBlock.Text = output.ToString();
     }
     else
     {
-        OutputTextBlock3.Text = "Operation cancelled.";
+        PickFilesOutputTextBlock.Text = "Operation cancelled.";
     }
 }

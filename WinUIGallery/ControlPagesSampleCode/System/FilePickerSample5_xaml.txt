@@ -12,5 +12,5 @@
 <StackPanel Orientation="Horizontal">
     <Button x:Name="SaveToAFileButton" Content="Save a file" Width="90"
             Click="SaveFileButton_Click" Margin="0,0,0,10"/>
-    <TextBlock x:Name="OutputTextBlock5" TextWrapping="Wrap" Padding="20,5,0,0"/>
+    <TextBlock x:Name="SaveFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
 </StackPanel>

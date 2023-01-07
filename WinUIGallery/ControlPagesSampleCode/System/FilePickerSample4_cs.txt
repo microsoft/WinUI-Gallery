@@ -1,7 +1,7 @@
 ﻿private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
 {
     // Clear previous returned file name, if it exists, between iterations of this scenario
-    OutputTextBlock4.Text = "";
+    PickFolderOutputTextBlock.Text = "";
 
     // Create a folder picker
     FolderPicker openPicker = new Windows.Storage.Pickers.FolderPicker();
@@ -22,10 +22,10 @@
     if (folder != null)
     {
         StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", folder);
-        OutputTextBlock4.Text = "Picked folder: " + folder.Name;
+        PickFolderOutputTextBlock.Text = "Picked folder: " + folder.Name;
     }
     else
     {
-        OutputTextBlock4.Text = "Operation cancelled.";
+        PickFolderOutputTextBlock.Text = "Operation cancelled.";
     }
 }
