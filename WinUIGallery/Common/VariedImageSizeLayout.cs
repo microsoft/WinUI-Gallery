@@ -1,13 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using Windows.Foundation;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
 using VirtualizingLayout = Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext;
 
@@ -37,7 +34,7 @@ namespace AppUIBasics.Common
             }
 
             // Initialize column offsets
-            int numColumns = (int)(availableSize.Width / Width);
+            int numColumns = Math.Max(1, (int)(availableSize.Width / Width));
             if (m_columnOffsets.Count == 0)
             {
                 for (int i = 0; i < numColumns; i++)
@@ -99,7 +96,7 @@ namespace AppUIBasics.Common
 
         private void UpdateCachedBounds(Size availableSize)
         {
-            int numColumns = (int)(availableSize.Width / Width);
+            int numColumns = Math.Max(1, (int)(availableSize.Width / Width));
             m_columnOffsets.Clear();
             for (int i = 0; i < numColumns; i++)
             {
