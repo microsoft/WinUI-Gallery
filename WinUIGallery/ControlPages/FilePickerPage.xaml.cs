@@ -238,15 +238,14 @@ namespace AppUIBasics.ControlPages
                 CachedFileManager.DeferUpdates(file);
 
                 // write to file
-                var textBox = ((sender as Button).Parent as StackPanel)
-                .FindName("FileContentTextBox") as TextBox;
-                    using (var stream = await file.OpenStreamForWriteAsync())
+                var textBox = ((sender as Button).Parent as StackPanel).FindName("FileContentTextBox") as TextBox;
+                using (var stream = await file.OpenStreamForWriteAsync())
+                {
+                    using (var tw = new StreamWriter(stream))
                     {
-                        using (var tw = new StreamWriter(stream))
-                        {
-                            tw.WriteLine(textBox?.Text);
-                        }
+                        tw.WriteLine(textBox?.Text);
                     }
+                }
                 // Another way to write a string to the file is to use this instead:
                 // await FileIO.WriteTextAsync(file, "Example file contents.");
                 
