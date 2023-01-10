@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 namespace AppUIBasics.ControlPages
 {
@@ -41,6 +42,46 @@ namespace AppUIBasics.ControlPages
             {
                 sender.Value = 0;
             }
+        }
+
+        private void Background_SelectionChanged1(object sender, SelectionChangedEventArgs e)
+        {
+            string colorName = e.AddedItems[0].ToString();
+            bool showBackgroundProperty = false;
+            switch (colorName)
+            {
+                case "Transparent":
+                    ProgressRing1.Background = new SolidColorBrush(Colors.Transparent);
+                    break;
+                case "LightGray":
+                    ProgressRing1.Background = new SolidColorBrush(Colors.LightGray);
+                    showBackgroundProperty = true;
+                    break;
+
+                default:
+                    throw new Exception($"Invalid argument: {colorName}");
+            }
+            RevealBackgroundProperty1.IsEnabled = showBackgroundProperty;
+        }
+
+        private void Background_SelectionChanged2(object sender, SelectionChangedEventArgs e)
+        {
+            string colorName = e.AddedItems[0].ToString();
+            bool showBackgroundProperty = false;
+            switch (colorName)
+            {
+                case "Transparent":
+                    ProgressRing2.Background = new SolidColorBrush(Colors.Transparent);
+                    break;
+                case "LightGray":
+                    ProgressRing2.Background = new SolidColorBrush(Colors.LightGray);
+                    showBackgroundProperty = true;
+                    break;
+
+                default:
+                    throw new Exception($"Invalid argument: {colorName}");
+            }
+            RevealBackgroundProperty2.IsEnabled = showBackgroundProperty;
         }
 
     }
