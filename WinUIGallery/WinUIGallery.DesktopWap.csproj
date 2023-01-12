@@ -83,8 +83,12 @@
   <ItemGroup>
     <None Remove="ControlPages\LinePage.xaml" />
     <None Remove="ControlPages\ShapePage.xaml" />
+    <None Remove="ControlPages\Typography.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="ControlPages\LinePage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
