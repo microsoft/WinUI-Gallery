@@ -81,11 +81,11 @@
                     IsOpen="False"
                     IsSticky="False"
                     Visibility="Collapsed">
-                    <AppBarButton x:Name="CopyLinkButton" Click="OnCopyLinkButtonClick">
+                    <AppBarButton x:Name="OpenFigmaLinkButton" Click="OnOpenFigmaLinkButtonClick">
                         <AppBarButton.Icon>
-                            <SymbolIcon x:Name="CopyLinkButtonIcon" Margin="0,-2,0,0" Symbol="Link" />
+                            <SymbolIcon x:Name="OpenFigmaLinkButtonIcon" Margin="0,-2,0,0" Symbol="Link" />
                         </AppBarButton.Icon>
-                        <AppBarButton.Resources>
+                        <!--<AppBarButton.Resources>
                             <TeachingTip
                                 x:Name="CopyLinkButtonTeachingTip"
                                 Title="Quickly reference this sample!"
@@ -99,7 +99,7 @@
                                     <Image Source="/Assets/CopyLinkTeachingTip.png" />
                                 </TeachingTip.HeroContent>
                             </TeachingTip>
-                        </AppBarButton.Resources>
+                        </AppBarButton.Resources>-->
                     </AppBarButton>
                     <AppBarButton
                         x:Name="ThemeButton"

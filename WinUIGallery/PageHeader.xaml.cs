@@ -115,17 +115,19 @@ namespace AppUIBasics
             this.ResetCopyLinkButton();
         }
 
-        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
+        private async void OnOpenFigmaLinkButtonClick(object sender, RoutedEventArgs e)
         {
-            this.CopyLinkAction?.Invoke();
+            //this.CopyLinkAction?.Invoke();
 
-            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
-            {
-                this.CopyLinkButtonTeachingTip.IsOpen = true;
-            }
+            //if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+            //{
+            //    this.CopyLinkButtonTeachingTip.IsOpen = true;
+            //}
 
-            this.CopyLinkButton.Label = "Copied to Clipboard";
-            this.CopyLinkButtonIcon.Symbol = Symbol.Accept;
+            //this.OnOpenFigmaLinkButton.Label = "Copied to Clipboard";
+            //this.OnOpenFigmaLinkButtonIcon.Symbol = Symbol.Accept;
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://www.figma.com/file/i19Jgv1A05ayFUXTuP7U7A/Windows-UI-3-(Community)?node-id=72491%3A280391&t=GTUagQuxXRLGWcsv-1"));
+
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
@@ -135,16 +137,16 @@ namespace AppUIBasics
 
         public void ResetCopyLinkButton()
         {
-            this.CopyLinkButtonTeachingTip.IsOpen = false;
-            this.CopyLinkButton.Label = "Generate Link to Page";
-            this.CopyLinkButtonIcon.Symbol = Symbol.Link;
+            //this.CopyLinkButtonTeachingTip.IsOpen = false;
+            this.OpenFigmaLinkButton.Label = "Open in Figma";
+            this.OpenFigmaLinkButtonIcon.Symbol = Symbol.Link;
         }
 
-        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
-        {
-            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
-            this.CopyLinkButtonTeachingTip.IsOpen = false;
-        }
+        //private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+        //{
+        //    ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+        //    this.CopyLinkButtonTeachingTip.IsOpen = false;
+        //}
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
@@ -162,30 +164,5 @@ namespace AppUIBasics
 
         }
 
-        // private void InitializeDropShadow(UIElement shadowHost, CompositionBrush shadowTargetBrush)
-        // {
-        //     Visual hostVisual = ElementCompositionPreview.GetElementVisual(shadowHost);
-        //     Compositor compositor = hostVisual.Compositor;
-
-        //     // Create a drop shadow
-        //     var dropShadow = compositor.CreateDropShadow();
-        //     dropShadow.Color = ColorHelper.FromArgb(102, 0, 0, 0);
-        //     dropShadow.BlurRadius = 4.0f;
-        //     // Associate the shape of the shadow with the shape of the target element
-        //     dropShadow.Mask = shadowTargetBrush;
-
-        //     // Create a Visual to hold the shadow
-        //     var shadowVisual = compositor.CreateSpriteVisual();
-        //     shadowVisual.Shadow = dropShadow;
-
-        //     // Add the shadow as a child of the host in the visual tree
-        //     ElementCompositionPreview.SetElementChildVisual(shadowHost, shadowVisual);
-
-        //     // Make sure size of shadow host and shadow visual always stay in sync
-        //     var bindSizeAnimation = compositor.CreateExpressionAnimation("hostVisual.Size");
-        //     bindSizeAnimation.SetReferenceParameter("hostVisual", hostVisual);
-
-        //     shadowVisual.StartAnimation("Size", bindSizeAnimation);
-        // }
     }
 }
