@@ -52,7 +52,8 @@ namespace AppUIBasics.ControlPages
                 CenterYSlider.Value = RadiusYSlider.Value = OriginYSlider.Value = rectSize.Width / 2;
                 CenterXSlider.StepFrequency = RadiusXSlider.StepFrequency = OriginXSlider.StepFrequency = rectSize.Width / 50;
                 CenterYSlider.StepFrequency = RadiusYSlider.StepFrequency = OriginYSlider.StepFrequency = rectSize.Height / 50;
-                CenterXSlider.SmallChange = RadiusYSlider.SmallChange = OriginYSlider.SmallChange = 10;
+                CenterXSlider.SmallChange = RadiusXSlider.SmallChange = OriginXSlider.SmallChange = 10;
+                CenterYSlider.SmallChange = RadiusYSlider.SmallChange = OriginYSlider.SmallChange = 10;
             }
             else
             {
