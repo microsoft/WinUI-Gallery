@@ -13,35 +13,19 @@ namespace AppUIBasics.ControlPages
 
         }
 
-        //private void Example1_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
-        //}
+        private void TestButtonClick1(object sender, RoutedEventArgs e)
+        {
+            ShowTypographyInfoTooltip1.IsOpen = true;
+        }
 
-        //private void Standard_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    var oldPage = ContentFrame.Content as SampleTypographyPage;
+        private void TestButtonClick2(object sender, RoutedEventArgs e)
+        {
+            ShowTypographyInfoTooltip2.IsOpen = true;
+        }
 
-        //    ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
-
-        //    if (oldPage != null)
-        //    {
-        //        var page = ContentFrame.Content as SampleStandardSizingPage;
-        //        page.CopyState(oldPage);
-        //    }
-        //}
-
-        //private void Compact_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    var oldPage = ContentFrame.Content as SampleStandardSizingPage;
-
-        //    ContentFrame.Navigate(typeof(SampleTypographyPage), null, new SuppressNavigationTransitionInfo());
-
-        //    if (oldPage != null)
-        //    {
-        //        var page = ContentFrame.Content as SampleTypographyPage;
-        //        page.CopyState(oldPage);
-        //    }
-        //}
+        private void TestButtonClick3(object sender, RoutedEventArgs e)
+        {
+            ShowTypographyInfoTooltip3.IsOpen = true;
+        }
     }
 }

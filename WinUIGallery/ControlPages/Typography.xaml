@@ -23,26 +23,93 @@
     <Grid>
         <local:ControlExample x:Name="Example1" HeaderText="">
             <StackPanel Orientation="Vertical">
-                <Image Source="/Assets/typography.png" Height="450">
-                    <ToolTipService.ToolTip>
-                        <ToolTip Content="Display" PlacementRect="200,0,0,100"/>
-                    </ToolTipService.ToolTip>
-                </Image>
-                <Canvas Width="740" Height="1000">
-                    <StackPanel Orientation="Vertical" Canvas.ZIndex="0">
-                        <Rectangle Fill="White" Width="740" Height="50" RadiusY="7" RadiusX="10"/>
-                        <Rectangle Fill="#F3F3F3" Width="740" Height="50" RadiusY="7" RadiusX="10"/>
-                        <Rectangle Fill="White" Width="740" Height="50" RadiusY="7" RadiusX="10"/>
-                        <Rectangle Fill="#F3F3F3" Width="740" Height="50" RadiusY="7" RadiusX="10"/>
-                    </StackPanel>
-                    <Grid Width="240" Height="120" Background="Transparent" ColumnDefinitions="200, Auto, *" RowDefinitions ="50, Auto, *" Canvas.ZIndex="1">
-                        <TextBlock Text="Example" Grid.Column="0" Grid.Row="0" />
-                        <TextBlock Text="Weight" Grid.Column="1" Grid.Row="0" />
-                        <TextBlock Text="Caption" Grid.Column="0" Grid.Row="1" />
-                        <TextBlock Text="400" Grid.Column="1" Grid.Row="1" />
-                    </Grid>
-                    <TextBlock Text="Caption" Canvas.ZIndex="1" />
+                <Canvas Height="450" >
+                    <Image Source="/Assets/typography.png" Height="450" Canvas.ZIndex="0"/>
+
+                    <Button x:Name="ShowTypographyButton1" Canvas.ZIndex="1" Canvas.Left="150" Canvas.Top="120"
+                        AutomationProperties.Name="Show typography"
+                        ToolTipService.ToolTip="Display" VerticalAlignment="Top"
+                        HorizontalAlignment="Right" Click="TestButtonClick1" Padding="4">
+                        <FontIcon Glyph="&#xE946;" FontSize="16"/>
+                    </Button>
+                    <TeachingTip x:Name="ShowTypographyInfoTooltip1" Target="{x:Bind ShowTypographyButton1}" Title="Display"/>
+
+                    <Button x:Name="ShowTypographyButton2" Canvas.ZIndex="1" Canvas.Left="650" Canvas.Top="60"
+                        AutomationProperties.Name="Show typography"
+                        ToolTipService.ToolTip="Caption" VerticalAlignment="Top"
+                        HorizontalAlignment="Right" Click="TestButtonClick2" Padding="4">
+                        <FontIcon Glyph="&#xE946;" FontSize="16"/>
+                    </Button>
+                    <TeachingTip x:Name="ShowTypographyInfoTooltip2" Target="{x:Bind ShowTypographyButton2}" Title="Caption"/>
+
+                    <Button x:Name="ShowTypographyButton3" Canvas.ZIndex="1" Canvas.Left="190" Canvas.Top="280"
+                        AutomationProperties.Name="Show typography"
+                        ToolTipService.ToolTip="Body" VerticalAlignment="Top"
+                        HorizontalAlignment="Right" Click="TestButtonClick3" Padding="4">
+                        <FontIcon Glyph="&#xE946;" FontSize="16"/>
+                    </Button>
+                    <TeachingTip x:Name="ShowTypographyInfoTooltip3" Target="{x:Bind ShowTypographyButton3}" Title="Body"/>
+
                 </Canvas>
+                <Grid Height="600" Width="740">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.2*"/>
+                        <RowDefinition Height="1.7*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="1" Grid.ColumnSpan="4" Background="#FFFFFF" CornerRadius="4"/>
+                    <Border Grid.Row="3" Grid.ColumnSpan="4" Background="#FFFFFF" CornerRadius="4"/>
+                    <Border Grid.Row="5" Grid.ColumnSpan="4" Background="#FFFFFF" CornerRadius="4"/>
+                    <Border Grid.Row="7" Grid.ColumnSpan="4" Background="#FFFFFF" CornerRadius="4"/>
+
+                    <TextBlock Text="Example" Foreground="{ThemeResource TextFillColorSecondaryBrush}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Caption" Grid.Row="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Body" Grid.Row="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Body Strong" Grid.Row="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyStrongTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Subtitle" Grid.Row="4" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource SubtitleTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Title" Grid.Row="5" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Title Large" Grid.Row="6" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource TitleLargeTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Display" Grid.Row="7" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource DisplayTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                    <TextBlock Text="Weight" Grid.Column="1" Foreground="{ThemeResource TextFillColorSecondaryBrush}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="400" Grid.Row="1" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="400" Grid.Row="2" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="600" Grid.Row="3" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="600" Grid.Row="4" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="600" Grid.Row="5" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="600" Grid.Row="6" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="600" Grid.Row="7" Grid.Column="1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                    <TextBlock Text="Variable Font" Grid.Column="2" Foreground="{ThemeResource TextFillColorSecondaryBrush}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Small" Grid.Row="1" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Text" Grid.Row="2" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Text, Semibold" Grid.Row="3" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Display, Semibold" Grid.Row="4" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Display, Semibold" Grid.Row="5" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Display, Semibold" Grid.Row="6" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Display, Semibold" Grid.Row="7" Grid.Column="2" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                    <TextBlock Text="Size/Line Height (72PPI)" Grid.Column="3" Foreground="{ThemeResource TextFillColorSecondaryBrush}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="12/16 epx" Grid.Row="1" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="14/20 epx" Grid.Row="2" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="14/20 epx" Grid.Row="3" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="20/28 epx" Grid.Row="4" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="28/36 epx" Grid.Row="5" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="40/52 epx" Grid.Row="6" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="68/92 epx" Grid.Row="7" Grid.Column="3" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                </Grid>
             </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String>
@@ -50,27 +117,5 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <!--<local:ControlExample x:Name="Example1" HeaderText="Compact Sizing for controls">
-            <Image Source="/Assets/typography.jpg" Height="100" />
-
-            --><!--<local:ControlExample.Options>
-                <RadioButtons Header="Fluent Standard and Compact Sizing">
-                    <RadioButton Content="Standard" Tag="StandardSize" GroupName="ControlSize" Checked="Standard_Checked" IsChecked="True" />
-                    <RadioButton Content="Compact" Tag="CompactSize" GroupName="ControlSize" Checked="Compact_Checked" />
-                </RadioButtons>
-            </local:ControlExample.Options>--><!--
-
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Page.Resources&gt;
-    &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&gt;
-&lt;/Page.Resources&gt;
-                    
-&lt;Grid.Resources&gt;
-    &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&gt;
-&lt;/Grid.Resources&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>-->
     </Grid>
 </Page>
