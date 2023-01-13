@@ -124,7 +124,7 @@
                         <StackPanel x:Name="HeaderTileOuterGrid2" Orientation="Horizontal">
                             <VariableSizedWrapGrid x:Name="HeaderTileGrid2"  Orientation="Horizontal" Margin="40,30,0,0">
                                 <controls:HeaderTile Title="Community Toolkit" Source="/Assets/HomeHeaderTiles/toolkit.png" Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ"/>
-                                <controls:HeaderTile Title="Windows Accessibility" Source="/Assets/HomeHeaderTiles/accessibility_tile.png" Link="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"/>
+                                <controls:HeaderTile Title="Accessibility" Source="/Assets/HomeHeaderTiles/accessibility_tile.png" Link="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"/>
                             </VariableSizedWrapGrid>
                         </StackPanel>
                     </FlipView>
