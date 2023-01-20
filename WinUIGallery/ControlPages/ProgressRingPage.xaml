@@ -25,7 +25,7 @@
             <local:ControlExample.Options>
                 <StackPanel>
                     <ToggleSwitch x:Name="ProgressToggle" AutomationProperties.Name="Progress options" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" />
-                    <ComboBox x:Name="BackgroundComboBox1" SelectionChanged="Background_SelectionChanged1"  Header="Background color" PlaceholderText="Pick a color" Width="200">
+                    <ComboBox x:Name="BackgroundComboBox1" SelectionChanged="Background_SelectionChanged"  Header="Background color" PlaceholderText="Pick a color" Width="200">
                         <x:String>Transparent</x:String>
                         <x:String>LightGray</x:String>
                     </ComboBox>
@@ -57,7 +57,7 @@
             </StackPanel>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox x:Name="BackgroundComboBox2" SelectionChanged="Background_SelectionChanged2"  Header="Background color" PlaceholderText="Pick a color" Width="200">
+                    <ComboBox x:Name="BackgroundComboBox2" SelectionChanged="Background_SelectionChanged"  Header="Background color" PlaceholderText="Pick a color" Width="200">
                         <x:String>Transparent</x:String>
                         <x:String>LightGray</x:String>
                     </ComboBox>
