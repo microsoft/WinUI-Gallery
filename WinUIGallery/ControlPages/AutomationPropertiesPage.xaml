@@ -45,7 +45,8 @@
                         Laborum pariatur nemo for veritatis yet explicabo eaque or esse. Ipsum ullam omnis so sed nequeporro but magna.</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="FontSizeLabel" VerticalAlignment="Center" FontSize="16" Margin="0,0,8,0" Text="Font size of text"/>
-                        <NumberBox x:Name="FontSizeNumberBox" Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
+                        <NumberBox x:Name="FontSizeNumberBox" AutomationProperties.LabeledBy="{x:Bind FontSizeLabel}"
+                                   Minimum="10" Maximum="32" Value="14" ValueChanged="FontSizeNumberBox_ValueChanged"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>

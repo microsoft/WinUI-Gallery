@@ -12,7 +12,7 @@
                 <TextBlock Text="Current backdrop: " />
                 <TextBlock x:Name="tbCurrentBackdrop" />
             </StackPanel>
-            <Button x:Name="btnChangeBackdrop" AutomationProperties.Name="ChangeBackdropButton" Content="Change Backdrop" Click="ChangeBackdropButton_Click" />
+            <Button x:Name="btnChangeBackdrop" Content="Change Backdrop" Click="ChangeBackdropButton_Click" />
             <TextBlock x:Name="tbChangeStatus" />
         </StackPanel>
     </StackPanel>
