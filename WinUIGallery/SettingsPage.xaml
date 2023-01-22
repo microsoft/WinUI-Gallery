@@ -39,11 +39,11 @@
                     Style="{StaticResource SubtitleTextBlockStyle}"
                     Margin="0,12,0,0"
                     Text="Theme Mode" />
-                <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
-                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown" />
-                    <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
-                    <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
-                </StackPanel>
+                <RadioButtons x:Name="themeMode" Header="Application theme mode" Margin="0,10,0,0" SelectionChanged="themeMode_SelectionChanged">
+                    <RadioButton Tag="Light" Content="Light" />
+                    <RadioButton Tag="Dark" Content="Dark" />
+                    <RadioButton Tag="Default" Content="Use system setting" />
+                </RadioButtons>
                 
                 <TextBlock
                     Style="{StaticResource SubtitleTextBlockStyle}"

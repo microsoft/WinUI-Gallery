@@ -65,8 +65,19 @@ namespace AppUIBasics
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
-            var currentTheme = ThemeHelper.RootTheme.ToString();
-            (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
+            var currentTheme = ThemeHelper.RootTheme;
+            switch (currentTheme)
+            {
+                case ElementTheme.Light:
+                    themeMode.SelectedIndex = 0;
+                    break;
+                case ElementTheme.Dark:
+                    themeMode.SelectedIndex = 1;
+                    break;
+                case ElementTheme.Default:
+                    themeMode.SelectedIndex = 2;
+                    break;
+            }
 
             NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
@@ -82,9 +93,9 @@ namespace AppUIBasics
             }
         }
 
-        private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
+        private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
+            var selectedTheme = ((RadioButton)themeMode.SelectedItem)?.Tag?.ToString();
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
 
@@ -116,13 +127,6 @@ namespace AppUIBasics
 
         }
 
-        private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
-            }
-        }
         private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
         {
             if (soundToggle.IsOn == true)
