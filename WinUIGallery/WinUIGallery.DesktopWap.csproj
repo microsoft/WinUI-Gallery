@@ -52,14 +52,14 @@
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
+  <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
     <PackageReference Remove="Microsoft.WinUI" />
     <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
