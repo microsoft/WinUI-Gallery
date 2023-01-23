@@ -86,7 +86,11 @@
     <None Remove="ControlPages\ShapePage.xaml" />
     <None Remove="ControlPages\Typography.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
+    <None Remove="DataModel\IconsData.json" />
     <None Remove="DesignGuidancePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
@@ -97,6 +101,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="ControlPages\Typography.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

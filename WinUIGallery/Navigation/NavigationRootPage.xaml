@@ -128,6 +128,27 @@
             </NavigationView.AutoSuggestBox>
 
             <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating"/>
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="NewControlsItem" Content="Home" Icon="Home"/>
+                <NavigationViewItem x:Name="AllControlsItem" Content="All apps" Icon="AllApps"/>
+                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design Guidance">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB3C;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Name="TypographyItem" Content="Typography"/>
+                        <NavigationViewItem x:Name="DesignGuidanceIconsPageItem" Content="Icons"/>
+                        <NavigationViewItem Content="Accessibility">
+                            <NavigationViewItem.MenuItems>
+                                <NavigationViewItem x:Name="AccessibilityScreenReaderPage" Content="Screen Reader support"/>
+                                <NavigationViewItem x:Name="AccessibilityKeyboardPage" Content="Keyboard support"/>
+                                <NavigationViewItem x:Name="AccessibilityContrastPage" Content="Color Contrast"/>
+                            </NavigationViewItem.MenuItems>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator />
+            </NavigationView.MenuItems>
         </NavigationView>
     </Grid>
 </Page>
