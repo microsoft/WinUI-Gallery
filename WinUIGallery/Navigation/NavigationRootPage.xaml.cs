@@ -32,6 +32,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap;
 
 namespace AppUIBasics
 {
@@ -44,6 +45,7 @@ namespace AppUIBasics
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
+        private Microsoft.UI.Xaml.Controls.NavigationViewItem _designGuidanceMenuItem;
 
         public static NavigationRootPage GetForElement(object obj)
         {
@@ -222,16 +224,23 @@ namespace AppUIBasics
                 {
                     this._newControlsMenuItem = itemGroup;
                 }
+                else if (group.UniqueId == "DesignGuidance")
+                {
+                    this._designGuidanceMenuItem = itemGroup;
+                }
             }
 
             // Move "What's New" and "All Controls" to the top of the NavigationView
             NavigationViewControl.MenuItems.Remove(_allControlsMenuItem);
             NavigationViewControl.MenuItems.Remove(_newControlsMenuItem);
+            NavigationViewControl.MenuItems.Remove(_designGuidanceMenuItem);
+            ;
             NavigationViewControl.MenuItems.Insert(0, _allControlsMenuItem);
+            NavigationViewControl.MenuItems.Insert(0, _designGuidanceMenuItem);
             NavigationViewControl.MenuItems.Insert(0, _newControlsMenuItem);
 
             // Separate the All/New items from the rest of the categories.
-            NavigationViewControl.MenuItems.Insert(2, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
+            NavigationViewControl.MenuItems.Insert(3, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
 
             _newControlsMenuItem.Loaded += OnNewControlsMenuItemLoaded;
         }
@@ -324,6 +333,13 @@ namespace AppUIBasics
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
                         Navigate(typeof(NewControlsPage));
+                    }
+                }
+                else if (selectedItem == _designGuidanceMenuItem)
+                {
+                    if (rootFrame.CurrentSourcePageType != typeof(DesignGuidancePage))
+                    {
+                        Navigate(typeof(DesignGuidancePage));
                     }
                 }
                 else

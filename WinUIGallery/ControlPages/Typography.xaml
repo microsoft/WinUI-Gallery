@@ -1,0 +1,116 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.TypographyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AppUIBasics"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    x:Name="compactPage"
+    mc:Ignorable="d">
+
+    <Grid>
+        <local:ControlExample x:Name="Example1" HeaderText="" XamlSource="Typography/TypographySample_xaml.txt">
+            <StackPanel Orientation="Vertical">
+                <Canvas Height="450">
+                    <Image
+                        Height="450"
+                        Canvas.ZIndex="0"
+                        Source="/Assets/typography.png" />
+
+                    <Button
+                        x:Name="ShowTypographyButton1"
+                        Canvas.Left="150"
+                        Canvas.Top="120"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="TestButtonClick1">
+                        <ToolTipService.ToolTip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Display"/>
+                                <Button Content="Text"/>
+                            </StackPanel>
+                        </ToolTipService.ToolTip>
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip1"
+                        Title="Display"
+                        Target="{x:Bind ShowTypographyButton1}" />
+
+                    <Button
+                        x:Name="ShowTypographyButton2"
+                        Canvas.Left="650"
+                        Canvas.Top="60"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="TestButtonClick2"
+                        ToolTipService.ToolTip="Caption">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip2"
+                        Title="Caption"
+                        Target="{x:Bind ShowTypographyButton2}" />
+
+                    <Button
+                        x:Name="ShowTypographyButton3"
+                        Canvas.Left="190"
+                        Canvas.Top="280"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="TestButtonClick3"
+                        ToolTipService.ToolTip="Body">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip3"
+                        Title="Body"
+                        Target="{x:Bind ShowTypographyButton3}" />
+
+                </Canvas>
+                <Grid Margin="0,48,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="308" />
+                    <ColumnDefinition Width="68" />
+                    <ColumnDefinition Width="156" />
+                    <ColumnDefinition Width="108" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                    <TextBlock Text="Example" Margin="24,0,0,0" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="Weight" Grid.Column="1" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="Variable Font" Grid.Column="2" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="Size / Line height"  Grid.Column="3" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    <TextBlock Text="Style" Grid.Column="4" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                </Grid>
+                <controls:TypographyControl Example="Caption" Weight="400" VariableFont="Small, Regular" SizeLinHeight="12/16 epx" ExampleStyle="{StaticResource CaptionTextBlockStyle}" ResourceName="CaptionTextBlockStyle" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <controls:TypographyControl Example="Body" Weight="400" VariableFont="Text, Regular" SizeLinHeight="14/20 epx" ExampleStyle="{StaticResource BodyTextBlockStyle}" ResourceName="BodyTextBlockStyle"/>
+                <controls:TypographyControl Example="Body Strong" Weight="600" VariableFont="Text, SemiBold" SizeLinHeight="14/20 epx" ExampleStyle="{StaticResource BodyStrongTextBlockStyle}" ResourceName="BodyStrongTextBlockStyle" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <controls:TypographyControl Example="Subtitle" Weight="600" VariableFont="Display, SemiBold" SizeLinHeight="20/28 epx" ExampleStyle="{StaticResource SubtitleTextBlockStyle}" ResourceName="SubtitleTextBlockStyle" Height="76"/>
+                <controls:TypographyControl Example="Title" Weight="600" VariableFont="Display, SemiBold" SizeLinHeight="28/36 epx" ExampleStyle="{StaticResource TitleTextBlockStyle}" ResourceName="TitleTextBlockStyle" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Height="86"/>
+                <controls:TypographyControl Example="Title Large" Weight="600" VariableFont="Display, SemiBold" SizeLinHeight="40/52 epx" ExampleStyle="{StaticResource TitleLargeTextBlockStyle}" ResourceName="TitleLargeTextBlockStyle" Height="98"/>
+                <controls:TypographyControl Example="Display" Weight="600" VariableFont="Display, SemiBold" SizeLinHeight="68/92 epx" ExampleStyle="{StaticResource DisplayTextBlockStyle}" ResourceName="DisplayTextBlockStyle" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Height="106" />
+            </StackPanel>
+        </local:ControlExample>
+    </Grid>
+</Page>
