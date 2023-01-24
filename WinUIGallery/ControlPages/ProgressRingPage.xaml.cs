@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 namespace AppUIBasics.ControlPages
 {
@@ -41,6 +42,28 @@ namespace AppUIBasics.ControlPages
             {
                 sender.Value = 0;
             }
+        }
+
+        private void Background_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var progressRing = sender == BackgroundComboBox1 ? ProgressRing1 : ProgressRing2;
+            var revealBackgroundProperty = sender == BackgroundComboBox1 ? RevealBackgroundProperty1 : RevealBackgroundProperty2;
+            string colorName = e.AddedItems[0].ToString();
+            bool showBackgroundProperty = false;
+            switch (colorName)
+            {
+                case "Transparent":
+                    progressRing.Background = new SolidColorBrush(Colors.Transparent);
+                    break;
+                case "LightGray":
+                    progressRing.Background = new SolidColorBrush(Colors.LightGray);
+                    showBackgroundProperty = true;
+                    break;
+
+                default:
+                    throw new Exception($"Invalid argument: {colorName}");
+            }
+            revealBackgroundProperty.IsEnabled = showBackgroundProperty;
         }
 
     }

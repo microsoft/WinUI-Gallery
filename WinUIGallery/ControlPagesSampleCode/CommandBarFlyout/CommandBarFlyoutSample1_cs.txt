@@ -7,11 +7,14 @@
 
 private void MyImageButton_ContextRequested(Microsoft.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
 {
-    // always show a context menu in standard mode
+    // Show a context menu in standard mode
+    // Focus will move to the menu
     ShowMenu(false);
 }
 
 private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
 {
-    ShowMenu((sender as Button).IsPointerOver);
+    // Show a context menu in transient mode
+    // Focus will not move to the menu
+    ShowMenu(true);
 }

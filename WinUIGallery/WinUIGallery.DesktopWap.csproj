@@ -52,14 +52,14 @@
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
+  <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
     <PackageReference Remove="Microsoft.WinUI" />
     <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(ProjectReunionPackageVersion)" Condition="'$(ProjectReunionPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,7 +86,11 @@
     <None Remove="ControlPages\ShapePage.xaml" />
     <None Remove="ControlPages\Typography.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
+    <None Remove="DataModel\IconsData.json" />
     <None Remove="DesignGuidancePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
@@ -97,6 +101,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="ControlPages\Typography.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="ControlPages\Typography.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
