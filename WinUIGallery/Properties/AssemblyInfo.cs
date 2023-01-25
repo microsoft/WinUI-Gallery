@@ -25,6 +25,6 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 // Note: package version and assembly version must be kept in sync
-[assembly: AssemblyVersion("1.3.16.0")]
-[assembly: AssemblyFileVersion("1.3.16.0")]
+[assembly: AssemblyVersion("1.3.17.0")]
+[assembly: AssemblyFileVersion("1.3.17.0")]
 [assembly: ComVisible(false)]
