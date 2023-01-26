@@ -21,6 +21,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
+          "HideSourceCodeLinks": true,
           "Docs": [],
           "RelatedControls": []
         },
@@ -35,6 +36,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
+          "HideSourceCodeLinks": true,
           "Docs": [],
           "RelatedControls": []
         },
@@ -49,6 +51,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
+          "HideSourceCodeLinks": true,
           "Docs": [],
           "RelatedControls": []
         },
@@ -63,6 +66,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
+          "HideSourceCodeLinks": true,
           "Docs": [],
           "RelatedControls": []
         },
@@ -77,13 +81,12 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
+          "HideSourceCodeLinks": true,
           "Docs": [],
           "RelatedControls": []
         }
       ]
     },
-
-
     {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
