@@ -1,61 +1,6 @@
 {
   "Groups": [
     {
-      "UniqueId": "NewControls",
-      "Title": "Home",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": []
-    },
-    {
-      "UniqueId": "AllControls",
-      "Title": "All controls",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": []
-    },
-    {
-      "UniqueId": "DesignGuidance",
-      "Title": "Design guidance",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": [
-        {
-          "UniqueId": "Typography",
-          "Title": "Typography",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "Typography helps provide structure and hierarchy to UI.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "Description": "Typography helps provide structure and hierarchy to UI. Hover over the example below to view and copy text styles.",
-          "Content": "<p>Look at the <i>Typography.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "TextBlock - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/controls/text-block"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/signature-experiences/typography"
-            }
-          ],
-          "RelatedControls": [
-          ]
-        }
-      ]
-    },
-    {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
       "ApiNamespace": "",

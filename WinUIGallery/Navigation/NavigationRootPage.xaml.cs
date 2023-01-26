@@ -319,6 +319,8 @@ namespace AppUIBasics
                     if (rootFrame.CurrentSourcePageType != typeof(TypographyPage))
                     {
                         Navigate(typeof(TypographyPage));
+                        //var item = (ControlInfoDataItem)selectedItem.DataContext;
+                        //Navigate(typeof(ItemPage), "Typography");
                     }
                 }
                 else if (selectedItem == DesignGuidanceIconsPageItem)
