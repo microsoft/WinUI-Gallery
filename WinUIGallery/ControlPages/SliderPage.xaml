@@ -81,19 +81,28 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
+        <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks."> 
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
+                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" SnapsTo="10,20" AutomationProperties.Name="Slider with ticks"/>
             </StackPanel>
             <local:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </local:ControlExample.Output>
+            <local:ControlExample.Options>
+                <StackPanel>
+                    <CheckBox x:Name="isSnappingCheckBox" Content="Snap to ticks" IsChecked="true"/>
+                </StackPanel>
+            </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" /&gt;
+                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" SnapsTo="$(IsSnapping)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsSnapping" Value="{x:Bind isSnappingCheckBox.IsChecked, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
+
         <local:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider4" Width="100" Height="100" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
