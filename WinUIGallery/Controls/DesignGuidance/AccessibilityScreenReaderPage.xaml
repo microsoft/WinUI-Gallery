@@ -24,13 +24,8 @@
     <ScrollViewer>
         <StackPanel
             MaxWidth="600"
-            Padding="30"
             HorizontalAlignment="Left"
             Spacing="10">
-            <TextBlock
-                FontSize="28"
-                FontWeight="SemiBold"
-                Text="Accessibility - Screen Reader support" />
             <RichTextBlock>
                 <Paragraph>
                     Accessibility is about building experiences that make your Windows application usable by people of

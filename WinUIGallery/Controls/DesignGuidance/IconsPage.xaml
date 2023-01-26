@@ -82,11 +82,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <StackPanel Padding="30" Spacing="10">
-            <TextBlock
-                FontSize="28"
-                FontWeight="SemiBold"
-                Text="Icons" />
+        <StackPanel Spacing="10">
             <RichTextBlock>
                 <Paragraph>
                     With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>

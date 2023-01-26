@@ -51,13 +51,6 @@ namespace AppUIBasics.ControlPages
             IconsRepeater.Loaded += ItemsGridView_Loaded;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            args.NavigationRootPage.NavigationView.Header = string.Empty;
-        }
-
         private void ItemsGridView_Loaded(object sender, RoutedEventArgs e)
         {
             // Delegate loading of icons, so we have smooth navigating to this page

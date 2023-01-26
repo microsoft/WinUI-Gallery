@@ -1,6 +1,90 @@
 {
   "Groups": [
     {
+      "UniqueId": "Design_Guidance",
+      "Title": "Design Guidance",
+      "ApiNamespace": "",
+      "Subtitle": "",
+      "ImagePath": "",
+      "ImageIconPath": "",
+      "Description": "",
+      "UsesCustomNavigationItems": true,
+      "Items": [
+        {
+          "UniqueId": "Typography",
+          "Title": "Typography",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "Icons",
+          "Title": "Icons",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityColorContrast",
+          "Title": "Color Contrast",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityKeyboard",
+          "Title": "Keyboard support",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityScreenReader",
+          "Title": "Screen reader support",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        }
+      ]
+    },
+
+
+    {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus and Toolbars",
       "ApiNamespace": "",

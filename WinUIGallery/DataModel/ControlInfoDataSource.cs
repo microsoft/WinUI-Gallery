@@ -89,7 +89,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace, bool usesCustomNavigationItems)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -99,6 +99,7 @@ namespace AppUIBasics.Data
             this.ImagePath = imagePath;
             this.ImageIconPath = imageIconPath;
             this.Items = new ObservableCollection<ControlInfoDataItem>();
+            this.UsesCustomNavigationItems = usesCustomNavigationItems;
         }
 
         public string UniqueId { get; private set; }
@@ -108,6 +109,7 @@ namespace AppUIBasics.Data
         public string ImagePath { get; private set; }
         public string ImageIconPath { get; private set; }
         public string ApiNamespace { get; private set; } = "";
+        public bool UsesCustomNavigationItems { get; set; }
         public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
@@ -209,13 +211,15 @@ namespace AppUIBasics.Data
 
                     JsonObject groupObject = groupValue.GetObject();
 
+                    var usesCustomNavigationItems = groupObject.ContainsKey("UsesCustomNavigationItems") ? groupObject["UsesCustomNavigationItems"].GetBoolean() : false;
                     ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
                                                                           groupObject["Title"].GetString(),
                                                                           groupObject["ApiNamespace"].GetString(),
                                                                           groupObject["Subtitle"].GetString(),
                                                                           groupObject["ImagePath"].GetString(),
                                                                           groupObject["ImageIconPath"].GetString(),
-                                                                          groupObject["Description"].GetString());
+                                                                          groupObject["Description"].GetString(),
+                                                                          usesCustomNavigationItems);
 
                     foreach (JsonValue itemValue in groupObject["Items"].GetArray())
                     {

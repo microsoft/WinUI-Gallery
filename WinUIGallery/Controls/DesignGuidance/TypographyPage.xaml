@@ -21,7 +21,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <local:ControlExample x:Name="Example1" HeaderText="Typography" XamlSource="Typography/TypographySample_xaml.txt">
+        <local:ControlExample x:Name="Example1" XamlSource="Typography/TypographySample_xaml.txt">
             <StackPanel Orientation="Vertical">
                 <Canvas Height="450">
                     <Image

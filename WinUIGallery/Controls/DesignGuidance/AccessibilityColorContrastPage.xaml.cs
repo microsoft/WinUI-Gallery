@@ -19,13 +19,6 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            args.NavigationRootPage.NavigationView.Header = string.Empty;
-        }
-        
         private void RecalculateContrastRatio()
         {
             var textColor = TextColorPicker.Color;
