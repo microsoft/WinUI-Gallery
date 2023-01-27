@@ -76,14 +76,14 @@ namespace AppUIBasics
                     SearchRoot = this.XamlRoot.Content
                 };
                 var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up, options);
-                if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
-                {
-                    NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
-                }
-                else
-                {
-                    FocusManager.TryMoveFocus(FocusNavigationDirection.Up);
-                }
+                //if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
+                //{
+                //    NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
+                //}
+                //else
+                //{
+                //    FocusManager.TryMoveFocus(FocusNavigationDirection.Up);
+                //}
             }
         }
 
@@ -98,10 +98,8 @@ namespace AppUIBasics
                 {
                     gridView.ScrollIntoView(item);
 
-                    if (NavigationRootPage.GetForElement(this).IsFocusSupported)
-                    {
                         ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
-                    }
+                    
 
                     ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
 

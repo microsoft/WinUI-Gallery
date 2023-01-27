@@ -16,16 +16,6 @@
     xmlns:local="using:AppUIBasics"
     HighContrastAdjustment="None">
 
-    <Page.Resources>
-        <DataTemplate x:Key="NavigationViewHeaderTemplate">
-            <local:PageHeader
-                Title="{Binding Title}"
-                ApiNamespace="{Binding ApiNamespace}"
-                Background="Transparent"
-                BackgroundColorOpacity="1" />
-        </DataTemplate>
-    </Page.Resources>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.ColumnDefinitions>
@@ -36,7 +26,7 @@
             <VisualStateGroup x:Name="TitleBarStates">
                 <VisualState x:Name="WideLayout">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640" />
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
                     </VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="SmallLayout">
@@ -102,9 +92,6 @@
             Canvas.ZIndex="0"
             x:Name="NavigationViewControl"
             Grid.Column="1"
-            AlwaysShowHeader="True"
-            Header=" "
-            HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
             SelectionChanged="OnNavigationViewSelectionChanged"

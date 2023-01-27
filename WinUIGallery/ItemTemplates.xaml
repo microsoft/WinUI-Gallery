@@ -15,6 +15,54 @@
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource ControlCornerRadius}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
+                    <Image
+                        x:Name="gridImage"
+                        Width="48"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="{x:Bind Title}"
+                        Source="{x:Bind ImagePath}"
+                        Stretch="Uniform" />
+                </Grid>
+
+
+                <RelativePanel
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="16,6,0,0">
+                    <TextBlock
+                        x:Name="titleText"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="{x:Bind Title}"
+                        TextLineBounds="TrimToCapHeight"
+                        TextWrapping="NoWrap" />
+                    <TextBlock
+                        Margin="0,2,8,0"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        RelativePanel.Below="titleText"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind Subtitle}"
+                        TextTrimming="CharacterEllipsis" />
+                </RelativePanel>
+
+                <Grid
+                    Grid.Column="2"
+                    Margin="0"
+                    VerticalAlignment="Top"
+                    CornerRadius="{StaticResource ControlCornerRadius}"
+                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}">
+
+                    <Ellipse
+                        Width="12"
+                        Height="12"
+                        Fill="{ThemeResource AccentFillColorDefaultBrush}" />
+                </Grid>
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="LayoutVisualStates">
                         <VisualState x:Name="WideLayout">
@@ -34,49 +82,6 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
-                    <Image
-                        x:Name="gridImage"
-                        Width="48"
-                        VerticalAlignment="Center"
-                        AutomationProperties.Name="{x:Bind Title}"
-                        Source="{x:Bind ImagePath}"
-                        Stretch="Uniform" />
-                </Grid>
-                
-
-                <RelativePanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,6,0,0">
-                    <TextBlock
-                        x:Name="titleText"
-                        Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="{x:Bind Title}"
-                        TextLineBounds="TrimToCapHeight"
-                        TextWrapping="NoWrap" />
-                    <TextBlock
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                        Margin="0,2,8,0"
-                        RelativePanel.Below="titleText"
-                        Text="{x:Bind Subtitle}"
-                        TextTrimming="CharacterEllipsis" />
-                </RelativePanel>
-
-                <Grid
-                    Margin="0"
-                    Grid.Column="2"
-                    VerticalAlignment="Top"
-                    CornerRadius="{StaticResource ControlCornerRadius}"
-                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" >
-
-                    <Ellipse Fill="{ThemeResource SystemAccentColorDark1}" Width="12" Height="12"/>
-                </Grid>
             </Grid>
         </UserControl>
     </DataTemplate>

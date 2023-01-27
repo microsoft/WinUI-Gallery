@@ -30,12 +30,13 @@ namespace AppUIBasics
     /// <summary>
     /// A page that displays details for a single item within a group.
     /// </summary>
-    public partial class ItemPage : Page
+    public sealed partial class ItemPage : Page
     {
+        public Action CopyLinkAction { get; set; }
+        public Action ToggleThemeAction { get; set; }
         private Compositor _compositor;
         private ControlInfoDataItem _item;
         private ElementTheme? _currentElementTheme;
-
         public ControlInfoDataItem Item
         {
             get { return _item; }
@@ -45,42 +46,27 @@ namespace AppUIBasics
         public ItemPage()
         {
             this.InitializeComponent();
-
-            LayoutVisualStates.CurrentStateChanged += (s, e) => UpdateSeeAlsoPanelVerticalTranslationAnimation();
             Loaded += (s,e) => SetInitialVisuals();
-            this.Unloaded += this.ItemPage_Unloaded;
-        }
-
-        private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
-        {
-            // Notifying the pageheader that this Itempage was unloaded
-            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
-            if (navigationRootPage != null)
-            {
-                navigationRootPage.PageHeader.Event_ItemPage_Unloaded(sender, e);
-            }
         }
 
         public void SetInitialVisuals()
         {
+         
             var navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
-                navigationRootPage.PageHeader.ToggleThemeAction = OnToggleTheme;
+      
+                ToggleThemeAction = OnToggleTheme;
                 navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
-                navigationRootPage.PageHeader.CopyLinkAction = OnCopyLink;
-                navigationRootPage.PageHeader.ResetCopyLinkButton();
+                CopyLinkAction = OnCopyLink;
+                ResetCopyLinkButton();
 
-                if (navigationRootPage.IsFocusSupported)
-                {
                     this.Focus(FocusState.Programmatic);
-                }
+                
             }
 
-            _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
-            UpdateSeeAlsoPanelVerticalTranslationAnimation();
+          
 
             if (UIHelper.IsScreenshotMode)
             {
@@ -96,29 +82,7 @@ namespace AppUIBasics
             }
         }
 
-        private void UpdateSeeAlsoPanelVerticalTranslationAnimation()
-        {
-            var isEnabled = LayoutVisualStates.CurrentState == LargeLayout;
-
-            ElementCompositionPreview.SetIsTranslationEnabled(seeAlsoPanel, true);
-
-            var targetPanelVisual = ElementCompositionPreview.GetElementVisual(seeAlsoPanel);
-            targetPanelVisual.Properties.InsertVector3("Translation", Vector3.Zero);
-
-            if (isEnabled)
-            {
-                var scrollProperties = ElementCompositionPreview.GetScrollViewerManipulationPropertySet(svPanel);
-
-                var expression = _compositor.CreateExpressionAnimation("ScrollManipulation.Translation.Y * -1");
-                expression.SetReferenceParameter("ScrollManipulation", scrollProperties);
-                expression.Target = "Translation.Y";
-                targetPanelVisual.StartAnimation(expression.Target, expression);
-            }
-            else
-            {
-                targetPanelVisual.StopAnimation("Translation.Y");
-            }
-        }
+      
 
         private void OnNavigationViewLoaded()
         {
@@ -223,20 +187,8 @@ namespace AppUIBasics
             if (navigationRootPage != null)
             {
                 navigationRootPage.NavigationViewLoaded = null;
-                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
-                navigationRootPage.PageHeader.ToggleThemeAction = null;
-                navigationRootPage.PageHeader.CopyLinkAction = null;
-
-                // Reverse Connected Animation
-                if (e.SourcePageType != typeof(ItemPage))
-                {
-                    PageHeader pageHeader = navigationRootPage.PageHeader;
-
-                    if (pageHeader.Visibility == Visibility.Visible)
-                    {
-                        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", pageHeader.TitlePanel);
-                    }
-                }
+                ToggleThemeAction = null;
+                CopyLinkAction = null;
             }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
@@ -253,16 +205,51 @@ namespace AppUIBasics
             base.OnNavigatedFrom(e);
         }
 
-        private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
+        public static ItemPage GetForElement(object obj)
         {
-            string targetState = "NormalFrameContent";
-
-            if ((contentColumn.ActualWidth) >= 1000)
+            UIElement element = (UIElement)obj;
+            Window window = WindowHelper.GetWindowForElement(element);
+            if (window != null)
             {
-                targetState = "WideFrameContent";
+                return (ItemPage)window.Content;
+            }
+            return null;
+        }
+
+
+        private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+        {
+            // NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction?.Invoke();
+        }
+
+
+        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
+            {
+                this.CopyLinkAction?.Invoke();
+
+                if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+                {
+                    this.CopyLinkButtonTeachingTip.IsOpen = true;
+                }
+            this.CopyLinkButtonIcon.Glyph = "\uE8FB";
+        }
+
+            public void OnThemeButtonClick(object sender, RoutedEventArgs e)
+            {
+                ToggleThemeAction?.Invoke();
             }
 
-            VisualStateManager.GoToState(this, targetState, false);
+            public void ResetCopyLinkButton()
+            {
+                this.CopyLinkButtonTeachingTip.IsOpen = false;
+                this.CopyLinkButtonIcon.Glyph = "\uE71B";
+        }
+
+            private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+            {
+                ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+                this.CopyLinkButtonTeachingTip.IsOpen = false;
+            }
+
         }
     }
-}

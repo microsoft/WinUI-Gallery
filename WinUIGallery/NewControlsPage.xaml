@@ -37,7 +37,6 @@
                         Until the XamlBehaviors are updated to work with lifted XAML, just use the smallHeaderText all the time.
                     -->
                     <VisualState.Setters>
-                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
                         <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -54,7 +53,6 @@
                         <Setter Target="HeaderTileGrid.MaximumRowsOrColumns" Value="2" />
                         <Setter Target="learnMore.Margin" Value="64,24,0,0" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
-                        <Setter Target="pageHeader.Visibility" Value="Collapsed" />
                         <Setter Target="smallHeaderText.Visibility" Value="Visible"/>
                         <Setter Target="smallHeaderSubtitleText.Visibility" Value="Visible"/>
                     </VisualState.Setters>
@@ -144,17 +142,5 @@
                 </Grid>
             </GridView.Footer>
         </GridView>
-
-        <local:PageHeader x:Name="pageHeader"
-            Title="{StaticResource AppTitleName}"
-            Subtitle="{StaticResource WinUIVersion}"
-            Margin="44,92"
-            VerticalAlignment="Top"
-            Foreground="Black"
-            Background="{ThemeResource HomePageBackgroundBrush}"
-            FontSize="28"
-            Padding="{ThemeResource NavigationViewHeaderMargin}"
-            IsHitTestVisible="False"
-            ShadowOpacity="0"/>
     </Grid>
 </local:ItemsPageBase>

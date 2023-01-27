@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="AppUIBasics.ControlExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,7 +14,6 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <x:Double x:Key="ExampleMaxWidth">1000</x:Double>
 
         <Storyboard x:Name="PopOutStoryboard">
             <PopInThemeAnimation SpeedRatio="2" TargetName="rootGrid" />
@@ -77,9 +76,9 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16" Text="{x:Bind HeaderText}" />
+        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Margin="0,12" Text="{x:Bind HeaderText}" />
 
-        <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="Red" IsTextSelectionEnabled="True">
+        <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="{ThemeResource SystemFillColorCriticalBrush}" IsTextSelectionEnabled="True">
             <Paragraph>
                 This sample requires a later version of Windows to be fully functional. Learn more about version adaptive apps:
                 <Hyperlink NavigateUri="https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps">https://docs.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps</Hyperlink>

@@ -25,7 +25,6 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="Black"/>
                     <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
@@ -34,7 +33,6 @@
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
                     <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
                     <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
@@ -43,7 +41,6 @@
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
                     <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
                     <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
                     <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
@@ -71,16 +68,12 @@
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
-            <Thickness x:Key="PageHeaderDefaultPadding">0</Thickness>
-            <Thickness x:Key="PageHeaderMinimalPadding">-4,0,12,0</Thickness>
-
             <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
 
             <!-- L-Pattern Overwriting resources -->
             <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
             <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
             <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
-            <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
 

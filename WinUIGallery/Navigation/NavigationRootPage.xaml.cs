@@ -40,7 +40,6 @@ namespace AppUIBasics
         public Windows.System.VirtualKey ArrowKey;
 
         private RootFrameNavigationHelper _navHelper;
-        private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
@@ -64,22 +63,6 @@ namespace AppUIBasics
         public Action NavigationViewLoaded { get; set; }
 
         public DeviceType DeviceFamily { get; set; }
-
-        public bool IsFocusSupported
-        {
-            get
-            {
-                return DeviceFamily == DeviceType.Xbox || _isGamePadConnected || _isKeyboardConnected;
-            }
-        }
-
-        public PageHeader PageHeader
-        {
-            get
-            {
-                return UIHelper.GetDescendantsOfType<PageHeader>(NavigationViewControl).FirstOrDefault();
-            }
-        }
 
         public string AppTitleText
         {
@@ -114,9 +97,6 @@ namespace AppUIBasics
                     Debug.WriteLine("got focus: " + focus.Name + " (" + focus.GetType().ToString() + ")");
                 }
             };
-
-            Gamepad.GamepadAdded += OnGamepadAdded;
-            Gamepad.GamepadRemoved += OnGamepadRemoved;
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
@@ -274,20 +254,10 @@ namespace AppUIBasics
 
         private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
-            if (IsFocusSupported && NavigationViewControl.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded)
+            if ( NavigationViewControl.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded)
             {
                 controlsSearchBox.Focus(FocusState.Keyboard);
             }
-        }
-
-        private void OnGamepadRemoved(object sender, Gamepad e)
-        {
-            _isGamePadConnected = Gamepad.Gamepads.Any();
-        }
-
-        private void OnGamepadAdded(object sender, Gamepad e)
-        {
-            _isGamePadConnected = Gamepad.Gamepads.Any();
         }
 
         private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
@@ -367,11 +337,11 @@ namespace AppUIBasics
 
         private void CloseTeachingTips()
         {
-            if (PageHeader != null)
-            {
-                PageHeader.TeachingTip1.IsOpen = false;
-                PageHeader.TeachingTip3.IsOpen = false;
-            }
+            //if (PageHeader != null)
+            //{
+            //    PageHeader.TeachingTip1.IsOpen = false;
+            //    PageHeader.TeachingTip3.IsOpen = false;
+            //}
         }
 
         private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
