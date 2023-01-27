@@ -13,6 +13,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+    <!-- SIMPLE SLIDER -->
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
             <StackPanel Orientation="Horizontal">
@@ -28,6 +30,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
+        <!-- SLIDER WITH RANGE AND STEPS -->
         <local:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
             <local:ControlExample.Options>
                 <Grid>
@@ -81,28 +84,39 @@
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <!-- SLIDER WITH TICK MARKS -->
         <local:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks."> 
             <StackPanel Orientation="Horizontal">
-                <Slider x:Name="Slider3" Width="290" TickFrequency="10" TickPlacement="Outside" SnapsTo="10,20" AutomationProperties.Name="Slider with ticks"/>
+                <Slider x:Name="Slider3" Width="290" TickFrequency="20" TickPlacement="Outside" AutomationProperties.Name="Slider with ticks"/>
             </StackPanel>
             <local:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
             </local:ControlExample.Output>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <CheckBox x:Name="isSnappingCheckBox" Content="Snap to ticks" IsChecked="true"/>
+                    <RadioButtons x:Name="SnapsToRadioButtons"
+                            Header="Snaps to:" SelectedIndex="0"
+                            SelectionChanged="SnapsToRadioButtons_SelectionChanged">
+                        <x:String>StepValues</x:String>
+                        <x:String>Ticks</x:String>
+                    </RadioButtons>
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;Slider AutomationProperties.Name="Slider with ticks" TickFrequency="10" TickPlacement="Outside" SnapsTo="$(IsSnapping)" /&gt;
+                <x:String xml:space="preserve">
+&lt;Slider
+     AutomationProperties.Name="Slider with ticks"
+     TickFrequency="20"
+     TickPlacement="Outside"
+     SnapsTo="$(SnapsTo)" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="IsSnapping" Value="{x:Bind isSnappingCheckBox.IsChecked, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="SnapsTo" Value="{x:Bind SnapsToRadioButtons.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
 
+        <!-- VERTICAL SLIDER -->
         <local:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
             <StackPanel Orientation="Horizontal">
                 <Slider x:Name="Slider4" Width="100" Height="100" Orientation="Vertical" TickFrequency="10" TickPlacement="Outside"
