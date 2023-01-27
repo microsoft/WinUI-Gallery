@@ -199,7 +199,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                    FontSize="{x:Bind FontsizeSlider.Value, Mode=OneWay}"
+                                    FontSize= "{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
                                     Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
                                     Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
                             </Grid>
@@ -213,7 +213,8 @@
                             x:Name="IconColorPicker"
                             Grid.Row="1"
                             Grid.Column="1"
-                            Color="Black" />
+                            Color="Black"
+                            />
 
                         <TextBlock
                             Grid.Row="2"
@@ -222,23 +223,13 @@
                         <Grid
                             Grid.Row="2"
                             Grid.Column="1"
-                            ColumnSpacing="8">
+                            ColumnSpacing="8"
+                            Padding="0, 10, 0, 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock
-                                Width="30"
-                                VerticalAlignment="Center"
-                                Text="{x:Bind FontsizeSlider.Value, Mode=OneWay}" />
-                            <Slider
-                                x:Name="FontsizeSlider"
-                                Grid.Column="1"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Center"
-                                Maximum="50"
-                                Minimum="12"
-                                Value="24" />
+                            <ComboBox x:Name="FontsizeComboBox" SelectedIndex="0" ItemsSource="{x:Bind FontSizes}" Width="100"/>
                         </Grid>
 
                         <TextBlock

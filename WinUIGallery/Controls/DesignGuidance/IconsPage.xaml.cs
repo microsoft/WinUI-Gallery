@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using AppUIBasics;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,13 @@ namespace AppUIBasics.ControlPages
     {
         public ObservableCollection<IconData> FilteredItems = new ObservableCollection<IconData>();
 
+        public List<double> FontSizes { get; } = new List<double>()
+            {
+                16,
+                24,
+                32,
+                48
+            };
 
         public IconData SelectedItem
         {
