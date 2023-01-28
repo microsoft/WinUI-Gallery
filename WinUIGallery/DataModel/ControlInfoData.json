@@ -1200,32 +1200,6 @@
       "Description": "",
       "Items": [
         {
-          "UniqueId": "AutomationProperties",
-          "Title": "AutomationProperties",
-          "ApiNamespace": "Microsoft.UI.Xaml.Automation",
-          "Subtitle": "Attributes that help with writing accessible XAML.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
-          "Description": "The AutomationProperties attributes provide functionality around accessible components.",
-          "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
-          "IsNew": false,
-          "IsUpdated": false,
-          "Docs": [
-            {
-              "Title": "AutomationProperties - API",
-              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
-            },
-            {
-              "Title": "Accessibility Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/apps/design/accessibility/accessibility"
-            }
-          ],
-          "RelatedControls": [
-            "TextBlock",
-            "Image"
-          ]
-        },
-        {
           "UniqueId": "InfoBar",
           "Title": "InfoBar",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
