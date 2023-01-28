@@ -27,8 +27,8 @@
             <UserControl PointerPressed="Icons_TemplatePointerPressed">
                 <Grid
                     x:Name="IconTemplateRoot"
-                    Width="110"
-                    Height="110"
+                    Width="80"
+                    Height="80"
                     Margin="4"
                     HorizontalAlignment="Stretch"
                     x:DefaultBindMode="OneWay"
@@ -43,9 +43,9 @@
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
-                        Width="30"
-                        Height="30"
-                        Margin="0,0,0,15">
+                        Width="20"
+                        Height="20"
+                        Margin="0,0,0,10">
                         <FontIcon
                             x:Name="IconGlyph"
                             Grid.Row="1"
@@ -236,7 +236,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <ComboBox x:Name="FontsizeComboBox" SelectedIndex="0" ItemsSource="{x:Bind FontSizes}" Width="100"/>
+                            <ComboBox x:Name="FontsizeComboBox" SelectedIndex="2" ItemsSource="{x:Bind FontSizes}" Width="100"/>
                         </Grid>
 
                         <TextBlock
