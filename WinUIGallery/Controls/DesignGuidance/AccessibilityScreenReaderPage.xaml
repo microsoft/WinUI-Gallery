@@ -40,20 +40,22 @@
                     are a few examples of how to add UIA names:</Paragraph>
             </RichTextBlock>
 
-            <TextBlock Style="{StaticResource SubHeaderTextStyle}" Text="Setting an accessible name" />
             <!--  ***** Listview example *****  -->
-            <core:ControlExample>
+            <core:ControlExample HeaderText="Setting an accessible name">
                 <core:ControlExample.Example>
-                    <ListView
+                    <StackPanel>
+                        <ListView
                         Width="300"
                         Margin="20"
                         HorizontalAlignment="Left"
                         AutomationProperties.Name="Contacts">
-                        <ListViewItem>Nathan Quinn</ListViewItem>
-                        <ListViewItem>Jessica Lamber</ListViewItem>
-                        <ListViewItem>Carl Bond</ListViewItem>
-                        <ListViewItem>Jessica Russel</ListViewItem>
-                    </ListView>
+                            <ListViewItem>Nathan Quinn</ListViewItem>
+                            <ListViewItem>Jessica Lamber</ListViewItem>
+                            <ListViewItem>Carl Bond</ListViewItem>
+                            <ListViewItem>Jessica Russel</ListViewItem>
+                        </ListView>
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource SampleExplanationTextStyle}" Text="This list will be read by screen readers as “Contacts”, while each item will be read using its respective text content." />
+                    </StackPanel>
                 </core:ControlExample.Example>
                 <core:ControlExample.Xaml>
                     <x:String xml:space="preserve">
@@ -72,8 +74,8 @@
             <core:ControlExample>
                 <core:ControlExample.Example>
                     <StackPanel>
-                        <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
-                        <TextBlock FontStyle="Italic" Text="The image above will be read out as 'Grapes'" />
+                        <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Height="150" HorizontalAlignment="Left"/>
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource SampleExplanationTextStyle}" Margin="0, 10, 0, 0" Text="The image above will be read out as 'Grapes'. To navigate through text, press Caps + Left/Right arrow." />
                     </StackPanel>
                 </core:ControlExample.Example>
 
@@ -84,51 +86,25 @@
                 </core:ControlExample.Xaml>
             </core:ControlExample>
 
-            <TextBlock Style="{StaticResource SubHeaderTextStyle}" Text="Providing a label for another control" />
-
-            <!--  ***** Label sample *****  -->
-            <core:ControlExample>
+            <!--  ***** Label by sample *****  -->
+            <core:ControlExample HeaderText="Using another control to provide a label">
                 <core:ControlExample.Example>
-                    <StackPanel Padding="30,10" Spacing="8">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                x:Name="lb1_FirstName"
-                                Width="100"
-                                VerticalAlignment="Center"
-                                Text="First name" />
-                            <TextBox Width="100" AutomationProperties.LabeledBy="{Binding lb1_FirstName}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                x:Name="lb1_LastName"
-                                Width="100"
-                                VerticalAlignment="Center"
-                                Text="Last name" />
-                            <TextBox Width="100" AutomationProperties.LabeledBy="{Binding lb1_LastName}" />
-                        </StackPanel>
-                        <TextBlock FontStyle="Italic" Text="Each textBox will be read by screen readers according to its associated text." />
+                    <StackPanel Spacing="8">
+                        <TextBlock x:Name="InputLabel" Style="{ThemeResource BodyTextBlockStyle}" Text="Searching Photos:" />
+                        <TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource SampleExplanationTextStyle}" Margin="0, 10, 0, 0" Text="The textBox above is labeled by the TextBlock and will be read as 'Searching Photos'." />
                     </StackPanel>
                 </core:ControlExample.Example>
                 <core:ControlExample.Xaml>
                     <x:String xml:space="preserve">
-&lt;StackPanel Spacing="8"&gt;
-    &lt;StackPanel Orientation="Horizontal"&gt;
-        &lt;TextBlock x:Name="lb1_FirstName" Text="First name"
-            Width="100" VerticalAlignment="Center"/&gt;
-        &lt;TextBox AutomationProperties.LabeledBy="{Binding lb1_FirstName}" Width="100"/&gt;
-    &lt;/StackPanel&gt;
-    &lt;StackPanel Orientation="Horizontal"&gt;
-        &lt;TextBlock x:Name="lb1_LastName" Text="Last name"
-            Width="100" VerticalAlignment="Center"/&gt;
-        &lt;TextBox AutomationProperties.LabeledBy="{Binding lb1_LastName}" Width="100"/&gt;
-    &lt;/StackPanel&gt;
-&lt;/StackPanel&gt;
+&lt;TextBlock x:Name="InputLabel" Text="Searching Photos:"/&gt;
+&lt;TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}"/&gt;
                         </x:String>
                 </core:ControlExample.Xaml>
             </core:ControlExample>
 
-            <TextBlock Style="{StaticResource SubHeaderTextStyle}" Text="Indicate the position of an element within a set" />
-            <core:ControlExample>
+            <!--  ***** Position in set sample *****  -->
+            <core:ControlExample HeaderText="Indicate the position of an element within a set">
                 <core:ControlExample.Example>
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <Button
@@ -157,6 +133,32 @@
 	&lt;Button Content="Paste"
 		AutomationProperties.PositionInSet="3"
 		AutomationProperties.SizeOfSet="3" /&gt;
+&lt;/StackPanel&gt;
+                    </x:String>
+                </core:ControlExample.Xaml>
+            </core:ControlExample>
+
+            <!--  ***** Remove from visual tree sample *****  -->
+            <core:ControlExample HeaderText="Remove a control from the content visual tree">
+                <core:ControlExample.Example>
+                    <StackPanel Orientation="Horizontal">
+                        <!-- The image is not necessary for screen readers as it does not contain any information.
+         Thus we remove it from the content visual tree with AccessibilityView="Raw" -->
+                        <Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/>
+                        <TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0">This is some demo text.
+                    The image on the right is just for decoration and serves no informational purpose.
+                    To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.</TextBlock>
+                    </StackPanel>
+                </core:ControlExample.Example>
+                <core:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;StackPanel Orientation="Horizontal"&gt;
+    &lt;!-- The image is not necessary for screen readers as it does not contain any information. 
+         Thus we remove it from the content visual tree with AccessibilityView="Raw" --&gt;
+    &lt;Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/&gt;
+    &lt;TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0"&gt;This is some demo text.
+                    The image on the right is just for decoration and serves no informational purpose. 
+                    To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
                     </x:String>
                 </core:ControlExample.Xaml>
