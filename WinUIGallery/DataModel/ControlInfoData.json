@@ -8,7 +8,7 @@
       "ImagePath": "",
       "ImageIconPath": "",
       "Description": "",
-      "UsesCustomNavigationItems": true,
+      "IsSpecialSection": true,
       "Items": [
         {
           "UniqueId": "Typography",
