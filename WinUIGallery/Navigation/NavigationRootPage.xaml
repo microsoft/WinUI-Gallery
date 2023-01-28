@@ -138,7 +138,7 @@
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem x:Name="TypographyItem" Content="Typography"/>
                         <NavigationViewItem x:Name="DesignGuidanceIconsPageItem" Content="Icons"/>
-                        <NavigationViewItem Content="Accessibility">
+                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
                             <NavigationViewItem.MenuItems>
                                 <NavigationViewItem x:Name="AccessibilityScreenReaderPage" Content="Screen Reader support" Tag="AccessibilityScreenReader"/>
                                 <NavigationViewItem x:Name="AccessibilityKeyboardPage" Content="Keyboard support" Tag="AccessibilityKeyboard"/>

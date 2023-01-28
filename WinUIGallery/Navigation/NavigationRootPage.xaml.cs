@@ -324,9 +324,9 @@ namespace AppUIBasics
                         Navigate(typeof(NewControlsPage));
                     }
                 }
-                else if (selectedItem == DesignGuidanceItem)
+                else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)
                 {
-                    Navigate(typeof(SectionPage), "Design_Guidance");
+                    //Navigate(typeof(SectionPage), "Design_Guidance");
                 }
                 else if (selectedItem == TypographyItem)
                 {
