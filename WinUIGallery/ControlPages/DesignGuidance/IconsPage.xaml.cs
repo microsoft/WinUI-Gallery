@@ -1,33 +1,30 @@
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using AppUIBasics;
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using WinUIGallery.DesktopWap.DataModel;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace AppUIBasics.ControlPages
 {
-    public sealed partial class IconsPage : ItemsPageBase
+    public sealed partial class IconsPage : Page
     {
-        public ObservableCollection<IconData> FilteredItems = new ObservableCollection<IconData>();
+        public ObservableCollection<IconData> FilteredItems = new();
 
-        public List<double> FontSizes { get; } = new List<double>()
+        public List<double> FontSizes { get; } = new ()
             {
                 16,
                 24,
@@ -43,13 +40,8 @@ namespace AppUIBasics.ControlPages
                 SetSampleCodePresenterCode(value);
             }
         }
-
-
-        // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedItemProperty =
             DependencyProperty.Register("SelectedItem", typeof(IconData), typeof(IconsPage), new PropertyMetadata(null));
-
-
 
         public IconsPage()
         {

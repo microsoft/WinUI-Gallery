@@ -1,9 +1,15 @@
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Animation;
-using AppUIBasics.SamplePages;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
 
 namespace AppUIBasics.ControlPages
 {
@@ -12,7 +18,6 @@ namespace AppUIBasics.ControlPages
         public TypographyPage()
         {
             this.InitializeComponent();
-
         }
 
         private void ShowTypographyButtonClick1(object sender, RoutedEventArgs e)

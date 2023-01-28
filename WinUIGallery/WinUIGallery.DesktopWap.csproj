@@ -126,6 +126,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ControlPages\DesignGuidance\" />
+  </ItemGroup>
   <Import Project="ContentIncludes.props" />
 
 </Project>
