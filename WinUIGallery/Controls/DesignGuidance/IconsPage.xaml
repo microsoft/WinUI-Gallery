@@ -116,7 +116,7 @@
                     Padding="12"
                     HorizontalAlignment="Left"
                     Background="{ThemeResource ControlOnImageFillColorSecondary}"
-                    CornerRadius="4">
+                    CornerRadius="4,4,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="20" />
@@ -286,7 +286,7 @@
                 </Grid>
                 <Expander
                     Grid.Row="1"
-                    Margin="0,20,0,0"
+                    CornerRadius="0,0,4,4"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Stretch">
                     <Expander.Header>
