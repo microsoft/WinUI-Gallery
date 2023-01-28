@@ -27,7 +27,7 @@
             <UserControl PointerPressed="Icons_TemplatePointerPressed">
                 <Grid
                     x:Name="IconTemplateRoot"
-                    Width="100"
+                    Width="110"
                     Height="110"
                     Margin="4"
                     HorizontalAlignment="Stretch"
@@ -43,9 +43,9 @@
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
-                        Width="40"
-                        Height="40"
-                        Margin="0,0,0,10">
+                        Width="30"
+                        Height="30"
+                        Margin="0,0,0,15">
                         <FontIcon
                             x:Name="IconGlyph"
                             Grid.Row="1"
@@ -85,19 +85,23 @@
         <StackPanel Spacing="10">
             <RichTextBlock>
                 <Paragraph>
-                    With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                    is the recommended symbol icon font.</Paragraph>
-                <Paragraph />
-                <Paragraph FontSize="16" FontWeight="Bold">How do I get the font?</Paragraph>
+                    With the release of Windows 11,
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                    is the recommended symbol icon font.
+                </Paragraph>
+            </RichTextBlock>
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
+            <RichTextBlock>
                 <Paragraph>
-                    Windows 11: There's nothing you need to do, the font comes with Windows.
-                    <LineBreak />On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
+                    On Windows 11: There's nothing you need to do, the font comes with Windows.
+                    <LineBreak/>
+                    On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                    <LineBreak/>
+                </Paragraph>
             </RichTextBlock>
 
-            <TextBlock
-                FontSize="16"
-                FontWeight="Bold"
-                Text="Fluent Icons Library" />
+            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Fluent Icons Library" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -187,7 +191,9 @@
                         <StackPanel Grid.ColumnSpan="2">
                             <TextBlock
                                 VerticalAlignment="Center"
-                                FontSize="26"
+                                Margin="0,5,0,0"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                FontSize="16"
                                 Text="{Binding SelectedItem.Name, Mode=OneWay}" />
 
 
@@ -219,6 +225,7 @@
                         <TextBlock
                             Grid.Row="2"
                             VerticalAlignment="Center"
+                            Padding="0, 10, 0, 0"
                             Text="FontSize" />
                         <Grid
                             Grid.Row="2"
@@ -257,22 +264,22 @@
                         <TextBlock
                             Grid.Row="6"
                             Grid.Column="0"
-                            Text="Code glyph" />
+                            Text="Text glyph" />
                         <controls:SampleCodePresenter
                             Grid.Row="6"
                             Grid.Column="1"
-                            Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}"
+                            Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}"
                             SampleType="Inline"
                             Style="{StaticResource CodeValuePresenterStyle}" />
 
                         <TextBlock
                             Grid.Row="7"
                             Grid.Column="0"
-                            Text="Text glyph" />
+                            Text="Code glyph" />
                         <controls:SampleCodePresenter
                             Grid.Row="7"
                             Grid.Column="1"
-                            Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}"
+                            Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}"
                             SampleType="Inline"
                             Style="{StaticResource CodeValuePresenterStyle}" />
                     </Grid>
