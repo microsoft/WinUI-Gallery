@@ -150,7 +150,7 @@
 
                     <ScrollViewer
                         Grid.Row="2" 
-                        Padding="8"
+                        Padding="8,8,12,8"
                         HorizontalAlignment="Stretch"
                         AutomationProperties.Name="Icons">
                         <ItemsRepeater
