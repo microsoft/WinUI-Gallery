@@ -32,7 +32,7 @@
                     all abilities. For more information about designing accessible apps:
                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>.<LineBreak />
                     <LineBreak />Screen readers, such as
-                    <Hyperlink NavigateUri="https://support.microsoft.com/en-us/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink>, convert text into spoken words to help blind or low vision users.
+                    <Hyperlink NavigateUri="https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink>, convert text into spoken words to help blind or low vision users.
                     Screen readers use the UI Automation (UIA) names of each control to report their name, role and content.
                     <LineBreak />
                     <LineBreak />If the control's content is a string, an accessible name is automatically determined from the visible

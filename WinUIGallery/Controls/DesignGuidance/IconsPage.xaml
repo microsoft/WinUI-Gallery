@@ -86,7 +86,7 @@
             <RichTextBlock>
                 <Paragraph>
                     With the release of Windows 11,
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
                     is the recommended symbol icon font.
                 </Paragraph>
             </RichTextBlock>
@@ -96,7 +96,7 @@
                     On Windows 11: There's nothing you need to do, the font comes with Windows.
                     <LineBreak/>
                     On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts">here</Hyperlink> .
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
                     <LineBreak/>
                 </Paragraph>
             </RichTextBlock>

@@ -22,7 +22,20 @@
           "IsNew": false,
           "IsUpdated": false,
           "HideSourceCodeLinks": true,
-          "Docs": [],
+          "Docs": [
+            {
+              "Title": "Typography in Windows Apps",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/typography"
+            },
+            {
+              "Title": "XAML theme resources",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources#the-xaml-type-ramp"
+            },
+            {
+              "Title": "Typography in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography"
+            }
+          ],
           "RelatedControls": []
         },
         {
@@ -37,7 +50,16 @@
           "IsNew": false,
           "IsUpdated": false,
           "HideSourceCodeLinks": true,
-          "Docs": [],
+          "Docs": [
+            {
+              "Title": "Iconography in Windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/iconography/overview"
+            },
+            {
+              "Title": "Segoe Fluent Icons font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            }
+          ],
           "RelatedControls": []
         },
         {
@@ -52,7 +74,16 @@
           "IsNew": false,
           "IsUpdated": false,
           "HideSourceCodeLinks": true,
-          "Docs": [],
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Automation Properties - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
+            }
+          ],
           "RelatedControls": []
         },
         {
@@ -67,7 +98,20 @@
           "IsNew": false,
           "IsUpdated": false,
           "HideSourceCodeLinks": true,
-          "Docs": [],
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Keyboard accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility"
+            },
+            {
+              "Title": "Automation Properties - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
+            }
+          ],
           "RelatedControls": []
         },
         {
@@ -82,7 +126,16 @@
           "IsNew": false,
           "IsUpdated": false,
           "HideSourceCodeLinks": true,
-          "Docs": [],
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Accessible text requirements",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessible-text-requirements"
+            }
+          ],
           "RelatedControls": []
         }
       ]
