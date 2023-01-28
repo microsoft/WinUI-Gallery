@@ -49,14 +49,6 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
-            <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
-
-            <LinearGradientBrush x:Key="HeroImageGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1.5">
-                <GradientStop Offset="0" Color="Transparent"/>
-                <GradientStop Offset="0.5" Color="{ThemeResource LayerFillColorDefault}"/>
-                <GradientStop Offset="1" Color="{ThemeResource LayerFillColorDefault}"/>
-            </LinearGradientBrush>
-
             <!--  Application-specific resources  -->
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
@@ -67,13 +59,8 @@
 
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
-
-            <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
-
-            <!-- L-Pattern Overwriting resources -->
             <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-            <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
-            <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
+            <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
 

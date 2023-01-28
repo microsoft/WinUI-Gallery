@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="headerGrid" Padding="36,0,36,0">
+        <Grid x:Name="headerGrid" Padding="36,24,36,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -278,7 +278,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="headerGrid.Padding" Value="16,0,16,0" />
+                        <Setter Target="headerGrid.Padding" Value="16,48,16,0" />
                         <Setter Target="contentRoot.Padding" Value="16,0,16,0" />
                     </VisualState.Setters>
                 </VisualState>

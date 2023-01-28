@@ -100,40 +100,7 @@ namespace AppUIBasics
 
                         ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
                     
-
-                    ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
-
-                    if (animation != null)
-                    {
-                        // Setup the "basic" configuration if the API is present.
-                        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                        {
-                            animation.Configuration = new BasicConnectedAnimationConfiguration();
-                        }
-
-                        await gridView.TryStartConnectedAnimationAsync(animation, item, "controlRoot");
-                    }
-                }
-            }
-        }
-
-        protected void OnItemGridViewSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var gridView = (GridView)sender;
-
-            if (gridView.ItemsPanelRoot is ItemsWrapGrid wrapGrid)
-            {
-                if (GetIsNarrowLayoutState())
-                {
-                    double wrapGridPadding = 88;
-                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Center;
-
-                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right - wrapGridPadding;
-                }
-                else
-                {
-                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Left;
-                    wrapGrid.ItemWidth = double.NaN;
+                    
                 }
             }
         }

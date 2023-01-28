@@ -150,8 +150,6 @@ namespace AppUIBasics
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
-
-                args.NavigationRootPage.NavigationView.Header = item;
                 args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
             }
 

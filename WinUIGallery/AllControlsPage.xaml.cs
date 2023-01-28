@@ -32,10 +32,5 @@ namespace AppUIBasics
 
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
         }
-
-        protected override bool GetIsNarrowLayoutState()
-        {
-            return LayoutVisualStates.CurrentState == NarrowLayout;
-        }
     }
 }

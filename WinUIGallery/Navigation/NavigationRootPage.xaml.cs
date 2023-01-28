@@ -80,10 +80,6 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
 
-            // Workaround for VisualState issue that should be fixed
-            // by https://github.com/microsoft/microsoft-ui-xaml/pull/2271
-            NavigationViewControl.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-
             _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
             SetDeviceFamily();
@@ -235,7 +231,6 @@ namespace AppUIBasics
                         (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
                         (IconElement)new FontIcon()
                         {
-                           // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath
                         };
         }
@@ -316,17 +311,6 @@ namespace AppUIBasics
         {
             // Close any open teaching tips before navigation
             CloseTeachingTips();
-
-            if (e.SourcePageType == typeof(AllControlsPage) ||
-                e.SourcePageType == typeof(NewControlsPage))
-            {
-                NavigationViewControl.AlwaysShowHeader = false;
-            }
-            else
-            {
-                NavigationViewControl.AlwaysShowHeader = true;
-            }
-
             TestContentLoadedCheckBox.IsChecked = true;
         }
 
@@ -467,41 +451,6 @@ namespace AppUIBasics
                 }
             }
         }
-
-        private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
-        {
-            const int smallLeftIndent = 4, largeLeftIndent = 24;
-
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-            {
-                AppTitle.TranslationTransition = new Vector3Transition();
-
-                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
-                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
-                {
-                    AppTitle.Translation = new System.Numerics.Vector3(smallLeftIndent, 0, 0);
-                }
-                else
-                {
-                    AppTitle.Translation = new System.Numerics.Vector3(largeLeftIndent, 0, 0);
-                }
-            }
-            else
-            {
-                Thickness currMargin = AppTitle.Margin;
-
-                if ((sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded && sender.IsPaneOpen) ||
-                         sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
-                {
-                    AppTitle.Margin = new Thickness() { Left = smallLeftIndent, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
-                }
-                else
-                {
-                    AppTitle.Margin = new Thickness() { Left = largeLeftIndent, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
-                }
-            }
-        }
-
         private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             controlsSearchBox.Focus(FocusState.Programmatic);

@@ -50,8 +50,6 @@ namespace AppUIBasics
             var queryText = args.Parameter?.ToString().ToLower();
 
             BuildFilterList(queryText);
-
-            args.NavigationRootPage.NavigationView.Header = "Search";
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

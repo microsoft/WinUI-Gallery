@@ -230,6 +230,7 @@ namespace AppUIBasics.Helper
         {
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
             {
+               // this.CurrentNavView.IsBackButtonVisible = this.Frame.CanGoBack ? NavigationViewBackButtonVisible.Visible : NavigationViewBackButtonVisible.Collapsed;
                 this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
             }
         }

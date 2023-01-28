@@ -17,7 +17,7 @@
     HighContrastAdjustment="None">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+       
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
@@ -93,7 +93,7 @@
             x:Name="NavigationViewControl"
             Grid.Column="1"
             IsTabStop="False"
-            IsTitleBarAutoPaddingEnabled="False"
+            IsTitleBarAutoPaddingEnabled="True"
             SelectionChanged="OnNavigationViewSelectionChanged"
             Loaded="OnNavigationViewControlLoaded">
             <NavigationView.AutoSuggestBox>
