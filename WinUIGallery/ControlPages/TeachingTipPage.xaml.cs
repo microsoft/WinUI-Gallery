@@ -22,37 +22,17 @@ namespace AppUIBasics.ControlPages
 
         private void TestButtonClick1(object sender, RoutedEventArgs e)
         {
-            //if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
-            //{
-            //    NavigationRootPage.GetForElement(this).PageHeader.TeachingTip1.IsOpen = true;
-            //}
+            ToggleThemeTeachingTip1.IsOpen = true;
         }
 
         private void TestButtonClick2(object sender, RoutedEventArgs e)
         {
-            //if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
-            //{
-            //    NavigationRootPage.GetForElement(this).PageHeader.TeachingTip2.IsOpen = true;
-            //}
+            ToggleThemeTeachingTip2.IsOpen = true;
         }
 
         private void TestButtonClick3(object sender, RoutedEventArgs e)
         {
-            //if (NavigationRootPage.GetForElement(this)?.PageHeader != null)
-            //{
-            //    NavigationRootPage.GetForElement(this).PageHeader.TeachingTip3.IsOpen = true;
-            //}
-        }
-
-        protected override void OnKeyDown(KeyRoutedEventArgs e)
-        {
-            // The non-light dismiss Teaching tips do not handle the escape key, however we do not want the page to navigate away while they are open, so we will mark these key events as
-
-            // handled while these tips are open.
-            //if (e.Key == Windows.System.VirtualKey.Escape && (NavigationRootPage.GetForElement(this).PageHeader.TeachingTip3.IsOpen || NavigationRootPage.GetForElement(this).PageHeader.TeachingTip1.IsOpen))
-            //{
-            //    e.Handled = true;
-            //}
+            ToggleThemeTeachingTip3.IsOpen = true;
         }
     }
 }
