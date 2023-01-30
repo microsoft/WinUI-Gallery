@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 namespace AppUIBasics.ControlPages
 {
     public sealed partial class AppBarSeparatorPage : Page
-    
+    { 
         public AppBarSeparatorPage()
         {
             this.InitializeComponent();
