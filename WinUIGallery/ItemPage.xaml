@@ -188,6 +188,7 @@
                     <Button
                         x:Name="ThemeButton"
                         Height="32"
+                        Style="{StaticResource SubtleButtonStyle}"
                         Click="OnThemeButtonClick"
                         ToolTipService.ToolTip="Toggle theme">
                         <Button.Content>
@@ -197,6 +198,7 @@
                     <Button
                         x:Name="CopyLinkButton"
                         Height="32"
+                        Style="{StaticResource SubtleButtonStyle}"
                         Click="OnCopyLinkButtonClick"
                         ToolTipService.ToolTip="Copy link">
                         <Button.Content>
