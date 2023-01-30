@@ -82,9 +82,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+    <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
     <None Remove="ControlPages\LinePage.xaml" />
     <None Remove="ControlPages\ShapePage.xaml" />
     <None Remove="ControlPages\Typography.xaml" />
+    <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
+    <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
+    <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
     <None Remove="DataModel\IconsData.json" />
     <None Remove="DesignGuidancePage.xaml" />
@@ -94,6 +98,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\DesignGuidance\ColorTile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\DesignGuidance\ColorPageExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="DesignGuidancePage.xaml">
@@ -127,7 +141,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ControlPages\DesignGuidance\" />
+    <Page Update="ControlPages\DesignGuidance\ColorsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
 

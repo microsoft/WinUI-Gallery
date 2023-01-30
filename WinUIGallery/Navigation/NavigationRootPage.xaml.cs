@@ -332,7 +332,11 @@ namespace AppUIBasics
                 {
                     Navigate(typeof(ItemPage), "Typography");
                 }
-                else if (selectedItem == DesignGuidanceIconsPageItem)
+                else if(selectedItem == ColorsItem)
+                {
+                    Navigate(typeof(ItemPage), "Colors");
+                }
+                else if (selectedItem == IconsItem)
                 {
                     Navigate(typeof(ItemPage), "Icons");
                 }

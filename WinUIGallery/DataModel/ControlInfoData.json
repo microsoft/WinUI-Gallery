@@ -63,6 +63,30 @@
           "RelatedControls": []
         },
         {
+          "UniqueId": "Colors",
+          "Title": "Colors",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeLinks": true,
+          "Docs": [
+            {
+              "Title": "Iconography in Windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/iconography/overview"
+            },
+            {
+              "Title": "Segoe Fluent Icons font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color Contrast",
           "ApiNamespace": "",
