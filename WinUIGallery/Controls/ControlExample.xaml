@@ -13,17 +13,6 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-
-        <Storyboard x:Name="PopOutStoryboard">
-            <PopInThemeAnimation SpeedRatio="2" TargetName="rootGrid" />
-        </Storyboard>
-
-        <Storyboard x:Name="PopInStoryboard">
-            <PopInThemeAnimation FromVerticalOffset="152" SpeedRatio=".2" TargetName="rootGrid" />
-        </Storyboard>
-    </UserControl.Resources>
-
     <Grid x:Name="rootGrid" Loaded="rootGrid_Loaded" >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -39,6 +28,7 @@
                     <VisualState.Setters>
                         <Setter Target="OptionsPresenter.HorizontalContentAlignment" Value="Left" />
                         <Setter Target="OptionsPresenter.Margin" Value="0,24,0,0" />
+                        <Setter Target="OptionsPresenter.BorderThickness" Value="0,1,0,0"/>
                         <Setter Target="OptionsPresenter.(Grid.Row)" Value="1" />
                         <Setter Target="OptionsPresenter.(Grid.Column)" Value="0" />
                         <Setter Target="OptionsPresenter.(Grid.ColumnSpan)" Value="2" />
@@ -54,7 +44,6 @@
                         <Setter Target="ControlPresenter.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}"/>
                         <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center"/>
                         <Setter Target="ScreenshotControls.Visibility" Value="Visible"/>
-
                         <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -143,9 +132,9 @@
                 <ContentPresenter
                     x:Name="OptionsPresenter"
                     Grid.Column="2"
-                    CornerRadius="8"
-                    Margin="0,12,12,12"
                     Padding="16"
+                    BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                    BorderThickness="1,0,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"

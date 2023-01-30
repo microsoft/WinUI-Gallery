@@ -46,27 +46,20 @@ namespace AppUIBasics
         public ItemPage()
         {
             this.InitializeComponent();
-            Loaded += (s,e) => SetInitialVisuals();
+            Loaded += (s, e) => SetInitialVisuals();
         }
 
         public void SetInitialVisuals()
         {
-         
             var navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-      
                 ToggleThemeAction = OnToggleTheme;
                 navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
                 CopyLinkAction = OnCopyLink;
                 ResetCopyLinkButton();
-
-                    this.Focus(FocusState.Programmatic);
-                
+                this.Focus(FocusState.Programmatic);
             }
-
-
-          
 
             if (UIHelper.IsScreenshotMode)
             {
@@ -81,9 +74,6 @@ namespace AppUIBasics
                 }
             }
         }
-
-      
-
         private void OnNavigationViewLoaded()
         {
             NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
@@ -213,41 +203,32 @@ namespace AppUIBasics
             }
             return null;
         }
-
-
-        private void ToggleThemeTeachingTip2_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
-        {
-            // NavigationRootPage.GetForElement(this).PageHeader.ToggleThemeAction?.Invoke();
-        }
-
-
         private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
-            {
-                this.CopyLinkAction?.Invoke();
+        {
+            this.CopyLinkAction?.Invoke();
 
-                if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
-                {
-                    this.CopyLinkButtonTeachingTip.IsOpen = true;
-                }
+            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+            {
+                this.CopyLinkButtonTeachingTip.IsOpen = true;
+            }
             this.CopyLinkButtonIcon.Glyph = "\uE8FB";
         }
 
-            public void OnThemeButtonClick(object sender, RoutedEventArgs e)
-            {
-                ToggleThemeAction?.Invoke();
-            }
-
-            public void ResetCopyLinkButton()
-            {
-                this.CopyLinkButtonTeachingTip.IsOpen = false;
-                this.CopyLinkButtonIcon.Glyph = "\uE71B";
+        public void OnThemeButtonClick(object sender, RoutedEventArgs e)
+        {
+            ToggleThemeAction?.Invoke();
         }
 
-            private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
-            {
-                ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
-                this.CopyLinkButtonTeachingTip.IsOpen = false;
-            }
+        public void ResetCopyLinkButton()
+        {
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
+            this.CopyLinkButtonIcon.Glyph = "\uE71B";
+        }
 
+        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
+        {
+            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
+            this.CopyLinkButtonTeachingTip.IsOpen = false;
         }
     }
+}
