@@ -140,7 +140,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="265" />
                             <ColumnDefinition Width="60" />
-                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="135" />
                             <ColumnDefinition Width="105" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>

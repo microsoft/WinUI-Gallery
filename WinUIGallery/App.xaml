@@ -123,11 +123,6 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
 
-            <Style x:Key="ColorPageSectionTitle" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
             <Style x:Key="ColorPageExampleBox" TargetType="StackPanel">
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="Background" Value="White"/>

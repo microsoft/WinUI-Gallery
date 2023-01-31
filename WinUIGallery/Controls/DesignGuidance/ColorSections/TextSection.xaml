@@ -14,9 +14,9 @@
     <!-- Colors section -->
     <StackPanel x:Name="ColorSection" Spacing="8">
         <!-- Text colors -->
-        <TextBlock Text="Text" Style="{StaticResource ColorPageSectionTitle}"/>
+        <TextBlock Text="Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,5"/>
         <designguidance:ColorPageExample Text="For UI labels and static text">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Margin="0,-10,0,40"/>
         </designguidance:ColorPageExample>
         <Grid CornerRadius="4">
             <Grid.ColumnDefinitions>
@@ -65,15 +65,16 @@
 &lt;SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{StaticResource TextFillColorSecondary}" &gt;
 &lt;SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{StaticResource TextFillColorTertiary}" &gt;
 &lt;SolidColorBrush x:Key="TextFillColorDisabledBrush" Color="{StaticResource TextFillColorDisab1ed}" &gt;
+                        
                     </x:String>
                 </controls:SampleCodePresenter.Code>
             </controls:SampleCodePresenter>
         </Expander>
 
         <!-- Accent text-->
-        <TextBlock Text="Accent Text" Style="{StaticResource ColorPageSectionTitle}" Margin="0,24,0,0"/>
+        <TextBlock Text="Accent Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="Recommended for links">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Margin="0,-10,0,40"/>
         </designguidance:ColorPageExample>
         <Grid CornerRadius="4">
             <Grid.ColumnDefinitions>
@@ -122,16 +123,17 @@
 &lt;SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="{StaticResource SystemAccentColorDark3}" &gt;
 &lt;SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="{StaticResource SystemAccentColorDark1}" &gt;
 &lt;SolidColorBrush x:Key="AccentTextFillColorDisabledBrush" Color="{StaticResource AccentTextFillColorDisabled}" &gt;
+                        
                     </x:String>
                 </controls:SampleCodePresenter.Code>
             </controls:SampleCodePresenter>
         </Expander>
 
         <!-- Text on accent-->
-        <TextBlock Text="Text On Accent" Style="{StaticResource ColorPageSectionTitle}" Margin="0,24,0,0"/>
+        <TextBlock Text="Text On Accent" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="Used for text on accent colored controls or fills"
             Background="{ThemeResource AccentFillColorDefaultBrush}" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" Margin="0,-10,0,40"/>
         </designguidance:ColorPageExample>
 
         <Grid CornerRadius="4" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
@@ -193,6 +195,7 @@
 &lt;SolidColorBrush x:Key="TextOnAccentFillColorSecondaryBrush" Color="{StaticResource TextOnAccentFillColorSecondary}" &gt;
 &lt;SolidColorBrush x:Key="TextOnAccentFillColorDisabledBrush" Color="{StaticResource TextOnAccentFillColorDisabled}" &gt;
 &lt;SolidColorBrush x:Key="TextOnAccentFillColorSelectedTextBrush" Color="{StaticResource TextOnAccentFillColorSelectedText}" &gt;
+                        
                     </x:String>
                 </controls:SampleCodePresenter.Code>
             </controls:SampleCodePresenter>

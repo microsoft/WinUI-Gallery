@@ -12,8 +12,8 @@
     <StackPanel Padding="16" CornerRadius="4"
         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1"
         Background="{x:Bind Background, Mode=OneWay}">
-        <TextBlock Text="Example" FontWeight="Bold"/>
-        <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="0,4,0,0"/>
+        <TextBlock Text="Example" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+        <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="0,4,0,0" Style="{ThemeResource BodyTextBlockStyle}"/>
         <ContentPresenter Content="{x:Bind ExampleContent, Mode=OneWay}" HorizontalAlignment="Center"/>
     </StackPanel>
 </UserControl>
