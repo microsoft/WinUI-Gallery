@@ -86,16 +86,7 @@
                             Text="{StaticResource WinUIVersion}"/>
                             </StackPanel>
                         </Grid>
-                  
-                   
-                    <StackPanel Grid.Row="1"  Margin="36,24,36,0" x:Name="HeaderTileOuterGrid" Orientation="Horizontal">
-                        <VariableSizedWrapGrid x:Name="HeaderTileGrid"  Orientation="Horizontal">
-                            <controls:HeaderTile Title="Getting Started" Source="/Assets/gettingStarted.png" Link="https://docs.microsoft.com/windows/apps/get-started/"/>
-                            <controls:HeaderTile Title="Windows Design" Source="/Assets/style-1x.png" Link="https://docs.microsoft.com/windows/apps/design/"/>
-                            <controls:HeaderTile Title="GitHub Repo" Source="/Assets/githubTile.png" Link="https://github.com/microsoft/microsoft-ui-xaml"/>
-                            <controls:HeaderTile Title="Template Studio" Source="/Assets/template_studio.png" Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"/>
-                        </VariableSizedWrapGrid>
-                    </StackPanel>
+                    <controls:TileGallery Grid.Row="1" Height="200" Margin="0,255,0,0" />
                 </Grid>
             </GridView.Header>
 

@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 namespace AppUIBasics.ControlPages
 {
@@ -29,6 +30,19 @@ namespace AppUIBasics.ControlPages
         public SliderPage()
         {
             this.InitializeComponent();
+        }
+
+        private void SnapsToRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (SnapsToRadioButtons.SelectedItem)
+            {
+                case "StepValues":
+                    Slider3.SnapsTo = SliderSnapsTo.StepValues;
+                    break;
+                default:
+                    Slider3.SnapsTo = SliderSnapsTo.Ticks;
+                    break;
+            }
         }
     }
 }
