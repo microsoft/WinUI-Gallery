@@ -80,14 +80,5 @@
   <ItemGroup>
     <Content Remove="@(Content)" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Controls\TileGallery.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Controls\TileGallery.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
   <Import Project="ContentIncludes.props" />
-
 </Project>
