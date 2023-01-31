@@ -53,8 +53,8 @@
                 visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
                 conditions, screens, and device settings.
                 <LineBreak />
-                <LineBreak />Check out the 
-                <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink> .
+                <LineBreak />Check out the
+                <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
                 app to help you find and fix accessibility issues in your Windows apps.
             </Paragraph>
 

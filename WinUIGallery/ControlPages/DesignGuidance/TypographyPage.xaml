@@ -138,10 +138,10 @@
                     </Canvas>
                     <Grid Margin="0,48,0,24">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="308" />
-                            <ColumnDefinition Width="68" />
-                            <ColumnDefinition Width="156" />
-                            <ColumnDefinition Width="108" />
+                            <ColumnDefinition Width="265" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="105" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Example" Margin="24,0,0,0" Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
