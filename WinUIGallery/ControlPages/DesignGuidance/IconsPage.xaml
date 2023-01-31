@@ -38,8 +38,8 @@
             <UserControl PointerPressed="Icons_TemplatePointerPressed">
                 <Grid
                     x:Name="IconTemplateRoot"
-                    Width="80"
-                    Height="80"
+                    Width="92"
+                    Height="92"
                     Margin="4"
                     HorizontalAlignment="Stretch"
                     x:DefaultBindMode="OneWay"
@@ -128,7 +128,7 @@
                 CornerRadius="4,4,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="15" />
                     <ColumnDefinition Width="300" />
                 </Grid.ColumnDefinitions>
 
@@ -137,7 +137,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="300" />
+                        <RowDefinition Height="320" />
                     </Grid.RowDefinitions>
 
                     <AutoSuggestBox
@@ -161,7 +161,7 @@
 
                     <ScrollViewer
                         Grid.Row="2" 
-                        Padding="8,8,12,8"
+                        Padding="8,8,12,0"
                         HorizontalAlignment="Stretch"
                         AutomationProperties.Name="Icons">
                         <ItemsRepeater
