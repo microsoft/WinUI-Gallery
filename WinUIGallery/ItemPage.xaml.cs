@@ -34,7 +34,6 @@ namespace AppUIBasics
     {
         public Action CopyLinkAction { get; set; }
         public Action ToggleThemeAction { get; set; }
-        private Compositor _compositor;
         private ControlInfoDataItem _item;
         private ElementTheme? _currentElementTheme;
         public ControlInfoDataItem Item
