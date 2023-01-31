@@ -118,19 +118,18 @@
             SizeChanged="scroller_SizeChanged"
             VerticalScrollMode="Disabled"
             ViewChanging="scroller_ViewChanging">
-            <Grid>
+            <Grid x:Name="ContentGrid" Margin="36,0,36,0">
                 <StackPanel Orientation="Horizontal" Spacing="12">
-
                     <local:HeaderTile
-                        Title="Getting Started"
+                        Title="Getting started"
                         Link="https://docs.microsoft.com/windows/apps/get-started/"
                         Source="/Assets/HomeHeaderTiles/gettingStarted.png" />
                     <local:HeaderTile
-                        Title="Windows Design"
+                        Title="Windows design"
                         Link="https://docs.microsoft.com/windows/apps/design/"
                         Source="/Assets/HomeHeaderTiles/style-1x.png" />
                     <local:HeaderTile
-                        Title="GitHub Repo"
+                        Title="GitHub repo"
                         Link="https://github.com/microsoft/microsoft-ui-xaml"
                         Source="/Assets/HomeHeaderTiles/githubTile.png" />
                     <local:HeaderTile

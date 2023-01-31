@@ -63,14 +63,14 @@ namespace AppUIBasics.Controls
 
         private void UpdateScrollButtonsVisibility()
         {
-                if (scroller.ScrollableWidth > 0)
-                {
-                    ScrollForwardBtn.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    ScrollForwardBtn.Visibility = Visibility.Collapsed;
-                }
+            if (scroller.ScrollableWidth > 0)
+            {
+                ScrollForwardBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ScrollForwardBtn.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

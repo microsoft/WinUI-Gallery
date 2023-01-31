@@ -33,7 +33,6 @@
                 HorizontalAlignment="Center"
                 Source="Assets/MainPage_Banner.png"
                 Stretch="UniformToFill" />
-
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock
                 x:Name="smallHeaderText"
@@ -66,9 +65,6 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="smallHeaderText.Visibility" Value="Visible" />
-                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowLayout">
                     <VisualState.StateTriggers>
@@ -79,7 +75,6 @@
                         <Setter Target="itemGridView.Padding" Value="16,16,16,36" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="smallHeaderText.Margin" Value="16,16,0,0" />
-
                         <Setter Target="smallHeaderText.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                     </VisualState.Setters>
                 </VisualState>
