@@ -94,5 +94,4 @@
     </Page>
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
-
 </Project>
