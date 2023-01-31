@@ -21,7 +21,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Typography in Windows Apps",
@@ -49,7 +49,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Iconography in Windows",
@@ -73,7 +73,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Colors in Windows 11",
@@ -100,7 +100,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",
@@ -124,7 +124,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",
@@ -152,7 +152,7 @@
           "Content": "",
           "IsNew": false,
           "IsUpdated": false,
-          "HideSourceCodeLinks": true,
+          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",

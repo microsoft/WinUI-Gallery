@@ -30,7 +30,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeLinks)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -47,7 +47,7 @@ namespace AppUIBasics.Data
             this.IsPreview = isPreview;
             this.Docs = new ObservableCollection<ControlInfoDocLink>();
             this.RelatedControls = new ObservableCollection<string>();
-            this.HideSourceCodeLinks = hideSourceCodeLinks;
+            this.HideSourceCodeAndRelatedControls = hideSourceCodeAndRelatedControls;
         }
 
         public string UniqueId { get; private set; }
@@ -62,7 +62,7 @@ namespace AppUIBasics.Data
         public bool IsNew { get; private set; }
         public bool IsUpdated { get; private set; }
         public bool IsPreview { get; private set; }
-        public bool HideSourceCodeLinks { get; private set; }
+        public bool HideSourceCodeAndRelatedControls { get; private set; }
         public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
         public ObservableCollection<string> RelatedControls { get; private set; }
 
@@ -246,7 +246,7 @@ namespace AppUIBasics.Data
                             badgeString = "Preview";
                         }
 
-                        var hideSourceCodeLinks = itemObject.ContainsKey("HideSourceCodeLinks") ? itemObject["HideSourceCodeLinks"].GetBoolean() : false;
+                        var hideSourceCodeAndRelatedControls = itemObject.ContainsKey("HideSourceCodeAndRelatedControls") ? itemObject["HideSourceCodeAndRelatedControls"].GetBoolean() : false;
                         var item = new ControlInfoDataItem(itemObject["UniqueId"].GetString(),
                                                                 itemObject["Title"].GetString(),
                                                                 itemObject["ApiNamespace"].GetString(),
@@ -259,7 +259,7 @@ namespace AppUIBasics.Data
                                                                 isNew,
                                                                 isUpdated,
                                                                 isPreview,
-                                                                hideSourceCodeLinks);
+                                                                hideSourceCodeAndRelatedControls);
 
                         {
                             string pageString = pageRoot + item.UniqueId + "Page";

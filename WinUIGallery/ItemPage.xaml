@@ -157,7 +157,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4" Visibility="{x:Bind Item.HideSourceCodeLinks,Mode=OneWay, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4" Visibility="{x:Bind Item.HideSourceCodeAndRelatedControls,Mode=OneWay, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                         <TextBlock
                             x:Name="SourceHeader"
                             x:Uid="SourceHeader"
@@ -201,7 +201,7 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24" Visibility="{x:Bind Item.HideSourceCodeAndRelatedControls,Mode=OneWay, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
