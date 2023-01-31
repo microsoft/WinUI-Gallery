@@ -13,8 +13,14 @@
 
     <!-- Colors section -->
     <StackPanel x:Name="ColorSection" Spacing="8">
+        <RichTextBlock>
+            <Paragraph>
+                Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+            </Paragraph>
+        </RichTextBlock>
+
         <!-- Text colors -->
-        <TextBlock Text="Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,5"/>
+        <TextBlock Text="Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="For UI labels and static text">
             <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Margin="0,-10,0,40"/>
         </designguidance:ColorPageExample>

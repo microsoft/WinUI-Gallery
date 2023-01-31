@@ -76,12 +76,15 @@
           "HideSourceCodeLinks": true,
           "Docs": [
             {
-              "Title": "Iconography in Windows",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/iconography/overview"
+              "Title": "Colors in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
+            },{
+              "Title": "Windows UI Toolkit (Figma)",
+              "Uri": "https://www.figma.com/community/file/1159947337437047524"
             },
             {
-              "Title": "Segoe Fluent Icons font",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+              "Title": "WinUI Theme Resources (Github)",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ],
           "RelatedControls": []
