@@ -16,6 +16,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -26,9 +27,15 @@
             <Button Content="Stroke"/>
             <Button Content="Background"/>
         </StackPanel>-->
-
-        <ScrollViewer Grid.Row="1">
-            <colorsections:TextSection/>
+        <RichTextBlock Grid.Row="1">
+            <Paragraph>
+                Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+            </Paragraph>
+        </RichTextBlock>
+        
+        <ScrollViewer Grid.Row="2">
+            <!--<colorsections:TextSection/>-->
+            <colorsections:FillSection />
         </ScrollViewer>
 
     </Grid>

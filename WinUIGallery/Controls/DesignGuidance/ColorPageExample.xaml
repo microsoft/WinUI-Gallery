@@ -14,6 +14,6 @@
         Background="{x:Bind Background, Mode=OneWay}">
         <TextBlock Text="Example" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
         <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="0,4,0,0" Style="{ThemeResource BodyTextBlockStyle}"/>
-        <ContentPresenter Content="{x:Bind ExampleContent, Mode=OneWay}" HorizontalAlignment="Center"/>
+        <ContentPresenter Content="{x:Bind ExampleContent, Mode=OneWay}" HorizontalAlignment="Center" Margin="20,20,20,40"/>
     </StackPanel>
 </UserControl>

@@ -22,7 +22,7 @@
         <!-- Text colors -->
         <TextBlock Text="Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="For UI labels and static text">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Margin="0,-10,0,40"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold"/>
         </designguidance:ColorPageExample>
         <Grid CornerRadius="4">
             <Grid.ColumnDefinitions>
@@ -80,7 +80,8 @@
         <!-- Accent text-->
         <TextBlock Text="Accent Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="Recommended for links">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Margin="0,-10,0,40"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold"
+                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
         </designguidance:ColorPageExample>
         <Grid CornerRadius="4">
             <Grid.ColumnDefinitions>
@@ -139,7 +140,7 @@
         <TextBlock Text="Text On Accent" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
         <designguidance:ColorPageExample Text="Used for text on accent colored controls or fills"
             Background="{ThemeResource AccentFillColorDefaultBrush}" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" Margin="0,-10,0,40"/>
+            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
         </designguidance:ColorPageExample>
 
         <Grid CornerRadius="4" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
