@@ -30,8 +30,8 @@
                         Content="Show TeachingTip" />
                     <TeachingTip
                         x:Name="ToggleThemeTeachingTip1"
-                        Title="Change themes without hassle"
-                        Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                        Title="This is the title"
+                        Subtitle="And this is the subtitle"
                         Target="{x:Bind ThemeButton}">
                         <TeachingTip.IconSource>
                             <SymbolIconSource Symbol="Refresh" />
@@ -50,13 +50,13 @@
                     <Button Click="TestButtonClick2" Content="Show TeachingTip" />
                     <TeachingTip
                         x:Name="ToggleThemeTeachingTip2"
-                        Title="Change themes without hassle"
-                        ActionButtonContent="Toggle theme now"
-                        CloseButtonContent="Got it!"
+                        Title="This is the title"
+                        ActionButtonContent="Action button"
+                        CloseButtonContent="Close button"
                         IsLightDismissEnabled="True"
                         PlacementMargin="20"
                         PreferredPlacement="Auto"
-                        Subtitle="It's easier than ever to see control samples in both light and dark theme!" />
+                        Subtitle="And this is the subtitle" />
                 </Grid>
             </local:ControlExample.Example>
         </local:ControlExample>
@@ -73,21 +73,21 @@
                         Content="Show TeachingTip" />
                     <TeachingTip
                         x:Name="ToggleThemeTeachingTip3"
-                        Title="Change themes without hassle"
+                        Title="This is the title"
                         PreferredPlacement="Bottom"
-                        Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                        Subtitle="And this is the subtitle"
                         Target="{x:Bind HeroButton}">
                         <TeachingTip.HeroContent>
                             <Image AutomationProperties.Name="Sunset" Source="/Assets/SampleMedia/sunset.jpg" />
                         </TeachingTip.HeroContent>
                         <TeachingTip.Content>
-                            <TextBlock Margin="0,16,0,0" TextWrapping="WrapWholeWords">
-                                To change your desktop theme visit the<Hyperlink NavigateUri="ms-settings:colors">Settings app</Hyperlink>
-                                .</TextBlock>
+                            <TextBlock
+                                Margin="0,16,0,0"
+                                Text="Description can go here"
+                                TextWrapping="WrapWholeWords" />
                         </TeachingTip.Content>
                     </TeachingTip>
                 </Grid>
-
             </local:ControlExample.Example>
         </local:ControlExample>
 

@@ -56,7 +56,7 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind Item.ApiNamespace, Mode=OneWay}"
                 Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
-            <Grid Grid.Row="2" Margin="0,12,0,0">
+            <Grid Grid.Row="2" Margin="0,12,0,12">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                     <DropDownButton
                         AutomationProperties.Name="Documentation"
@@ -83,64 +83,6 @@
                                         <DataTemplate x:DataType="data:ControlInfoDocLink">
                                             <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
                                                 <TextBlock Text="{x:Bind Title}" />
-                                            </HyperlinkButton>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </Flyout>
-                        </DropDownButton.Flyout>
-                    </DropDownButton>
-                    <DropDownButton  AutomationProperties.Name="Related controls"
-                        ToolTipService.ToolTip="Related controls" Visibility="{x:Bind Item.RelatedControls, Converter={StaticResource collectionConverter}}">
-                        <DropDownButton.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon FontSize="14" Glyph="&#xE2AE;" />
-                                <TextBlock Text="Related" />
-                            </StackPanel>
-                        </DropDownButton.Content>
-                        <DropDownButton.Flyout>
-                            <Flyout Placement="Bottom">
-                                <ItemsControl
-                                    x:Name="relatedItemsControl"
-                                    IsTabStop="False"
-                                    ItemsSource="{x:Bind Item.RelatedControls}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Vertical" />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate x:DataType="x:String">
-                                            <!--
-                                                A HyperlinkButton must always provide an accessible name to a screen reader which
-                                                conveys the purpose of the link. By default, when the HyperlinkButton is built
-                                                as below, with an Image and TextBlock, the HyperlinkButton provides no accessible
-                                                name. So bind the accessible name to the same data that provides the text shown
-                                                visually on the contained TextBlock.
-                                            -->
-                                            <HyperlinkButton AutomationProperties.Name="{x:Bind}" Click="OnRelatedControlClick">
-                                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                                    <!--
-                                                        Now that the HyperlinkButton has a helpful accessible name, it serves no
-                                                        useful purpose for the contained Image, (which is purely decorative,) or
-                                                        the contained TextBlock to be exposed to a screen reader. All the information
-                                                        required by customers using a screen reader is accessible directly through the
-                                                        Hyperlink button. As such, mark the contained elements as not being interesting
-                                                        to a screen reader through use of the AutomationProperties.AccessibilityView
-                                                        property.
-                                                    -->
-                                                    <Image
-                                                        x:Name="iconImage"
-                                                        Width="16"
-                                                        common:ImageLoader.Source="{Binding}"
-                                                        AutomationProperties.AccessibilityView="Raw" />
-                                                    <TextBlock
-                                                        AutomationProperties.AccessibilityView="Raw"
-                                                        Foreground="{ThemeResource HyperlinkButtonForeground}"
-                                                        RelativePanel.RightOf="iconImage"
-                                                        Text="{x:Bind}"
-                                                        TextWrapping="Wrap" />
-                                                </StackPanel>
                                             </HyperlinkButton>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -188,7 +130,6 @@
                     <Button
                         x:Name="ThemeButton"
                         Height="32"
-                        Style="{StaticResource SubtleButtonStyle}"
                         Click="OnThemeButtonClick"
                         ToolTipService.ToolTip="Toggle theme">
                         <Button.Content>
@@ -198,7 +139,6 @@
                     <Button
                         x:Name="CopyLinkButton"
                         Height="32"
-                        Style="{StaticResource SubtleButtonStyle}"
                         Click="OnCopyLinkButtonClick"
                         ToolTipService.ToolTip="Copy link">
                         <Button.Content>
