@@ -42,21 +42,21 @@
                 <designguidance:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource ControlFillColorSecondaryBrush}"
-                    ColorName="Control Secondary / Secondary"
+                    ColorName="Control / Secondary"
                     ColorExplanation="Hover"
                     ColorBrushName="ControlFillColorSecondaryBrush"
                     ColorValue="#F9F9F9 (50, 50%)"/>
                 <designguidance:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlFillColorTertiaryBrush}"
-                    ColorName="Control Secondary / Tertiary"
+                    ColorName="Control / Tertiary"
                     ColorExplanation="Pressed"
                     ColorBrushName="ControlFillColorTertiaryBrush"
                     ColorValue="#F9F9F9 (4D, 30%)"/>
                 <designguidance:ColorTile
                     Grid.Column="3"
                     Background="{ThemeResource ControlFillColorTertiaryBrush}"
-                    ColorName="Control Secondary / Quartenary"
+                    ColorName="Control / Quartenary"
                     ColorExplanation="Rest (Pill Button control)"
                     ColorBrushName="ControlFillColorQuarternaryBrush"
                     ColorValue="#F9F9F9 (C2, 30%)"/>
@@ -70,21 +70,21 @@
             <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource ControlFillColorDisabledBrush}"
-                ColorName="Control Secondary / Disabled"
+                ColorName="Control / Disabled"
                 ColorExplanation="Disabled"
                 ColorBrushName="ControlFillColorDisabledBrush"
                 ColorValue="#F3F3F3 (FD, 30%)"/>
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlFillColorTransparentBrush}"
-                ColorName="Control Secondary / Transparent"
+                ColorName="Control / Transparent"
                 ColorExplanation="Rest"
                 ColorBrushName="ControlFillColorTransparentBrush"
                 ColorValue="#FFFFFF (00, 0%)"/>
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlFillColorInputActiveBrush}"
-                ColorName="Control Secondary / Input Active"
+                ColorName="Control / Input Active"
                 ColorExplanation="Active/focused text input fields"
                 ColorBrushName="ControlFillColorInputActiveBrush"
                 ColorValue="#FFFFFF (FF, 100%)"/>
@@ -166,7 +166,7 @@
         </Expander>
 
         <TextBlock Text="Control Strong Fill" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Used for contorls that must meet contrast ratio requirements of 3:1"
+        <designguidance:ColorPageExample Text="Used for controls that must meet contrast ratio requirements of 3:1."
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
             <ScrollBar Orientation="Horizontal" Width="200" Height="20" Visibility="Visible" IndicatorMode="MouseIndicator" />
         </designguidance:ColorPageExample>
