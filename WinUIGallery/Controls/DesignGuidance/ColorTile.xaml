@@ -35,10 +35,10 @@
         </Button>
 
         <TextBlock Text="{x:Bind ColorExplanation, Mode=OneWay}" Grid.Row="1"
-            TextWrapping="WrapWholeWords"/>
+            TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>
 
         <TextBlock Text="{x:Bind ColorBrushName, Mode=OneWay}" Grid.Row="3" Grid.ColumnSpan="2"
-            TextWrapping="Wrap" IsTextSelectionEnabled="True"/>
-        <TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords"/>
+            TextWrapping="Wrap" IsTextSelectionEnabled="True" Style="{StaticResource CaptionTextBlockStyle}"/>
+        <TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>
     </Grid>
 </UserControl>
