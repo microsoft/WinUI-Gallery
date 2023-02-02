@@ -105,234 +105,330 @@
             </controls:SampleCodePresenter>
         </Expander>
 
-        <TextBlock Text="Controll Alt Fill" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Fill used for the 'off' states of toggle controls"
+        <TextBlock Text="Layer on Acrylic" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
+        <designguidance:ColorPageExample Text="Used on background colors of any material to create layering."
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
-            <ToggleSwitch OnContent="" OffContent=""/>
-        </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
-                Background="{ThemeResource ControlAltFillColorTransparentBrush}"
-                ColorName="Control Alt / Transparent"
-                ColorBrushName="ControlAltFillColorTransparentBrush"
-                ColorValue="#FFFFFF (00, 0%)"/>
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource ControlAltFillColorSecondaryBrush}"
-                ColorName="Control Alt / Secondary"
-                ColorBrushName="ControlAltFillColorSecondaryBrush"
-                ColorValue="#000000 (06, 2.41%)"/>
-            <designguidance:ColorTile
-                Grid.Column="2"
-                Background="{ThemeResource ControlAltFillColorTertiaryBrush}"
-                ColorName="Control Alt / Tertiary"
-                ColorBrushName="ControlAltFillColorTertiaryBrush"
-                ColorValue="#000000 (0F, 5.78%)"/>
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}" BorderThickness="0,1,1,1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
-                Background="{ThemeResource ControlAltFillColorQuarternaryBrush}"
-                ColorName="Control Alt / Quarternary"
-                ColorBrushName="ControlAltFillColorQuarternaryBrush"
-                ColorValue="#000000 (12, 6.58%)"/>
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource ControlAltFillColorDisabledBrush}"
-                ColorName="Control Alt / Disabled"
-                ColorBrushName="ControlAltFillColorDisabledBrush"
-                ColorValue="#FFFFFF (00, 0%)"/>
-        </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="ControlAltFillColorTransparentBrush" Color="{StaticResource ControlAltFillColorTransparent}" &gt;
-&lt;SolidColorBrush x:Key="ControlAltFillColorSecondaryBrush" Color="{StaticResource ControlAltFillColorSecondary}" &gt;
-&lt;SolidColorBrush x:Key="ControlAltFillColorTertiaryBrush" Color="{StaticResource ControlAltFillColorTertiary}" &gt;
-&lt;SolidColorBrush x:Key="ControlAltFillColorQuarternaryBrush" Color="{StaticResource ControlAltFillColorQuarternary}" &gt;
-&lt;SolidColorBrush x:Key="ControlAltFillColorDisabledBrush" Color="{StaticResource ControlAltFillColorDisabled}" &gt;
-                        
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
-
-        <TextBlock Text="Control Strong Fill" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Used for controls that must meet contrast ratio requirements of 3:1."
-            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
-            <ScrollBar Orientation="Horizontal" Width="200" Height="20" Visibility="Visible" IndicatorMode="MouseIndicator" />
-        </designguidance:ColorPageExample>
-
-        <Grid CornerRadius="4" Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <designguidance:ColorTile
-                Background="{ThemeResource ControlStrongFillColorDefaultBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control Strong / Default"
-                ColorExplanation="Rest or hover"
-                ColorBrushName="ControlStrongFillColorDefaultBrush"
-                ColorValue="#000000 (72, 44.58%)"/>
-            <designguidance:ColorTile
-                Grid.Column="2"
-                Background="{ThemeResource ControlStrongFillColorDisabledBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control Strong / Disabled"
-                ColorExplanation="Disabled only (not accessible)"
-                ColorBrushName="ControlStrongFillColorDisabledBrush"
-                ColorValue="#FFFFFF (51, 31.73%)"/>
-        </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="ControlStrongFillColorDefaultBrush" Color="{StaticResource ControlStrongFillColorDefault}" &gt;
-&lt;SolidColorBrush x:Key="ControlStrongFillColorDisabledBrush" Color="{StaticResource ControlStrongFillColorDisabled}" &gt;
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
-
-        <TextBlock Text="Control On Image Fill" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Used for controls living on top of imagery."
-            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
-            <Grid>
-                <Image Source="/Assets/SampleMedia/valley.jpg" MaxHeight="150"/>
-                <Border HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20"
-                    CornerRadius="4" Margin="8"
-                    BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
-                    Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"/>
-            </Grid>
-        </designguidance:ColorPageExample>
-
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <designguidance:ColorTile
-                Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control On Image Default"
-                ColorExplanation="Rest"
-                ColorBrushName="ControlOnImageFillColorDefaultBrush"
-                ColorValue="#FFFFFF (C9, 79%)"/>
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource ControlOnImageFillColorSecondaryBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control On Image Secondary"
-                ColorExplanation="Hover"
-                ColorBrushName="ControlOnImageFillColorSecondaryBrush"
-                ColorValue="#F3F3F3 (FF, 100%)"/>
-            <designguidance:ColorTile
-                Grid.Column="2"
-                Background="{ThemeResource ControlOnImageFillColorTertiaryBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control On Image Tertiary"
-                ColorExplanation="Pressed"
-                ColorBrushName="ControlOnImageFillColorTertiaryBrush"
-                ColorValue="#EBEBEB (FF, 100%)"/>
-            <designguidance:ColorTile
-                Grid.Column="3"
-                Background="{ThemeResource ControlOnImageFillColorDisabledBrush}"
-                Foreground="{ThemeResource TextFillColorPrimary}"
-                ColorName="Control On Image Disabled"
-                ColorExplanation="Disabled only (not accessible)"
-                ColorBrushName="ControlOnImageFillColorDisabledBrush"
-                ColorValue="#FFFFFF (00, 0%)"/>
-        </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="ControlOnImageFillColorDefaultBrush" Color="{StaticResource ControlOnImageFillColorDefault}" &gt;
-&lt;SolidColorBrush x:Key="ControlOnImageFillColorSecondaryBrush" Color="{StaticResource ControlOnImageFillColorSecondary}" &gt;
-&lt;SolidColorBrush x:Key="ControlOnImageFillColorTertiaryBrush" Color="{StaticResource ControlOnImageFillColorTertiary}" &gt;
-&lt;SolidColorBrush x:Key="ControlOnImageFillColorDisabledBrush" Color="{StaticResource ControlOnImageFillColorDisabled}" &gt;
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
-
-
-        <TextBlock Text="Accent Fill" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Used for accent fills on controls"
-            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
-            <StackPanel>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Text" />
+            <StackPanel Orientation="Horizontal" Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="4">
+                <Border Width="20" Height="30"/>
+                <Border Width="50" Height="30" Background="{ThemeResource LayerFillColorDefaultBrush}"/>
             </StackPanel>
         </designguidance:ColorPageExample>
-
-        <Grid Style="{StaticResource ColorTilesPanelStyle}" BorderThickness="0">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
-                Background="{ThemeResource AccentFillColorDefaultBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
-                ColorName="Accent / Default"
-                ColorBrushName="AccentFillColorDefaultBrush"
-                ColorValue="Dark 1 (100%)"/>
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource AccentFillColorSecondaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
-                ColorName="Accent / Secondary"
-                ColorBrushName="AccentFillColorSecondaryBrush"
-                ColorValue="Dark 1 (90%)"/>
-            <designguidance:ColorTile
-                Grid.Column="2"
-                Background="{ThemeResource AccentFillColorTertiaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
-                ColorName="Accent / Tertiary"
-                ColorBrushName="AccentFillColorTertiaryBrush"
-                ColorValue="Dark 1 (80%)"/>
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}" BorderThickness="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
-                Background="{ThemeResource AccentFillColorDisabledBrush}"
-                ColorName="Accent / Disabled"
-                ColorBrushName="AccentFillColorDisabledBrush"
-                ColorValue="#000000 (37, 21.09%)"/>
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
-                Background="{ThemeResource AccentFillColorSelectedTextBackgroundBrush}"
-                ColorName="Accent / Selected Text Background"
-                ColorBrushName="AccentFillColorSelectedTextBackgroundBrush"
-                ColorValue="Accent Base"/>
+                Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
+                ColorName="Layer On Acrylic / Default"
+                ColorExplanation="Content layer color on acrylic surfaces"
+                ColorBrushName="LayerOnAcrylicFillColorDefaultBrush"
+                ColorValue="#FFFFFF (40, 25%)"/>
         </Grid>
         <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <controls:SampleCodePresenter Language="XAML">
                 <controls:SampleCodePresenter.Code>
                     <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="{StaticResource AccentFillColorDefault}" &gt;
-&lt;SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="{StaticResource AccentFillColorSecondary}" &gt;
-&lt;SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="{StaticResource AccentFillColorTertiary}" &gt;
-&lt;SolidColorBrush x:Key="AccentFillColorDisabledBrush" Color="{StaticResource AccentFillColorDisabled}" &gt;
-&lt;SolidColorBrush x:Key="AccentFillColorSelectedTextBackgroundBrush" Color="{StaticResource AccentFillColorSelectedTextBackground}" &gt;
+&lt;SolidColorBrush x:Key="LayerOnAcrylicFillColorDefaultBrush" Color="{StaticResource LayerOnAcrylicFillColorDefault}" &gt;
+                    </x:String>
+                </controls:SampleCodePresenter.Code>
+            </controls:SampleCodePresenter>
+        </Expander>
+
+        <TextBlock Text="Layer on Mica Base Alt" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
+        <designguidance:ColorPageExample Text="Used for controls that must meet contrast ratio requirements of 3:1."
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
+            <TabViewItem Header="Text" Width="150" Height="30"/>
+        </designguidance:ColorPageExample>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Layer On Mica Base Alt / Default"
+                ColorExplanation="Active Tab Rest, Content layer"
+                ColorBrushName="LayerOnMicaBaseAltFillColorDefaultBrush"
+                ColorValue="#FFFFFF (B3, 70%)"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorSecondaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Layer On Mica Base Alt / Secondary"
+                ColorExplanation="Inactive Tab Hover"
+                ColorBrushName="LayerOnMicaBaseAltFillColorSecondaryBrush"
+                ColorValue="#000000 (0A, 3.73%)"/>
+        </Grid>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Layer On Mica Base Alt / Tertiary"
+                ColorExplanation="Active Tab Drag"
+                ColorBrushName="ControlStrongFillColorDefaultBrush"
+                ColorValue="#F9F9F9 (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorTransparentBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Inactive Tab Rest"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorBrushName="LayerOnMicaBaseAltFillColorTransparentBrush"
+                ColorValue="Transparent"/>
+        </Grid>
+        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <controls:SampleCodePresenter Language="XAML">
+                <controls:SampleCodePresenter.Code>
+                    <x:String xml:space="preserve">
+&lt;SolidColorBrush x:Key="LayerOnMicaBaseAltFillColorDefaultBrush" Color="{StaticResource LayerOnMicaBaseAltFillColorDefault}" &gt;
+&lt;SolidColorBrush x:Key="LayerOnMicaBaseAltFillColorSecondaryBrush" Color="{StaticResource LayerOnMicaBaseAltFillColorSecondary}" &gt;
+&lt;SolidColorBrush x:Key="LayerOnMicaBaseAltFillColorTertiaryBrush" Color="{StaticResource LayerOnMicaBaseAltFillColorTertiary}" &gt;
+&lt;SolidColorBrush x:Key="LayerOnMicaBaseAltFillColorTransparentBrush" Color="{StaticResource LayerOnMicaBaseAltFillColorTransparent}" &gt;
+                    </x:String>
+                </controls:SampleCodePresenter.Code>
+            </controls:SampleCodePresenter>
+        </Expander>
+
+        <TextBlock Text="Solid Background" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
+        <designguidance:ColorPageExample Text="Solid background colors to place layers, cards or controls on."
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
+            <Border Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" Width="80" Height="30"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="4" />
+        </designguidance:ColorPageExample>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Base"
+                ColorExplanation="Used for the bottom most layer of an experience."
+                ColorBrushName="SolidBackgroundFillColorBaseBrush"
+                ColorValue="#F3F3F (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SolidBackgroundFillColorBaseAltBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Base Alt"
+                ColorExplanation="Used for the bottom most layer of an experience."
+                ColorBrushName="SolidBackgroundFillColorBaseAltBrush"
+                ColorValue="#DADADA (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Secondary"
+                ColorExplanation="Alternate base color for those who need a darker background color."
+                ColorBrushName="SolidBackgroundFillColorSecondaryBrush"
+                ColorValue="#EEEEEE (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="3"
+                Background="{ThemeResource SolidBackgroundFillColorTertiaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Tertiary"
+                ColorExplanation="Control layer color"
+                ColorBrushName="SolidBackgroundFillColorTertiaryBrush"
+                ColorValue="#F9F9F9 (FF, 100%)"/>
+        </Grid>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Backgorund / Quarternary"
+                ColorExplanation="Alt content layer color."
+                ColorBrushName="SolidBackgroundFillColorQuarternaryBrush"
+                ColorValue="#FFFFFF (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Quinary"
+                ColorExplanation="Used for solid fallback color for default card"
+                ColorBrushName="SolidBackgroundFillColorQuinaryBrush"
+                ColorValue="#FDFDFD (FF, 100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ColorName="Solid Background / Senary"
+                ColorExplanation="Used for solid fallback color for default card hover and pressed"
+                ColorBrushName="SolidBackgroundFillColorSenaryBrush"
+                ColorValue="#FFFFFF (FF, 100%)"/>
+        </Grid>
+        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <controls:SampleCodePresenter Language="XAML">
+                <controls:SampleCodePresenter.Code>
+                    <x:String xml:space="preserve">
+&lt;SolidColorBrush x:Key="SolidBackgroundFillColorBaseBrush" Color="{StaticResource SolidBackgroundFillColorBaseBrush}" &gt;
+&lt;SolidColorBrush x:Key="SolidBackgroundFillColorBaseAltBrush" Color="{StaticResource SolidBackgroundFillColorBaseAltBrush}" &gt;
+&lt;SolidColorBrush x:Key="SolidBackgroundFillColorSecondaryBrush" Color="{StaticResource SolidBackgroundFillColorSecondaryBrush}" &gt;
+&lt;SolidColorBrush x:Key="SolidBackgroundFillColorQuarternaryBrush" Color="{StaticResource SolidBackgroundFillColorQuarternaryBrush}" &gt;
+                    </x:String>
+                </controls:SampleCodePresenter.Code>
+            </controls:SampleCodePresenter>
+        </Expander>
+
+
+        <TextBlock Text="System" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
+        <designguidance:ColorPageExample Text="Used for accent fills on controls"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}">
+            <InfoBar Severity="Error" IsOpen="True" Title="Title" Message="This is body text. Winddows 11 is faster and more intuitive."/>
+        </designguidance:ColorPageExample>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource SystemFillColorAttentionBrush}"
+                ColorName="System / Attention"
+                ColorExplanation="Badge"
+                ColorBrushName="SystemFillColorAttentionBrush"
+                ColorValue="#60CDFF (100%)"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SystemFillColorNeutralBrush}"
+                ColorName="System / Neutral"
+                ColorExplanation="Badge"
+                ColorBrushName="SystemFillColorNeutralBrush"
+                ColorValue="#FFFFFF (8B, 54,42%)"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SystemFillColorSolidNeutralBrush}"
+                ColorName="System / Solid Neutral"
+                ColorExplanation="Neutral badge over content"
+                ColorBrushName="SystemFillColorSolidNeutralBrush"
+                ColorValue="#9D9D9D"/>
+            <designguidance:ColorTile
+                Grid.Column="3"
+                Background="{ThemeResource SystemFillColorAttentionBackgroundBrush}"
+                ColorName="System / Attention Background"
+                ColorExplanation="Infobar Background"
+                ColorBrushName="SystemFillColorAttentionBackgroundBrush"
+                ColorValue="#FFFFFF (0B, 3.26%)"/>
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource SystemFillColorSuccessBrush}"
+                Foreground="{ThemeResource TextFillColorInverseBrush}"
+                ColorName="System / Success"
+                ColorExplanation="Badge"
+                ColorBrushName="SystemFillColorSuccessBrush"
+                ColorValue="#6CCB5F, 100%"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SystemFillColorCautionBrush}"
+                Foreground="{ThemeResource TextFillColorInverseBrush}"
+                ColorName="System / Caution"
+                ColorExplanation="Badge"
+                ColorBrushName="SystemFillColorCautionBrush"
+                ColorValue="FCE100, 100%"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SystemFillColorCriticalBrush}"
+                Foreground="{ThemeResource TextFillColorInverseBrush}"
+                ColorName="System / Critical"
+                ColorExplanation="Badge"
+                ColorBrushName="SystemFillColorCriticalBrush"
+                ColorValue="#FF99A4, 100%"/>
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"
+                ColorName="System / Success Background"
+                ColorBrushName="SystemFillColorSuccessBackgroundBrush"
+                ColorValue="#393D1B, 100%"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
+                ColorName="System / Caution Background"
+                ColorBrushName="SystemFillColorCautionBackgroundBrush"
+                ColorValue="#433519, 100%"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"
+                ColorName="Accent / Selected Text Background"
+                ColorBrushName="SystemFillColorCriticalBackgroundBrush"
+                ColorValue="#442726, 100%"/>
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource SystemFillColorNeutralBackgroundBrush}"
+                ColorName="System / Neutral Background"
+                ColorExplanation="Infobar Background"
+                ColorBrushName="SystemFillColorNeutralBackgroundBrush"
+                ColorValue="#FFFFFF (08, 3.26%)"/>
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource SystemFillColorSolidNeutralBackgroundBrush}"
+                ColorName="System / Solid Neutral Background"
+                ColorExplanation="Neutral badges over content"
+                ColorBrushName="SystemFillColorSolidNeutralBackgroundBrush"
+                ColorValue="#2E2E2E"/>
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SystemFillColorSolidAttentionBackgroundBrush}"
+                ColorName="System / Solid Attention Background"
+                ColorBrushName="SystemFillColorSolidAttentionBackgroundBrush"
+                ColorValue="#2E2E2E"/>
+        </Grid>
+        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <controls:SampleCodePresenter Language="XAML">
+                <controls:SampleCodePresenter.Code>
+                    <x:String xml:space="preserve">
+&lt;SolidColorBrush x:Key="SystemFillColorAttentionBrush" Color="{StaticResource SystemFillColorAttention}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorNeutralBrush" Color="{StaticResource SystemFillColorNeutral}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorSolidNeutralBrush" Color="{StaticResource SystemFillColorSolidNeutral}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorAttentionBackgroundBrush" Color="{StaticResource SystemFillColorAttentionBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorSuccessBrush" Color="{StaticResource SystemFillColorSuccess}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorCautionBrush" Color="{StaticResource SystemFillColorCaution}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorCriticalBrush" Color="{StaticResource SystemFillColorCritical}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorSuccessBackgroundBrush" Color="{StaticResource SystemFillColorSuccessBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorCautionBackgroundBrush" Color="{StaticResource SystemFillColorCautionBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorCriticalBackgroundBrush" Color="{StaticResource SystemFillColorCriticalBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorNeutralBackgroundBrush" Color="{StaticResource SystemFillColorNeutralBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorSolidNeutralBackgroundBrush" Color="{StaticResource SystemFillColorSolidNeutralBackground}" &gt;
+&lt;SolidColorBrush x:Key="SystemFillColorSolidAttentionBackgroundBrush" Color="{StaticResource SystemFillColorSolidAttentionBackground}" &gt;
                     </x:String>
                 </controls:SampleCodePresenter.Code>
             </controls:SampleCodePresenter>
