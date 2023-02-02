@@ -1,7 +1,7 @@
 <!-- Copyright (c) Microsoft Corporation and Contributors. -->
 <!-- Licensed under the MIT License. -->
 
-<UserControl
+<Page
     x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections.StrokeSection"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -11,14 +11,14 @@
     xmlns:controls="using:AppUIBasics.Controls"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
+    <Page.Resources>
         <Style x:Key="ColorTilesPanelStyle" TargetType="Grid">
             <Setter Property="Background" Value="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
             <Setter Property="CornerRadius" Value="4"/>
         </Style>
-    </UserControl.Resources>
+    </Page.Resources>
     
     <StackPanel x:Name="ColorSection" Spacing="8">
         <TextBlock Text="Control Stroke" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
@@ -213,4 +213,4 @@
             </controls:SampleCodePresenter>
         </Expander>
     </StackPanel>
-</UserControl>
+</Page>

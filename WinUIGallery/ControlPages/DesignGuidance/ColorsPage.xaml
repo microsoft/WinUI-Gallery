@@ -13,6 +13,10 @@
     Background="{ThemeResource HomePageBackgroundBrush}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,23 +24,28 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- TODO: Wire up and style -->
-        <!--<StackPanel Orientation="Horizontal">
-            <Button Content="Text"/>
-            <Button Content="Fill"/>
-            <Button Content="Stroke"/>
-            <Button Content="Background"/>
-        </StackPanel>-->
-        <RichTextBlock Grid.Row="1">
+        <RichTextBlock Margin="0,0,0,8">
             <Paragraph>
                 Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
             </Paragraph>
         </RichTextBlock>
-        
-        <ScrollViewer Grid.Row="2">
-            <!--<colorsections:TextSection/>-->
-            <colorsections:BackgroundSection />
-        </ScrollViewer>
 
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SelectionElement">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="4,0,0,4" HorizontalAlignment="Stretch" IsChecked="True">Text</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0" HorizontalAlignment="Stretch" Grid.Column="1">Fill</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0" HorizontalAlignment="Stretch" Grid.Column="2">Stroke</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" Grid.Column="3">Background</ToggleButton>
+        </Grid>
+
+        <ScrollViewer Grid.Row="2">
+            <Frame x:Name="NavigationFrame"/>
+        </ScrollViewer>
     </Grid>
 </Page>
