@@ -35,7 +35,7 @@
         
         <ScrollViewer Grid.Row="2">
             <!--<colorsections:TextSection/>-->
-            <colorsections:StrokeSection />
+            <colorsections:BackgroundSection />
         </ScrollViewer>
 
     </Grid>
