@@ -25,50 +25,41 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
-                        Background="{ThemeResource TextFillColorPrimary}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Text / Primary"
-                        ColorExplanation="Rest or Hover"
-                        ColorBrushName="TextFillColorPrimaryBrush"
-                        ColorValue="#000000 (E4, 89.56%)"/>
+                Background="{ThemeResource TextFillColorPrimary}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Text / Primary"
+                ColorExplanation="Rest or Hover"
+                ColorBrushName="TextFillColorPrimaryBrush"
+                ColorValue="#000000 (E4, 89.56%)"/>
             <designguidance:ColorTile
-                        Grid.Column="1"
-                        Background="{ThemeResource TextFillColorSecondaryBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Text / Secondary"
-                        ColorExplanation="Rest or Hover"
-                        ColorBrushName="TextFillColorSecondaryBrush"
-                        ColorValue="#000000 (9E, 61.86%)"/>
+                Grid.Column="1"
+                Background="{ThemeResource TextFillColorSecondaryBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Text / Secondary"
+                ColorExplanation="Rest or Hover"
+                ColorBrushName="TextFillColorSecondaryBrush"
+                ColorValue="#000000 (9E, 61.86%)"/>
             <designguidance:ColorTile
-                        Grid.Column="2"
-                        Background="{ThemeResource TextFillColorTertiaryBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Text / Tertiary"
-                        ColorExplanation="Pressed only (not accessible)"
-                        ColorBrushName="TextFillColorTertiaryBrush"
-                        ColorValue="#000000 (72, 44.58%)"/>
+                Grid.Column="2"
+                Background="{ThemeResource TextFillColorTertiaryBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Text / Tertiary"
+                ColorExplanation="Pressed only (not accessible)"
+                ColorBrushName="TextFillColorTertiaryBrush"
+                ColorValue="#000000 (72, 44.58%)"/>
             <designguidance:ColorTile
-                        Grid.Column="3"
-                        Background="{ThemeResource TextFillColorDisabledBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Text / Disabled"
-                        ColorExplanation="Disabled only (not accessible)"
-                        ColorBrushName="TextFillColorDisabledBrush"
-                        ColorValue="#000000 (5C, 36.14%)"/>
+                Grid.Column="3"
+                Background="{ThemeResource TextFillColorDisabledBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Text / Disabled"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorBrushName="TextFillColorDisabledBrush"
+                ColorValue="#000000 (5C, 36.14%)"/>
         </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{StaticResource TextFillColorPrimary}" &gt;
-&lt;SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{StaticResource TextFillColorSecondary}" &gt;
-&lt;SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{StaticResource TextFillColorTertiary}" &gt;
-&lt;SolidColorBrush x:Key="TextFillColorDisabledBrush" Color="{StaticResource TextFillColorDisab1ed}" &gt;
-                        
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
 
         <!-- Accent text-->
         <TextBlock Text="Accent Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
@@ -84,50 +75,41 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
-                        Background="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Accent Text / Primary"
-                        ColorExplanation="Rest or Hover"
-                        ColorBrushName="AccentTextFillColorPrimaryBrush"
-                        ColorValue="Dark 2"/>
+                Background="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Accent Text / Primary"
+                ColorExplanation="Rest or Hover"
+                ColorBrushName="AccentTextFillColorPrimaryBrush"
+                ColorValue="Dark 2"/>
             <designguidance:ColorTile
-                        Grid.Column="1"
-                        Background="{ThemeResource AccentTextFillColorSecondaryBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Accent Text / Secondary"
-                        ColorExplanation="Rest or Hover"
-                        ColorBrushName="AccentTextFillColorSecondaryBrush"
-                        ColorValue="Dark 3"/>
+                Grid.Column="1"
+                Background="{ThemeResource AccentTextFillColorSecondaryBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Accent Text / Secondary"
+                ColorExplanation="Rest or Hover"
+                ColorBrushName="AccentTextFillColorSecondaryBrush"
+                ColorValue="Dark 3"/>
             <designguidance:ColorTile
-                        Grid.Column="2"
-                        Background="{ThemeResource AccentTextFillColorTertiaryBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Accent Text / Tertiary"
-                        ColorExplanation="Pressed only (not accessible)"
-                        ColorBrushName="AccentTextFillColorTertiaryBrush"
-                        ColorValue="Dark 1"/>
+                Grid.Column="2"
+                Background="{ThemeResource AccentTextFillColorTertiaryBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Accent Text / Tertiary"
+                ColorExplanation="Pressed only (not accessible)"
+                ColorBrushName="AccentTextFillColorTertiaryBrush"
+                ColorValue="Dark 1"/>
             <designguidance:ColorTile
-                        Grid.Column="3"
-                        Background="{ThemeResource AccentTextFillColorDisabledBrush}"
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        ColorName="Accent Text / Disabled"
-                        ColorExplanation="Disabled only (not accessible)"
-                        ColorBrushName="AccentTextFillColorDisabledBrush"
-                        ColorValue="#000000 (5C, 36.14%)"/>
+                Grid.Column="3"
+                Background="{ThemeResource AccentTextFillColorDisabledBrush}"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False"
+                ColorName="Accent Text / Disabled"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorBrushName="AccentTextFillColorDisabledBrush"
+                ColorValue="#000000 (5C, 36.14%)"/>
         </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{StaticResource SystemAccentColorDark2}" &gt;
-&lt;SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="{StaticResource SystemAccentColorDark3}" &gt;
-&lt;SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="{StaticResource SystemAccentColorDark1}" &gt;
-&lt;SolidColorBrush x:Key="AccentTextFillColorDisabledBrush" Color="{StaticResource AccentTextFillColorDisabled}" &gt;
-                        
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
 
         <!-- Text on accent-->
         <TextBlock Text="Text On Accent" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
@@ -156,6 +138,7 @@
                         Grid.Column="2"
                         Background="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
                         Foreground="{ThemeResource TextFillColorPrimary}"
+                        ShowSeparator="False"
                         ColorName="Text on Accent / Secondary"
                         ColorExplanation="Pressed only (not accessible)"
                         ColorBrushName="AccentTextFillColorSecondaryBrush"
@@ -182,23 +165,11 @@
                         Grid.Column="2"
                         Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
                         Foreground="{ThemeResource TextFillColorPrimary}"
+                        ShowSeparator="False"
                         ColorName="For highlighted text in text entry experiences"
                         ColorExplanation="Disabled only (not accessible)"
                         ColorBrushName="AccentTextFillColorDisabledBrush"
                         ColorValue="#FFFFFF (FF, 100%)"/>
         </Grid>
-        <Expander Header="Source code" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <controls:SampleCodePresenter Language="XAML">
-                <controls:SampleCodePresenter.Code>
-                    <x:String xml:space="preserve">
-&lt;SolidColorBrush x:Key="TextOnAccentFillColorPrimaryBrush" Color="{StaticResource TextOnAccentFillColorPrimary}" &gt;
-&lt;SolidColorBrush x:Key="TextOnAccentFillColorSecondaryBrush" Color="{StaticResource TextOnAccentFillColorSecondary}" &gt;
-&lt;SolidColorBrush x:Key="TextOnAccentFillColorDisabledBrush" Color="{StaticResource TextOnAccentFillColorDisabled}" &gt;
-&lt;SolidColorBrush x:Key="TextOnAccentFillColorSelectedTextBrush" Color="{StaticResource TextOnAccentFillColorSelectedText}" &gt;
-                        
-                    </x:String>
-                </controls:SampleCodePresenter.Code>
-            </controls:SampleCodePresenter>
-        </Expander>
     </StackPanel>
 </Page>

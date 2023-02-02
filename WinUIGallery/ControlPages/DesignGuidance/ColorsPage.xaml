@@ -17,7 +17,7 @@
         <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
     </Page.Resources>
     
-    <Grid>
+    <Grid VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -27,7 +27,10 @@
         <RichTextBlock Margin="0,0,0,8">
             <Paragraph>
                 Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+            <LineBreak/>
             </Paragraph>
+            <Paragraph FontWeight="Bold">Using colors</Paragraph>
+            <Paragraph>Since the colors are provided as part of WinUI 3, you can use the colors below in your app by referencing them using ThemeResource bindings.</Paragraph>
         </RichTextBlock>
 
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SelectionElement">
@@ -44,7 +47,7 @@
             <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" Grid.Column="3">Background</ToggleButton>
         </Grid>
 
-        <ScrollViewer Grid.Row="2">
+        <ScrollViewer Grid.Row="2" VerticalAlignment="Stretch">
             <Frame x:Name="NavigationFrame"/>
         </ScrollViewer>
     </Grid>

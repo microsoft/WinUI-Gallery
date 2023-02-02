@@ -8,37 +8,54 @@
     xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    PointerEntered="UserControl_PointerEntered"
+    PointerExited="UserControl_PointerExited"
     mc:Ignorable="d">
 
-    <Grid Padding="10,12" RowSpacing="6"
-        Background="{x:Bind Background, Mode=OneWay}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*" MinHeight="30"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Foreground="{x:Bind Foreground, Mode=OneWay}" TextWrapping="WrapWholeWords"
+        <Grid Padding="10,12" RowSpacing="6"
+            Background="{x:Bind Background, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Foreground="{x:Bind Foreground, Mode=OneWay}" TextWrapping="WrapWholeWords"
             Text="{x:Bind ColorName, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
-        <Button Grid.Column="1" AutomationProperties.Name="Copy brush name"
+            <Button x:Name="CopyBrushNameButton" Visibility="Collapsed"
+                Grid.Column="1" Grid.RowSpan="4"
+                AutomationProperties.Name="Copy brush name"
                 Background="Transparent" BorderBrush="Transparent"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
                 ToolTipService.ToolTip="Copy brush name" VerticalAlignment="Top"
                 HorizontalAlignment="Right" Click="CopyBrushNameButton_Click" Padding="4">
-            <FontIcon Glyph="&#xE8C8;" FontSize="16"/>
-        </Button>
+                <FontIcon Glyph="&#xE8C8;" FontSize="16"/>
+            </Button>
 
-        <TextBlock Text="{x:Bind ColorExplanation, Mode=OneWay}" Grid.Row="1"
+            <TextBlock Text="{x:Bind ColorExplanation, Mode=OneWay}" Grid.Row="1"
             TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>
 
-        <TextBlock Text="{x:Bind ColorBrushName, Mode=OneWay}" Grid.Row="3" Grid.ColumnSpan="2"
+            <TextBlock Text="{x:Bind ColorBrushName, Mode=OneWay}" Grid.Row="3" Grid.ColumnSpan="2"
             TextWrapping="Wrap" IsTextSelectionEnabled="True" Style="{StaticResource CaptionTextBlockStyle}"/>
-        <TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>
+
+            <!-- Right now, we don't want to display colors. If we ever want to show them again, we can show them again by using the following code. -->
+            <!--<TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>-->
+        </Grid>
+
+        <Border HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="1"
+                Visibility="{x:Bind ShowSeparator, Mode=OneWay}" Grid.Column="1"
+                BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
     </Grid>
 </UserControl>
