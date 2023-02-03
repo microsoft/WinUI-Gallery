@@ -196,7 +196,6 @@
     <Content Include="Assets\ControlImages\ViewBox.png" />
     <Content Include="Assets\ControlImages\WebView.png" />
     <Content Include="Assets\ControlImages\XamlUICommand.png" />
-
     <Content Include="Assets\HomeHeaderTiles\gettingStarted.png" />
     <Content Include="Assets\HomeHeaderTiles\githubTile.png" />
     <Content Include="Assets\HomeHeaderTiles\style-1x.png" />

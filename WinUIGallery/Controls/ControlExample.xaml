@@ -65,7 +65,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Margin="0,12" Text="{x:Bind HeaderText}" />
+        <TextBlock x:Name="HeaderTextPresenter" Style="{ThemeResource BodyStrongTextBlockStyle}" Margin="0,12" Text="{x:Bind HeaderText}" />
 
         <RichTextBlock x:Name="ErrorTextBlock" Visibility="Collapsed" Grid.Row="1" Margin="0,0,0,12" Foreground="{ThemeResource SystemFillColorCriticalBrush}" IsTextSelectionEnabled="True">
             <Paragraph>
@@ -164,7 +164,7 @@
                         Code="{x:Bind CSharp}"
                         CodeSourceFile="{x:Bind CSharpSource}"
                         Substitutions="{x:Bind Substitutions}"
-                        IsCSharpSample="true"/>
+                        SampleType="CSharp"/>
                 </StackPanel>
             </muxc:Expander>
 

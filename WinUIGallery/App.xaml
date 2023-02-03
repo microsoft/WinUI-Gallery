@@ -103,6 +103,12 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
 
+            <Style x:Key="ColorPageExampleBox" TargetType="StackPanel">
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Spacing" Value="4"/>
+            </Style>
+
             <x:Double x:Key="TeachingTipMinWidth">50</x:Double>
 
             <SolidColorBrush x:Key="WindowCaptionBackground">Transparent</SolidColorBrush>
