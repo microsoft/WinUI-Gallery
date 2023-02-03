@@ -2902,7 +2902,7 @@
     },
     {
       "UniqueId": "MultipleWindows",
-      "Title": "Windows",
+      "Title": "Windowing",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -2911,7 +2911,7 @@
       "Items": [
         {
           "UniqueId": "CreateMultipleWindows",
-          "Title": "Create Multiple Windows",
+          "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",

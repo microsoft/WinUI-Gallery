@@ -40,38 +40,37 @@
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None">
             <GridView.Header>
-                <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
+                <Grid
+                    x:Name="HeaderGrid"
+                    Height="448"
+                    Margin="-24,0,-24,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="212"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid Height="256" CornerRadius="8,0,0,0">
-                        <Image
-                            x:Name="headerImage"
-                            HorizontalAlignment="Center"
-                            Source="Assets/MainPage_Banner.png"
-                            Stretch="UniformToFill" />
-                        <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                        <StackPanel
-                            Margin="36,0,0,0"
-                            VerticalAlignment="Center"
-                            Orientation="Vertical">
-                            <TextBlock
-                                x:Name="smallHeaderText"
-                                Foreground="Black"
-                                Style="{StaticResource TitleTextBlockStyle}"
-                                Text="{StaticResource AppTitleName}" />
-                            <TextBlock
-                                x:Name="smallHeaderSubtitleText"
-                                Foreground="Black"
-                                Style="{StaticResource SubtitleTextBlockStyle}"
-                                Text="{StaticResource WinUIVersion}" />
-                        </StackPanel>
-                    </Grid>
-                    <controls:TileGallery
-                        x:Name="headerTileGallery"
-                        Grid.Row="1"
-                        Height="200" />
+                    <Image
+                        x:Name="headerImage"
+                        Grid.RowSpan="2"
+                        HorizontalAlignment="Center"
+                        Source="Assets/MainPage_Banner.png"
+                        Stretch="UniformToFill" />
+                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                    <StackPanel
+                        Margin="36,0,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Vertical">
+                        <TextBlock
+                            x:Name="smallHeaderSubtitleText"
+                            FontSize="18"
+                            Text="{StaticResource WinUIVersion}" />
+                        <TextBlock
+                            x:Name="smallHeaderText"
+                            Style="{StaticResource TitleLargeTextBlockStyle}"
+                            Text="{StaticResource AppTitleName}" />
+
+                    </StackPanel>
+
+                    <controls:TileGallery Grid.Row="1" x:Name="headerTileGallery" />
                 </Grid>
             </GridView.Header>
 

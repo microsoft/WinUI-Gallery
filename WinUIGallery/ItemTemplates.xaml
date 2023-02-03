@@ -8,7 +8,7 @@
         <UserControl>
             <Grid
                 x:Name="controlRoot"
-                Width="360"
+                Width="406"
                 Height="90"
                 Padding="8"
                 HorizontalAlignment="Stretch"
@@ -54,6 +54,8 @@
 
                 <InfoBadge
                     Grid.Column="2"
+                    Width="10"
+                    Margin="4"
                     VerticalAlignment="Top"
                     Style="{StaticResource AttentionIconInfoBadgeStyle}"
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />

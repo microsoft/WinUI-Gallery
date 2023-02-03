@@ -92,9 +92,11 @@
     <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
     <None Remove="DataModel\IconsData.json" />
-    <None Remove="DesignGuidancePage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />
     <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
@@ -107,11 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\DesignGuidance\ColorPageExample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="DesignGuidancePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
