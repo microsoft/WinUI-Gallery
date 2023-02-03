@@ -24,15 +24,18 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <RichTextBlock Margin="0,0,0,8">
-            <Paragraph>
-                Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
-            <LineBreak/>
-            </Paragraph>
-            <Paragraph FontWeight="Bold">Using colors</Paragraph>
-            <Paragraph>Since the colors are provided as part of WinUI 3, you can use the colors below in your app by referencing them using ThemeResource bindings.</Paragraph>
-        </RichTextBlock>
-
+        <StackPanel Grid.Row="0">
+            <RichTextBlock>
+                <Paragraph>
+                    Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+                    <LineBreak/>
+                </Paragraph>
+            </RichTextBlock>
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Margin="0,0,0,5" Text="Using colors" />
+            <RichTextBlock  Margin="0,0,0,20">
+                <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
+            </RichTextBlock>
+        </StackPanel>
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SelectionElement">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
