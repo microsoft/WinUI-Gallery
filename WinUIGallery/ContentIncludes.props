@@ -114,6 +114,7 @@
     <Content Include="Assets\ControlImages\CalendarView.png" />
     <Content Include="Assets\ControlImages\Canvas.png" />
     <Content Include="Assets\ControlImages\Checkbox.png" />
+    <Content Include="Assets\ControlImages\Clipboard.png" />
     <Content Include="Assets\ControlImages\ColorPaletteResources.png" />
     <Content Include="Assets\ControlImages\ColorPicker.png" />
     <Content Include="Assets\ControlImages\ComboBox.png" />
@@ -128,6 +129,7 @@
     <Content Include="Assets\ControlImages\DropDownButton.png" />
     <Content Include="Assets\ControlImages\EasingFunction.png" />
     <Content Include="Assets\ControlImages\Expander.png" />
+    <Content Include="Assets\ControlImages\FilePicker.png" />
     <Content Include="Assets\ControlImages\FlipView.png" />
     <Content Include="Assets\ControlImages\Flyout.png" />
     <Content Include="Assets\ControlImages\Grid.png" />
@@ -194,11 +196,12 @@
     <Content Include="Assets\ControlImages\ViewBox.png" />
     <Content Include="Assets\ControlImages\WebView.png" />
     <Content Include="Assets\ControlImages\XamlUICommand.png" />
-
-    <Content Include="Assets\gettingStarted.png" />
-    <Content Include="Assets\githubTile.png" />
-    <Content Include="Assets\style-1x.png" />
-    <Content Include="Assets\template_studio.png" />
+    <Content Include="Assets\HomeHeaderTiles\gettingStarted.png" />
+    <Content Include="Assets\HomeHeaderTiles\githubTile.png" />
+    <Content Include="Assets\HomeHeaderTiles\style-1x.png" />
+    <Content Include="Assets\HomeHeaderTiles\template_studio.png" />
+    <Content Include="Assets\HomeHeaderTiles\toolkit.png" />
+    <Content Include="Assets\HomeHeaderTiles\accessibility_tile.png" />
     <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\ButtonsIcon.png" />
     <Content Include="Assets\NavigationViewItemIcons\CollectionIcon.png" />
@@ -337,6 +340,16 @@
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample5_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />

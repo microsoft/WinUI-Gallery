@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
-    <Grid Margin="0,0,12,12">
+    <Grid Width="174"> <!-- Half of a control tile + spacing -->
         <Grid.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
@@ -32,10 +32,10 @@
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        <HyperlinkButton Height="150" Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}" AutomationProperties.LabeledBy="{Binding ElementName=TitleText}">
+        <HyperlinkButton Padding="-1" NavigateUri="{x:Bind Link, Mode=OneWay}" AutomationProperties.LabeledBy="{Binding ElementName=TitleText}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="102" />
+                    <RowDefinition Height="104" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Image
@@ -50,7 +50,7 @@
                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                VerticalAlignment="Center"
                                TextWrapping="Wrap" />
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12" FontSize="16"/>
+                    <FontIcon Glyph="&#xE8A7;" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="12" FontSize="14"/>
                 </Grid>
             </Grid>
         </HyperlinkButton>

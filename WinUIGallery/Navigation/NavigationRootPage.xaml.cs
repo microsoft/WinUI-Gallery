@@ -32,6 +32,8 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap;
+using AppUIBasics.ControlPages;
 
 namespace AppUIBasics
 {
@@ -42,8 +44,6 @@ namespace AppUIBasics
         private RootFrameNavigationHelper _navHelper;
         private bool _isGamePadConnected;
         private bool _isKeyboardConnected;
-        private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
-        private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
 
         public static NavigationRootPage GetForElement(object obj)
         {
@@ -149,7 +149,7 @@ namespace AppUIBasics
 
         public bool CheckNewControlSelected()
         {
-            return _newControlsMenuItem.IsSelected;
+            return NewControlsItem.IsSelected;
         }
 
         // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
@@ -182,6 +182,23 @@ namespace AppUIBasics
                                 item.IsSelected = true;
                                 return;
                             }
+                            else if (item.MenuItems.Count > 0)
+                            {
+                                foreach (var rawInnerItem in item.MenuItems)
+                                {
+                                    if (rawInnerItem is NavigationViewItem innerItem)
+                                    {
+                                        if ((string)innerItem.Tag == id)
+                                        {
+                                            group.IsExpanded = true;
+                                            item.IsExpanded = true;
+                                            NavigationView.SelectedItem = innerItem;
+                                            innerItem.IsSelected = true;
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -190,7 +207,7 @@ namespace AppUIBasics
 
         private void AddNavigationMenuItems()
         {
-            foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title))
+            foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection))
             {
                 var itemGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.ImageIconPath) };
 
@@ -202,7 +219,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item};
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
@@ -213,27 +230,9 @@ namespace AppUIBasics
                 }
 
                 NavigationViewControl.MenuItems.Add(itemGroup);
-
-                if (group.UniqueId == "AllControls")
-                {
-                    this._allControlsMenuItem = itemGroup;
-                }
-                else if (group.UniqueId == "NewControls")
-                {
-                    this._newControlsMenuItem = itemGroup;
-                }
             }
 
-            // Move "What's New" and "All Controls" to the top of the NavigationView
-            NavigationViewControl.MenuItems.Remove(_allControlsMenuItem);
-            NavigationViewControl.MenuItems.Remove(_newControlsMenuItem);
-            NavigationViewControl.MenuItems.Insert(0, _allControlsMenuItem);
-            NavigationViewControl.MenuItems.Insert(0, _newControlsMenuItem);
-
-            // Separate the All/New items from the rest of the categories.
-            NavigationViewControl.MenuItems.Insert(2, new Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator());
-
-            _newControlsMenuItem.Loaded += OnNewControlsMenuItemLoaded;
+            NewControlsItem.Loaded += OnNewControlsMenuItemLoaded;
         }
 
         private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -252,10 +251,10 @@ namespace AppUIBasics
         private static IconElement GetIcon(string imagePath)
         {
             return imagePath.ToLowerInvariant().EndsWith(".png") ?
-                        (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
+                        (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
                         (IconElement)new FontIcon()
                         {
-                           // FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                            // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath
                         };
         }
@@ -311,20 +310,47 @@ namespace AppUIBasics
             else
             {
                 var selectedItem = args.SelectedItemContainer;
-
-                if (selectedItem == _allControlsMenuItem)
+                if (selectedItem == AllControlsItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(AllControlsPage))
                     {
                         Navigate(typeof(AllControlsPage));
                     }
                 }
-                else if (selectedItem == _newControlsMenuItem)
+                else if (selectedItem == NewControlsItem)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
                         Navigate(typeof(NewControlsPage));
                     }
+                }
+                else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)
+                {
+                    //Navigate(typeof(SectionPage), "Design_Guidance");
+                }
+                else if (selectedItem == TypographyItem)
+                {
+                    Navigate(typeof(ItemPage), "Typography");
+                }
+                else if(selectedItem == ColorsItem)
+                {
+                    Navigate(typeof(ItemPage), "Colors");
+                }
+                else if (selectedItem == IconsItem)
+                {
+                    Navigate(typeof(ItemPage), "Icons");
+                }
+                else if (selectedItem == AccessibilityScreenReaderPage)
+                {
+                    Navigate(typeof(ItemPage), "AccessibilityScreenReader");
+                }
+                else if (selectedItem == AccessibilityKeyboardPage)
+                {
+                    Navigate(typeof(ItemPage), "AccessibilityKeyboard");
+                }
+                else if (selectedItem == AccessibilityContrastPage)
+                {
+                    Navigate(typeof(ItemPage), "AccessibilityColorContrast");
                 }
                 else
                 {
@@ -348,7 +374,8 @@ namespace AppUIBasics
             CloseTeachingTips();
 
             if (e.SourcePageType == typeof(AllControlsPage) ||
-                e.SourcePageType == typeof(NewControlsPage))
+                e.SourcePageType == typeof(NewControlsPage) ||
+                e.SourcePageType == typeof(IconsPage))
             {
                 NavigationViewControl.AlwaysShowHeader = false;
             }
@@ -577,7 +604,7 @@ namespace AppUIBasics
 
         private void GoBackInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            if(this.rootFrame.CanGoBack)
+            if (this.rootFrame.CanGoBack)
             {
                 this.rootFrame.GoBack();
             }

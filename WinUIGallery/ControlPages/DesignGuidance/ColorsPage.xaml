@@ -1,0 +1,57 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.ColorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:AppUIBasics.Controls"
+    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:datamodel="using:WinUIGallery.DesktopWap.DataModel" xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance" xmlns:colorsections="using:WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections"
+    Background="{ThemeResource HomePageBackgroundBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
+    </Page.Resources>
+    
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <RichTextBlock>
+                <Paragraph>
+                    Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.
+                    <LineBreak/>
+                </Paragraph>
+            </RichTextBlock>
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Margin="0,0,0,5" Text="Using colors" />
+            <RichTextBlock  Margin="0,0,0,20">
+                <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SelectionElement">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="4,0,0,4" HorizontalAlignment="Stretch" IsChecked="True">Text</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0" HorizontalAlignment="Stretch" Grid.Column="1">Fill</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0" HorizontalAlignment="Stretch" Grid.Column="2">Stroke</ToggleButton>
+            <ToggleButton Checked="ToggleButton_Checked" CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" Grid.Column="3">Background</ToggleButton>
+        </Grid>
+
+        <ScrollViewer Grid.Row="2" VerticalAlignment="Stretch">
+            <Frame x:Name="NavigationFrame"/>
+        </ScrollViewer>
+    </Grid>
+</Page>
