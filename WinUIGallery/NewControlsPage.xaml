@@ -50,7 +50,7 @@
                             x:Name="headerImage"
                             HorizontalAlignment="Center"
                             Source="Assets/MainPage_Banner.png"
-                            Stretch="Fill" />
+                            Stretch="UniformToFill" />
                         <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                         <StackPanel
                             Margin="36,0,0,0"

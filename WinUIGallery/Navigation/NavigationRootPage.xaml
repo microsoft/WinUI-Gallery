@@ -116,8 +116,8 @@
             <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating"/>
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NewControlsItem" Content="Home" Icon="Home"/>
-                <NavigationViewItem x:Name="AllControlsItem" Content="All controls" Icon="AllApps"/>
-                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design Guidance" Tag="Design_Guidance">
+                
+                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design guidance" Tag="Design_Guidance">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
@@ -133,9 +133,12 @@
                             </NavigationViewItem.MenuItems>
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
-                </NavigationViewItem>
+                </NavigationViewItem>              
+                <NavigationViewItemHeader Content="Controls"/>
+                <NavigationViewItem x:Name="AllControlsItem" Content="All" Icon="AllApps"/>
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
+            
         </NavigationView>
     </Grid>
 </Page>
