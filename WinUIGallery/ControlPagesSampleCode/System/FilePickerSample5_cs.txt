@@ -1,0 +1,65 @@
+﻿private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
+{
+    // Clear previous returned file name, if it exists, between iterations of this scenario
+    SaveFileOutputTextBlock.Text = "";
+
+    // Create a file picker
+    FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+
+    // Retrieve the window handle (HWND) of the current WinUI 3 window.
+    var window = WindowHelper.GetWindowForElement(this);
+    var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+    // Initialize the file picker with the window handle (HWND).
+    WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hWnd);
+
+    // Set options for your file picker
+    savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+    // Dropdown of file types the user can save the file as
+    savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+    // Default file name if the user does not type one in or select a file to replace
+    var enteredFileName = ((sender as Button).Parent as StackPanel)
+    .FindName("FileNameTextBox") as TextBox;
+    savePicker.SuggestedFileName = enteredFileName.Text;
+
+    // Open the picker for the user to pick a file
+    StorageFile file= await savePicker.PickSaveFileAsync();
+    if (file != null)
+    {
+        // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.
+        CachedFileManager.DeferUpdates(file);
+
+        // write to file
+        var textBox = ((sender as Button).Parent as StackPanel)
+        .FindName("FileContentTextBox") as TextBox;
+            using (var stream = await file.OpenStreamForWriteAsync())
+            {
+                using (var tw = new StreamWriter(stream))
+                {
+                    tw.WriteLine(textBox?.Text);
+                }
+            }
+        // Another way to write a string to the file is to use this instead:
+        // await FileIO.WriteTextAsync(file, "Example file contents.");
+
+        // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
+        // Completing updates may require Windows to ask for user input.
+        FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+        if (status == FileUpdateStatus.Complete)
+        {
+            SaveFileOutputTextBlock.Text = "File " + file.Name + " was saved.";
+        }
+        else if (status == FileUpdateStatus.CompleteAndRenamed)
+        {
+            SaveFileOutputTextBlock.Text = "File " + file.Name + " was renamed and saved.";
+        }
+        else
+        {
+            SaveFileOutputTextBlock.Text = "File " + file.Name + " couldn't be saved.";
+        }
+    }
+    else
+    {
+        SaveFileOutputTextBlock.Text = "Operation cancelled.";
+    }
+}

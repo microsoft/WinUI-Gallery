@@ -1,0 +1,5 @@
+﻿<StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+    <Button x:Name="PickAPhotoButton" Content="Open a picture"
+            Click="PickAPhotoButton_Click" Margin="0,0,0,10"/>
+    <TextBlock x:Name="PickAPhotoOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+</StackPanel>

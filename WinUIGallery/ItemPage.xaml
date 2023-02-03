@@ -21,6 +21,10 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
 
+
+    <Page.Resources>
+        <common:BooleanToInvertedVisibilityConverter x:Key="BooleanToInvertedVisibilityConverter"/>
+    </Page.Resources>
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -153,7 +157,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4">
+                    <StackPanel x:Name="SourcePanel" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,24" Spacing="4" Visibility="{x:Bind Item.HideSourceCodeAndRelatedControls,Mode=OneWay, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                         <TextBlock
                             x:Name="SourceHeader"
                             x:Uid="SourceHeader"
@@ -197,7 +201,7 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24">
+                    <StackPanel x:Name="RelatedControlsPanel" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,24" Visibility="{x:Bind Item.HideSourceCodeAndRelatedControls,Mode=OneWay, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                         <TextBlock
                             x:Name="relatedControlsHeader"
                             x:Uid="RelatedControlsHeader"
