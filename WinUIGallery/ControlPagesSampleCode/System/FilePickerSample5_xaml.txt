@@ -1,0 +1,16 @@
+﻿<StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+    <TextBlock Text="File name:" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <TextBox x:Name="FileNameTextBox" PlaceholderText="Type your file name here..." Width="180"/>
+    <TextBlock Text=".txt" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+</StackPanel>
+
+<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+    <TextBlock Text="File content:" Width="90" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <TextBox x:Name="FileContentTextBox" PlaceholderText="Type your file contents here..." Width="210"/>
+</StackPanel>
+
+<StackPanel Orientation="Horizontal">
+    <Button x:Name="SaveToAFileButton" Content="Save a file" Width="90"
+            Click="SaveFileButton_Click" Margin="0,0,0,10"/>
+    <TextBlock x:Name="SaveFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+</StackPanel>

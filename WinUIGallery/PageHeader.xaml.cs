@@ -54,19 +54,6 @@ namespace AppUIBasics
         public static readonly DependencyProperty SubtitleProperty =
             DependencyProperty.Register("Subtitle", typeof(object), typeof(PageHeader), new PropertyMetadata(null));
 
-
-
-        public Thickness HeaderPadding
-        {
-            get { return (Thickness)GetValue(HeaderPaddingProperty); }
-            set { SetValue(HeaderPaddingProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for BackgroundColorOpacity.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderPaddingProperty =
-            DependencyProperty.Register("HeaderPadding", typeof(Thickness), typeof(PageHeader), new PropertyMetadata((Thickness)App.Current.Resources["PageHeaderDefaultPadding"]));
-
-
         public double BackgroundColorOpacity
         {
             get { return (double)GetValue(BackgroundColorOpacityProperty); }

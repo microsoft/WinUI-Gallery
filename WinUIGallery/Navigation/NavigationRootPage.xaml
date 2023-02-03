@@ -33,36 +33,38 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
+            <VisualStateGroup x:Name="TitleBarStates">
+                <VisualState x:Name="WideLayout">
                     <VisualState.StateTriggers>
-                        <local:DeviceFamilyTrigger DeviceFamily="Windows.Xbox" />
+                        <AdaptiveTrigger MinWindowWidth="640" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="SmallLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="XboxContentSafeRect.Visibility" Value="Visible" />
+                        <Setter Target="AppTitleBar.Margin" Value="96,0,0,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-
         </VisualStateManager.VisualStateGroups>
-
-        <Rectangle
-            x:Name="XboxContentSafeRect"
-            Width="48"
-            Fill="{ThemeResource NavigationViewDefaultPaneBackground}"
-            Visibility="Collapsed" Canvas.ZIndex="0" />
-
+        
         <Border x:Name="AppTitleBar"
                 Grid.Column="1"
+                Margin="48,0,0,0"
                 IsHitTestVisible="True"
                 VerticalAlignment="Top"
                 Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
                 Canvas.ZIndex="1">
-            <TextBlock x:Name="AppTitle"
+            <StackPanel Orientation="Horizontal">
+                <Image Width="18" Source="ms-appx:///Assets/Tiles/SmallTile-sdk.png"/>
+                <TextBlock x:Name="AppTitle"
                        Text="{x:Bind AppTitleText}"
-                       VerticalAlignment="Top"
-                       Margin="0,15,0,0"
+                       VerticalAlignment="Center"
+                       Margin="16,0,0,0"
                        Style="{StaticResource CaptionTextBlockStyle}" />
+            </StackPanel>
         </Border>
 
         <Grid x:Name="AutomationHelpersPanel"  Grid.Column="1">
@@ -105,9 +107,6 @@
             HeaderTemplate="{StaticResource NavigationViewHeaderTemplate}"
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="False"
-            PaneOpening="NavigationViewControl_PaneOpening"
-            PaneClosing="NavigationViewControl_PaneClosing"
-            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             SelectionChanged="OnNavigationViewSelectionChanged"
             Loaded="OnNavigationViewControlLoaded">
             <NavigationView.AutoSuggestBox>

@@ -10,26 +10,6 @@
     HighContrastAdjustment="Auto">
     <Grid>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:DeviceFamilyTrigger DeviceFamily="Windows.Xbox" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="headerControl.Padding" Value="24,15,48,0" />
-                        <Setter Target="headerControl.Height" Value="75" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:DeviceFamilyTrigger DeviceFamily="Windows.Mobile" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="headerControl.Padding" Value="14,0,14,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
             <VisualStateGroup x:Name="TitleForegroundStates">
                 <VisualState x:Name="DefaultForeground" />
                 <VisualState x:Name="AlternateForeground">
