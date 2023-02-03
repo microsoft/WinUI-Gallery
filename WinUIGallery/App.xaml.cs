@@ -95,7 +95,7 @@ namespace AppUIBasics
             IdleSynchronizer.Init();
 
             startupWindow = WindowHelper.CreateWindow();
-
+            startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached)
             //{

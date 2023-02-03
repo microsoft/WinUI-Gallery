@@ -1,0 +1,120 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+
+<Page x:Class="AppUIBasics.ControlPages.FilePickerPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AppUIBasics"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <StackPanel>
+
+        <!-- 1) PICK A SINGLE FILE -->
+        <local:ControlExample x:Name="Example1" HeaderText="Pick a single file" 
+                              XamlSource="System/FilePickerSample1_xaml.txt"
+                              CSharpSource="System/FilePickerSample1_cs.txt">
+            <local:ControlExample.Example>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,0,15">
+                        Prompt the user to pick a single file.
+                    </TextBlock>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <Button x:Name="PickAFileButton" Content="Open a file"
+                                Click="PickAFileButton_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="PickAFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <!-- 2) PICK A SPECIFIC FILE TYPE-->
+        <local:ControlExample x:Name="Example2" HeaderText="Pick a specific file type" 
+                              XamlSource="System/FilePickerSample2_xaml.txt"
+                              CSharpSource="System/FilePickerSample2_cs.txt">
+            <local:ControlExample.Example>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,0,15">
+                        Prompt the user to pick a single photo from their Pictures Library.
+                    </TextBlock>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <Button x:Name="PickAPhotoButton" Content="Open a picture"
+                                Click="PickAPhotoButton_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="PickAPhotoOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <!-- 3) PICK MULTIPLE FILES -->
+        <local:ControlExample x:Name="Example3" HeaderText="Pick multiple files" 
+                              XamlSource="System/FilePickerSample3_xaml.txt"
+                              CSharpSource="System/FilePickerSample3_cs.txt">
+            <local:ControlExample.Example>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,0,15">
+                        Prompt the user to pick one or more files.
+                    </TextBlock>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <Button x:Name="PickFilesButton" Content="Open multiple files"
+                                Click="PickFilesButton_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="PickFilesOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <!-- 4) PICK A FOLDER -->
+        <local:ControlExample x:Name="Example4" HeaderText="Pick a folder" 
+                              XamlSource="System/FilePickerSample4_xaml.txt"
+                              CSharpSource="System/FilePickerSample4_cs.txt">
+            <local:ControlExample.Example>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,0,15">
+                        Prompt the user to pick a folder so its contents can be accessed later.
+                    </TextBlock>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <Button x:Name="PickFolderButton" Content="Open a folder"
+                                Click="PickFolderButton_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="PickFolderOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+        <!-- 5) SAVE TO A FILE -->
+        <local:ControlExample x:Name="Example5" HeaderText="Save a file" 
+                              XamlSource="System/FilePickerSample5_xaml.txt"
+                              CSharpSource="System/FilePickerSample5_cs.txt">
+            <local:ControlExample.Example>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,0,15">
+                        Prompt the user to save a file.
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                        <TextBlock Text="File name:" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="FileNameTextBox" PlaceholderText="Type your file name here..." Width="180"/>
+                        <TextBlock Text=".txt" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="File content:" Width="90" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="FileContentTextBox" PlaceholderText="Type your file contents here..." Width="210"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="SaveToAFileButton" Content="Save a file" Width="90"
+                                Click="SaveFileButton_Click" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="SaveFileOutputTextBlock" TextWrapping="Wrap" Padding="20,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
+    </StackPanel>
+</Page>

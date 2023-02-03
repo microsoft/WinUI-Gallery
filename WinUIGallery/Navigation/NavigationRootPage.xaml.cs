@@ -364,7 +364,6 @@ namespace AppUIBasics
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
                         Navigate(typeof(ItemPage), item.UniqueId);
                     }
-
                 }
             }
         }
@@ -526,33 +525,6 @@ namespace AppUIBasics
             }
         }
 
-        private void NavigationViewControl_PaneClosing(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewPaneClosingEventArgs args)
-        {
-            UpdateAppTitleMargin(sender);
-        }
-
-        private void NavigationViewControl_PaneOpening(Microsoft.UI.Xaml.Controls.NavigationView sender, object args)
-        {
-            UpdateAppTitleMargin(sender);
-        }
-
-        private void NavigationViewControl_DisplayModeChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewDisplayModeChangedEventArgs args)
-        {
-            Thickness currMargin = AppTitleBar.Margin;
-            if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
-            {
-                AppTitleBar.Margin = new Thickness() { Left = (sender.CompactPaneLength * 2), Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
-
-            }
-            else
-            {
-                AppTitleBar.Margin = new Thickness() { Left = sender.CompactPaneLength, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
-            }
-
-            UpdateAppTitleMargin(sender);
-            UpdateHeaderMargin(sender);
-        }
-
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
         {
             const int smallLeftIndent = 4, largeLeftIndent = 24;
@@ -583,21 +555,6 @@ namespace AppUIBasics
                 else
                 {
                     AppTitle.Margin = new Thickness() { Left = largeLeftIndent, Top = currMargin.Top, Right = currMargin.Right, Bottom = currMargin.Bottom };
-                }
-            }
-        }
-
-        private void UpdateHeaderMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
-        {
-            if (PageHeader != null)
-            {
-                if (sender.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal)
-                {
-                    PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderMinimalPadding"];
-                }
-                else
-                {
-                    PageHeader.HeaderPadding = (Thickness)App.Current.Resources["PageHeaderDefaultPadding"];
                 }
             }
         }
