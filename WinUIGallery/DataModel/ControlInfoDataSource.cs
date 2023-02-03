@@ -30,7 +30,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -47,6 +47,7 @@ namespace AppUIBasics.Data
             this.IsPreview = isPreview;
             this.Docs = new ObservableCollection<ControlInfoDocLink>();
             this.RelatedControls = new ObservableCollection<string>();
+            this.HideSourceCodeAndRelatedControls = hideSourceCodeAndRelatedControls;
         }
 
         public string UniqueId { get; private set; }
@@ -61,6 +62,7 @@ namespace AppUIBasics.Data
         public bool IsNew { get; private set; }
         public bool IsUpdated { get; private set; }
         public bool IsPreview { get; private set; }
+        public bool HideSourceCodeAndRelatedControls { get; private set; }
         public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
         public ObservableCollection<string> RelatedControls { get; private set; }
 
@@ -89,7 +91,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace, bool isSpecialSection)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -99,6 +101,7 @@ namespace AppUIBasics.Data
             this.ImagePath = imagePath;
             this.ImageIconPath = imageIconPath;
             this.Items = new ObservableCollection<ControlInfoDataItem>();
+            this.IsSpecialSection = isSpecialSection;
         }
 
         public string UniqueId { get; private set; }
@@ -108,6 +111,7 @@ namespace AppUIBasics.Data
         public string ImagePath { get; private set; }
         public string ImageIconPath { get; private set; }
         public string ApiNamespace { get; private set; } = "";
+        public bool IsSpecialSection { get; set; }
         public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
@@ -209,13 +213,15 @@ namespace AppUIBasics.Data
 
                     JsonObject groupObject = groupValue.GetObject();
 
+                    var usesCustomNavigationItems = groupObject.ContainsKey("IsSpecialSection") ? groupObject["IsSpecialSection"].GetBoolean() : false;
                     ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
                                                                           groupObject["Title"].GetString(),
                                                                           groupObject["ApiNamespace"].GetString(),
                                                                           groupObject["Subtitle"].GetString(),
                                                                           groupObject["ImagePath"].GetString(),
                                                                           groupObject["ImageIconPath"].GetString(),
-                                                                          groupObject["Description"].GetString());
+                                                                          groupObject["Description"].GetString(),
+                                                                          usesCustomNavigationItems);
 
                     foreach (JsonValue itemValue in groupObject["Items"].GetArray())
                     {
@@ -240,6 +246,7 @@ namespace AppUIBasics.Data
                             badgeString = "Preview";
                         }
 
+                        var hideSourceCodeAndRelatedControls = itemObject.ContainsKey("HideSourceCodeAndRelatedControls") ? itemObject["HideSourceCodeAndRelatedControls"].GetBoolean() : false;
                         var item = new ControlInfoDataItem(itemObject["UniqueId"].GetString(),
                                                                 itemObject["Title"].GetString(),
                                                                 itemObject["ApiNamespace"].GetString(),
@@ -251,7 +258,8 @@ namespace AppUIBasics.Data
                                                                 itemObject["Content"].GetString(),
                                                                 isNew,
                                                                 isUpdated,
-                                                                isPreview);
+                                                                isPreview,
+                                                                hideSourceCodeAndRelatedControls);
 
                         {
                             string pageString = pageRoot + item.UniqueId + "Page";
