@@ -46,8 +46,8 @@ namespace AppUIBasics.ControlPages
 
         private void Background_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var progressRing = sender == BackgroundComboBox1 ? ProgressRing1 : ProgressRing2;
-            var revealBackgroundProperty = sender == BackgroundComboBox1 ? RevealBackgroundProperty1 : RevealBackgroundProperty2;
+            var progressRing = (ComboBox)sender == BackgroundComboBox1 ? ProgressRing1 : ProgressRing2;
+            var revealBackgroundProperty = (ComboBox)sender == BackgroundComboBox1 ? RevealBackgroundProperty1 : RevealBackgroundProperty2;
             string colorName = e.AddedItems[0].ToString();
             bool showBackgroundProperty = false;
             switch (colorName)
