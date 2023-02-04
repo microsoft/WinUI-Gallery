@@ -5,14 +5,8 @@
     x:Class="AppUIBasics.ControlPages.ColorsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:colorsections="using:WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections"
-    xmlns:controls="using:AppUIBasics.Controls"
-    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:datamodel="using:WinUIGallery.DesktopWap.DataModel"
-    xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource HomePageBackgroundBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -92,7 +86,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="2" VerticalAlignment="Stretch">
-            <Frame x:Name="NavigationFrame" />
+            <Frame x:Name="NavigationFrame"  Margin="0,0,0,36"/>
         </ScrollViewer>
     </Grid>
 </Page>

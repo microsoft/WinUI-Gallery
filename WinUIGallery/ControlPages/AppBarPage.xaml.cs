@@ -21,13 +21,6 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void topAppBar_Opened(object sender, object e)
-        {
-            //ItemPage.GetForElement(this).PageHeader.TopCommandBar;
-            //CommandBar headerTopAppBar = ItemPage.GetForElement(this).Headerrrr.TopCommandBar;
-            //headerTopAppBar.IsOpen = false;
-        }
-
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             topAppBar.IsOpen = true;

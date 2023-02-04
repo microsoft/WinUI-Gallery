@@ -18,7 +18,6 @@
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource HomePageBackgroundBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -101,17 +100,22 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel HorizontalAlignment="Stretch" Spacing="12">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
         <RichTextBlock>
             <Paragraph>
-                With the release of Windows 11,<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
                 is the recommended symbol icon font.</Paragraph>
         </RichTextBlock>
         <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
         <RichTextBlock>
             <Paragraph>
                 On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
+                On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
                 .<LineBreak />
             </Paragraph>
         </RichTextBlock>
@@ -124,16 +128,13 @@
             PlaceholderText="Search icons"
             QueryIcon="Find"
             TextChanged="SearchTextBox_TextChanged" />
-
-        <Grid>
-
+        </StackPanel>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="296" />
             </Grid.ColumnDefinitions>
-
             <ScrollViewer
-                MaxHeight="800"
                 Margin="-4,0,12,0"
                 Padding="0,0,12,0"
                 HorizontalAlignment="Stretch"
@@ -160,15 +161,13 @@
                 BorderThickness="1"
                 CornerRadius="4"
                 DataContext="{x:Bind}">
-                <StackPanel Grid.ColumnSpan="2">
+                <StackPanel>
                     <TextBlock
                         Margin="0,0,0,0"
                         VerticalAlignment="Center"
                         FontSize="16"
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="{Binding SelectedItem.Name, Mode=OneWay}" />
-
-
                     <Grid Height="80" HorizontalAlignment="Center">
                         <FontIcon
                             Grid.Row="1"
@@ -230,5 +229,5 @@
                 </StackPanel>
             </Grid>
         </Grid>
-    </StackPanel>
+    </Grid>
 </Page>

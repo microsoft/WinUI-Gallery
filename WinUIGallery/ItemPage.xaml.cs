@@ -32,15 +32,14 @@ namespace AppUIBasics
     /// </summary>
     public sealed partial class ItemPage : Page
     {
-        public Action CopyLinkAction { get; set; }
-        public Action ToggleThemeAction { get; set; }
-        private ControlInfoDataItem _item;
-        private ElementTheme? _currentElementTheme;
         public ControlInfoDataItem Item
         {
             get { return _item; }
             set { _item = value; }
         }
+
+        private ControlInfoDataItem _item;
+        private ElementTheme? _currentElementTheme;
 
         public ItemPage()
         {
@@ -53,10 +52,9 @@ namespace AppUIBasics
             var navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                ToggleThemeAction = OnToggleTheme;
+                pageHeader.ToggleThemeAction = OnToggleTheme;
                 navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
-                CopyLinkAction = OnCopyLink;
-                ResetCopyLinkButton();
+                
                 this.Focus(FocusState.Programmatic);
             }
 
@@ -78,64 +76,29 @@ namespace AppUIBasics
             NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
         }
 
-        private void OnCopyLink()
-        {
-            ProtocolActivationClipboardHelper.Copy(this.Item);
-        }
-
-        private void OnToggleTheme()
-        {
-            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
-            var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
-            SetControlExamplesTheme(newTheme);
-        }
-
-        private void SetControlExamplesTheme(ElementTheme theme)
-        {
-            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
-
-            if (controlExamples != null)
-            {
-                _currentElementTheme = theme;
-                foreach (var controlExample in controlExamples)
-                {
-                    var exampleContent = controlExample.Example as FrameworkElement;
-                    exampleContent.RequestedTheme = theme;
-                    controlExample.ExampleContainer.RequestedTheme = theme;
-                }
-            }
-        }
-
-        private void OnRelatedControlClick(object sender, RoutedEventArgs e)
-        {
-            ButtonBase b = (ButtonBase)sender;
-
-            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), b.DataContext.ToString());
-        }
-
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)args.Parameter);
+            NavigationArguments arg = (NavigationArguments)args.Parameter;
+            var item = await ControlInfoDataSource.Instance.GetItemAsync(arg.ID);
 
             if (item != null)
             {
                 Item = item;
 
+                if (!arg.IsControlPage)
+                {
+                    // We disable scrolling on specific pages because the pages will have their own scrolling behavior.
+                    svPanel.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                    pageHeader.ThemeButtonVisibility = Visibility.Collapsed;
+                }
+
                 // Load control page into frame.
-                string pageRoot = "AppUIBasics.ControlPages.";
-                string pageString = pageRoot + item.UniqueId + "Page";
-                Type pageType = Type.GetType(pageString);
+                Type pageType = Type.GetType("AppUIBasics.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {
-                    // Pagetype is not null!
-                    // So lets generate the github links and set them!
-                    var gitHubBaseURI = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
-                    var pageName = pageType.Name + ".xaml";
-                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
-                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
-
+                    pageHeader.SetSourceLinks("https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/", pageType.Name);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
@@ -164,7 +127,6 @@ namespace AppUIBasics
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             SetControlExamplesTheme(ThemeHelper.ActualTheme);
-
             base.OnNavigatingFrom(e);
         }
 
@@ -174,8 +136,8 @@ namespace AppUIBasics
             if (navigationRootPage != null)
             {
                 navigationRootPage.NavigationViewLoaded = null;
-                ToggleThemeAction = null;
-                CopyLinkAction = null;
+                pageHeader.ToggleThemeAction = null;
+                pageHeader.CopyLinkAction = null;
             }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
@@ -202,32 +164,28 @@ namespace AppUIBasics
             }
             return null;
         }
-        private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.CopyLinkAction?.Invoke();
 
-            if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
+        private void OnToggleTheme()
+        {
+            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
+            var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+            SetControlExamplesTheme(newTheme);
+        }
+
+        private void SetControlExamplesTheme(ElementTheme theme)
+        {
+            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+
+            if (controlExamples != null)
             {
-                this.CopyLinkButtonTeachingTip.IsOpen = true;
+                _currentElementTheme = theme;
+                foreach (var controlExample in controlExamples)
+                {
+                    var exampleContent = controlExample.Example as FrameworkElement;
+                    exampleContent.RequestedTheme = theme;
+                    controlExample.ExampleContainer.RequestedTheme = theme;
+                }
             }
-            this.CopyLinkButtonIcon.Glyph = "\uE8FB";
-        }
-
-        public void OnThemeButtonClick(object sender, RoutedEventArgs e)
-        {
-            ToggleThemeAction?.Invoke();
-        }
-
-        public void ResetCopyLinkButton()
-        {
-            this.CopyLinkButtonTeachingTip.IsOpen = false;
-            this.CopyLinkButtonIcon.Glyph = "\uE71B";
-        }
-
-        private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
-        {
-            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
-            this.CopyLinkButtonTeachingTip.IsOpen = false;
         }
     }
 }

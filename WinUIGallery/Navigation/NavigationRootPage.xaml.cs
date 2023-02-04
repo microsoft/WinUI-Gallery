@@ -292,27 +292,26 @@ namespace AppUIBasics
                 }
                 else if (selectedItem == TypographyItem)
                 {
-                    Navigate(typeof(ItemPage), "Typography");
-                }
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Typography", IsControlPage = false });                }
                 else if(selectedItem == ColorsItem)
                 {
-                    Navigate(typeof(ItemPage), "Colors");
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Colors", IsControlPage = false });
                 }
                 else if (selectedItem == IconsItem)
                 {
-                    Navigate(typeof(ItemPage), "Icons");
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Icons", IsControlPage = false });
                 }
                 else if (selectedItem == AccessibilityScreenReaderPage)
                 {
-                    Navigate(typeof(ItemPage), "AccessibilityScreenReader");
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityScreenReader", IsControlPage = false });
                 }
                 else if (selectedItem == AccessibilityKeyboardPage)
                 {
-                    Navigate(typeof(ItemPage), "AccessibilityKeyboard");
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityKeyboard", IsControlPage = false });
                 }
                 else if (selectedItem == AccessibilityContrastPage)
                 {
-                    Navigate(typeof(ItemPage), "AccessibilityColorContrast");
+                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityColorContrast", IsControlPage = false });
                 }
                 else
                 {
@@ -324,7 +323,7 @@ namespace AppUIBasics
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        Navigate(typeof(ItemPage), item.UniqueId);
+                        Navigate(typeof(ItemPage), new NavigationArguments() { ID = item.UniqueId });
                     }
                 }
             }
@@ -390,7 +389,7 @@ namespace AppUIBasics
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                Navigate(typeof(ItemPage), itemId);
+                Navigate(typeof(ItemPage), new NavigationArguments() { ID = itemId });
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
@@ -561,5 +560,11 @@ namespace AppUIBasics
         Mobile,
         Other,
         Xbox
+    }
+
+    public class NavigationArguments
+    {
+        public string ID { get; set; }
+        public bool IsControlPage { get; set; } = true;
     }
 }

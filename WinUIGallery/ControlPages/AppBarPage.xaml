@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -23,8 +23,7 @@
                 x:Name="topAppBar"
                 VerticalAlignment="Bottom"
                 Background="Gray"
-                IsSticky="True"
-                Opened="topAppBar_Opened">
+                IsSticky="True">
                 <ScrollViewer
                     HorizontalScrollBarVisibility="Auto"
                     HorizontalScrollMode="Auto"

@@ -13,161 +13,18 @@
     x:Class="AppUIBasics.ItemPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:AppUIBasics.Common"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:AppUIBasics.Data"
-    xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="pageRoot"
     mc:Ignorable="d">
-    <Page.Resources>
-        <converters:CollectionVisibilityConverter
-            x:Name="collectionConverter"
-            EmptyValue="Collapsed"
-            NotEmptyValue="Visible" />
-          </Page.Resources>
     <Grid x:Name="rootPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-
-        <Grid x:Name="headerGrid" Padding="36,24,36,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Style="{StaticResource TitleTextBlockStyle}"
-                Text="{x:Bind Item.Title, Mode=OneWay}"
-                TextTrimming="CharacterEllipsis"
-                TextWrapping="NoWrap" />
-            <TextBlock
-                x:Name="NamespaceTextBlock"
-                Grid.Row="1"
-                Margin="0,4,0,0"
-                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                IsTextSelectionEnabled="True"
-                Style="{StaticResource CaptionTextBlockStyle}"
-                Text="{x:Bind Item.ApiNamespace, Mode=OneWay}"
-                Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
-            <Grid Grid.Row="2" Margin="0,12,0,12">
-                <StackPanel Orientation="Horizontal" Spacing="4">
-                    <DropDownButton
-                        AutomationProperties.Name="Documentation"
-                        ToolTipService.ToolTip="Documentation"
-                        Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
-                        <DropDownButton.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon FontSize="14" Glyph="&#xE130;" />
-                                <TextBlock Text="Documentation" />
-                            </StackPanel>
-                        </DropDownButton.Content>
-                        <DropDownButton.Flyout>
-                            <Flyout Placement="Bottom">
-                                <ItemsControl
-                                    x:Name="DocsList"
-                                    IsTabStop="False"
-                                    ItemsSource="{x:Bind Item.Docs}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Vertical" />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate x:DataType="data:ControlInfoDocLink">
-                                            <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
-                                                <TextBlock Text="{x:Bind Title}" />
-                                            </HyperlinkButton>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </Flyout>
-                        </DropDownButton.Flyout>
-                    </DropDownButton>
-                    <DropDownButton  AutomationProperties.Name="Source code"
-                        ToolTipService.ToolTip="Source code">
-                        <DropDownButton.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <PathIcon
-                                    Margin="-3,-3,-16,-3"
-                                    VerticalAlignment="Center"
-                                    Data="{StaticResource GitHubIconPath}">
-                                    <PathIcon.RenderTransform>
-                                        <CompositeTransform
-                                            ScaleX="0.65"
-                                            ScaleY="0.65"
-                                            TranslateX="-5"
-                                            TranslateY="5" />
-                                    </PathIcon.RenderTransform>
-                                </PathIcon>
-                                <TextBlock Text="Source" />
-                            </StackPanel>
-                        </DropDownButton.Content>
-                        <DropDownButton.Flyout>
-                            <Flyout Placement="Bottom">
-                                <StackPanel x:Name="SourcePanel" Spacing="4">
-                                    <HyperlinkButton x:Name="PageMarkupGitHubLink" ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
-                                        <TextBlock Text="XAML source code" />
-                                    </HyperlinkButton>
-                                    <HyperlinkButton x:Name="PageCodeGitHubLink" ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
-                                        <TextBlock Text="C# source code" />
-                                    </HyperlinkButton>
-                                </StackPanel>
-                            </Flyout>
-                        </DropDownButton.Flyout>
-                    </DropDownButton>
-                </StackPanel>
-                <StackPanel
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal"
-                    Spacing="4">
-                    <Button
-                        x:Name="ThemeButton"
-                        Height="32"
-                        Click="OnThemeButtonClick"
-                        ToolTipService.ToolTip="Toggle theme">
-                        <Button.Content>
-                            <FontIcon FontSize="14" Glyph="&#xE793;" />
-                        </Button.Content>
-                    </Button>
-                    <Button
-                        x:Name="CopyLinkButton"
-                        Height="32"
-                        Click="OnCopyLinkButtonClick"
-                        ToolTipService.ToolTip="Copy link">
-                        <Button.Content>
-                            <FontIcon
-                                x:Name="CopyLinkButtonIcon"
-                                FontSize="14"
-                                Glyph="&#xE793;" />
-                        </Button.Content>
-                        <Button.Resources>
-
-
-                            <TeachingTip
-                                x:Name="CopyLinkButtonTeachingTip"
-                                Title="Quickly reference this sample!"
-                                ActionButtonClick="OnCopyDontShowAgainButtonClick"
-                                ActionButtonContent="Don't show again"
-                                CloseButtonContent="Got it!"
-                                PreferredPlacement="Bottom"
-                                Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
-                                Target="{x:Bind CopyLinkButton}">
-                                <TeachingTip.HeroContent>
-                                    <Image Source="/Assets/CopyLinkTeachingTip.png" />
-                                </TeachingTip.HeroContent>
-                            </TeachingTip>
-                        </Button.Resources>
-                    </Button>
-
-                </StackPanel>
-            </Grid>
-        </Grid>
+        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item, Mode=OneWay}" />
 
         <!--  Content Region  -->
         <ScrollViewer
@@ -175,7 +32,7 @@
             Grid.Row="1"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="36,0,36,36">
+            <Grid x:Name="contentRoot" Padding="36,0,36,0">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -186,26 +43,11 @@
                 <TextBlock
                     x:Name="descriptionText"
                     Grid.ColumnSpan="2"
-                    Margin="0,5,24,0"
+                    Margin="0,4,24,0"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Text="{x:Bind Item.Description}" />
 
-                <Frame x:Name="contentFrame" Grid.Row="1" />
-                <StackPanel
-                    x:Name="FeedbackPanel"
-                    Grid.Row="2"
-                    Margin="0,36,0,0">
-                    <TextBlock
-                        x:Name="feedbackHeader"
-                        x:Uid="FeedbackHeader"
-                        Style="{StaticResource BodyStrongTextBlockStyle}" />
-                    <HyperlinkButton
-                        Margin="-12,0,0,0"
-                        NavigateUri="https://github.com/microsoft/WinUI-Gallery/issues/new/choose"
-                        ToolTipService.ToolTip="https://github.com/microsoft/WinUI-Gallery/issues/new/choose">
-                        <TextBlock x:Uid="FeedbackLink" />
-                    </HyperlinkButton>
-                </StackPanel>
+                <Frame x:Name="contentFrame" Grid.Row="1"/>
             </Grid>
         </ScrollViewer>
 
@@ -220,22 +62,17 @@
                 </VisualState>
             </VisualStateGroup>
             <VisualStateGroup x:Name="LayoutVisualStates">
-
                 <VisualState x:Name="WideLayout">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--<Setter Target="seeAlsoPanel.Width" Value="Auto" />
-                        -->
-                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowLayout">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="headerGrid.Padding" Value="16,48,16,0" />
+                        <Setter Target="pageHeader.Padding" Value="16,48,16,0" />
                         <Setter Target="contentRoot.Padding" Value="16,0,16,0" />
                     </VisualState.Setters>
                 </VisualState>

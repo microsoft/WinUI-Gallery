@@ -64,7 +64,7 @@ namespace AppUIBasics
 
             _itemId = item.UniqueId;
 
-            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), new NavigationArguments() { ID = _itemId }, new DrillInNavigationTransitionInfo());
         }
 
         protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)

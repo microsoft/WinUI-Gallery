@@ -152,6 +152,14 @@
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
+                        Title="Community Toolkit"
+                        Description="A collection of helper functions, custom controls, and app services."
+                        Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
+                        <local:HeaderTile.Source>
+                            <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
+                    <local:HeaderTile
                         Title="Template Studio"
                         Description="Accelerates the creation of new WinUI apps using a wizard-based experience.."
                         Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">
@@ -167,11 +175,19 @@
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
-                        Title="Community Toolkit"
-                        Description="A collection of helper functions, custom controls, and app services."
-                        Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
+                        Title="Code samples"
+                        Description="Find ."
+                        Link=" https://partner.microsoft.com/en-us/dashboard/home">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
+                    <local:HeaderTile
+                        Title="Partner Center"
+                        Description="Find samples that demonstrate specific tasks, features, and API usage patterns."
+                        Link="https://docs.microsoft.com/windows/apps/get-started/samples">
+                        <local:HeaderTile.Source>
+                            <FontIcon Glyph=""/>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <!--<local:HeaderTile

@@ -92,6 +92,7 @@
     <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
     <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
+    <None Remove="Controls\PageHeader.xaml" />
     <None Remove="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\PageHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\DesignGuidance\ColorSections\SignalSection.xaml">

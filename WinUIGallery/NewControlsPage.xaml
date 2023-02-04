@@ -45,8 +45,8 @@
                     Height="448"
                     Margin="-24,0,-24,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="212"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="212" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Image
                         x:Name="headerImage"
@@ -70,7 +70,7 @@
 
                     </StackPanel>
 
-                    <controls:TileGallery Grid.Row="1" x:Name="headerTileGallery" />
+                    <controls:TileGallery x:Name="headerTileGallery" Grid.Row="1" />
                 </Grid>
             </GridView.Header>
 
@@ -88,24 +88,6 @@
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </GridView.GroupStyle>
-
-            <GridView.Footer>
-                <Grid x:Name="learnMoreGrid" Margin="16,36,16,36">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock
-                        x:Name="LearnMore"
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="Learn more" />
-                    <StackPanel Grid.Row="1" Margin="-12,8,0,0">
-                        <HyperlinkButton Content="Developer Center" NavigateUri="https://developer.microsoft.com/windows/" />
-                        <HyperlinkButton Content="App Code Samples" NavigateUri="https://docs.microsoft.com/windows/apps/get-started/samples" />
-                        <HyperlinkButton Content="Windows Template Studio" NavigateUri="https://github.com/microsoft/WindowsTemplateStudio" />
-                    </StackPanel>
-                </Grid>
-            </GridView.Footer>
         </GridView>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
