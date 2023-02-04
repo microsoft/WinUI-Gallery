@@ -1,175 +1,190 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
-<!-- Licensed under the MIT License. -->
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
 
 <Page
     x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections.TextSection"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections"
+    xmlns:controls="using:AppUIBasics.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
+    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance" xmlns:controls="using:AppUIBasics.Controls"
     mc:Ignorable="d">
 
-    <!-- Colors section -->
-    <StackPanel Spacing="8">
-        <TextBlock Text="Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="For UI labels and static text">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold"/>
+    <!--  Colors section  -->
+    <StackPanel>
+        <designguidance:ColorPageExample Title="Text" Description="For UI labels and static text">
+            <TextBlock
+                FontSize="42"
+                FontWeight="SemiBold"
+                Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid CornerRadius="4">
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
                 Background="{ThemeResource TextFillColorPrimary}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Text / Primary"
-                ColorExplanation="Rest or Hover"
                 ColorBrushName="TextFillColorPrimaryBrush"
-                ColorValue="#000000 (E4, 89.56%)"/>
+                ColorExplanation="Rest or Hover"
+                ColorName="Text / Primary"
+                ColorValue="#000000 (E4, 89.56%)"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource TextFillColorSecondaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Text / Secondary"
-                ColorExplanation="Rest or Hover"
                 ColorBrushName="TextFillColorSecondaryBrush"
-                ColorValue="#000000 (9E, 61.86%)"/>
+                ColorExplanation="Rest or Hover"
+                ColorName="Text / Secondary"
+                ColorValue="#000000 (9E, 61.86%)"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextFillColorTertiaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Text / Tertiary"
-                ColorExplanation="Pressed only (not accessible)"
                 ColorBrushName="TextFillColorTertiaryBrush"
-                ColorValue="#000000 (72, 44.58%)"/>
+                ColorExplanation="Pressed only (not accessible)"
+                ColorName="Text / Tertiary"
+                ColorValue="#000000 (72, 44.58%)"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource TextFillColorDisabledBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Text / Disabled"
-                ColorExplanation="Disabled only (not accessible)"
                 ColorBrushName="TextFillColorDisabledBrush"
-                ColorValue="#000000 (5C, 36.14%)"/>
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="Text / Disabled"
+                ColorValue="#000000 (5C, 36.14%)"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
         </Grid>
 
-        <!-- Accent text-->
-        <TextBlock Text="Accent Text" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Recommended for links">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold"
-                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+        <!--  Accent text  -->
+        <designguidance:ColorPageExample Title="Accent Text" Description="Recommended for links">
+            <TextBlock
+                FontSize="42"
+                FontWeight="SemiBold"
+                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid CornerRadius="4">
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
                 Background="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Accent Text / Primary"
-                ColorExplanation="Rest or Hover"
                 ColorBrushName="AccentTextFillColorPrimaryBrush"
-                ColorValue="Dark 2"/>
+                ColorExplanation="Rest or Hover"
+                ColorName="Accent Text / Primary"
+                ColorValue="Dark 2"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource AccentTextFillColorSecondaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Accent Text / Secondary"
-                ColorExplanation="Rest or Hover"
                 ColorBrushName="AccentTextFillColorSecondaryBrush"
-                ColorValue="Dark 3"/>
+                ColorExplanation="Rest or Hover"
+                ColorName="Accent Text / Secondary"
+                ColorValue="Dark 3"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource AccentTextFillColorTertiaryBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Accent Text / Tertiary"
-                ColorExplanation="Pressed only (not accessible)"
                 ColorBrushName="AccentTextFillColorTertiaryBrush"
-                ColorValue="Dark 1"/>
+                ColorExplanation="Pressed only (not accessible)"
+                ColorName="Accent Text / Tertiary"
+                ColorValue="Dark 1"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource AccentTextFillColorDisabledBrush}"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                ShowSeparator="False"
-                ColorName="Accent Text / Disabled"
-                ColorExplanation="Disabled only (not accessible)"
                 ColorBrushName="AccentTextFillColorDisabledBrush"
-                ColorValue="#000000 (5C, 36.14%)"/>
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="Accent Text / Disabled"
+                ColorValue="#000000 (5C, 36.14%)"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ShowSeparator="False" />
         </Grid>
 
-        <!-- Text on accent-->
-        <TextBlock Text="Text On Accent" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,5"/>
-        <designguidance:ColorPageExample Text="Used for text on accent colored controls or fills"
-            Background="{ThemeResource AccentFillColorDefaultBrush}" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}">
-            <TextBlock Text="Aa" FontSize="42" FontWeight="SemiBold" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+        <!--  Text on accent  -->
+        <designguidance:ColorPageExample
+            Title="Text On Accent"
+            Background="{ThemeResource AccentFillColorDefaultBrush}"
+            Description="Used for text on accent colored controls or fills"
+            Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}">
+            <TextBlock
+                FontSize="42"
+                FontWeight="SemiBold"
+                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                Text="Aa" />
         </designguidance:ColorPageExample>
 
-        <Grid CornerRadius="4" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <designguidance:ColorTile
-                        Background="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        Foreground="{ThemeResource TextFillColorPrimary}"
-                        ColorName="Text on Accent / Primary"
-                        ColorExplanation="Rest or Hover"
-                        ColorBrushName="TextOnAccentFillColorPrimaryBrush"
-                        ColorValue="#FFFFFF (FF, 100%)"/>
-            <Border VerticalAlignment="Stretch" Grid.Column="1"
-                BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                Background="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                ColorBrushName="TextOnAccentFillColorPrimaryBrush"
+                ColorExplanation="Rest or Hover"
+                ColorName="Text on Accent / Primary"
+                ColorValue="#FFFFFF (FF, 100%)"
+                Foreground="{ThemeResource TextFillColorPrimary}" />
+            <Border
+                Grid.Column="1"
+                VerticalAlignment="Stretch"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1" />
             <designguidance:ColorTile
-                        Grid.Column="2"
-                        Background="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
-                        Foreground="{ThemeResource TextFillColorPrimary}"
-                        ShowSeparator="False"
-                        ColorName="Text on Accent / Secondary"
-                        ColorExplanation="Pressed only (not accessible)"
-                        ColorBrushName="AccentTextFillColorSecondaryBrush"
-                        ColorValue="#FFFFFF (B3, 70%)"/>
+                Grid.Column="2"
+                Background="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
+                ColorBrushName="AccentTextFillColorSecondaryBrush"
+                ColorExplanation="Pressed only (not accessible)"
+                ColorName="Text on Accent / Secondary"
+                ColorValue="#FFFFFF (B3, 70%)"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ShowSeparator="False" />
         </Grid>
 
-        <Grid CornerRadius="4" Margin="0,2,0,0" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <designguidance:ColorTile
-                        Background="{ThemeResource TextOnAccentFillColorDisabledBrush}"
-                        Foreground="{ThemeResource TextFillColorPrimary}"
-                        ColorName="Disabled only (not accessible)"
-                        ColorExplanation="Pressed only (not accessible)"
-                        ColorBrushName="AccentTextFillColorTertiaryBrush"
-                        ColorValue="#FFFFFF (FF, 100%)"/>
-            <Border VerticalAlignment="Stretch" Grid.Column="1"
-                BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                Background="{ThemeResource TextOnAccentFillColorDisabledBrush}"
+                ColorBrushName="AccentTextFillColorTertiaryBrush"
+                ColorExplanation="Pressed only (not accessible)"
+                ColorName="Disabled only (not accessible)"
+                ColorValue="#FFFFFF (FF, 100%)"
+                Foreground="{ThemeResource TextFillColorPrimary}" />
+            <Border
+                Grid.Column="1"
+                VerticalAlignment="Stretch"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1" />
             <designguidance:ColorTile
-                        Grid.Column="2"
-                        Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
-                        Foreground="{ThemeResource TextFillColorPrimary}"
-                        ShowSeparator="False"
-                        ColorName="For highlighted text in text entry experiences"
-                        ColorExplanation="Disabled only (not accessible)"
-                        ColorBrushName="AccentTextFillColorDisabledBrush"
-                        ColorValue="#FFFFFF (FF, 100%)"/>
+                Grid.Column="2"
+                Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
+                ColorBrushName="AccentTextFillColorDisabledBrush"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="For highlighted text in text entry experiences"
+                ColorValue="#FFFFFF (FF, 100%)"
+                Foreground="{ThemeResource TextFillColorPrimary}"
+                ShowSeparator="False" />
         </Grid>
     </StackPanel>
 </Page>

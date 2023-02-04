@@ -1,12 +1,12 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
-<!-- Licensed under the MIT License. -->
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
 
 <UserControl
     x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorTile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     PointerEntered="UserControl_PointerEntered"
     PointerExited="UserControl_PointerExited"
@@ -18,44 +18,72 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Grid Padding="10,12" RowSpacing="6"
-            Background="{x:Bind Background, Mode=OneWay}">
+        <Grid
+            Padding="12"
+            Background="{x:Bind Background, Mode=OneWay}"
+            RowSpacing="6">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*" MinHeight="30"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" MinHeight="30" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Foreground="{x:Bind Foreground, Mode=OneWay}" TextWrapping="WrapWholeWords"
-            Text="{x:Bind ColorName, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
-            <Button x:Name="CopyBrushNameButton" Visibility="Collapsed"
-                Grid.Column="1" Grid.RowSpan="4"
-                AutomationProperties.Name="Copy brush name"
-                Background="Transparent" BorderBrush="Transparent"
+            <TextBlock
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy brush name" VerticalAlignment="Top"
-                HorizontalAlignment="Right" Click="CopyBrushNameButton_Click" Padding="4">
-                <FontIcon Glyph="&#xE8C8;" FontSize="16"/>
+                IsTextSelectionEnabled="True"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="{x:Bind ColorName, Mode=OneWay}"
+                TextWrapping="WrapWholeWords" />
+            <Button
+                x:Name="CopyBrushNameButton"
+                Grid.RowSpan="4"
+                Grid.Column="1"
+                Padding="4"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                AutomationProperties.Name="Copy brush name"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="CopyBrushNameButton_Click"
+                Foreground="{x:Bind Foreground, Mode=OneWay}"
+                ToolTipService.ToolTip="Copy brush name"
+                Visibility="Collapsed">
+                <FontIcon FontSize="16" Glyph="&#xE8C8;" />
             </Button>
 
-            <TextBlock Text="{x:Bind ColorExplanation, Mode=OneWay}" Grid.Row="1"
-            TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>
+            <TextBlock
+                Grid.Row="1"
+                Margin="0,-4,0,0"
+                IsTextSelectionEnabled="True"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="{x:Bind ColorExplanation, Mode=OneWay}"
+                TextWrapping="WrapWholeWords" />
 
-            <TextBlock Text="{x:Bind ColorBrushName, Mode=OneWay}" Grid.Row="3" Grid.ColumnSpan="2"
-            TextWrapping="Wrap" IsTextSelectionEnabled="True" Style="{StaticResource CaptionTextBlockStyle}"/>
+            <TextBlock
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                IsTextSelectionEnabled="True"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="{x:Bind ColorBrushName, Mode=OneWay}"
+                TextWrapping="Wrap" />
 
-            <!-- Right now, we don't want to display colors. If we ever want to show them again, we can show them again by using the following code. -->
+            <!--  Right now, we don't want to display colors. If we ever want to show them again, we can show them again by using the following code.  -->
             <!--<TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>-->
         </Grid>
 
-        <Border HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="1"
-                Visibility="{x:Bind ShowSeparator, Mode=OneWay}" Grid.Column="1"
-                BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+        <Border
+            Grid.Column="1"
+            Width="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Stretch"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            Visibility="{x:Bind ShowSeparator, Mode=OneWay}" />
     </Grid>
 </UserControl>
