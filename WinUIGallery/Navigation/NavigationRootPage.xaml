@@ -17,11 +17,203 @@
     HighContrastAdjustment="None">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-       
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
+        <Border
+            x:Name="AppTitleBar"
+            Grid.Column="1"
+            Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
+            Margin="48,0,0,0"
+            VerticalAlignment="Top"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="True">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="18" Source="ms-appx:///Assets/Tiles/SmallTile-sdk.png" />
+                <TextBlock
+                    x:Name="AppTitle"
+                    Margin="16,0,0,0"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{x:Bind AppTitleText}" />
+            </StackPanel>
+        </Border>
+
+        <Grid x:Name="AutomationHelpersPanel" Grid.Column="1">
+            <Grid.Resources>
+                <Style x:Key="AutomationHelperStyle" TargetType="Control">
+                    <Setter Property="IsTabStop" Value="False" />
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="Width" Value="0" />
+                    <Setter Property="Height" Value="0" />
+                    <Setter Property="Opacity" Value="0" />
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock
+                x:Name="CurrentPageTextBlock"
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                AutomationProperties.AutomationId="__CurrentPage"
+                FontSize="18" />
+            <!--  Automation Helpers  -->
+            <!--
+                These are not visible, but are used via UIA. They are fundamental to the operation of our test automation, so they should not be collapsed since
+                that prevents them from showing up in the UIA tree.
+            -->
+            <Button
+                x:Name="GoBackInvokerButton"
+                AutomationProperties.AutomationId="__GoBackInvoker"
+                Click="GoBackInvokerButton_Click"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <Button
+                x:Name="CloseAppInvokerButton"
+                AutomationProperties.AutomationId="__CloseAppInvoker"
+                Click="CloseAppInvokerButton_Click"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <Button
+                x:Name="WaitForIdleInvokerButton"
+                AutomationProperties.AutomationId="__WaitForIdleInvoker"
+                Click="WaitForIdleInvokerButton_Click"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <CheckBox
+                x:Name="_idleStateEnteredCheckBox"
+                AutomationProperties.AutomationId="__IdleStateEnteredCheckBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <TextBox
+                x:Name="_errorReportingTextBox"
+                AutomationProperties.AutomationId="__ErrorReportingTextBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <TextBox
+                x:Name="_logReportingTextBox"
+                AutomationProperties.AutomationId="__LogReportingTextBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <CheckBox
+                x:Name="ViewScalingCheckBox"
+                AutomationProperties.AutomationId="__ViewScalingCheckBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <Button
+                x:Name="WaitForDebuggerInvokerButton"
+                AutomationProperties.AutomationId="__WaitForDebuggerInvoker"
+                Click="WaitForDebuggerInvokerButton_Click"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <CheckBox
+                x:Name="DebuggerAttachedCheckBox"
+                AutomationProperties.AutomationId="__DebuggerAttachedCheckBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <TextBox
+                x:Name="UnhandledExceptionReportingTextBox"
+                AcceptsReturn="True"
+                AutomationProperties.AutomationId="__UnhandledExceptionReportingTextBox"
+                Style="{StaticResource AutomationHelperStyle}" />
+            <CheckBox
+                x:Name="TestContentLoadedCheckBox"
+                AutomationProperties.AutomationId="__TestContentLoadedCheckBox"
+                Content="TestContentLoadedCheckbox"
+                IsChecked="False"
+                Style="{StaticResource AutomationHelperStyle}" />
+
+        </Grid>
+
+        <!--
+            Don't set IsTitleBarAutoPaddingEnabled, since it should only be set false when we're using Window.SetTitleBar(), which isn't currently available.
+            Restore by re-applying https://github.com/microsoft/WinUI-Gallery/pull/198
+        -->
+        <NavigationView
+            x:Name="NavigationViewControl"
+            Grid.Column="1"
+            Canvas.ZIndex="0"
+            IsTabStop="False"
+            IsTitleBarAutoPaddingEnabled="True"
+            Loaded="OnNavigationViewControlLoaded"
+            SelectionChanged="OnNavigationViewSelectionChanged">
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox
+                    x:Name="controlsSearchBox"
+                    MinWidth="200"
+                    VerticalAlignment="Center"
+                    x:FieldModifier="public"
+                    KeyboardAcceleratorPlacementMode="Hidden"
+                    PlaceholderText="Search"
+                    QueryIcon="Find"
+                    QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                    TextChanged="OnControlsSearchBoxTextChanged">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator
+                            Key="F"
+                            Invoked="CtrlF_Invoked"
+                            Modifiers="Control" />
+                    </AutoSuggestBox.KeyboardAccelerators>
+                </AutoSuggestBox>
+            </NavigationView.AutoSuggestBox>
+
+            <Frame
+                x:Name="rootFrame"
+                Navigated="OnRootFrameNavigated"
+                Navigating="OnRootFrameNavigating" />
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Name="NewControlsItem"
+                    Content="Home"
+                    Icon="Home" />
+
+                <NavigationViewItem
+                    x:Name="DesignGuidanceItem"
+                    Content="Design guidance"
+                    Tag="Design_Guidance">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB3C;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Name="TypographyItem" Content="Typography">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE185;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="IconsItem" Content="Icons">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xED58;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="ColorsItem" Content="Colors">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE790;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItemSeparator />
+                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE776;" />
+                            </NavigationViewItem.Icon>
+                            <NavigationViewItem.MenuItems>
+                                <NavigationViewItem
+                                    x:Name="AccessibilityScreenReaderPage"
+                                    Content="Screen Reader support"
+                                    Tag="AccessibilityScreenReader" />
+                                <NavigationViewItem
+                                    x:Name="AccessibilityKeyboardPage"
+                                    Content="Keyboard support"
+                                    Tag="AccessibilityKeyboard" />
+                                <NavigationViewItem
+                                    x:Name="AccessibilityContrastPage"
+                                    Content="Color Contrast"
+                                    Tag="AccessibilityColorContrast" />
+                            </NavigationViewItem.MenuItems>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItemHeader Content="Controls" />
+                <NavigationViewItem
+                    x:Name="AllControlsItem"
+                    Content="All"
+                    Icon="AllApps" />
+                <NavigationViewItemSeparator />
+            </NavigationView.MenuItems>
+
+        </NavigationView>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="TitleBarStates">
                 <VisualState x:Name="WideLayout">
@@ -39,106 +231,5 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
-        <Border x:Name="AppTitleBar"
-                Grid.Column="1"
-                Margin="48,0,0,0"
-                IsHitTestVisible="True"
-                VerticalAlignment="Top"
-                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
-                Canvas.ZIndex="1">
-            <StackPanel Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/SmallTile-sdk.png"/>
-                <TextBlock x:Name="AppTitle"
-                       Text="{x:Bind AppTitleText}"
-                       VerticalAlignment="Center"
-                       Margin="16,0,0,0"
-                       Style="{StaticResource CaptionTextBlockStyle}" />
-            </StackPanel>
-        </Border>
-
-        <Grid x:Name="AutomationHelpersPanel"  Grid.Column="1">
-            <Grid.Resources>
-                <Style x:Key="AutomationHelperStyle" TargetType="Control">
-                    <Setter Property="IsTabStop" Value="False"/>
-                    <Setter Property="IsHitTestVisible" Value="False"/>
-                    <Setter Property="Width" Value="0"/>
-                    <Setter Property="Height" Value="0"/>
-                    <Setter Property="Opacity" Value="0"/>
-                </Style>
-            </Grid.Resources>
-
-            <TextBlock x:Name="CurrentPageTextBlock" AutomationProperties.AutomationId="__CurrentPage"  FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0"/>
-            <!-- Automation Helpers -->
-            <!-- These are not visible, but are used via UIA. They are fundamental to the operation of our test automation, so they should not be collapsed since 
-                                that prevents them from showing up in the UIA tree.-->
-            <Button x:Name="GoBackInvokerButton" AutomationProperties.AutomationId="__GoBackInvoker" Style="{StaticResource AutomationHelperStyle}" Click="GoBackInvokerButton_Click" />
-            <Button x:Name="CloseAppInvokerButton" AutomationProperties.AutomationId="__CloseAppInvoker" Style="{StaticResource AutomationHelperStyle}" Click="CloseAppInvokerButton_Click"/>
-            <Button x:Name="WaitForIdleInvokerButton"  AutomationProperties.AutomationId="__WaitForIdleInvoker" Style="{StaticResource AutomationHelperStyle}"  Click="WaitForIdleInvokerButton_Click"/>
-            <CheckBox x:Name="_idleStateEnteredCheckBox" AutomationProperties.AutomationId="__IdleStateEnteredCheckBox" Style="{StaticResource AutomationHelperStyle}" />
-            <TextBox x:Name="_errorReportingTextBox" AutomationProperties.AutomationId="__ErrorReportingTextBox" Style="{StaticResource AutomationHelperStyle}" />
-            <TextBox x:Name="_logReportingTextBox" AutomationProperties.AutomationId="__LogReportingTextBox" Style="{StaticResource AutomationHelperStyle}" />
-            <CheckBox x:Name="ViewScalingCheckBox" AutomationProperties.AutomationId="__ViewScalingCheckBox" Style="{StaticResource AutomationHelperStyle}" />
-            <Button x:Name="WaitForDebuggerInvokerButton" AutomationProperties.AutomationId="__WaitForDebuggerInvoker" Style="{StaticResource AutomationHelperStyle}" Click="WaitForDebuggerInvokerButton_Click" />
-            <CheckBox x:Name="DebuggerAttachedCheckBox" AutomationProperties.AutomationId="__DebuggerAttachedCheckBox" Style="{StaticResource AutomationHelperStyle}" />
-            <TextBox x:Name="UnhandledExceptionReportingTextBox" AutomationProperties.AutomationId="__UnhandledExceptionReportingTextBox" Style="{StaticResource AutomationHelperStyle}" AcceptsReturn="True" />
-            <CheckBox x:Name="TestContentLoadedCheckBox" IsChecked="False" AutomationProperties.AutomationId="__TestContentLoadedCheckBox" Content="TestContentLoadedCheckbox"  Style="{StaticResource AutomationHelperStyle}" />
-
-        </Grid>
-
-        <!-- Don't set IsTitleBarAutoPaddingEnabled, since it should only be set false when we're using Window.SetTitleBar(), which isn't currently available.
-             Restore by re-applying https://github.com/microsoft/WinUI-Gallery/pull/198 -->
-        <NavigationView
-            Canvas.ZIndex="0"
-            x:Name="NavigationViewControl"
-            Grid.Column="1"
-            IsTabStop="False"
-            IsTitleBarAutoPaddingEnabled="True"
-            SelectionChanged="OnNavigationViewSelectionChanged"
-            Loaded="OnNavigationViewControlLoaded">
-            <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox
-                    x:Name="controlsSearchBox"
-                    VerticalAlignment="Center"
-                    x:FieldModifier="public"
-                    PlaceholderText="Search"
-                    QueryIcon="Find"
-                    QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    MinWidth="200"
-                    KeyboardAcceleratorPlacementMode="Hidden"
-                    TextChanged="OnControlsSearchBoxTextChanged">
-                    <AutoSuggestBox.KeyboardAccelerators>
-                        <KeyboardAccelerator Modifiers="Control" Key="F" Invoked="CtrlF_Invoked" />
-                    </AutoSuggestBox.KeyboardAccelerators>
-                </AutoSuggestBox>
-            </NavigationView.AutoSuggestBox>
-
-            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating"/>
-            <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="NewControlsItem" Content="Home" Icon="Home"/>
-                
-                <NavigationViewItem x:Name="DesignGuidanceItem" Content="Design guidance" Tag="Design_Guidance">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEB3C;" />
-                    </NavigationViewItem.Icon>
-                    <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" Content="Typography"/>
-                        <NavigationViewItem x:Name="ColorsItem" Content="Colors"/>
-                        <NavigationViewItem x:Name="IconsItem" Content="Icons"/>
-                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
-                            <NavigationViewItem.MenuItems>
-                                <NavigationViewItem x:Name="AccessibilityScreenReaderPage" Content="Screen Reader support" Tag="AccessibilityScreenReader"/>
-                                <NavigationViewItem x:Name="AccessibilityKeyboardPage" Content="Keyboard support" Tag="AccessibilityKeyboard"/>
-                                <NavigationViewItem x:Name="AccessibilityContrastPage" Content="Color Contrast" Tag="AccessibilityColorContrast"/>
-                            </NavigationViewItem.MenuItems>
-                        </NavigationViewItem>
-                    </NavigationViewItem.MenuItems>
-                </NavigationViewItem>              
-                <NavigationViewItemHeader Content="Controls"/>
-                <NavigationViewItem x:Name="AllControlsItem" Content="All" Icon="AllApps"/>
-                <NavigationViewItemSeparator />
-            </NavigationView.MenuItems>
-            
-        </NavigationView>
     </Grid>
 </Page>

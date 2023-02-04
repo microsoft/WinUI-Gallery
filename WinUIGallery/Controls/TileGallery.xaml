@@ -176,18 +176,18 @@
                     </local:HeaderTile>
                     <local:HeaderTile
                         Title="Code samples"
-                        Description="Find ."
+                        Description="Find samples that demonstrate specific tasks, features, and APIs."
                         Link=" https://partner.microsoft.com/en-us/dashboard/home">
                         <local:HeaderTile.Source>
-                            <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
+                            <FontIcon Glyph="&#xE943;" FontSize="40" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
                         Title="Partner Center"
-                        Description="Find samples that demonstrate specific tasks, features, and API usage patterns."
+                        Description="Upload your app to the Store."
                         Link="https://docs.microsoft.com/windows/apps/get-started/samples">
                         <local:HeaderTile.Source>
-                            <FontIcon Glyph=""/>
+                            <FontIcon Glyph="&#xE943;" FontSize="40" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <!--<local:HeaderTile
