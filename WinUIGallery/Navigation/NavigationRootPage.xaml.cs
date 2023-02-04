@@ -262,9 +262,6 @@ namespace AppUIBasics
 
         private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            // Close any open teaching tips before navigation
-            CloseTeachingTips();
-
             if (args.IsSettingsSelected)
             {
                 if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
@@ -335,23 +332,12 @@ namespace AppUIBasics
 
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
-            // Close any open teaching tips before navigation
-            CloseTeachingTips();
             TestContentLoadedCheckBox.IsChecked = true;
         }
 
         private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
         {
             TestContentLoadedCheckBox.IsChecked = false;
-        }
-
-        private void CloseTeachingTips()
-        {
-            //if (PageHeader != null)
-            //{
-            //    PageHeader.TeachingTip1.IsOpen = false;
-            //    PageHeader.TeachingTip3.IsOpen = false;
-            //}
         }
 
         private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

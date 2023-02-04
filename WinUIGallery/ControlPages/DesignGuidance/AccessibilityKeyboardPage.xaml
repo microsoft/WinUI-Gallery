@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="AppUIBasics.ControlPages.AccessibilityKeyboardPage"
@@ -25,11 +25,6 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
-        <Style x:Key="SampleExplanationTextStyle" TargetType="TextBlock">
-            <Setter Property="FontStyle" Value="Italic" />
-            <Setter Property="MaxWidth" Value="450" />
-            <Setter Property="TextWrapping" Value="WrapWholeWords" />
-        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="WrapWholeWords" />
         </Style>
@@ -42,13 +37,12 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink> .
+                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                .<LineBreak />
                 <LineBreak />
-                <LineBreak /> If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.
+                If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
                 <LineBreak />
-                <LineBreak /> To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation. Here is how you can override the default tab order:
-            </Paragraph>
+                To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation. Here is how you can override the default tab order:</Paragraph>
         </RichTextBlock>
 
         <core:ControlExample HeaderText="Controlling tab sequence">
@@ -138,9 +132,12 @@
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
-        <TextBlock Margin="0,20,0,0" Style="{ThemeResource SubtitleTextBlockStyle}" Text="Keyboard Shortcuts" />
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Keyboard Shortcuts" />
         <TextBlock Text="It is imperative that you provide an easy way for users to discover your app's shortcut keys (e.g. using tooltips, accessible names, accessible descriptions, etc.)" />
-        <core:ControlExample >
+        <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
@@ -189,7 +186,7 @@
                     <TextBlock
                         Grid.Row="2"
                         Grid.ColumnSpan="3"
-                        Style="{StaticResource SampleExplanationTextStyle}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Using KeyboardAccelarator and the AutomationProperties.AcceleratorKey property to create a shortcut. Accelerator keys consist of the Ctrl key + a letter key." />
                 </Grid>
             </core:ControlExample.Example>
@@ -242,7 +239,10 @@
             </core:ControlExample.CSharp>
         </core:ControlExample>
 
-        <TextBlock Margin="0,20,0,0" Style="{ThemeResource SubtitleTextBlockStyle}" Text="Landmarks and headings" />
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Landmarks and headings" />
         <TextBlock>
             Landmarks and headings define sections of a user interface that aid in more efficient navigation for
             users of assistive technology (AT). Marking up the content into landmarks and headings provides a
@@ -251,7 +251,12 @@
         <core:ControlExample>
             <core:ControlExample.Example>
                 <StackPanel>
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource SampleExplanationTextStyle}" HorizontalAlignment="Left" Margin="0,0,0,10" Text="The sample below showcases landmarks." />
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The sample below showcases landmarks."
+                        TextWrapping="Wrap" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200" />
@@ -260,25 +265,26 @@
 
                         <!--  The navigation pane for our app  -->
                         <StackPanel
-                        Grid.Column="0"
-                        Padding="6"
-                        AutomationProperties.LandmarkType="Main"
-                        Background="{ThemeResource CardStrokeColorDefaultBrush}"
-                        Spacing="8">
+                            Grid.Column="0"
+                            Padding="6"
+                            AutomationProperties.LandmarkType="Main"
+                            Background="{ThemeResource CardStrokeColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            Spacing="8">
                             <AutoSuggestBox AutomationProperties.LandmarkType="Search" PlaceholderText="Search" />
                             <Button Content="Open settings" />
                         </StackPanel>
 
                         <!--  The main content of our app  -->
                         <StackPanel
-                        Grid.Column="1"
-                        Padding="6"
-                        AutomationProperties.LandmarkType="Main">
+                            Grid.Column="1"
+                            Padding="6"
+                            AutomationProperties.LandmarkType="Main">
                             <TextBlock TextWrapping="WrapWholeWords">
-                            Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
+                                Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
                             </TextBlock>
                         </StackPanel>
                     </Grid>
@@ -316,7 +322,12 @@
         <core:ControlExample>
             <core:ControlExample.Example>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource SampleExplanationTextStyle}" HorizontalAlignment="Left" Margin="0,0,0,10" Text="The sample below showcases headings." />
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The sample below showcases headings."
+                        TextWrapping="Wrap" />
                     <StackPanel MaxWidth="500">
                         <!--  Here is the main header for the whole text. It gets HeadingLevel 1  -->
                         <TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
