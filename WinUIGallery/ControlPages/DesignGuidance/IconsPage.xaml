@@ -179,7 +179,6 @@
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
-                            Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
 
                     <TextBlock Text="Icon name" />

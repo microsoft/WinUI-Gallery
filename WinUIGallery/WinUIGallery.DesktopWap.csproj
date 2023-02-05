@@ -99,6 +99,7 @@
     <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />
+    <Content Include="Assets\Typography.png" />
     <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
