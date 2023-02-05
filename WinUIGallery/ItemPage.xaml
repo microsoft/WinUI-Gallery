@@ -15,9 +15,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     x:Name="pageRoot"
     mc:Ignorable="d">
+    <Page.Resources>
+        <converters:StringVisibilityConverter x:Key="stringVisibilityConverter" EmptyValue="Collapsed" NotEmptyValue="Visible" />
+    </Page.Resources>
     <Grid x:Name="rootPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -45,7 +48,8 @@
                     Grid.ColumnSpan="2"
                     Margin="0,4,24,0"
                     Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="{x:Bind Item.Description}" />
+                    Text="{x:Bind Item.Description}"
+                    Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}"/>
 
                 <Frame x:Name="contentFrame" Grid.Row="1"/>
             </Grid>

@@ -182,7 +182,6 @@
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-
                         <NavigationViewItemSeparator />
                         <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
                             <NavigationViewItem.Icon>
