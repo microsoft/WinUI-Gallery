@@ -26,35 +26,6 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="SampleHeader" />
-        <ScrollViewer
-            x:Name="CodeScrollViewer"
-            Grid.Row="1"
-            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
-            HorizontalScrollBarVisibility="Auto"
-            HorizontalScrollMode="Auto"
-            VerticalScrollBarVisibility="Disabled"
-            VerticalScrollMode="Disabled">
-            <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
-        </ScrollViewer>
-        <Button
-            x:Name="CopyCodeButton"
-            Grid.Row="0"
-            Padding="4"
-            HorizontalAlignment="Right"
-            AutomationProperties.Name="Copy sample code"
-            Click="CopyCodeButton_Click"
-            ToolTipService.ToolTip="Copy sample code">
-            <FontIcon FontSize="16" Glyph="&#xE8C8;" />
-        </Button>
-
-        <controls:TeachingTip
-            x:Name="CopyConfirmationTeachingTip"
-            x:Load="False"
-            IsLightDismissEnabled="True"
-            Subtitle="Copied!"
-            Target="{x:Bind CopyCodeButton}"
-            Visibility="Collapsed" />
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
@@ -90,5 +61,34 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="SampleHeader" />
+        <ScrollViewer
+            x:Name="CodeScrollViewer"
+            Grid.Row="1"
+            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
+            HorizontalScrollBarVisibility="Auto"
+            HorizontalScrollMode="Auto"
+            VerticalScrollBarVisibility="Disabled"
+            VerticalScrollMode="Disabled">
+            <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
+        </ScrollViewer>
+        <Button
+            x:Name="CopyCodeButton"
+            Grid.Row="0"
+            Padding="4"
+            HorizontalAlignment="Right"
+            AutomationProperties.Name="Copy sample code"
+            Click="CopyCodeButton_Click"
+            ToolTipService.ToolTip="Copy sample code">
+            <FontIcon FontSize="16" Glyph="&#xE8C8;" />
+        </Button>
+
+        <controls:TeachingTip
+            x:Name="CopyConfirmationTeachingTip"
+            x:Load="False"
+            IsLightDismissEnabled="True"
+            Subtitle="Copied!"
+            Target="{x:Bind CopyCodeButton}"
+            Visibility="Collapsed" />
     </Grid>
 </UserControl>

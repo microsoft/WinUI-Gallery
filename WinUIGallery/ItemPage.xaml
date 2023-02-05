@@ -14,46 +14,22 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="pageRoot"
     mc:Ignorable="d">
     <Page.Resources>
-        <converters:StringVisibilityConverter x:Key="stringVisibilityConverter" EmptyValue="Collapsed" NotEmptyValue="Visible" />
+        <converters:StringVisibilityConverter
+            x:Key="stringVisibilityConverter"
+            EmptyValue="Collapsed"
+            NotEmptyValue="Visible" />
     </Page.Resources>
     <Grid x:Name="rootPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item, Mode=OneWay}" />
-
-        <!--  Content Region  -->
-        <ScrollViewer
-            x:Name="svPanel"
-            Grid.Row="1"
-            VerticalScrollBarVisibility="Auto"
-            VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="36,0,36,0">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <TextBlock
-                    x:Name="descriptionText"
-                    Grid.ColumnSpan="2"
-                    Margin="0,4,24,0"
-                    Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="{x:Bind Item.Description}"
-                    Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}"/>
-
-                <Frame x:Name="contentFrame" Grid.Row="1"/>
-            </Grid>
-        </ScrollViewer>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -82,5 +58,33 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item, Mode=OneWay}" />
+
+        <!--  Content Region  -->
+        <ScrollViewer
+            x:Name="svPanel"
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
+            <Grid x:Name="contentRoot" Padding="36,0,36,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    x:Name="descriptionText"
+                    Grid.ColumnSpan="2"
+                    Margin="0,4,24,0"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="{x:Bind Item.Description}"
+                    Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}" />
+
+                <Frame x:Name="contentFrame" Grid.Row="1" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

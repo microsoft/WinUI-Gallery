@@ -27,10 +27,10 @@
                 </Paragraph>
             </RichTextBlock>
             <TextBlock
-                Margin="0,0,0,5"
+                Margin="0,0,0,6"
                 Style="{ThemeResource BodyStrongTextBlockStyle}"
                 Text="Using colors" />
-            <RichTextBlock Margin="0,0,0,20">
+            <RichTextBlock Margin="0,0,0,24">
                 <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
             </RichTextBlock>
         </StackPanel>
@@ -51,7 +51,7 @@
                 Checked="ToggleButton_Checked"
                 CornerRadius="4,0,0,4"
                 IsChecked="True">
-                Text &amp; icons
+                Text
             </ToggleButton>
             <ToggleButton
                 Grid.Column="1"
@@ -67,8 +67,6 @@
                 CornerRadius="0">
                 Stroke
             </ToggleButton>
-
-
             <ToggleButton
                 Grid.Column="3"
                 HorizontalAlignment="Stretch"
@@ -86,7 +84,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="2" VerticalAlignment="Stretch">
-            <Frame x:Name="NavigationFrame"  Margin="0,0,0,36"/>
+            <Frame x:Name="NavigationFrame" Margin="0,0,0,36" />
         </ScrollViewer>
     </Grid>
 </Page>

@@ -153,7 +153,10 @@
                     <Setter Property="CornerRadius" Value="0,0,8,8" />
                 </Style.Setters>
             </Style>
-            <Style x:Key="ColorTilesPanelMiddleStyle" BasedOn="{StaticResource ColorTilesPanelBottomStyle}" TargetType="Grid">
+            <Style
+                x:Key="ColorTilesPanelMiddleStyle"
+                BasedOn="{StaticResource ColorTilesPanelBottomStyle}"
+                TargetType="Grid">
                 <Style.Setters>
                     <Setter Property="BorderThickness" Value="1,1,1,0" />
                     <Setter Property="CornerRadius" Value="0" />

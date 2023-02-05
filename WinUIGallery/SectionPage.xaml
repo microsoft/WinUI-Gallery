@@ -18,6 +18,10 @@
 
     <!--  This grid acts as a root panel for the page.  -->
     <Grid x:Name="rootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <!--  Visual states reflect the application's window size  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="LayoutVisualStates">
@@ -33,21 +37,20 @@
                     <VisualState.Setters>
                         <Setter Target="TitleTxt.Margin" Value="16,48,16,24" />
                         <Setter Target="itemGridView.Padding" Value="16,0,16,36" />
-                        <Setter Target="TitleTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}"/>
+                        <Setter Target="TitleTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="TitleTxt" Margin="36,24,36,24" Style="{StaticResource TitleTextBlockStyle}"/>
+        <TextBlock
+            x:Name="TitleTxt"
+            Margin="36,24,36,24"
+            Style="{StaticResource TitleTextBlockStyle}" />
         <GridView
-            Grid.Row="1"
             x:Name="itemGridView"
-            Padding="36,24,36,0" 
+            Grid.Row="1"
+            Padding="36,24,36,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"

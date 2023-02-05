@@ -141,12 +141,12 @@
                         Description="The latest Windows native controls and styles for your applications."
                         Link="https://github.com/microsoft/microsoft-ui-xaml">
                         <local:HeaderTile.Source>
-                            <PathIcon Foreground="{ThemeResource TextFillColorPrimaryBrush}" Data="{StaticResource GitHubIconPath}">
+                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
                                 <PathIcon.RenderTransform>
                                     <CompositeTransform
                                         ScaleX="2.05"
                                         ScaleY="2.05"
-                                        TranslateX="-20"/>
+                                        TranslateX="-20" />
                                 </PathIcon.RenderTransform>
                             </PathIcon>
                         </local:HeaderTile.Source>
@@ -164,7 +164,7 @@
                         Description="Accelerates the creation of new WinUI apps using a wizard-based experience.."
                         Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">
                         <local:HeaderTile.Source>
-                            <PathIcon Foreground="{ThemeResource TextFillColorPrimaryBrush}" Data="{StaticResource GitHubIconPath}">
+                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
                                 <PathIcon.RenderTransform>
                                     <CompositeTransform
                                         ScaleX="2.05"
@@ -179,7 +179,10 @@
                         Description="Find samples that demonstrate specific tasks, features, and APIs."
                         Link=" https://partner.microsoft.com/en-us/dashboard/home">
                         <local:HeaderTile.Source>
-                            <FontIcon Glyph="&#xE943;" FontSize="40" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                            <FontIcon
+                                FontSize="40"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Glyph="&#xE943;" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
@@ -187,7 +190,10 @@
                         Description="Upload your app to the Store."
                         Link="https://docs.microsoft.com/windows/apps/get-started/samples">
                         <local:HeaderTile.Source>
-                            <FontIcon Glyph="&#xE943;" FontSize="40" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                            <FontIcon
+                                FontSize="40"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Glyph="&#xE943;" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <!--<local:HeaderTile

@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 
 <Page
@@ -29,23 +29,20 @@
         </Style>
     </Page.Resources>
 
-    <StackPanel
-        HorizontalAlignment="Left"
-        Spacing="10">
+    <StackPanel HorizontalAlignment="Left" Spacing="10">
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink> .
+                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                .<LineBreak />
                 <LineBreak />
-                <LineBreak /> Screen readers, such as
-                <Hyperlink NavigateUri="https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink> , convert text into spoken words to help blind or low vision users.
-                Screen readers use the UI Automation (UIA) names of each control to report their name, role and content.
+                Screen readers, such as<Hyperlink NavigateUri="https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink>
+                , convert text into spoken words to help blind or low vision users.
+                Screen readers use the UI Automation (UIA) names of each control to report their name, role and content.<LineBreak />
                 <LineBreak />
-                <LineBreak /> If the control's content is a string, an accessible name is automatically determined from the visible
+                If the control's content is a string, an accessible name is automatically determined from the visible
                 text. However, elements such as images or input fields need to have a custom accessible name. Here
-                are a few examples of how to add UIA names:
-            </Paragraph>
+                are a few examples of how to add UIA names:</Paragraph>
         </RichTextBlock>
 
         <!--  ***** Listview example *****  -->
@@ -53,16 +50,19 @@
             <core:ControlExample.Example>
                 <StackPanel>
                     <ListView
-                    Width="300"
-                    Margin="0,0,0,24"
-                    HorizontalAlignment="Left"
-                    AutomationProperties.Name="Contacts">
+                        Width="300"
+                        Margin="0,0,0,24"
+                        HorizontalAlignment="Left"
+                        AutomationProperties.Name="Contacts">
                         <ListViewItem>Nathan Quinn</ListViewItem>
                         <ListViewItem>Jessica Lamber</ListViewItem>
                         <ListViewItem>Carl Bond</ListViewItem>
                         <ListViewItem>Jessica Russel</ListViewItem>
                     </ListView>
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}" Text="This list will be read by screen readers as “Contacts”, while each item will be read using its respective text content." />
+                    <TextBlock
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="This list will be read by screen readers as “Contacts”, while each item will be read using its respective text content."
+                        TextWrapping="Wrap" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
@@ -83,10 +83,18 @@ AutomationProperties.Name="Contacts"&gt;
             <core:ControlExample.Example>
                 <StackPanel>
                     <Border CornerRadius="{StaticResource ControlCornerRadius}">
-                        <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Height="150" HorizontalAlignment="Left"/>
+                        <Image
+                            Height="150"
+                            HorizontalAlignment="Left"
+                            AutomationProperties.Name="Grapes"
+                            Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     </Border>
-                 
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"  Margin="0, 12, 0, 0" Text="The image above will be read out as 'Grapes'. To navigate through text, press Caps + Left/Right arrow." />
+
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The image above will be read out as 'Grapes'. To navigate through text, press Caps + Left/Right arrow."
+                        TextWrapping="Wrap" />
                 </StackPanel>
             </core:ControlExample.Example>
 
@@ -101,9 +109,19 @@ AutomationProperties.Name="Contacts"&gt;
         <core:ControlExample HeaderText="Using another control to provide a label">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock x:Name="InputLabel" Style="{ThemeResource BodyTextBlockStyle}" Text="Searching Photos:" />
-                    <TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}" Width="200" HorizontalAlignment="Left"/>
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}" Margin="0, 12, 0, 0" Text="The textBox above is labeled by the TextBlock and will be read as 'Searching Photos'." />
+                    <TextBlock
+                        x:Name="InputLabel"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        Text="Searching Photos:" />
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Left"
+                        AutomationProperties.LabeledBy="{x:Bind InputLabel}" />
+                    <TextBlock
+                        Margin="0,12,0,0"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The textBox above is labeled by the TextBlock and will be read as 'Searching Photos'."
+                        TextWrapping="Wrap" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
@@ -153,15 +171,26 @@ AutomationProperties.Name="Contacts"&gt;
         <core:ControlExample HeaderText="Remove a control from the content visual tree">
             <core:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <!-- The image is not necessary for screen readers as it does not contain any information.
-        Thus we remove it from the content visual tree with AccessibilityView="Raw" -->
+                    <!--
+                        The image is not necessary for screen readers as it does not contain any information.
+                        Thus we remove it from the content visual tree with AccessibilityView="Raw"
+                    -->
                     <Border CornerRadius="{StaticResource ControlCornerRadius}">
-                        <Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/>
+                        <Image
+                            Height="40"
+                            VerticalAlignment="Top"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Source="/Assets/SampleMedia/treetops.jpg" />
                     </Border>
-                    
-                    <TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,-4,0,0">This is some demo text.
-                The image on the right is just for decoration and serves no informational purpose.
-                To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.</TextBlock>
+
+                    <TextBlock
+                        MaxWidth="400"
+                        Margin="8,-4,0,0"
+                        TextWrapping="WrapWholeWords">
+                        This is some demo text.
+                        The image on the right is just for decoration and serves no informational purpose.
+                        To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.
+                    </TextBlock>
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>

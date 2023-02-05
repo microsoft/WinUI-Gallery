@@ -35,7 +35,7 @@
             <Setter Property="SampleType" Value="Inline" />
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}"/>
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0,8,0,16" />
+            <Setter Property="Margin" Value="0,4,0,16" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
@@ -109,9 +109,11 @@
         <RichTextBlock>
             <Paragraph>
                 With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                is the recommended symbol icon font.</Paragraph>
-        </RichTextBlock>
-        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
+                is the recommended symbol icon font.
+                <LineBreak />
+                </Paragraph>
+            </RichTextBlock>
+        <TextBlock Margin="0,8,0,0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
         <RichTextBlock>
             <Paragraph>
                 On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
@@ -124,6 +126,7 @@
         <AutoSuggestBox
             MinWidth="304"
             MaxWidth="320"
+            Margin="0,8,0,8"
             HorizontalAlignment="Left"
             PlaceholderText="Search icons"
             QueryIcon="Find"
@@ -143,6 +146,7 @@
                 <ItemsRepeater
                     x:Name="IconsRepeater"
                     MinWidth="100"
+                    Margin="0,0,0,36"
                     HorizontalAlignment="Stretch"
                     ElementIndexChanged="IconsRepeater_ElementIndexChanged"
                     ElementPrepared="IconsRepeater_ElementPrepared"
@@ -160,6 +164,7 @@
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="4"
+                Margin="0,4,0,0"
                 DataContext="{x:Bind}">
                 <StackPanel>
                     <TextBlock
@@ -168,18 +173,14 @@
                         FontSize="16"
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="{Binding SelectedItem.Name, Mode=OneWay}" />
-                    <Grid Height="80" HorizontalAlignment="Center">
-                        <FontIcon
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            Margin="5"
-                            HorizontalAlignment="Center"
+                    <FontIcon
+                            Margin="0,12,0,24"
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
                             Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
-                    </Grid>
 
                     <TextBlock Text="Icon name" />
                     <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />

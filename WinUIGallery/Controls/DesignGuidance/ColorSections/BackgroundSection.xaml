@@ -70,7 +70,7 @@
                     Background="{ThemeResource LayerFillColorDefaultBrush}" />
             </StackPanel>
         </designguidance:ColorPageExample>
-        <Grid  Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -108,7 +108,7 @@
                     Background="{ThemeResource LayerFillColorDefaultBrush}" />
             </StackPanel>
         </designguidance:ColorPageExample>
-        <Grid  Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>

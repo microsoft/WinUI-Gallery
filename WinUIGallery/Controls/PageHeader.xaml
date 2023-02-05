@@ -105,9 +105,7 @@
                     </DropDownButton.Flyout>
                 </DropDownButton>
             </StackPanel>
-            <StackPanel
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button
                     x:Name="ThemeButton"
                     Height="32"

@@ -104,8 +104,8 @@
         PointerEntered="Grid_PointerEntered"
         PointerExited="Grid_PointerExited">
         <Grid
-            HorizontalAlignment="Stretch"
             Padding="{x:Bind Padding, Mode=OneWay}"
+            HorizontalAlignment="Stretch"
             Background="{x:Bind Background, Mode=OneWay}"
             CornerRadius="{ThemeResource ControlCornerRadius}">
             <Grid.ColumnDefinitions>
