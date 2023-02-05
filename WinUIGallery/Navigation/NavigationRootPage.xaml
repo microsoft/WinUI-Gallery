@@ -13,7 +13,7 @@
     x:Class="AppUIBasics.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics"
+    xmlns:local="using:AppUIBasics" xmlns:data="using:AppUIBasics.Data"
     HighContrastAdjustment="None">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -163,6 +163,18 @@
                             Invoked="CtrlF_Invoked"
                             Modifiers="Control" />
                     </AutoSuggestBox.KeyboardAccelerators>
+                    <AutoSuggestBox.ItemTemplate>
+                        <DataTemplate x:DataType="data:ControlInfoDataItem">
+                            <Grid ColumnSpacing="8" AutomationProperties.Name="{x:Bind Title}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{x:Bind ImagePath}"/>
+                                <TextBlock Text="{x:Bind Title}" Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
