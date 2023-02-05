@@ -11,6 +11,8 @@
     mc:Ignorable="d">
 
     <StackPanel x:Name="ColorSection">
+
+        <!--  Control Stroke  -->
         <designguidance:ColorPageExample
             Title="Control Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
@@ -47,7 +49,7 @@
             <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource ControlStrokeColorOnAccentSecondaryBrush}"
-                ColorBrushName="ControlFillColorQuarternaryBrush"
+                ColorBrushName="ControlStrokeColorOnAccentSecondaryBrush"
                 ColorExplanation="Used in Control Elevation Brushes"
                 ColorName="Control Stroke / On Accent Secondary"
                 ColorValue="#000000 (66, 40%)"
@@ -64,25 +66,26 @@
                 Background="{ThemeResource ControlStrokeColorOnAccentTertiaryBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentTertiaryBrush"
                 ColorExplanation="Linework on Accent controls, ie: dividers"
-                ColorName="Control Secondary / Disabled"
+                ColorName="Control Stroke / On Accent Tertiary"
                 ColorValue="#000000 (37, 21.69%)" />
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlStrokeColorOnAccentDisabledBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentDisabledBrush"
                 ColorExplanation="Disabled"
-                ColorName="Control Secondary / Transparent"
-                ColorValue="#000000 (DF, 5.78%)" />
+                ColorName="Control Stroke / On Accent Disabled"
+                ColorValue="#000000 (0F, 5.78%)" />
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlStrokeColorForStrongFillWhenOnImageBrush}"
                 ColorBrushName="ControlStrokeColorForStrongFillWhenOnImageBrush"
-                ColorExplanation="When used with a 'stron' fill color, ensures a 3:1 contrast on any background"
-                ColorName="Control Secondary / Input Active"
+                ColorExplanation="When used with a 'strong' fill color, ensures a 3:1 contrast on any background"
+                ColorName="Control Stroke / For Strong Fill When On Image"
                 ColorValue="#FFFFFF (59, 35%)"
                 ShowSeparator="False" />
         </Grid>
 
+        <!--  Card Stroke  -->
         <designguidance:ColorPageExample
             Title="Card Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
@@ -106,12 +109,13 @@
                 Grid.Column="1"
                 Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
                 ColorBrushName="CardStrokeColorDefaultSolidBrush"
-                ColorExplanation="Solid equivalent of Card Stroke / Default"
-                ColorName="Control Stroke / Default Solid"
+                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
+                ColorName="Card Stroke / Default Solid"
                 ColorValue="#EBEBEB (FF, 100%)"
                 ShowSeparator="False" />
         </Grid>
 
+        <!--  Control Strong Stroke  -->
         <designguidance:ColorPageExample
             Title="Control Strong Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
@@ -147,14 +151,59 @@
                 ShowSeparator="False" />
         </Grid>
 
+
+        <!--  Surface Stroke  -->
+        <designguidance:ColorPageExample
+            Title="Surface Stroke"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for strokes on background surfaces, ie: flyouts, windows, dialogs.">
+            <Grid
+                Width="120"
+                Height="40"
+                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" />
+        </designguidance:ColorPageExample>
+
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                ColorBrushName="SurfaceStrokeColorDefaultBrush"
+                ColorExplanation="Window and dialog borders, theme inverse"
+                ColorName="Surface Stroke / Default"
+                ColorValue="#757575 (66, 40%) Snapped Windows: #757575 (FF, 100%)"
+                ShowSeparator="False" />
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
+                ColorBrushName="SurfaceStrokeColorFlyoutBrush"
+                ColorExplanation="Control flyouts, always dark"
+                ColorName="Surface Stroke / Flyout"
+                ColorValue=""
+                ShowSeparator="False" />
+        </Grid>
+
+
+        <!--  Divider Stroke  -->
         <designguidance:ColorPageExample
             Title="Divider Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme.">
-            <Grid>
+            <Grid
+                Width="120"
+                Height="40"
+                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}">
                 <Border
                     Width="1"
-                    Height="30"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
                     BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
@@ -170,11 +219,64 @@
             <designguidance:ColorTile
                 Background="{ThemeResource DividerStrokeColorDefaultBrush}"
                 ColorBrushName="DividerStrokeColorDefaultBrush"
-                ColorExplanation="Rest"
-                ColorName="Content dividers"
+                ColorExplanation="Content dividers"
+                ColorName="Divider Stroke / Default"
                 ColorValue="#0000000 (DF, 5.78%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
         </Grid>
+
+        <!--  Focus Stroke  -->
+        <designguidance:ColorPageExample
+            Title="Focus Stroke"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme..">
+            <Grid
+                BorderBrush="{ThemeResource FocusStrokeColorOuterBrush}"
+                BorderThickness="2"
+                CornerRadius="10">
+                <Grid
+                    BorderBrush="{ThemeResource FocusStrokeColorInnerBrush}"
+                    BorderThickness="2"
+                    CornerRadius="9">
+                    <Grid
+                        Width="120"
+                        Height="40"
+                        BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource OverlayCornerRadius}">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="Text" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </designguidance:ColorPageExample>
+
+        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <designguidance:ColorTile
+                Background="{ThemeResource FocusStrokeColorOuterBrush}"
+                ColorBrushName="FocusStrokeColorOuterBrush"
+                ColorExplanation="Outer stroke color"
+                ColorName="Focus / Outer"
+                ColorValue="#000000 (E4, 89.56%)"
+                Foreground="{ThemeResource TextFillColorInverseBrush}"
+                ShowSeparator="False" />
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource FocusStrokeColorInnerBrush}"
+                ColorBrushName="FocusStrokeColorInnerBrush"
+                ColorExplanation="Inner stroke color"
+                ColorName="Focus / Inner"
+                ColorValue="#FFFFFF (B3, 70%)"
+                ShowSeparator="False" />
+        </Grid>
+
     </StackPanel>
 </Page>

@@ -12,6 +12,7 @@
 
     <!--  Colors section  -->
     <StackPanel>
+        <!--  Text  -->
         <designguidance:ColorPageExample Title="Text" Description="For UI labels and static text">
             <TextBlock
                 FontSize="42"
@@ -61,6 +62,7 @@
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
         </Grid>
+
 
         <!--  Accent text  -->
         <designguidance:ColorPageExample Title="Accent Text" Description="Recommended for links">
@@ -114,6 +116,7 @@
                 ShowSeparator="False" />
         </Grid>
 
+
         <!--  Text on accent  -->
         <designguidance:ColorPageExample
             Title="Text On Accent"
@@ -140,15 +143,11 @@
                 ColorName="Text on Accent / Primary"
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <Border
-                Grid.Column="1"
-                VerticalAlignment="Stretch"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1" />
+
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
-                ColorBrushName="AccentTextFillColorSecondaryBrush"
+                ColorBrushName="TextOnAccentFillColorSecondaryBrush"
                 ColorExplanation="Pressed only (not accessible)"
                 ColorName="Text on Accent / Secondary"
                 ColorValue="#FFFFFF (B3, 70%)"
@@ -164,22 +163,17 @@
 
             <designguidance:ColorTile
                 Background="{ThemeResource TextOnAccentFillColorDisabledBrush}"
-                ColorBrushName="AccentTextFillColorTertiaryBrush"
-                ColorExplanation="Pressed only (not accessible)"
-                ColorName="Disabled only (not accessible)"
+                ColorBrushName="TextOnAccentFillColorDisabledBrush"
+                ColorExplanation="Disabled only (not accessible)"
+                ColorName="Text on Accent / Disabled"
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <Border
-                Grid.Column="1"
-                VerticalAlignment="Stretch"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1" />
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
-                ColorBrushName="AccentTextFillColorDisabledBrush"
-                ColorExplanation="Disabled only (not accessible)"
-                ColorName="For highlighted text in text entry experiences"
+                ColorBrushName="TextOnAccentFillColorSelectedTextBrush"
+                ColorExplanation="For highlighted text in text entry experiences"
+                ColorName="Text on Accent / Selected Text"
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
