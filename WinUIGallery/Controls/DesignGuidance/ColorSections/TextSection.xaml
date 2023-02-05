@@ -175,7 +175,7 @@
                 ColorExplanation="For highlighted text in text entry experiences"
                 ColorName="Text on Accent / Selected Text"
                 ColorValue="#FFFFFF (FF, 100%)"
-                Foreground="{ThemeResource TextFillColorPrimary}"
+                Foreground="Black"
                 ShowSeparator="False" />
         </Grid>
     </StackPanel>
