@@ -22,7 +22,6 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
-using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.System.Profile;
@@ -106,18 +105,6 @@ namespace AppUIBasics
         {
             var navigationView = sender as NavigationView;
             NavigationRootPage.GetForElement(this).AppTitleBar.Visibility = navigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
-        {
-            //ensure the custom title bar does not overlap window caption controls
-            Thickness currMargin = AppTitleBar.Margin;
-            AppTitleBar.Margin = new Thickness() { Left = currMargin.Left, Top = currMargin.Top, Right = coreTitleBar.SystemOverlayRightInset, Bottom = currMargin.Bottom };
-        }
-
-        public bool CheckNewControlSelected()
-        {
-            return NewControlsItem.IsSelected;
         }
 
         // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
