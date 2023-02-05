@@ -56,7 +56,6 @@
             ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
-            KeyDown="OnItemGridViewKeyDown"
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None">
             <GridView.Header>

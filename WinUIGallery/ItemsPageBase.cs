@@ -67,27 +67,7 @@ namespace AppUIBasics
             NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), new NavigationArguments() { ID = _itemId }, new DrillInNavigationTransitionInfo());
         }
 
-        protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                FindNextElementOptions options = new FindNextElementOptions
-                {
-                    SearchRoot = this.XamlRoot.Content
-                };
-                var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up, options);
-                //if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
-                //{
-                //    NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
-                //}
-                //else
-                //{
-                //    FocusManager.TryMoveFocus(FocusNavigationDirection.Up);
-                //}
-            }
-        }
-
-        protected async void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
+        protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
         {
             if (_itemId != null)
             {
@@ -97,10 +77,7 @@ namespace AppUIBasics
                 if (item != null)
                 {
                     gridView.ScrollIntoView(item);
-
-                        ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
-                    
-                    
+                    ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
                 }
             }
         }

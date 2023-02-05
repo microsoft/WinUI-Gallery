@@ -65,7 +65,6 @@
                     ItemContainerStyle="{StaticResource GridViewItemStyle}"
                     ItemTemplate="{StaticResource ControlItemTemplate}"
                     ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
-                    KeyDown="OnItemGridViewKeyDown"
                     Loaded="OnItemGridViewLoaded"
                     SelectionMode="None"
                     TabIndex="1" />

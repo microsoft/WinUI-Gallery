@@ -55,7 +55,6 @@
             ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
-            KeyDown="OnItemGridViewKeyDown"
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None" />
         <VisualStateManager.VisualStateGroups>
