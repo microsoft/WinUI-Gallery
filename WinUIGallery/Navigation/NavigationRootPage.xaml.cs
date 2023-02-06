@@ -34,7 +34,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap;
 using AppUIBasics.ControlPages;
-using System.Threading.Channels;
 
 namespace AppUIBasics
 {
