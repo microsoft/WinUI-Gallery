@@ -34,6 +34,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap;
 using AppUIBasics.ControlPages;
+using System.Threading.Channels;
 
 namespace AppUIBasics
 {
@@ -448,11 +449,11 @@ namespace AppUIBasics
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
             {
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
-                var isSelectionChanged = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
+                var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
 
-                // In case the menu selecion change, it has trigger the
-                // selecion changed event that will navigate to the page already
-                if (!isSelectionChanged)
+                // In case the menu has selection change, it menas it has trigger
+                // the selection changed event that will navigate to the page already
+                if (!hasChangedSelection)
                 {
                     Navigate(typeof(ItemPage), infoDataItem.UniqueId);
                 }
