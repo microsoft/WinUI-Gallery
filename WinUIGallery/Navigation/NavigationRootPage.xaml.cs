@@ -450,8 +450,8 @@ namespace AppUIBasics
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
 
-                // In case the menu has selection change, it menas it has trigger
-                // the selection changed event that will navigate to the page already
+                // In case the menu selection has changed, it means that it has triggered
+                // the selection changed event, that will navigate to the page already
                 if (!hasChangedSelection)
                 {
                     Navigate(typeof(ItemPage), infoDataItem.UniqueId);
