@@ -159,6 +159,8 @@ namespace AppUIBasics
             object targetPageArguments = null,
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
+            // Close any open teaching tips before navigation
+            CloseTeachingTips();
             NavigationRootPageArgs args = new NavigationRootPageArgs();
             args.NavigationRootPage = this;
             args.Parameter = targetPageArguments;
@@ -297,9 +299,6 @@ namespace AppUIBasics
 
         private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            // Close any open teaching tips before navigation
-            CloseTeachingTips();
-
             if (args.IsSettingsSelected)
             {
                 if (rootFrame.CurrentSourcePageType != typeof(SettingsPage))
@@ -332,7 +331,7 @@ namespace AppUIBasics
                 {
                     Navigate(typeof(ItemPage), "Typography");
                 }
-                else if(selectedItem == ColorsItem)
+                else if (selectedItem == ColorsItem)
                 {
                     Navigate(typeof(ItemPage), "Colors");
                 }
@@ -449,9 +448,14 @@ namespace AppUIBasics
             if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
             {
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
-                var itemId = infoDataItem.UniqueId;
-                EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                Navigate(typeof(ItemPage), itemId);
+                var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
+
+                // In case the menu selection has changed, it means that it has triggered
+                // the selection changed event, that will navigate to the page already
+                if (!hasChangedSelection)
+                {
+                    Navigate(typeof(ItemPage), infoDataItem.UniqueId);
+                }
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
@@ -459,7 +463,7 @@ namespace AppUIBasics
             }
         }
 
-        public void EnsureItemIsVisibleInNavigation(string name)
+        public bool EnsureItemIsVisibleInNavigation(string name)
         {
             bool changedSelection = false;
             foreach (object rawItem in NavigationView.MenuItems)
@@ -523,6 +527,7 @@ namespace AppUIBasics
                     break;
                 }
             }
+            return changedSelection;
         }
 
         private void UpdateAppTitleMargin(Microsoft.UI.Xaml.Controls.NavigationView sender)
@@ -628,9 +633,9 @@ namespace AppUIBasics
                 dispatcherQueue.TryEnqueue(
                     DispatcherQueuePriority.Low,
                     new DispatcherQueueHandler(() =>
-                {
-                    DebuggerAttachedCheckBox.IsChecked = true;
-                }));
+                    {
+                        DebuggerAttachedCheckBox.IsChecked = true;
+                    }));
             });
 
             var asyncAction = Windows.System.Threading.ThreadPool.RunAsync(workItem);
