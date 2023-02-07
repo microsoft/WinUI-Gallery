@@ -336,7 +336,6 @@
                 ColorBrushName="MicaBackgroundFillColorBaseBrush"
                 ColorExplanation="Used for the bottom most layer of an experience."
                 ColorName="Mica Background / Base"
-                ShowSeparator="False"
                 ShowWarning="True" />
             <designguidance:ColorTile
                 Grid.Column="1"

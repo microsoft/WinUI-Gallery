@@ -113,8 +113,7 @@
                 ColorExplanation="Badge"
                 ColorName="System / Neutral"
                 ColorValue="#FFFFFF (8B, 54,42%)"
-                Foreground="{ThemeResource TextFillColorInverseBrush}"
-                ShowSeparator="False" />
+                Foreground="{ThemeResource TextFillColorInverseBrush}" />
 
 
             <designguidance:ColorTile
@@ -139,10 +138,7 @@
                 ColorBrushName="SystemFillColorAttentionBackgroundBrush"
                 ColorExplanation="Infobar Background"
                 ColorName="System / Attention Background"
-                ColorValue="#FFFFFF (0B, 3.26%)"
-                ShowSeparator="False" />
-          
-
+                ColorValue="#FFFFFF (0B, 3.26%)"/>
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorNeutralBackgroundBrush}"

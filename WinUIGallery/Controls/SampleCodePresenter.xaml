@@ -61,7 +61,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="SampleHeader" />
+        <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
         <ScrollViewer
             x:Name="CodeScrollViewer"
             Grid.Row="1"
