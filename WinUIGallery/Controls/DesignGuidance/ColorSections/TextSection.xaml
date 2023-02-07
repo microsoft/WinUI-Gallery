@@ -11,7 +11,7 @@
     mc:Ignorable="d">
 
     <!--  Colors section  -->
-    <StackPanel>
+    <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
         <!--  Text  -->
         <designguidance:ColorPageExample Title="Text" Description="For UI labels and static text">
             <TextBlock
@@ -19,7 +19,7 @@
                 FontWeight="SemiBold"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -72,7 +72,7 @@
                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -130,7 +130,7 @@
                 Text="Aa" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -155,7 +155,7 @@
                 ShowSeparator="False" />
         </Grid>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

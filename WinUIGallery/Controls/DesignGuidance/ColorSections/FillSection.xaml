@@ -10,7 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel x:Name="ColorSection">
+    <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
 
         <!--  Control Fill  -->
         <designguidance:ColorPageExample
@@ -19,7 +19,7 @@
             Description="Fill used for standard controls">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -56,7 +56,7 @@
                 ShowSeparator="False"
                 ShowWarning="True" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -94,7 +94,7 @@
             Description="Fill used for the 'off' states of toggle controls">
             <ToggleSwitch OffContent="" OnContent="" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -121,7 +121,7 @@
                 ColorValue="#000000 (0F, 5.78%)"
                 ShowSeparator="False" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -153,7 +153,7 @@
                 Value="40" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -180,7 +180,7 @@
                 Visibility="Visible" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -226,7 +226,7 @@
             </StackPanel>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -290,7 +290,7 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -343,7 +343,7 @@
             </StackPanel>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -376,7 +376,7 @@
                 Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                 ShowSeparator="False" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

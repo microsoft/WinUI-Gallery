@@ -25,8 +25,8 @@
             Padding="16"
             Background="{x:Bind Background, Mode=OneWay}"
             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-            BorderThickness="1,1,1,0"
-            CornerRadius="8,8,0,0">
+            BorderThickness="1"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

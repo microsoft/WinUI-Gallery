@@ -11,7 +11,7 @@
     mc:Ignorable="d">
 
 
-    <StackPanel>
+    <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
 
         <!--  Card Background  -->
         <designguidance:ColorPageExample
@@ -26,7 +26,7 @@
                 BorderThickness="1"
                 CornerRadius="4" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -70,7 +70,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -104,7 +104,7 @@
                     BorderThickness="1,0,0,0" />
             </Grid>
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -145,7 +145,7 @@
                     BorderThickness="1,0,0,0" />
             </Grid>
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -171,7 +171,7 @@
                 Header="Text" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -196,7 +196,7 @@
 
         </Grid>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -235,7 +235,7 @@
                 CornerRadius="4" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelMiddleStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -277,7 +277,7 @@
                 ShowSeparator="False" />
         </Grid>
 
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -326,7 +326,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -361,7 +361,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -396,7 +396,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelBottomStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
