@@ -53,7 +53,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="pageHeader.Padding" Value="16,48,16,0" />
-                        <Setter Target="contentRoot.Padding" Value="16,0,16,0" />
+                        <Setter Target="contentRoot.Padding" Value="16,0,16,16" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -67,7 +67,7 @@
             Grid.Row="1"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="36,0,36,0">
+            <Grid x:Name="contentRoot" Padding="36,0,36,36">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

@@ -174,7 +174,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Icon = GetIcon(item.ImagePath), Tag = item.UniqueId, DataContext = item };
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Icon = GetIcon(item.ImageIconPath), Tag = item.UniqueId, DataContext = item };
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
@@ -271,26 +271,27 @@ namespace AppUIBasics
                 }
                 else if (selectedItem == TypographyItem)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Typography", IsControlPage = false });                }
+                    Navigate(typeof(ItemPage), "Typography");
+                }
                 else if(selectedItem == ColorsItem)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Colors", IsControlPage = false });
+                    Navigate(typeof(ItemPage), "Colors");
                 }
                 else if (selectedItem == IconsItem)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "Icons", IsControlPage = false });
+                    Navigate(typeof(ItemPage), "Icons");
                 }
                 else if (selectedItem == AccessibilityScreenReaderPage)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityScreenReader", IsControlPage = false });
+                    Navigate(typeof(ItemPage), "AccessibilityScreenReader");
                 }
                 else if (selectedItem == AccessibilityKeyboardPage)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityKeyboard", IsControlPage = false });
+                    Navigate(typeof(ItemPage), "AccessibilityKeyboard");
                 }
                 else if (selectedItem == AccessibilityContrastPage)
                 {
-                    Navigate(typeof(ItemPage), new NavigationArguments() { ID = "AccessibilityColorContrast", IsControlPage = false });
+                    Navigate(typeof(ItemPage), "AccessibilityColorContrast");
                 }
                 else
                 {
@@ -302,7 +303,7 @@ namespace AppUIBasics
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        Navigate(typeof(ItemPage), new NavigationArguments() { ID = item.UniqueId });
+                        Navigate(typeof(ItemPage), item.UniqueId);
                     }
                 }
             }
@@ -368,7 +369,7 @@ namespace AppUIBasics
                 var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
                 var itemId = infoDataItem.UniqueId;
                 EnsureItemIsVisibleInNavigation(infoDataItem.Title);
-                Navigate(typeof(ItemPage), new NavigationArguments() { ID = itemId });
+                Navigate(typeof(ItemPage), itemId);
             }
             else if (!string.IsNullOrEmpty(args.QueryText))
             {
@@ -539,11 +540,5 @@ namespace AppUIBasics
         Mobile,
         Other,
         Xbox
-    }
-
-    public class NavigationArguments
-    {
-        public string ID { get; set; }
-        public bool IsControlPage { get; set; } = true;
     }
 }

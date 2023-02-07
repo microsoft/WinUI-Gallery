@@ -122,17 +122,17 @@
             </Paragraph>
         </RichTextBlock>
 
-        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
+            <TextBlock  Margin="0,8,0,0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
         <AutoSuggestBox
             MinWidth="304"
             MaxWidth="320"
-            Margin="0,8,0,8"
+            Margin="0,8,0,12"
             HorizontalAlignment="Left"
             PlaceholderText="Search icons"
             QueryIcon="Find"
             TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" MaxHeight="600" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="296" />

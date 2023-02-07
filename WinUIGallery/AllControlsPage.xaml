@@ -23,6 +23,28 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's window size  -->
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HeaderGrid.Height" Value="136" />
+                        <Setter Target="itemGridView.Padding" Value="16,16,16,36" />
+                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
+                        <Setter Target="smallHeaderText.Margin" Value="16,16,0,0" />
+                        <Setter Target="smallHeaderText.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
         <Grid
             x:Name="HeaderGrid"
@@ -57,27 +79,5 @@
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None" />
-        <VisualStateManager.VisualStateGroups>
-            <!--  Visual states reflect the application's window size  -->
-            <VisualStateGroup x:Name="LayoutVisualStates">
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="HeaderGrid.Height" Value="136" />
-                        <Setter Target="itemGridView.Padding" Value="16,16,16,36" />
-                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
-                        <Setter Target="smallHeaderText.Margin" Value="16,16,0,0" />
-                        <Setter Target="smallHeaderText.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
     </Grid>
 </local:ItemsPageBase>

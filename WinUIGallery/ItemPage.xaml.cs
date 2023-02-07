@@ -79,19 +79,11 @@ namespace AppUIBasics
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            NavigationArguments arg = (NavigationArguments)args.Parameter;
-            var item = await ControlInfoDataSource.Instance.GetItemAsync(arg.ID);
+            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)args.Parameter);
 
             if (item != null)
             {
                 Item = item;
-
-                if (!arg.IsControlPage)
-                {
-                    // We disable scrolling on specific pages because the pages will have their own scrolling behavior.
-                    svPanel.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-                    pageHeader.ThemeButtonVisibility = Visibility.Collapsed;
-                }
 
                 // Load control page into frame.
                 Type pageType = Type.GetType("AppUIBasics.ControlPages." + item.UniqueId + "Page");
