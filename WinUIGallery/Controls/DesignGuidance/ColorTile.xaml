@@ -33,13 +33,22 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock
+                    Foreground="{x:Bind Foreground, Mode=OneWay}"
+                    IsTextSelectionEnabled="True"
+                    Style="{ThemeResource BodyStrongTextBlockStyle}"
+                    Text="{x:Bind ColorName, Mode=OneWay}"
+                    TextWrapping="WrapWholeWords" />
 
-            <TextBlock
-                Foreground="{x:Bind Foreground, Mode=OneWay}"
-                IsTextSelectionEnabled="True"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="{x:Bind ColorName, Mode=OneWay}"
-                TextWrapping="WrapWholeWords" />
+                <FontIcon
+                    FontSize="16"
+                    Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                    Glyph="&#xE7BA;"
+                    ToolTipService.ToolTip="This brush might not (yet) be available in WinUI."
+                    Visibility="{x:Bind ShowWarning, Mode=OneWay}" />
+            </StackPanel>
+
             <Button
                 x:Name="CopyBrushNameButton"
                 Grid.RowSpan="4"
