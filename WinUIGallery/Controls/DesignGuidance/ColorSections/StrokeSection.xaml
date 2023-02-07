@@ -12,6 +12,65 @@
 
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
 
+
+        <!--  Control Elevation (gradient strokes)  -->
+        <designguidance:ColorPageExample
+            Title="Control Elevation (gradient strokes)"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for standard control strokes and stroke states.">
+            <Button Content="Text" />
+        </designguidance:ColorPageExample>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource ControlElevationBorderBrush}"
+                ColorBrushName="ControlElevationBorderBrush"
+                ColorExplanation="Rest"
+                ColorName="Control / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource CircleElevationBorderBrush}"
+                ColorBrushName="CircleElevationBorderBrush"
+                ColorExplanation="Rest"
+                ColorName="Circle / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
+            <designguidance:ColorTile
+                Grid.Column="2"
+                Background="{ThemeResource TextControlElevationBorderBrush}"
+                ColorBrushName="TextControlElevationBorderBrush"
+                ColorExplanation="Rest"
+                ColorName="Text Control / Border"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Grid.Column="0"
+                Background="{ThemeResource TextControlElevationBorderFocusedBrush}"
+                ColorBrushName="TextControlElevationBorderFocusedBrush"
+                ColorExplanation="Active text fields"
+                ColorName="Text Control / Border Focused"
+                ColorValue="Stop 1: Stroke/Control/Default Stop 2: Fill/Accent/Default" />
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource AccentControlElevationBorderBrush}"
+                ColorBrushName="AccentControlElevationBorderBrush"
+                ColorExplanation="Rest"
+                ColorName="Accent Control / Border"
+                ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
+        </Grid>
+
+
+
         <!--  Control Stroke  -->
         <designguidance:ColorPageExample
             Title="Control Stroke"
