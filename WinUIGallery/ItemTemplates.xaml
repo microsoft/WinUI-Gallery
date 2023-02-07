@@ -8,7 +8,7 @@
         <UserControl>
             <Grid
                 x:Name="controlRoot"
-                Width="406"
+                Width="360"
                 Height="90"
                 Padding="8"
                 HorizontalAlignment="Stretch"
