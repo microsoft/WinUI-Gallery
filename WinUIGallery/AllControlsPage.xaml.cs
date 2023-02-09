@@ -27,16 +27,10 @@ namespace AppUIBasics
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
 
-            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.ElementAt(1);
+            var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.ElementAt(3);
             menuItem.IsSelected = true;
-            args.NavigationRootPage.NavigationView.Header = string.Empty;
 
             Items = ControlInfoDataSource.Instance.Groups.Where(g => !g.IsSpecialSection).SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
-        }
-
-        protected override bool GetIsNarrowLayoutState()
-        {
-            return LayoutVisualStates.CurrentState == NarrowLayout;
         }
     }
 }

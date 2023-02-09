@@ -17,7 +17,11 @@
     NavigationCacheMode="Enabled">
 
     <!--  This grid acts as a root panel for the page.  -->
-    <Grid Background="{ThemeResource HomePageBackgroundBrush}">
+    <Grid x:Name="rootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <!--  Visual states reflect the application's window size  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="LayoutVisualStates">
@@ -31,16 +35,22 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="itemGridView.Padding" Value="12,0,12,36" />
+                        <Setter Target="TitleTxt.Margin" Value="16,48,16,24" />
+                        <Setter Target="itemGridView.Padding" Value="16,0,16,36" />
+                        <Setter Target="TitleTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
+        <TextBlock
+            x:Name="TitleTxt"
+            Margin="36,24,36,24"
+            Style="{StaticResource TitleTextBlockStyle}" />
         <GridView
             x:Name="itemGridView"
-            Padding="48,12,0,36"
+            Grid.Row="1"
+            Padding="36,24,36,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -50,9 +60,7 @@
             ItemContainerStyle="{StaticResource GridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
-            KeyDown="OnItemGridViewKeyDown"
             Loaded="OnItemGridViewLoaded"
-            SizeChanged="OnItemGridViewSizeChanged"
             SelectionMode="None"
             TabIndex="1" />
     </Grid>

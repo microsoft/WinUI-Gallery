@@ -55,7 +55,6 @@ namespace AppUIBasics
         {
             base.OnNavigatedTo(e);
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            args.NavigationRootPage.NavigationView.Header = "Settings";
         }
 
         private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
