@@ -91,7 +91,7 @@
         },
         {
           "UniqueId": "AccessibilityColorContrast",
-          "Title": "Color Contrast",
+          "Title": "Color contrast",
           "ApiNamespace": "",
           "Subtitle": "",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
@@ -169,7 +169,7 @@
     },
     {
       "UniqueId": "MenusAndToolbars",
-      "Title": "Menus and Toolbars",
+      "Title": "Menus & toolbars",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -727,7 +727,7 @@
     },
     {
       "UniqueId": "DateAndTime",
-      "Title": "Date and Time",
+      "Title": "Date & time",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -844,7 +844,7 @@
     },
     {
       "UniqueId": "BasicInput",
-      "Title": "Basic Input",
+      "Title": "Basic input",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -1272,7 +1272,7 @@
     },
     {
       "UniqueId": "StatusAndInfo",
-      "Title": "Status and Info",
+      "Title": "Status & info",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -1386,7 +1386,7 @@
     },
     {
       "UniqueId": "DialogsAndFlyouts",
-      "Title": "Dialogs and Flyouts",
+      "Title": "Dialogs & flyouts",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",

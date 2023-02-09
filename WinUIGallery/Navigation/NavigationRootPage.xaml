@@ -219,15 +219,15 @@
                             <NavigationViewItem.MenuItems>
                                 <NavigationViewItem
                                     x:Name="AccessibilityScreenReaderPage"
-                                    Content="Screen Reader support"
+                                    Content="Screen reader"
                                     Tag="AccessibilityScreenReader" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityKeyboardPage"
-                                    Content="Keyboard support"
+                                    Content="Keyboard navigation"
                                     Tag="AccessibilityKeyboard" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityContrastPage"
-                                    Content="Color Contrast"
+                                    Content="Color contrast"
                                     Tag="AccessibilityColorContrast" />
                             </NavigationViewItem.MenuItems>
                         </NavigationViewItem>
