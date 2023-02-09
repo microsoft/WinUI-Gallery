@@ -33,7 +33,7 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
                 .<LineBreak />
                 <LineBreak />
                 If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
