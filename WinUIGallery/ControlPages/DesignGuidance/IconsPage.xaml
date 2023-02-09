@@ -17,7 +17,8 @@
     xmlns:controls="using:AppUIBasics.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="using:AppUIBasics"
+    xmlns:local="using:AppUIBasics"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -33,7 +34,7 @@
             <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
             <Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
             <Setter Property="SampleType" Value="Inline" />
-            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,4,0,16" />
         </Style>
@@ -57,6 +58,19 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionState">
+                            <VisualState x:Name="Default" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
@@ -82,19 +96,6 @@
                         Text="{Binding Name}"
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
-
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="SelectionState">
-                            <VisualState x:Name="Default" />
-                            <VisualState x:Name="Selected">
-                                <VisualState.Setters>
-                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
                 </Grid>
             </UserControl>
         </DataTemplate>
@@ -102,46 +103,55 @@
 
     <Grid HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-        <RichTextBlock>
-            <Paragraph>
-                With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                is the recommended symbol icon font.
-                <LineBreak />
+            <RichTextBlock>
+                <Paragraph>
+                    With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                    is the recommended symbol icon font.<LineBreak />
                 </Paragraph>
             </RichTextBlock>
-        <TextBlock Margin="0,8,0,0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
-        <RichTextBlock>
-            <Paragraph>
-                On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
-                .<LineBreak />
-            </Paragraph>
-        </RichTextBlock>
+            <TextBlock
+                Margin="0,8,0,0"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="How do I get the font?" />
+            <RichTextBlock>
+                <Paragraph>
+                    On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
+                    On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
+                    .<LineBreak />
+                </Paragraph>
+            </RichTextBlock>
 
-            <TextBlock  Margin="0,8,0,0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
-        <AutoSuggestBox
-            MinWidth="304"
-            MaxWidth="320"
-            Margin="0,8,0,12"
-            HorizontalAlignment="Left"
-            PlaceholderText="Search icons"
-            QueryIcon="Find"
-            TextChanged="SearchTextBox_TextChanged" />
+            <TextBlock
+                Margin="0,8,0,0"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Fluent Icons Library" />
+            <AutoSuggestBox
+                MinWidth="304"
+                MaxWidth="320"
+                Margin="0,8,0,12"
+                HorizontalAlignment="Left"
+                PlaceholderText="Search icons"
+                QueryIcon="Find"
+                TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
-        <Grid VerticalAlignment="Top" Grid.Row="1" MaxHeight="600" Background="{ThemeResource ControlExampleDisplayBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1" CornerRadius="{StaticResource OverlayCornerRadius}">
+        <Grid
+            Grid.Row="1"
+            MaxHeight="600"
+            VerticalAlignment="Top"
+            Background="{ThemeResource ControlExampleDisplayBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="296" />
             </Grid.ColumnDefinitions>
             <ScrollViewer
-                Margin="0,0,12,0"
-                Padding="0,0,12,0"
+                Padding="4"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 AutomationProperties.Name="Icons">
@@ -161,12 +171,10 @@
 
             <Grid
                 Grid.Column="1"
-                Padding="12"
+                Padding="16"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="4"
-                Margin="0,4,0,0"
+                BorderThickness="1,0,0,0"
                 DataContext="{x:Bind}">
                 <StackPanel>
                     <TextBlock
@@ -176,12 +184,12 @@
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="{Binding SelectedItem.Name, Mode=OneWay}" />
                     <FontIcon
-                            Margin="0,12,0,24"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
-                            Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
+                        Margin="0,12,0,32"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
+                        Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
 
                     <TextBlock Text="Icon name" />
                     <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
@@ -192,9 +200,9 @@
                     <TextBlock Text="Code glyph" />
                     <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                     <TextBlock Text="XAML" />
-                    <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                     <TextBlock Text="C#" />
-                    <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}"/>
+                    <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
 
                     <StackPanel Orientation="Vertical" Visibility="Collapsed">
                         <TextBlock
