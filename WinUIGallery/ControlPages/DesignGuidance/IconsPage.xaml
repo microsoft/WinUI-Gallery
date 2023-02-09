@@ -17,7 +17,7 @@
     xmlns:controls="using:AppUIBasics.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="using:AppUIBasics"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -132,13 +132,15 @@
             QueryIcon="Find"
             TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
-        <Grid Grid.Row="1" MaxHeight="600" VerticalAlignment="Top">
+        <Grid VerticalAlignment="Top" Grid.Row="1" MaxHeight="600" Background="{ThemeResource ControlExampleDisplayBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1" CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="296" />
             </Grid.ColumnDefinitions>
             <ScrollViewer
-                Margin="-4,0,12,0"
+                Margin="0,0,12,0"
                 Padding="0,0,12,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
