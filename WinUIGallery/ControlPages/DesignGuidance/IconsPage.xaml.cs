@@ -93,7 +93,10 @@ namespace AppUIBasics.ControlPages
                     FilteredItems.Add(item);
                 }
             }
-            SelectedItem = FilteredItems[0];
+            if (FilteredItems.Count > 0)
+            {
+                SelectedItem = FilteredItems[0];
+            }
         }
 
         private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)

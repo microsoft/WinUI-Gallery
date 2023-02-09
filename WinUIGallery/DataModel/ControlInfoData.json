@@ -2,7 +2,7 @@
   "Groups": [
     {
       "UniqueId": "Design_Guidance",
-      "Title": "Design Guidance",
+      "Title": "Design guidance",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -91,7 +91,7 @@
         },
         {
           "UniqueId": "AccessibilityColorContrast",
-          "Title": "Color Contrast",
+          "Title": "Color contrast",
           "ApiNamespace": "",
           "Subtitle": "",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
@@ -169,7 +169,7 @@
     },
     {
       "UniqueId": "MenusAndToolbars",
-      "Title": "Menus and Toolbars",
+      "Title": "Menus & toolbars",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -727,7 +727,7 @@
     },
     {
       "UniqueId": "DateAndTime",
-      "Title": "Date and Time",
+      "Title": "Date & time",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -844,7 +844,7 @@
     },
     {
       "UniqueId": "BasicInput",
-      "Title": "Basic Input",
+      "Title": "Basic input",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -1272,7 +1272,7 @@
     },
     {
       "UniqueId": "StatusAndInfo",
-      "Title": "Status and Info",
+      "Title": "Status & info",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -1386,7 +1386,7 @@
     },
     {
       "UniqueId": "DialogsAndFlyouts",
-      "Title": "Dialogs and Flyouts",
+      "Title": "Dialogs & flyouts",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -2902,7 +2902,7 @@
     },
     {
       "UniqueId": "MultipleWindows",
-      "Title": "Windows",
+      "Title": "Windowing",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
@@ -2911,7 +2911,7 @@
       "Items": [
         {
           "UniqueId": "CreateMultipleWindows",
-          "Title": "Create Multiple Windows",
+          "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",

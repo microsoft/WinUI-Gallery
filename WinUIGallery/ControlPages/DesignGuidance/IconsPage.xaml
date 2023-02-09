@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 
 <Page
@@ -17,8 +17,8 @@
     xmlns:controls="using:AppUIBasics.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource HomePageBackgroundBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -27,23 +27,30 @@
         <StaticResource x:Key="GridViewItemForegroundSelected" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
 
         <Style x:Key="CodeValuePresenterStyle" TargetType="controls:SampleCodePresenter">
-            <Setter Property="BorderBrush" Value="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource ControlStrokeColorSecondaryBrush}" />
             <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Padding" Value="24" />
             <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
-            <Setter Property="Background" Value="{ThemeResource SolidBackgroundFillColorSecondaryBrush}" />
-            <Setter Property="Margin" Value="0,0,0,6" />
+            <Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+            <Setter Property="SampleType" Value="Inline" />
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,4,0,16" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
             <UserControl PointerPressed="Icons_TemplatePointerPressed">
                 <Grid
                     x:Name="IconTemplateRoot"
-                    Width="92"
-                    Height="92"
+                    Width="96"
+                    Height="96"
                     Margin="4"
                     HorizontalAlignment="Stretch"
                     x:DefaultBindMode="OneWay"
-                    Background="{ThemeResource SubtleFillColorTertiary}"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
                     CornerRadius="4"
                     ToolTipService.ToolTip="{Binding Name}">
                     <Grid.RowDefinitions>
@@ -51,11 +58,24 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionState">
+                            <VisualState x:Name="Default" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
-                        Width="20"
-                        Height="20"
+                        Width="28"
+                        Height="28"
                         Margin="0,0,0,10">
                         <FontIcon
                             x:Name="IconGlyph"
@@ -68,259 +88,156 @@
                     <TextBlock
                         x:Name="IconName"
                         Grid.Row="2"
-                        Margin="5,0,5,0"
+                        Margin="6,0,6,8"
                         HorizontalAlignment="Center"
-                        FontSize="12"
+                        VerticalAlignment="Bottom"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{Binding Name}"
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
-
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="SelectionState">
-                            <VisualState x:Name="Default" />
-                            <VisualState x:Name="Selected">
-                                <VisualState.Setters>
-                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource SystemFillColorAttentionBrush}" />
-                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
                 </Grid>
             </UserControl>
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Spacing="10" HorizontalAlignment="Stretch">
-        <RichTextBlock>
-            <Paragraph>
-                With the release of Windows 11,
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                is the recommended symbol icon font.
-            </Paragraph>
-        </RichTextBlock>
-        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="How do I get the font?" />
-        <RichTextBlock>
-            <Paragraph>
-                On Windows 11: There's nothing you need to do, the font comes with Windows.
-                <LineBreak/>
-                On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink> .
-                <LineBreak/>
-            </Paragraph>
-        </RichTextBlock>
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <RichTextBlock>
+                <Paragraph>
+                    With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
+                    is the recommended symbol icon font.<LineBreak />
+                </Paragraph>
+            </RichTextBlock>
+            <TextBlock
+                Margin="0,8,0,0"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="How do I get the font?" />
+            <RichTextBlock>
+                <Paragraph>
+                    On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
+                    On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
+                    .<LineBreak />
+                </Paragraph>
+            </RichTextBlock>
 
-        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Fluent Icons Library" />
-        <Grid>
+            <TextBlock
+                Margin="0,8,0,0"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Fluent Icons Library" />
+            <AutoSuggestBox
+                MinWidth="304"
+                MaxWidth="320"
+                Margin="0,8,0,12"
+                HorizontalAlignment="Left"
+                PlaceholderText="Search icons"
+                QueryIcon="Find"
+                TextChanged="SearchTextBox_TextChanged" />
+        </StackPanel>
+        <Grid
+            Grid.Row="1"
+            MaxHeight="600"
+            VerticalAlignment="Top"
+            Background="{ThemeResource ControlExampleDisplayBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MaxWidth="800"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="296" />
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <ScrollViewer
+                Padding="4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                AutomationProperties.Name="Icons">
+                <ItemsRepeater
+                    x:Name="IconsRepeater"
+                    MinWidth="100"
+                    Margin="0,0,0,36"
+                    HorizontalAlignment="Stretch"
+                    ElementIndexChanged="IconsRepeater_ElementIndexChanged"
+                    ElementPrepared="IconsRepeater_ElementPrepared"
+                    ItemTemplate="{StaticResource IconTemplate}">
+                    <ItemsRepeater.Layout>
+                        <UniformGridLayout Orientation="Horizontal" />
+                    </ItemsRepeater.Layout>
+                </ItemsRepeater>
+            </ScrollViewer>
 
             <Grid
-                Padding="12"
-                HorizontalAlignment="Left"
-                Background="{ThemeResource ControlOnImageFillColorSecondary}"
-                CornerRadius="4,4,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="15" />
-                    <ColumnDefinition Width="300" />
-                </Grid.ColumnDefinitions>
+                Grid.Column="1"
+                Padding="16"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,0,0,0"
+                DataContext="{x:Bind}">
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="{Binding SelectedItem.Name, Mode=OneWay}" />
+                    <FontIcon
+                        Margin="0,12,0,32"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource SymbolThemeFontFamily}"
+                        FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
+                        Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
 
+                    <TextBlock Text="Icon name" />
+                    <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                    <TextBlock Text="Unicode point" />
+                    <controls:SampleCodePresenter Code="{Binding SelectedItem.Code, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                    <TextBlock Text="Text glyph" />
+                    <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                    <TextBlock Text="Code glyph" />
+                    <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                    <TextBlock Text="XAML" />
+                    <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                    <TextBlock Text="C#" />
+                    <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
 
-                <Grid Background="{ThemeResource ControlSolidFillColorDefaultBrush}" CornerRadius="4" HorizontalAlignment="Stretch">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="320" />
-                    </Grid.RowDefinitions>
-
-                    <AutoSuggestBox
-                        Margin="10"
-                        HorizontalAlignment="Stretch"
-                        PlaceholderText="Search icons"
-                        QueryIcon="Find"
-                        TextChanged="SearchTextBox_TextChanged" />
-
-                    <!--
-                        Setting width on this will always make the parent grid try expand.
-                        This is desired since ItemsRepeater only requests more width if it can fit more elements then.
-                        Unfortunately setting this on the ScrollViewer does not work so we set it here.
-                    -->
-                    <Border
-                        Grid.Row="1"
-                        Width="100000"
-                        Height="2"
-                        HorizontalAlignment="Stretch"
-                        Background="{ThemeResource ControlOnImageFillColorSecondary}" />
-
-                    <ScrollViewer
-                        Grid.Row="2" 
-                        Padding="8,8,12,0"
-                        HorizontalAlignment="Stretch"
-                        AutomationProperties.Name="Icons">
-                        <ItemsRepeater
-                            x:Name="IconsRepeater"
-                            HorizontalAlignment="Stretch"
-                            ElementIndexChanged="IconsRepeater_ElementIndexChanged"
-                            ElementPrepared="IconsRepeater_ElementPrepared"
-                            MinWidth="100"
-                            ItemTemplate="{StaticResource IconTemplate}">
-                            <ItemsRepeater.Layout>
-                                <UniformGridLayout Orientation="Horizontal" />
-                            </ItemsRepeater.Layout>
-                        </ItemsRepeater>
-                    </ScrollViewer>
-                </Grid>
-
-                <Grid
-                    Grid.Column="2"
-                    Width="300"
-                    Padding="10"
-                    Background="{ThemeResource ControlSolidFillColorDefaultBrush}"
-                    ColumnSpacing="10"
-                    CornerRadius="4"
-                    DataContext="{x:Bind}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Vertical" Visibility="Collapsed">
                         <TextBlock
+                            Grid.Row="1"
                             VerticalAlignment="Center"
-                            Margin="0,5,0,0"
-                            Style="{ThemeResource BodyStrongTextBlockStyle}"
-                            FontSize="16"
-                            Text="{Binding SelectedItem.Name, Mode=OneWay}" />
+                            Text="Color" />
+                        <controls1:InlineColorPicker
+                            x:Name="IconColorPicker"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Color="Black" />
 
-
-                        <Grid Height="80" HorizontalAlignment="Center">
-                            <FontIcon
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                Margin="5"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                FontSize= "{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
-                                Foreground="{x:Bind IconColorPicker.ColorBrush, Mode=OneWay}"
-                                Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Padding="0,10,0,0"
+                            VerticalAlignment="Center"
+                            Text="FontSize" />
+                        <Grid
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Padding="0,10,0,0"
+                            ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox
+                                x:Name="FontsizeComboBox"
+                                Width="100"
+                                ItemsSource="{x:Bind FontSizes}"
+                                SelectedIndex="3" />
                         </Grid>
                     </StackPanel>
-
-                    <TextBlock
-                        Grid.Row="1"
-                        VerticalAlignment="Center"
-                        Text="Color" />
-                    <controls1:InlineColorPicker
-                        x:Name="IconColorPicker"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Color="Black"
-                        />
-
-                    <TextBlock
-                        Grid.Row="2"
-                        VerticalAlignment="Center"
-                        Padding="0, 10, 0, 0"
-                        Text="FontSize" />
-                    <Grid
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        ColumnSpacing="8"
-                        Padding="0, 10, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="FontsizeComboBox" SelectedIndex="2" ItemsSource="{x:Bind FontSizes}" Width="100"/>
-                    </Grid>
-
-                    <TextBlock
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Text="Icon-Name" />
-                    <controls:SampleCodePresenter
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Code="{Binding SelectedItem.Name, Mode=OneWay}"
-                        SampleType="Inline"
-                        Style="{StaticResource CodeValuePresenterStyle}" />
-
-                    <TextBlock
-                        Grid.Row="5"
-                        Grid.Column="0"
-                        Text="Unicode point" />
-                    <controls:SampleCodePresenter
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        Code="{Binding SelectedItem.Code, Mode=OneWay}"
-                        SampleType="Inline"
-                        Style="{StaticResource CodeValuePresenterStyle}" />
-
-                    <TextBlock
-                        Grid.Row="6"
-                        Grid.Column="0"
-                        Text="Text glyph" />
-                    <controls:SampleCodePresenter
-                        Grid.Row="6"
-                        Grid.Column="1"
-                        Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}"
-                        SampleType="Inline"
-                        Style="{StaticResource CodeValuePresenterStyle}" />
-
-                    <TextBlock
-                        Grid.Row="7"
-                        Grid.Column="0"
-                        Text="Code glyph" />
-                    <controls:SampleCodePresenter
-                        Grid.Row="7"
-                        Grid.Column="1"
-                        Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}"
-                        SampleType="Inline"
-                        Style="{StaticResource CodeValuePresenterStyle}" />
-                </Grid>
-            </Grid>
-            <Expander
-                Grid.Row="1"
-                CornerRadius="0,0,4,4"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Stretch">
-                <Expander.Header>
-                    <TextBlock Text="Source code" />
-                </Expander.Header>
-                <StackPanel HorizontalAlignment="Stretch">
-                    <controls:SampleCodePresenter x:Name="XAMLCodePresenter" HorizontalAlignment="Stretch" />
-
-                    <Border
-                        Margin="0,20"
-                        BorderBrush="{ThemeResource ControlAltFillColorQuarternaryBrush}"
-                        BorderThickness="1" />
-
-                    <controls:SampleCodePresenter
-                        x:Name="CSharpCodePresenter"
-                        HorizontalAlignment="Stretch"
-                        SampleType="CSharp" />
                 </StackPanel>
-            </Expander>
+            </Grid>
         </Grid>
-    </StackPanel>
+    </Grid>
 </Page>

@@ -26,13 +26,22 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
     public sealed partial class ColorPageExample : UserControl
     {
 
-        public string Text
+        public string Description
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
         }
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(ColorPageExample), new PropertyMetadata(""));
+
+        public static readonly DependencyProperty DescriptionProperty =
+            DependencyProperty.Register("Description", typeof(string), typeof(ColorPageExample), new PropertyMetadata(""));
+
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(ColorPageExample), new PropertyMetadata(""));
 
         public UIElement ExampleContent
         {
