@@ -59,7 +59,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item, Mode=OneWay}" />
+        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item}" />
 
         <!--  Content Region  -->
         <ScrollViewer
