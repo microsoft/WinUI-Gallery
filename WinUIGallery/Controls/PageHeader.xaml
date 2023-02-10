@@ -27,7 +27,7 @@
 
         <TextBlock
             Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind Item.Title, Mode=OneWay}"
+            Text="{x:Bind Item.Title}"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
         <TextBlock
@@ -37,8 +37,8 @@
             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
             IsTextSelectionEnabled="True"
             Style="{StaticResource CaptionTextBlockStyle}"
-            Text="{x:Bind Item.ApiNamespace, Mode=OneWay}"
-            Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
+            Text="{x:Bind Item.ApiNamespace}"
+            Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}" />
         <Grid Grid.Row="2" Margin="0,12,0,12">
             <StackPanel Orientation="Horizontal" Spacing="4">
                 <DropDownButton
