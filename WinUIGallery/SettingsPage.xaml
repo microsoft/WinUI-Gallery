@@ -37,20 +37,20 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="contentSV.Padding" Value="16,0" />
-                        <Setter Target="PageHeader.Margin" Value="56,0" />
+                        <Setter Target="PageHeader.Margin" Value="16,48,0,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <TextBlock
             x:Name="PageHeader"
-            Margin="56,0,56,0"
-            Style="{StaticResource TitleTextBlockStyle}"
+            Margin="36,24,36,0"
+            Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Settings" />
         <ScrollViewer
             x:Name="contentSV"
             Grid.Row="1"
-            Padding="56,0,56,0"
+            Padding="36,0,36,0"
             IsTabStop="False"
             UseSystemFocusVisuals="False"
             VerticalScrollBarVisibility="Auto"
