@@ -105,14 +105,14 @@
         PointerExited="Grid_PointerExited">
         <Grid
             Padding="{x:Bind Padding, Mode=OneWay}"
-            Background="{x:Bind Background}"
+            HorizontalAlignment="Stretch"
+            Background="{x:Bind Background, Mode=OneWay}"
             CornerRadius="{ThemeResource ControlCornerRadius}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="265" />
-                <ColumnDefinition Width="60" />
-                <ColumnDefinition Width="135" />
-                <ColumnDefinition Width="105" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="286" />
+                <ColumnDefinition Width="156" />
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock
                 Margin="24,0,0,0"
@@ -122,18 +122,14 @@
             <TextBlock
                 Grid.Column="1"
                 VerticalAlignment="Center"
-                Text="{x:Bind Weight}" />
-            <TextBlock
-                Grid.Column="2"
-                VerticalAlignment="Center"
                 Text="{x:Bind VariableFont}" />
             <TextBlock
-                Grid.Column="3"
+                Grid.Column="2"
                 VerticalAlignment="Center"
                 Text="{x:Bind SizeLinHeight}" />
 
             <StackPanel
-                Grid.Column="4"
+                Grid.Column="3"
                 Height="48"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">

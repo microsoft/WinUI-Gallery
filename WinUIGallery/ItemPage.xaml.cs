@@ -30,35 +30,21 @@ namespace AppUIBasics
     /// <summary>
     /// A page that displays details for a single item within a group.
     /// </summary>
-    public partial class ItemPage : Page
+    public sealed partial class ItemPage : Page
     {
-        private Compositor _compositor;
-        private ControlInfoDataItem _item;
-        private ElementTheme? _currentElementTheme;
-
         public ControlInfoDataItem Item
         {
             get { return _item; }
             set { _item = value; }
         }
 
+        private ControlInfoDataItem _item;
+        private ElementTheme? _currentElementTheme;
+
         public ItemPage()
         {
             this.InitializeComponent();
-
-            LayoutVisualStates.CurrentStateChanged += (s, e) => UpdateSeeAlsoPanelVerticalTranslationAnimation();
-            Loaded += (s,e) => SetInitialVisuals();
-            this.Unloaded += this.ItemPage_Unloaded;
-        }
-
-        private void ItemPage_Unloaded(object sender, RoutedEventArgs e)
-        {
-            // Notifying the pageheader that this Itempage was unloaded
-            NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
-            if (navigationRootPage != null)
-            {
-                navigationRootPage.PageHeader.Event_ItemPage_Unloaded(sender, e);
-            }
+            Loaded += (s, e) => SetInitialVisuals();
         }
 
         public void SetInitialVisuals()
@@ -66,21 +52,11 @@ namespace AppUIBasics
             var navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Visible;
-                navigationRootPage.PageHeader.ToggleThemeAction = OnToggleTheme;
+                pageHeader.ToggleThemeAction = OnToggleTheme;
                 navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
-                navigationRootPage.PageHeader.CopyLinkAction = OnCopyLink;
-                navigationRootPage.PageHeader.ResetCopyLinkButton();
-
-                if (navigationRootPage.IsFocusSupported)
-                {
-                    this.Focus(FocusState.Programmatic);
-                }
+                
+                this.Focus(FocusState.Programmatic);
             }
-
-            _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
-
-            UpdateSeeAlsoPanelVerticalTranslationAnimation();
 
             if (UIHelper.IsScreenshotMode)
             {
@@ -95,69 +71,9 @@ namespace AppUIBasics
                 }
             }
         }
-
-        private void UpdateSeeAlsoPanelVerticalTranslationAnimation()
-        {
-            var isEnabled = LayoutVisualStates.CurrentState == LargeLayout;
-
-            ElementCompositionPreview.SetIsTranslationEnabled(seeAlsoPanel, true);
-
-            var targetPanelVisual = ElementCompositionPreview.GetElementVisual(seeAlsoPanel);
-            targetPanelVisual.Properties.InsertVector3("Translation", Vector3.Zero);
-
-            if (isEnabled)
-            {
-                var scrollProperties = ElementCompositionPreview.GetScrollViewerManipulationPropertySet(svPanel);
-
-                var expression = _compositor.CreateExpressionAnimation("ScrollManipulation.Translation.Y * -1");
-                expression.SetReferenceParameter("ScrollManipulation", scrollProperties);
-                expression.Target = "Translation.Y";
-                targetPanelVisual.StartAnimation(expression.Target, expression);
-            }
-            else
-            {
-                targetPanelVisual.StopAnimation("Translation.Y");
-            }
-        }
-
         private void OnNavigationViewLoaded()
         {
             NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
-        }
-
-        private void OnCopyLink()
-        {
-            ProtocolActivationClipboardHelper.Copy(this.Item);
-        }
-
-        private void OnToggleTheme()
-        {
-            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
-            var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
-            SetControlExamplesTheme(newTheme);
-        }
-
-        private void SetControlExamplesTheme(ElementTheme theme)
-        {
-            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
-
-            if (controlExamples != null)
-            {
-                _currentElementTheme = theme;
-                foreach (var controlExample in controlExamples)
-                {
-                    var exampleContent = controlExample.Example as FrameworkElement;
-                    exampleContent.RequestedTheme = theme;
-                    controlExample.ExampleContainer.RequestedTheme = theme;
-                }
-            }
-        }
-
-        private void OnRelatedControlClick(object sender, RoutedEventArgs e)
-        {
-            ButtonBase b = (ButtonBase)sender;
-
-            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), b.DataContext.ToString());
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -170,24 +86,14 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                string pageRoot = "AppUIBasics.ControlPages.";
-                string pageString = pageRoot + item.UniqueId + "Page";
-                Type pageType = Type.GetType(pageString);
+                Type pageType = Type.GetType("AppUIBasics.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {
-                    // Pagetype is not null!
-                    // So lets generate the github links and set them!
-                    var gitHubBaseURI = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
-                    var pageName = pageType.Name + ".xaml";
-                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
-                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
-
+                    pageHeader.SetSourceLinks("https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/", pageType.Name);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
-
-                args.NavigationRootPage.NavigationView.Header = item;
                 args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
             }
 
@@ -213,7 +119,6 @@ namespace AppUIBasics
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             SetControlExamplesTheme(ThemeHelper.ActualTheme);
-
             base.OnNavigatingFrom(e);
         }
 
@@ -223,20 +128,8 @@ namespace AppUIBasics
             if (navigationRootPage != null)
             {
                 navigationRootPage.NavigationViewLoaded = null;
-                navigationRootPage.PageHeader.TopCommandBar.Visibility = Visibility.Collapsed;
-                navigationRootPage.PageHeader.ToggleThemeAction = null;
-                navigationRootPage.PageHeader.CopyLinkAction = null;
-
-                // Reverse Connected Animation
-                if (e.SourcePageType != typeof(ItemPage))
-                {
-                    PageHeader pageHeader = navigationRootPage.PageHeader;
-
-                    if (pageHeader.Visibility == Visibility.Visible)
-                    {
-                        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("controlAnimation", pageHeader.TitlePanel);
-                    }
-                }
+                pageHeader.ToggleThemeAction = null;
+                pageHeader.CopyLinkAction = null;
             }
 
             // We use reflection to call the OnNavigatedFrom function the user leaves this page
@@ -253,16 +146,38 @@ namespace AppUIBasics
             base.OnNavigatedFrom(e);
         }
 
-        private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
+        public static ItemPage GetForElement(object obj)
         {
-            string targetState = "NormalFrameContent";
-
-            if ((contentColumn.ActualWidth) >= 1000)
+            UIElement element = (UIElement)obj;
+            Window window = WindowHelper.GetWindowForElement(element);
+            if (window != null)
             {
-                targetState = "WideFrameContent";
+                return (ItemPage)window.Content;
             }
+            return null;
+        }
 
-            VisualStateManager.GoToState(this, targetState, false);
+        private void OnToggleTheme()
+        {
+            var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
+            var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+            SetControlExamplesTheme(newTheme);
+        }
+
+        private void SetControlExamplesTheme(ElementTheme theme)
+        {
+            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+
+            if (controlExamples != null)
+            {
+                _currentElementTheme = theme;
+                foreach (var controlExample in controlExamples)
+                {
+                    var exampleContent = controlExample.Example as FrameworkElement;
+                    exampleContent.RequestedTheme = theme;
+                    controlExample.ExampleContainer.RequestedTheme = theme;
+                }
+            }
         }
     }
 }

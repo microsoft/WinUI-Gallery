@@ -29,7 +29,7 @@ namespace AppUIBasics.Common
                 var item = await ControlInfoDataSource.Instance.GetItemAsync(e.NewValue?.ToString());
                 if (item?.ImageIconPath != null)
                 {
-                    Uri imageUri = new Uri(item.ImageIconPath, UriKind.Absolute);
+                    Uri imageUri = new Uri(item.ImagePath, UriKind.Absolute);
                     BitmapImage imageBitmap = new BitmapImage(imageUri);
                     image.Source = imageBitmap;
                 }

@@ -14,7 +14,7 @@ namespace WinUIGallery.DesktopWap.DataModel
 
         public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
         public string CodeGlyph => "\\u" + Code;
-        public string TextGlyph => "\\&#x" + Code + ";";
+        public string TextGlyph => "&#x" + Code + ";";
     }
 
     internal class IconsDataSource

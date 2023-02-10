@@ -118,33 +118,89 @@
             SizeChanged="scroller_SizeChanged"
             VerticalScrollMode="Disabled"
             ViewChanging="scroller_ViewChanging">
-            <Grid>
+            <Grid x:Name="ContentGrid" Margin="36,0,36,0">
                 <StackPanel Orientation="Horizontal" Spacing="12">
-
                     <local:HeaderTile
-                        Title="Getting Started"
-                        Link="https://docs.microsoft.com/windows/apps/get-started/"
-                        Source="/Assets/HomeHeaderTiles/gettingStarted.png" />
+                        Title="Getting started"
+                        Description="An overview of app development options, tools, and samples."
+                        Link="https://docs.microsoft.com/windows/apps/get-started/">
+                        <local:HeaderTile.Source>
+                            <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
                     <local:HeaderTile
-                        Title="Windows Design"
-                        Link="https://docs.microsoft.com/windows/apps/design/"
-                        Source="/Assets/HomeHeaderTiles/style-1x.png" />
+                        Title="Windows design"
+                        Description="Design guidelines and toolkits for creating native app experiences."
+                        Link="https://docs.microsoft.com/windows/apps/design/">
+                        <local:HeaderTile.Source>
+                            <Image Source="/Assets/HomeHeaderTiles/Header-WindowsDesign.png" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
                     <local:HeaderTile
-                        Title="GitHub Repo"
-                        Link="https://github.com/microsoft/microsoft-ui-xaml"
-                        Source="/Assets/HomeHeaderTiles/githubTile.png" />
-                    <local:HeaderTile
-                        Title="Template Studio"
-                        Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs"
-                        Source="/Assets/HomeHeaderTiles/template_studio.png" />
+                        Title="WinUI GitHub"
+                        Description="The latest Windows native controls and styles for your applications."
+                        Link="https://github.com/microsoft/microsoft-ui-xaml">
+                        <local:HeaderTile.Source>
+                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
+                                <PathIcon.RenderTransform>
+                                    <CompositeTransform
+                                        ScaleX="2.05"
+                                        ScaleY="2.05"
+                                        TranslateX="-20" />
+                                </PathIcon.RenderTransform>
+                            </PathIcon>
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
                     <local:HeaderTile
                         Title="Community Toolkit"
-                        Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ"
-                        Source="/Assets/HomeHeaderTiles/toolkit.png" />
+                        Description="A collection of helper functions, custom controls, and app services."
+                        Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
+                        <local:HeaderTile.Source>
+                            <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
                     <local:HeaderTile
+                        Title="Template Studio"
+                        Description="Accelerates the creation of new WinUI apps using a wizard-based experience.."
+                        Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">
+                        <local:HeaderTile.Source>
+                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
+                                <PathIcon.RenderTransform>
+                                    <CompositeTransform
+                                        ScaleX="2.05"
+                                        ScaleY="2.05"
+                                        TranslateX="-20" />
+                                </PathIcon.RenderTransform>
+                            </PathIcon>
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
+                    <local:HeaderTile
+                        Title="Code samples"
+                        Description="Find samples that demonstrate specific tasks, features, and APIs."
+                        Link=" https://partner.microsoft.com/en-us/dashboard/home">
+                        <local:HeaderTile.Source>
+                            <FontIcon
+                                FontSize="40"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Glyph="&#xE943;" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
+                    <local:HeaderTile
+                        Title="Partner Center"
+                        Description="Upload your app to the Store."
+                        Link="https://docs.microsoft.com/windows/apps/get-started/samples">
+                        <local:HeaderTile.Source>
+                            <FontIcon
+                                FontSize="40"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Glyph="&#xE943;" />
+                        </local:HeaderTile.Source>
+                    </local:HeaderTile>
+                    <!--<local:HeaderTile
                         Title="Accessibility"
+                        Description="An overview of app development options, tools, and samples."
                         Link="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
-                        Source="/Assets/HomeHeaderTiles/accessibility_tile.png" />
+                        Source="/Assets/HomeHeaderTiles/accessibility_tile.png" />-->
                 </StackPanel>
             </Grid>
         </ScrollViewer>
@@ -152,7 +208,7 @@
             x:Name="ScrollBackBtn"
             Width="16"
             Height="38"
-            Margin="2,-48,0,0"
+            Margin="8,-16,0,0"
             AutomationProperties.Name="Scroll left"
             Click="ScrollBackBtn_Click"
             Style="{StaticResource ScrollButtonStyle}"
@@ -164,7 +220,7 @@
             x:Name="ScrollForwardBtn"
             Width="16"
             Height="38"
-            Margin="0,-48,2,0"
+            Margin="0,-16,8,0"
             HorizontalAlignment="Right"
             AutomationProperties.Name="Scroll right"
             Click="ScrollForwardBtn_Click"
