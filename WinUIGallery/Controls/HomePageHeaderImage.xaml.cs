@@ -18,6 +18,7 @@ using System;
 
 namespace AppUIBasics.Controls
 {
+    // ATTRIBUTION: @RykenApps
     public sealed partial class HomePageHeaderImage : UserControl
     {
         private Compositor _compositor;
