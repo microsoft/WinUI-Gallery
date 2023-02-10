@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GalleryHeaderImage.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />

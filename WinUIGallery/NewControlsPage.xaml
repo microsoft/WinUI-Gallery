@@ -62,12 +62,12 @@
             <GridView.Header>
                 <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="212" />
+                        <RowDefinition Height="204" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <controls:HomePageHeaderImage
                         Grid.RowSpan="2"
-                        Height="420"
+                        Height="396"
                         VerticalAlignment="Top" />
 
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
@@ -83,7 +83,6 @@
                             x:Name="smallHeaderText"
                             Style="{StaticResource TitleLargeTextBlockStyle}"
                             Text="{StaticResource AppTitleName}" />
-
                     </StackPanel>
 
                     <controls:TileGallery
