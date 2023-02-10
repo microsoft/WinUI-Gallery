@@ -10,8 +10,6 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
 {
     public sealed partial class ColorTile : UserControl
     {
-
-
         public string ColorName
         {
             get { return (string)GetValue(ColorNameProperty); }
@@ -44,8 +42,6 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
         public static readonly DependencyProperty ColorValueProperty =
             DependencyProperty.Register("ColorValue", typeof(string), typeof(ColorTile), new PropertyMetadata(""));
 
-
-
         public bool ShowSeparator
         {
             get { return (bool)GetValue(ShowSeparatorProperty); }
@@ -57,7 +53,15 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
             DependencyProperty.Register("ShowSeparator", typeof(bool), typeof(ColorTile), new PropertyMetadata(true));
 
 
+        public bool ShowWarning
+        {
+            get { return (bool)GetValue(ShowWarningProperty); }
+            set { SetValue(ShowWarningProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for ShowSeparator.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowWarningProperty =
+            DependencyProperty.Register("ShowWarning", typeof(bool), typeof(ColorTile), new PropertyMetadata(false));
 
 
         public ColorTile()

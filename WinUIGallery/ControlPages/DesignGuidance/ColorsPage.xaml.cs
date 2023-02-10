@@ -33,6 +33,9 @@ namespace AppUIBasics.ControlPages
                     case "Background":
                         NavigationFrame.Navigate(typeof(BackgroundSection));
                         break;
+                    case "Signal":
+                        NavigationFrame.Navigate(typeof(SignalSection));
+                        break;
                 }
             }
             foreach(var child in SelectionElement.Children)

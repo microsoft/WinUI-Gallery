@@ -1,5 +1,5 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
-<!-- Licensed under the MIT License. -->
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
 
 <UserControl
     x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorPageExample"
@@ -7,13 +7,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
     mc:Ignorable="d">
 
-    <StackPanel Padding="16" CornerRadius="4"
-        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1"
-        Background="{x:Bind Background, Mode=OneWay}">
-        <TextBlock Text="Example" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
-        <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="0,4,0,0" Style="{ThemeResource BodyTextBlockStyle}"/>
-        <ContentPresenter Content="{x:Bind ExampleContent, Mode=OneWay}" HorizontalAlignment="Center" Margin="20,20,20,40"/>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="0,36,0,12"
+            Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="{x:Bind Title, Mode=OneWay}" />
+        <Grid
+            Grid.Row="1"
+            Padding="16"
+            Background="{x:Bind Background, Mode=OneWay}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Description, Mode=OneWay}" />
+            <ContentPresenter
+                Grid.Row="1"
+                Margin="0,16,0,16"
+                HorizontalAlignment="Center"
+                Content="{x:Bind ExampleContent, Mode=OneWay}" />
+        </Grid>
+    </Grid>
 </UserControl>

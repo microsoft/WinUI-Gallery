@@ -1,15 +1,15 @@
-﻿<local:ItemsPageBase
+<local:ItemsPageBase
     x:Class="AppUIBasics.SearchResultsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:ExtensionType="Search"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
-     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
+    <Grid Background="{ThemeResource HomePageBackgroundBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ResultStates">
                 <VisualState x:Name="ResultsFound" />
@@ -41,21 +41,22 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
+
         <NavigationView
             x:Name="resultsNavView"
-            Margin="12,0,0,0"
-            PaneDisplayMode="Top"
+            Margin="0,24,0,0"
+            IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
-            MenuItemsSource="{x:Bind Filters, Mode=OneWay}"
             Loaded="OnResultsNavViewLoaded"
+            MenuItemsSource="{x:Bind Filters, Mode=OneWay}"
+            PaneDisplayMode="Top"
             SelectionChanged="OnResultsNavViewSelectionChanged">
             <UserControl>
                 <GridView
                     x:Name="resultsGridView"
-                    AutomationProperties.AutomationId="ResultsGridView"
                     Margin="12,24,0,0"
                     Padding="0,0,0,36"
+                    AutomationProperties.AutomationId="ResultsGridView"
                     AutomationProperties.Name="Search Results"
                     ContainerContentChanging="OnItemGridViewContainerContentChanging"
                     IsItemClickEnabled="True"
@@ -64,9 +65,7 @@
                     ItemContainerStyle="{StaticResource GridViewItemStyle}"
                     ItemTemplate="{StaticResource ControlItemTemplate}"
                     ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
-                    KeyDown="OnItemGridViewKeyDown"
                     Loaded="OnItemGridViewLoaded"
-                    SizeChanged="OnItemGridViewSizeChanged"
                     SelectionMode="None"
                     TabIndex="1" />
             </UserControl>
@@ -74,8 +73,8 @@
 
         <TextBlock
             x:Name="noResultsTextBlock"
-            Style="{StaticResource TitleTextBlockStyle}"
             Margin="24,24,0,0"
+            Style="{StaticResource TitleTextBlockStyle}"
             Text="No results match your search."
             Visibility="Collapsed" />
     </Grid>

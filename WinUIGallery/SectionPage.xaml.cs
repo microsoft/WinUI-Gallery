@@ -30,11 +30,10 @@ namespace AppUIBasics
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             NavigationRootPage navigationRootPage = args.NavigationRootPage;
             var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)args.Parameter);
-
+       
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;
-            navigationRootPage.NavigationView.Header = group;
-
+            TitleTxt.Text = group.Title;
             Items = group.Items.OrderBy(i => i.Title).ToList();
         }
 

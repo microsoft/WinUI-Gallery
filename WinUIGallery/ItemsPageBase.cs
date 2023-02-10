@@ -67,27 +67,7 @@ namespace AppUIBasics
             NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
         }
 
-        protected void OnItemGridViewKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                FindNextElementOptions options = new FindNextElementOptions
-                {
-                    SearchRoot = this.XamlRoot.Content
-                };
-                var nextElement = FocusManager.FindNextElement(FocusNavigationDirection.Up, options);
-                if (nextElement?.GetType() == typeof(Microsoft.UI.Xaml.Controls.NavigationViewItem))
-                {
-                    NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
-                }
-                else
-                {
-                    FocusManager.TryMoveFocus(FocusNavigationDirection.Up);
-                }
-            }
-        }
-
-        protected async void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
+        protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
         {
             if (_itemId != null)
             {
@@ -97,45 +77,7 @@ namespace AppUIBasics
                 if (item != null)
                 {
                     gridView.ScrollIntoView(item);
-
-                    if (NavigationRootPage.GetForElement(this).IsFocusSupported)
-                    {
-                        ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
-                    }
-
-                    ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
-
-                    if (animation != null)
-                    {
-                        // Setup the "basic" configuration if the API is present.
-                        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                        {
-                            animation.Configuration = new BasicConnectedAnimationConfiguration();
-                        }
-
-                        await gridView.TryStartConnectedAnimationAsync(animation, item, "controlRoot");
-                    }
-                }
-            }
-        }
-
-        protected void OnItemGridViewSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var gridView = (GridView)sender;
-
-            if (gridView.ItemsPanelRoot is ItemsWrapGrid wrapGrid)
-            {
-                if (GetIsNarrowLayoutState())
-                {
-                    double wrapGridPadding = 88;
-                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Center;
-
-                    wrapGrid.ItemWidth = gridView.ActualWidth - gridView.Padding.Left - gridView.Padding.Right - wrapGridPadding;
-                }
-                else
-                {
-                    wrapGrid.HorizontalAlignment = HorizontalAlignment.Left;
-                    wrapGrid.ItemWidth = double.NaN;
+                    ((GridViewItem)gridView.ContainerFromItem(item))?.Focus(FocusState.Programmatic);
                 }
             }
         }
