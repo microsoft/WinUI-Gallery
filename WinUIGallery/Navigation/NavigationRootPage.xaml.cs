@@ -114,8 +114,6 @@ namespace AppUIBasics
             object targetPageArguments = null,
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
-            // Close any open teaching tips before navigation
-            CloseTeachingTips();
             NavigationRootPageArgs args = new NavigationRootPageArgs();
             args.NavigationRootPage = this;
             args.Parameter = targetPageArguments;
