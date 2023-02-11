@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "ms-dotnettools.vscode-dotnet-runtime"
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-vscode-remote.remote-containers"
     ]
 }
