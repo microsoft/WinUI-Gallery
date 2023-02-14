@@ -12,6 +12,7 @@ using Microsoft.UI;
 using CommunityToolkit.WinUI.UI.Animations;
 using Windows.UI;
 using System;
+using CommunityToolkit.WinUI.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -91,11 +92,40 @@ namespace AppUIBasics.Controls
             _bottomGradientStartPointAnimation?.Dispose();
             _bottomGradientStartPointAnimation = null;
         }
-
+        private void OnLoading(FrameworkElement sender, object args)
+        {
+            if (HeroImage.Source == null)
+            {
+                HeroImage.GetVisual().Opacity = 0;
+            }
+            else
+            {
+                AnimateImage();
+            }
+        }
         private void SetBottomGradientStartPoint()
         {
             _bottomGradientStartPointAnimation?.Properties.InsertScalar(GradientSizeKey, 180);
         }
+
+        private void OnImageOpened(object sender, RoutedEventArgs e)
+        {
+            AnimateImage();
+        }
+
+        private void AnimateImage()
+        {
+            AnimationBuilder.Create()
+                .Opacity(1, 0, duration: TimeSpan.FromMilliseconds(300), easingMode: EasingMode.EaseOut)
+                .Scale(1, 1.1f, duration: TimeSpan.FromMilliseconds(400), easingMode: EasingMode.EaseOut)
+                .Start(HeroImage);
+
+            AnimationBuilder.Create()
+                .Opacity(0.5, 0, duration: TimeSpan.FromMilliseconds(300), easingMode: EasingMode.EaseOut)
+                .Scale(1, 1.1f, duration: TimeSpan.FromMilliseconds(400), easingMode: EasingMode.EaseOut)
+                .Start(HeroOverlayImage);
+        }
+
 
         private ExpressionAnimation CreateExpressionAnimation(string target, string expression)
         {
