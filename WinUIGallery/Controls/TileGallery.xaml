@@ -200,7 +200,7 @@
                     <local:HeaderTile
                         Title="Partner Center"
                         Description="Upload your app to the Store."
-                        Link=" https://partner.microsoft.com/en-us/dashboard/home">
+                        Link="https://developer.microsoft.com/windows/">
                         <local:HeaderTile.Source>
                             <Image Source="{ThemeResource StoreIcon}" />
                         </local:HeaderTile.Source>
