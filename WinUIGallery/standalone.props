@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <WindowsAppSdkPackageVersion>1.2.221209.1</WindowsAppSdkPackageVersion>
+    <WindowsAppSdkPackageVersion>1.2.230217.4</WindowsAppSdkPackageVersion>
     <SamplesTargetFrameworkMoniker>net6.0-windows10.0.19041.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.755</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
-    <MicrosoftCsWinRTPackageVersion>2.0.0</MicrosoftCsWinRTPackageVersion>
+    <MicrosoftCsWinRTPackageVersion>2.0.1</MicrosoftCsWinRTPackageVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
