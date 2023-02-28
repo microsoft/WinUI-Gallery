@@ -45,7 +45,7 @@
         <TextBlock
             x:Name="PageHeader"
             Margin="36,24,36,0"
-            Style="{StaticResource SubtitleTextBlockStyle}"
+            Style="{StaticResource TitleTextBlockStyle}"
             Text="Settings" />
         <ScrollViewer
             x:Name="contentSV"
