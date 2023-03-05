@@ -1881,9 +1881,9 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that scales its content to a specified size.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Viewbox.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ViewBoxIcon.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ViewboxIcon.png",
           "Description": "Use a Viewbox control scale content up or down to a specified size.",
-          "Content": "<p>Look at the <i>ViewBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>ViewboxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
           "Docs": [
