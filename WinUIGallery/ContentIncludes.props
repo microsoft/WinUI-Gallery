@@ -95,7 +95,7 @@
     <Content Include="Assets\ControlIcons\ToggleSwitchIcon.png" />
     <Content Include="Assets\ControlIcons\ToolTipIcon.png" />
     <Content Include="Assets\ControlIcons\VariableSizedWrapGridIcon.png" />
-    <Content Include="Assets\ControlIcons\ViewBoxIcon.png" />
+    <Content Include="Assets\ControlIcons\ViewboxIcon.png" />
     <Content Include="Assets\ControlIcons\NumberBoxIcon.png" />
 
     <Content Include="Assets\ControlImages\Acrylic.png" />
@@ -193,7 +193,7 @@
     <Content Include="Assets\ControlImages\ToolTip.png" />
     <Content Include="Assets\ControlImages\TreeView.png" />
     <Content Include="Assets\ControlImages\VariableSizedWrapGrid.png" />
-    <Content Include="Assets\ControlImages\ViewBox.png" />
+    <Content Include="Assets\ControlImages\Viewbox.png" />
     <Content Include="Assets\ControlImages\WebView.png" />
     <Content Include="Assets\ControlImages\XamlUICommand.png" />
     <Content Include="Assets\HomeHeaderTiles\gettingStarted.png" />

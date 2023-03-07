@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -13,9 +13,9 @@ using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
-    public sealed partial class ViewBoxPage : Page
+    public sealed partial class ViewboxPage : Page
     {
-        public ViewBoxPage()
+        public ViewboxPage()
         {
             this.InitializeComponent();
         }
