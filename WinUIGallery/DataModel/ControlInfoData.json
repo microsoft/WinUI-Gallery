@@ -2905,8 +2905,8 @@
       "Title": "Windowing",
       "ApiNamespace": "",
       "Subtitle": "",
-      "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-      "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+      "ImagePath": "",
+      "ImageIconPath": "",
       "Description": "",
       "Items": [
         {
@@ -2964,8 +2964,8 @@
       "Title": "System",
       "ApiNamespace": "",
       "Subtitle": "",
-      "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-      "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+      "ImagePath": "",
+      "ImageIconPath": "",
       "Description": "",
       "Items": [
         {
