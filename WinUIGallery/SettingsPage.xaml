@@ -122,6 +122,7 @@
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/SmallTile-sdk.png" />
                     </labs:SettingsExpander.HeaderIcon>
                     <TextBlock
+                        Margin="0,-2,0,0"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         IsTextSelectionEnabled="True"
                         Text="{x:Bind Version}" />
