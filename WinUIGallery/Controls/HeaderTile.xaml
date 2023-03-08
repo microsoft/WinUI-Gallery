@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="198"
+    Height="220"
     mc:Ignorable="d">
 
     <Grid
@@ -36,34 +38,33 @@
             </ResourceDictionary>
         </Grid.Resources>
         <HyperlinkButton
-            Width="198"
-            Height="234"
             Padding="-1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             HorizontalContentAlignment="Stretch"
             VerticalContentAlignment="Stretch"
             AutomationProperties.LabeledBy="{Binding ElementName=TitleText}"
+            CornerRadius="{StaticResource OverlayCornerRadius}"
             NavigateUri="{x:Bind Link, Mode=OneWay}">
             <Grid
                 Padding="24"
                 VerticalAlignment="Stretch"
                 RowSpacing="16">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="56" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <FontIcon
+                    Grid.RowSpan="3"
                     Margin="-12"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
+                    VerticalAlignment="Bottom"
                     FontSize="16"
                     Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                     Glyph="&#xE8A7;" />
                 <ContentPresenter
-                    Height="56"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Top"
                     Content="{x:Bind Source, Mode=OneWay}" />
 
                 <StackPanel

@@ -14,6 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:AppUIBasics.Controls"
+    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:local="using:AppUIBasics"
     HighContrastAdjustment="None"
     NavigationCacheMode="Enabled">
@@ -59,20 +60,16 @@
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None">
             <GridView.Header>
-                <Grid
-                    x:Name="HeaderGrid"
-                    Height="448"
-                    Margin="-24,0,-24,0">
+                <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="212" />
+                        <RowDefinition Height="204" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Image
-                        x:Name="headerImage"
+                    <controls:HomePageHeaderImage
                         Grid.RowSpan="2"
-                        HorizontalAlignment="Center"
-                        Source="Assets/MainPage_Banner.png"
-                        Stretch="UniformToFill" />
+                        Height="396"
+                        VerticalAlignment="Top" />
+
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <StackPanel
                         Margin="36,0,0,0"
@@ -86,10 +83,12 @@
                             x:Name="smallHeaderText"
                             Style="{StaticResource TitleLargeTextBlockStyle}"
                             Text="{StaticResource AppTitleName}" />
-
                     </StackPanel>
 
-                    <controls:TileGallery x:Name="headerTileGallery" Grid.Row="1" />
+                    <controls:TileGallery
+                        x:Name="headerTileGallery"
+                        Grid.Row="1"
+                        Margin="0,0,0,0" />
                 </Grid>
             </GridView.Header>
 

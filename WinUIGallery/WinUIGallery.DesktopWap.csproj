@@ -29,6 +29,7 @@
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
     <PackageReference Include="Microsoft.WinUI" />
     <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
@@ -92,10 +93,14 @@
     <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
     <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
     <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
+    <None Remove="Controls\HomePageHeaderImage.xaml" />
     <None Remove="Controls\PageHeader.xaml" />
     <None Remove="DataModel\IconsData.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\GalleryHeaderImage.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
+    <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
     <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />
@@ -104,6 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\HomePageHeaderImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\PageHeader.xaml">

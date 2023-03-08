@@ -1,0 +1,55 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<UserControl
+    x:Class="AppUIBasics.Controls.HomePageHeaderImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.UI"
+    Loaded="OnLoaded"
+    Loading="OnLoading"
+    Unloaded="OnUnloaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <LinearGradientBrush x:Name="BackgroundGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0.0" Color="#CED8E4" />
+                        <GradientStop Offset="1.0" Color="#D5DBE3" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid
+            x:Name="ImageGrid"
+            Background="{ThemeResource BackgroundGradient}"
+            Opacity="0">
+            <Image
+                x:Name="HeroImage"
+                toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
+                ImageOpened="OnImageOpened"
+                Source="/Assets/GalleryHeaderImage.png"
+                Stretch="UniformToFill" />
+
+            <Image
+                x:Name="HeroOverlayImage"
+                toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
+                Opacity="0.5"
+                Source="/Assets/GalleryHeaderImage.png"
+                Stretch="UniformToFill" />
+
+        </Grid>
+        <Rectangle x:Name="ImageGridSurfaceRec" Fill="Transparent" />
+    </Grid>
+</UserControl>
