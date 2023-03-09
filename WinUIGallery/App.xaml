@@ -67,7 +67,7 @@
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent" />
 
-            <x:String x:Key="ControlsName">All controls</x:String>
+            <x:String x:Key="ControlsName">All samples</x:String>
             <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
             <x:String x:Key="WinUIVersion">WinAppSDK 1.2</x:String>
 
