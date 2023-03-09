@@ -48,7 +48,7 @@
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
             <StackPanel Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/SmallTile-sdk.png" />
+                <Image Width="18" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="16,0,0,0"
