@@ -35,7 +35,7 @@
             x:Name="Example1"
             Grid.Row="1"
             HorizontalContentAlignment="Stretch"
-            HeaderText="Type Ramp"
+            HeaderText="Type ramp"
             XamlSource="Typography/TypographySample_xaml.txt">
             <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
                 <Canvas Height="450">

@@ -48,7 +48,7 @@
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
             <StackPanel Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/SmallTile-sdk.png" />
+                <Image Width="18" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="16,0,0,0"
@@ -163,18 +163,6 @@
                             Invoked="CtrlF_Invoked"
                             Modifiers="Control" />
                     </AutoSuggestBox.KeyboardAccelerators>
-                    <AutoSuggestBox.ItemTemplate>
-                        <DataTemplate x:DataType="data:ControlInfoDataItem">
-                            <Grid AutomationProperties.Name="{x:Bind Title}" ColumnSpacing="12">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="16" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Image Source="{x:Bind ImagePath}" />
-                                <TextBlock Grid.Column="1" Text="{x:Bind Title}" />
-                            </Grid>
-                        </DataTemplate>
-                    </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
 
@@ -232,10 +220,10 @@
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                <NavigationViewItemHeader Content="Controls" />
+              
                 <NavigationViewItem
                     x:Name="AllControlsItem"
-                    Content="All"
+                    Content="All samples"
                     Icon="AllApps" />
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
