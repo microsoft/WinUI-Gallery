@@ -31,7 +31,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png" BackgroundColor="#00b2f0" />
+        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png"/>
       </uap:VisualElements>
       <Extensions>
         <uap3:Extension Category="windows.appUriHandler">
