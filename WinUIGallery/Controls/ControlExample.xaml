@@ -6,7 +6,7 @@
     xmlns:controls="using:AppUIBasics.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
@@ -90,64 +90,66 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid
-                x:Name="ExampleContainer"
-                x:FieldModifier="Public"
-                Background="{ThemeResource ControlExampleDisplayBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="8,8,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" MaxWidth="320" />
-                    <ColumnDefinition Width="Auto" MaxWidth="320" />
-                </Grid.ColumnDefinitions>
-
-                <!--  Example Display  -->
-                <ContentPresenter
-                    x:Name="ControlPresenter"
-                    Padding="12"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
+            <controls1:SampleThemeListener>
+                <Grid
+                    x:Name="ExampleContainer"
+                    x:FieldModifier="Public"
                     Background="{ThemeResource ControlExampleDisplayBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
-                    Content="{x:Bind Example}"
-                    CornerRadius="8,8,0,0" />
+                    BorderThickness="1"
+                    CornerRadius="8,8,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" MaxWidth="320" />
+                        <ColumnDefinition Width="Auto" MaxWidth="320" />
+                    </Grid.ColumnDefinitions>
 
-                <!--  Output Display  -->
-                <StackPanel
-                    Grid.Column="1"
-                    Margin="0,12,12,12"
-                    Padding="16"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Stretch"
-                    Background="{ThemeResource ControlExampleDisplayBrush}"
-                    CornerRadius="8"
-                    Orientation="Vertical"
-                    Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
-                    <TextBlock Text="Output:" />
-                    <ContentPresenter x:Name="OutputPresenter" Content="{x:Bind Output}" />
-                </StackPanel>
+                    <!--  Example Display  -->
+                        <ContentPresenter
+                            x:Name="ControlPresenter"
+                            Padding="12"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
+                            Background="{ThemeResource ControlExampleDisplayBrush}"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
+                            Content="{x:Bind Example}"
+                            CornerRadius="8,8,0,0" />
 
-                <!--  Options Display  -->
-                <ContentPresenter
-                    x:Name="OptionsPresenter"
-                    Grid.Column="2"
-                    Padding="16"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-                    BorderThickness="1,0,0,0"
-                    Content="{x:Bind Options}"
-                    Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
-            </Grid>
+                    <!--  Output Display  -->
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="0,12,12,12"
+                        Padding="16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource ControlExampleDisplayBrush}"
+                        CornerRadius="8"
+                        Orientation="Vertical"
+                        Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
+                        <TextBlock Text="Output:" />
+                        <ContentPresenter x:Name="OutputPresenter" Content="{x:Bind Output}" />
+                    </StackPanel>
+
+                    <!--  Options Display  -->
+                    <ContentPresenter
+                        x:Name="OptionsPresenter"
+                        Grid.Column="2"
+                        Padding="16"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                        BorderThickness="1,0,0,0"
+                        Content="{x:Bind Options}"
+                        Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
+                </Grid>
+            </controls1:SampleThemeListener>
 
             <!--  Sample code display  -->
             <muxc:Expander

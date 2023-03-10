@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     mc:Ignorable="d">
 
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
@@ -19,34 +19,35 @@
             Description="Fill used for standard controls">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlFillColorDefaultBrush}"
                 ColorBrushName="ControlFillColorDefaultBrush"
                 ColorExplanation="Rest"
                 ColorName="Control / Default"
                 ColorValue="#FFFFFF (B3, 70%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlFillColorSecondaryBrush}"
                 ColorBrushName="ControlFillColorSecondaryBrush"
                 ColorExplanation="Hover"
                 ColorName="Control / Secondary"
                 ColorValue="#F9F9F9 (50, 50%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlFillColorTertiaryBrush}"
                 ColorBrushName="ControlFillColorTertiaryBrush"
                 ColorExplanation="Pressed"
                 ColorName="Control / Tertiary"
                 ColorValue="#F9F9F9 (4D, 30%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource ControlFillColorTertiaryBrush}"
                 ColorBrushName="ControlFillColorQuarternaryBrush"
@@ -55,28 +56,30 @@
                 ColorValue="#F9F9F9 (C2, 30%)"
                 ShowSeparator="False"
                 ShowWarning="True" />
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+            </Grid>
+        </controls:SampleThemeListener>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource ControlFillColorDisabledBrush}"
                 ColorBrushName="ControlFillColorDisabledBrush"
                 ColorExplanation="Disabled"
                 ColorName="Control / Disabled"
                 ColorValue="#F3F3F3 (FD, 30%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlFillColorTransparentBrush}"
                 ColorBrushName="ControlFillColorTransparentBrush"
                 ColorExplanation="Rest"
                 ColorName="Control / Transparent"
                 ColorValue="#FFFFFF (00, 0%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlFillColorInputActiveBrush}"
                 ColorBrushName="ControlFillColorInputActiveBrush"
@@ -84,7 +87,8 @@
                 ColorName="Control / Input Active"
                 ColorValue="#FFFFFF (FF, 100%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Control Alt Fill  -->
@@ -94,25 +98,26 @@
             Description="Fill used for the 'off' states of toggle controls">
             <ToggleSwitch OffContent="" OnContent="" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlAltFillColorTransparentBrush}"
                 ColorBrushName="ControlAltFillColorTransparentBrush"
                 ColorName="Control Alt / Transparent"
                 ColorValue="#FFFFFF (00, 0%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlAltFillColorSecondaryBrush}"
                 ColorBrushName="ControlAltFillColorSecondaryBrush"
                 ColorExplanation="Rest"
                 ColorName="Control Alt / Secondary"
                 ColorValue="#000000 (06, 2.41%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlAltFillColorTertiaryBrush}"
                 ColorBrushName="ControlAltFillColorTertiaryBrush"
@@ -120,19 +125,21 @@
                 ColorName="Control Alt / Tertiary"
                 ColorValue="#000000 (0F, 5.78%)"
                 ShowSeparator="False" />
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+            </Grid>
+        </controls:SampleThemeListener>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlAltFillColorQuarternaryBrush}"
                 ColorBrushName="ControlAltFillColorQuarternaryBrush"
                 ColorExplanation="Pressed"
                 ColorName="Control Alt / Quarternary"
                 ColorValue="#000000 (12, 6.58%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlAltFillColorDisabledBrush}"
                 ColorBrushName="ControlAltFillColorDisabledBrush"
@@ -140,7 +147,8 @@
                 ColorName="Control Alt / Disabled"
                 ColorValue="#FFFFFF (00, 0%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
         <!--  Control Solid  -->
         <designguidance:ColorPageExample
@@ -153,19 +161,21 @@
                 Value="40" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlSolidFillColorDefaultBrush}"
                 ColorBrushName="ControlStrongFillColorDefaultBrush"
                 ColorExplanation="Rest"
                 ColorName="Control Solid / Default"
                 ColorValue="#FFFFFF (FF, 100%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
         <!--  Control Strong Fill  -->
         <designguidance:ColorPageExample
@@ -180,13 +190,14 @@
                 Visibility="Visible" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlStrongFillColorDefaultBrush}"
                 ColorBrushName="ControlStrongFillColorDefaultBrush"
                 ColorExplanation="Rest or hover"
@@ -194,7 +205,7 @@
                 ColorValue="#000000 (72, 44.58%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlStrongFillColorDisabledBrush}"
                 ColorBrushName="ControlStrongFillColorDisabledBrush"
@@ -203,7 +214,8 @@
                 ColorValue="#FFFFFF (51, 31.73%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Subtle fill  -->
@@ -226,15 +238,16 @@
             </StackPanel>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource SubtleFillColorTransparentBrush}"
                 ColorBrushName="SubtleFillColorTransparentBrush"
                 ColorExplanation="Rest"
@@ -242,7 +255,7 @@
                 ColorValue="#000000 (00, 0%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SubtleFillColorSecondaryBrush}"
                 ColorBrushName="SubtleFillColorSecondaryBrush"
@@ -250,7 +263,7 @@
                 ColorName="Subtle / Secondary"
                 ColorValue="#000000, (09,3.73%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource SubtleFillColorTertiaryBrush}"
                 ColorBrushName="SubtleFillColorTertiaryBrush"
@@ -258,7 +271,7 @@
                 ColorName="Subtle / Tertiary "
                 ColorValue=" #000000 (06, 2.41%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource SubtleFillColorDisabledBrush}"
                 ColorBrushName="SubtleFillColorDisabledBrush"
@@ -267,7 +280,8 @@
                 ColorValue="#000000 (00, 0%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Control On Image Fill  -->
@@ -290,22 +304,23 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
                 ColorBrushName="ControlOnImageFillColorDefaultBrush"
                 ColorExplanation="Rest"
                 ColorName="Control On Image Fill Default"
                 ColorValue="#FFFFFF (C9, 79%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlOnImageFillColorSecondaryBrush}"
                 ColorBrushName="ControlOnImageFillColorSecondaryBrush"
@@ -313,7 +328,7 @@
                 ColorName="Control On Image Fill Secondary"
                 ColorValue="#F3F3F3 (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlOnImageFillColorTertiaryBrush}"
                 ColorBrushName="ControlOnImageFillColorTertiaryBrush"
@@ -321,7 +336,7 @@
                 ColorName="Control On Image Fill Tertiary"
                 ColorValue="#EBEBEB (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource ControlOnImageFillColorDisabledBrush}"
                 ColorBrushName="ControlOnImageFillColorDisabledBrush"
@@ -330,7 +345,8 @@
                 ColorValue="#FFFFFF (00, 0%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Accent fill  -->
@@ -343,13 +359,14 @@
             </StackPanel>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource AccentFillColorDefaultBrush}"
                 ColorBrushName="AccentFillColorDefaultBrush"
                 ColorExplanation="Rest"
@@ -357,7 +374,7 @@
                 ColorValue="Dark 1 (100%)"
                 Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource AccentFillColorSecondaryBrush}"
                 ColorBrushName="AccentFillColorSecondaryBrush"
@@ -366,7 +383,7 @@
                 ColorValue="Dark 1 (90%)"
                 Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource AccentFillColorTertiaryBrush}"
                 ColorBrushName="AccentFillColorTertiaryBrush"
@@ -375,20 +392,22 @@
                 ColorValue="Dark 1 (80%)"
                 Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                 ShowSeparator="False" />
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+            </Grid>
+        </controls:SampleThemeListener>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource AccentFillColorDisabledBrush}"
                 ColorBrushName="AccentFillColorDisabledBrush"
                 ColorExplanation="Disabled"
                 ColorName="Accent / Disabled"
                 ColorValue="#000000 (37, 21.09%)"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource AccentFillColorSelectedTextBackgroundBrush}"
                 ColorBrushName="AccentFillColorSelectedTextBackgroundBrush"
@@ -397,7 +416,8 @@
                 ColorValue="Accent Base"
                 Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
     </StackPanel>
 </Page>
