@@ -46,9 +46,9 @@ namespace AppUIBasics
             if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
                 soundToggle.IsOn = true;
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
-                spatialSoundBox.IsChecked = true;
+                spatialSoundBox.IsOn = true;
 
-            ScreenshotSettingsGrid.Visibility = Visibility.Collapsed;
+            ScreenshotCard.Visibility = Visibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -94,7 +94,7 @@ namespace AppUIBasics
 
         private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            var selectedTheme = ((RadioButton)themeMode.SelectedItem)?.Tag?.ToString();
+            var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
             var res = Microsoft.UI.Xaml.Application.Current.Resources;
             Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
 
@@ -126,25 +126,17 @@ namespace AppUIBasics
 
         }
 
-        private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
-            }
-        }
-
         private void soundToggle_Toggled(object sender, RoutedEventArgs e)
         {
             if (soundToggle.IsOn == true)
             {
-                spatialSoundBox.IsEnabled = true;
+                SpatialAudioCard.IsEnabled = true;
                 ElementSoundPlayer.State = ElementSoundPlayerState.On;
             }
             else
             {
-                spatialSoundBox.IsEnabled = false;
-                spatialSoundBox.IsChecked = false;
+                SpatialAudioCard.IsEnabled = false;
+                spatialSoundBox.IsOn = false;
 
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
@@ -156,13 +148,6 @@ namespace AppUIBasics
             UIHelper.IsScreenshotMode = screenshotModeToggle.IsOn;
         }
 
-        private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            }
-        }
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -188,14 +173,27 @@ namespace AppUIBasics
             await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
 
-        private void OnResetTeachingTipsButtonClick(object sender, RoutedEventArgs e)
+        private void spatialSoundBox_Toggled(object sender, RoutedEventArgs e)
         {
-            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
+            if (soundToggle.IsOn == true)
+            {
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+            }
+            else
+            {
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+            }
         }
 
-        private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
+        }
+
+        private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
+        
         }
     }
 }
