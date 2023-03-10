@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     mc:Ignorable="d">
 
     <!--  Colors section  -->
@@ -19,14 +19,15 @@
                 FontWeight="SemiBold"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource TextFillColorPrimary}"
                 ColorBrushName="TextFillColorPrimaryBrush"
                 ColorExplanation="Rest or Hover"
@@ -34,7 +35,7 @@
                 ColorValue="#000000 (E4, 89.56%)"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource TextFillColorSecondaryBrush}"
                 ColorBrushName="TextFillColorSecondaryBrush"
@@ -43,7 +44,7 @@
                 ColorValue="#000000 (9E, 61.86%)"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextFillColorTertiaryBrush}"
                 ColorBrushName="TextFillColorTertiaryBrush"
@@ -52,7 +53,7 @@
                 ColorValue="#000000 (72, 44.58%)"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource TextFillColorDisabledBrush}"
                 ColorBrushName="TextFillColorDisabledBrush"
@@ -61,7 +62,8 @@
                 ColorValue="#000000 (5C, 36.14%)"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Accent text  -->
@@ -72,14 +74,15 @@
                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource AccentTextFillColorPrimaryBrush}"
                 ColorBrushName="AccentTextFillColorPrimaryBrush"
                 ColorExplanation="Rest or Hover"
@@ -87,7 +90,7 @@
                 ColorValue="Dark 2"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource AccentTextFillColorSecondaryBrush}"
                 ColorBrushName="AccentTextFillColorSecondaryBrush"
@@ -96,7 +99,7 @@
                 ColorValue="Dark 3"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource AccentTextFillColorTertiaryBrush}"
                 ColorBrushName="AccentTextFillColorTertiaryBrush"
@@ -105,7 +108,7 @@
                 ColorValue="Dark 1"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource AccentTextFillColorDisabledBrush}"
                 ColorBrushName="AccentTextFillColorDisabledBrush"
@@ -114,7 +117,8 @@
                 ColorValue="#000000 (5C, 36.14%)"
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Text on accent  -->
@@ -130,13 +134,14 @@
                 Text="Aa" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                 ColorBrushName="TextOnAccentFillColorPrimaryBrush"
                 ColorExplanation="Rest or Hover"
@@ -144,7 +149,7 @@
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextOnAccentFillColorSecondaryBrush}"
                 ColorBrushName="TextOnAccentFillColorSecondaryBrush"
@@ -153,22 +158,24 @@
                 ColorValue="#FFFFFF (B3, 70%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource TextOnAccentFillColorDisabledBrush}"
                 ColorBrushName="TextOnAccentFillColorDisabledBrush"
                 ColorExplanation="Disabled only (not accessible)"
                 ColorName="Text on Accent / Disabled"
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
                 ColorBrushName="TextOnAccentFillColorSelectedTextBrush"
@@ -177,6 +184,7 @@
                 ColorValue="#FFFFFF (FF, 100%)"
                 Foreground="Black"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
     </StackPanel>
 </Page>

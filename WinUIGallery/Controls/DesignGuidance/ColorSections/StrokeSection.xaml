@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     mc:Ignorable="d">
 
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
@@ -20,53 +20,57 @@
             Description="Used for standard control strokes and stroke states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlElevationBorderBrush}"
                 ColorBrushName="ControlElevationBorderBrush"
                 ColorExplanation="Rest"
                 ColorName="Control / Border"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource CircleElevationBorderBrush}"
                 ColorBrushName="CircleElevationBorderBrush"
                 ColorExplanation="Rest"
                 ColorName="Circle / Border"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control/Secondary" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextControlElevationBorderBrush}"
                 ColorBrushName="TextControlElevationBorderBrush"
                 ColorExplanation="Rest"
                 ColorName="Text Control / Border"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+            </Grid>
+        </controls:SampleThemeListener>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource TextControlElevationBorderFocusedBrush}"
                 ColorBrushName="TextControlElevationBorderFocusedBrush"
                 ColorExplanation="Active text fields"
                 ColorName="Text Control / Border Focused"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Fill/Accent/Default" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource AccentControlElevationBorderBrush}"
                 ColorBrushName="AccentControlElevationBorderBrush"
                 ColorExplanation="Rest"
                 ColorName="Accent Control / Border"
                 ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
 
@@ -77,34 +81,35 @@
             Description="Used for gradient stops in elevation borders, and for control states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlStrokeColorDefaultBrush}"
                 ColorBrushName="ControlStrokeColorDefaultBrush"
                 ColorExplanation="Used in Control Elevation Brushes. Pressed or Disabled"
                 ColorName="Control Stroke / Default"
                 ColorValue="#000000 (0F, 5.78%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlStrokeColorSecondaryBrush}"
                 ColorBrushName="ControlStrokeColorSecondaryBrush"
                 ColorExplanation="Used in Control Elevation Brushes"
                 ColorName="Control Stroke / Secondary"
                 ColorValue="#000000 (29, 16.22%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlStrokeColorOnAccentDefaultBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentDefaultBrush"
                 ColorExplanation="Used in Control Elevation Brushes. Pressed or Disabled"
                 ColorName="Control Stroke / On Accent Default"
                 ColorValue="#FFFFFF (14, 8%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="3"
                 Background="{ThemeResource ControlStrokeColorOnAccentSecondaryBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentSecondaryBrush"
@@ -112,28 +117,30 @@
                 ColorName="Control Stroke / On Accent Secondary"
                 ColorValue="#000000 (66, 40%)"
                 ShowSeparator="False" />
-        </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+            </Grid>
+        </controls:SampleThemeListener>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource ControlStrokeColorOnAccentTertiaryBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentTertiaryBrush"
                 ColorExplanation="Linework on Accent controls, ie: dividers"
                 ColorName="Control Stroke / On Accent Tertiary"
                 ColorValue="#000000 (37, 21.69%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource ControlStrokeColorOnAccentDisabledBrush}"
                 ColorBrushName="ControlStrokeColorOnAccentDisabledBrush"
                 ColorExplanation="Disabled"
                 ColorName="Control Stroke / On Accent Disabled"
                 ColorValue="#000000 (0F, 5.78%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlStrokeColorForStrongFillWhenOnImageBrush}"
                 ColorBrushName="ControlStrokeColorForStrongFillWhenOnImageBrush"
@@ -141,7 +148,8 @@
                 ColorName="Control Stroke / For Strong Fill When On Image"
                 ColorValue="#FFFFFF (59, 35%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
         <!--  Card Stroke  -->
         <designguidance:ColorPageExample
@@ -152,18 +160,19 @@
                 <TextBlock Width="60" />
             </DropDownButton>
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <designguidance:ColorTile
                 Background="{ThemeResource CardStrokeColorDefaultBrush}"
                 ColorBrushName="CardStrokeColorDefaultBrush"
                 ColorExplanation="Card layer and strokes"
                 ColorName="Control Stroke / Default"
                 ColorValue="#000000 (0F, 6.78%)" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
                 ColorBrushName="CardStrokeColorDefaultSolidBrush"
@@ -171,7 +180,8 @@
                 ColorName="Card Stroke / Default Solid"
                 ColorValue="#EBEBEB (FF, 100%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
         <!--  Control Strong Stroke  -->
         <designguidance:ColorPageExample
@@ -185,13 +195,14 @@
                 OnContent="" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                 ColorBrushName="ControlStrongStrokeColorDefaultBrush"
                 ColorExplanation="3:1 control border"
@@ -199,7 +210,7 @@
                 ColorValue="#000000 (72, 44.58%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource ControlStrongStrokeColorDisabledBrush}"
                 ColorBrushName="ControlStrongStrokeColorDisabledBrush"
@@ -207,7 +218,8 @@
                 ColorName="Control Strong Stroke / Disabled"
                 ColorValue="#FFFFFF (37, 21.69%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Surface Stroke  -->
@@ -224,20 +236,21 @@
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                 ColorBrushName="SurfaceStrokeColorDefaultBrush"
                 ColorExplanation="Window and dialog borders, theme inverse"
                 ColorName="Surface Stroke / Default"
                 ColorValue="#757575 (66, 40%) Snapped Windows: #757575 (FF, 100%)"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
                 ColorBrushName="SurfaceStrokeColorFlyoutBrush"
@@ -245,7 +258,8 @@
                 ColorName="Surface Stroke / Flyout"
                 ColorValue=""
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
 
         <!--  Divider Stroke  -->
@@ -269,12 +283,13 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource DividerStrokeColorDefaultBrush}"
                 ColorBrushName="DividerStrokeColorDefaultBrush"
                 ColorExplanation="Content dividers"
@@ -282,7 +297,8 @@
                 ColorValue="#0000000 (DF, 5.78%)"
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
         <!--  Focus Stroke  -->
         <designguidance:ColorPageExample
@@ -312,13 +328,14 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <controls:SampleThemeListener>
+            <Grid Style="{StaticResource ColorTilesPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Background="{ThemeResource FocusStrokeColorOuterBrush}"
                 ColorBrushName="FocusStrokeColorOuterBrush"
                 ColorExplanation="Outer stroke color"
@@ -326,7 +343,7 @@
                 ColorValue="#000000 (E4, 89.56%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-            <designguidance:ColorTile
+                <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource FocusStrokeColorInnerBrush}"
                 ColorBrushName="FocusStrokeColorInnerBrush"
@@ -334,7 +351,8 @@
                 ColorName="Focus / Inner"
                 ColorValue="#FFFFFF (B3, 70%)"
                 ShowSeparator="False" />
-        </Grid>
+            </Grid>
+        </controls:SampleThemeListener>
 
     </StackPanel>
 </Page>
