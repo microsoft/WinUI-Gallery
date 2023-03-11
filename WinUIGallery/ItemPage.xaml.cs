@@ -176,6 +176,10 @@ namespace AppUIBasics
                 {
                     controlExample.RequestedTheme = theme;
                 }
+                if(controlExamples.Count() == 0)
+                {
+                    this.RequestedTheme = theme;
+                }
             }
         }
     }
