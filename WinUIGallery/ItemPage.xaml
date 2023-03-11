@@ -17,7 +17,7 @@
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="pageRoot"
+    x:Name="pageRoot" Background="{ThemeResource SolidBackgroundFillColorTertiaryBrush}"
     mc:Ignorable="d">
     <Page.Resources>
         <converters:StringVisibilityConverter

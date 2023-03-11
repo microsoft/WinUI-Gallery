@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
 
@@ -26,7 +26,7 @@
                 BorderThickness="1"
                 CornerRadius="4" />
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -55,9 +55,9 @@
                 ShowSeparator="False"
                 ShowWarning="True" />
         </Grid>
-        </controls:SampleThemeListener>
 
-                <!--  Smoke Background  -->
+
+        <!--  Smoke Background  -->
         <designguidance:ColorPageExample
             Title="Smoke Background"
             Background="{ThemeResource SmokeFillColorDefaultBrush}"
@@ -70,7 +70,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -81,7 +81,6 @@
                 ColorName="Smoke / Default"
                 ColorValue="#000000 (4D, 30%) " />
         </Grid>
-        </controls:SampleThemeListener>
 
 
         <!--  Layer  -->
@@ -105,7 +104,7 @@
                     BorderThickness="1,0,0,0" />
             </Grid>
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -125,7 +124,6 @@
                 ColorValue="#FFFFFF (FF, 100%)"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
         <!--  Layer on Acrylic  -->
         <designguidance:ColorPageExample
@@ -147,7 +145,7 @@
                     BorderThickness="1,0,0,0" />
             </Grid>
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -159,7 +157,6 @@
                 ColorValue="#FFFFFF (40, 25%)"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
         <!--  Layer on Mica Base Alt  -->
         <designguidance:ColorPageExample
@@ -174,7 +171,7 @@
                 Header="Text" />
         </designguidance:ColorPageExample>
 
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -188,7 +185,7 @@
                 ColorValue="#FFFFFF (B3, 70%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
 
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
                 ColorBrushName="LayerOnMicaBaseAltFillColorTertiaryBrush"
@@ -196,10 +193,10 @@
                 ColorName="Layer On Mica Base Alt / Tertiary"
                 ColorValue="#F9F9F9 (FF, 100%)"
                 Foreground="{ThemeResource TextFillColorPrimary}" />
-            </Grid>
-        </controls:SampleThemeListener>
 
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        </Grid>
+
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -223,7 +220,6 @@
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
         <!--  Solid background  -->
         <designguidance:ColorPageExample
@@ -239,7 +235,7 @@
                 CornerRadius="4" />
         </designguidance:ColorPageExample>
 
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -280,9 +276,8 @@
                 Foreground="{ThemeResource TextFillColorPrimary}"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -316,7 +311,6 @@
                 ShowSeparator="False"
                 ShowWarning="True" />
         </Grid>
-        </controls:SampleThemeListener>
 
 
         <!--  Mica background  -->
@@ -332,7 +326,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -352,7 +346,6 @@
                 ShowSeparator="False"
                 ShowWarning="True" />
         </Grid>
-        </controls:SampleThemeListener>
 
         <!--  Acrylic background  -->
         <designguidance:ColorPageExample
@@ -367,7 +360,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -388,7 +381,6 @@
                 ColorValue="#FCFCFC (FF, 100%), 0% Tint Opacity, 85% Luminosity Opacity Fallback: #F9F9F9 (FF, 100%)"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
         <!--  Accent Acrylic background  -->
         <designguidance:ColorPageExample
@@ -403,7 +395,7 @@
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
-        <controls:SampleThemeListener><Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -424,7 +416,6 @@
                 ColorValue="Light 3, 80% Tint Opacity, 90% Luminosity Opacity Fallback: Light 3"
                 ShowSeparator="False" />
         </Grid>
-        </controls:SampleThemeListener>
 
     </StackPanel>
 </Page>
