@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:designguidance="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
 
@@ -24,15 +24,14 @@
                 Severity="Error" />
         </designguidance:ColorPageExample>
 
-        <controls:SampleThemeListener>
-            <Grid Style="{StaticResource ColorTilesPanelStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <designguidance:ColorTile
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+           
+            <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorSuccessBrush}"
                 ColorBrushName="SystemFillColorSuccessBrush"
                 ColorExplanation="Badge"
@@ -40,7 +39,7 @@
                 ColorValue="#6CCB5F, 100%"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorCautionBrush}"
                 ColorBrushName="SystemFillColorCautionBrush"
@@ -49,7 +48,7 @@
                 ColorValue="FCE100, 100%"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorCriticalBrush}"
                 Grid.Column="2"
                 ColorBrushName="SystemFillColorCriticalBrush"
@@ -58,17 +57,15 @@
                 ColorValue="#FF99A4, 100%"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-            </Grid>
-        </controls:SampleThemeListener>
-        <controls:SampleThemeListener>
-            <Grid Style="{StaticResource ColorTilesPanelStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <designguidance:ColorTile
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"
                 ColorBrushName="SystemFillColorSuccessBackgroundBrush"
@@ -76,7 +73,7 @@
                 ColorName="System / Success Background"
                 ColorValue="#393D1B, 100%"
                 ShowSeparator="False" />
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
                 ColorBrushName="SystemFillColorCautionBackgroundBrush"
@@ -84,7 +81,7 @@
                 ColorName="System / Caution Background"
                 ColorValue="#433519, 100%"
                 ShowSeparator="False" />
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"
                 ColorBrushName="SystemFillColorCriticalBackgroundBrush"
                 ColorExplanation="Infobar Background"
@@ -93,16 +90,14 @@
                 Grid.Column="2"
                 ShowSeparator="False" />
 
-            </Grid>
-        </controls:SampleThemeListener>
-        <controls:SampleThemeListener>
-            <Grid Style="{StaticResource ColorTilesPanelStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <designguidance:ColorTile
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorAttentionBrush}"
                 ColorBrushName="SystemFillColorAttentionBrush"
                 ColorExplanation="Badge"
@@ -110,8 +105,8 @@
                 ColorValue="#60CDFF (100%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-
-                <designguidance:ColorTile
+          
+            <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorNeutralBrush}"
                 ColorBrushName="SystemFillColorNeutralBrush"
@@ -121,7 +116,7 @@
                 Foreground="{ThemeResource TextFillColorInverseBrush}" />
 
 
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource SystemFillColorSolidNeutralBrush}"
                 ColorBrushName="SystemFillColorSolidNeutralBrush"
@@ -131,51 +126,46 @@
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
 
-            </Grid>
-        </controls:SampleThemeListener>
-        <controls:SampleThemeListener>
-            <Grid Style="{StaticResource ColorTilesPanelStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <designguidance:ColorTile
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorAttentionBackgroundBrush}"
                 ColorBrushName="SystemFillColorAttentionBackgroundBrush"
                 ColorExplanation="Infobar Background"
                 ColorName="System / Attention Background"
                 ColorValue="#FFFFFF (0B, 3.26%)"/>
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorNeutralBackgroundBrush}"
                 ColorBrushName="SystemFillColorNeutralBackgroundBrush"
                 ColorExplanation="Infobar Background"
                 ColorName="System / Neutral Background"
                 ColorValue="#FFFFFF (08, 3.26%)" />
-                <designguidance:ColorTile
+            <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource SystemFillColorSolidNeutralBackgroundBrush}"
                 ColorBrushName="SystemFillColorSolidNeutralBackgroundBrush"
                 ColorExplanation="Neutral badges over content"
                 ColorName="System / Solid Neutral Background"
                 ColorValue="#2E2E2E" />
-            </Grid>
-        </controls:SampleThemeListener>
-        <controls:SampleThemeListener>
-            <Grid Style="{StaticResource ColorTilesPanelStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <designguidance:ColorTile
+        </Grid>
+        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource SystemFillColorSolidAttentionBackgroundBrush}"
                 ColorBrushName="SystemFillColorSolidAttentionBackgroundBrush"
                 ColorName="System / Solid Attention Background"
                 ColorValue="#2E2E2E"
                 ShowSeparator="False" />
-            </Grid>
-        </controls:SampleThemeListener>
+        </Grid>
 
     </StackPanel>
 </Page>
