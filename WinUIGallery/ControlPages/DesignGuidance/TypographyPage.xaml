@@ -20,7 +20,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="compactPage"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.dark.png</ImageSource>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.light.png</ImageSource>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -42,7 +53,7 @@
                     <Image
                         Height="450"
                         Canvas.ZIndex="0"
-                        Source="/Assets/typography.png" />
+                        Source="{ThemeResource HeaderImage}" />
                     <Button
                         x:Name="ShowTypographyButton1"
                         Canvas.Left="650"
