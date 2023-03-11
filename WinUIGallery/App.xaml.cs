@@ -23,6 +23,7 @@ using Windows.System.Profile;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap.DataModel;
 
 namespace AppUIBasics
 {
@@ -94,7 +95,7 @@ namespace AppUIBasics
             IdleSynchronizer.Init();
 
             startupWindow = WindowHelper.CreateWindow();
-
+            startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached)
             //{
@@ -127,6 +128,7 @@ namespace AppUIBasics
             // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
             // We'll never need to do this again.
             await ControlInfoDataSource.Instance.GetGroupsAsync();
+            await IconsDataSource.Instance.LoadIcons();
 
             Frame rootFrame = GetRootFrame();
 

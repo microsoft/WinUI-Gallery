@@ -6,7 +6,8 @@
     xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
     xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
     IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.WinUI3ControlsGallery" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.16.0" />
+  <!--Note: package version and assembly version must be kept in sync-->
+  <Identity Name="Microsoft.WinUI3ControlsGallery" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.3.17.0" />
   <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WinUI 3 Gallery</DisplayName>
@@ -30,7 +31,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png" BackgroundColor="#00b2f0" />
+        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png"/>
       </uap:VisualElements>
       <Extensions>
         <uap3:Extension Category="windows.appUriHandler">

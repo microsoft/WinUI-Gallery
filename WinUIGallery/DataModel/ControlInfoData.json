@@ -1,28 +1,175 @@
 {
   "Groups": [
     {
-      "UniqueId": "NewControls",
-      "Title": "Home",
+      "UniqueId": "Design_Guidance",
+      "Title": "Design guidance",
       "ApiNamespace": "",
       "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
+      "ImagePath": "",
+      "ImageIconPath": "",
       "Description": "",
-      "Items": []
-    },
-    {
-      "UniqueId": "AllControls",
-      "Title": "All controls",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
-      "Items": []
+      "IsSpecialSection": true,
+      "Items": [
+        {
+          "UniqueId": "Typography",
+          "Title": "Typography",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Typography in Windows Apps",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/typography"
+            },
+            {
+              "Title": "XAML theme resources",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources#the-xaml-type-ramp"
+            },
+            {
+              "Title": "Typography in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "Icons",
+          "Title": "Icons",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Iconography in Windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/iconography/overview"
+            },
+            {
+              "Title": "Segoe Fluent Icons font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "Colors",
+          "Title": "Colors",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Colors in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
+            },{
+              "Title": "Windows UI Toolkit (Figma)",
+              "Uri": "https://www.figma.com/community/file/1159947337437047524"
+            },
+            {
+              "Title": "WinUI Theme Resources (Github)",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/dev/CommonStyles/Common_themeresources_any.xaml"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityColorContrast",
+          "Title": "Color contrast",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Automation Properties - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityKeyboard",
+          "Title": "Keyboard support",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Keyboard accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility"
+            },
+            {
+              "Title": "Automation Properties - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
+          "UniqueId": "AccessibilityScreenReader",
+          "Title": "Screen reader support",
+          "ApiNamespace": "",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "HideSourceCodeAndRelatedControls": true,
+          "Docs": [
+            {
+              "Title": "Accessibility",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+            },
+            {
+              "Title": "Accessible text requirements",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessible-text-requirements"
+            }
+          ],
+          "RelatedControls": []
+        }
+      ]
     },
     {
       "UniqueId": "MenusAndToolbars",
-      "Title": "Menus and Toolbars",
+      "Title": "Menus & toolbars",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -333,7 +480,7 @@
           "Description": "Touch gesture for quick menu actions on items.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "SwipeControl - API",
@@ -378,7 +525,7 @@
           "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "FlipView - API",
@@ -405,7 +552,7 @@
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "GridView - API",
@@ -580,7 +727,7 @@
     },
     {
       "UniqueId": "DateAndTime",
-      "Title": "Date and Time",
+      "Title": "Date & time",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -697,7 +844,7 @@
     },
     {
       "UniqueId": "BasicInput",
-      "Title": "Basic Input",
+      "Title": "Basic input",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -876,7 +1023,7 @@
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "SplitButton - API",
@@ -937,7 +1084,7 @@
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "CheckBox - API",
@@ -1076,7 +1223,7 @@
           "Description": "Use a Slider when you want your users to be able to set defined, contiguous values (such as volume or brightness) or a range of discrete values (such as screen resolution settings).",
           "Content": "<p>Look at the <i>SliderPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Slider - API",
@@ -1125,39 +1272,13 @@
     },
     {
       "UniqueId": "StatusAndInfo",
-      "Title": "Status and Info",
+      "Title": "Status & info",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
       "ImageIconPath": "",
       "Description": "",
       "Items": [
-        {
-          "UniqueId": "AutomationProperties",
-          "Title": "AutomationProperties",
-          "ApiNamespace": "Microsoft.UI.Xaml.Automation",
-          "Subtitle": "Attributes that help with writing accessible XAML.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ButtonIcon.png",
-          "Description": "The AutomationProperties attributes provide functionality around accessible components.",
-          "Content": "<p>The aim of <b>AutomationProperties</b> is to enable components that are accessible to screen readers.",
-          "IsNew": false,
-          "IsUpdated": false,
-          "Docs": [
-            {
-              "Title": "AutomationProperties - API",
-              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties"
-            },
-            {
-              "Title": "Accessibility Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/apps/design/accessibility/accessibility"
-            }
-          ],
-          "RelatedControls": [
-            "TextBlock",
-            "Image"
-          ]
-        },
         {
           "UniqueId": "InfoBar",
           "Title": "InfoBar",
@@ -1167,8 +1288,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuBarIcon.png",
           "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
           "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "InfoBar - API",
@@ -1219,7 +1340,7 @@
           "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "ProgressRing - API",
@@ -1265,7 +1386,7 @@
     },
     {
       "UniqueId": "DialogsAndFlyouts",
-      "Title": "Dialogs and Flyouts",
+      "Title": "Dialogs & flyouts",
       "ApiNamespace": "",
       "Subtitle": "",
       "ImagePath": "",
@@ -1376,7 +1497,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
           "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -1404,7 +1525,7 @@
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1524,7 +1645,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
           "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "Expander - API",
@@ -1676,7 +1798,7 @@
           "Description": "Use a SplitView to display content, such as navigation options, in a pane on the side.  There are multiple options for displaying the pane, namely CompactOverlay, Compact, Overlay, Inline.  If you are looking for a reference to the hamburger pattern, please see the links in the documentation below.",
           "Content": "<p>Look at the <i>SplitViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "SplitView - API",
@@ -1759,9 +1881,9 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that scales its content to a specified size.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Viewbox.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ViewBoxIcon.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ViewboxIcon.png",
           "Description": "Use a Viewbox control scale content up or down to a specified size.",
-          "Content": "<p>Look at the <i>ViewBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Content": "<p>Look at the <i>ViewboxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
           "IsUpdated": false,
           "Docs": [
@@ -1799,7 +1921,7 @@
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "BreadcrumbBar - API",
@@ -1879,7 +2001,7 @@
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
           "Content": "",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "IsPreview": false,
           "Docs": [
             {
@@ -1980,7 +2102,7 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MediaElementIcon.png",
           "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "Content": "",
-          "IsNew": false,
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2114,7 +2236,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AnimationsIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "AnimatedIcon - API",
@@ -2135,6 +2258,50 @@
           ]
         },
         {
+          "UniqueId": "ColorPaletteResources",
+          "Title": "ColorPaletteResources",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+          "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "Theme Editor (GitHub)",
+              "Uri": "https://github.com/Microsoft/fluent-xaml-theme-editor"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/style/color#scoping-with-a-resourcedictionary"
+            },
+            {
+              "Title": "ColorPaletteResources - API",
+              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.colorpaletteresources"
+            }
+          ]
+        },
+        {
+          "UniqueId": "CompactSizing",
+          "Title": "Compact Sizing",
+          "ApiNamespace": "",
+          "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/CompactSizingIcon.png",
+          "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "Spacing",
+              "Uri": "https://docs.microsoft.com/windows/apps/design/style/spacing"
+            }
+          ]
+        },
+        {
           "UniqueId": "IconElement",
           "Title": "IconElement",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
@@ -2143,7 +2310,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/ImageIcon.png",
           "Description": "Represents icon controls that use different image types as its content.",
           "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "BitmapIcon - API",
@@ -2208,7 +2376,7 @@
           "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
           "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Reveal Focus - API",
@@ -2223,47 +2391,53 @@
           ]
         },
         {
-          "UniqueId": "ColorPaletteResources",
-          "Title": "ColorPaletteResources",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
+          "UniqueId": "Shape",
+          "Title": "Shape",
+          "ApiNamespace": "Microsoft.UI.Xaml.Shapes",
+          "Subtitle": "How to draw shapes, such as ellipses, rectangles, and polygons.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Shape.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
-          "Content": "",
-          "IsNew": false,
+          "Description": "Basic shapes are intended for decorative rendering or for compositing non-interactive parts of controls.",
+          "Content": "<p>Look at the <i>ShapePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
-              "Title": "Theme Editor (GitHub)",
-              "Uri": "https://github.com/Microsoft/fluent-xaml-theme-editor"
+              "Title": "Shapes - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.shapes"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/apps/design/style/color#scoping-with-a-resourcedictionary"
-            },
-            {
-              "Title": "ColorPaletteResources - API",
-              "Uri": "https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.colorpaletteresources"
+              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
             }
+          ],
+          "RelatedControls": [
+            "Line"
           ]
         },
         {
-          "UniqueId": "CompactSizing",
-          "Title": "Compact Sizing",
-          "ApiNamespace": "",
-          "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/CompactSizingIcon.png",
-          "Description": "Compact dictionary included in WinUI 2.1. Allows you to create compact smaller apps by adding this at the page or the grid level.",
-          "Content": "",
-          "IsNew": false,
+          "UniqueId": "Line",
+          "Title": "Line",
+          "ApiNamespace": "Microsoft.UI.Xaml.Shapes",
+          "Subtitle": "Draws a straight line between two points.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Line.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+          "Description": "Draws a straight line between two points.",
+          "Content": "<p>Look at the <i>LinePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
           "IsUpdated": false,
           "Docs": [
             {
-              "Title": "Spacing",
-              "Uri": "https://docs.microsoft.com/windows/apps/design/style/spacing"
+              "Title": "Lines - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.shapes"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
             }
+          ],
+          "RelatedControls": [
+            "Shape"
           ]
         },
         {
@@ -2366,7 +2540,7 @@
           "Description": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
           "Content": "<p>Look at the <i>PasswordBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": false,
-          "IsUpdated": true,
+          "IsUpdated": false,
           "Docs": [
             {
               "Title": "PasswordBox - API",
@@ -2728,23 +2902,23 @@
     },
     {
       "UniqueId": "MultipleWindows",
-      "Title": "Windows",
+      "Title": "Windowing",
       "ApiNamespace": "",
       "Subtitle": "",
-      "ImagePath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-      "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+      "ImagePath": "",
+      "ImageIconPath": "",
       "Description": "",
       "Items": [
         {
           "UniqueId": "CreateMultipleWindows",
-          "Title": "Create Multiple Windows",
+          "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
           "Content": "<p>Look at the <i>CreateMultipleWindowsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
+          "IsNew": false,
           "IsUpdated": false,
           "Docs": [
             {
@@ -2768,8 +2942,8 @@
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
           "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
           "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": false,
+          "IsNew": false,
+          "IsUpdated": true,
           "Docs": [
             {
               "Title": "TitleBar - API",
@@ -2781,6 +2955,59 @@
             }
           ],
           "RelatedControls": [
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "System",
+      "Title": "System",
+      "ApiNamespace": "",
+      "Subtitle": "",
+      "ImagePath": "",
+      "ImageIconPath": "",
+      "Description": "",
+      "Items": [
+        {
+          "UniqueId": "Clipboard",
+          "Title": "Clipboard",
+          "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
+          "Subtitle": "Copy and paste to and from the system Clipboard.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+          "Description": "Copy and paste to and from the system Clipboard.",
+          "Content": "<p>Look at the <i>ClipboardPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "Clipboard - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
+            }
+          ],
+          "RelatedControls": [
+            "FilePicker"
+          ]
+        },
+        {
+          "UniqueId": "FilePicker",
+          "Title": "FilePicker",
+          "ApiNamespace": "Windows.Storage.Pickers",
+          "Subtitle": "Access files and folders through the file pickers.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
+          "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "FilePicker - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
+            }
+          ],
+          "RelatedControls": [
+            "Clipboard"
           ]
         }
       ]

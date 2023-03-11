@@ -1,4 +1,5 @@
-<Project>
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
     <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
@@ -26,5 +27,6 @@
   </PropertyGroup>
     
   <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
-  <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true'"/>
+  <!-- The UseStandalone property allows this to be overridden, in order to buildReleaseSamples to build without changing the entire repo -->
+  <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
 </Project>

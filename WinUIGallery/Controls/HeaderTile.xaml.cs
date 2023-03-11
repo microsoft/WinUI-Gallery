@@ -34,14 +34,23 @@ namespace AppUIBasics.Controls
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(HeaderTile), new PropertyMetadata(null));
 
-        public string Source
+        public string Description
         {
-            get { return (string)GetValue(SourceProperty); }
+            get { return (string)GetValue(DescriptionProperty); }
+            set { SetValue(DescriptionProperty, value); }
+        }
+
+        public static readonly DependencyProperty DescriptionProperty =
+            DependencyProperty.Register("Description", typeof(string), typeof(HeaderTile), new PropertyMetadata(null));
+
+        public object Source
+        {
+            get { return (object)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(HeaderTile), new PropertyMetadata(null));
+            DependencyProperty.Register("Source", typeof(object), typeof(HeaderTile), new PropertyMetadata(null));
 
         public string Link
         {
@@ -50,7 +59,7 @@ namespace AppUIBasics.Controls
         }
 
         public static readonly DependencyProperty LinkProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(HeaderTile), new PropertyMetadata(null));
+            DependencyProperty.Register("Link", typeof(string), typeof(HeaderTile), new PropertyMetadata(null));
 
 
         public HeaderTile()

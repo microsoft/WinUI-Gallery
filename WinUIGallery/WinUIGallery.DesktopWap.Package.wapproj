@@ -90,11 +90,10 @@
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup Condition="'$(ProjectReunionPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(ProjectReunionPackageVersion)]" GeneratePathProperty="true">
+  <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(WindowsAppSdkPackageVersion)]" GeneratePathProperty="true">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="[$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)]">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>

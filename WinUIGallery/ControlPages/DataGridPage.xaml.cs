@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Windows.System;
 
 namespace AppUIBasics.ControlPages
 { 
@@ -13,14 +14,18 @@ namespace AppUIBasics.ControlPages
 
         private async void LaunchToolkitButton_Click(object sender, RoutedEventArgs e)
         {
-            // Set the recommended app
-            var options = new Windows.System.LauncherOptions
-            {
-                PreferredApplicationPackageFamilyName = "Microsoft.UWPCommunityToolkitSampleApp_8wekyb3d8bbwe",
-                PreferredApplicationDisplayName = "Windows Community Toolkit"
-            };
+            // Either open the app if already instealled or the Microsoft Store
 
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("uwpct://controls?sample=datagrid"), options);
+            var isToolkitAvailable = await Windows.System.Launcher.QueryUriSupportAsync(new Uri("uwpct://controls?sample=datagrid"), Windows.System.LaunchQuerySupportType.Uri);
+
+            if (isToolkitAvailable == LaunchQuerySupportStatus.Available)
+            {
+                await Windows.System.Launcher.LaunchUriAsync(new Uri("uwpct://controls?sample=datagrid"));
+            }
+            else
+            {
+                await Windows.System.Launcher.LaunchUriAsync(new Uri(@"ms-windows-store://pdp/?ProductId=9NBLGGH4TLCQ"));
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using mux = Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -9,8 +8,8 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class TreeViewPage : Page
     {
-        mux.TreeViewNode personalFolder;
-        mux.TreeViewNode personalFolder2;
+        TreeViewNode personalFolder;
+        TreeViewNode personalFolder2;
         private ObservableCollection<ExplorerItem> DataSource;
 
         public TreeViewPage()
@@ -25,23 +24,23 @@ namespace AppUIBasics.ControlPages
 
         private void InitializeSampleTreeView()
         {
-            mux.TreeViewNode workFolder = new mux.TreeViewNode() { Content = "Work Documents" };
+            TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
             workFolder.IsExpanded = true;
 
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "XYZ Functional Spec" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Feature Schedule" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Overall Project Plan" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Feature Resources Allocation" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Overall Project Plan" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Feature Resources Allocation" });
 
-            mux.TreeViewNode remodelFolder = new mux.TreeViewNode() { Content = "Home Remodel" };
+            TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
             remodelFolder.IsExpanded = true;
 
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Contractor Contact Info" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Paint Color Scheme" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Flooring woodgrain type" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Kitchen cabinet style" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Flooring woodgrain type" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Kitchen cabinet style" });
 
-            personalFolder = new mux.TreeViewNode() { Content = "Personal Documents" };
+            personalFolder = new TreeViewNode() { Content = "Personal Documents" };
             personalFolder.IsExpanded = true;
             personalFolder.Children.Add(remodelFolder);
 
@@ -50,23 +49,23 @@ namespace AppUIBasics.ControlPages
         }
         private void InitializeSampleTreeView2()
         {
-            mux.TreeViewNode workFolder = new mux.TreeViewNode() { Content = "Work Documents" };
+            TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
             workFolder.IsExpanded = true;
 
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "XYZ Functional Spec" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Feature Schedule" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Overall Project Plan" });
-            workFolder.Children.Add(new mux.TreeViewNode() { Content = "Feature Resources Allocation" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Overall Project Plan" });
+            workFolder.Children.Add(new TreeViewNode() { Content = "Feature Resources Allocation" });
 
-            mux.TreeViewNode remodelFolder = new mux.TreeViewNode() { Content = "Home Remodel" };
+            TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
             remodelFolder.IsExpanded = true;
 
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Contractor Contact Info" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Paint Color Scheme" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Flooring woodgrain type" });
-            remodelFolder.Children.Add(new mux.TreeViewNode() { Content = "Kitchen cabinet style" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Flooring woodgrain type" });
+            remodelFolder.Children.Add(new TreeViewNode() { Content = "Kitchen cabinet style" });
 
-            personalFolder2 = new mux.TreeViewNode() { Content = "Personal Documents" };
+            personalFolder2 = new TreeViewNode() { Content = "Personal Documents" };
             personalFolder2.IsExpanded = true;
             personalFolder2.Children.Add(remodelFolder);
 
@@ -74,7 +73,7 @@ namespace AppUIBasics.ControlPages
             sampleTreeView2.RootNodes.Add(personalFolder2);
         }
 
-        private void sampleTreeView_ItemInvoked(mux.TreeView sender, mux.TreeViewItemInvokedEventArgs args)
+        private void sampleTreeView_ItemInvoked(TreeView sender, TreeViewItemInvokedEventArgs args)
         {
             return;
         }
