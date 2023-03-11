@@ -34,11 +34,9 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Page_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            PageSelector.SelectionChanged -= OnSelectionChanged;
-            NavigationFrame.Navigate(typeof(TextSection));
-            PageSelector.SelectionChanged += OnSelectionChanged;
+            PageSelector.SelectedItem = PageSelector.Items[0];
         }
     }
 }

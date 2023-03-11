@@ -29,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl" Version="0.0.2" />
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" Version="0.0.17" />
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" Version="0.0.16" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
