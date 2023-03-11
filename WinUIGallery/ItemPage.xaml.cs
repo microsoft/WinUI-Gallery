@@ -24,6 +24,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap.Controls;
 
 namespace AppUIBasics
 {
@@ -166,16 +167,18 @@ namespace AppUIBasics
 
         private void SetControlExamplesTheme(ElementTheme theme)
         {
-            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
 
             if (controlExamples != null)
             {
                 _currentElementTheme = theme;
                 foreach (var controlExample in controlExamples)
                 {
-                    var exampleContent = controlExample.Example as FrameworkElement;
-                    exampleContent.RequestedTheme = theme;
-                    controlExample.ExampleContainer.RequestedTheme = theme;
+                    controlExample.RequestedTheme = theme;
+                }
+                if(controlExamples.Count() == 0)
+                {
+                    this.RequestedTheme = theme;
                 }
             }
         }
