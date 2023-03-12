@@ -7,6 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -33,55 +34,15 @@
             <RichTextBlock Margin="0,0,0,24">
                 <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
             </RichTextBlock>
+        
         </StackPanel>
-        <Grid
-            x:Name="SelectionElement"
-            Grid.Row="1"
-            HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <ToggleButton
-                HorizontalAlignment="Stretch"
-                Checked="ToggleButton_Checked"
-                CornerRadius="4,0,0,4"
-                IsChecked="True">
-                Text
-            </ToggleButton>
-            <ToggleButton
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                Checked="ToggleButton_Checked"
-                CornerRadius="0">
-                Fill
-            </ToggleButton>
-            <ToggleButton
-                Grid.Column="2"
-                HorizontalAlignment="Stretch"
-                Checked="ToggleButton_Checked"
-                CornerRadius="0">
-                Stroke
-            </ToggleButton>
-            <ToggleButton
-                Grid.Column="3"
-                HorizontalAlignment="Stretch"
-                Checked="ToggleButton_Checked"
-                CornerRadius="0">
-                Background
-            </ToggleButton>
-            <ToggleButton
-                Grid.Column="4"
-                HorizontalAlignment="Stretch"
-                Checked="ToggleButton_Checked"
-                CornerRadius="0,4,4,0">
-                Signal
-            </ToggleButton>
-        </Grid>
+        <labs:Segmented x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" HorizontalAlignment="Stretch" Grid.Row="1">
+            <labs:SegmentedItem Content="Text"/>
+            <labs:SegmentedItem Content="Fill"/>
+            <labs:SegmentedItem Content="Stroke"/>
+            <labs:SegmentedItem Content="Background"/>
+            <labs:SegmentedItem Content="Signal"/>
+        </labs:Segmented>
 
         <Frame x:Name="NavigationFrame"   Grid.Row="2" />
     </Grid>
