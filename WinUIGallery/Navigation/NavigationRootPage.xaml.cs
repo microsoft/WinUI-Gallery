@@ -93,9 +93,8 @@ namespace AppUIBasics
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
                 NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
-                WindowHelper.GetWindowForElement(this);
 
-                var window = WindowHelper.GetWindowForElement(sender as UIElement);
+                Window window = WindowHelper.GetWindowForElement(sender as UIElement);
                 window.Title = AppTitleText;
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(this.AppTitleBar);
