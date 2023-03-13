@@ -8,8 +8,12 @@
 //
 //*********************************************************
 
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
+using WinRT.Interop;
 
 namespace AppUIBasics.Helper
 {
@@ -33,6 +37,13 @@ namespace AppUIBasics.Helper
                 _activeWindows.Remove(window);
             };
             _activeWindows.Add(window);
+        }
+
+        static public AppWindow GetAppWindow(Window window)
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(window);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(wndId);
         }
 
         static public Window GetWindowForElement(UIElement element)
