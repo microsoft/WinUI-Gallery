@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
@@ -92,10 +93,15 @@ namespace AppUIBasics
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
                 NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
-                WindowHelper.GetWindowForElement(this).Title = AppTitleText;
+                WindowHelper.GetWindowForElement(this);
+
                 var window = WindowHelper.GetWindowForElement(sender as UIElement);
+                window.Title = AppTitleText;
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(this.AppTitleBar);
+
+                AppWindow appWindow = WindowHelper.GetAppWindow(window);
+                appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
