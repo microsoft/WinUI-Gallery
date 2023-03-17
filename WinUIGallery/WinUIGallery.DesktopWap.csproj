@@ -88,6 +88,7 @@
     <None Remove="Assets\Tiles\GalleryIcon.ico" />
     <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
     <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
+    <None Remove="ControlPages\InfoBadgePage.xaml" />
     <None Remove="ControlPages\LinePage.xaml" />
     <None Remove="ControlPages\ShapePage.xaml" />
     <None Remove="ControlPages\Typography.xaml" />
@@ -121,6 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ControlPages\InfoBadgePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\SampleThemeListener.xaml">
