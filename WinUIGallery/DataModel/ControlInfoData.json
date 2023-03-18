@@ -1293,11 +1293,11 @@
           "Docs": [
             {
               "Title": "InfoBadge - API",
-              "Uri": "https://docs.microsoft.com/uwp/api/microsoft.ui.xaml.controls.infobadge"
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.infobadge"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/infobadge"
+              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/controls/info-badge"
             }
           ],
           "RelatedControls": [
