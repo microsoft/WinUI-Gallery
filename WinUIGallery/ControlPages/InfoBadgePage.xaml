@@ -104,7 +104,7 @@
                         <SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/>
                         <InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <InfoBadge.IconSource>
-                                <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xF13C;"/>
+                                <FontIconSource FontFamily={StaticResource SymbolThemeFontFamily} Glyph="&#xF13C;"/>
                             </InfoBadge.IconSource>
                         </InfoBadge>
                     </Grid>
@@ -119,7 +119,7 @@
         &lt;SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/&gt;
         &lt;InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top"&gt;
             &lt;InfoBadge.IconSource&gt;
-                &lt;FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xF13C;" /&gt;
+                &lt;FontIconSource FontFamily={StaticResource SymbolThemeFontFamily} Glyph="&#xF13C;" /&gt;
             &lt;/InfoBadge.IconSource&gt;
         &lt;/InfoBadge&gt;
     &lt;/Grid&gt;
