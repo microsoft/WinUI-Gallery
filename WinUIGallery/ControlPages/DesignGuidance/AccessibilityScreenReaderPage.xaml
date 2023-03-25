@@ -228,7 +228,75 @@ AutomationProperties.Name="Contacts"&gt;
         <TextBlock Margin="0,20,0,0"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    AutomationProperties.HeadingLevel="Level2"
-                   Text="Position in set" />
+                   Text="Common accessibility properties" />
+
+        <RichTextBlock MaxWidth="700"
+                       HorizontalAlignment="Left">
+            <Paragraph>
+                Besides accessible name, common accessibility properties include:
+                <LineBreak />
+                <LineBreak />
+                - Description and help text
+                <LineBreak />
+                - Position in set
+                <LineBreak />
+                - Headings and landmarks
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information">Basic Accessibility Information</Hyperlink>
+                and
+                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on an control</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample HeaderText="Add descriptions and help text to controls">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <!-- Use FullDescription to connect visible descriptions to their controls -->
+                    <StackPanel Spacing="8">
+                        <CheckBox Content="Clear cache on exit"
+                                  AutomationProperties.FullDescription="{x:Bind ClearCacheDescription.Text}" />
+                        <TextBlock x:Name="ClearCacheDescription"
+                                   Text="Deletes all cached items when closing the browser. This includes cookies, images, and browsing history."
+                                   AutomationProperties.AccessibilityView="Raw"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+
+                    <!-- Use HelpText and tooltips to explain nuances of controls -->
+                    <StackPanel Spacing="8">
+                        <Button Content="Next page &#8594;"
+                                IsEnabled="False"
+                                ToolTipService.ToolTip="No additional pages"
+                                AutomationProperties.HelpText="No additional pages" />
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;!-- Use FullDescription to connect visible descriptions to their controls --&gt;
+    &lt;StackPanel Spacing="8"&gt;
+        &lt;CheckBox Content="Clear cache on exit"
+                    AutomationProperties.FullDescription="{x:Bind ClearCacheDescription.Text}" /&gt;
+        &lt;TextBlock x:Name="ClearCacheDescription"
+                    Text="Deletes all cached items when closing the browser. This includes cookies, images, and browsing history."
+                    AutomationProperties.AccessibilityView="Raw"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" /&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;!-- Use HelpText and tooltips to explain nuances of controls --&gt;
+    &lt;StackPanel Spacing="8"&gt;
+        &lt;Button Content="Next page &#8594;"
+                IsEnabled="False"
+                ToolTipService.ToolTip="No additional pages"
+                AutomationProperties.HelpText="No additional pages" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
 
         <core:ControlExample HeaderText="Indicate the position of an element within a set">
             <core:ControlExample.Example>
