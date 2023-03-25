@@ -240,7 +240,7 @@ AutomationProperties.Name="Contacts"&gt;
                 <LineBreak />
                 - Position in set
                 <LineBreak />
-                - Headings and landmarks
+                - Headings and landmarks (see <Bold>Keyboard navigation</Bold>)
                 <LineBreak />
             </Paragraph>
             <Paragraph>
@@ -300,33 +300,72 @@ AutomationProperties.Name="Contacts"&gt;
 
         <core:ControlExample HeaderText="Indicate the position of an element within a set">
             <core:ControlExample.Example>
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                    <Button
-                        AutomationProperties.PositionInSet="1"
-                        AutomationProperties.SizeOfSet="3"
-                        Content="Cut" />
-                    <Button
-                        AutomationProperties.PositionInSet="2"
-                        AutomationProperties.SizeOfSet="3"
-                        Content="Copy" />
-                    <Button
-                        AutomationProperties.PositionInSet="3"
-                        AutomationProperties.SizeOfSet="3"
-                        Content="Paste" />
+                <StackPanel>
+                    <!-- Many controls automatically indicate position in set -->
+                    <TextBlock Text="Students"
+                               Style="{ThemeResource BodyStrongTextBlockStyle}"
+                               x:Name="StudentsLabel"
+                               AutomationProperties.AccessibilityView="Raw" />
+                    <ListView AutomationProperties.LabeledBy="{x:Bind StudentsLabel}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock Text="{x:Bind}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <x:String>Nathan Quinn</x:String>
+                        <x:String>Jessica Lamber</x:String>
+                        <x:String>Carl Bond</x:String>
+                        <x:String>Jessica Russel</x:String>
+                    </ListView>
+
+                    <!-- Custom layouts may need to specify PositionInSet and SizeOfSet manually. -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="8">
+                        <Button AutomationProperties.PositionInSet="1"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="View" />
+                        <Button AutomationProperties.PositionInSet="2"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="Rename" />
+                        <Button AutomationProperties.PositionInSet="3"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="Delete" />
+                    </StackPanel>
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel Orientation="Horizontal" Spacing="8"&gt;
-&lt;Button Content="Cut"
-	AutomationProperties.PositionInSet="1"
-	AutomationProperties.SizeOfSet="3" /&gt;
-&lt;Button Content="Copy"
-	AutomationProperties.PositionInSet="2"
-	AutomationProperties.SizeOfSet="3" /&gt;
-&lt;Button Content="Paste"
-	AutomationProperties.PositionInSet="3"
-	AutomationProperties.SizeOfSet="3" /&gt;
+&lt;StackPanel&gt;
+    &lt;!-- Many controls automatically indicate position in set --&gt;
+    &lt;TextBlock Text="Students"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                x:Name="StudentsLabel"
+                AutomationProperties.AccessibilityView="Raw" /&gt;
+    &lt;ListView AutomationProperties.LabeledBy="{x:Bind StudentsLabel}"&gt;
+        &lt;ListView.ItemTemplate&gt;
+            &lt;DataTemplate x:DataType="x:String"&gt;
+                &lt;TextBlock Text="{x:Bind}" /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/ListView.ItemTemplate&gt;
+        &lt;x:String&gt;Nathan Quinn&lt;/x:String&gt;
+        &lt;x:String&gt;Jessica Lamber&lt;/x:String&gt;
+        &lt;x:String&gt;Carl Bond&lt;/x:String&gt;
+        &lt;x:String&gt;Jessica Russel&lt;/x:String&gt;
+    &lt;/ListView&gt;
+
+    &lt;!-- Custom layouts may need to specify PositionInSet and SizeOfSet manually. --&gt;
+    &lt;StackPanel Orientation="Horizontal"
+                Spacing="8"&gt;
+        &lt;Button AutomationProperties.PositionInSet="1"
+                AutomationProperties.SizeOfSet="3"
+                Content="View" /&gt;
+        &lt;Button AutomationProperties.PositionInSet="2"
+                AutomationProperties.SizeOfSet="3"
+                Content="Rename" /&gt;
+        &lt;Button AutomationProperties.PositionInSet="3"
+                AutomationProperties.SizeOfSet="3"
+                Content="Delete" /&gt;
+    &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
                 </x:String>
             </core:ControlExample.Xaml>
