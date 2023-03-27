@@ -1,4 +1,4 @@
-<!--
+<!--    
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -27,20 +27,20 @@
         </Style>
     </Page.Resources>
 
-    <StackPanel Spacing="12"
-                Margin="0,20,0,0">
-        <RichTextBlock MaxWidth="700" HorizontalAlignment="Left">
+    <StackPanel Spacing="12">
+        <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
-                .<LineBreak />
+                all abilities. For more information about designing accessible apps:
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>.
                 <LineBreak />
+            </Paragraph>
+            <Paragraph>
                 Screen readers, such as
                 <Hyperlink NavigateUri="https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink>,
                 convert text into spoken words to help blind or low vision users.
                 Screen readers use the UI Automation (UIA) names of each control to report their name, role and content.
-                <LineBreak />
-                </Paragraph>
+            </Paragraph>
         </RichTextBlock>
 
         <TextBlock Margin="0,20,0,0"
@@ -48,23 +48,24 @@
                    AutomationProperties.HeadingLevel="Level2"
                    Text="Accessible names" />
 
-        <RichTextBlock MaxWidth="700" HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 An <Bold>accessible name</Bold> is a short, descriptive text string that a screen reader uses to describe a UI element.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                Typically, the accessible name should match the visual label of the control and be short.
+                Typically, the accessible name should be short and match the visual label of the control.
                 Screen reader users will hear this name every time they navigate to that control.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                If the control's content is a string, an accessible name is automatically determined from the visible
+                If the control's content can be converted ToString, an accessible name is automatically determined from the visible
                 text. However, elements such as images or input fields need to have a custom accessible name.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                See <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#accessible-name">Accessible Names</Hyperlink>.
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#accessible-name">Accessible name</Hyperlink>
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#name-from-inner-text">Name from inner text</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -73,8 +74,7 @@
                    AutomationProperties.HeadingLevel="Level3"
                    Text="Getting an accessible name automatically" />
 
-        <RichTextBlock MaxWidth="700"
-                       HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 For most controls, XAML automatically sets an accessible name from the control's content (if the content is a string).
             </Paragraph>
@@ -111,7 +111,7 @@
         <RichTextBlock MaxWidth="700"
                        HorizontalAlignment="Left">
             <Paragraph>
-                Controls without a string content will not get an accessible name automatically.
+                Controls without stringable content will not get an accessible name automatically.
             </Paragraph>
         </RichTextBlock>
 
@@ -176,6 +176,7 @@ AutomationProperties.Name="Contacts"&gt;
 
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;!-- Add "alt text" to this image so screen reader users can understand it --&gt;
 &lt;Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/grapes.jpg"/&gt;
                     </x:String>
             </core:ControlExample.Xaml>
@@ -187,8 +188,7 @@ AutomationProperties.Name="Contacts"&gt;
                    AutomationProperties.HeadingLevel="Level3"
                    Text="Using another control to provide an accessible name" />
 
-        <RichTextBlock MaxWidth="700"
-                       HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 Controls with accessible names can be used as labels for other controls. They should be removed from the UIA tree (see <Bold>Visual tree</Bold> below), to avoid being redundant.
             </Paragraph>
@@ -230,8 +230,7 @@ AutomationProperties.Name="Contacts"&gt;
                    AutomationProperties.HeadingLevel="Level2"
                    Text="Common accessibility properties" />
 
-        <RichTextBlock MaxWidth="700"
-                       HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 Besides accessible name, common accessibility properties include:
                 <LineBreak />
@@ -240,7 +239,7 @@ AutomationProperties.Name="Contacts"&gt;
                 <LineBreak />
                 - Position in set
                 <LineBreak />
-                - Headings and landmarks (see <Bold>Keyboard navigation</Bold>)
+                - Headings and landmarks (see <Bold>Keyboard navigation</Bold> page)
                 <LineBreak />
             </Paragraph>
             <Paragraph>
@@ -251,7 +250,7 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample HeaderText="Add descriptions and help text to controls">
+        <core:ControlExample HeaderText="Description and help text: add descriptions and help text to controls">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <!-- Use FullDescription to connect visible descriptions to their controls -->
@@ -298,7 +297,7 @@ AutomationProperties.Name="Contacts"&gt;
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
-        <core:ControlExample HeaderText="Indicate the position of an element within a set">
+        <core:ControlExample HeaderText="Position in set: indicate the position of an element within a set">
             <core:ControlExample.Example>
                 <StackPanel>
                     <!-- Many controls automatically indicate position in set -->
@@ -377,8 +376,7 @@ AutomationProperties.Name="Contacts"&gt;
                    AutomationProperties.HeadingLevel="Level2"
                    Text="Visual tree" />
 
-        <RichTextBlock MaxWidth="700"
-                       HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 UIA exposes multiple views of the UI tree: Control, Content, and Raw.
                 <LineBreak />
