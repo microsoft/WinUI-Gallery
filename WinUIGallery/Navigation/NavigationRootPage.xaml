@@ -206,11 +206,11 @@
                             <NavigationViewItem.MenuItems>
                                 <NavigationViewItem
                                     x:Name="AccessibilityScreenReaderPage"
-                                    Content="Screen reader"
+                                    Content="Screen reader support"
                                     Tag="AccessibilityScreenReader" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityKeyboardPage"
-                                    Content="Keyboard navigation"
+                                    Content="Keyboard support"
                                     Tag="AccessibilityKeyboard" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityContrastPage"
