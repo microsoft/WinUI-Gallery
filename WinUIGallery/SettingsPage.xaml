@@ -72,7 +72,7 @@
                     </ComboBox>
                 </labs:SettingsCard>
 
-                <labs:SettingsCard Description="Select which app theme to display" Header="Navigation style">
+                <labs:SettingsCard Header="Navigation style">
                     <labs:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xF594;" />
                     </labs:SettingsCard.HeaderIcon>
