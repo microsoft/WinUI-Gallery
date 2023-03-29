@@ -104,7 +104,7 @@
                         <SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/>
                         <InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <InfoBadge.IconSource>
-                                <FontIconSource FontFamily={StaticResource SymbolThemeFontFamily} Glyph="&#xF13C;"/>
+                                <FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF13C;"/>
                             </InfoBadge.IconSource>
                         </InfoBadge>
                     </Grid>
