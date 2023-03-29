@@ -1280,6 +1280,32 @@
       "Description": "",
       "Items": [
         {
+          "UniqueId": "InfoBadge",
+          "Title": "InfoBadge",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "An non-intrusive UI to display notifications or bring focus to an area",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InfoBadge.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/MenuBarIcon.png",
+          "Description": "Badging is a non-intrusive and intuitive way to display notifications or bring focus to an area within an app - whether that be for notifications, indicating new content, or showing an alert.",
+          "Content": "<p>Look at the <i>InfoBadgePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "IsUpdated": false,
+          "Docs": [
+            {
+              "Title": "InfoBadge - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.infobadge"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/info-badge"
+            }
+          ],
+          "RelatedControls": [
+            "InfoBar",
+            "TeachingTip"
+          ]
+        },
+        {
           "UniqueId": "InfoBar",
           "Title": "InfoBar",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
