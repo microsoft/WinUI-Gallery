@@ -111,14 +111,7 @@ namespace AppUIBasics
                 }
                 else
                 {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.White);
-                    }
-                    else
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.Black);
-                    }
+                    TitleBarHelper.ApplySystemThemeToCaptionButtons();
                 }
             }
             var window = WindowHelper.GetWindowForElement(this);

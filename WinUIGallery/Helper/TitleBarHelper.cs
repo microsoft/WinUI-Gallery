@@ -39,5 +39,18 @@ namespace WinUIGallery.DesktopWap.Helper
 
         }
 
+        public static void ApplySystemThemeToCaptionButtons()
+        {
+            var res = Application.Current.Resources;
+            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
+            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                SetTitleBarButtonForegroundColor(Colors.White);
+            }
+            else
+            {
+                SetTitleBarButtonForegroundColor(Colors.Black);
+            }
+        }
     }
 }
