@@ -303,13 +303,10 @@ AutomationProperties.Name="Contacts"&gt;
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                     </StackPanel>
 
-                    <!-- Use HelpText and tooltips to explain nuances of controls -->
-                    <StackPanel Spacing="8">
-                        <Button Content="Next page &#8594;"
-                                IsEnabled="False"
-                                ToolTipService.ToolTip="No additional pages"
-                                AutomationProperties.HelpText="No additional pages" />
-                    </StackPanel>
+                    <!-- Use HelpText and/or tooltips to explain nuances of controls -->
+                    <Button Content="Cancel RSS subscriptions"
+                            ToolTipService.ToolTip="Launch the cancellation wizard"
+                            AutomationProperties.HelpText="Launch the cancellation wizard" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
@@ -325,13 +322,10 @@ AutomationProperties.Name="Contacts"&gt;
                     Foreground="{ThemeResource TextFillColorSecondaryBrush}" /&gt;
     &lt;/StackPanel&gt;
 
-    &lt;!-- Use HelpText and tooltips to explain nuances of controls --&gt;
-    &lt;StackPanel Spacing="8"&gt;
-        &lt;Button Content="Next page &#8594;"
-                IsEnabled="False"
-                ToolTipService.ToolTip="No additional pages"
-                AutomationProperties.HelpText="No additional pages" /&gt;
-    &lt;/StackPanel&gt;
+    &lt;!-- Use HelpText and/or tooltips to explain nuances of controls --&gt;
+    &lt;Button Content="Cancel RSS subscriptions"
+            ToolTipService.ToolTip="Launch the cancellation wizard"
+            AutomationProperties.HelpText="Launch the cancellation wizard" /&gt;
 &lt;/StackPanel&gt;
                 </x:String>
             </core:ControlExample.Xaml>
