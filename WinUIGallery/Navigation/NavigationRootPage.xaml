@@ -186,7 +186,7 @@
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem x:Name="TypographyItem" Content="Typography">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE185;" />
+                                <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                         <NavigationViewItem x:Name="IconsItem" Content="Icons">
