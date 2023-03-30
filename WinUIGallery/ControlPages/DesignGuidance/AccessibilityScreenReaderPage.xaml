@@ -102,6 +102,54 @@
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <!-- Headers are promoted to name -->
+                    <TextBox Header="Name"
+                             Width="200"
+                             HorizontalAlignment="Left" />
+
+                    <!-- As are placeholders -->
+                    <TextBox PlaceholderText="Nickname"
+                             Width="200"
+                             HorizontalAlignment="Left" />
+
+                    <!-- If both are provided, headers are name and placeholders are moved to description -->
+                    <TextBox Header="Email"
+                             Width="200"
+                             PlaceholderText="test@example.com"
+                             HorizontalAlignment="Left" />
+
+                    <RichTextBlock MaxWidth="700"
+                                   FontSize="12"
+                                   HorizontalAlignment="Left">
+                        <Paragraph>
+                            Screen readers will read this these TextBoxes as
+                            <Bold>Name</Bold>, <Bold>Nickname</Bold>, and <Bold>Email</Bold>. The names are automatically derived from their headers or placeholders.
+                            <LineBreak />
+                        </Paragraph>
+                        <Paragraph>
+                            When both Header and PlaceholderText are present, Header is used as name and PlaceholderText is used as description.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- Headers are promoted to name --&gt;
+&lt;TextBox Header="Name" /&gt;
+
+&lt;!-- As are placeholders --&gt;
+&lt;TextBox PlaceholderText="Nickname" /&gt;
+
+&lt;!-- If both are provided, headers are name and placeholders are moved to description --&gt;
+&lt;TextBox Header="Email"
+            PlaceholderText="test@example.com" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
         <!--  ***** List View example *****  -->
         <TextBlock Margin="0,20,0,0"
                    Style="{ThemeResource BodyStrongTextBlockStyle}"
