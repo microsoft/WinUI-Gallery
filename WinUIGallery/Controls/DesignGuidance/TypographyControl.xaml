@@ -147,7 +147,7 @@
                         VerticalAlignment="Stretch"
                         AutomationProperties.Name="Copy Style to clipboard"
                         Click="CopyToClipboardButton_Click"
-                        Content="&#xE16F;"
+                        Content="&#xE8C8;"
                         FontFamily="{ThemeResource SymbolThemeFontFamily}"
                         Style="{StaticResource SubtleButtonStyle}"
                         ToolTipService.ToolTip="Copy Style to clipboard"
