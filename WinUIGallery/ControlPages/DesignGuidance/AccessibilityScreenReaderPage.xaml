@@ -1,4 +1,4 @@
-<!--    
+<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -24,6 +24,10 @@
             <Setter Property="Margin" Value="0,24,0,0" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="ScreenReaderOutputStyle" TargetType="RichTextBlock">
+            <Setter Property="FontSize" Value="12" />
         </Style>
     </Page.Resources>
 
@@ -84,9 +88,7 @@
             <core:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <Button Content="Download survey" />
-                    <RichTextBlock MaxWidth="700"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left">
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             Screen readers will read this this button as
                             <Bold>Download survey</Bold>. The name is automatically derived from the Button's Content.
@@ -121,9 +123,7 @@
                              PlaceholderText="test@example.com"
                              HorizontalAlignment="Left" />
 
-                    <RichTextBlock MaxWidth="700"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left">
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             Screen readers will read this these TextBoxes as
                             <Bold>Name</Bold>, <Bold>Nickname</Bold>, and <Bold>Email</Bold>. The names are automatically derived from their headers or placeholders.
@@ -155,8 +155,7 @@
                    AutomationProperties.HeadingLevel="Level3"
                    Text="Setting an accessible name manually" />
 
-        <RichTextBlock MaxWidth="700"
-                       HorizontalAlignment="Left">
+        <RichTextBlock>
             <Paragraph>
                 Controls without stringable content will not get an accessible name automatically.
             </Paragraph>
@@ -174,9 +173,7 @@
                         <ListViewItem>Carl Bond</ListViewItem>
                         <ListViewItem>Jessica Russel</ListViewItem>
                     </ListView>
-                    <RichTextBlock MaxWidth="700"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left">
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             Screen readers will read this ListView as
                             <Bold>Contacts</Bold>, while each item will be read using its respective text content.
@@ -210,9 +207,7 @@ AutomationProperties.Name="Contacts"&gt;
                             Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     </Border>
 
-                    <RichTextBlock MaxWidth="700"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left">
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             The image above will be read out as
                             <Bold>Grapes</Bold>. To navigate through elements that aren't focusable, use Caps + Left/Right arrow.
@@ -253,9 +248,7 @@ AutomationProperties.Name="Contacts"&gt;
                         Width="200"
                         HorizontalAlignment="Left"
                         AutomationProperties.LabeledBy="{x:Bind InputLabel}" />
-                    <RichTextBlock MaxWidth="700"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left">
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             The TextBox above is labeled by the TextBlock and will be read as
                             <Bold>Searching Photos:</Bold>.
@@ -467,11 +460,11 @@ AutomationProperties.Name="Contacts"&gt;
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Orientation="Horizontal"&gt;
-&lt;!-- The image is not necessary for screen readers as it does not contain any information. 
+&lt;!-- The image is not necessary for screen readers as it does not contain any information.
         Thus we remove it from the content visual tree with AccessibilityView="Raw" --&gt;
 &lt;Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/&gt;
 &lt;TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0"&gt;This is some demo text.
-                The image on the right is just for decoration and serves no informational purpose. 
+                The image on the right is just for decoration and serves no informational purpose.
                 To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
                 </x:String>
