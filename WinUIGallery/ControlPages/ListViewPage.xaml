@@ -391,7 +391,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/>
                                     <TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold"/>
+                                    <TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                     <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
                                     <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                 </StackPanel>
@@ -429,7 +429,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
             &lt;StackPanel Orientation="Horizontal"&gt;
                 &lt;TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
                 &lt;TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" FontSize="12" FontWeight="Bold" 
+                &lt;TextBlock Text=" &#x22C5; " FontFamily="Segoe UI" Style="{ThemeResource CaptionTextBlockStyle}" 
                             HorizontalAlignment="Left"/&gt;
                 &lt;TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
                 &lt;TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
