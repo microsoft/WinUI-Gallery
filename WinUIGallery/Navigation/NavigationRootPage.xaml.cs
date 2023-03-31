@@ -112,7 +112,7 @@ namespace AppUIBasics
                 AppWindow appWindow = WindowHelper.GetAppWindow(window);
                 appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
                 _settings = new UISettings();
-                _settings.ColorValuesChanged += _settings_ColorValuesChanged;
+                _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
@@ -124,7 +124,7 @@ namespace AppUIBasics
             // This calls comes off-thread, hence we will need to dispatch it to current app's thread
             dispatcherQueue.TryEnqueue(() =>
             {
-                TitleBarHelper.ApplySystemThemeToCaptionButtons();
+                TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
             });
         }
 

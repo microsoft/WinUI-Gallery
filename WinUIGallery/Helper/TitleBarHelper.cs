@@ -39,18 +39,25 @@ namespace WinUIGallery.DesktopWap.Helper
 
         }
 
-        public static void ApplySystemThemeToCaptionButtons()
+        public static void ApplySystemThemeToCaptionButtons(Window window)
         {
             var res = Application.Current.Resources;
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
-            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
+            if (frame.ActualTheme == ElementTheme.Dark)
             {
-                SetTitleBarButtonForegroundColor(Colors.White);
+                SetCaptionButtonColors(window, Colors.White);
             }
             else
             {
-                SetTitleBarButtonForegroundColor(Colors.Black);
+                SetCaptionButtonColors(window, Colors.Black);
             }
+        }
+
+        public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
+        {
+            var res = Application.Current.Resources;
+            res["WindowCaptionForeground"] = color;
+            triggerTitleBarRepaint(window);
         }
     }
 }
