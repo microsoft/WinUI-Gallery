@@ -1,6 +1,5 @@
 <Project>
   <ItemGroup>
-    <Content Include="Assets\WinUI3Hero.png" />
     <Content Include="Assets\ControlIcons\AcrylicBrushIcon.png" />
     <Content Include="Assets\ControlIcons\AnimationsIcon.png" />
     <Content Include="Assets\ControlIcons\CalendarDatePickerIcon.png" />
@@ -16,7 +15,6 @@
     <Content Include="Assets\ControlIcons\EasingFunctionsIcon.png" />
     <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
-    <Content Include="Assets\InnerPage_Banner.jpg" />
     <Content Include="Assets\ControlIcons\MenuBarIcon.png" />
     <Content Include="Assets\ControlIcons\NavigationViewIcon.png" />
     <Content Include="Assets\ControlIcons\new.png" />
@@ -35,7 +33,6 @@
     <Content Include="Assets\ControlIcons\SwipeIcon.png" />
     <Content Include="Assets\ControlIcons\SystemBackdropsIcon.png" />
     <Content Include="Assets\ControlIcons\TeachingTipIcon.png" />
-    <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\ControlIcons\TimingDurationIcon.png" />
     <Content Include="Assets\ControlIcons\ToggleSplitButtonIcon.png" />
     <Content Include="Assets\ControlIcons\TransitionsIcon.png" />
@@ -44,14 +41,12 @@
     <Content Include="Assets\ControlIcons\WebViewIcon.png" />
     <Content Include="Assets\ControlIcons\AutoSuggestBoxIcon.png" />
     <Content Include="Assets\ControlIcons\CalendarViewIcon.png" />
-    <Content Include="Assets\ContentDialog.png" />
     <Content Include="Assets\ControlIcons\ImageIcon.png" />
     <Content Include="Assets\ControlIcons\MediaElementIcon.png" />
     <Content Include="Assets\ninegrid.gif" />
     <Content Include="Assets\ControlIcons\PivotIcon.png" />
     <Content Include="Assets\ControlIcons\RelativePanelIcon.png" />
     <Content Include="Assets\ControlIcons\SplitViewIcon.png" />
-    <Content Include="Assets\Windows_Desktop.png" />
     <Content Include="Assets\ControlIcons\AppBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarButtonIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarSeparatorIcon.png" />
@@ -62,18 +57,15 @@
     <Content Include="Assets\ControlIcons\CheckBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ComboBoxIcon.png" />
     <Content Include="Assets\ControlIcons\CommandBarIcon.png" />
-    <Content Include="Assets\DarkGray.png" />
     <Content Include="Assets\ControlIcons\DatePickerIcon.png" />
     <Content Include="Assets\ControlIcons\FlipViewIcon.png" />
     <Content Include="Assets\ControlIcons\FlyoutIcon.png" />
     <Content Include="Assets\ControlIcons\GridIcon.png" />
     <Content Include="Assets\ControlIcons\GridViewIcon.png" />
     <Content Include="Assets\ControlIcons\HyperlinkButtonIcon.png" />
-    <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\ControlIcons\ListBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ListViewIcon.png" />
     <Content Include="Assets\LottieLogo1.png" />
-    <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\ControlIcons\MenuFlyoutIcon.png" />
     <Content Include="Assets\ControlIcons\PasswordBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ProgressBarIcon.png" />
@@ -82,8 +74,6 @@
     <Content Include="Assets\ControlIcons\RichEditBoxIcon.png" />
     <Content Include="Assets\ControlIcons\RichTextBlockIcon.png" />
     <Content Include="Assets\ControlIcons\ScrollViewerIcon.png" />
-    <Content Include="Assets\SemanticZoom.png" />
-    <Content Include="Assets\SettingsFlyout.png" />
     <Content Include="Assets\Slices.png" />
     <Content Include="Assets\Slices2.png" />
     <Content Include="Assets\ControlIcons\SliderIcon.png" />
@@ -196,23 +186,6 @@
     <Content Include="Assets\ControlImages\Viewbox.png" />
     <Content Include="Assets\ControlImages\WebView.png" />
     <Content Include="Assets\ControlImages\XamlUICommand.png" />
-    <Content Include="Assets\HomeHeaderTiles\gettingStarted.png" />
-    <Content Include="Assets\HomeHeaderTiles\githubTile.png" />
-    <Content Include="Assets\HomeHeaderTiles\style-1x.png" />
-    <Content Include="Assets\HomeHeaderTiles\template_studio.png" />
-    <Content Include="Assets\HomeHeaderTiles\toolkit.png" />
-    <Content Include="Assets\HomeHeaderTiles\accessibility_tile.png" />
-    <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\ButtonsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\CollectionIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\CommandingIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\FlyoutIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\LayoutIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\MediaIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\NewControlsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\ObjectQuickAnimation.png" />
-    <Content Include="Assets\NavigationViewItemIcons\PickerIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\TextIcon.png" />
     <Content Include="Assets\SampleMedia\MirrorPCConsent.svg" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
