@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
 using Windows.Storage;
 
@@ -49,6 +50,27 @@ namespace AppUIBasics.Helper
                     queue.Enqueue(child);
                 }
             }
+        }
+
+        static public UIElement FindElementByName(UIElement element, string name)
+        {
+            if (element.XamlRoot != null && element.XamlRoot.Content != null)
+            {
+                var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
+                if (ele != null)
+                {
+                    return ele as UIElement;
+                }
+            }
+            return null;
+        }
+
+        // Confirmation of Action
+        static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
+        {
+            var peer = FrameworkElementAutomationPeer.FromElement(ue);
+            peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
+                                        AutomationNotificationProcessing.ImportantMostRecent, annoucement, activityID);
         }
     }
 }

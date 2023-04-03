@@ -65,7 +65,7 @@
                     <labs:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE790;" />
                     </labs:SettingsCard.HeaderIcon>
-                    <ComboBox x:Name="themeMode" SelectionChanged="themeMode_SelectionChanged">
+                    <ComboBox x:Name="themeMode" AutomationProperties.AutomationId="themeModeComboBox" SelectionChanged="themeMode_SelectionChanged">
                         <ComboBoxItem Content="Light" Tag="Light" />
                         <ComboBoxItem Content="Dark" Tag="Dark" />
                         <ComboBoxItem Content="Use system setting" Tag="Default" />
