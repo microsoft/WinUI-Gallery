@@ -205,11 +205,6 @@
                             <Image Source="{ThemeResource StoreIcon}" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
-                    <!--<local:HeaderTile
-                        Title="Accessibility"
-                        Description="An overview of app development options, tools, and samples."
-                        Link="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
-                        Source="/Assets/HomeHeaderTiles/accessibility_tile.png" />-->
                 </StackPanel>
             </Grid>
         </ScrollViewer>
