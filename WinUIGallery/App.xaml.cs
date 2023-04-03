@@ -215,7 +215,7 @@ namespace AppUIBasics
            StartupWindow.Activate();
         }
 
-        private Frame GetRootFrame()
+        public Frame GetRootFrame()
         {
             Frame rootFrame;
             NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;

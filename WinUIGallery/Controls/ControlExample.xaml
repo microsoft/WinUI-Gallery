@@ -69,6 +69,7 @@
             x:Name="HeaderTextPresenter"
             Margin="0,12"
             Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
             Text="{x:Bind HeaderText}" />
 
         <RichTextBlock
