@@ -120,14 +120,11 @@ namespace AppUIBasics.ControlPages
 
         public void UpdateTitleBarColor()
         {
-            var res = Microsoft.UI.Xaml.Application.Current.Resources;
+            var window = WindowHelper.GetWindowForElement(this);
             var titleBarElement = WindowHelper.FindElementByName(this, "AppTitleBar");
 
             (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // changing titlebar uielement's color
-            res["WindowCaptionForeground"] = currentFgColor;
-            //res["WindowCaptionForegroundDisabled"] = currentFgColor; //optional to set disabled state colors
-            var window = WindowHelper.GetWindowForElement(this);
-            TitleBarHelper.triggerTitleBarRepaint(window);
+            TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
         }
 
         private void customTitleBar_Click(object sender, RoutedEventArgs e)

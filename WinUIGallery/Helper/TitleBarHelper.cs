@@ -21,7 +21,7 @@ namespace WinUIGallery.DesktopWap.Helper
     internal class TitleBarHelper
     {
 
-        public static void triggerTitleBarRepaint(Window window)
+        private static void triggerTitleBarRepaint(Window window)
         {
             // to trigger repaint tracking task id 38044406
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
@@ -39,5 +39,25 @@ namespace WinUIGallery.DesktopWap.Helper
 
         }
 
+        public static void ApplySystemThemeToCaptionButtons(Window window)
+        {
+            var res = Application.Current.Resources;
+            var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
+            if (frame.ActualTheme == ElementTheme.Dark)
+            {
+                SetCaptionButtonColors(window, Colors.White);
+            }
+            else
+            {
+                SetCaptionButtonColors(window, Colors.Black);
+            }
+        }
+
+        public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
+        {
+            var res = Application.Current.Resources;
+            res["WindowCaptionForeground"] = color;
+            triggerTitleBarRepaint(window);
+        }
     }
 }
