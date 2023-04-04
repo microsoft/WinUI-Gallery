@@ -8,24 +8,10 @@
 //
 //*********************************************************
 using AppUIBasics.Helper;
-using System;
-using Microsoft;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using WinRT;
-using System.Runtime.InteropServices;
 using WinUIGallery.DesktopWap.Helper;
 using Microsoft.UI.Xaml.Shapes;
 using System.Threading.Tasks;
@@ -131,12 +117,14 @@ namespace AppUIBasics.ControlPages
         {
             UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
             SetTitleBar(titleBarElement);
+
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
         private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
             SetTitleBar(null);
+
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
