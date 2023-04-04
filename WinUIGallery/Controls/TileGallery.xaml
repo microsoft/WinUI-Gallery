@@ -137,7 +137,7 @@
                     <local:HeaderTile
                         Title="Getting started"
                         Description="An overview of app development options, tools, and samples."
-                        Link="https://docs.microsoft.com/windows/apps/get-started/">
+                        Link="https://learn.microsoft.com/windows/apps/get-started/">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
                         </local:HeaderTile.Source>
@@ -145,7 +145,7 @@
                     <local:HeaderTile
                         Title="Windows design"
                         Description="Design guidelines and toolkits for creating native app experiences."
-                        Link="https://docs.microsoft.com/windows/apps/design/">
+                        Link="https://learn.microsoft.com/windows/apps/design/">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-WindowsDesign.png" />
                         </local:HeaderTile.Source>
@@ -188,7 +188,7 @@
                     <local:HeaderTile
                         Title="Code samples"
                         Description="Find samples that demonstrate specific tasks, features, and APIs."
-                        Link="https://docs.microsoft.com/windows/apps/get-started/samples">
+                        Link="https://learn.microsoft.com/windows/apps/get-started/samples">
                         <local:HeaderTile.Source>
                             <FontIcon
                                 Margin="0,8,0,0"
