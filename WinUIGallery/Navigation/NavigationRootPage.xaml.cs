@@ -124,7 +124,7 @@ namespace AppUIBasics
             // This calls comes off-thread, hence we will need to dispatch it to current app's thread
             dispatcherQueue.TryEnqueue(() =>
             {
-                TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
+                _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
             });
         }
 

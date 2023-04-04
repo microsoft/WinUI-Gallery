@@ -12,7 +12,7 @@
             <Setter Property="TabNavigation" Value="Cycle"/>
         </Style>
     </Page.Resources>
-    <StackPanel>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:ControlExample HeaderText="Automatically animate changes to Opacity">
             <Rectangle x:Name="OpacityRectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" VerticalAlignment="Center" Margin="45,5,5,5" Opacity="0.5" />
 
@@ -20,7 +20,7 @@
                 <StackPanel>
                     <NumberBox x:Name="OpacityNumberBox" Header="Opacity (0.0 to 1.0)" 
                                     Value="0.5" Margin="5" Maximum="1" Minimum="0"  KeyDown="NumberBox_KeyDown"/>
-                    <Button Content="Set Opacity" Margin="5" Click="OpacityButton_Click" HorizontalAlignment="Stretch" />
+                    <Button x:Name="OpacityBtn" Content="Set Opacity" Margin="5" Click="OpacityButton_Click" HorizontalAlignment="Stretch" />
                 </StackPanel>
             </local:ControlExample.Options>
 
@@ -61,7 +61,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                 <StackPanel>
                     <NumberBox x:Name="RotationNumberBox" Header="Rotation (0.0 to 360.0)" Value="45" Margin="5" 
                                     Minimum="0" Maximum="360"  KeyDown="NumberBox_KeyDown"/>
-                    <Button Content="Set Rotation" Margin="5" Click="RotationButton_Click" HorizontalAlignment="Stretch"/>
+                    <Button x:Name="RotateBtn"  Content="Set Rotation" Margin="5" Click="RotationButton_Click" HorizontalAlignment="Stretch"/>
                 </StackPanel>
             </local:ControlExample.Options>
 
@@ -102,7 +102,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                     <CheckBox x:Name="ScaleZ" Content="Animate Z" IsChecked="True" />
                     <NumberBox x:Name="ScaleNumberBox" Header="Scale (0.0 to 5.0)" Value="1" 
                                     Minimum="0" Maximum="5" Margin="5" KeyDown="NumberBox_KeyDown" />
-                    <Button Content="Set custom scale" Click="ScaleButton_Click" Margin="5" HorizontalAlignment="Stretch" />
+                    <Button x:Name="ScaleBtn"  Content="Set custom scale" Click="ScaleButton_Click" Margin="5" HorizontalAlignment="Stretch" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
@@ -144,7 +144,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                     <CheckBox x:Name="TranslateZ" Content="Animate Z" IsChecked="True" />
                     <NumberBox x:Name="TranslationNumberBox" Header="Translation (0.0 to 200.0)" Value="1"
                                     Minimum="0" Maximum="200" Margin="5" KeyDown="NumberBox_KeyDown" />
-                    <Button Content="Set custom Translation" Margin="5" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
+                    <Button x:Name="TranslateBtn" Content="Set custom Translation" Margin="5" Click="TranslateButton_Click" HorizontalAlignment="Stretch" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
@@ -174,7 +174,7 @@ private void button_Click(object sender, RoutedEventArgs e)
         <local:ControlExample HeaderText="Implicitly animate when the Background changes" >
             <ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="50" Height="50" VerticalAlignment="Top" Margin="45,5,5,5" />
             <local:ControlExample.Options>
-                <Button Content="Change Background Color" Click="BackgroundButton_Click"  />
+                <Button x:Name="BgColorBtn" Content="Change Background Color" Click="BackgroundButton_Click"  />
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -220,7 +220,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                 </StackPanel>
             </Grid>
             <local:ControlExample.Options>
-                <Button Content="Change Theme" Click="ThemeButton_Click" VerticalAlignment="Top"  />
+                <Button x:Name="ChangeThemeBtn" Content="Change Theme" Click="ThemeButton_Click" VerticalAlignment="Top"  />
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">

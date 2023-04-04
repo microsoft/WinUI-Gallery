@@ -121,7 +121,7 @@ namespace AppUIBasics.ControlPages
         public void UpdateTitleBarColor()
         {
             var window = WindowHelper.GetWindowForElement(this);
-            var titleBarElement = WindowHelper.FindElementByName(this, "AppTitleBar");
+            var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
 
             (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // changing titlebar uielement's color
             TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
@@ -129,12 +129,16 @@ namespace AppUIBasics.ControlPages
 
         private void customTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            UIElement titleBarElement = WindowHelper.FindElementByName(sender as UIElement, "AppTitleBar");
+            UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
             SetTitleBar(titleBarElement);
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
         private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
             SetTitleBar(null);
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
     }
 }
