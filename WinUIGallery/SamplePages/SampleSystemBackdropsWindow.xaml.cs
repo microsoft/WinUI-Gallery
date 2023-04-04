@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Runtime.InteropServices; // For DllImport
 using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
+using AppUIBasics.Helper;
 
 namespace AppUIBasics.SamplePages
 {
@@ -145,6 +146,8 @@ namespace AppUIBasics.SamplePages
                     tbChangeStatus.Text += "  Acrylic isn't supported. Switching to default color.";
                 }
             }
+             // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
         }
 
         bool TrySetMicaBackdrop(bool useMicaAlt)

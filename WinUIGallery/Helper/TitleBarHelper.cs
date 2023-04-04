@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using WinRT;
 using System.Runtime.InteropServices;
+using AppUIBasics;
 
 namespace WinUIGallery.DesktopWap.Helper
 {
@@ -39,18 +40,21 @@ namespace WinUIGallery.DesktopWap.Helper
 
         }
 
-        public static void ApplySystemThemeToCaptionButtons(Window window)
+        public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
         {
             var res = Application.Current.Resources;
             var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
+            Windows.UI.Color color;
             if (frame.ActualTheme == ElementTheme.Dark)
             {
-                SetCaptionButtonColors(window, Colors.White);
+                color = Colors.White;
             }
             else
             {
-                SetCaptionButtonColors(window, Colors.Black);
+                color = Colors.Black;
             }
+            SetCaptionButtonColors(window,color);
+            return color;
         }
 
         public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
