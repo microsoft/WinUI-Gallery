@@ -43,9 +43,9 @@ namespace AppUIBasics.Controls
         }
 
         public static readonly DependencyProperty CodeSourceFileProperty = DependencyProperty.Register("CodeSourceFile", typeof(object), typeof(SampleCodePresenter), new PropertyMetadata(null, OnDependencyPropertyChanged));
-        public Uri CodeSourceFile
+        public string CodeSourceFile
         {
-            get { return (Uri)GetValue(CodeSourceFileProperty); }
+            get { return (string)GetValue(CodeSourceFileProperty); }
             set { SetValue(CodeSourceFileProperty, value); }
         }
 
@@ -137,15 +137,9 @@ namespace AppUIBasics.Controls
             GenerateSyntaxHighlightedContent();
         }
 
-        private Uri GetDerivedSource(Uri rawSource)
+        private Uri GetDerivedSource(string sourceRelativePath)
         {
-            // Get the full path of the source string
-            string concatString = "";
-            for (int i = 2; i < rawSource.Segments.Length; i++)
-            {
-                concatString += rawSource.Segments[i];
-            }
-            Uri derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), concatString);
+            Uri derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), sourceRelativePath);
 
             return derivedSource;
         }
@@ -168,11 +162,11 @@ namespace AppUIBasics.Controls
             }
         }
 
-        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, ILanguage highlightLanguage)
+        private async void FormatAndRenderSampleFromFile(string sourceRelativePath, ContentPresenter presenter, ILanguage highlightLanguage)
         {
-            if (source != null && source.AbsolutePath.EndsWith("txt"))
+            if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
-                Uri derivedSource = GetDerivedSource(source);
+                Uri derivedSource = GetDerivedSource(sourceRelativePath);
                 var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
                 string sampleString = await FileIO.ReadTextAsync(file);
 
