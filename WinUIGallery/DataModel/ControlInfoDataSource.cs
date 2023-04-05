@@ -91,7 +91,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace, bool isSpecialSection)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace, string folder, bool isSpecialSection)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -100,6 +100,7 @@ namespace AppUIBasics.Data
             this.Description = description;
             this.ImagePath = imagePath;
             this.ImageIconPath = imageIconPath;
+            this.Folder = folder;
             this.Items = new ObservableCollection<ControlInfoDataItem>();
             this.IsSpecialSection = isSpecialSection;
         }
@@ -112,6 +113,7 @@ namespace AppUIBasics.Data
         public string ImageIconPath { get; private set; }
         public string ApiNamespace { get; private set; } = "";
         public bool IsSpecialSection { get; set; }
+        public string Folder { get; private set; }
         public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
 
         public override string ToString()
@@ -214,6 +216,7 @@ namespace AppUIBasics.Data
                     JsonObject groupObject = groupValue.GetObject();
 
                     var usesCustomNavigationItems = groupObject.ContainsKey("IsSpecialSection") ? groupObject["IsSpecialSection"].GetBoolean() : false;
+                    var folder = groupObject.ContainsKey("Folder") ? groupObject["Folder"].GetString() : string.Empty;
                     ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
                                                                           groupObject["Title"].GetString(),
                                                                           groupObject["ApiNamespace"].GetString(),
@@ -221,6 +224,7 @@ namespace AppUIBasics.Data
                                                                           groupObject["ImagePath"].GetString(),
                                                                           groupObject["ImageIconPath"].GetString(),
                                                                           groupObject["Description"].GetString(),
+                                                                          folder,
                                                                           usesCustomNavigationItems);
 
                     foreach (JsonValue itemValue in groupObject["Items"].GetArray())
