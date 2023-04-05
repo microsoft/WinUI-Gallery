@@ -9,6 +9,7 @@
       "ImageIconPath": "",
       "Description": "",
       "IsSpecialSection": true,
+      "Folder": "DesignGuidance",
       "Items": [
         {
           "UniqueId": "Typography",
