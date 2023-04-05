@@ -48,7 +48,7 @@
                     Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
                     <DropDownButton.Content>
                         <StackPanel Orientation="Horizontal" Spacing="8">
-                            <FontIcon Glyph="&#xE8A5;" />
+                            <FontIcon FontSize="16" Glyph="&#xE8A5;" />
                             <TextBlock Text="Documentation" />
                         </StackPanel>
                     </DropDownButton.Content>
@@ -116,7 +116,7 @@
                     ToolTipService.ToolTip="Toggle theme"
                     Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}">
                     <Button.Content>
-                        <FontIcon Glyph="&#xE793;" />
+                        <FontIcon FontSize="16" Glyph="&#xE793;" />
                     </Button.Content>
                 </Button>
                 <AppBarSeparator Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}" />
@@ -154,7 +154,7 @@
                     Click="OnFeedBackButtonClick"
                     ToolTipService.ToolTip="Send feedback">
                     <Button.Content>
-                        <FontIcon Glyph="&#xED15;" />
+                        <FontIcon FontSize="16" Glyph="&#xED15;" />
                     </Button.Content>
                 </Button>
             </StackPanel>
