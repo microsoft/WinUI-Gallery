@@ -48,7 +48,7 @@
                                             <animatedvisuals:AnimatedSettingsVisualSource/>
                                         </AnimatedIcon.Source>
                                         <AnimatedIcon.FallbackIconSource>
-                                            <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;"/>
+                                            <FontIconSource Glyph="&#xE713;"/>
                                         </AnimatedIcon.FallbackIconSource>
                                     </AnimatedIcon>
                                 </NavigationViewItem.Icon>
