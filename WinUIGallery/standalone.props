@@ -12,7 +12,7 @@
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
     <!-- 
-         For Desktop, the .NET 6 SDK automatically includes every .cs file in the project directory.  It normally
+         For Desktop, the .NET 7 SDK automatically includes every .cs file in the project directory.  It normally
          also excludes items under the obj/bin folders based on the value of BaseIntermediateOutputPath/BaseOutputPath.
          However, because we overwrite those to output to subdirectories, the outputs of the UWP WinUI Gallery
          are erroneously included.  Explicitly exclude them here
