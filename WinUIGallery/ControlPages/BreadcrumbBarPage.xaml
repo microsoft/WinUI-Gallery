@@ -56,7 +56,7 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;BreadcrumbBar x:Name="BreadcrumbBar1"&gt;
+&lt;BreadcrumbBar x:Name="BreadcrumbBar2"&gt;
     &lt;BreadcrumbBar.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="l:Folder"&gt;
             &lt;BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}"&gt;
@@ -88,7 +88,7 @@ BreadcrumbBar2.ItemClicked += BreadcrumbBar2_ItemClicked;
 
 private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
 {
-    var items = BreadcrumbBar2.ItemsSource as ObservableCollection&lt;Folder&gt;
+    var items = BreadcrumbBar2.ItemsSource as ObservableCollection&lt;Folder&gt;;
     for (int i = items.Count - 1; i >= args.Index + 1; i--)
     {
         items.RemoveAt(i);
