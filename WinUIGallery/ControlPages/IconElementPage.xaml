@@ -32,7 +32,7 @@
                 <StackPanel>
                     <TextBlock Text="Use FontIcon as the icon for a control if you want to specify a Glyph value from a FontFamily. Windows 10 uses the Segoe MDL2 Assets FontFamily and that is what this example is showing." Style="{ThemeResource BodyTextBlockStyle}" Margin="0,0,0,12"  />
                     <Button Name="ExampleButton1">
-                        <FontIcon Glyph="&#xE790;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
                     </Button>
                 </StackPanel>
             </local:ControlExample.Example>
