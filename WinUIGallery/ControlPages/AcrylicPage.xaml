@@ -63,7 +63,7 @@
             <Paragraph>
                 Acrylic Brush might fall back to SolidColorbrush in certain scenarios.
                 If you can't see the Acrylic effect, please refer to
-                <Hyperlink NavigateUri="https://docs.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
         <local:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">

@@ -95,35 +95,29 @@ namespace AppUIBasics
         private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
-            var res = Microsoft.UI.Xaml.Application.Current.Resources;
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
-
+            var window = WindowHelper.GetWindowForElement(this);
+            string color;
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
                 if (selectedTheme == "Dark")
                 {
-                    SetTitleBarButtonForegroundColor(Colors.White);
+                    TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
+                    color = selectedTheme;
                 }
                 else if (selectedTheme == "Light")
                 {
-                    SetTitleBarButtonForegroundColor(Colors.Black);
+                    TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
+                    color = selectedTheme;
                 }
                 else
                 {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.White);
-                    }
-                    else
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.Black);
-                    }
+                    color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
                 }
+                // announce visual change to automation
+                UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+                                                                                "ThemeChangedNotificationActivityId");
             }
-            var window = WindowHelper.GetWindowForElement(this);
-            TitleBarHelper.triggerTitleBarRepaint(window);
-
         }
 
         private void soundToggle_Toggled(object sender, RoutedEventArgs e)

@@ -16,7 +16,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
+using ColorCode.Compilation.Languages;
+using CommunityToolkit.WinUI;
+using Microsoft.UI;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
@@ -24,16 +28,22 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Devices.Input;
 using Windows.Foundation;
+using Windows.System;
 using Windows.System.Profile;
+using Windows.UI.ViewManagement;
+using WinUIGallery.DesktopWap.Helper;
 
 namespace AppUIBasics
 {
     public sealed partial class NavigationRootPage : Page
     {
         public Windows.System.VirtualKey ArrowKey;
+        public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
 
         private RootFrameNavigationHelper _navHelper;
         private bool _isKeyboardConnected;
+        private UISettings _settings;
+
 
         public static NavigationRootPage GetForElement(object obj)
         {
@@ -70,6 +80,7 @@ namespace AppUIBasics
         public NavigationRootPage()
         {
             this.InitializeComponent();
+            dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
             _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
@@ -92,13 +103,29 @@ namespace AppUIBasics
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
                 NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
-                WindowHelper.GetWindowForElement(this).Title = AppTitleText;
-                var window = WindowHelper.GetWindowForElement(sender as UIElement);
+
+                Window window = WindowHelper.GetWindowForElement(sender as UIElement);
+                window.Title = AppTitleText;
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(this.AppTitleBar);
+
+                AppWindow appWindow = WindowHelper.GetAppWindow(window);
+                appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+                _settings = new UISettings();
+                _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
             };
 
             NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
+        }
+        // this handles updating the caption button colors correctly when indows system theme is changed
+        // while the app is open
+        private void _settings_ColorValuesChanged(UISettings sender, object args)
+        {
+            // This calls comes off-thread, hence we will need to dispatch it to current app's thread
+            dispatcherQueue.TryEnqueue(() =>
+            {
+                _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
+            });
         }
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
@@ -515,8 +542,8 @@ namespace AppUIBasics
                 DebugBreak();
 
                 dispatcherQueue.TryEnqueue(
-                    DispatcherQueuePriority.Low,
-                    new DispatcherQueueHandler(() =>
+                    Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
+                    new Microsoft.UI.Dispatching.DispatcherQueueHandler(() =>
                     {
                         DebuggerAttachedCheckBox.IsChecked = true;
                     }));

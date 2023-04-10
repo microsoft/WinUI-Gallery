@@ -133,9 +133,9 @@ namespace AppUIBasics
         }
 
         public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri XamlSource
+        public string XamlSource
         {
-            get { return (Uri)GetValue(XamlSourceProperty); }
+            get { return (string)GetValue(XamlSourceProperty); }
             set { SetValue(XamlSourceProperty, value); }
         }
 
@@ -147,9 +147,9 @@ namespace AppUIBasics
         }
 
         public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
-        public Uri CSharpSource
+        public string CSharpSource
         {
-            get { return (Uri)GetValue(CSharpSourceProperty); }
+            get { return (string)GetValue(CSharpSourceProperty); }
             set { SetValue(CSharpSourceProperty, value); }
         }
 
@@ -357,7 +357,7 @@ namespace AppUIBasics
             if (XamlSource != null)
             {
                 // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = new Uri("ms-appx:///" + Path.Combine("ControlPagesSampleCode", XamlSource.LocalPath)).LocalPath;
+                string xamlSource = new Uri(XamlSource, UriKind.Relative).LocalPath;
                 string fileName = Path.GetFileNameWithoutExtension(xamlSource);
                 if (!String.IsNullOrWhiteSpace(fileName))
                 {

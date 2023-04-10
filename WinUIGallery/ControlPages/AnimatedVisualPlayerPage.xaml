@@ -22,7 +22,7 @@
                            Lottie-Windows
                         </Hyperlink>.
                         Since the 
-                        <Hyperlink NavigateUri="https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape">
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape">
                             CompositionShapes
                         </Hyperlink> used here are supported on Windows 10 version 17763+, 
                         the AnimatedVisualPlayer falls back to an Image when its Source is unavailable.

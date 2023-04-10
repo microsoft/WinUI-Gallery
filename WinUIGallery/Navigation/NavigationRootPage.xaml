@@ -41,6 +41,7 @@
 
         <Border
             x:Name="AppTitleBar"
+            AutomationProperties.AutomationId="AppTitleBar"
             Grid.Column="1"
             Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
             Margin="48,0,0,0"
@@ -186,7 +187,7 @@
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem x:Name="TypographyItem" Content="Typography">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE185;" />
+                                <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                         <NavigationViewItem x:Name="IconsItem" Content="Icons">
@@ -206,11 +207,11 @@
                             <NavigationViewItem.MenuItems>
                                 <NavigationViewItem
                                     x:Name="AccessibilityScreenReaderPage"
-                                    Content="Screen reader"
+                                    Content="Screen reader support"
                                     Tag="AccessibilityScreenReader" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityKeyboardPage"
-                                    Content="Keyboard navigation"
+                                    Content="Keyboard support"
                                     Tag="AccessibilityKeyboard" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityContrastPage"

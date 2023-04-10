@@ -24,6 +24,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap.Controls;
 
 namespace AppUIBasics
 {
@@ -79,7 +80,9 @@ namespace AppUIBasics
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            var item = await ControlInfoDataSource.Instance.GetItemAsync((String)args.Parameter);
+            var uniqueId = (string)args.Parameter;
+            var group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync(uniqueId);
+            var item = group?.Items.FirstOrDefault(x => x.UniqueId.Equals(uniqueId));
 
             if (item != null)
             {
@@ -90,7 +93,8 @@ namespace AppUIBasics
 
                 if (pageType != null)
                 {
-                    pageHeader.SetSourceLinks("https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/", pageType.Name);
+                    var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
+                    pageHeader.SetSourceLinks("https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/", pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
@@ -166,16 +170,18 @@ namespace AppUIBasics
 
         private void SetControlExamplesTheme(ElementTheme theme)
         {
-            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
+            var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
 
             if (controlExamples != null)
             {
                 _currentElementTheme = theme;
                 foreach (var controlExample in controlExamples)
                 {
-                    var exampleContent = controlExample.Example as FrameworkElement;
-                    exampleContent.RequestedTheme = theme;
-                    controlExample.ExampleContainer.RequestedTheme = theme;
+                    controlExample.RequestedTheme = theme;
+                }
+                if(controlExamples.Count() == 0)
+                {
+                    this.RequestedTheme = theme;
                 }
             }
         }
