@@ -129,6 +129,7 @@
                     <Button.Content>
                         <FontIcon
                             x:Name="CopyLinkButtonIcon"
+                            FontSize="16"
                             Glyph="&#xE71B;" />
                     </Button.Content>
                     <Button.Resources>
