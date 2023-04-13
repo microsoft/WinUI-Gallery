@@ -197,8 +197,44 @@
         <TextBlock
             Margin="0,20,0,0"
             Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Keyboard Shortcuts" />
-        <TextBlock Text="It is imperative that you provide an easy way for users to discover your app's shortcut keys (e.g. using tooltips, accessible names, accessible descriptions, etc.)" />
+            AutomationProperties.HeadingLevel="Level2"
+            Text="Keyboard shortcuts" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Keyboard shortcuts are extremely helpful for Narrator users, keyboard users, and power users.
+                Since these groups often find it difficult to quickly jump between sections of UI like mouse users,
+                adding a few keyboard shortcuts for common actions can make your app much easier to use.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                WinUI offers 2 types of keyboard shortcuts: <Bold>Accelerators</Bold> and <Bold>Access keys</Bold>.
+                Accelerators invoke specific app commands, while access keys set focus to specific parts of your UI.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Accelerators" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Accelerators are hotkeys (typically starting with the Ctrl key) that invoke specific app commands.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                It's important to provide an easy way of discovering keyboard accelerators. For example, with tooltips, visible labels, AutomationProperties.AcceleratorKey, accessible descriptions, etc.
+                By default, WinUI adds a tooltip with the hotkey, but consider including the accelerator manually if you use a custom tooltip.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
         <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
@@ -211,12 +247,13 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Rectangle
                         x:Name="ColorRectangle"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Height="30"
                         Fill="Red"
                         RadiusX="4"
@@ -224,10 +261,8 @@
 
                     <Button
                         Grid.Row="1"
-                        AutomationProperties.AcceleratorKey="R"
                         Click="MakeRedButton_Click"
-                        Content="Red"
-                        ToolTipService.ToolTip="Shortcut: Ctrl+R">
+                        Content="Red">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
@@ -236,20 +271,30 @@
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
-                        AutomationProperties.AcceleratorKey="B"
                         Click="MakeBlueButton_Click"
-                        Content="Blue"
-                        ToolTipService.ToolTip="Shortcut: Ctrl+B">
+                        Content="Blue">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
                     </Button>
 
+                    <!-- Including the hotkey in a custom tooltip -->
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Click="MakeChartreuseButton_Click"
+                        Content="Chartreuse"
+                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+G)">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="G" Modifiers="Control" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+
                     <TextBlock
                         Grid.Row="2"
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Using KeyboardAccelarator and the AutomationProperties.AcceleratorKey property to create a shortcut. Accelerator keys consist of the Ctrl key + a letter key." />
+                        Text="Using KeyboardAccelarator and the AutomationProperties.AcceleratorKey property to create a shortcut" />
                 </Grid>
             </core:ControlExample.Example>
 
@@ -264,11 +309,12 @@
 &lt;Grid.ColumnDefinitions&gt;
 	&lt;ColumnDefinition Width="Auto"/&gt;
 	&lt;ColumnDefinition Width="Auto"/&gt;
+	&lt;ColumnDefinition Width="Auto"/&gt;
 &lt;/Grid.ColumnDefinitions&gt;
 
 &lt;Rectangle x:Name="ColorRectangle" Fill="Red"
 	Height="30" RadiusX="4" RadiusY="4"
-	Grid.ColumnSpan="2"/&gt;
+	Grid.ColumnSpan="3"/&gt;
 
 &lt;Button Click="MakeRedButton_Click" Content="Red" Grid.Row="1"
 	AutomationProperties.AcceleratorKey="R"
@@ -286,18 +332,34 @@
 		&lt;KeyboardAccelerator Modifiers="Control" Key="B" /&gt;
 	&lt;/Button.KeyboardAccelerators&gt;
 &lt;/Button&gt;
+
+&lt;!-- Including the hotkey in a custom tooltip --&gt;
+&lt;Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
+	Grid.Row="1" Grid.Column="1"
+	AutomationProperties.AcceleratorKey="G"
+	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)"&gt;
+	&lt;Button.KeyboardAccelerators&gt;
+		&lt;KeyboardAccelerator Modifiers="Control" Key="G" /&gt;
+	&lt;/Button.KeyboardAccelerators&gt;
+&lt;/Button&gt;
 &lt;/Grid&gt;
                 </x:String>
             </core:ControlExample.Xaml>
             <core:ControlExample.CSharp>
-                private void MakeRedButton_Click(object sender, RoutedEventArgs e)
-                {
-                ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
-                }
-                private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
-                {
-                ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
-                }
+                <x:String xml:space="preserve">
+private void MakeRedButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
+}
+private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
+}
+private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
+}
+                </x:String>
             </core:ControlExample.CSharp>
         </core:ControlExample>
 
