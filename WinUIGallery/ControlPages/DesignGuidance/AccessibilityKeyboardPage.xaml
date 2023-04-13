@@ -37,11 +37,66 @@
                 .<LineBreak />
                 <LineBreak />
                 If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
-                <LineBreak />
-                To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation. Here is how you can override the default tab order:</Paragraph>
+            </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample HeaderText="Controlling tab sequence">
+        <TextBlock
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level2"
+            Text="Tab order" />
+
+        <RichTextBlock>
+            <Paragraph>
+                To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                All interactive controls, like buttons, should have tab stops (unless they are in a group), but non-interactive controls, like labels, should not.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
+                and
+                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Automatic tab order" />
+
+        <RichTextBlock>
+            <Paragraph>
+                By default, tab order matches the order elements are defined in the XAML. This is usually the best order:
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="4">
+                    <Button Content="First" />
+                    <TextBlock Text="(not present)" />
+                    <Button Content="Second" />
+                    <Button Content="(not present)" IsEnabled="False" />
+                    <Button Content="Third" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="4"&gt;
+    &lt;TextBlock Text="(not present)" /&gt;
+    &lt;Button Content="First" /&gt;
+    &lt;Button Content="Second" /&gt;
+    &lt;Button Content="(not present)" IsEnabled="False" /&gt;
+    &lt;Button Content="Third" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Manual tab order">
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
@@ -102,27 +157,27 @@
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid RowSpacing="8" ColumnSpacing="8"&gt;
-&lt;Grid.RowDefinitions&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-&lt;/Grid.RowDefinitions&gt;
-&lt;Grid.ColumnDefinitions&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-&lt;/Grid.ColumnDefinitions&gt;
+    &lt;Grid.RowDefinitions&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
 
-&lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
-&lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
+    &lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
+    &lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
 
-&lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
-&lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" Width="100"/&gt;
-&lt;Button Grid.Column="2" Grid.Row="1" Content="Second stop" TabIndex="2" Width="100"/&gt;
+    &lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
+    &lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" Width="100"/&gt;
+    &lt;Button Grid.Column="2" Grid.Row="1" Content="Second stop" TabIndex="2" Width="100"/&gt;
 
-&lt;TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/&gt;
-&lt;Button Grid.Column="1" Grid.Row="2" Content="Third stop" TabIndex="3" Width="100"/&gt;
-&lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" Width="100"/&gt;
+    &lt;TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/&gt;
+    &lt;Button Grid.Column="1" Grid.Row="2" Content="Third stop" TabIndex="3" Width="100"/&gt;
+    &lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" Width="100"/&gt;
 &lt;/Grid&gt;
                     </x:String>
             </core:ControlExample.Xaml>
