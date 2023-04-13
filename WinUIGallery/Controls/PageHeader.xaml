@@ -125,6 +125,7 @@
                     Height="32"
                     Margin="4,0,4,0"
                     Click="OnCopyLinkButtonClick"
+                    AutomationProperties.Name="Copy link"
                     ToolTipService.ToolTip="Copy link">
                     <Button.Content>
                         <FontIcon
