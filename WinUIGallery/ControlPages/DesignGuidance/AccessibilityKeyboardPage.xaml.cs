@@ -30,5 +30,9 @@ namespace AppUIBasics.ControlPages
         {
             ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
         }
+        private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
+        {
+            ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
+        }
     }
 }
