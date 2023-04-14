@@ -235,6 +235,8 @@
             </Paragraph>
         </RichTextBlock>
 
+        <!-- BESTO: note to self. Why is WinUI not setting AutomationProperties.AcceleratorKey="Ctrl+G" properly? -->
+        
         <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
@@ -294,7 +296,7 @@
                         Grid.Row="2"
                         Grid.ColumnSpan="4"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Using KeyboardAccelarator and the AutomationProperties.AcceleratorKey property to create a shortcut" />
+                        Text="Using the KeyboardAccelarator property to create an accelerator" />
                 </Grid>
             </core:ControlExample.Example>
 
@@ -317,7 +319,6 @@
 	Grid.ColumnSpan="3"/&gt;
 
 &lt;Button Click="MakeRedButton_Click" Content="Red" Grid.Row="1"
-	AutomationProperties.AcceleratorKey="R"
 	ToolTipService.ToolTip="Shortcut: Ctrl+R"&gt;
 	&lt;Button.KeyboardAccelerators&gt;
 		&lt;KeyboardAccelerator Modifiers="Control" Key="R" /&gt;
@@ -326,7 +327,6 @@
 	
 &lt;Button Click="MakeBlueButton_Click" Content="Blue"
 	Grid.Row="1" Grid.Column="1"
-	AutomationProperties.AcceleratorKey="B"
 	ToolTipService.ToolTip="Shortcut: Ctrl+B"&gt;
 	&lt;Button.KeyboardAccelerators&gt;
 		&lt;KeyboardAccelerator Modifiers="Control" Key="B" /&gt;
@@ -336,7 +336,6 @@
 &lt;!-- Including the hotkey in a custom tooltip --&gt;
 &lt;Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
 	Grid.Row="1" Grid.Column="1"
-	AutomationProperties.AcceleratorKey="G"
 	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)"&gt;
 	&lt;Button.KeyboardAccelerators&gt;
 		&lt;KeyboardAccelerator Modifiers="Control" Key="G" /&gt;
@@ -361,6 +360,76 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
 }
                 </x:String>
             </core:ControlExample.CSharp>
+        </core:ControlExample>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Access keys" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Access keys are keyboard shortcuts, starting with Alt, that move system focus around your UI.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/access-keys">Access keys</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Orientation="Vertical">
+                    <MenuBar>
+                        <MenuBarItem Title="File" AccessKey="F">
+                            <MenuFlyoutItem Text="New" AccessKey="N" />
+                            <MenuFlyoutItem Text="Open..." AccessKey="O" />
+                            <MenuFlyoutItem Text="Save" AccessKey="S" />
+                            <MenuFlyoutItem Text="Exit" AccessKey="E" />
+                        </MenuBarItem>
+
+                        <MenuBarItem Title="Edit" AccessKey="E">
+                            <MenuFlyoutItem Text="Undo" AccessKey="U" />
+                            <MenuFlyoutItem Text="Cut" AccessKey="X" />
+                            <MenuFlyoutItem Text="Copy" AccessKey="C" />
+                            <MenuFlyoutItem Text="Paste" AccessKey="V" />
+                        </MenuBarItem>
+
+                        <MenuBarItem Title="Help" AccessKey="H">
+                            <MenuFlyoutItem Text="About" AccessKey="A" />
+                        </MenuBarItem>
+                    </MenuBar>
+                    <TextBlock
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Using AccessKey to create access keys. Press and release Alt to display them." />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;MenuBar&gt;
+    &lt;MenuBarItem Title="File" AccessKey="F"&gt;
+        &lt;MenuFlyoutItem Text="New" AccessKey="N" /&gt;
+        &lt;MenuFlyoutItem Text="Open..." AccessKey="O" /&gt;
+        &lt;MenuFlyoutItem Text="Save" AccessKey="S" /&gt;
+        &lt;MenuFlyoutItem Text="Exit" AccessKey="E" /&gt;
+    &lt;/MenuBarItem&gt;
+
+    &lt;MenuBarItem Title="Edit" AccessKey="E"&gt;
+        &lt;MenuFlyoutItem Text="Undo" AccessKey="U" /&gt;
+        &lt;MenuFlyoutItem Text="Cut" AccessKey="X" /&gt;
+        &lt;MenuFlyoutItem Text="Copy" AccessKey="C" /&gt;
+        &lt;MenuFlyoutItem Text="Paste" AccessKey="V" /&gt;
+    &lt;/MenuBarItem&gt;
+
+    &lt;MenuBarItem Title="Help" AccessKey="H"&gt;
+        &lt;MenuFlyoutItem Text="About" AccessKey="A" /&gt;
+    &lt;/MenuBarItem&gt;
+&lt;/MenuBar&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
         </core:ControlExample>
 
         <TextBlock
