@@ -49,11 +49,12 @@
 
         <RichTextBlock>
             <Paragraph>
-                To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation.
+                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via <Bold>Tab navigation</Bold> and the <Bold>Tab order</Bold>.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
                 All interactive controls, like buttons, should have tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
+                Try to put initial focus on the most useful or logical element.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
@@ -79,8 +80,10 @@
             <core:ControlExample.Example>
                 <StackPanel Spacing="4">
                     <Button Content="First" />
+                    <!-- Non-interactive controls should not be in the tab order -->
                     <TextBlock Text="(not present)" />
                     <Button Content="Second" />
+                    <!-- Disabled controls should not be in the tab order -->
                     <Button Content="(not present)" IsEnabled="False" />
                     <Button Content="Third" />
                 </StackPanel>
@@ -89,8 +92,10 @@
                 <x:String xml:space="preserve">
 &lt;StackPanel Spacing="4"&gt;
     &lt;Button Content="First" /&gt;
+    &lt;!-- Non-interactive controls should not be in the tab order --&gt;
     &lt;TextBlock Text="(not present)" /&gt;
     &lt;Button Content="Second" /&gt;
+    &lt;!-- Disabled controls should not be in the tab order --&gt;
     &lt;Button Content="(not present)" IsEnabled="False" /&gt;
     &lt;Button Content="Third" /&gt;
 &lt;/StackPanel&gt;
@@ -132,6 +137,11 @@
                         HorizontalAlignment="Center"
                         Text="Column 2" />
 
+                    <!--
+                        This example is a bit contrived, since you could fix the
+                        tab order by reordering the elements in the XAML, but
+                        sometimes that is not easy to do.
+                    -->
                     <TextBlock
                         Grid.Row="1"
                         VerticalAlignment="Center"
@@ -184,6 +194,11 @@
     &lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
     &lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
 
+    &lt;!--
+        This example is a bit contrived, since you could fix the
+        tab order by reordering the elements in the XAML, but
+        sometimes that is not easy to do.
+    --&gt;
     &lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
     &lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" HorizontalAlignment="Stretch"/&gt;
     &lt;Button Grid.Column="2" Grid.Row="1" Content="Third stop" TabIndex="3" HorizontalAlignment="Stretch"/&gt;
@@ -201,6 +216,12 @@
             Style="{ThemeResource SubtitleTextBlockStyle}"
             AutomationProperties.HeadingLevel="Level2"
             Text="Arrow keys" />
+
+        <RichTextBlock>
+            <Paragraph>
+                
+            </Paragraph>
+        </RichTextBlock>
 
         <TextBlock
             Margin="0,20,0,0"
