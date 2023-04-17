@@ -88,8 +88,8 @@
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Spacing="4"&gt;
-    &lt;TextBlock Text="(not present)" /&gt;
     &lt;Button Content="First" /&gt;
+    &lt;TextBlock Text="(not present)" /&gt;
     &lt;Button Content="Second" /&gt;
     &lt;Button Content="(not present)" IsEnabled="False" /&gt;
     &lt;Button Content="Third" /&gt;
@@ -442,9 +442,9 @@
                         Grid.Column="2"
                         Click="MakeChartreuseButton_Click"
                         Content="Chartreuse"
-                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+C)">
+                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+G)">
                         <Button.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="C" Modifiers="Control" />
+                            <KeyboardAccelerator Key="G" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
                     </Button>
 
@@ -452,7 +452,7 @@
                         Grid.Row="2"
                         Grid.ColumnSpan="4"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Ctrl+R, Ctrl+B, and Ctrl-C trigger Red, Blue, and Chartreuse respectively" />
+                        Text="Ctrl+R, Ctrl+B, and Ctrl+G trigger Red, Blue, and Chartreuse respectively" />
                 </Grid>
             </core:ControlExample.Example>
 
