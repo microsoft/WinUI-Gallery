@@ -33,8 +33,10 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
-                .<LineBreak />
+                all abilities. For more information about designing accessible apps:
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>.
+                <LineBreak />
                 <LineBreak />
                 If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
             </Paragraph>
@@ -51,7 +53,7 @@
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                All interactive controls, like buttons, should have tab stops (unless they are in a group), but non-interactive controls, like labels, should not.
+                All interactive controls, like buttons, should have tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
@@ -198,6 +200,160 @@
             Margin="0,20,0,0"
             Style="{ThemeResource SubtitleTextBlockStyle}"
             AutomationProperties.HeadingLevel="Level2"
+            Text="Arrow keys" />
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Automatically supporting arrow keys" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Most controls that group elements support arrow keys by default:
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Orientation="Vertical">
+                    <!-- ListViews fully support arrow keys, for example -->
+                    <ListView
+                        Width="300"
+                        AutomationProperties.Name="Colors">
+                        <ListViewItem>Red</ListViewItem>
+                        <ListViewItem>Blue</ListViewItem>
+                        <ListViewItem>Green</ListViewItem>
+                        <ListViewItem>Yellow</ListViewItem>
+                    </ListView>
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Tab navigates to the control, arrow keys navigate within the control" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- ListViews fully support arrow keys, for example --&gt;
+&lt;ListView
+    Width="300"
+    AutomationProperties.Name="Colors"&gt;
+    &lt;ListViewItem&gt;Red&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Blue&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Green&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Yellow&lt;/ListViewItem&gt;
+&lt;/ListView&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Manually supporting arrow keys with XYFocusKeyboardNavigation" />
+
+        <RichTextBlock>
+            <Paragraph>
+                You can enable arrow key navigation between items manually, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Note that for true lists of items, users may expect additional affordances like
+                support for Home/End, PgUp/PgDn, and additional accessibility properties like
+                PositionInSet and SizeOfSet. Keyboard navigation can get complicated, but getting
+                it right can make your app a lot easier to use - for everyone.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#navigation">
+                    Keyboard navigation
+                </Hyperlink>,
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/focus-navigation">
+                    Focus navigation for keyboard, gamepad, remote control, and accessibility tools
+                </Hyperlink>, and
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility">
+                    Keyboard accessibility
+                </Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel
+                    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    Spacing="8"
+                    Padding="8"
+                    CornerRadius="4">
+                    <TextBlock
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        Text="Potatoes?" />
+                    <!--
+                        XYFocusKeyboardNavigation enables arrow keys between the buttons.
+
+                        Note that:
+
+                            - The buttons are still tabbable by default
+                            - Home/End and PgUp/PgDn do not work
+                            - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
+
+                        All of that would require custom work.
+                    -->
+                    <StackPanel
+                        Spacing="4"
+                        Orientation="Horizontal"
+                        XYFocusKeyboardNavigation="Enabled">
+                        <Button Content="Boil 'em"  />
+                        <Button Content="Mash 'em" />
+                        <Button Content="Stick 'em in a stew" />
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel
+    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+    BorderThickness="1"
+    Spacing="8"
+    Padding="8"
+    CornerRadius="4"&gt;
+    &lt;TextBlock
+        Style="{ThemeResource BodyStrongTextBlockStyle}"
+        Text="Potatoes?" /&gt;
+    &lt;!--
+        XYFocusKeyboardNavigation enables arrow keys between the buttons.
+
+        Note that:
+
+            - The buttons are still tabbable by default
+            - Home/End and PgUp/PgDn do not work
+            - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
+
+        All of that would require custom work.
+    --&gt;
+    &lt;StackPanel
+        Spacing="4"
+        Orientation="Horizontal"
+        XYFocusKeyboardNavigation="Enabled"&gt;
+        &lt;Button Content="Boil 'em"  /&gt;
+        &lt;Button Content="Mash 'em" /&gt;
+        &lt;Button Content="Stick 'em in a stew" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level2"
             Text="Keyboard shortcuts" />
 
         <RichTextBlock>
@@ -286,9 +442,9 @@
                         Grid.Column="2"
                         Click="MakeChartreuseButton_Click"
                         Content="Chartreuse"
-                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+G)">
+                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+C)">
                         <Button.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="G" Modifiers="Control" />
+                            <KeyboardAccelerator Key="C" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
                     </Button>
 
@@ -296,7 +452,7 @@
                         Grid.Row="2"
                         Grid.ColumnSpan="4"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Using the KeyboardAccelarator property to create an accelerator" />
+                        Text="Ctrl+R, Ctrl+B, and Ctrl-C trigger Red, Blue, and Chartreuse respectively" />
                 </Grid>
             </core:ControlExample.Example>
 
@@ -374,6 +530,12 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                 <LineBreak />
             </Paragraph>
             <Paragraph>
+                When users press the Alt key, WinUI shows <Bold>Key Tips</Bold> next to each control with an access key,
+                so users can discover them. WinUI also populates AccessKey UIA property, so screen reader users can learn
+                access keys, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
                 See
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/access-keys">Access keys</Hyperlink>.
@@ -404,7 +566,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                     </MenuBar>
                     <TextBlock
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Using AccessKey to create access keys. Press and release Alt to display them." />
+                        Text="Press and release Alt to display Key Tips; use Alt+letter to move focus to items" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
