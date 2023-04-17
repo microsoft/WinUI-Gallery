@@ -219,7 +219,33 @@
 
         <RichTextBlock>
             <Paragraph>
-                
+                Users expect groups of similar, related controls to be navigable via <Bold>Arrow keys</Bold>, too. This can be instead of
+                <Italic>or</Italic> in addition to tab navigation, depending on the situation.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Groups of controls that support arrow key navigation typically support Home/End and PgUp/PgDn, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#navigation">
+                    Keyboard navigation
+                </Hyperlink>,
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
+                    Home and End keys
+                </Hyperlink>,
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
+                    Page up and Page down keys
+                </Hyperlink>,
+                and
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#control-group">
+                    Control group
+                </Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -231,7 +257,7 @@
 
         <RichTextBlock>
             <Paragraph>
-                Most controls that group elements support arrow keys by default:
+                Most controls that group elements support arrow keys (and Home/End and PgUp/PgDn) by default:
             </Paragraph>
         </RichTextBlock>
 
@@ -288,13 +314,9 @@
             <Paragraph>
                 See
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#navigation">
-                    Keyboard navigation
-                </Hyperlink>,
-                <Hyperlink
                     NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/focus-navigation">
                     Focus navigation for keyboard, gamepad, remote control, and accessibility tools
-                </Hyperlink>, and
+                </Hyperlink> and
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility">
                     Keyboard accessibility
