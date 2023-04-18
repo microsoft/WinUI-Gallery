@@ -627,6 +627,14 @@ AutomationProperties.Name="Contacts"&gt;
             AutomationProperties.HeadingLevel="3"
             Text="Headings" />
 
+        <RichTextBlock>
+            <Paragraph>
+                <Bold>Headings</Bold> typically identify smaller groups of content.
+                They usually correspond to the "visual" headings in your UI—the text
+                that labels sections in your UI visually.
+            </Paragraph>
+        </RichTextBlock>
+
         <core:ControlExample>
             <core:ControlExample.Example>
                 <StackPanel HorizontalAlignment="Left">
