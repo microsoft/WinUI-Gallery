@@ -505,7 +505,7 @@ AutomationProperties.Name="Contacts"&gt;
                         Margin="0,0,0,10"
                         HorizontalAlignment="Left"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases landmarks."
+                        Text="The sample below showcases landmarks. To navigate landmarks, press D or Shift+D while in Scan mode."
                         TextWrapping="Wrap" />
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -632,6 +632,10 @@ AutomationProperties.Name="Contacts"&gt;
                 <Bold>Headings</Bold> typically identify smaller groups of content.
                 They usually correspond to the "visual" headings in your UI—the text
                 that labels sections in your UI visually.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                For example, all of the section headings on this page are accessible headings.
             </Paragraph>
         </RichTextBlock>
 
@@ -642,7 +646,7 @@ AutomationProperties.Name="Contacts"&gt;
                         Margin="0,0,0,10"
                         HorizontalAlignment="Left"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases headings."
+                        Text="The sample below showcases headings. To navigate headings, press H or Shift+H while in Scan mode."
                         TextWrapping="Wrap" />
                     <StackPanel MaxWidth="500">
                         <!--  Here is the main header for the whole text. It gets HeadingLevel 1  -->
@@ -709,5 +713,7 @@ AutomationProperties.Name="Contacts"&gt;
             Style="{ThemeResource SubtitleTextBlockStyle}"
             AutomationProperties.HeadingLevel="3"
             Text="Associating smaller groups of controls" />
+
+        
     </StackPanel>
 </Page>
