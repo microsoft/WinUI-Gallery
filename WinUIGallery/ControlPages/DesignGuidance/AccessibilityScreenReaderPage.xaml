@@ -210,7 +210,7 @@ AutomationProperties.Name="Contacts"&gt;
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
                             The image above will be read out as
-                            <Bold>Grapes</Bold>. To navigate through elements that aren't focusable, use Caps + Left/Right arrow.
+                            <Bold>Grapes</Bold>. To navigate in Narrator through elements that aren't focusable, use Caps + Left/Right arrow.
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
@@ -505,7 +505,7 @@ AutomationProperties.Name="Contacts"&gt;
                         Margin="0,0,0,10"
                         HorizontalAlignment="Left"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases landmarks. To navigate landmarks, press D or Shift+D while in Scan mode."
+                        Text="The sample below showcases landmarks. To navigate landmarks in Narrator, press D or Shift+D while in Scan mode."
                         TextWrapping="Wrap" />
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -646,9 +646,11 @@ AutomationProperties.Name="Contacts"&gt;
                         Margin="0,0,0,10"
                         HorizontalAlignment="Left"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases headings. To navigate headings, press H or Shift+H while in Scan mode."
+                        Text="The sample below showcases headings. To navigate headings in Narrator, press H or Shift+H while in Scan mode."
                         TextWrapping="Wrap" />
-                    <StackPanel MaxWidth="500">
+                    <StackPanel
+                        MaxWidth="500"
+                        HorizontalAlignment="Left">
                         <!--  Here is the main header for the whole text. It gets HeadingLevel 1  -->
                         <TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
                         <!--  The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2  -->
@@ -714,6 +716,89 @@ AutomationProperties.Name="Contacts"&gt;
             AutomationProperties.HeadingLevel="3"
             Text="Associating smaller groups of controls" />
 
-        
+        <RichTextBlock>
+            <Paragraph>
+                You can also group controls together manually, even if the
+                controls don't have a visible heading or landmark, by adding
+                an accessible name to the parent container. When entering a
+                region with a name or a landmark, Narrator will read it out as
+                <Bold>Context</Bold>. Narrator users can control their
+                <Bold>Context level</Bold> in Settings.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                This is helpful in complicated UI with many similar elements,
+                where the grouping might be obvious to visual users, but not
+                screen reader users.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}">
+                        The sample below groups items using accessible names.
+                        Screen readers will read this as users navigate between
+                        different groups. To force read the current context in
+                        Narrator, press Caps+/.
+                    </TextBlock>
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}">
+                        Note how Narrator reads 'My albums' or 'Shared with me' if you
+                        tab between the ListViews, and reads the additional context
+                        'Album browser' when Caps+/ is pressed.
+                    </TextBlock>
+                    <StackPanel AutomationProperties.Name="Album browser">
+                        <StackPanel AutomationProperties.Name="My albums">
+                            <!-- These TextBlocks could reasonably be headings, too. -->
+                            <TextBlock
+                                Text="My albums"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                            <ListView>
+                                <x:String>Trip to Redmond</x:String>
+                                <x:String>Visiting Ben</x:String>
+                            </ListView>
+                        </StackPanel>
+                        <StackPanel AutomationProperties.Name="Shared with me">
+                            <TextBlock
+                                Text="Shared with me"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                            <ListView>
+                                <x:String>Paul's winter vacation</x:String>
+                                <x:String>Cool street photography</x:String>
+                                <x:String>Valeria's cat</x:String>
+                            </ListView>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel AutomationProperties.Name="Album browser"&gt;
+    &lt;StackPanel AutomationProperties.Name="My albums"&gt;
+        &lt;!-- These TextBlocks could reasonably be headings, too. --&gt;
+        &lt;TextBlock
+            Text="My albums"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" /&gt;
+        &lt;ListView&gt;
+            &lt;x:String&gt;Trip to Redmond&lt;/x:String&gt;
+            &lt;x:String&gt;Visiting Ben&lt;/x:String&gt;
+        &lt;/ListView&gt;
+    &lt;/StackPanel&gt;
+    &lt;StackPanel AutomationProperties.Name="Shared with me"&gt;
+        &lt;TextBlock
+            Text="Shared with me"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" /&gt;
+        &lt;ListView&gt;
+            &lt;x:String&gt;Paul's winter vacation&lt;/x:String&gt;
+            &lt;x:String&gt;Cool street photography&lt;/x:String&gt;
+            &lt;x:String&gt;Valeria's cat&lt;/x:String&gt;
+        &lt;/ListView&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
     </StackPanel>
 </Page>
