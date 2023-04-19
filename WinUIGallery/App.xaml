@@ -69,7 +69,7 @@
 
             <x:String x:Key="ControlsName">All samples</x:String>
             <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
-            <x:String x:Key="WinUIVersion">WinAppSDK 1.2</x:String>
+            <x:String x:Key="WinUIVersion">WinAppSDK 1.3</x:String>
 
             <Style
                 x:Key="OutputTextBlockStyle"
