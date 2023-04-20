@@ -1,9 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
@@ -11,7 +8,7 @@ namespace AppUIBasics.Common
 {
     internal class FileLoader
     {
-        public static async Task<string> LoadText(string relativeFilePath)
+        public static async Task<StorageFile> GetJsonFile(string relativeFilePath)
         {
 #if UNPACKAGED
             var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
@@ -20,6 +17,11 @@ namespace AppUIBasics.Common
             Uri sourceUri = new Uri("ms-appx:///" + relativeFilePath);
             var file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
 #endif
+            return file;
+        }
+        public static async Task<string> LoadText(string relativeFilePath)
+        {
+            var file = await GetJsonFile(relativeFilePath);
 
             return await FileIO.ReadTextAsync(file);
         }
