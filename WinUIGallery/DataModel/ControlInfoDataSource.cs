@@ -116,7 +116,7 @@ namespace AppUIBasics.Data
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public string ImageIconPath { get; set; }
-        public string ApiNamespace { get; set; } = "";
+        public string ApiNamespace { get; set; }
         public bool IsSpecialSection { get; set; }
         public string Folder { get; set; }
         public ObservableCollection<ControlInfoDataItem> Items { get; set; }
