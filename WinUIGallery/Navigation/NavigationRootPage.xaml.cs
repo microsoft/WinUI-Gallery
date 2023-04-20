@@ -16,10 +16,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
-using ColorCode.Compilation.Languages;
-using CommunityToolkit.WinUI;
-using Microsoft.UI;
-using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -28,7 +24,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Devices.Input;
 using Windows.Foundation;
-using Windows.System;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
@@ -201,7 +196,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item, Icon = GetIcon(item.ImageIconPath) };
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
