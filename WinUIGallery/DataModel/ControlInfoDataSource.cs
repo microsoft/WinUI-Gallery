@@ -135,6 +135,8 @@ namespace AppUIBasics.Data
     /// </summary>
     public sealed class ControlInfoDataSource
     {
+        private static readonly object _lock = new object();
+
         #region Singleton
 
         private static ControlInfoDataSource _instance;
@@ -197,70 +199,76 @@ namespace AppUIBasics.Data
 
         private async Task GetControlInfoDataAsync()
         {
-            if (this.Groups.Count() != 0)
+            lock (_lock)
             {
-                return;
+                if (this.Groups.Count() != 0)
+                {
+                    return;
+                }
             }
 
-            var jsonFile = await FileLoader.GetJsonFile("DataModel/ControlInfoData.json");
-            using FileStream openStream = File.OpenRead(jsonFile.Path);
-            var controlInfoDataGroup = await JsonSerializer.DeserializeAsync<Root>(openStream, new JsonSerializerOptions
+            var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
+            var controlInfoDataGroup = JsonSerializer.Deserialize<Root>(jsonText, new JsonSerializerOptions
             {
                 WriteIndented = true,
                 PropertyNameCaseInsensitive = true
             });
-            string pageRoot = "AppUIBasics.ControlPages.";
-            foreach (var groupItem in controlInfoDataGroup.Groups)
-            {
-                ControlInfoDataGroup group = new ControlInfoDataGroup(groupItem.UniqueId,
-                                                                          groupItem.Title,
-                                                                          groupItem.ApiNamespace,
-                                                                          groupItem.Subtitle,
-                                                                          groupItem.ImagePath,
-                                                                          groupItem.ImageIconPath,
-                                                                          groupItem.Description,
-                                                                          groupItem.Folder,
-                                                                          groupItem.IsSpecialSection);
-                foreach (var item in groupItem.Items)
-                {
-                    string badgeString = null;
-                    if (item.IsNew)
-                    {
-                        badgeString = "New";
-                    }
-                    else if (item.IsUpdated)
-                    {
-                        badgeString = "Updated";
-                    }
-                    else if (item.IsPreview)
-                    {
-                        badgeString = "Preview";
-                    }
-                    
-                    var controlInfoDataItem = new ControlInfoDataItem(item.UniqueId,
-                                                                item.Title,
-                                                                item.ApiNamespace,
-                                                                item.Subtitle,
-                                                                item.ImagePath,
-                                                                item.ImageIconPath,
-                                                                badgeString,
-                                                                item.Description,
-                                                                item.Content,
-                                                                item.IsNew,
-                                                                item.IsUpdated,
-                                                                item.IsPreview,
-                                                                item.HideSourceCodeAndRelatedControls,
-                                                                item.Docs,
-                                                                item.RelatedControls);
 
-                    string pageString = pageRoot + item.UniqueId + "Page";
-                    Type pageType = Type.GetType(pageString);
-                    controlInfoDataItem.IncludedInBuild = pageType != null;
-                    group.Items.Add(controlInfoDataItem);
-                }
-                if (!Groups.Any(g => g.Title == group.Title))
+            lock (_lock)
+            {
+                string pageRoot = "AppUIBasics.ControlPages.";
+                foreach (var groupItem in controlInfoDataGroup.Groups)
                 {
-                    Groups.Add(group);
+                    ControlInfoDataGroup group = new ControlInfoDataGroup(groupItem.UniqueId,
+                                                                              groupItem.Title,
+                                                                              groupItem.ApiNamespace,
+                                                                              groupItem.Subtitle,
+                                                                              groupItem.ImagePath,
+                                                                              groupItem.ImageIconPath,
+                                                                              groupItem.Description,
+                                                                              groupItem.Folder,
+                                                                              groupItem.IsSpecialSection);
+                    foreach (var item in groupItem.Items)
+                    {
+                        string badgeString = null;
+                        if (item.IsNew)
+                        {
+                            badgeString = "New";
+                        }
+                        else if (item.IsUpdated)
+                        {
+                            badgeString = "Updated";
+                        }
+                        else if (item.IsPreview)
+                        {
+                            badgeString = "Preview";
+                        }
+
+                        var controlInfoDataItem = new ControlInfoDataItem(item.UniqueId,
+                                                                    item.Title,
+                                                                    item.ApiNamespace,
+                                                                    item.Subtitle,
+                                                                    item.ImagePath,
+                                                                    item.ImageIconPath,
+                                                                    badgeString,
+                                                                    item.Description,
+                                                                    item.Content,
+                                                                    item.IsNew,
+                                                                    item.IsUpdated,
+                                                                    item.IsPreview,
+                                                                    item.HideSourceCodeAndRelatedControls,
+                                                                    item.Docs,
+                                                                    item.RelatedControls);
+
+                        string pageString = pageRoot + item.UniqueId + "Page";
+                        Type pageType = Type.GetType(pageString);
+                        controlInfoDataItem.IncludedInBuild = pageType != null;
+                        group.Items.Add(controlInfoDataItem);
+                    }
+                    if (!Groups.Any(g => g.Title == group.Title))
+                    {
+                        Groups.Add(group);
+                    }
                 }
             }
         }
