@@ -13,9 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AppUIBasics.Common;
-using System.IO;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
