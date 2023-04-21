@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using AppUIBasics.Common;
 using System.IO;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -217,54 +218,25 @@ namespace AppUIBasics.Data
             lock (_lock)
             {
                 string pageRoot = "AppUIBasics.ControlPages.";
-                foreach (var groupItem in controlInfoDataGroup.Groups)
+
+                controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
                 {
-                    ControlInfoDataGroup group = new ControlInfoDataGroup(groupItem.UniqueId,
-                                                                              groupItem.Title,
-                                                                              groupItem.ApiNamespace,
-                                                                              groupItem.Subtitle,
-                                                                              groupItem.ImagePath,
-                                                                              groupItem.ImageIconPath,
-                                                                              groupItem.Description,
-                                                                              groupItem.Folder,
-                                                                              groupItem.IsSpecialSection);
-                    foreach (var item in groupItem.Items)
+                    string? badgeString = item switch
                     {
-                        string badgeString = null;
-                        if (item.IsNew)
-                        {
-                            badgeString = "New";
-                        }
-                        else if (item.IsUpdated)
-                        {
-                            badgeString = "Updated";
-                        }
-                        else if (item.IsPreview)
-                        {
-                            badgeString = "Preview";
-                        }
+                        { IsNew: true } => "New",
+                        { IsUpdated: true } => "Updated",
+                        { IsPreview: true } => "Preview",
+                        _ => null
+                    };
+                    string pageString = $"{pageRoot}{item.UniqueId}Page";
+                    Type? pageType = Type.GetType(pageString);
 
-                        var controlInfoDataItem = new ControlInfoDataItem(item.UniqueId,
-                                                                    item.Title,
-                                                                    item.ApiNamespace,
-                                                                    item.Subtitle,
-                                                                    item.ImagePath,
-                                                                    item.ImageIconPath,
-                                                                    badgeString,
-                                                                    item.Description,
-                                                                    item.Content,
-                                                                    item.IsNew,
-                                                                    item.IsUpdated,
-                                                                    item.IsPreview,
-                                                                    item.HideSourceCodeAndRelatedControls,
-                                                                    item.Docs,
-                                                                    item.RelatedControls);
+                    item.BadgeString = badgeString;
+                    item.IncludedInBuild = pageType is not null;
+                });
 
-                        string pageString = pageRoot + item.UniqueId + "Page";
-                        Type pageType = Type.GetType(pageString);
-                        controlInfoDataItem.IncludedInBuild = pageType != null;
-                        group.Items.Add(controlInfoDataItem);
-                    }
+                foreach (var group in controlInfoDataGroup.Groups)
+                {
                     if (!Groups.Any(g => g.Title == group.Title))
                     {
                         Groups.Add(group);
