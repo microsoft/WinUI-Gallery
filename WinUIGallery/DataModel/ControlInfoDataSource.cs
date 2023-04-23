@@ -209,7 +209,6 @@ namespace AppUIBasics.Data
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
             var controlInfoDataGroup = JsonSerializer.Deserialize<Root>(jsonText, new JsonSerializerOptions
             {
-                WriteIndented = true,
                 PropertyNameCaseInsensitive = true
             });
 
