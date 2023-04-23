@@ -44,7 +44,6 @@ namespace WinUIGallery.DesktopWap.DataModel
                 {
                     icons = JsonSerializer.Deserialize<List<IconData>>(jsonText, new JsonSerializerOptions
                     {
-                        WriteIndented = true,
                         PropertyNameCaseInsensitive = true
                     });
                 }
