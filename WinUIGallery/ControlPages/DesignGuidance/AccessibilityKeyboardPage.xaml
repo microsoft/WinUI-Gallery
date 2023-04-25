@@ -49,11 +49,13 @@
 
         <RichTextBlock>
             <Paragraph>
-                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via <Bold>Tab navigation</Bold> and the <Bold>Tab order</Bold>.
+                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via <Bold>Tab navigation</Bold>, which cycles through controls that are
+                <Bold>tab stops</Bold>.
+                The order of these tab stops is called the <Bold>tab order</Bold>.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                All interactive controls, like buttons, should have tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
+                All interactive controls, like buttons, should be tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
                 Try to put initial focus on the most useful or logical element.
                 <LineBreak />
             </Paragraph>
@@ -72,7 +74,7 @@
 
         <RichTextBlock>
             <Paragraph>
-                By default, tab order matches the order elements are defined in the XAML. This is usually the best order:
+                By default, tab order matches the order elements are defined in XAML. This is usually the best order:
             </Paragraph>
         </RichTextBlock>
 
