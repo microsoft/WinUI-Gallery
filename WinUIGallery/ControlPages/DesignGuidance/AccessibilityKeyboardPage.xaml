@@ -59,9 +59,9 @@
             </Paragraph>
             <Paragraph>
                 See
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
                 and
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>.
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -230,20 +230,20 @@
             <Paragraph>
                 See
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#navigation">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
                     Keyboard navigation
                 </Hyperlink>,
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
                     Home and End keys
                 </Hyperlink>,
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
                     Page up and Page down keys
                 </Hyperlink>,
                 and
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-interactions#control-group">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
                     Control group
                 </Hyperlink>.
             </Paragraph>
@@ -314,11 +314,11 @@
             <Paragraph>
                 See
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/focus-navigation">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/focus-navigation">
                     Focus navigation for keyboard, gamepad, remote control, and accessibility tools
                 </Hyperlink> and
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">
                     Keyboard accessibility
                 </Hyperlink>.
             </Paragraph>
@@ -437,7 +437,7 @@
             </Paragraph>
             <Paragraph>
                 See
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>.
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -588,7 +588,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
             <Paragraph>
                 See
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/input/access-keys">Access keys</Hyperlink>.
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/access-keys">Access keys</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
