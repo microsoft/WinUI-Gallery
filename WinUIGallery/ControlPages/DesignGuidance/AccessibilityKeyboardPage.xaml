@@ -409,7 +409,7 @@
         <RichTextBlock>
             <Paragraph>
                 Keyboard shortcuts are extremely helpful for Narrator users, keyboard users, and power users.
-                Since these groups often find it difficult to quickly jump between sections of UI like mouse users,
+                Since keyboard shortcuts generally lack the ability to quickly switch between sections of UI like a mouse can,
                 adding a few keyboard shortcuts for common actions can make your app much easier to use.
                 <LineBreak />
             </Paragraph>
@@ -441,8 +441,6 @@
             </Paragraph>
         </RichTextBlock>
 
-        <!-- BESTO: note to self. Why is WinUI not setting AutomationProperties.AcceleratorKey="Ctrl+G" properly? -->
-        
         <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
