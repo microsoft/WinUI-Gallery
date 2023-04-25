@@ -486,7 +486,11 @@
                         </Button.KeyboardAccelerators>
                     </Button>
 
-                    <!-- Including the hotkey in a custom tooltip -->
+                    <!--
+                        Chartreuse is an uncommon color, so we explain it in the tooltip.
+                        This replaces the auto-generated tooltip, so we manually mention
+                        the hotkey in the custom tooltip.
+                    -->
                     <Button
                         Grid.Row="1"
                         Grid.Column="2"
@@ -539,7 +543,11 @@
 	&lt;/Button.KeyboardAccelerators&gt;
 &lt;/Button&gt;
 
-&lt;!-- Including the hotkey in a custom tooltip --&gt;
+&lt;!--
+    Chartreuse is an uncommon color, so we explain it in the tooltip.
+    This replaces the auto-generated tooltip, so we manually mention
+    the hotkey in the custom tooltip.
+--&gt;
 &lt;Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
 	Grid.Row="1" Grid.Column="1"
 	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)"&gt;
