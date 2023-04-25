@@ -414,7 +414,7 @@
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                WinUI offers 2 types of keyboard shortcuts: <Bold>Accelerators</Bold> and <Bold>Access keys</Bold>.
+                WinUI 3 offers 2 types of keyboard shortcuts: <Bold>Accelerators</Bold> and <Bold>Access keys</Bold>.
                 Accelerators invoke specific app commands, while access keys set focus to specific parts of your UI.
             </Paragraph>
         </RichTextBlock>
