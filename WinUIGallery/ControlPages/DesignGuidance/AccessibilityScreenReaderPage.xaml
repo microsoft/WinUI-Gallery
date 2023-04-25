@@ -279,7 +279,7 @@ AutomationProperties.Name="Contacts"&gt;
                 <LineBreak />
                 - Position in set
                 <LineBreak />
-                - Headings and landmarks (see <Bold>Keyboard navigation</Bold> page)
+                - Headings and landmarks (see below)
                 <LineBreak />
             </Paragraph>
             <Paragraph>
@@ -630,7 +630,7 @@ AutomationProperties.Name="Contacts"&gt;
         <RichTextBlock>
             <Paragraph>
                 <Bold>Headings</Bold> typically identify smaller groups of content.
-                They usually correspond to the "visual" headings in your UI—the text
+                They usually correspond to the "visual" headings in your UI — the text
                 that labels sections in your UI visually.
                 <LineBreak />
             </Paragraph>
