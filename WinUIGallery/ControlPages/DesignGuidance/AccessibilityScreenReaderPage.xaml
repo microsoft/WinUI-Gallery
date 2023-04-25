@@ -472,7 +472,9 @@ AutomationProperties.Name="Contacts"&gt;
             Text="Landmarks and headings" />
         <RichTextBlock>
             <Paragraph>
-                <Bold>Landmarks and headings</Bold> indicate, or label, different sections of a user interface, just like visible headings would.
+                <Bold>Landmarks and headings</Bold> indicate, or label, different
+                sections of a user interface for screen readers and other
+                Assistive Technologies (ATs), just like visible headings do for visual users.
                 Marking up your content with landmarks and headings lets
                 screen reader users skim content similarly to sighted users.
                 <LineBreak />
