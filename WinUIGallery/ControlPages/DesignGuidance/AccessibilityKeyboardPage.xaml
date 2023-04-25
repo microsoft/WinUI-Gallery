@@ -308,7 +308,7 @@
                 Note that for true lists of items, users may expect additional affordances like
                 support for Home/End, PgUp/PgDn, and additional accessibility properties like
                 PositionInSet and SizeOfSet. Keyboard navigation can get complicated, but getting
-                it right can make your app a lot easier to use—for everyone.
+                it right can make your app a lot easier to use — for everyone.
                 <LineBreak />
             </Paragraph>
             <Paragraph>
