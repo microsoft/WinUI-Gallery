@@ -68,8 +68,8 @@
                 <LineBreak />
             </Paragraph>
             <Paragraph>
-                See <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#accessible-name">Accessible name</Hyperlink>
-                and <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#name-from-inner-text">Name from inner text</Hyperlink>.
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#accessible-name">Accessible name</Hyperlink>
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#name-from-inner-text">Name from inner text</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -284,9 +284,9 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
             <Paragraph>
                 See
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information">Basic Accessibility Information</Hyperlink>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information">Basic Accessibility Information</Hyperlink>
                 and
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on an control</Hyperlink>.
+                <Hyperlink NavigateUri="https://learn.microsoft.com/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on an control</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
 
@@ -421,7 +421,7 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
             <Paragraph>
                 See
-                <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/basic-accessibility-information#influencing-the-ui-automation-tree-views">Influencing the UI Automation tree views
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#influencing-the-ui-automation-tree-views">Influencing the UI Automation tree views
                 </Hyperlink>.
             </Paragraph>
         </RichTextBlock>
@@ -480,7 +480,7 @@ AutomationProperties.Name="Contacts"&gt;
             <Paragraph>
                 See
                 <Hyperlink
-                    NavigateUri="https://learn.microsoft.com/en-us/windows/apps/design/accessibility/landmarks-and-headings">
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/landmarks-and-headings">
                     Landmarks and headings
                 </Hyperlink>.
             </Paragraph>
