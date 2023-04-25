@@ -233,20 +233,20 @@
                 See
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
-                    Keyboard navigation
+                    Keyboard interactions#Navigation
                 </Hyperlink>,
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
-                    Home and End keys
+                    Keyboard interactions#Home and End keys
                 </Hyperlink>,
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
-                    Page up and Page down keys
+                    Keyboard interactions#Page up and Page down keys
                 </Hyperlink>,
                 and
                 <Hyperlink
                     NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
-                    Control group
+                    Keyboard interactions#Control group
                 </Hyperlink>.
             </Paragraph>
         </RichTextBlock>
