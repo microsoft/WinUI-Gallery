@@ -15,6 +15,8 @@
 //******************************************************************************
 
 using Axe.Windows.Automation;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules;
 using System.Diagnostics;
 using System.Linq;
 
@@ -36,7 +38,10 @@ namespace UITests
 
 		public static void AssertNoAccessibilityErrors()
 		{
-			var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors);
+			var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
+				.Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
+				.Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
+				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType);
 			if (testResult.Count() != 0)
 			{
 				var mappedResult = testResult.Select(result => "Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");

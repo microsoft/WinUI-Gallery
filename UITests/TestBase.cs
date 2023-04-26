@@ -31,7 +31,7 @@ namespace UITests
 			search.SendKeys(name);
 			Thread.Sleep(1_000);
 			Session.FindElementByName(name).Click();
-
+			Thread.Sleep(5_000);
 			AxeHelper.AssertNoAccessibilityErrors();
 		}
 
