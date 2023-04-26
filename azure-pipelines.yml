@@ -27,18 +27,20 @@ stages:
                   displayName: Install NuGet 5.8.0
                   inputs:
                       versionSpec: 5.8.0
+
                 - task: NuGetCommand@2
                   inputs:
                     command: 'restore'
                     restoreSolution: '**/*.sln'
                     feedsToUse: 'config'
                     nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+
                 - task: VSBuild@1
                   inputs:
                       platform: $(buildPlatform)
                       solution: "$(solutionGallery)"
                       configuration: "$(buildConfiguration)"
-                      msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
+                      msbuildArgs: '/p:PublishReadyToRun=false /p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
 
                 - task: NuGetCommand@2
                   displayName: Restore packages
