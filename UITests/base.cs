@@ -17,8 +17,8 @@
 using System;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 
 namespace UITests
 {
@@ -34,21 +34,23 @@ namespace UITests
 
         public static void Setup(TestContext context)
         {
-    
+            
             if (session == null)
             {
-                DesiredCapabilities appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("app", AppUIBasicAppId);
+                AppiumOptions appiumOptions = new AppiumOptions();
+                appiumOptions.AddAdditionalCapability("app", AppUIBasicAppId);
+                appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
+
                 try
                 {
-                    session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+                    session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
                 }
                 catch
                 {  }
                 Thread.Sleep(125000);
                if (session == null)
                 {
-                    session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+                    session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appiumOptions);
                 }
                 Assert.IsNotNull(session);
                 Assert.IsNotNull(session.SessionId);
