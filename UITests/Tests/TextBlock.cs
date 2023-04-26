@@ -14,15 +14,12 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium;
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class TextBlock : Test_Base
+	[TestClass]
+    public class TextBlock : TestBase
     {
         private static WindowsElement textBlockElement1 = null;
         private static WindowsElement textBlockElement2 = null;
@@ -30,22 +27,11 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Text");
-            buttonTab.Click();
-            var button = session.FindElementByName("TextBlock");
-            button.Click();
-            textBlockElement1 = session.FindElementByName("I am a TextBlock.");
+			OpenControlPage("TextBlock");
+			textBlockElement1 = Session.FindElementByName("I am a TextBlock.");
             Assert.IsNotNull(textBlockElement1);
-            textBlockElement2 = session.FindElementByName("I am a styled TextBlock.");
+            textBlockElement2 = Session.FindElementByName("I am a styled TextBlock.");
             Assert.IsNotNull(textBlockElement2);
-            Thread.Sleep(3000);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]

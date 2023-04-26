@@ -14,41 +14,26 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using System.Threading;
-
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class Button : Test_Base
+	[TestClass]
+    public class Button : TestBase
     {
         private static WindowsElement buttonElement = null;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("Button");
-            button.Click();
-            buttonElement = session.FindElementByAccessibilityId("Button1");
+            OpenControlPage("Button");
+			buttonElement = Session.FindElementByAccessibilityId("Button1");
             Assert.IsNotNull(buttonElement);
-            Thread.Sleep(3000);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]
         public void Button_Click()
         {
-        
-            var buttonEventOutput = session.FindElementByAccessibilityId("Control1Output");
+
+            var buttonEventOutput = Session.FindElementByAccessibilityId("Control1Output");
             Assert.AreEqual(string.Empty, buttonEventOutput.Text);
 
             buttonElement.Click();
@@ -65,7 +50,7 @@ namespace UITests
         [TestMethod]
         public void Enabled()
         {
-            var disableButtonCheckbox = session.FindElementByAccessibilityId("DisableButton1");
+            var disableButtonCheckbox = Session.FindElementByAccessibilityId("DisableButton1");
             Assert.IsTrue(buttonElement.Enabled);
             disableButtonCheckbox.Click();
             Assert.IsFalse(buttonElement.Enabled);
@@ -89,7 +74,7 @@ namespace UITests
         [TestMethod]
         public void Text()
         {
-            Assert.AreEqual("Standard XAML button", buttonElement.Text);
+            Assert.AreEqual("Standard XAML", buttonElement.Text);
         }
     }
 }
