@@ -14,16 +14,12 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium;
 using System.Threading;
-using System;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class DatePicker : Test_Base
+	[TestClass]
+    public class DatePicker : TestBase
     {
         private static WindowsElement datePickerElement1 = null;
         private static WindowsElement datePickerElement2 = null;
@@ -31,23 +27,11 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Date and Time");
-            buttonTab.Click();
-            var button = session.FindElementByName("DatePicker");
-            button.Click();
-            Thread.Sleep(3000);
-            datePickerElement1 = session.FindElementByName("Pick a date");
+            OpenControlPage("DatePicker");
+			datePickerElement1 = Session.FindElementByName("Pick a date");
             Assert.IsNotNull(datePickerElement1);
-            datePickerElement2 = session.FindElementByAccessibilityId("Control2");
+            datePickerElement2 = Session.FindElementByAccessibilityId("Control2");
             Assert.IsNotNull(datePickerElement2);
-            session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]
@@ -55,21 +39,21 @@ namespace UITests
         {
             // Click datePickerElement1 to show the picker and simply dismiss it
             datePickerElement1.Click();
-            var datePickerFlyout = session.FindElementByAccessibilityId("FlyoutButton");
+            var datePickerFlyout = Session.FindElementByAccessibilityId("FlyoutButton");
             Assert.IsNotNull(datePickerFlyout);
             Assert.IsTrue(datePickerFlyout.Displayed);
-            session.FindElementByAccessibilityId("DatePickerFlyoutPresenter").FindElementByAccessibilityId("DismissButton").Click();
-            System.Threading.Thread.Sleep(1000);
+            Session.FindElementByAccessibilityId("DatePickerFlyoutPresenter").FindElementByAccessibilityId("DismissButton").Click();
+            Thread.Sleep(1000);
 
             // Click datePickerElement1 to show the picker and set the year to 2000
             datePickerElement1.Click();
-            datePickerFlyout = session.FindElementByAccessibilityId("DatePickerFlyoutPresenter");
+            datePickerFlyout = Session.FindElementByAccessibilityId("DatePickerFlyoutPresenter");
             Assert.IsNotNull(datePickerFlyout);
             var yearLoopingSelector = datePickerFlyout.FindElementByAccessibilityId("YearLoopingSelector");
             Assert.IsNotNull(yearLoopingSelector);
             var currentYear = yearLoopingSelector.Text;
             yearLoopingSelector.FindElementByName("2000").Click();
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             Assert.AreNotEqual(currentYear, yearLoopingSelector.Text);
             datePickerFlyout.FindElementByAccessibilityId("AcceptButton").Click();
         }

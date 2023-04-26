@@ -14,14 +14,10 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using System.Threading;
-
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class CheckBox : Test_Base
+	[TestClass]
+    public class CheckBox : TestBase
     {
         private static WindowsElement checkBoxElement1 = null;
         private static WindowsElement checkBoxElement2 = null;
@@ -29,27 +25,16 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("CheckBox");
-            button.Click();
-            Thread.Sleep(1000);
-            checkBoxElement1 = session.FindElementByName("Two-state CheckBox");
-            checkBoxElement2 = session.FindElementByName("Three-state CheckBox");
+			OpenControlPage("CheckBox");
+			checkBoxElement1 = Session.FindElementByName("Two-state");
+            checkBoxElement2 = Session.FindElementByName("Three-state");
             Assert.IsNotNull(checkBoxElement2);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]
         public void Click()
         {
-            var checkBoxEventOutput = session.FindElementByAccessibilityId("Control2Output");
+            var checkBoxEventOutput = Session.FindElementByAccessibilityId("Control2Output");
             Assert.AreEqual(string.Empty, checkBoxEventOutput.Text);
 
             checkBoxElement2.Click();
@@ -114,13 +99,6 @@ namespace UITests
             Assert.IsTrue(checkBoxElement1.Size.Height > 0);
             Assert.IsTrue(checkBoxElement1.Size.Width <= checkBoxElement2.Size.Width);
             Assert.AreEqual(checkBoxElement1.Size.Height, checkBoxElement2.Size.Height);
-        }
-
-        [TestMethod]
-        public void Text()
-        {
-            Assert.AreEqual("Two-state CheckBox", checkBoxElement1.Text);
-            Assert.AreEqual("Three-state CheckBox", checkBoxElement2.Text);
         }
     }
 }

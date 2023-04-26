@@ -14,14 +14,12 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class ProgressBar : Test_Base
+	[TestClass]
+    public class ProgressBar : TestBase
     {
         private static WindowsElement progressBarElement = null;
         private static WindowsElement clickAndHoldButton = null;
@@ -29,24 +27,13 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            //NavigateTo("Progress controls", "ProgressBar");
-            var buttonTab = session.FindElementByName("Status and Info");
-            buttonTab.Click();
-            var button = session.FindElementByName("ProgressBar");
-            button.Click();
-            progressBarElement = session.FindElementByAccessibilityId("ProgressBar2");
+			OpenControlPage("ProgressBar");
+            progressBarElement = Session.FindElementByAccessibilityId("ProgressBar2");
             Assert.IsNotNull(progressBarElement);
             // Numberbox is a spinner, thus "Increase" is the button we need
-            clickAndHoldButton = session.FindElementByName("Increase");
+            clickAndHoldButton = Session.FindElementByName("Increase");
             Assert.IsNotNull(clickAndHoldButton);
             Thread.Sleep(3000);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]

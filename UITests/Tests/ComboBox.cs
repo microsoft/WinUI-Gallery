@@ -14,15 +14,10 @@
 //
 //******************************************************************************
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium;
-using System.Threading;
-
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class ComboBox : Test_Base
+	[TestClass]
+    public class ComboBox : TestBase
     {
         private static WindowsElement comboBoxElement1 = null;
         private static WindowsElement comboBoxElement2 = null;
@@ -30,22 +25,11 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("ComboBox");
-            button.Click();
-            comboBoxElement1 = session.FindElementByAccessibilityId("Combo1");
+			OpenControlPage("ComboBox");
+			comboBoxElement1 = Session.FindElementByAccessibilityId("Combo1");
             Assert.IsNotNull(comboBoxElement1);
-            comboBoxElement2 = session.FindElementByAccessibilityId("Combo2");
+            comboBoxElement2 = Session.FindElementByAccessibilityId("Combo2");
             Assert.IsNotNull(comboBoxElement2);
-            Thread.Sleep(3000);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
         }
 
         [TestMethod]
