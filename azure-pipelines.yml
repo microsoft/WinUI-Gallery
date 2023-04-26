@@ -23,6 +23,10 @@ stages:
           - job:
             displayName: Build
             steps:
+                - task: NuGetToolInstaller@1
+                  displayName: Install NuGet 5.8.0
+                  inputs:
+                      versionSpec: 5.8.0
                 - task: NuGetCommand@2
                   inputs:
                     command: 'restore'
