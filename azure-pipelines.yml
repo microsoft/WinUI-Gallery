@@ -5,6 +5,7 @@
 
 trigger:
     - main
+    - "dev/create-ci"
 
 pool:
     vmImage: "windows-2022"
@@ -22,16 +23,6 @@ stages:
           - job:
             displayName: Build
             steps:
-                - task: NuGetToolInstaller@1
-                  displayName: Install NuGet 5.8.0
-                  inputs:
-                      versionSpec: 5.8.0
-
-                - task: NuGetCommand@2
-                  displayName: Restore packages
-                  inputs:
-                      restoreSolution: "$(solutionGallery)"
-
                 - task: VSBuild@1
                   inputs:
                       platform: $(buildPlatform)
