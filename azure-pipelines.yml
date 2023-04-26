@@ -23,6 +23,12 @@ stages:
           - job:
             displayName: Build
             steps:
+                - task: NuGetCommand@2
+                  inputs:
+                    command: 'restore'
+                    restoreSolution: '**/*.sln'
+                    feedsToUse: 'config'
+                    nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
                 - task: VSBuild@1
                   inputs:
                       platform: $(buildPlatform)
