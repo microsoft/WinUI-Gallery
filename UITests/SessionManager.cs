@@ -1,5 +1,20 @@
-﻿using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
+﻿//******************************************************************************
+//
+// Copyright (c) 2023 Microsoft Corporation. All rights reserved.
+//
+// This code is licensed under the MIT License (MIT).
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+//******************************************************************************
+
+using OpenQA.Selenium.Appium;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -70,7 +85,8 @@ namespace UITests
 				Thread.Sleep(3000);
 				Assert.IsNotNull(_session);
 				Assert.IsNotNull(_session.SessionId);
-
+				AxeHelper.InitializeAxe();
+				
 				// Dismiss the disclaimer window that may pop up on the very first application launch
 				// If the disclaimer is not found, this throws an exception, so lets catch that
 				try
