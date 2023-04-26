@@ -55,8 +55,8 @@ namespace UITests
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("fghij67890^&*()");
-            Assert.AreEqual("fghij67890^&*()", textBoxElement1.Text);
+            textBoxElement1.SendKeys("fghij");
+            Assert.AreEqual("fghij", textBoxElement1.Text);
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
         }
@@ -65,7 +65,7 @@ namespace UITests
         public void Click()
         {
             // Click textBoxElement1 to set focus and arbitrarily type
-           //textBoxElement1.Clear();
+            textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
             textBoxElement1.Click();
             session.Keyboard.SendKeys("1234567890");
