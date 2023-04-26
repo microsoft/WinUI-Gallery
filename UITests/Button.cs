@@ -89,7 +89,7 @@ namespace UITests
         [TestMethod]
         public void Text()
         {
-            Assert.AreEqual("Button", buttonElement.Text);
+            Assert.AreEqual("Standard XAML button", buttonElement.Text);
         }
     }
 }
