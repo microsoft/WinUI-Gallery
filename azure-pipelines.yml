@@ -30,14 +30,6 @@ steps:
         feedsToUse: 'config'
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
-    - task: MSBuild@1
-      inputs:
-        platform: 'x64'
-        solution: '**/WinUIGallery.DesktopWap.Package.wapproj'
-        configuration: '$(buildConfiguration)'
-        msbuildArguments: '/t:build;_GenerateAppxPackage /p:Configuration=Debug;Platform="$(buildPlatform)";AppxBundle=Always;AppxBundlePlatforms="$(buildPlatform)";AppxPackageDir="$(appxPackageDir)";AppxPackageSigningEnabled=true;UapAppxPackageBuildMode=SideloadOnly'
-        maximumCpuCount: true
-
     - task: VSBuild@1
       inputs:
           platform: $(buildPlatform)
@@ -55,7 +47,9 @@ steps:
               $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
               echo $AppBundle
               cd $AppBundle
-              ./Add-AppDevPackage.ps1 -Force
+              ls
+              ./Install.ps1 -Force
+              Get-AppxPackage
           errorActionPreference: "continue"
           failOnStderr: true
           workingDirectory: "$(System.DefaultWorkingDirectory)"
