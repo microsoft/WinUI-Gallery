@@ -61,7 +61,7 @@ steps:
 
     - task: VSBuild@1
       inputs:
-          platform: "Any CPU"
+          platform: "$(buildPlatform)"
           solution: "$(solutionUITests)"
           configuration: "$(buildConfiguration)"
 
