@@ -132,8 +132,28 @@
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
             },
             {
+              "Title": "Accessibility overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview"
+            },
+            {
               "Title": "Keyboard accessibility",
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility"
+            },
+            {
+              "Title": "Keyboard interactions",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions"
+            },
+            {
+              "Title": "Access keys",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/access-keys"
+            },
+            {
+              "Title": "Keyboard accelerators",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators"
+            },
+            {
+              "Title": "Focus navigation for keyboard, gamepad, remote control, and accessibility tools",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/focus-navigation"
             },
             {
               "Title": "Automation Properties - API",
@@ -160,8 +180,24 @@
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
             },
             {
+              "Title": "Accessibility overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview"
+            },
+            {
+              "Title": "Expose basic accessibility information",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information"
+            },
+            {
+              "Title": "Landmarks and Headings",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/landmarks-and-headings"
+            },
+            {
               "Title": "Accessible text requirements",
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessible-text-requirements"
+            },
+            {
+              "Title": "Complete guide to Narrator",
+              "Uri": "https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1"
             }
           ],
           "RelatedControls": []
