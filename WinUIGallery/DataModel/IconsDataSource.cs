@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AppUIBasics.Common;
 
@@ -38,12 +37,15 @@ namespace WinUIGallery.DesktopWap.DataModel
                     return icons;
                 }
             }
-            string jsonText = await FileLoader.LoadText("DataModel/IconsData.json");
+            var jsonText = await FileLoader.LoadText("DataModel/IconsData.json");
             lock (_lock)
             {
                 if (icons.Count == 0)
                 {
-                    icons = System.Text.Json.JsonSerializer.Deserialize<List<IconData>>(jsonText);
+                    icons = JsonSerializer.Deserialize<List<IconData>>(jsonText, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
                 }
                 return icons;
             }
