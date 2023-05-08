@@ -24,6 +24,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap.DataModel;
+using WASDK = Microsoft.WindowsAppSDK;
 
 namespace AppUIBasics
 {
@@ -32,8 +33,25 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-
         private static Window startupWindow;
+
+        public static string WinAppSdkDetails
+        {
+            get => string.Format("Windows App SDK {0}.{1}.{2}{3}",
+                WASDK.Release.Major, WASDK.Release.Minor, WASDK.Release.Patch, WASDK.Release.FormattedVersionTag);
+        }
+
+        public static string WinAppSdkRuntimeDetails
+        {
+            get
+            {
+                var details = WinAppSdkDetails;
+#if WindowsAppSdkRuntimeDependent
+                details += ", Windows App Runtime " + WASDK.Runtime.Version.DotQuadString;
+#endif
+                return details;
+            }
+        }
 
         // Get the initial window created for this app
         // On UWP, this is simply Window.Current
