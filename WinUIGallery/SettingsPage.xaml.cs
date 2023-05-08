@@ -38,6 +38,8 @@ namespace AppUIBasics
             }
         }
 
+        public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
+
         public SettingsPage()
         {
             this.InitializeComponent();
