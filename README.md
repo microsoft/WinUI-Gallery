@@ -27,7 +27,8 @@ Shows all of the XAML UI components in an interactive format. This app is the in
 
 ## Further information
 
->**Note**: The WinUI 3 Gallery requires [Visual Studio 16.9 Preview 1](https://visualstudio.microsoft.com/vs/preview/) or later to build and Windows 10 to execute.  Also ensure that you've completed the prerequisite steps from the [installation instructions for WinUI 3 Preview 4](https://aka.ms/winui3/preview4).
+>**Note**: The WinUI 3 Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute.
+If you're building an app with the Windows App SDK for the first time, follow the [installation instructions here.](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/set-up-your-development-environment)
 
 To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 
