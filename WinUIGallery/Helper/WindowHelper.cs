@@ -11,6 +11,7 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using WinRT.Interop;
@@ -26,7 +27,10 @@ namespace AppUIBasics.Helper
     {
         static public Window CreateWindow()
         {
-            Window newWindow = new Window();
+            Window newWindow = new Window
+            {
+                SystemBackdrop = new MicaBackdrop()
+            };
             TrackWindow(newWindow);
             return newWindow;
         }
