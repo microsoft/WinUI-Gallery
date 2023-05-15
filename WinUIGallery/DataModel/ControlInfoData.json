@@ -2275,7 +2275,7 @@
           "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/SystemBackdropsIcon.png",
-          "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. Applying a backdrop currently requires a bunch of app code, but this will be easier in a future release.",
+          "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
           "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
           "IsNew": true,
           "Docs": [
