@@ -13,10 +13,9 @@
     x:Class="AppUIBasics.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:data="using:AppUIBasics.Data"
     HighContrastAdjustment="None">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
@@ -41,11 +40,11 @@
 
         <Border
             x:Name="AppTitleBar"
-            AutomationProperties.AutomationId="AppTitleBar"
             Grid.Column="1"
             Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
             Margin="48,0,0,0"
             VerticalAlignment="Top"
+            AutomationProperties.AutomationId="AppTitleBar"
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
             <StackPanel Orientation="Horizontal">
@@ -221,7 +220,7 @@
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-              
+
                 <NavigationViewItem
                     x:Name="AllControlsItem"
                     Content="All samples"
