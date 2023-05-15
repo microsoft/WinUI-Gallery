@@ -1,4 +1,4 @@
-﻿using Windows.Foundation.Metadata;
+using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -109,7 +109,7 @@ namespace AppUIBasics.SamplePages
             {
                 if (TrySetMicaBackdrop(false))
                 {
-                    tbCurrentBackdrop.Text = "Mica";
+                    tbCurrentBackdrop.Text = "Custom Mica";
                     m_currentBackdrop = type;
                 }
                 else
@@ -123,7 +123,7 @@ namespace AppUIBasics.SamplePages
             {
                 if (TrySetMicaBackdrop(true))
                 {
-                    tbCurrentBackdrop.Text = "MicaAlt";
+                    tbCurrentBackdrop.Text = "Custom MicaAlt";
                     m_currentBackdrop = type;
                 }
                 else
@@ -137,7 +137,7 @@ namespace AppUIBasics.SamplePages
             {
                 if (TrySetAcrylicBackdrop())
                 {
-                    tbCurrentBackdrop.Text = "Acrylic";
+                    tbCurrentBackdrop.Text = "Custom Acrylic";
                     m_currentBackdrop = type;
                 }
                 else
@@ -154,7 +154,7 @@ namespace AppUIBasics.SamplePages
         {
             if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
             {
-                // Hooking up the policy object
+                // Hooking up the policy object.
                 m_configurationSource = new Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration();
                 this.Activated += Window_Activated;
                 this.Closed += Window_Closed;
@@ -165,31 +165,24 @@ namespace AppUIBasics.SamplePages
                 SetConfigurationSourceTheme();
 
                 m_micaController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
-                
-                if (useMicaAlt)
-                {
-                   m_micaController.Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt;
-                }
-                else
-                {
-                   m_micaController.Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
-                }
-                
+
+                m_micaController.Kind = useMicaAlt ? Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt : Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
+
                 // Enable the system backdrop.
                 // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
                 m_micaController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
                 m_micaController.SetSystemBackdropConfiguration(m_configurationSource);
-                return true; // succeeded
+                return true; // Succeeded.
             }
 
-            return false; // Mica is not supported on this system
+            return false; // Mica is not supported on this system.
         }
 
         bool TrySetAcrylicBackdrop()
         {
             if (Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController.IsSupported())
             {
-                // Hooking up the policy object
+                // Hooking up the policy object.
                 m_configurationSource = new Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration();
                 this.Activated += Window_Activated;
                 this.Closed += Window_Closed;
@@ -205,7 +198,7 @@ namespace AppUIBasics.SamplePages
                 // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
                 m_acrylicController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
                 m_acrylicController.SetSystemBackdropConfiguration(m_configurationSource);
-                return true; // succeeded
+                return true; // Succeeded.
             }
 
             return false; // Acrylic is not supported on this system
