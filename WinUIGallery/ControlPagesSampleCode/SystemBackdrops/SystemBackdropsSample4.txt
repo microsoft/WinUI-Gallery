@@ -5,8 +5,8 @@ bool TrySetDesktopAcrylicBackdrop()
         Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop DesktopAcrylicBackdrop = new Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop();
         this.SystemBackdrop = DesktopAcrylicBackdrop;
 
-        return true; // succeeded
+        return true; // Succeeded.
     }
 
-    return false; // DesktopAcrylic is not supported on this system
+    return false; // DesktopAcrylic is not supported on this system.
 }
