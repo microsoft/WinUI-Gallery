@@ -1,6 +1,5 @@
-using Microsoft.UI.Xaml;
-using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
 using AppUIBasics.Helper;
+using Microsoft.UI.Xaml;
 
 namespace AppUIBasics.SamplePages
 {
@@ -12,7 +11,8 @@ namespace AppUIBasics.SamplePages
         {
             this.InitializeComponent();
             ((FrameworkElement)this.Content).RequestedTheme = AppUIBasics.Helper.ThemeHelper.RootTheme;
-
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(titleBar);
             SetBackdrop(BackdropType.Mica);
         }
 
