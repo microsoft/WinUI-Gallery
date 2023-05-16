@@ -94,7 +94,7 @@ namespace AppUIBasics
                             foreach (string queryToken in querySplit)
                             {
                                 // Check if token is in title or subtitle
-                                if (!item.Title.ToLower().Contains(queryToken) && !item.Subtitle.ToLower().Contains(queryToken))
+                                if (!item.Title.ToLower().Contains(queryToken) && item.Subtitle != null && !item.Subtitle.ToLower().Contains(queryToken))
                                 {
                                     // Neither title nor sub title contain one of the tokens so we discard this item!
                                     flag = false;
