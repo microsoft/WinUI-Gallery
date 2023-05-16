@@ -97,7 +97,7 @@ namespace AppUIBasics
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                NavigationOrientationHelper.UpdateTitleBarForElement(NavigationOrientationHelper.IsLeftMode(), this);
+                NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode(), this);
 
                 Window window = WindowHelper.GetWindowForElement(sender as UIElement);
                 window.Title = AppTitleText;
@@ -109,9 +109,27 @@ namespace AppUIBasics
                 _settings = new UISettings();
                 _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
             };
-
-            NavigationViewControl.RegisterPropertyChangedCallback(NavigationView.PaneDisplayModeProperty, new DependencyPropertyChangedCallback(OnPaneDisplayModeChanged));
         }
+
+        private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
+        {
+            if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
+            {
+                VisualStateManager.GoToState(this, "Top", true);
+            }
+            else
+            {
+                if (args.DisplayMode == NavigationViewDisplayMode.Minimal)
+                {
+                    VisualStateManager.GoToState(this, "Compact", true);
+                }
+                else
+                {
+                    VisualStateManager.GoToState(this, "Default", true);
+                }
+            }
+        }
+
         // this handles updating the caption button colors correctly when indows system theme is changed
         // while the app is open
         private void _settings_ColorValuesChanged(UISettings sender, object args)
@@ -121,12 +139,6 @@ namespace AppUIBasics
             {
                 _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
             });
-        }
-
-        private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
-        {
-            var navigationView = sender as NavigationView;
-            NavigationRootPage.GetForElement(this).AppTitleBar.Visibility = navigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
         }
 
         // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
@@ -554,6 +566,7 @@ namespace AppUIBasics
         private static extern void DebugBreak();
 
         #endregion
+
     }
 
     public class NavigationRootPageArgs
