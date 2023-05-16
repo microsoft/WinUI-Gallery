@@ -34,9 +34,6 @@ namespace AppUIBasics
     {
         public Windows.System.VirtualKey ArrowKey;
         public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-
-        private RootFrameNavigationHelper _navHelper;
-        private bool _isKeyboardConnected;
         private UISettings _settings;
 
 
@@ -77,8 +74,6 @@ namespace AppUIBasics
             this.InitializeComponent();
             dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
-            _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
-
             SetDeviceFamily();
             AddNavigationMenuItems();
 
@@ -90,8 +85,6 @@ namespace AppUIBasics
                     Debug.WriteLine("got focus: " + focus.Name + " (" + focus.GetType().ToString() + ")");
                 }
             };
-
-            _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
