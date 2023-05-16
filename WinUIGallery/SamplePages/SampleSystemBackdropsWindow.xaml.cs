@@ -1,12 +1,8 @@
-using Windows.Foundation.Metadata;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Runtime.InteropServices; // For DllImport
-using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
 using AppUIBasics.Helper;
+using Microsoft.UI.Xaml;
+using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
 
 namespace AppUIBasics.SamplePages
 {
@@ -55,7 +51,8 @@ namespace AppUIBasics.SamplePages
         {
             this.InitializeComponent();
             ((FrameworkElement)this.Content).RequestedTheme = AppUIBasics.Helper.ThemeHelper.RootTheme;
-
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(titleBar);
             m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();
             m_wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
 
