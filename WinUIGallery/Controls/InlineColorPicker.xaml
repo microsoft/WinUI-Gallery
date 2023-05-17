@@ -24,6 +24,6 @@
                 </Flyout>
             </SplitButton.Flyout>
         </SplitButton>
-        <TextBox x:Name="ColorHex" TextChanged="ColorHex_TextChanged" HorizontalAlignment="Stretch" Margin="5, 0, 0, 0" Grid.Column="1"/>
+        <TextBox x:Name="ColorHex" TextChanged="ColorHex_TextChanged" MinWidth="120" HorizontalAlignment="Stretch" Margin="5, 0, 0, 0" Grid.Column="1"/>
     </Grid>
 </UserControl>
