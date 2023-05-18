@@ -279,19 +279,6 @@ namespace AppUIBasics.Controls
             DataPackage package = new DataPackage();
             package.SetText(actualCode);
             Clipboard.SetContent(package);
-
-            VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
-            Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-
-            // Automatically close teachingtip after 1 seconds
-            if (dispatcherQueue != null)
-            {
-                dispatcherQueue.TryEnqueue(async () =>
-                {
-                    await Task.Delay(1000);
-                    VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
-                });
-            }
         }
     }
 }
