@@ -5,6 +5,7 @@
     x:Class="WinUIGallery.DesktopWap.Controls.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.DesktopWap.Controls.CopyButton"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="using:AppUIBasics.Data"
@@ -26,9 +27,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock
+            AutomationProperties.HeadingLevel="Level1"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"
-            AutomationProperties.HeadingLevel="Level1"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
         <TextBlock
@@ -120,26 +121,23 @@
                     </Button.Content>
                 </Button>
                 <AppBarSeparator Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}" />
-                <Button
+                <local:CopyButton
                     x:Name="CopyLinkButton"
                     Height="32"
                     Margin="4,0,4,0"
-                    Click="OnCopyLinkButtonClick"
+                    Padding="11,2,11,0"
                     AutomationProperties.Name="Copy link"
+                    Click="OnCopyLinkButtonClick"
+                    Content="&#xE71B;"
                     ToolTipService.ToolTip="Copy link">
-                    <Button.Content>
-                        <FontIcon
-                            x:Name="CopyLinkButtonIcon"
-                            FontSize="16"
-                            Glyph="&#xE71B;" />
-                    </Button.Content>
-                    <Button.Resources>
+                    <local:CopyButton.Resources>
                         <TeachingTip
                             x:Name="CopyLinkButtonTeachingTip"
                             Title="Quickly reference this sample!"
                             ActionButtonClick="OnCopyDontShowAgainButtonClick"
                             ActionButtonContent="Don't show again"
                             CloseButtonContent="Got it!"
+                            FontFamily="{StaticResource ContentControlThemeFontFamily}"
                             PreferredPlacement="Bottom"
                             Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
                             Target="{x:Bind CopyLinkButton}">
@@ -147,8 +145,8 @@
                                 <Image Source="/Assets/CopyLinkTeachingTip.png" />
                             </TeachingTip.HeroContent>
                         </TeachingTip>
-                    </Button.Resources>
-                </Button>
+                    </local:CopyButton.Resources>
+                </local:CopyButton>
                 <Button
                     x:Name="FeedbackBtn"
                     Height="32"

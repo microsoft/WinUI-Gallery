@@ -2,8 +2,8 @@
     x:Class="AppUIBasics.Controls.SampleCodePresenter"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Padding="0,4,0,4"
     VerticalContentAlignment="Top"
@@ -49,17 +49,6 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-
-            <VisualStateGroup x:Name="ConfirmDialogGroups">
-                <VisualState x:Name="ConfirmationDialogHidden" />
-                <VisualState x:Name="ConfirmationDialogVisible">
-                    <VisualState.Setters>
-                        <Setter Target="CopyCodeButton.IsEnabled" Value="False" />
-                        <Setter Target="CopyConfirmationTeachingTip.Visibility" Value="Visible" />
-                        <Setter Target="CopyConfirmationTeachingTip.IsOpen" Value="True" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
         <ScrollViewer
@@ -72,23 +61,11 @@
             VerticalScrollMode="Disabled">
             <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
-        <Button
+        <local:CopyButton
             x:Name="CopyCodeButton"
             Grid.Row="0"
-            Padding="4"
             HorizontalAlignment="Right"
-            AutomationProperties.Name="Copy sample code"
             Click="CopyCodeButton_Click"
-            ToolTipService.ToolTip="Copy sample code">
-            <FontIcon FontSize="16" Glyph="&#xE8C8;" />
-        </Button>
-
-        <controls:TeachingTip
-            x:Name="CopyConfirmationTeachingTip"
-            x:Load="False"
-            IsLightDismissEnabled="True"
-            Subtitle="Copied!"
-            Target="{x:Bind CopyCodeButton}"
-            Visibility="Collapsed" />
+            Content="&#xE8C8;" />
     </Grid>
 </UserControl>

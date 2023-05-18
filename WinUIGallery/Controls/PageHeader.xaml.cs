@@ -59,7 +59,6 @@ namespace WinUIGallery.DesktopWap.Controls
             {
                 this.CopyLinkButtonTeachingTip.IsOpen = true;
             }
-            CopyLinkButtonIcon.Glyph = "\uE8FB";
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
