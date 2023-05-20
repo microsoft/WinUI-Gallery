@@ -101,56 +101,59 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid HorizontalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch" RowSpacing="8">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical">
-            <RichTextBlock>
-                <Paragraph>
-                    With the release of Windows 11, <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font">Segoe Fluent Icons Font</Hyperlink>
-                    is the recommended symbol icon font.
-                </Paragraph>
-            </RichTextBlock>
-            <TextBlock
-                Margin="0,8,0,0"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="How do I get the font?" />
-            <RichTextBlock>
-                <Paragraph>
-                    On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                    On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
-                </Paragraph>
-            </RichTextBlock>
+        <Expander HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  IsExpanded="True"
+                  BorderThickness="0"
+                  BorderBrush="Transparent"
+                  Padding="0,4,0,0"
+                  Header="With the release of Windows 11, Segoe Fluent Icons Font is the recommended symbol icon font."
+                  Background="Transparent">
+            <StackPanel Orientation="Vertical" Spacing="8">
+                <RichTextBlock>
+                    <Paragraph FontWeight="SemiBold">
+                        How do I get the font?
+                    </Paragraph>
+                    <Paragraph>
+                        On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
+                        On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
+                    </Paragraph>
+                </RichTextBlock>
 
-            <TextBlock
-                Margin="0,8,0,0"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="How do I set the font?" />
-            <RichTextBlock>
-                <Paragraph>
-                    If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime,
-                    the FontIcon falls back to the default font family defined by the SymbolThemeFontFamily theme resource.</Paragraph>
-            </RichTextBlock>
+                <RichTextBlock>
+                    <Paragraph FontWeight="SemiBold">
+                        How do I set the font?
+                    </Paragraph>
+                    <Paragraph>
+                        If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime,
+                        the FontIcon falls back to the default font family defined by the SymbolThemeFontFamily theme resource.
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Expander>
 
+        <StackPanel Spacing="8" Grid.Row="1">
             <TextBlock
-                Margin="0,8,0,0"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="Fluent Icons Library" />
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            Text="Fluent Icons Library" />
             <AutoSuggestBox
-                MinWidth="304"
-                MaxWidth="320"
-                Margin="0,8,0,12"
-                HorizontalAlignment="Left"
-                PlaceholderText="Search icons"
-                QueryIcon="Find"
-                TextChanged="SearchTextBox_TextChanged" />
+            MinWidth="304"
+            MaxWidth="320"
+            HorizontalAlignment="Left"
+            PlaceholderText="Search icons"
+            QueryIcon="Find"
+            TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
-        
+
         <controls1:SampleThemeListener
-                Grid.Row="1"
+                Grid.Row="2"
                 MaxHeight="600"
                 VerticalAlignment="Top">
             <Grid
