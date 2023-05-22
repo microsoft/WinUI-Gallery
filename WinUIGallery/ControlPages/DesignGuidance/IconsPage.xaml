@@ -19,6 +19,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -105,41 +106,47 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Expander HorizontalAlignment="Stretch"
-                  HorizontalContentAlignment="Left"
-                  IsExpanded="True"
-                  BorderThickness="0"
-                  BorderBrush="Transparent"
-                  Padding="0,4,0,0"
-                  Header="With the release of Windows 11, Segoe Fluent Icons Font is the recommended symbol icon font."
-                  Background="Transparent">
-            <StackPanel Orientation="Vertical" Spacing="8">
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">
-                        How do I get the font?
-                    </Paragraph>
-                    <Paragraph>
-                        On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                        On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
-                    </Paragraph>
-                </RichTextBlock>
+        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons Font is the recommended symbol icon font."/>
+        <labs:SettingsExpander Grid.Row="1"
+                  IsExpanded="False"
+                  Header="Instructions on how to use Segoe Fluent Icons">
+            <labs:SettingsExpander.Items>
+                <labs:SettingsCard ContentAlignment="Left" Padding="8">
+                    <RichTextBlock TextWrapping="Wrap">
+                        <Paragraph FontWeight="SemiBold">
+                            How do I get the font?
+                        </Paragraph>
+                        <Paragraph>
+                            On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
+                            On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                            <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
+                        </Paragraph>
+                    </RichTextBlock>
+                </labs:SettingsCard>
+                <labs:SettingsCard ContentAlignment="Left" Padding="8">
+                    <StackPanel Orientation="Vertical" Spacing="8">
+                        <RichTextBlock TextWrapping="Wrap">
+                            <Paragraph FontWeight="SemiBold">
+                                How do I set the font?
+                            </Paragraph>
+                            <Paragraph>
+                                If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime,
+                                the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily theme resource.
+                            </Paragraph>
+                        </RichTextBlock>
+                        <controls:SampleCodePresenter
+                            SampleType="XAML"
+                            CodeSourceFile="Icons/FontIconSample1_xaml.txt">
+                        </controls:SampleCodePresenter>
+                    </StackPanel>
+                </labs:SettingsCard>
+            </labs:SettingsExpander.Items>
+        </labs:SettingsExpander>
 
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">
-                        How do I set the font?
-                    </Paragraph>
-                    <Paragraph>
-                        If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime,
-                        the FontIcon falls back to the default font family defined by the SymbolThemeFontFamily theme resource.
-                    </Paragraph>
-                </RichTextBlock>
-            </StackPanel>
-        </Expander>
-
-        <StackPanel Spacing="8" Grid.Row="1">
+        <StackPanel Spacing="8" Grid.Row="2">
             <TextBlock
             Style="{ThemeResource BodyStrongTextBlockStyle}"
             Text="Fluent Icons Library" />
@@ -153,7 +160,7 @@
         </StackPanel>
 
         <controls1:SampleThemeListener
-                Grid.Row="2"
+                Grid.Row="3"
                 MaxHeight="600"
                 VerticalAlignment="Top">
             <Grid
