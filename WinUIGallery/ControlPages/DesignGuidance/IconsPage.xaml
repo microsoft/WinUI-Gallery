@@ -114,10 +114,10 @@
                   IsExpanded="False"
                   Header="Instructions on how to use Segoe Fluent Icons">
             <labs:SettingsExpander.Items>
-                <labs:SettingsCard ContentAlignment="Left" Padding="8">
+                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
                     <RichTextBlock TextWrapping="Wrap">
                         <Paragraph FontWeight="SemiBold">
-                            How do I get the font?
+                            How to get the font
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
@@ -126,15 +126,17 @@
                         </Paragraph>
                     </RichTextBlock>
                 </labs:SettingsCard>
-                <labs:SettingsCard ContentAlignment="Left" Padding="8">
+                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">
-                                How do I set the font?
+                                How to use the font
                             </Paragraph>
                             <Paragraph>
-                                If you don't specify a FontFamily, or you specify a FontFamily that is not available on the system at runtime,
-                                the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily theme resource.
+                                If you don't specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run>,
+                                or you specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run> that is not available on the system at runtime,
+                                the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the
+                                <Run FontFamily="Consolas, monospace" FontWeight="Bold">SymbolThemeFontFamily</Run> theme resource.
                             </Paragraph>
                         </RichTextBlock>
                         <controls:SampleCodePresenter
@@ -202,7 +204,6 @@
                         <TextBlock
                             Margin="0,0,0,0"
                             VerticalAlignment="Center"
-                            FontSize="16"
                             Style="{StaticResource SubtitleTextBlockStyle}"
                             Text="{Binding SelectedItem.Name, Mode=OneWay}" />
                         <FontIcon
