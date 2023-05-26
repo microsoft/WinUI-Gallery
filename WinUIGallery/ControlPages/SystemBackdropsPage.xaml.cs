@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -24,13 +24,20 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void createMicaWindow_Click(object sender, RoutedEventArgs e)
+        private void createBuiltInMicaWindow_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
+            var newWindow = new AppUIBasics.SamplePages.SampleBuiltInSystemBackdropsWindow();
             newWindow.Activate();
         }
 
-        private void createAcrylicWindow_Click(object sender, RoutedEventArgs e)
+        private void createCustomMicaWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
+            newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.Mica);
+            newWindow.Activate();
+        }
+
+        private void createBuiltInAcrylicWindow_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
             newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylic);
