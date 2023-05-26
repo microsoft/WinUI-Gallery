@@ -21,16 +21,32 @@
     <StackPanel>
         <local:ControlExample HeaderText="Create a window with a built-in Mica system backdrop."
                               CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+// Option 1 - implement Mica with Xaml.
+&lt;Window.SystemBackdrop&gt;
+    &lt;MicaBackdrop /&gt;
+&lt;/Window.SystemBackdrop&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
             <Button Click="createBuiltInMicaWindow_Click">Create Window with built-in Mica</Button>
         </local:ControlExample>
         
-        <local:ControlExample HeaderText="Create a window with a Mica system backdrop."
+        <local:ControlExample HeaderText="Create a window with a customizable Mica system backdrop."
                               CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
             <Button Click="createCustomMicaWindow_Click">Create Window with customizable Mica</Button>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Create a window with a built-in Desktop Acrylic system backdrop."
                               CSharpSource="SystemBackdrops\SystemBackdropsSample4.txt">
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+// Option 1 - implement Acrylic with Xaml.
+&lt;Window.SystemBackdrop&gt;
+    &lt;DesktopAcrylicBackdrop /&gt;
+&lt;/Window.SystemBackdrop&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
             <Button Click="createBuiltInAcrylicWindow_Click">Create Window with built-in Acrylic</Button>
         </local:ControlExample>
 
