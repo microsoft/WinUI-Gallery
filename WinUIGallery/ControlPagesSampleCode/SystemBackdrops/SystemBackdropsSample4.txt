@@ -1,3 +1,5 @@
+// Option 2 - Implement Acrylic with codebehind.
+// Allows for toggling backdrops as shown in sample.
 bool TrySetDesktopAcrylicBackdrop()
 {
     if (Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController.IsSupported())
