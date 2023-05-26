@@ -28,10 +28,10 @@ bool TrySetAcrylicBackdrop()
         // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
         m_acrylicController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
         m_acrylicController.SetSystemBackdropConfiguration(m_configurationSource);
-        return true; // succeeded
+        return true; // Succeeded.
     }
 
-    return false; // Acrylic is not supported on this system
+    return false; // Acrylic is not supported on this system.
 }
 
 private void Window_Activated(object sender, WindowActivatedEventArgs args)

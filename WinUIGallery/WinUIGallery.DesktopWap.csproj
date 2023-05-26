@@ -106,6 +106,7 @@
     <None Remove="Controls\PageHeader.xaml" />
     <None Remove="Controls\SampleThemeListener.xaml" />
     <None Remove="DataModel\IconsData.json" />
+    <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GalleryHeaderImage.png" />
@@ -200,6 +201,9 @@
   <ItemGroup>
     <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
   <Import Project="ContentIncludes.props" />
