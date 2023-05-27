@@ -109,7 +109,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons Font is the recommended symbol icon font."/>
+        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font."/>
         <labs:SettingsExpander Grid.Row="1"
                   IsExpanded="False"
                   Header="Instructions on how to use Segoe Fluent Icons">
@@ -121,7 +121,7 @@
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: The Segoe Fluent Icons is not included by default on Windows 10. You can download it
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
                             <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
                         </Paragraph>
                     </RichTextBlock>
@@ -136,19 +136,19 @@
                                 If you don't specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run>,
                                 or you specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run> that is not available on the system at runtime,
                                 the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the
-                                <Run FontFamily="Consolas, monospace" FontWeight="Bold">SymbolThemeFontFamily</Run> theme resource.
+                                <Run FontFamily="Consolas, monospace" FontWeight="Bold">SymbolThemeFontFamily</Run> resource.
                             </Paragraph>
                         </RichTextBlock>
                         <controls:SampleCodePresenter
                             SampleType="XAML"
-                            CodeSourceFile="Icons/FontIconSample1_xaml.txt">
+                            CodeSourceFile="Icons/FontIconSample2_xaml.txt">
                         </controls:SampleCodePresenter>
                     </StackPanel>
                 </labs:SettingsCard>
             </labs:SettingsExpander.Items>
         </labs:SettingsExpander>
 
-        <StackPanel Spacing="8" Grid.Row="2">
+        <StackPanel Grid.Row="2" Spacing="8" Margin="0,24,0,0">
             <TextBlock
             Style="{ThemeResource BodyStrongTextBlockStyle}"
             Text="Fluent Icons Library" />
@@ -202,7 +202,6 @@
                     DataContext="{x:Bind}">
                     <StackPanel>
                         <TextBlock
-                            Margin="0,0,0,0"
                             VerticalAlignment="Center"
                             Style="{StaticResource SubtitleTextBlockStyle}"
                             Text="{Binding SelectedItem.Name, Mode=OneWay}" />

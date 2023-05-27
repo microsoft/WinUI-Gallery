@@ -1,0 +1,3 @@
+﻿<Button Name="ExampleButton1">
+    <FontIcon Glyph="&#xE790;"/>
+</Button>
