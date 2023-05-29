@@ -1,3 +1,4 @@
-﻿<Button Name="ExampleButton1">
-    <FontIcon Glyph="&#xE790;"/>
-</Button>
+﻿<Grid>
+    <FontIcon Glyph="&#xEB51;" Foreground="#C72335" />
+    <FontIcon Glyph="&#xEB52;" />
+</Grid>

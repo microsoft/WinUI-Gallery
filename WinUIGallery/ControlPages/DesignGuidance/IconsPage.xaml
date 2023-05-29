@@ -133,10 +133,25 @@
                                 How to use the font
                             </Paragraph>
                             <Paragraph>
-                                If you don't specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run>,
-                                or you specify a <Run FontFamily="Consolas, monospace" FontWeight="Bold">FontFamily</Run> that is not available on the system at runtime,
+                                If you don't specify a FontFamily,
+                                or you specify a FontFamily that is not available on the system at runtime,
                                 the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the
-                                <Run FontFamily="Consolas, monospace" FontWeight="Bold">SymbolThemeFontFamily</Run> resource.
+                                SymbolThemeFontFamily resource.
+                            </Paragraph>
+                            <Paragraph>
+                                Each font glyph is designed so that the footprint of the icon area is a square em.
+                                An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
+                            </Paragraph>
+                            <Paragraph>
+                                Only apply measurement values to certain key elements and use fluid layout behavior for the other elements. This provides for responsive UI when the window width changes.
+                                If you do use measurement values, all dimensions, margins, and padding should be in <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/layout/screen-sizes-and-breakpoints-for-responsive-design#multiples-of-four">increments of 4</Hyperlink> epx.
+                                When XAML uses effective pixels and scaling to make your app legible on all devices and screen sizes, it scales UI elements by multiples of 4.
+                                Using values in increments of 4 results in the best rendering by aligning with whole pixels.
+                            </Paragraph>
+                            <Paragraph>
+                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so
+                                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
+                                This example shows a black outline drawn on top of the zero-width red heart.
                             </Paragraph>
                         </RichTextBlock>
                         <controls:SampleCodePresenter
