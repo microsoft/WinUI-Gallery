@@ -115,11 +115,6 @@ namespace AppUIBasics
             startupWindow = WindowHelper.CreateWindow();
             startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
-            //if (System.Diagnostics.Debugger.IsAttached)
-            //{
-            //    this.DebugSettings.EnableFrameRateCounter = true;
-            //}
-
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;

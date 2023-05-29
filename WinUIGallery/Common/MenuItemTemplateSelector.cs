@@ -11,8 +11,6 @@ namespace AppUIBasics.Common
     {
         public DataTemplate ItemTemplate { get; set; }
 
-        //public string PaneTitle { get; set; }
-
         protected override DataTemplate SelectTemplateCore(object item)
         {
             return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
