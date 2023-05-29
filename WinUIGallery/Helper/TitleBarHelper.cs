@@ -42,7 +42,6 @@ namespace WinUIGallery.DesktopWap.Helper
 
         public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
         {
-            var res = Application.Current.Resources;
             var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
             Windows.UI.Color color;
             if (frame.ActualTheme == ElementTheme.Dark)

@@ -215,17 +215,6 @@ namespace AppUIBasics.Helper
             return navigated;
         }
 
-        private bool TryGoForward()
-        {
-            bool navigated = false;
-            if (this.Frame.CanGoForward)
-            {
-                this.Frame.GoForward();
-                navigated = true;
-            }
-            return navigated;
-        }
-
         private void UpdateBackButton()
         {
             if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))

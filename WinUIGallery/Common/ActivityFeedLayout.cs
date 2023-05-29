@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Windows.Foundation;
 using Microsoft.UI.Xaml;
@@ -95,8 +95,7 @@ namespace AppUIBasics.Common
         protected override void InitializeForContextCore(VirtualizingLayoutContext context)
         {
             base.InitializeForContextCore(context);
-
-            if (!(context.LayoutState is ActivityFeedLayoutState state))
+            if (!(context.LayoutState is ActivityFeedLayoutState))
             {
                 // Store any state we might need since (in theory) the layout could be in use by multiple
                 // elements simultaneously
@@ -169,7 +168,6 @@ namespace AppUIBasics.Common
                 for (int columnIndex = 0; columnIndex < 3; columnIndex++)
                 {
                     var index = firstItemIndex + columnIndex;
-                    var rect = boundsForCurrentRow[index % 3];
                     var container = context.GetOrCreateElementAt(index);
 
                     container.Measure(

@@ -163,24 +163,6 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (Grid.GetColumnSpan(ScrollViewerControl) == 1)
-            {
-                ScrollViewerControl.Width = (e.NewSize.Width / 2) - 50;
-            }
-            else
-            {
-                ScrollViewerControl.Width = e.NewSize.Width - 50;
-            }
-
-        }
-
-        private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
-        }
-
         private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
