@@ -30,6 +30,13 @@ steps:
         feedsToUse: 'config'
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
+    - task: PowerShell@2
+      displayName: GenerateTestPFX.ps1
+      inputs:
+        targetType: filePath
+        filePath: GenerateTestPFX.ps1
+
+
     - task: VSBuild@1
       inputs:
           platform: $(buildPlatform)

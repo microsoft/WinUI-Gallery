@@ -32,7 +32,13 @@ namespace UITests.Tests
             Thread.Sleep(3000);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Click()
         {
             var originalState = toggleSwitchElement.Selected;

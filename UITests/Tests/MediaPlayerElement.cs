@@ -17,7 +17,13 @@ namespace UITests.Tests
 			Session.FindElementByName("MediaPlayerElement").Click();
 		}
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void PlayMedia()
         {
             Thread.Sleep(1000);

@@ -34,7 +34,13 @@ namespace UITests.Tests
             Assert.IsNotNull(datePickerElement2);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Click()
         {
             // Click datePickerElement1 to show the picker and simply dismiss it

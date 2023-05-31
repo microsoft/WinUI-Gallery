@@ -34,9 +34,15 @@ namespace UITests.Tests
             clickAndHoldButton = Session.FindElementByName("Increase");
             Assert.IsNotNull(clickAndHoldButton);
             Thread.Sleep(3000);
-        }
+		}
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Displayed()
         {
             Assert.IsTrue(progressBarElement.Displayed);
