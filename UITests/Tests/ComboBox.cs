@@ -14,6 +14,9 @@
 //
 //******************************************************************************
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium.Windows;
+
 namespace UITests.Tests
 {
 	[TestClass]
