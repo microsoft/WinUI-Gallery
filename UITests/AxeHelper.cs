@@ -16,7 +16,7 @@
 
 using Axe.Windows.Automation;
 using Axe.Windows.Core.Enums;
-using Axe.Windows.Rules;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.Linq;
 
@@ -42,7 +42,7 @@ namespace UITests
 				.Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType);
-			if (testResult.Count() != 0)
+			if (testResult.Any())
 			{
 				var mappedResult = testResult.Select(result => "Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");
 				Assert.Fail("Failed with the following accessibility errors \r\n" + string.Join("\r\n", mappedResult));

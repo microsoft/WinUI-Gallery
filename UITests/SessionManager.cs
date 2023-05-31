@@ -14,7 +14,9 @@
 //
 //******************************************************************************
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -27,8 +29,8 @@ namespace UITests
 	{
 		private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 		private static string[] WinUIGalleryAppIDs = new string[]{
-			"Microsoft.WinUI3ControlsGallery.Debug_s9y1p3hwd5qda!App",
-			"Microsoft.WinUI3ControlsGallery_s9y1p3hwd5qda!App"
+			"Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
+			"Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App"
 		};
 
 		private static uint appIdIndex = 0;

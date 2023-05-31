@@ -14,6 +14,8 @@
 //
 //******************************************************************************
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
 
