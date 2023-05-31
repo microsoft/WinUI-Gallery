@@ -41,11 +41,5 @@ namespace UITests
 			var actions = new Actions(Session);
 			actions.SendKeys(text).Perform();
 		}
-
-		[ClassCleanup]
-		public static void Cleanup()
-		{
-			Session.FindElementByName("Home");
-		}
 	}
 }
