@@ -31,7 +31,13 @@ namespace UITests.Tests
             Assert.IsNotNull(checkBoxElement2);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Click()
         {
             var checkBoxEventOutput = Session.FindElementByAccessibilityId("Control2Output");

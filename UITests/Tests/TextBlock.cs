@@ -34,7 +34,13 @@ namespace UITests.Tests
             Assert.IsNotNull(textBlockElement2);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Displayed()
         {
             Assert.IsTrue(textBlockElement1.Displayed);

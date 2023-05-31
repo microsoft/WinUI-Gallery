@@ -32,7 +32,13 @@ namespace UITests.Tests
             Assert.IsNotNull(comboBoxElement2);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Click()
         {
 

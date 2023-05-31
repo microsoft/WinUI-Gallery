@@ -32,7 +32,6 @@ namespace UITests
 			Thread.Sleep(1_000);
 			Session.FindElementByName(name).Click();
 			Thread.Sleep(5_000);
-			AxeHelper.AssertNoAccessibilityErrors();
 		}
 
 		public static void TypeText(string text)
