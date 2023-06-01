@@ -11,7 +11,7 @@ statusNotificationTargets:
 description: Demonstrates the usage of all XAML/WinUI controls in an interactive format.
 ---
 
-# WinUI Gallery
+## WinUI Gallery
 
 ![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
 
