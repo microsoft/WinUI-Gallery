@@ -81,7 +81,6 @@ namespace UITests.Tests
         [TestMethod]
         public void Size()
         {
-            Thread.Sleep(500);
             Assert.IsTrue(textBlockElement1.Size.Width > 0);
             Assert.IsTrue(textBlockElement1.Size.Height > 0);
             Assert.IsTrue(textBlockElement2.Size.Width >= textBlockElement1.Size.Width);

@@ -37,12 +37,9 @@ namespace UITests.Tests
 		[TestMethod]
 		public void SwitchOptions()
 		{
-			Session.FindElementByName("Profile Image").Click();
-			Thread.Sleep(1_000);
-			Session.FindElementByName("Display Name").Click();
-			Thread.Sleep(1_000); 
-			Session.FindElementByName("Initials").Click();
-			Thread.Sleep(1_000);
+			GetElementByName("Profile Image").Click();
+			GetElementByName("Display Name").Click();
+			GetElementByName("Initials").Click();
 		}
 	}
 }
