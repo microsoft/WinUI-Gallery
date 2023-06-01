@@ -34,7 +34,6 @@ namespace UITests.Tests
             Assert.IsNotNull(radioButtonElement1);
             radioButtonElement2 = Session.FindElementByAccessibilityId("Option2RadioButton");
             Assert.IsNotNull(radioButtonElement2);
-            Thread.Sleep(3000);
         }
 
 		[TestMethod]

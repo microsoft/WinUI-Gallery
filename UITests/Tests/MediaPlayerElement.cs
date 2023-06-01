@@ -32,7 +32,7 @@ namespace UITests.Tests
             search.Clear();
             Thread.Sleep(1_000);
             search.SendKeys("MediaPla");
-			Session.FindElementByName("MediaPlayerElement").Click();
+			GetElementByName("MediaPlayerElement").Click();
 		}
 
 		[TestMethod]
@@ -44,21 +44,15 @@ namespace UITests.Tests
 		[TestMethod]
         public void PlayMedia()
         {
-            Thread.Sleep(1000);
             WindowsElement play = Session.FindElementByAccessibilityId("PlayPauseButton");
             Assert.IsNotNull(play);
             Assert.IsNotNull(Session.FindElementByAccessibilityId("svPanel"));
-            Thread.Sleep(1000);
 
-            try
-            {
-                play.Click();
-            }
-            catch
-            {
-
-            }
+            // Play the video
+            play.Click();
             Thread.Sleep(1000);
+            
+            // Pause the video
             play.Click();
         }
     }

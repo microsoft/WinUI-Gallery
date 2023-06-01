@@ -31,7 +31,6 @@ namespace UITests.Tests
 			OpenControlPage("ToggleButton");
 			toggleButtonElement = Session.FindElementByAccessibilityId("Toggle1");
             Assert.IsNotNull(toggleButtonElement);
-            Thread.Sleep(3000);
         }
 
 		[TestMethod]

@@ -35,7 +35,6 @@ namespace UITests.Tests
             // Numberbox is a spinner, thus "Increase" is the button we need
             clickAndHoldButton = Session.FindElementByName("Increase");
             Assert.IsNotNull(clickAndHoldButton);
-            Thread.Sleep(3000);
 		}
 
 		[TestMethod]

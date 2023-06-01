@@ -17,6 +17,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
+using System.Linq;
 using System.Threading;
 
 namespace UITests
@@ -29,11 +30,38 @@ namespace UITests
 		{
 			var search = Session.FindElementByName("Search");
 			search.Clear();
-			Thread.Sleep(1_000);
+			var headers = Session.FindElementsByName(name);
+
 			search.SendKeys(name);
-			Thread.Sleep(1_000);
-			Session.FindElementByName(name).Click();
-			Thread.Sleep(5_000);
+			GetElementByName(name).Click();
+
+			WaitForPageHeader(name);
+		}
+
+		public static WindowsElement GetElementByName(string name)
+		{
+			for (int i = 0; i < 100; i++)
+			{
+				Thread.Sleep(50);
+				var element = Session.FindElementByName(name);
+				if (element != null)
+				{
+					return element;
+				}
+			}
+			return null;
+		}
+		private static void WaitForPageHeader(string name)
+		{
+			for (int i = 0; i < 100; i++)
+			{
+				var header = Session.FindElementsByName(name).Where(x => x.GetProperty("AutomationId") == "PageHeader");
+				if (header != null)
+				{
+					break;
+				}
+				Thread.Sleep(50);
+			}
 		}
 
 		public static void TypeText(string text)
