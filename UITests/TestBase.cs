@@ -30,12 +30,11 @@ namespace UITests
 		{
 			var search = Session.FindElementByName("Search");
 			search.Clear();
-			var headers = Session.FindElementsByName(name);
 
 			search.SendKeys(name);
 			GetElementByName(name).Click();
 
-			WaitForPageHeader(name);
+			Assert.IsNotNull(WaitForPageHeader(name), "Failed to find matching page header for page: " + name);
 		}
 
 		public static WindowsElement GetElementByName(string name)
@@ -51,17 +50,18 @@ namespace UITests
 			}
 			return null;
 		}
-		private static void WaitForPageHeader(string name)
+		private static WindowsElement WaitForPageHeader(string name)
 		{
 			for (int i = 0; i < 100; i++)
 			{
-				var header = Session.FindElementsByName(name).Where(x => x.GetProperty("AutomationId") == "PageHeader");
+				var header = Session.FindElementsByName(name).Where(x => x.GetProperty("AutomationId") == "PageHeader").First();
 				if (header != null)
 				{
-					break;
+					return header;
 				}
 				Thread.Sleep(50);
 			}
+			return null;
 		}
 
 		public static void TypeText(string text)
