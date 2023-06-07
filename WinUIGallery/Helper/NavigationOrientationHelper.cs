@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
-using Windows.Storage;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Windows.Storage;
 
 
 namespace AppUIBasics.Helper
@@ -38,7 +31,7 @@ namespace AppUIBasics.Helper
 
         public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
         {
-            UpdateTitleBarForElement(isLeftMode, element);
+            UpdateNavigationViewForElement(isLeftMode, element);
 #if !UNPACKAGED
             ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
 #else
@@ -46,18 +39,18 @@ namespace AppUIBasics.Helper
 #endif
         }
 
-        public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
+        public static void UpdateNavigationViewForElement(bool isLeftMode, UIElement element)
         {
-            var window = WindowHelper.GetWindowForElement(element);
-            window.ExtendsContentIntoTitleBar = isLeftMode;
-
+            NavigationView _navView = NavigationRootPage.GetForElement(element).NavigationView;
             if (isLeftMode)
             {
-                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
+                _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
+                Grid.SetRow(_navView, 0);
             }
             else
             {
-                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                Grid.SetRow(_navView, 1);
             }
         }
     }
