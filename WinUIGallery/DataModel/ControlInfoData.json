@@ -37,8 +37,8 @@
           "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
-              "Title": "Iconography in Windows",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/iconography/overview"
+              "Title": "Iconography in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
             },
             {
               "Title": "Segoe Fluent Icons font",
