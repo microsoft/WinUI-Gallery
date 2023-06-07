@@ -38,7 +38,7 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
                 .<LineBreak />
                 <LineBreak />
                 To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-
@@ -46,7 +46,7 @@
                 visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
                 conditions, screens, and device settings.<LineBreak />
                 <LineBreak />
-                Check out the <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
+                Check out the<Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
                 app to help you find and fix accessibility issues in your Windows apps.</Paragraph>
 
         </RichTextBlock>
@@ -64,7 +64,7 @@
             Padding="8"
             Background="{ThemeResource CardStrokeColorDefaultBrush}"
             ColumnSpacing="8"
-            CornerRadius="4"
+            CornerRadius="{StaticResource ControlCornerRadius}"
             RowSpacing="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -81,7 +81,8 @@
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
-                Margin="10,10,0,0"
+                Margin="12,0,0,0"
+                VerticalAlignment="Bottom"
                 Style="{ThemeResource BodyStrongTextBlockStyle}"
                 Text="Text color" />
 
@@ -89,35 +90,34 @@
                 x:Name="TextColorPicker"
                 Grid.Row="1"
                 Grid.Column="0"
-                Width="160"
-                Margin="10,0,0,10"
+                Margin="12,0,0,12"
                 ColorChanged="TextColorPicker_ColorChanged"
                 Color="Black" />
 
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="1"
-                Margin="10,10,0,0"
+                Margin="12,10,0,0"
                 Style="{ThemeResource BodyStrongTextBlockStyle}"
                 Text="Background color" />
             <controls1:InlineColorPicker
                 x:Name="BackgroundColorPicker"
                 Grid.Row="1"
                 Grid.Column="1"
-                Width="160"
-                Margin="10,0,0,10"
+                Margin="12,0,0,12"
                 ColorChanged="BackgroundColorPicker_ColorChanged" />
 
             <TextBlock
                 Grid.Column="3"
-                Margin="10,10,0,0"
+                Margin="12,0,0,0"
+                VerticalAlignment="Bottom"
                 Style="{ThemeResource BodyStrongTextBlockStyle}"
                 Text="Contrast Ratio" />
             <TextBlock
                 x:Name="ContrastRatioPresenter"
                 Grid.Row="1"
                 Grid.Column="3"
-                Margin="10,0,0,10"
+                Margin="12,0,0,0"
                 Style="{ThemeResource SubtitleTextBlockStyle}"
                 Text="21:1" />
 
@@ -125,8 +125,8 @@
                 Grid.Row="2"
                 Grid.ColumnSpan="4"
                 MinHeight="300"
-                Margin="10,0,10,10"
-                CornerRadius="4">
+                Margin="12,0,12,12"
+                CornerRadius="{StaticResource ControlCornerRadius}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -150,7 +150,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Grid Margin="10,0,0,0">
+                    <Grid Margin="12,0,0,0">
                         <Ellipse
                             x:Name="NormalTextCheckEllipse"
                             Width="30"
@@ -170,13 +170,13 @@
                         Text="Pass" />
                     <StackPanel
                         Grid.Column="2"
-                        Padding="0,0,10,0"
+                        Padding="0,0,12,0"
                         VerticalAlignment="Center">
                         <TextBlock FontWeight="Bold" Text="Regular text" />
                         <TextBlock Text="Requires at least 4.5:1" />
                     </StackPanel>
 
-                    <Grid Grid.Row="1" Margin="10,0,0,0">
+                    <Grid Grid.Row="1" Margin="12,0,0,0">
                         <Ellipse
                             x:Name="LargeTextCheckEllipse"
                             Width="30"
@@ -198,7 +198,7 @@
                     <StackPanel
                         Grid.Row="1"
                         Grid.Column="2"
-                        Padding="0,0,10,0"
+                        Padding="0,0,12,0"
                         VerticalAlignment="Center">
                         <TextBlock FontWeight="Bold" Text="Large text (14 pt. bold or 18pt. regular)" />
                         <TextBlock Text="Requires at least 3:1" />
@@ -246,14 +246,14 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock
-                        Padding="10,0,10,0"
+                        Padding="12,0,12,0"
                         VerticalAlignment="Center"
                         Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
                         Text="The quick brown fox jumped over the lazy fox." />
 
                     <StackPanel
                         Grid.Row="1"
-                        Padding="10,0,10,0"
+                        Padding="12,0,12,0"
                         VerticalAlignment="Center">
                         <TextBlock
                             FontSize="14"
@@ -268,7 +268,7 @@
 
                     <StackPanel
                         Grid.Row="2"
-                        Padding="10,0,10,0"
+                        Padding="12,0,12,0"
                         VerticalAlignment="Center"
                         Orientation="Horizontal"
                         Spacing="8">
