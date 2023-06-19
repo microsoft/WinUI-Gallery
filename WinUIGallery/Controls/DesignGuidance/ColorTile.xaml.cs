@@ -74,7 +74,6 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
             DataPackage package = new DataPackage();
             package.SetText(ColorBrushName);
             Clipboard.SetContent(package);
-
         }
 
         private void UserControl_PointerEntered(object sender, PointerRoutedEventArgs e)
