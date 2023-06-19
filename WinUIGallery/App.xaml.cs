@@ -79,11 +79,6 @@ namespace AppUIBasics
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
 #endif
-
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-            {
-                this.FocusVisualKind = AnalyticsInfo.VersionInfo.DeviceFamily == "Xbox" ? FocusVisualKind.Reveal : FocusVisualKind.HighVisibility;
-            }
         }
 
         public void EnableSound(bool withSpatial = false)
@@ -185,7 +180,6 @@ namespace AppUIBasics
 
                 targetPageArguments = uri;
                 string targetId = string.Empty;
-                File.WriteAllText("D:\\uri.txt", uri);
 
                 if (uri == "AllControls")
                 {
@@ -204,7 +198,6 @@ namespace AppUIBasics
                     targetPageType = typeof(ItemPage);
                 }
             }
-
 
             NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
             rootPage.Navigate(targetPageType, targetPageArguments);
