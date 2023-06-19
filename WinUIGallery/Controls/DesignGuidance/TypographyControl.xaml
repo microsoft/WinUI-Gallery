@@ -99,53 +99,50 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid
-        MinHeight="68"
-        Background="Transparent"
-        PointerEntered="Grid_PointerEntered"
-        PointerExited="Grid_PointerExited">
+    <Grid MinHeight="68" Background="Transparent">
         <Grid
             Padding="{x:Bind Padding, Mode=OneWay}"
             HorizontalAlignment="Stretch"
             Background="{x:Bind Background, Mode=OneWay}"
             CornerRadius="{ThemeResource ControlCornerRadius}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="286" />
-                <ColumnDefinition Width="156" />
-                <ColumnDefinition Width="140" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="272" />
+                <ColumnDefinition Width="144" />
+                <ColumnDefinition Width="112" />
+                <ColumnDefinition Width="164" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock
-                Margin="24,0,0,0"
+                Margin="16,0,0,0"
                 VerticalAlignment="Center"
                 Style="{x:Bind ExampleStyle}"
                 Text="{x:Bind Example}" />
             <TextBlock
                 Grid.Column="1"
                 VerticalAlignment="Center"
+                Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind VariableFont}" />
             <TextBlock
                 Grid.Column="2"
                 VerticalAlignment="Center"
+                Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind SizeLinHeight}" />
 
-            <StackPanel
+
+            <TextBlock
                 Grid.Column="3"
-                Height="48"
                 VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <TextBlock
-                    VerticalAlignment="Center"
-                    IsTextSelectionEnabled="True"
-                    Text="{x:Bind ResourceName}" />
-                <local:CopyButton
-                        x:Name="CopyToClipboardButton"
-                        Click="CopyToClipboardButton_Click"
-                        Content="&#xE8C8;"
-                        Margin="4,2,8,0"
-                        ToolTipService.ToolTip="Copy to clipboard"
-                        Visibility="Collapsed" />
-            </StackPanel>
+                FontFamily="Consolas"
+                IsTextSelectionEnabled="True"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                Text="{x:Bind ResourceName}" />
+            <local:CopyButton
+                x:Name="CopyToClipboardButton"
+                Grid.Column="4"
+                Margin="4,2,8,0"
+                Click="CopyToClipboardButton_Click"
+                Content="&#xE8C8;"
+                ToolTipService.ToolTip="Copy to clipboard" />
         </Grid>
     </Grid>
 </UserControl>
