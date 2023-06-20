@@ -193,27 +193,27 @@
                 <NavigationViewItem
                     x:Name="DesignGuidanceItem"
                     Content="Design guidance"
-                    Tag="Design_Guidance">
+                    Tag="Design Guidance">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" Content="Typography">
+                        <NavigationViewItem x:Name="TypographyItem" Content="Typography" Tag="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" Content="Icons">
+                        <NavigationViewItem x:Name="IconsItem" Content="Icons" Tag="Icons">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" Content="Colors">
+                        <NavigationViewItem x:Name="ColorsItem" Content="Colors" Tag="Colors">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
+                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility" Tag="Accessibility">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE776;" />
                             </NavigationViewItem.Icon>
