@@ -31,7 +31,7 @@
                         <NavigationView.MenuItems>
                             <NavigationViewItem Content="Home" Icon="Home"/>
                             <NavigationViewItem Content="Account" Icon="Contact"/>
-                            <NavigationViewItem x:Name="InboxPage" Content="Inbox" Icon="Mail">
+                            <NavigationViewItem x:Name="InboxPage" Content="Inbox" Icon="Mail" AutomationProperties.Name="Inbox, 5 notifications">
                                 <NavigationViewItem.InfoBadge>
                                     <InfoBadge x:Name="infoBadge1" Value="5" Opacity="{x:Bind InfoBadgeOpacity, Mode=OneWay}"/>
                                 </NavigationViewItem.InfoBadge>
@@ -55,7 +55,7 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;NavigationViewItem x:Name="InboxPage" Content="Inbox" Icon="Mail"&gt;
+&lt;NavigationViewItem x:Name="InboxPage" Content="Inbox" Icon="Mail" AutomationProperties.Name="Inbox, 5 notifications"&gt;
     &lt;NavigationViewItem.InfoBadge&gt;
         &lt;InfoBadge x:Name="infoBadge1" Value="5" Opacity="{x:Bind InfoBadgeOpacity, Mode=OneWay}"/&gt;
     &lt;/NavigationViewItem.InfoBadge&gt;
@@ -67,9 +67,11 @@
         <local:ControlExample x:Name="Example2" HeaderText="Different InfoBadge Styles" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal" contract5Present:Spacing="20" HorizontalAlignment="Center">
-                    <InfoBadge x:Name="infoBadge2" Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"/>
+                    <InfoBadge x:Name="infoBadge2" Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"
+                        AutomationProperties.Name="Warning badge" AutomationProperties.AutomationControlType="Image"/>
                     <InfoBadge x:Name="infoBadge3" Style="{StaticResource AttentionValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10"/>
-                    <InfoBadge x:Name="infoBadge4" Style="{StaticResource AttentionDotInfoBadgeStyle}" VerticalAlignment="Center"/>
+                    <InfoBadge x:Name="infoBadge4" Style="{StaticResource AttentionDotInfoBadgeStyle}" VerticalAlignment="Center"
+                        AutomationProperties.Name="Notification badge" AutomationProperties.AutomationControlType="Image"/>
                 </StackPanel>
 
             </local:ControlExample.Example>
@@ -86,9 +88,11 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}" /&gt;
+&lt;InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}"
+    AutomationProperties.Name="Warning badge" AutomationProperties.AutomationControlType="Image"/&gt;
 &lt;InfoBadge x:Name="infoBadge3" Style="{StaticResource $(Style)ValueInfoBadgeStyle}" Value="10" /&gt;
-&lt;InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}" /&gt;
+&lt;InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}"
+    AutomationProperties.Name="Notification badge" AutomationProperties.AutomationControlType="Image"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
 
