@@ -100,7 +100,7 @@
                     </labs:SettingsExpander.Items>
                 </labs:SettingsExpander>
 
-                <labs:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode">
+                <labs:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode" Visibility="Collapsed">
                     <labs:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC4F;" />
                     </labs:SettingsExpander.HeaderIcon>
