@@ -140,7 +140,9 @@ namespace AppUIBasics
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(navigationLocation.SelectedIndex != lastNavigationSelectionMode)
+            // Since setting the left mode does not look at the old setting we 
+            // need to check if this is an actual update
+            if (navigationLocation.SelectedIndex != lastNavigationSelectionMode)
             {
                 NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
                 lastNavigationSelectionMode = navigationLocation.SelectedIndex;
