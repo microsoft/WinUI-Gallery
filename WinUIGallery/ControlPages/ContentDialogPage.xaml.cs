@@ -37,6 +37,22 @@ namespace AppUIBasics.ControlPages
             dialog.Content = new ContentDialogContent();
             dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
 
+            dialog.Loaded += (s, args) =>
+            {
+                // Apply a dark overlay to the title bar of the window while the dialog is open
+                var parent = VisualTreeHelper.GetParent((DependencyObject)dialog);
+                var child = VisualTreeHelper.GetChild(parent, 0);
+                var frame = (Microsoft.UI.Xaml.Shapes.Rectangle)child;
+                frame.Margin = new Thickness(0);
+                frame.RegisterPropertyChangedCallback(
+                    FrameworkElement.MarginProperty,
+                    (DependencyObject sender, DependencyProperty dp) =>
+                    {
+                        if (dp == FrameworkElement.MarginProperty)
+                            sender.ClearValue(dp);
+                    });
+            };
+
             var result = await dialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
