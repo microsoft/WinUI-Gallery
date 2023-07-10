@@ -88,11 +88,13 @@
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}"
-    AutomationProperties.Name="Warning badge" AutomationProperties.AutomationControlType="Image"/&gt;
-&lt;InfoBadge x:Name="infoBadge3" Style="{StaticResource $(Style)ValueInfoBadgeStyle}" Value="10" /&gt;
-&lt;InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}"
-    AutomationProperties.Name="Notification badge" AutomationProperties.AutomationControlType="Image"/&gt;
+&lt;StackPanel Orientation="Horizontal" contract5Present:Spacing="20" HorizontalAlignment="Center"/&gt;
+    &lt;InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}" HorizontalAlignment="Right"
+        AutomationProperties.Name="Warning badge" AutomationProperties.AutomationControlType="Image"/&gt;
+    &lt;InfoBadge x:Name="infoBadge3" Style="{StaticResource $(Style)ValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10" /&gt;
+    &lt;InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}" VerticalAlignment="Center"
+        AutomationProperties.Name="Notification badge" AutomationProperties.AutomationControlType="Image"/&gt;
+&lt;/StackPanel&gt;
                 </x:String>
             </local:ControlExample.Xaml>
 
