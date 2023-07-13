@@ -29,10 +29,4 @@
   <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
   <!-- The UseStandalone property allows this to be overridden, in order to buildReleaseSamples to build without changing the entire repo -->
   <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
-
-  <!-- Define UNPACKAGED variable which will be used for selective compilation of unpacakged related code-->
-  <PropertyGroup Condition="'$(WindowsPackageType)' == 'None'">
-      <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
-      <DefineConstants>$(DefineConstants);UNPACKAGED</DefineConstants>
-  </PropertyGroup>
 </Project>
