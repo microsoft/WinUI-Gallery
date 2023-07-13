@@ -22,6 +22,7 @@ using Windows.UI.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using AppUIBasics.Common;
 
 namespace AppUIBasics.Controls
 {
@@ -166,10 +167,13 @@ namespace AppUIBasics.Controls
         {
             if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
+#if UNPACKAGED
+                string sampleString = await FileLoader.LoadText("ControlPagesSampleCode\\" + sourceRelativePath);
+#else
                 Uri derivedSource = GetDerivedSource(sourceRelativePath);
                 var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
                 string sampleString = await FileIO.ReadTextAsync(file);
-
+#endif
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
             else

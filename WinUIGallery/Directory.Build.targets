@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../')))"/>
-  <PropertyGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
-    <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
-    <AppxPackageName>WinUIGallery.Desktop</AppxPackageName>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
-    <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-  <Import Project="net6.override.targets" Condition="'$(MSBuildRuntimeType)' == 'Core'" />
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../')))"/>
+    <PropertyGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
+        <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
+        <AppxPackageName>WinUIGallery.Desktop</AppxPackageName>
+    </PropertyGroup>
+    <!-- Define UNPACKAGED variable which will be used for selective compilation of unpacakged related code-->
+    <PropertyGroup Condition="'$(WindowsPackageType)' == 'None'">
+        <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
+        <DefineConstants>$(DefineConstants);UNPACKAGED</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
+        <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">
+            <SubType>Designer</SubType>
+        </AppxManifest>
+    </ItemGroup>
+    <Import Project="net6.override.targets" Condition="'$(MSBuildRuntimeType)' == 'Core'" />
 </Project>
