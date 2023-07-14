@@ -6,12 +6,14 @@
     <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
     <DefineConstants>$(DefineConstants);MSIX</DefineConstants>
     <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
+    <WindowsPackageType Condition="'$(WindowsPackageType)' == ''">None</WindowsPackageType> <!-- it will create unpackaged desktop app -->
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <NoWarn>8305</NoWarn>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <EnableMsixTooling>false</EnableMsixTooling>
+    <DefineConstants Condition="'$(WindowsPackageType)' == 'None'">$(DefineConstants);UNPACKAGED</DefineConstants> <!-- will execute unpackaged app specific code -->
     <NoWarn>
       0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
       8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -218,5 +220,4 @@
       <ReferencePath Remove="@(FileToRemove)" />
     </ItemGroup>
   </Target>
-  
 </Project>
