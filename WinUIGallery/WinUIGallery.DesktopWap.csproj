@@ -13,7 +13,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <EnableMsixTooling>false</EnableMsixTooling>
-    <DefineConstants Condition="'$(WindowsPackageType)' == 'None'">$(DefineConstants);UNPACKAGED</DefineConstants> <!-- will execute unpackaged app specific code -->
+    <WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>
     <NoWarn>
       0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
       8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -36,6 +36,7 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Microsoft.WinUI" />
     <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
@@ -62,7 +63,6 @@
   <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
     <PackageReference Remove="Microsoft.WinUI" />
     <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">

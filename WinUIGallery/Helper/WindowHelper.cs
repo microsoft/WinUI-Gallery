@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using WinRT.Interop;
 
 namespace AppUIBasics.Helper
@@ -37,7 +38,8 @@ namespace AppUIBasics.Helper
 
         static public void TrackWindow(Window window)
         {
-            window.Closed += (sender,args) => {
+            window.Closed += (sender, args) =>
+            {
                 _activeWindows.Remove(window);
             };
             _activeWindows.Add(window);
@@ -65,8 +67,26 @@ namespace AppUIBasics.Helper
             return null;
         }
 
-        static public List<Window> ActiveWindows { get { return _activeWindows; }}
+        static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
         static private List<Window> _activeWindows = new List<Window>();
+
+        public static bool IsAppPackaged
+        {
+            get
+            {
+                int bufferSize = 0;
+                byte byteBuffer = 0;
+                // Try to grab the ID of the Package of the current process (if it exists)
+                uint lastError = NativeHelper.GetCurrentPackageId(ref bufferSize, out byteBuffer);
+                bool isPacakged = true;
+
+                if (lastError == NativeHelper.APPMODEL_ERROR_NO_PACKAGE)
+                {
+                    isPacakged = false;
+                }
+                return isPacakged;
+            }
+        }
     }
 }

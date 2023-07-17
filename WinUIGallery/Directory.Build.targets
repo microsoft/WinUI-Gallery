@@ -5,11 +5,6 @@
         <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
         <AppxPackageName>WinUIGallery.Desktop</AppxPackageName>
     </PropertyGroup>
-    <!-- Define UNPACKAGED variable which will be used for selective compilation of unpacakged related code-->
-    <PropertyGroup Condition="'$(WindowsPackageType)' == 'None'">
-        <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
-        <DefineConstants>$(DefineConstants);UNPACKAGED</DefineConstants>
-    </PropertyGroup>
     <ItemGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
         <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">
             <SubType>Designer</SubType>

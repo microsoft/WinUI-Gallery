@@ -167,13 +167,17 @@ namespace AppUIBasics.Controls
         {
             if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
-#if UNPACKAGED
-                string sampleString = await FileLoader.LoadText("ControlPagesSampleCode\\" + sourceRelativePath);
-#else
-                Uri derivedSource = GetDerivedSource(sourceRelativePath);
-                var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
-                string sampleString = await FileIO.ReadTextAsync(file);
-#endif
+                string sampleString = null;
+                if (!WindowHelper.IsAppPackaged)
+                {
+                    sampleString = await FileLoader.LoadText("ControlPagesSampleCode\\" + sourceRelativePath);
+                }
+                else
+                {
+                    Uri derivedSource = GetDerivedSource(sourceRelativePath);
+                    var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
+                    sampleString = await FileIO.ReadTextAsync(file);
+                }
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
             else
