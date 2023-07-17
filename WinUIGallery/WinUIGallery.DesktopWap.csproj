@@ -66,7 +66,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
