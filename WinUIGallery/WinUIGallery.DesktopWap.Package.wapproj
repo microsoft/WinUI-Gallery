@@ -45,7 +45,6 @@
     <EntryPointProjectUniqueName>WinUIGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
     <WindowsPackageType>Desktop</WindowsPackageType> <!-- it will create packaged desktop app -->
-    <WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>

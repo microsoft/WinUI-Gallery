@@ -77,15 +77,14 @@ namespace AppUIBasics.Helper
             {
                 int bufferSize = 0;
                 byte byteBuffer = 0;
-                // Try to grab the ID of the Package of the current process (if it exists)
                 uint lastError = NativeHelper.GetCurrentPackageId(ref bufferSize, out byteBuffer);
-                bool isPacakged = true;
+                bool isPackaged = true;
 
                 if (lastError == NativeHelper.APPMODEL_ERROR_NO_PACKAGE)
                 {
-                    isPacakged = false;
+                    isPackaged = false;
                 }
-                return isPacakged;
+                return isPackaged;
             }
         }
     }

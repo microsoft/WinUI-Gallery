@@ -13,7 +13,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <EnableMsixTooling>false</EnableMsixTooling>
-    <WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>
     <NoWarn>
       0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
       8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
