@@ -64,7 +64,7 @@ namespace AppUIBasics.Helper
                     }
                 }
 
-                if (WindowHelper.IsAppPackaged)
+                if (NativeHelper.IsAppPackaged)
                 {
                     ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
                 }
@@ -73,7 +73,7 @@ namespace AppUIBasics.Helper
 
         public static void Initialize()
         {
-            if (WindowHelper.IsAppPackaged)
+            if (NativeHelper.IsAppPackaged)
             {
                 // Save reference as this might be null when the user is in another app
                 CurrentApplicationWindow = App.StartupWindow;

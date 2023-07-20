@@ -13,14 +13,7 @@ namespace AppUIBasics.Helper
     {
         static UIHelper()
         {
-            if(!WindowHelper.IsAppPackaged)
-            {
-                ScreenshotStorageFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
-            }
-            else
-            {
-                ScreenshotStorageFolder = ApplicationData.Current.LocalFolder;
-            }
+            ScreenshotStorageFolder = WindowHelper.GetAppLocalFolder();
         }
 
         public static bool IsScreenshotMode { get; set; }

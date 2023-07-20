@@ -18,7 +18,7 @@ namespace AppUIBasics.Helper
         {
             get
             {
-                if (WindowHelper.IsAppPackaged)
+                if (NativeHelper.IsAppPackaged)
                 {
                     object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
                     if (valueFromSettings == null)
@@ -36,7 +36,7 @@ namespace AppUIBasics.Helper
 
             set
             {
-                if (WindowHelper.IsAppPackaged)
+                if (NativeHelper.IsAppPackaged)
                 {
                     ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
 

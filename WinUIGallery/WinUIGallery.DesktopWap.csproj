@@ -6,7 +6,6 @@
     <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
     <DefineConstants>$(DefineConstants);MSIX</DefineConstants>
     <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
-    <WindowsPackageType Condition="'$(WindowsPackageType)' == ''">None</WindowsPackageType> <!-- it will create unpackaged desktop app -->
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <NoWarn>8305</NoWarn>
@@ -65,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>

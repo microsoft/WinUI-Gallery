@@ -13,7 +13,7 @@ namespace AppUIBasics.Common
         public static async Task<string> LoadText(string relativeFilePath)
         {
             StorageFile file = null;
-            if (!WindowHelper.IsAppPackaged)
+            if (!NativeHelper.IsAppPackaged)
             {
                 var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
                 file = await StorageFile.GetFileFromPathAsync(sourcePath);

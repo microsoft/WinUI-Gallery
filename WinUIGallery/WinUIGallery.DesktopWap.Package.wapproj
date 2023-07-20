@@ -44,7 +44,6 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>WinUIGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
-    <WindowsPackageType>Desktop</WindowsPackageType> <!-- it will create packaged desktop app -->
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
@@ -92,12 +91,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(WindowsAppSdkPackageVersion)]" GeneratePathProperty="true">
+      <IncludeAssets>build</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="[$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)]">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <!-- WinUI 3 NuGet-specific logic-->

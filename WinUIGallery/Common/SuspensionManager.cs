@@ -76,16 +76,7 @@ namespace AppUIBasics.Common
                 serializer.WriteObject(sessionData, _sessionState);
 
                 // Get an output stream for the SessionState file and write the state asynchronously
-                StorageFolder localFolder = null;
-                if (WindowHelper.IsAppPackaged)
-                {
-                    localFolder = ApplicationData.Current.LocalFolder;
-                }
-                else
-                {
-                    localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
-                }
-
+                StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
                 StorageFile file = await localFolder.CreateFileAsync(sessionStateFilename, CreationCollisionOption.ReplaceExisting);
                 using (Stream fileStream = await file.OpenStreamForWriteAsync())
                 {
@@ -115,15 +106,7 @@ namespace AppUIBasics.Common
             try
             {
                 // Get the input stream for the SessionState file
-                StorageFolder localFolder = null;
-                if (WindowHelper.IsAppPackaged)
-                {
-                    localFolder = ApplicationData.Current.LocalFolder;
-                }
-                else
-                {
-                    localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
-                }
+                StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
 
                 StorageFile file = await localFolder.GetFileAsync(sessionStateFilename);
                 using (IInputStream inStream = await file.OpenSequentialReadAsync())

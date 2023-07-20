@@ -168,7 +168,7 @@ namespace AppUIBasics.Controls
             if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
                 string sampleString = null;
-                if (!WindowHelper.IsAppPackaged)
+                if (!NativeHelper.IsAppPackaged)
                 {
                     sampleString = await FileLoader.LoadText("ControlPagesSampleCode\\" + sourceRelativePath);
                 }

@@ -15,6 +15,8 @@ using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Windows.Storage;
 using WinRT.Interop;
 
 namespace AppUIBasics.Helper
@@ -71,21 +73,19 @@ namespace AppUIBasics.Helper
 
         static private List<Window> _activeWindows = new List<Window>();
 
-        public static bool IsAppPackaged
+        static public StorageFolder GetAppLocalFolder()
         {
-            get
+            StorageFolder localFolder;
+            if (!NativeHelper.IsAppPackaged)
             {
-                int bufferSize = 0;
-                byte byteBuffer = 0;
-                uint lastError = NativeHelper.GetCurrentPackageId(ref bufferSize, out byteBuffer);
-                bool isPackaged = true;
-
-                if (lastError == NativeHelper.APPMODEL_ERROR_NO_PACKAGE)
-                {
-                    isPackaged = false;
-                }
-                return isPackaged;
+                localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
             }
+            else
+            {
+                localFolder = ApplicationData.Current.LocalFolder;
+            }
+            return localFolder;
         }
+
     }
 }

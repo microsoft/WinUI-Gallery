@@ -13,7 +13,7 @@ namespace AppUIBasics.Helper
 
         public static bool IsLeftMode()
         {
-            if (WindowHelper.IsAppPackaged)
+            if (NativeHelper.IsAppPackaged)
             {
                 var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
                 if (valueFromSettings == null)
@@ -32,7 +32,7 @@ namespace AppUIBasics.Helper
         public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
         {
             UpdateNavigationViewForElement(isLeftMode, element);
-            if (WindowHelper.IsAppPackaged)
+            if (NativeHelper.IsAppPackaged)
             {
                 ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
             }
