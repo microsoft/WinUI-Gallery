@@ -57,6 +57,7 @@
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|ARM64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+    <WindowsPackageType>MSIX</WindowsPackageType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -77,10 +78,10 @@
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
+    <AppxManifest Include="Package.WAP.MSIX.appxmanifest" Condition="!('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'MSIX'">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug'">
+    <AppxManifest Include="Package.WAP.MSIX.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug' And '$(WindowsPackageType)' == 'MSIX'">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>

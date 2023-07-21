@@ -4,7 +4,6 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
-    <DefineConstants>$(DefineConstants);MSIX</DefineConstants>
     <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
@@ -20,10 +19,20 @@
       WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
     </MSBuildWarningsAsMessages>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    <WindowsPackageType Condition="'$(WindowsPackageType)'==''">None</WindowsPackageType>
+    <DefineConstants Condition="'$(WindowsPackageType)'=='MSIX'">$(DefineConstants);MSIX</DefineConstants>
   </PropertyGroup>
 
-  <Import Project="Common.props" />
+  <ItemGroup>
+    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'None'">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'None'">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
 
+  <Import Project="Common.props" />
   <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
