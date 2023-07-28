@@ -36,6 +36,7 @@
   </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <Import Project="common.props" />
+
   <PropertyGroup>
     <ProjectGuid>4c7b20d7-5f5c-440e-8da3-b19a328cc8bd</ProjectGuid>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
@@ -44,6 +45,8 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>WinUIGallery.DesktopWap.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
+    <WindowsPackageType>MSIX</WindowsPackageType>
+    <DefineConstants>$(DefineConstants);MSIX;</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
@@ -57,7 +60,6 @@
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|ARM64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
-    <WindowsPackageType>MSIX</WindowsPackageType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -78,21 +80,22 @@
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.WAP.MSIX.appxmanifest" Condition="!('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'MSIX'">
+    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <AppxManifest Include="Package.WAP.MSIX.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug' And '$(WindowsPackageType)' == 'MSIX'">
+    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="('$(Configuration)' == 'Debug')">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="WinUIGallery.DesktopWap.csproj">
-      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
+      <!-- <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties> -->
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
+      <!-- <WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize> -->
     </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(WindowsAppSdkPackageVersion)]" GeneratePathProperty="true">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" GeneratePathProperty="true">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="[$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)]">

@@ -20,14 +20,16 @@
     </MSBuildWarningsAsMessages>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <WindowsPackageType Condition="'$(WindowsPackageType)'==''">None</WindowsPackageType>
-    <DefineConstants Condition="'$(WindowsPackageType)'=='MSIX'">$(DefineConstants);MSIX</DefineConstants>
+    <!-- <WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>true</WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp> -->
+    <!-- <WindowsAppSdkBootstrapInitialize Condition="'$(WindowsPackageType)' == 'MSIX'">false</WindowsAppSdkBootstrapInitialize> -->
+
   </PropertyGroup>
 
   <ItemGroup>
-    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'None'">
+    <AppxManifest Include="Package.WAP.appxmanifest" Condition="!('$(Configuration)' == 'Debug')">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="('$(Configuration)' == 'Debug') And '$(WindowsPackageType)' == 'None'">
+    <AppxManifest Include="Package.WAP.Dev.appxmanifest" Condition="('$(Configuration)' == 'Debug')">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
@@ -73,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
