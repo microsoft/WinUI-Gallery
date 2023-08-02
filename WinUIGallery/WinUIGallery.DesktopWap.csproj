@@ -19,18 +19,18 @@
       WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
     </MSBuildWarningsAsMessages>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-    <Configurations>Debug;Release;Debug-Packaged</Configurations>
+    <Configurations>Debug;Release;Debug-Unpackaged;Release-Unpackaged</Configurations>
   </PropertyGroup>
 
-<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+<PropertyGroup Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Release-Unpackaged'">
     <EnableMsixTooling>false</EnableMsixTooling>
     <WindowsPackageType>None</WindowsPackageType>
-      <WindowsAppSdkEnableMdd>true</WindowsAppSdkEnableMdd>
-      <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
+    <WindowsAppSdkEnableMdd>true</WindowsAppSdkEnableMdd>
+    <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
 </PropertyGroup>
 
 
-<PropertyGroup Condition="'$(Configuration)'=='Debug-Packaged'">
+<PropertyGroup Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Release'">
     <WindowsPackageType>MSIX</WindowsPackageType>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
     <DefineConstants>$(DefineConstants);MSIX;</DefineConstants>
