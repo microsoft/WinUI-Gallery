@@ -18,8 +18,6 @@
          are erroneously included.  Explicitly exclude them here
     -->
     <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <!-- Where to place the files generated from CSWinRT from WinUIGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
   </PropertyGroup>

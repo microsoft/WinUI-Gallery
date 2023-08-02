@@ -5,11 +5,9 @@
         <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
     </PropertyGroup>
 
-    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
-
-    <!-- When building standalone, WinUI Gallery needs to do some extra things that are done implicitly in the WinUI repo. -->
-    <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
-        <!-- We want to binplace the WinUI Gallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
+  <!-- When building standalone, WinUI Gallery needs to do some extra things that are done implicitly in the WinUI repo.-->
+  <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+    <!-- We want to binplace the WinUI Gallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
          overwrite each other. -->
         <BinplaceSymbolsToSubdir>true</BinplaceSymbolsToSubdir>
     </PropertyGroup>
