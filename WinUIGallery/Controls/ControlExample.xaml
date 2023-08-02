@@ -6,7 +6,7 @@
     xmlns:controls="using:AppUIBasics.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:controls1="using:WinUIGallery.Controls"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"

@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
-    <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
-  </PropertyGroup>
-    
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
+    <PropertyGroup>
+        <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
+        <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
+    </PropertyGroup>
 
-  <!-- When building standalone, WinUI Gallery needs to do some extra things that are done implicitly in the WinUI repo.
-       Determine if building standalone by conditioning on the MuxCustomBuildTasksPackageVersion property, which only exists in the WinUI repo -->
-  <PropertyGroup Condition="'$(MuxCustomBuildTasksPackageVersion)' != ''">
-    <IsInWinUIRepo>true</IsInWinUIRepo>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
 
-    <!-- We want to binplace the WinUI Gallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
+    <!-- When building standalone, WinUI Gallery needs to do some extra things that are done implicitly in the WinUI repo. -->
+    <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+        <!-- We want to binplace the WinUI Gallery pdb to a subdirectory of Symbols\Test so that the UWP and Desktop versions don't 
          overwrite each other. -->
-    <BinplaceSymbolsToSubdir>true</BinplaceSymbolsToSubdir>
-  </PropertyGroup>
+        <BinplaceSymbolsToSubdir>true</BinplaceSymbolsToSubdir>
+    </PropertyGroup>
 
     <!--
          When building in the WinUI repo, we likely only have one current flavor built, either x86 or x64, and won't have locally built bits to support both.
          In that case, we only build an appx for the current flavor.  If we're not in the WinUI repo or specify we have all flavors built with BuildAllAppFlavors,
          we will build both the x86 and x64 flavors into the same appx.
     -->
-  <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true' AND '$(BuildAllAppFlavors)' == ''">
-    <BuildAllAppFlavors>true</BuildAllAppFlavors>
-  </PropertyGroup>
-    
-  <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
-  <!-- The UseStandalone property allows this to be overridden, in order to buildReleaseSamples to build without changing the entire repo -->
-  <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
+    <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true' AND '$(BuildAllAppFlavors)' == ''">
+        <BuildAllAppFlavors>true</BuildAllAppFlavors>
+    </PropertyGroup>
+
+    <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
+    <!-- The UseStandalone property allows this to be overridden, in order to buildReleaseSamples to build without changing the entire repo -->
+    <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
 </Project>

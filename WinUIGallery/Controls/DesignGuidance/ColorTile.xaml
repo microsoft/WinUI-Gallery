@@ -2,11 +2,11 @@
 <!--  Licensed under the MIT License.  -->
 
 <UserControl
-    x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorTile"
+    x:Class="WinUIGallery.Controls.DesignGuidance.ColorTile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
+    xmlns:local="using:WinUIGallery.Controls.DesignGuidance"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     PointerEntered="UserControl_PointerEntered"
     PointerExited="UserControl_PointerExited"

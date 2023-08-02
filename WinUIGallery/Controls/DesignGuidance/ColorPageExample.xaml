@@ -2,7 +2,7 @@
 <!--  Licensed under the MIT License.  -->
 
 <UserControl
-    x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorPageExample"
+    x:Class="WinUIGallery.Controls.DesignGuidance.ColorPageExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

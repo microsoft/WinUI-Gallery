@@ -16,7 +16,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
-using WinUIGallery.DesktopWap.Helper;
+using WinUIGallery.Helper;
 
 namespace AppUIBasics
 {

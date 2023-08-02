@@ -24,7 +24,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.DesktopWap.Controls;
+using WinUIGallery.Controls;
 
 namespace AppUIBasics
 {

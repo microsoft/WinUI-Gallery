@@ -17,7 +17,7 @@ using WinRT;
 using System.Runtime.InteropServices;
 using AppUIBasics;
 
-namespace WinUIGallery.DesktopWap.Helper
+namespace WinUIGallery.Helper
 {
     internal class TitleBarHelper
     {

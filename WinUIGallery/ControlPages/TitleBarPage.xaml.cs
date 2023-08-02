@@ -12,7 +12,7 @@ using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using WinUIGallery.DesktopWap.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 

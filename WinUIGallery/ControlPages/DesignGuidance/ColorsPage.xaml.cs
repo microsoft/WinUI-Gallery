@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
+using WinUIGallery.Controls.DesignGuidance.ColorSections;
 
 namespace AppUIBasics.ControlPages
 {

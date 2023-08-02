@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using AppUIBasics.Common;
 
-namespace WinUIGallery.DesktopWap.DataModel
+namespace WinUIGallery.DataModel
 {
     public class IconData
     {

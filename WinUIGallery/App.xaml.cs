@@ -23,7 +23,7 @@ using Windows.System.Profile;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.DesktopWap.DataModel;
+using WinUIGallery.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
 
 namespace AppUIBasics

@@ -25,7 +25,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
-using WinUIGallery.DesktopWap.Helper;
+using WinUIGallery.Helper;
 
 namespace AppUIBasics
 {

@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
+namespace WinUIGallery.Controls.DesignGuidance
 {
     public sealed partial class ColorTile : UserControl
     {

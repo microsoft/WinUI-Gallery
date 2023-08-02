@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.DesktopWap.Controls;
+using WinUIGallery.Controls;
 
 namespace AppUIBasics.ControlPages
 {

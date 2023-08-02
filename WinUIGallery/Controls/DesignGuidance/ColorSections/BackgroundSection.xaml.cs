@@ -3,7 +3,7 @@
 
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections
+namespace WinUIGallery.Controls.DesignGuidance.ColorSections
 {
     public sealed partial class BackgroundSection : Page
     {
