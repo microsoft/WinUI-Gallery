@@ -22,6 +22,9 @@ using Windows.UI.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using AppUIBasics.Common;
+using System.Reflection;
+using System.IO;
 
 namespace AppUIBasics.Controls
 {
@@ -125,6 +128,18 @@ namespace AppUIBasics.Controls
             return derivedSource;
         }
 
+        private string GetDerivedSourceUnpackaged(Uri rawSource)
+        {
+            // Get the full path of the source string
+            string concatString = "";
+            for (int i = 2; i < rawSource.Segments.Length; i++)
+            {
+                concatString += rawSource.Segments[i];
+            }
+            string derviedSourceString = "ControlPagesSampleCode\\" + concatString;
+            return derviedSourceString;
+        }
+
         private void GenerateSyntaxHighlightedContent()
         {
             if (!string.IsNullOrEmpty(Code))
@@ -141,9 +156,22 @@ namespace AppUIBasics.Controls
         {
             if (source != null && source.AbsolutePath.EndsWith("txt"))
             {
-                Uri derivedSource = GetDerivedSource(source);
-                var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
-                string sampleString = await FileIO.ReadTextAsync(file);
+
+                string sampleString = null;
+                StorageFile file = null;
+                if (!NativeHelper.IsAppPackaged)
+                {
+                    var relativePath = GetDerivedSourceUnpackaged(source);
+                    var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativePath));
+                    file = await StorageFile.GetFileFromPathAsync(sourcePath);
+                }
+                else
+                {
+                    Uri derivedSource = GetDerivedSource(source);
+                    file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
+                }
+
+                sampleString = await FileIO.ReadTextAsync(file);
 
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }

@@ -1,95 +1,133 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
+    <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
 
-  <PropertyGroup>
-    <!-- Set WindowsPackageType to 'None' to build XCG as an unpackaged application - use the "WinUIGallery Unpackaged" profile to launch it -->
-    <!-- Set WindowsPackageType to 'MSIX' to build XCG as an packaged application - use the "WinUIGallery Packaged" profile to launch it -->
-    <WindowsPackageType Condition="'$(WindowsPackageType)'==''">MSIX</WindowsPackageType>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <DefineConstants>MSIX</DefineConstants>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x86;x64;ARM64</Platforms>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <EnableMsixTooling>true</EnableMsixTooling>
-    <NoWarn>
-      0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
-      8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
-    </NoWarn>
-    <MSBuildWarningsAsMessages>
-      WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
-    </MSBuildWarningsAsMessages>
-    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <UseWinUI>true</UseWinUI>
+        <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <Platforms>x86;x64;ARM64</Platforms>
+        <NoWarn>8305</NoWarn>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+        <NoWarn>
+            0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
+            8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
+        </NoWarn>
+        <MSBuildWarningsAsMessages>
+            WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
+        </MSBuildWarningsAsMessages>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+        <Configurations>Debug;Release;Debug-Unpackaged;Release-Unpackaged</Configurations>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(WindowsPackageType)'=='None'">
-      <WindowsAppSdkEnableMdd>true</WindowsAppSdkEnableMdd>
-      <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
-      <DefineConstants>$(DefineConstants);UNPACKAGED</DefineConstants>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Release-Unpackaged'">
+        <EnableMsixTooling>false</EnableMsixTooling>
+        <WindowsPackageType>None</WindowsPackageType>
+        <WindowsAppSdkEnableMdd>true</WindowsAppSdkEnableMdd>
+        <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(WindowsPackageType)'=='MSIX'">
-      <DefineConstants>MSIX</DefineConstants>
-  </PropertyGroup>
 
-  <!-- AppInstaller settings when building in the WinUI repo -->
-  <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
-    <GenerateAppInstallerFile>true</GenerateAppInstallerFile>
-    <!-- URI must be absolute so this is really only useful for testing a locally produced
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Release'">
+        <WindowsPackageType>MSIX</WindowsPackageType>
+        <AppxBundleNameForOutput>WinUIGallery</AppxBundleNameForOutput>
+        <EnableMsixTooling>true</EnableMsixTooling>
+        <SDKIdentifier>Windows</SDKIdentifier>
+        <DefaultLanguage>en-US</DefaultLanguage>
+        <AppxPackage>true</AppxPackage>
+        <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+        <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+        <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+        <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+        <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+        <GenerateTestArtifacts>True</GenerateTestArtifacts>
+        <AppxBundlePlatforms>$(Platform)</AppxBundlePlatforms>
+        <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|ARM64</AppxBundlePlatforms>
+        <AppxBundle>Always</AppxBundle>
+        <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+        <SDKVersion>10.0</SDKVersion>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AppxManifest Include="Package.appxmanifest" Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">
+            <SubType>Designer</SubType>
+        </AppxManifest>
+        <AppxManifest Include="Package.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">
+            <SubType>Designer</SubType>
+        </AppxManifest>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+        <GenerateAppInstallerFile>true</GenerateAppInstallerFile>
+        <!-- URI must be absolute so this is really only useful for testing a locally produced
          AppInstaller. -->
-    <AppInstallerUri>$(AppxPackageDir)</AppInstallerUri>
-    <!-- False until https://task.ms/31482969 is implemented -->
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
+        <AppInstallerUri>$(AppxPackageDir)</AppInstallerUri>
+        <!-- False until https://task.ms/31482969 is implemented -->
+        <AppxBundle>Never</AppxBundle>
+    </PropertyGroup>
 
-  <Import Project="Common.props" />
 
-  <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
+
+    <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+    <!-- <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+        <ProjectCapability Include="Msix" />
+    </ItemGroup> -->
+
+
+    <Import Project="Common.props" />
+    <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
-    <PackageReference Include="ColorCode.Core" />
-    <PackageReference Include="Microsoft.Graphics.Win2D" />
-    <PackageReference Include="Microsoft.Windows.CsWinRT" />
-    <Manifest Include="$(ApplicationManifest)" />
+    <ItemGroup>
+        <PackageReference Include="Microsoft.WindowsAppSDK" />
+        <PackageReference Include="ColorCode.Core" />
+        <PackageReference Include="Microsoft.Graphics.Win2D" />
+        <PackageReference Include="Microsoft.Windows.CsWinRT" />
+        <Manifest Include="$(ApplicationManifest)" />
 
-    <!--
+        <!--
     System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
     CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
     addresses those vulnerabilites, we need to pull it in ourselves.
     -->
-    <PackageReference Include="System.Private.Uri" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
-    <PackageReference Remove="ColorCode.Core" />
-    <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-    <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
-    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
-    <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
-    <PackageReference Update="System.Private.Uri" Version="4.3.2" />
-  </ItemGroup>
+        <PackageReference Include="System.Private.Uri" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Remove="ColorCode.Core" />
+        <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
+        <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
+        <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
+        
+        <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
+        <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+        <PackageReference Update="System.Private.Uri" Version="4.3.2" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="CollectionsInterop.cs" />
-    <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-    <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
-    <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
 
-    <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
-    <Page Remove="ControlPages\InputValidationPage.xaml" />
+    <ItemGroup>
 
-    <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
-    <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
-    <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="@(Content)" />
-  </ItemGroup>
-  <Import Project="ContentIncludes.props" />
+        <Compile Remove="CollectionsInterop.cs" />
+        <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
+        <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
+        <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
 
+        <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
+        <Page Remove="ControlPages\InputValidationPage.xaml" />
+
+        <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
+        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Remove="@(Content)" />
+    </ItemGroup>
+    <Import Project="ContentIncludes.props" />
 </Project>

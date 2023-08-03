@@ -27,7 +27,7 @@
 
     <StackPanel>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
-                              CSharpSource="Window\TitleBar\TitleBarSample1.txt">
+                              CSharpSource="Window/TitleBar/TitleBarSample1.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
@@ -112,7 +112,7 @@
 
         </local:ControlExample>
         <local:ControlExample HeaderText="Fallback titlebar when no user defined titlebar is set"
-                              CSharpSource="Window\TitleBar\TitleBarSample2.txt">
+                              CSharpSource="Window/TitleBar/TitleBarSample2.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">

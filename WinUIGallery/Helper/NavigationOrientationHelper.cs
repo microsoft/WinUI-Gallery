@@ -16,34 +16,37 @@ namespace AppUIBasics.Helper
     {
 
         private const string IsLeftModeKey = "NavigationIsOnLeftMode";
-
-#if UNPACKAGED
         private static bool _isLeftMode = true;
-#endif
 
         public static bool IsLeftMode()
         {
-#if !UNPACKAGED
-            var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
-            if(valueFromSettings == null)
+            if (NativeHelper.IsAppPackaged)
             {
-                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
-                valueFromSettings = true;
+                var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
+                if (valueFromSettings == null)
+                {
+                    ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
+                    valueFromSettings = true;
+                }
+                return (bool)valueFromSettings;
             }
-            return (bool)valueFromSettings;
-#else
-            return _isLeftMode;
-#endif
+            else
+            {
+                return _isLeftMode;
+            }
         }
 
         public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
         {
             UpdateTitleBarForElement(isLeftMode, element);
-#if !UNPACKAGED
-            ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
-#else
-            _isLeftMode = isLeftMode;
-#endif
+            if (NativeHelper.IsAppPackaged)
+            {
+                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
+            }
+            else
+            {
+                _isLeftMode = isLeftMode;
+            }
         }
 
         public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
@@ -60,5 +63,6 @@ namespace AppUIBasics.Helper
                 NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
             }
         }
+        
     }
 }

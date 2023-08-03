@@ -1,25 +1,24 @@
+using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
 using Windows.Storage;
-
-#if UNPACKAGED
-using System;
-using System.Threading.Tasks;
-#endif
 
 namespace AppUIBasics.Helper
 {
     public static class UIHelper
     {
-        public static bool IsScreenshotMode { get; set; }
-#if UNPACKAGED
-        public static StorageFolder ScreenshotStorageFolder { get; set; } = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
-#else
-        public static StorageFolder ScreenshotStorageFolder { get; set; } = ApplicationData.Current.LocalFolder;
-#endif
+        static UIHelper()
+        {
+            ScreenshotStorageFolder = WindowHelper.GetAppLocalFolder();
+        }
 
+        public static bool IsScreenshotMode { get; set; }
+
+        public static StorageFolder ScreenshotStorageFolder { get; set; }
         public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
         {
             return start.GetDescendants().OfType<T>();
@@ -49,6 +48,27 @@ namespace AppUIBasics.Helper
                     queue.Enqueue(child);
                 }
             }
+        }
+
+        static public UIElement FindElementByName(UIElement element, string name)
+        {
+            if (element.XamlRoot != null && element.XamlRoot.Content != null)
+            {
+                var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
+                if (ele != null)
+                {
+                    return ele as UIElement;
+                }
+            }
+            return null;
+        }
+
+        // Confirmation of Action
+        static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
+        {
+            var peer = FrameworkElementAutomationPeer.FromElement(ue);
+            peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
+                                        AutomationNotificationProcessing.ImportantMostRecent, annoucement, activityID);
         }
     }
 }

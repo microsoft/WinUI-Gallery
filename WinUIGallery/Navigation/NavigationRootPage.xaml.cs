@@ -202,7 +202,7 @@ namespace AppUIBasics
 
                 foreach (var item in group.Items)
                 {
-                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item};
+                    var itemInGroup = new Microsoft.UI.Xaml.Controls.NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
 
                     var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} Sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                     itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
@@ -252,10 +252,10 @@ namespace AppUIBasics
         private static IconElement GetIcon(string imagePath)
         {
             return imagePath.ToLowerInvariant().EndsWith(".png") ?
-                        (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute) , ShowAsMonochrome = false} :
+                        (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
                         (IconElement)new FontIcon()
                         {
-                           // FontFamily = new FontFamily("Segoe MDL2 Assets"),
+                            // FontFamily = new FontFamily("Segoe MDL2 Assets"),
                             Glyph = imagePath
                         };
         }
@@ -620,7 +620,7 @@ namespace AppUIBasics
 
         private void GoBackInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            if(this.rootFrame.CanGoBack)
+            if (this.rootFrame.CanGoBack)
             {
                 this.rootFrame.GoBack();
             }
@@ -644,9 +644,9 @@ namespace AppUIBasics
                 dispatcherQueue.TryEnqueue(
                     DispatcherQueuePriority.Low,
                     new DispatcherQueueHandler(() =>
-                {
-                    DebuggerAttachedCheckBox.IsChecked = true;
-                }));
+                    {
+                        DebuggerAttachedCheckBox.IsChecked = true;
+                    }));
             });
 
             var asyncAction = Windows.System.Threading.ThreadPool.RunAsync(workItem);

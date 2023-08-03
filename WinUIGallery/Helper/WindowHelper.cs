@@ -9,7 +9,10 @@
 //*********************************************************
 
 using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace AppUIBasics.Helper
 {
@@ -66,5 +69,19 @@ namespace AppUIBasics.Helper
         static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
         static private List<Window> _activeWindows = new List<Window>();
+
+        static public StorageFolder GetAppLocalFolder()
+        {
+            StorageFolder localFolder;
+            if (!NativeHelper.IsAppPackaged)
+            {
+                localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
+            }
+            else
+            {
+                localFolder = ApplicationData.Current.LocalFolder;
+            }
+            return localFolder;
+        }
     }
 }
