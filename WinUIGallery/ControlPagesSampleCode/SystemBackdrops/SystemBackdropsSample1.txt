@@ -28,10 +28,10 @@ bool TrySetMicaBackdrop()
         // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
         m_micaController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
         m_micaController.SetSystemBackdropConfiguration(m_configurationSource);
-        return true; // succeeded
+        return true; // Succeeded.
     }
 
-    return false; // Mica is not supported on this system
+    return false; // Mica is not supported on this system.
 }
 
 private void Window_Activated(object sender, WindowActivatedEventArgs args)

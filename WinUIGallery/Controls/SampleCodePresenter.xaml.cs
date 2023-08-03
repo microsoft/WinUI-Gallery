@@ -25,6 +25,14 @@ using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.Controls
 {
+
+    public enum SampleCodePresenterType
+    {
+        XAML,
+        CSharp,
+        Inline
+    }
+
     public sealed partial class SampleCodePresenter : UserControl
     {
         public static readonly DependencyProperty CodeProperty = DependencyProperty.Register("Code", typeof(string), typeof(SampleCodePresenter), new PropertyMetadata("", OnDependencyPropertyChanged));
@@ -35,17 +43,17 @@ namespace AppUIBasics.Controls
         }
 
         public static readonly DependencyProperty CodeSourceFileProperty = DependencyProperty.Register("CodeSourceFile", typeof(object), typeof(SampleCodePresenter), new PropertyMetadata(null, OnDependencyPropertyChanged));
-        public Uri CodeSourceFile
+        public string CodeSourceFile
         {
-            get { return (Uri)GetValue(CodeSourceFileProperty); }
+            get { return (string)GetValue(CodeSourceFileProperty); }
             set { SetValue(CodeSourceFileProperty, value); }
         }
 
-        public static readonly DependencyProperty IsCSharpSampleProperty = DependencyProperty.Register("IsCSharpSample", typeof(bool), typeof(SampleCodePresenter), new PropertyMetadata(false));
-        public bool IsCSharpSample
+        public static readonly DependencyProperty SampleTypeProperty = DependencyProperty.Register("SampleType", typeof(SampleCodePresenterType), typeof(SampleCodePresenter), new PropertyMetadata(SampleCodePresenterType.XAML));
+        public SampleCodePresenterType SampleType
         {
-            get { return (bool)GetValue(IsCSharpSampleProperty); }
-            set { SetValue(IsCSharpSampleProperty, value); }
+            get { return (SampleCodePresenterType)GetValue(SampleTypeProperty); }
+            set { SetValue(SampleTypeProperty, value); }
         }
 
         public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(IList<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
@@ -70,6 +78,7 @@ namespace AppUIBasics.Controls
             if (target is SampleCodePresenter presenter)
             {
                 presenter.ReevaluateVisibility();
+                presenter.GenerateSyntaxHighlightedContent();
             }
         }
 
@@ -88,10 +97,26 @@ namespace AppUIBasics.Controls
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
             ReevaluateVisibility();
-            VisualStateManager.GoToState(this, IsCSharpSample ? "CSharpSample" : "XAMLSample", false);
-            foreach (var substitution in Substitutions)
+            VisualStateManager.GoToState(this, GetSampleLanguageVisualState(), false);
+            if (Substitutions != null)
             {
-                substitution.ValueChanged += OnValueChanged;
+                foreach (var substitution in Substitutions)
+                {
+                    substitution.ValueChanged += OnValueChanged;
+                }
+            }
+        }
+
+        private string GetSampleLanguageVisualState()
+        {
+            switch (SampleType)
+            {
+                case SampleCodePresenterType.XAML:
+                    return "XAMLSample";
+                case SampleCodePresenterType.CSharp:
+                    return "CSharpSample";
+                default:
+                    return "InlineSample";
             }
         }
 
@@ -112,36 +137,36 @@ namespace AppUIBasics.Controls
             GenerateSyntaxHighlightedContent();
         }
 
-        private Uri GetDerivedSource(Uri rawSource)
+        private Uri GetDerivedSource(string sourceRelativePath)
         {
-            // Get the full path of the source string
-            string concatString = "";
-            for (int i = 2; i < rawSource.Segments.Length; i++)
-            {
-                concatString += rawSource.Segments[i];
-            }
-            Uri derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), concatString);
+            Uri derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), sourceRelativePath);
 
             return derivedSource;
         }
 
         private void GenerateSyntaxHighlightedContent()
         {
+            var language = SampleType switch
+            {
+                SampleCodePresenterType.XAML => Languages.Xml,
+                SampleCodePresenterType.CSharp => Languages.CSharp,
+                _ => Languages.Markdown
+            };
             if (!string.IsNullOrEmpty(Code))
             {
-                FormatAndRenderSampleFromString(Code, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
+                FormatAndRenderSampleFromString(Code, CodePresenter, language);
             }
             else
             {
-                FormatAndRenderSampleFromFile(CodeSourceFile, CodePresenter, IsCSharpSample ? Languages.CSharp : Languages.Xml);
+                FormatAndRenderSampleFromFile(CodeSourceFile, CodePresenter, language);
             }
         }
 
-        private async void FormatAndRenderSampleFromFile(Uri source, ContentPresenter presenter, ILanguage highlightLanguage)
+        private async void FormatAndRenderSampleFromFile(string sourceRelativePath, ContentPresenter presenter, ILanguage highlightLanguage)
         {
-            if (source != null && source.AbsolutePath.EndsWith("txt"))
+            if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
-                Uri derivedSource = GetDerivedSource(source);
+                Uri derivedSource = GetDerivedSource(sourceRelativePath);
                 var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
                 string sampleString = await FileIO.ReadTextAsync(file);
 
@@ -161,26 +186,38 @@ namespace AppUIBasics.Controls
             // Also trim out spaces at the end of each line
             sampleString = string.Join('\n', sampleString.Split('\n').Select(s => s.TrimEnd()));
 
-            // Perform any applicable substitutions.
-            sampleString = SubstitutionPattern.Replace(sampleString, match =>
+            if(Substitutions != null)
             {
-                foreach (var substitution in Substitutions)
+                // Perform any applicable substitutions.
+                sampleString = SubstitutionPattern.Replace(sampleString, match =>
                 {
-                    if (substitution.Key == match.Groups[1].Value)
+                    foreach (var substitution in Substitutions)
                     {
-                        return substitution.ValueAsString();
+                        if (substitution.Key == match.Groups[1].Value)
+                        {
+                            return substitution.ValueAsString();
+                        }
                     }
-                }
-                throw new KeyNotFoundException(match.Groups[1].Value);
-            });
+                    throw new KeyNotFoundException(match.Groups[1].Value);
+                });
+            }
 
             actualCode = sampleString;
 
-            var sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
 
             var formatter = GenerateRichTextFormatter();
-            formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
-            presenter.Content = sampleCodeRTB;
+            if (SampleType == SampleCodePresenterType.Inline)
+            {
+                CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
+                CodeScrollViewer.UpdateLayout();
+            }
+            else
+            {
+                var sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
+                formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
+                CodePresenter.Content = sampleCodeRTB;
+                CodeScrollViewer.Content = CodePresenter;
+            }
         }
 
         private RichTextBlockFormatter GenerateRichTextFormatter()
@@ -242,19 +279,6 @@ namespace AppUIBasics.Controls
             DataPackage package = new DataPackage();
             package.SetText(actualCode);
             Clipboard.SetContent(package);
-
-            VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
-            Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-
-            // Automatically close teachingtip after 1 seconds
-            if (dispatcherQueue != null)
-            {
-                dispatcherQueue.TryEnqueue(async () =>
-                {
-                    await Task.Delay(1000);
-                    VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
-                });
-            }
         }
     }
 }

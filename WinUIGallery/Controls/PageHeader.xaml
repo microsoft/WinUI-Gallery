@@ -1,0 +1,163 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<UserControl
+    x:Class="WinUIGallery.DesktopWap.Controls.PageHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.DesktopWap.Controls.CopyButton"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:AppUIBasics.Data"
+    xmlns:local="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:CollectionVisibilityConverter
+            x:Name="collectionConverter"
+            EmptyValue="Collapsed"
+            NotEmptyValue="Visible" />
+    </UserControl.Resources>
+    <Grid x:Name="headerGrid" Padding="36,24,36,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            AutomationProperties.HeadingLevel="Level1"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Item.Title}"
+            TextTrimming="CharacterEllipsis"
+            TextWrapping="NoWrap" />
+        <TextBlock
+            x:Name="NamespaceTextBlock"
+            Grid.Row="1"
+            Margin="0,4,0,0"
+            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+            IsTextSelectionEnabled="True"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind Item.ApiNamespace}"
+            Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}" />
+        <Grid Grid.Row="2" Margin="0,12,0,12">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+                <DropDownButton
+                    AutomationProperties.Name="Documentation"
+                    ToolTipService.ToolTip="Documentation"
+                    Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
+                    <DropDownButton.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon FontSize="16" Glyph="&#xE8A5;" />
+                            <TextBlock Text="Documentation" />
+                        </StackPanel>
+                    </DropDownButton.Content>
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <ItemsControl
+                                x:Name="DocsList"
+                                IsTabStop="False"
+                                ItemsSource="{x:Bind Item.Docs}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="data:ControlInfoDocLink">
+                                        <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
+                                            <TextBlock Text="{x:Bind Title}" />
+                                        </HyperlinkButton>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code">
+                    <DropDownButton.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <PathIcon
+                                Margin="-3,-3,-16,-3"
+                                VerticalAlignment="Center"
+                                Data="{StaticResource GitHubIconPath}">
+                                <PathIcon.RenderTransform>
+                                    <CompositeTransform
+                                        ScaleX="0.65"
+                                        ScaleY="0.65"
+                                        TranslateX="-5"
+                                        TranslateY="5" />
+                                </PathIcon.RenderTransform>
+                            </PathIcon>
+                            <TextBlock Text="Source" />
+                        </StackPanel>
+                    </DropDownButton.Content>
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <StackPanel x:Name="SourcePanel" Spacing="4">
+                                <HyperlinkButton x:Name="PageMarkupGitHubLink" ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="XAML source code" />
+                                </HyperlinkButton>
+                                <HyperlinkButton x:Name="PageCodeGitHubLink" ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="C# source code" />
+                                </HyperlinkButton>
+                            </StackPanel>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button
+                    x:Name="ThemeButton"
+                    Height="32"
+                    Margin="0,0,4,0"
+                    AutomationProperties.Name="Toggle theme"
+                    Click="OnThemeButtonClick"
+                    ToolTipService.ToolTip="Toggle theme"
+                    Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}">
+                    <Button.Content>
+                        <FontIcon FontSize="16" Glyph="&#xE793;" />
+                    </Button.Content>
+                </Button>
+                <AppBarSeparator Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}" />
+                <local:CopyButton
+                    x:Name="CopyLinkButton"
+                    Height="32"
+                    Margin="4,0,4,0"
+                    Padding="11,2,11,0"
+                    AutomationProperties.Name="Copy link"
+                    Click="OnCopyLinkButtonClick"
+                    Content="&#xE71B;"
+                    ToolTipService.ToolTip="Copy link">
+                    <local:CopyButton.Resources>
+                        <TeachingTip
+                            x:Name="CopyLinkButtonTeachingTip"
+                            Title="Quickly reference this sample!"
+                            ActionButtonClick="OnCopyDontShowAgainButtonClick"
+                            ActionButtonContent="Don't show again"
+                            CloseButtonContent="Got it!"
+                            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+                            PreferredPlacement="Bottom"
+                            Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
+                            Target="{x:Bind CopyLinkButton}">
+                            <TeachingTip.HeroContent>
+                                <Image Source="/Assets/CopyLinkTeachingTip.png" />
+                            </TeachingTip.HeroContent>
+                        </TeachingTip>
+                    </local:CopyButton.Resources>
+                </local:CopyButton>
+                <Button
+                    x:Name="FeedbackBtn"
+                    Height="32"
+                    AutomationProperties.Name="Send feedback"
+                    Click="OnFeedBackButtonClick"
+                    ToolTipService.ToolTip="Send feedback">
+                    <Button.Content>
+                        <FontIcon FontSize="16" Glyph="&#xED15;" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,241 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.TypographyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AppUIBasics"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="compactPage"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.dark.png</ImageSource>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.light.png</ImageSource>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <RichTextBlock>
+            <Paragraph>
+                Type helps provide structure and hierarchy to UI. The default font for Windows is
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
+                Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
+        </RichTextBlock>
+        <local:ControlExample
+            x:Name="Example1"
+            Grid.Row="1"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="Type ramp"
+            XamlSource="Typography/TypographySample_xaml.txt">
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                <Canvas Height="450">
+                    <Image
+                        Height="450"
+                        Canvas.ZIndex="0"
+                        Source="{ThemeResource HeaderImage}" />
+                    <Button
+                        x:Name="ShowTypographyButton1"
+                        Canvas.Left="650"
+                        Canvas.Top="60"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="ShowTypographyButtonClick1"
+                        ToolTipService.ToolTip="Caption">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip1"
+                        Title="Caption"
+                        Target="{x:Bind ShowTypographyButton1}" />
+
+                    <!--  Body Teaching tip  -->
+                    <Button
+                        x:Name="ShowTypographyButton2"
+                        Canvas.Left="190"
+                        Canvas.Top="280"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="ShowTypographyButtonClick2"
+                        ToolTipService.ToolTip="Body">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip2"
+                        Title="Body"
+                        Target="{x:Bind ShowTypographyButton2}" />
+
+                    <!--  Body Strong Teaching tip  -->
+                    <Button
+                        x:Name="ShowTypographyButton3"
+                        Canvas.Left="83"
+                        Canvas.Top="245"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="ShowTypographyButtonClick3"
+                        ToolTipService.ToolTip="Body Strong">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip3"
+                        Title="Body Strong"
+                        Target="{x:Bind ShowTypographyButton3}" />
+
+                    <!--  Title Teaching tip  -->
+                    <Button
+                        x:Name="ShowTypographyButton4"
+                        Canvas.Left="320"
+                        Canvas.Top="20"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="ShowTypographyButtonClick4"
+                        ToolTipService.ToolTip="Title">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip4"
+                        Title="Title"
+                        Target="{x:Bind ShowTypographyButton4}" />
+
+                    <!--  Display Teaching tip  -->
+                    <Button
+                        x:Name="ShowTypographyButton5"
+                        Canvas.Left="160"
+                        Canvas.Top="110"
+                        Padding="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Show typography"
+                        Canvas.ZIndex="1"
+                        Click="ShowTypographyButtonClick5">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                    </Button>
+                    <TeachingTip
+                        x:Name="ShowTypographyInfoTooltip5"
+                        Title="Display"
+                        Target="{x:Bind ShowTypographyButton5}" />
+
+                </Canvas>
+                <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="286" />
+                        <ColumnDefinition Width="156" />
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Margin="24,0,0,0"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Example" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Variable Font" />
+                    <TextBlock
+                        Grid.Column="2"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Size / Line height" />
+                    <TextBlock
+                        Grid.Column="3"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="Style" />
+                </Grid>
+                <controls:TypographyControl
+                    HorizontalAlignment="Stretch"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Example="Caption"
+                    ExampleStyle="{StaticResource CaptionTextBlockStyle}"
+                    ResourceName="CaptionTextBlockStyle"
+                    SizeLinHeight="12/16 epx"
+                    VariableFont="Small, Regular"
+                    Weight="400" />
+                <controls:TypographyControl
+                    Example="Body"
+                    ExampleStyle="{StaticResource BodyTextBlockStyle}"
+                    ResourceName="BodyTextBlockStyle"
+                    SizeLinHeight="14/20 epx"
+                    VariableFont="Text, Regular"
+                    Weight="400" />
+                <controls:TypographyControl
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Example="Body Strong"
+                    ExampleStyle="{StaticResource BodyStrongTextBlockStyle}"
+                    ResourceName="BodyStrongTextBlockStyle"
+                    SizeLinHeight="14/20 epx"
+                    VariableFont="Text, SemiBold"
+                    Weight="600" />
+                <controls:TypographyControl
+                    Height="76"
+                    Example="Subtitle"
+                    ExampleStyle="{StaticResource SubtitleTextBlockStyle}"
+                    ResourceName="SubtitleTextBlockStyle"
+                    SizeLinHeight="20/28 epx"
+                    VariableFont="Display, SemiBold"
+                    Weight="600" />
+                <controls:TypographyControl
+                    Height="86"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Example="Title"
+                    ExampleStyle="{StaticResource TitleTextBlockStyle}"
+                    ResourceName="TitleTextBlockStyle"
+                    SizeLinHeight="28/36 epx"
+                    VariableFont="Display, SemiBold"
+                    Weight="600" />
+                <controls:TypographyControl
+                    Height="98"
+                    Example="Title Large"
+                    ExampleStyle="{StaticResource TitleLargeTextBlockStyle}"
+                    ResourceName="TitleLargeTextBlockStyle"
+                    SizeLinHeight="40/52 epx"
+                    VariableFont="Display, SemiBold"
+                    Weight="600" />
+                <controls:TypographyControl
+                    Height="106"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Example="Display"
+                    ExampleStyle="{StaticResource DisplayTextBlockStyle}"
+                    ResourceName="DisplayTextBlockStyle"
+                    SizeLinHeight="68/92 epx"
+                    VariableFont="Display, SemiBold"
+                    Weight="600" />
+            </StackPanel>
+        </local:ControlExample>
+    </Grid>
+</Page>

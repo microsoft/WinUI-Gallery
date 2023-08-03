@@ -1,9 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
@@ -20,7 +17,6 @@ namespace AppUIBasics.Common
             Uri sourceUri = new Uri("ms-appx:///" + relativeFilePath);
             var file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
 #endif
-
             return await FileIO.ReadTextAsync(file);
         }
 

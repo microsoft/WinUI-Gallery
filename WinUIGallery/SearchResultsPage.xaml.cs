@@ -50,8 +50,6 @@ namespace AppUIBasics
             var queryText = args.Parameter?.ToString().ToLower();
 
             BuildFilterList(queryText);
-
-            args.NavigationRootPage.NavigationView.Header = "Search";
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -96,7 +94,7 @@ namespace AppUIBasics
                             foreach (string queryToken in querySplit)
                             {
                                 // Check if token is in title or subtitle
-                                if (!item.Title.ToLower().Contains(queryToken) && !item.Subtitle.ToLower().Contains(queryToken))
+                                if (!item.Title.ToLower().Contains(queryToken) && item.Subtitle != null && !item.Subtitle.ToLower().Contains(queryToken))
                                 {
                                     // Neither title nor sub title contain one of the tokens so we discard this item!
                                     flag = false;
@@ -116,8 +114,6 @@ namespace AppUIBasics
                 {
                     // Display informational text when there are no search results.
                     VisualStateManager.GoToState(this, "NoResultsFound", false);
-                    var textbox = NavigationRootPage.GetForElement(this)?.PageHeader?.GetDescendantsOfType<AutoSuggestBox>().FirstOrDefault();
-                    textbox?.Focus(FocusState.Programmatic);
                 }
                 else
                 {

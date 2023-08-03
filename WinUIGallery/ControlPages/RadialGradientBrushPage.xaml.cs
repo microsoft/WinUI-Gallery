@@ -50,8 +50,10 @@ namespace AppUIBasics.ControlPages
                 CenterYSlider.Maximum = RadiusYSlider.Maximum = OriginYSlider.Maximum = rectSize.Width;
                 CenterXSlider.Value = RadiusXSlider.Value = OriginXSlider.Value = rectSize.Width / 2;
                 CenterYSlider.Value = RadiusYSlider.Value = OriginYSlider.Value = rectSize.Width / 2;
-                CenterXSlider.StepFrequency = RadiusXSlider.StepFrequency = OriginXSlider.StepFrequency = rectSize.Width/50;
-                CenterYSlider.StepFrequency = RadiusYSlider.StepFrequency = OriginYSlider.StepFrequency = rectSize.Height/50;
+                CenterXSlider.StepFrequency = RadiusXSlider.StepFrequency = OriginXSlider.StepFrequency = rectSize.Width / 50;
+                CenterYSlider.StepFrequency = RadiusYSlider.StepFrequency = OriginYSlider.StepFrequency = rectSize.Height / 50;
+                CenterXSlider.SmallChange = RadiusXSlider.SmallChange = OriginXSlider.SmallChange = 10;
+                CenterYSlider.SmallChange = RadiusYSlider.SmallChange = OriginYSlider.SmallChange = 10;
             }
             else
             {
@@ -61,6 +63,8 @@ namespace AppUIBasics.ControlPages
                 CenterYSlider.Value = RadiusYSlider.Value = OriginYSlider.Value = 0.5;
                 CenterXSlider.StepFrequency = RadiusXSlider.StepFrequency = OriginXSlider.StepFrequency = 0.02;
                 CenterYSlider.StepFrequency = RadiusYSlider.StepFrequency = OriginYSlider.StepFrequency = 0.02;
+                CenterXSlider.SmallChange = RadiusXSlider.SmallChange = OriginXSlider.SmallChange = 0.05;
+                CenterYSlider.SmallChange = RadiusYSlider.SmallChange = OriginYSlider.SmallChange = 0.05;
             }
         }
 
