@@ -75,11 +75,13 @@
     <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
     <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.0.3" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <!--Include package/runtime version numbers-->
+    <Compile Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
     <Compile Remove="CollectionsInterop.cs" />
     <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
