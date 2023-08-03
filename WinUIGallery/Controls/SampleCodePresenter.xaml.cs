@@ -147,15 +147,9 @@ namespace AppUIBasics.Controls
             return derivedSource;
         }
 
-        private string GetDerivedSourceUnpackaged(Uri rawSource)
+        private string GetDerivedSourceUnpackaged(string sourceRelativePath)
         {
-            // Get the full path of the source string
-            string concatString = "";
-            for (int i = 2; i < rawSource.Segments.Length; i++)
-            {
-                concatString += rawSource.Segments[i];
-            }
-            string derviedSourceString = "ControlPagesSampleCode\\" + concatString;
+            string derviedSourceString = "ControlPagesSampleCode\\" + sourceRelativePath;
             return derviedSourceString;
         }
 
@@ -186,13 +180,13 @@ namespace AppUIBasics.Controls
                 StorageFile file = null;
                 if (!NativeHelper.IsAppPackaged)
                 {
-                    var relativePath = GetDerivedSourceUnpackaged(source);
+                    var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
                     var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativePath));
                     file = await StorageFile.GetFileFromPathAsync(sourcePath);
                 }
                 else
                 {
-                    Uri derivedSource = GetDerivedSource(source);
+                    Uri derivedSource = GetDerivedSource(sourceRelativePath);
                     file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
                 }
 

@@ -554,13 +554,8 @@ namespace AppUIBasics
                 DebugBreak();
 
                 dispatcherQueue.TryEnqueue(
-<<<<<<< HEAD
-                    DispatcherQueuePriority.Low,
-                    new DispatcherQueueHandler(() =>
-=======
                     Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
                     new Microsoft.UI.Dispatching.DispatcherQueueHandler(() =>
->>>>>>> unpkg-main
                     {
                         DebuggerAttachedCheckBox.IsChecked = true;
                     }));

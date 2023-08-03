@@ -11,17 +11,12 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-<<<<<<< HEAD
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
-=======
-using Microsoft.UI.Xaml.Media;
-using System;
-using System.Collections.Generic;
 using WinRT.Interop;
->>>>>>> unpkg-main
 
 namespace AppUIBasics.Helper
 {

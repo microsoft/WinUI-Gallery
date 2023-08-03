@@ -8,7 +8,7 @@
     IgnorableNamespaces="uap mp uap3">
   <!--Note: package version and assembly version must be kept in sync-->
   <Identity Name="Microsoft.WinUI3ControlsGallery.Debug" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="2.1.0.0" />
-  <mp:PhoneIdentity PhoneProductId="0ba9d13a-a477-463f-955f-91d935fa4cd5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WinUI 3 Gallery Dev</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
