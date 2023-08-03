@@ -1,0 +1,808 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.AccessibilityScreenReaderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="using:AppUIBasics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,24,0,0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="ScreenReaderOutputStyle" TargetType="RichTextBlock">
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </Page.Resources>
+
+    <StackPanel Spacing="12">
+        <RichTextBlock>
+            <Paragraph>
+                Accessibility is about building experiences that make your Windows application usable by people of
+                all abilities. For more information about designing accessible apps:
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Screen readers, such as
+                <Hyperlink NavigateUri="https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</Hyperlink>,
+                convert text into spoken words to help blind or low vision users.
+                Screen readers use the UI Automation (UIA) names of each control to report their name, role and content.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level2"
+                   Text="Accessible names" />
+
+        <RichTextBlock>
+            <Paragraph>
+                An <Bold>accessible name</Bold> is a short, descriptive text string that a screen reader uses to describe a UI element.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Typically, the accessible name should be short and match the visual label of the control.
+                Screen reader users will hear this name every time they navigate to that control.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                If the control's content can be converted ToString, an accessible name is automatically determined from the visible
+                text. However, elements such as images or input fields need to have a custom accessible name.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#accessible-name">Expose basic accessibility information#Accessible name</Hyperlink>
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#name-from-inner-text">Expose basic accessibility information#Name from inner text</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level3"
+                   Text="Getting an accessible name automatically" />
+
+        <RichTextBlock>
+            <Paragraph>
+                For most controls, XAML automatically sets an accessible name from the control's content (if the content is a string).
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <Button Content="Download survey" />
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
+                        <Paragraph>
+                            Screen readers will read this this button as
+                            <Bold>Download survey</Bold>. The name is automatically derived from the Button's Content.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- Most controls automatically get names from their content --&gt;
+&lt;Button Content="Download survey" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <!-- Headers are promoted to name -->
+                    <TextBox Header="Name"
+                             Width="200"
+                             HorizontalAlignment="Left" />
+
+                    <!-- As are placeholders -->
+                    <TextBox PlaceholderText="Nickname"
+                             Width="200"
+                             HorizontalAlignment="Left" />
+
+                    <!-- If both are provided, headers are name and placeholders are moved to description -->
+                    <TextBox Header="Email"
+                             Width="200"
+                             PlaceholderText="test@example.com"
+                             HorizontalAlignment="Left" />
+
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
+                        <Paragraph>
+                            Screen readers will read this these TextBoxes as
+                            <Bold>Name</Bold>, <Bold>Nickname</Bold>, and <Bold>Email</Bold>. The names are automatically derived from their headers or placeholders.
+                            <LineBreak />
+                        </Paragraph>
+                        <Paragraph>
+                            When both Header and PlaceholderText are present, Header is used as name and PlaceholderText is used as description.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- Headers are promoted to name --&gt;
+&lt;TextBox Header="Name" /&gt;
+
+&lt;!-- As are placeholders --&gt;
+&lt;TextBox PlaceholderText="Nickname" /&gt;
+
+&lt;!-- If both are provided, headers are name and placeholders are moved to description --&gt;
+&lt;TextBox Header="Email" PlaceholderText="test@example.com" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <!--  ***** List View example *****  -->
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level3"
+                   Text="Setting an accessible name manually" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Controls without stringable content will not get an accessible name automatically.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <ListView
+                        Width="300"
+                        HorizontalAlignment="Left"
+                        AutomationProperties.Name="Contacts">
+                        <ListViewItem>Nathan Quinn</ListViewItem>
+                        <ListViewItem>Jessica Lamber</ListViewItem>
+                        <ListViewItem>Carl Bond</ListViewItem>
+                        <ListViewItem>Jessica Russel</ListViewItem>
+                    </ListView>
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
+                        <Paragraph>
+                            Screen readers will read this ListView as
+                            <Bold>Contacts</Bold>, while each item will be read using its respective text content.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- Add a name to this ListView to be heard when screen reader users enter it --&gt;
+&lt;ListView Width="300"
+AutomationProperties.Name="Contacts"&gt;
+&lt;ListViewItem&gt;Nathan Quinn&lt;/ListViewItem&gt;
+&lt;ListViewItem&gt;Jessica Lamber&lt;/ListViewItem&gt;
+&lt;ListViewItem&gt;Carl Bond&lt;/ListViewItem&gt;
+&lt;ListViewItem&gt;Jessica Russel&lt;/ListViewItem&gt;
+&lt;/ListView&gt;
+                    </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <!--  ***** Image sample *****  -->
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <Border CornerRadius="{StaticResource ControlCornerRadius}">
+                        <Image
+                            Height="150"
+                            HorizontalAlignment="Left"
+                            AutomationProperties.Name="Grapes"
+                            Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
+                    </Border>
+
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
+                        <Paragraph>
+                            The image above will be read out as
+                            <Bold>Grapes</Bold>. To navigate in Narrator through elements that aren't focusable, use Caps + Left/Right arrow.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- Add "alt text" to this image so screen reader users can understand it --&gt;
+&lt;Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/grapes.jpg"/&gt;
+                    </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <!--  ***** Label by sample *****  -->
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level3"
+                   Text="Using another control to provide an accessible name" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Controls with accessible names can be used as labels for other controls. They should be removed from the UIA tree (see <Bold>Visual tree</Bold> below), to avoid being redundant.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock
+                        x:Name="InputLabel"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        AutomationProperties.AccessibilityView="Raw"
+                        Text="Searching Photos:" />
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Left"
+                        AutomationProperties.LabeledBy="{x:Bind InputLabel}" />
+                    <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
+                        <Paragraph>
+                            The TextBox above is labeled by the TextBlock and will be read as
+                            <Bold>Searching Photos:</Bold>.
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBlock x:Name="InputLabel" AutomationProperties.AccessibilityView="Raw" Text="Searching Photos:"/&gt;
+&lt;TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}"/&gt;
+                    </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <!--  ***** Position in set sample *****  -->
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level2"
+                   Text="Common accessibility properties" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Besides accessible name, common accessibility properties include:
+                <LineBreak />
+                <LineBreak />
+                - Description and help text
+                <LineBreak />
+                - Position in set
+                <LineBreak />
+                - Headings and landmarks (see below)
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information">Expose basic accessibility information</Hyperlink>
+                and
+                <Hyperlink NavigateUri="https://learn.microsoft.com/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on an control</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample HeaderText="Description and help text: add descriptions and help text to controls">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <!-- Use FullDescription to connect visible descriptions to their controls -->
+                    <StackPanel Spacing="8">
+                        <CheckBox Content="Clear cache on exit"
+                                  AutomationProperties.FullDescription="{x:Bind ClearCacheDescription.Text}" />
+                        <TextBlock x:Name="ClearCacheDescription"
+                                   Text="Deletes all cached items when closing the browser. This includes cookies, images, and browsing history."
+                                   AutomationProperties.AccessibilityView="Raw"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+
+                    <!-- Use HelpText and/or tooltips to explain nuances of controls -->
+                    <Button Content="Cancel RSS subscriptions"
+                            ToolTipService.ToolTip="Launch the cancellation wizard"
+                            AutomationProperties.HelpText="Launch the cancellation wizard" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;!-- Use FullDescription to connect visible descriptions to their controls --&gt;
+    &lt;StackPanel Spacing="8"&gt;
+        &lt;CheckBox Content="Clear cache on exit"
+                    AutomationProperties.FullDescription="{x:Bind ClearCacheDescription.Text}" /&gt;
+        &lt;TextBlock x:Name="ClearCacheDescription"
+                    Text="Deletes all cached items when closing the browser. This includes cookies, images, and browsing history."
+                    AutomationProperties.AccessibilityView="Raw"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" /&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;!-- Use HelpText and/or tooltips to explain nuances of controls --&gt;
+    &lt;Button Content="Cancel RSS subscriptions"
+            ToolTipService.ToolTip="Launch the cancellation wizard"
+            AutomationProperties.HelpText="Launch the cancellation wizard" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Position in set: indicate the position of an element within a set">
+            <core:ControlExample.Example>
+                <StackPanel>
+                    <!-- Many controls automatically indicate position in set -->
+                    <TextBlock Text="Students"
+                               Style="{ThemeResource BodyStrongTextBlockStyle}"
+                               x:Name="StudentsLabel"
+                               AutomationProperties.AccessibilityView="Raw" />
+                    <ListView AutomationProperties.LabeledBy="{x:Bind StudentsLabel}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock Text="{x:Bind}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <x:String>Nathan Quinn</x:String>
+                        <x:String>Jessica Lamber</x:String>
+                        <x:String>Carl Bond</x:String>
+                        <x:String>Jessica Russel</x:String>
+                    </ListView>
+
+                    <!-- Custom layouts may need to specify PositionInSet and SizeOfSet manually. -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="8">
+                        <Button AutomationProperties.PositionInSet="1"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="View" />
+                        <Button AutomationProperties.PositionInSet="2"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="Rename" />
+                        <Button AutomationProperties.PositionInSet="3"
+                                AutomationProperties.SizeOfSet="3"
+                                Content="Delete" />
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;!-- Many controls automatically indicate position in set --&gt;
+    &lt;TextBlock Text="Students"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                x:Name="StudentsLabel"
+                AutomationProperties.AccessibilityView="Raw" /&gt;
+    &lt;ListView AutomationProperties.LabeledBy="{x:Bind StudentsLabel}"&gt;
+        &lt;ListView.ItemTemplate&gt;
+            &lt;DataTemplate x:DataType="x:String"&gt;
+                &lt;TextBlock Text="{x:Bind}" /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/ListView.ItemTemplate&gt;
+        &lt;x:String&gt;Nathan Quinn&lt;/x:String&gt;
+        &lt;x:String&gt;Jessica Lamber&lt;/x:String&gt;
+        &lt;x:String&gt;Carl Bond&lt;/x:String&gt;
+        &lt;x:String&gt;Jessica Russel&lt;/x:String&gt;
+    &lt;/ListView&gt;
+
+    &lt;!-- Custom layouts may need to specify PositionInSet and SizeOfSet manually. --&gt;
+    &lt;StackPanel Orientation="Horizontal"
+                Spacing="8"&gt;
+        &lt;Button AutomationProperties.PositionInSet="1"
+                AutomationProperties.SizeOfSet="3"
+                Content="View" /&gt;
+        &lt;Button AutomationProperties.PositionInSet="2"
+                AutomationProperties.SizeOfSet="3"
+                Content="Rename" /&gt;
+        &lt;Button AutomationProperties.PositionInSet="3"
+                AutomationProperties.SizeOfSet="3"
+                Content="Delete" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <!--  ***** Remove from visual tree sample *****  -->
+        <TextBlock Margin="0,20,0,0"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   AutomationProperties.HeadingLevel="Level2"
+                   Text="Visual tree" />
+
+        <RichTextBlock>
+            <Paragraph>
+                UIA exposes multiple views of the UI tree: Control, Content, and Raw.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Most accessibility tools use the "Control" or "Content" views, so you can effectively "hide" redundant or unhelpful controls from screen readers by putting them in the "Raw" view.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#influencing-the-ui-automation-tree-views">Expose basic accessibility information#Influencing the UI Automation tree views
+                </Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample HeaderText="Remove a control from the content visual tree">
+            <core:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <!--
+                        The image is not necessary for screen readers as it does not contain any information.
+                        Thus we remove it from the content visual tree with AccessibilityView="Raw"
+                    -->
+                    <Border CornerRadius="{StaticResource ControlCornerRadius}">
+                        <Image
+                            Height="40"
+                            VerticalAlignment="Top"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Source="/Assets/SampleMedia/treetops.jpg" />
+                    </Border>
+
+                    <TextBlock
+                        MaxWidth="400"
+                        Margin="8,-4,0,0"
+                        TextWrapping="WrapWholeWords">
+                        This is some demo text.
+                        The image on the right is just for decoration and serves no informational purpose.
+                        To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.
+                    </TextBlock>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Orientation="Horizontal"&gt;
+&lt;!-- The image is not necessary for screen readers as it does not contain any information.
+        Thus we remove it from the content visual tree with AccessibilityView="Raw" --&gt;
+&lt;Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/&gt;
+&lt;TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0"&gt;This is some demo text.
+                The image on the right is just for decoration and serves no informational purpose.
+                To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="2"
+            Text="Landmarks and headings" />
+        <RichTextBlock>
+            <Paragraph>
+                <Bold>Landmarks and headings</Bold> indicate, or label, different
+                sections of a user interface for screen readers and other
+                Assistive Technologies (ATs), just like visible headings do for visual users.
+                Marking up your content with landmarks and headings lets
+                screen reader users skim content similarly to sighted users.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/landmarks-and-headings">
+                    Landmarks and headings
+                </Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="3"
+            Text="Landmarks" />
+
+        <RichTextBlock>
+            <Paragraph>
+                <Bold>Landmarks</Bold> typically identify big sections of your UI, like "search", "main content", or "navigation." You can also add landmarks with custom names.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The sample below showcases landmarks. To navigate landmarks in Narrator, press D or Shift+D while in Scan mode."
+                        TextWrapping="Wrap" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  The navigation pane for our app  -->
+                        <StackPanel
+                            Grid.Column="0"
+                            Spacing="8"
+                            Padding="6"
+                            Background="{ThemeResource CardStrokeColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            AutomationProperties.LandmarkType="Navigation">
+                            <AutoSuggestBox
+                                PlaceholderText="Search"
+                                AutomationProperties.LandmarkType="Search"/>
+                            <Button Content="Open settings" />
+                        </StackPanel>
+
+                        <!--  The main content of our app  -->
+                        <StackPanel
+                            Grid.Column="1"
+                            Padding="6"
+                            AutomationProperties.LandmarkType="Main">
+                            <TextBlock TextWrapping="WrapWholeWords">
+                                Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
+                            </TextBlock>
+                        </StackPanel>
+
+                        <!-- A custom sidebar with a custom landmark name -->
+                        <StackPanel
+                            Grid.Column="2"
+                            Padding="6"
+                            Background="{ThemeResource CardStrokeColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            Spacing="8"
+                            AutomationProperties.LandmarkType="Custom"
+                            AutomationProperties.LocalizedLandmarkType="Current viewers">
+                            <TextBlock
+                                Text="Current viewers"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                AutomationProperties.HeadingLevel="Level1" />
+                            <TextBlock
+                                Text="(No other users viewing)"
+                                Style="{ThemeResource BodyTextBlockStyle}"
+                                FontStyle="Italic" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Grid&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition Width="200" /&gt;
+        &lt;ColumnDefinition Width="*" /&gt;
+        &lt;ColumnDefinition Width="200" /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+
+    &lt;!--  The navigation pane for our app  --&gt;
+    &lt;StackPanel
+        Grid.Column="0"
+        Spacing="8"
+        Padding="6"
+        Background="{ThemeResource CardStrokeColorDefaultBrush}"
+        CornerRadius="{StaticResource ControlCornerRadius}"
+        AutomationProperties.LandmarkType="Navigation"&gt;
+        &lt;AutoSuggestBox
+            PlaceholderText="Search"
+            AutomationProperties.LandmarkType="Search"/&gt;
+        &lt;Button Content="Open settings" /&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;!--  The main content of our app  --&gt;
+    &lt;StackPanel
+        Grid.Column="1"
+        Padding="6"
+        AutomationProperties.LandmarkType="Main"&gt;
+        &lt;TextBlock TextWrapping="WrapWholeWords"&gt;
+            Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
+        &lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;!-- A custom sidebar with a custom landmark name --&gt;
+    &lt;StackPanel
+        Grid.Column="2"
+        Padding="6"
+        Background="{ThemeResource CardStrokeColorDefaultBrush}"
+        CornerRadius="{StaticResource ControlCornerRadius}"
+        Spacing="8"
+        AutomationProperties.LandmarkType="Custom"
+        AutomationProperties.LocalizedLandmarkType="Current viewers"&gt;
+        &lt;TextBlock
+            Text="Current viewers"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level1" /&gt;
+        &lt;TextBlock
+            Text="(No other users viewing)"
+            Style="{ThemeResource BodyTextBlockStyle}"
+            FontStyle="Italic" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/Grid&gt;
+                    </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="3"
+            Text="Headings" />
+
+        <RichTextBlock>
+            <Paragraph>
+                <Bold>Headings</Bold> typically identify smaller groups of content.
+                They usually correspond to the "visual" headings in your UI — the text
+                that labels sections in your UI visually.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                For example, all of the section headings on this page are accessible headings.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="The sample below showcases headings. To navigate headings in Narrator, press H or Shift+H while in Scan mode."
+                        TextWrapping="Wrap" />
+                    <StackPanel
+                        MaxWidth="500"
+                        HorizontalAlignment="Left">
+                        <!--  Here is the main header for the whole text. It gets HeadingLevel 1  -->
+                        <TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
+                        <!--  The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2  -->
+                        <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Lorem ipsum</TextBlock>
+                        <TextBlock TextWrapping="WrapWholeWords">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus.
+                            Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.
+                        </TextBlock>
+
+                        <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Cat ipsum</TextBlock>
+                        <!--  This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3  -->
+                        <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Standard</TextBlock>
+                        <TextBlock TextWrapping="WrapWholeWords">
+                            Mice litter kitter kitty litty little kitten big roar roar feed me
+                            but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.
+                        </TextBlock>
+                        <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Cat breeds</TextBlock>
+                        <TextBlock TextWrapping="WrapWholeWords">
+                            Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat.
+                            Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.
+                        </TextBlock>
+
+                        <TextBlock AutomationProperties.HeadingLevel="2" FontSize="22">Bacon ipsum</TextBlock>
+                        <TextBlock TextWrapping="WrapWholeWords">
+                            Bacon ipsum dolor amet meatball nulla labore,
+                            tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel MaxWidth="500"&gt;
+&lt;!-- Here is the main header for the whole text. It gets HeadingLevel 1 --&gt;
+&lt;TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26"&gt;Lorem ipsums&lt;/TextBlock&gt;
+&lt;!-- The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2--&gt;
+&lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Lorem ipsum&lt;/TextBlock&gt;
+&lt;TextBlock TextWrapping="WrapWholeWords"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus. 
+                Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.&lt;/TextBlock&gt;
+    
+&lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Cat ipsum&lt;/TextBlock&gt;
+&lt;!-- This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3 --&gt;
+&lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Standard&lt;/TextBlock&gt;
+&lt;TextBlock TextWrapping="WrapWholeWords">Mice litter kitter kitty litty little kitten big roar roar feed me 
+                but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.&lt;/TextBlock&gt;
+&lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Cat breeds&lt;/TextBlock&gt;
+&lt;TextBlock TextWrapping="WrapWholeWords">Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat. 
+                Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.&lt;/TextBlock&gt;
+    
+&lt;TextBlock AutomationProperties.HeadingLevel="2" FontSize="22"&gt;Bacon ipsum&lt;/TextBlock&gt;
+&lt;TextBlock TextWrapping="WrapWholeWords">Bacon ipsum dolor amet meatball nulla labore, 
+                tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.&lt;/TextBlock&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="3"
+            Text="Associating smaller groups of controls" />
+
+        <RichTextBlock>
+            <Paragraph>
+                You can also group controls together manually, even if the
+                controls don't have a visible heading or landmark, by adding
+                an accessible name to the parent container. When entering a
+                region with a name or a landmark, Narrator will read it out as
+                <Bold>Context</Bold>. Narrator users can control their
+                <Bold>Context level</Bold> in Settings.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                This is helpful in complicated UI with many similar elements,
+                where the grouping might be obvious to visual users, but not
+                screen reader users.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}">
+                        The sample below groups items using accessible names.
+                        Screen readers will read this as users navigate between
+                        different groups. To force read the current context in
+                        Narrator, press Caps+/.
+                    </TextBlock>
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}">
+                        Note how Narrator reads 'My albums' or 'Shared with me' if you
+                        tab between the ListViews, and reads the additional context
+                        'Album browser' when Caps+/ is pressed.
+                    </TextBlock>
+                    <StackPanel AutomationProperties.Name="Album browser">
+                        <StackPanel AutomationProperties.Name="My albums">
+                            <!-- These TextBlocks could reasonably be headings, too. -->
+                            <TextBlock
+                                Text="My albums"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                            <ListView>
+                                <x:String>Trip to Redmond</x:String>
+                                <x:String>Visiting Ben</x:String>
+                            </ListView>
+                        </StackPanel>
+                        <StackPanel AutomationProperties.Name="Shared with me">
+                            <TextBlock
+                                Text="Shared with me"
+                                Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                            <ListView>
+                                <x:String>Valeria's cat</x:String>
+                                <x:String>Paul's winter vacation</x:String>
+                                <x:String>Cool street photography</x:String>
+                            </ListView>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel AutomationProperties.Name="Album browser"&gt;
+    &lt;StackPanel AutomationProperties.Name="My albums"&gt;
+        &lt;!-- These TextBlocks could reasonably be headings, too. --&gt;
+        &lt;TextBlock
+            Text="My albums"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" /&gt;
+        &lt;ListView&gt;
+            &lt;x:String&gt;Trip to Redmond&lt;/x:String&gt;
+            &lt;x:String&gt;Visiting Ben&lt;/x:String&gt;
+        &lt;/ListView&gt;
+    &lt;/StackPanel&gt;
+    &lt;StackPanel AutomationProperties.Name="Shared with me"&gt;
+        &lt;TextBlock
+            Text="Shared with me"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" /&gt;
+        &lt;ListView&gt;
+            &lt;x:String&gt;Paul's winter vacation&lt;/x:String&gt;
+            &lt;x:String&gt;Cool street photography&lt;/x:String&gt;
+            &lt;x:String&gt;Valeria's cat&lt;/x:String&gt;
+        &lt;/ListView&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+    </StackPanel>
+</Page>

@@ -6,14 +6,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <StackPanel Margin="20" Spacing="10">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Current backdrop: " />
-                <TextBlock x:Name="tbCurrentBackdrop" />
-            </StackPanel>
-            <Button x:Name="btnChangeBackdrop" AutomationProperties.Name="ChangeBackdropButton" Content="Change Backdrop" Click="ChangeBackdropButton_Click" />
-            <TextBlock x:Name="tbChangeStatus" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="titleBar" Background="Transparent" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Spacing="12">
+            <TextBlock HorizontalAlignment="Center">
+                <Run Text="Current backdrop: " />
+                <Run x:Name="tbCurrentBackdrop" FontWeight="SemiBold" />
+            </TextBlock>
+            <Button
+                x:Name="btnChangeBackdrop"
+                HorizontalAlignment="Center"
+                Click="ChangeBackdropButton_Click"
+                Content="Change Backdrop" />
+            <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </Window>

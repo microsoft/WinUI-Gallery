@@ -8,11 +8,20 @@
 //
 //*********************************************************
 
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
+=======
+using Microsoft.UI.Xaml.Media;
+using System;
+using System.Collections.Generic;
+using WinRT.Interop;
+>>>>>>> unpkg-main
 
 namespace AppUIBasics.Helper
 {
@@ -25,7 +34,10 @@ namespace AppUIBasics.Helper
     {
         static public Window CreateWindow()
         {
-            Window newWindow = new Window();
+            Window newWindow = new Window
+            {
+                SystemBackdrop = new MicaBackdrop()
+            };
             TrackWindow(newWindow);
             return newWindow;
         }
@@ -38,6 +50,13 @@ namespace AppUIBasics.Helper
             _activeWindows.Add(window);
         }
 
+        static public AppWindow GetAppWindow(Window window)
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(window);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(wndId);
+        }
+
         static public Window GetWindowForElement(UIElement element)
         {
             if (element.XamlRoot != null)
@@ -48,19 +67,6 @@ namespace AppUIBasics.Helper
                     {
                         return window;
                     }
-                }
-            }
-            return null;
-        }
-
-        static public UIElement FindElementByName(UIElement element, string name)
-        {
-            if (element.XamlRoot != null && element.XamlRoot.Content != null)
-            {
-                var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
-                if (ele != null)
-                {
-                    return ele as UIElement;
                 }
             }
             return null;

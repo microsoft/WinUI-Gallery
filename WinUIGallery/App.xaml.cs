@@ -23,6 +23,8 @@ using Windows.System.Profile;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.DesktopWap.DataModel;
+using WASDK = Microsoft.WindowsAppSDK;
 
 namespace AppUIBasics
 {
@@ -31,8 +33,25 @@ namespace AppUIBasics
     /// </summary>
     sealed partial class App : Application
     {
-
         private static Window startupWindow;
+
+        public static string WinAppSdkDetails
+        {
+            get => string.Format("Windows App SDK {0}.{1}.{2}{3}",
+                WASDK.Release.Major, WASDK.Release.Minor, WASDK.Release.Patch, WASDK.Release.FormattedVersionTag);
+        }
+
+        public static string WinAppSdkRuntimeDetails
+        {
+            get
+            {
+                var details = WinAppSdkDetails;
+#if WindowsAppSdkRuntimeDependent
+                details += ", Windows App Runtime " + WASDK.Runtime.Version.DotQuadString;
+#endif
+                return details;
+            }
+        }
 
         // Get the initial window created for this app
         // On UWP, this is simply Window.Current
@@ -94,7 +113,7 @@ namespace AppUIBasics
             IdleSynchronizer.Init();
 
             startupWindow = WindowHelper.CreateWindow();
-
+            startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached)
             //{
@@ -127,6 +146,7 @@ namespace AppUIBasics
             // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
             // We'll never need to do this again.
             await ControlInfoDataSource.Instance.GetGroupsAsync();
+            await IconsDataSource.Instance.LoadIcons();
 
             Frame rootFrame = GetRootFrame();
 

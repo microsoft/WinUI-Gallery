@@ -7,19 +7,15 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Helper;
 using System;
-using System.Linq;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.System;
+using AppUIBasics.Helper;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
-using WinRT;
-using System.Runtime.InteropServices;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
 
 namespace AppUIBasics
@@ -33,10 +29,12 @@ namespace AppUIBasics
         {
             get
             {
-                var version = Windows.ApplicationModel.Package.Current.Id.Version;
+                var version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
                 return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
             }
         }
+
+        public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
 
         public SettingsPage()
         {
@@ -46,32 +44,36 @@ namespace AppUIBasics
             if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
                 soundToggle.IsOn = true;
             if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
-                spatialSoundBox.IsChecked = true;
+                spatialSoundBox.IsOn = true;
 
-            ScreenshotSettingsGrid.Visibility = Visibility.Collapsed;
+            ScreenshotCard.Visibility = Visibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-            args.NavigationRootPage.NavigationView.Header = "Settings";
-        }
-
-        private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
-        {
-            await Launcher.LaunchUriAsync(new Uri("feedback-hub:"));
         }
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
         {
-            var currentTheme = ThemeHelper.RootTheme.ToString();
-            (ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme)).IsChecked = true;
+            var currentTheme = ThemeHelper.RootTheme;
+            switch (currentTheme)
+            {
+                case ElementTheme.Light:
+                    themeMode.SelectedIndex = 0;
+                    break;
+                case ElementTheme.Dark:
+                    themeMode.SelectedIndex = 1;
+                    break;
+                case ElementTheme.Default:
+                    themeMode.SelectedIndex = 2;
+                    break;
+            }
 
             NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                if (navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+                if (navigationRootPage.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
                 {
                     navigationLocation.SelectedIndex = 0;
                 }
@@ -82,52 +84,31 @@ namespace AppUIBasics
             }
         }
 
-        private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
+        private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
-            var res = Microsoft.UI.Xaml.Application.Current.Resources;
-            Action<Windows.UI.Color> SetTitleBarButtonForegroundColor = (Windows.UI.Color color) => { res["WindowCaptionForeground"] = color; };
-
+            var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
+            var window = WindowHelper.GetWindowForElement(this);
+            string color;
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
                 if (selectedTheme == "Dark")
                 {
-                    SetTitleBarButtonForegroundColor(Colors.White);
+                    TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
+                    color = selectedTheme;
                 }
                 else if (selectedTheme == "Light")
                 {
-                    SetTitleBarButtonForegroundColor(Colors.Black);
+                    TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
+                    color = selectedTheme;
                 }
                 else
                 {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.White);
-                    }
-                    else
-                    {
-                        SetTitleBarButtonForegroundColor(Colors.Black);
-                    }
+                    color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
                 }
-            }
-            var window = WindowHelper.GetWindowForElement(this);
-            TitleBarHelper.triggerTitleBarRepaint(window);
-
-        }
-
-        private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Up)
-            {
-                NavigationRootPage.GetForElement(this).PageHeader.Focus(FocusState.Programmatic);
-            }
-        }
-        private void spatialSoundBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+                // announce visual change to automation
+                UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+                                                                                "ThemeChangedNotificationActivityId");
             }
         }
 
@@ -135,13 +116,13 @@ namespace AppUIBasics
         {
             if (soundToggle.IsOn == true)
             {
-                spatialSoundBox.IsEnabled = true;
+                SpatialAudioCard.IsEnabled = true;
                 ElementSoundPlayer.State = ElementSoundPlayerState.On;
             }
             else
             {
-                spatialSoundBox.IsEnabled = false;
-                spatialSoundBox.IsChecked = false;
+                SpatialAudioCard.IsEnabled = false;
+                spatialSoundBox.IsOn = false;
 
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
@@ -153,13 +134,6 @@ namespace AppUIBasics
             UIHelper.IsScreenshotMode = screenshotModeToggle.IsOn;
         }
 
-        private void spatialSoundBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (soundToggle.IsOn == true)
-            {
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            }
-        }
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -185,14 +159,27 @@ namespace AppUIBasics
             await Launcher.LaunchFolderAsync(UIHelper.ScreenshotStorageFolder);
         }
 
-        private void OnResetTeachingTipsButtonClick(object sender, RoutedEventArgs e)
+        private void spatialSoundBox_Toggled(object sender, RoutedEventArgs e)
         {
-            ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
+            if (soundToggle.IsOn == true)
+            {
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+            }
+            else
+            {
+                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+            }
         }
 
-        private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
+        }
+
+        private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
+        
         }
     }
 }

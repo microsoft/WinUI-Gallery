@@ -1,6 +1,5 @@
 <Project>
   <ItemGroup>
-    <Content Include="Assets\WinUI3Hero.png" />
     <Content Include="Assets\ControlIcons\AcrylicBrushIcon.png" />
     <Content Include="Assets\ControlIcons\AnimationsIcon.png" />
     <Content Include="Assets\ControlIcons\CalendarDatePickerIcon.png" />
@@ -16,7 +15,6 @@
     <Content Include="Assets\ControlIcons\EasingFunctionsIcon.png" />
     <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
-    <Content Include="Assets\InnerPage_Banner.jpg" />
     <Content Include="Assets\ControlIcons\MenuBarIcon.png" />
     <Content Include="Assets\ControlIcons\NavigationViewIcon.png" />
     <Content Include="Assets\ControlIcons\new.png" />
@@ -35,7 +33,6 @@
     <Content Include="Assets\ControlIcons\SwipeIcon.png" />
     <Content Include="Assets\ControlIcons\SystemBackdropsIcon.png" />
     <Content Include="Assets\ControlIcons\TeachingTipIcon.png" />
-    <Content Include="Assets\MainPage_Banner.png" />
     <Content Include="Assets\ControlIcons\TimingDurationIcon.png" />
     <Content Include="Assets\ControlIcons\ToggleSplitButtonIcon.png" />
     <Content Include="Assets\ControlIcons\TransitionsIcon.png" />
@@ -44,14 +41,12 @@
     <Content Include="Assets\ControlIcons\WebViewIcon.png" />
     <Content Include="Assets\ControlIcons\AutoSuggestBoxIcon.png" />
     <Content Include="Assets\ControlIcons\CalendarViewIcon.png" />
-    <Content Include="Assets\ContentDialog.png" />
     <Content Include="Assets\ControlIcons\ImageIcon.png" />
     <Content Include="Assets\ControlIcons\MediaElementIcon.png" />
     <Content Include="Assets\ninegrid.gif" />
     <Content Include="Assets\ControlIcons\PivotIcon.png" />
     <Content Include="Assets\ControlIcons\RelativePanelIcon.png" />
     <Content Include="Assets\ControlIcons\SplitViewIcon.png" />
-    <Content Include="Assets\Windows_Desktop.png" />
     <Content Include="Assets\ControlIcons\AppBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarButtonIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarSeparatorIcon.png" />
@@ -62,18 +57,15 @@
     <Content Include="Assets\ControlIcons\CheckBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ComboBoxIcon.png" />
     <Content Include="Assets\ControlIcons\CommandBarIcon.png" />
-    <Content Include="Assets\DarkGray.png" />
     <Content Include="Assets\ControlIcons\DatePickerIcon.png" />
     <Content Include="Assets\ControlIcons\FlipViewIcon.png" />
     <Content Include="Assets\ControlIcons\FlyoutIcon.png" />
     <Content Include="Assets\ControlIcons\GridIcon.png" />
     <Content Include="Assets\ControlIcons\GridViewIcon.png" />
     <Content Include="Assets\ControlIcons\HyperlinkButtonIcon.png" />
-    <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\ControlIcons\ListBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ListViewIcon.png" />
     <Content Include="Assets\LottieLogo1.png" />
-    <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\ControlIcons\MenuFlyoutIcon.png" />
     <Content Include="Assets\ControlIcons\PasswordBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ProgressBarIcon.png" />
@@ -82,8 +74,6 @@
     <Content Include="Assets\ControlIcons\RichEditBoxIcon.png" />
     <Content Include="Assets\ControlIcons\RichTextBlockIcon.png" />
     <Content Include="Assets\ControlIcons\ScrollViewerIcon.png" />
-    <Content Include="Assets\SemanticZoom.png" />
-    <Content Include="Assets\SettingsFlyout.png" />
     <Content Include="Assets\Slices.png" />
     <Content Include="Assets\Slices2.png" />
     <Content Include="Assets\ControlIcons\SliderIcon.png" />
@@ -95,7 +85,7 @@
     <Content Include="Assets\ControlIcons\ToggleSwitchIcon.png" />
     <Content Include="Assets\ControlIcons\ToolTipIcon.png" />
     <Content Include="Assets\ControlIcons\VariableSizedWrapGridIcon.png" />
-    <Content Include="Assets\ControlIcons\ViewBoxIcon.png" />
+    <Content Include="Assets\ControlIcons\ViewboxIcon.png" />
     <Content Include="Assets\ControlIcons\NumberBoxIcon.png" />
 
     <Content Include="Assets\ControlImages\Acrylic.png" />
@@ -114,6 +104,7 @@
     <Content Include="Assets\ControlImages\CalendarView.png" />
     <Content Include="Assets\ControlImages\Canvas.png" />
     <Content Include="Assets\ControlImages\Checkbox.png" />
+    <Content Include="Assets\ControlImages\Clipboard.png" />
     <Content Include="Assets\ControlImages\ColorPaletteResources.png" />
     <Content Include="Assets\ControlImages\ColorPicker.png" />
     <Content Include="Assets\ControlImages\ComboBox.png" />
@@ -128,6 +119,7 @@
     <Content Include="Assets\ControlImages\DropDownButton.png" />
     <Content Include="Assets\ControlImages\EasingFunction.png" />
     <Content Include="Assets\ControlImages\Expander.png" />
+    <Content Include="Assets\ControlImages\FilePicker.png" />
     <Content Include="Assets\ControlImages\FlipView.png" />
     <Content Include="Assets\ControlImages\Flyout.png" />
     <Content Include="Assets\ControlImages\Grid.png" />
@@ -142,6 +134,7 @@
     <Content Include="Assets\ControlImages\InkToolbar.png" />
     <Content Include="Assets\ControlImages\InputValidation.png" />
     <Content Include="Assets\ControlImages\ItemsRepeater.png" />
+    <Content Include="Assets\ControlImages\Line.png" />
     <Content Include="Assets\ControlImages\ListBox.png" />
     <Content Include="Assets\ControlImages\ListView.png" />
     <Content Include="Assets\ControlImages\MediaPlayerElement.png" />
@@ -169,6 +162,7 @@
     <Content Include="Assets\ControlImages\RichTextBlock.png" />
     <Content Include="Assets\ControlImages\ScrollViewer.png" />
     <Content Include="Assets\ControlImages\SemanticZoom.png" />
+    <Content Include="Assets\ControlImages\Shape.png" />
     <Content Include="Assets\ControlImages\Slider.png" />
     <Content Include="Assets\ControlImages\Sound.png" />
     <Content Include="Assets\ControlImages\SplitButton.png" />
@@ -189,25 +183,9 @@
     <Content Include="Assets\ControlImages\ToolTip.png" />
     <Content Include="Assets\ControlImages\TreeView.png" />
     <Content Include="Assets\ControlImages\VariableSizedWrapGrid.png" />
-    <Content Include="Assets\ControlImages\ViewBox.png" />
+    <Content Include="Assets\ControlImages\Viewbox.png" />
     <Content Include="Assets\ControlImages\WebView.png" />
     <Content Include="Assets\ControlImages\XamlUICommand.png" />
-
-    <Content Include="Assets\gettingStarted.png" />
-    <Content Include="Assets\githubTile.png" />
-    <Content Include="Assets\style-1x.png" />
-    <Content Include="Assets\template_studio.png" />
-    <Content Include="Assets\NavigationViewItemIcons\AllControlsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\ButtonsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\CollectionIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\CommandingIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\FlyoutIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\LayoutIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\MediaIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\NewControlsIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\ObjectQuickAnimation.png" />
-    <Content Include="Assets\NavigationViewItemIcons\PickerIcon.png" />
-    <Content Include="Assets\NavigationViewItemIcons\TextIcon.png" />
     <Content Include="Assets\SampleMedia\MirrorPCConsent.svg" />
     <Content Include="Assets\SampleMedia\cliff.jpg" />
     <Content Include="Assets\SampleMedia\fishes.wmv" />
@@ -335,8 +313,20 @@
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample3_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample3_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample4_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample4_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample5_cs.txt" />
+    <Content Include="ControlPagesSampleCode\System\FilePickerSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample3.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample4.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
@@ -358,7 +348,11 @@
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_cs.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Motion\AnimationInterop\AnimationInteropSample1_cs.txt" />
-    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSimple.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_cs.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt" />
     <Content Include="ControlPagesSampleCode\XamlUICommand\XamlUICommandSample1_cs.txt" />

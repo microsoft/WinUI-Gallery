@@ -22,12 +22,13 @@ namespace AppUIBasics
             this.InitializeComponent();
         }
 
+        public string WinAppSdkDetails => App.WinAppSdkDetails;
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
             menuItem.IsSelected = true;
-            args.NavigationRootPage.NavigationView.Header = string.Empty;
 
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
             itemsCVS.Source = FormatData();
@@ -55,13 +56,13 @@ namespace AppUIBasics
                 switch (item.Key.ToString())
                 {
                     case "New":
-                        item.Title = "Recently Added Samples";
+                        item.Title = "Recently added samples";
                         break;
                     case "Updated":
-                        item.Title = "Recently Updated Samples";
+                        item.Title = "Recently updated samples";
                         break;
                     case "Preview":
-                        item.Title = "Preview Samples";
+                        item.Title = "Preview samples";
                         break;
                 }
             }

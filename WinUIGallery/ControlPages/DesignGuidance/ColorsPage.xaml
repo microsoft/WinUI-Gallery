@@ -1,0 +1,49 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.ColorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <RichTextBlock>
+                <Paragraph>
+                    Color provides an intuitive way of communicating information to users in your app: it can be used to indicate interactivity, give feedback to user actions, and give your interface a sense of visual continuity.<LineBreak />
+                </Paragraph>
+            </RichTextBlock>
+            <TextBlock
+                Margin="0,0,0,6"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Using colors" />
+            <RichTextBlock Margin="0,0,0,24">
+                <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
+            </RichTextBlock>
+        
+        </StackPanel>
+        <labs:Segmented x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" HorizontalAlignment="Stretch" Grid.Row="1">
+            <labs:SegmentedItem Content="Text"/>
+            <labs:SegmentedItem Content="Fill"/>
+            <labs:SegmentedItem Content="Stroke"/>
+            <labs:SegmentedItem Content="Background"/>
+            <labs:SegmentedItem Content="Signal"/>
+        </labs:Segmented>
+
+        <Frame x:Name="NavigationFrame"   Grid.Row="2" />
+    </Grid>
+</Page>

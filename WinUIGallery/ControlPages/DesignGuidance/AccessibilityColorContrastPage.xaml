@@ -1,0 +1,309 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="AppUIBasics.ControlPages.AccessibilityColorContrastPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,24,0,0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="SampleExplanationTextStyle" TargetType="TextBlock">
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="MaxWidth" Value="450" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+        </Style>
+    </Page.Resources>
+    <StackPanel Spacing="12">
+        <RichTextBlock>
+            <Paragraph>
+                Accessibility is about building experiences that make your Windows application usable by people of
+                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                .<LineBreak />
+                <LineBreak />
+                To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-
+                read color combinationto for text and its background. Not only will this benefit users with lower
+                visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
+                conditions, screens, and device settings.<LineBreak />
+                <LineBreak />
+                Check out the <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
+                app to help you find and fix accessibility issues in your Windows apps.</Paragraph>
+
+        </RichTextBlock>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Color Contrast Checker" />
+        <TextBlock
+            Margin="0,0,0,10"
+            Style="{ThemeResource BodyTextBlockStyle}"
+            Text="Use this tool to calculate the contrast ratio of two colors and measure them against the Web Content Accessibility Guidelines (WCAG)."
+            TextWrapping="Wrap" />
+        <Grid
+            Padding="8"
+            Background="{ThemeResource CardStrokeColorDefaultBrush}"
+            ColumnSpacing="8"
+            CornerRadius="{StaticResource ControlCornerRadius}"
+            RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="12,0,0,0"
+                VerticalAlignment="Bottom"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Text color" />
+
+            <controls1:InlineColorPicker
+                x:Name="TextColorPicker"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="12,0,0,12"
+                ColorChanged="TextColorPicker_ColorChanged"
+                Color="Black" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="12,10,0,0"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Background color" />
+            <controls1:InlineColorPicker
+                x:Name="BackgroundColorPicker"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="12,0,0,12"
+                ColorChanged="BackgroundColorPicker_ColorChanged" />
+
+            <TextBlock
+                Grid.Column="3"
+                Margin="12,0,0,0"
+                VerticalAlignment="Bottom"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="Contrast Ratio" />
+            <TextBlock
+                x:Name="ContrastRatioPresenter"
+                Grid.Row="1"
+                Grid.Column="3"
+                Margin="12,0,0,0"
+                Style="{ThemeResource SubtitleTextBlockStyle}"
+                Text="21:1" />
+
+            <Grid
+                Grid.Row="2"
+                Grid.ColumnSpan="4"
+                MinHeight="300"
+                Margin="12,0,12,12"
+                CornerRadius="{StaticResource ControlCornerRadius}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Status Checks  -->
+                <Grid
+                    Padding="8"
+                    Background="{ThemeResource ControlFillColorDefaultBrush}"
+                    ColumnSpacing="8"
+                    RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Margin="12,0,0,0">
+                        <Ellipse
+                            x:Name="NormalTextCheckEllipse"
+                            Width="30"
+                            Height="30"
+                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                        <FontIcon
+                            x:Name="NormalTextCheckIcon"
+                            Foreground="White"
+                            Glyph="&#xE73E;" />
+                    </Grid>
+                    <TextBlock
+                        x:Name="NormalTextCheckResult"
+                        Grid.Column="1"
+                        Width="40"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        Text="Pass" />
+                    <StackPanel
+                        Grid.Column="2"
+                        Padding="0,0,12,0"
+                        VerticalAlignment="Center">
+                        <TextBlock FontWeight="Bold" Text="Regular text" />
+                        <TextBlock Text="Requires at least 4.5:1" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1" Margin="12,0,0,0">
+                        <Ellipse
+                            x:Name="LargeTextCheckEllipse"
+                            Width="30"
+                            Height="30"
+                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                        <FontIcon
+                            x:Name="LargeTextCheckIcon"
+                            Foreground="White"
+                            Glyph="&#xE73E;" />
+                    </Grid>
+                    <TextBlock
+                        x:Name="LargeTextCheckResult"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="40"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        Text="Pass" />
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="0,0,12,0"
+                        VerticalAlignment="Center">
+                        <TextBlock FontWeight="Bold" Text="Large text (14 pt. bold or 18pt. regular)" />
+                        <TextBlock Text="Requires at least 3:1" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="2" Margin="10,0,0,0">
+                        <Ellipse
+                            x:Name="ComponentsCheckEllipse"
+                            Width="30"
+                            Height="30"
+                            VerticalAlignment="Center"
+                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                        <FontIcon
+                            x:Name="ComponentsCheckIcon"
+                            Foreground="White"
+                            Glyph="&#xE73E;" />
+                    </Grid>
+                    <TextBlock
+                        x:Name="ComponentsCheckResult"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="40"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        Text="Pass" />
+                    <StackPanel
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="0,0,10,0"
+                        VerticalAlignment="Center">
+                        <TextBlock FontWeight="Bold" Text="Graphical objects and UI components" />
+                        <TextBlock Text="Requires at least 3:1" />
+                    </StackPanel>
+                </Grid>
+
+                <!--  Preview  -->
+                <Grid
+                    Grid.Column="1"
+                    Padding="8"
+                    Background="{x:Bind BackgroundColorPicker.ColorBrush, Mode=OneWay}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Padding="12,0,12,0"
+                        VerticalAlignment="Center"
+                        Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                        Text="The quick brown fox jumped over the lazy fox." />
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Padding="12,0,12,0"
+                        VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                            Text="The quick brown fox jumped over the lazy fox." />
+                        <TextBlock
+                            FontSize="18"
+                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                            Text="The quick brown fox jumped over the lazy fox." />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Padding="12,0,12,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                        <Grid>
+                            <Rectangle
+                                Width="30"
+                                Height="30"
+                                Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                RadiusX="4"
+                                RadiusY="4" />
+                            <FontIcon Foreground="White" Glyph="&#xE73E;" />
+                        </Grid>
+
+                        <Grid>
+                            <Rectangle
+                                Width="50"
+                                Height="30"
+                                Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                RadiusX="15"
+                                RadiusY="50" />
+                            <Ellipse
+                                Width="15"
+                                Height="15"
+                                Margin="0,0,5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Fill="White" />
+                        </Grid>
+                        <FontIcon
+                            FontSize="20"
+                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                            Glyph="&#xE735;" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</Page>

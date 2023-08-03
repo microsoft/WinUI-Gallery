@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics.ControlPages
 {
@@ -284,7 +285,8 @@ namespace AppUIBasics.ControlPages
             // Update corresponding rectangle with selected color
             Button senderBtn = sender as Button;
             colorRectangle.Fill = senderBtn.Background;
-
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Rectangle color set to {(sender as ContentControl).Content}", "RectangleChangedNotificationActivityId");
             SetUIANamesForSelectedEntry(senderBtn);
         }
 

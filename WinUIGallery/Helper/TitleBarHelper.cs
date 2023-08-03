@@ -15,13 +15,14 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using WinRT;
 using System.Runtime.InteropServices;
+using AppUIBasics;
 
 namespace WinUIGallery.DesktopWap.Helper
 {
     internal class TitleBarHelper
     {
 
-        public static void triggerTitleBarRepaint(Window window)
+        private static void triggerTitleBarRepaint(Window window)
         {
             // to trigger repaint tracking task id 38044406
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
@@ -39,5 +40,28 @@ namespace WinUIGallery.DesktopWap.Helper
 
         }
 
+        public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
+        {
+            var res = Application.Current.Resources;
+            var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
+            Windows.UI.Color color;
+            if (frame.ActualTheme == ElementTheme.Dark)
+            {
+                color = Colors.White;
+            }
+            else
+            {
+                color = Colors.Black;
+            }
+            SetCaptionButtonColors(window,color);
+            return color;
+        }
+
+        public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
+        {
+            var res = Application.Current.Resources;
+            res["WindowCaptionForeground"] = color;
+            triggerTitleBarRepaint(window);
+        }
     }
 }

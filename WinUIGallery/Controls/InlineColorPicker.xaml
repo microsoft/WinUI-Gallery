@@ -1,0 +1,28 @@
+<UserControl
+    x:Class="WinUIGallery.DesktopWap.Controls.InlineColorPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid ColumnSpacing="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <SplitButton Padding="0" VerticalAlignment="Stretch">
+            <Rectangle x:Name="ColorPreview" Fill="{x:Bind ColorBrush, Mode=OneWay}" VerticalAlignment="Stretch" MinHeight="30" Width="40"/>
+            <SplitButton.Flyout>
+                <Flyout Opened="PickerFlyout_Opened">
+                    <ColorPicker x:Name="Picker"
+                        ColorChanged="Picker_ColorChanged"
+                        IsMoreButtonVisible="False"
+                        IsHexInputVisible="False"
+                        IsColorChannelTextInputVisible="False"/>
+                </Flyout>
+            </SplitButton.Flyout>
+        </SplitButton>
+        <TextBox x:Name="ColorHex" TextChanged="ColorHex_TextChanged" MinWidth="120" HorizontalAlignment="Stretch" Margin="4, 0, 0, 0" Grid.Column="1"/>
+    </Grid>
+</UserControl>
