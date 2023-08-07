@@ -2,16 +2,19 @@
   <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
 
   <PropertyGroup>
+    <!-- Set WindowsPackageType to 'None' to build XCG as an unpackaged application - use the "WinUIGallery Unpackaged" profile to launch it -->
+    <!-- Set WindowsPackageType to 'MSIX' to build XCG as an packaged application - use the "WinUIGallery Packaged" profile to launch it -->
+    <WindowsPackageType Condition="'$(WindowsPackageType)'==''">MSIX</WindowsPackageType>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefineConstants>$(DefineConstants);MSIX</DefineConstants>
     <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
-    <NoWarn>8305</NoWarn>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <EnableMsixTooling>false</EnableMsixTooling>
+    <EnableMsixTooling>true</EnableMsixTooling>
     <NoWarn>
       0108; <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
       8305  <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -22,21 +25,41 @@
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(WindowsPackageType)'=='None'">
+      <WindowsAppSdkEnableMdd>true</WindowsAppSdkEnableMdd>
+      <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
+      <DefineConstants>$(DefineConstants);UNPACKAGED</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(WindowsPackageType)'=='MSIX'">
+      <DefineConstants>MSIX</DefineConstants>
+  </PropertyGroup>
+
+  <!-- AppInstaller settings when building in the WinUI repo -->
+  <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+    <GenerateAppInstallerFile>true</GenerateAppInstallerFile>
+    <!-- URI must be absolute so this is really only useful for testing a locally produced
+         AppInstaller. -->
+    <AppInstallerUri>$(AppxPackageDir)</AppInstallerUri>
+    <!-- False until https://task.ms/31482969 is implemented -->
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+
   <Import Project="Common.props" />
 
   <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
        just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
        in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="ColorCode.Core" />
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl" Version="0.0.2" />
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" Version="0.0.16" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
-    <PackageReference Include="Microsoft.WinUI" />
-    <PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl"/>
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls"/>
+    <PackageReference Include="CommunityToolkit.WinUI.UI"/>
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations"/>
+    <PackageReference Include="Microsoft.VCRTForwarders.140" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
@@ -47,32 +70,30 @@
     <PackageReference Include="System.Private.Uri" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
-    <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-    <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
-    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
-    <PackageReference Update="Microsoft.WinUI" Version="$(WinUIPackageVersion)" Condition="'$(WinUIPackageVersion)' != ''" />
+    <PackageReference Include="ColorCode.WinUI"
+                      Version="$(ColorCodeVersion)" />
+    <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl"
+                      Version="$(CommunityToolkitSegmentedControlVersion)" />                      
+    <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls"
+                      Version="$(CommunityToolkitSettingsControlsVersion)" />
+    <PackageReference Update="CommunityToolkit.WinUI.UI"
+                      Version="$(CommunityToolkitWinUIVersion)" />
+    <PackageReference Update="CommunityToolkit.WinUI.UI.Animations"
+                      Version="$(CommunityToolkitWinUIVersion)" />                                                
+    <PackageReference Update="Microsoft.Graphics.Win2D"
+                      Version="$(GraphicsWin2DVersion)" />
+    <PackageReference Update="Microsoft.VCRTForwarders.140"
+                      Version="1.0.6" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.0.3" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
-    <PackageReference Remove="Microsoft.WinUI" />
-    <PackageReference Remove="Microsoft.ProjectReunion.InteractiveExperiences.TransportPackage" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" Condition="'$(WindowsAppSdkPackageVersion)' != ''" />
-  </ItemGroup>
-
   <ItemGroup>
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-
     <!--Include package/runtime version numbers-->
     <Compile Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
-
     <Compile Remove="CollectionsInterop.cs" />
     <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
     <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
