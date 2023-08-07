@@ -59,6 +59,7 @@
     <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls"/>
     <PackageReference Include="CommunityToolkit.WinUI.UI"/>
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations"/>
+    <PackageReference Include="Microsoft.VCRTForwarders.140" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
