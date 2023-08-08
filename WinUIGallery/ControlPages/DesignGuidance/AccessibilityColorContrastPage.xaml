@@ -78,46 +78,33 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="12,0,0,0"
-                VerticalAlignment="Bottom"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="Text color" />
-
             <controls1:InlineColorPicker
                 x:Name="TextColorPicker"
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="12,0,0,12"
+                AutomationProperties.Name="TextColorPicker"
+                Grid.RowSpan="2"
+                Header="Text Color"
                 ColorChanged="TextColorPicker_ColorChanged"
                 Color="Black" />
 
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="12,10,0,0"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="Background color" />
             <controls1:InlineColorPicker
                 x:Name="BackgroundColorPicker"
-                Grid.Row="1"
+                AutomationProperties.Name="BackgroundColorPicker"
                 Grid.Column="1"
-                Margin="12,0,0,12"
+                Grid.RowSpan="2"
+                Header="Background Color"
                 ColorChanged="BackgroundColorPicker_ColorChanged" />
 
             <TextBlock
                 Grid.Column="3"
                 Margin="12,0,0,0"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Style="{ThemeResource BodyStrongTextBlockStyle}"
                 Text="Contrast Ratio" />
             <TextBlock
                 x:Name="ContrastRatioPresenter"
                 Grid.Row="1"
                 Grid.Column="3"
-                Margin="12,0,0,0"
+                Margin="12,-4,0,0"
                 Style="{ThemeResource SubtitleTextBlockStyle}"
                 Text="21:1" />
 

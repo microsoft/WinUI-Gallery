@@ -55,10 +55,10 @@
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl"/>
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls"/>
-    <PackageReference Include="CommunityToolkit.WinUI.UI"/>
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations"/>
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl" />
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" />
     <PackageReference Include="Microsoft.VCRTForwarders.140" />
     <Manifest Include="$(ApplicationManifest)" />
 
@@ -70,22 +70,15 @@
     <PackageReference Include="System.Private.Uri" />
   </ItemGroup>
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.4.230628000-preview1" />
     <PackageReference Remove="ColorCode.Core" />
-    <PackageReference Include="ColorCode.WinUI"
-                      Version="$(ColorCodeVersion)" />
-    <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl"
-                      Version="$(CommunityToolkitSegmentedControlVersion)" />                      
-    <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls"
-                      Version="$(CommunityToolkitSettingsControlsVersion)" />
-    <PackageReference Update="CommunityToolkit.WinUI.UI"
-                      Version="$(CommunityToolkitWinUIVersion)" />
-    <PackageReference Update="CommunityToolkit.WinUI.UI.Animations"
-                      Version="$(CommunityToolkitWinUIVersion)" />                                                
-    <PackageReference Update="Microsoft.Graphics.Win2D"
-                      Version="$(GraphicsWin2DVersion)" />
-    <PackageReference Update="Microsoft.VCRTForwarders.140"
-                      Version="1.0.6" />
+    <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
+    <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl" Version="$(CommunityToolkitSegmentedControlVersion)" />                      
+    <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls" Version="$(CommunityToolkitSettingsControlsVersion)" />
+    <PackageReference Update="CommunityToolkit.WinUI.UI" Version="$(CommunityToolkitWinUIVersion)" />
+    <PackageReference Update="CommunityToolkit.WinUI.UI.Animations" Version="$(CommunityToolkitWinUIVersion)" />                                                
+    <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
+    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.6" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.0.3" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
