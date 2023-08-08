@@ -62,7 +62,7 @@
             TextWrapping="Wrap" />
         <Grid
             Padding="8"
-            Background="{ThemeResource CardStrokeColorDefaultBrush}"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
             ColumnSpacing="8"
             CornerRadius="{StaticResource ControlCornerRadius}"
             RowSpacing="8">
