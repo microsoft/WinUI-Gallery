@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -36,7 +36,7 @@
             </RichTextBlock>
         </StackPanel>
 
-        <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" Margin="0,18,0,-18" Grid.Row="1" >
+        <ComboBox x:Name="PageSelector" AutomationProperties.Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" Margin="0,18,0,-18" Grid.Row="1" >
             <x:String>Text</x:String>
             <x:String>Fill</x:String>
             <x:String>Stroke</x:String>
@@ -44,6 +44,8 @@
             <x:String>Signal</x:String>
         </ComboBox>
 
-        <Frame x:Name="NavigationFrame" Grid.Row="2" />
+        <controls1:SampleThemeListener Grid.Row="2">
+            <Frame x:Name="NavigationFrame" />
+        </controls1:SampleThemeListener>
     </Grid>
 </Page>
