@@ -59,7 +59,6 @@
     <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls"/>
     <PackageReference Include="CommunityToolkit.WinUI.UI"/>
     <PackageReference Include="CommunityToolkit.WinUI.UI.Animations"/>
-    <PackageReference Include="Microsoft.VCRTForwarders.140" />
     <Manifest Include="$(ApplicationManifest)" />
 
     <!--
@@ -84,10 +83,8 @@
                       Version="$(CommunityToolkitWinUIVersion)" />                                                
     <PackageReference Update="Microsoft.Graphics.Win2D"
                       Version="$(GraphicsWin2DVersion)" />
-    <PackageReference Update="Microsoft.VCRTForwarders.140"
-                      Version="1.0.6" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.0.3" />
+    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
