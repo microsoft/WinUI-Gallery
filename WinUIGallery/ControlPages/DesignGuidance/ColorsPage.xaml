@@ -34,16 +34,16 @@
             <RichTextBlock Margin="0,0,0,24">
                 <Paragraph>The colors below are provided as part of WinUI 3. You can reference them in your app using ThemeResource bindings. For example: Color="{ThemeResource CardBackgroundFillColorDefault}"</Paragraph>
             </RichTextBlock>
-        
         </StackPanel>
-        <labs:Segmented x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" HorizontalAlignment="Stretch" Grid.Row="1">
-            <labs:SegmentedItem Content="Text"/>
-            <labs:SegmentedItem Content="Fill"/>
-            <labs:SegmentedItem Content="Stroke"/>
-            <labs:SegmentedItem Content="Background"/>
-            <labs:SegmentedItem Content="Signal"/>
-        </labs:Segmented>
 
-        <Frame x:Name="NavigationFrame"   Grid.Row="2" />
+        <ComboBox x:Name="PageSelector" SelectionChanged="OnSelectionChanged" Loaded="OnLoaded" Width="200" Margin="0,18,0,-18" Grid.Row="1" >
+            <x:String>Text</x:String>
+            <x:String>Fill</x:String>
+            <x:String>Stroke</x:String>
+            <x:String>Background</x:String>
+            <x:String>Signal</x:String>
+        </ComboBox>
+
+        <Frame x:Name="NavigationFrame" Grid.Row="2" />
     </Grid>
 </Page>
