@@ -18,7 +18,7 @@
         
         <Grid
             Grid.Row="1"
-            Margin="0,36,0,12"
+            Margin="0,36,0,0"
             Padding="12"
             Background="{x:Bind Background, Mode=OneWay}"
             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -39,7 +39,7 @@
             <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Description, Mode=OneWay}" Grid.Row="1"/>
             <ContentPresenter
                 Grid.Row="2"
-                Margin="0,16,0,16"
+                Margin="0,12,0,12"
                 HorizontalAlignment="Center"
                 Content="{x:Bind ExampleContent, Mode=OneWay}" />
         </Grid>
