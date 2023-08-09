@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using AppUIBasics.Helper;
 
 
 namespace AppUIBasics.ControlPages
@@ -18,8 +17,6 @@ namespace AppUIBasics.ControlPages
                 new Folder { Name = "Folder3" },
         };
 
-        private DispatcherTimer resetTimer = new DispatcherTimer();
-
         public BreadcrumbBarPage()
         {
             this.InitializeComponent();
@@ -27,9 +24,6 @@ namespace AppUIBasics.ControlPages
 
             BreadcrumbBar2.ItemsSource = new ObservableCollection<Folder>(folders);
             BreadcrumbBar2.ItemClicked += BreadcrumbBar2_ItemClicked;
-
-            resetTimer.Interval = TimeSpan.FromSeconds(5);
-            resetTimer.Tick += ResetTimer_Tick;
         }
 
         private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
@@ -49,27 +43,8 @@ namespace AppUIBasics.ControlPages
                 items.Add(folders[i]);
             }
 
-            // Toggle success message for accessibility.
-            ResetSampleSucessTextBlock.Text = "Reset successful";
-            ResetSampleSucessTextBlock.Opacity = 1;
-
-            var peer = FrameworkElementAutomationPeer.FromElement(ResetSampleSucessTextBlock);
-
-            if (peer != null)
-            {
-                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-            }
-
-            // Start the timer to hide the success message after 5 seconds.
-            resetTimer.Start();
-        }
-
-        private void ResetTimer_Tick(object sender, object e)
-        {
-            // Reset the message and stop the timer
-            ResetSampleSucessTextBlock.Text = string.Empty;
-            ResetSampleSucessTextBlock.Opacity = 0;
-            resetTimer.Stop();
+            // Announce reset successful notifiication.
+            UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, "BreadcrumbBar sample reset successful.", "BreadCrumbBarSampleResetNotificationId");
         }
     }
 
