@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -31,18 +32,23 @@ namespace AppUIBasics.ControlPages
                 {
                     case "Button1":
                         Control1Output.Text = "You clicked: " + name;
+                        UIHelper.AnnounceActionForAccessibility(Button1, Control1Output.Text, "AppBarButtonSuccessNotificationId");
                         break;
                     case "Button2":
                         Control2Output.Text = "You clicked: " + name;
+                        UIHelper.AnnounceActionForAccessibility(Button2, Control2Output.Text, "AppBarButtonSuccessNotificationId");
                         break;
                     case "Button3":
                         Control3Output.Text = "You clicked: " + name;
+                        UIHelper.AnnounceActionForAccessibility(Button3, Control3Output.Text, "AppBarButtonSuccessNotificationId");
                         break;
                     case "Button4":
                         Control4Output.Text = "You clicked: " + name;
+                        UIHelper.AnnounceActionForAccessibility(Button4, Control4Output.Text, "AppBarButtonSuccessNotificationId");
                         break;
                     case "Button5":
                         Control5Output.Text = "You clicked: " + name;
+                        UIHelper.AnnounceActionForAccessibility(Button5, Control5Output.Text, "AppBarButtonSuccessNotificationId");
                         break;
                 }
             }

@@ -43,7 +43,7 @@ namespace AppUIBasics.ControlPages
                 items.Add(folders[i]);
             }
 
-            // Announce reset successful notifiication.
+            // Announce reset success notifiication.
             UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, "BreadcrumbBar sample reset successful.", "BreadCrumbBarSampleResetNotificationId");
         }
     }
