@@ -84,7 +84,7 @@
     <PackageReference Update="Microsoft.Graphics.Win2D"
                       Version="$(GraphicsWin2DVersion)" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+    <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.0.3" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
   </ItemGroup>
 
