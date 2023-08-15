@@ -51,9 +51,7 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
             </local:ControlExample.Example>
 
             <local:ControlExample.Options>
-                <StackPanel>
-                    <Button x:Name="ResetSampleBtn" Content="Reset sample"  Click="ResetSampleButton_Click"/>
-                </StackPanel>
+                <Button x:Name="ResetSampleBtn" Content="Reset sample"  Click="ResetSampleButton_Click"/>
             </local:ControlExample.Options>
 
             <local:ControlExample.Xaml>
