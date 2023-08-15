@@ -35,14 +35,14 @@
                                     </Style>
                                 </GridView.Resources>
                                 <GridView.Items>
-                                    <Rectangle Fill="Red"/>
-                                    <Rectangle Fill="Orange"/>
-                                    <Rectangle Fill="Yellow"/>
-                                    <Rectangle Fill="Green"/>
-                                    <Rectangle Fill="Blue"/>
-                                    <Rectangle Fill="Indigo"/>
-                                    <Rectangle Fill="Violet"/>
-                                    <Rectangle Fill="Gray"/>
+                                    <Rectangle Fill="Red" AutomationProperties.Name="Red" />
+                                    <Rectangle Fill="Orange" AutomationProperties.Name="Orange" />
+                                    <Rectangle Fill="Yellow" AutomationProperties.Name="Yellow" />
+                                    <Rectangle Fill="Green" AutomationProperties.Name="Green" />
+                                    <Rectangle Fill="Blue" AutomationProperties.Name="Blue" />
+                                    <Rectangle Fill="Indigo" AutomationProperties.Name="Indigo" />
+                                    <Rectangle Fill="Violet" AutomationProperties.Name="Violet" />
+                                    <Rectangle Fill="Gray" AutomationProperties.Name="Gray" />
                                 </GridView.Items>
                             </GridView>
 
