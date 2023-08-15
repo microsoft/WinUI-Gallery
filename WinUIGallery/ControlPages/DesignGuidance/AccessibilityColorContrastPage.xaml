@@ -85,41 +85,41 @@
                 </Grid.ColumnDefinitions>
 
                 <controls1:InlineColorPicker
-                x:Name="TextColorPicker"
-                AutomationProperties.Name="TextColorPicker"
-                Grid.RowSpan="2"
-                Header="Text Color"
-                ColorChanged="TextColorPicker_ColorChanged"
-                Color="Black" />
+                    x:Name="TextColorPicker"
+                    AutomationProperties.Name="TextColorPicker"
+                    Grid.RowSpan="2"
+                    Header="Text Color"
+                    ColorChanged="TextColorPicker_ColorChanged"
+                    Color="Black" />
 
                 <controls1:InlineColorPicker
-                x:Name="BackgroundColorPicker"
-                AutomationProperties.Name="BackgroundColorPicker"
-                Grid.Column="1"
-                Grid.RowSpan="2"
-                Header="Background Color"
-                ColorChanged="BackgroundColorPicker_ColorChanged" />
+                    x:Name="BackgroundColorPicker"
+                    AutomationProperties.Name="BackgroundColorPicker"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Header="Background Color"
+                    ColorChanged="BackgroundColorPicker_ColorChanged" />
 
                 <TextBlock
-                Grid.Column="3"
-                Margin="12,0,0,0"
-                VerticalAlignment="Center"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="Contrast Ratio" />
+                    Grid.Column="3"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center"
+                    Style="{ThemeResource BodyStrongTextBlockStyle}"
+                    Text="Contrast Ratio" />
                 <TextBlock
-                x:Name="ContrastRatioPresenter"
-                Grid.Row="1"
-                Grid.Column="3"
-                Margin="12,-4,0,0"
-                Style="{ThemeResource SubtitleTextBlockStyle}"
-                Text="21:1" />
+                    x:Name="ContrastRatioPresenter"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Margin="12,-4,0,0"
+                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                    Text="21:1" />
 
                 <Grid
-                Grid.Row="2"
-                Grid.ColumnSpan="4"
-                MinHeight="300"
-                Margin="12,0,12,12"
-                CornerRadius="{StaticResource ControlCornerRadius}">
+                    Grid.Row="2"
+                    Grid.ColumnSpan="4"
+                    MinHeight="300"
+                    Margin="12,0,12,12"
+                    CornerRadius="{StaticResource ControlCornerRadius}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -127,10 +127,10 @@
 
                     <!--  Status Checks  -->
                     <Grid
-                    Padding="8"
-                    Background="{ThemeResource ControlFillColorDefaultBrush}"
-                    ColumnSpacing="8"
-                    RowSpacing="16">
+                        Padding="8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        ColumnSpacing="8"
+                        RowSpacing="16">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -155,16 +155,16 @@
                             Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
-                        x:Name="NormalTextCheckResult"
-                        Grid.Column="1"
-                        Width="40"
-                        VerticalAlignment="Center"
-                        Style="{ThemeResource BodyStrongTextBlockStyle}"
-                        Text="Pass" />
+                            x:Name="NormalTextCheckResult"
+                            Grid.Column="1"
+                            Width="40"
+                            VerticalAlignment="Center"
+                            Style="{ThemeResource BodyStrongTextBlockStyle}"
+                            Text="Pass" />
                         <StackPanel
-                        Grid.Column="2"
-                        Padding="0,0,12,0"
-                        VerticalAlignment="Center">
+                            Grid.Column="2"
+                            Padding="0,0,12,0"
+                            VerticalAlignment="Center">
                             <TextBlock FontWeight="Bold" Text="Regular text" />
                             <TextBlock Text="Requires at least 4.5:1" />
                         </StackPanel>
@@ -181,18 +181,18 @@
                             Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
-                        x:Name="LargeTextCheckResult"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Width="40"
-                        VerticalAlignment="Center"
-                        Style="{ThemeResource BodyStrongTextBlockStyle}"
-                        Text="Pass" />
+                            x:Name="LargeTextCheckResult"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="40"
+                            VerticalAlignment="Center"
+                            Style="{ThemeResource BodyStrongTextBlockStyle}"
+                            Text="Pass" />
                         <StackPanel
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Padding="0,0,12,0"
-                        VerticalAlignment="Center">
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Padding="0,0,12,0"
+                            VerticalAlignment="Center">
                             <TextBlock FontWeight="Bold" Text="Large text (14 pt. bold or 18pt. regular)" />
                             <TextBlock Text="Requires at least 3:1" />
                         </StackPanel>
@@ -210,18 +210,18 @@
                             Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
-                        x:Name="ComponentsCheckResult"
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Width="40"
-                        VerticalAlignment="Center"
-                        Style="{ThemeResource BodyStrongTextBlockStyle}"
-                        Text="Pass" />
+                            x:Name="ComponentsCheckResult"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="40"
+                            VerticalAlignment="Center"
+                            Style="{ThemeResource BodyStrongTextBlockStyle}"
+                            Text="Pass" />
                         <StackPanel
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Padding="0,0,10,0"
-                        VerticalAlignment="Center">
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Padding="0,0,10,0"
+                            VerticalAlignment="Center">
                             <TextBlock FontWeight="Bold" Text="Graphical objects and UI components" />
                             <TextBlock Text="Requires at least 3:1" />
                         </StackPanel>
@@ -229,9 +229,9 @@
 
                     <!--  Preview  -->
                     <Grid
-                    Grid.Column="1"
-                    Padding="8"
-                    Background="{x:Bind BackgroundColorPicker.ColorBrush, Mode=OneWay}">
+                        Grid.Column="1"
+                        Padding="8"
+                        Background="{x:Bind BackgroundColorPicker.ColorBrush, Mode=OneWay}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -239,61 +239,61 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock
-                        Padding="12,0,12,0"
-                        VerticalAlignment="Center"
-                        Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                        Text="The quick brown fox jumped over the lazy fox." />
+                            Padding="12,0,12,0"
+                            VerticalAlignment="Center"
+                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                            Text="The quick brown fox jumped over the lazy fox." />
 
                         <StackPanel
-                        Grid.Row="1"
-                        Padding="12,0,12,0"
-                        VerticalAlignment="Center">
+                            Grid.Row="1"
+                            Padding="12,0,12,0"
+                            VerticalAlignment="Center">
                             <TextBlock
-                            FontSize="14"
-                            FontWeight="Bold"
-                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                            Text="The quick brown fox jumped over the lazy fox." />
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                Text="The quick brown fox jumped over the lazy fox." />
                             <TextBlock
-                            FontSize="18"
-                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                            Text="The quick brown fox jumped over the lazy fox." />
+                                FontSize="18"
+                                Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                Text="The quick brown fox jumped over the lazy fox." />
                         </StackPanel>
 
                         <StackPanel
-                        Grid.Row="2"
-                        Padding="12,0,12,0"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal"
-                        Spacing="8">
+                            Grid.Row="2"
+                            Padding="12,0,12,0"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="8">
                             <Grid>
                                 <Rectangle
-                                Width="30"
-                                Height="30"
-                                Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                                RadiusX="4"
-                                RadiusY="4" />
+                                    Width="30"
+                                    Height="30"
+                                    Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                    RadiusX="4"
+                                    RadiusY="4" />
                                 <FontIcon Foreground="White" Glyph="&#xE73E;" />
                             </Grid>
 
                             <Grid>
                                 <Rectangle
-                                Width="50"
-                                Height="30"
-                                Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                                RadiusX="15"
-                                RadiusY="50" />
+                                    Width="50"
+                                    Height="30"
+                                    Fill="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                    RadiusX="15"
+                                    RadiusY="50" />
                                 <Ellipse
-                                Width="15"
-                                Height="15"
-                                Margin="0,0,5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Fill="White" />
+                                    Width="15"
+                                    Height="15"
+                                    Margin="0,0,5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Fill="White" />
                             </Grid>
                             <FontIcon
-                            FontSize="20"
-                            Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
-                            Glyph="&#xE735;" />
+                                FontSize="20"
+                                Foreground="{x:Bind TextColorPicker.ColorBrush, Mode=OneWay}"
+                                Glyph="&#xE735;" />
                         </StackPanel>
                     </Grid>
                 </Grid>
