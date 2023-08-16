@@ -64,7 +64,7 @@ namespace WinUIGallery.DesktopWap.Controls
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
-            UIHelper.AnnounceActionForAccessibility(ThemeButton, "Theme Changed.", "ThemeChangedSuccessNotificationId");
+            UIHelper.AnnounceActionForAccessibility(ThemeButton, "Theme changed.", "ThemeChangedSuccessNotificationId");
         }
 
         private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
