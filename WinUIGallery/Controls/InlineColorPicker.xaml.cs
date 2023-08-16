@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using AppUIBasics.Controls;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -22,6 +23,15 @@ namespace WinUIGallery.DesktopWap.Controls
 {
     public sealed partial class InlineColorPicker : UserControl
     {
+        public string Header
+        {
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(string), typeof(InlineColorPicker), new PropertyMetadata(null));
+
         public Color Color
         {
             get { return (Color)GetValue(ColorProperty); }

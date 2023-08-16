@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using Microsoft.UI.Xaml.Controls;
+using AppUIBasics.Helper;
 
 
 namespace AppUIBasics.ControlPages
@@ -40,6 +39,9 @@ namespace AppUIBasics.ControlPages
             {
                 items.Add(folders[i]);
             }
+
+            // Announce reset success notifiication.
+            UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, "BreadcrumbBar sample reset successful.", "BreadCrumbBarSampleResetNotificationId");
         }
     }
 

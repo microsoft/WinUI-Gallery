@@ -104,22 +104,6 @@ namespace AppUIBasics
             base.OnNavigatedTo(e);
         }
 
-        protected override void OnKeyDown(KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Escape)
-            {
-                this.Item = null;
-                if (this.contentFrame.CanGoBack)
-                {
-                    this.contentFrame.GoBack();
-                }
-                else
-                {
-                    NavigationRootPage.GetForElement(this).Navigate(typeof(AllControlsPage));
-                }
-            }
-        }
-
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             SetControlExamplesTheme(ThemeHelper.ActualTheme);
