@@ -43,7 +43,7 @@
 
         <local:ControlExample HeaderText="A determinate progress bar.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <ProgressBar Width="130" x:Name="ProgressBar2"/>
+                <ProgressBar Width="130" x:Name="ProgressBar2" AutomationProperties.Name="Determinate ProgressBar example"/>
                 <TextBlock x:Name="Control2Output" Style="{ThemeResource OutputTextBlockStyle}" Width="60" TextAlignment="Center" />
                 <TextBlock x:Name="ProgressLabel"  Text="Progress" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <NumberBox

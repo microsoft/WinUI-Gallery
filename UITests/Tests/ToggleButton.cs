@@ -18,36 +18,31 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class ToggleButton : Test_Base
+	[TestClass]
+    public class ToggleButton : TestBase
     {
         private static WindowsElement toggleButtonElement = null;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("ToggleButton");
-            button.Click();
-            toggleButtonElement = session.FindElementByAccessibilityId("Toggle1");
+			OpenControlPage("ToggleButton");
+			toggleButtonElement = Session.FindElementByAccessibilityId("Toggle1");
             Assert.IsNotNull(toggleButtonElement);
-            Thread.Sleep(3000);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
-        }
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
 
-        [TestMethod]
+		[TestMethod]
         public void Click()
         {
-            var buttonEventOutput = session.FindElementByAccessibilityId("Control1Output");
+            var buttonEventOutput = Session.FindElementByAccessibilityId("Control1Output");
             Assert.AreEqual("Off", buttonEventOutput.Text);
 
             toggleButtonElement.Click();
@@ -65,7 +60,7 @@ namespace UITests
         [TestMethod]
         public void Enabled()
         {
-            var disableButtonCheckbox = session.FindElementByAccessibilityId("DisableToggle1");
+            var disableButtonCheckbox = Session.FindElementByAccessibilityId("DisableToggle1");
             Assert.IsTrue(toggleButtonElement.Enabled);
 
             disableButtonCheckbox.Click();
