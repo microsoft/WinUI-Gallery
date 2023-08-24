@@ -11,7 +11,7 @@ pool:
     vmImage: "windows-2022"
 
 variables:
-    solutionGallery: "**/WinUIGallery.DesktopWap.sln"
+    solutionGallery: "**/WinUIGallery.sln"
     solutionUITests: "**/UITests.sln"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
