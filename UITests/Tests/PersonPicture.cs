@@ -14,28 +14,32 @@
 //
 //******************************************************************************
 
-using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
+using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
 	[TestClass]
-	public class SampleTestTemplate : TestBase
+	public class PersonPicture : TestBase
 	{
-
-		private static WindowsElement element1 = null;
-		private static WindowsElement element2 = null;
-
+		[ClassInitialize]
 		public static void ClassInitialize(TestContext context)
 		{
-			OpenControlPage("MyControlPage");
-			Thread.Sleep(1000);
-			element1 = Session.FindElementByAccessibilityId("Element Locator");
-			Assert.IsNotNull(element1);
-			element2 = Session.FindElementByAccessibilityId("Element Locator");
-			Assert.IsNotNull(element2);
+			OpenControlPage("PersonPicture");
+		}
+
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
+		public void SwitchOptions()
+		{
+			GetElementByName("Profile Image").Click();
+			GetElementByName("Display Name").Click();
+			GetElementByName("Initials").Click();
 		}
 	}
 }
-
