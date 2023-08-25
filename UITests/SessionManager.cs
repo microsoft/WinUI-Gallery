@@ -27,7 +27,7 @@ namespace UITests
 	[TestClass]
 	public class SessionManager
 	{
-		private const string WindowsApplicationDriverUrl = "http://127.0.0.1:11118";
+		private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 		private static readonly string[] WinUIGalleryAppIDs = new string[]{
 			"Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
 			"Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App"
@@ -62,11 +62,11 @@ namespace UITests
 					// WinAppDriver is probably not running, so lets start it!
 					if (File.Exists(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"))
 					{
-						Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe", "11118");
+						Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
 					}
 					else if (File.Exists(@"C:\Program Files\Windows Application Driver\WinAppDriver.exe"))
 					{
-						Process.Start(@"C:\Program Files\Windows Application Driver\WinAppDriver.exe", "11118");
+						Process.Start(@"C:\Program Files\Windows Application Driver\WinAppDriver.exe");
 					}
 					else
 					{

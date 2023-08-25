@@ -75,9 +75,8 @@ steps:
 
     - task: Windows Application Driver@0
       inputs:
-        OperationType: 'Start'
-        WADArguments: '11118'
-        AgentResolution: '1080p'
+          OperationType: "Start"
+          AgentResolution: "1080p"
 
     - task: VSTest@2
       inputs:
