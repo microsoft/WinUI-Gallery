@@ -36,13 +36,14 @@ steps:
         targetType: filePath
         filePath: build/GenerateTestPFX.ps1
 
-
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       inputs:
-          platform: $(buildPlatform)
-          solution: "$(solutionGallery)"
-          configuration: "$(buildConfiguration)"
-          msbuildArgs: '/p:PublishReadyToRun=false /p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true'
+        command: 'publish'
+        publishWebProjects: false
+        projects: '$(solutionGallery)'
+        arguments: '/p:PublishReadyToRun=false /p:AppxBundlePlatforms="x64" /p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true /p:platform="x64" /p:configuration="Debug" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml"'
+        zipAfterPublish: false
+        modifyOutputPath: false
 
     - task: PowerShell@2
       inputs:
