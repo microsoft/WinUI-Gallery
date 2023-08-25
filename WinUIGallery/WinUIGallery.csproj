@@ -114,9 +114,13 @@
                             Version="4.3.2" />
       </ItemGroup>
 
+      <PropertyGroup>
+        <!-- Ensure that GenerateBootstrapCS runs before XamlPreCompile, to compile WindowsAppSDK-VersionInfo.cs.
+            This can be removed when WinAppSDK contains it. -->
+        <CoreCompileDependsOn>$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
+      </PropertyGroup>
+
       <ItemGroup>
-          <!-- Include package/runtime version numbers -->
-          <Compile Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
           <Compile Remove="CollectionsInterop.cs" />
           <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
           <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
