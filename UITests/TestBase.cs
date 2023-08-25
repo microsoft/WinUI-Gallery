@@ -54,8 +54,8 @@ namespace UITests
 		{
 			for (int i = 0; i < 100; i++)
 			{
-				var header = Session.FindElementsByName(name).Where(x => x.GetProperty("AutomationId") == "PageHeader").First();
-				if (header != null)
+				var header = Session.FindElementByAccessibilityId("PageHeader");
+				if (header != null && header.Text == name)
 				{
 					return header;
 				}
