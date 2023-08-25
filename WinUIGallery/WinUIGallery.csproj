@@ -89,6 +89,8 @@
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
           addresses those vulnerabilites, we need to pull it in ourselves. -->
           <PackageReference Include="System.Private.Uri" />
+          <!-- Include package/runtime version numbers -->
+          <Compile Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
       </ItemGroup>
 
       <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">

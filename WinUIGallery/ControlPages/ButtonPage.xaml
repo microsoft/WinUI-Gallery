@@ -80,10 +80,10 @@
                 <TextBlock Text="Another option is to explicitly wrap the Button's content" Margin="0,8,0,8"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button MaxWidth="240" Margin="0,0,8,0">
-                        <TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/>
+                        <TextBlock Text="This is some text that is too long and will get cut off without wrapping" TextWrapping="WrapWholeWords"/>
                     </Button>
                     <Button MaxWidth="240">
-                        <TextBlock Text="This is another text that would result in being cut off" TextWrapping="WrapWholeWords"/>
+                        <TextBlock Text="This is another text that would result in being cut off without wrapping" TextWrapping="WrapWholeWords"/>
                     </Button>
                 </StackPanel>
             </StackPanel>

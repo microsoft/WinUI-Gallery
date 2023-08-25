@@ -18,40 +18,35 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class ToggleSwitch : Test_Base
+	[TestClass]
+    public class ToggleSwitch : TestBase
     {
         private static WindowsElement toggleSwitchElement = null;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("ToggleSwitch");
-            button.Click();
-            toggleSwitchElement = session.FindElementByAccessibilityId("ToggleSwitch2");
+			OpenControlPage("ToggleSwitch");
+			toggleSwitchElement = Session.FindElementByAccessibilityId("ToggleSwitch2");
             Assert.IsNotNull(toggleSwitchElement);
-            Thread.Sleep(3000);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
-        }
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
 
-        [TestMethod]
+		[TestMethod]
         public void Click()
         {
             var originalState = toggleSwitchElement.Selected;
             toggleSwitchElement.Click();
             Assert.AreNotEqual(originalState, toggleSwitchElement.Selected);
 
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             toggleSwitchElement.Click();
             Assert.AreEqual(originalState, toggleSwitchElement.Selected);
         }
@@ -81,7 +76,7 @@ namespace UITests
             toggleSwitchElement.Click();
             Assert.AreNotEqual(originalState, toggleSwitchElement.Selected);
 
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
             toggleSwitchElement.Click();
             Assert.AreEqual(originalState, toggleSwitchElement.Selected);
         }

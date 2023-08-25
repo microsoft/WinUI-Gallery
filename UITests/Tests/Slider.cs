@@ -15,14 +15,13 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium;
-using System.Threading;
+using OpenQA.Selenium.Appium.Windows;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class Slider : Test_Base
+	[TestClass]
+    public class Slider : TestBase
     {
         private static WindowsElement sliderElement1 = null;
         private static WindowsElement sliderElement2 = null;
@@ -30,25 +29,20 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("Slider");
-            button.Click();
-            sliderElement1 = session.FindElementByAccessibilityId("Slider1");
+			OpenControlPage("Slider");
+			sliderElement1 = Session.FindElementByAccessibilityId("Slider1");
             Assert.IsNotNull(sliderElement1);
-            sliderElement2 = session.FindElementByAccessibilityId("Slider2");
+            sliderElement2 = Session.FindElementByAccessibilityId("Slider2");
             Assert.IsNotNull(sliderElement2);
-            Thread.Sleep(3000);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
-        }
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
 
-        [TestMethod]
+		[TestMethod]
         public void Click()
         {
             sliderElement1.Click();
