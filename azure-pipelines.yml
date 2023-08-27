@@ -41,7 +41,7 @@ steps:
         command: 'publish'
         publishWebProjects: false
         projects: '$(solutionGallery)'
-        arguments: '/p:PublishReadyToRun=false /p:AppxBundlePlatforms="x64" /p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true /p:platform="x64" /p:configuration="Debug" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml"'
+        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-$(buildPlatform).pubxml"'
         zipAfterPublish: false
         modifyOutputPath: false
 
