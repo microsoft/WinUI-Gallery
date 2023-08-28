@@ -152,7 +152,7 @@
                 <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="272" />
-                        <ColumnDefinition Width="144" />
+                        <ColumnDefinition Width="136" />
                         <ColumnDefinition Width="112" />
                         <ColumnDefinition Width="164" />
                     </Grid.ColumnDefinitions>
@@ -170,7 +170,7 @@
                         Grid.Column="2"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Size" />
+                        Text="Size/Line height" />
                     <TextBlock
                         Grid.Column="3"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
