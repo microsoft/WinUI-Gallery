@@ -277,7 +277,8 @@ namespace AppUIBasics
             // Delay necessary to ensure NavigationView visual state can match navigation
             await Task.Delay(500);
 
-            // IsExpanded has no effect if the UI is not visible
+            // Auto-expand the "Design guidance" section, since it's a small top-level group.
+            // This must be done now, since Expanding doesn't work if the UI is not visible
             DesignGuidanceItem.IsExpanded = true;
 
             this.NavigationViewLoaded?.Invoke();
