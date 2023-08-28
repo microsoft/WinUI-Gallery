@@ -25,7 +25,7 @@ namespace AppUIBasics.ControlPages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            // Needed if this page is getting cached due to the navigation stack
+            // Needed if this page is getting cached due to the navigation stack.
             Player2.MediaPlayer.Play();
         }
 
