@@ -122,8 +122,7 @@
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
-                            .</Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>                            .</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
                 <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
@@ -135,15 +134,13 @@
                             <Paragraph>
                                 If you don't specify a FontFamily,
                                 or you specify a FontFamily that is not available on the system at runtime,
-                                the<Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink>
-                                falls back to the default font family defined by the SymbolThemeFontFamily resource.</Paragraph>
+                                the<Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.</Paragraph>
                             <Paragraph>
                                 An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
                                 For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
                             </Paragraph>
                             <Paragraph>
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink>
-                                and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
+                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
                         </RichTextBlock>
                         <controls:SampleCodePresenter CodeSourceFile="Icons/FontIconSample2_xaml.txt" SampleType="XAML" />
                     </StackPanel>
