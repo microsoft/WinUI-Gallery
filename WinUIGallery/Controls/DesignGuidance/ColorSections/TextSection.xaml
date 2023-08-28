@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <designguidance:ColorTile
-                Background="{ThemeResource TextFillColorPrimary}"
+                Background="{ThemeResource TextFillColorPrimaryBrush}"
                 ColorBrushName="TextFillColorPrimaryBrush"
                 ColorExplanation="Rest or Hover"
                 ColorName="Text / Primary"
@@ -142,7 +142,7 @@
                 ColorExplanation="Rest or Hover"
                 ColorName="Text on Accent / Primary"
                 ColorValue="#FFFFFF (FF, 100%)"
-                Foreground="{ThemeResource TextFillColorPrimary}" />
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
 
             <designguidance:ColorTile
                 Grid.Column="2"
@@ -151,7 +151,7 @@
                 ColorExplanation="Pressed only (not accessible)"
                 ColorName="Text on Accent / Secondary"
                 ColorValue="#FFFFFF (B3, 70%)"
-                Foreground="{ThemeResource TextFillColorPrimary}"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                 ShowSeparator="False" />
         </Grid>
 
@@ -167,7 +167,7 @@
                 ColorExplanation="Disabled only (not accessible)"
                 ColorName="Text on Accent / Disabled"
                 ColorValue="#FFFFFF (FF, 100%)"
-                Foreground="{ThemeResource TextFillColorPrimary}" />
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
             <designguidance:ColorTile
                 Grid.Column="2"
                 Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"

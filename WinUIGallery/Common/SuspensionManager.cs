@@ -10,6 +10,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using AppUIBasics.Helper;
 
 namespace AppUIBasics.Common
 {
@@ -75,11 +76,7 @@ namespace AppUIBasics.Common
                 serializer.WriteObject(sessionData, _sessionState);
 
                 // Get an output stream for the SessionState file and write the state asynchronously
-#if !UNPACKAGED
-                StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-#else
-                StorageFolder localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
-#endif
+                StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
                 StorageFile file = await localFolder.CreateFileAsync(sessionStateFilename, CreationCollisionOption.ReplaceExisting);
                 using (Stream fileStream = await file.OpenStreamForWriteAsync())
                 {
@@ -109,11 +106,8 @@ namespace AppUIBasics.Common
             try
             {
                 // Get the input stream for the SessionState file
-#if !UNPACKAGED
-                StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-#else
-                StorageFolder localFolder = await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory);
-#endif
+                StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
+
                 StorageFile file = await localFolder.GetFileAsync(sessionStateFilename);
                 using (IInputStream inStream = await file.OpenSequentialReadAsync())
                 {

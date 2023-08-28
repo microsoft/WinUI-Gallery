@@ -18,10 +18,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class RadioButton : Test_Base
+	[TestClass]
+    public class RadioButton : TestBase
     {
         private static WindowsElement radioButtonElement1 = null;
         private static WindowsElement radioButtonElement2 = null;
@@ -29,35 +29,29 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            //NavigateTo("Selection and picker controls", "RadioButton");
-            var buttonTab = session.FindElementByName("Basic Input");
-            buttonTab.Click();
-            var button = session.FindElementByName("RadioButton");
-            button.Click();
-            radioButtonElement1 = session.FindElementByAccessibilityId("Option1RadioButton");
+			OpenControlPage("RadioButton");
+			radioButtonElement1 = Session.FindElementByAccessibilityId("Option1RadioButton");
             Assert.IsNotNull(radioButtonElement1);
-            radioButtonElement2 = session.FindElementByAccessibilityId("Option2RadioButton");
+            radioButtonElement2 = Session.FindElementByAccessibilityId("Option2RadioButton");
             Assert.IsNotNull(radioButtonElement2);
-            Thread.Sleep(3000);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
-        }
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
 
-        [TestMethod]
+		[TestMethod]
         public void Click()
         {
-            var radioButtonEventOutput = session.FindElementByAccessibilityId("Control1Output");
+            var radioButtonEventOutput = Session.FindElementByAccessibilityId("Control1Output");
 
             radioButtonElement1.Click();
-            Assert.AreEqual("You selected option 1.", radioButtonEventOutput.Text);
+            Assert.AreEqual("You selected Option 1", radioButtonEventOutput.Text);
 
             radioButtonElement2.Click();
-            Assert.AreEqual("You selected option 2.", radioButtonEventOutput.Text);
+            Assert.AreEqual("You selected Option 2", radioButtonEventOutput.Text);
         }
 
         [TestMethod]

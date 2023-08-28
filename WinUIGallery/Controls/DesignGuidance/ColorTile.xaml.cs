@@ -76,15 +76,5 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
             Clipboard.SetContent(package);
 
         }
-
-        private void UserControl_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            CopyBrushNameButton.Visibility = Visibility.Visible;
-        }
-
-        private void UserControl_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            CopyBrushNameButton.Visibility = Visibility.Collapsed;
-        }
     }
 }
