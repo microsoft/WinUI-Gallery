@@ -272,10 +272,15 @@ namespace AppUIBasics
             }
         }
 
-        private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
+        private async void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
         {
             // Delay necessary to ensure NavigationView visual state can match navigation
-            Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
+            await Task.Delay(500);
+
+            // IsExpanded has no effect if the UI is not visible
+            DesignGuidanceItem.IsExpanded = true;
+
+            this.NavigationViewLoaded?.Invoke();
         }
 
         private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
