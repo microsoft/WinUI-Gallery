@@ -11,6 +11,7 @@
         {
           "UniqueId": "Typography",
           "Title": "Typography",
+          "Subtitle": "The type ramp used in WinUI",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -32,6 +33,7 @@
         {
           "UniqueId": "Icons",
           "Title": "Icons",
+          "Subtitle": "A complete list of icons in the Segoe Fluent Icons font",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -49,6 +51,7 @@
         {
           "UniqueId": "Colors",
           "Title": "Colors",
+          "Subtitle": "Theme colors and their usage",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -69,6 +72,7 @@
         {
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color contrast",
+          "Subtitle": "Tool for checking color contrast",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -86,6 +90,7 @@
         {
           "UniqueId": "AccessibilityKeyboard",
           "Title": "Keyboard support",
+          "Subtitle": "How to write keyboard-accessible apps",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -127,6 +132,7 @@
         {
           "UniqueId": "AccessibilityScreenReader",
           "Title": "Screen reader support",
+          "Subtitle": "How to write screen reader-accessible apps for blind and visually-impaired people",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,

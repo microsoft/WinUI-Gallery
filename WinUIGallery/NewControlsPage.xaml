@@ -63,6 +63,7 @@
                 <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="204" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <controls:HomePageHeaderImage

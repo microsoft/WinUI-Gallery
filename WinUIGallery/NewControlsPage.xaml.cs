@@ -30,7 +30,9 @@ namespace AppUIBasics
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
             menuItem.IsSelected = true;
 
-            Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
+            Items = ControlInfoDataSource.Instance.Groups
+                .SelectMany(g => g.Items.Where(i => i.BadgeString != null || g.IsSpecialSection))
+                .OrderBy(i => i.Title).ToList();
             itemsCVS.Source = FormatData();
         }
 
@@ -39,7 +41,7 @@ namespace AppUIBasics
             var query = from item in this.Items
                         group item by item.BadgeString into g
                         orderby g.Key
-                        select new GroupInfoList(g) { Key = g.Key };
+                        select new GroupInfoList(g) { Key = g.Key ?? "SpecialSection" };
 
             ObservableCollection<GroupInfoList> groupList = new ObservableCollection<GroupInfoList>(query);
 
@@ -63,6 +65,9 @@ namespace AppUIBasics
                         break;
                     case "Preview":
                         item.Title = "Preview samples";
+                        break;
+                    case "SpecialSection":
+                        item.Title = "Design guidance";
                         break;
                 }
             }
