@@ -28,7 +28,7 @@ namespace UITests
 
 		internal static void InitializeAxe()
 		{
-			var processes = Process.GetProcessesByName("WinUIGallery.DesktopWap");
+			var processes = Process.GetProcessesByName("WinUIGallery");
 			Assert.IsTrue(processes.Length > 0);
 
 			var config = Config.Builder.ForProcessId(processes[0].Id).Build();

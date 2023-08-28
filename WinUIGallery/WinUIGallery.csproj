@@ -53,7 +53,11 @@
         <AppxBundle>Always</AppxBundle>
         <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
         <SDKVersion>10.0</SDKVersion>
-        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+        <PfxFile>$(MSBuildProjectDirectory)\..\build\WinUI-Gallery-Test.pfx</PfxFile>
+    </PropertyGroup>
+      
+    <PropertyGroup Condition="Exists('$(PfxFile)')">
+        <PackageCertificateKeyFile>..\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -68,8 +72,7 @@
     </ItemGroup>
     <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
         <GenerateAppInstallerFile>true</GenerateAppInstallerFile>
-        <!-- URI must be absolute so this is really only useful for testing a locally produced
-              AppInstaller. -->
+        <!-- URI must be absolute so this is really only useful for testing a locally produced AppInstaller. -->
         <AppInstallerUri>$(AppxPackageDir)</AppInstallerUri>
         <!-- False until https://task.ms/31482969 is implemented -->
         <AppxBundle>Never</AppxBundle>
