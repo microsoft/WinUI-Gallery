@@ -11,8 +11,11 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Windows.Storage;
 using WinRT.Interop;
 
 namespace AppUIBasics.Helper
@@ -26,7 +29,10 @@ namespace AppUIBasics.Helper
     {
         static public Window CreateWindow()
         {
-            Window newWindow = new Window();
+            Window newWindow = new Window
+            {
+                SystemBackdrop = new MicaBackdrop()
+            };
             TrackWindow(newWindow);
             return newWindow;
         }
@@ -64,5 +70,19 @@ namespace AppUIBasics.Helper
         static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
         static private List<Window> _activeWindows = new List<Window>();
+
+        static public StorageFolder GetAppLocalFolder()
+        {
+            StorageFolder localFolder;
+            if (!NativeHelper.IsAppPackaged)
+            {
+                localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
+            }
+            else
+            {
+                localFolder = ApplicationData.Current.LocalFolder;
+            }
+            return localFolder;
+        }
     }
 }

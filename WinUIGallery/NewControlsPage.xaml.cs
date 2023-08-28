@@ -22,6 +22,8 @@ namespace AppUIBasics
             this.InitializeComponent();
         }
 
+        public string WinAppSdkDetails => App.WinAppSdkDetails;
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;

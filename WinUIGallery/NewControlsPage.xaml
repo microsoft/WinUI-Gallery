@@ -78,7 +78,7 @@
                         <TextBlock
                             x:Name="smallHeaderSubtitleText"
                             FontSize="18"
-                            Text="{StaticResource WinUIVersion}" />
+                            Text="{x:Bind WinAppSdkDetails}" />
                         <TextBlock
                             x:Name="smallHeaderText"
                             Style="{StaticResource TitleLargeTextBlockStyle}"

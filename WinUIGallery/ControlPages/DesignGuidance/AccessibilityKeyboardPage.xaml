@@ -33,15 +33,90 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
-                .<LineBreak />
+                all abilities. For more information about designing accessible apps:
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>.
+                <LineBreak />
                 <LineBreak />
                 If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
-                <LineBreak />
-                To use the keyboard with a control, the control must have focus, and to receive focus (without using a pointer) the control must be accessible in a Ul design via tab navigation. Here is how you can override the default tab order:</Paragraph>
+            </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample HeaderText="Controlling tab sequence">
+        <TextBlock
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level2"
+            Text="Tab order" />
+
+        <RichTextBlock>
+            <Paragraph>
+                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via <Bold>Tab navigation</Bold>, which cycles through controls that are
+                <Bold>tab stops</Bold>.
+                The order of these tab stops is called the <Bold>tab order</Bold>.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                All interactive controls, like buttons, should be tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
+                Try to put initial focus on the most useful or logical element.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
+                and
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Automatic tab order" />
+
+        <RichTextBlock>
+            <Paragraph>
+                By default, tab order matches the order elements are defined in XAML. This is usually the best order:
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="4">
+                    <Button Content="First" />
+                    <!-- Non-interactive controls should not be in the tab order -->
+                    <TextBlock Text="(not present)" />
+                    <Button Content="Second" />
+                    <!-- Disabled controls should not be in the tab order -->
+                    <Button Content="(not present)" IsEnabled="False" />
+                    <Button Content="Third" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="4"&gt;
+    &lt;Button Content="First" /&gt;
+    &lt;!-- Non-interactive controls should not be in the tab order --&gt;
+    &lt;TextBlock Text="(not present)" /&gt;
+    &lt;Button Content="Second" /&gt;
+    &lt;!-- Disabled controls should not be in the tab order --&gt;
+    &lt;Button Content="(not present)" IsEnabled="False" /&gt;
+    &lt;Button Content="Third" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <TextBlock
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Manual tab order" />
+
+        <RichTextBlock>
+            <Paragraph>
+                When the XAML order doesn't match the "logical" tab order, though, you can specify tab order manually:
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
@@ -64,6 +139,11 @@
                         HorizontalAlignment="Center"
                         Text="Column 2" />
 
+                    <!--
+                        This example is a bit contrived, since you could fix the
+                        tab order by reordering the elements in the XAML, but
+                        sometimes that is not easy to do.
+                    -->
                     <TextBlock
                         Grid.Row="1"
                         VerticalAlignment="Center"
@@ -71,15 +151,15 @@
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
-                        Width="100"
+                        HorizontalAlignment="Stretch"
                         Content="First stop"
                         TabIndex="1" />
                     <Button
                         Grid.Row="1"
                         Grid.Column="2"
                         Width="100"
-                        Content="Second stop"
-                        TabIndex="2" />
+                        Content="Third stop"
+                        TabIndex="3" />
 
                     <TextBlock
                         Grid.Row="2"
@@ -88,13 +168,13 @@
                     <Button
                         Grid.Row="2"
                         Grid.Column="1"
-                        Width="100"
-                        Content="Third stop"
-                        TabIndex="3" />
+                        HorizontalAlignment="Stretch"
+                        Content="Second stop"
+                        TabIndex="2" />
                     <Button
                         Grid.Row="2"
                         Grid.Column="2"
-                        Width="100"
+                        HorizontalAlignment="Stretch"
                         Content="Not a stop"
                         IsTabStop="False" />
                 </Grid>
@@ -102,27 +182,32 @@
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid RowSpacing="8" ColumnSpacing="8"&gt;
-&lt;Grid.RowDefinitions&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-	&lt;RowDefinition Height="Auto"/&gt;
-&lt;/Grid.RowDefinitions&gt;
-&lt;Grid.ColumnDefinitions&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-&lt;/Grid.ColumnDefinitions&gt;
+    &lt;Grid.RowDefinitions&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+	    &lt;RowDefinition Height="Auto"/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+	    &lt;ColumnDefinition Width="Auto"/&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
 
-&lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
-&lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
+    &lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
+    &lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
 
-&lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
-&lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" Width="100"/&gt;
-&lt;Button Grid.Column="2" Grid.Row="1" Content="Second stop" TabIndex="2" Width="100"/&gt;
+    &lt;!--
+        This example is a bit contrived, since you could fix the
+        tab order by reordering the elements in the XAML, but
+        sometimes that is not easy to do.
+    --&gt;
+    &lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
+    &lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" HorizontalAlignment="Stretch"/&gt;
+    &lt;Button Grid.Column="2" Grid.Row="1" Content="Third stop" TabIndex="3" HorizontalAlignment="Stretch"/&gt;
 
-&lt;TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/&gt;
-&lt;Button Grid.Column="1" Grid.Row="2" Content="Third stop" TabIndex="3" Width="100"/&gt;
-&lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" Width="100"/&gt;
+    &lt;TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/&gt;
+    &lt;Button Grid.Column="1" Grid.Row="2" Content="Second stop" TabIndex="2" HorizontalAlignment="Stretch"/&gt;
+    &lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" HorizontalAlignment="Stretch"/&gt;
 &lt;/Grid&gt;
                     </x:String>
             </core:ControlExample.Xaml>
@@ -131,8 +216,233 @@
         <TextBlock
             Margin="0,20,0,0"
             Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Keyboard Shortcuts" />
-        <TextBlock Text="It is imperative that you provide an easy way for users to discover your app's shortcut keys (e.g. using tooltips, accessible names, accessible descriptions, etc.)" />
+            AutomationProperties.HeadingLevel="Level2"
+            Text="Arrow keys" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Users expect groups of similar, related controls to be navigable via <Bold>Arrow keys</Bold>, too. This can be instead of
+                <Italic>or</Italic> in addition to tab navigation, depending on the situation.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Groups of controls that support arrow key navigation typically support Home/End and PgUp/PgDn, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
+                    Keyboard interactions#Navigation
+                </Hyperlink>,
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
+                    Keyboard interactions#Home and End keys
+                </Hyperlink>,
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
+                    Keyboard interactions#Page up and Page down keys
+                </Hyperlink>,
+                and
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
+                    Keyboard interactions#Control group
+                </Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Automatically supporting arrow keys" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Most controls that group elements support arrow keys (and Home/End and PgUp/PgDn) by default:
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Orientation="Vertical">
+                    <!-- ListViews fully support arrow keys, for example -->
+                    <ListView
+                        Width="300"
+                        AutomationProperties.Name="Colors">
+                        <ListViewItem>Red</ListViewItem>
+                        <ListViewItem>Blue</ListViewItem>
+                        <ListViewItem>Green</ListViewItem>
+                        <ListViewItem>Yellow</ListViewItem>
+                    </ListView>
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Tab navigates to the control, arrow keys navigate within the control" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!-- ListViews fully support arrow keys, for example --&gt;
+&lt;ListView
+    Width="300"
+    AutomationProperties.Name="Colors"&gt;
+    &lt;ListViewItem&gt;Red&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Blue&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Green&lt;/ListViewItem&gt;
+    &lt;ListViewItem&gt;Yellow&lt;/ListViewItem&gt;
+&lt;/ListView&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Manually supporting arrow keys with XYFocusKeyboardNavigation" />
+
+        <RichTextBlock>
+            <Paragraph>
+                You can enable arrow key navigation between items manually, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                Note that if you're implementing a list of items, users may expect additional affordances like
+                support for Home/End, PgUp/PgDn, and additional accessibility properties like
+                PositionInSet and SizeOfSet. Keyboard navigation can get complicated, but getting
+                it right can make your app a lot easier to use — for everyone.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/focus-navigation">
+                    Focus navigation for keyboard, gamepad, remote control, and accessibility tools
+                </Hyperlink> and
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">
+                    Keyboard accessibility
+                </Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
+        <core:ControlExample>
+            <core:ControlExample.Example>
+                <StackPanel Spacing="4">
+                    <StackPanel
+                        Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                        BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                        AutomationProperties.Name="Potatoes?"
+                        BorderThickness="1"
+                        Spacing="8"
+                        Padding="8"
+                        CornerRadius="4">
+                        <TextBlock
+                            Style="{ThemeResource BodyStrongTextBlockStyle}"
+                            Text="Potatoes?" />
+                        <!--
+                            XYFocusKeyboardNavigation enables arrow keys between the buttons.
+
+                            Note that:
+
+                                - The buttons are still tabbable by default
+                                - Home/End and PgUp/PgDn do not work
+                                - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
+
+                            All of that would require custom work.
+                        -->
+                        <StackPanel
+                            Spacing="4"
+                            Orientation="Horizontal"
+                            XYFocusKeyboardNavigation="Enabled">
+                            <Button Content="Boil 'em"  />
+                            <Button Content="Mash 'em" />
+                            <Button Content="Stick 'em in a stew" />
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Arrow keys navigate between each button, but tab still navigates between each button, and other buttons like Home/End do not work" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel
+    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+    AutomationProperties.Name="Potatoes?"
+    BorderThickness="1"
+    Spacing="8"
+    Padding="8"
+    CornerRadius="4"&gt;
+    &lt;TextBlock
+        Style="{ThemeResource BodyStrongTextBlockStyle}"
+        Text="Potatoes?" /&gt;
+    &lt;!--
+        XYFocusKeyboardNavigation enables arrow keys between the buttons.
+
+        Note that:
+
+            - The buttons are still tabbable by default
+            - Home/End and PgUp/PgDn do not work
+            - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
+
+        All of that would require custom work.
+    --&gt;
+    &lt;StackPanel
+        Spacing="4"
+        Orientation="Horizontal"
+        XYFocusKeyboardNavigation="Enabled"&gt;
+        &lt;Button Content="Boil 'em"  /&gt;
+        &lt;Button Content="Mash 'em" /&gt;
+        &lt;Button Content="Stick 'em in a stew" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level2"
+            Text="Keyboard shortcuts" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Keyboard shortcuts are extremely helpful for Narrator users, keyboard users, and power users.
+                Since keyboard shortcuts generally lack the ability to quickly switch between sections of UI like a mouse can,
+                adding a few keyboard shortcuts for common actions can make your app much easier to use.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                WinUI 3 offers 2 types of keyboard shortcuts: <Bold>Accelerators</Bold> and <Bold>Access keys</Bold>.
+                Accelerators invoke specific app commands, while access keys set focus to specific parts of your UI.
+            </Paragraph>
+        </RichTextBlock>
+
+        <TextBlock
+            Margin="0,20,0,0"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Accelerators" />
+
+        <RichTextBlock>
+            <Paragraph>
+                Accelerators are hotkeys (typically starting with the Ctrl key) that invoke specific app commands.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                It's important to provide an easy way of discovering keyboard accelerators. For example, with tooltips, visible labels, AutomationProperties.AcceleratorKey, accessible descriptions, etc.
+                By default, WinUI adds a tooltip with the hotkey, but consider including the accelerator manually if you use a custom tooltip.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
+
         <core:ControlExample>
             <core:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
@@ -145,12 +455,13 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Rectangle
                         x:Name="ColorRectangle"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Height="30"
                         Fill="Red"
                         RadiusX="4"
@@ -158,10 +469,8 @@
 
                     <Button
                         Grid.Row="1"
-                        AutomationProperties.AcceleratorKey="R"
                         Click="MakeRedButton_Click"
-                        Content="Red"
-                        ToolTipService.ToolTip="Shortcut: Ctrl+R">
+                        Content="Red">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
@@ -170,20 +479,34 @@
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
-                        AutomationProperties.AcceleratorKey="B"
                         Click="MakeBlueButton_Click"
-                        Content="Blue"
-                        ToolTipService.ToolTip="Shortcut: Ctrl+B">
+                        Content="Blue">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
                         </Button.KeyboardAccelerators>
                     </Button>
 
+                    <!--
+                        Chartreuse is an uncommon color, so we explain it in the tooltip.
+                        This replaces the auto-generated tooltip, so we manually mention
+                        the hotkey in the custom tooltip.
+                    -->
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Click="MakeChartreuseButton_Click"
+                        Content="Chartreuse"
+                        ToolTipService.ToolTip="A greenish-yellow (Ctrl+G)">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="G" Modifiers="Control" />
+                        </Button.KeyboardAccelerators>
+                    </Button>
+
                     <TextBlock
                         Grid.Row="2"
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="Using KeyboardAccelarator and the AutomationProperties.AcceleratorKey property to create a shortcut. Accelerator keys consist of the Ctrl key + a letter key." />
+                        Text="Ctrl+R, Ctrl+B, and Ctrl+G trigger Red, Blue, and Chartreuse respectively" />
                 </Grid>
             </core:ControlExample.Example>
 
@@ -198,14 +521,14 @@
 &lt;Grid.ColumnDefinitions&gt;
 	&lt;ColumnDefinition Width="Auto"/&gt;
 	&lt;ColumnDefinition Width="Auto"/&gt;
+	&lt;ColumnDefinition Width="Auto"/&gt;
 &lt;/Grid.ColumnDefinitions&gt;
 
 &lt;Rectangle x:Name="ColorRectangle" Fill="Red"
 	Height="30" RadiusX="4" RadiusY="4"
-	Grid.ColumnSpan="2"/&gt;
+	Grid.ColumnSpan="3"/&gt;
 
 &lt;Button Click="MakeRedButton_Click" Content="Red" Grid.Row="1"
-	AutomationProperties.AcceleratorKey="R"
 	ToolTipService.ToolTip="Shortcut: Ctrl+R"&gt;
 	&lt;Button.KeyboardAccelerators&gt;
 		&lt;KeyboardAccelerator Modifiers="Control" Key="R" /&gt;
@@ -214,172 +537,143 @@
 	
 &lt;Button Click="MakeBlueButton_Click" Content="Blue"
 	Grid.Row="1" Grid.Column="1"
-	AutomationProperties.AcceleratorKey="B"
 	ToolTipService.ToolTip="Shortcut: Ctrl+B"&gt;
 	&lt;Button.KeyboardAccelerators&gt;
 		&lt;KeyboardAccelerator Modifiers="Control" Key="B" /&gt;
+	&lt;/Button.KeyboardAccelerators&gt;
+&lt;/Button&gt;
+
+&lt;!--
+    Chartreuse is an uncommon color, so we explain it in the tooltip.
+    This replaces the auto-generated tooltip, so we manually mention
+    the hotkey in the custom tooltip.
+--&gt;
+&lt;Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
+	Grid.Row="1" Grid.Column="1"
+	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)"&gt;
+	&lt;Button.KeyboardAccelerators&gt;
+		&lt;KeyboardAccelerator Modifiers="Control" Key="G" /&gt;
 	&lt;/Button.KeyboardAccelerators&gt;
 &lt;/Button&gt;
 &lt;/Grid&gt;
                 </x:String>
             </core:ControlExample.Xaml>
             <core:ControlExample.CSharp>
-                private void MakeRedButton_Click(object sender, RoutedEventArgs e)
-                {
-                ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
-                }
-                private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
-                {
-                ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
-                }
+                <x:String xml:space="preserve">
+private void MakeRedButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
+}
+private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
+}
+private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
+}
+                </x:String>
             </core:ControlExample.CSharp>
         </core:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Landmarks and headings" />
-        <TextBlock>
-            Landmarks and headings define sections of a user interface that aid in more efficient navigation for
-            users of assistive technology (AT). Marking up the content into landmarks and headings provides a
-            screen reader user the option to skim content similar to the way a sighted user would.
-        </TextBlock>
-        <core:ControlExample>
-            <core:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock
-                        Margin="0,0,0,10"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases landmarks."
-                        TextWrapping="Wrap" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level3"
+            Text="Access keys" />
 
-                        <!--  The navigation pane for our app  -->
-                        <StackPanel
-                            Grid.Column="0"
-                            Padding="6"
-                            AutomationProperties.LandmarkType="Main"
-                            Background="{ThemeResource CardStrokeColorDefaultBrush}"
-                            CornerRadius="{StaticResource ControlCornerRadius}"
-                            Spacing="8">
-                            <AutoSuggestBox AutomationProperties.LandmarkType="Search" PlaceholderText="Search" />
-                            <Button Content="Open settings" />
-                        </StackPanel>
-
-                        <!--  The main content of our app  -->
-                        <StackPanel
-                            Grid.Column="1"
-                            Padding="6"
-                            AutomationProperties.LandmarkType="Main">
-                            <TextBlock TextWrapping="WrapWholeWords">
-                                Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Grid&gt;
-&lt;Grid.ColumnDefinitions&gt;
-	&lt;ColumnDefinition Width="200"/&gt;
-	&lt;ColumnDefinition Width="*"/&gt;
-&lt;/Grid.ColumnDefinitions&gt;
-
-&lt;!-- The navigation pane for our app  --&gt;
-&lt;StackPanel Grid.Column="0" AutomationProperties.LandmarkType="Main" Padding="6" Spacing="8"
-	Background="{ThemeResource CardStrokeColorDefaultBrush}"&gt;
-	&lt;AutoSuggestBox AutomationProperties.LandmarkType="Search" PlaceholderText="Search"/&gt;
-	&lt;Button Content="Open settings"/&gt;
-&lt;/StackPanel&lt;
-
-&lt;!-- The main content of our app  --&gt;
-&lt;StackPanel Grid.Column="1" AutomationProperties.LandmarkType="Main" Padding="6"&gt;
-	&lt;TextBlock TextWrapping="WrapWholeWords"&gt;
-		Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-		Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
-		Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
-		Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
-	&lt;/TextBlock&gt;
-&lt;/StackPanel&gt;
-&lt;/Grid&gt;
-                    </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+        <RichTextBlock>
+            <Paragraph>
+                Access keys are keyboard shortcuts, starting with Alt, that move system focus around your UI.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                When users press the Alt key, WinUI shows <Bold>Key Tips</Bold> next to each control with an access key,
+                so users can discover them. WinUI also populates AccessKey UIA property, so screen reader users can learn
+                access keys, too.
+                <LineBreak />
+            </Paragraph>
+            <Paragraph>
+                See
+                <Hyperlink
+                    NavigateUri="https://learn.microsoft.com/windows/apps/design/input/access-keys">Access keys</Hyperlink>.
+            </Paragraph>
+        </RichTextBlock>
 
         <core:ControlExample>
             <core:ControlExample.Example>
-                <StackPanel HorizontalAlignment="Left">
+                <StackPanel
+                    Orientation="Vertical">
+                    <MenuBar>
+                        <MenuBarItem
+                            Title="File"
+                            AccessKey="F">
+                            <MenuFlyoutItem
+                                Text="New"
+                                AccessKey="N" />
+                            <MenuFlyoutItem
+                                Text="Open..."
+                                AccessKey="O" />
+                            <MenuFlyoutItem
+                                Text="Save"
+                                AccessKey="S" />
+                            <MenuFlyoutItem
+                                Text="Exit"
+                                AccessKey="E" />
+                        </MenuBarItem>
+
+                        <MenuBarItem
+                            Title="Edit"
+                            AccessKey="E">
+                            <MenuFlyoutItem
+                                Text="Undo"
+                                AccessKey="U" />
+                            <MenuFlyoutItem
+                                Text="Cut"
+                                AccessKey="X" />
+                            <MenuFlyoutItem
+                                Text="Copy"
+                                AccessKey="C" />
+                            <MenuFlyoutItem
+                                Text="Paste"
+                                AccessKey="V" />
+                        </MenuBarItem>
+
+                        <MenuBarItem
+                            Title="Help"
+                            AccessKey="H">
+                            <MenuFlyoutItem
+                                Text="About"
+                                AccessKey="A" />
+                        </MenuBarItem>
+                    </MenuBar>
                     <TextBlock
-                        Margin="0,0,0,10"
-                        HorizontalAlignment="Left"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="The sample below showcases headings."
-                        TextWrapping="Wrap" />
-                    <StackPanel MaxWidth="500">
-                        <!--  Here is the main header for the whole text. It gets HeadingLevel 1  -->
-                        <TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
-                        <!--  The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2  -->
-                        <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Lorem ipsum</TextBlock>
-                        <TextBlock TextWrapping="WrapWholeWords">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus.
-                            Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.
-                        </TextBlock>
-
-                        <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Cat ipsum</TextBlock>
-                        <!--  This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3  -->
-                        <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Standard</TextBlock>
-                        <TextBlock TextWrapping="WrapWholeWords">
-                            Mice litter kitter kitty litty little kitten big roar roar feed me
-                            but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.
-                        </TextBlock>
-                        <TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Cat breeds</TextBlock>
-                        <TextBlock TextWrapping="WrapWholeWords">
-                            Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat.
-                            Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.
-                        </TextBlock>
-
-                        <TextBlock AutomationProperties.HeadingLevel="2" FontSize="22">Bacon ipsum</TextBlock>
-                        <TextBlock TextWrapping="WrapWholeWords">
-                            Bacon ipsum dolor amet meatball nulla labore,
-                            tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.
-                        </TextBlock>
-                    </StackPanel>
+                        Text="Press and release Alt to display Key Tips; use Alt+letter to move focus to items" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel MaxWidth="500"&gt;
-&lt;!-- Here is the main header for the whole text. It gets HeadingLevel 1 --&gt;
-&lt;TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26"&gt;Lorem ipsums&lt;/TextBlock&gt;
-&lt;!-- The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2--&gt;
-&lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Lorem ipsum&lt;/TextBlock&gt;
-&lt;TextBlock TextWrapping="WrapWholeWords"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus. 
-                Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.&lt;/TextBlock&gt;
-    
-&lt;TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22"&gt;Cat ipsum&lt;/TextBlock&gt;
-&lt;!-- This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3 --&gt;
-&lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Standard&lt;/TextBlock&gt;
-&lt;TextBlock TextWrapping="WrapWholeWords">Mice litter kitter kitty litty little kitten big roar roar feed me 
-                but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.&lt;/TextBlock&gt;
-&lt;TextBlock AutomationProperties.HeadingLevel="3" FontSize="18"&gt;Cat breeds&lt;/TextBlock&gt;
-&lt;TextBlock TextWrapping="WrapWholeWords">Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat. 
-                Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.&lt;/TextBlock&gt;
-    
-&lt;TextBlock AutomationProperties.HeadingLevel="2" FontSize="22"&gt;Bacon ipsum&lt;/TextBlock&gt;
-&lt;TextBlock TextWrapping="WrapWholeWords">Bacon ipsum dolor amet meatball nulla labore, 
-                tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.&lt;/TextBlock&gt;
-&lt;/StackPanel&gt;
+                <x:String
+                    xml:space="preserve">
+&lt;MenuBar&gt;
+    &lt;MenuBarItem Title="File" AccessKey="F"&gt;
+        &lt;MenuFlyoutItem Text="New" AccessKey="N" /&gt;
+        &lt;MenuFlyoutItem Text="Open..." AccessKey="O" /&gt;
+        &lt;MenuFlyoutItem Text="Save" AccessKey="S" /&gt;
+        &lt;MenuFlyoutItem Text="Exit" AccessKey="E" /&gt;
+    &lt;/MenuBarItem&gt;
+
+    &lt;MenuBarItem Title="Edit" AccessKey="E"&gt;
+        &lt;MenuFlyoutItem Text="Undo" AccessKey="U" /&gt;
+        &lt;MenuFlyoutItem Text="Cut" AccessKey="X" /&gt;
+        &lt;MenuFlyoutItem Text="Copy" AccessKey="C" /&gt;
+        &lt;MenuFlyoutItem Text="Paste" AccessKey="V" /&gt;
+    &lt;/MenuBarItem&gt;
+
+    &lt;MenuBarItem Title="Help" AccessKey="H"&gt;
+        &lt;MenuFlyoutItem Text="About" AccessKey="A" /&gt;
+    &lt;/MenuBarItem&gt;
+&lt;/MenuBar&gt;
                 </x:String>
             </core:ControlExample.Xaml>
         </core:ControlExample>

@@ -2,18 +2,40 @@
     x:Class="WinUIGallery.DesktopWap.Controls.InlineColorPicker"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid ColumnSpacing="2">
+    <Grid ColumnSpacing="2" Margin="12,12,0,12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <SplitButton Padding="0" VerticalAlignment="Stretch">
-            <Rectangle x:Name="ColorPreview" Fill="{x:Bind ColorBrush, Mode=OneWay}" VerticalAlignment="Stretch" MinHeight="30" Width="40"/>
+        
+        <TextBlock
+            x:Name="HeaderText"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,12"
+            VerticalAlignment="Bottom"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            Text="{x:Bind Header, Mode=OneWay}" />
+
+        <SplitButton
+            AutomationProperties.LabeledBy="{Binding ElementName=HeaderText}"
+            Padding="0" VerticalAlignment="Stretch"
+            Grid.Row="1">
+            <Rectangle
+                x:Name="ColorPreview"
+                Fill="{x:Bind ColorBrush, Mode=OneWay}"
+                VerticalAlignment="Stretch"
+                MinHeight="30"
+                Width="40"/>
             <SplitButton.Flyout>
                 <Flyout Opened="PickerFlyout_Opened">
                     <ColorPicker x:Name="Picker"
@@ -24,6 +46,14 @@
                 </Flyout>
             </SplitButton.Flyout>
         </SplitButton>
-        <TextBox x:Name="ColorHex" TextChanged="ColorHex_TextChanged" HorizontalAlignment="Stretch" Margin="5, 0, 0, 0" Grid.Column="1"/>
+        <TextBox
+            x:Name="ColorHex"
+            AutomationProperties.LabeledBy="{Binding ElementName=HeaderText}"
+            TextChanged="ColorHex_TextChanged"
+            MinWidth="120"
+            HorizontalAlignment="Stretch"
+            Margin="4,0,0,0"
+            Grid.Column="1"
+            Grid.Row="1" />
     </Grid>
 </UserControl>

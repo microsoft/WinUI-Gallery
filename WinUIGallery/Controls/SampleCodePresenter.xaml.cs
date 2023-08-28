@@ -22,6 +22,9 @@ using Windows.UI.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using AppUIBasics.Common;
+using System.Reflection;
+using System.IO;
 
 namespace AppUIBasics.Controls
 {
@@ -144,6 +147,12 @@ namespace AppUIBasics.Controls
             return derivedSource;
         }
 
+        private string GetDerivedSourceUnpackaged(string sourceRelativePath)
+        {
+            string derviedSourceString = "ControlPagesSampleCode\\" + sourceRelativePath;
+            return derviedSourceString;
+        }
+
         private void GenerateSyntaxHighlightedContent()
         {
             var language = SampleType switch
@@ -166,9 +175,22 @@ namespace AppUIBasics.Controls
         {
             if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
             {
-                Uri derivedSource = GetDerivedSource(sourceRelativePath);
-                var file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
-                string sampleString = await FileIO.ReadTextAsync(file);
+
+                string sampleString = null;
+                StorageFile file = null;
+                if (!NativeHelper.IsAppPackaged)
+                {
+                    var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
+                    var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativePath));
+                    file = await StorageFile.GetFileFromPathAsync(sourcePath);
+                }
+                else
+                {
+                    Uri derivedSource = GetDerivedSource(sourceRelativePath);
+                    file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
+                }
+
+                sampleString = await FileIO.ReadTextAsync(file);
 
                 FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
             }
@@ -279,19 +301,6 @@ namespace AppUIBasics.Controls
             DataPackage package = new DataPackage();
             package.SetText(actualCode);
             Clipboard.SetContent(package);
-
-            VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
-            Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-
-            // Automatically close teachingtip after 1 seconds
-            if (dispatcherQueue != null)
-            {
-                dispatcherQueue.TryEnqueue(async () =>
-                {
-                    await Task.Delay(1000);
-                    VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
-                });
-            }
         }
     }
 }

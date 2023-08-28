@@ -7,19 +7,15 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Helper;
 using System;
-using System.Linq;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.System;
+using AppUIBasics.Helper;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
-using WinRT;
-using System.Runtime.InteropServices;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
 
 namespace AppUIBasics
@@ -38,6 +34,8 @@ namespace AppUIBasics
             }
         }
 
+        public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
+
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -54,12 +52,6 @@ namespace AppUIBasics
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-        }
-
-        private async void OnFeedbackButtonClick(object sender, RoutedEventArgs e)
-        {
-            await Launcher.LaunchUriAsync(new Uri("feedback-hub:"));
         }
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
@@ -81,7 +73,7 @@ namespace AppUIBasics
             NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
             if (navigationRootPage != null)
             {
-                if (navigationRootPage.NavigationView.PaneDisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto)
+                if (navigationRootPage.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
                 {
                     navigationLocation.SelectedIndex = 0;
                 }

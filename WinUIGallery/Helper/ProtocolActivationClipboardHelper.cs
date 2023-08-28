@@ -12,33 +12,40 @@ namespace AppUIBasics.Helper
     public static class ProtocolActivationClipboardHelper
     {
         private const string ShowCopyLinkTeachingTipKey = "ShowCopyLinkTeachingTip";
-
-#if UNPACKAGED
         private static bool _showCopyLinkTeachingTip = true;
-#endif
 
         public static bool ShowCopyLinkTeachingTip
         {
             get
             {
-#if !UNPACKAGED
-                object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
-                if (valueFromSettings == null)
+                if (NativeHelper.IsAppPackaged)
                 {
-                    ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = true;
-                    valueFromSettings = true;
+                    object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
+                    if (valueFromSettings == null)
+                    {
+                        ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = true;
+                        valueFromSettings = true;
+                    }
+                    return (bool)valueFromSettings;
                 }
-                return (bool)valueFromSettings;
-#else
-                return _showCopyLinkTeachingTip;
-#endif
+                else
+                {
+                    return _showCopyLinkTeachingTip;
+                }
             }
 
-#if !UNPACKAGED
-            set => ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
-#else
-            set => _showCopyLinkTeachingTip = value;
-#endif
+            set
+            {
+                if (NativeHelper.IsAppPackaged)
+                {
+                    ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
+
+                }
+                else
+                {
+                    _showCopyLinkTeachingTip = value;
+                }
+            }
         }
 
         public static void Copy(ControlInfoDataItem item)

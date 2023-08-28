@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
-using Windows.Storage;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Windows.Storage;
 
 
 namespace AppUIBasics.Helper
@@ -16,49 +9,53 @@ namespace AppUIBasics.Helper
     {
 
         private const string IsLeftModeKey = "NavigationIsOnLeftMode";
-
-#if UNPACKAGED
         private static bool _isLeftMode = true;
-#endif
 
         public static bool IsLeftMode()
         {
-#if !UNPACKAGED
-            var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
-            if(valueFromSettings == null)
+            if (NativeHelper.IsAppPackaged)
             {
-                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
-                valueFromSettings = true;
+                var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
+                if (valueFromSettings == null)
+                {
+                    ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
+                    valueFromSettings = true;
+                }
+                return (bool)valueFromSettings;
             }
-            return (bool)valueFromSettings;
-#else
-            return _isLeftMode;
-#endif
+            else
+            {
+                return _isLeftMode;
+            }
         }
 
         public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
         {
-            UpdateTitleBarForElement(isLeftMode, element);
-#if !UNPACKAGED
-            ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
-#else
-            _isLeftMode = isLeftMode;
-#endif
-        }
-
-        public static void UpdateTitleBarForElement(bool isLeftMode, UIElement element)
-        {
-            var window = WindowHelper.GetWindowForElement(element);
-            window.ExtendsContentIntoTitleBar = isLeftMode;
-
-            if (isLeftMode)
+            UpdateNavigationViewForElement(isLeftMode, element);
+            if (NativeHelper.IsAppPackaged)
             {
-                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto;
+                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
             }
             else
             {
-                NavigationRootPage.GetForElement(element).NavigationView.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                _isLeftMode = isLeftMode;
             }
         }
+
+        public static void UpdateNavigationViewForElement(bool isLeftMode, UIElement element)
+        {
+            NavigationView _navView = NavigationRootPage.GetForElement(element).NavigationView;
+            if (isLeftMode)
+            {
+                _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
+                Grid.SetRow(_navView, 0);
+            }
+            else
+            {
+                _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                Grid.SetRow(_navView, 1);
+            }
+        }
+        
     }
 }

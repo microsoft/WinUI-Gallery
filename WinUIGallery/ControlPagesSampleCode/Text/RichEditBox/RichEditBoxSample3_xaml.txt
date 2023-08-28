@@ -8,25 +8,25 @@
     </RelativePanel.Resources>
     <Button x:Name="openFileButton" Click="OpenButton_Click" AutomationProperties.Name="Open file" ToolTipService.ToolTip="Open file">
         <Button.Content>
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E5;"/>
+            <FontIcon Glyph="&#xE8E5;"/>
         </Button.Content>
     </Button>
     <Button Click="SaveButton_Click" AutomationProperties.Name="Save file" ToolTipService.ToolTip="Save file" 
             RelativePanel.RightOf="openFileButton">
         <Button.Content>
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74E;"/>
+            <FontIcon Glyph="&#xE74E;"/>
         </Button.Content>
     </Button>
     <Button AutomationProperties.Name="Bold" ToolTipService.ToolTip="Bold" Click="BoldButton_Click" 
             RelativePanel.LeftOf="italicButton" >
         <Button.Content>
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DD;"/>
+            <FontIcon Glyph="&#xE8DD;"/>
         </Button.Content>
     </Button>
     <Button x:Name="italicButton" Click="ItalicButton_Click" AutomationProperties.Name="Italic" ToolTipService.ToolTip="Italic" 
             RelativePanel.LeftOf="fontColorButton">
         <Button.Content>
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DB;"/>
+            <FontIcon Glyph="&#xE8DB;"/>
         </Button.Content>
     </Button>
 

@@ -5,10 +5,7 @@
     <!-- These are set in Directory.Build.targets because we need to import the publish profile first -->
     <AppxPackageName>WinUIGallery.Desktop</AppxPackageName>
   </PropertyGroup>
-  <ItemGroup Condition="'$(WindowsPackageType)' == 'MSIX'">
-    <AppxManifest Include="Package.$(WindowsPackageType).appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
+
   <Import Project="net7.override.targets" Condition="'$(MSBuildRuntimeType)' == 'Core'" />
+
 </Project>

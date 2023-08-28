@@ -12,8 +12,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Data.Json;
 using AppUIBasics.Common;
+using System.Text.Json;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -25,12 +25,16 @@ using AppUIBasics.Common;
 
 namespace AppUIBasics.Data
 {
+    public class Root
+    {
+        public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
+    }
     /// <summary>
     /// Generic item data model.
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -45,26 +49,26 @@ namespace AppUIBasics.Data
             this.IsNew = isNew;
             this.IsUpdated = isUpdated;
             this.IsPreview = isPreview;
-            this.Docs = new ObservableCollection<ControlInfoDocLink>();
-            this.RelatedControls = new ObservableCollection<string>();
+            this.Docs = docs;
+            this.RelatedControls = relatedControls;
             this.HideSourceCodeAndRelatedControls = hideSourceCodeAndRelatedControls;
         }
 
-        public string UniqueId { get; private set; }
-        public string Title { get; private set; }
-        public string ApiNamespace { get; private set; }
-        public string Subtitle { get; private set; }
-        public string Description { get; private set; }
-        public string ImagePath { get; private set; }
-        public string ImageIconPath { get; private set; }
-        public string BadgeString { get; private set; }
-        public string Content { get; private set; }
-        public bool IsNew { get; private set; }
-        public bool IsUpdated { get; private set; }
-        public bool IsPreview { get; private set; }
-        public bool HideSourceCodeAndRelatedControls { get; private set; }
-        public ObservableCollection<ControlInfoDocLink> Docs { get; private set; }
-        public ObservableCollection<string> RelatedControls { get; private set; }
+        public string UniqueId { get; set; }
+        public string Title { get; set; }
+        public string ApiNamespace { get; set; }
+        public string Subtitle { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+        public string ImageIconPath { get; set; }
+        public string BadgeString { get; set; }
+        public string Content { get; set; }
+        public bool IsNew { get; set; }
+        public bool IsUpdated { get; set; }
+        public bool IsPreview { get; set; }
+        public bool HideSourceCodeAndRelatedControls { get; set; }
+        public ObservableCollection<ControlInfoDocLink> Docs { get; set; }
+        public ObservableCollection<string> RelatedControls { get; set; }
 
         public bool IncludedInBuild { get; set; }
 
@@ -81,8 +85,8 @@ namespace AppUIBasics.Data
             this.Title = title;
             this.Uri = uri;
         }
-        public string Title { get; private set; }
-        public string Uri { get; private set; }
+        public string Title { get; set; }
+        public string Uri { get; set; }
     }
 
 
@@ -105,16 +109,16 @@ namespace AppUIBasics.Data
             this.IsSpecialSection = isSpecialSection;
         }
 
-        public string UniqueId { get; private set; }
-        public string Title { get; private set; }
-        public string Subtitle { get; private set; }
-        public string Description { get; private set; }
-        public string ImagePath { get; private set; }
-        public string ImageIconPath { get; private set; }
-        public string ApiNamespace { get; private set; } = "";
+        public string UniqueId { get; set; }
+        public string Title { get; set; }
+        public string Subtitle { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+        public string ImageIconPath { get; set; }
+        public string ApiNamespace { get; set; }
         public bool IsSpecialSection { get; set; }
-        public string Folder { get; private set; }
-        public ObservableCollection<ControlInfoDataItem> Items { get; private set; }
+        public string Folder { get; set; }
+        public ObservableCollection<ControlInfoDataItem> Items { get; set; }
 
         public override string ToString()
         {
@@ -202,93 +206,36 @@ namespace AppUIBasics.Data
                 }
             }
 
-            string jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
-
-            JsonObject jsonObject = JsonObject.Parse(jsonText);
-            JsonArray jsonArray = jsonObject["Groups"].GetArray();
+            var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
+            var controlInfoDataGroup = JsonSerializer.Deserialize<Root>(jsonText, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             lock (_lock)
             {
                 string pageRoot = "AppUIBasics.ControlPages.";
-                foreach (JsonValue groupValue in jsonArray)
+
+                controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
                 {
-
-                    JsonObject groupObject = groupValue.GetObject();
-
-                    var usesCustomNavigationItems = groupObject.ContainsKey("IsSpecialSection") ? groupObject["IsSpecialSection"].GetBoolean() : false;
-                    var folder = groupObject.ContainsKey("Folder") ? groupObject["Folder"].GetString() : string.Empty;
-                    ControlInfoDataGroup group = new ControlInfoDataGroup(groupObject["UniqueId"].GetString(),
-                                                                          groupObject["Title"].GetString(),
-                                                                          groupObject["ApiNamespace"].GetString(),
-                                                                          groupObject["Subtitle"].GetString(),
-                                                                          groupObject["ImagePath"].GetString(),
-                                                                          groupObject["ImageIconPath"].GetString(),
-                                                                          groupObject["Description"].GetString(),
-                                                                          folder,
-                                                                          usesCustomNavigationItems);
-
-                    foreach (JsonValue itemValue in groupObject["Items"].GetArray())
+#nullable enable
+                    string? badgeString = item switch
                     {
-                        JsonObject itemObject = itemValue.GetObject();
+                        { IsNew: true } => "New",
+                        { IsUpdated: true } => "Updated",
+                        { IsPreview: true } => "Preview",
+                        _ => null
+                    };
+                    string pageString = $"{pageRoot}{item.UniqueId}Page";
+                    Type? pageType = Type.GetType(pageString);
 
-                        string badgeString = null;
+                    item.BadgeString = badgeString;
+                    item.IncludedInBuild = pageType is not null;
+#nullable disable
+                });
 
-                        bool isNew = itemObject.ContainsKey("IsNew") ? itemObject["IsNew"].GetBoolean() : false;
-                        bool isUpdated = itemObject.ContainsKey("IsUpdated") ? itemObject["IsUpdated"].GetBoolean() : false;
-                        bool isPreview = itemObject.ContainsKey("IsPreview") ? itemObject["IsPreview"].GetBoolean() : false;
-
-                        if (isNew)
-                        {
-                            badgeString = "New";
-                        }
-                        else if (isUpdated)
-                        {
-                            badgeString = "Updated";
-                        }
-                        else if (isPreview)
-                        {
-                            badgeString = "Preview";
-                        }
-
-                        var hideSourceCodeAndRelatedControls = itemObject.ContainsKey("HideSourceCodeAndRelatedControls") ? itemObject["HideSourceCodeAndRelatedControls"].GetBoolean() : false;
-                        var item = new ControlInfoDataItem(itemObject["UniqueId"].GetString(),
-                                                                itemObject["Title"].GetString(),
-                                                                itemObject["ApiNamespace"].GetString(),
-                                                                itemObject["Subtitle"].GetString(),
-                                                                itemObject["ImagePath"].GetString(),
-                                                                itemObject["ImageIconPath"].GetString(),
-                                                                badgeString,
-                                                                itemObject["Description"].GetString(),
-                                                                itemObject["Content"].GetString(),
-                                                                isNew,
-                                                                isUpdated,
-                                                                isPreview,
-                                                                hideSourceCodeAndRelatedControls);
-
-                        {
-                            string pageString = pageRoot + item.UniqueId + "Page";
-                            Type pageType = Type.GetType(pageString);
-                            item.IncludedInBuild = pageType != null;
-                        }
-
-                        if (itemObject.ContainsKey("Docs"))
-                        {
-                            foreach (JsonValue docValue in itemObject["Docs"].GetArray())
-                            {
-                                JsonObject docObject = docValue.GetObject();
-                                item.Docs.Add(new ControlInfoDocLink(docObject["Title"].GetString(), docObject["Uri"].GetString()));
-                            }
-                        }
-                        if (itemObject.ContainsKey("RelatedControls"))
-                        {
-                            foreach (JsonValue relatedControlValue in itemObject["RelatedControls"].GetArray())
-                            {
-                                item.RelatedControls.Add(relatedControlValue.GetString());
-                            }
-                        }
-
-                        group.Items.Add(item);
-                    }
+                foreach (var group in controlInfoDataGroup.Groups)
+                {
                     if (!Groups.Any(g => g.Title == group.Title))
                     {
                         Groups.Add(group);

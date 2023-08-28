@@ -59,12 +59,12 @@ namespace WinUIGallery.DesktopWap.Controls
             {
                 this.CopyLinkButtonTeachingTip.IsOpen = true;
             }
-            CopyLinkButtonIcon.Glyph = "\uE8FB";
         }
 
         public void OnThemeButtonClick(object sender, RoutedEventArgs e)
         {
             ToggleThemeAction?.Invoke();
+            UIHelper.AnnounceActionForAccessibility(ThemeButton, "Theme changed.", "ThemeChangedSuccessNotificationId");
         }
 
         private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)

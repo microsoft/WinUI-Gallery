@@ -22,7 +22,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
-                <TextBlock x:Name="TwoStateOutput"/>
+                <TextBlock x:Name="TwoStateOutput" AutomationProperties.AutomationId="Control1Output"/>
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -41,7 +41,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Output>
-                <TextBlock x:Name="ThreeStateOutput" />
+                <TextBlock x:Name="ThreeStateOutput" AutomationProperties.AutomationId="Control2Output" />
             </local:ControlExample.Output>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
