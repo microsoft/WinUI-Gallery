@@ -107,7 +107,7 @@
             CornerRadius="{ThemeResource ControlCornerRadius}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="272" />
-                <ColumnDefinition Width="144" />
+                <ColumnDefinition Width="136" />
                 <ColumnDefinition Width="112" />
                 <ColumnDefinition Width="164" />
                 <ColumnDefinition Width="Auto" />

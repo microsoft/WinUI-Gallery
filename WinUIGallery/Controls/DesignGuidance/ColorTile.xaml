@@ -53,9 +53,7 @@
                 Click="CopyBrushNameButton_Click"
                 Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy brush name">
-                <FontIcon FontSize="16" Glyph="&#xE8C8;" />
-            </Button>
+                ToolTipService.ToolTip="Copy brush name"/>
 
             <TextBlock
                 Grid.Row="1"
