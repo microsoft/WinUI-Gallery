@@ -13,9 +13,7 @@ namespace AppUIBasics.Helper
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
 
-#if !UNPACKAGED
         private static Window CurrentApplicationWindow;
-#endif
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
         /// root element, or if that value is Default, the requested theme of the Application.
@@ -66,24 +64,26 @@ namespace AppUIBasics.Helper
                     }
                 }
 
-#if !UNPACKAGED
-                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
-#endif
+                if (NativeHelper.IsAppPackaged)
+                {
+                    ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
+                }
             }
         }
 
         public static void Initialize()
         {
-#if !UNPACKAGED
-            // Save reference as this might be null when the user is in another app
-            CurrentApplicationWindow = App.StartupWindow;
-            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
-
-            if (savedTheme != null)
+            if (NativeHelper.IsAppPackaged)
             {
-                RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
+                // Save reference as this might be null when the user is in another app
+                CurrentApplicationWindow = App.StartupWindow;
+                string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
+
+                if (savedTheme != null)
+                {
+                    RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
+                }
             }
-#endif
         }
 
         public static bool IsDarkTheme()

@@ -9,8 +9,6 @@
     xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
     xmlns:localControls="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    PointerEntered="UserControl_PointerEntered"
-    PointerExited="UserControl_PointerExited"
     mc:Ignorable="d">
 
     <Grid>
@@ -44,19 +42,20 @@
 
             <localControls:CopyButton
                 x:Name="CopyBrushNameButton"
+                AutomationProperties.Name="Copy brush name"
                 Grid.RowSpan="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                AutomationProperties.Name="Copy resource name"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CopyBrushNameButton_Click"
                 Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy resource name"
-                Visibility="Collapsed" />
+                ToolTipService.ToolTip="Copy brush name">
+                <FontIcon FontSize="16" Glyph="&#xE8C8;" />
+            </Button>
 
             <TextBlock
                 Grid.Row="1"

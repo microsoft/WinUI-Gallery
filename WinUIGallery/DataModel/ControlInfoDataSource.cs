@@ -218,6 +218,7 @@ namespace AppUIBasics.Data
 
                 controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
                 {
+#nullable enable
                     string? badgeString = item switch
                     {
                         { IsNew: true } => "New",
@@ -230,6 +231,7 @@ namespace AppUIBasics.Data
 
                     item.BadgeString = badgeString;
                     item.IncludedInBuild = pageType is not null;
+#nullable disable
                 });
 
                 foreach (var group in controlInfoDataGroup.Groups)
