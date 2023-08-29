@@ -422,16 +422,15 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
 
             &lt;StackPanel Margin="12,0,0,0" Grid.Column="1" &gt;
                 &lt;TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
-                            HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
+                             HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/&gt;
                 &lt;TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
-                            TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/&gt;
+                            TextTrimming="CharacterEllipsis" Width="350" TextWrapping="NoWrap"/&gt;
                 &lt;StackPanel Orientation="Horizontal"&gt;
-                    &lt;TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/&gt;
-                    &lt;TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
-                    &lt;TextBlock Text=" &#x22C5; " Style="{ThemeResource CaptionTextBlockStyle}" 
-                                HorizontalAlignment="Left"/&gt;
-                    &lt;TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
-                    &lt;TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                    &lt;TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/&gt;
+                    &lt;TextBlock Text=" Views "  Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                    &lt;TextBlock Text=" &amp;#x22C5; " Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
+                    &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/&gt;
+                    &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}"/&gt;
                 &lt;/StackPanel&gt;
             &lt;/StackPanel&gt;
         &lt;/Grid&gt;
