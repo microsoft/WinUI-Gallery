@@ -2627,15 +2627,11 @@
             },
             {
               "Title": "Composition Animation - API",
-              "Uri": "https://learn.microsoft.com/windows/uwp/composition/composition-animation"
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
             },
             {
               "Title": "Guidelines - Xaml Property Animations",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
-            },
-            {
-              "Title": "Using the Visual Layer with XAML",
-              "Uri": "https://learn.microsoft.com/windows/uwp/composition/using-the-visual-layer-with-xaml"
             }
           ],
           "RelatedControls": [
