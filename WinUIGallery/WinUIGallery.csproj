@@ -247,8 +247,9 @@
     <Import Project="ContentIncludes.props" />
 
     <!-- Workaround to ensure WindowsAppSDK-VersionInfo.cs is included in project exactly once, before any compilation -->
-    <PropertyGroup>
-        <CoreCompileDependsOn Condition="'$(WindowsAppSdkSelfContained)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
+    <PropertyGroup Condition="'$(WindowsAppSdkSelfContained)'!='true'">
+        <CoreCompileDependsOn Condition="'$(Packaged)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
+        <CoreCompileDependsOn Condition="'$(Packaged)'=='true'">$(CoreCompileDependsOn);GenerateDeploymentManagerCS</CoreCompileDependsOn>
     </PropertyGroup>
     <ItemGroup>
         <Compile Condition="'$(WindowsAppSdkSelfContained)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
