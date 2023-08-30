@@ -6,9 +6,7 @@
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
-    <CommunityToolkitSegmentedControlVersion>0.0.2</CommunityToolkitSegmentedControlVersion>
-    <CommunityToolkitSettingsControlsVersion>0.0.16</CommunityToolkitSettingsControlsVersion>
-    <CommunityToolkitWinUIVersion>7.1.2</CommunityToolkitWinUIVersion>
+    <CommunityToolkitWinUIVersion>8.0.230823-rc</CommunityToolkitWinUIVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.756</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
     <MicrosoftCsWinRTPackageVersion>2.0.3</MicrosoftCsWinRTPackageVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
