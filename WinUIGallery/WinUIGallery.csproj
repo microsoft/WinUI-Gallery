@@ -102,15 +102,15 @@
         <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-        <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl" Version="$(CommunityToolkitSegmentedControlVersion)" />
-        <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls" Version="$(CommunityToolkitSettingsControlsVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.UI" Version="$(CommunityToolkitWinUIVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.UI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
         <PackageReference Update="System.Private.Uri" Version="4.3.2" />
-    </ItemGroup>
+      </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="CollectionsInterop.cs" />
