@@ -86,10 +86,10 @@
           <PackageReference Include="ColorCode.Core" />
           <PackageReference Include="Microsoft.Graphics.Win2D" />
           <PackageReference Include="Microsoft.Windows.CsWinRT" />
-          <PackageReference Include="CommunityToolkit.Labs.WinUI.SegmentedControl" />
-          <PackageReference Include="CommunityToolkit.Labs.WinUI.SettingsControls" />
-          <PackageReference Include="CommunityToolkit.WinUI.UI" />
-          <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" />
+          <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" />
+          <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
+          <PackageReference Include="CommunityToolkit.WinUI.Converters" />
+          <PackageReference Include="CommunityToolkit.WinUI.Animations" />
           <Manifest Include="$(ApplicationManifest)" />
           <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
@@ -105,13 +105,13 @@
           <PackageReference Remove="ColorCode.Core" />
           <PackageReference Include="ColorCode.WinUI"
                             Version="$(ColorCodeVersion)" />
-          <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl"
-                            Version="$(CommunityToolkitSegmentedControlVersion)" />
-          <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls"
-                            Version="$(CommunityToolkitSettingsControlsVersion)" />
-          <PackageReference Update="CommunityToolkit.WinUI.UI"
+          <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented"
                             Version="$(CommunityToolkitWinUIVersion)" />
-          <PackageReference Update="CommunityToolkit.WinUI.UI.Animations"
+          <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls"
+                            Version="$(CommunityToolkitWinUIVersion)" />
+          <PackageReference Update="CommunityToolkit.WinUI.Converters"
+                            Version="$(CommunityToolkitWinUIVersion)" />
+          <PackageReference Update="CommunityToolkit.WinUI.Animations"
                             Version="$(CommunityToolkitWinUIVersion)" />
           <PackageReference Update="Microsoft.Graphics.Win2D"
                             Version="$(GraphicsWin2DVersion)" />
