@@ -20,6 +20,8 @@
         </MSBuildWarningsAsMessages>
         <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
         <Configurations>Debug;Release;Debug-Unpackaged;Release-Unpackaged</Configurations>
+        <Release>true</Release>
+        <Release Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">false</Release>
         <Packaged>true</Packaged>
         <Packaged Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Release-Unpackaged'">false</Packaged>
         <Optimized>true</Optimized>
@@ -60,10 +62,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AppxManifest Include="Package.appxmanifest" Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">
+        <AppxManifest Include="Package.appxmanifest" Condition="'$(Release)' == 'true'">
             <SubType>Designer</SubType>
         </AppxManifest>
-        <AppxManifest Include="Package.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">
+        <AppxManifest Include="Package.Dev.appxmanifest" Condition="'$(Release)' == 'false'">
             <SubType>Designer</SubType>
         </AppxManifest>
     </ItemGroup>
@@ -248,8 +250,8 @@
 
     <!-- Workaround to ensure WindowsAppSDK-VersionInfo.cs is included in project exactly once, before any compilation -->
     <PropertyGroup Condition="'$(WindowsAppSdkSelfContained)'!='true'">
-        <CoreCompileDependsOn Condition="'$(Packaged)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
         <CoreCompileDependsOn Condition="'$(Packaged)'=='true'">$(CoreCompileDependsOn);GenerateDeploymentManagerCS</CoreCompileDependsOn>
+        <CoreCompileDependsOn Condition="'$(Packaged)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
     </PropertyGroup>
     <ItemGroup>
         <Compile Condition="'$(WindowsAppSdkSelfContained)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
