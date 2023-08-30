@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Sdk Name="Microsoft.Build.CentralPackageVersions"
-         Version="2.0.1" />
+    <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.1" />
     <PropertyGroup>
         <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
         <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -55,18 +54,16 @@
         <SDKVersion>10.0</SDKVersion>
         <PfxFile>$(MSBuildProjectDirectory)\..\build\WinUI-Gallery-Test.pfx</PfxFile>
     </PropertyGroup>
-      
+
     <PropertyGroup Condition="Exists('$(PfxFile)')">
         <PackageCertificateKeyFile>..\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <AppxManifest Include="Package.appxmanifest"
-                      Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">
+        <AppxManifest Include="Package.appxmanifest" Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">
             <SubType>Designer</SubType>
         </AppxManifest>
-        <AppxManifest Include="Package.Dev.appxmanifest"
-                      Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">
+        <AppxManifest Include="Package.Dev.appxmanifest" Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">
             <SubType>Designer</SubType>
         </AppxManifest>
     </ItemGroup>
@@ -100,37 +97,17 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK"
-                          Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
         <PackageReference Remove="ColorCode.Core" />
-        <PackageReference Include="ColorCode.WinUI"
-                          Version="$(ColorCodeVersion)" />
-        <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl"
-                          Version="$(CommunityToolkitSegmentedControlVersion)" />
-        <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls"
-                          Version="$(CommunityToolkitSettingsControlsVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.UI"
-                          Version="$(CommunityToolkitWinUIVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.UI.Animations"
-                          Version="$(CommunityToolkitWinUIVersion)" />
-        <PackageReference Update="Microsoft.Graphics.Win2D"
-                          Version="$(GraphicsWin2DVersion)" />
+        <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
+        <PackageReference Update="CommunityToolkit.Labs.WinUI.SegmentedControl" Version="$(CommunityToolkitSegmentedControlVersion)" />
+        <PackageReference Update="CommunityToolkit.Labs.WinUI.SettingsControls" Version="$(CommunityToolkitSettingsControlsVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.UI" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.UI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-        <PackageReference Update="Microsoft.Windows.CsWinRT"
-                          Version="$(MicrosoftCsWinRTPackageVersion)" />
-        <PackageReference Update="System.Private.Uri"
-                          Version="4.3.2" />
-    </ItemGroup>
-
-    <!-- Include WindowsAppSDK-VersionInfo.cs in the project exactly once -->
-    <PropertyGroup>
-        <!-- GenerateBootstrapCS adds WindowsAppSDK-VersionInfo.cs.  Ensure that it runs before XamlPreCompile.
-            This can be removed when WinAppSDK contains it. -->
-        <CoreCompileDependsOn Condition="'$(WindowsAppSdkSelfContained)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
-    </PropertyGroup>
-    <ItemGroup>
-        <!-- Otherwise, for self-contained, explicitly add WindowsAppSDK-VersionInfo.cs. -->
-        <Compile Condition="'$(WindowsAppSdkSelfContained)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
+        <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+        <PackageReference Update="System.Private.Uri" Version="4.3.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -141,10 +118,8 @@
         <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
         <Page Remove="ControlPages\InputValidationPage.xaml" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
-        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs"
-                Condition="'$(IsInWinUIRepo)' != 'true'" />
-        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs"
-                Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
     </ItemGroup>
 
@@ -271,15 +246,16 @@
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
 
-    <!-- Work around: WindowsAppSDK 1.3 distributed Microsoft.WindowsAppRuntime.Release.Net.dll,
-          causing duplicate type errors. -->
-    <Target Name="RemoveWindowsAppRuntimeReleaseNet"
-            Returns="@(ReferencePath)"
-            AfterTargets="ResolveAssemblyReferences">
-        <ItemGroup>
-            <FileToRemove Include="@(ReferencePath)"
-                          Condition="'%(Filename)' == 'Microsoft.WindowsAppRuntime.Release.Net'" />
-            <ReferencePath Remove="@(FileToRemove)" />
-        </ItemGroup>
-    </Target>
+    <!-- Workaround to ensure WindowsAppSDK-VersionInfo.cs is included in project exactly once, before any compilation -->
+    <PropertyGroup>
+        <CoreCompileDependsOn Condition="'$(WindowsAppSdkSelfContained)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Condition="'$(WindowsAppSdkSelfContained)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
+    </ItemGroup>
+    <!-- When WindowsAppSdkIncludeVersionInfo supported, above workaround can be replaced with this: -->
+    <PropertyGroup>
+        <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
+    </PropertyGroup>
+
 </Project>
