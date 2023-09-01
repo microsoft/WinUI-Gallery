@@ -47,6 +47,7 @@
     <Content Include="Assets\ControlIcons\PivotIcon.png" />
     <Content Include="Assets\ControlIcons\RelativePanelIcon.png" />
     <Content Include="Assets\ControlIcons\SplitViewIcon.png" />
+    <Content Include="Assets\ControlIcons\AnnotatedScrollBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarButtonIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarSeparatorIcon.png" />
@@ -63,6 +64,7 @@
     <Content Include="Assets\ControlIcons\GridIcon.png" />
     <Content Include="Assets\ControlIcons\GridViewIcon.png" />
     <Content Include="Assets\ControlIcons\HyperlinkButtonIcon.png" />
+    <Content Include="Assets\ControlIcons\ItemsViewIcon.png" />
     <Content Include="Assets\ControlIcons\ListBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ListViewIcon.png" />
     <Content Include="Assets\LottieLogo1.png" />
@@ -74,6 +76,7 @@
     <Content Include="Assets\ControlIcons\RichEditBoxIcon.png" />
     <Content Include="Assets\ControlIcons\RichTextBlockIcon.png" />
     <Content Include="Assets\ControlIcons\ScrollViewerIcon.png" />
+    <Content Include="Assets\ControlIcons\ScrollViewIcon.png" />
     <Content Include="Assets\Slices.png" />
     <Content Include="Assets\Slices2.png" />
     <Content Include="Assets\ControlIcons\SliderIcon.png" />
@@ -92,6 +95,7 @@
     <Content Include="Assets\ControlImages\AnimatedIcon.png" />
     <Content Include="Assets\ControlImages\AnimatedVisualPlayer.png" />
     <Content Include="Assets\ControlImages\AnimationInterop.png" />
+    <Content Include="Assets\ControlImages\AnnotatedScrollBar.png" />
     <Content Include="Assets\ControlImages\AppBarButton.png" />
     <Content Include="Assets\ControlImages\AppBarSeparator.png" />
     <Content Include="Assets\ControlImages\AppBarToggleButton.png" />
@@ -134,6 +138,7 @@
     <Content Include="Assets\ControlImages\InkToolbar.png" />
     <Content Include="Assets\ControlImages\InputValidation.png" />
     <Content Include="Assets\ControlImages\ItemsRepeater.png" />
+    <Content Include="Assets\ControlImages\ItemsView.png" />
     <Content Include="Assets\ControlImages\Line.png" />
     <Content Include="Assets\ControlImages\ListBox.png" />
     <Content Include="Assets\ControlImages\ListView.png" />
@@ -160,6 +165,7 @@
     <Content Include="Assets\ControlImages\RevealFocus.png" />
     <Content Include="Assets\ControlImages\RichEditBox.png" />
     <Content Include="Assets\ControlImages\RichTextBlock.png" />
+    <Content Include="Assets\ControlImages\ScrollView.png" />
     <Content Include="Assets\ControlImages\ScrollViewer.png" />
     <Content Include="Assets\ControlImages\SemanticZoom.png" />
     <Content Include="Assets\ControlImages\Shape.png" />
@@ -199,6 +205,11 @@
     <Content Include="Assets\SampleMedia\LandscapeImage6.jpg" />
     <Content Include="Assets\SampleMedia\LandscapeImage7.jpg" />
     <Content Include="Assets\SampleMedia\LandscapeImage8.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage9.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage10.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage11.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage12.jpg" />
+    <Content Include="Assets\SampleMedia\LandscapeImage13.jpg" />
     <Content Include="Assets\SampleMedia\rainier.jpg" />
     <Content Include="Assets\SampleMedia\sunset.jpg" />
     <Content Include="Assets\SampleMedia\treetops.jpg" />
