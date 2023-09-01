@@ -48,6 +48,9 @@
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true'">
+    <PackageCertificateKeyFile Condition="'$(PackageCertificateKeyFile)'==''">$(SolutionDir)..\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
   <PropertyGroup>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -57,7 +60,6 @@
     <AppxBundlePlatforms Condition="'$(BuildAllAppFlavors)' == 'true'">x86|x64|ARM64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);net6.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
-    <PackageCertificateKeyFile>D:\git\WinUI-Gallery2\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -88,7 +90,7 @@
   <ItemGroup>
     <ProjectReference Include="WinUIGallery.csproj">
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
-      <PublishProfile>Properties\PublishProfiles\win10-$(Platform)-unpackaged.pubxml</PublishProfile>
+      <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
