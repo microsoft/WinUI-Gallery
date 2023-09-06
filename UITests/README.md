@@ -18,7 +18,7 @@ The test scenarios are written to test the controls in the Xaml Controls Gallery
     dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml
 ```
 
-1. Locate the Xaml Controls Gallery package output folder from above and deploy for testing:
+1. Locate the WinUI 3's Gallery package output folder from above and deploy for testing:
 
 ```shell
     PS> .\WinUIGallery\AppxPackages\WinUIGallery.Desktop_Test\Install.ps1
