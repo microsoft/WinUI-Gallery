@@ -2,9 +2,11 @@
 
 This UI Test repository of collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. Note: the [Universal Windows Platform controls](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/) reference can be used, as the WinUI 3 controls are very similar to the UWP controls.
 
-The test scenarios are written to test the controls in the Xaml Controls Gallery app. The procedure below outlines the steps needed to build, deploy, and stage the Xaml Controls Gallery and WinAppDriver to run the UI Tests. These manual steps simulate what azure-pipelines.yml does in pipeline test runs.
+The test scenarios are written to test the controls in the WinUI 3 Gallery app. The procedure below outlines the steps needed to build and deploy WinUI 3 Gallery and WinAppDriver to run the UI Tests. These steps mirror what azure-pipelines.yml does in pipeline runs.
 
-## Build and install Xaml Controls Gallery
+## Deploy WinUI 3 Gallery
+
+The easiest way to deploy WinUI 3 Gallery for unit test execution is to simply build WinUIGallery\WinUIGallery.sln and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
 
 1. Generate the test signing certificate:
 
@@ -12,29 +14,41 @@ The test scenarios are written to test the controls in the Xaml Controls Gallery
     PS> .\build\GenerateTestPfx.ps1
 ```
 
-1. Build and publish the Xaml Controls Gallery from the command line, e.g.:
+1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
 
 ```shell
     dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml
 ```
 
-1. Locate the WinUI 3's Gallery package output folder from above and deploy for testing:
+1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:
 
 ```shell
     PS> .\WinUIGallery\AppxPackages\WinUIGallery.Desktop_Test\Install.ps1
 ```
 
-## Install and execute WinAppDriver
+## Run WinAppDriver
+
+The test runner (vstest.console.exe and VS Test Explorer) should automatically launch WinAppDriver. Alternatively, it can be launched manually to observe diagnostic output as follows.
 
 1. Download and install the latest version of WinAppDriver from [here](https://github.com/microsoft/WinAppDriver/releases)
 
-1. Run WinAppDriver (required for running tests on cmdline or in VS):
+1. Run WinAppDriver:
 
 ```shell
     C:\Program Files (x86)\Windows Application Driver>WinAppDriver.exe
 ```
 
 ## Build and run/debug Tests
+
+The easiest way to run/debug the UI tests is with Visual Studio, as follows:
+
+   * Open `UITests\UITests.sln` in Visual Studio
+   * Select **Test** > **Windows** > **Test Explorer**
+   * Select **Run All** on the test pane or through menu **Test** > **Run** > **All Tests**
+
+   Once the project is successfully built, you can use the **Test Explorer** to choose  test scenarios to run/debug
+
+Alternatively, the following commands can be used for automation:
 
 1. Build UITests:
 
@@ -48,21 +62,13 @@ The test scenarios are written to test the controls in the Xaml Controls Gallery
     vstest.console.exe D:\git\WinUI-Gallery\UITests\bin\x64\Debug\net7.0\UITests.dll
 ```
 
-1. Debug test cases in Visual Studio
-   * Open `UITests.sln` in Visual Studio
-   * Select **Test** > **Windows** > **Test Explorer**
-   * Select **Run All** on the test pane or through menu **Test** > **Run** > **All Tests**
-
-   Once the project is successfully built, you can use the **TestExplorer** to pick and choose the test scenario(s) to run/debug
-
 ## Test output
 
 In either scenario above (cmdline or VS), if the tests run successfully, you should see:
 
-* WinAppDriver console spew indicating successful launch of the test app
-* The Xaml Controls Gallery launch and run with automated UI interactions
-* vstest.console.exe spew (if cmdline) showing test case status
-
+* The WinUI 3 Gallery launch and run with automated UI interactions
+* vstest.console.exe spew or Test Explorer indications of test case status
+* Optionally, WinAppDriver console spew indicating successful launch of the test app
 
 ## Adding/Updating Test Scenarios
 
@@ -70,4 +76,4 @@ Please follow the guidelines below to maintain test reliability and reduce test 
 
 1. Provide a complete set of interactions (if applicable) for each new control
 1. Aim for simple and reliable scenario using the least amount of test steps
-1. Reuse existing application session when possible to reduce unnecessary application re-launching
+
