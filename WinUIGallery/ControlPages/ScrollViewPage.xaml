@@ -15,16 +15,12 @@
     xmlns:local="using:AppUIBasics">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
-            <Grid>
-                <ScrollPresenter/>
-
-                <ScrollView x:Name="scrollView1" Height="266" Width="400" ContentOrientation="None"
-                    ZoomMode="Enabled" IsTabStop="True"
-                    VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform"
-                        HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="cliff"/>
-                </ScrollView>
-            </Grid>
+            <ScrollView x:Name="scrollView1" Height="266" Width="400" ContentOrientation="None"
+                ZoomMode="Enabled" IsTabStop="True"
+                VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="cliff"/>
+            </ScrollView>
             
             <local:ControlExample.Options>
                 <Grid MinWidth="200"
