@@ -15,13 +15,18 @@
     xmlns:local="using:AppUIBasics">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
-            <ScrollView x:Name="scrollView1" Height="266" Width="400" ContentOrientation="None"
-                ZoomMode="Enabled" IsTabStop="True"
-                VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="cliff"/>
-            </ScrollView>
-            
+            <StackPanel>
+                <TextBlock Margin="0,0,0,15"
+                    Text="This ScrollView allows horizontal and vertical scrolling, as well as zooming. Change the settings on the right to alter those capabilities or the built-in scrollbars' visibility."/>
+                
+                <ScrollView x:Name="scrollView1" Height="266" Width="400" ContentOrientation="None"
+                    ZoomMode="Enabled" IsTabStop="True"
+                    VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="cliff"/>
+                </ScrollView>
+            </StackPanel>
+        
             <local:ControlExample.Options>
                 <Grid MinWidth="200"
                     RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"

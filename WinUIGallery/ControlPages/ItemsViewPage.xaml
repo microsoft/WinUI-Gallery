@@ -31,7 +31,7 @@
                         <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
-                            <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"></TextBlock>
+                            <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -65,7 +65,7 @@
                         <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
-                            <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"></TextBlock>
+                            <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -90,6 +90,12 @@
             
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;DataTemplate x:Key="ImageTemplate" x:DataType="localcp:CustomDataObject"&gt;
+    &lt;ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}"&gt;
+        &lt;Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/&gt;
+    &lt;/ItemContainer&gt;
+&lt;/DataTemplate&gt;
+
 &lt;ItemsView Width="220" Height="400" HorizontalAlignment="Left"
     ItemTemplate="{StaticResource ImageTemplate}" IsItemInvokedEnabled="True" ItemInvoked="BasicItemsView_ItemInvoked"/&gt;
                 </x:String>
@@ -205,13 +211,28 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="localcp:CustomDataObject"&gt;
+    &lt;ItemContainer AutomationProperties.Name="{x:Bind Title}"&gt;
+        &lt;Grid&gt;
+            &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="70"/&gt;
+            &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75"&gt;
+                &lt;TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                &lt;StackPanel Orientation="Horizontal"&gt;
+                    &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                    &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                &lt;/StackPanel&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Grid&gt;
+    &lt;/ItemContainer&gt;
+&lt;/DataTemplate&gt;
+
 &lt;ItemsView Width="500" Height="400" HorizontalAlignment="Left"
     ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}"&gt;
     &lt;ItemsView.Layout&gt;
         &lt;LinedFlowLayout ItemsStretch="Fill" LineHeight="160" LineSpacing="5" MinItemSpacing="5"/&gt;
     &lt;/ItemsView.Layout&gt;
 &lt;/ItemsView&gt;
-                </x:String>
+                </x:String> 
             </local:ControlExample.Xaml>            
         </local:ControlExample>
         
@@ -276,6 +297,21 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
 
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
+&lt;DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="localcp:CustomDataObject"&gt;
+    &lt;ItemContainer AutomationProperties.Name="{x:Bind Title}"&gt;
+        &lt;Grid Width="150"&gt;
+            &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+            &lt;StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75"&gt;
+                &lt;TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                &lt;StackPanel Orientation="Horizontal"&gt;
+                    &lt;TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                    &lt;TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+                &lt;/StackPanel&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Grid&gt;
+    &lt;/ItemContainer&gt;
+&lt;/DataTemplate&gt;
+
 &lt;ItemsView Width="500" Height="400" HorizontalAlignment="Left"
     SelectionMode="$(SelectionMode)"
     IsItemInvokedEnabled="$(IsItemInvokedEnabled)"

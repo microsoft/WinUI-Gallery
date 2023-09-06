@@ -17,14 +17,18 @@ namespace AppUIBasics.ControlPages
 {
     public sealed partial class AnnotatedScrollBarPage : Page
     {
+        // Define the number of items present in each section of the source collection.
         private const int AzureCount = 32;
         private const int CrimsonCount = 50;
         private const int CyanCount = 8;
         private const int FuchsiaCount = 70;
         private const int GoldCount = 90;
+
+        // Each item is sized 120x90 in the ItemsRepeater.
         private const int ItemWidth = 120;
         private const int ItemHeight = 90;
 
+        // ItemsRepeater's ItemsSource.
         public ObservableCollection<SolidColorBrush> ColorCollection = new ObservableCollection<SolidColorBrush>();
 
         public AnnotatedScrollBarPage()
@@ -38,16 +42,22 @@ namespace AppUIBasics.ControlPages
 
         private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
+            // Connect the ScrollView and AnnotatedScrollBar controls. The AnnotatedScrollBar provides
+            // an IScrollController implementation, while the ScrollView consumes it.
             scrollView.ScrollPresenter.VerticalScrollController = annotatedScrollBar.ScrollController;
         }
 
         private void AnnotatedScrollBar_DetailLabelRequested(object sender, AnnotatedScrollBarDetailLabelRequestedEventArgs e)
         {
+            // Provide a string as the tooltip content when hovering the mouse over the AnnotatedScrollBar's vertical rail. The string simply
+            // represents the color of the last item in the row computed from AnnotatedScrollBarDetailLabelRequestedEventArgs.ScrollOffset.
             e.Content = GetOffsetLabel(e.ScrollOffset);
         }
 
         private void ItemsRepeater_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
         {
+            // When the ItemsRepeater is resized, its items layout may change and thus require an update of
+            // the AnnotatedScrollBar label positions.
             PopulateLabelCollection();
         }
 
@@ -55,6 +65,8 @@ namespace AppUIBasics.ControlPages
         {
             if (annotatedScrollBar != null)
             {
+                // Changing the height of the AnnotatedScrollBar to illustrate how labels
+                // are hidden to avoid collisions when the available room shrinks too much.
                 annotatedScrollBar.MaxHeight = (sender as Slider).Value;
             }
         }
@@ -101,8 +113,11 @@ namespace AppUIBasics.ControlPages
         {
             if (annotatedScrollBar != null)
             {
+                // Get rid of the labels that may have been defined earlier.
                 annotatedScrollBar.Labels.Clear();
 
+                // A new label is associated with the first item of each color section.
+                // The offset value of a label is function of the row that item belongs to.
                 annotatedScrollBar.Labels.Add(new AnnotatedScrollBarLabel("Azure", GetOffsetOfItem(0)));
                 annotatedScrollBar.Labels.Add(new AnnotatedScrollBarLabel("Crimson", GetOffsetOfItem(AzureCount)));
                 annotatedScrollBar.Labels.Add(new AnnotatedScrollBarLabel("Cyan", GetOffsetOfItem(AzureCount + CrimsonCount)));
