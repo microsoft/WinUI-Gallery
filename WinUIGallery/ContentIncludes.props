@@ -47,7 +47,6 @@
     <Content Include="Assets\ControlIcons\PivotIcon.png" />
     <Content Include="Assets\ControlIcons\RelativePanelIcon.png" />
     <Content Include="Assets\ControlIcons\SplitViewIcon.png" />
-    <Content Include="Assets\ControlIcons\AnnotatedScrollBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarButtonIcon.png" />
     <Content Include="Assets\ControlIcons\AppBarSeparatorIcon.png" />
@@ -64,7 +63,6 @@
     <Content Include="Assets\ControlIcons\GridIcon.png" />
     <Content Include="Assets\ControlIcons\GridViewIcon.png" />
     <Content Include="Assets\ControlIcons\HyperlinkButtonIcon.png" />
-    <Content Include="Assets\ControlIcons\ItemsViewIcon.png" />
     <Content Include="Assets\ControlIcons\ListBoxIcon.png" />
     <Content Include="Assets\ControlIcons\ListViewIcon.png" />
     <Content Include="Assets\LottieLogo1.png" />
@@ -76,7 +74,6 @@
     <Content Include="Assets\ControlIcons\RichEditBoxIcon.png" />
     <Content Include="Assets\ControlIcons\RichTextBlockIcon.png" />
     <Content Include="Assets\ControlIcons\ScrollViewerIcon.png" />
-    <Content Include="Assets\ControlIcons\ScrollViewIcon.png" />
     <Content Include="Assets\Slices.png" />
     <Content Include="Assets\Slices2.png" />
     <Content Include="Assets\ControlIcons\SliderIcon.png" />
