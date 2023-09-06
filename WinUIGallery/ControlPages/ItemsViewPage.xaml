@@ -18,14 +18,14 @@
 
     <local:ItemsPageBase.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="localcp:CustomDataObject">
-            <ItemContainer HorizontalAlignment="Left" Width="200" Height="140">
-                <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" AutomationProperties.Name="{x:Bind Title}" Margin="4" AutomationProperties.AccessibilityView="Raw"/>
+            <ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}">
+                <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/>
             </ItemContainer>
         </DataTemplate>
 
         <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
-            <ItemContainer>
-                <Grid AutomationProperties.Name="{x:Bind Title}">
+            <ItemContainer AutomationProperties.Name="{x:Bind Title}">
+                <Grid>
                     <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="70"/>
                     <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
                         <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
@@ -39,8 +39,8 @@
         </DataTemplate>
 
         <DataTemplate x:Key="StackLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
-            <ItemContainer>
-                <RelativePanel AutomationProperties.Name="{x:Bind Title}" Width="480" MinHeight="80" MaxHeight="100">
+            <ItemContainer AutomationProperties.Name="{x:Bind Title}">
+                <RelativePanel Width="480" MinHeight="80" MaxHeight="100">
                     <Image x:Name="image"
                         Width="24" Height="16"
                         HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -58,8 +58,8 @@
         </DataTemplate>
 
         <DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
-            <ItemContainer>
-                <Grid Width="150" AutomationProperties.Name="{x:Bind Title}">
+            <ItemContainer AutomationProperties.Name="{x:Bind Title}">
+                <Grid Width="150">
                     <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
                         <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
@@ -100,7 +100,7 @@
                 <x:String xml:space="preserve">
 private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
 {
-    InvokeOutput0.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+    tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 }
                 </x:String>
             </local:ControlExample.CSharp>
@@ -208,7 +208,7 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ItemsView Width="500" Height="400" HorizontalAlignment="Left"
-        ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}"&gt;
+    ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}"&gt;
     &lt;ItemsView.Layout&gt;
         &lt;LinedFlowLayout ItemsStretch="Fill" LineHeight="160" LineSpacing="5" MinItemSpacing="5"/&gt;
     &lt;/ItemsView.Layout&gt;
@@ -218,8 +218,24 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
         </local:ControlExample>
         
         <local:ControlExample x:Name="Example3" HeaderText="ItemsView item invocation and selection">
-            <Grid RowDefinitions="*, Auto">
-                <ItemsView x:Name="SwappableSelectionModesItemsView" SelectionMode="Multiple"
+            <Grid RowDefinitions="Auto, *, Auto">
+                <RichTextBlock TextWrapping="Wrap" Margin="0,0,0,15">
+                    <Paragraph>You can enable four different selection modes on the right.</Paragraph>
+                    <Paragraph>
+                        <Bold>None</Bold> disables selection all together.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Single</Bold> allows for only one item to be selected in the collection.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Multiple</Bold> causes checkboxes to appear within the items, so that multiple items can be chosen from the collection.
+                    </Paragraph>
+                    <Paragraph>
+                        <Bold>Extended</Bold> allows the user to select multiple items by using Ctrl+Click to select the individual items they want, or Shift+Click to select a range of contiguous items.
+                    </Paragraph>
+                </RichTextBlock>
+
+                <ItemsView x:Name="SwappableSelectionModesItemsView" Grid.Row="1" SelectionMode="Multiple"
                     Width="500" Height="400" HorizontalAlignment="Left"
                     ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"
                     ItemInvoked="SwappableSelectionModesItemsView_ItemInvoked"
@@ -229,7 +245,7 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
                     </ItemsView.Layout>
                 </ItemsView>
 
-                <StackPanel Grid.Row="1">
+                <StackPanel Grid.Row="2">
                     <TextBlock x:Name="tblInvocationOutput" Style="{StaticResource OutputTextBlockStyle}" />
                     <TextBlock x:Name="tblSelectionOutput" Style="{StaticResource OutputTextBlockStyle}" />
                 </StackPanel>
@@ -263,16 +279,35 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ItemsView Width="500" Height="400" HorizontalAlignment="Left"
-        SelectionMode="Multiple"
-        ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"
-        ItemInvoked="SwappableSelectionModesItemsView_ItemInvoked"
-        SelectionChanged="SwappableSelectionModesItemsView_SelectionChanged"&gt;
+    SelectionMode="$(SelectionMode)"
+    IsItemInvokedEnabled="$(IsItemInvokedEnabled)"
+    ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"
+    ItemInvoked="SwappableSelectionModesItemsView_ItemInvoked"
+    SelectionChanged="SwappableSelectionModesItemsView_SelectionChanged"&gt;
     &lt;ItemsView.Layout&gt;
         &lt;UniformGridLayout MinRowSpacing="5" MinColumnSpacing="5" MaximumRowsOrColumns="3"/&gt;
     &lt;/ItemsView.Layout&gt;
 &lt;/ItemsView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
+{
+    tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+}
+
+private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
+{
+    tblSelectionOutput.Text = string.Format("You have selected {0} item(s).", SwappableSelectionModesItemsView.SelectedItems.Count);
+}
+                </x:String>
+            </local:ControlExample.CSharp>
+
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SelectionMode" Value="{x:Bind ((ComboBoxItem)cmbSelectionMode.SelectedItem).Content, Mode=OneWay}"/>
+                <local:ControlExampleSubstitution Key="IsItemInvokedEnabled" Value="{x:Bind chkIsItemInvokedEnabled.IsChecked, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </local:ItemsPageBase>

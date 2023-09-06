@@ -12,10 +12,7 @@
 <Page x:Class="AppUIBasics.ControlPages.ScrollViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:common="using:AppUIBasics.Common">
+    xmlns:local="using:AppUIBasics">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
             <Grid>
@@ -100,12 +97,12 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="266" Width="400" ContentOrientation="None"
-            ZoomMode="$(ZoomMode)" IsTabStop="True"
-            VerticalAlignment="Top" HorizontalAlignment="Left"
-            HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
-            VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
+    ZoomMode="$(ZoomMode)" IsTabStop="True"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+    VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
-           HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+        HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
 &lt;/ScrollView&gt;
                 </x:String>
             </local:ControlExample.Xaml>
@@ -120,18 +117,23 @@
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2" HeaderText="Constant velocity scrolling.">
-            <ScrollView x:Name="scrollView2" Height="300" Width="400" IsTabStop="True"
-                VerticalAlignment="Top" HorizontalAlignment="Left">
-                <StackPanel>
-                    <Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Stretch="Uniform" AutomationProperties.Name="grapes"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" Stretch="Uniform" AutomationProperties.Name="rainier"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" Stretch="Uniform" AutomationProperties.Name="sunset"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/treetops.jpg" Stretch="Uniform" AutomationProperties.Name="treetops"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" Stretch="Uniform" AutomationProperties.Name="valley"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform" AutomationProperties.Name="cliff"/>
-                </StackPanel>
-            </ScrollView>
+            <StackPanel>
+                <TextBlock Margin="0,0,0,15"
+                    Text="Set the vertical velocity to a value greater than 30 to scroll down, or a value smaller than -30 to scroll up at a constant speed."/>
 
+                <ScrollView x:Name="scrollView2" Height="300" Width="400" IsTabStop="True"
+                    VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel>
+                        <Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Stretch="Uniform" AutomationProperties.Name="grapes"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" Stretch="Uniform" AutomationProperties.Name="rainier"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" Stretch="Uniform" AutomationProperties.Name="sunset"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/treetops.jpg" Stretch="Uniform" AutomationProperties.Name="treetops"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" Stretch="Uniform" AutomationProperties.Name="valley"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform" AutomationProperties.Name="cliff"/>
+                    </StackPanel>
+                </ScrollView>
+            </StackPanel>
+            
             <local:ControlExample.Options>
                 <Grid MinWidth="200"
                     RowDefinitions="Auto"
@@ -155,7 +157,7 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="300" Width="400" IsTabStop="True"
-            VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+    VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Stretch="Uniform" AutomationProperties.Name="grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" Stretch="Uniform" AutomationProperties.Name="rainier"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" Stretch="Uniform" AutomationProperties.Name="sunset"/&gt;
@@ -168,23 +170,28 @@
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example3" HeaderText="Programmatic scroll with custom animation.">
-            <ScrollView x:Name="scrollView3" Height="300" Width="400" IsTabStop="True"
-                ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
-                VerticalAlignment="Top" HorizontalAlignment="Left">
-                <StackPanel>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg" Stretch="Uniform" AutomationProperties.Name="leaves"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg" Stretch="Uniform" AutomationProperties.Name="carousel"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg" Stretch="Uniform" AutomationProperties.Name="bicycles"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage4.jpg" Stretch="Uniform" AutomationProperties.Name="pond"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg" Stretch="Uniform" AutomationProperties.Name="marina"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg" Stretch="Uniform" AutomationProperties.Name="beach"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg" Stretch="Uniform" AutomationProperties.Name="rampart"/>
-                    <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg" Stretch="Uniform" AutomationProperties.Name="mountain"/>
-                </StackPanel>
-            </ScrollView>
+            <StackPanel>
+                <TextBlock Margin="0,0,0,15"
+                    Text="Pick an animation type and its duration and then click the button on the right to launch a programmatic scroll."/>
 
+                <ScrollView x:Name="scrollView3" Height="300" Width="400" IsTabStop="True"
+                    ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
+                    VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg" Stretch="Uniform" AutomationProperties.Name="leaves"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg" Stretch="Uniform" AutomationProperties.Name="carousel"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg" Stretch="Uniform" AutomationProperties.Name="bicycles"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage4.jpg" Stretch="Uniform" AutomationProperties.Name="pond"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg" Stretch="Uniform" AutomationProperties.Name="marina"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg" Stretch="Uniform" AutomationProperties.Name="beach"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg" Stretch="Uniform" AutomationProperties.Name="rampart"/>
+                        <Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg" Stretch="Uniform" AutomationProperties.Name="mountain"/>
+                    </StackPanel>
+                </ScrollView>
+            </StackPanel>
+            
             <local:ControlExample.Options>
-                <Grid MinWidth="200"
+                <Grid MinWidth="320"
                     RowDefinitions="Auto, Auto, Auto"
                     ColumnDefinitions="Auto, *">
                     <TextBlock Text="Scroll with animation" VerticalAlignment="Center" Margin="0,0,10,0"/>
@@ -215,8 +222,8 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="300" Width="400" IsTabStop="True"
-            ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
-            VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+    ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
+    VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg" Stretch="Uniform" AutomationProperties.Name="leaves"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg" Stretch="Uniform" AutomationProperties.Name="carousel"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg" Stretch="Uniform" AutomationProperties.Name="bicycles"/&gt;
