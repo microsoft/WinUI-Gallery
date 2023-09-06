@@ -74,8 +74,6 @@
     </local:ItemsPageBase.Resources>
 
     <StackPanel>
-        <ScrollPresenter/>
-
         <local:ControlExample x:Name="Example1" HeaderText="Basic ItemsView">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15">
