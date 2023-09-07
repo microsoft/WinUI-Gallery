@@ -26,16 +26,18 @@
         <Packaged Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Release-Unpackaged'">false</Packaged>
         <Optimized>true</Optimized>
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
+        <SingleProject>true</SingleProject>
+        <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <!--<WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>-->
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Packaged)' != 'true'">
+    <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
         <PublishProfile>win10-$(Platform)-unpackaged.pubxml</PublishProfile>
         <EnableMsixTooling>false</EnableMsixTooling>
         <WindowsPackageType>None</WindowsPackageType>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Packaged)' == 'true'">
+    <PropertyGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
         <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
         <WindowsPackageType>MSIX</WindowsPackageType>
         <AppxBundleNameForOutput>WinUIGallery</AppxBundleNameForOutput>
@@ -55,13 +57,10 @@
         <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
         <SDKVersion>10.0</SDKVersion>
         <PfxFile>$(MSBuildProjectDirectory)\..\build\WinUI-Gallery-Test.pfx</PfxFile>
+        <PackageCertificateKeyFile Condition="Exists('$(PfxFile)')">$(PfxFile)</PackageCertificateKeyFile>
     </PropertyGroup>
 
-    <PropertyGroup Condition="Exists('$(PfxFile)')">
-        <PackageCertificateKeyFile>..\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
-    </PropertyGroup>
-
-    <ItemGroup>
+    <ItemGroup Condition="'$(SingleProject)'=='true'">
         <AppxManifest Include="Package.appxmanifest" Condition="'$(Release)' == 'true'">
             <SubType>Designer</SubType>
         </AppxManifest>
@@ -69,6 +68,7 @@
             <SubType>Designer</SubType>
         </AppxManifest>
     </ItemGroup>
+
     <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
         <GenerateAppInstallerFile>true</GenerateAppInstallerFile>
         <!-- URI must be absolute so this is really only useful for testing a locally produced AppInstaller. -->
@@ -249,12 +249,15 @@
     <Import Project="ContentIncludes.props" />
 
     <!-- Workaround to ensure WindowsAppSDK-VersionInfo.cs is included in project exactly once, before any compilation -->
-    <PropertyGroup Condition="'$(WindowsAppSdkSelfContained)'!='true'">
+    <PropertyGroup>
+        <ExplicitlyIncludeVersionInfo Condition="'$(WindowsAppSdkSelfContained)'=='true' or '$(SingleProject)'!='true'">true</ExplicitlyIncludeVersionInfo>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(ExplicitlyIncludeVersionInfo)'!='true'">
         <CoreCompileDependsOn Condition="'$(Packaged)'=='true'">$(CoreCompileDependsOn);GenerateDeploymentManagerCS</CoreCompileDependsOn>
         <CoreCompileDependsOn Condition="'$(Packaged)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Condition="'$(WindowsAppSdkSelfContained)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
+        <Compile Condition="'$(ExplicitlyIncludeVersionInfo)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
     </ItemGroup>
     <!-- When WindowsAppSdkIncludeVersionInfo supported, above workaround can be replaced with this: -->
     <PropertyGroup>
