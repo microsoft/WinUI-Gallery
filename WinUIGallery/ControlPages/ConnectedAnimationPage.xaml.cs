@@ -75,7 +75,7 @@ namespace AppUIBasics.ControlPages
         {
         }
 
-        public static List<CustomDataObject> GetDataObjects()
+        public static List<CustomDataObject> GetDataObjects(bool includeAllItems = false)
         {
             string[] dummyTexts = new[] {
                 @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id facilisis lectus. Cras nec convallis ante, quis pulvinar tellus. Integer dictum accumsan pulvinar. Pellentesque eget enim sodales sapien vestibulum consequat.",
@@ -89,7 +89,7 @@ namespace AppUIBasics.ControlPages
             };
 
             Random rand = new Random();
-            const int numberOfLocations = 8;
+            int numberOfLocations = includeAllItems ? 13 : 8;
             List<CustomDataObject> objects = new List<CustomDataObject>();
             for (int i = 0; i < numberOfLocations; i++)
             {
