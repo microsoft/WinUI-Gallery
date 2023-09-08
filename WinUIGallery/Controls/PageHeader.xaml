@@ -29,7 +29,6 @@
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"
             AutomationProperties.AutomationId="PageHeader"
-            AutomationProperties.HeadingLevel="Level1"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
         <TextBlock
