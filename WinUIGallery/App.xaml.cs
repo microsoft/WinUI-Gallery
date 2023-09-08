@@ -39,8 +39,9 @@ namespace AppUIBasics
 
         public static string WinAppSdkDetails
         {
-            get => string.Format("Windows App SDK {0}.{1}.{2}{3}",
-                WASDK.Release.Major, WASDK.Release.Minor, WASDK.Release.Patch, WASDK.Release.FormattedVersionTag);
+            // TODO: restore patch number and version tag when WinAppSDK supports them both
+            get => string.Format("Windows App SDK {0}.{1}",
+                WASDK.Release.Major, WASDK.Release.Minor);
         }
 
         public static string WinAppSdkRuntimeDetails
