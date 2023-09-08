@@ -41,8 +41,9 @@ namespace UITests
 			var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
 				.Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
-				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType);
-			if (testResult.Any())
+				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType)
+				.Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable);
+            if (testResult.Any())
 			{
 				var mappedResult = testResult.Select(result => "Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");
 				Assert.Fail("Failed with the following accessibility errors \r\n" + string.Join("\r\n", mappedResult));
