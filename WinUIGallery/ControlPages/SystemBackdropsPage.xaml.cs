@@ -43,5 +43,12 @@ namespace AppUIBasics.ControlPages
             newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
             newWindow.Activate();
         }
+
+        private void createCustomDesktopAcrylicWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
+            newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
+            newWindow.Activate();
+        }
     }
 }
