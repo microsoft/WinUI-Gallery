@@ -150,6 +150,7 @@
     <Content Include="Assets\ControlImages\PersonPicture.png" />
     <Content Include="Assets\ControlImages\PipsPager.png" />
     <Content Include="Assets\ControlImages\Pivot.png" />
+    <Content Include="Assets\ControlImages\Placeholder.png" />
     <Content Include="Assets\ControlImages\ProgressBar.png" />
     <Content Include="Assets\ControlImages\ProgressRing.png" />
     <Content Include="Assets\ControlImages\PullToRefresh.png" />
