@@ -18,10 +18,9 @@
         <local:ControlExample HeaderText="A group of RadioButton controls in a RadioButtons group.">
             <StackPanel>
                 <RadioButtons Header="Options:">
-                    <RadioButton Content="Option 1" Checked="RadioButton_Checked" />
-                    <RadioButton Content="Option 2" Checked="RadioButton_Checked" />
-                    <RadioButton Content="Option 3" Checked="RadioButton_Checked" />
-                </RadioButtons>
+                    <RadioButton Content="Option 1" Checked="RadioButton_Checked" AutomationProperties.AutomationId="Option1RadioButton"/>
+                    <RadioButton Content="Option 2" Checked="RadioButton_Checked" AutomationProperties.AutomationId="Option2RadioButton"/>
+                    <RadioButton Content="Option 3" Checked="RadioButton_Checked" AutomationProperties.AutomationId="Option3RadioButton"/>                </RadioButtons>
             </StackPanel>
             <local:ControlExample.Output>
                 <TextBlock x:Name="Control1Output" Text="Select an option." />

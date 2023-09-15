@@ -1,0 +1,93 @@
+# Universal Windows Platform
+# Build a Universal Windows Platform project using Visual Studio.
+# Add steps that test and distribute an app, save build artifacts, and more:
+# https://aka.ms/yaml
+
+trigger:
+    - main
+    - "dev/create-ci"
+
+pool:
+    vmImage: "windows-2022"
+
+variables:
+    solutionGallery: "**/WinUIGallery.sln"
+    solutionUITests: "**/UITests.sln"
+    buildPlatform: "x64"
+    buildConfiguration: "Debug"
+    appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+
+steps:
+    - task: NuGetToolInstaller@1
+      displayName: Install NuGet 5.8.0
+      inputs:
+          versionSpec: 5.8.0
+
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+
+    - task: PowerShell@2
+      displayName: GenerateTestPFX.ps1
+      inputs:
+        targetType: filePath
+        filePath: build/GenerateTestPFX.ps1
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'publish'
+        publishWebProjects: false
+        projects: '$(solutionGallery)'
+        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-$(buildPlatform).pubxml"'
+        zipAfterPublish: false
+        modifyOutputPath: false
+
+    - task: PowerShell@2
+      inputs:
+          targetType: "inline"
+          script: |
+              # Find correct folder and run app install script.
+              cd $(appxPackageDir)
+
+              $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
+              echo $AppBundle
+              cd $AppBundle
+              ls
+              ./Install.ps1 -Force
+              Get-AppxPackage
+          errorActionPreference: "continue"
+          failOnStderr: true
+          workingDirectory: "$(System.DefaultWorkingDirectory)"
+
+    - task: NuGetCommand@2
+      displayName: Restore packages
+      inputs:
+          restoreSolution: "$(solutionUITests)"
+
+    - task: VSBuild@1
+      inputs:
+          platform: "$(buildPlatform)"
+          solution: "$(solutionUITests)"
+          configuration: "$(buildConfiguration)"
+
+    - task: Windows Application Driver@0
+      inputs:
+          OperationType: "Start"
+          AgentResolution: "1080p"
+
+    - task: VSTest@2
+      inputs:
+          testSelector: "testAssemblies"
+          testAssemblyVer2: |
+              **\UITests.dll
+              !**\*TestAdapter.dll
+              !**\obj\**
+              !**\ref\**
+          searchFolder: "$(System.DefaultWorkingDirectory)"
+
+    - task: Windows Application Driver@0
+      inputs:
+          OperationType: "Stop"

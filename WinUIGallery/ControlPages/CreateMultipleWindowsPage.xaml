@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -22,7 +22,7 @@
    
     <StackPanel>
         <local:ControlExample HeaderText="Create single threaded Multiple Top level Windows(MTW)."
-                              CSharpSource="Window\CreateWindowSample1.txt">
+                              CSharpSource="Window/CreateWindowSample1.txt">
             <Button x:Name="Control1" Click="createNewWindow_Click">Create new Window</Button>
         </local:ControlExample>
     </StackPanel>

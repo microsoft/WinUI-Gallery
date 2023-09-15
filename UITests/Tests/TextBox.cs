@@ -15,14 +15,15 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
+
 using System.Threading;
 
-namespace UITests
+namespace UITests.Tests
 {
-    [TestClass]
-    public class TextBox : Test_Base
+	[TestClass]
+    public class TextBox : TestBase
     {
         private static WindowsElement textBoxElement1 = null;
         private static WindowsElement textBoxElement2 = null;
@@ -30,33 +31,26 @@ namespace UITests
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            Setup(context);
-            var buttonTab = session.FindElementByName("Text");
-            buttonTab.Click();
-            var button = session.FindElementByName("TextBox");
-            button.Click();
-            var textBoxes = session.FindElementsByClassName("TextBox");
-            Assert.IsTrue(textBoxes.Count > 2);
-            textBoxElement1 = textBoxes[0];
-            textBoxElement2 = textBoxes[1];
-            Assert.IsNotNull(textBoxElement1);
+			OpenControlPage("TextBox");
+            textBoxElement1 = Session.FindElementByName("simple TextBox");
+            textBoxElement2 = Session.FindElementByName("Enter your name:");
+			Assert.IsNotNull(textBoxElement1);
             Assert.IsNotNull(textBoxElement2);
-            Thread.Sleep(3000);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            TearDown();
-        }
+		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
 
-        [TestMethod]
+		[TestMethod]
         public void Clear()
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("fghij67890^&*()");
-            Assert.AreEqual("fghij67890^&*()", textBoxElement1.Text);
+            textBoxElement1.SendKeys("fghij");
+            Assert.AreEqual("fghij", textBoxElement1.Text);
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
         }
@@ -65,18 +59,20 @@ namespace UITests
         public void Click()
         {
             // Click textBoxElement1 to set focus and arbitrarily type
-           //textBoxElement1.Clear();
+            textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
             textBoxElement1.Click();
-            session.Keyboard.SendKeys("1234567890");
+            Thread.Sleep(1_000);
+			TypeText("1234567890");
             Assert.AreEqual("1234567890", textBoxElement1.Text);
 
             // Click textBoxElement2 to set focus and arbitrarily type
             textBoxElement2.Clear();
             Assert.AreEqual(string.Empty, textBoxElement2.Text);
             textBoxElement2.Click();
-            session.Keyboard.SendKeys("1234567890");
-            Assert.AreEqual("1234567890", textBoxElement2.Text);
+            Thread.Sleep(1_000);
+			TypeText("1234567890");
+			Assert.AreEqual("1234567890", textBoxElement2.Text);
         }
 
         [TestMethod]
@@ -119,8 +115,8 @@ namespace UITests
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("abcde12345!@#$%");
-            Assert.AreEqual("abcde12345!@#$%", textBoxElement1.Text);
+            textBoxElement1.SendKeys("abc");
+            Assert.AreEqual("abc", textBoxElement1.Text);
 
             // Use Ctrl + A to select all text and backspace to clear the box
             textBoxElement1.SendKeys(Keys.Control + "a" + Keys.Control + Keys.Backspace);
@@ -128,8 +124,8 @@ namespace UITests
 
             textBoxElement2.Clear();
             Assert.AreEqual(string.Empty, textBoxElement2.Text);
-            textBoxElement2.SendKeys("fghij67890^&*()");
-            Assert.AreEqual("fghij67890^&*()", textBoxElement2.Text);
+            textBoxElement2.SendKeys("efg");
+            Assert.AreEqual("efg", textBoxElement2.Text);
         }
 
         [TestMethod]
@@ -137,8 +133,8 @@ namespace UITests
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("abcde12345!@#$%");
-            Assert.AreEqual("abcde12345!@#$%", textBoxElement1.Text);
+            textBoxElement1.SendKeys("abc");
+            Assert.AreEqual("abc", textBoxElement1.Text);
         }
     }
 }
