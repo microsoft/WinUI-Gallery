@@ -27,9 +27,12 @@ namespace AppUIBasics.ControlPages
         public CaptureElementPreviewPage()
         {
             this.InitializeComponent();
+
             StartCaptureElement();
 
-            // Move the ScrollViewer from the captureContainer under an ExpandToFilLContainer
+            // Move the ScrollViewer from the captureContainer under an ExpandToFillContainer.
+            // This will allow the snapshots column to use all available height without
+            // influencing the height.
             var expandToFillContainer = new ExpandToFillContainer();
             var sv = captureContainer.Children[0];
             captureContainer.Children.Remove(sv);
@@ -62,7 +65,8 @@ namespace AppUIBasics.ControlPages
             await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
 
             // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-            captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id]);
+            var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+            captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
         }
 
         public string MirrorTextReplacement = ""; // starts not mirrored, so no text in that case
@@ -81,6 +85,7 @@ namespace AppUIBasics.ControlPages
                 captureElement.RenderTransform = new ScaleTransform() { ScaleX = -1 };
                 captureElement.RenderTransformOrigin = new Point(0.5, 0.5);
                 MirrorTextReplacement =
+                    "\n" +
                     "        // Mirror the preview\n" +
                     "        captureElement.RenderTransform = new ScaleTransform() { ScaleX = -1 };\n" +
                     "        captureElement.RenderTransformOrigin = new Point(0.5, 0.5);\n";
@@ -95,16 +100,6 @@ namespace AppUIBasics.ControlPages
 
         async private void CapturePhoto_Click(object sender, RoutedEventArgs e)
         {
-            if (false)
-            {
-                var elem = new StackPanel();
-                elem.Width = 100;
-                elem.Height = 80;
-                elem.Background = new SolidColorBrush(Microsoft.UI.Colors.Red);
-                snapshots.Children.Insert(0, elem);
-                capturedText.Visibility = Visibility.Visible;
-                return;
-            }
             // Capture a photo to a stream
             var imgFormat = ImageEncodingProperties.CreateJpeg();
             var stream = new InMemoryRandomAccessStream();

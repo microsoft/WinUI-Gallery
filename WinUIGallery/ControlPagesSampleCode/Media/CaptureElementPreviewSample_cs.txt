@@ -26,7 +26,8 @@ using Windows.Media.Capture;
         await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
 
         // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-        captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id]);
+        var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+        captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
 $(MirrorPreview)    }
 
     async private void CapturePhoto_Click(object sender, RoutedEventArgs e)
@@ -42,4 +43,6 @@ $(MirrorPreview)    }
         await bmpImage.SetSourceAsync(stream);
         var image = new Image() { Source = bmpImage };
         snapshots.Children.Insert(0, image);
+
+        capturedText.Visibility = Visibility.Visible;
     }
