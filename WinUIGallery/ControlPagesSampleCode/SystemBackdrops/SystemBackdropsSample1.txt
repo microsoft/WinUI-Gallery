@@ -5,7 +5,7 @@ WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See separate sample below fo
 Microsoft.UI.Composition.SystemBackdrops.MicaController m_micaController;
 Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration m_configurationSource;
 
-bool TrySetMicaBackdrop()
+bool TrySetMicaBackdrop(bool useMicaAlt)
 {
     if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
     {
@@ -23,6 +23,8 @@ bool TrySetMicaBackdrop()
         SetConfigurationSourceTheme();
 
         m_micaController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
+
+        m_micaController.Kind = useMicaAlt ? Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt : Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
 
         // Enable the system backdrop.
         // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
