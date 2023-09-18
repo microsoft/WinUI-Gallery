@@ -51,7 +51,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="Create a window with a customizable Desktop Acrylic system backdrop."
-                      CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
             <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
         </local:ControlExample>
 
