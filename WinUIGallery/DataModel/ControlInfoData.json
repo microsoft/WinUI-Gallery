@@ -2011,7 +2011,7 @@
         },
         {
           "UniqueId": "CaptureElementPreview",
-          "Title": "Capture element / camera preview",
+          "Title": "Capture Element / Camera Preview",
           "Subtitle": "A sample for doing a camera preview.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/MediaElementIcon.png",
