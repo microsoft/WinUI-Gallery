@@ -2010,6 +2010,24 @@
           ]
         },
         {
+          "UniqueId": "CaptureElementPreview",
+          "Title": "Capture Element / Camera Preview",
+          "Subtitle": "A sample for doing a camera preview.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/MediaElementIcon.png",
+          "Description": "You can use a MediaPlayerElement control to show a camera preview with a MediaCapture object.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "MediaCapture - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.media.capture.mediacapture"
+            }
+          ],
+          "RelatedControls": [
+            "MediaPlayerElement"
+          ]
+        },
+        {
           "UniqueId": "Image",
           "Title": "Image",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
