@@ -67,6 +67,7 @@
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
                     Text="{x:Bind AppTitleText}" />
+                <TextBox x:Name="AppTitleBarTextBox" Width="300" Height="40" Margin="16,0,0,0" Visibility="Collapsed" /> 
             </StackPanel>
         </Border>
 

@@ -26,13 +26,35 @@
     </Page.Resources>
 
     <StackPanel>
+        <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
+                              CSharpSource="Window\TitleBar\TitleBarSample2.txt">
+            <local:ControlExample.Example>
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <TextBlock TextWrapping="WrapWholeWords">
+                        WinUI provides a default titlebar in case where user doesn't explicit provides a uielement for setting the titlebar. The system titlebar (Windows provided titlebar) disappears and client area content is extended to non client area.
+                        In this default case, entire non client region (titlebar region) get system titlebar behaviors like drag regions, system menu on context click etc.
+                        <LineBreak></LineBreak>
+                        This is recommended way of using TitleBar apis and covers most common scenarios.
+                        <LineBreak></LineBreak>
+                        It can be applied by just calling ExtendsContentIntoTitleBar api. This internally calls SetTitleBar api with null argument and provides the default case.
+                        <LineBreak></LineBreak>
+                        Use the button below to toggle between system titlebar and default custom titlebar.
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="20">
+                        <Button x:Name="defaultTitleBar" Click="defaultTitleBar_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
         <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
                               CSharpSource="Window/TitleBar/TitleBarSample1.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
-                        User can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar. <LineBreak></LineBreak>
+                        For finer controls, a user can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar (gets all system titlebar behavior). <LineBreak></LineBreak>
                         The Background and Foreground Color dropdowns set the foreground and background of titlebar and caption buttons respectively.
+                        <LineBreak></LineBreak>
+                        Use the button below to toggle between system titlebar and custom WinUI titlebar.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="10">
                         <Button x:Name="customTitleBar" Click="customTitleBar_Click"></Button>
@@ -64,7 +86,8 @@
                                             <Rectangle Fill="Green" AutomationProperties.Name="Green"/>
                                             <Rectangle Fill="Blue" AutomationProperties.Name="Blue"/>
                                             <Rectangle Fill="White" AutomationProperties.Name="White"/>
-                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>                                        </GridView.Items>
+                                            <Rectangle Fill="Black" AutomationProperties.Name="Black"/>
+                                        </GridView.Items>
                                     </GridView>
 
                                 </Flyout>
@@ -111,23 +134,33 @@
             </local:ControlExample.Example>
 
         </local:ControlExample>
-        <local:ControlExample HeaderText="Fallback titlebar when no user defined titlebar is set"
-                              CSharpSource="Window/TitleBar/TitleBarSample2.txt">
+        <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
+                              CSharpSource="Window\TitleBar\TitleBarSample3.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
-                        WinUI provides a fallback titlebar in case where user doesn't want to provide a uielement for setting the titlebar.
-                        A small horizontal section next to min/max/close caption buttons is chosen as the fallback titlebar.
-                         <LineBreak></LineBreak>
-                        It can be applied by just calling ExtendsContentIntoTitleBar api only and not calling SetTitleBar afterwards. It can also be manually triggered by calling SetTitleBar api with null arument.
+                        WinUI custom titlebar now hosting interactive clickable controls within non client region of the window, when using custom titlebar.
                         <LineBreak></LineBreak>
-                        Use the Color dropdown controls in the section above to change color of the fallback titlebar.
+                        This is achieved by using lower level
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar">
+                           Microsoft.UI.AppwindowTitlebar
+                        </Hyperlink>
+                        and
+                        <Italic>Microsoft.UI.NonClientInputPointerSource apis</Italic>
+                        <LineBreak></LineBreak>
+                        <LineBreak></LineBreak>
+                        WinUI allows  <Bold> mix and match </Bold> of higher level WinUI custom titlebar apis with lower level Appwindow and NonClientInputPointerSource apis for most cases.
+                        One exception is one should not use <Italic> Window.SetTitlebar </Italic> api along with any lower level api which also sets drag regions as it can result in unexpected behavior.
+                        If needed, set <Italic> Window.SetTitlebar </Italic> to null (default case) and proceed to use lower level apis for drag functionality.
+                        <LineBreak></LineBreak>
+                        Use the button below to toggle between system titlebar and default custom titlebar.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Spacing="20">
-                        <Button x:Name="defaultTitleBar" Click="defaultTitleBar_Click"></Button>
+                        <Button x:Name="addInteractiveElements" Click="AddInteractiveElements_Click">Add interactive control to titlebar</Button>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
+
     </StackPanel>
 </Page>

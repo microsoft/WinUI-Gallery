@@ -1,0 +1,10 @@
+﻿Window window = App.MainWindow;
+window.ExtendsContentIntoTitleBar = true;
+window.SetTitleBar(AppTitleBar);
+var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
+
+// Windows.Graphics.RectInt32[] rects defines the area which allows click throughs in custom titlebar 
+// it is non dpi-aware client coordinates 
+// and thus, appropriate calculations are needed from xaml coordinates befure calling this api
+// see TitleBarPage.xaml.cs for detailed implementation
+nonClientInputSrc.ConfigureRegion(NonClientRegionKind.Transparent, rects); // areas defined will be click through and can host button and textboxes
