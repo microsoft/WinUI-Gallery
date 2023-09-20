@@ -19,7 +19,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -109,24 +109,23 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font."/>
-        <labs:SettingsExpander Grid.Row="1"
-                  IsExpanded="False"
-                  Header="Instructions on how to use Segoe Fluent Icons">
-            <labs:SettingsExpander.Items>
-                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
+        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
+        <toolkit:SettingsExpander
+            Grid.Row="1"
+            Header="Instructions on how to use Segoe Fluent Icons"
+            IsExpanded="False">
+            <toolkit:SettingsExpander.Items>
+                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
                     <RichTextBlock TextWrapping="Wrap">
                         <Paragraph FontWeight="SemiBold">
                             How to get the font
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                            <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
-                        </Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>                            .</Paragraph>
                     </RichTextBlock>
-                </labs:SettingsCard>
-                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
+                </toolkit:SettingsCard>
+                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">
@@ -142,36 +141,32 @@
                                 For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
                             </Paragraph>
                             <Paragraph>
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so
-                                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
-                            </Paragraph>
+                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
                         </RichTextBlock>
-                        <controls:SampleCodePresenter
-                            SampleType="XAML"
-                            CodeSourceFile="Icons/FontIconSample2_xaml.txt">
-                        </controls:SampleCodePresenter>
+                        <controls:SampleCodePresenter CodeSourceFile="Icons/FontIconSample2_xaml.txt" SampleType="XAML" />
                     </StackPanel>
-                </labs:SettingsCard>
-            </labs:SettingsExpander.Items>
-        </labs:SettingsExpander>
+                </toolkit:SettingsCard>
+            </toolkit:SettingsExpander.Items>
+        </toolkit:SettingsExpander>
 
-        <StackPanel Grid.Row="2" Spacing="8" Margin="0,24,0,0">
-            <TextBlock
-            Style="{ThemeResource BodyStrongTextBlockStyle}"
-            Text="Fluent Icons Library" />
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,24,0,0"
+            Spacing="8">
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
             <AutoSuggestBox
-            MinWidth="304"
-            MaxWidth="320"
-            HorizontalAlignment="Left"
-            PlaceholderText="Search icons"
-            QueryIcon="Find"
-            TextChanged="SearchTextBox_TextChanged" />
+                MinWidth="304"
+                MaxWidth="320"
+                HorizontalAlignment="Left"
+                PlaceholderText="Search icons"
+                QueryIcon="Find"
+                TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
 
         <controls1:SampleThemeListener
-                Grid.Row="3"
-                MaxHeight="600"
-                VerticalAlignment="Top">
+            Grid.Row="3"
+            MaxHeight="600"
+            VerticalAlignment="Top">
             <Grid
                 Background="{ThemeResource ControlExampleDisplayBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
