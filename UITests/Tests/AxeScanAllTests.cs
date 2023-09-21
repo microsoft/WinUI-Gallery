@@ -82,12 +82,22 @@ namespace UITests.Tests
         [TestMethod]
         public void ValidateAccessibilityWithAxe()
         {
-            foreach (var controlInfoDataItems in controlInfoData.Groups)
+            foreach (var controlInfoDataGroup in controlInfoData.Groups)
             {
-                var navViewItems = Session.FindElementByAccessibilityId(controlInfoDataItems.UniqueId);
-                navViewItems.Click();
+                var groupItem = Session.FindElementByAccessibilityId(controlInfoDataGroup.UniqueId);
+                groupItem.Click();
+
+                Assert.IsNotNull(WaitForPageHeader(name), "Failed to find matching page header for page: " + name);
 
                 AxeHelper.AssertNoAccessibilityErrors();
+
+                foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
+                {
+                    var controlItem = Session.FindElementByAccessibilityId(controlInfoDataItem.UniqueId);
+                    controlItem.Click();
+
+                    AxeHelper.AssertNoAccessibilityErrors();
+                }
             }
         }
         

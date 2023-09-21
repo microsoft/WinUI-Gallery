@@ -201,36 +201,39 @@
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" Content="Typography">
+                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" Content="Icons">
+                        <NavigationViewItem x:Name="IconsItem" AutomationProperties.AutomationId="Icons" Content="Icons">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" Content="Colors">
+                        <NavigationViewItem x:Name="ColorsItem" AutomationProperties.AutomationId="Colors" Content="Colors">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
+                        <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE776;" />
                             </NavigationViewItem.Icon>
                             <NavigationViewItem.MenuItems>
                                 <NavigationViewItem
                                     x:Name="AccessibilityScreenReaderPage"
+                                    AutomationProperties.AutomationId="AccessibilityScreenReader" 
                                     Content="Screen reader support"
                                     Tag="AccessibilityScreenReader" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityKeyboardPage"
+                                    AutomationProperties.AutomationId="AccessibilityKeyboard" 
                                     Content="Keyboard support"
                                     Tag="AccessibilityKeyboard" />
                                 <NavigationViewItem
                                     x:Name="AccessibilityContrastPage"
+                                    AutomationProperties.AutomationId="AccessibilityColorContrast" 
                                     Content="Color contrast"
                                     Tag="AccessibilityColorContrast" />
                             </NavigationViewItem.MenuItems>
