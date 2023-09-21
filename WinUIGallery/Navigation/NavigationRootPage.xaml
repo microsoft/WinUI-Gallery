@@ -188,12 +188,14 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Name="Home"
+                    AutomationProperties.AutomationId="Home"
                     Content="Home"
                     Icon="Home" />
 
                 <NavigationViewItem
                     x:Name="DesignGuidanceItem"
-                    Content="Design guidance"
+                    AutomationProperties.AutomationId="Design_Guidance"
+                    Content="Design Guidance"
                     Tag="Design_Guidance">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />

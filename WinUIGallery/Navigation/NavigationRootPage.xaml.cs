@@ -228,7 +228,7 @@ namespace AppUIBasics
                 NavigationViewControl.MenuItems.Add(itemGroup);
             }
 
-            NewControlsItem.Loaded += OnNewControlsMenuItemLoaded;
+            Home.Loaded += OnNewControlsMenuItemLoaded;
         }
 
         private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -299,7 +299,7 @@ namespace AppUIBasics
                         Navigate(typeof(AllControlsPage));
                     }
                 }
-                else if (selectedItem == NewControlsItem)
+                else if (selectedItem == Home)
                 {
                     if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
