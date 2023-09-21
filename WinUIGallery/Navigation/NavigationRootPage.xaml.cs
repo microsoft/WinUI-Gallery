@@ -210,6 +210,7 @@ namespace AppUIBasics
                 itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
 
                 AutomationProperties.SetName(itemGroup, group.Title);
+                AutomationProperties.SetAutomationId(itemGroup, group.UniqueId);
 
                 foreach (var item in group.Items)
                 {
@@ -221,6 +222,7 @@ namespace AppUIBasics
 
                     itemGroup.MenuItems.Add(itemInGroup);
                     AutomationProperties.SetName(itemInGroup, item.Title);
+                    AutomationProperties.SetAutomationId(itemInGroup, item.UniqueId);
                 }
 
                 NavigationViewControl.MenuItems.Add(itemGroup);
