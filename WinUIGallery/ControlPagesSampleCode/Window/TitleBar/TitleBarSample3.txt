@@ -7,4 +7,4 @@ var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(window.AppWin
 // it is non dpi-aware client coordinates 
 // and thus, appropriate calculations are needed from xaml coordinates befure calling this api
 // see TitleBarPage.xaml.cs for detailed implementation
-nonClientInputSrc.ConfigureRegion(NonClientRegionKind.Transparent, rects); // areas defined will be click through and can host button and textboxes
+nonClientInputSrc.SetRegionRects(NonClientRegionKind.Passthrough, rects); // areas defined will be click through and can host button and textboxes

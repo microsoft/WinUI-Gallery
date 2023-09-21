@@ -88,14 +88,14 @@ namespace AppUIBasics.ControlPages
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
             var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
-            nonClientInputSrc.ConfigureRegion(NonClientRegionKind.Transparent, rects);
+            nonClientInputSrc.SetRegionRects(NonClientRegionKind.Passthrough, rects);
         }
 
         private void ClearClickThruRegions()
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
             var noninputsrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
-            noninputsrc.ClearRegion(NonClientRegionKind.Transparent);
+            noninputsrc.ClearRegionRects(NonClientRegionKind.Passthrough);
         }
 
         public void UpdateButtonText()
