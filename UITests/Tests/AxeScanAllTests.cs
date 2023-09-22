@@ -17,7 +17,7 @@ namespace UITests.Tests
     public class AxeScanAll : TestBase
     {       
         public static readonly string jsonUri = "ms-appx:///../../../../../../WinUIGallery/DataModel/ControlInfoData.json";
-        public static WindowsDriver<WindowsElement> Session => SessionManager.Session;
+        public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
         public class ControlInfoData
         {
