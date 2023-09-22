@@ -60,12 +60,13 @@
             VerticalScrollBarVisibility="Disabled"
             VerticalScrollMode="Disabled">
             <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
+           
         </ScrollViewer>
         <local:CopyButton
-            x:Name="CopyCodeButton"
-            Grid.Row="0"
-            HorizontalAlignment="Right"
-            Click="CopyCodeButton_Click"
-            Content="&#xE8C8;" />
+             x:Name="CopyCodeButton"
+             Grid.Row="0"
+             HorizontalAlignment="Right"
+             Click="CopyCodeButton_Click"
+             Content="&#xE8C8;" />
     </Grid>
 </UserControl>

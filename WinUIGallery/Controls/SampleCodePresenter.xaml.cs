@@ -25,6 +25,7 @@ using Microsoft.UI.Xaml.Media;
 using AppUIBasics.Common;
 using System.Reflection;
 using System.IO;
+using Microsoft.UI.Xaml.Automation;
 
 namespace AppUIBasics.Controls
 {
@@ -64,6 +65,13 @@ namespace AppUIBasics.Controls
         {
             get { return (IList<ControlExampleSubstitution>)GetValue(SubstitutionsProperty); }
             set { SetValue(SubstitutionsProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header", typeof(string), typeof(SampleCodePresenter), new PropertyMetadata("", OnDependencyPropertyChanged));
+        public string Header
+        {
+            get { return (string)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
         }
 
         public bool IsEmpty => Code.Length == 0 && CodeSourceFile == null;
@@ -225,6 +233,10 @@ namespace AppUIBasics.Controls
             }
 
             actualCode = sampleString;
+
+            var name = GetSampleLanguageVisualState() == "InlineSample" ? actualCode : SampleHeader.Text;
+            var automationName = "Copy " + name + " Code";
+            AutomationProperties.SetName(CopyCodeButton, automationName);
 
 
             var formatter = GenerateRichTextFormatter();

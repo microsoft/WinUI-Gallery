@@ -112,6 +112,7 @@
         <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
         <toolkit:SettingsExpander
             Grid.Row="1"
+            AutomationProperties.AccessibilityView="Raw"
             Header="Instructions on how to use Segoe Fluent Icons"
             IsExpanded="False">
             <toolkit:SettingsExpander.Items>
