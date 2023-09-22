@@ -16,6 +16,7 @@ namespace UITests.Tests
     [TestClass]
     public class AxeScanAll : TestBase
     {       
+        public static readonly string jsonUri = "ms-appx:///../../../../../../WinUIGallery/DataModel/ControlInfoData.json";
         public static WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
         public class ControlInfoData
@@ -79,12 +80,17 @@ namespace UITests.Tests
         [ClassInitialize]
         public static void ClassInitializeAsync(TestContext context)
         {
-            LoadText();
+            ParseJson();
         }
 
         [TestMethod]
+        [TestProperty("Description", "Scan all controls in the WinUIGallery for accessibility issues.")]
         public void ValidateAccessibilityWithAxe()
         {
+            // We are using using the list of controls from ControlInfoData.json to get the Ids of each existing page.
+            // Then we physically navigate to each page via NavigationView and scan for Axe issues. This also tests for run-time crashes.
+
+            // Click through each control group in NavView and scan for Axe issues.
             foreach (var controlInfoDataGroup in controlInfoData.Groups)
             {
                 var groupName = controlInfoDataGroup.UniqueId;
@@ -93,10 +99,12 @@ namespace UITests.Tests
 
                 AxeHelper.AssertNoAccessibilityErrors(groupName);
 
+                // Click through each control in the group and scan for Axe issues.
                 foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
                 {
                     var controlName = controlInfoDataItem.UniqueId;
 
+                    // Skip controls that are in the exclusion list.
                     if (ExclusionList.Contains(controlName))
                     {
                         continue;
@@ -110,10 +118,9 @@ namespace UITests.Tests
             }
         }
         
-        public static void LoadText()
-        {
-            var uri = "ms-appx:///../../../../../../WinUIGallery/DataModel/ControlInfoData.json";
-            var jsonData = File.ReadAllText(uri);
+        public static void ParseJson()
+        {;
+            var jsonData = File.ReadAllText(jsonUri);
 
             controlInfoData = JsonSerializer.Deserialize<ControlInfoData>(jsonData);
         }
