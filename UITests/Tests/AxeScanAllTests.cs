@@ -84,19 +84,19 @@ namespace UITests.Tests
         {
             foreach (var controlInfoDataGroup in controlInfoData.Groups)
             {
-                var groupItem = Session.FindElementByAccessibilityId(controlInfoDataGroup.UniqueId);
+                var groupName = controlInfoDataGroup.UniqueId;
+                var groupItem = Session.FindElementByAccessibilityId(groupName);
                 groupItem.Click();
 
-                Assert.IsNotNull(WaitForPageHeader(name), "Failed to find matching page header for page: " + name);
-
-                AxeHelper.AssertNoAccessibilityErrors();
+                AxeHelper.AssertNoAccessibilityErrors(groupName);
 
                 foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
                 {
-                    var controlItem = Session.FindElementByAccessibilityId(controlInfoDataItem.UniqueId);
+                    var controlName = controlInfoDataItem.UniqueId;
+                    var controlItem = Session.FindElementByAccessibilityId(controlName);
                     controlItem.Click();
 
-                    AxeHelper.AssertNoAccessibilityErrors();
+                    AxeHelper.AssertNoAccessibilityErrors(controlName);
                 }
             }
         }

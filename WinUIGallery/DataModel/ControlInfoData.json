@@ -56,7 +56,8 @@
             {
               "Title": "Colors in Windows 11",
               "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
-            },{
+            },
+            {
               "Title": "Windows UI Toolkit (Figma)",
               "Uri": "https://www.figma.com/community/file/1159947337437047524"
             },
@@ -67,8 +68,14 @@
           ]
         },
         {
+          "UniqueId": "AccessibilityItem",
+          "Title": "Accessibility",
+          "IsSpecialSection": true,
+          "Folder": "Accessibility"
+        },
+        {
           "UniqueId": "AccessibilityColorContrast",
-          "Title": "Color contrast",
+          "Title": "Color Contrast",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -85,7 +92,7 @@
         },
         {
           "UniqueId": "AccessibilityKeyboard",
-          "Title": "Keyboard support",
+          "Title": "Keyboard Support",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
@@ -126,7 +133,7 @@
         },
         {
           "UniqueId": "AccessibilityScreenReader",
-          "Title": "Screen reader support",
+          "Title": "Screen Reader Support",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/AppBarSeparatorIcon.png",
           "HideSourceCodeAndRelatedControls": true,
