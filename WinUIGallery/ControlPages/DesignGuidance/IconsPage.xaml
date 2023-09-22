@@ -110,6 +110,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
+
+        <!-- https://github.com/CommunityToolkit/Windows/issues/240 -->
+        <!-- External toolkit SettingsExpander does not pass Axe testing-->
         <toolkit:SettingsExpander
             Grid.Row="1"
             AutomationProperties.AccessibilityView="Raw"
