@@ -36,7 +36,7 @@ namespace UITests
 			AccessibilityScanner = ScannerFactory.CreateScanner(config);
 		}
 
-		public static void AssertNoAccessibilityErrors(string uniqueId = "")
+		public static void AssertNoAccessibilityErrors(string uniqueId)
 		{
 			var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
 				.Where(rule => rule.Rule.ID != RuleId.NameIsInformative)

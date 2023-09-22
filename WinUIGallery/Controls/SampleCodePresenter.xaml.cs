@@ -67,13 +67,6 @@ namespace AppUIBasics.Controls
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header", typeof(string), typeof(SampleCodePresenter), new PropertyMetadata("", OnDependencyPropertyChanged));
-        public string Header
-        {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
-        }
-
         public bool IsEmpty => Code.Length == 0 && CodeSourceFile == null;
 
         private string actualCode = "";
