@@ -46,7 +46,7 @@ namespace UITests
             if (testResult.Any())
 			{
 				var mappedResult = testResult.Select(result => 
-				"Failed at page:" + uniqueId + "\n" +
+				"Failed at page: " + uniqueId + "\n" +
 				"Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");
 				Assert.Fail("Failed with the following accessibility errors \r\n" + string.Join("\r\n", mappedResult));
 			}

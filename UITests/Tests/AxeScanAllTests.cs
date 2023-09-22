@@ -15,9 +15,7 @@ namespace UITests.Tests
 {
     [TestClass]
     public class AxeScanAll : TestBase
-    {
-        
-
+    {       
         public static WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
         public class ControlInfoData
@@ -73,6 +71,11 @@ namespace UITests.Tests
 
         private static ControlInfoData controlInfoData;
 
+        private string[] ExclusionList =
+        {
+            "WebView2" // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
+        };
+
         [ClassInitialize]
         public static void ClassInitializeAsync(TestContext context)
         {
@@ -93,6 +96,12 @@ namespace UITests.Tests
                 foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
                 {
                     var controlName = controlInfoDataItem.UniqueId;
+
+                    if (ExclusionList.Contains(controlName))
+                    {
+                        continue;
+                    }
+
                     var controlItem = Session.FindElementByAccessibilityId(controlName);
                     controlItem.Click();
 
