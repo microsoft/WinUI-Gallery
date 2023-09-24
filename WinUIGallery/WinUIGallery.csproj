@@ -28,7 +28,8 @@
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
-        <!--<WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>-->
+        <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
+        <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
