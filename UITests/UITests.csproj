@@ -8,6 +8,13 @@
         <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     </PropertyGroup>
 
+    <!-- Build output related paths -->
+    <PropertyGroup>
+        <ProjectRoot>$(MSBuildThisFileDirectory)..\</ProjectRoot>
+        <ArtifactsBinRoot>$(MSBuildThisFileDirectory)\bin\</ArtifactsBinRoot>
+        <TestBinplaceDestinationPath>\$(Platform)\$(Configuration)\$(TargetFramework)</TestBinplaceDestinationPath>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Appium.WebDriver" Version="4.4.0" />
         <PackageReference Include="Axe.Windows" Version="2.1.0" />
@@ -15,4 +22,16 @@
         <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
         <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     </ItemGroup>
+
+    <!-- Generate the test data to use for the WinUIGallery tests-->
+  <PropertyGroup>
+    <WinUIGalleryControlInfoDataPath>$(ProjectRoot)\WinUIGallery\DataModel\ControlInfoData.json</WinUIGalleryControlInfoDataPath>
+    <WinUIGalleryTestDataOutputPath>$(ArtifactsBinRoot)\$(TestBinplaceDestinationPath)\WinUIGalleryTestData.xml</WinUIGalleryTestDataOutputPath>
+  </PropertyGroup>
+  <Target Name="GenerateWinUIGalleryTestData" AfterTargets="AfterBuild" Inputs="$(WinUIGalleryControlInfoDataPath)" Outputs="$(WinUIGalleryTestDataOutputPath)">
+    <PropertyGroup>
+        <ScriptLocation>$(MSBuildThisFileDirectory)\Scripts\GenerateWinUIGalleryTestData.ps1</ScriptLocation>
+    </PropertyGroup>
+    <Exec Command="powershell.exe -ExecutionPolicy Bypass -File &quot;$(ScriptLocation)&quot; -InputWinUIGalleryJsonFilePath &quot;$(WinUIGalleryControlInfoDataPath)&quot; -OutputXmlFilePath &quot;$(WinUIGalleryTestDataOutputPath)&quot;" />
+  </Target>
 </Project>
