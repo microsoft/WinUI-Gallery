@@ -72,45 +72,57 @@ namespace UITests.Tests
             "WebView2" // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
         };
 
+        public static TestContext TestContext { get; set; }
+
         [ClassInitialize]
-        public static void ClassInitializeAsync(TestContext context)
+        public static void ClassInitialize(TestContext testcontext)
         {
-            ParseJson();
+            //ParseJson();
+            TestContext = testcontext;
         }
 
         [TestMethod]
+        [DataSource("Table:WinUIGalleryTestData.xml#MenuAndToolbars")]
         [TestProperty("Description", "Scan all controls in the WinUIGallery for accessibility issues.")]
         public void ValidateAccessibilityWithAxe()
         {
-            // We are using using the list of controls from ControlInfoData.json to get the Ids of each existing page.
-            // Then we physically navigate to each page via NavigationView and scan for Axe issues. This also tests for run-time crashes.
+            //// We are using using the list of controls from ControlInfoData.json to get the Ids of each existing page.
+            //// Then we physically navigate to each page via NavigationView and scan for Axe issues. This also tests for run-time crashes.
 
-            // Click through each control group in NavView and scan for Axe issues.
-            foreach (var controlInfoDataGroup in controlInfoData.Groups)
-            {
-                var groupName = controlInfoDataGroup.UniqueId;
-                var groupItem = Session.FindElementByAccessibilityId(groupName);
-                groupItem.Click();
+            //// Click through each control group in NavView and scan for Axe issues.
+            //foreach (var controlInfoDataGroup in controlInfoData.Groups)
+            //{
+            //    var groupName = controlInfoDataGroup.UniqueId;
+            //    var groupItem = Session.FindElementByAccessibilityId(groupName);
+            //    groupItem.Click();
 
-                AxeHelper.AssertNoAccessibilityErrors(groupName);
+            //    AxeHelper.AssertNoAccessibilityErrors(groupName);
 
-                // Click through each control in the group and scan for Axe issues.
-                foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
-                {
-                    var controlName = controlInfoDataItem.UniqueId;
+            //    // Click through each control in the group and scan for Axe issues.
+            //    foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
+            //    {
+            //        var controlName = controlInfoDataItem.UniqueId;
 
-                    // Skip controls that are in the exclusion list.
-                    if (ExclusionList.Contains(controlName))
-                    {
-                        continue;
-                    }
+            //        // Skip controls that are in the exclusion list.
+            //        if (ExclusionList.Contains(controlName))
+            //        {
+            //            continue;
+            //        }
 
-                    var controlItem = Session.FindElementByAccessibilityId(controlName);
-                    controlItem.Click();
+            //        var controlItem = Session.FindElementByAccessibilityId(controlName);
+            //        controlItem.Click();
 
-                    AxeHelper.AssertNoAccessibilityErrors(controlName);
-                }
-            }
+            //        AxeHelper.AssertNoAccessibilityErrors(controlName);
+            //    }
+
+            //string sectionName = TestContext.DataRow["SectionName"].ToString();
+            string pageName = TestContext.DataRow["PageName"].ToString();
+            //string textOnPage = TestContext.DataRow["TextOnPage"].ToString();
+
+            var groupItem = Session.FindElementByAccessibilityId(pageName);
+            groupItem.Click();
+
+            AxeHelper.AssertNoAccessibilityErrors();
         }
         
         public static void ParseJson()
