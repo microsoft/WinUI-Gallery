@@ -29,7 +29,7 @@ namespace AppUIBasics.ControlPages
     public sealed partial class TitleBarPage : Page
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
-        private Windows.UI.Color currentFgColor = Colors.Black;
+        private Windows.UI.Color currentFgColor = Colors.Transparent;
 
         public TitleBarPage()
         {
@@ -45,14 +45,18 @@ namespace AppUIBasics.ControlPages
         private void SetTitleBar(UIElement titlebar)
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
+            var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
+
             if (!window.ExtendsContentIntoTitleBar)
             {
+                titleBarElement.Visibility = Visibility.Visible;
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(titlebar);
                 TitleBarHelper.SetCaptionButtonBackgroundColors(window, Colors.Transparent);
             }
             else
             {
+                titleBarElement.Visibility = Visibility.Collapsed;
                 window.ExtendsContentIntoTitleBar = false;
                 window.SetTitleBar(null);
                 TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
@@ -64,6 +68,7 @@ namespace AppUIBasics.ControlPages
         public void UpdateButtonText()
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
+            
             if (window.ExtendsContentIntoTitleBar)
             {
                 customTitleBar.Content = "Reset to system TitleBar";
@@ -109,9 +114,28 @@ namespace AppUIBasics.ControlPages
         {
             var window = WindowHelper.GetWindowForElement(this);
             var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
+            var titleBarAppNameElement = UIHelper.FindElementByName(this, "AppTitle");
 
             (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // changing titlebar uielement's color
+            if(currentFgColor != Colors.Transparent)
+            {
+                (titleBarAppNameElement as TextBlock).Foreground = new SolidColorBrush(currentFgColor);
+            }
+            else
+            {
+                (titleBarAppNameElement as TextBlock).Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
+            }
             TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
+            if(currentBgColor == Colors.Transparent)
+            {
+                // If the current background is null, we want to revert to the default titlebar which is achieved using null as color
+                TitleBarHelper.SetBackgroundColor(window, null);
+            }
+            else
+            {
+                TitleBarHelper.SetBackgroundColor(window, currentBgColor);
+            }
+            TitleBarHelper.SetForegroundColor(window, currentFgColor);
         }
 
         private void customTitleBar_Click(object sender, RoutedEventArgs e)
