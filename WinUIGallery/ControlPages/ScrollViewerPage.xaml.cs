@@ -10,7 +10,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -19,7 +18,7 @@ namespace AppUIBasics.ControlPages
         public ScrollViewerPage()
         {
             this.InitializeComponent();
-            ScrollViewerControl.ZoomToFactor((float)2.0);
+            ScrollViewerControl.ZoomToFactor(4.0f);
         }
 
         private void ZoomModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -28,22 +27,12 @@ namespace AppUIBasics.ControlPages
             {
                 if (sender is ComboBox cb)
                 {
-                    switch (cb.SelectedIndex)
+                    ScrollViewerControl.ZoomMode = (ZoomMode)cb.SelectedIndex;
+                    ZoomSlider.IsEnabled = cb.SelectedIndex == 1;
+
+                    if (!ZoomSlider.IsEnabled)
                     {
-                        case 0: // Enabled
-                            ScrollViewerControl.ZoomMode = ZoomMode.Enabled;
-                            ZoomSlider.IsEnabled = true;
-                            break;
-                        case 1: // Disabled
-                            ScrollViewerControl.ZoomMode = ZoomMode.Disabled;
-                            ScrollViewerControl.ChangeView(null, null, (float)1.0);
-                            ZoomSlider.Value = 1;
-                            ZoomSlider.IsEnabled = false;
-                            break;
-                        default: // Enabled
-                            ScrollViewerControl.ZoomMode = ZoomMode.Enabled;
-                            ZoomSlider.IsEnabled = true;
-                            break;
+                        ScrollViewerControl.ZoomToFactor(2.0f);
                     }
                 }
             }
@@ -57,108 +46,46 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void hsmCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void hsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
-                    switch (cb.SelectedIndex)
-                    {
-                        case 0: // Auto
-                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Auto;
-                            break;
-                        case 1: //Enabled
-                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Enabled;
-                            break;
-                        case 2: // Disabled
-                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Disabled;
-                            break;
-                        default:
-                            ScrollViewerControl.HorizontalScrollMode = ScrollMode.Enabled;
-                            break;
-                    }
+                    ScrollViewerControl.HorizontalScrollMode = (ScrollMode)cb.SelectedIndex;
                 }
             }
         }
 
-        private void hsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void hsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
-                    switch (cb.SelectedIndex)
-                    {
-                        case 0: // Auto
-                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
-                            break;
-                        case 1: //Visible
-                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
-                            break;
-                        case 2: // Hidden
-                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
-                            break;
-                        case 3: // Disabled
-                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
-                            break;
-                        default:
-                            ScrollViewerControl.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
-                            break;
-                    }
+                    ScrollViewerControl.HorizontalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
                 }
             }
         }
 
-        private void vsmCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void vsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
-                    switch (cb.SelectedIndex)
-                    {
-                        case 0: // Auto
-                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Auto;
-                            break;
-                        case 1: //Enabled
-                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Enabled;
-                            break;
-                        case 2: // Disabled
-                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Disabled;
-                            break;
-                        default:
-                            ScrollViewerControl.VerticalScrollMode = ScrollMode.Enabled;
-                            break;
-                    }
+                    ScrollViewerControl.VerticalScrollMode = (ScrollMode)cb.SelectedIndex;
                 }
             }
         }
 
-        private void vsbvCombo_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void vsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ScrollViewerControl != null)
             {
                 if (sender is ComboBox cb)
                 {
-                    switch (cb.SelectedIndex)
-                    {
-                        case 0: // Auto
-                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-                            break;
-                        case 1: //Visible
-                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-                            break;
-                        case 2: // Hidden
-                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-                            break;
-                        case 3: // Disabled
-                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-                            break;
-                        default:
-                            ScrollViewerControl.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-                            break;
-                    }
+                    ScrollViewerControl.VerticalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
                 }
             }
         }
@@ -166,6 +93,14 @@ namespace AppUIBasics.ControlPages
         private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
+        }
+
+        private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            if (!e.IsIntermediate)
+            {
+                ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
+            }
         }
     }
 }

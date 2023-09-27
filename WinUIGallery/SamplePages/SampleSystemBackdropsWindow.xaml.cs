@@ -64,7 +64,8 @@ namespace AppUIBasics.SamplePages
         {
             Mica,
             MicaAlt,
-            DesktopAcrylic,
+            DesktopAcrylicBase,
+            DesktopAcrylicThin,
             DefaultColor,
         }
 
@@ -112,7 +113,7 @@ namespace AppUIBasics.SamplePages
                 else
                 {
                     // Mica isn't supported. Try Acrylic.
-                    type = BackdropType.DesktopAcrylic;
+                    type = BackdropType.DesktopAcrylicBase;
                     tbChangeStatus.Text += "  Mica isn't supported. Trying Acrylic.";
                 }
             }
@@ -126,23 +127,37 @@ namespace AppUIBasics.SamplePages
                 else
                 {
                     // MicaAlt isn't supported. Try Acrylic.
-                    type = BackdropType.DesktopAcrylic;
+                    type = BackdropType.DesktopAcrylicBase;
                     tbChangeStatus.Text += "  MicaAlt isn't supported. Trying Acrylic.";
                 }
             }
-            if (type == BackdropType.DesktopAcrylic)
+            if (type == BackdropType.DesktopAcrylicBase)
             {
-                if (TrySetAcrylicBackdrop())
+                if (TrySetAcrylicBackdrop(false))
                 {
-                    tbCurrentBackdrop.Text = "Custom Acrylic";
+                    tbCurrentBackdrop.Text = "Custom Acrylic (Base)";
                     m_currentBackdrop = type;
                 }
                 else
                 {
                     // Acrylic isn't supported, so take the next option, which is DefaultColor, which is already set.
-                    tbChangeStatus.Text += "  Acrylic isn't supported. Switching to default color.";
+                    tbChangeStatus.Text += "  Acrylic Base isn't supported. Switching to default color.";
                 }
             }
+            if (type == BackdropType.DesktopAcrylicThin)
+            {
+                if (TrySetAcrylicBackdrop(true))
+                {
+                    tbCurrentBackdrop.Text = "Custom Acrylic (Thin)";
+                    m_currentBackdrop = type;
+                }
+                else
+                {
+                    // Acrylic isn't supported, so take the next option, which is DefaultColor, which is already set.
+                    tbChangeStatus.Text += "  Acrylic Thin isn't supported. Switching to default color.";
+                }
+            }
+            
              // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
         }
@@ -175,7 +190,7 @@ namespace AppUIBasics.SamplePages
             return false; // Mica is not supported on this system.
         }
 
-        bool TrySetAcrylicBackdrop()
+        bool TrySetAcrylicBackdrop(bool useAcrylicThin)
         {
             if (Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController.IsSupported())
             {
@@ -190,6 +205,8 @@ namespace AppUIBasics.SamplePages
                 SetConfigurationSourceTheme();
 
                 m_acrylicController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
+
+                m_acrylicController.Kind = useAcrylicThin ? Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin : Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base;
 
                 // Enable the system backdrop.
                 // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
@@ -248,8 +265,9 @@ namespace AppUIBasics.SamplePages
             switch (m_currentBackdrop)
             {
                 case BackdropType.Mica:           newType = BackdropType.MicaAlt; break;
-                case BackdropType.MicaAlt:        newType = BackdropType.DesktopAcrylic; break;
-                case BackdropType.DesktopAcrylic: newType = BackdropType.DefaultColor; break;
+                case BackdropType.MicaAlt:        newType = BackdropType.DesktopAcrylicBase; break;
+                case BackdropType.DesktopAcrylicBase: newType = BackdropType.DesktopAcrylicThin; break;
+                case BackdropType.DesktopAcrylicThin: newType = BackdropType.DefaultColor; break;
                 default:
                 case BackdropType.DefaultColor:   newType = BackdropType.Mica; break;
             }
