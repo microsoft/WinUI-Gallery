@@ -49,12 +49,13 @@ namespace AppUIBasics.ControlPages
             {
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(titlebar);
+                TitleBarHelper.SetCaptionButtonBackgroundColors(window, Colors.Transparent);
             }
             else
             {
                 window.ExtendsContentIntoTitleBar = false;
                 window.SetTitleBar(null);
-
+                TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
             }
             UpdateButtonText();
             UpdateTitleBarColor();

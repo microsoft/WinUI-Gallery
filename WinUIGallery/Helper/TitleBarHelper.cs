@@ -63,5 +63,12 @@ namespace WinUIGallery.DesktopWap.Helper
             res["WindowCaptionForeground"] = color;
             triggerTitleBarRepaint(window);
         }
+
+        public static void SetCaptionButtonBackgroundColors(Window window, Windows.UI.Color? color)
+        {
+            var titleBar = window.AppWindow.TitleBar;
+            titleBar.ButtonBackgroundColor = color;
+            triggerTitleBarRepaint(window);
+        }
     }
 }
