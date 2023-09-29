@@ -2830,7 +2830,7 @@
           "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it : using default titlebar and setting an UIElement as a custom titlebar.",
+          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
           "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [
