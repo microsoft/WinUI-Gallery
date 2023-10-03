@@ -80,7 +80,7 @@
             IsTextSelectionEnabled="True"
             Visibility="Collapsed">
             <Paragraph>
-                This sample requires a later version of Windows to be fully functional. Learn more about version adaptive apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps">https://learn.microsoft.com/windows/uwp/debug-test-perf/version-adaptive-apps</Hyperlink>
+                This sample requires a later version of Windows to be fully functional.
             </Paragraph>
         </RichTextBlock>
 
