@@ -1,136 +1,61 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestPlatform;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Linq;
 using System.Text.Json;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace UITests.Tests
 {
     [TestClass]
     public class AxeScanAll : TestBase
     {       
-        public static readonly string jsonUri = "ms-appx:///../../../../../../WinUIGallery/DataModel/ControlInfoData.json";
+        public static readonly string xmlUri = "WinUIGalleryTestData.xml";
         public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
-
-        public class ControlInfoData
-        {
-            public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
-        }
-
-        public class ControlInfoDataGroup
-        {
-            public string UniqueId { get; set; }
-            public string Title { get; set; }
-            public string Subtitle { get; set; }
-            public string Description { get; set; }
-            public string ImagePath { get; set; }
-            public string ImageIconPath { get; set; }
-            public string ApiNamespace { get; set; }
-            public bool IsSpecialSection { get; set; }
-            public string Folder { get; set; }
-            public ObservableCollection<ControlInfoDataItem> Items { get; set; }
-        }
-
-        public class ControlInfoDataItem
-        {
-            public string UniqueId { get; set; }
-            public string Title { get; set; }
-            public string ApiNamespace { get; set; }
-            public string Subtitle { get; set; }
-            public string Description { get; set; }
-            public string ImagePath { get; set; }
-            public string ImageIconPath { get; set; }
-            public string BadgeString { get; set; }
-            public string Content { get; set; }
-            public bool IsNew { get; set; }
-            public bool IsUpdated { get; set; }
-            public bool IsPreview { get; set; }
-            public bool HideSourceCodeAndRelatedControls { get; set; }
-            public ObservableCollection<ControlInfoDocLink> Docs { get; set; }
-            public ObservableCollection<string> RelatedControls { get; set; }
-
-            public bool IncludedInBuild { get; set; }
-        }
-
-        public class ControlInfoDocLink
-        {
-            public ControlInfoDocLink(string title, string uri)
-            {
-                this.Title = title;
-                this.Uri = uri;
-            }
-            public string Title { get; set; }
-            public string Uri { get; set; }
-        }
-
-        private static ControlInfoData controlInfoData;
 
         private string[] ExclusionList =
         {
             "WebView2" // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
         };
 
-        public static TestContext TestContext { get; set; }
+        private static IEnumerable<object[]> TestData()
+        {
+            var testCases = new List<object[]>();
+
+            // Load the XML file
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(xmlUri);
+
+            var nodes = xmlDoc.SelectNodes("//Row");
+            foreach (XmlNode node in nodes)
+            {
+                var rowName = node.Attributes["Name"].Value;
+                testCases.Add(new object[] { rowName });
+            }
+
+            return testCases;
+        }
 
         [ClassInitialize]
-        public static void ClassInitialize(TestContext testcontext)
+        public static void ClassInitialize(TestContext context)
         {
-            //ParseJson();
-            TestContext = testcontext;
         }
 
         [TestMethod]
-        [DataSource("Table:WinUIGalleryTestData.xml#MenuAndToolbars")]
+        [DynamicData(nameof(TestData), DynamicDataSourceType.Method)]
         [TestProperty("Description", "Scan all controls in the WinUIGallery for accessibility issues.")]
-        public void ValidateAccessibilityWithAxe()
+        public void ValidateAccessibilityWithAxe(string name)
         {
-            //// We are using using the list of controls from ControlInfoData.json to get the Ids of each existing page.
-            //// Then we physically navigate to each page via NavigationView and scan for Axe issues. This also tests for run-time crashes.
 
-            //// Click through each control group in NavView and scan for Axe issues.
-            //foreach (var controlInfoDataGroup in controlInfoData.Groups)
-            //{
-            //    var groupName = controlInfoDataGroup.UniqueId;
-            //    var groupItem = Session.FindElementByAccessibilityId(groupName);
-            //    groupItem.Click();
-
-            //    AxeHelper.AssertNoAccessibilityErrors(groupName);
-
-            //    // Click through each control in the group and scan for Axe issues.
-            //    foreach (var controlInfoDataItem in controlInfoDataGroup.Items)
-            //    {
-            //        var controlName = controlInfoDataItem.UniqueId;
-
-            //        // Skip controls that are in the exclusion list.
-            //        if (ExclusionList.Contains(controlName))
-            //        {
-            //            continue;
-            //        }
-
-            //        var controlItem = Session.FindElementByAccessibilityId(controlName);
-            //        controlItem.Click();
-
-            //        AxeHelper.AssertNoAccessibilityErrors(controlName);
-            //    }
-
-            //string sectionName = TestContext.DataRow["SectionName"].ToString();
-            string pageName = TestContext.DataRow["PageName"].ToString();
-            //string textOnPage = TestContext.DataRow["TextOnPage"].ToString();
-
-            var groupItem = Session.FindElementByAccessibilityId(pageName);
+            var groupItem = Session.FindElementByAccessibilityId(name);
             groupItem.Click();
 
             AxeHelper.AssertNoAccessibilityErrors();
         }
-        
-        public static void ParseJson()
-        {;
-            var jsonData = File.ReadAllText(jsonUri);
-
-            controlInfoData = JsonSerializer.Deserialize<ControlInfoData>(jsonData);
-        }
-
     }
 }
