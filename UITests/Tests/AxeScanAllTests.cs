@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using System.Reflection;
 
 namespace UITests.Tests
 {
@@ -18,11 +19,6 @@ namespace UITests.Tests
         public static readonly string xmlUri = "WinUIGalleryTestData.xml";
         public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
-        private string[] ExclusionList =
-        {
-            "WebView2" // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
-        };
-
         private static IEnumerable<object[]> TestData()
         {
             var testCases = new List<object[]>();
@@ -31,11 +27,23 @@ namespace UITests.Tests
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(xmlUri);
 
-            var nodes = xmlDoc.SelectNodes("//Row");
-            foreach (XmlNode node in nodes)
+            // Select all tables in the XML
+            var tables = xmlDoc.SelectNodes("//Table");
+            foreach (XmlNode tableNode in tables)
             {
-                var rowName = node.Attributes["Name"].Value;
-                testCases.Add(new object[] { rowName });
+                var tableId = tableNode.Attributes["Id"].Value;
+
+                // Select all row names within the current table
+                var rows = tableNode.SelectNodes("Row");
+                var rowNames = new List<string>();
+
+                foreach (XmlNode rowNode in rows)
+                {
+                    var rowName = rowNode.Attributes["Name"].Value;
+                    rowNames.Add(rowName);
+                }
+
+                testCases.Add(new object[] { tableId, rowNames });
             }
 
             return testCases;
@@ -47,15 +55,29 @@ namespace UITests.Tests
         }
 
         [TestMethod]
-        [DynamicData(nameof(TestData), DynamicDataSourceType.Method)]
-        [TestProperty("Description", "Scan all controls in the WinUIGallery for accessibility issues.")]
-        public void ValidateAccessibilityWithAxe(string name)
+        [DynamicData(nameof(TestData), DynamicDataSourceType.Method, DynamicDataDisplayName = nameof(GetCustomDynamicDataDisplayName))]
+        [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
+        public void ValidatePageAccessibilityWithAxe(string tableId, List<string> rowNames)
         {
-
-            var groupItem = Session.FindElementByAccessibilityId(name);
-            groupItem.Click();
+            // Expand tree view and check for page accessibility.
+            var page = Session.FindElementByAccessibilityId(tableId);
+            page.Click();
 
             AxeHelper.AssertNoAccessibilityErrors();
+
+            // Click into each page and check for accessibility issues.
+            foreach (var rowName in rowNames)
+            {
+                var row = Session.FindElementByAccessibilityId(rowName);
+                row.Click();
+
+                AxeHelper.AssertNoAccessibilityErrors();
+            }
+        }
+
+        public static string GetCustomDynamicDataDisplayName(MethodInfo methodInfo, object[] data)
+        {
+            return string.Format("Validate{0}PagesAccessibilityWithAxe", data[0]);
         }
     }
 }
