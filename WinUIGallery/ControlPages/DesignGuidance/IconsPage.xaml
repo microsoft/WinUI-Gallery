@@ -115,7 +115,6 @@
         <!-- External toolkit SettingsExpander does not pass Axe testing-->
         <toolkit:SettingsExpander
             Grid.Row="1"
-            AutomationProperties.AccessibilityView="Raw"
             Header="Instructions on how to use Segoe Fluent Icons"
             IsExpanded="False">
             <toolkit:SettingsExpander.Items>
