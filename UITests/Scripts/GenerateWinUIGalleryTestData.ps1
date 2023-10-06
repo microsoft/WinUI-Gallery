@@ -29,21 +29,6 @@ foreach($group in $xcgControlInfo.Groups)
             $row = $doc.CreateElement("Row")
             $row.SetAttribute("Name", $item.UniqueId)
 
-            $param = $doc.CreateElement("Parameter")
-            $param.SetAttribute("Name", "SectionName")
-            $param.InnerText = $group.Title
-            $row.AppendChild($param) | Out-Null
-
-            $param = $doc.CreateElement("Parameter")
-            $param.SetAttribute("Name", "PageName")
-            $param.InnerText = $item.Title
-            $row.AppendChild($param) | Out-Null
-
-            $param = $doc.CreateElement("Parameter")
-            $param.SetAttribute("Name", "TextOnPage")
-            $param.InnerText = $item.Description
-            $row.AppendChild($param) | Out-Null
-
             $table.AppendChild($row) | Out-Null
         }
     }
