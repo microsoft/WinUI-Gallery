@@ -56,7 +56,7 @@ namespace UITests.Tests
         [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
         public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
         {
-            // Expand tree view and check for page accessibility.
+            // Expand tree view.
             var page = Session.FindElementByAccessibilityId(sectionName);
             page.Click();
 
