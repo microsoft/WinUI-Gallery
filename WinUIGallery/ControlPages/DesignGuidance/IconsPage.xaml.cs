@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -97,6 +98,9 @@ namespace AppUIBasics.ControlPages
             {
                 SelectedItem = FilteredItems[0];
             }
+
+            var outputString = FilteredItems.Count() + " icons found.";
+            UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
         }
 
         private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)

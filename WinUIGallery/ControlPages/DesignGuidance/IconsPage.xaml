@@ -156,6 +156,7 @@
             Spacing="8">
             <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
             <AutoSuggestBox
+                x:Name="IconsAutoSuggestBox"
                 MinWidth="304"
                 MaxWidth="320"
                 HorizontalAlignment="Left"
