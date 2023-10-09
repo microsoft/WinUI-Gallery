@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using System.Globalization;
 
 namespace AppUIBasics.ControlPages
 {
@@ -42,7 +43,9 @@ namespace AppUIBasics.ControlPages
         {
             if(DampingStackPanel.SelectedItem != null)
             {
-                return (float)Convert.ToDouble((DampingStackPanel.SelectedItem as RadioButton).Content);
+                // We need to specify the InvariantCulture since the decimal point depends on the
+                // system language and might parse "0.8" to 8 since the decimal point is a different character
+                return float.Parse((DampingStackPanel.SelectedItem as RadioButton).Content as string, CultureInfo.InvariantCulture);
             }
             return 0.6f;
         }
