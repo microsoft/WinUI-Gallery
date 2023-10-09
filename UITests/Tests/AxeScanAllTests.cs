@@ -31,19 +31,16 @@ namespace UITests.Tests
             var tables = xmlDoc.SelectNodes("//Table");
             foreach (XmlNode tableNode in tables)
             {
-                var tableId = tableNode.Attributes["Id"].Value;
+                var sectionName = tableNode.Attributes["Id"].Value;
 
                 // Select all row names within the current table
                 var rows = tableNode.SelectNodes("Row");
-                var rowNames = new List<string>();
 
                 foreach (XmlNode rowNode in rows)
                 {
-                    var rowName = rowNode.Attributes["Name"].Value;
-                    rowNames.Add(rowName);
+                    var pageName = rowNode.Attributes["Name"].Value;
+                    testCases.Add(new object[] { sectionName, pageName });
                 }
-
-                testCases.Add(new object[] { tableId, rowNames });
             }
 
             return testCases;
@@ -57,27 +54,22 @@ namespace UITests.Tests
         [TestMethod]
         [DynamicData(nameof(TestData), DynamicDataSourceType.Method, DynamicDataDisplayName = nameof(GetCustomDynamicDataDisplayName))]
         [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
-        public void ValidatePageAccessibilityWithAxe(string tableId, List<string> rowNames)
+        public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
         {
             // Expand tree view and check for page accessibility.
-            var page = Session.FindElementByAccessibilityId(tableId);
+            var page = Session.FindElementByAccessibilityId(sectionName);
             page.Click();
 
+            // Click into page and check for accessibility issues.
+            var row = Session.FindElementByAccessibilityId(pageName);
+            row.Click();
+
             AxeHelper.AssertNoAccessibilityErrors();
-
-            // Click into each page and check for accessibility issues.
-            foreach (var rowName in rowNames)
-            {
-                var row = Session.FindElementByAccessibilityId(rowName);
-                row.Click();
-
-                AxeHelper.AssertNoAccessibilityErrors();
-            }
         }
 
         public static string GetCustomDynamicDataDisplayName(MethodInfo methodInfo, object[] data)
         {
-            return string.Format("Validate{0}PagesAccessibilityWithAxe", data[0]);
+            return string.Format("Validate{0}PageAccessibility", data[1]);
         }
     }
 }
