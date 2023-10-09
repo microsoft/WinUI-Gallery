@@ -216,28 +216,29 @@
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE776;" />
-                            </NavigationViewItem.Icon>
-                            <NavigationViewItem.MenuItems>
-                                <NavigationViewItem
-                                    x:Name="AccessibilityScreenReaderPage"
-                                    AutomationProperties.AutomationId="AccessibilityScreenReader" 
-                                    Content="Screen reader support"
-                                    Tag="AccessibilityScreenReader" />
-                                <NavigationViewItem
-                                    x:Name="AccessibilityKeyboardPage"
-                                    AutomationProperties.AutomationId="AccessibilityKeyboard" 
-                                    Content="Keyboard support"
-                                    Tag="AccessibilityKeyboard" />
-                                <NavigationViewItem
-                                    x:Name="AccessibilityContrastPage"
-                                    AutomationProperties.AutomationId="AccessibilityColorContrast" 
-                                    Content="Color contrast"
-                                    Tag="AccessibilityColorContrast" />
-                            </NavigationViewItem.MenuItems>
-                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE776;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                            x:Name="AccessibilityScreenReaderPage"
+                            AutomationProperties.AutomationId="AccessibilityScreenReader" 
+                            Content="Screen reader support"
+                            Tag="AccessibilityScreenReader" />
+                        <NavigationViewItem
+                            x:Name="AccessibilityKeyboardPage"
+                            AutomationProperties.AutomationId="AccessibilityKeyboard" 
+                            Content="Keyboard support"
+                            Tag="AccessibilityKeyboard" />
+                        <NavigationViewItem
+                            x:Name="AccessibilityContrastPage"
+                            AutomationProperties.AutomationId="AccessibilityColorContrast" 
+                            Content="Color contrast"
+                            Tag="AccessibilityColorContrast" />
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 

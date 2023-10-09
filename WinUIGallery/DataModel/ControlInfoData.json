@@ -66,15 +66,17 @@
               "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ]
-        },
-        {
-          "UniqueId": "AccessibilityItem",
-          "Title": "Accessibility",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "IsSpecialSection": true,
-          "Folder": "Accessibility"
-        },
+        }
+      ]
+    },
+    {
+      "UniqueId": "AccessibilityItem",
+      "Title": "Accessibility",
+      "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+      "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
+      "IsSpecialSection": true,
+      "Folder": "Accessibility",
+      "Items": [
         {
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color Contrast",
