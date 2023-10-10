@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
@@ -278,6 +279,31 @@ namespace AppUIBasics
         {
             // Delay necessary to ensure NavigationView visual state can match navigation
             Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
+            GetTogglePaneButton(sender, e);
+
+            var navigationView = sender as NavigationView;
+            navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
+        }
+
+        private void OnIsPaneOpenChanged(DependencyObject sender, DependencyProperty dp)
+        {
+            var navigationView = sender as NavigationView;
+            var announcementText = navigationView.IsPaneOpen ? "Navigation Pane Opened" : "Navigation Pane Closed";
+
+            UIHelper.AnnounceActionForAccessibility(navigationView, announcementText, "NavigationViewPaneIsOpenChangeNotificationId");
+        }
+
+        private void GetTogglePaneButton(object sender, RoutedEventArgs e)
+        {
+            var navView = sender as NavigationView;
+            var rootGrid = VisualTreeHelper.GetChild(navView, 0) as Grid;
+
+            // Find the back button.
+            var paneToggleButtonGrid = VisualTreeHelper.GetChild(rootGrid, 0) as Grid;
+            var buttonHolderGrid = VisualTreeHelper.GetChild(paneToggleButtonGrid, 1) as Grid;
+            var navigationViewTogglePaneButton = VisualTreeHelper.GetChild(buttonHolderGrid, 2) as Button;
+
+
         }
 
         private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
