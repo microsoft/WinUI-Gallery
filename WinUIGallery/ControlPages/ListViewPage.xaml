@@ -378,7 +378,8 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                                 <TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
                                            HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
                                 <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
-                                           TextTrimming="CharacterEllipsis" Width="350" TextWrapping="NoWrap"/>
+                                           Width="350" MaxHeight="60" Margin="0,0,0,10"
+                                           TextTrimming="CharacterEllipsis" TextWrapping="Wrap" IsTextTrimmedChanged="TextBlock_IsTextTrimmedChanged"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/>
                                     <TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/>
