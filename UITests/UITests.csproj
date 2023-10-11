@@ -23,15 +23,7 @@
         <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     </ItemGroup>
 
-    <!-- Generate the test data to use for the WinUIGallery tests-->
-  <PropertyGroup>
-    <WinUIGalleryControlInfoDataPath>$(ProjectRoot)\WinUIGallery\DataModel\ControlInfoData.json</WinUIGalleryControlInfoDataPath>
-    <WinUIGalleryTestDataOutputPath>$(ArtifactsBinRoot)\$(TestBinplaceDestinationPath)\WinUIGalleryTestData.xml</WinUIGalleryTestDataOutputPath>
-  </PropertyGroup>
-  <Target Name="GenerateWinUIGalleryTestData" AfterTargets="AfterBuild" Inputs="$(WinUIGalleryControlInfoDataPath)" Outputs="$(WinUIGalleryTestDataOutputPath)">
-    <PropertyGroup>
-        <ScriptLocation>$(MSBuildThisFileDirectory)\Scripts\GenerateWinUIGalleryTestData.ps1</ScriptLocation>
-    </PropertyGroup>
-    <Exec Command="powershell.exe -ExecutionPolicy Bypass -File &quot;$(ScriptLocation)&quot; -InputWinUIGalleryJsonFilePath &quot;$(WinUIGalleryControlInfoDataPath)&quot; -OutputXmlFilePath &quot;$(WinUIGalleryTestDataOutputPath)&quot;" />
+  <Target Name="CopyControlInfoData" AfterTargets="AfterBuild">
+      <Copy SourceFiles="$(ProjectRoot)\WinUIGallery\DataModel\ControlInfoData.json" DestinationFiles="$(ArtifactsBinRoot)\$(TestBinplaceDestinationPath)\ControlInfoData.json" />
   </Target>
 </Project>
