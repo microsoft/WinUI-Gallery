@@ -372,6 +372,7 @@
     <Content Include="ControlPagesSampleCode\Window\CreateWindowSample1.txt" />
     <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample2.txt" />
+    <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample3.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
   </ItemGroup>

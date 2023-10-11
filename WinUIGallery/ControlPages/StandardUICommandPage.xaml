@@ -54,7 +54,7 @@
                     </MenuBarItem>
                 </MenuBar>
 
-                <ListView x:Name="ListViewRight" Grid.Row="2" Height="500" Loaded="ListView_Loaded" ContainerContentChanging="ListViewRight_ContainerContentChanging" IsItemClickEnabled="True" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemContainerStyle="{StaticResource HorizontalSwipe}">
+                <ListView x:Name="ListViewRight" Grid.Row="2" Height="500" Loaded="ListView_Loaded" ContainerContentChanging="ListViewRight_ContainerContentChanging" IsItemClickEnabled="True" SelectionMode="Single" ItemContainerStyle="{StaticResource HorizontalSwipe}">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local2:ListItemData">
                             <UserControl PointerEntered="ListViewSwipeContainer_PointerEntered" PointerExited="ListViewSwipeContainer_PointerExited">

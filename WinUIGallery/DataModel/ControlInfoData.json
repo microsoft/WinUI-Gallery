@@ -534,6 +534,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that presents a collection of items using various layouts.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ItemsView.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ListViewIcon.png",
           "Description": "The ItemsView lets you show a collection of items using scrollable & swappable layouts.",
           "Content": "<p><b>ItemsView</b> can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set a <b>Layout</b> to define how the items are laid out.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ItemsViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
@@ -1428,6 +1429,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that extends a regular vertical scrollbar's functionality for an easy navigation through large collections.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ScrollViewerIcon.png",
           "Description": "The AnnotatedScrollBar lets you navigate through a large collection of items via a clickable rail with labels which act as markers.",
           "Content": "<p><b>AnnotatedScrollBar</b> can be connected to a scrollable container, like a ScrollView, via its <b>ScrollController</b> property.</p><p>Populate the <b>Labels</b> property with special values that act as markers.</p><p>Set the <b>LabelTemplate</b> and <b>DetailLabelTemplate</b> data templates to define the labels' and more granular tooltips' looks.</p><p>Look at the <i>AnnotatedScrollBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
@@ -1473,7 +1475,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A container control that lets the user pan and zoom its content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ScrollView.png",
-          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ScrollViewIcon.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/ScrollViewerIcon.png",
           "Description": "A ScrollView lets a user scroll, pan, and zoom to see content that's larger than the viewable area. The ItemsView has a ScrollView built into its control template to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
@@ -2727,15 +2729,11 @@
             },
             {
               "Title": "Composition Animation - API",
-              "Uri": "https://learn.microsoft.com/windows/uwp/composition/composition-animation"
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
             },
             {
               "Title": "Guidelines - Xaml Property Animations",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
-            },
-            {
-              "Title": "Using the Visual Layer with XAML",
-              "Uri": "https://learn.microsoft.com/windows/uwp/composition/using-the-visual-layer-with-xaml"
             }
           ],
           "RelatedControls": [
@@ -2830,7 +2828,7 @@
           "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
           "ImageIconPath": "ms-appx:///Assets/ControlIcons/DefaultIcon.png",
-          "Description": "This sample shows how to use a custom UIElement as titlebar for app's window.",
+          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
           "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
           "Docs": [

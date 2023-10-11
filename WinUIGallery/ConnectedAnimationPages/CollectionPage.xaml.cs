@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -59,8 +59,7 @@ namespace AppUIBasics.ConnectedAnimationPages
                 // Prepare the connected animation.
                 // Notice that the stored item is passed in, as well as the name of the connected element. 
                 // The animation will actually start on the Detailed info page.
-                var animation = collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
-
+                collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
             }
 
             // Navigate to the DetailedInfoPage.

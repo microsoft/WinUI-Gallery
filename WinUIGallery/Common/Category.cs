@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics.Common
@@ -11,7 +11,6 @@ namespace AppUIBasics.Common
         public string Name { get; set; }
         public string Tooltip { get; set; }
         public Symbol Glyph { get; set; }
-        //public Type TargetType { get; set; }
     }
 
     public class Separator : CategoryBase { }
