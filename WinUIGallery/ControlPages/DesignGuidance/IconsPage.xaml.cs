@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -93,10 +94,21 @@ namespace AppUIBasics.ControlPages
                     FilteredItems.Add(item);
                 }
             }
-            if (FilteredItems.Count > 0)
+
+            string outputString;
+            var filteredItemsCount = FilteredItems.Count;
+
+            if (filteredItemsCount > 0)
             {
                 SelectedItem = FilteredItems[0];
+                outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
             }
+            else
+            {
+                outputString = "No icon found.";
+            }
+
+            UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
         }
 
         private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)
