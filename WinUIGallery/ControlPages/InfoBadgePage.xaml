@@ -99,7 +99,7 @@
 
         <local:ControlExample x:Name="Example3" HeaderText="Placing an InfoBadge Inside Another Control" HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
-                <Button Padding="0" Width="200" Height="60" ToolTipService.ToolTip="Refresh required"
+                <Button x:Name="Example3Button" AutomationProperties.Name="Example3Button" Padding="0" Width="200" Height="60" ToolTipService.ToolTip="Refresh required"
                         HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
                         <SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/>

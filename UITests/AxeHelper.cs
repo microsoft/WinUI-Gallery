@@ -45,7 +45,8 @@ namespace UITests
 				.Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable);
             if (testResult.Any())
 			{
-				var mappedResult = testResult.Select(result => "Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");
+				var mappedResult = testResult.Select(result =>
+				"Element " + result.Element.Properties["ControlType"] + " violated rule '" + result.Rule.Description + "'.");
 				Assert.Fail("Failed with the following accessibility errors \r\n" + string.Join("\r\n", mappedResult));
 			}
 		}
