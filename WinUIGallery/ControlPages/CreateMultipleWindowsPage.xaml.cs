@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -21,11 +21,6 @@ namespace AppUIBasics.ControlPages
         public CreateMultipleWindowsPage()
         {
             this.InitializeComponent();
-        }
-
-        private void List_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Control1.StartBringIntoView();
         }
 
         private void createNewWindow_Click(object sender, RoutedEventArgs e)
