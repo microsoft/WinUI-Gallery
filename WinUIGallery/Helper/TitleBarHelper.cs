@@ -51,21 +51,18 @@ namespace WinUIGallery.DesktopWap.Helper
         {
             var titleBar = window.AppWindow.TitleBar;
             titleBar.ButtonBackgroundColor = color;
-            triggerTitleBarRepaint(window);
         }
 
         public static void SetForegroundColor(Window window, Windows.UI.Color? color)
         {
             var titleBar = window.AppWindow.TitleBar;
             titleBar.ForegroundColor = color;
-            triggerTitleBarRepaint(window);
         }
 
         public static void SetBackgroundColor(Window window, Windows.UI.Color? color)
         {
             var titleBar = window.AppWindow.TitleBar;
             titleBar.BackgroundColor = color;
-            triggerTitleBarRepaint(window);
         }
     }
 }
