@@ -52,7 +52,7 @@ namespace AppUIBasics.ControlPages
                 var text = await package.GetTextAsync();
                 PasteClipboard2.Text = text;
 
-                UIHelper.AnnounceActionForAccessibility(sender as Button, "Text pasted to clipboard", "TextPastedSuccessNotificationId");
+                UIHelper.AnnounceActionForAccessibility(sender as Button, "Text pasted from clipboard", "TextPastedSuccessNotificationId");
             }
 
         }

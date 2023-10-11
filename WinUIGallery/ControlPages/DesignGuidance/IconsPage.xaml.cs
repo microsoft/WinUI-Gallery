@@ -94,12 +94,20 @@ namespace AppUIBasics.ControlPages
                     FilteredItems.Add(item);
                 }
             }
-            if (FilteredItems.Count > 0)
+
+            string outputString;
+            var filteredItemsCount = FilteredItems.Count;
+
+            if (filteredItemsCount > 0)
             {
                 SelectedItem = FilteredItems[0];
+                outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
+            }
+            else
+            {
+                outputString = "No icon found.";
             }
 
-            var outputString = FilteredItems.Count() + " icons found.";
             UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
         }
 

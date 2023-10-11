@@ -229,7 +229,7 @@ namespace AppUIBasics
                 NavigationViewControl.MenuItems.Add(itemGroup);
             }
 
-            Home.Loaded += OnNewControlsMenuItemLoaded;
+            Home.Loaded += OnHomeMenuItemLoaded;
         }
 
         private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -267,7 +267,7 @@ namespace AppUIBasics
             DeviceFamily = parsedDeviceType;
         }
 
-        private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
+        private void OnHomeMenuItemLoaded(object sender, RoutedEventArgs e)
         {
             if ( NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
             {

@@ -142,7 +142,7 @@
                             Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
                             Target="{x:Bind CopyLinkButton}">
                             <TeachingTip.HeroContent>
-                                <Image Source="/Assets/CopyLinkTeachingTip.png" AutomationProperties.Name="Image of copied text in run dialogue."/>
+                                <Image Source="/Assets/CopyLinkTeachingTip.png" AutomationProperties.Name="Image of copied text in Run Dialog."/>
                             </TeachingTip.HeroContent>
                         </TeachingTip>
                     </local:CopyButton.Resources>
