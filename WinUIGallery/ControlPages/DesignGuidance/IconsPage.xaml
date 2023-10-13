@@ -61,7 +61,7 @@
                             Grid.Row="1"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="{Binding Character}" />
-                     </Viewbox>
+                    </Viewbox>
 
                     <!--  Icon name/descriptor  -->
                     <TextBlock
@@ -76,7 +76,6 @@
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
                 </Grid>
-                
             </ItemContainer>
         </DataTemplate>
     </Page.Resources>
@@ -168,7 +167,6 @@
                         MinWidth="100"
                         Margin="0,0,0,36"
                         HorizontalAlignment="Stretch"
-                        IsItemInvokedEnabled="True"
                         SelectionChanged="IconsItemsView_SelectionChanged"
                         ItemTemplate="{StaticResource IconTemplate}"
                         TabFocusNavigation="Once">
