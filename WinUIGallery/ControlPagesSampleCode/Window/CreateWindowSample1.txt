@@ -6,6 +6,6 @@ newWindow.Content = rootPage;
 newWindow.Activate();
 
 // C# code to navigate in the new window
-var targetPageType = typeof(NewControlsPage);
+var targetPageType = typeof(HomePage);
 string targetPageArguments = string.Empty;
 rootPage.Navigate(targetPageType, targetPageArguments);
