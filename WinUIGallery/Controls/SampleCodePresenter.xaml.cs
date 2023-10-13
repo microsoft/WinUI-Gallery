@@ -25,6 +25,7 @@ using Microsoft.UI.Xaml.Media;
 using AppUIBasics.Common;
 using System.Reflection;
 using System.IO;
+using Microsoft.UI.Xaml.Automation;
 
 namespace AppUIBasics.Controls
 {
@@ -225,6 +226,10 @@ namespace AppUIBasics.Controls
             }
 
             actualCode = sampleString;
+
+            var name = GetSampleLanguageVisualState() == "InlineSample" ? actualCode : SampleHeader.Text;
+            var automationName = "Copy " + name + " Code";
+            AutomationProperties.SetName(CopyCodeButton, automationName);
 
 
             var formatter = GenerateRichTextFormatter();

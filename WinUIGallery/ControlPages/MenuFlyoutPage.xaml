@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -19,7 +19,7 @@
             <StackPanel x:Name="Control1" Orientation="Horizontal">
                 <AppBarButton Icon="Sort" IsCompact="True" ToolTipService.ToolTip="Sort" AutomationProperties.Name="Sort">
                     <Button.Flyout>
-                        <MenuFlyout Opened="MenuFlyout_Opened">
+                        <MenuFlyout>
                             <MenuFlyoutItem Text="By rating" Click="MenuFlyoutItem_Click" Tag="rating" />
                             <MenuFlyoutItem Text="By match" Click="MenuFlyoutItem_Click" Tag="match" />
                             <MenuFlyoutItem Text="By distance" Click="MenuFlyoutItem_Click" Tag="distance" />
@@ -46,7 +46,7 @@
                 HeaderText="A MenuFlyout with ToggleMenuFlyoutItems and MenuFlyoutSeparator.">
             <Button x:Name="Control2" Content="Options">
                 <Button.Flyout>
-                    <MenuFlyout  Opened="MenuFlyout_Opened">
+                    <MenuFlyout>
                         <MenuFlyoutItem Text="Reset" />
                         <MenuFlyoutSeparator />
                         <ToggleMenuFlyoutItem x:Name="RepeatToggleMenuFlyoutItem" Text="Repeat" IsChecked="True" />
@@ -76,7 +76,7 @@
         <local:ControlExample x:Name="Example3" HeaderText="A MenuFlyout with cascading menus.">
             <Button x:Name="Control3" Content="File Options">
                 <Button.Flyout>
-                    <MenuFlyout  Opened="MenuFlyout_Opened">
+                    <MenuFlyout>
                         <MenuFlyoutItem Text="Open" />
                         <MenuFlyoutSubItem Text="Send to">
                             <MenuFlyoutItem Text="Bluetooth" />
@@ -115,7 +115,7 @@
                 HeaderText="A MenuFlyout with icons.">
             <Button x:Name="Control4" Content="Edit Options">
                 <Button.Flyout>
-                    <MenuFlyout  Opened="MenuFlyout_Opened">
+                    <MenuFlyout>
                         <MenuFlyoutItem Text="Share">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72D;" />
@@ -154,7 +154,7 @@
                 HeaderText="A MenuFlyout with icons and Keyboard Accelerators." FontFamily="Segoe UI" Loaded="Example5_Loaded">
             <Button x:Name="Control5" Content="Edit Options">
                 <Button.Flyout>
-                    <MenuFlyout  Opened="MenuFlyout_Opened">
+                    <MenuFlyout>
                         <MenuFlyoutItem Text="Share">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72D;" />

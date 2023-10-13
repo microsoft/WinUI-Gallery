@@ -12,7 +12,7 @@
                               XamlSource="MenuBar\MenuBarSample1.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText" Text="" />
-                <MenuBar LayoutUpdated="MenuBar_LayoutUpdated"  x:Name="Example1">
+                <MenuBar x:Name="Example1">
                     <MenuBarItem Title="File">
                         <MenuFlyoutItem x:Name="o1" Text="New" Click="OnElementClicked"/>
                         <MenuFlyoutItem x:Name="o2" Text="Open" Click="OnElementClicked"/>
@@ -38,7 +38,7 @@
                               XamlSource="Menubar\MenuBarSample3.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText1" Text="" />
-                <MenuBar LayoutUpdated="MenuBar_LayoutUpdated" x:Name="Example2">
+                <MenuBar x:Name="Example2">
                     <MenuBarItem Title="File">
                         <MenuFlyoutItem x:Name ="t2" Text="New" Click="OnElementClicked">
                             <MenuFlyoutItem.KeyboardAccelerators>
@@ -101,7 +101,7 @@
                               XamlSource="MenuBar\MenuBarSample2.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText2" Text="" />
-                <MenuBar LayoutUpdated="MenuBar_LayoutUpdated" x:Name="Example3">
+                <MenuBar x:Name="Example3">
                     <MenuBarItem Title="File">
                         <MenuFlyoutSubItem Text="New">
                             <MenuFlyoutItem x:Name="z1" Text="Plain Text Document" Click="OnElementClicked"/>

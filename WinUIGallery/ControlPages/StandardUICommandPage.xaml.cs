@@ -49,14 +49,6 @@ namespace AppUIBasics.ControlPages
             listView.ItemsSource = collection;
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ListViewRight.SelectedIndex != -1)
-            {
-                var item = collection[ListViewRight.SelectedIndex];
-            }
-        }
-
         private void ListViewSwipeContainer_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             if (e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Pen)

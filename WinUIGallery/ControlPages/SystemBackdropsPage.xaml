@@ -50,6 +50,11 @@
             <Button Click="createBuiltInAcrylicWindow_Click">Create Window with built-in Acrylic</Button>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="Create a window with a customizable Desktop Acrylic system backdrop."
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
+            <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
+        </local:ControlExample>
+
         <local:ControlExample HeaderText="Helper class to ensure a Windows.System.DispatcherQueue exists."
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
             <TextBlock Text="A Windows.System.DispatcherQueue must exist on the thread to use MicaController or DesktopAcrylicController. This helper class exposes and uses the underlying create function." TextWrapping="WrapWholeWords" />
