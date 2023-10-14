@@ -13,7 +13,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using AppUIBasics.Common;
-
+using Windows.UI.Core;
+using Microsoft.UI.Input;
 
 namespace AppUIBasics.Helper
 {
@@ -168,14 +169,15 @@ namespace AppUIBasics.Helper
     public class RootFrameNavigationHelper
     {
         private Frame Frame { get; set; }
-        private Microsoft.UI.Xaml.Controls.NavigationView CurrentNavView { get; set; }
+        private NavigationView CurrentNavView { get; set; }
+        private bool alreadyProcessedKeyDown = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RootNavigationHelper"/> class.
         /// </summary>
         /// <param name="rootFrame">A reference to the top-level frame.
         /// This reference allows for frame manipulation and to register navigation handlers.</param>
-        public RootFrameNavigationHelper(Frame rootFrame, Microsoft.UI.Xaml.Controls.NavigationView currentNavView)
+        public RootFrameNavigationHelper(Frame rootFrame, NavigationView currentNavView)
         {
             this.Frame = rootFrame;
             this.Frame.Navigated += (s, e) =>
@@ -185,14 +187,12 @@ namespace AppUIBasics.Helper
             };
             this.CurrentNavView = currentNavView;
 
-            // must register back requested on navview
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-            {
-                CurrentNavView.BackRequested += NavView_BackRequested;
-            }
+            CurrentNavView.BackRequested += NavView_BackRequested;
+            CurrentNavView.KeyDown += CurrentNavView_KeyDown;
+            CurrentNavView.KeyUp += CurrentNavView_KeyUp;
         }
 
-        private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             TryGoBack();
         }
@@ -200,7 +200,7 @@ namespace AppUIBasics.Helper
         private bool TryGoBack()
         {
             // don't go back if the nav pane is overlayed
-            if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal))
+            if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
             {
                 return false;
             }
@@ -215,13 +215,70 @@ namespace AppUIBasics.Helper
             return navigated;
         }
 
+        private bool TryGoForward()
+        {
+            bool navigated = false;
+            if (this.Frame.CanGoForward)
+            {
+                this.Frame.GoForward();
+                navigated = true;
+            }
+            return navigated;
+        }
+
         private void UpdateBackButton()
         {
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
+            this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
+        }
+
+        /// <summary>
+        /// Invoked on every keystroke, including system keys such as Alt key combinations.
+        /// Used to detect keyboard navigation between pages even when the page itself
+        /// doesn't have focus.
+        /// </summary>
+        /// <param name="sender">Instance that triggered the event.</param>
+        /// <param name="e">Event data describing the conditions that led to the event.</param>
+
+        private void CurrentNavView_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Handled || alreadyProcessedKeyDown)
             {
-               // this.CurrentNavView.IsBackButtonVisible = this.Frame.CanGoBack ? NavigationViewBackButtonVisible.Visible : NavigationViewBackButtonVisible.Collapsed;
-                this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
+                return;
             }
+
+            var virtualKey = e.Key;
+
+            // Only investigate further when Left, Right, or the dedicated Previous or Next keys
+            // are pressed
+            if (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
+                (int)virtualKey == 166 || (int)virtualKey == 167)
+            {
+                var downState = CoreVirtualKeyStates.Down;
+                bool menuKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
+                bool controlKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
+                bool shiftKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
+                bool noModifiers = !menuKey && !controlKey && !shiftKey;
+                bool onlyAlt = menuKey && !controlKey && !shiftKey;
+
+                if (((int)virtualKey == 166 && noModifiers) ||
+                    (virtualKey == VirtualKey.Left && onlyAlt))
+                {
+                    // When the previous key or Alt+Left are pressed navigate back
+                    e.Handled = TryGoBack();
+                }
+                else if (((int)virtualKey == 167 && noModifiers) ||
+                    (virtualKey == VirtualKey.Right && onlyAlt))
+                {
+                    // When the next key or Alt+Right are pressed navigate forward
+                    e.Handled = TryGoForward();
+                }
+                alreadyProcessedKeyDown = e.Handled;
+            }
+        }
+
+        private void CurrentNavView_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            alreadyProcessedKeyDown = false;
         }
     }
 

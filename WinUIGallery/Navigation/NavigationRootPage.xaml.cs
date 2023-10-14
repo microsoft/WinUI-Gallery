@@ -34,6 +34,7 @@ namespace AppUIBasics
     {
         public Windows.System.VirtualKey ArrowKey;
         public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
+        private RootFrameNavigationHelper _navHelper;
         private UISettings _settings;
 
 
@@ -73,6 +74,8 @@ namespace AppUIBasics
         {
             this.InitializeComponent();
             dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+
+            _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
 
             SetDeviceFamily();
             AddNavigationMenuItems();
