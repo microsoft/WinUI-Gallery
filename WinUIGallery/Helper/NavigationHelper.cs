@@ -199,7 +199,7 @@ namespace AppUIBasics.Helper
 
         private bool TryGoBack()
         {
-            // don't go back if the nav pane is overlayed
+            // Don't go back if the nav pane is overlayed.
             if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
             {
                 return false;
@@ -248,13 +248,13 @@ namespace AppUIBasics.Helper
 
             var virtualKey = e.Key;
 
-            // Only investigate further when Left, Right, or the dedicated Previous or Next keys
-            // are pressed
+            // Only investigate further when Left, Right, or the dedicated
+            // Previous or Next keys are pressed.
             if (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
                 (int)virtualKey == 166 || (int)virtualKey == 167)
             {
                 var downState = CoreVirtualKeyStates.Down;
-                // VirtualKeys 'Menu' key is also the 'Alt' key on the keyboard
+                // VirtualKeys 'Menu' key is also the 'Alt' key on the keyboard.
                 bool isMenuKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
                 bool isControlKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
                 bool isShiftKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
@@ -264,13 +264,13 @@ namespace AppUIBasics.Helper
                 if (((int)virtualKey == 166 && isModifierKeyPressed) ||
                     (virtualKey == VirtualKey.Left && isOnlyAltPressed))
                 {
-                    // When the previous key or Alt+Left are pressed navigate back
+                    // When the previous key or Alt+Left are pressed navigate back.
                     e.Handled = TryGoBack();
                 }
                 else if (((int)virtualKey == 167 && isModifierKeyPressed) ||
                     (virtualKey == VirtualKey.Right && isOnlyAltPressed))
                 {
-                    // When the next key or Alt+Right are pressed navigate forward
+                    // When the next key or Alt+Right are pressed navigate forward.
                     e.Handled = TryGoForward();
                 }
                 hasAlreadyProcessedKeyDown = e.Handled;
