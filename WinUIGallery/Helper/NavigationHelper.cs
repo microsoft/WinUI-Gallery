@@ -170,7 +170,7 @@ namespace AppUIBasics.Helper
     {
         private Frame Frame { get; set; }
         private NavigationView CurrentNavView { get; set; }
-        private bool alreadyProcessedKeyDown = false;
+        private bool hasAlreadyProcessedKeyDown = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RootNavigationHelper"/> class.
@@ -241,7 +241,7 @@ namespace AppUIBasics.Helper
 
         private void CurrentNavView_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (e.Handled || alreadyProcessedKeyDown)
+            if (e.Handled || hasAlreadyProcessedKeyDown)
             {
                 return;
             }
@@ -254,31 +254,32 @@ namespace AppUIBasics.Helper
                 (int)virtualKey == 166 || (int)virtualKey == 167)
             {
                 var downState = CoreVirtualKeyStates.Down;
-                bool menuKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
-                bool controlKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
-                bool shiftKey = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
-                bool noModifiers = !menuKey && !controlKey && !shiftKey;
-                bool onlyAlt = menuKey && !controlKey && !shiftKey;
+                // VirtualKeys 'Menu' key is also the 'Alt' key on the keyboard
+                bool isMenuKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
+                bool isControlKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
+                bool isShiftKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
+                bool isModifierKeyPressed = !isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
+                bool isOnlyAltPressed = isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
 
-                if (((int)virtualKey == 166 && noModifiers) ||
-                    (virtualKey == VirtualKey.Left && onlyAlt))
+                if (((int)virtualKey == 166 && isModifierKeyPressed) ||
+                    (virtualKey == VirtualKey.Left && isOnlyAltPressed))
                 {
                     // When the previous key or Alt+Left are pressed navigate back
                     e.Handled = TryGoBack();
                 }
-                else if (((int)virtualKey == 167 && noModifiers) ||
-                    (virtualKey == VirtualKey.Right && onlyAlt))
+                else if (((int)virtualKey == 167 && isModifierKeyPressed) ||
+                    (virtualKey == VirtualKey.Right && isOnlyAltPressed))
                 {
                     // When the next key or Alt+Right are pressed navigate forward
                     e.Handled = TryGoForward();
                 }
-                alreadyProcessedKeyDown = e.Handled;
+                hasAlreadyProcessedKeyDown = e.Handled;
             }
         }
 
         private void CurrentNavView_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            alreadyProcessedKeyDown = false;
+            hasAlreadyProcessedKeyDown = false;
         }
     }
 
