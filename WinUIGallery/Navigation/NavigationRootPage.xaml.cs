@@ -313,9 +313,9 @@ namespace AppUIBasics
                 }
                 else if (selectedItem == Home)
                 {
-                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
+                    if (rootFrame.CurrentSourcePageType != typeof(HomePage))
                     {
-                        Navigate(typeof(NewControlsPage));
+                        Navigate(typeof(HomePage));
                     }
                 }
                 else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)
