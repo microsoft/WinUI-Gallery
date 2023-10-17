@@ -16,7 +16,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <CheckBox x:Name="MonochromeButton" Content="Monochrome" Checked="MonochromeButton_Checked" Unchecked="MonochromeButton_Unchecked"/>
+                <CheckBox x:Name="MonochromeButton" Content="Monochrome" Checked="MonochromeButton_CheckedChanged" Unchecked="MonochromeButton_CheckedChanged"/>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String>

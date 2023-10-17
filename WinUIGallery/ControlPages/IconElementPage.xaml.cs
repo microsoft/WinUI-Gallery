@@ -23,15 +23,9 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
-        private void MonochromeButton_Checked(object sender, RoutedEventArgs e)
+        private void MonochromeButton_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            SlicesIcon.ShowAsMonochrome = true;
-            SlicesIcon.UriSource = new Uri("ms-appx:///Assets/slices.png");
-        }
-
-        private void MonochromeButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SlicesIcon.ShowAsMonochrome = false;
+            SlicesIcon.ShowAsMonochrome = (bool)MonochromeButton.IsChecked;
             SlicesIcon.UriSource = new Uri("ms-appx:///Assets/slices.png");
         }
     }
