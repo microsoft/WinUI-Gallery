@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -49,6 +49,42 @@
 &lt;/Button&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Flyout with different ShowMode">
+            <local:ControlExample.Example>
+                <Button Content="Click for flyout">
+                    <Button.Flyout>
+                        <Flyout x:Name="CustomFlyout" ShowMode="{x:Bind ShowMode, Mode=OneWay}">
+                            <TextBlock Text="This is a flyout"/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Options>
+                <ComboBox x:Name="FlyoutShowModeBox" Header="ShowMode" SelectedIndex="0" SelectionChanged="FlyoutShowModeBox_SelectionChanged">
+                    <x:String>Auto</x:String>
+                    <x:String>Standard</x:String>
+                    <x:String>Transient</x:String>
+                    <x:String>TransientWithDismissOnPointerMoveAway</x:String>
+                </ComboBox>
+            </local:ControlExample.Options>
+
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Click for flyout"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;Flyout ShowMode="$(ShowMode)"&gt;
+            &lt;TextBlock Text="This is a flyout" /&gt;
+        &lt;/Flyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="ShowMode" Value="{x:Bind CustomFlyout.ShowMode, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
 </Page>
