@@ -31,7 +31,7 @@ namespace AppUIBasics.ControlPages
             newWindow.Content = rootPage;
             newWindow.Activate();
 
-            var targetPageType = typeof(NewControlsPage);
+            var targetPageType = typeof(HomePage);
             string targetPageArguments = string.Empty;
             rootPage.Navigate(targetPageType, targetPageArguments);
         }
