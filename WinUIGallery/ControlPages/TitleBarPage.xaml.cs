@@ -52,12 +52,11 @@ namespace AppUIBasics.ControlPages
         {
             ResetTitlebarSettings();
         }
-
-
-
+        
         private void SetTitleBar(UIElement titlebar, bool forceCustomTitlebar = false)
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
+            var titleBarElement = UIHelper.FindElementByName(this as UIElement, "AppTitleBar");
             if (forceCustomTitlebar || !window.ExtendsContentIntoTitleBar)
             {
                 titleBarElement.Visibility = Visibility.Visible;
