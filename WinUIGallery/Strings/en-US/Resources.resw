@@ -223,10 +223,10 @@
   <data name="InputValidationPage_ZipCodeField.PlaceholderText" xml:space="preserve">
     <value>Enter ZIP code</value>
   </data>
-  <data name="HomePage_PageHeader.Title" xml:space="preserve">
+  <data name="NewControlsPage_PageHeader.Title" xml:space="preserve">
     <value>What's New</value>
   </data>
-  <data name="HomePage_SmallHeader.Text" xml:space="preserve">
+  <data name="NewControlsPage_SmallHeader.Text" xml:space="preserve">
     <value>What's New</value>
   </data>
 </root>

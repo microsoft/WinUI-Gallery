@@ -337,9 +337,9 @@ source code for the WinUI Gallery. -->
 sent or received, and those values are bound in the DataTemplate.--&gt;
 &lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
     &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
-        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{ThemeResource SystemColorHighlightColor}" CornerRadius="{StaticResource ControlCornerRadius}"&gt;
-            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemColorHighlightTextColor}"/&gt;
-            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemColorHighlightTextColor}"/&gt;
+        &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="{StaticResource ControlCornerRadius}"&gt;
+            &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/&gt;
+            &lt;TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/&gt;
         &lt;/StackPanel&gt;
     &lt;/Grid&gt;
 &lt;/DataTemplate&gt;
@@ -378,8 +378,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                                 <TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
                                            HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
                                 <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
-                                           Width="350" MaxHeight="60" Margin="0,0,0,10"
-                                           TextTrimming="CharacterEllipsis" TextWrapping="Wrap" IsTextTrimmedChanged="TextBlock_IsTextTrimmedChanged"/>
+                                           TextTrimming="CharacterEllipsis" Width="350" TextWrapping="NoWrap"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0"/>
                                     <TextBlock Text=" Views " Style="{ThemeResource CaptionTextBlockStyle}"/>

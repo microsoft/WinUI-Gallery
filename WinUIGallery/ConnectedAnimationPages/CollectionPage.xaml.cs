@@ -67,12 +67,5 @@ namespace AppUIBasics.ConnectedAnimationPages
             Frame.Navigate(typeof(DetailedInfoPage), _storeditem, new SuppressNavigationTransitionInfo());
         }
 
-        private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
-        {
-            var textBlock = sender as TextBlock;
-            var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
-
-            ToolTipService.SetToolTip(textBlock, text);
-        }
     }
 }

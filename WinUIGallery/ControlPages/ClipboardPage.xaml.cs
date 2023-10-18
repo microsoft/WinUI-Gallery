@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.DataTransfer;
@@ -27,8 +26,6 @@ namespace AppUIBasics.ControlPages
             package.SetText(textToCopy);
             Clipboard.SetContent(package);
 
-            UIHelper.AnnounceActionForAccessibility(sender as Button, "Text copied to clipboard", "TextCopiedSuccessNotificationId");
-
             VisualStateManager.GoToState(this, "ConfirmationClipboardVisible", false);
             Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
@@ -51,8 +48,6 @@ namespace AppUIBasics.ControlPages
             {
                 var text = await package.GetTextAsync();
                 PasteClipboard2.Text = text;
-
-                UIHelper.AnnounceActionForAccessibility(sender as Button, "Text pasted from clipboard", "TextPastedSuccessNotificationId");
             }
 
         }

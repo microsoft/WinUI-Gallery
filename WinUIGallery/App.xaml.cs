@@ -148,7 +148,7 @@ namespace AppUIBasics
 
             ThemeHelper.Initialize();
 
-            Type targetPageType = typeof(HomePage);
+            Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
 
             if (args != null)
@@ -184,9 +184,9 @@ namespace AppUIBasics
                             {
                                 targetPageType = typeof(AllControlsPage);
                             }
-                            else if (targetId == "HomePage")
+                            else if (targetId == "NewControls")
                             {
-                                targetPageType = typeof(HomePage);
+                                targetPageType = typeof(NewControlsPage);
                             }
                             else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
                             {
@@ -216,7 +216,7 @@ namespace AppUIBasics
             NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
             rootPage.Navigate(targetPageType, targetPageArguments);
 
-            if (targetPageType == typeof(HomePage))
+            if (targetPageType == typeof(NewControlsPage))
             {
                 ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }

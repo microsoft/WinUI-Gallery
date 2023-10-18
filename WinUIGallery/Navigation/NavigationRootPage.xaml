@@ -187,58 +187,52 @@
                 Navigating="OnRootFrameNavigating" />
             <NavigationView.MenuItems>
                 <NavigationViewItem
-                    x:Name="Home"
-                    AutomationProperties.AutomationId="Home"
+                    x:Name="NewControlsItem"
                     Content="Home"
                     Icon="Home" />
 
                 <NavigationViewItem
                     x:Name="DesignGuidanceItem"
-                    AutomationProperties.AutomationId="Design_Guidance"
-                    Content="Design Guidance"
+                    Content="Design guidance"
                     Tag="Design_Guidance">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography">
+                        <NavigationViewItem x:Name="TypographyItem" Content="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" AutomationProperties.AutomationId="Icons" Content="Icons">
+                        <NavigationViewItem x:Name="IconsItem" Content="Icons">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" AutomationProperties.AutomationId="Colors" Content="Colors">
+                        <NavigationViewItem x:Name="ColorsItem" Content="Colors">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                    </NavigationViewItem.MenuItems>
-                </NavigationViewItem>
-
-                <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE776;" />
-                    </NavigationViewItem.Icon>
-                    <NavigationViewItem.MenuItems>
-                        <NavigationViewItem
-                            x:Name="AccessibilityScreenReaderPage"
-                            AutomationProperties.AutomationId="AccessibilityScreenReader" 
-                            Content="Screen reader support"
-                            Tag="AccessibilityScreenReader" />
-                        <NavigationViewItem
-                            x:Name="AccessibilityKeyboardPage"
-                            AutomationProperties.AutomationId="AccessibilityKeyboard" 
-                            Content="Keyboard support"
-                            Tag="AccessibilityKeyboard" />
-                        <NavigationViewItem
-                            x:Name="AccessibilityContrastPage"
-                            AutomationProperties.AutomationId="AccessibilityColorContrast" 
-                            Content="Color contrast"
-                            Tag="AccessibilityColorContrast" />
+                        <NavigationViewItem x:Name="AccessibilityItem" Content="Accessibility">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE776;" />
+                            </NavigationViewItem.Icon>
+                            <NavigationViewItem.MenuItems>
+                                <NavigationViewItem
+                                    x:Name="AccessibilityScreenReaderPage"
+                                    Content="Screen reader support"
+                                    Tag="AccessibilityScreenReader" />
+                                <NavigationViewItem
+                                    x:Name="AccessibilityKeyboardPage"
+                                    Content="Keyboard support"
+                                    Tag="AccessibilityKeyboard" />
+                                <NavigationViewItem
+                                    x:Name="AccessibilityContrastPage"
+                                    Content="Color contrast"
+                                    Tag="AccessibilityColorContrast" />
+                            </NavigationViewItem.MenuItems>
+                        </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 

@@ -21,7 +21,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
@@ -211,7 +210,6 @@ namespace AppUIBasics
                 itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
 
                 AutomationProperties.SetName(itemGroup, group.Title);
-                AutomationProperties.SetAutomationId(itemGroup, group.UniqueId);
 
                 foreach (var item in group.Items)
                 {
@@ -223,13 +221,12 @@ namespace AppUIBasics
 
                     itemGroup.MenuItems.Add(itemInGroup);
                     AutomationProperties.SetName(itemInGroup, item.Title);
-                    AutomationProperties.SetAutomationId(itemInGroup, item.UniqueId);
                 }
 
                 NavigationViewControl.MenuItems.Add(itemGroup);
             }
 
-            Home.Loaded += OnHomeMenuItemLoaded;
+            NewControlsItem.Loaded += OnNewControlsMenuItemLoaded;
         }
 
         private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
@@ -267,7 +264,7 @@ namespace AppUIBasics
             DeviceFamily = parsedDeviceType;
         }
 
-        private void OnHomeMenuItemLoaded(object sender, RoutedEventArgs e)
+        private void OnNewControlsMenuItemLoaded(object sender, RoutedEventArgs e)
         {
             if ( NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
             {
@@ -279,17 +276,6 @@ namespace AppUIBasics
         {
             // Delay necessary to ensure NavigationView visual state can match navigation
             Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
-
-            var navigationView = sender as NavigationView;
-            navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
-        }
-
-        private void OnIsPaneOpenChanged(DependencyObject sender, DependencyProperty dp)
-        {
-            var navigationView = sender as NavigationView;
-            var announcementText = navigationView.IsPaneOpen ? "Navigation Pane Opened" : "Navigation Pane Closed";
-
-            UIHelper.AnnounceActionForAccessibility(navigationView, announcementText, "NavigationViewPaneIsOpenChangeNotificationId");
         }
 
         private void OnNavigationViewSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -311,11 +297,11 @@ namespace AppUIBasics
                         Navigate(typeof(AllControlsPage));
                     }
                 }
-                else if (selectedItem == Home)
+                else if (selectedItem == NewControlsItem)
                 {
-                    if (rootFrame.CurrentSourcePageType != typeof(HomePage))
+                    if (rootFrame.CurrentSourcePageType != typeof(NewControlsPage))
                     {
-                        Navigate(typeof(HomePage));
+                        Navigate(typeof(NewControlsPage));
                     }
                 }
                 else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)

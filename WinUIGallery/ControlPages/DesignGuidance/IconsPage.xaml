@@ -41,15 +41,37 @@
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
-            <ItemContainer
-                AutomationProperties.Name="{Binding Name}"
-                ToolTipService.ToolTip="{Binding Name}"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                Width="96"
-                Height="96"
-                Margin="4">
-                <Grid>
+            <UserControl PointerPressed="Icons_TemplatePointerPressed">
+                <Grid
+                    x:Name="IconTemplateRoot"
+                    Width="96"
+                    Height="96"
+                    Margin="4"
+                    HorizontalAlignment="Stretch"
+                    x:DefaultBindMode="OneWay"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    ToolTipService.ToolTip="{Binding Name}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionState">
+                            <VisualState x:Name="Default" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
@@ -76,7 +98,7 @@
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
                 </Grid>
-            </ItemContainer>
+            </UserControl>
         </DataTemplate>
     </Page.Resources>
 
@@ -88,7 +110,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
-
         <toolkit:SettingsExpander
             Grid.Row="1"
             Header="Instructions on how to use Segoe Fluent Icons"
@@ -134,7 +155,6 @@
             Spacing="8">
             <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
             <AutoSuggestBox
-                x:Name="IconsAutoSuggestBox"
                 MinWidth="304"
                 MaxWidth="320"
                 HorizontalAlignment="Left"
@@ -146,8 +166,7 @@
         <controls1:SampleThemeListener
             Grid.Row="3"
             MaxHeight="600"
-            VerticalAlignment="Top"
-            IsTabStop="True">
+            VerticalAlignment="Top">
             <Grid
                 Background="{ThemeResource ControlExampleDisplayBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -162,18 +181,18 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     AutomationProperties.Name="Icons">
-                    <ItemsView
-                        x:Name="IconsItemsView"
+                    <ItemsRepeater
+                        x:Name="IconsRepeater"
                         MinWidth="100"
                         Margin="0,0,0,36"
                         HorizontalAlignment="Stretch"
-                        SelectionChanged="IconsItemsView_SelectionChanged"
-                        ItemTemplate="{StaticResource IconTemplate}"
-                        TabFocusNavigation="Once">
-                        <ItemsView.Layout>
+                        ElementIndexChanged="IconsRepeater_ElementIndexChanged"
+                        ElementPrepared="IconsRepeater_ElementPrepared"
+                        ItemTemplate="{StaticResource IconTemplate}">
+                        <ItemsRepeater.Layout>
                             <UniformGridLayout Orientation="Horizontal" />
-                        </ItemsView.Layout>
-                    </ItemsView>
+                        </ItemsRepeater.Layout>
+                    </ItemsRepeater>
                 </ScrollViewer>
 
                 <Grid
