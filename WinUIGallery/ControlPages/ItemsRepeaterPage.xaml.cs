@@ -25,6 +25,8 @@ namespace AppUIBasics.ControlPages
         public List<Recipe> staticRecipeData;
         private bool IsSortDescending = false;
 
+        private double AnimatedBtnHeight;
+        private Thickness AnimatedBtnMargin;
         private Button LastSelectedColorButton;
         private int PreviouslyFocusedAnimatedScrollRepeaterIndex = -1;
 
@@ -314,6 +316,13 @@ namespace AppUIBasics.ControlPages
             item.StartAnimation("CenterPoint", centerPointExpression);
         }
 
+        private void GetButtonSize(object sender, RoutedEventArgs e)
+        {
+            Button AnimatedBtn = sender as Button;
+            AnimatedBtnHeight = AnimatedBtn.ActualHeight;
+            AnimatedBtnMargin = AnimatedBtn.Margin;
+        }
+
         private void SetUIANamesForSelectedEntry(Button selectedItem)
         {
             if (LastSelectedColorButton != null && LastSelectedColorButton.Content is string content)
@@ -325,6 +334,27 @@ namespace AppUIBasics.ControlPages
             LastSelectedColorButton = selectedItem;
         }
 
+        // Find centerpoint of ScrollViewer
+        private double CenterPointOfViewportInExtent()
+        {
+            return Animated_ScrollViewer.VerticalOffset + Animated_ScrollViewer.ViewportHeight / 2;
+        }
+
+        // Find index of the item that's at the center of the viewport
+        private int GetSelectedIndexFromViewport()
+        {
+            int selectedItemIndex = (int)Math.Floor(CenterPointOfViewportInExtent() / ((double)AnimatedBtnMargin.Top + AnimatedBtnHeight));
+            selectedItemIndex %= animatedScrollRepeater.ItemsSourceView.Count;
+            return selectedItemIndex;
+        }
+
+        // Return item that's currently in center of viewport
+        private object GetSelectedItemFromViewport()
+        {
+            var selectedIndex = GetSelectedIndexFromViewport();
+            var selectedElement = animatedScrollRepeater.TryGetElement(selectedIndex) as Button;
+            return selectedElement;
+        }
 
         // ==========================================================================
         // VariedImageSize Layout with Filtering/Sorting

@@ -113,6 +113,11 @@ namespace AppUIBasics
             startupWindow = WindowHelper.CreateWindow();
             startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
+            //if (System.Diagnostics.Debugger.IsAttached)
+            //{
+            //    this.DebugSettings.EnableFrameRateCounter = true;
+            //}
+
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;
@@ -145,7 +150,7 @@ namespace AppUIBasics
 
             ThemeHelper.Initialize();
 
-            Type targetPageType = typeof(HomePage);
+            Type targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
 
             if (args != null)
@@ -198,7 +203,7 @@ namespace AppUIBasics
             NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
             rootPage.Navigate(targetPageType, targetPageArguments);
 
-            if (targetPageType == typeof(HomePage))
+            if (targetPageType == typeof(NewControlsPage))
             {
                 ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }

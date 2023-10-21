@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -23,6 +23,11 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
+        private void List_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Control1.StartBringIntoView();
+        }
+
         private void createNewWindow_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = WindowHelper.CreateWindow();
@@ -31,7 +36,7 @@ namespace AppUIBasics.ControlPages
             newWindow.Content = rootPage;
             newWindow.Activate();
 
-            var targetPageType = typeof(HomePage);
+            var targetPageType = typeof(NewControlsPage);
             string targetPageArguments = string.Empty;
             rootPage.Navigate(targetPageType, targetPageArguments);
         }

@@ -8,7 +8,6 @@
 //
 //*********************************************************
 
-using System;
 using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -182,7 +181,7 @@ namespace AppUIBasics.ControlPages
 
         private int GetItemsPerRow()
         {
-            return (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int) Math.Max(itemsRepeater.ActualWidth / ItemWidth, 1);
+            return (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int) (itemsRepeater.ActualWidth / ItemWidth);
         }
     }
 }

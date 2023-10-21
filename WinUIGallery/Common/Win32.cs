@@ -19,6 +19,7 @@ namespace AppUIBasics
 
         public const int WM_ACTIVATE = 0x0006;
         public const int WA_ACTIVE = 0x01;
+        //static int WA_CLICKACTIVE = 0x02;
         public const int WA_INACTIVE = 0x00;
 
         public const int WM_SETICON = 0x0080;

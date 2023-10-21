@@ -13,6 +13,7 @@ namespace AppUIBasics.Helper
     {
         private const string SelectedAppThemeKey = "SelectedAppTheme";
 
+        private static Window CurrentApplicationWindow;
         /// <summary>
         /// Gets the current actual theme of the app based on the requested theme of the
         /// root element, or if that value is Default, the requested theme of the Application.
@@ -74,6 +75,8 @@ namespace AppUIBasics.Helper
         {
             if (NativeHelper.IsAppPackaged)
             {
+                // Save reference as this might be null when the user is in another app
+                CurrentApplicationWindow = App.StartupWindow;
                 string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
 
                 if (savedTheme != null)

@@ -15,9 +15,9 @@ using System.Collections.ObjectModel;
 
 namespace AppUIBasics
 {
-    public sealed partial class HomePage : ItemsPageBase
+    public sealed partial class NewControlsPage : ItemsPageBase
     {
-        public HomePage()
+        public NewControlsPage()
         {
             this.InitializeComponent();
         }

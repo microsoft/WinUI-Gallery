@@ -198,6 +198,37 @@ namespace AppUIBasics.ControlPages
             contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
         }
 
+        private void databindHeader_Checked(object sender, RoutedEventArgs e)
+        {
+            Categories = new ObservableCollection<CategoryBase>()
+            {
+                new Header { Name = "Header1 "},
+                new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
+                new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" },
+                new Separator(),
+                new Header { Name = "Header2 "},
+                new Category {Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" },
+                new Category {Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 3" }
+            };
+        }
+
+        private void databindHeader_Checked_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Categories = new ObservableCollection<CategoryBase>()
+            {
+                new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" },
+                new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" },
+                new Category {Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" },
+                new Category {Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 3" }
+            };
+        }
+
+        private void Grid_ManipulationDelta1(object sender, Microsoft.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs e)
+        {
+            var grid = sender as Grid;
+            grid.Width = grid.ActualWidth + e.Delta.Translation.X;
+        }
+
         private void headerCheck_Click(object sender, RoutedEventArgs e)
         {
             nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true ? true : false;

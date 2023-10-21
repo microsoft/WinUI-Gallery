@@ -21,6 +21,17 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
+        private void CompactButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is ToggleButton toggle && toggle.IsChecked != null)
+            {
+                Button1.IsCompact =
+                Button2.IsCompact =
+                Button3.IsCompact =
+                Button4.IsCompact = (bool)toggle.IsChecked;
+            }
+        }
+
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is AppBarToggleButton b)

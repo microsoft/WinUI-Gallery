@@ -112,7 +112,7 @@ namespace AppUIBasics.ControlPages
                 dialog.CloseButtonText = "Close";
                 dialog.DefaultButton = ContentDialogButton.Close;
                 dialog.XamlRoot = sender.XamlRoot;
-                _ = dialog.ShowAsync();
+                var task = dialog.ShowAsync();
             }
 
             // Mark the event as handled so the framework doesn’t update the selected item automatically. 

@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Class="AppUIBasics.ConnectedAnimationPages.CollectionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -30,12 +30,13 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Views: " Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="Bold"/>
                                 <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
-
-                                <TextBlock Text="Likes: " Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="Bold" Margin="8,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Likes: " Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="Bold"/>
                                 <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{x:Bind Description}" Style="{ThemeResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,8,0,0" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxWidth="500" MaxHeight="40" IsTextTrimmedChanged="TextBlock_IsTextTrimmedChanged"/>
+                                <TextBlock Text="{x:Bind Description}" Style="{ThemeResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,12,0,0" TextTrimming="CharacterEllipsis" MaxWidth="500" MaxLines="1"/>
                             </StackPanel>
 
                         </StackPanel>

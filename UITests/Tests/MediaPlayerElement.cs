@@ -36,6 +36,12 @@ namespace UITests.Tests
 		}
 
 		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void PlayMedia()
         {
             WindowsElement play = Session.FindElementByAccessibilityId("PlayPauseButton");

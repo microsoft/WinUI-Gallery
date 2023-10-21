@@ -118,6 +118,7 @@ namespace AppUIBasics.ControlPages
         private void PullToRefreshPage_Loaded(object sender, RoutedEventArgs e)
         {
             visualizerContentVisual = ElementCompositionPreview.GetElementVisual(rv2.Content);
+
             this.Loaded -= PullToRefreshPage_Loaded;
         }
 
@@ -199,7 +200,7 @@ namespace AppUIBasics.ControlPages
 
         private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args)
         {
-            visualizerContentVisual.StopAnimation("RotationAngle");
+            //visualizerContentVisual.StopAnimation("RotationAngle");
         }
     }
 }

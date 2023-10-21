@@ -137,25 +137,24 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
                         </Style>
                     </StackPanel.Resources>
 
-                    <RadioButtons Header="Layout" FontWeight="SemiBold">
+                    <TextBlock Margin="0,15,0,10" Text="Layout" FontWeight="SemiBold"/>
+                    
+                    <RadioButtons>
                         <RadioButton
                             Checked="RbLayout_Checked"
                             Content="LinedFlowLayout"
                             GroupName="ItemsViewLayouts"
-                            FontWeight="Normal"
                             IsChecked="True"/>
 
                         <RadioButton
                             Checked="RbLayout_Checked"
                             Content="UniformGridLayout"
-                            GroupName="ItemsViewLayouts"
-                            FontWeight="Normal"/>
+                            GroupName="ItemsViewLayouts"/>
 
                         <RadioButton
                             Checked="RbLayout_Checked"
                             Content="StackLayout"
-                            GroupName="ItemsViewLayouts"
-                            FontWeight="Normal"/>
+                            GroupName="ItemsViewLayouts"/>
                     </RadioButtons>
 
                     <StackPanel x:Name="spLinedFlowLayoutOptions" MinHeight="300">

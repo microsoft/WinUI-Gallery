@@ -38,6 +38,12 @@ namespace UITests.Tests
         }
 
 		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Displayed()
         {
             Assert.IsTrue(textBlockElement1.Displayed);

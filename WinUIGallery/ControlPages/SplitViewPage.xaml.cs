@@ -39,6 +39,28 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
         }
 
+        private void togglePaneButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = WindowHelper.GetWindowForElement(this);
+            if (window.Bounds.Width >= 640)
+            {
+                if (splitView.IsPaneOpen)
+                {
+                    splitView.DisplayMode = SplitViewDisplayMode.CompactOverlay;
+                    splitView.IsPaneOpen = false;
+                }
+                else
+                {
+                    splitView.IsPaneOpen = true;
+                    splitView.DisplayMode = SplitViewDisplayMode.Inline;
+                }
+            }
+            else
+            {
+                splitView.IsPaneOpen = !splitView.IsPaneOpen;
+            }
+        }
+
         private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
             content.Text = (e.ClickedItem as NavLink).Label + " Page";

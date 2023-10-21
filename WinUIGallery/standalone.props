@@ -1,8 +1,8 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <SamplesTargetFrameworkMoniker>net7.0-windows10.0.19041.0</SamplesTargetFrameworkMoniker>
-    <WindowsAppSdkPackageVersion>1.4.231008000</WindowsAppSdkPackageVersion>
+    <WindowsAppSdkPackageVersion>1.4.230822000</WindowsAppSdkPackageVersion>
+    <SamplesTargetFrameworkMoniker>net6.0-windows10.0.19041.0</SamplesTargetFrameworkMoniker>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>

@@ -103,7 +103,6 @@
     <Content Include="Assets\ControlImages\Button.png" />
     <Content Include="Assets\ControlImages\CalendarDatePicker.png" />
     <Content Include="Assets\ControlImages\CalendarView.png" />
-    <!-- TODO: Need a camera capture icon. -->
     <Content Include="Assets\ControlImages\Canvas.png" />
     <Content Include="Assets\ControlImages\Checkbox.png" />
     <Content Include="Assets\ControlImages\Clipboard.png" />
@@ -151,7 +150,6 @@
     <Content Include="Assets\ControlImages\PersonPicture.png" />
     <Content Include="Assets\ControlImages\PipsPager.png" />
     <Content Include="Assets\ControlImages\Pivot.png" />
-    <Content Include="Assets\ControlImages\Placeholder.png" />
     <Content Include="Assets\ControlImages\ProgressBar.png" />
     <Content Include="Assets\ControlImages\ProgressRing.png" />
     <Content Include="Assets\ControlImages\PullToRefresh.png" />
@@ -304,8 +302,6 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\Media\CaptureElementPreviewSample_cs.txt" />
-    <Content Include="ControlPagesSampleCode\Media\CaptureElementPreviewSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample2.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample3.txt" />
@@ -372,7 +368,6 @@
     <Content Include="ControlPagesSampleCode\Window\CreateWindowSample1.txt" />
     <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1.txt" />
     <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample2.txt" />
-    <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample3.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
   </ItemGroup>

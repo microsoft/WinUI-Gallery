@@ -54,7 +54,8 @@ public sealed partial class CollectionPage : Page
             // Prepare the connected animation.
             // Notice that the stored item is passed in, as well as the name of the connected element. 
             // The animation will actually start on the Detailed info page.
-            collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+            var animation = collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+
         }
 
         // Navigate to the DetailedInfoPage.

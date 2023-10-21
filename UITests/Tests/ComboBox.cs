@@ -37,8 +37,16 @@ namespace UITests.Tests
         }
 
 		[TestMethod]
+		public void ValidateAccessibilityWithAxe()
+		{
+			AxeHelper.AssertNoAccessibilityErrors();
+		}
+
+		[TestMethod]
         public void Click()
         {
+
+
             // Click comboBoxElement1 to show the list and simply dismiss it
             var originalSelectedItem = comboBoxElement1.Text;
             comboBoxElement1.Click();

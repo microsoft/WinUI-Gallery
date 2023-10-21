@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -59,7 +59,8 @@ namespace AppUIBasics.ConnectedAnimationPages
                 // Prepare the connected animation.
                 // Notice that the stored item is passed in, as well as the name of the connected element. 
                 // The animation will actually start on the Detailed info page.
-                collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+                var animation = collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+
             }
 
             // Navigate to the DetailedInfoPage.
@@ -67,12 +68,5 @@ namespace AppUIBasics.ConnectedAnimationPages
             Frame.Navigate(typeof(DetailedInfoPage), _storeditem, new SuppressNavigationTransitionInfo());
         }
 
-        private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
-        {
-            var textBlock = sender as TextBlock;
-            var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
-
-            ToolTipService.SetToolTip(textBlock, text);
-        }
     }
 }

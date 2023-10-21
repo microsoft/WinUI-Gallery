@@ -24,7 +24,7 @@
             <ProgressRing x:Name="ProgressRing1" IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" AutomationProperties.Name="Progress image" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
             <local:ControlExample.Options>
                 <StackPanel>
-                    <ToggleSwitch x:Name="ProgressToggle" AutomationProperties.Name="Progress Options" Header="Progress Options" OffContent="Do work" OnContent="Working" IsOn="True" />
+                    <ToggleSwitch x:Name="ProgressToggle" AutomationProperties.Name="Progress options" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True" />
                     <ComboBox x:Name="BackgroundComboBox1" SelectionChanged="Background_SelectionChanged"  Header="Background color" PlaceholderText="Pick a color" Width="200">
                         <x:String>Transparent</x:String>
                         <x:String>LightGray</x:String>

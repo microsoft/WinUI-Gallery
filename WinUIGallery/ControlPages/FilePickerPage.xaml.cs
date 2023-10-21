@@ -60,14 +60,12 @@ namespace AppUIBasics.ControlPages
                 
                 span.Inlines.Add(run1);
                 span.Inlines.Add(run2);
-                PickAFileOutputTextBlock.Inlines.Add(span);
+                PickAFileOutputTextBlock.Inlines.Add(span);     
             }
             else
             {
                 PickAFileOutputTextBlock.Text = "Operation cancelled.";
             }
-
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickAFileOutputTextBlock.Text, "FilePickedNotificationId");
         }
         private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -113,8 +111,6 @@ namespace AppUIBasics.ControlPages
             {
                 PickAPhotoOutputTextBlock.Text = "Operation cancelled.";
             }
-
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickAPhotoOutputTextBlock.Text, "PhotoPickedNotificationId");
         }
 
         private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
@@ -163,8 +159,6 @@ namespace AppUIBasics.ControlPages
             {
                 PickFilesOutputTextBlock.Text = "Operation cancelled.";
             }
-
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickFilesOutputTextBlock.Text, "FilesPickedNotificationId");
         }
 
         private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
@@ -210,8 +204,6 @@ namespace AppUIBasics.ControlPages
             {
                 PickFolderOutputTextBlock.Text = "Operation cancelled.";
             }
-
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickFolderOutputTextBlock.Text, "FolderPickedNotificationId");
         }
 
         private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
@@ -277,8 +269,7 @@ namespace AppUIBasics.ControlPages
             {
                 SaveFileOutputTextBlock.Text = "Operation cancelled.";
             }
-
-            UIHelper.AnnounceActionForAccessibility(sender as Button, SaveFileOutputTextBlock.Text, "FileSavedNotificationId");
         }
+
     }
 }

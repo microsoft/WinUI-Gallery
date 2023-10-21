@@ -66,21 +66,6 @@ namespace AppUIBasics.Helper
             }
             return null;
         }
-        // get dpi for an element
-        static public double GetRasterizationScaleForElement(UIElement element)
-        {
-            if (element.XamlRoot != null)
-            {
-                foreach (Window window in _activeWindows)
-                {
-                    if (element.XamlRoot == window.Content.XamlRoot)
-                    {
-                        return element.XamlRoot.RasterizationScale;
-                    }
-                }
-            }
-            return 0.0;
-        }
 
         static public List<Window> ActiveWindows { get { return _activeWindows; }}
 

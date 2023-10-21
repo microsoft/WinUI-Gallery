@@ -188,7 +188,7 @@ namespace AppUIBasics.ControlPages
 
         private void Editor_GotFocus(object sender, RoutedEventArgs e)
         {
-            editor.Document.GetText(TextGetOptions.UseCrlf, out _);
+            editor.Document.GetText(TextGetOptions.UseCrlf, out string currentRawText);
             
             // reset colors to correct defaults for Focused state
             ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
@@ -197,6 +197,18 @@ namespace AppUIBasics.ControlPages
             if (background != null)
             {
                 documentRange.CharacterFormat.BackgroundColor = background.Color;
+            }
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width <= 768)
+            {
+                editor.Width = e.NewSize.Width - 20;
+            }
+            else
+            {
+                editor.Width = e.NewSize.Width - 100;
             }
         }
 

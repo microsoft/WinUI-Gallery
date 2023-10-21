@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -49,10 +48,10 @@ namespace AppUIBasics.ControlPages
             // Fill filtered items
             IconsDataSource.Icons.ForEach(item => FilteredItems.Add(item));
             this.InitializeComponent();
-            IconsItemsView.Loaded += IconsItemsView_Loaded;
+            IconsRepeater.Loaded += ItemsGridView_Loaded;
         }
 
-        private void IconsItemsView_Loaded(object sender, RoutedEventArgs e)
+        private void ItemsGridView_Loaded(object sender, RoutedEventArgs e)
         {
             // Delegate loading of icons, so we have smooth navigating to this page
             // and not unnecessarily block UI Thread
@@ -60,7 +59,7 @@ namespace AppUIBasics.ControlPages
             {
                 _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.High, () =>
                 {
-                    IconsItemsView.ItemsSource = FilteredItems;
+                    IconsRepeater.ItemsSource = FilteredItems;
                     SelectedItem = FilteredItems[0];
                     SetSampleCodePresenterCode(FilteredItems[0]);
                 });
@@ -94,30 +93,41 @@ namespace AppUIBasics.ControlPages
                     FilteredItems.Add(item);
                 }
             }
-
-            string outputString;
-            var filteredItemsCount = FilteredItems.Count;
-
-            if (filteredItemsCount > 0)
+            if (FilteredItems.Count > 0)
             {
                 SelectedItem = FilteredItems[0];
-                outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
             }
-            else
-            {
-                outputString = "No icon found.";
-            }
-
-            UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
         }
 
-        private void IconsItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs args)
+        private void Icons_TemplatePointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            if (IconsItemsView.CurrentItemIndex != -1)
+            var oldIndex = FilteredItems.IndexOf(SelectedItem);
+            var previousItem = IconsRepeater.TryGetElement(oldIndex);
+            if(previousItem != null)
             {
-                SelectedItem = FilteredItems[IconsItemsView.CurrentItemIndex];
+                MoveToSelectionState(previousItem, false);
             }
-            
+
+            var itemIndex = IconsRepeater.GetElementIndex(sender as UIElement);
+            SelectedItem = FilteredItems[itemIndex != -1 ? itemIndex : 0];
+            MoveToSelectionState(sender as UIElement, true);
+        }
+
+        private static void MoveToSelectionState(UIElement previousItem, bool isSelected)
+        {
+            VisualStateManager.GoToState(previousItem as Control, isSelected ? "Selected" : "Default", false);
+        }
+
+        private void IconsRepeater_ElementIndexChanged(ItemsRepeater sender, ItemsRepeaterElementIndexChangedEventArgs args)
+        {
+            var newItem = FilteredItems[args.NewIndex];
+            MoveToSelectionState(args.Element, newItem == SelectedItem);
+        }
+
+        private void IconsRepeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
+        {
+            var newItem = FilteredItems[args.Index];
+            MoveToSelectionState(args.Element, newItem == SelectedItem);
         }
     }
 }

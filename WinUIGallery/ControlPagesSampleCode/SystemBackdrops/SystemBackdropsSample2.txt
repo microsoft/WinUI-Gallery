@@ -5,7 +5,7 @@ WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See separate sample below fo
 Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController m_acrylicController;
 Microsoft.UI.Composition.SystemBackdrops.SystemBackdropConfiguration m_configurationSource;
 
-bool TrySetAcrylicBackdrop(bool useAcrylicThin)
+bool TrySetAcrylicBackdrop()
 {
     if (Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController.IsSupported())
     {
@@ -23,8 +23,6 @@ bool TrySetAcrylicBackdrop(bool useAcrylicThin)
         SetConfigurationSourceTheme();
 
         m_acrylicController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
-
-        m_acrylicController.Kind = useAcrylicThin ? Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin : Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base;
 
         // Enable the system backdrop.
         // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.

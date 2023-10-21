@@ -40,14 +40,7 @@ namespace AppUIBasics.ControlPages
         private void createBuiltInAcrylicWindow_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
-            newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
-            newWindow.Activate();
-        }
-
-        private void createCustomDesktopAcrylicWindow_Click(object sender, RoutedEventArgs e)
-        {
-            var newWindow = new AppUIBasics.SamplePages.SampleSystemBackdropsWindow();
-            newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
+            newWindow.SetBackdrop(AppUIBasics.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylic);
             newWindow.Activate();
         }
     }

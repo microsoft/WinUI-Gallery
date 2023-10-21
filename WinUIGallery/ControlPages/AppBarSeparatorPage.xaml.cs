@@ -20,5 +20,16 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
         }
+        private void CompactButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as AppBarToggleButton).IsChecked == true)
+            {
+                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Collapsed;
+            }
+            else
+            {
+                Control1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Bottom;
+            }
+        }
     }
 }

@@ -10,7 +10,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -89,11 +88,6 @@ namespace AppUIBasics.ControlPages
                     ScrollViewerControl.VerticalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
                 }
             }
-        }
-
-        private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-        {
-            ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
         }
 
         private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
