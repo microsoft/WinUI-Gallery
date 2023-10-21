@@ -8,6 +8,13 @@
         <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     </PropertyGroup>
 
+    <!-- Build output related paths -->
+    <PropertyGroup>
+        <ProjectRoot>$(MSBuildThisFileDirectory)..\</ProjectRoot>
+        <ArtifactsBinRoot>$(MSBuildThisFileDirectory)\bin\</ArtifactsBinRoot>
+        <TestBinplaceDestinationPath>\$(Platform)\$(Configuration)\$(TargetFramework)</TestBinplaceDestinationPath>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Appium.WebDriver" Version="4.4.0" />
         <PackageReference Include="Axe.Windows" Version="2.1.0" />
@@ -15,4 +22,8 @@
         <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
         <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     </ItemGroup>
+
+  <Target Name="CopyControlInfoData" AfterTargets="AfterBuild">
+      <Copy SourceFiles="$(ProjectRoot)\WinUIGallery\DataModel\ControlInfoData.json" DestinationFiles="$(ArtifactsBinRoot)\$(TestBinplaceDestinationPath)\ControlInfoData.json" />
+  </Target>
 </Project>

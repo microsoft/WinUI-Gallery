@@ -1,4 +1,4 @@
-//*********************************************************
+﻿//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -7,12 +7,10 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -47,15 +45,6 @@ namespace AppUIBasics.ControlPages
         private void Example5_Loaded(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        // Workaround for known issue with menu themes in WinAppSDK 1.4 (#8678, #8756)
-        private void MenuFlyout_Opened(object sender, object e)
-        {
-            foreach (var popup in VisualTreeHelper.GetOpenPopupsForXamlRoot(this.XamlRoot))
-            {
-                popup.RequestedTheme = ThemeHelper.RootTheme;
-            }
         }
     }
 }

@@ -67,6 +67,7 @@
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
                     Text="{x:Bind AppTitleText}" />
+                <TextBox x:Name="AppTitleBarTextBox" MinWidth="300" Height="40" Margin="16,0,0,0" Visibility="Collapsed"  PlaceholderText="Enter any text" /> 
             </StackPanel>
         </Border>
 
@@ -186,29 +187,31 @@
                 Navigating="OnRootFrameNavigating" />
             <NavigationView.MenuItems>
                 <NavigationViewItem
-                    x:Name="NewControlsItem"
+                    x:Name="Home"
+                    AutomationProperties.AutomationId="Home"
                     Content="Home"
                     Icon="Home" />
 
                 <NavigationViewItem
                     x:Name="DesignGuidanceItem"
+                    AutomationProperties.AutomationId="Design_Guidance"
                     Content="Design guidance"
                     Tag="Design Guidance">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" Content="Typography" Tag="Typography">
+                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" Content="Icons" Tag="Icons">
+                        <NavigationViewItem x:Name="IconsItem" AutomationProperties.AutomationId="Icons" Content="Icons" Tag="Icons">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" Content="Colors" Tag="Colors">
+                        <NavigationViewItem x:Name="ColorsItem" AutomationProperties.AutomationId="Colors" Content="Colors" Tag="Colors">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>

@@ -59,7 +59,6 @@ namespace AppUIBasics
 
         protected void OnItemGridViewItemClick(object sender, ItemClickEventArgs e)
         {
-            var gridView = (GridView)sender;
             var item = (ControlInfoDataItem)e.ClickedItem;
 
             _itemId = item.UniqueId;

@@ -28,7 +28,7 @@
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
-        <!--<WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>-->
+        <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -247,21 +247,5 @@
         </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
-
-    <!-- Workaround to ensure WindowsAppSDK-VersionInfo.cs is included in project exactly once, before any compilation -->
-    <PropertyGroup>
-        <ExplicitlyIncludeVersionInfo Condition="'$(WindowsAppSdkSelfContained)'=='true' or '$(SingleProject)'!='true'">true</ExplicitlyIncludeVersionInfo>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(ExplicitlyIncludeVersionInfo)'!='true'">
-        <CoreCompileDependsOn Condition="'$(Packaged)'=='true'">$(CoreCompileDependsOn);GenerateDeploymentManagerCS</CoreCompileDependsOn>
-        <CoreCompileDependsOn Condition="'$(Packaged)'!='true'">$(CoreCompileDependsOn);GenerateBootstrapCS</CoreCompileDependsOn>
-    </PropertyGroup>
-    <ItemGroup>
-        <Compile Condition="'$(ExplicitlyIncludeVersionInfo)'=='true'" Include="$(MicrosoftWindowsAppSDKPackageDir)include\WindowsAppSDK-VersionInfo.cs" />
-    </ItemGroup>
-    <!-- When WindowsAppSdkIncludeVersionInfo supported, above workaround can be replaced with this: -->
-    <PropertyGroup>
-        <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
-    </PropertyGroup>
 
 </Project>
