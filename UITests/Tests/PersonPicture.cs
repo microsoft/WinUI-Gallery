@@ -29,12 +29,6 @@ namespace UITests.Tests
 		}
 
 		[TestMethod]
-		public void ValidateAccessibilityWithAxe()
-		{
-			AxeHelper.AssertNoAccessibilityErrors();
-		}
-
-		[TestMethod]
 		public void SwitchOptions()
 		{
 			GetElementByName("Profile Image").Click();

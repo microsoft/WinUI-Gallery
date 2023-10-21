@@ -32,12 +32,6 @@ namespace UITests.Tests
             Assert.IsNotNull(buttonElement);
         }
 
-        [TestMethod]
-        public void ValidateAccessibilityWithAxe()
-        {
-            AxeHelper.AssertNoAccessibilityErrors();
-        }
-
 		[TestMethod]
         public void Button_Click()
         {

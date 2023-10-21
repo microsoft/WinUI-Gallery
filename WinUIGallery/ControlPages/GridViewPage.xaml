@@ -104,7 +104,7 @@
                 <GridView x:Name="StyledGrid"
                           ItemTemplate="{StaticResource ImageOverlayTemplate}">
                     <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
+                        <Style TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}">
                             <Setter Property="Margin" Value="5"/>
                         </Style>
                     </GridView.ItemContainerStyle>
@@ -155,7 +155,7 @@ some parts of the GridViewItems (i.e. the margins). --&gt;
     ItemTemplate="{StaticResource ImageOverlayTemplate}"&gt;
 
     &lt;GridView.ItemContainerStyle&gt;
-        &lt;Style TargetType="GridViewItem"&gt;
+        &lt;Style TargetType="GridViewItem" BasedOn="{StaticResource DefaultGridViewItemStyle}"&gt;
             &lt;Setter Property="Margin" Value="$(ColMargin), $(RowMargin), $(ColMargin), $(RowMargin)"/&gt;
         &lt;/Style&gt;
     &lt;/GridView.ItemContainerStyle&gt;

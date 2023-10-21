@@ -13,6 +13,11 @@ namespace AppUIBasics.ControlPages
     {
         public string Text { get; set; }
         public ICommand Command { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 
     public sealed partial class StandardUICommandPage : Page
@@ -47,14 +52,6 @@ namespace AppUIBasics.ControlPages
         {
             var listView = (ListView)sender;
             listView.ItemsSource = collection;
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ListViewRight.SelectedIndex != -1)
-            {
-                var item = collection[ListViewRight.SelectedIndex];
-            }
         }
 
         private void ListViewSwipeContainer_PointerEntered(object sender, PointerRoutedEventArgs e)
