@@ -170,7 +170,7 @@ namespace AppUIBasics.Helper
     {
         private Frame Frame { get; set; }
         private NavigationView CurrentNavView { get; set; }
-        private bool hasAlreadyProcessedKeyDown = false;
+        private bool isKeyDownProcessed = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RootNavigationHelper"/> class.
@@ -199,13 +199,13 @@ namespace AppUIBasics.Helper
 
         private bool TryGoBack()
         {
+            bool navigated = false;
             // Don't go back if the nav pane is overlayed.
             if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
             {
-                return false;
+                return navigated;
             }
 
-            bool navigated = false;
             if (this.Frame.CanGoBack)
             {
                 this.Frame.GoBack();
@@ -241,7 +241,7 @@ namespace AppUIBasics.Helper
 
         private void CurrentNavView_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (e.Handled || hasAlreadyProcessedKeyDown)
+            if (e.Handled || isKeyDownProcessed)
             {
                 return;
             }
@@ -273,13 +273,13 @@ namespace AppUIBasics.Helper
                     // When the next key or Alt+Right are pressed navigate forward.
                     e.Handled = TryGoForward();
                 }
-                hasAlreadyProcessedKeyDown = e.Handled;
+                isKeyDownProcessed = e.Handled;
             }
         }
 
         private void CurrentNavView_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            hasAlreadyProcessedKeyDown = false;
+            isKeyDownProcessed = false;
         }
     }
 
