@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using AppUIBasics.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -74,6 +75,8 @@ namespace WinUIGallery.DesktopWap.Controls.DesignGuidance
             DataPackage package = new DataPackage();
             package.SetText(ColorBrushName);
             Clipboard.SetContent(package);
+
+            UIHelper.AnnounceActionForAccessibility(sender as Button, "Brush name copied to clipboard", "BrushNameCopiedSuccessNotificationId");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -38,7 +38,6 @@ namespace AppUIBasics
         /// within a <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" />.  The
         /// default value is <see cref="F:System.Double.NaN" />.
         /// </value>
-        //[TypeConverter(typeof(LengthConverter))]
         public double ItemHeight
         {
             get { return (double)GetValue(ItemHeightProperty); }
@@ -73,7 +72,6 @@ namespace AppUIBasics
         /// contained in a <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" />.
         /// The default value is <see cref="F:System.Double.NaN" />.
         /// </value>
-        //[TypeConverter(typeof(LengthConverter))]
         public double ItemWidth
         {
             get { return (double)GetValue(ItemWidthProperty); }

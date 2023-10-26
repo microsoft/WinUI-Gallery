@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // This code is licensed under the MIT License (MIT).
@@ -25,7 +25,6 @@ namespace AppUIBasics.Common
     {
         #region Member variables
 
-        UIElement hostForVisual;
         Compositor _compositor;
         ContainerVisual _containerForVisuals;
         ScalarKeyFrameAnimation _slideAnimation;
@@ -42,10 +41,6 @@ namespace AppUIBasics.Common
         /// </summary>
         public ColorSlideTransitionHelper(UIElement hostForVisual)
         {
-
-
-            this.hostForVisual = hostForVisual;
-
             // we have an element in the XAML tree that will host our Visuals
             var visual = ElementCompositionPreview.GetElementVisual(hostForVisual);
             _compositor = visual.Compositor;

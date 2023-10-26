@@ -470,6 +470,7 @@
                     <Button
                         Grid.Row="1"
                         Click="MakeRedButton_Click"
+                        AutomationProperties.AcceleratorKey="Ctrl+R"
                         Content="Red">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="R" Modifiers="Control" />
@@ -480,6 +481,7 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Click="MakeBlueButton_Click"
+                        AutomationProperties.AcceleratorKey="Ctrl+B"
                         Content="Blue">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="B" Modifiers="Control" />
@@ -496,6 +498,7 @@
                         Grid.Column="2"
                         Click="MakeChartreuseButton_Click"
                         Content="Chartreuse"
+                        AutomationProperties.AcceleratorKey="Ctrl+G"
                         ToolTipService.ToolTip="A greenish-yellow (Ctrl+G)">
                         <Button.KeyboardAccelerators>
                             <KeyboardAccelerator Key="G" Modifiers="Control" />
