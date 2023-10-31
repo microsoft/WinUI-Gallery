@@ -183,7 +183,7 @@ namespace AppUIBasics
                 }
                 else if (uri == "NewControls")
                 {
-                    targetPageType = typeof(NewControlsPage);
+                    targetPageType = typeof(HomePage);
                 }
                 else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == uri))
                 {
