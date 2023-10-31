@@ -13,7 +13,6 @@
     <Content Include="Assets\ControlIcons\DefaultIcon.png" />
     <Content Include="Assets\ControlIcons\DropdownButtonIcon.png" />
     <Content Include="Assets\ControlIcons\EasingFunctionsIcon.png" />
-    <Content Include="Assets\file.png" />
     <Content Include="Assets\folder.png" />
     <Content Include="Assets\ControlIcons\MenuBarIcon.png" />
     <Content Include="Assets\ControlIcons\NavigationViewIcon.png" />
