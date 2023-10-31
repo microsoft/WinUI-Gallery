@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using AppUIBasics.Helper;
@@ -25,8 +25,6 @@ namespace AppUIBasics
         const string s_rootVisualResetHandleName = "RootVisualReset";
         const string s_imageDecodingIdleHandleName = "ImageDecodingIdle";
         const string s_fontDownloadsIdleHandleName = "FontDownloadsIdle";
-        const string s_hasBuildTreeWorksHandleName = "HasBuildTreeWorks";
-        const string s_buildTreeServiceDrainedHandleName = "BuildTreeServiceDrained";
 
         private DispatcherQueue m_dispatcherQueue = null;
 
@@ -37,8 +35,6 @@ namespace AppUIBasics
         private Handle m_rootVisualResetHandle;
         private Handle m_imageDecodingIdleHandle;
         private Handle m_fontDownloadsIdleHandle;
-        private Handle m_hasBuildTreeWorksHandle;
-        private Handle m_buildTreeServiceDrainedHandle;
 
         private bool m_waitForAnimationsIsDisabled = false;
         private bool m_isRS2OrHigherInitialized = false;
@@ -69,11 +65,6 @@ namespace AppUIBasics
             }
 
             return handle;
-        }
-
-        private Handle OpenNamedEvent(uint threadId, string eventNamePrefix)
-        {
-            return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), threadId, eventNamePrefix);
         }
 
         private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
@@ -134,8 +125,6 @@ namespace AppUIBasics
             m_rootVisualResetHandle = OpenNamedEvent(m_dispatcherQueue, s_rootVisualResetHandleName);
             m_imageDecodingIdleHandle = OpenNamedEvent(m_dispatcherQueue, s_imageDecodingIdleHandleName);
             m_fontDownloadsIdleHandle = OpenNamedEvent(m_dispatcherQueue, s_fontDownloadsIdleHandleName);
-            m_hasBuildTreeWorksHandle = OpenNamedEvent(m_dispatcherQueue, s_hasBuildTreeWorksHandleName);
-            m_buildTreeServiceDrainedHandle = OpenNamedEvent(m_dispatcherQueue, s_buildTreeServiceDrainedHandleName);
         }
 
         public static void Init()
@@ -152,8 +141,7 @@ namespace AppUIBasics
 
         public static void Wait()
         {
-            string logMessage;
-            Wait(out logMessage);
+            Wait(out _);
         }
 
         public static void Wait(out string logMessage)
@@ -168,8 +156,7 @@ namespace AppUIBasics
 
         public static string TryWait()
         {
-            string logMessage;
-            return Instance.WaitInternal(out logMessage);
+            return Instance.WaitInternal(out _);
         }
 
         public static string TryWait(out string logMessage)
@@ -193,8 +180,6 @@ namespace AppUIBasics
         private string WaitInternal(out string logMessage)
         {
             logMessage = string.Empty;
-            string errorString = string.Empty;
-
             if (m_dispatcherQueue.HasThreadAccess)
             {
                 return "Cannot wait for UI thread idle from the UI thread.";
@@ -206,11 +191,9 @@ namespace AppUIBasics
             bool isIdle = false;
             while (!isIdle)
             {
-                bool hadAnimations = true;
-                bool hadDeferredAnimationOperations = true;
                 bool hadBuildTreeWork = false;
 
-                errorString = WaitForRootVisualReset();
+                var errorString = WaitForRootVisualReset();
                 if (errorString.Length > 0) { return errorString; }
                 AddLog("After WaitForRootVisualReset");
 
@@ -228,6 +211,7 @@ namespace AppUIBasics
                 WaitForIdleDispatcher();
                 AddLog("After WaitForIdleDispatcher");
 
+                bool hadAnimations;
                 // At this point, we know that the UI thread is idle - now we need to make sure
                 // that XAML isn't animating anything.
                 // TODO 27870237: Remove this #if once BuildTreeServiceDrained is properly signaled in WinUI desktop apps.
@@ -246,6 +230,7 @@ namespace AppUIBasics
                     hadAnimations = false;
                 }
 
+                bool hadDeferredAnimationOperations;
                 errorString = WaitForDeferredAnimationOperationsComplete(out hadDeferredAnimationOperations);
                 if (errorString.Length > 0) { return errorString; }
                 AddLog("After WaitForDeferredAnimationOperationsComplete");
@@ -322,70 +307,6 @@ namespace AppUIBasics
 
             timer.Start();
             shouldContinueEvent.WaitOne(s_defaultWaitForEventMs);
-        }
-
-        string WaitForBuildTreeServiceWork(out bool hadBuildTreeWork)
-        {
-            hadBuildTreeWork = false;
-            bool hasBuildTreeWork = true;
-
-            // We want to avoid an infinite loop, so we'll iterate 20 times before concluding that
-            // we probably are never going to become idle.
-            int waitCount = 20;
-
-            while (hasBuildTreeWork && waitCount-- > 0)
-            {
-                if (!NativeMethods.ResetEvent(m_buildTreeServiceDrainedHandle.NativeHandle))
-                {
-                    return "Failed to reset BuildTreeServiceDrained handle.";
-                }
-
-                AutoResetEvent layoutUpdatedEvent = new AutoResetEvent(false);
-
-                m_dispatcherQueue.TryEnqueue(
-                    DispatcherQueuePriority.Normal,
-                    new DispatcherQueueHandler(() =>
-                    {
-                        foreach (Window window in WindowHelper.ActiveWindows)
-                        {
-                            if (window.Content != null)
-                            {
-                                window.Content.UpdateLayout();
-                            }
-                        }
-
-                        layoutUpdatedEvent.Set();
-                    }));
-
-                layoutUpdatedEvent.WaitOne(s_defaultWaitForEventMs);
-
-                // This will be signaled if and only if Jupiter plans to at some point in the near
-                // future set the BuildTreeServiceDrained event.
-                uint waitResult = NativeMethods.WaitForSingleObject(m_hasBuildTreeWorksHandle.NativeHandle, 0);
-
-                if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-                {
-                    return "HasBuildTreeWork handle wait returned an invalid value.";
-                }
-
-                hasBuildTreeWork = (waitResult == NativeMethods.WAIT_OBJECT_0);
-                AddLog("HasBuildTreeWork? " + hasBuildTreeWork);
-
-                if (hasBuildTreeWork)
-                {
-                    AddLog("Waiting for BuildTreeService to finish...");
-                    waitResult = NativeMethods.WaitForSingleObject(m_buildTreeServiceDrainedHandle.NativeHandle, 10000);
-
-                    if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-                    {
-                        return "Wait for build tree service failed";
-                    }
-                    AddLog("BuildTreeService drained");
-                }
-            }
-
-            hadBuildTreeWork = hasBuildTreeWork;
-            return string.Empty;
         }
 
         string WaitForAnimationsComplete(out bool hadAnimations)
@@ -471,31 +392,6 @@ namespace AppUIBasics
 
             hadDeferredAnimationOperations = hasDeferredAnimationOperations;
             return string.Empty;
-        }
-
-        private void SynchronouslyTickUIThread(uint ticks)
-        {
-            for (uint i = 0; i < ticks; i++)
-            {
-                AutoResetEvent tickCompleteEvent = new AutoResetEvent(false);
-
-                m_dispatcherQueue.TryEnqueue(
-                    DispatcherQueuePriority.Normal,
-                    new DispatcherQueueHandler(() =>
-                    {
-                        EventHandler<object> renderingHandler = null;
-
-                        renderingHandler = (object sender, object args) =>
-                        {
-                            CompositionTarget.Rendering -= renderingHandler;
-                            tickCompleteEvent.Set();
-                        };
-
-                        CompositionTarget.Rendering += renderingHandler;
-                    }));
-
-                tickCompleteEvent.WaitOne(s_defaultWaitForEventMs);
-            }
         }
 
         private bool IsRS2OrHigher()

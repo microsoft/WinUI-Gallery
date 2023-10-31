@@ -37,8 +37,9 @@ namespace AppUIBasics
 
         public static string WinAppSdkDetails
         {
-            get => string.Format("Windows App SDK {0}.{1}.{2}{3}",
-                WASDK.Release.Major, WASDK.Release.Minor, WASDK.Release.Patch, WASDK.Release.FormattedVersionTag);
+            // TODO: restore patch number and version tag when WinAppSDK supports them both
+            get => string.Format("Windows App SDK {0}.{1}",
+                WASDK.Release.Major, WASDK.Release.Minor);
         }
 
         public static string WinAppSdkRuntimeDetails
@@ -115,11 +116,6 @@ namespace AppUIBasics
             startupWindow = WindowHelper.CreateWindow();
             startupWindow.ExtendsContentIntoTitleBar = true;
 #if DEBUG
-            //if (System.Diagnostics.Debugger.IsAttached)
-            //{
-            //    this.DebugSettings.EnableFrameRateCounter = true;
-            //}
-
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;
@@ -152,7 +148,7 @@ namespace AppUIBasics
 
             ThemeHelper.Initialize();
 
-            Type targetPageType = typeof(NewControlsPage);
+            Type targetPageType = typeof(HomePage);
             string targetPageArguments = string.Empty;
 
             if (args != null)
@@ -188,9 +184,9 @@ namespace AppUIBasics
                             {
                                 targetPageType = typeof(AllControlsPage);
                             }
-                            else if (targetId == "NewControls")
+                            else if (targetId == "HomePage")
                             {
-                                targetPageType = typeof(NewControlsPage);
+                                targetPageType = typeof(HomePage);
                             }
                             else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
                             {
@@ -220,7 +216,7 @@ namespace AppUIBasics
             NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
             rootPage.Navigate(targetPageType, targetPageArguments);
 
-            if (targetPageType == typeof(NewControlsPage))
+            if (targetPageType == typeof(HomePage))
             {
                 ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }

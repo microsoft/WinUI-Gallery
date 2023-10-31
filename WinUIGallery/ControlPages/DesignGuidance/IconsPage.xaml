@@ -19,7 +19,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AppUIBasics"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -41,37 +41,15 @@
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
-            <UserControl PointerPressed="Icons_TemplatePointerPressed">
-                <Grid
-                    x:Name="IconTemplateRoot"
-                    Width="96"
-                    Height="96"
-                    Margin="4"
-                    HorizontalAlignment="Stretch"
-                    x:DefaultBindMode="OneWay"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1"
-                    CornerRadius="4"
-                    ToolTipService.ToolTip="{Binding Name}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="SelectionState">
-                            <VisualState x:Name="Default" />
-                            <VisualState x:Name="Selected">
-                                <VisualState.Setters>
-                                    <Setter Target="IconTemplateRoot.Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-                                    <Setter Target="IconGlyph.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                    <Setter Target="IconName.Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
+            <ItemContainer
+                AutomationProperties.Name="{Binding Name}"
+                ToolTipService.ToolTip="{Binding Name}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                Width="96"
+                Height="96"
+                Margin="4">
+                <Grid>
                     <!--  Icon  -->
                     <Viewbox
                         Grid.Row="1"
@@ -98,7 +76,7 @@
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
                 </Grid>
-            </UserControl>
+            </ItemContainer>
         </DataTemplate>
     </Page.Resources>
 
@@ -109,24 +87,24 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font."/>
-        <labs:SettingsExpander Grid.Row="1"
-                  IsExpanded="False"
-                  Header="Instructions on how to use Segoe Fluent Icons">
-            <labs:SettingsExpander.Items>
-                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
+        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
+
+        <toolkit:SettingsExpander
+            Grid.Row="1"
+            Header="Instructions on how to use Segoe Fluent Icons"
+            IsExpanded="False">
+            <toolkit:SettingsExpander.Items>
+                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
                     <RichTextBlock TextWrapping="Wrap">
                         <Paragraph FontWeight="SemiBold">
                             How to get the font
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it
-                            <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.
-                        </Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>                            .</Paragraph>
                     </RichTextBlock>
-                </labs:SettingsCard>
-                <labs:SettingsCard ContentAlignment="Left" Padding="16,8">
+                </toolkit:SettingsCard>
+                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">
@@ -135,43 +113,41 @@
                             <Paragraph>
                                 If you don't specify a FontFamily,
                                 or you specify a FontFamily that is not available on the system at runtime,
-                                the <Hyperlink NavigateUri="https://learn.microsoft.com/uwp/api/windows.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
+                                the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
                             </Paragraph>
                             <Paragraph>
                                 An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
                                 For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
                             </Paragraph>
                             <Paragraph>
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so
-                                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.
-                            </Paragraph>
+                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
                         </RichTextBlock>
-                        <controls:SampleCodePresenter
-                            SampleType="XAML"
-                            CodeSourceFile="Icons/FontIconSample2_xaml.txt">
-                        </controls:SampleCodePresenter>
+                        <controls:SampleCodePresenter CodeSourceFile="Icons/FontIconSample2_xaml.txt" SampleType="XAML" />
                     </StackPanel>
-                </labs:SettingsCard>
-            </labs:SettingsExpander.Items>
-        </labs:SettingsExpander>
+                </toolkit:SettingsCard>
+            </toolkit:SettingsExpander.Items>
+        </toolkit:SettingsExpander>
 
-        <StackPanel Grid.Row="2" Spacing="8" Margin="0,24,0,0">
-            <TextBlock
-            Style="{ThemeResource BodyStrongTextBlockStyle}"
-            Text="Fluent Icons Library" />
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,24,0,0"
+            Spacing="8">
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
             <AutoSuggestBox
-            MinWidth="304"
-            MaxWidth="320"
-            HorizontalAlignment="Left"
-            PlaceholderText="Search icons"
-            QueryIcon="Find"
-            TextChanged="SearchTextBox_TextChanged" />
+                x:Name="IconsAutoSuggestBox"
+                MinWidth="304"
+                MaxWidth="320"
+                HorizontalAlignment="Left"
+                PlaceholderText="Search icons"
+                QueryIcon="Find"
+                TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
 
         <controls1:SampleThemeListener
-                Grid.Row="3"
-                MaxHeight="600"
-                VerticalAlignment="Top">
+            Grid.Row="3"
+            MaxHeight="600"
+            VerticalAlignment="Top"
+            IsTabStop="True">
             <Grid
                 Background="{ThemeResource ControlExampleDisplayBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -186,18 +162,18 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     AutomationProperties.Name="Icons">
-                    <ItemsRepeater
-                        x:Name="IconsRepeater"
+                    <ItemsView
+                        x:Name="IconsItemsView"
                         MinWidth="100"
                         Margin="0,0,0,36"
                         HorizontalAlignment="Stretch"
-                        ElementIndexChanged="IconsRepeater_ElementIndexChanged"
-                        ElementPrepared="IconsRepeater_ElementPrepared"
-                        ItemTemplate="{StaticResource IconTemplate}">
-                        <ItemsRepeater.Layout>
+                        SelectionChanged="IconsItemsView_SelectionChanged"
+                        ItemTemplate="{StaticResource IconTemplate}"
+                        TabFocusNavigation="Once">
+                        <ItemsView.Layout>
                             <UniformGridLayout Orientation="Horizontal" />
-                        </ItemsRepeater.Layout>
-                    </ItemsRepeater>
+                        </ItemsView.Layout>
+                    </ItemsView>
                 </ScrollViewer>
 
                 <Grid
