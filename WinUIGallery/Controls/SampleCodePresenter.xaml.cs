@@ -25,6 +25,7 @@ using Microsoft.UI.Xaml.Media;
 using AppUIBasics.Common;
 using System.Reflection;
 using System.IO;
+using Microsoft.UI.Xaml.Automation;
 
 namespace AppUIBasics.Controls
 {
@@ -66,7 +67,7 @@ namespace AppUIBasics.Controls
             set { SetValue(SubstitutionsProperty, value); }
         }
 
-        public bool IsEmpty => Code.Length == 0 && CodeSourceFile == null;
+        public bool IsEmpty => string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(CodeSourceFile);
 
         private string actualCode = "";
         private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
@@ -87,7 +88,7 @@ namespace AppUIBasics.Controls
 
         private void ReevaluateVisibility()
         {
-            if (Code.Length == 0 && CodeSourceFile == null)
+            if (IsEmpty)
             {
                 Visibility = Visibility.Collapsed;
             }
@@ -225,6 +226,10 @@ namespace AppUIBasics.Controls
             }
 
             actualCode = sampleString;
+
+            var name = GetSampleLanguageVisualState() == "InlineSample" ? actualCode : SampleHeader.Text;
+            var automationName = "Copy " + name + " Code";
+            AutomationProperties.SetName(CopyCodeButton, automationName);
 
 
             var formatter = GenerateRichTextFormatter();

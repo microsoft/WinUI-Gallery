@@ -58,7 +58,6 @@ namespace AppUIBasics.ControlPages
 
         private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            var selectedFlyoutItem = sender as AppBarButton;
             SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
         }
 

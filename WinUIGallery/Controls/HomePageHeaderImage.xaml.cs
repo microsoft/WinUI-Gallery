@@ -9,10 +9,10 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Composition;
 using Microsoft.UI;
-using CommunityToolkit.WinUI.UI.Animations;
+using CommunityToolkit.WinUI.Animations;
 using Windows.UI;
 using System;
-using CommunityToolkit.WinUI.UI;
+using CommunityToolkit.WinUI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

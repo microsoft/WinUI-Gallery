@@ -22,9 +22,6 @@ namespace AppUIBasics.Controls
 {
     public sealed partial class HeaderTile : UserControl
     {
-        Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
-        private SpringVector3NaturalMotionAnimation _springAnimation;
-
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -65,34 +62,6 @@ namespace AppUIBasics.Controls
         public HeaderTile()
         {
             this.InitializeComponent();
-        }
-
-        private void Element_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            CreateOrUpdateSpringAnimation(1.1f);
-            (sender as UIElement).CenterPoint = new Vector3(70, 40, 1f);
-            (sender as UIElement).StartAnimation(_springAnimation);
-        }
-
-        private void Element_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            CreateOrUpdateSpringAnimation(1.0f);
-            (sender as UIElement).CenterPoint = new Vector3(70, 40, 1f);
-            (sender as UIElement).StartAnimation(_springAnimation);
-        }
-
-        private void CreateOrUpdateSpringAnimation(float finalValue)
-        {
-            if (_springAnimation == null)
-            {
-                if (_compositor != null)
-                {
-                    _springAnimation = _compositor.CreateSpringVector3Animation();
-                    _springAnimation.Target = "Scale";
-                }
-            }
-
-            _springAnimation.FinalValue = new Vector3(finalValue);
         }
     }
 }

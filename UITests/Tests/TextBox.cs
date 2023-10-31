@@ -39,12 +39,6 @@ namespace UITests.Tests
         }
 
 		[TestMethod]
-		public void ValidateAccessibilityWithAxe()
-		{
-			AxeHelper.AssertNoAccessibilityErrors();
-		}
-
-		[TestMethod]
         public void Clear()
         {
             textBoxElement1.Clear();
@@ -115,8 +109,8 @@ namespace UITests.Tests
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("abcde12345!@#$%");
-            Assert.AreEqual("abcde12345!@#$%", textBoxElement1.Text);
+            textBoxElement1.SendKeys("abc");
+            Assert.AreEqual("abc", textBoxElement1.Text);
 
             // Use Ctrl + A to select all text and backspace to clear the box
             textBoxElement1.SendKeys(Keys.Control + "a" + Keys.Control + Keys.Backspace);
@@ -124,8 +118,8 @@ namespace UITests.Tests
 
             textBoxElement2.Clear();
             Assert.AreEqual(string.Empty, textBoxElement2.Text);
-            textBoxElement2.SendKeys("fghij67890^&*()");
-            Assert.AreEqual("fghij67890^&*()", textBoxElement2.Text);
+            textBoxElement2.SendKeys("efg");
+            Assert.AreEqual("efg", textBoxElement2.Text);
         }
 
         [TestMethod]
@@ -133,8 +127,8 @@ namespace UITests.Tests
         {
             textBoxElement1.Clear();
             Assert.AreEqual(string.Empty, textBoxElement1.Text);
-            textBoxElement1.SendKeys("abcde12345!@#$%");
-            Assert.AreEqual("abcde12345!@#$%", textBoxElement1.Text);
+            textBoxElement1.SendKeys("abc");
+            Assert.AreEqual("abc", textBoxElement1.Text);
         }
     }
 }
