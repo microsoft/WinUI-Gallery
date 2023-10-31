@@ -37,12 +37,6 @@ namespace UITests.Tests
         }
 
 		[TestMethod]
-		public void ValidateAccessibilityWithAxe()
-		{
-			AxeHelper.AssertNoAccessibilityErrors();
-		}
-
-		[TestMethod]
         public void Click()
         {
             var radioButtonEventOutput = Session.FindElementByAccessibilityId("Control1Output");

@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using System;
@@ -10,8 +10,6 @@ namespace AppUIBasics.Common
     class MenuItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate ItemTemplate { get; set; }
-
-        //public string PaneTitle { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {

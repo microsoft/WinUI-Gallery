@@ -323,6 +323,18 @@ namespace AppUIBasics.ControlPages
                 new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
                 );
         }
+
+        //===================================================================================================================
+        // ListView with Images Sample
+        //===================================================================================================================
+
+        private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
+        {
+            var textBlock = sender as TextBlock;
+            var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
+
+            ToolTipService.SetToolTip(textBlock, text);
+        }
     }
 
     public class Message
