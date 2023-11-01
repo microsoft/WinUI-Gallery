@@ -142,9 +142,9 @@
                 ShowSeparator="False" />
         </Grid>
 
-        <!--  Control Solid  -->
+        <!--  Neutral Solid  -->
         <designguidance:ColorPageExample
-            Title="Control Solid"
+            Title="Neutral Solid"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Fills used for Sliders thumb control to cover the track beneath it.">
             <Slider
@@ -160,16 +160,16 @@
 
             <designguidance:ColorTile
                 Background="{ThemeResource ControlSolidFillColorDefaultBrush}"
-                ColorBrushName="ControlStrongFillColorDefaultBrush"
+                ColorBrushName="ControlSolidFillColorDefaultBrush"
                 ColorExplanation="Rest"
                 ColorName="Control Solid / Default"
                 ColorValue="#FFFFFF (FF, 100%)"
                 ShowSeparator="False" />
         </Grid>
 
-        <!--  Control Strong Fill  -->
+        <!--  Neutral Strong  -->
         <designguidance:ColorPageExample
-            Title="Control Strong Fill"
+            Title="Neutral Strong"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
             Description="Used for controls that must meet contrast ratio requirements of 3:1.">
             <ScrollBar

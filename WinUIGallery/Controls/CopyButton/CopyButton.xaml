@@ -203,6 +203,7 @@
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             FontFamily="{TemplateBinding FontFamily}"
                             FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
                             RenderTransformOrigin=".5,.5">
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />

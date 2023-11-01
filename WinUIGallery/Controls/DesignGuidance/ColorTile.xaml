@@ -7,6 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
+    xmlns:localControls="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -39,22 +40,20 @@
                 Text="{x:Bind ColorName, Mode=OneWay}"
                 TextWrapping="WrapWholeWords" />
 
-            <Button
+            <localControls:CopyButton
                 x:Name="CopyBrushNameButton"
                 AutomationProperties.Name="Copy brush name"
                 Grid.RowSpan="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Padding="4"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CopyBrushNameButton_Click"
+                Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy brush name">
-                <FontIcon FontSize="16" Glyph="&#xE8C8;" />
-            </Button>
+                ToolTipService.ToolTip="Copy brush name"/>
 
             <TextBlock
                 Grid.Row="1"
