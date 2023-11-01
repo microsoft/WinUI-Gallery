@@ -101,7 +101,7 @@
                 </toolkit:SettingsExpander>
 
                 <toolkit:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode" Visibility="Collapsed">
-                    <labs:SettingsExpander.HeaderIcon>
+                    <toolkit:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC4F;" />
                     </toolkit:SettingsExpander.HeaderIcon>
                     <ToggleSwitch x:Name="screenshotModeToggle" Toggled="screenshotModeToggle_Toggled" />
