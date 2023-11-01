@@ -100,7 +100,7 @@
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
 
-                <toolkit:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode">
+                <toolkit:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode" Visibility="Collapsed">
                     <toolkit:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC4F;" />
                     </toolkit:SettingsExpander.HeaderIcon>

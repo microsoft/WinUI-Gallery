@@ -35,18 +35,12 @@ namespace AppUIBasics
         }
 
         public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
+        private int lastNavigationSelectionMode = 0;
 
         public SettingsPage()
         {
             this.InitializeComponent();
             Loaded += OnSettingsPageLoaded;
-
-            if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
-                soundToggle.IsOn = true;
-            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
-                spatialSoundBox.IsOn = true;
-
-            ScreenshotCard.Visibility = Visibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -81,7 +75,16 @@ namespace AppUIBasics
                 {
                     navigationLocation.SelectedIndex = 1;
                 }
+                lastNavigationSelectionMode = navigationLocation.SelectedIndex;
             }
+
+            if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
+                soundToggle.IsOn = true;
+            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On)
+                spatialSoundBox.IsOn = true;
+#if DEBUG
+            ScreenshotCard.Visibility = Visibility.Visible;
+#endif
         }
 
         private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
@@ -137,7 +140,13 @@ namespace AppUIBasics
 
         private void navigationLocation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
+            // Since setting the left mode does not look at the old setting we 
+            // need to check if this is an actual update
+            if (navigationLocation.SelectedIndex != lastNavigationSelectionMode)
+            {
+                NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
+                lastNavigationSelectionMode = navigationLocation.SelectedIndex;
+            }
         }
 
         private async void FolderButton_Click(object sender, RoutedEventArgs e)
