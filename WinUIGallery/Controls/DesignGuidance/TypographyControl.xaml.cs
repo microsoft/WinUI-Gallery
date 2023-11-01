@@ -77,16 +77,6 @@ namespace WinUIGallery.DesktopWap.Controls
             set => SetValue(ResourceNameProperty, value);
         }
 
-        private void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            CopyToClipboardButton.Visibility = Visibility.Visible;
-        }
-
-        private void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            CopyToClipboardButton.Visibility = Visibility.Collapsed;
-        }
-
         private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
         {
             DataPackage package = new DataPackage();

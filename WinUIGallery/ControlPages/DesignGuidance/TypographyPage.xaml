@@ -39,8 +39,7 @@
         </Grid.RowDefinitions>
         <RichTextBlock>
             <Paragraph>
-                Type helps provide structure and hierarchy to UI. The default font for Windows is
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
+                Type helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
                 Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
         </RichTextBlock>
         <local:ControlExample
@@ -50,8 +49,11 @@
             HeaderText="Type ramp"
             XamlSource="Typography/TypographySample_xaml.txt">
             <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                <ScrollViewer Height="450" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
-                    <Canvas Height="450" Width="750">
+                <ScrollViewer
+                    Height="450"
+                    HorizontalScrollBarVisibility="Auto"
+                    HorizontalScrollMode="Auto">
+                    <Canvas Width="750" Height="450">
                         <Image
                             Height="450"
                             Canvas.ZIndex="0"
@@ -151,17 +153,17 @@
                     </Canvas>
                 </ScrollViewer>
 
-                <ScrollViewer HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
                     <StackPanel>
                         <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="286" />
-                                <ColumnDefinition Width="156" />
-                                <ColumnDefinition Width="140" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="272" />
+                                <ColumnDefinition Width="136" />
+                                <ColumnDefinition Width="112" />
+                                <ColumnDefinition Width="164" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
-                                Margin="24,0,0,0"
+                                Margin="16,0,0,0"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Example" />
@@ -174,7 +176,7 @@
                                 Grid.Column="2"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Size / Line height" />
+                                Text="Size/Line height" />
                             <TextBlock
                                 Grid.Column="3"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
