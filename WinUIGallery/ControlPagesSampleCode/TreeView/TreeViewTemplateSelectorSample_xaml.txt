@@ -13,7 +13,7 @@
     <DataTemplate x:Key="FileTemplate" x:DataType="controlpages:ExplorerItem">
         <TreeViewItem AutomationProperties.Name="{x:Bind Name}">
             <StackPanel Orientation="Horizontal">
-                <Image Width="20" Source="../Assets/file.png"/>
+                <FontIcon Glyph="&#xE8A5;" />
                 <TextBlock Margin="0,0,10,0"/>
                 <TextBlock Text="{x:Bind Name}"/>
             </StackPanel>
