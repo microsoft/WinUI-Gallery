@@ -25,6 +25,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
+using Microsoft.Windows.AppLifecycle;
+using System.IO;
 
 namespace AppUIBasics
 {
@@ -78,11 +80,6 @@ namespace AppUIBasics
             this.Resuming += App_Resuming;
             this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
 #endif
-
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-            {
-                this.FocusVisualKind = AnalyticsInfo.VersionInfo.DeviceFamily == "Xbox" ? FocusVisualKind.Reveal : FocusVisualKind.HighVisibility;
-            }
         }
 
         public void EnableSound(bool withSpatial = false)
@@ -170,46 +167,31 @@ namespace AppUIBasics
 
                     targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
                 }
-                else if (args.Kind == ActivationKind.Protocol)
+            }
+            var eventargs = Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs();
+            if (eventargs != null && eventargs.Kind is ExtendedActivationKind.Protocol && eventargs.Data is ProtocolActivatedEventArgs)
+            {
+                ProtocolActivatedEventArgs ProtocolArgs = eventargs.Data as ProtocolActivatedEventArgs;
+                var uri = ProtocolArgs.Uri.LocalPath.Replace("/", "");
+
+                targetPageArguments = uri;
+                string targetId = string.Empty;
+
+                if (uri == "AllControls")
                 {
-                    Match match;
-
-                    string targetId = string.Empty;
-
-                    switch (((ProtocolActivatedEventArgs)args).Uri?.AbsoluteUri)
-                    {
-                        case string s when IsMatching(s, "(/*)category/(.*)"):
-                            targetId = match.Groups[2]?.ToString();
-                            if (targetId == "AllControls")
-                            {
-                                targetPageType = typeof(AllControlsPage);
-                            }
-                            else if (targetId == "HomePage")
-                            {
-                                targetPageType = typeof(HomePage);
-                            }
-                            else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == targetId))
-                            {
-                                targetPageType = typeof(SectionPage);
-                            }
-                            break;
-
-                        case string s when IsMatching(s, "(/*)item/(.*)"):
-                            targetId = match.Groups[2]?.ToString();
-                            if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == targetId)))
-                            {
-                                targetPageType = typeof(ItemPage);
-                            }
-                            break;
-                    }
-
-                    targetPageArguments = targetId;
-
-                    bool IsMatching(string parent, string expression)
-                    {
-                        match = Regex.Match(parent, expression);
-                        return match.Success;
-                    }
+                    targetPageType = typeof(AllControlsPage);
+                }
+                else if (uri == "NewControls")
+                {
+                    targetPageType = typeof(HomePage);
+                }
+                else if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == uri))
+                {
+                    targetPageType = typeof(SectionPage);
+                }
+                else if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == uri)))
+                {
+                    targetPageType = typeof(ItemPage);
                 }
             }
 
@@ -220,13 +202,9 @@ namespace AppUIBasics
             {
                 ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
             }
-            else if (targetPageType == typeof(ItemPage))
-            {
-                NavigationRootPage.GetForElement(this).EnsureNavigationSelection(targetPageArguments);
-            }
 
             // Ensure the current window is active
-           StartupWindow.Activate();
+            StartupWindow.Activate();
         }
 
         public Frame GetRootFrame()
