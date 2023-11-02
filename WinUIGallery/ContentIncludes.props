@@ -334,6 +334,7 @@
     <Content Include="ControlPagesSampleCode\System\FilePickerSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\Window.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample3.txt" />
