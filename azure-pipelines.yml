@@ -18,7 +18,7 @@ steps:
           versionSpec: 5.8.0
 
     - task: NuGetCommand@2
-      displayName: Restore NuGet packages for WinUI Gallery
+      displayName: Restore NuGet Packages for WinUI Gallery
       inputs:
         command: 'restore'
         restoreSolution: '**/*.sln'
@@ -26,13 +26,13 @@ steps:
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
     - task: PowerShell@2
-      displayName: Generate test signing certificate
+      displayName: Generate Test Signing Certificate
       inputs:
         targetType: filePath
         filePath: build/GenerateTestPFX.ps1
 
     - task: DotNetCoreCLI@2
-      displayName: Build WinUI Gallery package
+      displayName: Build WinUI Gallery Package
       inputs:
         command: 'publish'
         publishWebProjects: false
@@ -42,7 +42,7 @@ steps:
         modifyOutputPath: false
 
     - task: PowerShell@2
-      displayName: Install WinUI Gallery package
+      displayName: Install WinUI Gallery Package
       inputs:
           targetType: "inline"
           script: |
@@ -56,12 +56,12 @@ steps:
           workingDirectory: "$(System.DefaultWorkingDirectory)"
 
     - task: NuGetCommand@2
-      displayName: Restore packages for UI Tests project
+      displayName: Restore Packages for UI Tests Project
       inputs:
           restoreSolution: "$(solutionUITests)"
 
     - task: VSBuild@1
-      displayName: Build UI Tests project
+      displayName: Build UI Tests Project
       inputs:
           platform: "$(buildPlatform)"
           solution: "$(solutionUITests)"
