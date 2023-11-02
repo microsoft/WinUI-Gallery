@@ -22,7 +22,6 @@
                         <x:String>Green</x:String>
                         <x:String>Red</x:String>
                         <x:String>Yellow</x:String>
-                        <x:String>Placeholder dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy dummy</x:String>
                     </ListBox>
                     <Rectangle x:Name="Control1Output" Height="30" Width="100" Margin="0,10,0,0" />
                 </StackPanel>
