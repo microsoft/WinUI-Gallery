@@ -14,10 +14,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A ListBox with items defined inline and its width set.">
+        <local:ControlExample x:Name="Example1" HeaderText="A ListBox with items defined inline and its minimum width set.">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <ListBox x:Name="ListBox1" SelectionChanged="ColorListBox_SelectionChanged" Width="200" HighContrastAdjustment="Auto">
+                    <ListBox x:Name="ListBox1" SelectionChanged="ColorListBox_SelectionChanged" MinWidth="200" HighContrastAdjustment="Auto">
                         <x:String>Blue</x:String>
                         <x:String>Green</x:String>
                         <x:String>Red</x:String>
@@ -28,7 +28,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ListBox SelectionChanged="ColorListBox_SelectionChanged" Width="200"&gt;
+&lt;ListBox SelectionChanged="ColorListBox_SelectionChanged" MinWidth="200"&gt;
     &lt;x:String&gt;Blue&lt;x:String&gt;
     &lt;x:String&gt;Green&lt;x:String&gt;
     &lt;x:String&gt;Red&lt;x:String&gt;
