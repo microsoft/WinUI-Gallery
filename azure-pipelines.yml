@@ -1,11 +1,5 @@
-# Universal Windows Platform
-# Build a Universal Windows Platform project using Visual Studio.
-# Add steps that test and distribute an app, save build artifacts, and more:
-# https://aka.ms/yaml
-
 trigger:
     - main
-    - "dev/create-ci"
 
 pool:
     vmImage: "windows-2022"
@@ -24,6 +18,7 @@ steps:
           versionSpec: 5.8.0
 
     - task: NuGetCommand@2
+      displayName: Restore NuGet Packages for WinUI Gallery
       inputs:
         command: 'restore'
         restoreSolution: '**/*.sln'
@@ -31,12 +26,13 @@ steps:
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
     - task: PowerShell@2
-      displayName: GenerateTestPFX.ps1
+      displayName: Generate Test Signing Certificate
       inputs:
         targetType: filePath
         filePath: build/GenerateTestPFX.ps1
 
     - task: DotNetCoreCLI@2
+      displayName: Build WinUI Gallery Package
       inputs:
         command: 'publish'
         publishWebProjects: false
@@ -46,39 +42,39 @@ steps:
         modifyOutputPath: false
 
     - task: PowerShell@2
+      displayName: Install WinUI Gallery Package
       inputs:
           targetType: "inline"
           script: |
-              # Find correct folder and run app install script.
               cd $(appxPackageDir)
 
               $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
-              echo $AppBundle
               cd $AppBundle
-              ls
               ./Install.ps1 -Force
-              Get-AppxPackage
           errorActionPreference: "continue"
           failOnStderr: true
           workingDirectory: "$(System.DefaultWorkingDirectory)"
 
     - task: NuGetCommand@2
-      displayName: Restore packages
+      displayName: Restore Packages for UI Tests Project
       inputs:
           restoreSolution: "$(solutionUITests)"
 
     - task: VSBuild@1
+      displayName: Build UI Tests Project
       inputs:
           platform: "$(buildPlatform)"
           solution: "$(solutionUITests)"
           configuration: "$(buildConfiguration)"
 
     - task: Windows Application Driver@0
+      displayName: Start Windows Application Driver
       inputs:
           OperationType: "Start"
           AgentResolution: "1080p"
 
     - task: VSTest@2
+      displayName: Run UI Tests
       inputs:
           testSelector: "testAssemblies"
           testAssemblyVer2: |
@@ -89,5 +85,6 @@ steps:
           searchFolder: "$(System.DefaultWorkingDirectory)"
 
     - task: Windows Application Driver@0
+      displayName: Stop Windows Application Driver
       inputs:
           OperationType: "Stop"
