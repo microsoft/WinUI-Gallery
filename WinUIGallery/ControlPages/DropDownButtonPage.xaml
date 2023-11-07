@@ -30,7 +30,7 @@
                     <FontIcon Glyph="&#xE715;"/>
                 </DropDownButton.Content>
                 <DropDownButton.Flyout>
-                    <MenuFlyout Placement="Bottom">
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
                         <MenuFlyoutItem Text="Send">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE725;"/>
