@@ -136,6 +136,7 @@
         <None Remove="ControlPages\Typography.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
+        <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\SignalSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
@@ -177,6 +178,9 @@
     <ItemGroup>
         <Page Update="ControlPages\InfoBadgePage.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml">
+          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
     <ItemGroup>
