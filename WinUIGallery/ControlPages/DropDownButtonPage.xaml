@@ -13,7 +13,7 @@
             <StackPanel x:Name="Control1" Orientation="Horizontal">
                 <DropDownButton Content="Email">
                     <DropDownButton.Flyout>
-                        <MenuFlyout Placement="Bottom">
+                        <MenuFlyout Placement="BottomEdgeAlignedLeft">
                             <MenuFlyoutItem Text="Send"/>
                             <MenuFlyoutItem Text="Reply"/>
                             <MenuFlyoutItem Text="Reply All"/>
@@ -30,7 +30,7 @@
                     <FontIcon Glyph="&#xE715;"/>
                 </DropDownButton.Content>
                 <DropDownButton.Flyout>
-                    <MenuFlyout Placement="Bottom">
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
                         <MenuFlyoutItem Text="Send">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE725;"/>
