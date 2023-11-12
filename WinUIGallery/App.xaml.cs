@@ -27,6 +27,7 @@ using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
 using Microsoft.Windows.AppLifecycle;
 using System.IO;
+using WinUIGallery.Helper;
 
 namespace AppUIBasics
 {
@@ -36,6 +37,7 @@ namespace AppUIBasics
     sealed partial class App : Application
     {
         private static Window startupWindow;
+        private static Win32WindowHelper win32WindowHelper;
 
         public static string WinAppSdkDetails
         {
@@ -112,6 +114,10 @@ namespace AppUIBasics
 
             startupWindow = WindowHelper.CreateWindow();
             startupWindow.ExtendsContentIntoTitleBar = true;
+
+            win32WindowHelper = new Win32WindowHelper(startupWindow);
+            win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
