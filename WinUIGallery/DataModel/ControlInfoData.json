@@ -4,7 +4,7 @@
       "UniqueId": "Design_Guidance",
       "Title": "Design guidance",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "IsSpecialSection": true,
       "Folder": "DesignGuidance",
       "Items": [
@@ -163,7 +163,7 @@
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus & toolbars",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "XamlUICommand",
@@ -465,7 +465,7 @@
       "UniqueId": "Collections",
       "Title": "Collections",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "FlipView",
@@ -689,7 +689,7 @@
       "UniqueId": "DateAndTime",
       "Title": "Date & time",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "CalendarDatePicker",
@@ -790,7 +790,7 @@
       "UniqueId": "BasicInput",
       "Title": "Basic input",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "InputValidation",
@@ -1168,7 +1168,7 @@
       "UniqueId": "StatusAndInfo",
       "Title": "Status & info",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "InfoBadge",
@@ -1292,7 +1292,7 @@
       "UniqueId": "DialogsAndFlyouts",
       "Title": "Dialogs & flyouts",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "ContentDialog",
@@ -1376,7 +1376,7 @@
       "UniqueId": "Scrolling",
       "Title": "Scrolling",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "AnnotatedScrollBar",
@@ -1509,7 +1509,7 @@
       "UniqueId": "Layout",
       "Title": "Layout",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Description": "Use layout controls to arrange the controls and content in your app.",
       "Items": [
         {
@@ -1806,7 +1806,7 @@
       "UniqueId": "Navigation",
       "Title": "Navigation",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "BreadcrumbBar",
@@ -1912,7 +1912,7 @@
       "UniqueId": "Media",
       "Title": "Media",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "AnimatedVisualPlayer",
@@ -2076,7 +2076,7 @@
       "UniqueId": "Styles",
       "Title": "Styles",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "Acrylic",
@@ -2317,7 +2317,7 @@
       "UniqueId": "Text",
       "Title": "Text",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "AutoSuggestBox",
@@ -2506,7 +2506,7 @@
       "UniqueId": "Motion",
       "Title": "Motion",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "ConnectedAnimation",
@@ -2701,7 +2701,7 @@
       "UniqueId": "MultipleWindows",
       "Title": "Windowing",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "CreateMultipleWindows",
@@ -2752,7 +2752,7 @@
       "UniqueId": "System",
       "Title": "System",
       "ImagePath": "",
-      "ImageIconPath": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "Clipboard",
