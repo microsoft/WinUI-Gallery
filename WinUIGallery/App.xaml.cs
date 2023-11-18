@@ -42,16 +42,12 @@ namespace AppUIBasics
         {
             get
             {
-                var details = WinAppSdkDetails;
-#if WindowsAppSdkRuntimeDependent
                 // Retrieve Windows App Runtime version info dynamically
                 var windowsAppRuntimeVersion =
                     from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
                     where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
                     select FileVersionInfo.GetVersionInfo(module.FileName);
-                details += ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion; 
-#endif
-                return details;
+                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion; 
             }
         }
 
