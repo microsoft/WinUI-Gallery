@@ -7,26 +7,20 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using AppUIBasics.Common;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation.Metadata;
-using Windows.System.Profile;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.AppLifecycle;
+using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using Microsoft.Windows.AppLifecycle;
-using System.IO;
 
 namespace AppUIBasics
 {
@@ -48,11 +42,12 @@ namespace AppUIBasics
         {
             get
             {
-                var details = WinAppSdkDetails;
-#if WindowsAppSdkRuntimeDependent
-                details += ", Windows App Runtime " + WASDK.Runtime.Version.DotQuadString;
-#endif
-                return details;
+                // Retrieve Windows App Runtime version info dynamically
+                var windowsAppRuntimeVersion =
+                    from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
+                    where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
+                    select FileVersionInfo.GetVersionInfo(module.FileName);
+                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion; 
             }
         }
 
