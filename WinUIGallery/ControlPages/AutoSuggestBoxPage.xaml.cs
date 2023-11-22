@@ -234,7 +234,7 @@ namespace AppUIBasics.ControlPages
             {
                 ControlDetails.Visibility = Visibility.Visible;
 
-                BitmapImage image = new BitmapImage(new Uri(control.ImageIconPath));
+                BitmapImage image = new BitmapImage(new Uri(control.IconGlyph));
                 ControlImage.Source = image;
 
                 ControlTitle.Text = control.Title;

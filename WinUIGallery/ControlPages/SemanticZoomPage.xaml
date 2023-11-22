@@ -25,7 +25,6 @@
 
         <DataTemplate x:Key="ZoomedInTemplate" x:DataType="data:ControlInfoDataItem">
             <StackPanel Orientation="Horizontal" MinWidth="200" Margin="12,6,12,6">
-                <Image Source="{x:Bind ImageIconPath}" Width="36"/>
                 <StackPanel Margin="20,0,0,0">
                     <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}"/>
                     <TextBlock Text="{x:Bind Subtitle}" TextWrapping="Wrap" HorizontalAlignment="Left" Width="300" Style="{StaticResource BodyTextBlockStyle}"/>
