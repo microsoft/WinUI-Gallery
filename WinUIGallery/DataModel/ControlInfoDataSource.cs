@@ -34,7 +34,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string imageIconPath, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string iconGlyph, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -43,7 +43,7 @@ namespace AppUIBasics.Data
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
-            this.ImageIconPath = imageIconPath;
+            this.IconGlyph = iconGlyph;
             this.BadgeString = badgeString;
             this.Content = content;
             this.IsNew = isNew;
@@ -60,7 +60,7 @@ namespace AppUIBasics.Data
         public string Subtitle { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public string ImageIconPath { get; set; }
+        public string IconGlyph { get; set; }
         public string BadgeString { get; set; }
         public string Content { get; set; }
         public bool IsNew { get; set; }
@@ -95,7 +95,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string imageIconPath, string description, string apiNamespace, string folder, bool isSpecialSection)
+        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string iconGlyph, string description, string apiNamespace, string folder, bool isSpecialSection)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -103,7 +103,7 @@ namespace AppUIBasics.Data
             this.Subtitle = subtitle;
             this.Description = description;
             this.ImagePath = imagePath;
-            this.ImageIconPath = imageIconPath;
+            this.IconGlyph = iconGlyph;
             this.Folder = folder;
             this.Items = new ObservableCollection<ControlInfoDataItem>();
             this.IsSpecialSection = isSpecialSection;
@@ -114,7 +114,7 @@ namespace AppUIBasics.Data
         public string Subtitle { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public string ImageIconPath { get; set; }
+        public string IconGlyph { get; set; }
         public string ApiNamespace { get; set; }
         public bool IsSpecialSection { get; set; }
         public string Folder { get; set; }
