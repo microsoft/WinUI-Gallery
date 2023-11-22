@@ -26,9 +26,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock
+            AutomationProperties.AutomationId="PageHeader"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"
-            AutomationProperties.AutomationId="PageHeader"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
         <TextBlock
@@ -74,7 +74,7 @@
                         </Flyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
-                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code">
+                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code of this sample page">
                     <DropDownButton.Content>
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon
@@ -105,6 +105,19 @@
                         </Flyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
+                <Button x:Name="StylesLink" Click="StylesLink_Click">
+                    <Button.Content>
+
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <PathIcon
+                                VerticalAlignment="Center"
+                                Data="{StaticResource CodeIconPath}">
+                            
+                            </PathIcon>
+                            <TextBlock Text="GitHub source" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button
@@ -141,7 +154,7 @@
                             Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
                             Target="{x:Bind CopyLinkButton}">
                             <TeachingTip.HeroContent>
-                                <Image Source="/Assets/CopyLinkTeachingTip.png" AutomationProperties.Name="Image of copied text in Run Dialog."/>
+                                <Image AutomationProperties.Name="Image of copied text in Run Dialog." Source="/Assets/CopyLinkTeachingTip.png" />
                             </TeachingTip.HeroContent>
                         </TeachingTip>
                     </local:CopyButton.Resources>

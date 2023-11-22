@@ -35,6 +35,8 @@ namespace WinUIGallery.DesktopWap.Controls
 
         private ControlInfoDataItem _item;
 
+        private static string BaseRepoURL = "https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/1.4-stable/controls/dev/";
+
         public PageHeader()
         {
             this.InitializeComponent();
@@ -80,6 +82,14 @@ namespace WinUIGallery.DesktopWap.Controls
         public async void OnFeedBackButtonClick(object sender, RoutedEventArgs e)
         {
              await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
+        }
+
+        private async void StylesLink_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Item.SourceRepo))
+            {
+                await Windows.System.Launcher.LaunchUriAsync(new Uri(BaseRepoURL + Item.SourceRepo));
+            }
         }
     }
 }
