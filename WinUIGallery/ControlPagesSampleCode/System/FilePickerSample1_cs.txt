@@ -26,4 +26,5 @@
     else
     {
         PickAFileOutputTextBlock.Text = "Operation cancelled.";
+    }
 }
