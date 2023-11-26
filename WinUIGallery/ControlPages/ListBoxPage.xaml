@@ -29,10 +29,10 @@
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ListBox SelectionChanged="ColorListBox_SelectionChanged" MinWidth="200"&gt;
-    &lt;x:String&gt;Blue&lt;x:String&gt;
-    &lt;x:String&gt;Green&lt;x:String&gt;
-    &lt;x:String&gt;Red&lt;x:String&gt;
-    &lt;x:String&gt;Yellow&lt;x:String&gt;
+    &lt;x:String&gt;Blue&lt;/x:String&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Red&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
 &lt;/ListBox&gt;
                 </x:String>
             </local:ControlExample.Xaml>
