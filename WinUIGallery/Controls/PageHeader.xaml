@@ -94,30 +94,54 @@
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <StackPanel x:Name="SourcePanel" Spacing="4">
-                                <HyperlinkButton x:Name="PageMarkupGitHubLink" ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="XAML source code" />
+                            <StackPanel x:Name="SourcePanel">
+                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,24">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Control source code" />
+                                        <FontIcon
+                                            FontSize="14"
+                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                            Glyph="&#xE946;"
+                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available" />
+                                    </StackPanel>
+                                    <HyperlinkButton
+                                        x:Name="ControlSourceLink"
+                                        Margin="-12,4,0,0"
+                                        ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri, Mode=OneWay}">
+                                        <TextBlock Text="{x:Bind Item.Title}" />
+                                    </HyperlinkButton>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="Sample page source code" />
+                                    <FontIcon
+                                        FontSize="14"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE946;"
+                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository" />
+                                </StackPanel>
+                                <HyperlinkButton
+                                    x:Name="PageMarkupGitHubLink"
+                                    Margin="-12,4,0,0"
+                                    ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="XAML" />
                                 </HyperlinkButton>
-                                <HyperlinkButton x:Name="PageCodeGitHubLink" ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="C# source code" />
+                                <HyperlinkButton
+                                    x:Name="PageCodeGitHubLink"
+                                    Margin="-12,0,0,0"
+                                    ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="C#" />
                                 </HyperlinkButton>
                             </StackPanel>
                         </Flyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
-                <Button x:Name="StylesLink" Click="StylesLink_Click">
-                    <Button.Content>
-
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <PathIcon
-                                VerticalAlignment="Center"
-                                Data="{StaticResource CodeIconPath}">
-                            
-                            </PathIcon>
-                            <TextBlock Text="GitHub source" />
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button

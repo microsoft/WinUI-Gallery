@@ -11,7 +11,7 @@
           "UniqueId": "Typography",
           "Title": "Typography",
           "HideSourceCodeAndRelatedControls": true,
-          "SourceRepo": "/CommonStyles/TextBlock_themeresources.xaml",
+          "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
           "Docs": [
             {
               "Title": "Typography in Windows Apps",
@@ -221,7 +221,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarButton.png",
           "Description": "App bar buttons differ from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Use the <b>Label</b> and <b>Icon</b> properties to define the content of the app bar buttons. Set the <b>Label</b> property to a string to specify the text label. The label is shown by default but is hidden when the button is in its compact state, so you also need to specify a meaningful icon. To do that, set the button's <b>Icon</b> property to an element derived from the <b>IconElement</b> class. Four kinds of icon elements are provided:</p><p><b>FontIcon</b> - The icon is based on a glyph from the specified font family.</p><p><b>BitmapIcon</b> - The icon is based on a bitmap image file with the specified Uri.</p><p><b>PathIcon</b> - The icon is based on Path data.</p><p><b>SymbolIcon</b> - The icon is based on a predefined list of glyphs from the Segoe UI Symbol font.</p><p>Look at the <i>AppBarButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo":  "/CommonStyles/AppBarButton_themeresources.xaml",
+          "SourcePath":  "/CommonStyles/AppBarButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "AppBarButton - API",
@@ -262,7 +262,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "Description": "An AppBarSeparator creates a vertical line to visually separate groups of commands in a app bar. It has a compact state with reduced padding to match the compact state of the AppBarButton and AppBarToggleButton controls.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons and separators on this page change.</p><p>When the <b>IsCompact</b> property is true, the padding around the <b>AppBarSeparator</b> is reduced.</p><p>Look at the <i>AppBarSeparatorPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/AppBarSeparator_themeresources.xaml",
+          "SourcePath": "/CommonStyles/AppBarSeparator_themeresources.xaml",
           "Docs": [
             {
               "Title": "AppBarSeparator - API",
@@ -287,7 +287,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarToggleButton.png",
           "Description": "An AppBarToggleButton looks like an AppBarButton, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Look at the <i>AppBarToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/AppBarToggleButton_themeresources.xaml",
+          "SourcePath": "/CommonStyles/AppBarToggleButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "AppBarToggleButton - API",
@@ -328,7 +328,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/CommandBar.png",
           "Description": "The CommandBar simplifies the creation of basic app bars by providing:\n- Automatic layout of commands, with primary commands on the right and secondary commands on the left.\n- Automatic resizing of app bar commands when the app size changes.\nWhen you need an app bar that contains only AppBarButton,AppBarToggleButton , and AppBarSeparator controls, use a CommandBar. If you need more complex content, such as images, progress bars, or text blocks, use an AppBar control.",
           "Content": "<p>The bottom app bar on this page is a <b>CommandBar</b> control.</p><p>Add secondary commands and then resize the app to see how the <b>CommandBar</b> automatically adapts to different widths.</p><p>This <b>CommandBar</b> element is in the ItemPage so it can be shared across all control pages in the app. Look at the <i>ItemPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/CommandBar_themeresources.xaml",
+          "SourcePath": "/CommonStyles/CommandBar_themeresources.xaml",
           "Docs": [
             {
               "Title": "CommandBar - API",
@@ -352,7 +352,7 @@
           "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MenuBar.png",
           "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
-          "SourceRepo": "/MenuBar",
+          "SourcePath": "/MenuBar",
           "Docs": [
             {
               "Title": "MenuBar - API",
@@ -377,7 +377,7 @@
           "Subtitle": "A mini-toolbar displaying proactive commands, and an optional menu of commands.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CommandBarFlyout.png",
           "Description": "A mini-toolbar which displays a set of proactive commands, as well as a secondary menu of commands if desired.",
-          "SourceRepo": "/MenuBar",
+          "SourcePath": "/MenuBar",
           "Docs": [
             {
               "Title": "CommandBarFlyout - API",
@@ -405,7 +405,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/MenuFlyout.png",
           "Description": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
           "Content": "<p>Look at the <i>MenuFlyoutPage.xaml</i> file in Visual Studio to see the full code.</p>",
-          "SourceRepo": "/CommonStyles/MenuFlyout_themeresources.xaml",
+          "SourcePath": "/CommonStyles/MenuFlyout_themeresources.xaml",
           "Docs": [
             {
               "Title": "MenuFlyout - API",
@@ -482,7 +482,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/FlipView.png",
           "Description": "The FlipView lets you flip through a collection of items, one at a time. It's great for displaying images from a gallery, pages of a magazine, or similar items.",
           "Content": "<p><b>FlipView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Look at the <i>FlipViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/FlipView_themeresources.xaml",
+          "SourcePath": "/CommonStyles/FlipView_themeresources.xaml",
           "Docs": [
             {
               "Title": "FlipView - API",
@@ -507,7 +507,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/GridView.png",
           "Description": "The GridView lets you show a collection of items arranged in rows and columns that scroll horizontally.",
           "Content": "<p><b>GridView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>GridViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/GridViewItem_themeresources.xaml",
+          "SourcePath": "/CommonStyles/GridViewItem_themeresources.xaml",
           "Docs": [
             {
               "Title": "GridView - API",
@@ -533,7 +533,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ItemsView.png",
           "Description": "The ItemsView lets you show a collection of items using scrollable & swappable layouts.",
           "Content": "<p><b>ItemsView</b> can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set a <b>Layout</b> to define how the items are laid out.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ItemsViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/ItemsView",
+          "SourcePath": "/ItemsView",
           "IsNew": true,
           "Docs": [
             {
@@ -561,7 +561,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ListBox.png",
           "Description": "Use a ListBox when you want the options to be visible all the time or when users can select more than one option at a time. ListBox controls are always open, which allows several items to be displayed to the user without user interaction.",
           "Content": "<p>Look at the <i>ListBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/ListBox_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ListBox_themeresources.xaml",
           "Docs": [
             {
               "Title": "ListBox - API",
@@ -588,7 +588,7 @@
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/ListViewItem_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ListViewItem_themeresources.xaml",
           "Docs": [
             {
               "Title": "ListView - API",
@@ -635,7 +635,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/PullToRefresh.png",
           "Description": "PullToRefresh lets a user pull down on a list of data using touch in order to retrieve more data. PullToRefresh is widely used on devices with a touch screen.",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/PullToRefresh",
+          "SourcePath": "/PullToRefresh",
           "Docs": [
             {
               "Title": "RefreshContainer - API",
@@ -659,7 +659,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TreeView.png",
           "Description": "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items. ",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/TreeView",
+          "SourcePath": "/TreeView",
           "Docs": [
             {
               "Title": "TreeView - API",
@@ -712,7 +712,7 @@
           "Subtitle": "A control that lets users pick a date value using a calendar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CalendarDatePicker.png",
           "Description": "A control that lets users pick a date value using a calendar.",
-          "SourceRepo": "/CommonStyles/CalendarDatePicker_themeresources.xaml",
+          "SourcePath": "/CommonStyles/CalendarDatePicker_themeresources.xaml",
           "Docs": [
             {
               "Title": "CalendarDatePicker - API",
@@ -736,7 +736,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/CalendarView.png",
           "Description": "CalendarView shows a larger view for showing and selecting dates.  DatePicker by contrast has a compact view with inline selection.",
           "Content": "<p>Look at the <i>CalendarView.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/CalendarView_themeresources.xaml",
+          "SourcePath": "/CommonStyles/CalendarView_themeresources.xaml",
           "Docs": [
             {
               "Title": "CalendarView - API",
@@ -761,7 +761,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/DatePicker.png",
           "Description": "Use a DatePicker to let users set a date in your app, for example to schedule an appointment. The DatePicker displays three controls for month, date, and year. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>DatePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/DatePicker_themeresources.xaml",
+          "SourcePath": "/CommonStyles/DatePicker_themeresources.xaml",
           "Docs": [
             {
               "Title": "DatePicker - API",
@@ -786,7 +786,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TimePicker.png",
           "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. The TimePicker displays three controls for hour, minute, and AM/PM. These controls are easy to use with touch or mouse, and they can be styled and configured in several different ways.",
           "Content": "<p>Look at the <i>TimePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/TimePicker_themeresources.xaml",
+          "SourcePath": "/CommonStyles/TimePicker_themeresources.xaml",
           "Docs": [
             {
               "Title": "TimePicker - API",
@@ -832,7 +832,7 @@
           "Description": "The Button control provides a Click event to respond to user input from a touch, mouse, keyboard, stylus, or other input device. You can put different kinds of content in a button, such as text or an image, or you can restyle a button to give it a new look.",
           "Content": "<p>The main purpose of a <b>Button</b> is to make something happen when a user clicks it. There are two ways you can make something happen:</p><ul><li>Handle the <b>Click</b> event.</li><li>Bind the <b>Command</b> property to an ICommand implementation that describes the command logic.</li></ul><p>Buttons often have only simple string content, but you can use any object as content. You can also change the style and template to give them any look you want.</p><p>Look at the <i>ButtonPage.xaml</i> file in Visual Studio to see the custom button style and template definitions used on this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/Button_themeresources.xaml",
+          "SourcePath": "/CommonStyles/Button_themeresources.xaml",
           "Docs": [
             {
               "Title": "Button - API",
@@ -857,7 +857,7 @@
           "Subtitle": "A button that displays a flyout of choices when clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/DropDownButton.png",
           "Description": "A control that drops down a flyout of choices from which one can be chosen.",
-          "SourceRepo": "/DropDownButton",
+          "SourcePath": "/DropDownButton",
           "Docs": [
             {
               "Title": "DropDownButton - API",
@@ -886,7 +886,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/HyperlinkButton.png",
           "Description": "A HyperlinkButton appears as a text hyperlink. When a user clicks it, it opens the page you specify in the NavigateUri property in the default browser. Or you can handle its Click event, typically to navigate within your app.",
           "Content": "<p>A <b>HyperlinkButton</b> looks like hyperlink text, but works like a button. You can use it in two ways:</p><ul><li>Set the <b>NavigateUri</b> property. When a user clicks it, it will automatically open the URI in the default browser.</li><li>Handle the <b>Click</b> event. This works just like the <b>Click</b> event of a standard <b>Button</b>, and can be used to navigate within your app.</li></ul><p>Each control page in this app has two sets of hyperlink buttons, one set to open documentation in Internet Explorer, and one set to navigate to related control pages in the app.</p><p>Look at the <i>HyperlinkButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/HyperlinkButton_themeresources.xaml",
+          "SourcePath": "/CommonStyles/HyperlinkButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "HyperlinkButton - API",
@@ -912,7 +912,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/RepeatButton_themeresources.xaml",
+          "SourcePath": "/CommonStyles/RepeatButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "RepeatButton - API",
@@ -938,7 +938,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleButton.png",
           "Description": "A ToggleButton looks like a Button, but works like a CheckBox. It typically has two states, checked (on) or unchecked (off), but can be indeterminate if the IsThreeState property is true. You can determine it's state by checking the IsChecked property.",
           "Content": "<p><b>ToggleButton</b> is used as a base class for similar controls like <b>CheckBox</b> and <b>RadioButton</b>. It can be used on its own, but don't use it if a <b>CheckBox</b>, <b>RadioButton</b>, or <b>ToggleSwitch</b> would convey your intent better.</p><p>Look at the <i>ToggleButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/ToggleButton_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ToggleButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "ToggleButton - API",
@@ -966,7 +966,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
           "IsUpdated": true,
-          "SourceRepo": "/SplitButton",
+          "SourcePath": "/SplitButton",
           "Docs": [
             {
               "Title": "SplitButton - API",
@@ -994,7 +994,7 @@
           "Subtitle": "A version of the SplitButton where the activation target toggles on/off.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleSplitButton.png",
           "Description": "A version of the SplitButton where the activation target toggles on/off.",
-          "SourceRepo": "/SplitButton",
+          "SourcePath": "/SplitButton",
           "Docs": [
             {
               "Title": "ToggleSplitButton - API",
@@ -1023,7 +1023,7 @@
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/CheckBox_themeresources.xaml",
+          "SourcePath": "/CommonStyles/CheckBox_themeresources.xaml",
           "Docs": [
             {
               "Title": "CheckBox - API",
@@ -1047,7 +1047,7 @@
           "Subtitle": "A control that displays a selectable color spectrum.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPicker.png",
           "Description": "A selectable color spectrum.",
-          "SourceRepo": "/ColorPicker",
+          "SourcePath": "/ColorPicker",
           "Docs": [
             {
               "Title": "ColorPicker - API",
@@ -1069,7 +1069,7 @@
           "Subtitle": "A drop-down list of items a user can select from.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ComboBox.png",
           "Description": "Use a ComboBox when you need to conserve on-screen space and when users select only one option at a time. A ComboBox shows only the currently selected item.",
-          "SourceRepo": "/ComboBox",
+          "SourcePath": "/ComboBox",
           "Docs": [
             {
               "Title": "ComboBox - API",
@@ -1101,7 +1101,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
           "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "Content": "<p>Look at the <i>RadioButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/RadioButton_themeresources.xaml",
+          "SourcePath": "/CommonStyles/RadioButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "RadioButton - API",
@@ -1126,7 +1126,7 @@
           "Subtitle": "Rate something 1 to 5 stars.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RatingControl.png",
           "Description": "Rate something 1 to 5 stars.",
-          "SourceRepo": "/RatingControl",
+          "SourcePath": "/RatingControl",
           "Docs": [
             {
               "Title": "RatingControl - API",
@@ -1151,7 +1151,7 @@
           "Description": "Use a Slider when you want your users to be able to set defined, contiguous values (such as volume or brightness) or a range of discrete values (such as screen resolution settings).",
           "Content": "<p>Look at the <i>SliderPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/Slider_themeresources.xaml",
+          "SourcePath": "/CommonStyles/Slider_themeresources.xaml",
           "Docs": [
             {
               "Title": "Slider - API",
@@ -1176,7 +1176,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ToggleSwitch.png",
           "Description": "Use ToggleSwitch controls to present users with exactly two mutually exclusive options (like on/off), where choosing an option results in an immediate commit. A toggle switch should have a single label.",
           "Content": "<p>Look at the <i>ToggleSwitchPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/ToggleSwitch_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ToggleSwitch_themeresources.xaml",
           "Docs": [
             {
               "Title": "ToggleSwitch - API",
@@ -1211,7 +1211,7 @@
           "Description": "Badging is a non-intrusive and intuitive way to display notifications or bring focus to an area within an app - whether that be for notifications, indicating new content, or showing an alert.",
           "Content": "<p>Look at the <i>InfoBadgePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
-          "SourceRepo": "/InfoBadge",
+          "SourcePath": "/InfoBadge",
           "Docs": [
             {
               "Title": "InfoBadge - API",
@@ -1236,7 +1236,7 @@
           "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
           "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/InfoBar",
+          "SourcePath": "/InfoBar",
           "Docs": [
             {
               "Title": "InfoBar - API",
@@ -1260,7 +1260,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ProgressBar.png",
           "Description": "The ProgressBar has two different visual representations:\nIndeterminate - shows that a task is ongoing, but doesn't block user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/ProgressBar",
+          "SourcePath": "/ProgressBar",
           "Docs": [
             {
               "Title": "ProgressBar - API",
@@ -1283,7 +1283,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ProgressRing.png",
           "Description": "The ProgressRing has two different visual representations:\nIndeterminate - shows that a task is ongoing, but blocks user interaction.\nDeterminate - shows how much progress has been made on a known amount of work.",
           "Content": "<p>Look at the <i>ProgressRingPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/ProgressRing",
+          "SourcePath": "/ProgressRing",
           "Docs": [
             {
               "Title": "ProgressRing - API",
@@ -1306,7 +1306,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ToolTip.png",
           "Description": "A ToolTip shows more information about a UI element. You might show information about what the element does, or what the user should do. The ToolTip is shown when a user hovers over or presses and holds the UI element.",
           "Content": "<p>Look at the <i>ToolTipPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/ToolTip_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ToolTip_themeresources.xaml",
           "Docs": [
             {
               "Title": "ToolTip - API",
@@ -1340,7 +1340,7 @@
           "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
           "Content": "<p>Look at the <i>ContentDialog.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/ContentDialog_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ContentDialog_themeresources.xaml",
           "Docs": [
             {
               "Title": "ContentDialog - API",
@@ -1366,7 +1366,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Flyout.png",
           "Description": "A Flyout displays lightweight UI that is either information, or requires user interaction. Unlike a dialog, a Flyout can be light dismissed by clicking or tapping off of it. Use it to collect input from the user, show more details about an item, or ask the user to confirm an action.",
           "Content": "<p>Look at the <i>FlyoutPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/FlyoutPresenter_themeresources.xaml",
+          "SourcePath": "/CommonStyles/FlyoutPresenter_themeresources.xaml",
           "Docs": [
             {
               "Title": "Flyout - API",
@@ -1393,7 +1393,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TeachingTip.png",
           "Description": "The XAML TeachingTip Control provides a way for your app to guide and inform users in your application with a non-invasive and content rich notification. TeachingTip can be used for bringing focus to a new or important feature, teaching users how to perform a task, or enhancing the user workflow by providing contextually relevant information to their task at hand.",
           "Content": "<p>Look at the <i>TeachingTip.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/TeachingTip",
+          "SourcePath": "/TeachingTip",
           "Docs": [
             {
               "Title": "TeachingTip - API",
@@ -1427,7 +1427,7 @@
           "Description": "The AnnotatedScrollBar lets you navigate through a large collection of items via a clickable rail with labels which act as markers.",
           "Content": "<p><b>AnnotatedScrollBar</b> can be connected to a scrollable container, like a ScrollView, via its <b>ScrollController</b> property.</p><p>Populate the <b>Labels</b> property with special values that act as markers.</p><p>Set the <b>LabelTemplate</b> and <b>DetailLabelTemplate</b> data templates to define the labels' and more granular tooltips' looks.</p><p>Look at the <i>AnnotatedScrollBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
-          "SourceRepo": "/AnnotatedScrollBar",
+          "SourcePath": "/AnnotatedScrollBar",
           "Docs": [
             {
               "Title": "AnnotatedScrollBar - API",
@@ -1447,7 +1447,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/PipsPager.png",
           "Description": "A PipsPager allows the user to navigate through a paginated collection and is independent of the content shown. Use this control when the content in the layout is not explicitly ordered by relevancy or you desire a glyph-based representation of numbered pages. PipsPagers are commonly used in photo viewers, app lists, carousels, and when display space is limited.",
           "Content": "<p>Look at the <i>PipsPagerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/PipsPager",
+          "SourcePath": "/PipsPager",
           "Docs": [
             {
               "Title": "PipsPager - API",
@@ -1473,7 +1473,7 @@
           "Description": "A ScrollView lets a user scroll, pan, and zoom to see content that's larger than the viewable area. The ItemsView has a ScrollView built into its control template to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
-          "SourceRepo": "/ScrollView",
+          "SourcePath": "/ScrollView",
           "Docs": [
             {
               "Title": "ScrollView - API",
@@ -1504,7 +1504,7 @@
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/ScrollViewer_themeresources.xaml",
+          "SourcePath": "/CommonStyles/ScrollViewer_themeresources.xaml",
           "Docs": [
             {
               "Title": "ScrollViewer - API",
@@ -1612,7 +1612,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Expander.png",
           "Description": "The Expander has a header and can expand to show a body with more content. Use an Expander when some content is only relevant some of the time (for example to read more information or access additional options for an item).",
           "Content": "Look at the <i>ExpanderPage.xaml</i> file in Visual Studio to see the full code for this page.",
-          "SourceRepo": "/Expander",
+          "SourcePath": "/Expander",
           "Docs": [
             {
               "Title": "Expander - API",
@@ -1701,7 +1701,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/RadioButtons",
+          "SourcePath": "/RadioButtons",
           "Docs": [
             {
               "Title": "RadioButtons - API",
@@ -1754,7 +1754,7 @@
           "Description": "Use a SplitView to display content, such as navigation options, in a pane on the side.  There are multiple options for displaying the pane, namely CompactOverlay, Compact, Overlay, Inline.  If you are looking for a reference to the hamburger pattern, please see the links in the documentation below.",
           "Content": "<p>Look at the <i>SplitViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/SplitView",
+          "SourcePath": "/SplitView",
           "Docs": [
             {
               "Title": "SplitView - API",
@@ -1864,7 +1864,7 @@
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/Breadcrumb",
+          "SourcePath": "/Breadcrumb",
           "Docs": [
             {
               "Title": "BreadcrumbBar - API",
@@ -1888,7 +1888,7 @@
           "Subtitle": "Common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "ImagePath": "ms-appx:///Assets/ControlImages/NavigationView.png",
           "Description": "The navigation view control provides a common vertical layout for top-level areas of your app via a collapsible navigation menu.",
-          "SourceRepo": "/NavigationView",
+          "SourcePath": "/NavigationView",
           "Docs": [
             {
               "Title": "NavigationView - API",
@@ -1912,7 +1912,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
           "Description": "A Pivot allows you to show a collection of items from different sources in a tabbed view.",
           "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PivotPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
-          "SourceRepo": "/CommonStyles/Pivot_themeresources.xaml",
+          "SourcePath": "/CommonStyles/Pivot_themeresources.xaml",
           "Docs": [
             {
               "Title": "Pivot - API",
@@ -1936,7 +1936,7 @@
           "Subtitle": "A control that displays a collection of tabs that can be used to display several documents.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TabView.png",
           "Description": "TabView provides the user with a collection of tabs that can be used to display several documents.",
-          "SourceRepo": "/TabView",
+          "SourcePath": "/TabView",
           "Docs": [
             {
               "Title": "TabView - API",
@@ -1973,7 +1973,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedVisualPlayer.png",
           "Description": "An element to render and control playback of motion graphics.",
           "Content": "<p>Look at the <i>AnimatedVisualPlayerPage.xaml</i> and <i>AnimatedVisualPlayerPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/AnimatedVisualPlayer",
+          "SourcePath": "/AnimatedVisualPlayer",
           "Docs": [
             {
               "Title": "AnimatedVisualPlayer - API",
@@ -2045,7 +2045,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
           "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "IsNew": true,
-          "SourceRepo": "/CommonStyles/MediaTransportControls_themeresources.xaml",
+          "SourcePath": "/CommonStyles/MediaTransportControls_themeresources.xaml",
           "Docs": [
             {
               "Title": "MediaPlayerElement - API",
@@ -2067,7 +2067,7 @@
           "Subtitle": "Displays the picture of a person/contact.",
           "ImagePath": "ms-appx:///Assets/ControlImages/PersonPicture.png",
           "Description": "Displays the picture of a person/contact.",
-          "SourceRepo": "/PersonPicture",
+          "SourcePath": "/PersonPicture",
           "Docs": [
             {
               "Title": "PersonPicture - API",
@@ -2109,7 +2109,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
           "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
           "IsNew": true,
-          "SourceRepo": "/WebView2",
+          "SourcePath": "/WebView2",
           "Docs": [
             {
               "Title": "WebView2 - API",
@@ -2140,7 +2140,7 @@
           "Subtitle": "A translucent material recommended for panel backgrounds.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "Description": "A translucent material recommended for panel backgrounds.",
-          "SourceRepo": "/Materials/Acrylic",
+          "SourcePath": "/Materials/Acrylic",
           "Docs": [
             {
               "Title": "AcrylicBrush - API",
@@ -2164,7 +2164,7 @@
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/AnimatedIcon",
+          "SourcePath": "/AnimatedIcon",
           "Docs": [
             {
               "Title": "AnimatedIcon - API",
@@ -2227,7 +2227,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Image.png",
           "Description": "Represents icon controls that use different image types as its content.",
           "Content": "<p>Look at the <i>IconElementPage.xaml</i> and <i>IconElementPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/ImageIcon",
+          "SourcePath": "/ImageIcon",
           "Docs": [
             {
               "Title": "BitmapIcon - API",
@@ -2288,7 +2288,7 @@
           "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
           "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/Materials/Reveal",
+          "SourcePath": "/Materials/Reveal",
           "Docs": [
             {
               "Title": "Reveal Focus - API",
@@ -2357,7 +2357,7 @@
           "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
           "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
           "IsNew": true,
-          "SourceRepo": "/Materials",
+          "SourcePath": "/Materials",
           "Docs": [
             {
               "Title": "MicaController - API",
@@ -2388,7 +2388,7 @@
           "Description": "A text control that makes suggestions to users as they type. The app is notified when text has been changed by the user and is responsible for providing relevant suggestions for this control to display.",
           "Content": "<p>Look at the <i>AutoSuggestBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/AutoSuggestBox",
+          "SourcePath": "/AutoSuggestBox",
           "Docs": [
             {
               "Title": "AutoSuggestBox - API",
@@ -2413,7 +2413,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/NumberBox.png",
           "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/NumberBox",
+          "SourcePath": "/NumberBox",
           "Docs": [
             {
               "Title": "NumberBox - API",
@@ -2439,7 +2439,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/PasswordBox.png",
           "Description": "A user can enter a single line of non-wrapping text in a PasswordBox control. The text is masked by characters that you can specify by using the PasswordChar property, and you can specify the maximum number of characters that the user can enter by setting the MaxLength property.",
           "Content": "<p>Look at the <i>PasswordBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/PasswordBox_themeresources.xaml",
+          "SourcePath": "/CommonStyles/PasswordBox_themeresources.xaml",
           "Docs": [
             {
               "Title": "PasswordBox - API",
@@ -2466,7 +2466,7 @@
           "Description": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
           "Content": "<p>On this page, you can type into the <b>RichTextBox</b> control and save it as a RichTextFormat (.rtf) document, or load an existing .rtf document. You can format the text as <b>Bold</b> or <u>Underlined</u>, and change the text color.</p><p>Look at the <i>RichEditBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "SourceRepo": "/CommonStyles/RichEditBox_themeresources.xaml",
+          "SourcePath": "/CommonStyles/RichEditBox_themeresources.xaml",
           "Docs": [
             {
               "Title": "RichEditBox - API",
@@ -2519,7 +2519,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBlock.png",
           "Description": "TextBlock is the primary control for displaying read-only text in your app. You typically display text by setting the Text property to a simple string. You can also display a series of strings in Run elements and give each different formatting.",
           "Content": "<p>Look at the <i>TextBlockPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/TextBlock_themeresources.xaml",
+          "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
           "Docs": [
             {
               "Title": "TextBlock - API",
@@ -2546,7 +2546,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
           "Description": "Use a TextBox to let a user enter simple text input in your app. You can add a header and placeholder text to let the user know what the TextBox is for, and you can customize it in other ways.",
           "Content": "<p>Look at the <i>TextBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "SourceRepo": "/CommonStyles/TextBox_themeresources.xaml",
+          "SourcePath": "/CommonStyles/TextBox_themeresources.xaml",
           "Docs": [
             {
               "Title": "TextBox - API",
@@ -2746,7 +2746,7 @@
           "Subtitle": "A container control that provides the parallax effect when scrolling.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ParallaxView.png",
           "Description": "A container control that provides the parallax effect when scrolling.",
-          "SourceRepo": "/ParallaxView",
+          "SourcePath": "/ParallaxView",
           "Docs": [
             {
               "Title": "ParallaxView - API",
