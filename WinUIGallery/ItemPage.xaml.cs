@@ -97,8 +97,8 @@ namespace AppUIBasics
                 if (pageType != null)
                 {
                     var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
-                    pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
+                    pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
