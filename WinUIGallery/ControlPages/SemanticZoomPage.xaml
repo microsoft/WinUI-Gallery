@@ -24,13 +24,15 @@
                               d:Source="{Binding Groups, Source={d:DesignData Source=/DataModel/ControlInfoData.json, Type=data:ControlInfoDataSource}}"/>
 
         <DataTemplate x:Key="ZoomedInTemplate" x:DataType="data:ControlInfoDataItem">
-            <StackPanel Orientation="Horizontal" MinWidth="200" Margin="12,6,12,6">
-                <StackPanel Margin="20,0,0,0">
-                    <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Text="{x:Bind Subtitle}" TextWrapping="Wrap" HorizontalAlignment="Left" Width="300" Style="{StaticResource BodyTextBlockStyle}"/>
-                </StackPanel>
-            </StackPanel>
-        </DataTemplate>
+            <StackPanel MinWidth="200" Margin="12,6,12,6">
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="{x:Bind Title}" />
+                <TextBlock
+                    Width="300"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind Subtitle}"
+                    TextWrapping="Wrap" />
+            </StackPanel>        </DataTemplate>
 
         <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="data:ControlInfoDataGroup">
             <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
