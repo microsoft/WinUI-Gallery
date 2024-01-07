@@ -42,6 +42,7 @@
             <x:String>Stroke</x:String>
             <x:String>Background</x:String>
             <x:String>Signal</x:String>
+            <x:String>High Contrast</x:String>
         </ComboBox>
 
         <controls1:SampleThemeListener Grid.Row="2">

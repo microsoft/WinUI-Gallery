@@ -79,6 +79,14 @@
 
     <Import Project="Common.props" />
 
+    <ItemGroup>
+      <Compile Remove="Assets\ControlIcons\**" />
+      <Content Remove="Assets\ControlIcons\**" />
+      <EmbeddedResource Remove="Assets\ControlIcons\**" />
+      <None Remove="Assets\ControlIcons\**" />
+      <Page Remove="Assets\ControlIcons\**" />
+    </ItemGroup>
+
     <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
@@ -136,6 +144,7 @@
         <None Remove="ControlPages\Typography.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
+        <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\SignalSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
@@ -177,6 +186,9 @@
     <ItemGroup>
         <Page Update="ControlPages\InfoBadgePage.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Update="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml">
+          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
     <ItemGroup>
@@ -247,5 +259,8 @@
         </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
+    <ItemGroup>
+      <PRIResource Remove="Assets\ControlIcons\**" />
+    </ItemGroup>
 
 </Project>
