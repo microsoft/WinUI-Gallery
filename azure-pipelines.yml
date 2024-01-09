@@ -41,6 +41,19 @@ steps:
         zipAfterPublish: false
         modifyOutputPath: false
 
+    - script: |
+        dir /b /s $(Build.ArtifactStagingDirectory)
+        dir /b /s $(System.DefaultWorkingDirectory)
+      displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
+
+    - task: VSTest@2
+      displayName: 'Run Unit Tests'
+      inputs:
+        failOnMinTestsNotRun: true
+        minimumExpectedTests: '3'
+        testAssemblyVer2: |
+          **\WinUIGalleryUnitTests.build.appxrecipe
+
     - task: PowerShell@2
       displayName: Install WinUI Gallery Package
       inputs:
