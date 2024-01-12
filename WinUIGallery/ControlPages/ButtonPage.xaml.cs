@@ -34,6 +34,10 @@ namespace AppUIBasics.ControlPages
                 {
                     return d.ThemeDictionaries.SelectMany((t) =>
                     {
+                        // TODO: this isn't the best approach. It works, since lightweight styles always have a key that starts with "Button",
+                        // but it would be nicer to inspect the default template somehow & get a complete list of styles.
+                        //
+                        // Similarly, it'd be nice to automatically know to fetch things like "AccentButton".
                         return (t.Value as ResourceDictionary)
                             .Where((r) => r.Key.ToString().StartsWith("Button") && r.Value is SolidColorBrush)
                             .Select((r) =>

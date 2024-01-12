@@ -148,7 +148,9 @@
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Text="{x:Bind Name}" Style="{ThemeResource BodyTextBlockStyle}" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" />
-                        
+
+                        <!-- TODO: include hex in view -->
+                        <!-- TODO: allow live restyling? -->
                         <Border Height="40" Grid.Column="1" Background="{x:Bind LightBrush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
                         <Border Height="50" Margin="-5" Grid.Column="2" Background="Black" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" Padding="4">
                             <Border Height="40" Background="{x:Bind DarkBrush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
