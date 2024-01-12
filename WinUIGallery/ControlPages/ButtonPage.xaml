@@ -123,17 +123,35 @@
 
         <TextBlock Text="Lightweight styling" Style="{ThemeResource BodyStrongTextBlockStyle}" AutomationProperties.HeadingLevel="Level2" Margin="0,16,0,4" />
         <ListView x:Name="LightweightStylesBox" HorizontalAlignment="Left">
+            <ListView.Header>
+                    <Grid ColumnSpacing="8" Padding="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="*" MinWidth="100" />
+                            <ColumnDefinition Width="*" MinWidth="100" />
+                            <ColumnDefinition Width="*" MinWidth="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Dark" Style="{ThemeResource BodyTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" />
+                        <TextBlock Text="Light" Style="{ThemeResource BodyTextBlockStyle}" Grid.Column="2" VerticalAlignment="Center" TextAlignment="Center" />
+                        <TextBlock Text="High Contrast" Style="{ThemeResource BodyTextBlockStyle}" Grid.Column="3" VerticalAlignment="Center" TextAlignment="Center" />
+                    </Grid>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="pages:ButtonResource">
                     <Grid ColumnSpacing="8" Padding="0,8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="300" />
                             <ColumnDefinition Width="*" MinWidth="100" />
+                            <ColumnDefinition Width="*" MinWidth="100" />
+                            <ColumnDefinition Width="*" MinWidth="100" />
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Text="{x:Bind Name}" Style="{ThemeResource BodyTextBlockStyle}" Grid.Column="0" VerticalAlignment="Center" TextAlignment="Right" />
                         
-                        <Border Height="40" Grid.Column="1" Background="{x:Bind Brush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
+                        <Border Height="40" Grid.Column="1" Background="{x:Bind DarkBrush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
+                        <Border Height="40" Grid.Column="2" Background="{x:Bind LightBrush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
+                        <Border Height="40" Grid.Column="3" Background="{x:Bind HighContrastBrush}" CornerRadius="4" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

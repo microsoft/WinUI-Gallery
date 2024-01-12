@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using System;
 using System.Linq;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -17,7 +18,9 @@ namespace AppUIBasics.ControlPages
     public sealed class ButtonResource
     {
         public string Name;
-        public SolidColorBrush Brush;
+        public SolidColorBrush LightBrush;
+        public SolidColorBrush DarkBrush;
+        public SolidColorBrush HighContrastBrush;
     }
 
     public sealed partial class ButtonPage : Page
@@ -26,23 +29,32 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            var buttonResources = Application.Current.Resources.MergedDictionaries
+            var rawButtonResources = Application.Current.Resources.MergedDictionaries
                 .SelectMany((d) =>
                 {
                     return d.ThemeDictionaries.SelectMany((t) =>
                     {
-                        return (t.Value as ResourceDictionary).Where((r) => r.Key.ToString().StartsWith("Button"));
+                        return (t.Value as ResourceDictionary)
+                            .Where((r) => r.Key.ToString().StartsWith("Button") && r.Value is SolidColorBrush)
+                            .Select((r) =>
+                            {
+                                return new Tuple<string, string, SolidColorBrush>(t.Key.ToString(), r.Key.ToString(), r.Value as SolidColorBrush);
+                            });
                     });
-                })
-                .Where(r => r.Value is SolidColorBrush)
-                .Select((r) =>
-                {
-                    return new ButtonResource()
+                });
+
+            var buttonResources = rawButtonResources
+                .GroupBy((t) => t.Item2)
+                .Select((grouped) => {
+                    return new ButtonResource
                     {
-                        Name = r.Key.ToString(),
-                        Brush = r.Value as SolidColorBrush
+                        Name = grouped.Key,
+                        LightBrush = grouped.Where((t) => t.Item1 == "Light").Select((t) => t.Item3).FirstOrDefault(),
+                        DarkBrush = grouped.Where((t) => t.Item1 == "Default").Select((t) => t.Item3).FirstOrDefault(),
+                        HighContrastBrush = grouped.Where((t) => t.Item1 == "HighContrast").Select((t) => t.Item3).FirstOrDefault()
                     };
                 });
+
             LightweightStylesBox.ItemsSource = buttonResources;
         }
 
