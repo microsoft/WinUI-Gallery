@@ -20,7 +20,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="InfoBadge embedded in NavigationView" HorizontalContentAlignment="Stretch" >
+        <local:ControlExample x:Name="Example1" HeaderText="InfoBadge embedded in NavigationView " HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -123,7 +123,7 @@
         &lt;SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/&gt;
         &lt;InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top"&gt;
             &lt;InfoBadge.IconSource&gt;
-                &lt;FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF13C;" /&gt;
+                &lt;FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&amp;#xF13C;" /&gt;
             &lt;/InfoBadge.IconSource&gt;
         &lt;/InfoBadge&gt;
     &lt;/Grid&gt;

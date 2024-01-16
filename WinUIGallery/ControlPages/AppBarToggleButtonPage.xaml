@@ -67,7 +67,7 @@
                 <x:String xml:space="preserve">
 &lt;AppBarToggleButton Label="FontIcon" Click="AppBarButton_Click"&gt;
     &lt;AppBarToggleButton.Icon&gt;
-        &lt;FontIcon FontFamily="Candara" Glyph="&#x03A3;"/&gt;
+        &lt;FontIcon FontFamily="Candara" Glyph="&amp;#x03A3;"/&gt;
     &lt;/AppBarToggleButton.Icon&gt;
 &lt;/AppBarToggleButton&gt;
                 </x:String>
