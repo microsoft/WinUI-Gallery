@@ -56,6 +56,7 @@
                         <Flyout Placement="Bottom">
                             <ItemsControl
                                 x:Name="DocsList"
+                                Margin="-12,-8,-12,-8"
                                 IsTabStop="False"
                                 ItemsSource="{x:Bind Item.Docs}">
                                 <ItemsControl.ItemsPanel>
@@ -95,13 +96,15 @@
                     <DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
                             <StackPanel x:Name="SourcePanel">
-                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,24">
+                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,12">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <TextBlock
+                                            VerticalAlignment="Center"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
                                             Text="Control source code" />
                                         <FontIcon
+                                            VerticalAlignment="Center"
                                             FontSize="14"
                                             Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                             Glyph="&#xE946;"
@@ -117,10 +120,12 @@
 
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBlock
+                                        VerticalAlignment="Center"
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="Sample page source code" />
                                     <FontIcon
+                                        VerticalAlignment="Center"
                                         FontSize="14"
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xE946;"
@@ -134,7 +139,7 @@
                                 </HyperlinkButton>
                                 <HyperlinkButton
                                     x:Name="PageCodeGitHubLink"
-                                    Margin="-12,0,0,0"
+                                    Margin="-12,0,0,-8"
                                     ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
                                     <TextBlock Text="C#" />
                                 </HyperlinkButton>
