@@ -7,7 +7,7 @@
     FolderPicker openPicker = new Windows.Storage.Pickers.FolderPicker();
 
     // See the sample code below for how to make the window accessible from the App class.
-    var window = App.Window;
+    var window = App.MainWindow;
 
     // Retrieve the window handle (HWND) of the current WinUI 3 window.
     var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
