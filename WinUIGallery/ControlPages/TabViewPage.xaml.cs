@@ -245,12 +245,14 @@ namespace AppUIBasics.ControlPages
 
         private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            var newWindow = WindowHelper.CreateWindow();
+            var tabViewSample = new TabViewWindowingSamplePage();
 
-            Frame frame = new Frame();
-            frame.RequestedTheme = ThemeHelper.RootTheme;
-            frame.Navigate(typeof(TabViewWindowingSamplePage), null);
-            newWindow.Content = frame;
+            var newWindow = WindowHelper.CreateWindow();
+            newWindow.ExtendsContentIntoTitleBar = true;
+            newWindow.Content = tabViewSample;
+            tabViewSample.LoadDemoData();
+            tabViewSample.SetupWindowMinSize(newWindow);
+
             newWindow.Activate();
         }
     }
