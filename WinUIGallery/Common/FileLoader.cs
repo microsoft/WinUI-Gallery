@@ -16,7 +16,7 @@ namespace WinUIGallery.Common
             StorageFile file = null;
             if (!NativeHelper.IsAppPackaged)
             {
-                var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
+                var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativeFilePath));
                 file = await StorageFile.GetFileFromPathAsync(sourcePath);
 
             }

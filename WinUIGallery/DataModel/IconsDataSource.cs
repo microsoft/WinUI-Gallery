@@ -49,7 +49,7 @@ namespace WinUIGallery.DesktopWap.DataModel
             {
                 if (icons.Count == 0)
                 {
-                    icons = JsonSerializer.Deserialize(jsonText, typeof(List<IconData>), IconDataListContext.Default) as List<IconData>;
+                    icons = JsonSerializer.Deserialize(jsonText, IconDataListContext.Default);
                 }
                 return icons;
             }

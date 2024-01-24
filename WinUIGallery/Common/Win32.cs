@@ -3,31 +3,31 @@ using System.Runtime.InteropServices;
 
 namespace WinUIGallery
 {
-    internal static class Win32
+    internal static partial class Win32
     {
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, IntPtr lParam);
+        [LibraryImport("user32.dll")]
+        public static partial IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, IntPtr lParam);
 
-        [DllImport("user32.dll")]
-        public static extern IntPtr LoadIcon(IntPtr hInstance, IntPtr lpIconName);
+        [LibraryImport("user32.dll", StringMarshalling = StringMarshalling.Utf16)]
+        public static partial IntPtr LoadIconW(IntPtr hInstance, string lpIconName);
 
-        [DllImport("user32.dll")]
-        public static extern IntPtr GetActiveWindow();
+        [LibraryImport("user32.dll")]
+        public static partial IntPtr GetActiveWindow();
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr GetModuleHandle(IntPtr moduleName);
+        [LibraryImport("kernel32.dll", StringMarshalling = StringMarshalling.Utf16)]
+        public static partial IntPtr GetModuleHandleW(string moduleName);
 
-        [DllImport("User32.dll")]
-        internal static extern int GetDpiForWindow(IntPtr hwnd);
+        [LibraryImport("User32.dll")]
+        internal static partial int GetDpiForWindow(IntPtr hwnd);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-        internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+        [LibraryImport("user32.dll", EntryPoint = "SetWindowLongW")]
+        internal static partial int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-        internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+        [LibraryImport("user32.dll", EntryPoint = "SetWindowLongPtrW")]
+        internal static partial IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
-        [DllImport("user32.dll")]
-        internal static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+        [LibraryImport("user32.dll", EntryPoint = "CallWindowProcW")]
+        internal static partial IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
 
         public const int WM_ACTIVATE = 0x0006;
         public const int WA_ACTIVE = 0x01;

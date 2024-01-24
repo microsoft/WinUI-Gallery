@@ -182,7 +182,7 @@ namespace WinUIGallery.Controls
                 if (!NativeHelper.IsAppPackaged)
                 {
                     var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
-                    var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativePath));
+                    var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativePath));
                     file = await StorageFile.GetFileFromPathAsync(sourcePath);
                 }
                 else
