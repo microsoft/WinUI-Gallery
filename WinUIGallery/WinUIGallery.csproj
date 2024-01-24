@@ -36,6 +36,16 @@
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
+        <WindowsSdkPackageVersion>10.0.22621.30-preview.aot8.ni-release-svc-prod3</WindowsSdkPackageVersion>
+        <IsAotCompatible>true</IsAotCompatible>
+        <PublishAot>true</PublishAot>
+        <IsTrimmable>true</IsTrimmable>
+        <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+        <PackageCertificateKeyFile>WinUIGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+        <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+        <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">

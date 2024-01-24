@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUIGallery.DesktopWap.Controls
 {
-    public sealed class CopyButton : Button
+    public sealed partial class CopyButton : Button
     {
         public CopyButton()
         {

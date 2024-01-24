@@ -9,7 +9,7 @@ using Microsoft.UI.Xaml.Media;
 
 namespace WinUIGallery.Behaviors
 {
-    public class ImageScrollBehavior : DependencyObject, IBehavior
+    public partial class ImageScrollBehavior : DependencyObject, IBehavior
     {
         private const int _opacityMaxValue = 250;
         private const int _alpha = 255;

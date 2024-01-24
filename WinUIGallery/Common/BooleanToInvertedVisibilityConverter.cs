@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Data;
 
 namespace WinUIGallery.Common
 {
-    public sealed class BooleanToInvertedVisibilityConverter: IValueConverter
+    public sealed partial class BooleanToInvertedVisibilityConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {

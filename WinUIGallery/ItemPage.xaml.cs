@@ -131,7 +131,7 @@ namespace WinUIGallery
             Page innerPage = contentFrameAsFrame.Content as Page;
             if (innerPage != null)
             {
-                MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+                MethodInfo dynMethod = typeof(Page).GetMethod("OnNavigatedFrom",
                     BindingFlags.NonPublic | BindingFlags.Instance);
                 dynMethod.Invoke(innerPage, new object[] { e });
             }

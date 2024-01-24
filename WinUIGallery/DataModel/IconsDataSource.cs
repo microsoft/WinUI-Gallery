@@ -16,6 +16,7 @@ namespace WinUIGallery.DesktopWap.DataModel
         public string CodeGlyph => "\\u" + Code;
         public string TextGlyph => "&#x" + Code + ";";
     }
+
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(List<IconData>))]
     internal partial class IconDataListContext : JsonSerializerContext

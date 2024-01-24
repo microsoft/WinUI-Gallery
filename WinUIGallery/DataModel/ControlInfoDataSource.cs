@@ -31,6 +31,7 @@ namespace WinUIGallery.Data
     {
         public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
     }
+
     [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
     [JsonSerializable(typeof(Root))]
     internal partial class RootContext : JsonSerializerContext

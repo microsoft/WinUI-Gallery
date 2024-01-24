@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml.Data;
 
 namespace WinUIGallery.Common
 {
-    public sealed class BooleanToValueConverter: IValueConverter
+    public sealed partial class BooleanToValueConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {

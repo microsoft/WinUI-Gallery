@@ -39,7 +39,7 @@ namespace WinUIGallery
     /// If enabled (default), then $(Key) is replaced with the stringified value.
     /// If disabled, then $(Key) is replaced with the empty string.
     /// </summary>
-    public sealed class ControlExampleSubstitution : DependencyObject
+    public sealed partial class ControlExampleSubstitution : DependencyObject
     {
         public event TypedEventHandler<ControlExampleSubstitution, object> ValueChanged;
 

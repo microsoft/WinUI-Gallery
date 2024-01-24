@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
 namespace WinUIGallery.Common
 {
-    public class NullToVisibilityConverter : IValueConverter
+    public partial class NullToVisibilityConverter : IValueConverter
     {
         public Visibility NullValue { get; set; } = Visibility.Collapsed;
         public Visibility NonNullValue { get; set; } = Visibility.Visible;
