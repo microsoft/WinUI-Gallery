@@ -52,7 +52,7 @@
                 <x:String xml:space="preserve">
 &lt;TextBox AutomationProperties.Name="multi-line TextBox"
     TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True"
-    SelectionHighlightColor="Green" MinWidth="400" &gt;
+    SelectionHighlightColor="Green" MinWidth="400" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
