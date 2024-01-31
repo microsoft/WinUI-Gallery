@@ -1,6 +1,6 @@
 //******************************************************************************
 //
-// Copyright (c) 2023 Microsoft Corporation. All rights reserved.
+// Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 //
 // This code is licensed under the MIT License (MIT).
 //
