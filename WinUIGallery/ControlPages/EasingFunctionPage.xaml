@@ -58,7 +58,7 @@
                     <Storyboard x:Name="Storyboard2">
                         <DoubleAnimation Storyboard.TargetName="Translation2" Storyboard.TargetProperty="X" Duration="0:0:0.15">
                             <DoubleAnimation.EasingFunction>
-                                <ExponentialEase Exponent="4.5" EasingMode="EaseIn" />
+                                <ExponentialEase Exponent="{x:Bind AccelerateEasingExponent.Value, Mode=OneWay}" EasingMode="EaseIn" />
                             </DoubleAnimation.EasingFunction>
                         </DoubleAnimation>
                     </Storyboard>
@@ -74,18 +74,25 @@
                     </Rectangle.RenderTransform>
                 </Rectangle>
             </Grid>
-
+            
+            <local:ControlExample.Options>
+                <NumberBox x:Name="AccelerateEasingExponent" Header="Exponent" AutomationProperties.Name="Accelerate easing exponent" Value="4.5"/>
+            </local:ControlExample.Options>
+            
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Storyboard x:Name="Storyboard2"&gt;
     &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
         &lt;DoubleAnimation.EasingFunction&gt;
-            &lt;ExponentialEase Exponent="4.5" EasingMode="EaseIn" /&gt;
+            &lt;ExponentialEase Exponent="$(AccelerateEasingExponent)" EasingMode="EaseIn" /&gt;
         &lt;/DoubleAnimation.EasingFunction&gt;
     &lt;/DoubleAnimation&gt;
 &lt;/Storyboard&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="AccelerateEasingExponent" Value="{x:Bind AccelerateEasingExponent.Value, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
 
@@ -95,7 +102,7 @@
                     <Storyboard x:Name="Storyboard3">
                         <DoubleAnimation Storyboard.TargetName="Translation3" Storyboard.TargetProperty="X" Duration="0:0:0.3">
                             <DoubleAnimation.EasingFunction>
-                                <ExponentialEase Exponent="7" EasingMode="EaseOut" />
+                                <ExponentialEase Exponent="{x:Bind DecelerateEasingExponent.Value, Mode=OneWay}" EasingMode="EaseOut" />
                             </DoubleAnimation.EasingFunction>
                         </DoubleAnimation>
                     </Storyboard>
@@ -111,17 +118,25 @@
                     </Rectangle.RenderTransform>
                 </Rectangle>
             </Grid>
+
+            <local:ControlExample.Options>
+                <NumberBox x:Name="DecelerateEasingExponent" Header="Exponent" AutomationProperties.Name="Decelerate easing exponent" Value="7"/>
+            </local:ControlExample.Options>
+            
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Storyboard x:Name="Storyboard3"&gt;
     &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
         &lt;DoubleAnimation.EasingFunction&gt;
-            &lt;ExponentialEase Exponent="7" EasingMode="EaseOut" /&gt;
+            &lt;ExponentialEase Exponent="$(DecelerateEasingExponent)" EasingMode="EaseOut" /&gt;
         &lt;/DoubleAnimation.EasingFunction&gt;
     &lt;/DoubleAnimation&gt;
 &lt;/Storyboard&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="DecelerateEasingExponent" Value="{x:Bind DecelerateEasingExponent.Value, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example4" HeaderText="Other XAML Easing Functions">
