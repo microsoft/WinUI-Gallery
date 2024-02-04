@@ -117,7 +117,7 @@
 
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
-                <toolkit:SettingsExpander Description="© 2023 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">
+                <toolkit:SettingsExpander Description="© 2024 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">
                     <toolkit:SettingsExpander.HeaderIcon>
                         <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/SmallTile-sdk.png" />
                     </toolkit:SettingsExpander.HeaderIcon>

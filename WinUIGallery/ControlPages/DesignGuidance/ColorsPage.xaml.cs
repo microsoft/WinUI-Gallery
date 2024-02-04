@@ -31,6 +31,9 @@ namespace AppUIBasics.ControlPages
                 case 4:
                     NavigationFrame.Navigate(typeof(SignalSection));
                     break;
+                case 5:
+                    NavigationFrame.Navigate(typeof(HighContrastSection));
+                    break;
             }
         }
 
