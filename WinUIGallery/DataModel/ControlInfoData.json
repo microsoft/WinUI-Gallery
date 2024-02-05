@@ -1383,7 +1383,7 @@
           "Title": "AnnotatedScrollBar",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that extends a regular vertical scrollbar's functionality for an easy navigation through large collections.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ScrollViewer.png",
           "Description": "The AnnotatedScrollBar lets you navigate through a large collection of items via a clickable rail with labels which act as markers.",
           "Content": "<p><b>AnnotatedScrollBar</b> can be connected to a scrollable container, like a ScrollView, via its <b>ScrollController</b> property.</p><p>Populate the <b>Labels</b> property with special values that act as markers.</p><p>Set the <b>LabelTemplate</b> and <b>DetailLabelTemplate</b> data templates to define the labels' and more granular tooltips' looks.</p><p>Look at the <i>AnnotatedScrollBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
