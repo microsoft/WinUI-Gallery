@@ -11,42 +11,6 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="HighContrast">
-                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
-                    <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-            <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
-            <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
-            <common:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
-            <common:NullToVisibilityConverter
-                x:Key="inverseNullToVisibilityConverter"
-                NonNullValue="Collapsed"
-                NullValue="Visible" />
-            <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
-            <!--<common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />-->
-            <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
