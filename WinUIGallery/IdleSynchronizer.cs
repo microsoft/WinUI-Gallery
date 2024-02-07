@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics
 {
-    class IdleSynchronizer
+    public class IdleSynchronizer
     {
         const uint s_idleTimeoutMs = 100000;
         const int s_defaultWaitForEventMs = 10000;
