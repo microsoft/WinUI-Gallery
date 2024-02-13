@@ -34,7 +34,7 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string iconGlyph, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls)
+        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string iconGlyph, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls, string sourcePath)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
@@ -52,6 +52,7 @@ namespace AppUIBasics.Data
             this.Docs = docs;
             this.RelatedControls = relatedControls;
             this.HideSourceCodeAndRelatedControls = hideSourceCodeAndRelatedControls;
+            this.SourcePath = sourcePath;
         }
 
         public string UniqueId { get; set; }
@@ -71,6 +72,8 @@ namespace AppUIBasics.Data
         public ObservableCollection<string> RelatedControls { get; set; }
 
         public bool IncludedInBuild { get; set; }
+
+        public string SourcePath { get; set; }
 
         public override string ToString()
         {

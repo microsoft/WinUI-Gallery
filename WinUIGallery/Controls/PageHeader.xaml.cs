@@ -8,9 +8,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace WinUIGallery.DesktopWap.Controls
 {
     public sealed partial class PageHeader : UserControl
@@ -39,16 +36,29 @@ namespace WinUIGallery.DesktopWap.Controls
         {
             this.InitializeComponent();
             CopyLinkAction = OnCopyLink;
-            
         }
 
-        public void SetSourceLinks(string BaseUri, string PageName)
+        public void SetSamplePageSourceLinks(string BaseUri, string PageName)
         {
             // Pagetype is not null!
             // So lets generate the github links and set them!
             var pageName = PageName + ".xaml";
             PageCodeGitHubLink.NavigateUri = new Uri(BaseUri + pageName + ".cs");
             PageMarkupGitHubLink.NavigateUri = new Uri(BaseUri + pageName);
+        }
+
+        public void SetControlSourceLink(string BaseUri, string SourceLink)
+        {
+            if (!string.IsNullOrEmpty(SourceLink))
+            {
+                ControlSourcePanel.Visibility = Visibility.Visible;
+                ControlSourceLink.NavigateUri = new Uri(BaseUri + SourceLink);
+            }
+            else
+            {
+                ControlSourcePanel.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)

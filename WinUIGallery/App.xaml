@@ -20,7 +20,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:ItemTemplates />
                 <XamlControlsResources />
-                <ResourceDictionary Source="/Controls/CopyButton/CopyButton.xaml"/>
+                <ResourceDictionary Source="/Controls/CopyButton/CopyButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
