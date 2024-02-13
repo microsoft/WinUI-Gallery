@@ -21,7 +21,6 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using WinUIGallery.Helper;
 
 namespace WinUIGallery
 {

@@ -14,7 +14,6 @@ using Microsoft.UI.Dispatching;
 using System.Threading.Tasks;
 using Windows.System;
 using DispatcherQueueHandler = Microsoft.UI.Dispatching.DispatcherQueueHandler;
-using WinUIGallery.Helper;
 
 namespace WinUIGallery.TabViewPages
 {
