@@ -14,8 +14,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -27,7 +27,7 @@ using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public sealed partial class NavigationRootPage : Page
     {

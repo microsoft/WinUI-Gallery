@@ -1,7 +1,7 @@
 using System;
 using Microsoft.UI.Xaml.Controls;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
 
     public class CategoryBase { }

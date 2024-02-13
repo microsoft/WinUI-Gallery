@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Windowing;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using System.Threading;
 using Microsoft.UI.Dispatching;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ using Windows.System;
 using DispatcherQueueHandler = Microsoft.UI.Dispatching.DispatcherQueueHandler;
 using WinUIGallery.Helper;
 
-namespace AppUIBasics.TabViewPages
+namespace WinUIGallery.TabViewPages
 {
     public sealed partial class TabViewWindowingSamplePage : Page
     {

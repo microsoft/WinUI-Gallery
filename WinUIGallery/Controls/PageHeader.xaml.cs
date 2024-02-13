@@ -2,8 +2,8 @@
 // Licensed under the MIT License.
 
 using System;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;

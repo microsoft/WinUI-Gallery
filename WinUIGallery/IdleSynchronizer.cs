@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -11,7 +11,7 @@ using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public class IdleSynchronizer
     {

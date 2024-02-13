@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.UI.Xaml.Data;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     public sealed class BooleanToValueConverter: IValueConverter
     {

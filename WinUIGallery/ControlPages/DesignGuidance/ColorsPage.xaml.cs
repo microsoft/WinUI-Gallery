@@ -4,7 +4,7 @@
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ColorsPage : Page
     {

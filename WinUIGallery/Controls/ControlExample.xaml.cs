@@ -7,8 +7,8 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
-using AppUIBasics.Helper;
+using WinUIGallery.Common;
+using WinUIGallery.Helper;
 using ColorCode;
 using ColorCode.Common;
 using System;
@@ -32,7 +32,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Reflection;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// Describes a textual substitution in sample content.

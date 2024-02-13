@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls;
-using AppUIBasics.SamplePages;
+using WinUIGallery.SamplePages;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ConnectedAnimationPage : Page
     {
