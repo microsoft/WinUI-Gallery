@@ -815,7 +815,7 @@
           "Title": "InputValidation",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
-          "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InputValidation.png",
           "Description": "A feature to display developer-defined errors for text values",
           "Content": "<p>Look at the <i>InputValidationPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "RelatedControls": [
@@ -1423,7 +1423,7 @@
           "Title": "AnnotatedScrollBar",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that extends a regular vertical scrollbar's functionality for an easy navigation through large collections.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ScrollViewer.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AnnotatedScrollbar.png",
           "Description": "The AnnotatedScrollBar lets you navigate through a large collection of items via a clickable rail with labels which act as markers.",
           "Content": "<p><b>AnnotatedScrollBar</b> can be connected to a scrollable container, like a ScrollView, via its <b>ScrollController</b> property.</p><p>Populate the <b>Labels</b> property with special values that act as markers.</p><p>Set the <b>LabelTemplate</b> and <b>DetailLabelTemplate</b> data templates to define the labels' and more granular tooltips' looks.</p><p>Look at the <i>AnnotatedScrollBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
@@ -2001,7 +2001,7 @@
           "UniqueId": "CaptureElementPreview",
           "Title": "Capture Element / Camera Preview",
           "Subtitle": "A sample for doing a camera preview.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CaptureElement.png",
           "Description": "You can use a MediaPlayerElement control to show a camera preview with a MediaCapture object.",
           "IsNew": true,
           "Docs": [
