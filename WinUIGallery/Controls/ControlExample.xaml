@@ -30,6 +30,8 @@
                         <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
                     </ResourceDictionary>
                 </ResourceDictionary.ThemeDictionaries>
+
+                <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
             </ResourceDictionary>
         </Grid.Resources>
 
