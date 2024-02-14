@@ -149,7 +149,7 @@
             VerticalAlignment="Top"
             IsTabStop="True">
             <Grid
-                Background="{ThemeResource ControlExampleDisplayBrush}"
+                Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}">

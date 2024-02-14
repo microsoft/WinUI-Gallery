@@ -14,6 +14,24 @@
     mc:Ignorable="d">
 
     <Grid x:Name="rootGrid" Loaded="rootGrid_Loaded">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Light">
+                        <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                        <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="Dark">
+                        <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                        <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="HighContrast">
+                        <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                        <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
+                    </ResourceDictionary>
+                </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -26,27 +26,12 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent" />
-                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
-                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
-                    <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
-                    <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
-                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
