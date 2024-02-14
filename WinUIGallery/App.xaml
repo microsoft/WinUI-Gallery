@@ -54,8 +54,7 @@
 
             <!-- Style Overrides -->
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent" />
-            <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-
+            
             <!-- Application-specific styles -->
             <Style
                 x:Key="OutputTextBlockStyle"
