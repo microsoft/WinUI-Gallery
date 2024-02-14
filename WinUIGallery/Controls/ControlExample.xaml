@@ -114,10 +114,8 @@
             <controls1:SampleThemeListener>
                 <Grid
                     x:Name="ExampleContainer"
+                    Style="{ThemeResource GalleryTileGridStyle}"
                     x:FieldModifier="Public"
-                    Background="{ThemeResource ControlExampleDisplayBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1"
                     CornerRadius="8,8,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -130,17 +128,17 @@
                     </Grid.ColumnDefinitions>
 
                     <!--  Example Display  -->
-                        <ContentPresenter
-                            x:Name="ControlPresenter"
-                            Padding="12"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
-                            Background="{ThemeResource ControlExampleDisplayBrush}"
-                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                            BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
-                            Content="{x:Bind Example}"
-                            CornerRadius="8,8,0,0" />
+                    <ContentPresenter
+                        x:Name="ControlPresenter"
+                        Padding="12"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
+                        Background="{ThemeResource ControlExampleDisplayBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
+                        Content="{x:Bind Example}"
+                        CornerRadius="8,8,0,0" />
 
                     <!--  Output Display  -->
                     <StackPanel
