@@ -148,11 +148,7 @@
             MaxHeight="600"
             VerticalAlignment="Top"
             IsTabStop="True">
-            <Grid
-                Background="{ThemeResource ControlExampleDisplayBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="{StaticResource OverlayCornerRadius}">
+            <Grid Style="{ThemeResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="296" />

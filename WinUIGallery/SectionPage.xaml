@@ -35,9 +35,8 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="TitleTxt.Margin" Value="16,48,16,24" />
+                        <Setter Target="TitleTxt.Margin" Value="24,64,16,24" />
                         <Setter Target="itemGridView.Padding" Value="16,0,16,36" />
-                        <Setter Target="TitleTxt.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                     </VisualState.Setters>
                 </VisualState>
