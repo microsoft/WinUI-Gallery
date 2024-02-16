@@ -65,11 +65,8 @@
             TextWrapping="Wrap" />
         <controls1:SampleThemeListener>
             <Grid
+                Style="{ThemeResource GalleryTileGridStyle}"
                 Padding="8"
-                Background="{ThemeResource ControlExampleDisplayBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="{StaticResource ControlCornerRadius}"
                 ColumnSpacing="8"
                 RowSpacing="8">
                 <Grid.RowDefinitions>
