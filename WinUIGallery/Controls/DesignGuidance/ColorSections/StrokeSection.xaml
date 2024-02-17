@@ -20,7 +20,7 @@
             Description="Used for standard control strokes and stroke states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -47,7 +47,7 @@
                 ColorName="Text Control / Border"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -77,7 +77,7 @@
             Description="Used for gradient stops in elevation borders, and for control states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -113,7 +113,7 @@
                 ColorValue="#000000 (66, 40%)"
                 ShowSeparator="False" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -152,7 +152,7 @@
                 <TextBlock Width="60" />
             </DropDownButton>
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -185,7 +185,7 @@
                 OnContent="" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -224,7 +224,7 @@
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -269,7 +269,7 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -312,7 +312,7 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
