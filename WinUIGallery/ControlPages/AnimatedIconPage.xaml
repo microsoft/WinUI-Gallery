@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:local="using:AppUIBasics"
+    xmlns:pages="using:AppUIBasics.ControlPages"
     mc:Ignorable="d">
     <StackPanel>
        <local:ControlExample x:Name="AnimatedIconExample1" HeaderText="Adding AnimatedIcon to a button"
@@ -21,10 +22,7 @@
                         For guidance on how to properly structure your animation file see the AnimatedIcon Guidance page.<LineBreak></LineBreak>
                     </TextBlock>
                     <Button PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited" Width="75" AutomationProperties.Name="AnimatedIcon Example">
-                        <AnimatedIcon x:Name="SearchAnimatedIcon">
-                            <AnimatedIcon.Source>
-                                <animatedvisuals:AnimatedFindVisualSource/>
-                            </AnimatedIcon.Source>
+                        <AnimatedIcon x:Name="SearchAnimatedIcon" Source="{x:Bind pages:AnimatedIconPage.GetAnimationSourceFromString(AnimatedVisualSourceSelection.SelectedItem), Mode=OneWay}">
                             <AnimatedIcon.FallbackIconSource>
                                 <SymbolIconSource Symbol="Find"/>
                             </AnimatedIcon.FallbackIconSource>
@@ -32,6 +30,20 @@
                     </Button>
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <ComboBox x:Name="AnimatedVisualSourceSelection" Header="Kind" SelectedIndex="4" VerticalAlignment="Center">
+                    <x:String>AnimatedBackVisualSource</x:String>
+                    <x:String>AnimatedChevronDownSmallVisualSource</x:String>
+                    <x:String>AnimatedChevronRightDownSmallVisualSource</x:String>
+                    <x:String>AnimatedChevronUpDownSmallVisualSource</x:String>
+                    <x:String>AnimatedFindVisualSource</x:String>
+                    <x:String>AnimatedGlobalNavigationButtonVisualSource</x:String>
+                    <x:String>AnimatedSettingsVisualSource</x:String>
+                </ComboBox>
+            </local:ControlExample.Options>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="AnimatedVisualSourceKind" Value="{x:Bind AnimatedVisualSourceSelection.SelectedItem, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample x:Name="AnimatedIconExample2" HeaderText="Adding AnimatedIcon to a NavigationView" XamlSource="Icons/AnimatedIconSample2_xaml.txt">
             <local:ControlExample.Example>
