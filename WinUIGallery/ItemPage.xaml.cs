@@ -11,8 +11,8 @@ using System;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.System;
@@ -26,7 +26,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap.Controls;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// A page that displays details for a single item within a group.
@@ -92,7 +92,7 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                Type pageType = Type.GetType("AppUIBasics.ControlPages." + item.UniqueId + "Page");
+                Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {

@@ -1,4 +1,4 @@
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using System;
 using System.Collections.ObjectModel;
 using Windows.Foundation;
@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class PullToRefreshPage : Page
     {

@@ -7,7 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.ComponentModel;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     {

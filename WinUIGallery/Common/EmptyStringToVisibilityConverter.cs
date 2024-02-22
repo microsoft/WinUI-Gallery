@@ -2,7 +2,7 @@ using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     public class EmptyStringToVisibilityConverter : IValueConverter
     {

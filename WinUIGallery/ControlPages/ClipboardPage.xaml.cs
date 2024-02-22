@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ClipboardPage : Page
     {

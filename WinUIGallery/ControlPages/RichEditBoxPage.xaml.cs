@@ -22,7 +22,7 @@ using Microsoft.UI;
 using System.Runtime.InteropServices;
 using WinRT;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class RichEditBoxPage : Page
     {

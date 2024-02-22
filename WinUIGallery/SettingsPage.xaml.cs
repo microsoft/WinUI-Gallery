@@ -8,7 +8,7 @@
 //
 //*********************************************************
 using System;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -18,7 +18,7 @@ using Windows.Storage.Pickers;
 using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// A page that displays the app's settings.

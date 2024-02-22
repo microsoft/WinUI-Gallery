@@ -10,7 +10,7 @@
     //*********************************************************
 -->
 <Page
-    x:Class="AppUIBasics.NavigationRootPage"
+    x:Class="WinUIGallery.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     HighContrastAdjustment="None">

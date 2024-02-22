@@ -1,8 +1,8 @@
-﻿using AppUIBasics.Data;
+﻿using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ParallaxViewPage : ItemsPageBase
     {
