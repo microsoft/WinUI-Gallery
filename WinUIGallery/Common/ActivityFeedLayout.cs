@@ -8,7 +8,7 @@ using LayoutContext = Microsoft.UI.Xaml.Controls.LayoutContext;
 using VirtualizingLayout = Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     class ActivityFeedLayout : VirtualizingLayout
     {

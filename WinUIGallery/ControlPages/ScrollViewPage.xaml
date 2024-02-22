@@ -9,10 +9,10 @@
 //
 //*********************************************************
 -->
-<Page x:Class="AppUIBasics.ControlPages.ScrollViewPage"
+<Page x:Class="WinUIGallery.ControlPages.ScrollViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics">
+    xmlns:local="using:WinUIGallery">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
             <StackPanel>

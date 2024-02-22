@@ -1,4 +1,4 @@
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.Xaml.Interactivity;
 using System.Linq;
 using Windows.Storage;
@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
-namespace AppUIBasics.Behaviors
+namespace WinUIGallery.Behaviors
 {
     public class ImageScrollBehavior : DependencyObject, IBehavior
     {

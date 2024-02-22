@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 
 namespace WinUIGallery.DesktopWap.DataModel
 {

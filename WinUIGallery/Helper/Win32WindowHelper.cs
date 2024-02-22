@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml;
-using static AppUIBasics.Win32;
+using static WinUIGallery.Win32;
 
 namespace WinUIGallery.Helper
 {

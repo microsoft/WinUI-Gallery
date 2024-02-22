@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 using System.Text.Json;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -23,7 +23,7 @@ using System.Text.Json;
 // responsiveness by initiating the data loading task in the code behind for App.xaml when the app
 // is first launched.
 
-namespace AppUIBasics.Data
+namespace WinUIGallery.Data
 {
     public class Root
     {
@@ -217,7 +217,7 @@ namespace AppUIBasics.Data
 
             lock (_lock)
             {
-                string pageRoot = "AppUIBasics.ControlPages.";
+                string pageRoot = "WinUIGallery.ControlPages.";
 
                 controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
                 {

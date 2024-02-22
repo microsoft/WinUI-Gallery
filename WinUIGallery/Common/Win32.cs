@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     internal static class Win32
     {
