@@ -30,6 +30,7 @@ namespace UITests.Tests
 
         [TestMethod]
         [DataRow("a")]  // "a" should return results for all groups.
+        [TestProperty("Description", "Validate the accessibility of the search results page.")]
         public void ValidateSearchResultsPageAccessibility(string searchText)
         {
             var search = Session.FindElementByName("Search");
@@ -47,6 +48,7 @@ namespace UITests.Tests
             {
                 Thread.Sleep(1000);
                 menuItem.Click();
+                AxeHelper.AssertNoAccessibilityErrors();
             }
         }
     }
