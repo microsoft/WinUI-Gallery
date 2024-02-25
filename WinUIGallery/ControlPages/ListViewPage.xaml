@@ -436,9 +436,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
 
         <local:ControlExample HeaderText="ListView with context menus">
             <StackPanel>
-                <TextBlock Margin="0 0 0 15" TextWrapping="Wrap">
-                   This ListView allows users to right click to open a context menu. In this case, the context menu provides the option to delete an entry.
-                </TextBlock>
+                <TextBlock Margin="0 0 0 15" TextWrapping="Wrap" Text="This ListView allows users to right click to open a context menu. In this case, the context menu provides the option to delete an entry." />
                 <ListView
                     x:Name="ContextMenuList"
                     SelectionMode="Single"
@@ -558,6 +556,6 @@ private void ContactDeleteMenuyItem_Click(object sender, RoutedEventArgs e)
             </local:ControlExample.CSharp>
 
         </local:ControlExample>
-        
+
     </StackPanel>
 </local:ItemsPageBase>
