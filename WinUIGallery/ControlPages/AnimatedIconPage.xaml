@@ -31,7 +31,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <ComboBox x:Name="AnimatedVisualSourceSelection" Header="Kind" SelectedIndex="4" VerticalAlignment="Center">
+                <ComboBox x:Name="AnimatedVisualSourceSelection" Header="Kind" SelectedIndex="4" VerticalAlignment="Center" MinWidth="340">
                     <x:String>AnimatedBackVisualSource</x:String>
                     <x:String>AnimatedChevronDownSmallVisualSource</x:String>
                     <x:String>AnimatedChevronRightDownSmallVisualSource</x:String>
