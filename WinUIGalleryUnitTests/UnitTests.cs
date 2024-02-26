@@ -1,5 +1,5 @@
-using AppUIBasics;
-using AppUIBasics.Data;
+using WinUIGallery;
+using WinUIGallery.Data;
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -64,7 +64,7 @@ namespace WinUIGalleryUnitTests
         [UITestMethod]
         public void TestWrapGrid()
         {
-            AppUIBasics.WrapPanel wrapPanel = new AppUIBasics.WrapPanel();
+            WinUIGallery.WrapPanel wrapPanel = new WinUIGallery.WrapPanel();
             wrapPanel.Width = 250;
             wrapPanel.Height = 250;
             for (int i = 0; i < 4; i++) 

@@ -11,9 +11,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using AppUIBasics.Common;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Common;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -21,9 +21,8 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using WinUIGallery.Helper;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

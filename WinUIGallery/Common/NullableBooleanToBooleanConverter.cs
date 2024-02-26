@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     public class NullableBooleanToBooleanConverter : IValueConverter
     {

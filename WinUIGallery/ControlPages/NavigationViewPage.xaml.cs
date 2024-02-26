@@ -1,5 +1,5 @@
-using AppUIBasics.SamplePages;
-using AppUIBasics.Common;
+using WinUIGallery.SamplePages;
+using WinUIGallery.Common;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System.Linq;
 using Windows.System;
 using Microsoft.UI.Xaml.Automation;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class NavigationViewPage : Page
     {
@@ -70,7 +70,7 @@ namespace AppUIBasics.ControlPages
                 {
                     string selectedItemTag = ((string)selectedItem.Tag);
                     sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                    string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                    string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                     Type pageType = Type.GetType(pageName);
                     contentFrame.Navigate(pageType);
                 }
@@ -89,7 +89,7 @@ namespace AppUIBasics.ControlPages
                 {
                     var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                     string selectedItemTag = ((string)selectedItem.Tag);
-                    string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                    string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                     Type pageType = Type.GetType(pageName);
                     contentFrame2.Navigate(pageType);
                 }
@@ -111,7 +111,7 @@ namespace AppUIBasics.ControlPages
                 var selectedItem = (Category)args.SelectedItem;
                 string selectedItemTag = selectedItem.Name;
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                string pageName = "AppUIBasics.SamplePages." + "SamplePage1";
+                string pageName = "WinUIGallery.SamplePages." + "SamplePage1";
                 Type pageType = Type.GetType(pageName);
                 contentFrame4.Navigate(pageType);
             }
@@ -129,7 +129,7 @@ namespace AppUIBasics.ControlPages
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 Type pageType = Type.GetType(pageName);
                 contentFrame5.Navigate(pageType);
             }
@@ -143,7 +143,7 @@ namespace AppUIBasics.ControlPages
             else
             {
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
-                string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
+                string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
                 Type pageType = Type.GetType(pageName);
                 contentFrame6.Navigate(pageType);
             }
@@ -158,7 +158,7 @@ namespace AppUIBasics.ControlPages
             else
             {
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
-                string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
+                string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
                 Type pageType = Type.GetType(pageName);
 
                 contentFrame7.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
@@ -183,7 +183,7 @@ namespace AppUIBasics.ControlPages
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
-                string pageName = "AppUIBasics.SamplePages." + selectedItemTag;
+                string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 Type pageType = Type.GetType(pageName);
                 contentFrame8.Navigate(pageType);
             }
@@ -192,7 +192,7 @@ namespace AppUIBasics.ControlPages
         private void NavigationView_SelectionChanged9(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
-            string pageName = "AppUIBasics.SamplePages." + ((string)selectedItem.Tag);
+            string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
             Type pageType = Type.GetType(pageName);
 
             contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);

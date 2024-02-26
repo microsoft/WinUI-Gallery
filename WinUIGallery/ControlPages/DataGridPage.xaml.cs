@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 { 
     public sealed partial class DataGridPage : Page
     {

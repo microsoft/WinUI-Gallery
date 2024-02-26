@@ -1,10 +1,10 @@
 using System;
 using System.Runtime.InteropServices; // For DllImport
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
 
-namespace AppUIBasics.SamplePages
+namespace WinUIGallery.SamplePages
 {
     class WindowsSystemDispatcherQueueHelper
     {
@@ -50,7 +50,7 @@ namespace AppUIBasics.SamplePages
         public SampleSystemBackdropsWindow()
         {
             this.InitializeComponent();
-            ((FrameworkElement)this.Content).RequestedTheme = AppUIBasics.Helper.ThemeHelper.RootTheme;
+            ((FrameworkElement)this.Content).RequestedTheme = WinUIGallery.Helper.ThemeHelper.RootTheme;
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(titleBar);
             m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();

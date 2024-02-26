@@ -11,12 +11,12 @@
 -->
 
 <Page
-    x:Class="AppUIBasics.ControlPages.TypographyPage"
+    x:Class="WinUIGallery.ControlPages.TypographyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:AppUIBasics"
+    xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="compactPage"
     mc:Ignorable="d">
