@@ -84,7 +84,7 @@ namespace WinUIGallery
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             var uniqueId = (string)args.Parameter;
-            var group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync(uniqueId);
+            var group = await ControlInfoDataSource.GetGroupFromItemAsync(uniqueId);
             var item = group?.Items.FirstOrDefault(x => x.UniqueId.Equals(uniqueId));
 
             if (item != null)
