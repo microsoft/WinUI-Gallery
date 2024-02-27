@@ -198,6 +198,7 @@ namespace WinUIGallery.Data
 
                     item.BadgeString = badgeString;
                     item.IncludedInBuild = pageType is not null;
+                    item.ImagePath ??= "ms-appx:///Assets/ControlImages/Placeholder.png";
 #nullable disable
                 });
 
