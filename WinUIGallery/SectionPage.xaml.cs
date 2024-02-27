@@ -29,7 +29,7 @@ namespace WinUIGallery
             base.OnNavigatedTo(e);
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             NavigationRootPage navigationRootPage = args.NavigationRootPage;
-            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)args.Parameter);
+            var group = await ControlInfoDataSource.GetGroupAsync((string)args.Parameter);
        
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;

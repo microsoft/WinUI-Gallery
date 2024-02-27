@@ -10,7 +10,6 @@
         {
           "UniqueId": "Typography",
           "Title": "Typography",
-          "HideSourceCodeAndRelatedControls": true,
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
           "Docs": [
             {
@@ -30,7 +29,6 @@
         {
           "UniqueId": "Icons",
           "Title": "Icons",
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Iconography in Windows 11",
@@ -45,7 +43,6 @@
         {
           "UniqueId": "Colors",
           "Title": "Colors",
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Colors in Windows 11",
@@ -73,7 +70,6 @@
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color Contrast",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",
@@ -89,7 +85,6 @@
           "UniqueId": "AccessibilityKeyboard",
           "Title": "Keyboard Support",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",
@@ -129,7 +124,6 @@
           "UniqueId": "AccessibilityScreenReader",
           "Title": "Screen Reader Support",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "Accessibility",
@@ -813,10 +807,10 @@
         {
           "UniqueId": "InputValidation",
           "Title": "InputValidation",
+          "Subtitle": "A feature to display developer-defined errors for text values",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
           "ImagePath": "ms-appx:///Assets/ControlImages/InputValidation.png",
-          "Description": "A feature to display developer-defined errors for text values",
+          "Description": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
           "Content": "<p>Look at the <i>InputValidationPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "RelatedControls": [
             "TextBox",
