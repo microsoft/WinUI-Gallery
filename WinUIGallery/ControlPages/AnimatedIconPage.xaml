@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
-    xmlns:local="using:AppUIBasics"
-    xmlns:pages="using:AppUIBasics.ControlPages"
+    xmlns:local="using:WinUIGallery"
+    xmlns:pages="using:WinUIGallery.ControlPages"
     mc:Ignorable="d">
     <StackPanel>
        <local:ControlExample x:Name="AnimatedIconExample1" HeaderText="Adding AnimatedIcon to a button"
