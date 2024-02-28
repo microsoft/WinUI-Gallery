@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {

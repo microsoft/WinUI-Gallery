@@ -26,7 +26,7 @@
     <Content Include="Assets\ControlImages\Button.png" />
     <Content Include="Assets\ControlImages\CalendarDatePicker.png" />
     <Content Include="Assets\ControlImages\CalendarView.png" />
-    <!-- TODO: Need a camera capture icon. -->
+    <Content Include="Assets\ControlImages\CaptureElement.png" />
     <Content Include="Assets\ControlImages\Canvas.png" />
     <Content Include="Assets\ControlImages\Checkbox.png" />
     <Content Include="Assets\ControlImages\Clipboard.png" />
@@ -258,6 +258,7 @@
     <Content Include="ControlPagesSampleCode\System\FilePickerSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\System\Window.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample3.txt" />

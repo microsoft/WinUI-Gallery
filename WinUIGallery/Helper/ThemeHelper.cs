@@ -4,7 +4,7 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     /// <summary>
     /// Class providing functionality around switching and restoring theme settings
@@ -32,7 +32,7 @@ namespace AppUIBasics.Helper
                     }
                 }
 
-                return AppUIBasics.App.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
+                return WinUIGallery.App.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
             }
         }
 
@@ -78,7 +78,7 @@ namespace AppUIBasics.Helper
 
                 if (savedTheme != null)
                 {
-                    RootTheme = AppUIBasics.App.GetEnum<ElementTheme>(savedTheme);
+                    RootTheme = WinUIGallery.App.GetEnum<ElementTheme>(savedTheme);
                 }
             }
         }

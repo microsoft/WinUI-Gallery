@@ -2,7 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.DesktopWap.Controls;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class InfoBadgePage : Page
     {

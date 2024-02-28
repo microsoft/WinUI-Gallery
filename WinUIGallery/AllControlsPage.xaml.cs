@@ -7,11 +7,11 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// A page that displays a grouped collection of items.

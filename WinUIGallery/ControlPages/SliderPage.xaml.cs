@@ -23,7 +23,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class SliderPage : Page
     {

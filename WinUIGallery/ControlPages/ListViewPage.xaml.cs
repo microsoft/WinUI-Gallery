@@ -7,7 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,9 +19,9 @@ using Windows.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ListViewPage : ItemsPageBase
     {
@@ -63,7 +63,7 @@ namespace AppUIBasics.ControlPages
             contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
             DragDropListView2.ItemsSource = contacts2;
 
-            Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
+            Control4.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
 
             // Initialize list of contacts to be filtered
@@ -398,7 +398,7 @@ namespace AppUIBasics.ControlPages
 
         public override string ToString()
         {
-            return Name;
+            return $"{Name}, {Company}";
         }
 #endregion
     }

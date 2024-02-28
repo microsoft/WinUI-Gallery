@@ -12,11 +12,11 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 using Windows.UI.Core;
 using Microsoft.UI.Input;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     /// <summary>
     /// NavigationHelper aids in navigation between pages. It manages

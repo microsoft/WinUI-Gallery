@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using WinRT.Interop;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     // Helper class to allow the app to find the Window that contains an
     // arbitrary UIElement (GetWindowForElement).  To do this, we keep track

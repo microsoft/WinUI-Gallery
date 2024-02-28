@@ -4,7 +4,7 @@
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ColorsPage : Page
     {
@@ -30,6 +30,9 @@ namespace AppUIBasics.ControlPages
                     break;
                 case 4:
                     NavigationFrame.Navigate(typeof(SignalSection));
+                    break;
+                case 5:
+                    NavigationFrame.Navigate(typeof(HighContrastSection));
                     break;
             }
         }

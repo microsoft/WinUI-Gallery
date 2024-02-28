@@ -6,8 +6,10 @@
     // Create a file picker
     var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
 
+    // See the sample code below for how to make the window accessible from the App class.
+    var window = App.MainWindow;
+
     // Retrieve the window handle (HWND) of the current WinUI 3 window.
-    var window = WindowHelper.GetWindowForElement(this);
     var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
 
     // Initialize the file picker with the window handle (HWND).
@@ -26,4 +28,5 @@
     else
     {
         PickAFileOutputTextBlock.Text = "Operation cancelled.";
+    }
 }

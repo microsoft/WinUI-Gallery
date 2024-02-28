@@ -1,10 +1,10 @@
 using System;
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     /// <summary>
     /// Class providing functionality to support generating and copying protocol activation URIs.

@@ -11,8 +11,8 @@ using System;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.System;
@@ -26,13 +26,16 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap.Controls;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// A page that displays details for a single item within a group.
     /// </summary>
     public sealed partial class ItemPage : Page
     {
+        private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/1.4-stable/controls/dev/";
+        private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
+
         public ControlInfoDataItem Item
         {
             get { return _item; }
@@ -81,7 +84,7 @@ namespace AppUIBasics
         {
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             var uniqueId = (string)args.Parameter;
-            var group = await ControlInfoDataSource.Instance.GetGroupFromItemAsync(uniqueId);
+            var group = await ControlInfoDataSource.GetGroupFromItemAsync(uniqueId);
             var item = group?.Items.FirstOrDefault(x => x.UniqueId.Equals(uniqueId));
 
             if (item != null)
@@ -89,12 +92,13 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                Type pageType = Type.GetType("AppUIBasics.ControlPages." + item.UniqueId + "Page");
+                Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {
                     var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
-                    pageHeader.SetSourceLinks("https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/", pageName);
+                    pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
+                    pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }

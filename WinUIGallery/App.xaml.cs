@@ -11,9 +11,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using AppUIBasics.Common;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Common;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -22,7 +22,7 @@ using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -30,6 +30,7 @@ namespace AppUIBasics
     sealed partial class App : Application
     {
         private static Window startupWindow;
+        private static Win32WindowHelper win32WindowHelper;
 
         public static string WinAppSdkDetails
         {
@@ -107,6 +108,10 @@ namespace AppUIBasics
 
             startupWindow = WindowHelper.CreateWindow();
             startupWindow.ExtendsContentIntoTitleBar = true;
+
+            win32WindowHelper = new Win32WindowHelper(startupWindow);
+            win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
