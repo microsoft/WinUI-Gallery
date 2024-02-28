@@ -2791,6 +2791,21 @@
           "RelatedControls": [
             "Clipboard"
           ]
+        },
+        {
+          "UniqueId": "ScratchPad",
+          "Title": "Scratch Pad",
+          "Subtitle": "Scratch pad for testing simple XAML markup",
+          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
+          "Description": "TODO: Description here",
+          "Content": "<p>Look at the <i>TODO -- Do I want this?.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "XamlReader - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
+            }
+          ]
         }
       ]
     }
