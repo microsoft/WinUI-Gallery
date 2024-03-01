@@ -27,13 +27,13 @@
                               CSharpSource="MapControl\MapControlSample_cs.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/SampleMedia/MapExample.png"  Stretch="None" />
+                    <Image Source="/Assets/SampleMedia/MapExample.png" Width="600" Height="Auto" />
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <PasswordBox x:Name="MapToken" PlaceholderText="Map service token" Width="200" KeyDown="MapToken_KeyDown" />
                             <Button Content="Set Token" Click="Button_Click"/>
                         </StackPanel>
-                        <controls:MapControl x:Name="map1" Width="800" Height="600"/>
+                        <controls:MapControl x:Name="map1" Width="600" Height="400"/>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
