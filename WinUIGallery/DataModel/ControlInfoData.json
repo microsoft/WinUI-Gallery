@@ -2139,6 +2139,21 @@
               "Uri": "https://github.com/MicrosoftEdge/WebView2Samples"
             }
           ]
+        },
+        {
+          "UniqueId": "MapControl",
+          "Title": "MapControl",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "Displays a symbolic map of the Earth",
+          "ImagePath": "ms-appx:///Assets/ControlImages/MapControl.png",
+          "Description": "Displays a symbolic map of the Earth",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "MapControl - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
+            }
+          ]
         }
       ]
     },
