@@ -26,7 +26,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="SelectorBar Manipulating Frame Content" Margin="0,0,24,0">
+        <local:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions" Margin="0,0,24,0">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
                     <SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True"/>
@@ -41,13 +41,51 @@
            
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;SelectorBar x:Name="SelectorBar1"&gt;
-    &lt;SelectorBarItem x:Name="SelectorBarItemRecent" Text="Recent" Icon="Clock" /&gt;
-    &lt;SelectorBarItem x:Name="SelectorBarItemShared" Text="Shared" Icon="Share" /&gt;
-    &lt;SelectorBarItem x:Name="SelectorBarItemFavorites" Text="Favorites" Icon="Favorite" IsSelected="True" /&gt;
+&lt;SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged"&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage2" Text="Page2" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage3" Text="Page3" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage4" Text="Page4" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage5" Text="Page5" /&gt;
 &lt;/SelectorBar&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+rivate void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        {
+            SelectorBarItem selectedItem = sender.SelectedItem;
+            int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
+            System.Type pageType;
+
+            switch (currentSelectedIndex)
+            {
+                case 0:
+                    pageType = typeof(SamplePage1);
+                    break;
+                case 1:
+                    pageType = typeof(SamplePage2);
+                    break;
+                case 2:
+                    pageType = typeof(SamplePage3);
+                    break;
+                case 3:
+                    pageType = typeof(SamplePage4);
+                    break;
+                default:
+                    pageType = typeof(SamplePage5);
+                    break;
+            }
+
+            var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
+
+            ContentFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
+
+            previousSelectedIndex = currentSelectedIndex;
+        }
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </Page>
