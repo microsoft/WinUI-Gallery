@@ -1928,7 +1928,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
           "Description": "SelectorBar is used to modify the content shown by allowing users to select and switch between different sets of data.",
           "Content": "<p>This page shows a simplified <b>SelectorBar</b> control with minimal content to demonstrate basic <b>SelectorBar</b> usage. Look at the <i>SelectorBar.xaml</i> file in Visual Studio to see the full code for this page.</p><p><b>SelectorBar</b> is typically used with <b>SelectorBarItem</b>",
-          "SourcePath": "/CommonStyles/SelectorBar_themeresources.xaml",
+          "SourcePath": "/SelectorBar/SelectorBar_themeresources.xaml",
           "IsNew": true,
           "Docs": [
             {
