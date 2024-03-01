@@ -87,6 +87,7 @@
     <Content Include="Assets\ControlImages\RevealFocus.png" />
     <Content Include="Assets\ControlImages\RichEditBox.png" />
     <Content Include="Assets\ControlImages\RichTextBlock.png" />
+    <Content Include="Assets\ControlImages\ScratchPad.png" />
     <Content Include="Assets\ControlImages\ScrollView.png" />
     <Content Include="Assets\ControlImages\ScrollViewer.png" />
     <Content Include="Assets\ControlImages\SemanticZoom.png" />

@@ -18,12 +18,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using System.ComponentModel;
-using AppUIBasics.Helper;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Markup;
 using System.Xml;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ScratchPadPage : Page
     {
