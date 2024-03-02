@@ -48,7 +48,7 @@
                          Margin="6"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"
-                         Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                         Fill="{ThemeResource ControlStrongFillColorDefaultBrush}"/>
                 <TextBlock Grid.Column="1"
                            Text="{x:Bind Name}"
                            x:Phase="1"
@@ -89,7 +89,7 @@
                 <ListView x:Name="BaseExample"
                     ItemTemplate="{StaticResource BasicListViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                     Width="350" 
                     Height="400"
                     HorizontalAlignment="Left"/>
@@ -117,7 +117,7 @@
                 <ListView x:Name="Control2" 
                           ItemTemplate="{StaticResource ContactListViewTemplate}"
                           BorderThickness="1"
-                          BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                          BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                           Width="400" 
                           Height="400"
                           HorizontalAlignment="Left"/>
@@ -161,7 +161,7 @@
                     AllowDrop="True"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                     MinWidth="350" 
                     Height="400"
                     DragItemsStarting="Source_DragItemsStarting"
@@ -182,7 +182,7 @@
                     DragEnter="Target_DragEnter"
                     SelectionMode="Single" 
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                     MinWidth="350" 
                     Height="400"/>
             </Grid>
@@ -221,7 +221,7 @@ source code for the WinUI Gallery. -->
                 Height="400"
                 Width="400"
                 BorderThickness="1"
-                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                 HorizontalAlignment="Left">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -264,7 +264,7 @@ source code for the WinUI Gallery. -->
                 Height="400"
                 Width="400"
                 BorderThickness="1"
-                BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"/>
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"/>
 
             <local:ControlExample.Options>
                 <StackPanel Width="200">
@@ -289,7 +289,7 @@ source code for the WinUI Gallery. -->
                     x:Name="InvertedListView"
                     ItemTemplate="{StaticResource MessageViewTemplate}"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
                     Height="400"
                     SelectionMode="None">
 
@@ -364,7 +364,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                       Height="400"
                       MinWidth="550"
                       BorderThickness="1"
-                      BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
+                      BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
@@ -399,7 +399,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
      Height="400"
      MinWidth="550"
      BorderThickness="1"
-     BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"&gt;
+     BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"&gt;
                     
 &lt;!-- Data Template Used: --&gt;
 &lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;
@@ -444,7 +444,6 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                     Height="400"
                     Width="400"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
                     HorizontalAlignment="Left">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local1:Contact">
@@ -464,24 +463,24 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Ellipse x:Name="Ellipse"
-                                Grid.RowSpan="2"
-                                Width ="32"
-                                Height="32"
-                                Margin="6"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                                    Grid.RowSpan="2"
+                                    Width ="32"
+                                    Height="32"
+                                    Margin="6"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Fill="{ThemeResource ControlStrongFillColorDefaultBrush}"/>
                                 <TextBlock Grid.Column="1"
-                                Text="{x:Bind Name}"
-                                x:Phase="1"
-                                Style="{ThemeResource BaseTextBlockStyle}"
-                                Margin="12,6,0,0"/>
+                                    Text="{x:Bind Name}"
+                                    x:Phase="1"
+                                    Style="{ThemeResource BaseTextBlockStyle}"
+                                    Margin="12,6,0,0"/>
                                 <TextBlock Grid.Column="1"
-                                Grid.Row="1"
-                                Text="{x:Bind Company}"
-                                x:Phase="2"
-                                Style="{ThemeResource BodyTextBlockStyle}"
-                                Margin="12,0,0,6"/>
+                                    Grid.Row="1"
+                                    Text="{x:Bind Company}"
+                                    x:Phase="2"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Margin="12,0,0,6"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -497,7 +496,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
     Height="400"
     Width="400"
     BorderThickness="1"
-    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
     HorizontalAlignment="Left""&gt;
     &lt;ListView.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="local1:Contact"&gt;
@@ -523,7 +522,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                     Margin="6"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/&gt;
+                    Fill="{ThemeResource ControlStrongFillColorDefaultBrush}"/&gt;
                 &lt;TextBlock Grid.Column="1"
                     Text="{x:Bind Name}"
                     x:Phase="1"
