@@ -118,7 +118,7 @@ namespace WinUIGallery.ControlPages
         }
     }
 
-    class ExpandToFillContainer : Grid
+    partial class ExpandToFillContainer : Grid
     {
         protected override Size MeasureOverride(Size availableSize)
         {

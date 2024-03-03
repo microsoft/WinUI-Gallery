@@ -7,7 +7,7 @@ namespace WinUIGallery.Common
 {
 
     [ContentProperty(Name = "ItemTemplate")]
-    class MenuItemTemplateSelector : DataTemplateSelector
+    partial class MenuItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate ItemTemplate { get; set; }
 

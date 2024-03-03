@@ -204,7 +204,7 @@ namespace WinUIGallery.ControlPages
         }
     }
 
-    class ExplorerItemTemplateSelector : DataTemplateSelector
+    partial class ExplorerItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate FolderTemplate { get; set; }
         public DataTemplate FileTemplate { get; set; }
