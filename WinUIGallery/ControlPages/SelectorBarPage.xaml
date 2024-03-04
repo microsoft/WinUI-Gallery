@@ -33,7 +33,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions" Margin="0,0,24,0">
+        <local:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
                     <SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True"/>
