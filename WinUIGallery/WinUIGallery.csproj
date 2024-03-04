@@ -140,6 +140,7 @@
         <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
+        <None Remove="ControlPages\SelectorBarPage.xaml" />
         <None Remove="ControlPages\ShapePage.xaml" />
         <None Remove="ControlPages\Typography.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
@@ -261,6 +262,11 @@
     <Import Project="ContentIncludes.props" />
     <ItemGroup>
       <PRIResource Remove="Assets\ControlIcons\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\SelectorBarPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
 </Project>
