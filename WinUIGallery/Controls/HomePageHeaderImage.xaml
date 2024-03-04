@@ -20,17 +20,20 @@
                         <GradientStop Offset="0.0" Color="#CED8E4" />
                         <GradientStop Offset="1.0" Color="#D5DBE3" />
                     </LinearGradientBrush>
+                    <x:Double x:Key="ImageOpacity">0.9</x:Double>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                    <SolidColorBrush x:Key="BackgroundGradient" Color="#020B20" />
+                    <x:Double x:Key="ImageOpacity">0.8</x:Double>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                    <x:Double x:Key="ImageOpacity">0.8</x:Double>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="0,-100,0,0">
         <Grid
             x:Name="ImageGrid"
             Background="{ThemeResource BackgroundGradient}"
@@ -39,13 +42,14 @@
                 x:Name="HeroImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
                 ImageOpened="OnImageOpened"
+                Opacity="{ThemeResource ImageOpacity}"
                 Source="/Assets/GalleryHeaderImage.png"
                 Stretch="UniformToFill" />
 
             <Image
                 x:Name="HeroOverlayImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
-                Opacity="0.5"
+                Opacity="{ThemeResource ImageOpacity}"
                 Source="/Assets/GalleryHeaderImage.png"
                 Stretch="UniformToFill" />
 
