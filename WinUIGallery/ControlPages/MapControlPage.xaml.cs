@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -21,6 +21,11 @@ namespace WinUIGallery.ControlPages
         {
             this.InitializeComponent();
 
+            this.Loaded += MapControlPage_Loaded;
+        }
+
+        private void MapControlPage_Loaded(object sender, RoutedEventArgs e)
+        {
             var myLandmarks = new List<MapElement>();
 
             BasicGeoposition centerPosition = new BasicGeoposition { Latitude = 0, Longitude = 0 };
@@ -32,7 +37,7 @@ namespace WinUIGallery.ControlPages
             BasicGeoposition position = new BasicGeoposition { Latitude = -30.034647, Longitude = -51.217659 };
             Geopoint point = new Geopoint(position);
 
-            var icon = new MapIcon 
+            var icon = new MapIcon
             {
                 Location = point,
             };
@@ -44,7 +49,7 @@ namespace WinUIGallery.ControlPages
                 MapElements = myLandmarks
             };
 
-            map1.Layers.Add(LandmarksLayer); 
+            map1.Layers.Add(LandmarksLayer);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

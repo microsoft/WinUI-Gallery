@@ -63,7 +63,7 @@
     <Content Include="Assets\ControlImages\Line.png" />
     <Content Include="Assets\ControlImages\ListBox.png" />
     <Content Include="Assets\ControlImages\ListView.png" />
-    <!-- TODO: Need a map control icon. -->
+    <Content Include="Assets\ControlImages\MapControl.png" />
     <Content Include="Assets\ControlImages\MediaPlayerElement.png" />
     <Content Include="Assets\ControlImages\MenuBar.png" />
     <Content Include="Assets\ControlImages\MenuFlyout.png" />
