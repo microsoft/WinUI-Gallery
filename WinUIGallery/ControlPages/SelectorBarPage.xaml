@@ -97,7 +97,7 @@ rivate void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelecti
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView" Margin="0,0,24,0">
+        <local:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged">
                     <SelectorBarItem x:Name="SelectorBarItemPink" Text="Pink" IsSelected="True"/>
