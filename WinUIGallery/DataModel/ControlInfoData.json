@@ -2055,6 +2055,21 @@
           ]
         },
         {
+          "UniqueId": "MapControl",
+          "Title": "MapControl",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "Displays a symbolic map of the Earth",
+          "ImagePath": "ms-appx:///Assets/ControlImages/MapControl.png",
+          "Description": "Displays a symbolic map of the Earth",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "MapControl - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
+            }
+          ]
+        },
+        {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",

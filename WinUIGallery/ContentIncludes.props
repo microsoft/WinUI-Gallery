@@ -63,6 +63,7 @@
     <Content Include="Assets\ControlImages\Line.png" />
     <Content Include="Assets\ControlImages\ListBox.png" />
     <Content Include="Assets\ControlImages\ListView.png" />
+    <Content Include="Assets\ControlImages\MapControl.png" />
     <Content Include="Assets\ControlImages\MediaPlayerElement.png" />
     <Content Include="Assets\ControlImages\MenuBar.png" />
     <Content Include="Assets\ControlImages\MenuFlyout.png" />
@@ -136,6 +137,7 @@
     <Content Include="Assets\SampleMedia\sunset.jpg" />
     <Content Include="Assets\SampleMedia\treetops.jpg" />
     <Content Include="Assets\SampleMedia\valley.jpg" />
+    <Content Include="Assets\SampleMedia\MapExample.png" />
     <Content Include="Assets\TabViewIcons\cmd.png" />
     <Content Include="Assets\TabViewIcons\linux.png" />
     <Content Include="Assets\TabViewIcons\powershell.png" />
@@ -227,6 +229,7 @@
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_cs.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewSample4_xaml.txt" />
     <Content Include="ControlPagesSampleCode\ListView\ListViewStickyHeaderSample_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\MapControl\MapControlSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\Media\CaptureElementPreviewSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\Media\CaptureElementPreviewSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\MenuBar\MenuBarSample1.txt" />
