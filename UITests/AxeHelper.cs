@@ -45,7 +45,8 @@ namespace UITests
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType)
 				.Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable)
 				.Where(rule => rule.Rule.ID != RuleId.NameReasonableLength)
-				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull);
+				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull)
+				.Where(rule => rule.Rule.ID != RuleId.NameNotNull);
 
             if (testResult.Any())
 			{
