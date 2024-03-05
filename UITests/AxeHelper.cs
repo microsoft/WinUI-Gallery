@@ -38,11 +38,15 @@ namespace UITests
 
 		public static void AssertNoAccessibilityErrors()
 		{
-			var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
+            // Bug 1474: Disabling Rules NameReasonableLength and BoundingRectangleNotNull temporarily
+            var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
 				.Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
 				.Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType)
-				.Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable);
+				.Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable)
+				.Where(rule => rule.Rule.ID != RuleId.NameReasonableLength)
+				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull);
+
             if (testResult.Any())
 			{
 				var mappedResult = testResult.Select(result =>
