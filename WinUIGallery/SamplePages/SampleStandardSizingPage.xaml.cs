@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics.SamplePages
+namespace WinUIGallery.SamplePages
 {
     public sealed partial class SampleStandardSizingPage : Page
     {

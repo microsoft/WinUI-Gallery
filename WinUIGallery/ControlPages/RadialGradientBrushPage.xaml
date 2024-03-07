@@ -9,11 +9,11 @@
 //
 //*********************************************************
 -->
-<Page x:Class="AppUIBasics.ControlPages.RadialGradientBrushPage"
+<Page x:Class="WinUIGallery.ControlPages.RadialGradientBrushPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:media="using:Microsoft.UI.Xaml.Media"
-      xmlns:local="using:AppUIBasics">
+      xmlns:local="using:WinUIGallery">
     <StackPanel>
         <local:ControlExample
             HeaderText="RadialGradientBrush Sample"

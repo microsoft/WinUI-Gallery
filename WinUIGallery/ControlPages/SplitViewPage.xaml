@@ -1,9 +1,9 @@
 <Page
-    x:Class="AppUIBasics.ControlPages.SplitViewPage"
+    x:Class="WinUIGallery.ControlPages.SplitViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics"
-    xmlns:controlPages="using:AppUIBasics.ControlPages">
+    xmlns:local="using:WinUIGallery"
+    xmlns:controlPages="using:WinUIGallery.ControlPages">
     <Page.Resources>
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="controlPages:NavLink">
             <StackPanel Orientation="Horizontal" Margin="2,0,0,0" AutomationProperties.Name="{x:Bind Label}">

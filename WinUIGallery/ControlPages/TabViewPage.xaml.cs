@@ -1,16 +1,16 @@
 using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
-using AppUIBasics.SamplePages;
-using AppUIBasics.Helper;
+using WinUIGallery.SamplePages;
+using WinUIGallery.Helper;
 using Windows.ApplicationModel.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Dispatching;
-using AppUIBasics.TabViewPages;
+using WinUIGallery.TabViewPages;
 using System.Collections.ObjectModel;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public class MyData
     {
@@ -245,12 +245,14 @@ namespace AppUIBasics.ControlPages
 
         private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            var newWindow = WindowHelper.CreateWindow();
+            var tabViewSample = new TabViewWindowingSamplePage();
 
-            Frame frame = new Frame();
-            frame.RequestedTheme = ThemeHelper.RootTheme;
-            frame.Navigate(typeof(TabViewWindowingSamplePage), null);
-            newWindow.Content = frame;
+            var newWindow = WindowHelper.CreateWindow();
+            newWindow.ExtendsContentIntoTitleBar = true;
+            newWindow.Content = tabViewSample;
+            tabViewSample.LoadDemoData();
+            tabViewSample.SetupWindowMinSize(newWindow);
+
             newWindow.Activate();
         }
     }

@@ -1,8 +1,5 @@
 ﻿private void ActualSizeExample_Loaded(object sender, RoutedEventArgs e)
 {
-    // Only create an expression using ActualSize if the API exists to do so.
-    if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
-
     // We will lay out some buttons in a circle.
     // The formulas we will use are:
     //   X = radius * cos(theta) + xOffset

@@ -17,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using System.ComponentModel;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class InputValidationPage : Page
     {

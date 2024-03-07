@@ -9,7 +9,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Hosting;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
 #if WINUI_PRERELEASE
     public class DefaultElementAnimator : ElementAnimator

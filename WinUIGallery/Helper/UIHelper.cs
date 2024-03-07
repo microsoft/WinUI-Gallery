@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
 using Windows.Storage;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     public static class UIHelper
     {

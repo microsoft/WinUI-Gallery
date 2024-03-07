@@ -1,8 +1,5 @@
 ﻿private void ActualOffsetExample_Loaded(object sender, RoutedEventArgs e)
 {
-    // Only create an expression using ActualSize if the API exists to do so.
-    if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))) return;
-
     // This sample positions a popup relative to a block of text that has variable layout size based on font size.
     var anim = _compositor.CreateExpressionAnimation();
 

@@ -7,11 +7,11 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// A page that displays an overview of a single group, including a preview of the items
@@ -29,7 +29,7 @@ namespace AppUIBasics
             base.OnNavigatedTo(e);
             NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
             NavigationRootPage navigationRootPage = args.NavigationRootPage;
-            var group = await ControlInfoDataSource.Instance.GetGroupAsync((string)args.Parameter);
+            var group = await ControlInfoDataSource.GetGroupAsync((string)args.Parameter);
        
             var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
             menuItem.IsSelected = true;
