@@ -88,6 +88,7 @@
       <EmbeddedResource Remove="Assets\ControlIcons\**" />
       <None Remove="Assets\ControlIcons\**" />
       <Page Remove="Assets\ControlIcons\**" />
+      <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
 
     <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
@@ -176,12 +177,8 @@
         <Content Include="Assets\Typography.dark.png" />
         <Content Include="Assets\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <Content Include="DataModel\IconsData.json">
-            <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
-        </Content>
-        <Content Include="DataModel\ControlInfoData.json">
-            <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
-        </Content>
+        <Content Include="DataModel\IconsData.json" />
+        <Content Include="DataModel\ControlInfoData.json" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
@@ -267,9 +264,6 @@
         </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
-    <ItemGroup>
-      <PRIResource Remove="Assets\ControlIcons\**" />
-    </ItemGroup>
    
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
