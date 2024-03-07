@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Common;
 using Windows.UI.Core;
 using Microsoft.UI.Input;
+using static CommunityToolkit.WinUI.Animations.Expressions.ExpressionValues;
 
 namespace WinUIGallery.Helper
 {
@@ -170,7 +171,9 @@ namespace WinUIGallery.Helper
     {
         private Frame Frame { get; set; }
         private NavigationView CurrentNavView { get; set; }
-        private bool isKeyDownProcessed = false;
+
+#nullable enable
+        private static RootFrameNavigationHelper? instance;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RootNavigationHelper"/> class.
@@ -179,6 +182,11 @@ namespace WinUIGallery.Helper
         /// This reference allows for frame manipulation and to register navigation handlers.</param>
         public RootFrameNavigationHelper(Frame rootFrame, NavigationView currentNavView)
         {
+            if (instance != null)
+            {
+                return;
+            }
+
             this.Frame = rootFrame;
             this.Frame.Navigated += (s, e) =>
             {
@@ -188,8 +196,72 @@ namespace WinUIGallery.Helper
             this.CurrentNavView = currentNavView;
 
             CurrentNavView.BackRequested += NavView_BackRequested;
-            CurrentNavView.KeyDown += CurrentNavView_KeyDown;
-            CurrentNavView.KeyUp += CurrentNavView_KeyUp;
+            CurrentNavView.PointerPressed += CurrentNavView_PointerPressed;
+            instance = this;
+        }
+
+        /// <summary>
+        /// Invoked on every keystroke, including system keys such as Alt key combinations.
+        /// Used to detect keyboard navigation between pages even when the page itself
+        /// doesn't have focus.
+        /// </summary>
+        /// <param name="sender">Instance that triggered the event.</param>
+        /// <param name="e">Event data describing the conditions that led to the event.</param>
+        public static void RaiseKeyPressed(uint keyCode)
+        {
+            if (instance == null) return;
+
+            // Only investigate further when Left, Right, or the dedicated
+            // Previous or Next keys are pressed.
+            if (keyCode == (int)VirtualKey.Left ||
+                keyCode == (int)VirtualKey.Right ||
+                keyCode == 166 ||
+                keyCode == 167 ||
+                keyCode == (int)VirtualKey.Back)
+            {
+                var downState = CoreVirtualKeyStates.Down;
+                // VirtualKeys 'Menu' key is also the 'Alt' key on the keyboard.
+                bool isMenuKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
+                bool isControlKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
+                bool isShiftKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
+                bool isWindowsKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.LeftWindows) & downState) == downState;
+                bool isModifierKeyPressed = !isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
+                bool isOnlyAltPressed = isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
+
+                if (((int)keyCode == 166 && isModifierKeyPressed) ||
+                    (keyCode == (int)VirtualKey.Left && isOnlyAltPressed) ||
+                    (keyCode == (int)VirtualKey.Back && isWindowsKeyPressed))
+                {
+                    // When the previous key or Alt+Left are pressed navigate back.
+                    instance.TryGoBack();
+                }
+                else if (((int)keyCode == 167 && isModifierKeyPressed) ||
+                    (keyCode == (int)VirtualKey.Right && isOnlyAltPressed))
+                {
+                    // When the next key or Alt+Right are pressed navigate forward.
+                    instance.TryGoForward();
+                }
+            }
+        }
+
+        private void CurrentNavView_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var properties = e.GetCurrentPoint(CurrentNavView).Properties;
+
+            // Ignore button chords with the left, right, and middle buttons
+            if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed ||
+                properties.IsMiddleButtonPressed)
+                return;
+
+            // If back or forward are pressed (but not both) navigate appropriately
+            bool backPressed = properties.IsXButton1Pressed;
+            bool forwardPressed = properties.IsXButton2Pressed;
+            if (backPressed ^ forwardPressed)
+            {
+                e.Handled = true;
+                if (backPressed) TryGoBack();
+                if (forwardPressed) TryGoForward();
+            }
         }
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -229,57 +301,6 @@ namespace WinUIGallery.Helper
         private void UpdateBackButton()
         {
             this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
-        }
-
-        /// <summary>
-        /// Invoked on every keystroke, including system keys such as Alt key combinations.
-        /// Used to detect keyboard navigation between pages even when the page itself
-        /// doesn't have focus.
-        /// </summary>
-        /// <param name="sender">Instance that triggered the event.</param>
-        /// <param name="e">Event data describing the conditions that led to the event.</param>
-
-        private void CurrentNavView_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            if (e.Handled || isKeyDownProcessed)
-            {
-                return;
-            }
-
-            var virtualKey = e.Key;
-
-            // Only investigate further when Left, Right, or the dedicated
-            // Previous or Next keys are pressed.
-            if (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
-                (int)virtualKey == 166 || (int)virtualKey == 167)
-            {
-                var downState = CoreVirtualKeyStates.Down;
-                // VirtualKeys 'Menu' key is also the 'Alt' key on the keyboard.
-                bool isMenuKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Menu) & downState) == downState;
-                bool isControlKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Control) & downState) == downState;
-                bool isShiftKeyPressed = (InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) & downState) == downState;
-                bool isModifierKeyPressed = !isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
-                bool isOnlyAltPressed = isMenuKeyPressed && !isControlKeyPressed && !isShiftKeyPressed;
-
-                if (((int)virtualKey == 166 && isModifierKeyPressed) ||
-                    (virtualKey == VirtualKey.Left && isOnlyAltPressed))
-                {
-                    // When the previous key or Alt+Left are pressed navigate back.
-                    e.Handled = TryGoBack();
-                }
-                else if (((int)virtualKey == 167 && isModifierKeyPressed) ||
-                    (virtualKey == VirtualKey.Right && isOnlyAltPressed))
-                {
-                    // When the next key or Alt+Right are pressed navigate forward.
-                    e.Handled = TryGoForward();
-                }
-                isKeyDownProcessed = e.Handled;
-            }
-        }
-
-        private void CurrentNavView_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            isKeyDownProcessed = false;
         }
     }
 
