@@ -5,12 +5,11 @@
         <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
         <OutputType>WinExe</OutputType>
         <UseWinUI>true</UseWinUI>
-        <DefineConstants Condition="'$(WindowsAppSdkSelfContained)'==''">$(DefineConstants);WindowsAppSdkRuntimeDependent</DefineConstants>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <Platforms>x86;x64;ARM64</Platforms>
         <NoWarn>8305</NoWarn>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
         <NoWarn>
             0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
             8305    <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
@@ -24,21 +23,25 @@
         <Release Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">false</Release>
         <Packaged>true</Packaged>
         <Packaged Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Release-Unpackaged'">false</Packaged>
+        <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
+        <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <Optimized>true</Optimized>
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
+        <!-- In .NET 8, serialization is prohibited by default - we can safely use it since we're not dealing with UDTs. -->
+        <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
+        <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
-        <PublishProfile>win10-$(Platform)-unpackaged.pubxml</PublishProfile>
         <EnableMsixTooling>false</EnableMsixTooling>
+        <EnableMsixTooling Condition="'$(PublishSingleFile)'=='true'">true</EnableMsixTooling>
         <WindowsPackageType>None</WindowsPackageType>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
-        <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
         <WindowsPackageType>MSIX</WindowsPackageType>
         <AppxBundleNameForOutput>WinUIGallery</AppxBundleNameForOutput>
         <EnableMsixTooling>true</EnableMsixTooling>
@@ -60,7 +63,7 @@
         <PackageCertificateKeyFile Condition="Exists('$(PfxFile)')">$(PfxFile)</PackageCertificateKeyFile>
     </PropertyGroup>
 
-    <ItemGroup Condition="'$(SingleProject)'=='true'">
+    <ItemGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
         <AppxManifest Include="Package.appxmanifest" Condition="'$(Release)' == 'true'">
             <SubType>Designer</SubType>
         </AppxManifest>
@@ -173,7 +176,12 @@
         <Content Include="Assets\Typography.dark.png" />
         <Content Include="Assets\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <Content Include="DataModel\IconsData.json" />
+        <Content Include="DataModel\IconsData.json">
+            <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+        </Content>
+        <Content Include="DataModel\ControlInfoData.json">
+            <!-- <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+        </Content>
     </ItemGroup>
     <ItemGroup>
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
@@ -262,5 +270,25 @@
     <ItemGroup>
       <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
+   
+    <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
+        just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
+        and _NoneWithTargetPath items in the MSIX package.  The .NET GetCopyToPublishDirectoryItems 
+        overrides this and drops all these items unless they're specifically set to copy to the output
+        directory.  The default behavior is easier, so we'll mimic that here.-->
+    <Target Name="AddCopyToPublishDirectoryItems" Condition="'$(PublishSingleFile)'=='true'" BeforeTargets="GetCopyToPublishDirectoryItems" DependsOnTargets="AssignTargetPaths">
+        <ItemGroup>
+            <CurrentContentWithTargetPath Include="@(ContentWithTargetPath)"/>
+            <ContentWithTargetPath Remove="@(CurrentContentWithTargetPath )"/>
+            <ContentWithTargetPath Include="@(CurrentContentWithTargetPath )">
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            </ContentWithTargetPath>
+            <CurrentNoneWithTargetPath Include="@(_NoneWithTargetPath)"/>
+            <_NoneWithTargetPath Remove="@(CurrentNoneWithTargetPath )"/>
+            <_NoneWithTargetPath Include="@(CurrentNoneWithTargetPath )">
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            </_NoneWithTargetPath>
+        </ItemGroup>
+    </Target> 
 
 </Project>
