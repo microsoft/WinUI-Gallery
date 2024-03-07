@@ -3,10 +3,10 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
-using AppUIBasics.ControlPages;
+using WinUIGallery.ControlPages;
 using Windows.Foundation.Metadata;
 
-namespace AppUIBasics.ConnectedAnimationPages
+namespace WinUIGallery.ConnectedAnimationPages
 {
     public sealed partial class CollectionPage : Page
     {
@@ -19,7 +19,7 @@ namespace AppUIBasics.ConnectedAnimationPages
             // Ensure that the MainPage is only created once, and cached during navigation.
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
-            collection.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
+            collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
         }
 
         private async void collection_Loaded(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 using System.Text.Json;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -23,7 +23,7 @@ using System.Text.Json;
 // responsiveness by initiating the data loading task in the code behind for App.xaml when the app
 // is first launched.
 
-namespace AppUIBasics.Data
+namespace WinUIGallery.Data
 {
     public class Root
     {
@@ -34,26 +34,6 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataItem
     {
-        public ControlInfoDataItem(string uniqueId, string title, string apiNamespace, string subtitle, string imagePath, string iconGlyph, string badgeString, string description, string content, bool isNew, bool isUpdated, bool isPreview, bool hideSourceCodeAndRelatedControls, ObservableCollection<ControlInfoDocLink> docs, ObservableCollection<string> relatedControls)
-        {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-
-            this.ApiNamespace = apiNamespace;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.IconGlyph = iconGlyph;
-            this.BadgeString = badgeString;
-            this.Content = content;
-            this.IsNew = isNew;
-            this.IsUpdated = isUpdated;
-            this.IsPreview = isPreview;
-            this.Docs = docs;
-            this.RelatedControls = relatedControls;
-            this.HideSourceCodeAndRelatedControls = hideSourceCodeAndRelatedControls;
-        }
-
         public string UniqueId { get; set; }
         public string Title { get; set; }
         public string ApiNamespace { get; set; }
@@ -66,11 +46,12 @@ namespace AppUIBasics.Data
         public bool IsNew { get; set; }
         public bool IsUpdated { get; set; }
         public bool IsPreview { get; set; }
-        public bool HideSourceCodeAndRelatedControls { get; set; }
         public ObservableCollection<ControlInfoDocLink> Docs { get; set; }
         public ObservableCollection<string> RelatedControls { get; set; }
 
         public bool IncludedInBuild { get; set; }
+
+        public string SourcePath { get; set; }
 
         public override string ToString()
         {
@@ -95,20 +76,6 @@ namespace AppUIBasics.Data
     /// </summary>
     public class ControlInfoDataGroup
     {
-        public ControlInfoDataGroup(string uniqueId, string title, string subtitle, string imagePath, string iconGlyph, string description, string apiNamespace, string folder, bool isSpecialSection)
-        {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.ApiNamespace = apiNamespace;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.IconGlyph = iconGlyph;
-            this.Folder = folder;
-            this.Items = new ObservableCollection<ControlInfoDataItem>();
-            this.IsSpecialSection = isSpecialSection;
-        }
-
         public string UniqueId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
@@ -134,11 +101,11 @@ namespace AppUIBasics.Data
     /// </summary>
     public sealed class ControlInfoDataSource
     {
-        private static readonly object _lock = new object();
+        private static readonly object _lock = new();
 
         #region Singleton
 
-        private static ControlInfoDataSource _instance;
+        private static readonly ControlInfoDataSource _instance;
 
         public static ControlInfoDataSource Instance
         {
@@ -157,7 +124,7 @@ namespace AppUIBasics.Data
 
         #endregion
 
-        private IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
+        private readonly IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
         public IList<ControlInfoDataGroup> Groups
         {
             get { return this._groups; }
@@ -170,7 +137,7 @@ namespace AppUIBasics.Data
             return _instance.Groups;
         }
 
-        public async Task<ControlInfoDataGroup> GetGroupAsync(string uniqueId)
+        public static async Task<ControlInfoDataGroup> GetGroupAsync(string uniqueId)
         {
             await _instance.GetControlInfoDataAsync();
             // Simple linear search is acceptable for small data sets
@@ -179,7 +146,7 @@ namespace AppUIBasics.Data
             return null;
         }
 
-        public async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
+        public static async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
         {
             await _instance.GetControlInfoDataAsync();
             // Simple linear search is acceptable for small data sets
@@ -188,7 +155,7 @@ namespace AppUIBasics.Data
             return null;
         }
 
-        public async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
+        public static async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
         {
             await _instance.GetControlInfoDataAsync();
             var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
@@ -214,7 +181,7 @@ namespace AppUIBasics.Data
 
             lock (_lock)
             {
-                string pageRoot = "AppUIBasics.ControlPages.";
+                string pageRoot = "WinUIGallery.ControlPages.";
 
                 controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
                 {
@@ -231,6 +198,7 @@ namespace AppUIBasics.Data
 
                     item.BadgeString = badgeString;
                     item.IncludedInBuild = pageType is not null;
+                    item.ImagePath ??= "ms-appx:///Assets/ControlImages/Placeholder.png";
 #nullable disable
                 });
 

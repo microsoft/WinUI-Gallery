@@ -11,7 +11,7 @@ using System;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class DatePickerPage : Page
     {

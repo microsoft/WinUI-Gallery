@@ -9,7 +9,7 @@
 //*********************************************************
 using Microsoft.UI.Xaml;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public sealed partial class ItemTemplates : ResourceDictionary
     {

@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace AppUIBasics.SamplePages
+namespace WinUIGallery.SamplePages
 {
     public sealed partial class SamplePage6 : Page
     {

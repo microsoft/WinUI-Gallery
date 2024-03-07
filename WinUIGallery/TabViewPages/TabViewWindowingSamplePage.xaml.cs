@@ -8,18 +8,19 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Windowing;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using System.Threading;
 using Microsoft.UI.Dispatching;
 using System.Threading.Tasks;
 using Windows.System;
 using DispatcherQueueHandler = Microsoft.UI.Dispatching.DispatcherQueueHandler;
 
-namespace AppUIBasics.TabViewPages
+namespace WinUIGallery.TabViewPages
 {
     public sealed partial class TabViewWindowingSamplePage : Page
     {
         private const string DataIdentifier = "MyTabItem";
+        private Win32WindowHelper win32WindowHelper;
         public TabViewWindowingSamplePage()
         {
             this.InitializeComponent();
@@ -27,6 +28,12 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
 
             Loaded += TabViewWindowingSamplePage_Loaded;
+        }
+
+        public void SetupWindowMinSize(Window window)
+        {
+            win32WindowHelper = new Win32WindowHelper(window);
+            win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 300 });
         }
 
         private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
@@ -57,16 +64,8 @@ namespace AppUIBasics.TabViewPages
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        public void LoadDemoData()
         {
-            base.OnNavigatedTo(e);
-
-            SetupWindow();
-        }
-
-        void SetupWindow()
-        {
-
             // Main Window -- add some default items
             for (int i = 0; i < 3; i++)
             {
@@ -92,6 +91,7 @@ namespace AppUIBasics.TabViewPages
             var newWindow = WindowHelper.CreateWindow();
             newWindow.ExtendsContentIntoTitleBar = true;
             newWindow.Content = newPage;
+            newPage.SetupWindowMinSize(newWindow);
 
             newWindow.Activate();
         }

@@ -143,6 +143,7 @@
         <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
+        <None Remove="ControlPages\SelectorBarPage.xaml" />
         <None Remove="ControlPages\ShapePage.xaml" />
         <None Remove="ControlPages\Typography.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
@@ -270,7 +271,11 @@
     <ItemGroup>
       <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
-   
+    <ItemGroup>
+      <Page Update="ControlPages\SelectorBarPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
         and _NoneWithTargetPath items in the MSIX package.  The .NET GetCopyToPublishDirectoryItems 
@@ -290,5 +295,4 @@
             </_NoneWithTargetPath>
         </ItemGroup>
     </Target> 
-
 </Project>

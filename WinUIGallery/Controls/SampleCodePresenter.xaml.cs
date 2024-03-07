@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using ColorCode;
 using ColorCode.Common;
 using Windows.ApplicationModel.DataTransfer;
@@ -22,12 +22,12 @@ using Windows.UI.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 using System.Reflection;
 using System.IO;
 using Microsoft.UI.Xaml.Automation;
 
-namespace AppUIBasics.Controls
+namespace WinUIGallery.Controls
 {
 
     public enum SampleCodePresenterType

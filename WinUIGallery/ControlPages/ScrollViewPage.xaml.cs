@@ -14,7 +14,7 @@ using System;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ScrollViewPage : Page
     {

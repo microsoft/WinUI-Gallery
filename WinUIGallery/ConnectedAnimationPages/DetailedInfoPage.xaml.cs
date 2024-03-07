@@ -1,10 +1,10 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using AppUIBasics.ControlPages;
+using WinUIGallery.ControlPages;
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace AppUIBasics.ConnectedAnimationPages
+namespace WinUIGallery.ConnectedAnimationPages
 {
     public sealed partial class DetailedInfoPage : Page
     {

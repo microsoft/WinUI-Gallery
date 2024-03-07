@@ -24,7 +24,7 @@
                 Severity="Error" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -58,7 +58,7 @@
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -91,7 +91,7 @@
                 ShowSeparator="False" />
 
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -127,7 +127,7 @@
                 ShowSeparator="False" />
 
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -154,7 +154,7 @@
                 ColorName="System / Solid Neutral Background"
                 ColorValue="#2E2E2E" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>

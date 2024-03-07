@@ -18,7 +18,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Aquatic" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -113,7 +113,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Desert" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -208,7 +208,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Dusk" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -303,7 +303,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Night Sky" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

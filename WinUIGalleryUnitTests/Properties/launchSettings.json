@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinUIGalleryUnitTests (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinUIGalleryUnitTests (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
