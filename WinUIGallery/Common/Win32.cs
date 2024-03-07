@@ -48,7 +48,7 @@ namespace WinUIGallery
         public static bool IsKeyDownHook(IntPtr lWord)
         {
             // The 30th bit tells what the previous key state is with 0 being the "UP" state
-            // For more info see https://learn.microsoft.com/en-us/windows/win32/winmsg/keyboardproc#lparam-in
+            // For more info see https://learn.microsoft.com/windows/win32/winmsg/keyboardproc#lparam-in
             return (lWord >> 30 & 1) == 0;
         }
 
