@@ -7,7 +7,6 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,9 +18,10 @@ using Windows.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
+using WinUIGallery.Data;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class ListViewPage : ItemsPageBase
     {
@@ -29,6 +29,7 @@ namespace AppUIBasics.ControlPages
         ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
         ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
 
         ItemsStackPanel stackPanelObj;
 
@@ -63,12 +64,16 @@ namespace AppUIBasics.ControlPages
             contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
             DragDropListView2.ItemsSource = contacts2;
 
-            Control4.ItemsSource = AppUIBasics.ControlPages.CustomDataObject.GetDataObjects();
+            Control4.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
             ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
 
             // Initialize list of contacts to be filtered
             contacts3 = await Contact.GetContactsAsync();
             contacts3Filtered = new ObservableCollection<Contact>(contacts3);
+
+            // Initializze list of contacts for context menu sample
+            contacts4ContextMenu = await Contact.GetContactsAsync();
+            ContextMenuList.ItemsSource = contacts4ContextMenu;
 
             FilteredListView.ItemsSource = contacts3Filtered;
         }
@@ -335,6 +340,18 @@ namespace AppUIBasics.ControlPages
 
             ToolTipService.SetToolTip(textBlock, text);
         }
+
+
+        //===================================================================================================================
+        // ListView with context menu
+        //===================================================================================================================
+
+        private void ContactDeleteMenuyItem_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext;
+            var contact = item as Contact;
+            contacts4ContextMenu.Remove(contact);
+        }
     }
 
     public class Message
@@ -357,12 +374,12 @@ namespace AppUIBasics.ControlPages
 
     public class Contact
     {
-#region Properties
+        #region Properties
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Company { get; private set; }
         public string Name => FirstName + " " + LastName;
-#endregion
+        #endregion
 
         public Contact(string firstName, string lastName, string company)
         {
@@ -371,7 +388,7 @@ namespace AppUIBasics.ControlPages
             Company = company;
         }
 
-#region Public Methods
+        #region Public Methods
         public async static Task<ObservableCollection<Contact>> GetContactsAsync()
         {
             IList<string> lines = await FileLoader.LoadLines("Assets/Contacts.txt");
@@ -398,9 +415,9 @@ namespace AppUIBasics.ControlPages
 
         public override string ToString()
         {
-            return Name;
+            return $"{Name}, {Company}";
         }
-#endregion
+        #endregion
     }
 
     public class GroupInfoList : List<object>

@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using System;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
 
     [ContentProperty(Name = "ItemTemplate")]

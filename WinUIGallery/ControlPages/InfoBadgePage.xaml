@@ -10,17 +10,17 @@
 //*********************************************************
 -->
 <Page
-    x:Class="AppUIBasics.ControlPages.InfoBadgePage"
+    x:Class="WinUIGallery.ControlPages.InfoBadgePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
-    xmlns:local="using:AppUIBasics"
+    xmlns:local="using:WinUIGallery"
     mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="InfoBadge embedded in NavigationView" HorizontalContentAlignment="Stretch" >
+        <local:ControlExample x:Name="Example1" HeaderText="InfoBadge embedded in NavigationView " HorizontalContentAlignment="Stretch" >
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -123,7 +123,7 @@
         &lt;SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/&gt;
         &lt;InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top"&gt;
             &lt;InfoBadge.IconSource&gt;
-                &lt;FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF13C;" /&gt;
+                &lt;FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&amp;#xF13C;" /&gt;
             &lt;/InfoBadge.IconSource&gt;
         &lt;/InfoBadge&gt;
     &lt;/Grid&gt;

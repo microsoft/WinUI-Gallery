@@ -9,10 +9,10 @@
 //
 //*********************************************************
 -->
-<Page x:Class="AppUIBasics.ControlPages.AnnotatedScrollBarPage"
+<Page x:Class="WinUIGallery.ControlPages.AnnotatedScrollBarPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppUIBasics"
+    xmlns:local="using:WinUIGallery"
     xmlns:media="using:Microsoft.UI.Xaml.Media">
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="AnnotatedScrollBar linked to a ScrollView.">

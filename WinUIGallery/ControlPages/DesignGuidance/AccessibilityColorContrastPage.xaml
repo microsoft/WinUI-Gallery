@@ -10,7 +10,7 @@
     //*********************************************************
 -->
 <Page
-    x:Class="AppUIBasics.ControlPages.AccessibilityColorContrastPage"
+    x:Class="WinUIGallery.ControlPages.AccessibilityColorContrastPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
@@ -65,11 +65,8 @@
             TextWrapping="Wrap" />
         <controls1:SampleThemeListener>
             <Grid
+                Style="{ThemeResource GalleryTileGridStyle}"
                 Padding="8"
-                Background="{ThemeResource ControlExampleDisplayBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="{StaticResource ControlCornerRadius}"
                 ColumnSpacing="8"
                 RowSpacing="8">
                 <Grid.RowDefinitions>

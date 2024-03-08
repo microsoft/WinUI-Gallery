@@ -7,13 +7,13 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Data;
+using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public sealed partial class HomePage : ItemsPageBase
     {

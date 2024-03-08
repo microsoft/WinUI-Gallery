@@ -15,9 +15,9 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Reflection;
 using Windows.Globalization;
 using Windows.UI.Popups;
-using AppUIBasics.Common;
+using WinUIGallery.Common;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class CalendarViewPage : Page
     {
