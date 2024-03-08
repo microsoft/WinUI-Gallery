@@ -10,9 +10,9 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     /// <summary>
     /// SuspensionManager captures global session state to simplify process lifetime management

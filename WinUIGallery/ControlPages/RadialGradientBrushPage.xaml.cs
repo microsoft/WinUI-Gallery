@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 using System.Numerics;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class RadialGradientBrushPage : Page
     {

@@ -18,9 +18,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using System.ComponentModel;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyChanged
     {

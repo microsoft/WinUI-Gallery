@@ -7,9 +7,9 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using AppUIBasics.Common;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Common;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +20,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// This page displays search results when a global search is directed to this application.

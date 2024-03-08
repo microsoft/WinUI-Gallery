@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using WinRT;
 using System.Runtime.InteropServices;
-using AppUIBasics;
+using WinUIGallery;
 
 namespace WinUIGallery.DesktopWap.Helper
 {
@@ -26,7 +26,7 @@ namespace WinUIGallery.DesktopWap.Helper
         // https://task.ms/44172495
         public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
         {
-            var frame = (Application.Current as AppUIBasics.App).GetRootFrame() as FrameworkElement;
+            var frame = (Application.Current as WinUIGallery.App).GetRootFrame() as FrameworkElement;
             Windows.UI.Color color;
             if (frame.ActualTheme == ElementTheme.Dark)
             {

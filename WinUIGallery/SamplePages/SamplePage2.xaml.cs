@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace AppUIBasics.SamplePages
+namespace WinUIGallery.SamplePages
 {
     public sealed partial class SamplePage2 : Page
     {

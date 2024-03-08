@@ -13,19 +13,18 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using WinUIGallery.DesktopWap.DataModel;
+using System.Threading;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public sealed partial class IconsPage : Page
     {
-        public ObservableCollection<IconData> FilteredItems = new();
-
-        public List<double> FontSizes { get; } = new ()
+        public List<double> FontSizes { get; } = new()
             {
                 16,
                 24,
@@ -33,10 +32,13 @@ namespace AppUIBasics.ControlPages
                 48
             };
 
+        private string currentSearch = null;
+
         public IconData SelectedItem
         {
             get { return (IconData)GetValue(SelectedItemProperty); }
-            set {
+            set
+            {
                 SetValue(SelectedItemProperty, value);
                 SetSampleCodePresenterCode(value);
             }
@@ -47,7 +49,6 @@ namespace AppUIBasics.ControlPages
         public IconsPage()
         {
             // Fill filtered items
-            IconsDataSource.Icons.ForEach(item => FilteredItems.Add(item));
             this.InitializeComponent();
             IconsItemsView.Loaded += IconsItemsView_Loaded;
         }
@@ -60,9 +61,9 @@ namespace AppUIBasics.ControlPages
             {
                 _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.High, () =>
                 {
-                    IconsItemsView.ItemsSource = FilteredItems;
-                    SelectedItem = FilteredItems[0];
-                    SetSampleCodePresenterCode(FilteredItems[0]);
+                    IconsItemsView.ItemsSource = new List<IconData>(IconsDataSource.Icons);
+                    SelectedItem = IconsDataSource.Icons[0];
+                    SetSampleCodePresenterCode(IconsDataSource.Icons[0]);
                 });
             });
         }
@@ -77,47 +78,68 @@ namespace AppUIBasics.ControlPages
         {
             Filter((sender as AutoSuggestBox).Text);
         }
-        
+
         public void Filter(string search)
         {
+            // Clearing itemssource so user thinks we are doing something
+            IconsItemsView.ItemsSource = null;
+            // Setting current search to trigger breaking condition of other threads
+            currentSearch = search;
+
             string[] filter = search?.Split(" ");
 
-            FilteredItems.Clear();
-
-            foreach (var item in IconsDataSource.Icons)
+            // Spawning a new thread to not have the UI freeze because of our search
+            new Thread(() =>
             {
-                var fitsFilter = filter.All(entry => item.Code.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                        || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (fitsFilter)
+                var newItems = new List<IconData>();
+                foreach (var item in IconsDataSource.Icons)
                 {
-                    FilteredItems.Add(item);
+                    // Skip UI update if this thread is not handling the current search term
+                    if (search != currentSearch)
+                    {
+                        return;
+                    }
+
+                    var fitsFilter = filter.All(entry => item.Code.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
+                            || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase));
+
+                    if (fitsFilter)
+                    {
+                        newItems.Add(item);
+                    }
                 }
-            }
 
-            string outputString;
-            var filteredItemsCount = FilteredItems.Count;
+                // Skip UI update if this thread is not handling the current search term
+                if (search != currentSearch) return;
 
-            if (filteredItemsCount > 0)
-            {
-                SelectedItem = FilteredItems[0];
-                outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
-            }
-            else
-            {
-                outputString = "No icon found.";
-            }
+                // Updates to anything UI related (e.g. setting ItemsSource) need to be run on UI thread so queue it through dispatcher
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    IconsItemsView.ItemsSource = newItems;
 
-            UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
+                    string outputString;
+                    var filteredItemsCount = newItems.Count;
+                    if (filteredItemsCount > 0)
+                    {
+                        SelectedItem = newItems[0];
+                        outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
+                    }
+                    else
+                    {
+                        outputString = "No icon found.";
+                    }
+
+                    UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
+                });
+            }).Start();
         }
 
         private void IconsItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs args)
         {
             if (IconsItemsView.CurrentItemIndex != -1)
             {
-                SelectedItem = FilteredItems[IconsItemsView.CurrentItemIndex];
+                SelectedItem = (IconsItemsView.ItemsSource as IList<IconData>)[IconsItemsView.CurrentItemIndex];
             }
-            
         }
     }
 }
