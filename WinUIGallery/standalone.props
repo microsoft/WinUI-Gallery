@@ -7,7 +7,9 @@
     <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <CommunityToolkitWinUIVersion>8.0.230907</CommunityToolkitWinUIVersion>
+    <WindowsSdkTargetPlatformVersion>10.0.22621.756</WindowsSdkTargetPlatformVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.756</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
+    <WindowsAppSdkTargetPlatformVersion>10.0.17763.0</WindowsAppSdkTargetPlatformVersion>
     <MicrosoftCsWinRTPackageVersion>2.0.3</MicrosoftCsWinRTPackageVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
