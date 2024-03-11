@@ -1204,7 +1204,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/InfoBadge.png",
           "Description": "Badging is a non-intrusive and intuitive way to display notifications or bring focus to an area within an app - whether that be for notifications, indicating new content, or showing an alert.",
           "Content": "<p>Look at the <i>InfoBadgePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
           "SourcePath": "/InfoBadge",
           "Docs": [
             {
@@ -1903,8 +1902,8 @@
           "Title": "Pivot",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Presents information from different sources in a tabbed view.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
-          "Description": "A Pivot allows you to show a collection of items from different sources in a tabbed view.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "<p>Pivot is deprecated. Please use the <b>SelectorBar</b> and <b>SelectorBarItem.</b></p><p>A Pivot allows you to show a collection of items from different sources in a tabbed view.<p>",
           "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PivotPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
           "SourcePath": "/CommonStyles/Pivot_themeresources.xaml",
           "Docs": [
@@ -1918,9 +1917,33 @@
             }
           ],
           "RelatedControls": [
-            "SemanticZoom",
-            "ListView",
-            "GridView"
+            "SelectorBar"
+          ]
+        },
+        {
+          "UniqueId": "SelectorBar",
+          "Title": "SelectorBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "Presents information from a small set of different sources. The user can pick one of them.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
+          "Description": "SelectorBar is used to modify the content shown by allowing users to select and switch between a small, finite set of data.",
+          "Content": "<p>This page shows a simplified <b>SelectorBar</b> control with minimal content to demonstrate basic <b>SelectorBar</b> usage. Look at the <i>SelectorBar.xaml</i> file in Visual Studio to see the full code for this page.</p><p><b>SelectorBar</b> is typically used with <b>SelectorBarItem</b>",
+          "SourcePath": "/SelectorBar/SelectorBar_themeresources.xaml",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "SelectorBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbar"
+            },
+            {
+              "Title": "SelectorBarItem - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbaritem"
+            }
+          ],
+          "RelatedControls": [
+            "RadioButtons",
+            "NavigationView",
+            "PipsPager"
           ]
         },
         {
@@ -2032,13 +2055,27 @@
           ]
         },
         {
+          "UniqueId": "MapControl",
+          "Title": "MapControl",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "Displays a symbolic map of the Earth",
+          "ImagePath": "ms-appx:///Assets/ControlImages/MapControl.png",
+          "Description": "Displays a symbolic map of the Earth",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "MapControl - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
+            }
+          ]
+        },
+        {
           "UniqueId": "MediaPlayerElement",
           "Title": "MediaPlayerElement",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to display video and image content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
           "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
-          "IsNew": true,
           "SourcePath": "/CommonStyles/MediaTransportControls_themeresources.xaml",
           "Docs": [
             {
@@ -2102,7 +2139,6 @@
           "Subtitle": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
           "ImagePath": "ms-appx:///Assets/ControlImages/WebView.png",
           "Description": "A Microsoft Edge (Chromium) based control that hosts HTML content in an app.",
-          "IsNew": true,
           "SourcePath": "/WebView2",
           "Docs": [
             {
