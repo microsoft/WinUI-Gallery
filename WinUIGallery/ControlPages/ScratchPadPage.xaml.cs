@@ -21,6 +21,7 @@ using System.ComponentModel;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Markup;
 using System.Xml;
+using Windows.Storage;
 
 namespace WinUIGallery.ControlPages
 {
@@ -30,18 +31,54 @@ namespace WinUIGallery.ControlPages
         {
             this.InitializeComponent();
 
+            var xamlStr = ReadScratchPadXAMLinLocalSettings();
+            if (xamlStr != null)
+            {
+                m_oldText = xamlStr;
+                textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
+                var x = new XamlTextModel(textbox);
+                x.ApplyColors();
+            }
+        }
+
+        public string ReadScratchPadXAMLinLocalSettings()
+        {
             var appData = Windows.Storage.ApplicationData.Current;
             if (appData.LocalSettings.Containers.ContainsKey("ScratchPad"))
             {
                 var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Existing);
                 if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey("ScratchPadXAML"))
                 {
-                    m_oldText = scratchPadContainer.Values["ScratchPadXAML"].ToString();
-                    textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
-                    var x = new XamlTextModel(textbox);
-                    //x.ApplyColors();
+                    // String values are limited to to 4K characters. Use a composite value to support longer.
+                    var compositeStr = scratchPadContainer.Values["ScratchPadXAML"] as ApplicationDataCompositeValue;
+                    var xamlStr = "";
+                    int count = (int)compositeStr["count"];
+                    for (int i = 0; i < count; i++)
+                    {
+                        xamlStr += compositeStr[i.ToString()];
+                    }
+                    return xamlStr;
                 }
             }
+            return null;
+        }
+
+        public void SaveScratchPadXAMLinLocalSettings(string xamlStr)
+        {
+            var appData = Windows.Storage.ApplicationData.Current;
+            var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            // String values are limited to to 4K characters. Use a composite value to support longer.
+            var compositeStr = new ApplicationDataCompositeValue();
+            int count = 0;
+            while (xamlStr.Length > 0)
+            {
+                var len = Math.Min(xamlStr.Length, 4000);
+                compositeStr[count.ToString()] = xamlStr.Substring(0, len);
+                count++;
+                xamlStr = xamlStr.Substring(len);
+            }
+            compositeStr["count"] = count;
+            scratchPadContainer.Values["ScratchPadXAML"] = compositeStr;
         }
 
         private string AddXmlNamespace(string xml)
@@ -65,9 +102,7 @@ namespace WinUIGallery.ControlPages
             textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
             System.Diagnostics.Debug.WriteLine("new text: " + newText);
 
-            var appData = Windows.Storage.ApplicationData.Current;
-            var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Always);
-            scratchPadContainer.Values["ScratchPadXAML"] = newText;
+            SaveScratchPadXAMLinLocalSettings(newText);
 
             // TODO: Strip out x:Bind -- maybe just convert it to spaces?
             try
@@ -182,6 +217,9 @@ namespace WinUIGallery.ControlPages
 
 
         private void textbox_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+        }
+        private void textbox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             m_lastChangeFromTyping = true;
             switch (e.Key)
@@ -449,7 +487,7 @@ namespace WinUIGallery.ControlPages
                             var endIndex = rebText.IndexOf("\"", currIndex + 2);
                             if (endIndex >= 0)
                             {
-                                currIndex = endIndex + 2;
+                                currIndex = endIndex;
                             }
                         }
                     }

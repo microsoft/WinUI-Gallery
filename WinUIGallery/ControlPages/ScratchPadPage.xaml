@@ -17,6 +17,7 @@
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                       IsSpellCheckEnabled="False"
                       PreviewKeyDown="textbox_PreviewKeyDown"
+                      KeyDown="textbox_KeyDown"
                       PreviewKeyUp="textbox_PreviewKeyUp"
                       TextChanged="textbox_TextChanged" />
                     <Button x:Name="loadButton" Grid.Column="1" VerticalAlignment="Top" Content="Load" Click="LoadClick"/>
