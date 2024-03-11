@@ -37,7 +37,7 @@ steps:
         command: 'publish'
         publishWebProjects: false
         projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-$(buildPlatform).pubxml"'
+        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
         zipAfterPublish: false
         modifyOutputPath: false
 
