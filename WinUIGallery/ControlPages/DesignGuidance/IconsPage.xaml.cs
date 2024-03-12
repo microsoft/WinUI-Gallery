@@ -33,7 +33,6 @@ namespace WinUIGallery.ControlPages
             };
 
         private string currentSearch = null;
-        private Thread searchThread = null;
 
         public IconData SelectedItem
         {

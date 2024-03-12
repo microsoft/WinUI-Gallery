@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using WinUIGallery.Common;
 
@@ -14,6 +15,11 @@ namespace WinUIGallery.DesktopWap.DataModel
         public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
         public string CodeGlyph => "\\u" + Code;
         public string TextGlyph => "&#x" + Code + ";";
+    }
+    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
+    [JsonSerializable(typeof(List<IconData>))]
+    internal partial class IconDataListContext : JsonSerializerContext
+    {
     }
 
     internal class IconsDataSource
@@ -42,10 +48,7 @@ namespace WinUIGallery.DesktopWap.DataModel
             {
                 if (icons.Count == 0)
                 {
-                    icons = JsonSerializer.Deserialize<List<IconData>>(jsonText, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
+                    icons = JsonSerializer.Deserialize(jsonText, typeof(List<IconData>), IconDataListContext.Default) as List<IconData>;
                 }
                 return icons;
             }
