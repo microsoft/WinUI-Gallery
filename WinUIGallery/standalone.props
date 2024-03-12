@@ -1,13 +1,15 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
-    <SamplesTargetFrameworkMoniker>net7.0-windows10.0.19041.0</SamplesTargetFrameworkMoniker>
+    <SamplesTargetFrameworkMoniker>net8.0-windows10.0.22621.0</SamplesTargetFrameworkMoniker>
     <WindowsAppSdkPackageVersion>1.5.240227000</WindowsAppSdkPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.0.4</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <CommunityToolkitWinUIVersion>8.0.230907</CommunityToolkitWinUIVersion>
+    <WindowsSdkTargetPlatformVersion>10.0.22621.756</WindowsSdkTargetPlatformVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.22621.756</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
+    <WindowsAppSdkTargetPlatformVersion>10.0.17763.0</WindowsAppSdkTargetPlatformVersion>
     <MicrosoftCsWinRTPackageVersion>2.0.3</MicrosoftCsWinRTPackageVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
