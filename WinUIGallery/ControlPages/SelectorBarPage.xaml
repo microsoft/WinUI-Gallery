@@ -1,26 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="WinUIGallery.ControlPages.SelectorBarPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
-    xmlns:media="using:Microsoft.UI.Xaml.Media"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
 
     <Page.Resources>
         <DataTemplate x:Key="ColorsTemplate" x:DataType="media:SolidColorBrush">
-            <ItemContainer Background="{x:Bind}" Width="112" Height="82" Margin="4" />
+            <ItemContainer
+                Width="112"
+                Height="82"
+                Margin="4"
+                Background="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
 
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A Basic SelectorBar">
             <SelectorBar x:Name="SelectorBar1">
-                <SelectorBarItem x:Name="SelectorBarItemRecent" Text="Recent" Icon="Clock" />
-                <SelectorBarItem x:Name="SelectorBarItemShared" Text="Shared" Icon="Share" />
-                <SelectorBarItem x:Name="SelectorBarItemFavorites" Text="Favorites" Icon="Favorite" />
+                <SelectorBarItem
+                    x:Name="SelectorBarItemRecent"
+                    Icon="Clock"
+                    Text="Recent" />
+                <SelectorBarItem
+                    x:Name="SelectorBarItemShared"
+                    Icon="Share"
+                    Text="Shared" />
+                <SelectorBarItem
+                    x:Name="SelectorBarItemFavorites"
+                    Icon="Favorite"
+                    Text="Favorites" />
             </SelectorBar>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -36,7 +49,10 @@
         <local:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
-                    <SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True"/>
+                    <SelectorBarItem
+                        x:Name="SelectorBarItemPage1"
+                        IsSelected="True"
+                        Text="Page1" />
                     <SelectorBarItem x:Name="SelectorBarItemPage2" Text="Page2" />
                     <SelectorBarItem x:Name="SelectorBarItemPage3" Text="Page3" />
                     <SelectorBarItem x:Name="SelectorBarItemPage4" Text="Page4" />
@@ -45,7 +61,7 @@
 
                 <Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" />
             </StackPanel>
-           
+
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged"&gt;
@@ -62,7 +78,7 @@
 
             <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-rivate void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
         {
             SelectorBarItem selectedItem = sender.SelectedItem;
             int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
@@ -100,7 +116,10 @@ rivate void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelecti
         <local:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged">
-                    <SelectorBarItem x:Name="SelectorBarItemPink" Text="Pink" IsSelected="True"/>
+                    <SelectorBarItem
+                        x:Name="SelectorBarItemPink"
+                        IsSelected="True"
+                        Text="Pink" />
                     <SelectorBarItem x:Name="SelectorBarItemPlum" Text="Plum" />
                     <SelectorBarItem x:Name="SelectorBarItemPowderBlue" Text="PowderBlue" />
                 </SelectorBar>
@@ -111,7 +130,7 @@ rivate void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelecti
                     </ItemsView.Layout>
                 </ItemsView>
             </StackPanel>
-            
+
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged" &gt;
