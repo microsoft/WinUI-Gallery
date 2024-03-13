@@ -18,8 +18,9 @@
     <!-- If conflicting build and publish deps.json files exist in this or referenced projects,
         use only the publish deps.json files, and remove the corresponding build deps.json files. -->
     <ItemGroup>
-      <_PublishDepsJsonFiles Include="@(PackagingOutputs->HasMetadata('CopyToPublishDirectory'))"
-        Condition="$([System.String]::Copy(%(FileName)%(Extension)).EndsWith('.deps.json'))" />
+      <_PublishPackagingOutputs Include="@(PackagingOutputs->HasMetadata('CopyToPublishDirectory'))"/>
+      <_PublishDepsJsonFiles Include="@(_PublishPackagingOutputs)"
+        Condition="'@(_PublishPackagingOutputs)' != '' and $([System.String]::Copy(%(FileName)%(Extension)).EndsWith('.deps.json'))" />
       <PackagingOutputs Remove="@(_PublishDepsJsonFiles)" MatchOnMetadata="TargetPath"/>
       <PackagingOutputs Include="@(_PublishDepsJsonFiles)"/>
     </ItemGroup>
