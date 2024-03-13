@@ -1,43 +1,62 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using System;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
+using WinUIGallery.SamplePages;
 
 namespace WinUIGallery.ControlPages
 {
     public sealed partial class ColorsPage : Page
     {
+        int previousSelectedIndex = 0;
+
         public ColorsPage()
         {
             this.InitializeComponent();
         }
-        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void PageSelector_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
         {
-            switch (PageSelector.SelectedIndex)
+            SelectorBarItem selectedItem = sender.SelectedItem;
+            int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
+            Type pageType;
+
+            switch (currentSelectedIndex)
             {
                 case 0:
-                    NavigationFrame.Navigate(typeof(TextSection));
+                    pageType = typeof(TextSection);
                     break;
                 case 1:
-                    NavigationFrame.Navigate(typeof(FillSection));
+                    pageType = typeof(FillSection);
                     break;
                 case 2:
-                    NavigationFrame.Navigate(typeof(StrokeSection));
+                    pageType = typeof(StrokeSection);
                     break;
                 case 3:
-                    NavigationFrame.Navigate(typeof(BackgroundSection));
+                    pageType = typeof(BackgroundSection);
                     break;
                 case 4:
-                    NavigationFrame.Navigate(typeof(SignalSection));
+                    pageType = typeof(SignalSection);
                     break;
                 case 5:
-                    NavigationFrame.Navigate(typeof(HighContrastSection));
+                    pageType = typeof(HighContrastSection);
+                    break;
+                default:
+                    pageType = typeof(TextSection);
                     break;
             }
+
+            var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
+
+            NavigationFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
+
+            previousSelectedIndex = currentSelectedIndex;
         }
 
-        private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private void PageSelector_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             PageSelector.SelectedItem = PageSelector.Items[0];
         }
