@@ -17,7 +17,7 @@ The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simp
 1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
 
 ```shell
-    >dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml
+    >dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
 ```
 
 1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:
