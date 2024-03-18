@@ -22,33 +22,16 @@ namespace WinUIGallery.ControlPages
         {
             SelectorBarItem selectedItem = sender.SelectedItem;
             int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
-            Type pageType;
-
-            switch (currentSelectedIndex)
+            Type pageType = currentSelectedIndex switch
             {
-                case 0:
-                    pageType = typeof(TextSection);
-                    break;
-                case 1:
-                    pageType = typeof(FillSection);
-                    break;
-                case 2:
-                    pageType = typeof(StrokeSection);
-                    break;
-                case 3:
-                    pageType = typeof(BackgroundSection);
-                    break;
-                case 4:
-                    pageType = typeof(SignalSection);
-                    break;
-                case 5:
-                    pageType = typeof(HighContrastSection);
-                    break;
-                default:
-                    pageType = typeof(TextSection);
-                    break;
-            }
-
+                0 => typeof(TextSection),
+                1 => typeof(FillSection),
+                2 => typeof(StrokeSection),
+                3 => typeof(BackgroundSection),
+                4 => typeof(SignalSection),
+                5 => typeof(HighContrastSection),
+                _ => typeof(TextSection),
+            };
             var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
 
             NavigationFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
