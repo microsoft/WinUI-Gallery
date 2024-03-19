@@ -20,6 +20,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Common;
 using WinUIGallery.Data;
+using WinUIGallery.Helper;
 
 namespace WinUIGallery.ControlPages
 {
@@ -299,6 +300,8 @@ namespace WinUIGallery.ControlPages
             var filtered = contacts3.Where(contact => Filter(contact));
             Remove_NonMatching(filtered);
             AddBack_Contacts(filtered);
+
+            UIHelper.AnnounceActionForAccessibility(FilteredListView, $"Found {filtered.Count()} contacts", "ContactListViewFilteredActivityId");
         }
 
         private bool Filter(Contact contact)
@@ -395,7 +398,7 @@ namespace WinUIGallery.ControlPages
 
             ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
 
-            for (int i = 0; i < lines.Count-2; i += 3)
+            for (int i = 0; i < lines.Count - 2; i += 3)
             {
                 contacts.Add(new Contact(lines[i], lines[i + 1], lines[i + 2]));
             }
