@@ -51,17 +51,6 @@ namespace WinUIGallery.TabViewPages
             {
                 WindowHelper.GetWindowForElement(this).Close();
             }
-            // If there is only one tab left, disable dragging and reordering of Tabs.
-            else if (sender.TabItems.Count == 1)
-            {
-                sender.CanReorderTabs = false;
-                sender.CanDragTabs = false;
-            }
-            else
-            {
-                sender.CanReorderTabs = true;
-                sender.CanDragTabs = true;
-            }
         }
 
         public void LoadDemoData()
