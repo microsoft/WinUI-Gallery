@@ -1,6 +1,6 @@
 # UI Tests with WinAppDriver
 
-The UI Test repository is a collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. Note: the [Universal Windows Platform controls](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/) reference can be used, as the WinUI 3 controls are very similar to the UWP controls.
+The UI Test repository is a collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. See the [Windows Platform controls reference](https://learn.microsoft.com/windows/apps/design/controls/) for more information on available controls.
 
 The test scenarios are written to test the controls in the WinUI 3 Gallery app. The procedure below outlines the steps needed to build and deploy WinUI 3 Gallery and WinAppDriver to run the UI Tests. These steps mirror what azure-pipelines.yml does in pipeline runs.
 
