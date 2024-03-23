@@ -13,7 +13,10 @@
     <!--  Colors section  -->
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
         <!--  Text  -->
-        <designguidance:ColorPageExample Title="Text" Description="For UI labels and static text">
+        <designguidance:ColorPageExample
+            Title="Text"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="For UI labels and static text">
             <TextBlock
                 FontSize="42"
                 FontWeight="SemiBold"
@@ -65,7 +68,10 @@
 
 
         <!--  Accent text  -->
-        <designguidance:ColorPageExample Title="Accent Text" Description="Recommended for links">
+        <designguidance:ColorPageExample
+            Title="Accent Text"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Recommended for links">
             <TextBlock
                 FontSize="42"
                 FontWeight="SemiBold"
