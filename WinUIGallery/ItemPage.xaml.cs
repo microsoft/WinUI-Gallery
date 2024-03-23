@@ -33,7 +33,7 @@ namespace WinUIGallery
     /// </summary>
     public sealed partial class ItemPage : Page
     {
-        private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/1.4-stable/controls/dev/";
+        private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/1.5-stable/controls/dev/";
         private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
 
         public ControlInfoDataItem Item
