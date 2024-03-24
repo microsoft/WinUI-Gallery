@@ -38,12 +38,11 @@
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <WindowsSdkPackageVersion>10.0.22621.30-preview.aot12.ni-release-svc-prod3</WindowsSdkPackageVersion>
         <IsAotCompatible>true</IsAotCompatible>
-        <PublishAot>true</PublishAot>
+        <PublishAot Condition="'$(Platform)' == 'x64' Or '$(Platform)' == 'arm64'">true</PublishAot>
         <IsTrimmable>true</IsTrimmable>
         <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
-        <PackageCertificateKeyFile>WinUIGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
-        <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-        <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+        <!-- <PackageCertificateKeyFile>WinUIGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+        <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>  -->
         <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
         <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
     </PropertyGroup>
