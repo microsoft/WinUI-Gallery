@@ -27,7 +27,7 @@
         <Optimized>true</Optimized>
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
         <!-- In .NET 8, serialization is prohibited by default - we can safely use it since we're not dealing with UDTs. -->
-        <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+        <!-- <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault> -->
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
