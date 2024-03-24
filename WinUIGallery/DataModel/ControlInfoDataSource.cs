@@ -183,7 +183,7 @@ namespace WinUIGallery.Data
             }
 
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
-            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, RootContext.Default);
+            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, RootContext.Default.Root);
 
             lock (_lock)
             {
