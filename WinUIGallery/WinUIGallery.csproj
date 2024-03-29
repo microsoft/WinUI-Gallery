@@ -270,6 +270,9 @@
             <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
@@ -278,13 +281,13 @@
         directory.  The default behavior is easier, so we'll mimic that here.-->
     <Target Name="AddCopyToPublishDirectoryItems" Condition="'$(PublishSingleFile)'=='true'" BeforeTargets="GetCopyToPublishDirectoryItems" DependsOnTargets="AssignTargetPaths">
         <ItemGroup>
-            <CurrentContentWithTargetPath Include="@(ContentWithTargetPath)"/>
-            <ContentWithTargetPath Remove="@(CurrentContentWithTargetPath )"/>
+            <CurrentContentWithTargetPath Include="@(ContentWithTargetPath)" />
+            <ContentWithTargetPath Remove="@(CurrentContentWithTargetPath )" />
             <ContentWithTargetPath Include="@(CurrentContentWithTargetPath )">
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </ContentWithTargetPath>
-            <CurrentNoneWithTargetPath Include="@(_NoneWithTargetPath)"/>
-            <_NoneWithTargetPath Remove="@(CurrentNoneWithTargetPath )"/>
+            <CurrentNoneWithTargetPath Include="@(_NoneWithTargetPath)" />
+            <_NoneWithTargetPath Remove="@(CurrentNoneWithTargetPath )" />
             <_NoneWithTargetPath Include="@(CurrentNoneWithTargetPath )">
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>
