@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:contract7Present="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
@@ -40,56 +41,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="IntermediateLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="740" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="PhoneLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="OptionsPresenter.HorizontalContentAlignment" Value="Left" />
-                        <Setter Target="OptionsPresenter.Margin" Value="0,24,0,0" />
-                        <Setter Target="OptionsPresenter.BorderThickness" Value="0,1,0,0" />
-                        <Setter Target="OptionsPresenter.(Grid.Row)" Value="1" />
-                        <Setter Target="OptionsPresenter.(Grid.Column)" Value="0" />
-                        <Setter Target="OptionsPresenter.(Grid.ColumnSpan)" Value="2" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
-            <VisualStateGroup>
-                <VisualState x:Name="NormalMode" />
-                <VisualState x:Name="ScreenshotMode">
-                    <VisualState.Setters>
-                        <Setter Target="CodeScrollViewer.Visibility" Value="Collapsed" />
-                        <Setter Target="ControlPresenter.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}" />
-                        <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center" />
-                        <Setter Target="ScreenshotControls.Visibility" Value="Visible" />
-                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
-            <VisualStateGroup x:Name="SampleCodeSeparatorStates">
-                <VisualState x:Name="SeparatorCollapsed" />
-                <VisualState x:Name="SeparatorVisible">
-                    <VisualState.Setters>
-                        <Setter Target="SampleCodeSeparator.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
 
         <TextBlock
             x:Name="HeaderTextPresenter"
             Margin="0,12"
-            Style="{ThemeResource BodyStrongTextBlockStyle}"
             AutomationProperties.HeadingLevel="Level3"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
             Text="{x:Bind HeaderText}" />
 
         <RichTextBlock
@@ -114,9 +71,9 @@
             <controls1:SampleThemeListener>
                 <Grid
                     x:Name="ExampleContainer"
-                    Style="{ThemeResource GalleryTileGridStyle}"
                     x:FieldModifier="Public"
-                    CornerRadius="8,8,0,0">
+                    CornerRadius="8,8,0,0"
+                    Style="{ThemeResource GalleryTileGridStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
@@ -191,7 +148,7 @@
                     <Border
                         x:Name="SampleCodeSeparator"
                         Margin="0,20"
-                        BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                        BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
                         BorderThickness="1"
                         Visibility="Collapsed" />
                     <controls:SampleCodePresenter
@@ -240,5 +197,49 @@
                     LostFocus="ControlPaddingBox_LostFocus" />
             </StackPanel>
         </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="IntermediateLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="740" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="PhoneLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="OptionsPresenter.HorizontalContentAlignment" Value="Left" />
+                        <Setter Target="OptionsPresenter.Margin" Value="0,24,0,0" />
+                        <Setter Target="OptionsPresenter.BorderThickness" Value="0,1,0,0" />
+                        <Setter Target="OptionsPresenter.(Grid.Row)" Value="1" />
+                        <Setter Target="OptionsPresenter.(Grid.Column)" Value="0" />
+                        <Setter Target="OptionsPresenter.(Grid.ColumnSpan)" Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup>
+                <VisualState x:Name="NormalMode" />
+                <VisualState x:Name="ScreenshotMode">
+                    <VisualState.Setters>
+                        <Setter Target="CodeScrollViewer.Visibility" Value="Collapsed" />
+                        <Setter Target="ControlPresenter.Padding" Value="{ThemeResource ControlElementScreenshotModePadding}" />
+                        <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center" />
+                        <Setter Target="ScreenshotControls.Visibility" Value="Visible" />
+                        <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="SampleCodeSeparatorStates">
+                <VisualState x:Name="SeparatorCollapsed" />
+                <VisualState x:Name="SeparatorVisible">
+                    <VisualState.Setters>
+                        <Setter Target="SampleCodeSeparator.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </UserControl>
