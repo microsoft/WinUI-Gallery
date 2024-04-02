@@ -1,5 +1,6 @@
-trigger:
-    - main
+name: $(BuildDefinitionName)_$(date:yyMM).$(date:dd)$(rev:rrr)
+
+trigger: none
 
 pool:
     vmImage: "windows-2022"
@@ -11,93 +12,127 @@ variables:
     buildConfiguration: "Debug"
     appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
-steps:
-    - task: NuGetToolInstaller@1
-      displayName: Install NuGet 5.8.0
-      inputs:
-          versionSpec: 5.8.0
+resources:
+  repositories: 
+    - repository: templates
+      type: git
+      name: OneBranch.Pipelines/GovernedTemplates
+      ref: refs/heads/main
+    - repository: WinUI-Gallery # The name used to reference this repository in the checkout step
+      type: github
+      endpoint: microsoft
+      name: microsoft/WinUI-Gallery
 
-    - task: NuGetCommand@2
-      displayName: Restore NuGet Packages for WinUI Gallery
-      inputs:
-        command: 'restore'
-        restoreSolution: '**/*.sln'
-        feedsToUse: 'config'
-        nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+extends:
+  template: v2/Microsoft.Official.yml@templates # https://aka.ms/obpipelines/templates
+  parameters:
+    platform:
+      name: 'windows_undocked'
+    
+    globalSdl: # Refer the wiki for more options in this parameter: https://aka.ms/obpipelines/sdl
+      tsa:
+        enabled: true 
 
-    - task: PowerShell@2
-      displayName: Generate Test Signing Certificate
-      inputs:
-        targetType: filePath
-        filePath: build/GenerateTestPFX.ps1
+    stages:
+    - stage: build
+      jobs: 
+      - job: main
 
-    - task: DotNetCoreCLI@2
-      displayName: Build WinUI Gallery Package
-      inputs:
-        command: 'publish'
-        publishWebProjects: false
-        projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
-        zipAfterPublish: false
-        modifyOutputPath: false
+        steps:
+        - task: NuGetToolInstaller@1
+          displayName: Install NuGet 5.8.0
+          inputs:
+              versionSpec: 5.8.0
 
-    - script: |
-        dir /b /s $(Build.ArtifactStagingDirectory)
-        dir /b /s $(System.DefaultWorkingDirectory)
-      displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
+        - task: NuGetCommand@2
+          displayName: Restore NuGet Packages for WinUI Gallery
+          inputs:
+            command: 'restore'
+            restoreSolution: '**/*.sln'
+            feedsToUse: 'config'
+            nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
-    - task: VSTest@2
-      displayName: 'Run Sample Unit Tests'
-      inputs:
-        failOnMinTestsNotRun: true
-        minimumExpectedTests: '3'
-        testAssemblyVer2: |
-          **\WinUIGalleryUnitTests.build.appxrecipe
+        - task: PowerShell@2
+          displayName: Generate Test Signing Certificate
+          inputs:
+            targetType: filePath
+            filePath: build/GenerateTestPFX.ps1
 
-    - task: PowerShell@2
-      displayName: Install WinUI Gallery Package
-      inputs:
-          targetType: "inline"
-          script: |
-              cd $(appxPackageDir)
+        - task: DotNetCoreCLI@2
+          displayName: Build WinUI Gallery Package
+          inputs:
+            command: 'publish'
+            publishWebProjects: false
+            projects: '$(solutionGallery)'
+            arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
+            zipAfterPublish: false
+            modifyOutputPath: false
 
-              $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
-              cd $AppBundle
-              ./Install.ps1 -Force
-          errorActionPreference: "continue"
-          failOnStderr: true
-          workingDirectory: "$(System.DefaultWorkingDirectory)"
+        - script: |
+            dir /b /s $(Build.ArtifactStagingDirectory)
+            dir /b /s $(System.DefaultWorkingDirectory)
+          displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
 
-    - task: NuGetCommand@2
-      displayName: Restore Packages for UI Tests Project
-      inputs:
-          restoreSolution: "$(solutionUITests)"
+      - job: runTests
+        steps:
+        - task: VSTest@2
+          displayName: 'Run Sample Unit Tests'
+          inputs:
+            failOnMinTestsNotRun: true
+            minimumExpectedTests: '3'
+            testAssemblyVer2: |
+              **\WinUIGalleryUnitTests.build.appxrecipe
 
-    - task: VSBuild@1
-      displayName: Build UI Tests Project
-      inputs:
-          platform: "$(buildPlatform)"
-          solution: "$(solutionUITests)"
-          configuration: "$(buildConfiguration)"
+        - task: PowerShell@2
+          displayName: Install WinUI Gallery Package
+          inputs:
+              targetType: "inline"
+              script: |
+                  cd $(appxPackageDir)
 
-    - task: Windows Application Driver@0
-      displayName: Start Windows Application Driver
-      inputs:
-          OperationType: "Start"
-          AgentResolution: "1080p"
+                  $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
+                  cd $AppBundle
+                  ./Install.ps1 -Force
+              errorActionPreference: "continue"
+              failOnStderr: true
+              workingDirectory: "$(System.DefaultWorkingDirectory)"
 
-    - task: VSTest@2
-      displayName: Run UI Tests
-      inputs:
-          testSelector: "testAssemblies"
-          testAssemblyVer2: |
-              **\UITests.dll
-              !**\*TestAdapter.dll
-              !**\obj\**
-              !**\ref\**
-          searchFolder: "$(System.DefaultWorkingDirectory)"
+        - task: NuGetCommand@2
+          displayName: Restore Packages for UI Tests Project
+          inputs:
+              restoreSolution: "$(solutionUITests)"
 
-    - task: Windows Application Driver@0
-      displayName: Stop Windows Application Driver
-      inputs:
-          OperationType: "Stop"
+        - task: VSBuild@1
+          displayName: Build UI Tests Project
+          inputs:
+              platform: "$(buildPlatform)"
+              solution: "$(solutionUITests)"
+              configuration: "$(buildConfiguration)"
+
+        - task: PublishPipelineArtifact@1
+          displayName: 'Publish Artifact: drop'
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+
+        - task: Windows Application Driver@0
+          displayName: Start Windows Application Driver
+          inputs:
+              OperationType: "Start"
+              AgentResolution: "1080p"
+
+        - task: VSTest@2
+          displayName: Run UI Tests
+          inputs:
+              testSelector: "testAssemblies"
+              testAssemblyVer2: |
+                  **\UITests.dll
+                  !**\*TestAdapter.dll
+                  !**\obj\**
+                  !**\ref\**
+              searchFolder: "$(System.DefaultWorkingDirectory)"
+
+        - task: Windows Application Driver@0
+          displayName: Stop Windows Application Driver
+          inputs:
+              OperationType: "Stop"
