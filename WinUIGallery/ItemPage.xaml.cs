@@ -34,7 +34,7 @@ namespace WinUIGallery
     /// </summary>
     public sealed partial class ItemPage : Page
     {
-        private static string WinUIBaseUrl = string.Format("https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/{0}.{1}-stable/controls/dev/", WASDK.Release.Major, WASDK.Release.Minor);
+        private static string WinUIBaseUrl = string.Format("https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/{0}.{1}-stable/controls/dev", WASDK.Release.Major, WASDK.Release.Minor);
         private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
 
         public ControlInfoDataItem Item
