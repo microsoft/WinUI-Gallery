@@ -36,8 +36,8 @@ namespace WinUIGallery.ControlPages
             {
                 m_oldText = xamlStr;
                 textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
-                var x = new XamlTextModel(textbox);
-                x.ApplyColors();
+                var formatter = new XamlTextFormatter(textbox);
+                formatter.ApplyColors();
             }
         }
 
@@ -124,15 +124,11 @@ namespace WinUIGallery.ControlPages
 
         private void InsertTextboxText(string str, bool setCursorAfterInsertedStr)
         {
-#if true
             var selectionStart = textbox.TextDocument.Selection.StartPosition;
             var range = textbox.TextDocument.GetRange(selectionStart, selectionStart);
             m_lastChangeFromTyping = false;
             range.Text = str;
             textbox.TextDocument.Selection.StartPosition = selectionStart + (setCursorAfterInsertedStr ? str.Length : 0);
-#else
-            textbox.TextDocument.Selection.TypeText(str);
-#endif
         }
 
         private string GetTextboxTextPreviousLine()
@@ -172,49 +168,7 @@ namespace WinUIGallery.ControlPages
                 range.Text = "\n" + indentStr;
             }
             textbox.TextDocument.EndUndoGroup();
-
-            try
-            {
-                string text;
-                textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out text);
-                var reader = new System.Xml.XmlTextReader(GenerateStreamFromString(AddXmlNamespace(text)));
-                while (reader.Read())
-                {
-                    switch (reader.NodeType)
-                    {
-                        case XmlNodeType.Element:
-                            System.Diagnostics.Debug.WriteLine("Start Element " + reader.Name);
-                            break;
-                        case XmlNodeType.Text:
-                            System.Diagnostics.Debug.WriteLine("Text Node: " +
-                                     await reader.GetValueAsync());
-                            break;
-                        case XmlNodeType.EndElement:
-                            System.Diagnostics.Debug.WriteLine("End Element " + reader.Name);
-                            break;
-                        default:
-                            System.Diagnostics.Debug.WriteLine("Other node " + reader.NodeType + " with value " +
-                                     reader.Value);
-                            break;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                log.Text += e.ToString();
-            }
         }
-
-        public static Stream GenerateStreamFromString(string s)
-        {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
-
 
         private void textbox_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
         {
@@ -303,8 +257,8 @@ namespace WinUIGallery.ControlPages
             LoadContent();
 
             m_lastChangeFromTyping = false;
-            var x = new XamlTextModel(textbox);
-            x.ApplyColors();
+            var formatter = new XamlTextFormatter(textbox);
+            formatter.ApplyColors();
         }
 
         bool m_lastChangeFromTyping = false;
@@ -375,13 +329,11 @@ namespace WinUIGallery.ControlPages
         }
     }
 
-    public class XamlTextModel
+    public class XamlTextFormatter
     {
-        //string m_text;
-        RichEditBox m_richEditBox;
-        public XamlTextModel(/*string text,*/ RichEditBox richEditBox)
+        private RichEditBox m_richEditBox;
+        public XamlTextFormatter(RichEditBox richEditBox)
         {
-            //m_text = text;
             m_richEditBox = richEditBox;
         }
 
@@ -402,7 +354,7 @@ namespace WinUIGallery.ControlPages
         {
             var doc = m_richEditBox.Document;
             doc.BeginUndoGroup();
-            //var range = doc.GetRange(0, 1);
+
             string rebText;
             doc.GetText(Microsoft.UI.Text.TextGetOptions.None, out rebText);
 
@@ -517,7 +469,7 @@ namespace WinUIGallery.ControlPages
             {
                 return;
             }
-            //
+
             var doc = m_richEditBox.Document;
             var range = doc.GetRange(startIndex, endIndexExclusive);
             Windows.UI.Color foregroundColor = Microsoft.UI.Colors.Black;
@@ -538,7 +490,6 @@ namespace WinUIGallery.ControlPages
 
                 case ZoneType.PropertyValue:
                     foregroundColor = Microsoft.UI.Colors.Blue;
-                    //range.CharacterFormat.Underline = Microsoft.UI.Text.UnderlineType.Wave;
                     break;
 
                 case ZoneType.Whitespace:
