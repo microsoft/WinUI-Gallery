@@ -10,7 +10,7 @@ using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutC
 
 namespace WinUIGallery.Common
 {
-    class ActivityFeedLayout : VirtualizingLayout
+    partial class ActivityFeedLayout : VirtualizingLayout
     {
         #region Layout parameters
 

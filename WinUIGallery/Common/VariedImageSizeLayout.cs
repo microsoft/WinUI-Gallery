@@ -10,7 +10,7 @@ using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutC
 
 namespace WinUIGallery.Common
 {
-    public class VariedImageSizeLayout : VirtualizingLayout
+    public partial class VariedImageSizeLayout : VirtualizingLayout
     {
         public double Width { get; set; } = 150;
         protected override void OnItemsChangedCore(VirtualizingLayoutContext context, object source, NotifyCollectionChangedEventArgs args)

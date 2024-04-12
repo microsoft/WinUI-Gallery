@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml;
 namespace WinUIGallery
 {
     // https://learn.microsoft.com/windows/apps/design/devices/designing-for-tv#custom-visual-state-trigger-for-xbox
-    class DeviceFamilyTrigger : StateTriggerBase
+    partial class DeviceFamilyTrigger : StateTriggerBase
     {
         private string _actualDeviceFamily;
         private string _triggerDeviceFamily;

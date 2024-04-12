@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 #define INDEI
@@ -130,7 +130,7 @@ namespace WinUIGallery.ControlPages
         */
     }
 
-    public class PurchaseViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
+    public partial class PurchaseViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         public PurchaseViewModel()
         {

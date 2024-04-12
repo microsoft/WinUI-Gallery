@@ -27,15 +27,22 @@
         <Optimized>true</Optimized>
         <Optimized Condition="'$(Configuration)' == 'Debug-Unpackaged' Or '$(Configuration)' == 'Debug'">false</Optimized>
         <!-- In .NET 8, serialization is prohibited by default - we can safely use it since we're not dealing with UDTs. -->
-        <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+        <!-- <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault> -->
         <SingleProject>true</SingleProject>
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-        <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
+        <!-- Note: PublishAot does not support x86. -->
+        <PublishAot Condition="'$(PublishAot)' == '' and '$(Optimized)' == 'true' and ('$(Platform)' == 'x64' or '$(Platform)' == 'arm64')">true</PublishAot>
+        <IsAotCompatible>true</IsAotCompatible>
+        <IsTrimmable>true</IsTrimmable>    
+        <!-- Note: PublishAot and PublishSingleFile cannot be specified at the same time. -->
+        <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true' and '$(PublishAot)' != 'true'">true</PublishSingleFile>
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -270,6 +277,9 @@
             <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
@@ -278,13 +288,13 @@
         directory.  The default behavior is easier, so we'll mimic that here.-->
     <Target Name="AddCopyToPublishDirectoryItems" Condition="'$(PublishSingleFile)'=='true'" BeforeTargets="GetCopyToPublishDirectoryItems" DependsOnTargets="AssignTargetPaths">
         <ItemGroup>
-            <CurrentContentWithTargetPath Include="@(ContentWithTargetPath)"/>
-            <ContentWithTargetPath Remove="@(CurrentContentWithTargetPath )"/>
+            <CurrentContentWithTargetPath Include="@(ContentWithTargetPath)" />
+            <ContentWithTargetPath Remove="@(CurrentContentWithTargetPath )" />
             <ContentWithTargetPath Include="@(CurrentContentWithTargetPath )">
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </ContentWithTargetPath>
-            <CurrentNoneWithTargetPath Include="@(_NoneWithTargetPath)"/>
-            <_NoneWithTargetPath Remove="@(CurrentNoneWithTargetPath )"/>
+            <CurrentNoneWithTargetPath Include="@(_NoneWithTargetPath)" />
+            <_NoneWithTargetPath Remove="@(CurrentNoneWithTargetPath )" />
             <_NoneWithTargetPath Include="@(CurrentNoneWithTargetPath )">
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>

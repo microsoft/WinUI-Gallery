@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
@@ -161,7 +161,7 @@ namespace WinUIGallery.ControlPages
 
     }
 
-    public class ExplorerItem : INotifyPropertyChanged
+    public partial class ExplorerItem : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public enum ExplorerItemType { Folder, File };
@@ -204,7 +204,7 @@ namespace WinUIGallery.ControlPages
         }
     }
 
-    class ExplorerItemTemplateSelector : DataTemplateSelector
+    partial class ExplorerItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate FolderTemplate { get; set; }
         public DataTemplate FileTemplate { get; set; }
