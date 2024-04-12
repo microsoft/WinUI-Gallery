@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
+    <WindowsSdkPackageVersion>10.0.22621.30-preview.aot13.ni-release-svc-prod3</WindowsSdkPackageVersion>
     <WindowsAppSdkPackageVersion>1.5.240325000-experimentalpr</WindowsAppSdkPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.1.1-1.1.1-local3</GraphicsWin2DVersion>

@@ -32,6 +32,11 @@
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+        <!-- Note: PublishAot does not support x86. -->
+        <PublishAot Condition="'$(PublishAot)' == '' and '$(Optimized)' == 'true' and ('$(Platform)' == 'x64' or '$(Platform)' == 'arm64')">true</PublishAot>
+        <IsAotCompatible>true</IsAotCompatible>
+        <IsTrimmable>true</IsTrimmable>    
+        <!-- Note: PublishAot and PublishSingleFile cannot be specified at the same time. -->
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true' and '$(PublishAot)' != 'true'">true</PublishSingleFile>
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
