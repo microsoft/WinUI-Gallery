@@ -27,17 +27,21 @@ using WASDK = Microsoft.WindowsAppSDK;
 // responsiveness by initiating the data loading task in the code behind for App.xaml when the app
 // is first launched.
 
+namespace JsonDataModel
+{
+    [JsonSerializable(typeof(Root))]
+    [JsonSerializable(typeof(List<IconData>))]
+    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
+    internal sealed partial class SourceGenerationContext : JsonSerializerContext
+    {
+    }
+}
+
 namespace WinUIGallery.Data
 {
     public class Root
     {
         public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
-    }
-
-    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
-    [JsonSerializable(typeof(Root))]
-    internal partial class RootContext : JsonSerializerContext
-    {
     }
 
     /// <summary>

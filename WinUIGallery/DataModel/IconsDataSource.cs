@@ -17,12 +17,6 @@ namespace WinUIGallery.DesktopWap.DataModel
         public string TextGlyph => "&#x" + Code + ";";
     }
 
-    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
-    [JsonSerializable(typeof(List<IconData>))]
-    internal partial class IconDataListContext : JsonSerializerContext
-    {
-    }
-
     internal class IconsDataSource
     {
         public static IconsDataSource Instance { get; } = new();
@@ -49,7 +43,7 @@ namespace WinUIGallery.DesktopWap.DataModel
             {
                 if (icons.Count == 0)
                 {
-                    icons = JsonSerializer.Deserialize(jsonText, IconDataListContext.Default.ListIconData);
+                    icons = JsonSerializer.Deserialize(jsonText, JsonDataModel.SourceGenerationContext.Default.ListIconData);
                 }
                 return icons;
             }
