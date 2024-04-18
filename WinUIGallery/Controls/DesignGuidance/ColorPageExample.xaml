@@ -15,10 +15,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <Grid
             Grid.Row="1"
-            Margin="0,36,0,0"
+            Margin="0,12,0,0"
             Padding="12"
             Background="{x:Bind Background, Mode=OneWay}"
             BorderBrush="{ThemeResource GalleryBorderBrush}"
@@ -36,7 +36,10 @@
                 Style="{ThemeResource SubtitleTextBlockStyle}"
                 Text="{x:Bind Title, Mode=OneWay}" />
 
-            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Description, Mode=OneWay}" Grid.Row="1"/>
+            <TextBlock
+                Grid.Row="1"
+                Style="{ThemeResource CaptionTextBlockStyle}"
+                Text="{x:Bind Description, Mode=OneWay}" />
             <ContentPresenter
                 Grid.Row="2"
                 Margin="0,12,0,12"
