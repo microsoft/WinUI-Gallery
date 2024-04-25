@@ -50,12 +50,19 @@ namespace WinUIGallery
         {
             get
             {
-                // Retrieve Windows App Runtime version info dynamically
-                var windowsAppRuntimeVersion =
-                    from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
-                    where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
-                    select FileVersionInfo.GetVersionInfo(module.FileName);
-                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion;
+                try
+                {
+                    // Retrieve Windows App Runtime version info dynamically
+                    var windowsAppRuntimeVersion =
+                        from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
+                        where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
+                        select FileVersionInfo.GetVersionInfo(module.FileName);
+                    return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion;
+                }
+                catch
+                {
+                    return WinAppSdkDetails + $", Windows App Runtime {WASDK.Runtime.Version.Major}.{WASDK.Runtime.Version.Minor}";
+                }
             }
         }
 
