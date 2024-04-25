@@ -5,14 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Padding="0,4,0,4"
     VerticalContentAlignment="Top"
     ActualThemeChanged="SampleCodePresenter_ActualThemeChanged"
     Loaded="SampleCodePresenter_Loaded"
     mc:Ignorable="d">
 
     <Grid
-        Padding="{Binding Padding, Mode=OneWay}"
         Background="{Binding Background, Mode=OneWay}"
         BorderBrush="{Binding BorderBrush, Mode=OneWay}"
         BorderThickness="{Binding BorderThickness, Mode=OneWay}"
@@ -26,6 +24,26 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
+        <ScrollViewer
+            x:Name="CodeScrollViewer"
+            Grid.Row="1"
+            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
+            HorizontalScrollBarVisibility="Auto"
+            HorizontalScrollMode="Auto"
+            VerticalScrollBarVisibility="Disabled"
+            VerticalScrollMode="Disabled">
+            <ContentPresenter
+                x:Name="CodePresenter"
+                Margin="0,0,0,16"
+                Loaded="CodePresenter_Loaded" />
+        </ScrollViewer>
+        <local:CopyButton
+            x:Name="CopyCodeButton"
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            Click="CopyCodeButton_Click"
+            Content="&#xE8C8;" />
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
@@ -50,22 +68,5 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
-        <ScrollViewer
-            x:Name="CodeScrollViewer"
-            Grid.Row="1"
-            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
-            HorizontalScrollBarVisibility="Auto"
-            HorizontalScrollMode="Auto"
-            VerticalScrollBarVisibility="Disabled"
-            VerticalScrollMode="Disabled">
-            <ContentPresenter x:Name="CodePresenter" Loaded="CodePresenter_Loaded" />
-        </ScrollViewer>
-        <local:CopyButton
-            x:Name="CopyCodeButton"
-            Grid.Row="0"
-            HorizontalAlignment="Right"
-            Click="CopyCodeButton_Click"
-            Content="&#xE8C8;" />
     </Grid>
 </UserControl>

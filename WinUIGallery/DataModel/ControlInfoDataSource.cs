@@ -11,9 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using WinUIGallery.Common;
-using System.Text.Json;
+using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -29,6 +31,12 @@ namespace WinUIGallery.Data
     {
         public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
     }
+    [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
+    [JsonSerializable(typeof(Root))]
+    internal partial class RootContext : JsonSerializerContext
+    {
+    }
+
     /// <summary>
     /// Generic item data model.
     /// </summary>
@@ -64,7 +72,7 @@ namespace WinUIGallery.Data
         public ControlInfoDocLink(string title, string uri)
         {
             this.Title = title;
-            this.Uri = uri;
+            this.Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
         }
         public string Title { get; set; }
         public string Uri { get; set; }
@@ -174,10 +182,7 @@ namespace WinUIGallery.Data
             }
 
             var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
-            var controlInfoDataGroup = JsonSerializer.Deserialize<Root>(jsonText, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), RootContext.Default) as Root;
 
             lock (_lock)
             {

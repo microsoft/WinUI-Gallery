@@ -25,6 +25,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.DesktopWap.Controls;
+using WASDK = Microsoft.WindowsAppSDK;
 
 namespace WinUIGallery
 {
@@ -33,7 +34,7 @@ namespace WinUIGallery
     /// </summary>
     public sealed partial class ItemPage : Page
     {
-        private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/1.4-stable/controls/dev/";
+        private static string WinUIBaseUrl = string.Format("https://github.com/microsoft/microsoft-ui-xaml/tree/winui3/release/{0}.{1}-stable/controls/dev", WASDK.Release.Major, WASDK.Release.Minor);
         private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
 
         public ControlInfoDataItem Item

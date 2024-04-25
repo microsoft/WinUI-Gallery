@@ -33,7 +33,6 @@ namespace WinUIGallery.ControlPages
             };
 
         private string currentSearch = null;
-        private Thread searchThread = null;
 
         public IconData SelectedItem
         {
@@ -137,9 +136,13 @@ namespace WinUIGallery.ControlPages
 
         private void IconsItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs args)
         {
-            if (IconsItemsView.CurrentItemIndex != -1)
+            if (IconsItemsView.ItemsSource is IList<IconData> currentItems)
             {
-                SelectedItem = (IconsItemsView.ItemsSource as IList<IconData>)[IconsItemsView.CurrentItemIndex];
+                if (IconsItemsView.CurrentItemIndex != -1 && IconsItemsView.CurrentItemIndex < currentItems.Count)
+                {
+                    SelectedItem = currentItems[IconsItemsView.CurrentItemIndex];
+                }
+
             }
         }
     }
