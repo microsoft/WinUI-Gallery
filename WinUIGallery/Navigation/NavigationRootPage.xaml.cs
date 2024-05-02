@@ -26,6 +26,8 @@ using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
+using WinUIGallery.ControlPages;
+using Microsoft.UI.Xaml.Media;
 
 namespace WinUIGallery
 {
@@ -335,6 +337,10 @@ namespace WinUIGallery
                 else if (selectedItem == IconsItem)
                 {
                     Navigate(typeof(ItemPage), "Icons");
+                }
+                else if (selectedItem == GeometryItem)
+                {
+                    Navigate(typeof(ItemPage), "Geometry");
                 }
                 else if (selectedItem == AccessibilityScreenReaderPage)
                 {

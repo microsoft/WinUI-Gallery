@@ -226,6 +226,11 @@
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
+                        <NavigationViewItem x:Name="GeometryItem" AutomationProperties.AutomationId="Geometry" Content="Geometry" Tag="Geometry">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE790;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
                         <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility" Tag="Accessibility">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE776;" />

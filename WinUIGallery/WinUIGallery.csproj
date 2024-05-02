@@ -145,6 +145,7 @@
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
+        <None Remove="ControlPages\DesignGuidance\GeometryPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
         <None Remove="ControlPages\SelectorBarPage.xaml" />
@@ -188,6 +189,9 @@
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
     </ItemGroup>
     <ItemGroup>
+        <Page Update="ControlPages\DesignGuidance\GeometryPage.xaml">
+          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+        </Page>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
