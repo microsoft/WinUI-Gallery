@@ -53,7 +53,10 @@
                     Height="450"
                     HorizontalScrollBarVisibility="Auto"
                     HorizontalScrollMode="Auto">
-                    <Canvas Width="750" Height="450">
+                    <Canvas
+                        Width="750"
+                        Height="450"
+                        HorizontalAlignment="Left">
                         <Image
                             Height="450"
                             Canvas.ZIndex="0"

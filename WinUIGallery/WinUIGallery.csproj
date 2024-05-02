@@ -141,10 +141,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\Geometry.dark.png" />
+        <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
+        <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
-        <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
+        <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
         <None Remove="ControlPages\SelectorBarPage.xaml" />
@@ -166,6 +169,8 @@
 
     <ItemGroup>
         <Content Include="Assets\GalleryHeaderImage.png" />
+        <Content Include="Assets\Geometry.dark.png" />
+        <Content Include="Assets\Geometry.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
@@ -180,6 +185,7 @@
         <Content Include="Assets\Tiles\TitlebarLogo.png" />
         <Content Include="Assets\Typography.dark.png" />
         <Content Include="Assets\Typography.light.png" />
+        <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
@@ -255,7 +261,7 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\DesignGuidance\ColorsPage.xaml">
+        <Page Update="ControlPages\DesignGuidance\ColorPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
     </ItemGroup>

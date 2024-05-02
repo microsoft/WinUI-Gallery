@@ -8,6 +8,52 @@
       "Folder": "DesignGuidance",
       "Items": [
         {
+          "UniqueId": "Color",
+          "Title": "Color",
+          "Docs": [
+            {
+              "Title": "Colors in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
+            },
+            {
+              "Title": "Windows UI Toolkit (Figma)",
+              "Uri": "https://www.figma.com/community/file/1159947337437047524"
+            },
+            {
+              "Title": "WinUI Theme Resources (GitHub)",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Geometry",
+          "Title": "Geometry",
+          "Docs": [
+            {
+              "Title": "Geometry in Windows 11",
+              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/signature-experiences/geometry"
+            },
+            {
+              "Title": "WinUI Theme Resources (GitHub)",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Iconography",
+          "Title": "Iconography",
+          "Docs": [
+            {
+              "Title": "Iconography in Windows 11",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
+            },
+            {
+              "Title": "Segoe Fluent Icons font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            }
+          ]
+        },
+        {
           "UniqueId": "Typography",
           "Title": "Typography",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
@@ -23,38 +69,6 @@
             {
               "Title": "Typography in Windows 11",
               "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Icons",
-          "Title": "Icons",
-          "Docs": [
-            {
-              "Title": "Iconography in Windows 11",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
-            },
-            {
-              "Title": "Segoe Fluent Icons font",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Colors",
-          "Title": "Colors",
-          "Docs": [
-            {
-              "Title": "Colors in Windows 11",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
-            },
-            {
-              "Title": "Windows UI Toolkit (Figma)",
-              "Uri": "https://www.figma.com/community/file/1159947337437047524"
-            },
-            {
-              "Title": "WinUI Theme Resources (GitHub)",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ]
         }

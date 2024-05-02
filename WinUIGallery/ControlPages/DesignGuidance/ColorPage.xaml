@@ -2,7 +2,7 @@
 <!--  Licensed under the MIT License.  -->
 
 <Page
-    x:Class="WinUIGallery.ControlPages.ColorsPage"
+    x:Class="WinUIGallery.ControlPages.ColorPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"

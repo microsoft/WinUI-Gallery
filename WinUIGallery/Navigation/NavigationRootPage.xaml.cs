@@ -324,17 +324,21 @@ namespace WinUIGallery
                 {
                     //Navigate(typeof(SectionPage), "Design_Guidance");
                 }
+                else if (selectedItem == ColorItem)
+                {
+                    Navigate(typeof(ItemPage), "Color");
+                }
+                else if (selectedItem == GeometryItem)
+                {
+                    Navigate(typeof(ItemPage), "Geometry");
+                }
+                else if (selectedItem == IconographyItem)
+                {
+                    Navigate(typeof(ItemPage), "Iconography");
+                }
                 else if (selectedItem == TypographyItem)
                 {
                     Navigate(typeof(ItemPage), "Typography");
-                }
-                else if (selectedItem == ColorsItem)
-                {
-                    Navigate(typeof(ItemPage), "Colors");
-                }
-                else if (selectedItem == IconsItem)
-                {
-                    Navigate(typeof(ItemPage), "Icons");
                 }
                 else if (selectedItem == AccessibilityScreenReaderPage)
                 {
