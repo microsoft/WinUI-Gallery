@@ -226,6 +226,11 @@
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
+                        <NavigationViewItem x:Name="SpacingItem" AutomationProperties.AutomationId="Spacing" Content="Spacing" Tag="Spacing">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8A9;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
                         <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />

@@ -54,6 +54,16 @@
           ]
         },
         {
+          "UniqueId": "Spacing",
+          "Title": "Spacing",
+          "Docs": [
+            {
+              "Title": "Content design basics",
+              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/basics/content-basics"
+            }
+          ]
+        },
+        {
           "UniqueId": "Typography",
           "Title": "Typography",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",

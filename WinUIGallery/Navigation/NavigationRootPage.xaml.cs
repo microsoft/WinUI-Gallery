@@ -336,6 +336,10 @@ namespace WinUIGallery
                 {
                     Navigate(typeof(ItemPage), "Iconography");
                 }
+                else if (selectedItem == SpacingItem)
+                {
+                    Navigate(typeof(ItemPage), "Spacing");
+                }
                 else if (selectedItem == TypographyItem)
                 {
                     Navigate(typeof(ItemPage), "Typography");

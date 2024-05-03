@@ -138,13 +138,13 @@
         <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
-        <Content Remove="Assets\Design\Cards.dark.png" />
-        <Content Remove="Assets\Design\Cards.light.png" />
-        <Content Remove="Assets\Design\Dialog.dark.png" />
-        <Content Remove="Assets\Design\Dialog.light.png" />
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\Design\Cards.dark.png" />
+        <None Remove="Assets\Design\Cards.light.png" />
+        <None Remove="Assets\Design\Dialog.dark.png" />
+        <None Remove="Assets\Design\Dialog.light.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
@@ -152,6 +152,7 @@
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
+        <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
         <None Remove="ControlPages\SelectorBarPage.xaml" />
@@ -172,6 +173,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\Design\Cards.dark.png" />
+        <Content Include="Assets\Design\Cards.light.png" />
+        <Content Include="Assets\Design\Dialog.dark.png" />
+        <Content Include="Assets\Design\Dialog.light.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
         <Content Include="Assets\Design\Geometry.light.png" />
@@ -198,6 +203,10 @@
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
     </ItemGroup>
     <ItemGroup>
+        <Page Update="ControlPages\DesignGuidance\SpacingPage.xaml">
+          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+          <SubType>Designer</SubType>
+        </Page>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
