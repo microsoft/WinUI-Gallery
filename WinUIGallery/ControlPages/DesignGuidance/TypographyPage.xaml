@@ -24,10 +24,10 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
-                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.dark.png</ImageSource>
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Design/Typography.dark.png</ImageSource>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Light">
-                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Typography.light.png</ImageSource>
+                    <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Design/Typography.light.png</ImageSource>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

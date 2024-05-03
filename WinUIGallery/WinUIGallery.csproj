@@ -138,6 +138,10 @@
         <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
+        <Content Remove="Assets\Design\Cards.dark.png" />
+        <Content Remove="Assets\Design\Cards.light.png" />
+        <Content Remove="Assets\Design\Dialog.dark.png" />
+        <Content Remove="Assets\Design\Dialog.light.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -169,8 +173,8 @@
 
     <ItemGroup>
         <Content Include="Assets\GalleryHeaderImage.png" />
-        <Content Include="Assets\Geometry.dark.png" />
-        <Content Include="Assets\Geometry.light.png" />
+        <Content Include="Assets\Design\Geometry.dark.png" />
+        <Content Include="Assets\Design\Geometry.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
@@ -183,8 +187,8 @@
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-32.png" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-48.png" />
         <Content Include="Assets\Tiles\TitlebarLogo.png" />
-        <Content Include="Assets\Typography.dark.png" />
-        <Content Include="Assets\Typography.light.png" />
+        <Content Include="Assets\Design\Typography.dark.png" />
+        <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="DataModel\IconsData.json" />
