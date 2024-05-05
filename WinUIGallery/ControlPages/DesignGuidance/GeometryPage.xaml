@@ -150,7 +150,8 @@
                         <Grid
                             MinHeight="68"
                             HorizontalAlignment="Stretch"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource OverlayCornerRadius}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
@@ -188,7 +189,10 @@
                                 Content="&#xE8C8;"
                                 ToolTipService.ToolTip="Copy to clipboard" />
                         </Grid>
-                        <Grid MinHeight="68" HorizontalAlignment="Stretch">
+                        <Grid
+                            MinHeight="68"
+                            HorizontalAlignment="Stretch"
+                            CornerRadius="{StaticResource OverlayCornerRadius}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
@@ -230,7 +234,8 @@
                         <Grid
                             MinHeight="68"
                             HorizontalAlignment="Stretch"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource OverlayCornerRadius}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
