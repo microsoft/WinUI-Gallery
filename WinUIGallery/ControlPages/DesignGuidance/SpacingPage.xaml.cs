@@ -8,10 +8,7 @@
 //
 //*********************************************************
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.DataTransfer;
 
 namespace WinUIGallery.ControlPages
 {
@@ -20,20 +17,6 @@ namespace WinUIGallery.ControlPages
         public SpacingPage()
         {
             this.InitializeComponent();
-        }
-
-        private void CopyControlResourceToClipboardButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataPackage package = new DataPackage();
-            package.SetText("ControlCornerRadius");
-            Clipboard.SetContent(package);
-        }
-
-        private void CopyOverlayResourceToClipboardButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataPackage package = new DataPackage();
-            package.SetText("OverlayCornerRadius");
-            Clipboard.SetContent(package);
         }
     }
 }

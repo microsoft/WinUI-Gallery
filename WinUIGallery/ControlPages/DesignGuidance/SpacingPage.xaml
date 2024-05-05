@@ -32,6 +32,43 @@
                     <ImageSource x:Key="CardsImage">ms-appx:///Assets/Design/Cards.light.png</ImageSource>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
+
+
+            <Style x:Key="GridCardStyle" TargetType="Grid">
+                <Style.Setters>
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="MinHeight" Value="68" />
+                    <Setter Property="CornerRadius" Value="{StaticResource OverlayCornerRadius}" />
+                </Style.Setters>
+            </Style>
+
+            <Style x:Key="ValueTextStyle" TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="16,0,0,0" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style.Setters>
+            </Style>
+
+            <Style
+                x:Key="DescriptionTextStyle"
+                BasedOn="{StaticResource CaptionTextBlockStyle}"
+                TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="Grid.Column" Value="2" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style.Setters>
+            </Style>
+
+            <Style x:Key="VisualBorderStyle" TargetType="Border">
+                <Style.Setters>
+                    <Setter Property="Grid.Column" Value="1" />
+                    <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
+                    <Setter Property="Height" Value="20" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                </Style.Setters>
+            </Style>
+
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -50,21 +87,7 @@
         </RichTextBlock>
         <ScrollView Grid.Row="1" Margin="0,24,0,0">
             <StackPanel Orientation="Horizontal" Spacing="36">
-                <Grid RowSpacing="12">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        Style="{StaticResource SubtitleTextBlockStyle}"
-                        Text="Form layout" />
-                    <Image
-                        Grid.Row="1"
-                        Margin="-16,0,0,0"
-                        Source="{ThemeResource DialogImage}" />
-                </Grid>
-                <Grid RowSpacing="12">
+                <Grid VerticalAlignment="Top" RowSpacing="12">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
@@ -73,157 +96,98 @@
                         HorizontalAlignment="Center"
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="Page with cards layout" />
-
                     <Image Grid.Row="1" Source="{ThemeResource CardsImage}" />
                 </Grid>
-
+                <Grid VerticalAlignment="Top" RowSpacing="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        Text="Form layout" />
+                    <Image Grid.Row="1" Source="{ThemeResource DialogImage}" />
+                </Grid>
             </StackPanel>
         </ScrollView>
-        <local:ControlExample
-            x:Name="Example1"
-            Grid.Row="2"
-            HorizontalContentAlignment="Stretch">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
                     <StackPanel>
                         <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="148" />
+                                <ColumnDefinition Width="222" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
-                                <ColumnDefinition Width="112" />
                             </Grid.ColumnDefinitions>
                             <TextBlock
                                 Margin="16,0,0,0"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Corner radius" />
+                                Text="Value" />
                             <TextBlock
                                 Grid.Column="1"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Usage" />
-                            <TextBlock
-                                Grid.Column="2"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Style" />
                         </Grid>
+                        <!--  4epx  -->
                         <Grid
-                            MinHeight="68"
-                            HorizontalAlignment="Stretch"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="148" />
-                                <ColumnDefinition Width="*" MaxWidth="400" />
-                                <ColumnDefinition Width="160" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <Border
-                                    Grid.Column="1"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="16,0,0,0"
-                                    Background="{ThemeResource AccentFillColorDefaultBrush}"
-                                    CornerRadius="{StaticResource OverlayCornerRadius}" />
-                                <TextBlock VerticalAlignment="Center" Text="8px" />
-                            </StackPanel>
-                            <TextBlock
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Top-level containers such as app windows, flyouts and dialogs." />
-                            <TextBlock
-                                Grid.Column="2"
-                                VerticalAlignment="Center"
-                                FontFamily="Consolas"
-                                IsTextSelectionEnabled="True"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="OverlayCornerRadius" />
-
-                            <controls:CopyButton
-                                x:Name="CopyOverlayResourceToClipboardButton"
-                                Grid.Column="3"
-                                Margin="4,2,8,0"
-                                Click="CopyOverlayResourceToClipboardButton_Click"
-                                Content="&#xE8C8;"
-                                ToolTipService.ToolTip="Copy to clipboard" />
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            Grid.ColumnDefinitions="86,136,*"
+                            Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="4epx" />
+                            <Border Width="4" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing used for compact sizing." />
                         </Grid>
-                        <Grid MinHeight="68" HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="148" />
-                                <ColumnDefinition Width="*" MaxWidth="400" />
-                                <ColumnDefinition Width="160" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <Border
-                                    Grid.Column="1"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="16,0,0,0"
-                                    Background="{ThemeResource AccentFillColorDefaultBrush}"
-                                    CornerRadius="{StaticResource ControlCornerRadius}" />
-                                <TextBlock VerticalAlignment="Center" Text="4px" />
-                            </StackPanel>
-                            <TextBlock
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="In-page elements such as buttons and list backplates." />
-                            <TextBlock
-                                Grid.Column="2"
-                                VerticalAlignment="Center"
-                                FontFamily="Consolas"
-                                IsTextSelectionEnabled="True"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="ControlCornerRadius" />
-
-                            <controls:CopyButton
-                                x:Name="CopyControlResourceToClipboardButton"
-                                Grid.Column="3"
-                                Margin="4,2,8,0"
-                                Click="CopyControlResourceToClipboardButton_Click"
-                                Content="&#xE8C8;"
-                                ToolTipService.ToolTip="Copy to clipboard" />
+                        <!--  8epx  -->
+                        <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="8epx" />
+                            <Border Width="8" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between UI controls, control + header, control + label." />
                         </Grid>
+                        <!--  12epx  -->
                         <Grid
-                            MinHeight="68"
-                            HorizontalAlignment="Stretch"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="148" />
-                                <ColumnDefinition Width="*" MaxWidth="400" />
-                                <ColumnDefinition Width="160" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <Border
-                                    Grid.Column="1"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="16,0,0,0"
-                                    Background="{ThemeResource AccentFillColorDefaultBrush}" />
-                                <TextBlock VerticalAlignment="Center" Text="0px" />
-                            </StackPanel>
-                            <TextBlock
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Straight edges that intersect with other straight edges." />
-                            <TextBlock
-                                Grid.Column="2"
-                                VerticalAlignment="Center"
-                                FontFamily="Consolas"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="N/a" />
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            Grid.ColumnDefinitions="86,136,*"
+                            Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="12epx" />
+                            <Border Width="12" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between surface and edge text, text sections." />
                         </Grid>
-
+                        <!--  16epx  -->
+                        <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="16epx" />
+                            <Border Width="16" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Padding used in list styles, cards." />
+                        </Grid>
+                        <!--  24epx  -->
+                        <Grid
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            Grid.ColumnDefinitions="86,136,*"
+                            Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="24epx" />
+                            <Border Width="24" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between content sections." />
+                        </Grid>
+                        <!--  36epx  -->
+                        <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="36epx" />
+                            <Border Width="36" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Padding on pages." />
+                        </Grid>
+                        <!--  48epx  -->
+                        <Grid
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            Grid.ColumnDefinitions="86,136,*"
+                            Style="{StaticResource GridCardStyle}">
+                            <TextBlock Style="{StaticResource ValueTextStyle}" Text="48epx" />
+                            <Border Width="48" Style="{StaticResource VisualBorderStyle}" />
+                            <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between page sections with title." />
+                        </Grid>
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
-        </local:ControlExample>
+        </Grid>
     </Grid>
 </Page>
