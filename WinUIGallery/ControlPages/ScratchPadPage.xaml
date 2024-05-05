@@ -7,8 +7,16 @@
         <Grid RowDefinitions="*,*">
             <ScrollViewer x:Name="scratchPad" Grid.Row="0" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Visible" VerticalScrollMode="Auto"/>
 
-            <Grid Background="Beige" Padding="10" Grid.Row="1" RowDefinitions="*, Auto" RowSpacing="10">
-                <Grid ColumnDefinitions="*, Auto" Grid.Row="0">
+            <Grid
+                Background="{ThemeResource ExpanderContentBackground}"
+                BorderThickness="{ThemeResource ExpanderContentDownBorderThickness}"
+                BorderBrush="{ThemeResource ExpanderContentBorderBrush}"
+                CornerRadius="{ThemeResource ControlCornerRadius}"
+                Padding="10"
+                Grid.Row="1"
+                RowDefinitions="*, Auto"
+                RowSpacing="10">
+                <Grid ColumnDefinitions="*, Auto" Grid.Row="0" ColumnSpacing="10">
                     <RichEditBox x:Name="textbox"
                       FontFamily="Consolas"
                       FontSize="13"
@@ -19,8 +27,12 @@
                       PreviewKeyDown="textbox_PreviewKeyDown"
                       KeyDown="textbox_KeyDown"
                       PreviewKeyUp="textbox_PreviewKeyUp"
-                      TextChanged="textbox_TextChanged" />
-                    <Button x:Name="loadButton" Grid.Column="1" VerticalAlignment="Top" Content="Load" Click="LoadClick"/>
+                      TextChanged="textbox_TextChanged"
+                      ActualThemeChanged="textbox_ActualThemeChanged" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Top" Spacing="10">
+                        <Button x:Name="loadButton" Content="Load" Click="LoadClick"/>
+                        <Button Content="Reset" ToolTipService.ToolTip="Resets to the default scratch pad content" Click="ResetToDefaultClick" />
+                    </StackPanel>
                 </Grid>
                 <TextBlock x:Name="log" Grid.Row="1" />
             </Grid>

@@ -32,13 +32,41 @@ namespace WinUIGallery.ControlPages
             this.InitializeComponent();
 
             var xamlStr = ReadScratchPadXAMLinLocalSettings();
-            if (xamlStr != null)
+
+            // If there is no stored XAML, load the default.
+            if (xamlStr == null || xamlStr.Trim().Length == 0)
             {
-                m_oldText = xamlStr;
-                textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
-                var formatter = new XamlTextFormatter(textbox);
-                formatter.ApplyColors();
+                xamlStr = GetDefaultScratchXAML();
             }
+
+            m_oldText = xamlStr;
+            textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
+            var formatter = new XamlTextFormatter(textbox);
+            formatter.ApplyColors();
+
+            // Provide some initial instruction in the content area.
+            SetEmptyScratchPadContent();
+        }
+
+        private void SetEmptyScratchPadContent()
+        {
+            scratchPad.Content = new TextBlock()
+            {
+                Text = "Click the Load button to load the content below.",
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                TextWrapping = TextWrapping.Wrap
+            };
+        }
+
+        private string GetDefaultScratchXAML()
+        {
+            return
+@"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
+    <!-- Note: {x:Bind} is not supported in Scratch Pad. -->
+    <TextBlock>This is a sample TextBlock.</TextBlock>
+    <Button Content=""Sample Button""/>
+</StackPanel>";
         }
 
         public string ReadScratchPadXAMLinLocalSettings()
@@ -79,6 +107,29 @@ namespace WinUIGallery.ControlPages
             }
             compositeStr["count"] = count;
             scratchPadContainer.Values["ScratchPadXAML"] = compositeStr;
+        }
+
+        private async void ResetToDefaultClick(object sender, RoutedEventArgs e)
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.Title = "Are you sure you want to reset?";
+            dialog.Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?";
+            dialog.PrimaryButtonText = "Reset";
+            dialog.CloseButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                m_oldText = GetDefaultScratchXAML();
+                textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
+                var formatter = new XamlTextFormatter(textbox);
+                formatter.ApplyColors();
+
+                SetEmptyScratchPadContent();
+                log.Text = "";
+            }
         }
 
         private string AddXmlNamespace(string xml)
@@ -122,6 +173,15 @@ namespace WinUIGallery.ControlPages
             log.Opacity = 1.0;
         }
 
+        private void LoadContentAndApplyFormatting()
+        {
+            LoadContent();
+
+            m_lastChangeFromTyping = false;
+            var formatter = new XamlTextFormatter(textbox);
+            formatter.ApplyColors();
+        }
+
         private void InsertTextboxText(string str, bool setCursorAfterInsertedStr)
         {
             var selectionStart = textbox.TextDocument.Selection.StartPosition;
@@ -149,7 +209,7 @@ namespace WinUIGallery.ControlPages
             return "";
         }
 
-        private async void HandleEnter()
+        private void HandleEnter()
         {
             textbox.TextDocument.BeginUndoGroup();
             string previousLine = GetTextboxTextPreviousLine();
@@ -242,7 +302,7 @@ namespace WinUIGallery.ControlPages
             switch (e.Key)
             {
                 case Windows.System.VirtualKey.F5:
-                    LoadContent();
+                    LoadContentAndApplyFormatting();
                     break;
 
                 case Windows.System.VirtualKey.Enter:
@@ -254,11 +314,7 @@ namespace WinUIGallery.ControlPages
 
         private void LoadClick(object sender, RoutedEventArgs e)
         {
-            LoadContent();
-
-            m_lastChangeFromTyping = false;
-            var formatter = new XamlTextFormatter(textbox);
-            formatter.ApplyColors();
+            LoadContentAndApplyFormatting();
         }
 
         bool m_lastChangeFromTyping = false;
@@ -297,7 +353,10 @@ namespace WinUIGallery.ControlPages
                             if (nameEndIndex > 0)
                             {
                                 tagName = tagName = tagName.Substring(0, nameEndIndex);
-                                InsertTextboxText("</" + tagName + ">", false);
+                                if (tagName != "!--") // don't add a close tag for a comment
+                                {
+                                    InsertTextboxText("</" + tagName + ">", false);
+                                }
                             }
                         }
                     }
@@ -326,6 +385,13 @@ namespace WinUIGallery.ControlPages
 
             // Save the text so next time we can compare against the new text
             textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out m_oldText);
+        }
+
+        private void textbox_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            // Updating the formating for theme change
+            var formatter = new XamlTextFormatter(textbox);
+            formatter.ApplyColors();
         }
     }
 
@@ -470,35 +536,37 @@ namespace WinUIGallery.ControlPages
                 return;
             }
 
+            bool lightTheme = m_richEditBox.ActualTheme != ElementTheme.Dark;
+
             var doc = m_richEditBox.Document;
             var range = doc.GetRange(startIndex, endIndexExclusive);
-            Windows.UI.Color foregroundColor = Microsoft.UI.Colors.Black;
+            Windows.UI.Color foregroundColor = lightTheme ? Microsoft.UI.Colors.Black : Microsoft.UI.Colors.White;
             switch (zoneType)
             {
                 case ZoneType.OpenTag:
                 case ZoneType.EndTag:
-                    foregroundColor = Microsoft.UI.Colors.Blue;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Blue : Microsoft.UI.Colors.Gray;
                     break;
 
                 case ZoneType.TagName:
-                    foregroundColor = Microsoft.UI.Colors.Brown;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Brown : Microsoft.UI.Colors.White;
                     break;
 
                 case ZoneType.PropertyName:
-                    foregroundColor = Microsoft.UI.Colors.Red;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Red : Microsoft.UI.Colors.LightSkyBlue;
                     break;
 
                 case ZoneType.PropertyValue:
-                    foregroundColor = Microsoft.UI.Colors.Blue;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Blue : Microsoft.UI.Colors.DodgerBlue;
                     break;
 
                 case ZoneType.Whitespace:
                 case ZoneType.Content:
-                    foregroundColor = Microsoft.UI.Colors.Black;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Black : Microsoft.UI.Colors.White;
                     break;
 
                 case ZoneType.Comment:
-                    foregroundColor = Microsoft.UI.Colors.Green;
+                    foregroundColor = lightTheme ? Microsoft.UI.Colors.Green : Microsoft.UI.Colors.LimeGreen;
                     break;
             }
 
