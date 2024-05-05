@@ -171,7 +171,7 @@
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="Top-level containers such as app windows, flyouts and dialogs." />
+                                Text="Top-level containers such as app windows, flyouts, cards and dialogs." />
                             <TextBlock
                                 Grid.Column="2"
                                 VerticalAlignment="Center"
@@ -210,7 +210,7 @@
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="In-page elements such as buttons and list backplates." />
+                                Text="In-page elements such as controls and list backplates." />
                             <TextBlock
                                 Grid.Column="2"
                                 VerticalAlignment="Center"
@@ -221,9 +221,9 @@
 
                             <controls:CopyButton
                                 x:Name="CopyControlResourceToClipboardButton"
-                                Click="CopyControlResourceToClipboardButton_Click"
                                 Grid.Column="3"
                                 Margin="4,2,8,0"
+                                Click="CopyControlResourceToClipboardButton_Click"
                                 Content="&#xE8C8;"
                                 ToolTipService.ToolTip="Copy to clipboard" />
                         </Grid>
