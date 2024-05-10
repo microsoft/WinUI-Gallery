@@ -9,7 +9,15 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock>TODO: Put something here???</TextBlock>
-        <Rectangle Fill="Green" Width="300" Height="300" />
+        
+        <TextBlock>Here's an island in a ScrollViewer.  Notice now the content scrolls and clips correctly.</TextBlock>
+        <ScrollViewer Height="500">
+            <StackPanel>
+                <Rectangle Margin="10" Fill="LightBlue" Width="300" Height="300" />
+                <Rectangle Margin="10" Fill="Blue" Width="300" Height="300" />
+                <Rectangle Margin="10" Fill="LightBlue" Width="300" Height="300" />
+                <Rectangle Margin="10" Fill="Blue" Width="300" Height="300" />
+            </StackPanel>
+        </ScrollViewer>
     </StackPanel>
 </Page>
