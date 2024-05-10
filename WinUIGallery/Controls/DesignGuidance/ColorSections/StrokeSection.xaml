@@ -12,6 +12,38 @@
 
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
 
+        <!--  Card Stroke  -->
+        <designguidance:ColorPageExample
+            Title="Card Stroke"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for card and layer colors.">
+            <Grid
+                Width="60"
+                Height="48"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                CornerRadius="{StaticResource ControlCornerRadius}" />
+        </designguidance:ColorPageExample>
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource CardStrokeColorDefaultBrush}"
+                ColorBrushName="CardStrokeColorDefaultBrush"
+                ColorExplanation="Card layer and strokes"
+                ColorName="Control Stroke / Default"
+                ColorValue="#000000 (0F, 6.78%)" />
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
+                ColorBrushName="CardStrokeColorDefaultSolidBrush"
+                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
+                ColorName="Card Stroke / Default Solid"
+                ColorValue="#EBEBEB (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid>
 
         <!--  Control Elevation (gradient strokes)  -->
         <designguidance:ColorPageExample
@@ -67,8 +99,6 @@
                 ColorName="Accent Control / Border"
                 ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
         </Grid>
-
-
 
         <!--  Control Stroke  -->
         <designguidance:ColorPageExample
@@ -140,36 +170,6 @@
                 ColorExplanation="When used with a 'strong' fill color, ensures a 3:1 contrast on any background"
                 ColorName="Control Stroke / For Strong Fill When On Image"
                 ColorValue="#FFFFFF (59, 35%)"
-                ShowSeparator="False" />
-        </Grid>
-
-        <!--  Card Stroke  -->
-        <designguidance:ColorPageExample
-            Title="Card Stroke"
-            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used for card and layer colors.">
-            <DropDownButton>
-                <TextBlock Width="60" />
-            </DropDownButton>
-        </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource GalleryTileGridStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
-                Background="{ThemeResource CardStrokeColorDefaultBrush}"
-                ColorBrushName="CardStrokeColorDefaultBrush"
-                ColorExplanation="Card layer and strokes"
-                ColorName="Control Stroke / Default"
-                ColorValue="#000000 (0F, 6.78%)" />
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
-                ColorBrushName="CardStrokeColorDefaultSolidBrush"
-                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
-                ColorName="Card Stroke / Default Solid"
-                ColorValue="#EBEBEB (FF, 100%)"
                 ShowSeparator="False" />
         </Grid>
 

@@ -81,13 +81,16 @@
         <RichTextBlock>
             <Paragraph>
                 <Run>The use of consistently sized spacing and gutters semantically groups an experience into separate components. These values map to our rounded corner logic and together help create a cohesive and usable layout.</Run>
-                <Run>A best practice in design is to use a 4px grid. This means that any spacing or sizing should be a multiple of 4. This helps to create a consistent and harmonious layout.</Run>
+                <Run>A best practice in design is to use a 4px grid. This means that any spacing or sizing should be a multiple of 4. This helps to create a consistent and harmonious layout and these values are easy to scale.</Run>
                 <LineBreak />
                 <Run>Below, you can find a few examples of common layout types with highlighted spacing values (in epx).</Run>
             </Paragraph>
         </RichTextBlock>
         <ScrollView Grid.Row="1" Margin="0,24,0,0">
-            <StackPanel Orientation="Horizontal" Spacing="36">
+            <StackPanel
+                Margin="0,0,0,16"
+                Orientation="Horizontal"
+                Spacing="36">
                 <Grid VerticalAlignment="Top" RowSpacing="12">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
