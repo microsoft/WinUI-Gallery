@@ -114,7 +114,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.6.240507000-experimental" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
@@ -144,6 +144,7 @@
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <None Remove="ControlPages\ContentIslandPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
         <None Remove="ControlPages\LinePage.xaml" />
@@ -272,6 +273,11 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\ContentIslandsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
