@@ -34,7 +34,7 @@
                         <Button Content="Reset" ToolTipService.ToolTip="Resets to the default scratch pad content" Click="ResetToDefaultClick" />
                     </StackPanel>
                 </Grid>
-                <TextBlock x:Name="log" Grid.Row="1" />
+                <TextBlock x:Name="loadStatus" Grid.Row="1" />
             </Grid>
         </Grid>
     </Grid>

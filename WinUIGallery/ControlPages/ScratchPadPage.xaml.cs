@@ -77,7 +77,7 @@ namespace WinUIGallery.ControlPages
                 var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Existing);
                 if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey("ScratchPadXAML"))
                 {
-                    // String values are limited to to 4K characters. Use a composite value to support longer.
+                    // String values are limited to to 4K characters. Use a composite value to support a longer string.
                     var compositeStr = scratchPadContainer.Values["ScratchPadXAML"] as ApplicationDataCompositeValue;
                     var xamlStr = "";
                     int count = (int)compositeStr["count"];
@@ -95,7 +95,7 @@ namespace WinUIGallery.ControlPages
         {
             var appData = Windows.Storage.ApplicationData.Current;
             var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Always);
-            // String values are limited to to 4K characters. Use a composite value to support longer.
+            // String values are limited to to 4K characters. Use a composite value to support a longer string.
             var compositeStr = new ApplicationDataCompositeValue();
             int count = 0;
             while (xamlStr.Length > 0)
@@ -128,7 +128,7 @@ namespace WinUIGallery.ControlPages
                 formatter.ApplyColors();
 
                 SetEmptyScratchPadContent();
-                log.Text = "";
+                loadStatus.Text = "";
             }
         }
 
@@ -158,19 +158,19 @@ namespace WinUIGallery.ControlPages
             // TODO: Strip out x:Bind -- maybe just convert it to spaces?
             try
             {
-                log.Text = ""; // Clear the log before loading
+                loadStatus.Text = ""; // Clear the log before loading
 
                 var xml = AddXmlNamespace(newText);
 
                 var element = (UIElement)XamlReader.Load(xml);
                 scratchPad.Content = element;
-                log.Text = "Load successful.";
+                loadStatus.Text = "Load successful.";
             }
             catch (Exception ex)
             {
-                log.Text = ex.Message + "\n" + log.Text;
+                loadStatus.Text = ex.Message + "\n" + loadStatus.Text;
             }
-            log.Opacity = 1.0;
+            loadStatus.Opacity = 1.0;
         }
 
         private void LoadContentAndApplyFormatting()
@@ -309,7 +309,6 @@ namespace WinUIGallery.ControlPages
                     HandleEnter();
                     break;
             }
-
         }
 
         private void LoadClick(object sender, RoutedEventArgs e)
@@ -323,13 +322,13 @@ namespace WinUIGallery.ControlPages
         {
             if (textbox.TextDocument.Selection.Length == 0 && m_lastChangeFromTyping)
             {
-                if (log.Text == "Load successful.")
+                if (loadStatus.Text == "Load successful.")
                 {
-                    log.Text = "";
+                    loadStatus.Text = "";
                 }
                 else
                 {
-                    log.Opacity = 0.5;
+                    loadStatus.Opacity = 0.5;
                 }
 
                 string newText;
