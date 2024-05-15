@@ -19,6 +19,7 @@
             Description="Used for accent fills on controls">
             <InfoBar
                 Title="Title"
+                IsClosable="False"
                 IsOpen="True"
                 Message="This is body text. Windows 11 is faster and more intuitive."
                 Severity="Error" />
@@ -30,7 +31,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-           
+
             <designguidance:ColorTile
                 Background="{ThemeResource SystemFillColorSuccessBrush}"
                 ColorBrushName="SystemFillColorSuccessBrush"
@@ -49,8 +50,8 @@
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
             <designguidance:ColorTile
-                Background="{ThemeResource SystemFillColorCriticalBrush}"
                 Grid.Column="2"
+                Background="{ThemeResource SystemFillColorCriticalBrush}"
                 ColorBrushName="SystemFillColorCriticalBrush"
                 ColorExplanation="Badge"
                 ColorName="System / Critical"
@@ -64,7 +65,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
+
             <designguidance:ColorTile
                 Grid.Column="0"
                 Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"
@@ -82,12 +83,12 @@
                 ColorValue="#433519, 100%"
                 ShowSeparator="False" />
             <designguidance:ColorTile
+                Grid.Column="2"
                 Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"
                 ColorBrushName="SystemFillColorCriticalBackgroundBrush"
                 ColorExplanation="Infobar Background"
-                ColorName="Accent / Selected Text Background"
+                ColorName="System / Critical Background"
                 ColorValue="#442726, 100%"
-                Grid.Column="2"
                 ShowSeparator="False" />
 
         </Grid>
@@ -105,7 +106,7 @@
                 ColorValue="#60CDFF (100%)"
                 Foreground="{ThemeResource TextFillColorInverseBrush}"
                 ShowSeparator="False" />
-          
+
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorNeutralBrush}"
@@ -138,7 +139,7 @@
                 ColorBrushName="SystemFillColorAttentionBackgroundBrush"
                 ColorExplanation="Infobar Background"
                 ColorName="System / Attention Background"
-                ColorValue="#FFFFFF (0B, 3.26%)"/>
+                ColorValue="#FFFFFF (0B, 3.26%)" />
             <designguidance:ColorTile
                 Grid.Column="1"
                 Background="{ThemeResource SystemFillColorNeutralBackgroundBrush}"
