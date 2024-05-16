@@ -52,14 +52,16 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="pageHeader.Padding" Value="16,48,16,0" />
+                        <Setter Target="pageHeader.Margin" Value="16,12,16,0" />
                         <Setter Target="contentRoot.Padding" Value="16,0,16,16" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
-        <controls:PageHeader x:Name="pageHeader" Item="{x:Bind Item}" />
+        <controls:PageHeader
+            x:Name="pageHeader"
+            Margin="36,24,36,0"
+            Item="{x:Bind Item}" />
 
         <!--  Content Region  -->
         <ScrollViewer
