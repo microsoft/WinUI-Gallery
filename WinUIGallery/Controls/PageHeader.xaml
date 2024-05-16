@@ -18,7 +18,7 @@
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
     </UserControl.Resources>
-    <Grid x:Name="headerGrid" Padding="36,24,36,0">
+    <Grid x:Name="headerGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
