@@ -1,20 +1,23 @@
-# WinUI Gallery
+# WinUI Gallery 
 
 [![Build Status](https://dev.azure.com/ms/microsoft-ui-xaml/_apis/build/status%2Fmicrosoft.WinUI-Gallery?branchName=main)](https://dev.azure.com/ms/microsoft-ui-xaml/_build/latest?definitionId=612&branchName=main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
-
 ![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
 
-Shows all of the XAML UI components in an interactive format. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
+### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
 
-## The WinUI Gallery shows how to:
+This app demonstrates all of the Windows UI 3 library controls and styles available to make a WinUI 3 app with the Windows App SDK. This app is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
 
-- **Specify XAML controls in markup:** Each control page shows the markup used to create each example.
+[![](README_Images/storeBadge.png)](https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare) 
+
+## The WinUI Gallery Shows How to:
+
+- **WinUI Controls Samples:** Each control page shows the markup and codebehind used to create each example.
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
-- **Basic layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
+- **Basic Layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
-- **Version adaptive code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
+- **Design & Accessibility Guidance**: Design and accessibility pages help make the gallery a useful developer companion app. 
+- **Version Adaptive Code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
 ## Further information
 
@@ -35,7 +38,7 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 [Install a prebuilt version of this app from Microsoft Store](https://www.microsoft.com/store/productId/9P3JFPWWDZRC). Each control page in the application has links to relevant Microsoft Docs for that control.
 
-[Windows UI Library (WinUI)](https://docs.microsoft.com/windows/apps/winui)
+[Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)
 
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
