@@ -53,13 +53,23 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Visual Studio.
 
-### Further information
+## ➡️ Further information
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
-
-To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)
-
+To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
+To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)  
 To contact the authors, please reach out to ControlsGallery@microsoft.com
+
+### Related topics
+
+[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
+[Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)  
+[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
+
+###  Related samples
+
+[RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
+[Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
+[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
@@ -67,15 +77,3 @@ Thanks to our amazing contributors!
 [![Toolkit Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
 
 Made with [contrib.rocks](https://contrib.rocks).
-
-## Related topics
-
-[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
-[Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)  
-[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
-
-## Related samples
-
-[RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
-[Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
-[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
