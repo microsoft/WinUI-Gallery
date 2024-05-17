@@ -22,61 +22,7 @@ namespace WinUIGallery.ControlPages
 {
     public sealed partial class CalendarViewPage : Page
     {
-        // Workaround an issue in CsWinRT where it doesn't handle nested types correctly
-        // in its Vtable lookup by defining our own entry for it.  Will be addressed in
-        // upcoming CsWinRT versions.
-        static CalendarViewPage()
-        {
-            WinRT.ComWrappersSupport.RegisterTypeComInterfaceEntriesLookup(LookupVtableEntries);
-            WinRT.ComWrappersSupport.RegisterTypeRuntimeClassNameLookup(new Func<Type, string>(LookupRuntimeClassName));
-
-            static System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry[] LookupVtableEntries(Type type)
-            {
-                if (type.ToString() == "System.Collections.Generic.List`1[WinUIGallery.Common.LanguageList+Language]")
-                {
-                    _ = WinRT.GenericHelpers.IReadOnlyList_object.Initialized;
-                    _ = WinRT.GenericHelpers.IEnumerable_object.Initialized;
-
-                    return new System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry[]
-                    {
-                        new System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry
-                        {
-                            IID = ABI.System.Collections.Generic.IReadOnlyListMethods<object>.IID,
-                            Vtable = ABI.System.Collections.Generic.IReadOnlyListMethods<object>.AbiToProjectionVftablePtr
-                        },
-                        new System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry
-                        {
-                            IID = ABI.System.Collections.Generic.IEnumerableMethods<object>.IID,
-                            Vtable = ABI.System.Collections.Generic.IEnumerableMethods<object>.AbiToProjectionVftablePtr
-                        },
-                        new System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry
-                        {
-                            IID = ABI.System.Collections.IListMethods.IID,
-                            Vtable = ABI.System.Collections.IListMethods.AbiToProjectionVftablePtr
-                        },
-                        new System.Runtime.InteropServices.ComWrappers.ComInterfaceEntry
-                        {
-                            IID = ABI.System.Collections.IEnumerableMethods.IID,
-                            Vtable = ABI.System.Collections.IEnumerableMethods.AbiToProjectionVftablePtr
-                        },
-                    };
-                }
-
-                return default;
-            }
-
-            static string LookupRuntimeClassName(Type type)
-            {
-                if (type.ToString() == "System.Collections.Generic.List`1[WinUIGallery.Common.LanguageList+Language]")
-                {
-                    return "Windows.Foundation.Collections.IVectorView`1<Object>";
-                }
-
-                return default;
-            }
-        }
-
-        // ICustomProperty provider is today not AOT safe yet, so declaring here that we make use of public properties with reflection.
+        // ICustomProperty provider is not AOT safe yet, so declaring here that we make use of public properties with reflection.
         [DynamicDependency(DynamicallyAccessedMemberTypes.PublicProperties, typeof(WinUIGallery.Common.LanguageList.Language))]
         public CalendarViewPage()
         {
