@@ -66,6 +66,8 @@ namespace WinUIGallery.ControlPages
     <!-- Note: {x:Bind} is not supported in Scratch Pad. -->
     <TextBlock>This is a sample TextBlock.</TextBlock>
     <Button Content=""Sample Button""/>
+
+    <!-- Note: Syntax highlighting updates on 'Load'. -->
 </StackPanel>";
         }
 
@@ -328,17 +330,15 @@ namespace WinUIGallery.ControlPages
                 }
                 else
                 {
-                    loadStatus.Opacity = 0.5;
+                    loadStatus.Opacity = 0.5; // dim the message which is now old
                 }
 
                 string newText;
                 textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
-                var selectionIndex = textbox.TextDocument.Selection.StartPosition;
-                //if (selectionIndex >= 2 && newText[selectionIndex-1] == '>' && newText[selectionIndex-2] != '/'
-                //    && (m_oldText != null && m_oldText.Length > selectionIndex-1 && m_oldText[selectionIndex-1] != '>'))
                 if (newText.Length == m_oldText.Length + 1)
                 {
                     // Added just one character
+                    var selectionIndex = textbox.TextDocument.Selection.StartPosition;
                     if (selectionIndex >= 2 && newText[selectionIndex - 1] == '>' && newText[selectionIndex - 2] != '/')
                     {
                         var tagStartIndex = newText.LastIndexOf('<', selectionIndex - 1);
