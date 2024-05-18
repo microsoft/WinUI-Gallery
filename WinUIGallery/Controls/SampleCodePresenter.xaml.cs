@@ -227,7 +227,7 @@ namespace WinUIGallery.Controls
 
             actualCode = sampleString;
 
-            var name = GetSampleLanguageVisualState() == "InlineSample" ? actualCode : SampleHeader.Text;
+            var name = GetSampleLanguageVisualState() == "InlineSample" ? actualCode : SampleType.ToString();
             var automationName = "Copy " + name + " Code";
             AutomationProperties.SetName(CopyCodeButton, automationName);
 
