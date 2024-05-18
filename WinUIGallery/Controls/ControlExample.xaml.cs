@@ -125,28 +125,28 @@ namespace WinUIGallery
             set { SetValue(OptionsProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
         public string Xaml
         {
             get { return (string)GetValue(XamlProperty); }
             set { SetValue(XamlProperty, value); }
         }
 
-        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
         public string XamlSource
         {
             get { return (string)GetValue(XamlSourceProperty); }
             set { SetValue(XamlSourceProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
         public string CSharp
         {
             get { return (string)GetValue(CSharpProperty); }
             set { SetValue(CSharpProperty, value); }
         }
 
-        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
         public string CSharpSource
         {
             get { return (string)GetValue(CSharpSourceProperty); }
@@ -209,12 +209,7 @@ namespace WinUIGallery
 
         private void ControlExample_Loaded(object sender, RoutedEventArgs e)
         {
-            if(!XamlPresenter.IsEmpty && !CSharpPresenter.IsEmpty)
-            {
-                VisualStateManager.GoToState(this, "SeparatorVisible", false);
-            }
             HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
-
         }
 
         private void rootGrid_Loaded(object sender, RoutedEventArgs e)
@@ -430,6 +425,41 @@ namespace WinUIGallery
                 case 4:
                     ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[1], Right = nums[2], Bottom = nums[3] };
                     break;
+            }
+        }
+        private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            var item = sender as SelectorBarItem;
+            if (item.Tag.Equals("Xaml"))
+            {
+                item.Visibility = string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource) ? Visibility.Collapsed : Visibility.Visible;
+            }
+            else if (item.Tag.Equals("Csharp"))
+            {
+                item.Visibility = string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource) ? Visibility.Collapsed : Visibility.Visible;
+            }
+
+            var firstVisibileItem = selectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
+            if (firstVisibileItem != null)
+            {
+                firstVisibileItem.IsSelected = true;
+            }
+        }
+
+        private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = (ControlExample)d;
+            if (ctrl != null)
+            {
+                ctrl.SelectorBarItem_Loaded(ctrl.selectorBarXamlItem, null);
+            }
+        }
+        private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = (ControlExample)d;
+            if (ctrl != null)
+            {
+                ctrl.SelectorBarItem_Loaded(ctrl.selectorBarCSharpItem, null);
             }
         }
     }

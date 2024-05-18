@@ -8,12 +8,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
     d:DesignWidth="1000"
     mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0,24,0"
+                                        To="0"
+                                        Duration="0:0:0.4" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.2" />
+        </animations:ImplicitAnimationSet>
+        <animations:ImplicitAnimationSet x:Name="HideTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0"
+                                        To="0,24,0"
+                                        Duration="0:0:0.2" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.1" />
+        </animations:ImplicitAnimationSet>
+    </UserControl.Resources>
     <Grid x:Name="rootGrid" Loaded="rootGrid_Loaded">
         <Grid.Resources>
             <ResourceDictionary>
@@ -138,26 +160,40 @@
                 <muxc:Expander.Header>
                     <TextBlock Text="Source code" />
                 </muxc:Expander.Header>
-
-                <StackPanel x:DefaultBindMode="OneWay">
-                    <controls:SampleCodePresenter
-                        x:Name="XamlPresenter"
-                        Code="{x:Bind Xaml}"
-                        CodeSourceFile="{x:Bind XamlSource}"
-                        Substitutions="{x:Bind Substitutions}" />
-                    <Border
-                        x:Name="SampleCodeSeparator"
-                        Margin="0,20"
-                        BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-                        BorderThickness="1"
-                        Visibility="Collapsed" />
-                    <controls:SampleCodePresenter
-                        x:Name="CSharpPresenter"
-                        Code="{x:Bind CSharp}"
-                        CodeSourceFile="{x:Bind CSharpSource}"
-                        SampleType="CSharp"
-                        Substitutions="{x:Bind Substitutions}" />
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <SelectorBar x:Name="selectorBarControl">
+                        <SelectorBarItem x:Name="selectorBarXamlItem" Loaded="SelectorBarItem_Loaded" Tag="Xaml" Text="XAML" />
+                        <SelectorBarItem x:Name="selectorBarCSharpItem" Loaded="SelectorBarItem_Loaded" Tag="Csharp" Text="C#" />
+                    </SelectorBar>
+                    <controls1:SwitchPresenter
+                                 x:DefaultBindMode="OneWay"
+                                 Grid.Row="1"
+                                 Value="{Binding SelectedItem.Tag, ElementName=selectorBarControl}">
+                        <controls1:Case Value="Xaml">
+                            <controls:SampleCodePresenter
+                                x:Name="XamlPresenter"
+                                Code="{x:Bind Xaml}"
+                                CodeSourceFile="{x:Bind XamlSource}"
+                                Substitutions="{x:Bind Substitutions}"
+                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                        </controls1:Case>
+                        <controls1:Case Value="Csharp">
+                            <controls:SampleCodePresenter
+                                x:Name="CSharpPresenter"
+                                Code="{x:Bind CSharp}"
+                                CodeSourceFile="{x:Bind CSharpSource}"
+                                SampleType="CSharp"
+                                Substitutions="{x:Bind Substitutions}"
+                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                        </controls1:Case>
+                    </controls1:SwitchPresenter>
+                </Grid>
             </muxc:Expander>
 
             <StackPanel
@@ -228,15 +264,6 @@
                         <Setter Target="ControlPresenter.HorizontalAlignment" Value="Center" />
                         <Setter Target="ScreenshotControls.Visibility" Value="Visible" />
                         <Setter Target="ExampleContainer.Background" Value="{ThemeResource SystemControlPageBackgroundBaseLowBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
-            <VisualStateGroup x:Name="SampleCodeSeparatorStates">
-                <VisualState x:Name="SeparatorCollapsed" />
-                <VisualState x:Name="SeparatorVisible">
-                    <VisualState.Setters>
-                        <Setter Target="SampleCodeSeparator.Visibility" Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
