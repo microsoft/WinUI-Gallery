@@ -26,6 +26,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
+using WinUIGallery.Controls;
+using CommunityToolkit.WinUI.Animations;
 
 namespace WinUIGallery
 {
@@ -443,7 +445,7 @@ namespace WinUIGallery
                 firstVisibileItem.IsSelected = true;
             }
 
-            HandlePresenterVisibility();
+            SwitchPresenter();
         }
 
         private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -465,25 +467,44 @@ namespace WinUIGallery
 
         private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
         {
-            HandlePresenterVisibility();
+            SwitchPresenter();
         }
 
-        private void HandlePresenterVisibility()
+        private void SwitchPresenter()
         {
             var selectedItem = SelectorBarControl.SelectedItem;
             if (selectedItem != null)
             {
                 if (selectedItem.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
                 {
-                    XamlPresenter.Visibility = Visibility.Visible;
-                    CSharpPresenter.Visibility = Visibility.Collapsed;
+                    SamplePresenterHost.Content = CreateSamplePresenter(SampleCodePresenterType.XAML);
                 }
                 else if (selectedItem.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
                 {
-                    CSharpPresenter.Visibility = Visibility.Visible;
-                    XamlPresenter.Visibility = Visibility.Collapsed;
+                    SamplePresenterHost.Content = CreateSamplePresenter(SampleCodePresenterType.CSharp);
                 }
             }
+        }
+
+        private SampleCodePresenter CreateSamplePresenter(SampleCodePresenterType presenterType)
+        {
+            var presenter = new SampleCodePresenter();
+            switch (presenterType)
+            {
+                case SampleCodePresenterType.XAML:
+                    presenter.Code = Xaml;
+                    presenter.CodeSourceFile = XamlSource;
+                    break;
+                case SampleCodePresenterType.CSharp:
+                    presenter.Code = CSharp;
+                    presenter.CodeSourceFile = CSharpSource;
+                    break;
+            }
+
+            presenter.Substitutions = Substitutions;
+            Implicit.SetHideAnimations(presenter, Resources["HideTransitions"] as ImplicitAnimationSet);
+            Implicit.SetShowAnimations(presenter, Resources["ShowTransitions"] as ImplicitAnimationSet);
+            return presenter;
         }
     }
 }

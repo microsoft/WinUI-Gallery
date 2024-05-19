@@ -172,22 +172,7 @@
 
                     <!-- using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
                     <Grid x:DefaultBindMode="OneWay" Grid.Row="1">
-                        <controls:SampleCodePresenter
-                            x:Name="XamlPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind Xaml}"
-                            CodeSourceFile="{x:Bind XamlSource}"
-                            Substitutions="{x:Bind Substitutions}"
-                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
-                        <controls:SampleCodePresenter
-                            x:Name="CSharpPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind CSharp}"
-                            CodeSourceFile="{x:Bind CSharpSource}"
-                            Substitutions="{x:Bind Substitutions}"
-                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                        <ContentPresenter x:Name="SamplePresenterHost"/>
                     </Grid>
                 </Grid>
             </muxc:Expander>
