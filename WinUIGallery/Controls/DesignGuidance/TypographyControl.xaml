@@ -22,7 +22,6 @@
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
             <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
-            <Setter Property="FocusVisualMargin" Value="-3" />
             <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -99,50 +98,46 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid MinHeight="68" Background="Transparent">
-        <Grid
-            Padding="{x:Bind Padding, Mode=OneWay}"
-            HorizontalAlignment="Stretch"
-            Background="{x:Bind Background, Mode=OneWay}"
-            CornerRadius="{ThemeResource ControlCornerRadius}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="272" />
-                <ColumnDefinition Width="136" />
-                <ColumnDefinition Width="112" />
-                <ColumnDefinition Width="164" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Margin="16,0,0,0"
-                VerticalAlignment="Center"
-                Style="{x:Bind ExampleStyle}"
-                Text="{x:Bind Example}" />
-            <TextBlock
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                Style="{StaticResource CaptionTextBlockStyle}"
-                Text="{x:Bind VariableFont}" />
-            <TextBlock
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                Style="{StaticResource CaptionTextBlockStyle}"
-                Text="{x:Bind SizeLinHeight}" />
-
-
-            <TextBlock
-                Grid.Column="3"
-                VerticalAlignment="Center"
-                FontFamily="Consolas"
-                IsTextSelectionEnabled="True"
-                Style="{StaticResource CaptionTextBlockStyle}"
-                Text="{x:Bind ResourceName}" />
-            <local:CopyButton
-                x:Name="CopyToClipboardButton"
-                Grid.Column="4"
-                Margin="4,2,8,0"
-                Click="CopyToClipboardButton_Click"
-                Content="&#xE8C8;"
-                ToolTipService.ToolTip="Copy to clipboard" />
-        </Grid>
+    <Grid
+        Padding="0,12"
+        HorizontalAlignment="Stretch"
+        Background="{x:Bind Background, Mode=OneWay}"
+        CornerRadius="{ThemeResource ControlCornerRadius}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="272" />
+            <ColumnDefinition Width="136" />
+            <ColumnDefinition Width="112" />
+            <ColumnDefinition Width="172" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Margin="16,0,0,0"
+            VerticalAlignment="Center"
+            Style="{x:Bind ExampleStyle}"
+            Text="{x:Bind Example}" />
+        <TextBlock
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind VariableFont}" />
+        <TextBlock
+            Grid.Column="2"
+            VerticalAlignment="Center"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind SizeLinHeight}" />
+        <TextBlock
+            Grid.Column="3"
+            VerticalAlignment="Center"
+            FontFamily="Consolas"
+            IsTextSelectionEnabled="True"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind ResourceName}" />
+        <local:CopyButton
+            x:Name="CopyToClipboardButton"
+            Grid.Column="4"
+            VerticalAlignment="Center"
+            Click="CopyToClipboardButton_Click"
+            Content="&#xE8C8;"
+            ToolTipService.ToolTip="Copy to clipboard" />
     </Grid>
 </UserControl>
