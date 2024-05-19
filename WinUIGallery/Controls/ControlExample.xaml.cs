@@ -7,16 +7,12 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using WinUIGallery.Common;
 using WinUIGallery.Helper;
-using ColorCode;
-using ColorCode.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
@@ -30,7 +26,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
-using System.Reflection;
 
 namespace WinUIGallery
 {
@@ -430,20 +425,25 @@ namespace WinUIGallery
         private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
         {
             var item = sender as SelectorBarItem;
-            if (item.Tag.Equals("Xaml"))
+            if (item == null)
+                return;
+
+            if (item.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
             {
                 item.Visibility = string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource) ? Visibility.Collapsed : Visibility.Visible;
             }
-            else if (item.Tag.Equals("Csharp"))
+            else if (item.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
             {
                 item.Visibility = string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource) ? Visibility.Collapsed : Visibility.Visible;
             }
 
-            var firstVisibileItem = selectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
+            var firstVisibileItem = SelectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
             if (firstVisibileItem != null)
             {
                 firstVisibileItem.IsSelected = true;
             }
+
+            HandlePresenterVisibility();
         }
 
         private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -451,7 +451,7 @@ namespace WinUIGallery
             var ctrl = (ControlExample)d;
             if (ctrl != null)
             {
-                ctrl.SelectorBarItem_Loaded(ctrl.selectorBarXamlItem, null);
+                ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
             }
         }
         private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -459,7 +459,30 @@ namespace WinUIGallery
             var ctrl = (ControlExample)d;
             if (ctrl != null)
             {
-                ctrl.SelectorBarItem_Loaded(ctrl.selectorBarCSharpItem, null);
+                ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
+            }
+        }
+
+        private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        {
+            HandlePresenterVisibility();
+        }
+
+        private void HandlePresenterVisibility()
+        {
+            var selectedItem = SelectorBarControl.SelectedItem;
+            if (selectedItem != null)
+            {
+                if (selectedItem.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
+                {
+                    XamlPresenter.Visibility = Visibility.Visible;
+                    CSharpPresenter.Visibility = Visibility.Collapsed;
+                }
+                else if (selectedItem.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
+                {
+                    CSharpPresenter.Visibility = Visibility.Visible;
+                    XamlPresenter.Visibility = Visibility.Collapsed;
+                }
             }
         }
     }

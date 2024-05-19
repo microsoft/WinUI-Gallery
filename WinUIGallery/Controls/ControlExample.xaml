@@ -165,34 +165,30 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <SelectorBar x:Name="selectorBarControl">
-                        <SelectorBarItem x:Name="selectorBarXamlItem" Loaded="SelectorBarItem_Loaded" Tag="Xaml" Text="XAML" />
-                        <SelectorBarItem x:Name="selectorBarCSharpItem" Loaded="SelectorBarItem_Loaded" Tag="Csharp" Text="C#" />
+                    <SelectorBar x:Name="SelectorBarControl" SelectionChanged="SelectorBarControl_SelectionChanged">
+                        <SelectorBarItem x:Name="SelectorBarXamlItem" Loaded="SelectorBarItem_Loaded" Tag="Xaml" Text="XAML" />
+                        <SelectorBarItem x:Name="SelectorBarCSharpItem" Loaded="SelectorBarItem_Loaded" Tag="CSharp" Text="C#" />
                     </SelectorBar>
-                    <controls1:SwitchPresenter
-                                 x:DefaultBindMode="OneWay"
-                                 Grid.Row="1"
-                                 Value="{Binding SelectedItem.Tag, ElementName=selectorBarControl}">
-                        <controls1:Case Value="Xaml">
-                            <controls:SampleCodePresenter
-                                x:Name="XamlPresenter"
-                                Code="{x:Bind Xaml}"
-                                CodeSourceFile="{x:Bind XamlSource}"
-                                Substitutions="{x:Bind Substitutions}"
-                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
-                        </controls1:Case>
-                        <controls1:Case Value="Csharp">
-                            <controls:SampleCodePresenter
-                                x:Name="CSharpPresenter"
-                                Code="{x:Bind CSharp}"
-                                CodeSourceFile="{x:Bind CSharpSource}"
-                                SampleType="CSharp"
-                                Substitutions="{x:Bind Substitutions}"
-                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
-                        </controls1:Case>
-                    </controls1:SwitchPresenter>
+
+                    <!-- using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
+                    <Grid x:DefaultBindMode="OneWay" Grid.Row="1">
+                        <controls:SampleCodePresenter
+                            x:Name="XamlPresenter"
+                            Visibility="Collapsed"
+                            Code="{x:Bind Xaml}"
+                            CodeSourceFile="{x:Bind XamlSource}"
+                            Substitutions="{x:Bind Substitutions}"
+                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                        <controls:SampleCodePresenter
+                            x:Name="CSharpPresenter"
+                            Visibility="Collapsed"
+                            Code="{x:Bind CSharp}"
+                            CodeSourceFile="{x:Bind CSharpSource}"
+                            Substitutions="{x:Bind Substitutions}"
+                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                    </Grid>
                 </Grid>
             </muxc:Expander>
 
