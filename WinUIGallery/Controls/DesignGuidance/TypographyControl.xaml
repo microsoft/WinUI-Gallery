@@ -101,7 +101,7 @@
     </UserControl.Resources>
     <Grid MinHeight="68" Background="Transparent">
         <Grid
-            Padding="0,12"
+            Padding="{x:Bind Padding, Mode=OneWay}"
             HorizontalAlignment="Stretch"
             Background="{x:Bind Background, Mode=OneWay}"
             CornerRadius="{ThemeResource ControlCornerRadius}">
@@ -127,6 +127,7 @@
                 VerticalAlignment="Center"
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind SizeLinHeight}" />
+
 
             <TextBlock
                 Grid.Column="3"
