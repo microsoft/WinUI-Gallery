@@ -6,7 +6,8 @@
 
 ### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
 
-This app demonstrates all of the Windows UI 3 library controls and styles available to make a WinUI 3 app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
+This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
+
 
 [![](README_Images/storeBadge.png)](https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare) 
 
@@ -60,8 +61,10 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
-[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
-[Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)  
+[Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
+
+[WinUI](https://aka.ms/windev)  
+
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
 ###  Related samples
