@@ -55,8 +55,7 @@ Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Vis
 
 ## ➡️ Further information
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
-To obtain information about Microsoft Visual Studio and the tools for developing Windows apps, go to [Visual Studio](http://go.microsoft.com/fwlink/?LinkID=532422)  
+To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
 To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
@@ -74,6 +73,6 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 ## 🏆 Contributors
 Thanks to our amazing contributors!
 
-[![Toolkit Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
+[![WinUI 3 Gallery Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
 
 Made with [contrib.rocks](https://contrib.rocks).
