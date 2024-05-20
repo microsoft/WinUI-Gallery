@@ -63,7 +63,8 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
-[Get started with Windows 11 apps](https://docs.microsoft.com/windows/apps/get-started)  
+[Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
+
 [Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)  
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
