@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/ms/microsoft-ui-xaml/_apis/build/status%2Fmicrosoft.WinUI-Gallery?branchName=main)](https://dev.azure.com/ms/microsoft-ui-xaml/_build/latest?definitionId=612&branchName=main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
+![WinUI Screenshot](README_Images/WinUIGalleryLanding.png)
 
 ### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
 
@@ -56,15 +56,13 @@ Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Vis
 
 ## ➡️ Further information
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)
+To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
 To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
 [Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
-
 [WinUI](https://aka.ms/windev)  
-
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
 ###  Related samples
