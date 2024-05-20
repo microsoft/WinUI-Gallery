@@ -38,16 +38,7 @@
                 <Style.Setters>
                     <Setter Property="HorizontalAlignment" Value="Stretch" />
                     <Setter Property="MinHeight" Value="68" />
-                    <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
-                </Style.Setters>
-            </Style>
-
-            <Style
-                x:Key="GridRowLightStyle"
-                BasedOn="{StaticResource GridCardStyle}"
-                TargetType="Grid">
-                <Style.Setters>
-                    <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+                    <Setter Property="CornerRadius" Value="{StaticResource OverlayCornerRadius}" />
                 </Style.Setters>
             </Style>
 
@@ -72,6 +63,7 @@
             <Style x:Key="VisualBorderStyle" TargetType="Border">
                 <Style.Setters>
                     <Setter Property="Grid.Column" Value="1" />
+                    <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
                     <Setter Property="Height" Value="20" />
                     <Setter Property="HorizontalAlignment" Value="Left" />
                     <Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
@@ -131,7 +123,7 @@
                 <StackPanel Padding="12,24,12,12">
                     <Grid Margin="16,0,0,0" HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="222" />
+                            <ColumnDefinition Width="206" />
                             <ColumnDefinition Width="*" MaxWidth="400" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
@@ -147,8 +139,9 @@
                     <!--  4epx  -->
                     <Grid
                         Margin="0,24,0,0"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         Grid.ColumnDefinitions="86,136,*"
-                        Style="{StaticResource GridRowLightStyle}">
+                        Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="4epx" />
                         <Border Width="4" Style="{StaticResource VisualBorderStyle}" />
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing used for compact sizing." />
@@ -160,7 +153,10 @@
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between UI controls, control + label." />
                     </Grid>
                     <!--  12epx  -->
-                    <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridRowLightStyle}">
+                    <Grid
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        Grid.ColumnDefinitions="86,136,*"
+                        Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="12epx" />
                         <Border Width="12" Style="{StaticResource VisualBorderStyle}" />
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between control + header, surface and edge text, text sections." />
@@ -172,7 +168,10 @@
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Padding used in list styles, cards." />
                     </Grid>
                     <!--  24epx  -->
-                    <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridRowLightStyle}">
+                    <Grid
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        Grid.ColumnDefinitions="86,136,*"
+                        Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="24epx" />
                         <Border Width="24" Style="{StaticResource VisualBorderStyle}" />
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between content sections." />
@@ -184,7 +183,10 @@
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Padding on pages." />
                     </Grid>
                     <!--  48epx  -->
-                    <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridRowLightStyle}">
+                    <Grid
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        Grid.ColumnDefinitions="86,136,*"
+                        Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="48epx" />
                         <Border Width="48" Style="{StaticResource VisualBorderStyle}" />
                         <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between page sections with title." />
