@@ -30,21 +30,6 @@
                     <ImageSource x:Key="HeaderImage">ms-appx:///Assets/Design/Geometry.light.png</ImageSource>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
-            <Style x:Key="GridCardStyle" TargetType="Grid">
-                <Style.Setters>
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                    <Setter Property="MinHeight" Value="68" />
-                    <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
-                </Style.Setters>
-            </Style>
-            <Style
-                x:Key="GridRowLightStyle"
-                BasedOn="{StaticResource GridCardStyle}"
-                TargetType="Grid">
-                <Style.Setters>
-                    <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
-                </Style.Setters>
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -56,8 +41,8 @@
             <Paragraph>
                 <Run>Geometry describes the shape, size and position of UI elements on screen. These fundamental design elements help experiences feel coherent across the entire design system. WinUI uses three levels of rounding depending on what UI component is being rounded and how that component is arranged relative to neighboring elements.</Run>
                 <Run>You can reference built-in corner radii styles using:</Run>
-                <Run FontStyle="Italic">CornerRadius="{StaticResource ControlCornerRadius}"</Run>.
-            </Paragraph>
+                <Run FontStyle="Italic">CornerRadius="{StaticResource ControlCornerRadius}"</Run>
+                .</Paragraph>
         </RichTextBlock>
         <local:ControlExample
             x:Name="Example1"
@@ -160,7 +145,7 @@
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Style" />
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" Style="{StaticResource GridRowLightStyle}">
+                        <Grid HorizontalAlignment="Stretch" Style="{StaticResource DesignRowLightCardStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
@@ -197,7 +182,7 @@
                                 Content="&#xE8C8;"
                                 ToolTipService.ToolTip="Copy to clipboard" />
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" Style="{ThemeResource GridCardStyle}">
+                        <Grid HorizontalAlignment="Stretch" Style="{ThemeResource DesignRowCardStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
@@ -235,7 +220,7 @@
                                 Content="&#xE8C8;"
                                 ToolTipService.ToolTip="Copy to clipboard" />
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" Style="{StaticResource GridRowLightStyle}">
+                        <Grid HorizontalAlignment="Stretch" Style="{StaticResource DesignRowLightCardStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="148" />
                                 <ColumnDefinition Width="*" MaxWidth="400" />
