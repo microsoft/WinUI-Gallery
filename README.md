@@ -65,7 +65,8 @@ To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 [Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
 
-[Windows UI Library (WinUI)](https://ocs.microsoft.com/windows/apps/winui)  
+[WinUI](https://aka.ms/windev)  
+
 [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
 ###  Related samples
