@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
         <RichTextBlock>
             <Paragraph>
-                Type helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
+                Typography helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
                 Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
         </RichTextBlock>
         <local:ControlExample
@@ -211,7 +211,6 @@
                             VariableFont="Text, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
-                            Height="76"
                             Example="Subtitle"
                             ExampleStyle="{StaticResource SubtitleTextBlockStyle}"
                             ResourceName="SubtitleTextBlockStyle"
@@ -219,7 +218,6 @@
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
-                            Height="86"
                             Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                             Example="Title"
                             ExampleStyle="{StaticResource TitleTextBlockStyle}"
@@ -228,7 +226,6 @@
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
-                            Height="98"
                             Example="Title Large"
                             ExampleStyle="{StaticResource TitleLargeTextBlockStyle}"
                             ResourceName="TitleLargeTextBlockStyle"
@@ -236,7 +233,6 @@
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
-                            Height="106"
                             Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                             Example="Display"
                             ExampleStyle="{StaticResource DisplayTextBlockStyle}"
