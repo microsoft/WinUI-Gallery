@@ -151,7 +151,7 @@
                     <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="8epx" />
                         <Border Width="8" Style="{StaticResource VisualBorderStyle}" />
-                        <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between UI controls, control + header, control + label." />
+                        <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between UI controls, control + label." />
                     </Grid>
                     <!--  12epx  -->
                     <Grid
@@ -160,7 +160,7 @@
                         Style="{StaticResource GridCardStyle}">
                         <TextBlock Style="{StaticResource ValueTextStyle}" Text="12epx" />
                         <Border Width="12" Style="{StaticResource VisualBorderStyle}" />
-                        <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between surface and edge text, text sections." />
+                        <TextBlock Style="{StaticResource DescriptionTextStyle}" Text="Spacing between control + header, surface and edge text, text sections." />
                     </Grid>
                     <!--  16epx  -->
                     <Grid Grid.ColumnDefinitions="86,136,*" Style="{StaticResource GridCardStyle}">
