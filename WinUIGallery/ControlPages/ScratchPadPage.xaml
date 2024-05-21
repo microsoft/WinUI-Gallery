@@ -36,7 +36,8 @@
                          KeyDown="textbox_KeyDown"
                          PreviewKeyUp="textbox_PreviewKeyUp"
                          TextChanged="textbox_TextChanged"
-                         ActualThemeChanged="textbox_ActualThemeChanged" />
+                         ActualThemeChanged="textbox_ActualThemeChanged"
+                         AutomationProperties.Name="XAML markup textbox"/>
                     <StackPanel Grid.Column="1" VerticalAlignment="Top" Spacing="10">
                         <Button x:Name="loadButton" Content="Load" Click="LoadClick"/>
                         <Button Content="Reset" ToolTipService.ToolTip="Resets to the default scratch pad content" Click="ResetToDefaultClick" />

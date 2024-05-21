@@ -65,7 +65,7 @@ namespace WinUIGallery.ControlPages
 @"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
     <!-- Note: {x:Bind} is not supported in Scratch Pad. -->
     <TextBlock>This is a sample TextBlock.</TextBlock>
-    <Button Content=""Sample Button""/>
+    <Button Content=""Click me!""/>
 
     <!-- Note: Syntax highlighting updates on 'Load'. -->
 </StackPanel>";
