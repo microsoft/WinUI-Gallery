@@ -211,19 +211,29 @@
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
+                        <NavigationViewItem x:Name="ColorItem" AutomationProperties.AutomationId="Color" Content="Color" Tag="Color">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE8D2;" />
+                                <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" AutomationProperties.AutomationId="Icons" Content="Icons" Tag="Icons">
+                        <NavigationViewItem x:Name="GeometryItem" AutomationProperties.AutomationId="Geometry" Content="Geometry" Tag="Geometry">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE743;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="IconographyItem" AutomationProperties.AutomationId="Iconography" Content="Iconography" Tag="Iconography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" AutomationProperties.AutomationId="Colors" Content="Colors" Tag="Colors">
+                        <NavigationViewItem x:Name="SpacingItem" AutomationProperties.AutomationId="Spacing" Content="Spacing" Tag="Spacing">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE790;" />
+                                <FontIcon Glyph="&#xE8A9;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                         <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility" Tag="Accessibility">

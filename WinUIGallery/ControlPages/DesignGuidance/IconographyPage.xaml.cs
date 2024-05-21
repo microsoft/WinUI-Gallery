@@ -10,19 +10,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using WinUIGallery.DesktopWap.DataModel;
 using System.Threading;
 
 namespace WinUIGallery.ControlPages
 {
-    public sealed partial class IconsPage : Page
+    public sealed partial class IconographyPage : Page
     {
         public List<double> FontSizes { get; } = new()
             {
@@ -44,9 +42,9 @@ namespace WinUIGallery.ControlPages
             }
         }
         public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register("SelectedItem", typeof(IconData), typeof(IconsPage), new PropertyMetadata(null));
+            DependencyProperty.Register("SelectedItem", typeof(IconData), typeof(IconographyPage), new PropertyMetadata(null));
 
-        public IconsPage()
+        public IconographyPage()
         {
             // Fill filtered items
             this.InitializeComponent();

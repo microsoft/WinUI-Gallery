@@ -5,15 +5,14 @@ using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
-using WinUIGallery.SamplePages;
 
 namespace WinUIGallery.ControlPages
 {
-    public sealed partial class ColorsPage : Page
+    public sealed partial class ColorPage : Page
     {
         int previousSelectedIndex = 0;
 
-        public ColorsPage()
+        public ColorPage()
         {
             this.InitializeComponent();
         }
