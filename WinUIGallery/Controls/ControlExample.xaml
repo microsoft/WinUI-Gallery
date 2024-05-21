@@ -160,7 +160,7 @@
                 <muxc:Expander.Header>
                     <TextBlock Text="Source code" />
                 </muxc:Expander.Header>
-                <Grid RowSpacing="8">
+                <Grid RowSpacing="16">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
