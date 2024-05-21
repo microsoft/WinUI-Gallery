@@ -128,6 +128,32 @@
                         <Grid.BackgroundTransition>
                             <BrushTransition Duration="0:0:0.083" />
                         </Grid.BackgroundTransition>
+
+                        <ContentPresenter
+                            x:Name="ContentPresenter"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            ContentTransitions="{TemplateBinding ContentTransitions}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            RenderTransformOrigin=".5,.5">
+                            <ContentPresenter.RenderTransform>
+                                <ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                        <ContentPresenter
+                            x:Name="CopySuccessGlyph"
+                            Foreground="{TemplateBinding Foreground}"
+                            Opacity="0"
+                            RenderTransformOrigin=".5,.5">
+                            <ContentPresenter.RenderTransform>
+                                <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
+                            </ContentPresenter.RenderTransform>
+                            <FontIcon FontSize="{TemplateBinding FontSize}" Glyph="&#xE73E;" />
+                        </ContentPresenter>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -193,32 +219,6 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-
-                        <ContentPresenter
-                            x:Name="ContentPresenter"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTransitions="{TemplateBinding ContentTransitions}"
-                            FontFamily="{TemplateBinding FontFamily}"
-                            FontSize="{TemplateBinding FontSize}"
-                            Foreground="{TemplateBinding Foreground}"
-                            RenderTransformOrigin=".5,.5">
-                            <ContentPresenter.RenderTransform>
-                                <ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />
-                            </ContentPresenter.RenderTransform>
-                        </ContentPresenter>
-                        <ContentPresenter
-                            x:Name="CopySuccessGlyph"
-                            Foreground="{TemplateBinding Foreground}"
-                            Opacity="0"
-                            RenderTransformOrigin=".5,.5">
-                            <ContentPresenter.RenderTransform>
-                                <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
-                            </ContentPresenter.RenderTransform>
-                            <FontIcon FontSize="{TemplateBinding FontSize}" Glyph="&#xE73E;" />
-                        </ContentPresenter>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
