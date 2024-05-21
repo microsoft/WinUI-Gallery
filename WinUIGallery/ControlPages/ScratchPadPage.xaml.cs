@@ -79,7 +79,7 @@ namespace WinUIGallery.ControlPages
                 var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Existing);
                 if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey("ScratchPadXAML"))
                 {
-                    // String values are limited to to 4K characters. Use a composite value to support a longer string.
+                    // String values are limited to 4K characters. Use a composite value to support a longer string.
                     var compositeStr = scratchPadContainer.Values["ScratchPadXAML"] as ApplicationDataCompositeValue;
                     var xamlStr = "";
                     int count = (int)compositeStr["count"];
@@ -97,7 +97,7 @@ namespace WinUIGallery.ControlPages
         {
             var appData = Windows.Storage.ApplicationData.Current;
             var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Always);
-            // String values are limited to to 4K characters. Use a composite value to support a longer string.
+            // String values are limited to 4K characters. Use a composite value to support a longer string.
             var compositeStr = new ApplicationDataCompositeValue();
             int count = 0;
             while (xamlStr.Length > 0)
@@ -216,7 +216,7 @@ namespace WinUIGallery.ControlPages
             textbox.TextDocument.BeginUndoGroup();
             string previousLine = GetTextboxTextPreviousLine();
             string indentStr = previousLine.Substring(0, previousLine.Length - previousLine.TrimStart().Length);
-            // TODO: Ident further if this is the start of a child tag or property.
+            // TODO: Indent further if this is the start of a child tag or property.
             InsertTextboxText(indentStr, true);
 
             // If this looks like the start of content area in a tag, further indent and put the end tag on a new line.
