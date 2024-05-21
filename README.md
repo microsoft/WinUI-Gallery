@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/ms/microsoft-ui-xaml/_apis/build/status%2Fmicrosoft.WinUI-Gallery?branchName=main)](https://dev.azure.com/ms/microsoft-ui-xaml/_build/latest?definitionId=612&branchName=main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-![WinUI Screenshot](README_Images/WinUIGalleryLanding.png)
+![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
 
 ### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
 
