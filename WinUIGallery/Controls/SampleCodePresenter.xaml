@@ -23,8 +23,8 @@
         <ScrollViewer
             x:Name="CodeScrollViewer"
             VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
-            HorizontalScrollBarVisibility="Hidden"
-            HorizontalScrollMode="Disabled"
+            HorizontalScrollBarVisibility="Auto"
+            HorizontalScrollMode="Auto"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <ContentPresenter
