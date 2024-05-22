@@ -312,5 +312,8 @@
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>
         </ItemGroup>
-    </Target> 
+    </Target>
+    <Target Name="CopyContentToOutputDirectory" AfterTargets="Build">
+      <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" />
+    </Target>
 </Project>
