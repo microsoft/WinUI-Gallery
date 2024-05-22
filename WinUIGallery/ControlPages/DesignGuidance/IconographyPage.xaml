@@ -11,13 +11,12 @@
 -->
 
 <Page
-    x:Class="WinUIGallery.ControlPages.IconsPage"
+    x:Class="WinUIGallery.ControlPages.IconographyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
@@ -92,9 +91,10 @@
         <toolkit:SettingsExpander
             Grid.Row="1"
             Header="Instructions on how to use Segoe Fluent Icons"
+            AutomationProperties.AccessibilityView="Raw"
             IsExpanded="False">
             <toolkit:SettingsExpander.Items>
-                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
+                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left" AutomationProperties.Name="How to get the font">
                     <RichTextBlock TextWrapping="Wrap">
                         <Paragraph FontWeight="SemiBold">
                             How to get the font
@@ -104,7 +104,9 @@
                             On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>                            .</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
-                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left">
+                <toolkit:SettingsCard Padding="16,8"
+                                      ContentAlignment="Left"
+                                      AutomationProperties.Name="How to use the font">
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">

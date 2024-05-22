@@ -21,6 +21,10 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
+using System.Text;
+using Windows.System;
+using System.Runtime.InteropServices;
+using static WinUIGallery.Win32;
 
 namespace WinUIGallery
 {
@@ -31,6 +35,9 @@ namespace WinUIGallery
     {
         private static Window startupWindow;
         private static Win32WindowHelper win32WindowHelper;
+        private static int registeredKeyPressedHook = 0;
+        private HookProc keyEventHook;
+
 
         public static string WinAppSdkDetails
         {
@@ -43,12 +50,19 @@ namespace WinUIGallery
         {
             get
             {
-                // Retrieve Windows App Runtime version info dynamically
-                var windowsAppRuntimeVersion =
-                    from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
-                    where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
-                    select FileVersionInfo.GetVersionInfo(module.FileName);
-                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion; 
+                try
+                {
+                    // Retrieve Windows App Runtime version info dynamically
+                    var windowsAppRuntimeVersion =
+                        from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
+                        where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
+                        select FileVersionInfo.GetVersionInfo(module.FileName);
+                    return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion;
+                }
+                catch
+                {
+                    return WinAppSdkDetails + $", Windows App Runtime {WASDK.Runtime.Version.Major}.{WASDK.Runtime.Version.Minor}";
+                }
             }
         }
 
@@ -119,7 +133,20 @@ namespace WinUIGallery
             }
 #endif
 
+            keyEventHook = new HookProc(KeyEventHook);
+            registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
+
             EnsureWindow();
+        }
+
+        private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode >= 0 && IsKeyDownHook(lParam))
+            {
+                RootFrameNavigationHelper.RaiseKeyPressed((uint)wParam);
+            }
+
+            return CallNextHookEx(registeredKeyPressedHook, nCode, wParam, lParam);
         }
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
