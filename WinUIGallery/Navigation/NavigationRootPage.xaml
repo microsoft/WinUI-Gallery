@@ -59,8 +59,8 @@
             AutomationProperties.AutomationId="AppTitleBar"
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
-            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
+            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+                <Image Width="18" VerticalAlignment="Center" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="12,0,0,0"
