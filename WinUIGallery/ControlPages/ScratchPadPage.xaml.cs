@@ -153,7 +153,7 @@ namespace WinUIGallery.ControlPages
         {
             string newText;
             textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
-            System.Diagnostics.Debug.WriteLine("new text: " + newText);
+            //System.Diagnostics.Debug.WriteLine("new text: " + newText);
 
             SaveScratchPadXAMLinLocalSettings(newText);
 
