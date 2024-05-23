@@ -87,7 +87,7 @@ namespace WinUIGallery.TabViewPages
 
             foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
             {
-                GetParentTabView(tab).TabItems.Remove(tab);
+                GetParentTabView(tab)?.TabItems.Remove(tab);
                 newPage.AddTabToTabs(tab);
             }
         }
@@ -103,7 +103,7 @@ namespace WinUIGallery.TabViewPages
 
             foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
             {
-                GetParentTabView(tab).TabItems.Remove(tab);
+                GetParentTabView(tab)?.TabItems.Remove(tab);
                 sender.TabItems.Insert(args.DropIndex + position, tab);
                 position++;
             }
