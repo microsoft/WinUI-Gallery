@@ -4,8 +4,8 @@
     WinUI 3 Gallery
 </h1>
 <p align="center">
-  <a href="https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare">
-    <img src="README_Images/storeBadge.png" alt="WinUI-Gallery-DevOps-CI-Status" width="200" /</a>
+  <a href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true&mode=mini">
+    <img src="README_Images/storeBadge.png" width="200" /></a>
 </p>
 
 ## ⭐️ Accompanying samples for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
