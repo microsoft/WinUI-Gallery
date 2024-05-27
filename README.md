@@ -1,11 +1,11 @@
-![WinUI Gallery Hero Image](README_Images/WinUIGalleryLanding.PNG)
+![WinUI Gallery Hero Image](assets/hero.png)
 
 <h1 align="center">
     WinUI 3 Gallery
 </h1>
 <p align="center">
-  <a href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true&mode=mini">
-    <img src="README_Images/storeBadge.png" width="200" /></a>
+  <a href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=mini">
+    <img src="assets/storeBadge.png" width="200" /></a>
 </p>
 
 ## ⭐️ Accompanying samples for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
@@ -55,22 +55,22 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Visual Studio.
 
-## ➡️ Further information
+## 🪟 Further information
 
 To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
 To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
-[Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
-[WinUI](https://aka.ms/windev)  
-[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
+- [Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
+- [WinUI](https://aka.ms/windev)  
+- [Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
 
 ###  Related samples
 
-[RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
-[Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
-[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
+- [RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
+- [Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
+- [Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
