@@ -1,17 +1,16 @@
-# WinUI 3 Gallery 
+![WinUI Gallery Hero Image](README_Images/WinUIGalleryLanding.PNG)
 
-[![Build Status](https://dev.azure.com/ms/microsoft-ui-xaml/_apis/build/status%2Fmicrosoft.WinUI-Gallery?branchName=main)](https://dev.azure.com/ms/microsoft-ui-xaml/_build/latest?definitionId=612&branchName=main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+<h1 align="center">
+    WinUI 3 Gallery
+</h1>
+<p align="center">
+  <a href="https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare">
+    <img src="README_Images/storeBadge.png" alt="WinUI-Gallery-DevOps-CI-Status" width="200" /</a>
+</p>
 
-![WinUI Screenshot](README_Images/WinUIGalleryLanding.PNG)
+## ⭐️ Accompanying samples for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
 
-### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
-
-This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
-
-
-[![](README_Images/storeBadge.png)](https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare) 
-
-## ⭐ Features:
+This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs.
 
 - **WinUI Controls Samples:** Each control page shows the markup and codebehind used to create each example.
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
@@ -21,7 +20,7 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 - **Version Adaptive Code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
 
-## 👏 Contribute to WinUI Gallery
+## 📢 Contributing to WinUI Gallery
 
 Any samples or docs improvements you'd like to see? We're always looking for a helping hand. Feel free to file an issue to start the discussion, or even better, create a PR with the change you'd like to see!
 
@@ -29,12 +28,14 @@ Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?
 
 You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
 
-## 🚀 Getting Started
+## 🚀 Getting started with WinUI Gallery
+
 Quick start guide to building WinUI 3 Gallery locally:
 
 ### 1. Set up the Environment
 
->**Note**: The WinUI 3 Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute.
+> [!NOTE]
+> The WinUI 3 Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute.
 If you're building an app with the Windows App SDK for the first time, follow the [installation instructions here.](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/set-up-your-development-environment)
 
 **Required [Visual Studio components](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/set-up-your-development-environment?tabs=cs-vs-community%2Ccpp-vs-community%2Cvs-2022-17-1-a%2Cvs-2022-17-1-b#required-workloads-and-components):**
