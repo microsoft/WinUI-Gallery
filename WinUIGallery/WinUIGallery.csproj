@@ -5,6 +5,7 @@
         <TargetFramework>$(SamplesTargetFrameworkMoniker)</TargetFramework>
         <TargetPlatformVersion>$(WindowsSdkTargetPlatformVersion)</TargetPlatformVersion>
         <TargetPlatformMinVersion>$(WindowsAppSdkTargetPlatformVersion)</TargetPlatformMinVersion>
+        <WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
         <UseWinUI>true</UseWinUI>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <Platforms>x86;x64;ARM64</Platforms>
