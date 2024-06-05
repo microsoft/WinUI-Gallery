@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
-    <!-- The NuGet versions of dependencies to build against. -->
-    <WindowsSdkPackageVersion>10.0.22621.30-preview.aot13.ni-release-svc-prod3</WindowsSdkPackageVersion>
-    <WindowsAppSdkPackageVersion>1.5.240325000-experimentalpr</WindowsAppSdkPackageVersion>
+    <WindowsSdkPackageVersion>10.0.22621.35-preview</WindowsSdkPackageVersion>
+    <WindowsAppSdkPackageVersion>1.6.240531000-experimental1</WindowsAppSdkPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
+    <!-- TODO: move to published AOT-compatible Win2D when available -->
     <GraphicsWin2DVersion>1.1.1-1.1.1-local3</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.13</ColorCodeVersion>
     <CommunityToolkitWinUIVersion>8.0.230907</CommunityToolkitWinUIVersion>
-    <MicrosoftCsWinRTPackageVersion>2.0.8-prerelease-ci.240328.28</MicrosoftCsWinRTPackageVersion>      
+    <MicrosoftCsWinRTPackageVersion>2.1.0-prerelease.240602.1</MicrosoftCsWinRTPackageVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
