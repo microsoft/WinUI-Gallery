@@ -87,6 +87,8 @@ namespace WinUIGallery
 #endif
         }
 
+        // Known issue: Caption buttons currently do not update colors with theme changes.
+        // This will be fixed in a subsequent release.
         private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
