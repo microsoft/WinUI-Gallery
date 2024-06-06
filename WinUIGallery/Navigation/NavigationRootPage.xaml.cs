@@ -34,7 +34,6 @@ namespace WinUIGallery
         public Windows.System.VirtualKey ArrowKey;
         public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
         private RootFrameNavigationHelper _navHelper;
-        private UISettings _settings;
 
 
         public static NavigationRootPage GetForElement(object obj)
@@ -72,9 +71,10 @@ namespace WinUIGallery
         public NavigationRootPage()
         {
             this.InitializeComponent();
+
             dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
-            _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
+            _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl, AppTitleBar);
 
             SetDeviceFamily();
             AddNavigationMenuItems();
@@ -88,65 +88,29 @@ namespace WinUIGallery
                 }
             };
 
-            // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
-            // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             Loaded += delegate (object sender, RoutedEventArgs e)
             {
-                NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode(), this);
-
                 Window window = WindowHelper.GetWindowForElement(sender as UIElement);
-                window.Title = AppTitleText;
                 window.ExtendsContentIntoTitleBar = true;
-                window.Activated += Window_Activated;
                 window.SetTitleBar(this.AppTitleBar);
-
-                AppWindow appWindow = WindowHelper.GetAppWindow(window);
-                appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-                _settings = new UISettings();
-                _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
             };
+
+            AppTitleBar.Loaded += AppTitleBar_Loaded;
         }
 
-        private void Window_Activated(object sender, WindowActivatedEventArgs args)
+        // Known issue: In this release, the TitleBar only shows the Icon and Title due to an issue where
+        // some elements don't show up on load. To work around this, use the following code to load the
+        // other elements (Subtitle, Header, Content, and Footer).
+        // See: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/experimental-channel#version-16-experimental-160-experimental1
+        private void AppTitleBar_Loaded(object sender, RoutedEventArgs e)
         {
-            if (args.WindowActivationState == WindowActivationState.Deactivated)
-            {
-                VisualStateManager.GoToState(this, "Deactivated", true);
-            }
-            else
-            {
-                VisualStateManager.GoToState(this, "Activated", true);
-            }
-        }
+            // Parts get delay loaded. If you have the parts, make them visible.
+            VisualStateManager.GoToState(AppTitleBar, "SubtitleTextVisible", false);
+            VisualStateManager.GoToState(AppTitleBar, "HeaderVisible", false);
+            VisualStateManager.GoToState(AppTitleBar, "ContentVisible", false);
 
-        private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
-        {
-            if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
-            {
-                VisualStateManager.GoToState(this, "Top", true);
-            }
-            else
-            {
-                if (args.DisplayMode == NavigationViewDisplayMode.Minimal)
-                {
-                    VisualStateManager.GoToState(this, "Compact", true);
-                }
-                else
-                {
-                    VisualStateManager.GoToState(this, "Default", true);
-                }
-            }
-        }
-
-        // this handles updating the caption button colors correctly when indows system theme is changed
-        // while the app is open
-        private void _settings_ColorValuesChanged(UISettings sender, object args)
-        {
-            // This calls comes off-thread, hence we will need to dispatch it to current app's thread
-            dispatcherQueue.TryEnqueue(() =>
-            {
-                _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
-            });
+            // Run layout so we re-calculate the drag regions.
+            AppTitleBar.InvalidateMeasure();
         }
 
         // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.

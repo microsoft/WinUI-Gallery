@@ -171,6 +171,7 @@ namespace WinUIGallery.Helper
     {
         private Frame Frame { get; set; }
         private NavigationView CurrentNavView { get; set; }
+        private TitleBar CurrentTitleBar { get; set; }
 
 #nullable enable
         private static RootFrameNavigationHelper? instance;
@@ -180,7 +181,7 @@ namespace WinUIGallery.Helper
         /// </summary>
         /// <param name="rootFrame">A reference to the top-level frame.
         /// This reference allows for frame manipulation and to register navigation handlers.</param>
-        public RootFrameNavigationHelper(Frame rootFrame, NavigationView currentNavView)
+        public RootFrameNavigationHelper(Frame rootFrame, NavigationView currentNavView, TitleBar currentTitleBar)
         {
             if (instance != null)
             {
@@ -194,9 +195,12 @@ namespace WinUIGallery.Helper
                 UpdateBackButton();
             };
             this.CurrentNavView = currentNavView;
-
-            CurrentNavView.BackRequested += NavView_BackRequested;
             CurrentNavView.PointerPressed += CurrentNavView_PointerPressed;
+
+            this.CurrentTitleBar = currentTitleBar;
+            CurrentTitleBar.BackRequested += TitleBar_BackRequested;
+            CurrentTitleBar.PaneToggleRequested += TitleBar_PaneToggleRequested;
+
             instance = this;
         }
 
@@ -264,7 +268,7 @@ namespace WinUIGallery.Helper
             }
         }
 
-        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             TryGoBack();
         }
@@ -300,7 +304,12 @@ namespace WinUIGallery.Helper
 
         private void UpdateBackButton()
         {
-            this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
+            this.CurrentTitleBar.IsBackEnabled = this.Frame.CanGoBack ? true : false;
+        }
+
+        private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
+        {
+            this.CurrentNavView.IsPaneOpen = !this.CurrentNavView.IsPaneOpen;
         }
     }
 

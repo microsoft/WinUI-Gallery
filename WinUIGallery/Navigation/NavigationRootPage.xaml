@@ -26,52 +26,35 @@
             <RowDefinition Height="*" />
             <!--  NavView  -->
         </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="TitleBarStates">
-                <VisualState x:Name="Default" />
-                <VisualState x:Name="Compact">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Margin" Value="96,0,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Top">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Margin" Value="16,0,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-            <VisualStateGroup x:Name="WindowActivationStates">
-                <VisualState x:Name="Activated" />
-                <VisualState x:Name="Deactivated">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitle.Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
 
-        <Border
-            x:Name="AppTitleBar"
-            Grid.Column="1"
-            Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
-            Margin="48,0,0,0"
-            VerticalAlignment="Stretch"
-            AutomationProperties.AutomationId="AppTitleBar"
-            Canvas.ZIndex="1"
-            IsHitTestVisible="True">
-            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
-                <TextBlock
-                    x:Name="AppTitle"
-                    Margin="12,0,0,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource CaptionTextBlockStyle}"
-                    Text="{x:Bind AppTitleText}" />
-                <TextBox x:Name="AppTitleBarTextBox" MinWidth="300" Height="40" Margin="16,0,0,0" Visibility="Collapsed"  PlaceholderText="Enter any text" /> 
-            </StackPanel>
-        </Border>
-
-        <Grid x:Name="AutomationHelpersPanel" Grid.Column="1">
+        <TitleBar x:Name="AppTitleBar"
+                  Title="{x:Bind AppTitleText}"
+                  Subtitle="Experimental"
+                  IsBackButtonVisible="True"
+                  IsPaneToggleButtonVisible="True"
+                  Grid.Column="1">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
+            </TitleBar.IconSource>
+            <AutoSuggestBox x:Name="controlsSearchBox"
+                            MinWidth="300"
+                            MaxWidth="500"
+                            Margin="8"
+                            x:FieldModifier="public"
+                            KeyboardAcceleratorPlacementMode="Hidden"
+                            PlaceholderText="Search for controls..."
+                            QueryIcon="Find"
+                            QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                            TextChanged="OnControlsSearchBoxTextChanged">
+                <AutoSuggestBox.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="F"
+                                         Invoked="CtrlF_Invoked"
+                                         Modifiers="Control" />
+                </AutoSuggestBox.KeyboardAccelerators>
+            </AutoSuggestBox>
+        </TitleBar>
+        
+        <Grid x:Name="AutomationHelpersPanel" Grid.Column="1" IsHitTestVisible="False">
             <Grid.Resources>
                 <Style x:Key="AutomationHelperStyle" TargetType="Control">
                     <Setter Property="IsTabStop" Value="False" />
@@ -153,48 +136,27 @@
         -->
         <NavigationView
             x:Name="NavigationViewControl"
-            Grid.RowSpan="2"
+            Grid.Row="1"
             Grid.Column="1"
             Canvas.ZIndex="0"
-            DisplayModeChanged="OnPaneDisplayModeChanged"
             IsTabStop="False"
-            IsTitleBarAutoPaddingEnabled="True"
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleButtonVisible="False"
             Loaded="OnNavigationViewControlLoaded"
             SelectionChanged="OnNavigationViewSelectionChanged">
 
-            <!-- Custom TitleBar with NavigationView L-Pattern Overwriting resources -->
+            <!-- TitleBar with NavigationView L-Pattern Overwriting resources -->
             <NavigationView.Resources>
-                <!-- This top margin is the height of the custom titleBar -->
-                <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-                <Thickness x:Key="NavigationViewMinimalContentMargin">0,48,0,0</Thickness>
                 <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
                 <!-- This is the rounded corner on the Top left of the L Pattern -->
                 <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
             </NavigationView.Resources>
-            <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox
-                    x:Name="controlsSearchBox"
-                    MinWidth="200"
-                    VerticalAlignment="Center"
-                    x:FieldModifier="public"
-                    KeyboardAcceleratorPlacementMode="Hidden"
-                    PlaceholderText="Search"
-                    QueryIcon="Find"
-                    QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    TextChanged="OnControlsSearchBoxTextChanged">
-                    <AutoSuggestBox.KeyboardAccelerators>
-                        <KeyboardAccelerator
-                            Key="F"
-                            Invoked="CtrlF_Invoked"
-                            Modifiers="Control" />
-                    </AutoSuggestBox.KeyboardAccelerators>
-                </AutoSuggestBox>
-            </NavigationView.AutoSuggestBox>
 
             <Frame
                 x:Name="rootFrame"
                 Navigated="OnRootFrameNavigated"
                 Navigating="OnRootFrameNavigating" />
+            
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Name="Home"
