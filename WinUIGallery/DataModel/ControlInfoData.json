@@ -2846,11 +2846,11 @@
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
           "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
+          "Subtitle": "An example showing the usage of WinUI TitleBar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
-          "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "Description": "The WinUI TitleBar is a title bar control to be used in lieu of the Win32 title bar for when developers want more than the basic Win32 title bar functionalities.",
+          "Content": "<p>Note that caption buttons are handled by the Win32 TitleBar. Hence they are not visible in the samples below.</p>",
+          "IsNew": true,
           "Docs": [
             {
               "Title": "TitleBar - API",

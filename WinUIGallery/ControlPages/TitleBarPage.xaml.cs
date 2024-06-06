@@ -43,14 +43,14 @@ namespace WinUIGallery.ControlPages
             this.InitializeComponent();
             Loaded += (object sender, RoutedEventArgs e) =>
             {
-                (sender as TitleBarPage).UpdateTitleBarColor();
+                //(sender as TitleBarPage).UpdateTitleBarColor();
                 UpdateButtonText();
             };
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            ResetTitlebarSettings();
+            //ResetTitlebarSettings();
         }
         
         private void SetTitleBar(UIElement titlebar, bool forceCustomTitlebar = false)
@@ -72,7 +72,7 @@ namespace WinUIGallery.ControlPages
                 TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
             }
             UpdateButtonText();
-            UpdateTitleBarColor();
+            //UpdateTitleBarColor();
         }
 
         private void ResetTitlebarSettings()
@@ -138,7 +138,7 @@ namespace WinUIGallery.ControlPages
             ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
-            UpdateTitleBarColor();
+            //UpdateTitleBarColor();
 
             // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
             Task.Delay(10).ContinueWith(_ => myFgColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
@@ -198,7 +198,7 @@ namespace WinUIGallery.ControlPages
 
             if (txtBoxNonClientArea.Visibility == Visibility.Visible)
             {
-                ResetTitlebarSettings();
+                //ResetTitlebarSettings();
             }
             else
             {

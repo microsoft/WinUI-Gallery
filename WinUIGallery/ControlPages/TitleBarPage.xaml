@@ -26,6 +26,60 @@
     </Page.Resources>
 
     <StackPanel>
+        <local:ControlExample HeaderText="Default TitleBar">
+            <local:ControlExample.Example>
+                <StackPanel Orientation="Vertical"
+                            Spacing="10">
+                    <TextBlock TextWrapping="WrapWholeWords">
+Title bar caption controls are handled by Win32 TitleBar. Hence they are not visible in the sample below.
+                    </TextBlock>
+                    <TitleBar x:Name="DefaultTitleBar"
+                              Title="Default TitleBar"
+                              Subtitle="Preview">
+                        <TitleBar.IconSource>
+                            <SymbolIconSource Symbol="Home" />
+                        </TitleBar.IconSource>
+                    </TitleBar>
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Window x:Class="App1.MainWindow"
+        xmlns:local="using:App1"
+        mc:Ignorable="d"&gt;
+    &lt;Grid&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height="Auto" /&gt; &lt;!-- WinUI TitleBar --&gt;
+            &lt;RowDefinition Height="*" /&gt; &lt;!-- App content --&gt;
+        &lt;/Grid.RowDefinitions&gt;
+        &lt;TitleBar x:Name="DefaultTitleBar"
+                Title="Default TitleBar"
+                Subtitle="Preview"&gt;
+            &lt;TitleBar.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Home" /&gt;
+            &lt;/TitleBar.IconSource&gt;
+        &lt;/TitleBar&gt;
+
+        &lt;!-- App content --&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public MainWindow()
+{
+    this.InitializeComponent();
+
+    // C# code to set AppTitleBar UIElement as Titlebar
+    Window window = this; 
+    window.ExtendsContentIntoTitleBar = true;  // Enable custom titlebar
+    window.SetTitleBar(this.DefaultTitleBar);
+}
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+        
         <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>
