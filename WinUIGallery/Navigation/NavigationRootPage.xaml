@@ -130,10 +130,6 @@
 
         </Grid>
 
-        <!--
-            Don't set IsTitleBarAutoPaddingEnabled, since it should only be set false when we're using Window.SetTitleBar(), which isn't currently available.
-            Restore by re-applying https://github.com/microsoft/WinUI-Gallery/pull/198
-        -->
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"

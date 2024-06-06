@@ -90,27 +90,11 @@ namespace WinUIGallery
         private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
         {
             var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
-            var window = WindowHelper.GetWindowForElement(this);
-            string color;
             if (selectedTheme != null)
             {
                 ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
-                if (selectedTheme == "Dark")
-                {
-                    TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
-                    color = selectedTheme;
-                }
-                else if (selectedTheme == "Light")
-                {
-                    TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
-                    color = selectedTheme;
-                }
-                else
-                {
-                    color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
-                }
-                // announce visual change to automation
-                UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+                // Announce visual change to automation.
+                UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {selectedTheme}",
                                                                                 "ThemeChangedNotificationActivityId");
             }
         }
