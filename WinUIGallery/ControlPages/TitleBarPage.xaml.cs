@@ -45,7 +45,29 @@ namespace WinUIGallery.ControlPages
             {
                 //(sender as TitleBarPage).UpdateTitleBarColor();
                 UpdateButtonText();
+
+                // Parts get delay loaded. If you have the parts, make them visible.
+                VisualStateManager.GoToState(ControlsTitleBar, "SubtitleTextVisible", false);
+                VisualStateManager.GoToState(ControlsTitleBar, "HeaderVisible", false);
+                VisualStateManager.GoToState(ControlsTitleBar, "ContentVisible", false);
+                VisualStateManager.GoToState(ControlsTitleBar, "FooterVisible", false);
+
+                // Run layout so we re-calculate the drag regions.
+                ControlsTitleBar.InvalidateMeasure();
             };
+        }
+
+        private void NavViewTitleBar_BackRequested(TitleBar sender, object args)
+        {
+            if (NavFrame.CanGoBack)
+            {
+                NavFrame.GoBack();
+            }
+        }
+
+        private void NavViewTitleBar_PaneToggleRequested(TitleBar sender, object args)
+        {
+            NavView.IsPaneOpen = !NavView.IsPaneOpen;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
