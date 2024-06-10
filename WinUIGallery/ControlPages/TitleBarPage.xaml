@@ -121,7 +121,6 @@ public MainWindow()
                        Initials="JD" /&gt;
     &lt;/TitleBar.Footer>
 &lt;/TitleBar&gt;
-
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
@@ -138,7 +137,7 @@ public MainWindow()
                               Title="NavView TitleBar"
                               Background="Transparent"
                               IsBackButtonVisible="True"
-                              IsBackEnabled="True"
+                              IsBackEnabled="{Binding ElementName=NavFrame, Path=CanGoBack, Mode=OneWay}"
                               IsPaneToggleButtonVisible="True"
                               BackRequested="NavViewTitleBar_BackRequested"
                               PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
@@ -158,7 +157,8 @@ public MainWindow()
                                     Grid.Row="1"
                                     IsPaneToggleButtonVisible="False"
                                     IsBackButtonVisible="Collapsed"
-                                    >
+                                    SelectionChanged="NavigationView_SelectionChanged"
+                                    Height="400">
 
                         <!-- TitleBar with NavigationView L-Pattern Overwriting resources -->
                         <NavigationView.Resources>
@@ -170,35 +170,116 @@ public MainWindow()
                         <Frame x:Name="NavFrame" />
 
                         <NavigationView.MenuItems>
-                            <NavigationViewItem Content="Home" Icon="Home"/>
-                            <NavigationViewItem Content="Map" Icon="Map"/>
+                            <NavigationViewItem Content="Home"
+                                                Icon="Home"
+                                                Tag="SamplePage1"/>
+                            <NavigationViewItem Content="Map"
+                                                Icon="Map"
+                                                Tag="SamplePage2"/>
                         </NavigationView.MenuItems>
                     </NavigationView>
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TitleBar x:Name="ControlsTitleBar"
-          Title="Controls TitleBar"
-          Subtitle="Preview"&gt;
-    &lt;TitleBar.IconSource&gt;
-        &lt;ImageIconSource ImageSource="ms-appx:///Assets/Tiles/TitlebarLogo.png" /&gt;
-    &lt;/TitleBar.IconSource&gt;
-    &lt;AutoSuggestBox x:Name="AutoSuggestBoxInTitleBar"
-                    MinWidth="300"
-                    MaxWidth="500"
-                    Margin="8"
-                    PlaceholderText="Search pictures, videos or places..."
-                    QueryIcon="Find" /&gt;
-    &lt;TitleBar.Footer&gt;
-        &lt;PersonPicture Width="30"
-                       Height="30"
-                       Initials="JD" /&gt;
-    &lt;/TitleBar.Footer>
-&lt;/TitleBar&gt;
+&lt;Grid&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height="Auto" /&gt; &lt;!-- WinUI TitleBar --&gt;
+        &lt;RowDefinition Height="*" /&gt; &lt;!-- App content --&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;TitleBar x:Name="NavViewTitleBar"
+                        Title="NavView TitleBar"
+                        Background="Transparent"
+                        IsBackButtonVisible="True"
+                        IsBackEnabled="{Binding ElementName=NavFrame, Path=CanGoBack, Mode=OneWay}"
+                        IsPaneToggleButtonVisible="True"
+                        BackRequested="NavViewTitleBar_BackRequested"
+                        PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
+        &lt;TitleBar.IconSource&gt;
+            &lt;SymbolIconSource Symbol="Home" /&gt;
+        &lt;/TitleBar.IconSource&gt;
 
+        &lt;AutoSuggestBox x:Name="AutoSuggestBoxInNavViewTitleBar"
+                            MinWidth="300"
+                            MaxWidth="500"
+                            Margin="8"
+                            PlaceholderText="Search pictures, videos or places..."
+                            QueryIcon="Find" /&gt;
+    &lt;/TitleBar&gt;
+
+    &lt;NavigationView x:Name="NavView"
+                        Grid.Row="1"
+                        IsPaneToggleButtonVisible="False"
+                        IsBackButtonVisible="Collapsed"
+                        SelectionChanged="NavigationView_SelectionChanged"
+                        Height="400"&gt;
+
+        &lt;!-- TitleBar with NavigationView L-Pattern Overwriting resources --&gt;
+        &lt;NavigationView.Resources>
+            &lt;Thickness x:Key="NavigationViewContentGridBorderThickness"&gt;1,1,0,0&lt;/Thickness&gt;
+            &lt;!-- This is the rounded corner on the Top left of the L Pattern --&gt;
+            &lt;CornerRadius x:Key="NavigationViewContentGridCornerRadius"&gt;8,0,0,0&lt;/CornerRadius&gt;
+        &lt;/NavigationView.Resources&gt;
+
+        &lt;Frame x:Name="NavFrame" /&gt;
+
+        &lt;NavigationView.MenuItems&gt;
+            &lt;NavigationViewItem Content="Home"
+                                Icon="Home"
+                                Tag="SamplePage1" /&gt;
+            &lt;NavigationViewItem Content="Map"
+                                Icon="Map"
+                                Tag="SamplePage2" /&gt;
+        &lt;/NavigationView.MenuItems&gt;
+    &lt;/NavigationView&gt;
+&lt;/Grid>
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public MainWindow()
+{
+    this.InitializeComponent();
+
+    // C# code to set AppTitleBar UIElement as Titlebar
+    Window window = this; 
+    window.ExtendsContentIntoTitleBar = true;  // Enable custom titlebar
+    window.SetTitleBar(this.DefaultTitleBar);
+}
+
+// TitleBar BackRequested event handler bound to NavigationView Nav Frame.
+private void NavViewTitleBar_BackRequested(TitleBar sender, object args)
+{
+    if (NavFrame.CanGoBack)
+    {
+        NavFrame.GoBack();
+    }
+}
+
+// TitleBar PaneToggleRequested event handler bound to NavigationView back button.
+private void NavViewTitleBar_PaneToggleRequested(TitleBar sender, object args)
+{
+    NavView.IsPaneOpen = !NavView.IsPaneOpen;
+}
+
+// NavigationView SelectionChanged event handler to navigate to selected sample pages.
+private void NavigationView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+{
+    if (args.IsSettingsSelected)
+    {
+        NavFrame.Navigate(typeof(SampleSettingsPage));
+    }
+    else
+    {
+        var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+        string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
+        Type pageType = Type.GetType(pageName);
+
+        NavFrame.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
+    }
+}
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
 
 
@@ -366,38 +447,6 @@ public MainWindow()
                 </StackPanel>
             </local:ControlExample.Example>
 
-        </local:ControlExample>
-        <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
-                              CSharpSource="Window\TitleBar\TitleBarSample3.txt">
-            <local:ControlExample.Example>
-                <StackPanel Orientation="Vertical"
-                            Spacing="10">
-                    <TextBlock TextWrapping="WrapWholeWords">
-                        WinUI custom titlebar now hosting interactive clickable controls within non client region of the window, when using custom titlebar.
-                        <LineBreak></LineBreak>
-                        This is achieved by using lower level
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar">
-                           Microsoft.UI.AppWindowTitlebar
-                        </Hyperlink>
-                        and
-                        <Italic>Microsoft.UI.NonClientInputPointerSource apis</Italic>
-                        <LineBreak></LineBreak>
-                        <LineBreak></LineBreak>
-                        WinUI allows  <Bold> mix and match </Bold> of higher level WinUI custom titlebar apis with lower level AppWindow and NonClientInputPointerSource apis for most cases.
-                        One exception is one should not use <Italic> Window.SetTitlebar </Italic> api along with any lower level api which also sets drag regions as it can result in unexpected behavior.
-                        If needed, set <Italic> Window.SetTitlebar </Italic> to null (default case) and proceed to use lower level apis for drag functionality.
-                        <LineBreak></LineBreak>
-                        Use the button below to toggle between system titlebar and default custom titlebar.
-                    </TextBlock>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top"
-                                Spacing="20">
-                        <Button x:Name="addInteractiveElements"
-                                Click="AddInteractiveElements_Click">Add interactive control to titlebar</Button>
-                    </StackPanel>
-                </StackPanel>
-            </local:ControlExample.Example>
         </local:ControlExample>
 
     </StackPanel>

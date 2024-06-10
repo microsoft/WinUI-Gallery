@@ -21,6 +21,7 @@ using Microsoft.UI.Input;
 using System.IO;
 using Windows.Foundation;
 using System;
+using WinUIGallery.SamplePages;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -46,11 +47,13 @@ namespace WinUIGallery.ControlPages
                 //(sender as TitleBarPage).UpdateTitleBarColor();
                 UpdateButtonText();
 
-                // Parts get delay loaded. If you have the parts, make them visible.
+                // Known Preview bug: Parts get delay loaded. If you have the parts, make them visible.
                 VisualStateManager.GoToState(ControlsTitleBar, "SubtitleTextVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "HeaderVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "ContentVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "FooterVisible", false);
+
+                VisualStateManager.GoToState(NavViewTitleBar, "ContentVisible", false);
 
                 // Run layout so we re-calculate the drag regions.
                 ControlsTitleBar.InvalidateMeasure();
@@ -70,9 +73,20 @@ namespace WinUIGallery.ControlPages
             NavView.IsPaneOpen = !NavView.IsPaneOpen;
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        private void NavigationView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            //ResetTitlebarSettings();
+            if (args.IsSettingsSelected)
+            {
+                NavFrame.Navigate(typeof(SampleSettingsPage));
+            }
+            else
+            {
+                var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+                string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
+                Type pageType = Type.GetType(pageName);
+
+                NavFrame.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
+            }
         }
         
         private void SetTitleBar(UIElement titlebar, bool forceCustomTitlebar = false)
@@ -95,31 +109,6 @@ namespace WinUIGallery.ControlPages
             }
             UpdateButtonText();
             //UpdateTitleBarColor();
-        }
-
-        private void ResetTitlebarSettings()
-        {
-            var window = WindowHelper.GetWindowForElement(this as UIElement);
-            UIElement titleBarElement = UIHelper.FindElementByName(this as UIElement, "AppTitleBar");
-            SetTitleBar(titleBarElement, forceCustomTitlebar: true);
-            ClearClickThruRegions();
-            var txtBoxNonClientArea = UIHelper.FindElementByName(this as UIElement, "AppTitleBarTextBox") as FrameworkElement;
-            txtBoxNonClientArea.Visibility = Visibility.Collapsed;
-            addInteractiveElements.Content = "Add interactive control to titlebar";
-        }
-
-        private void SetClickThruRegions(Windows.Graphics.RectInt32[] rects)
-        {
-            var window = WindowHelper.GetWindowForElement(this as UIElement);
-            var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
-            nonClientInputSrc.SetRegionRects(NonClientRegionKind.Passthrough, rects);
-        }
-
-        private void ClearClickThruRegions()
-        {
-            var window = WindowHelper.GetWindowForElement(this as UIElement);
-            var noninputsrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
-            noninputsrc.ClearRegionRects(NonClientRegionKind.Passthrough);
         }
 
         public void UpdateButtonText()
@@ -213,48 +202,5 @@ namespace WinUIGallery.ControlPages
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
-
-        private void AddInteractiveElements_Click(object sender, RoutedEventArgs e)
-        {
-            var txtBoxNonClientArea = UIHelper.FindElementByName(sender as UIElement, "AppTitleBarTextBox") as FrameworkElement;
-
-            if (txtBoxNonClientArea.Visibility == Visibility.Visible)
-            {
-                //ResetTitlebarSettings();
-            }
-            else
-            {
-                addInteractiveElements.Content = "Remove interactive control from titlebar";
-                txtBoxNonClientArea.Visibility = Visibility.Visible;
-                if (!sizeChangedEventHandlerAdded)
-                {
-                    sizeChangedEventHandlerAdded = true;
-                    // run this code when textbox has been made visible and its actual width and height has been calculated
-                    txtBoxNonClientArea.SizeChanged += (object sender, SizeChangedEventArgs e) =>
-                    {
-                        if (txtBoxNonClientArea.Visibility != Visibility.Collapsed)
-                        {
-                            GeneralTransform transformTxtBox = txtBoxNonClientArea.TransformToVisual(null);
-                            Rect bounds = transformTxtBox.TransformBounds(new Rect(0, 0, txtBoxNonClientArea.ActualWidth, txtBoxNonClientArea.ActualHeight));
-
-                            var scale = WindowHelper.GetRasterizationScaleForElement(this);
-
-                            var transparentRect = new Windows.Graphics.RectInt32(
-                                _X: (int)Math.Round(bounds.X * scale),
-                                _Y: (int)Math.Round(bounds.Y * scale),
-                                _Width: (int)Math.Round(bounds.Width * scale),
-                                _Height: (int)Math.Round(bounds.Height * scale)
-                            );
-                            var rectArr = new Windows.Graphics.RectInt32[] { transparentRect };
-                            SetClickThruRegions(rectArr);
-                        }
-                    };
-                }
-                txtBoxNonClientArea.Width += 1; //to trigger size changed event
-            }
-            // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
-        }
-       
     }
 }
