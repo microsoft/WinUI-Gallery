@@ -192,6 +192,23 @@ namespace WinUIGallery.ControlPages
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
 
+        private void setTxtBoxAsPasthrough(FrameworkElement txtBoxNonClientArea)
+        {
+            GeneralTransform transformTxtBox = txtBoxNonClientArea.TransformToVisual(null);
+            Rect bounds = transformTxtBox.TransformBounds(new Rect(0, 0, txtBoxNonClientArea.ActualWidth, txtBoxNonClientArea.ActualHeight));
+
+            var scale = WindowHelper.GetRasterizationScaleForElement(this);
+
+            var transparentRect = new Windows.Graphics.RectInt32(
+                _X: (int)Math.Round(bounds.X * scale),
+                _Y: (int)Math.Round(bounds.Y * scale),
+                _Width: (int)Math.Round(bounds.Width * scale),
+                _Height: (int)Math.Round(bounds.Height * scale)
+            );
+            var rectArr = new Windows.Graphics.RectInt32[] { transparentRect };
+            SetClickThruRegions(rectArr);
+        }
+
         private void AddInteractiveElements_Click(object sender, RoutedEventArgs e)
         {
             var txtBoxNonClientArea = UIHelper.FindElementByName(sender as UIElement, "AppTitleBarTextBox") as FrameworkElement;
@@ -204,7 +221,11 @@ namespace WinUIGallery.ControlPages
             {
                 addInteractiveElements.Content = "Remove interactive control from titlebar";
                 txtBoxNonClientArea.Visibility = Visibility.Visible;
-                if (!sizeChangedEventHandlerAdded)
+                if (sizeChangedEventHandlerAdded)
+                {
+                    setTxtBoxAsPasthrough(txtBoxNonClientArea);
+                }
+                else
                 {
                     sizeChangedEventHandlerAdded = true;
                     // run this code when textbox has been made visible and its actual width and height has been calculated
@@ -212,26 +233,14 @@ namespace WinUIGallery.ControlPages
                     {
                         if (txtBoxNonClientArea.Visibility != Visibility.Collapsed)
                         {
-                            GeneralTransform transformTxtBox = txtBoxNonClientArea.TransformToVisual(null);
-                            Rect bounds = transformTxtBox.TransformBounds(new Rect(0, 0, txtBoxNonClientArea.ActualWidth, txtBoxNonClientArea.ActualHeight));
-
-                            var scale = WindowHelper.GetRasterizationScaleForElement(this);
-
-                            var transparentRect = new Windows.Graphics.RectInt32(
-                                _X: (int)Math.Round(bounds.X * scale),
-                                _Y: (int)Math.Round(bounds.Y * scale),
-                                _Width: (int)Math.Round(bounds.Width * scale),
-                                _Height: (int)Math.Round(bounds.Height * scale)
-                            );
-                            var rectArr = new Windows.Graphics.RectInt32[] { transparentRect };
-                            SetClickThruRegions(rectArr);
+                            setTxtBoxAsPasthrough(txtBoxNonClientArea);
                         }
                     };
                 }
-                txtBoxNonClientArea.Width += 1; //to trigger size changed event
+
+                // announce visual change to automation
+                UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
             }
-            // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
        
     }
