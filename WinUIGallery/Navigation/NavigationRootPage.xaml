@@ -54,7 +54,7 @@
             </AutoSuggestBox>
         </TitleBar>
         
-        <Grid x:Name="AutomationHelpersPanel" Grid.Column="1" IsHitTestVisible="False">
+        <Grid x:Name="AutomationHelpersPanel" Grid.Column="1" Height="0" IsHitTestVisible="False">
             <Grid.Resources>
                 <Style x:Key="AutomationHelperStyle" TargetType="Control">
                     <Setter Property="IsTabStop" Value="False" />

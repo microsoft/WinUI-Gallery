@@ -97,7 +97,7 @@ public MainWindow()
                     <TitleBar.Footer>
                         <PersonPicture Width="30"
                                        Height="30"
-                                       Initials="RJ" />
+                                       Initials="JD" />
                     </TitleBar.Footer>
                 </TitleBar>
             </local:ControlExample.Example>
@@ -188,31 +188,31 @@ public MainWindow()
         &lt;RowDefinition Height="*" /&gt; &lt;!-- App content --&gt;
     &lt;/Grid.RowDefinitions&gt;
     &lt;TitleBar x:Name="NavViewTitleBar"
-                        Title="NavView TitleBar"
-                        Background="Transparent"
-                        IsBackButtonVisible="True"
-                        IsBackEnabled="{Binding ElementName=NavFrame, Path=CanGoBack, Mode=OneWay}"
-                        IsPaneToggleButtonVisible="True"
-                        BackRequested="NavViewTitleBar_BackRequested"
-                        PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
+              Title="NavView TitleBar"
+              Background="Transparent"
+              IsBackButtonVisible="True"
+              IsBackEnabled="{Binding ElementName=NavFrame, Path=CanGoBack, Mode=OneWay}"
+              IsPaneToggleButtonVisible="True"
+              BackRequested="NavViewTitleBar_BackRequested"
+              PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
         &lt;TitleBar.IconSource&gt;
             &lt;SymbolIconSource Symbol="Home" /&gt;
         &lt;/TitleBar.IconSource&gt;
 
         &lt;AutoSuggestBox x:Name="AutoSuggestBoxInNavViewTitleBar"
-                            MinWidth="300"
-                            MaxWidth="500"
-                            Margin="8"
-                            PlaceholderText="Search pictures, videos or places..."
-                            QueryIcon="Find" /&gt;
+                        MinWidth="300"
+                        MaxWidth="500"
+                        Margin="8"
+                        PlaceholderText="Search pictures, videos or places..."
+                        QueryIcon="Find" /&gt;
     &lt;/TitleBar&gt;
 
     &lt;NavigationView x:Name="NavView"
-                        Grid.Row="1"
-                        IsPaneToggleButtonVisible="False"
-                        IsBackButtonVisible="Collapsed"
-                        SelectionChanged="NavigationView_SelectionChanged"
-                        Height="400"&gt;
+                    Grid.Row="1"
+                    IsPaneToggleButtonVisible="False"
+                    IsBackButtonVisible="Collapsed"
+                    SelectionChanged="NavigationView_SelectionChanged"
+                    Height="400"&gt;
 
         &lt;!-- TitleBar with NavigationView L-Pattern Overwriting resources --&gt;
         &lt;NavigationView.Resources>
@@ -283,170 +283,174 @@ private void NavigationView_SelectionChanged(Microsoft.UI.Xaml.Controls.Navigati
         </local:ControlExample>
 
 
-        <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
+        <local:ControlExample HeaderText="Default Win32 titlebar"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical"
                             Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
-                        WinUI provides a default titlebar in such cases where the user doesn't explicitly provide a uielement, for setting the titlebar. The system titlebar (Windows-provided titlebar) disappears and client area content is extended to non client area.
-                        In this default case, entire non client region (titlebar region) get system titlebar behaviors like drag regions, system menu on context click etc.
-                        <LineBreak></LineBreak>
-                        This is the recommended way of using TitleBar apis and covers most common scenarios.
-                        <LineBreak></LineBreak>
-                        It can be applied by just calling ExtendsContentIntoTitleBar api. This internally calls SetTitleBar api with null argument and provides the default case.
-                        <LineBreak></LineBreak>
-                        Use the button below to toggle between system titlebar and default custom titlebar.
+                        WinUI provides a default Win32 titlebar if no user defined title bar is set.
+                        <LineBreak /><LineBreak />
+                        Use the button below to toggle between system title bar and user defined WinUI titlebar.
                     </TextBlock>
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top"
                                 Spacing="20">
-                        <Button x:Name="defaultTitleBar"
-                                Click="defaultTitleBar_Click"></Button>
+                        <Button x:Name="ToggleTitleBarButton"
+                                Click="ToggleTitleBar_Click">
+                            Toggle Title
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// No user defined TitleBar is set for titlebar. Default Win32 title bar is created which extends to entire non-client area.
+Window window = App.MainWindow;
+window.ExtendsContentIntoTitleBar = true;
+// window.SetTitleBar(null);  // Not setting any UIElement as title bar is the same as setting null as title bar.
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
-        <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
-                              CSharpSource="Window/TitleBar/TitleBarSample1.txt">
+
+        <!-- Themeing is currently not available as TemplateBindings are not set up in TitleBar -->
+        <local:ControlExample HeaderText="TitleBar Theming" IsEnabled="False">
             <local:ControlExample.Example>
                 <StackPanel Orientation="Vertical"
                             Spacing="10">
-                    <TextBlock TextWrapping="WrapWholeWords">
-                        For finer controls, a user can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar (gets all system titlebar behavior). <LineBreak></LineBreak>
-                        The Background and Foreground Color dropdowns set the foreground and background of titlebar and caption buttons respectively.
-                        <LineBreak></LineBreak>
-                        Use the button below to toggle between system titlebar and custom WinUI titlebar.
+                    <TextBlock TextWrapping="WrapWholeWords"
+                               Foreground="{ThemeResource TextFillColorDisabledBrush}">
+                        Themeing is currently not available as TemplateBindings are not set up in TitleBar.
+                        <LineBreak /><LineBreak />
+                        Toggle different colours for the background and foreground of the titlebar.
                     </TextBlock>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top"
-                                Spacing="10">
-                        <Button x:Name="customTitleBar"
-                                Click="customTitleBar_Click"></Button>
-                        <TextBlock> Background Color</TextBlock>
-                        <SplitButton x:Name="myBgColorButton"
-                                     AutomationProperties.Name="Background color"
-                                     Padding="0"
-                                     MinHeight="0"
-                                     MinWidth="0"
-                                     VerticalAlignment="Top">
-                            <Border x:Name="BackgroundColorElement"
-                                    Width="{StaticResource SwatchSize}"
-                                    Height="{StaticResource SwatchSize}"
-                                    Background="Transparent"
-                                    Margin="0"
-                                    CornerRadius="4,0,0,4" />
-                            <SplitButton.Flyout>
-                                <Flyout Placement="Auto">
-                                    <GridView ItemClick="BgGridView_ItemClick"
-                                              IsItemClickEnabled="True">
-                                        <GridView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <ItemsWrapGrid MaximumRowsOrColumns="3"
-                                                               Orientation="Horizontal" />
-                                            </ItemsPanelTemplate>
-                                        </GridView.ItemsPanel>
-                                        <GridView.Resources>
-                                            <Style TargetType="Rectangle">
-                                                <Setter Property="Width"
-                                                        Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="Height"
-                                                        Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="RadiusX"
-                                                        Value="4" />
-                                                <Setter Property="RadiusY"
-                                                        Value="4" />
-                                            </Style>
-                                        </GridView.Resources>
-                                        <GridView.Items>
-                                            <Rectangle Fill="Transparent"
-                                                       AutomationProperties.Name="Transparent" />
-                                            <Rectangle Fill="Red"
-                                                       AutomationProperties.Name="Red" />
-                                            <Rectangle Fill="Orange"
-                                                       AutomationProperties.Name="Orange" />
-                                            <Rectangle Fill="Yellow"
-                                                       AutomationProperties.Name="Yellow" />
-                                            <Rectangle Fill="Green"
-                                                       AutomationProperties.Name="Green" />
-                                            <Rectangle Fill="Blue"
-                                                       AutomationProperties.Name="Blue" />
-                                            <Rectangle Fill="White"
-                                                       AutomationProperties.Name="White" />
-                                            <Rectangle Fill="Black"
-                                                       AutomationProperties.Name="Black" />
-                                        </GridView.Items>
-                                    </GridView>
-
-                                </Flyout>
-                            </SplitButton.Flyout>
-                        </SplitButton>
-
-                        <TextBlock> Foreground Color</TextBlock>
-                        <SplitButton x:Name="myFgColorButton"
-                                     AutomationProperties.Name="Foreground color"
-                                     Padding="0"
-                                     MinHeight="0"
-                                     MinWidth="0"
-                                     VerticalAlignment="Top">
-                            <Border x:Name="ForegroundColorElement"
-                                    Width="{StaticResource SwatchSize}"
-                                    Height="{StaticResource SwatchSize}"
-                                    Background="Transparent"
-                                    Margin="0"
-                                    CornerRadius="4,0,0,4" />
-                            <SplitButton.Flyout>
-                                <Flyout Placement="Auto">
-                                    <GridView ItemClick="FgGridView_ItemClick"
-                                              IsItemClickEnabled="True">
-                                        <GridView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <ItemsWrapGrid MaximumRowsOrColumns="3"
-                                                               Orientation="Horizontal" />
-                                            </ItemsPanelTemplate>
-                                        </GridView.ItemsPanel>
-                                        <GridView.Resources>
-                                            <Style TargetType="Rectangle">
-                                                <Setter Property="Width"
-                                                        Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="Height"
-                                                        Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="RadiusX"
-                                                        Value="4" />
-                                                <Setter Property="RadiusY"
-                                                        Value="4" />
-                                            </Style>
-                                        </GridView.Resources>
-                                        <GridView.Items>
-                                            <Rectangle Fill="Transparent"
-                                                       AutomationProperties.Name="Transparent" />
-                                            <Rectangle Fill="Red"
-                                                       AutomationProperties.Name="Red" />
-                                            <Rectangle Fill="Orange"
-                                                       AutomationProperties.Name="Orange" />
-                                            <Rectangle Fill="Yellow"
-                                                       AutomationProperties.Name="Yellow" />
-                                            <Rectangle Fill="Green"
-                                                       AutomationProperties.Name="Green" />
-                                            <Rectangle Fill="Blue"
-                                                       AutomationProperties.Name="Blue" />
-                                            <Rectangle Fill="White"
-                                                       AutomationProperties.Name="White" />
-                                            <Rectangle Fill="Black"
-                                                       AutomationProperties.Name="Black" />
-                                        </GridView.Items>
-                                    </GridView>
-
-                                </Flyout>
-                            </SplitButton.Flyout>
-                        </SplitButton>
-
-                    </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <TextBlock Foreground="{ThemeResource TextFillColorDisabledBrush}">Background Color</TextBlock>
+                    <SplitButton x:Name="myBgColorButton"
+                                 IsEnabled="False"
+                                 AutomationProperties.Name="Background color"
+                                 Padding="0"
+                                 MinHeight="0"
+                                 MinWidth="0"
+                                 VerticalAlignment="Top"
+                                 Margin="0,0,0,4">
+                        <Border x:Name="BackgroundColorElement"
+                                Width="{StaticResource SwatchSize}"
+                                Height="{StaticResource SwatchSize}"
+                                Background="Transparent"
+                                Margin="0"
+                                CornerRadius="4,0,0,4" />
+                        <SplitButton.Flyout>
+                            <Flyout Placement="Auto">
+                                <GridView ItemClick="BgGridView_ItemClick"
+                                          IsItemClickEnabled="True">
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid MaximumRowsOrColumns="3"
+                                                           Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                    <GridView.Resources>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Width"
+                                                    Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="Height"
+                                                    Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="RadiusX"
+                                                    Value="4" />
+                                            <Setter Property="RadiusY"
+                                                    Value="4" />
+                                        </Style>
+                                    </GridView.Resources>
+                                    <GridView.Items>
+                                        <Rectangle Fill="Transparent"
+                                                   AutomationProperties.Name="Transparent" />
+                                        <Rectangle Fill="Red"
+                                                   AutomationProperties.Name="Red" />
+                                        <Rectangle Fill="Orange"
+                                                   AutomationProperties.Name="Orange" />
+                                        <Rectangle Fill="Yellow"
+                                                   AutomationProperties.Name="Yellow" />
+                                        <Rectangle Fill="Green"
+                                                   AutomationProperties.Name="Green" />
+                                        <Rectangle Fill="Blue"
+                                                   AutomationProperties.Name="Blue" />
+                                        <Rectangle Fill="White"
+                                                   AutomationProperties.Name="White" />
+                                        <Rectangle Fill="Black"
+                                                   AutomationProperties.Name="Black" />
+                                    </GridView.Items>
+                                </GridView>
 
+                            </Flyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+
+                    <TextBlock Foreground="{ThemeResource TextFillColorDisabledBrush}">Foreground Color</TextBlock>
+                    <SplitButton x:Name="myFgColorButton"
+                                 IsEnabled="False"
+                                 AutomationProperties.Name="Foreground color"
+                                 Padding="0"
+                                 MinHeight="0"
+                                 MinWidth="0"
+                                 VerticalAlignment="Top">
+                        <Border x:Name="ForegroundColorElement"
+                                Width="{StaticResource SwatchSize}"
+                                Height="{StaticResource SwatchSize}"
+                                Background="Transparent"
+                                Margin="0"
+                                CornerRadius="4,0,0,4" />
+                        <SplitButton.Flyout>
+                            <Flyout Placement="Auto">
+                                <GridView ItemClick="FgGridView_ItemClick"
+                                          IsItemClickEnabled="True">
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid MaximumRowsOrColumns="3"
+                                                           Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                    <GridView.Resources>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Width"
+                                                    Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="Height"
+                                                    Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="RadiusX"
+                                                    Value="4" />
+                                            <Setter Property="RadiusY"
+                                                    Value="4" />
+                                        </Style>
+                                    </GridView.Resources>
+                                    <GridView.Items>
+                                        <Rectangle Fill="Transparent"
+                                                   AutomationProperties.Name="Transparent" />
+                                        <Rectangle Fill="Red"
+                                                   AutomationProperties.Name="Red" />
+                                        <Rectangle Fill="Orange"
+                                                   AutomationProperties.Name="Orange" />
+                                        <Rectangle Fill="Yellow"
+                                                   AutomationProperties.Name="Yellow" />
+                                        <Rectangle Fill="Green"
+                                                   AutomationProperties.Name="Green" />
+                                        <Rectangle Fill="Blue"
+                                                   AutomationProperties.Name="Blue" />
+                                        <Rectangle Fill="White"
+                                                   AutomationProperties.Name="White" />
+                                        <Rectangle Fill="Black"
+                                                   AutomationProperties.Name="Black" />
+                                    </GridView.Items>
+                                </GridView>
+
+                            </Flyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+                </StackPanel>
+            </local:ControlExample.Options>
         </local:ControlExample>
 
     </StackPanel>

@@ -37,26 +37,23 @@ namespace WinUIGallery.ControlPages
     {
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = ThemeHelper.ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
-        private bool sizeChangedEventHandlerAdded = false;
 
         public TitleBarPage()
         {
             this.InitializeComponent();
             Loaded += (object sender, RoutedEventArgs e) =>
             {
-                //(sender as TitleBarPage).UpdateTitleBarColor();
-                UpdateButtonText();
-
                 // Known Preview bug: Parts get delay loaded. If you have the parts, make them visible.
                 VisualStateManager.GoToState(ControlsTitleBar, "SubtitleTextVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "HeaderVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "ContentVisible", false);
                 VisualStateManager.GoToState(ControlsTitleBar, "FooterVisible", false);
 
-                VisualStateManager.GoToState(NavViewTitleBar, "ContentVisible", false);
-
                 // Run layout so we re-calculate the drag regions.
                 ControlsTitleBar.InvalidateMeasure();
+
+                VisualStateManager.GoToState(NavViewTitleBar, "ContentVisible", false);
+                NavViewTitleBar.InvalidateMeasure();
             };
         }
 
@@ -89,43 +86,32 @@ namespace WinUIGallery.ControlPages
             }
         }
         
-        private void SetTitleBar(UIElement titlebar, bool forceCustomTitlebar = false)
+        private void SetTitleBar(UIElement titlebar)
         {
             var window = WindowHelper.GetWindowForElement(this as UIElement);
             var titleBarElement = UIHelper.FindElementByName(this as UIElement, "AppTitleBar");
-            if (forceCustomTitlebar || !window.ExtendsContentIntoTitleBar)
+
+            if (!window.ExtendsContentIntoTitleBar)
             {
                 titleBarElement.Visibility = Visibility.Visible;
                 window.ExtendsContentIntoTitleBar = true;
                 window.SetTitleBar(titlebar);
-                TitleBarHelper.SetCaptionButtonBackgroundColors(window, Colors.Transparent);
             }
             else
             {
                 titleBarElement.Visibility = Visibility.Collapsed;
                 window.ExtendsContentIntoTitleBar = false;
                 window.SetTitleBar(null);
-                TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
             }
-            UpdateButtonText();
-            //UpdateTitleBarColor();
         }
 
-        public void UpdateButtonText()
+        private void ToggleTitleBar_Click(object sender, RoutedEventArgs e)
         {
-            var window = WindowHelper.GetWindowForElement(this as UIElement);
-            
-            if (window.ExtendsContentIntoTitleBar)
-            {
-                customTitleBar.Content = "Reset to System TitleBar";
-                defaultTitleBar.Content = "Reset to System TitleBar";
-            }
-            else
-            {
-                customTitleBar.Content = "Set Custom TitleBar";
-                defaultTitleBar.Content = "Set Default Custom TitleBar";
-            }
+            UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
+            SetTitleBar(titleBarElement);
 
+            // Announce visual change to automation.
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
 
         private void BgGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -149,7 +135,7 @@ namespace WinUIGallery.ControlPages
             ForegroundColorElement.Background = new SolidColorBrush(color);
 
             currentFgColor = color;
-            //UpdateTitleBarColor();
+            UpdateTitleBarColor();
 
             // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
             Task.Delay(10).ContinueWith(_ => myFgColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
@@ -159,23 +145,22 @@ namespace WinUIGallery.ControlPages
         public void UpdateTitleBarColor()
         {
             var window = WindowHelper.GetWindowForElement(this);
-            var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
-            var titleBarAppNameElement = UIHelper.FindElementByName(this, "AppTitle");
+            var titleBar = UIHelper.FindElementByName(this, "AppTitleBar");
 
-            (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // Changing titlebar uielement's color.
+            (titleBar as TitleBar).Background = new SolidColorBrush(currentBgColor);
 
             if(currentFgColor != Colors.Transparent)
             {
-                (titleBarAppNameElement as TextBlock).Foreground = new SolidColorBrush(currentFgColor);
+                (titleBar as TitleBar).Foreground = new SolidColorBrush(currentFgColor);
             }
             else
             {
-                (titleBarAppNameElement as TextBlock).Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
+                (titleBar as TitleBar).Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
             }
 
-            TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
+            TitleBarHelper.SetForegroundColor(window, currentFgColor);
 
-            if(currentBgColor == Colors.Transparent)
+            if (currentBgColor == Colors.Transparent)
             {
                 // If the current background is null, we want to revert to the default titlebar which is achieved using null as color.
                 TitleBarHelper.SetBackgroundColor(window, null);
@@ -184,23 +169,6 @@ namespace WinUIGallery.ControlPages
             {
                 TitleBarHelper.SetBackgroundColor(window, currentBgColor);
             }
-
-            TitleBarHelper.SetForegroundColor(window, currentFgColor);
-        }
-
-        private void customTitleBar_Click(object sender, RoutedEventArgs e)
-        {
-            UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
-            SetTitleBar(titleBarElement);
-            // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
-        }
-        private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
-        {
-            SetTitleBar(null);
-
-            // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
     }
 }
