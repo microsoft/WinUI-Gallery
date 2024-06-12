@@ -165,7 +165,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <SelectorBar x:Name="SelectorBarControl" SelectionChanged="SelectorBarControl_SelectionChanged">
+                    <SelectorBar x:Name="SelectorBarControl" Margin="-12,0,0,0" SelectionChanged="SelectorBarControl_SelectionChanged">
                         <SelectorBarItem x:Name="SelectorBarXamlItem" Loaded="SelectorBarItem_Loaded" Tag="Xaml" Text="XAML" />
                         <SelectorBarItem x:Name="SelectorBarCSharpItem" Loaded="SelectorBarItem_Loaded" Tag="CSharp" Text="C#" />
                     </SelectorBar>
