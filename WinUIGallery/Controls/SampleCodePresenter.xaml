@@ -15,24 +15,18 @@
         BorderBrush="{Binding BorderBrush, Mode=OneWay}"
         BorderThickness="{Binding BorderThickness, Mode=OneWay}"
         CornerRadius="{Binding CornerRadius, Mode=OneWay}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
         <ScrollViewer
             x:Name="CodeScrollViewer"
-            Grid.Row="1"
             VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
             HorizontalScrollBarVisibility="Auto"
             HorizontalScrollMode="Auto"
-            VerticalScrollBarVisibility="Disabled"
-            VerticalScrollMode="Disabled">
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
             <ContentPresenter
                 x:Name="CodePresenter"
                 Margin="0,0,0,16"
@@ -40,30 +34,21 @@
         </ScrollViewer>
         <local:CopyButton
             x:Name="CopyCodeButton"
-            Grid.Row="0"
             HorizontalAlignment="Right"
             Click="CopyCodeButton_Click"
+            VerticalAlignment="Top"
+            Grid.Column="1"
+            Margin="5,0,0,0"
             Content="&#xE8C8;" />
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
-                <VisualState x:Name="XAMLSample">
-                    <VisualState.Setters>
-                        <Setter Target="SampleHeader.Text" Value="XAML" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="CSharpSample">
-                    <VisualState.Setters>
-                        <Setter Target="SampleHeader.Text" Value="C#" />
-                    </VisualState.Setters>
-                </VisualState>
+                <VisualState x:Name="XAMLSample"/>
+                <VisualState x:Name="CSharpSample"/>
                 <VisualState x:Name="InlineSample">
                     <VisualState.Setters>
-                        <Setter Target="SampleHeader.Visibility" Value="Collapsed" />
-                        <Setter Target="CodeScrollViewer.(Grid.Row)" Value="0" />
                         <Setter Target="CodeScrollViewer.HorizontalScrollMode" Value="Disabled" />
                         <Setter Target="CodeScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-                        <Setter Target="CopyCodeButton.(Grid.Column)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
