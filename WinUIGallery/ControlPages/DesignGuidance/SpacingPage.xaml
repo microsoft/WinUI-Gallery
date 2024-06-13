@@ -113,10 +113,11 @@
             Style="{StaticResource GalleryTileGridStyle}">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
                 <StackPanel Padding="12,24,12,12">
-                    <Grid HorizontalAlignment="Stretch">
+                    <!--  header  -->
+                    <Grid Margin="16,0,0,0" HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="190" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="206" />
+                            <ColumnDefinition Width="*" MaxWidth="400" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
