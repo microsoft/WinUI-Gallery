@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ICommand = System.Windows.Input.ICommand;
 
-namespace AppUIBasics.ControlPages
+namespace WinUIGallery.ControlPages
 {
     public class ListItemData
     {

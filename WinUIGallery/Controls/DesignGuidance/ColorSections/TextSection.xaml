@@ -13,13 +13,16 @@
     <!--  Colors section  -->
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
         <!--  Text  -->
-        <designguidance:ColorPageExample Title="Text" Description="For UI labels and static text">
+        <designguidance:ColorPageExample
+            Title="Text"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="For UI labels and static text">
             <TextBlock
                 FontSize="42"
                 FontWeight="SemiBold"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -65,14 +68,17 @@
 
 
         <!--  Accent text  -->
-        <designguidance:ColorPageExample Title="Accent Text" Description="Recommended for links">
+        <designguidance:ColorPageExample
+            Title="Accent Text"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Recommended for links">
             <TextBlock
                 FontSize="42"
                 FontWeight="SemiBold"
                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                 Text="Aa" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -130,7 +136,7 @@
                 Text="Aa" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -155,7 +161,7 @@
                 ShowSeparator="False" />
         </Grid>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

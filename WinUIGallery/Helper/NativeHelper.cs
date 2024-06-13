@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppUIBasics.Helper
+namespace WinUIGallery.Helper
 {
     internal class NativeHelper
     {

@@ -1,7 +1,7 @@
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 
-namespace AppUIBasics.SamplePages
+namespace WinUIGallery.SamplePages
 {
     public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
     {
@@ -10,7 +10,7 @@ namespace AppUIBasics.SamplePages
         public SampleBuiltInSystemBackdropsWindow()
         {
             this.InitializeComponent();
-            ((FrameworkElement)this.Content).RequestedTheme = AppUIBasics.Helper.ThemeHelper.RootTheme;
+            ((FrameworkElement)this.Content).RequestedTheme = WinUIGallery.Helper.ThemeHelper.RootTheme;
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(titleBar);
             SetBackdrop(BackdropType.Mica);

@@ -16,7 +16,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Hosting;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     /// <summary>
     /// A helper class encapsulating the function and visuals for a Color Slide transition animation.

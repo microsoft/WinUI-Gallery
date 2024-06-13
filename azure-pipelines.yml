@@ -37,9 +37,22 @@ steps:
         command: 'publish'
         publishWebProjects: false
         projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win10-$(buildPlatform).pubxml"'
+        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
         zipAfterPublish: false
         modifyOutputPath: false
+
+    - script: |
+        dir /b /s $(Build.ArtifactStagingDirectory)
+        dir /b /s $(System.DefaultWorkingDirectory)
+      displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
+
+    - task: VSTest@2
+      displayName: 'Run Sample Unit Tests'
+      inputs:
+        failOnMinTestsNotRun: true
+        minimumExpectedTests: '3'
+        testAssemblyVer2: |
+          **\WinUIGalleryUnitTests.build.appxrecipe
 
     - task: PowerShell@2
       displayName: Install WinUI Gallery Package

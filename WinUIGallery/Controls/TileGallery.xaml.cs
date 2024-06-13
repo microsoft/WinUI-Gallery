@@ -16,7 +16,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-namespace AppUIBasics.Controls
+namespace WinUIGallery.Controls
 {
     public sealed partial class TileGallery : UserControl
     {

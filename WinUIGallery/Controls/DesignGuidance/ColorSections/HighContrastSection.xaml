@@ -11,14 +11,14 @@
     mc:Ignorable="d">
 
     <!--  Colors section  -->
-    <StackPanel Margin="0,32,0,0" Spacing="{StaticResource ColorSectionSpacing}">
+    <StackPanel Margin="0,12,0,0" Spacing="{StaticResource ColorSectionSpacing}">
         <TextBlock Text="Below are the default highcontrast themes shown. The brush names are the same, and the OS will chose the right colors based on the selected theme." />
         <!--  Aquatic  -->
         <TextBlock
-            Margin="0,24,0,0"
+            Margin="0,12,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Aquatic" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -113,7 +113,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Desert" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -208,7 +208,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Dusk" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -303,7 +303,7 @@
             Margin="0,24,0,0"
             Style="{StaticResource SubtitleTextBlockStyle}"
             Text="Night Sky" />
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

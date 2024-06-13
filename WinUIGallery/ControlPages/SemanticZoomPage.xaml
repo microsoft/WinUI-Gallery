@@ -10,12 +10,12 @@
     //*********************************************************
 -->
 <Page
-    x:Class="AppUIBasics.ControlPages.SemanticZoomPage"
+    x:Class="WinUIGallery.ControlPages.SemanticZoomPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:AppUIBasics.Data"
-    xmlns:local="using:AppUIBasics"
+    xmlns:data="using:WinUIGallery.Data"
+    xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">

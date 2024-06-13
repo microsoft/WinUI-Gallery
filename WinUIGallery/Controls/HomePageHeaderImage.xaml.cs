@@ -17,7 +17,7 @@ using CommunityToolkit.WinUI;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace AppUIBasics.Controls
+namespace WinUIGallery.Controls
 {
     // ATTRIBUTION: @RykenApps
     public sealed partial class HomePageHeaderImage : UserControl

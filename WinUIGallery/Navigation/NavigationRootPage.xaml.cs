@@ -14,8 +14,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -27,7 +27,7 @@ using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     public sealed partial class NavigationRootPage : Page
     {
@@ -324,17 +324,25 @@ namespace AppUIBasics
                 {
                     //Navigate(typeof(SectionPage), "Design_Guidance");
                 }
+                else if (selectedItem == ColorItem)
+                {
+                    Navigate(typeof(ItemPage), "Color");
+                }
+                else if (selectedItem == GeometryItem)
+                {
+                    Navigate(typeof(ItemPage), "Geometry");
+                }
+                else if (selectedItem == IconographyItem)
+                {
+                    Navigate(typeof(ItemPage), "Iconography");
+                }
+                else if (selectedItem == SpacingItem)
+                {
+                    Navigate(typeof(ItemPage), "Spacing");
+                }
                 else if (selectedItem == TypographyItem)
                 {
                     Navigate(typeof(ItemPage), "Typography");
-                }
-                else if (selectedItem == ColorsItem)
-                {
-                    Navigate(typeof(ItemPage), "Colors");
-                }
-                else if (selectedItem == IconsItem)
-                {
-                    Navigate(typeof(ItemPage), "Icons");
                 }
                 else if (selectedItem == AccessibilityScreenReaderPage)
                 {

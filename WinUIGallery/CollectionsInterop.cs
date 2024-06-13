@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 using NotifyCollectionChangedAction = Microsoft.UI.Xaml.Interop.NotifyCollectionChangedAction;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     // .NET collection types are tightly coupled with WUX types - e.g., ObservableCollection<T>
     // maps to WUX.INotifyCollectionChanged, and creates WUX.NotifyCollectionChangedEventArgs

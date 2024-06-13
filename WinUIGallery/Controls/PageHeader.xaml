@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:AppUIBasics.Data"
+    xmlns:data="using:WinUIGallery.Data"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -18,7 +18,7 @@
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
     </UserControl.Resources>
-    <Grid x:Name="headerGrid" Padding="36,24,36,0">
+    <Grid x:Name="headerGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -26,9 +26,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock
+            AutomationProperties.AutomationId="PageHeader"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"
-            AutomationProperties.AutomationId="PageHeader"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
         <TextBlock
@@ -56,6 +56,7 @@
                         <Flyout Placement="Bottom">
                             <ItemsControl
                                 x:Name="DocsList"
+                                Margin="-12,-8,-12,-8"
                                 IsTabStop="False"
                                 ItemsSource="{x:Bind Item.Docs}">
                                 <ItemsControl.ItemsPanel>
@@ -74,7 +75,7 @@
                         </Flyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
-                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code">
+                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code of this sample page">
                     <DropDownButton.Content>
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon
@@ -94,12 +95,53 @@
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <StackPanel x:Name="SourcePanel" Spacing="4">
-                                <HyperlinkButton x:Name="PageMarkupGitHubLink" ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="XAML source code" />
+                            <StackPanel x:Name="SourcePanel">
+                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,12">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Control source code" />
+                                        <FontIcon
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                            Glyph="&#xE946;"
+                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available" />
+                                    </StackPanel>
+                                    <HyperlinkButton
+                                        x:Name="ControlSourceLink"
+                                        Margin="-12,4,0,0"
+                                        ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri, Mode=OneWay}">
+                                        <TextBlock Text="{x:Bind Item.Title}" />
+                                    </HyperlinkButton>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="Sample page source code" />
+                                    <FontIcon
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE946;"
+                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository" />
+                                </StackPanel>
+                                <HyperlinkButton
+                                    x:Name="PageMarkupGitHubLink"
+                                    Margin="-12,4,0,0"
+                                    ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="XAML" />
                                 </HyperlinkButton>
-                                <HyperlinkButton x:Name="PageCodeGitHubLink" ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="C# source code" />
+                                <HyperlinkButton
+                                    x:Name="PageCodeGitHubLink"
+                                    Margin="-12,0,0,-8"
+                                    ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
+                                    <TextBlock Text="C#" />
                                 </HyperlinkButton>
                             </StackPanel>
                         </Flyout>
@@ -141,7 +183,7 @@
                             Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
                             Target="{x:Bind CopyLinkButton}">
                             <TeachingTip.HeroContent>
-                                <Image Source="/Assets/CopyLinkTeachingTip.png" AutomationProperties.Name="Image of copied text in Run Dialog."/>
+                                <Image AutomationProperties.Name="Image of copied text in Run Dialog." Source="/Assets/CopyLinkTeachingTip.png" />
                             </TeachingTip.HeroContent>
                         </TeachingTip>
                     </local:CopyButton.Resources>

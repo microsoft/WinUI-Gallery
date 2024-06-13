@@ -11,9 +11,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using AppUIBasics.Common;
-using AppUIBasics.Data;
-using AppUIBasics.Helper;
+using WinUIGallery.Common;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -21,11 +21,12 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using Microsoft.Windows.AppLifecycle;
-using System.IO;
-using WinUIGallery.Helper;
+using System.Text;
+using Windows.System;
+using System.Runtime.InteropServices;
+using static WinUIGallery.Win32;
 
-namespace AppUIBasics
+namespace WinUIGallery
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -34,6 +35,9 @@ namespace AppUIBasics
     {
         private static Window startupWindow;
         private static Win32WindowHelper win32WindowHelper;
+        private static int registeredKeyPressedHook = 0;
+        private HookProc keyEventHook;
+
 
         public static string WinAppSdkDetails
         {
@@ -46,12 +50,19 @@ namespace AppUIBasics
         {
             get
             {
-                // Retrieve Windows App Runtime version info dynamically
-                var windowsAppRuntimeVersion =
-                    from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
-                    where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
-                    select FileVersionInfo.GetVersionInfo(module.FileName);
-                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion; 
+                try
+                {
+                    // Retrieve Windows App Runtime version info dynamically
+                    var windowsAppRuntimeVersion =
+                        from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
+                        where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
+                        select FileVersionInfo.GetVersionInfo(module.FileName);
+                    return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion;
+                }
+                catch
+                {
+                    return WinAppSdkDetails + $", Windows App Runtime {WASDK.Runtime.Version.Major}.{WASDK.Runtime.Version.Minor}";
+                }
             }
         }
 
@@ -122,7 +133,20 @@ namespace AppUIBasics
             }
 #endif
 
+            keyEventHook = new HookProc(KeyEventHook);
+            registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
+
             EnsureWindow();
+        }
+
+        private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode >= 0 && IsKeyDownHook(lParam))
+            {
+                RootFrameNavigationHelper.RaiseKeyPressed((uint)wParam);
+            }
+
+            return CallNextHookEx(registeredKeyPressedHook, nCode, wParam, lParam);
         }
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)

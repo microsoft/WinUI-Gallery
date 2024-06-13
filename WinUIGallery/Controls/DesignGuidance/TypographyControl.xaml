@@ -101,7 +101,7 @@
     </UserControl.Resources>
     <Grid MinHeight="68" Background="Transparent">
         <Grid
-            Padding="{x:Bind Padding, Mode=OneWay}"
+            Padding="0,12"
             HorizontalAlignment="Stretch"
             Background="{x:Bind Background, Mode=OneWay}"
             CornerRadius="{ThemeResource ControlCornerRadius}">

@@ -1,6 +1,6 @@
 # UI Tests with WinAppDriver
 
-The UI Test repository is a collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. Note: the [Universal Windows Platform controls](https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/) reference can be used, as the WinUI 3 controls are very similar to the UWP controls.
+The UI Test repository is a collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. See the [Windows Platform controls reference](https://learn.microsoft.com/windows/apps/design/controls/) for more information on available controls.
 
 The test scenarios are written to test the controls in the WinUI 3 Gallery app. The procedure below outlines the steps needed to build and deploy WinUI 3 Gallery and WinAppDriver to run the UI Tests. These steps mirror what azure-pipelines.yml does in pipeline runs.
 
@@ -17,7 +17,7 @@ The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simp
 1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
 
 ```shell
-    >dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win10-x64.pubxml
+    >dotnet.exe publish WinUIGallery\WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
 ```
 
 1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:

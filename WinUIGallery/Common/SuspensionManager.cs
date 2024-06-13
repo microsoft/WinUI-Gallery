@@ -1,18 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using AppUIBasics.Helper;
+using WinUIGallery.Helper;
 
-namespace AppUIBasics.Common
+namespace WinUIGallery.Common
 {
     /// <summary>
     /// SuspensionManager captures global session state to simplify process lifetime management
@@ -56,6 +54,8 @@ namespace AppUIBasics.Common
         /// to save its state.
         /// </summary>
         /// <returns>An asynchronous task that reflects when session state has been saved.</returns>
+        [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
+            Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
         public static async Task SaveAsync()
         {
             try
@@ -99,6 +99,8 @@ namespace AppUIBasics.Common
         /// <returns>An asynchronous task that reflects when session state has been read.  The
         /// content of <see cref="SessionState"/> should not be relied upon until this task
         /// completes.</returns>
+        [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
+            Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
         public static async Task RestoreAsync()
         {
             _sessionState = new Dictionary<string, object>();

@@ -10,7 +10,7 @@
     //*********************************************************
 -->
 <Page
-    x:Class="AppUIBasics.NavigationRootPage"
+    x:Class="WinUIGallery.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     HighContrastAdjustment="None">
@@ -59,8 +59,8 @@
             AutomationProperties.AutomationId="AppTitleBar"
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
-            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Width="18" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
+            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+                <Image Width="18" VerticalAlignment="Center" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="12,0,0,0"
@@ -161,6 +161,16 @@
             IsTitleBarAutoPaddingEnabled="True"
             Loaded="OnNavigationViewControlLoaded"
             SelectionChanged="OnNavigationViewSelectionChanged">
+
+            <!-- Custom TitleBar with NavigationView L-Pattern Overwriting resources -->
+            <NavigationView.Resources>
+                <!-- This top margin is the height of the custom titleBar -->
+                <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+                <Thickness x:Key="NavigationViewMinimalContentMargin">0,48,0,0</Thickness>
+                <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
+                <!-- This is the rounded corner on the Top left of the L Pattern -->
+                <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
+            </NavigationView.Resources>
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
@@ -201,19 +211,29 @@
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
+                        <NavigationViewItem x:Name="ColorItem" AutomationProperties.AutomationId="Color" Content="Color" Tag="Color">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE8D2;" />
+                                <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconsItem" AutomationProperties.AutomationId="Icons" Content="Icons" Tag="Icons">
+                        <NavigationViewItem x:Name="GeometryItem" AutomationProperties.AutomationId="Geometry" Content="Geometry" Tag="Geometry">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE743;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="IconographyItem" AutomationProperties.AutomationId="Iconography" Content="Iconography" Tag="Iconography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="ColorsItem" AutomationProperties.AutomationId="Colors" Content="Colors" Tag="Colors">
+                        <NavigationViewItem x:Name="SpacingItem" AutomationProperties.AutomationId="Spacing" Content="Spacing" Tag="Spacing">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE790;" />
+                                <FontIcon Glyph="&#xE8A9;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                         <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility" Tag="Accessibility">

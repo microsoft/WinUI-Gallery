@@ -11,13 +11,13 @@
 -->
 
 <Page
-    x:Class="AppUIBasics.ControlPages.TitleBarPage"
+    x:Class="WinUIGallery.ControlPages.TitleBarPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:AppUIBasics"
-    xmlns:data="using:AppUIBasics.Data"
+    xmlns:local="using:WinUIGallery"
+    xmlns:data="using:WinUIGallery.Data"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
 
@@ -26,6 +26,17 @@
     </Page.Resources>
 
     <StackPanel>
+        <InfoBar IsOpen="True" IsClosable="False" Margin="0,12">
+            <TextBlock>
+                TitleBar control is now available in <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/experimental-channel#required-c-project-changes-for-16-experimental1">Experimental</Hyperlink>!
+
+                Preview samples for TitleBar at <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery/blob/feature/TitleBarExperimental/WinUIGallery/ControlPages/TitleBarPage.xaml">feature/TitleBarExperimental</Hyperlink>
+            </TextBlock>
+
+        </InfoBar>
+        
+
+        
         <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>

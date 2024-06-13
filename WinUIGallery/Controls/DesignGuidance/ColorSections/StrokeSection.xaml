@@ -12,6 +12,38 @@
 
     <StackPanel Spacing="{StaticResource ColorSectionSpacing}">
 
+        <!--  Card Stroke  -->
+        <designguidance:ColorPageExample
+            Title="Card Stroke"
+            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+            Description="Used for card and layer colors.">
+            <Grid
+                Width="60"
+                Height="48"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                CornerRadius="{StaticResource ControlCornerRadius}" />
+        </designguidance:ColorPageExample>
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <designguidance:ColorTile
+                Background="{ThemeResource CardStrokeColorDefaultBrush}"
+                ColorBrushName="CardStrokeColorDefaultBrush"
+                ColorExplanation="Card layer and strokes"
+                ColorName="Control Stroke / Default"
+                ColorValue="#000000 (0F, 6.78%)" />
+            <designguidance:ColorTile
+                Grid.Column="1"
+                Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
+                ColorBrushName="CardStrokeColorDefaultSolidBrush"
+                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
+                ColorName="Card Stroke / Default Solid"
+                ColorValue="#EBEBEB (FF, 100%)"
+                ShowSeparator="False" />
+        </Grid>
 
         <!--  Control Elevation (gradient strokes)  -->
         <designguidance:ColorPageExample
@@ -20,7 +52,7 @@
             Description="Used for standard control strokes and stroke states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -47,7 +79,7 @@
                 ColorName="Text Control / Border"
                 ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -68,8 +100,6 @@
                 ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
         </Grid>
 
-
-
         <!--  Control Stroke  -->
         <designguidance:ColorPageExample
             Title="Control Stroke"
@@ -77,7 +107,7 @@
             Description="Used for gradient stops in elevation borders, and for control states.">
             <Button Content="Text" />
         </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -113,7 +143,7 @@
                 ColorValue="#000000 (66, 40%)"
                 ShowSeparator="False" />
         </Grid>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -143,36 +173,6 @@
                 ShowSeparator="False" />
         </Grid>
 
-        <!--  Card Stroke  -->
-        <designguidance:ColorPageExample
-            Title="Card Stroke"
-            Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used for card and layer colors.">
-            <DropDownButton>
-                <TextBlock Width="60" />
-            </DropDownButton>
-        </designguidance:ColorPageExample>
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <designguidance:ColorTile
-                Background="{ThemeResource CardStrokeColorDefaultBrush}"
-                ColorBrushName="CardStrokeColorDefaultBrush"
-                ColorExplanation="Card layer and strokes"
-                ColorName="Control Stroke / Default"
-                ColorValue="#000000 (0F, 6.78%)" />
-            <designguidance:ColorTile
-                Grid.Column="1"
-                Background="{ThemeResource CardStrokeColorDefaultSolidBrush}"
-                ColorBrushName="CardStrokeColorDefaultSolidBrush"
-                ColorExplanation="Solid equivalent of Card Stroke / Default. Used in command bar for expanded states"
-                ColorName="Card Stroke / Default Solid"
-                ColorValue="#EBEBEB (FF, 100%)"
-                ShowSeparator="False" />
-        </Grid>
-
         <!--  Control Strong Stroke  -->
         <designguidance:ColorPageExample
             Title="Control Strong Stroke"
@@ -185,7 +185,7 @@
                 OnContent="" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -224,7 +224,7 @@
                 CornerRadius="{StaticResource OverlayCornerRadius}" />
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -269,7 +269,7 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -312,7 +312,7 @@
             </Grid>
         </designguidance:ColorPageExample>
 
-        <Grid Style="{StaticResource ColorTilesPanelStyle}">
+        <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
