@@ -144,8 +144,8 @@
                 <StackPanel>
                     <ComboBox x:Name="EasingComboBox" AutomationProperties.Name="Easing type" ItemsSource="{x:Bind EasingFunctions}" 
                               DisplayMemberPath="Name" SelectedValuePath="EasingFunctionBase" Loaded="EasingComboBox_Loaded"/>
-                    <RadioButtons>
-                        <RadioButton x:Name="easeOutRB" Content="EaseOut" IsChecked="True" />
+                    <RadioButtons x:Name="EasingModeRadioButtons" SelectedIndex="0">
+                        <RadioButton x:Name="easeOutRB" Content="EaseOut" />
                         <RadioButton x:Name="easeInRB" Content="EaseIn" />
                         <RadioButton x:Name="easeInOutRB" Content="EaseInOut" />
                     </RadioButtons>
@@ -177,7 +177,7 @@
 &lt;Storyboard x:Name="Storyboard3"&gt;
     &lt;DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" &gt;
         &lt;DoubleAnimation.EasingFunction&gt;
-            &lt;$(EasingFunction)/&gt;
+            &lt;$(EasingFunction) EasingMode="$(EasingMode)"/&gt;
         &lt;/DoubleAnimation.EasingFunction&gt;
     &lt;/DoubleAnimation&gt;
 &lt;/Storyboard&gt;
@@ -185,6 +185,7 @@
             </local:ControlExample.Xaml>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="EasingFunction" Value="{x:Bind ((control:NamedEasingFunction)EasingComboBox.SelectedItem).Name, Mode=OneWay}" />
+                <local:ControlExampleSubstitution Key="EasingMode" Value="{x:Bind ((RadioButton)EasingModeRadioButtons.SelectedItem).Content, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
     </StackPanel>
