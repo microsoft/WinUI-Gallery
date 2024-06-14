@@ -1,6 +1,6 @@
 ﻿<NumberBox x:Name="NumberBoxSpinButtonPlacementExample"
     Header="Enter an integer:" 
     Value="1" 
-    SpinButtonPlacementMode="Compact" 
+    SpinButtonPlacementMode="$(SpinButtonPlacementMode)" 
     SmallChange="10"
     LargeChange="100" />
