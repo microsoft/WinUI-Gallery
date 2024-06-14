@@ -66,8 +66,6 @@
                             Canvas.Left="16"
                             Canvas.Top="16"
                             Padding="4"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
                             AutomationProperties.Name="Show Geometry"
                             Canvas.ZIndex="1"
                             Click="ShowGeometryButtonClick1"
@@ -86,8 +84,6 @@
                             Canvas.Left="16"
                             Canvas.Top="148"
                             Padding="4"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
                             AutomationProperties.Name="Show Geometry"
                             Canvas.ZIndex="1"
                             Click="ShowGeometryButtonClick2"
@@ -99,14 +95,12 @@
                             Title="0px"
                             Target="{x:Bind ShowGeometryButton2}" />
 
-                        <!--  Body Strong Teaching tip  -->
+                        <!--  Control Teaching tip  -->
                         <Button
                             x:Name="ShowGeometryButton3"
                             Canvas.Left="240"
                             Canvas.Top="168"
                             Padding="4"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
                             AutomationProperties.Name="Show geometry"
                             Canvas.ZIndex="1"
                             Click="ShowGeometryButtonClick3"
@@ -249,7 +243,6 @@
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="N/a" />
                         </Grid>
-
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
