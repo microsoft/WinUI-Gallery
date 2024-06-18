@@ -5,7 +5,7 @@
 <local:MenuItemTemplateSelector x:Key="selector"> 
     <local:MenuItemTemplateSelector.ItemTemplate> 
         <DataTemplate x:DataType="local:Category" > 
-            <NavigationViewItem Content="{x:Bind Name}" TooltipService.ToolTip="{x:Bind Tooltip}"> 
+            <NavigationViewItem Content="{x:Bind Name}" ToolTipService.ToolTip="{x:Bind Tooltip}"> 
                 <NavigationViewItem.Icon> 
                     <SymbolIcon Symbol="{x:Bind Glyph}" /> 
                 </NavigationViewItem.Icon> 
