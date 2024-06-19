@@ -99,7 +99,8 @@ namespace WinUIGallery.ControlPages
                     }
 
                     var fitsFilter = filter.All(entry => item.Code.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                            || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase));
+                            || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
+                            || item.Tags.Any(tag => string.IsNullOrEmpty(tag) is false && tag.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)));
 
                     if (fitsFilter)
                     {
