@@ -28,8 +28,7 @@
                               XamlSource="XamlUICommand\XamlUICommandSample1_xaml.txt"
                               CSharpSource="XamlUICommand\XamlUICommandSample1_cs.txt"
                               HorizontalContentAlignment="Stretch"
-                              MinimumUniversalAPIContract="7"
-                              Loaded="ControlExample_Loaded">
+                              MinimumUniversalAPIContract="7">
             <Grid x:Name="rootGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
