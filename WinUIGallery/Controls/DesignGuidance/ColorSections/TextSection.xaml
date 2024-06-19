@@ -53,7 +53,7 @@
                 ColorExplanation="Pressed only (not accessible)"
                 ColorName="Text / Tertiary"
                 ColorValue="#000000 (72, 44.58%)"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                 ShowSeparator="False" />
             <designguidance:ColorTile
                 Grid.Column="3"
@@ -62,7 +62,7 @@
                 ColorExplanation="Disabled only (not accessible)"
                 ColorName="Text / Disabled"
                 ColorValue="#000000 (5C, 36.14%)"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                 ShowSeparator="False" />
         </Grid>
 
@@ -118,7 +118,7 @@
                 ColorExplanation="Disabled only (not accessible)"
                 ColorName="Accent Text / Disabled"
                 ColorValue="#000000 (5C, 36.14%)"
-                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                 ShowSeparator="False" />
         </Grid>
 
