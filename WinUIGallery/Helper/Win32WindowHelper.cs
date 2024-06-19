@@ -51,7 +51,7 @@ namespace WinUIGallery.Helper
                     if (maxWindowSize != null)
                     {
                         minMaxInfo.ptMaxTrackSize.x = (int)(maxWindowSize.Value.x * scalingFactor);
-                        minMaxInfo.ptMaxTrackSize.y = (int)(minWindowSize.Value.y * scalingFactor);
+                        minMaxInfo.ptMaxTrackSize.y = (int)(maxWindowSize.Value.y * scalingFactor);
                     }
 
                     Marshal.StructureToPtr(minMaxInfo, lParam, true);
