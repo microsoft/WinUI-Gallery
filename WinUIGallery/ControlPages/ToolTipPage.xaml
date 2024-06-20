@@ -50,7 +50,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="An Image with a ToolTip using PlacementRect." MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="An Image with a ToolTip using PlacementRect.">
             <local:ControlExample.Example>
                 <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266">
                     <ToolTipService.ToolTip>

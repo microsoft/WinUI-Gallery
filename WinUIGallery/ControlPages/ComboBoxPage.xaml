@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -58,7 +58,7 @@
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="An editable ComboBox." MinimumUniversalAPIContract="7">
+        <local:ControlExample HeaderText="An editable ComboBox.">
             <local:ControlExample.Example>
                 <StackPanel>
                     <ComboBox x:Name="Combo3" contract7Present:IsEditable="True" ItemsSource="{x:Bind FontSizes}" Header="Font Size" Width="200" Loaded="Combo3_Loaded"  />

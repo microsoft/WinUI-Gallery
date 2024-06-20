@@ -62,19 +62,6 @@ namespace WinUIGallery
                 
                 this.Focus(FocusState.Programmatic);
             }
-
-            if (UIHelper.IsScreenshotMode)
-            {
-                var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<ControlExample>();
-
-                if (controlExamples != null)
-                {
-                    foreach (var controlExample in controlExamples)
-                    {
-                        VisualStateManager.GoToState(controlExample, "ScreenshotMode", false);
-                    }
-                }
-            }
         }
         private void OnNavigationViewLoaded()
         {
