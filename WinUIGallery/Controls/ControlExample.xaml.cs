@@ -7,25 +7,15 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using WinUIGallery.Helper;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.Graphics.Display;
-using Windows.Graphics.Imaging;
-using Windows.Media.AppRecording;
-using Windows.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
+using Windows.Foundation;
+using Windows.Foundation.Metadata;
 
 namespace WinUIGallery
 {
@@ -186,19 +176,10 @@ namespace WinUIGallery
             set { SetValue(HorizontalContentAlignmentProperty, value); }
         }
 
-        public static readonly DependencyProperty MinimumUniversalAPIContractProperty = DependencyProperty.Register("MinimumUniversalAPIContract", typeof(int), typeof(ControlExample), new PropertyMetadata(null));
-        public int MinimumUniversalAPIContract
-        {
-            get { return (int)GetValue(MinimumUniversalAPIContractProperty); }
-            set { SetValue(MinimumUniversalAPIContractProperty, value); }
-        }
-
         public ControlExample()
         {
             this.InitializeComponent();
             Substitutions = new List<ControlExampleSubstitution>();
-
-            ControlPresenter.RegisterPropertyChangedCallback(ContentPresenter.PaddingProperty, ControlPaddingChangedCallback);
             this.Loaded += ControlExample_Loaded;
         }
 
@@ -207,221 +188,8 @@ namespace WinUIGallery
             HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        private void rootGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (MinimumUniversalAPIContract != 0 && !(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", (ushort)MinimumUniversalAPIContract)))
-            {
-                ErrorTextBlock.Visibility = Visibility.Visible;
-            }
-        }
-
         private enum SyntaxHighlightLanguage { Xml, CSharp };
 
-        private void ScreenshotButton_Click(object sender, RoutedEventArgs e)
-        {
-            TakeScreenshot();
-        }
-
-        private void ScreenshotDelayButton_Click(object sender, RoutedEventArgs e)
-        {
-            TakeScreenshotWithDelay();
-        }
-
-        private async void TakeScreenshot()
-        {
-            // Using RTB doesn't capture popups; but in the non-delay case, that probably isn't necessary.
-            // This method seems more robust than using AppRecordingManager and also will work on non-desktop devices.
-
-            RenderTargetBitmap rtb = new RenderTargetBitmap();
-            await rtb.RenderAsync(ControlPresenter);
-
-            var pixelBuffer = await rtb.GetPixelsAsync();
-            var pixels = pixelBuffer.ToArray();
-
-            var file = await UIHelper.ScreenshotStorageFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
-            using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
-            {
-                var displayInformation = DisplayInformation.GetForCurrentView();
-                var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-                encoder.SetPixelData(BitmapPixelFormat.Bgra8,
-                    BitmapAlphaMode.Premultiplied,
-                    (uint)rtb.PixelWidth,
-                    (uint)rtb.PixelHeight,
-                    displayInformation.RawDpiX,
-                    displayInformation.RawDpiY,
-                    pixels);
-
-                await encoder.FlushAsync();
-            }
-        }
-
-        public async void TakeScreenshotWithDelay()
-        {
-            // 3 second countdown
-            for (int i = 3; i > 0; i--)
-            {
-                ScreenshotStatusTextBlock.Text = i.ToString();
-                await Task.Delay(1000);
-            }
-            ScreenshotStatusTextBlock.Text = "Image captured";
-
-            // AppRecordingManager is desktop-only, and its use here is quite hacky,
-            // but it is able to capture popups (though not theme shadows).
-            bool isAppRecordingPresent = ApiInformation.IsTypePresent("Windows.Media.AppRecording.AppRecordingManager");
-            if (!isAppRecordingPresent)
-            {
-                // Better than doing nothing
-                TakeScreenshot();
-            }
-            else
-            {
-                var manager = AppRecordingManager.GetDefault();
-                if (manager.GetStatus().CanRecord)
-                {
-                    StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
-                    var result = await manager.SaveScreenshotToFilesAsync(
-                        localFolder,
-                        "appScreenshot",
-                        AppRecordingSaveScreenshotOption.HdrContentVisible,
-                        manager.SupportedScreenshotMediaEncodingSubtypes);
-
-                    if (result.Succeeded)
-                    {
-                        // Open the screenshot back up
-                        var screenshotFile = await localFolder.GetFileAsync("appScreenshot.png");
-                        using (var stream = await screenshotFile.OpenAsync(FileAccessMode.Read))
-                        {
-                            var decoder = await BitmapDecoder.CreateAsync(stream);
-
-                            // Find the control in the picture
-                            GeneralTransform t = ControlPresenter.TransformToVisual(Window.Current.Content);
-                            Point pos = t.TransformPoint(new Point(0, 0));
-
-                            if (!CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar)
-                            {
-                                // Add the height of the title bar, which I really wish was programmatically available anywhere.
-                                pos.Y += 32.0;
-                            }
-
-                            // Crop the screenshot to the control area
-                            var transform = new BitmapTransform() { Bounds = new BitmapBounds() {
-                                X = (uint)(Math.Ceiling(pos.X)) + 1, // Avoid the 1px window border
-                                Y = (uint)(Math.Ceiling(pos.Y)) + 1,
-                                Width = (uint)ControlPresenter.ActualWidth - 1, // Rounding issues -- this avoids capturing the control border
-                                Height = (uint)ControlPresenter.ActualHeight - 1} };
-
-                            var softwareBitmap = await decoder.GetSoftwareBitmapAsync(
-                                decoder.BitmapPixelFormat,
-                                BitmapAlphaMode.Ignore,
-                                transform,
-                                ExifOrientationMode.IgnoreExifOrientation,
-                                ColorManagementMode.DoNotColorManage);
-
-                            // Save the cropped picture
-                            var file = await localFolder.CreateFileAsync(GetBestScreenshotName(), CreationCollisionOption.ReplaceExisting);
-                            using (var outStream = await file.OpenAsync(FileAccessMode.ReadWrite))
-                            {
-                                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outStream);
-                                encoder.SetSoftwareBitmap(softwareBitmap);
-                                await encoder.FlushAsync();
-                            }
-                        }
-
-                        // Delete intermediate file
-                        await screenshotFile.DeleteAsync();
-                    }
-                }
-            }
-
-            await Task.Delay(1000);
-            ScreenshotStatusTextBlock.Text = "";
-        }
-
-        string GetBestScreenshotName()
-        {
-            string imageName = "Screenshot.png";
-            if (XamlSource != null)
-            {
-                // Most of them don't have this, but the xaml source name is a really good file name
-                string xamlSource = new Uri(XamlSource, UriKind.Relative).LocalPath;
-                string fileName = Path.GetFileNameWithoutExtension(xamlSource);
-                if (!String.IsNullOrWhiteSpace(fileName))
-                {
-                    imageName = fileName + ".png";
-                }
-            }
-            else if (!String.IsNullOrWhiteSpace(Name))
-            {
-                // Put together the page name and the control example name
-                UIElement uie = this;
-                while (uie != null && !(uie is Page))
-                {
-                    uie = VisualTreeHelper.GetParent(uie) as UIElement;
-                }
-                if (uie != null)
-                {
-                    string name = Name;
-                    if (name.Equals("RootPanel"))
-                    {
-                        // This is the default name for the example; add an index on the end to disambiguate
-                        imageName = uie.GetType().Name + "_" + ((Panel)this.Parent).Children.IndexOf(this).ToString() + ".png";
-                    }
-                    else
-                    {
-                        imageName = uie.GetType().Name + "_" + name + ".png";
-                    }
-                }
-            }
-            return imageName;
-        }
-
-        private void ControlPaddingChangedCallback(DependencyObject sender, DependencyProperty dp)
-        {
-            ControlPaddingBox.Text = ControlPresenter.Padding.ToString();
-        }
-
-        private void ControlPaddingBox_KeyUp(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Enter && !String.IsNullOrWhiteSpace(ControlPaddingBox.Text))
-            {
-                EvaluatePadding();
-            }
-        }
-
-        private void ControlPaddingBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            EvaluatePadding();
-        }
-
-        private void EvaluatePadding()
-        {
-            // Evaluate the text in the ControlPaddingBox as padding
-            string[] strs = ControlPaddingBox.Text.Split(new char[] { ' ', ',' });
-            double[] nums = new double[4];
-            for (int i = 0; i < strs.Length; i++)
-            {
-                if (!Double.TryParse(strs[i], out nums[i]))
-                {
-                    //  Bad format
-                    return;
-                }
-            }
-
-            switch (nums.Length)
-            {
-                case 1:
-                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[0], Right = nums[0], Bottom = nums[0] };
-                    break;
-
-                case 2:
-                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[1], Right = nums[0], Bottom = nums[1] };
-                    break;
-
-                case 4:
-                    ControlPresenter.Padding = new Thickness() { Left = nums[0], Top = nums[1], Right = nums[2], Bottom = nums[3] };
-                    break;
-            }
-        }
         private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
         {
             var item = sender as SelectorBarItem;
