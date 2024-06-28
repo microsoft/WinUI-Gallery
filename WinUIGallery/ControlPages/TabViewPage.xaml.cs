@@ -250,6 +250,7 @@ namespace WinUIGallery.ControlPages
             var newWindow = WindowHelper.CreateWindow();
             newWindow.ExtendsContentIntoTitleBar = true;
             newWindow.Content = tabViewSample;
+            newWindow.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
             tabViewSample.LoadDemoData();
             tabViewSample.SetupWindowMinSize(newWindow);
 

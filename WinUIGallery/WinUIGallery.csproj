@@ -299,5 +299,9 @@
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>
         </ItemGroup>
-    </Target> 
+    </Target>
+    <!-- Needed in order for running unpackaged to work properly. -->
+    <Target Name="CopyContentToOutputDirectory" AfterTargets="Build">
+      <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" />
+    </Target>
 </Project>
