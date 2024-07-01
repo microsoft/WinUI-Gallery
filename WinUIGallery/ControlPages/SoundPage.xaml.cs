@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,8 +28,9 @@ namespace WinUIGallery.ControlPages
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {            
-            ElementSoundPlayer.Play((ElementSoundKind)soundSelection.SelectedIndex);
+        {
+            var tagInt = int.Parse((string)(sender as Button).Tag);
+            ElementSoundPlayer.Play((ElementSoundKind)tagInt);
         }
 
         private void spatialAudioBox_Checked(object sender, RoutedEventArgs e)
