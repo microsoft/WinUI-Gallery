@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "WinUIGallery/WinUIGallery.sln"
+    "dotnet.defaultSolution": "WinUIGallery/WinUIGallery.sln",
+    "dotnet.preferCSharpExtension": true
 }
