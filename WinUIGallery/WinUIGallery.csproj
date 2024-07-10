@@ -315,6 +315,7 @@
     </Target>
     <!-- Needed in order for running unpackaged to work properly. -->
     <Target Name="CopyContentToOutputDirectory" AfterTargets="Build">
-      <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" />
+      <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" Condition="!$([System.IO.Path]::IsPathRooted('%(Content.Identity)'))" />
+      <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" Condition="$([System.IO.Path]::IsPathRooted('%(Content.Identity)'))" />
     </Target>
 </Project>
