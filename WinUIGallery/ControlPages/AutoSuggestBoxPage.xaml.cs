@@ -234,7 +234,8 @@ namespace WinUIGallery.ControlPages
             {
                 ControlDetails.Visibility = Visibility.Visible;
 
-                BitmapImage image = new BitmapImage(new Uri(control.IconGlyph));
+
+                BitmapImage image = control.IconGlyph == null? null : new BitmapImage(new Uri(control.IconGlyph));
                 ControlImage.Source = image;
 
                 ControlTitle.Text = control.Title;
