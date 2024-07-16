@@ -1,0 +1,67 @@
+# Sync branches in a mirror repository to a base repo by running this pipeline
+# from the mirror repo, and supplying the base repo as a parameter
+name: $(BuildDefinitionName)_$(date:yyMMdd)$(rev:.r)
+
+parameters:
+  - name: "SourceToTargetBranches"
+    type: object
+    default:
+      master: master
+  - name: "SourceRepository"
+    type: string
+    default: "https://github.com/microsoft/WinUI-Gallery.git"
+
+resources:
+  repositories:
+  - repository: 1ESPipelineTemplates
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-2022
+      os: windows
+    customBuildTags:
+    - ES365AIMigrationTooling
+    stages:
+    - stage: stage
+      jobs:
+        - job: SyncMirror
+          strategy:
+            matrix:
+              ${{ each branches in parameters.SourceToTargetBranches }}:
+                ${{ branches.key }}:
+                  SourceBranch: ${{ branches.key }}
+                  TargetBranch: ${{ branches.value }}
+          dependsOn: []
+          steps:
+            - checkout: self
+              persistCredentials: true
+
+            - task: PowerShell@2
+              inputs:
+                targetType: 'inline'
+                script: |
+                  Write-Host "SourceBranch " + "$(SourceBranch)"
+                  Write-Host "TargetBranch " + "$(TargetBranch)"
+
+                  $repo = "${{ parameters.SourceRepository }}"
+                  git remote add sourcerepo $repo
+                  git remote
+
+                  $target = "$(TargetBranch)"
+                  git fetch origin $target
+                  git checkout $target
+                  git pull origin $target
+
+                  $source = "$(SourceBranch)"
+                  git fetch sourcerepo $source
+                  git pull sourcerepo $source
+
+            - task: CmdLine@2
+              inputs:
+                script: |
+                  git push
