@@ -151,6 +151,7 @@
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <None Remove="ControlPages\AppWindowPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
@@ -170,6 +171,9 @@
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="DataModel\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="SamplePages\SampleCompactOverlayPresenterWindow.xaml" />
+        <None Remove="SamplePages\SampleFullScreenPresenterWindow.xaml" />
+        <None Remove="SamplePages\SampleOverlappedPresenterWindow.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -291,6 +295,26 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="SamplePages\SampleFullScreenPresenterWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="SamplePages\SampleCompactOverlayPresenterWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="SamplePages\SampleOverlappedPresenterWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\AppWindowPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
