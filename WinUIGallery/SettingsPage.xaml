@@ -100,21 +100,6 @@
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
 
-                <toolkit:SettingsExpander x:Name="ScreenshotCard" Header="Screenshot mode" Visibility="Collapsed">
-                    <toolkit:SettingsExpander.HeaderIcon>
-                        <FontIcon Glyph="&#xEC4F;" />
-                    </toolkit:SettingsExpander.HeaderIcon>
-                    <ToggleSwitch x:Name="screenshotModeToggle" Toggled="screenshotModeToggle_Toggled" />
-                    <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard x:Name="ScreenshotFolderCard" Header="Screenshot folder">
-                            <toolkit:SettingsCard.Description>
-                                <HyperlinkButton x:Name="screenshotFolderLink" Click="screenshotFolderLink_Click" />
-                            </toolkit:SettingsCard.Description>
-                            <Button Click="FolderButton_Click" Content="Browse" />
-                        </toolkit:SettingsCard>
-                    </toolkit:SettingsExpander.Items>
-                </toolkit:SettingsExpander>
-
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                 <toolkit:SettingsExpander Description="© 2024 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">
