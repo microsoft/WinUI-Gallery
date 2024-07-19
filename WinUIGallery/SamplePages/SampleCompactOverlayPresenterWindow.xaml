@@ -8,8 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
-        Current CompactOverlaySize: 
-        <Run x:Name="SizeText"/>
-    </TextBlock>
+    <StackPanel Spacing="20" VerticalAlignment="Center">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16">
+            Current CompactOverlaySize: 
+            <Run x:Name="SizeText"/>
+        </TextBlock>
+
+        <ToggleButton Click="ToggleButton_Click" HorizontalAlignment="Center">ExtendsContentIntoTitleBar</ToggleButton>
+    </StackPanel>
+
 </Window>

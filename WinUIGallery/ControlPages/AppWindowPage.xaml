@@ -11,9 +11,6 @@
     <StackPanel>
         <local:ControlExample HeaderText="AppWindow with OverlappedPresenter">
             <Button Click="Button_Click">Create new Window with OverlappedPresenter</Button>
-            <local:ControlExample.Options>
-                <ToggleSwitch Header="ExtendsContentIntoTitleBar" x:Name="ExtendContent1"/>
-            </local:ControlExample.Options>
         </local:ControlExample>
 
         <local:ControlExample HeaderText="AppWindow with FullScreenPresenter">

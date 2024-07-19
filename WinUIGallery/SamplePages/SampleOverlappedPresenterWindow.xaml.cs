@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,25 +23,50 @@ namespace WinUIGallery.SamplePages
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SampleOverlappedPresenterWindow : Window
+    public sealed partial class SampleOverlappedPresenterWindow : Window, INotifyPropertyChanged
     {
         OverlappedPresenter presenter;
+        public event PropertyChangedEventHandler PropertyChanged;
         public SampleOverlappedPresenterWindow()
         {
-            this.InitializeComponent();
             presenter = AppWindow.Presenter as OverlappedPresenter;
+            this.InitializeComponent();
         }
 
         public bool HasBorder
         {
             get => presenter.HasBorder;
-            set => presenter.SetBorderAndTitleBar(value, HasTitleBar);
+            set
+            {
+                try
+                {
+                    presenter.SetBorderAndTitleBar(value, HasTitleBar);
+                }
+                catch (Exception e)
+                {
+                    ShowExceptionDialog(e.Message);
+                }
+                NotifyPropertyChanged("HasBorder");
+                NotifyPropertyChanged("HasTitleBar");
+            }
         }
 
         public bool HasTitleBar
         {
             get => presenter.HasTitleBar;
-            set => presenter.SetBorderAndTitleBar(HasBorder, value);
+            set
+            {
+                try
+                {
+                    presenter.SetBorderAndTitleBar(HasBorder, value);
+                }
+                catch (Exception e)
+                {
+                    ShowExceptionDialog(e.Message);
+                }
+                NotifyPropertyChanged("HasTitleBar");
+                NotifyPropertyChanged("HasBorder");
+            }
         }
 
         public bool IsAlwaysOnTop
@@ -71,6 +97,27 @@ namespace WinUIGallery.SamplePages
         {
             get => presenter.IsResizable;
             set => presenter.IsResizable = value;
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExtendsContentIntoTitleBar = !ExtendsContentIntoTitleBar;
+        }
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        
+        private void ShowExceptionDialog(string message)
+        {
+            new ContentDialog()
+            {
+                XamlRoot = this.Content.XamlRoot,
+                Title = "Exception thrown",
+                Content = message,
+                PrimaryButtonText = "OK",
+            }.ShowAsync();
         }
     }
 }

@@ -8,13 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Spacing="5">
+    <StackPanel Spacing="5" HorizontalAlignment="Center" VerticalAlignment="Center">
         <ToggleSwitch Header="HasBorder" IsOn="{x:Bind HasBorder, Mode=TwoWay}"/>
         <ToggleSwitch Header="HasTitleBar" IsOn="{x:Bind HasTitleBar, Mode=TwoWay}"/>
         <ToggleSwitch Header="IsAlwaysOnTop" IsOn="{x:Bind IsAlwaysOnTop, Mode=TwoWay}"/>
         <ToggleSwitch Header="IsMaximizable" IsOn="{x:Bind IsMaximizable, Mode=TwoWay}"/>
-        <ToggleSwitch Header="IsMinimizable" IsOn="{x:Bind IsAlwaysOnTop, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsMinimizable" IsOn="{x:Bind IsMinimizable, Mode=TwoWay}"/>
         <ToggleSwitch Header="IsModal" IsOn="{x:Bind IsModal, Mode=TwoWay}"/>
         <ToggleSwitch Header="IsResizable" IsOn="{x:Bind IsResizable, Mode=TwoWay}"/>
+
+        <ToggleButton Click="ToggleButton_Click" HorizontalAlignment="Center" Margin="0,20">ExtendsContentIntoTitleBar</ToggleButton>
     </StackPanel>
 </Window>

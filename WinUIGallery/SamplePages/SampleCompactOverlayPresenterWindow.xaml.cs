@@ -43,5 +43,10 @@ namespace WinUIGallery.SamplePages
             }
             return "";
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExtendsContentIntoTitleBar = !ExtendsContentIntoTitleBar;
+        }
     }
 }
