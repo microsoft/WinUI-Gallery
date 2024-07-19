@@ -1715,7 +1715,7 @@
           "Title": "RadioButtons",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/RadioButtons.png",
           "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
           "Content": "<p>Look at the <i>RadioButtonsPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/RadioButtons",
