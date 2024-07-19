@@ -38,22 +38,16 @@ ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On
             </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Play Specific System Sound">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Play Sound" ElementSoundMode="Off" Click="Button_Click" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="soundSelection" Grid.Column="1" Header="Pick Custom Sound" SelectedIndex="1" HorizontalAlignment="Right" Margin="50,0,0,0">
-                    <ComboBoxItem>Focus</ComboBoxItem>
-                    <ComboBoxItem>Invoke</ComboBoxItem>
-                    <ComboBoxItem>Show</ComboBoxItem>
-                    <ComboBoxItem>Hide</ComboBoxItem>
-                    <ComboBoxItem>MoveNext</ComboBoxItem>
-                    <ComboBoxItem>MovePrevious</ComboBoxItem>
-                    <ComboBoxItem>GoBack</ComboBoxItem>
-                </ComboBox>
-            </Grid>
+            <StackPanel Orientation="Vertical" Spacing="5">
+                <Button Content="&#x25B6; Focus" ElementSoundMode="Off" Tag="0" Click="Button_Click"/>
+                <Button Content="&#x25B6; Invoke" ElementSoundMode="Off" Tag="1" Click="Button_Click"/>
+                <Button Content="&#x25B6; Show" ElementSoundMode="Off" Tag="2" Click="Button_Click"/>
+                <Button Content="&#x25B6; Hide" ElementSoundMode="Off" Tag="3" Click="Button_Click"/>
+                <Button Content="&#x25B6; MovePrevious" ElementSoundMode="Off" Tag="4" Click="Button_Click"/>
+                <Button Content="&#x25B6; MoveNext" ElementSoundMode="Off" Tag="5" Click="Button_Click"/>
+                <Button Content="&#x25B6; GoBack" ElementSoundMode="Off" Tag="6" Click="Button_Click"/>
+            </StackPanel>
+ 
             <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 ElementSoundPlayer.State = ElementSoundPlayerState.On;
@@ -62,8 +56,8 @@ ElementSoundPlayer.Play(ElementSoundKind.Focus);
 ElementSoundPlayer.Play(ElementSoundKind.Invoke);
 ElementSoundPlayer.Play(ElementSoundKind.Show);
 ElementSoundPlayer.Play(ElementSoundKind.Hide);
-ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
 ElementSoundPlayer.Play(ElementSoundKind.MovePrevious);
+ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
 ElementSoundPlayer.Play(ElementSoundKind.GoBack);
                 </x:String>
             </local:ControlExample.CSharp>
