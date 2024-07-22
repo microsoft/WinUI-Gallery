@@ -40,8 +40,8 @@
         <local:ControlExample x:Name="Example2" HeaderText="A ListBox with its ItemsSource and Height set.">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <ListBox x:Name="ListBox2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1"
-                            SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded" HighContrastAdjustment="Auto"/>
+                    <ListBox x:Name="ListBox2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Name"
+                            SelectedValuePath="FontFamily" Height="164" Loaded="ListBox2_Loaded" HighContrastAdjustment="Auto"/>
                     <TextBlock x:Name="Control2Output" Text="You can set the font used for this text."
                             FontFamily="{x:Bind (FontFamily)ListBox2.SelectedValue, Mode=OneWay}"
                             Style="{StaticResource OutputTextBlockStyle}" />
@@ -49,7 +49,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String>
-                    &lt;ListBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Height="164" Loaded="ListBox2_Loaded"/&gt;
+                    &lt;ListBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Name" SelectedValuePath="FontFamily" Height="164" Loaded="ListBox2_Loaded"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

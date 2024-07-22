@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,21 +12,22 @@ using System.Collections.Generic;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using WinUIGallery.Common;
 
 namespace WinUIGallery.ControlPages
 {
     public sealed partial class ListBoxPage : Page
     {
-        private List<Tuple<string, FontFamily>> _fonts = new List<Tuple<string, FontFamily>>()
+        private List<FontFamilyTuple> _fonts = new List<FontFamilyTuple>()
         {
-            new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
-            new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
-            new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
-            new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
-            new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
+            new FontFamilyTuple("Arial", new FontFamily("Arial")),
+            new FontFamilyTuple("Comic Sans MS", new FontFamily("Comic Sans MS")),
+            new FontFamilyTuple("Courier New", new FontFamily("Courier New")),
+            new FontFamilyTuple("Segoe UI", new FontFamily("Segoe UI")),
+            new FontFamilyTuple("Times New Roman", new FontFamily("Times New Roman"))
         };
 
-        public List<Tuple<string, FontFamily>> Fonts
+        public List<FontFamilyTuple> Fonts
         {
             get { return _fonts; }
         }

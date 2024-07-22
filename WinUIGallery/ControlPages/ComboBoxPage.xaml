@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -43,8 +43,8 @@
         <local:ControlExample HeaderText="A ComboBox with its ItemsSource set.">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <ComboBox x:Name="Combo2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1"
-                            SelectedValuePath="Item2" Header="Font" MinWidth="200" Loaded="Combo2_Loaded" />
+                    <ComboBox x:Name="Combo2" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Name"
+                            SelectedValuePath="FontFamily" Header="Font" MinWidth="200" Loaded="Combo2_Loaded" />
                     <TextBlock x:Name="Control2Output" Text="You can set the font used for this text."
                             FontFamily="{x:Bind (FontFamily)Combo2.SelectedValue, Mode=OneWay}"
                             Style="{StaticResource OutputTextBlockStyle}" />
@@ -52,7 +52,7 @@
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2"
+&lt;ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Name" SelectedValuePath="FontFamily"
           Header="Font" Width="200" Loaded="Combo2_Loaded"/&gt;
                 </x:String>
             </local:ControlExample.Xaml>
