@@ -79,5 +79,27 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <local:ControlExample x:Name="Example5" HeaderText="A selectable TextBlock">
+            <local:ControlExample.Example>
+                <TextBlock IsTextSelectionEnabled="{x:Bind SelectionEnabledSwitch.IsOn, Mode=OneWay}"
+                           Text="I am a selectable TextBlock with custom SelectionHighlightColor."
+                           SelectionHighlightColor="DarkOrange"/>
+            </local:ControlExample.Example>
+
+            <local:ControlExample.Options>
+                <ToggleSwitch Header="IsTextSelectionEnabled" x:Name="SelectionEnabledSwitch"/>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBlock IsTextSelectionEnabled="$(IsTextSelectionEnabled)"
+           Text="I am a selectable TextBlock with custom SelectionHighlightColor."
+           SelectionHighlightColor="DarkOrange"&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="IsTextSelectionEnabled" Value="{x:Bind SelectionEnabledSwitch.IsOn, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
+        </local:ControlExample>
     </StackPanel>
 </Page>
