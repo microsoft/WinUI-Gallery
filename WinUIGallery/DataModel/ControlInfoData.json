@@ -2843,26 +2843,44 @@
           ]
         },
         {
-          "UniqueId": "TitleBar",
-          "Title": "TitleBar",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
-          "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "TitleBar - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window.extendscontentintotitlebar"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            }
-          ],
-          "RelatedControls": [
-          ]
+            "UniqueId": "TitleBar",
+            "Title": "TitleBar",
+            "ApiNamespace": "Microsoft.UI.Xaml",
+            "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
+            "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
+            "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
+            "Content": "<p>Look at the <i>TitleBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+            "IsUpdated": true,
+            "Docs": [
+                {
+                    "Title": "TitleBar - API",
+                    "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window.extendscontentintotitlebar"
+                },
+                {
+                    "Title": "Guidelines",
+                    "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
+                }
+            ],
+            "RelatedControls": [
+            ]
+        },
+        {
+            "UniqueId": "AppWindow",
+            "Title": "AppWindow",
+            "ApiNamespace": "Microsoft.UI.Windowing",
+            "Subtitle": "",
+            "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
+            "Description": "This sample shows different functionalities of AppWindow and its corresponding Presenter.",
+            "Docs": [
+                {
+                    "Title": "AppWindow - API",
+                    "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindow"
+                },
+                {
+                    "Title": "OverlappedPresenter - API",
+                    "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.overlappedpresenter"
+                }
+            ]
         }
       ]
     },
