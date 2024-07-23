@@ -25,8 +25,15 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <BreadcrumbBar
+        <TextBlock
             Grid.Row="0"
+            AutomationProperties.AutomationId="PageHeader"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Item.Title}"
+            TextTrimming="CharacterEllipsis"
+            TextWrapping="NoWrap" />
+        <BreadcrumbBar
+            Grid.Row="1"
             IsHitTestVisible="False"
             Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}"
             ItemsSource="{x:Bind Item.BaseClasses}">
@@ -38,13 +45,6 @@
                 </DataTemplate>
             </BreadcrumbBar.ItemTemplate>
         </BreadcrumbBar>
-        <TextBlock
-            Grid.Row="1"
-            AutomationProperties.AutomationId="PageHeader"
-            Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind Item.Title}"
-            TextTrimming="CharacterEllipsis"
-            TextWrapping="NoWrap" />
         <TextBlock
             x:Name="NamespaceTextBlock"
             Grid.Row="2"
