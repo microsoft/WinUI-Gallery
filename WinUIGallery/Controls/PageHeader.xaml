@@ -23,24 +23,38 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <TextBlock
+            Grid.Row="0"
             AutomationProperties.AutomationId="PageHeader"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"
             TextTrimming="CharacterEllipsis"
             TextWrapping="NoWrap" />
+        <BreadcrumbBar
+            Grid.Row="1"
+            IsHitTestVisible="False"
+            Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}"
+            ItemsSource="{x:Bind Item.BaseClasses}">
+            <BreadcrumbBar.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <TextBlock
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind}" />
+                </DataTemplate>
+            </BreadcrumbBar.ItemTemplate>
+        </BreadcrumbBar>
         <TextBlock
             x:Name="NamespaceTextBlock"
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="0,4,0,0"
             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
             IsTextSelectionEnabled="True"
             Style="{StaticResource CaptionTextBlockStyle}"
             Text="{x:Bind Item.ApiNamespace}"
             Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}" />
-        <Grid Grid.Row="2" Margin="0,12,0,12">
+        <Grid Grid.Row="3" Margin="0,12,0,12">
             <StackPanel Orientation="Horizontal" Spacing="4">
                 <DropDownButton
                     AutomationProperties.Name="Documentation"
