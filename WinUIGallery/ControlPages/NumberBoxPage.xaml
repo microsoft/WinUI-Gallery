@@ -44,11 +44,14 @@
                 </NumberBox>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
-                <RadioButtons x:Name="SpinButtonPlacementGroup" Header="SpinButton placement">
+                <RadioButtons x:Name="SpinButtonPlacementGroup" Header="SpinButton placement" SelectedIndex="1">
                     <RadioButton Content="Inline" Tag="Inline" Checked="RadioButton_Checked" />
-                    <RadioButton Content="Compact" Tag="Compact" Checked="RadioButton_Checked" IsChecked="True" />
+                    <RadioButton Content="Compact" Tag="Compact" Checked="RadioButton_Checked" />
                 </RadioButtons>
             </local:ControlExample.Options>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="SpinButtonPlacementMode" Value="{x:Bind ((RadioButton)SpinButtonPlacementGroup.SelectedItem).Content, Mode=OneWay}"/>
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         
         <local:ControlExample HeaderText="A formatted NumberBox that rounds to the nearest 0.25." 
