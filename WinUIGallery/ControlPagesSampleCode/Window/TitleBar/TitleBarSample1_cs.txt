@@ -1,0 +1,3 @@
+﻿Window window = WindowHelper.GetWindowForElement(this as UIElement); //Gets this window from the current page
+window.ExtendsContentIntoTitleBar = true;  // Disable the system title bar
+window.SetTitleBar(AppTitleBar);      // Set the users title bar UIElement as the titlebar

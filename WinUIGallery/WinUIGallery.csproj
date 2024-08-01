@@ -151,6 +151,9 @@
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample3.txt" />
+        <None Remove="ControlPagesSampleCode\Window\TitleBar\TitleBarSample4_xaml.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
@@ -196,6 +199,9 @@
         <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample3.txt" />
+        <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample4_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Window\TitleBar\TitleBarSample1_xaml.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
     </ItemGroup>

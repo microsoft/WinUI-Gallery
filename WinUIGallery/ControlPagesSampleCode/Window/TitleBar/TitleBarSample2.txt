@@ -1,4 +1,11 @@
-﻿// no UIElement is set for titlebar, default titlebar is created which extends to entire non client area
-Window window = App.MainWindow;
-window.ExtendsContentIntoTitleBar = true;
-// window.SetTitleBar(null);  // optional line as not setting any UIElement as titlebar is same as setting null as titlebar
+//System title bar
+Window window = WindowHelper.GetWindowForElement(this as UIElement); //Get current window from this page
+AppWindow appWindow = WindowHelper.GetAppWindow(window); //Get current appWindow
+AppWindowTitleBar appWindowTitleBar = appWindow.TitleBar; //Get app window title bar
+
+appWindowTitleBar.BackgroundColor = backgroundColor; //Set background color
+appWindowTitleBar.ForegroundColor = foregroundColor; //Set foreground color
+
+//Custom title bar
+AppTitleBar.Background = new SolidColorBrush(backgroundColor); //Set background color
+AppTitleBar.Foreground = new SolidColorBrush(foregroundColor); //Set foreground color

@@ -1,0 +1,3 @@
+﻿<Border x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top">
+    <TextBlock x:Name="AppTitle" Text="{StaticResource AppTitleName}" VerticalAlignment="Top" Margin="0,8,0,0" />
+</Border>
