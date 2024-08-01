@@ -37,6 +37,7 @@ namespace WinUIGallery.ControlPages
         private Windows.UI.Color currentBgColor = Colors.Transparent;
         private Windows.UI.Color currentFgColor = ThemeHelper.ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
         private bool sizeChangedEventHandlerAdded = false;
+        private bool customTitleBarEnabled = true;
 
         public TitleBarPage()
         {
@@ -83,7 +84,7 @@ namespace WinUIGallery.ControlPages
             ClearClickThruRegions();
             var txtBoxNonClientArea = UIHelper.FindElementByName(this as UIElement, "AppTitleBarTextBox") as FrameworkElement;
             txtBoxNonClientArea.Visibility = Visibility.Collapsed;
-            addInteractiveElements.Content = "Add interactive control to titlebar";
+            addInteractiveElements.Content = "Add a TextBox to the TileBar";
         }
 
         private void SetClickThruRegions(Windows.Graphics.RectInt32[] rects)
@@ -106,13 +107,13 @@ namespace WinUIGallery.ControlPages
             
             if (window.ExtendsContentIntoTitleBar)
             {
-                customTitleBar.Content = "Reset to System TitleBar";
-                defaultTitleBar.Content = "Reset to System TitleBar";
+                customTitleBar.Content = "Set System TitleBar";
+                defaultTitleBar.Content = "Set System TitleBar";
             }
             else
             {
                 customTitleBar.Content = "Set Custom TitleBar";
-                defaultTitleBar.Content = "Set Default Custom TitleBar";
+                defaultTitleBar.Content = "Set Custom TitleBar";
             }
 
         }
@@ -148,10 +149,12 @@ namespace WinUIGallery.ControlPages
         public void UpdateTitleBarColor()
         {
             var window = WindowHelper.GetWindowForElement(this);
+            var backButtonParent = UIHelper.FindElementByName(this, "AutomationHelpersPanel");
             var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
             var titleBarAppNameElement = UIHelper.FindElementByName(this, "AppTitle");
 
-            (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // Changing titlebar uielement's color.
+            (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // Changing TitleBar color.
+            (backButtonParent as Grid).Background = new SolidColorBrush(currentBgColor); // Changing BackButton background.
 
             if(currentFgColor != Colors.Transparent)
             {
@@ -181,12 +184,16 @@ namespace WinUIGallery.ControlPages
         {
             UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
             SetTitleBar(titleBarElement);
+            customTitleBarEnabled = true;
+
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
         }
+
         private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
         {
             SetTitleBar(null);
+            customTitleBarEnabled = false;
 
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
@@ -219,7 +226,7 @@ namespace WinUIGallery.ControlPages
             }
             else
             {
-                addInteractiveElements.Content = "Remove interactive control from titlebar";
+                addInteractiveElements.Content = "Remove the TextBox from the TitleBar";
                 txtBoxNonClientArea.Visibility = Visibility.Visible;
                 if (sizeChangedEventHandlerAdded)
                 {
@@ -242,6 +249,72 @@ namespace WinUIGallery.ControlPages
                 UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
             }
         }
-       
+
+        private void collapsedTitleBar_Click(object sender, RoutedEventArgs e)
+        {
+            //Enable custom TitleBar if it's disabled
+            if (!customTitleBarEnabled)
+                customTitleBar_Click(sender, e);
+
+            //Get appWindowTitleBar
+            var window = WindowHelper.GetWindowForElement(this as UIElement);
+            var appWindow = window.AppWindow;
+            var appWindowTitleBar = appWindow.TitleBar;
+
+            //Set height
+            appWindowTitleBar.PreferredHeightOption = TitleBarHeightOption.Collapsed;
+
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
+        }
+
+        void systemTitleBar_Click(object sender, RoutedEventArgs e)
+        {
+            //Return if the system TitleBar is already enabled
+            if (!customTitleBarEnabled) return;
+
+            //Disable the custom title bar
+            SetTitleBar(null);
+            customTitleBarEnabled = false;
+
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
+        }
+
+        private void standardTitleBar_Click(object sender, RoutedEventArgs e)
+        {
+            //Enable custom TitleBar if it's disabled
+            if (!customTitleBarEnabled)
+                customTitleBar_Click(sender, e);
+
+            //Get appWindowTitleBar
+            var window = WindowHelper.GetWindowForElement(this as UIElement);
+            var appWindow = window.AppWindow;
+            var appWindowTitleBar = appWindow.TitleBar;
+
+            //Set height
+            appWindowTitleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
+
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
+        }
+
+        private void tallTitleBar_Click(object sender, RoutedEventArgs e)
+        {
+            //Enable custom TitleBar if it's disabled
+            if (!customTitleBarEnabled)
+                customTitleBar_Click(sender, e);
+
+            //Get appWindowTitleBar
+            var window = WindowHelper.GetWindowForElement(this as UIElement);
+            var appWindow = window.AppWindow;
+            var appWindowTitleBar = appWindow.TitleBar;
+
+            //Set height
+            appWindowTitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+            // announce visual change to automation
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
+        }
     }
 }
