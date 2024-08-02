@@ -24,8 +24,8 @@ namespace WinUIGallery
             if (typeName == "System.Collections.Generic.List`1[WinUIGallery.Common.LanguageList+Language]")
             {
                 // CsWinRT already generates these for other scenarios we use.
-                _ = WinRT.GenericHelpers.IReadOnlyList_object.Initialized;
-                _ = WinRT.GenericHelpers.IEnumerable_object.Initialized;
+                _ = WinRT.WinUIGalleryGenericHelpers.IReadOnlyList_object.Initialized;
+                _ = WinRT.WinUIGalleryGenericHelpers.IEnumerable_object.Initialized;
 
                 return new ComWrappers.ComInterfaceEntry[]
                 {
@@ -57,7 +57,7 @@ namespace WinUIGallery
             else if (typeName == "System.Linq.Enumerable+RangeIterator")
             {
                 // CsWinRT already generates these for other scenarios we use.
-                _ = WinRT.GenericHelpers.IEnumerable_int.Initialized;
+                _ = WinRT.WinUIGalleryGenericHelpers.IEnumerable_int.Initialized;
 
                 return new ComWrappers.ComInterfaceEntry[]
                 {

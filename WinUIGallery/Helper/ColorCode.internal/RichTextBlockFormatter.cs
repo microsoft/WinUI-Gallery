@@ -145,7 +145,7 @@ namespace ColorCode
                 Run.FontStyle = FontStyle.Italic;
 
             if (bold)
-                Run.FontWeight = FontWeights.Bold;
+                Run.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
         }
 
         private void GetStyleInsertionsForCapturedStyle(Scope scope, ICollection<TextInsertion> styleInsertions)

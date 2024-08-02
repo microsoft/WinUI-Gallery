@@ -158,9 +158,9 @@ public static class CompositionGradientBrushExtensions
         }
         else
         {
-            compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopBegin, Colors.Black));
+            compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopBegin, Microsoft.UI.Colors.Black));
         }
 
-        compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopEnd, Colors.Transparent));
+        compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopEnd, Microsoft.UI.Colors.Transparent));
     }
 }

@@ -41,7 +41,7 @@ namespace WinUIGallery.DesktopWap.Controls
             }
         }
         public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(InlineColorPicker), new PropertyMetadata(Colors.White));
+            DependencyProperty.Register("Color", typeof(Color), typeof(InlineColorPicker), new PropertyMetadata(Microsoft.UI.Colors.White));
 
         public SolidColorBrush ColorBrush
         {
@@ -49,7 +49,7 @@ namespace WinUIGallery.DesktopWap.Controls
             set { SetValue(ColorBrushProperty, value); }
         }
         public static readonly DependencyProperty ColorBrushProperty =
-            DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Colors.White)));
+            DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Microsoft.UI.Colors.White)));
         
         public event EventHandler<Color> ColorChanged;
 

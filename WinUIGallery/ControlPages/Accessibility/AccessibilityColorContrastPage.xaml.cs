@@ -41,13 +41,13 @@ namespace WinUIGallery.ControlPages
         {
             if (passed)
             {
-                background.Fill = new SolidColorBrush(Colors.DarkGreen);
+                background.Fill = new SolidColorBrush(Microsoft.UI.Colors.DarkGreen);
                 icon.Glyph = "\uE73E";
                 resultName.Text = "Pass";
             }
             else
             {
-                background.Fill = new SolidColorBrush(Colors.DarkRed);
+                background.Fill = new SolidColorBrush(Microsoft.UI.Colors.DarkRed);
                 icon.Glyph = "\uE711";
                 resultName.Text = "Fail";
             }
