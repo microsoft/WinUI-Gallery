@@ -3,7 +3,7 @@ using WinRT;
 
 namespace WinUIGallery.Common
 {
-    [BindableCustomProperty]
+    [GeneratedBindableCustomProperty]
     public sealed partial class FontFamilyTuple
     {
         public string Name { get; }

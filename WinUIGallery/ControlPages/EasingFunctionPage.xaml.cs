@@ -17,7 +17,7 @@ using WinRT;
 
 namespace WinUIGallery.ControlPages
 {
-    [BindableCustomProperty]
+    [GeneratedBindableCustomProperty]
     public partial class NamedEasingFunction
     {
         public string Name { get; private set; }

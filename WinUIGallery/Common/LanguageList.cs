@@ -110,7 +110,7 @@ namespace WinUIGallery.Common
             
         }
 
-        [BindableCustomProperty]
+        [GeneratedBindableCustomProperty]
         public partial class Language
         {
             public string Name { get; set; }
