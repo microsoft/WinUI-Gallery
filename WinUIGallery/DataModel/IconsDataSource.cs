@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using WinRT;
 using WinUIGallery.Common;
 
 namespace WinUIGallery.DesktopWap.DataModel
 {
-    public class IconData
+    [GeneratedBindableCustomProperty]
+    public partial class IconData
     {
         public string Name { get; set; }
         public string Code { get; set; }

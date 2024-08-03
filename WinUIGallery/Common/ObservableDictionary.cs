@@ -9,9 +9,9 @@ namespace WinUIGallery.Common
     /// Implementation of IObservableMap that supports reentrancy for use as a default view
     /// model.
     /// </summary>
-    public class ObservableDictionary : IObservableMap<string, object>
+    public partial class ObservableDictionary : IObservableMap<string, object>
     {
-        private class ObservableDictionaryChangedEventArgs : IMapChangedEventArgs<string>
+        private partial class ObservableDictionaryChangedEventArgs : IMapChangedEventArgs<string>
         {
             public ObservableDictionaryChangedEventArgs(CollectionChange change, string key)
             {

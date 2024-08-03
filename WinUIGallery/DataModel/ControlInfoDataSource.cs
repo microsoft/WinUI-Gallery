@@ -18,6 +18,7 @@ using WinUIGallery.Common;
 using WinUIGallery.Data;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
+using WinRT;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -74,7 +75,8 @@ namespace WinUIGallery.Data
         }
     }
 
-    public class ControlInfoDocLink
+    [GeneratedBindableCustomProperty]
+    public partial class ControlInfoDocLink
     {
         public ControlInfoDocLink(string title, string uri)
         {
@@ -89,7 +91,8 @@ namespace WinUIGallery.Data
     /// <summary>
     /// Generic group data model.
     /// </summary>
-    public class ControlInfoDataGroup
+    [GeneratedBindableCustomProperty]
+    public partial class ControlInfoDataGroup
     {
         public string UniqueId { get; set; }
         public string Title { get; set; }
