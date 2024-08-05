@@ -100,7 +100,7 @@
                             <StackPanel x:Name="SourcePanel"
                                         Margin="0,-8,0,-12">
                                 <StackPanel x:Name="ControlSourcePanel"
-                                            Margin="0,0,0,12">
+                                            Margin="0,0,0,4">
                                     <StackPanel Orientation="Horizontal"
                                                 Spacing="8">
                                         <TextBlock VerticalAlignment="Center"
