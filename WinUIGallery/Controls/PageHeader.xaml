@@ -124,8 +124,11 @@
                                     </HyperlinkButton>
                                 </StackPanel>
 
+                                <MenuFlyoutSeparator Margin="-12" />
+
                                 <StackPanel Orientation="Horizontal"
-                                            Spacing="8">
+                                            Spacing="8"
+                                            Margin="0,8,0,0">
                                     <TextBlock VerticalAlignment="Center"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
