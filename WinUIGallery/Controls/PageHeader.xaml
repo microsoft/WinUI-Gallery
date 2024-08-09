@@ -108,6 +108,7 @@
                                                    Style="{StaticResource CaptionTextBlockStyle}"
                                                    Text="Control source code" />
                                         <Button Padding="6,5,6,6"
+                                                Style="{ThemeResource SubtleButtonStyle}"
                                                 ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available">
                                             <FontIcon VerticalAlignment="Center"
                                                       FontSize="14"
@@ -134,6 +135,7 @@
                                                Style="{StaticResource CaptionTextBlockStyle}"
                                                Text="Sample page source code" />
                                     <Button Padding="6,5,6,6"
+                                            Style="{ThemeResource SubtleButtonStyle}"
                                             ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository">
                                         <FontIcon VerticalAlignment="Center"
                                                   FontSize="14"
