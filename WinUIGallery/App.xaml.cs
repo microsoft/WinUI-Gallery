@@ -273,7 +273,7 @@ namespace WinUIGallery
         }
 
         /// <summary>
-        /// Prevents the app from crashing when a error gets thrown.
+        /// Prevents the app from crashing when a exception gets thrown and notifies the user.
         /// </summary>
         /// <param name="sender">The app as an object.</param>
         /// <param name="e">Details about the exception.</param>
@@ -287,7 +287,7 @@ namespace WinUIGallery
                 .AddArgument("conversationId", 9813);
 
             //Set notification content.
-            notification.AddText("An error was thrown.");
+            notification.AddText("An exception was thrown.");
             notification.AddText($"Type: {e.Exception.GetType()}");
             notification.AddText($"Message: {e.Message}\r\n" +
                 $"HResult: {e.Exception.HResult}");
