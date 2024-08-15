@@ -24,7 +24,8 @@ using WASDK = Microsoft.WindowsAppSDK;
 using System.Text;
 using Windows.System;
 using System.Runtime.InteropServices;
-using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 using static WinUIGallery.Win32;
 
 namespace WinUIGallery
@@ -282,18 +283,15 @@ namespace WinUIGallery
             e.Handled = true; //Don't crash the app.
 
             //Create the notification.
-            var notification = new ToastContentBuilder()
-                .AddArgument("action", "viewConversation")
-                .AddArgument("conversationId", 9813);
+            var notification = new AppNotificationBuilder()
+                .AddText("An exception was thrown.")
+                .AddText($"Type: {e.Exception.GetType()}")
+                .AddText($"Message: {e.Message}\r\n" +
+                         $"HResult: {e.Exception.HResult}")
+                .BuildNotification();
 
-            //Set notification content.
-            notification.AddText("An exception was thrown.");
-            notification.AddText($"Type: {e.Exception.GetType()}");
-            notification.AddText($"Message: {e.Message}\r\n" +
-                $"HResult: {e.Exception.HResult}");
-
-            //Show the notification.
-            notification.Show();
+            //Show the notification
+            AppNotificationManager.Default.Show(notification);
         }
 
 
