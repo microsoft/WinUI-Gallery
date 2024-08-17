@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -205,6 +205,37 @@
             &lt;MenuFlyoutSeparator/&gt;
             &lt;MenuFlyoutItem Text="Rename"/&gt;
             &lt;MenuFlyoutItem Text="Select"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <local:ControlExample x:Name="Example6" HeaderText="A MenuFlyout with RadioMenuFlyoutItems">
+            <Button x:Name="Control6" Content="Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/>
+                        <RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/>
+                        <MenuFlyoutSeparator/>
+                        <RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup"/>
+                        <RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup"/>
+                        <RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup"/>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/&gt;
+            &lt;MenuFlyoutSeparator/&gt;
+            &lt;RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup"/&gt;
         &lt;/MenuFlyout&gt;
     &lt;/Button.Flyout&gt;
 &lt;/Button&gt;
