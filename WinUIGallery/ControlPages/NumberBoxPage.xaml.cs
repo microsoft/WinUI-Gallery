@@ -38,18 +38,16 @@ namespace WinUIGallery.ControlPages
             FormattedNumberBox.NumberFormatter = formatter;
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void SpinButtonPlacementGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is RadioButton rb && NumberBoxSpinButtonPlacementExample != null)
+            if (sender is RadioButtons radioButtons)
             {
-                string spinButtonPlacementModeName = rb.Tag.ToString();
-
-                switch (spinButtonPlacementModeName)
+                switch (radioButtons.SelectedIndex)
                 {
-                    case "Inline":
+                    case 0:
                         NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Inline;
                         break;
-                    case "Compact":
+                    case 1:
                         NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Compact;
                         break;
                 }
