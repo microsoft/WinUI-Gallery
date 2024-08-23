@@ -150,6 +150,9 @@
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
+        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
+        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
@@ -196,6 +199,9 @@
         <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
+        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
+        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
     </ItemGroup>
