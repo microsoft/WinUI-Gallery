@@ -36,6 +36,7 @@
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
+        <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
