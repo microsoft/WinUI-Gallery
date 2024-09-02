@@ -436,7 +436,7 @@
             {
               "Title": "MenuFlyoutSubItem - API",
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutsubitem"
-            }
+            },
             {
               "Title": "MenuFlyoutSeparator - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutseparator"
