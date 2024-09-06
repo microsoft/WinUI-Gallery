@@ -102,6 +102,7 @@ namespace WinUIGallery
 
                 AppWindow appWindow = WindowHelper.GetAppWindow(window);
                 appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+                appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
                 _settings = new UISettings();
                 _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
             };
