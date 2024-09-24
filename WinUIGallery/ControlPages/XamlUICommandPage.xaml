@@ -27,8 +27,7 @@
         <local:ControlExample HeaderText="Creating a reusable command with XamlUICommand"
                               XamlSource="XamlUICommand\XamlUICommandSample1_xaml.txt"
                               CSharpSource="XamlUICommand\XamlUICommandSample1_cs.txt"
-                              HorizontalContentAlignment="Stretch"
-                              Loaded="ControlExample_Loaded">
+                              HorizontalContentAlignment="Stretch">
             <Grid x:Name="rootGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
