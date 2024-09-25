@@ -27,6 +27,10 @@ namespace WinUIGallery.ControlPages
 
         private async void PickAFileButton_Click(object sender, RoutedEventArgs e)
         {
+            //disable the button to avoid double-clicking
+            var senderButton = sender as Button;
+            senderButton.IsEnabled = false;
+
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickAFileOutputTextBlock.Text = "";
 
@@ -67,10 +71,16 @@ namespace WinUIGallery.ControlPages
                 PickAFileOutputTextBlock.Text = "Operation cancelled.";
             }
 
+            //re-enable the button
+            senderButton.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickAFileOutputTextBlock.Text, "FilePickedNotificationId");
         }
         private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
         {
+            //disable the button to avoid double-clicking
+            var senderButton = sender as Button;
+            senderButton.IsEnabled = false;
+
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickAPhotoOutputTextBlock.Text = "";
 
@@ -114,11 +124,17 @@ namespace WinUIGallery.ControlPages
                 PickAPhotoOutputTextBlock.Text = "Operation cancelled.";
             }
 
+            //re-enable the button
+            senderButton.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickAPhotoOutputTextBlock.Text, "PhotoPickedNotificationId");
         }
 
         private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
         {
+            //disable the button to avoid double-clicking
+            var senderButton = sender as Button;
+            senderButton.IsEnabled = false;
+
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickFilesOutputTextBlock.Text = "";
 
@@ -164,11 +180,17 @@ namespace WinUIGallery.ControlPages
                 PickFilesOutputTextBlock.Text = "Operation cancelled.";
             }
 
+            //re-enable the button
+            senderButton.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickFilesOutputTextBlock.Text, "FilesPickedNotificationId");
         }
 
         private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
         {
+            //disable the button to avoid double-clicking
+            var senderButton = sender as Button;
+            senderButton.IsEnabled = false;
+
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickFolderOutputTextBlock.Text = "";
 
@@ -211,11 +233,17 @@ namespace WinUIGallery.ControlPages
                 PickFolderOutputTextBlock.Text = "Operation cancelled.";
             }
 
+            //re-enable the button
+            senderButton.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickFolderOutputTextBlock.Text, "FolderPickedNotificationId");
         }
 
         private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
         {
+            //disable the button to avoid double-clicking
+            var senderButton = sender as Button;
+            senderButton.IsEnabled = false;
+
             // Clear previous returned file name, if it exists, between iterations of this scenario
             SaveFileOutputTextBlock.Text = "";
 
@@ -278,6 +306,8 @@ namespace WinUIGallery.ControlPages
                 SaveFileOutputTextBlock.Text = "Operation cancelled.";
             }
 
+            //re-enable the button
+            senderButton.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, SaveFileOutputTextBlock.Text, "FileSavedNotificationId");
         }
     }
