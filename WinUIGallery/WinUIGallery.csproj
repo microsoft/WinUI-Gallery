@@ -84,6 +84,30 @@
         <AppxBundle>Never</AppxBundle>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|x86'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|x64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|ARM64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|x86'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|x64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|ARM64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" />
+
     <Import Project="Common.props" />
 
     <ItemGroup>
