@@ -27,11 +27,15 @@ namespace UITests
 	[TestClass]
 	public class SessionManager
 	{
-		private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4724";
+		private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 		private static readonly string[] WinUIGalleryAppIDs = new string[]{
-			"Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
-			"Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App"
-		};
+			// WinUI 3 Gallery apps built in the lab
+            "Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
+            "Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App",
+			// WinUI 3 Gallery apps built locally
+            "Microsoft.WinUI3ControlsGallery.Debug_8wekyb3d8bbwe!App",
+            "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App"
+        };
 
 		private static uint appIdIndex = 0;
 
@@ -59,14 +63,17 @@ namespace UITests
 				TryInitializeSession();
 				if (_session is null)
 				{
-					// WinAppDriver is probably not running, so lets start it!
-					if (File.Exists(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"))
+                    // WinAppDriver is probably not running, so lets start it!
+                    string winAppDriverX64Path = Path.Join(Environment.GetEnvironmentVariable("ProgramFiles"), "Windows Application Driver", "WinAppDriver.exe");
+                    string winAppDriverX86Path = Path.Join(Environment.GetEnvironmentVariable("ProgramFiles(x86)"), "Windows Application Driver", "WinAppDriver.exe");
+
+                    if (File.Exists(winAppDriverX64Path))
 					{
-						Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
+						Process.Start(winAppDriverX64Path);
 					}
-					else if (File.Exists(@"C:\Program Files\Windows Application Driver\WinAppDriver.exe"))
+					else if (File.Exists(winAppDriverX86Path))
 					{
-						Process.Start(@"C:\Program Files\Windows Application Driver\WinAppDriver.exe");
+						Process.Start(winAppDriverX86Path);
 					}
 					else
 					{
