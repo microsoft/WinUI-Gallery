@@ -249,7 +249,6 @@
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample6.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample8_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NavigationView\NavigationViewSample9_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample2_xaml.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="ControlPagesSampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample1_cs.txt" />
