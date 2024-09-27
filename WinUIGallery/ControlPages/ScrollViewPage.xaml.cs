@@ -11,13 +11,17 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.IO;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
+using Windows.Storage;
 
 namespace WinUIGallery.ControlPages
 {
     public sealed partial class ScrollViewPage : Page
     {
+        private double prvAnimationDuration;
+
         public ScrollViewPage()
         {
             this.InitializeComponent();
@@ -43,7 +47,10 @@ namespace WinUIGallery.ControlPages
                 NumberRounder = rounder
             };
             nbZoomFactor.NumberFormatter = formatter;
-            
+
+            Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
+            prvAnimationDuration = nbAnimationDuration.Value;
+
             this.Loaded -= ScrollViewPage_Loaded;
         }
 
@@ -255,6 +262,44 @@ namespace WinUIGallery.ControlPages
             {
                 return 4.0 * scrollView3.ScrollableHeight / 5.0;
             }
+        }
+
+        private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox combo)
+            {
+                switch (combo.SelectedIndex)
+                {
+                    case 0:
+                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_DefaultAnimation_cs");
+                        break;
+                    case 1:
+                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_AccordionAnimation_cs");
+                        break;
+                    case 2:
+                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_TeleportationAnimation_cs");
+                        break;
+                }
+        
+                if (nbAnimationDuration != null)
+                {
+                    Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
+                }
+        
+                Example3.UpdateLayout();
+            }
+        }
+
+        private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+        {
+            Example3.CSharp = Example3.CSharp.Replace(prvAnimationDuration.ToString(),nbAnimationDuration.Value.ToString());
+            prvAnimationDuration = nbAnimationDuration.Value;
+        }
+
+        private string ReadSampleCodeFileContent(string sampleCodeFileName)
+        {
+            StorageFolder folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            return File.ReadAllText($"{folder.Path}\\ControlPagesSampleCode\\ScrollView\\{sampleCodeFileName}.txt");
         }
     }
 }
