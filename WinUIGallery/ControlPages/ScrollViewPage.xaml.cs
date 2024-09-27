@@ -280,10 +280,14 @@ namespace WinUIGallery.ControlPages
                         Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_TeleportationAnimation_cs");
                         break;
                 }
+        
                 if (nbAnimationDuration != null)
+                {
                     Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
+                }
+        
                 Example3.UpdateLayout();
-            }         
+            }
         }
 
         private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
