@@ -24,6 +24,10 @@
             x:Key="stringVisibilityConverter"
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
+        <converters:CollectionVisibilityConverter
+            x:Name="collectionConverter"
+            EmptyValue="Collapsed"
+            NotEmptyValue="Visible" />
     </Page.Resources>
     <Grid x:Name="rootPanel">
         <Grid.RowDefinitions>
@@ -73,8 +77,8 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock
@@ -85,7 +89,36 @@
                     Text="{x:Bind Item.Description}"
                     Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}" />
 
-                <Frame x:Name="contentFrame" Grid.Row="1" />
+                <Grid
+                    Grid.Row="1"
+                    ColumnSpacing="8"
+                    Margin="0,8,0,0"
+                    Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        VerticalAlignment="Bottom"
+                        Text="Inheritance" />
+                    <BreadcrumbBar
+                        VerticalAlignment="Bottom"
+                        Grid.Column="1"
+                        IsHitTestVisible="False"
+                        ItemsSource="{x:Bind Item.BaseClasses}">
+                        <BreadcrumbBar.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind}" />
+                            </DataTemplate>
+                        </BreadcrumbBar.ItemTemplate>
+                    </BreadcrumbBar>
+                </Grid>
+
+                <Frame x:Name="contentFrame" Grid.Row="2" />
             </Grid>
         </ScrollViewer>
     </Grid>
