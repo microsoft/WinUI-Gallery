@@ -52,12 +52,26 @@ namespace UITests
             }
         }
 
+        private static string screenshotDirectory;
+
         [AssemblyInitialize]
-        public static void Setup(TestContext _)
+        public static void Setup(TestContext context)
         {
+            string outputDirectory;
+
+            if (context.Properties.Contains("ArtifactStagingDirectory"))
+            {
+                outputDirectory = context.Properties["ArtifactStagingDirectory"].ToString();
+            }
+            else
+            {
+                outputDirectory = context.TestRunResultsDirectory;
+            }
+
+            screenshotDirectory = Path.Combine(outputDirectory, "Screenshots");
+
             if (_session is null)
             {
-
                 int timeoutCount = 50;
 
                 TryInitializeSession();
@@ -124,6 +138,12 @@ namespace UITests
                 _session.Quit();
                 _session = null;
             }
+        }
+
+        public static void TakeScreenshot(string fileName)
+        {
+            Directory.CreateDirectory(screenshotDirectory);
+            _session.GetScreenshot().SaveAsFile(Path.Join(screenshotDirectory, $"{fileName}.png"));
         }
 
         private static void TryInitializeSession()
