@@ -9,7 +9,7 @@ variables:
     solutionUITests: "**/UITests.sln"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
-    appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+    appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\'
 
 steps:
     - task: NuGetToolInstaller@1
@@ -37,7 +37,7 @@ steps:
         command: 'publish'
         publishWebProjects: false
         projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="D:\a\1\a\AppxPackages\\" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
+        arguments: '/p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
         zipAfterPublish: false
         modifyOutputPath: false
 
@@ -55,7 +55,17 @@ steps:
           **\WinUIGalleryUnitTests.build.appxrecipe
 
     - task: PowerShell@2
-      displayName: Install WinUI Gallery Package
+      displayName: Uninstall existing WinUI Gallery packages
+      inputs:
+          targetType: "inline"
+          script: |
+              Get-AppxPackage Microsoft.WinUI3ControlsGallery* | ForEach-Object { Remove-AppxPackage $_.PackageFullName }
+          errorActionPreference: "continue"
+          failOnStderr: true
+          workingDirectory: "$(System.DefaultWorkingDirectory)"
+
+    - task: PowerShell@2
+      displayName: Install WinUI Gallery package
       inputs:
           targetType: "inline"
           script: |
@@ -101,3 +111,11 @@ steps:
       displayName: Stop Windows Application Driver
       inputs:
           OperationType: "Stop"
+      condition: always()
+
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish build artifacts"
+      inputs:
+        PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+        ArtifactName: "drop"
+      condition: always()
