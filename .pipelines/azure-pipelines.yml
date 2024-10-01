@@ -9,7 +9,7 @@ variables:
     solutionUITests: "**/UITests.sln"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
-    appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\'
+    appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages'
 
 steps:
     - task: NuGetToolInstaller@1
