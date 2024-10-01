@@ -15,12 +15,17 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
+using System.Xml.Linq;
 
 namespace UITests
 {
@@ -52,11 +57,15 @@ namespace UITests
             }
         }
 
+        public static TestContext TestContext { get; set; }
+
         private static string screenshotDirectory;
 
         [AssemblyInitialize]
         public static void Setup(TestContext context)
         {
+            TestContext = context;
+
             string outputDirectory;
 
             if (context.Properties.Contains("ArtifactStagingDirectory"))
@@ -144,6 +153,44 @@ namespace UITests
         {
             Directory.CreateDirectory(screenshotDirectory);
             _session.GetScreenshot().SaveAsFile(Path.Join(screenshotDirectory, $"{fileName}.png"));
+        }
+
+        public static void DumpTree()
+        {
+            Logger.LogMessage("=================");
+            Logger.LogMessage("Begin visual tree");
+            Logger.LogMessage("=================");
+
+            foreach (WindowsElement element in _session.FindElementsByXPath("/*"))
+            {
+                DumpTreeHelper(element, 0);
+            }
+
+            Logger.LogMessage("===============");
+            Logger.LogMessage("End visual tree");
+            Logger.LogMessage("===============");
+        }
+
+        private static void DumpTreeHelper(WindowsElement root, int depth)
+        {
+            string indent = new(' ', depth * 2);
+
+            if (root.Displayed && !string.IsNullOrEmpty(root.TagName))
+            {
+                if (string.IsNullOrEmpty(root.Text))
+                {
+                    Logger.LogMessage($"{indent}{root.TagName}");
+                }
+                else
+                {
+                    Logger.LogMessage($"{indent}{root.TagName} [{root.Text}]");
+                }
+            }
+
+            foreach (WindowsElement child in root.FindElementsByXPath("*/*"))
+            {
+                DumpTreeHelper(child, root.Displayed ? depth + 1 : depth);
+            }
         }
 
         private static void TryInitializeSession()
