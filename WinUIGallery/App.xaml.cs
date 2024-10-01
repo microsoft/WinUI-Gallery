@@ -21,9 +21,7 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using System.Text;
-using Windows.System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using static WinUIGallery.Win32;
 
 namespace WinUIGallery
@@ -53,7 +51,7 @@ namespace WinUIGallery
                 try
                 {
                     // Retrieve Windows App Runtime version info dynamically
-                    var windowsAppRuntimeVersion =
+                    IEnumerable<FileVersionInfo> windowsAppRuntimeVersion =
                         from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
                         where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
                         select FileVersionInfo.GetVersionInfo(module.FileName);
@@ -66,42 +64,30 @@ namespace WinUIGallery
             }
         }
 
-        // Get the initial window created for this app
-        // On UWP, this is simply Window.Current
-        // On Desktop, multiple Windows may be created, and the StartupWindow may have already
-        // been closed.
+        /// <summary>
+        /// Get the initial window created for this app.
+        /// </summary>
         public static Window StartupWindow
         {
-            get
-            {
-                return startupWindow;
-            }
+            get => startupWindow;
         }
+
         /// <summary>
-        /// Initializes the singleton Application object.  This is the first line of authored code
+        /// Initializes the singleton Application object. This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-
-#if WINUI_PRERELEASE
-            this.Suspending += OnSuspending;
-            this.Resuming += App_Resuming;
-            this.RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
-#endif
+            InitializeComponent();
         }
 
-        public void EnableSound(bool withSpatial = false)
-        {
-            ElementSoundPlayer.State = ElementSoundPlayerState.On;
-
-            if (!withSpatial)
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-            else
-                ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
-        }
-
+        /// <summary>
+        /// Converts a string into a enum.
+        /// </summary>
+        /// <typeparam name="TEnum">The output enum type.</typeparam>
+        /// <param name="text">The input text.</param>
+        /// <returns>The parsed enum.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the TEnum type is not a enum.</exception>
         public static TEnum GetEnum<TEnum>(string text) where TEnum : struct
         {
             if (!typeof(TEnum).GetTypeInfo().IsEnum)
@@ -127,13 +113,13 @@ namespace WinUIGallery
             win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
 
 #if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
+            if (Debugger.IsAttached)
             {
-                this.DebugSettings.BindingFailed += DebugSettings_BindingFailed;
+                DebugSettings.BindingFailed += DebugSettings_BindingFailed;
             }
 #endif
 
-            keyEventHook = new HookProc(KeyEventHook);
+            keyEventHook = KeyEventHook;
             registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
 
             EnsureWindow();
@@ -151,20 +137,14 @@ namespace WinUIGallery
 
         private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
         {
-
+            throw new Exception($"A debug binding failed: " + e.Message);
         }
 
-#if WINUI_PRERELEASE
-        protected override void OnActivated(IActivatedEventArgs args)
-        {
-            EnsureWindow(args);
-        }
-#endif
-
-        private async void EnsureWindow(IActivatedEventArgs args = null)
+        private async void EnsureWindow()
         {
             // No matter what our destination is, we're going to need control data loaded - let's knock that out now.
             // We'll never need to do this again.
+            // Do not delete this comment :)
             await ControlInfoDataSource.Instance.GetGroupsAsync();
             await IconsDataSource.Instance.LoadIcons();
 
@@ -172,37 +152,15 @@ namespace WinUIGallery
 
             ThemeHelper.Initialize();
 
-            Type targetPageType = typeof(HomePage);
-            string targetPageArguments = string.Empty;
+            var targetPageType = typeof(HomePage);
+            var targetPageArguments = string.Empty;
 
-            if (args != null)
+            AppActivationArguments eventArgs = AppInstance.GetCurrent().GetActivatedEventArgs();
+            if (eventArgs != null && eventArgs.Kind == ExtendedActivationKind.Protocol && eventArgs.Data is ProtocolActivatedEventArgs)
             {
-                if (args.Kind == ActivationKind.Launch)
-                {
-                    if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                    {
-                        try
-                        {
-                            await SuspensionManager.RestoreAsync();
-                        }
-                        catch (SuspensionManagerException)
-                        {
-                            //Something went wrong restoring state.
-                            //Assume there is no state and continue
-                        }
-                    }
-
-                    targetPageArguments = ((Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)args).Arguments;
-                }
-            }
-            var eventargs = Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs();
-            if (eventargs != null && eventargs.Kind is ExtendedActivationKind.Protocol && eventargs.Data is ProtocolActivatedEventArgs)
-            {
-                ProtocolActivatedEventArgs ProtocolArgs = eventargs.Data as ProtocolActivatedEventArgs;
-                var uri = ProtocolArgs.Uri.LocalPath.Replace("/", "");
-
+                var ProtocolArgs = eventArgs.Data as ProtocolActivatedEventArgs;
+                string uri = ProtocolArgs.Uri.LocalPath.Replace("/", "");
                 targetPageArguments = uri;
-                string targetId = string.Empty;
 
                 if (uri == "AllControls")
                 {
@@ -222,22 +180,28 @@ namespace WinUIGallery
                 }
             }
 
-            NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
+            var rootPage = StartupWindow.Content as NavigationRootPage;
             rootPage.Navigate(targetPageType, targetPageArguments);
 
             if (targetPageType == typeof(HomePage))
             {
-                ((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)App.StartupWindow.Content).NavigationView.MenuItems[0]).IsSelected = true;
+                var navItem = (NavigationViewItem) rootPage.NavigationView.MenuItems[0];
+                navItem.IsSelected = true;
             }
 
-            // Ensure the current window is active
+            // Activate the startup window.
             StartupWindow.Activate();
         }
 
+        /// <summary>
+        /// Gets the frame of the StartupWindow.
+        /// </summary>
+        /// <returns>The frame of the StartupWindow.</returns>
+        /// <exception cref="Exception">Thrown if the window doesn't have a frame with the name "rootFrame".</exception>
         public Frame GetRootFrame()
         {
             Frame rootFrame;
-            NavigationRootPage rootPage = StartupWindow.Content as NavigationRootPage;
+            var rootPage = StartupWindow.Content as NavigationRootPage;
             if (rootPage == null)
             {
                 rootPage = new NavigationRootPage();
@@ -269,21 +233,5 @@ namespace WinUIGallery
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
-
-#if WINUI_PRERELEASE
-        /// <summary>
-        /// Invoked when application execution is being suspended.  Application state is saved
-        /// without knowing whether the application will be terminated or resumed with the contents
-        /// of memory still intact.
-        /// </summary>
-        /// <param name="sender">The source of the suspend request.</param>
-        /// <param name="e">Details about the suspend request.</param>
-        private async void OnSuspending(object sender, SuspendingEventArgs e)
-        {
-            var deferral = e.SuspendingOperation.GetDeferral();
-            await SuspensionManager.SaveAsync();
-            deferral.Complete();
-        }
-#endif // WINUI_PRERELEASE
     }
 }
