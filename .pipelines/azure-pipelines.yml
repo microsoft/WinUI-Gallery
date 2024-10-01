@@ -106,6 +106,8 @@ steps:
               !**\obj\**
               !**\ref\**
           searchFolder: "$(System.DefaultWorkingDirectory)"
+          resultsFolder: "$(Build.ArtifactStagingDirectory)\TestResults"
+          overrideTestrunParameters: '-ArtifactStagingDirectory "$(Build.ArtifactStagingDirectory)"'
 
     - task: Windows Application Driver@0
       displayName: Stop Windows Application Driver
