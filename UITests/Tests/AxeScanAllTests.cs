@@ -87,6 +87,8 @@ namespace UITests.Tests
         [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
         public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
         {
+            SessionManager.TakeScreenshot($"{sectionName}.{pageName}.Before");
+
             try
             {
                 Logger.LogMessage($"Opening page \"{pageName}\".");
@@ -118,12 +120,14 @@ namespace UITests.Tests
                     Logger.LogMessage($"Section \"{sectionName}\" not found either.");
 
                     SessionManager.DumpTree();
-                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
 
                     throw;
                 }
             }
 
+            SessionManager.DumpTree();
+            SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
         }
 
         public static string GetCustomDynamicDataDisplayName(MethodInfo methodInfo, object[] data)

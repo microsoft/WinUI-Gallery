@@ -173,7 +173,21 @@ namespace UITests
 
         private static void DumpTreeHelper(WindowsElement root, int depth)
         {
-            string indent = new(' ', depth * 2);
+            string indent = string.Empty;
+
+            for (int i = 0; i < depth; i++)
+            {
+                indent += "|";
+
+                if (i == depth - 1)
+                {
+                    indent += "-";
+                }
+                else
+                {
+                    indent += " ";
+                }
+            }
 
             if (root.Displayed && !string.IsNullOrEmpty(root.TagName))
             {
