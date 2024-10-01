@@ -115,12 +115,15 @@ namespace UITests.Tests
                 }
                 catch
                 {
-                    Logger.LogMessage($"Section \"{sectionName}\" not found either. Taking a screenshot and then allowing the exception to be propagated.");
+                    Logger.LogMessage($"Section \"{sectionName}\" not found either.");
+
+                    SessionManager.DumpTree();
                     SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
 
                     throw;
                 }
             }
+
         }
 
         public static string GetCustomDynamicDataDisplayName(MethodInfo methodInfo, object[] data)
