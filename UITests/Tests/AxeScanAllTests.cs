@@ -101,7 +101,6 @@ namespace UITests.Tests
             {
                 try
                 {
-                    throw new Exception("onoes");
                     Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
 
                     // If element is not found, expand tree view as it is nested.
