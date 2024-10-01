@@ -106,7 +106,7 @@ steps:
               !**\obj\**
               !**\ref\**
           searchFolder: "$(System.DefaultWorkingDirectory)"
-          resultsFolder: "$(Build.ArtifactStagingDirectory)\TestResults"
+          resultsFolder: "$(Build.ArtifactStagingDirectory)\\TestResults"
           overrideTestrunParameters: '-ArtifactStagingDirectory "$(Build.ArtifactStagingDirectory)"'
 
     - task: Windows Application Driver@0
@@ -118,6 +118,6 @@ steps:
     - task: PublishBuildArtifacts@1
       displayName: "Publish build artifacts"
       inputs:
-        PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+        PathToPublish: "$(Build.ArtifactStagingDirectory)"
         ArtifactName: "drop"
       condition: always()
