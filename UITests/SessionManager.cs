@@ -197,7 +197,8 @@ namespace UITests
                 }
                 else
                 {
-                    Logger.LogMessage($"{indent}{root.TagName} [{root.Text}]");
+                    string trimmedText = root.Text.Length > 50 ? root.Text.Substring(0, 50) + "..." : root.Text;
+                    Logger.LogMessage($"{indent}{root.TagName} [{trimmedText}]");
                 }
             }
 
