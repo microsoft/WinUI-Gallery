@@ -109,6 +109,9 @@ namespace UITests.Tests
                     var section = Session.FindElementByAccessibilityId(sectionName);
                     section.Click();
 
+                    // wait for tree to expand
+                    System.Threading.Thread.Sleep(1000);
+
                     // Click into page and check for accessibility issues.
                     var page = Session.FindElementByAccessibilityId(pageName);
                     page.Click();
