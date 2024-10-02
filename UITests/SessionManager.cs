@@ -191,14 +191,18 @@ namespace UITests
 
             if (root.Displayed && !string.IsNullOrEmpty(root.TagName))
             {
+                string message;
+
                 if (string.IsNullOrEmpty(root.Text))
                 {
-                    Logger.LogMessage($"{indent}{root.TagName}");
+                    message = $"{indent}{root.TagName}";
                 }
                 else
                 {
-                    Logger.LogMessage($"{indent}{root.TagName} [{root.Text}]");
+                    message = $"{indent}{root.TagName} [{root.Text}]";
                 }
+
+                Logger.LogMessage(message.Replace("{", "{{").Replace("}","}}"));
             }
 
             foreach (WindowsElement child in root.FindElementsByXPath("*/*"))
