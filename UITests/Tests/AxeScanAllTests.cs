@@ -12,6 +12,7 @@ using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using System.Threading;
 
 namespace UITests.Tests
 {
@@ -99,8 +100,10 @@ namespace UITests.Tests
 
                 AxeHelper.AssertNoAccessibilityErrors();
             }
-            catch
+            catch (OpenQA.Selenium.WebDriverException exc)
             {
+                Logger.LogMessage(exc.Message);
+
                 try
                 {
                     Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
@@ -110,7 +113,7 @@ namespace UITests.Tests
                     section.Click();
 
                     // wait for tree to expand
-                    System.Threading.Thread.Sleep(1000);
+                    Thread.Sleep(1000);
 
                     // Click into page and check for accessibility issues.
                     var page = Session.FindElementByAccessibilityId(pageName);
