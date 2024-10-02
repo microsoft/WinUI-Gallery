@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 
 namespace UITests.Tests
 {
@@ -86,8 +87,12 @@ namespace UITests.Tests
         [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
         public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
         {
+            SessionManager.TakeScreenshot($"{sectionName}.{pageName}.Before");
+
             try
             {
+                Logger.LogMessage($"Opening page \"{pageName}\".");
+
                 // Click into page and check for accessibility issues.
                 var page = Session.FindElementByAccessibilityId(pageName);
                 page.Click();
@@ -96,15 +101,29 @@ namespace UITests.Tests
             }
             catch
             {
-                // If element is not found, expand tree view as it is nested.
-                var section = Session.FindElementByAccessibilityId(sectionName);
-                section.Click();
+                try
+                {
+                    Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
 
-                // Click into page and check for accessibility issues.
-                var page = Session.FindElementByAccessibilityId(pageName);
-                page.Click();
+                    // If element is not found, expand tree view as it is nested.
+                    var section = Session.FindElementByAccessibilityId(sectionName);
+                    section.Click();
 
-                AxeHelper.AssertNoAccessibilityErrors();
+                    // Click into page and check for accessibility issues.
+                    var page = Session.FindElementByAccessibilityId(pageName);
+                    page.Click();
+
+                    AxeHelper.AssertNoAccessibilityErrors();
+                }
+                catch
+                {
+                    Logger.LogMessage($"Section \"{sectionName}\" not found either.");
+
+                    SessionManager.DumpTree();
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
+
+                    throw;
+                }
             }
         }
 

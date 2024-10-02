@@ -8,7 +8,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Composition;
-using Microsoft.UI;
 using CommunityToolkit.WinUI.Animations;
 using Windows.UI;
 using System;
@@ -152,15 +151,15 @@ public static class CompositionGradientBrushExtensions
             {
                 var progress = (i - colorStopBegin) / (colorStopEnd - colorStopBegin);
 
-                var colorStop = compositor.CreateColorGradientStop(i, Color.FromArgb((byte)(0xff * easingFunc.Ease(1 - progress)), 0, 0, 0));
+                var colorStop = compositor.CreateColorGradientStop(i, Microsoft.UI.ColorHelper.FromArgb((byte)(0xff * easingFunc.Ease(1 - progress)), 0, 0, 0));
                 compositionGradientBrush.ColorStops.Add(colorStop);
             }
         }
         else
         {
-            compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopBegin, Colors.Black));
+            compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopBegin, Microsoft.UI.Colors.Black));
         }
 
-        compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopEnd, Colors.Transparent));
+        compositionGradientBrush.ColorStops.Add(compositor.CreateColorGradientStop(colorStopEnd, Microsoft.UI.Colors.Transparent));
     }
 }
