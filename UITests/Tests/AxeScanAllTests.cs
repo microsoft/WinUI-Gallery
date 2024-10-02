@@ -125,9 +125,6 @@ namespace UITests.Tests
                     throw;
                 }
             }
-
-            SessionManager.DumpTree();
-            SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
         }
 
         public static string GetCustomDynamicDataDisplayName(MethodInfo methodInfo, object[] data)
