@@ -102,34 +102,41 @@ namespace UITests.Tests
             }
             catch (OpenQA.Selenium.WebDriverException exc)
             {
-                Logger.LogMessage(exc.Message);
-
-                try
+                if (exc.Message.Contains("element could not be located"))
                 {
-                    Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
+                    try
+                    {
+                        Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
 
-                    // If element is not found, expand tree view as it is nested.
-                    var section = Session.FindElementByAccessibilityId(sectionName);
-                    section.Click();
+                        // If element is not found, expand tree view as it is nested.
+                        var section = Session.FindElementByAccessibilityId(sectionName);
+                        section.Click();
 
-                    // wait for tree to expand
-                    Thread.Sleep(1000);
+                        // wait for tree to expand
+                        Thread.Sleep(1000);
 
-                    // Click into page and check for accessibility issues.
-                    var page = Session.FindElementByAccessibilityId(pageName);
-                    page.Click();
+                        // Click into page and check for accessibility issues.
+                        var page = Session.FindElementByAccessibilityId(pageName);
+                        page.Click();
 
-                    AxeHelper.AssertNoAccessibilityErrors();
+                        AxeHelper.AssertNoAccessibilityErrors();
+                    }
+                    catch (OpenQA.Selenium.WebDriverException exc2)
+                    {
+                        Logger.LogMessage($"Section \"{sectionName}\" not found either.");
+                        Logger.LogMessage(exc2.Message);
+
+                        SessionManager.DumpTree();
+                        SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
+
+                        throw;
+                    }
                 }
-                catch
+                else
                 {
-                    Logger.LogMessage($"Section \"{sectionName}\" not found either.");
-
-                    SessionManager.DumpTree();
-                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
-
-                    throw;
+                    Logger.LogMessage(exc.Message);
                 }
+               
             }
         }
 
