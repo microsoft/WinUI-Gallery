@@ -88,8 +88,6 @@ namespace UITests.Tests
         [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
         public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
         {
-            SessionManager.TakeScreenshot($"{sectionName}.{pageName}.Before");
-
             try
             {
                 Logger.LogMessage($"Opening page \"{pageName}\".");
@@ -127,7 +125,7 @@ namespace UITests.Tests
                         Logger.LogMessage(exc2.Message);
 
                         SessionManager.DumpTree();
-                        SessionManager.TakeScreenshot($"{sectionName}.{pageName}.After");
+                        SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
 
                         throw;
                     }
@@ -135,6 +133,7 @@ namespace UITests.Tests
                 else
                 {
                     Logger.LogMessage(exc.Message);
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
                 }
                
             }
