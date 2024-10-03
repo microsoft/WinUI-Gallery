@@ -312,5 +312,5 @@
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>
         </ItemGroup>
-    </Target> 
+    </Target>
 </Project>

@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using System.Threading;
 
 namespace UITests.Tests
 {
@@ -88,23 +90,52 @@ namespace UITests.Tests
         {
             try
             {
+                Logger.LogMessage($"Opening page \"{pageName}\".");
+
                 // Click into page and check for accessibility issues.
                 var page = Session.FindElementByAccessibilityId(pageName);
                 page.Click();
 
                 AxeHelper.AssertNoAccessibilityErrors();
             }
-            catch
+            catch (OpenQA.Selenium.WebDriverException exc)
             {
-                // If element is not found, expand tree view as it is nested.
-                var section = Session.FindElementByAccessibilityId(sectionName);
-                section.Click();
+                if (exc.Message.Contains("element could not be located"))
+                {
+                    try
+                    {
+                        Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
 
-                // Click into page and check for accessibility issues.
-                var page = Session.FindElementByAccessibilityId(pageName);
-                page.Click();
+                        // If element is not found, expand tree view as it is nested.
+                        var section = Session.FindElementByAccessibilityId(sectionName);
+                        section.Click();
 
-                AxeHelper.AssertNoAccessibilityErrors();
+                        // wait for tree to expand
+                        Thread.Sleep(1000);
+
+                        // Click into page and check for accessibility issues.
+                        var page = Session.FindElementByAccessibilityId(pageName);
+                        page.Click();
+
+                        AxeHelper.AssertNoAccessibilityErrors();
+                    }
+                    catch (OpenQA.Selenium.WebDriverException exc2)
+                    {
+                        Logger.LogMessage($"Section \"{sectionName}\" not found either.");
+                        Logger.LogMessage(exc2.Message);
+
+                        SessionManager.DumpTree();
+                        SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+
+                        throw;
+                    }
+                }
+                else
+                {
+                    Logger.LogMessage(exc.Message);
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+                }
+               
             }
         }
 
