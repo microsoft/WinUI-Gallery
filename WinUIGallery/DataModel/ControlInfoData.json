@@ -1,4 +1,5 @@
 {
+  "$schema": "ControlInfoDataSchema.json",
   "Groups": [
     {
       "UniqueId": "Design_Guidance",
