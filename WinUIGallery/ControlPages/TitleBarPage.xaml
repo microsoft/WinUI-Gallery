@@ -157,7 +157,8 @@
                            Microsoft.UI.AppWindowTitlebar
                         </Hyperlink>
                         and
-                        <Italic>Microsoft.UI.NonClientInputPointerSource apis</Italic>
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.NonClientInputPointerSource</Hyperlink>
+                        <Italic>apis</Italic>
                         <LineBreak></LineBreak>
                         <LineBreak></LineBreak>
                         WinUI allows  <Bold> mix and match </Bold> of higher level WinUI custom titlebar apis with lower level AppWindow and NonClientInputPointerSource apis for most cases.
