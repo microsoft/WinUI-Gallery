@@ -157,11 +157,11 @@
                            Microsoft.UI.AppWindowTitlebar
                         </Hyperlink>
                         and
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.NonClientInputPointerSource</Hyperlink>
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.InputNonClientPointerSource</Hyperlink>
                         <Italic>apis</Italic>
                         <LineBreak></LineBreak>
                         <LineBreak></LineBreak>
-                        WinUI allows  <Bold> mix and match </Bold> of higher level WinUI custom titlebar apis with lower level AppWindow and NonClientInputPointerSource apis for most cases.
+                        WinUI allows  <Bold> mix and match </Bold> of higher level WinUI custom titlebar apis with lower level AppWindow and InputNonClientPointerSource apis for most cases.
                         One exception is one should not use <Italic> Window.SetTitlebar </Italic> api along with any lower level api which also sets drag regions as it can result in unexpected behavior.
                         If needed, set <Italic> Window.SetTitlebar </Italic> to null (default case) and proceed to use lower level apis for drag functionality.
                         <LineBreak></LineBreak>
