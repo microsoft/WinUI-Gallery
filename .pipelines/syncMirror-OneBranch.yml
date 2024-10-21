@@ -98,5 +98,4 @@ extends:
             - task: CmdLine@2
               inputs:
                 script: |
-                  git config lfs.https://microsoft.visualstudio.com/WinUI/_git/WinUI-Gallery-Mirror.git/info/lfs.locksverify true
                   git push
