@@ -178,3 +178,5 @@ extends:
             targetPath: $(ob_outputDirectory)
             artifact: 'drop_build_main_$(buildPlatform)_$(buildConfiguration)'
             publishLocation: 'pipeline'
+
+            
