@@ -30,6 +30,10 @@ resources:
       type: git
       name: OneBranch.Pipelines/GovernedTemplates
       ref: refs/heads/main
+    - repository: InternalWinUIGallery
+      type: git
+      name: WinUI/WinUI-Gallery-Mirror
+      ref: refs/heads/main
 
 extends:
   template: v2/Microsoft.NonOfficial.yml@templates # https://aka.ms/obpipelines/templates
@@ -67,7 +71,7 @@ extends:
 
           dependsOn: []
           steps:
-            - checkout: self
+            - checkout: InternalWinUIGallery
               path: s/
               persistCredentials: true
 
