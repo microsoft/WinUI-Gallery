@@ -19,6 +19,7 @@ using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using System.ComponentModel;
 using WinUIGallery.Helper;
+using System.Threading.Tasks;
 
 namespace WinUIGallery.ControlPages
 {
@@ -38,6 +39,14 @@ namespace WinUIGallery.ControlPages
             captureContainer.Children.Remove(sv);
             captureContainer.Children.Add(expandToFillContainer);
             expandToFillContainer.Children.Add(sv);
+
+            this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
+        }
+
+        private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Needs to run as task to unblock UI thread
+            new Task(mediaCapture.Dispose).Start();
         }
 
         private MediaFrameSourceGroup mediaFrameSourceGroup;
