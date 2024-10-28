@@ -25,7 +25,7 @@ resources:
 jobs:
   - job: SyncMirror
     pool:
-      type: windows
+      vmImage: "windows-2022"
     strategy:
       matrix:
         ${{ each branches in parameters.SourceToTargetBranches }}:
