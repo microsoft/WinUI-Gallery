@@ -71,7 +71,7 @@ extends:
 
           dependsOn: []
           steps:
-            - checkout: self
+            - checkout: InternalWinUIGallery
               path: s/
               persistCredentials: true
 
@@ -102,4 +102,4 @@ extends:
             - task: CmdLine@2
               inputs:
                 script: |
-                  git push origin $(TargetBranch)
+                  git push
