@@ -35,7 +35,7 @@ jobs:
 
     dependsOn: []
     steps:
-      - checkout: InternalWinUIGallery
+      - checkout: self
         path: s/
         persistCredentials: true
 
