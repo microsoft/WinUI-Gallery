@@ -46,8 +46,8 @@ Global
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug|x86.Deploy.0 = Debug|x86
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64.ActiveCfg = Debug-Unpackaged|ARM64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64.Build.0 = Debug-Unpackaged|ARM64
-		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64EC.ActiveCfg = Debug-Unpackaged|ARM64
-		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64EC.Build.0 = Debug-Unpackaged|ARM64
+		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64EC.ActiveCfg = Debug-Unpackaged|ARM64EC
+		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|ARM64EC.Build.0 = Debug-Unpackaged|ARM64EC
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|x64.ActiveCfg = Debug-Unpackaged|x64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|x64.Build.0 = Debug-Unpackaged|x64
 		{D78F3B56-340D-44F0-9AF1-320D473BA611}.Debug-Unpackaged|x86.ActiveCfg = Debug-Unpackaged|x86
