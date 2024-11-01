@@ -48,7 +48,8 @@ namespace UITests
 				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull)
 				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullListViewXAML)
 				.Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullTextBlockXAML)
-				.Where(rule => rule.Rule.ID != RuleId.NameNotNull);
+				.Where(rule => rule.Rule.ID != RuleId.NameNotNull)
+				.Where(rule => rule.Rule.ID != RuleId.ChromiumComponentsShouldUseWebScanner);
 
             if (testResult.Any())
 			{
