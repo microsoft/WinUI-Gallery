@@ -11,9 +11,11 @@
             CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
             XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
             <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ShowDialog" Content="Show dialog" Click="ShowDialog_Click" />
-                    <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
+                <StackPanel x:Name="stackPanel">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ShowDialog" Content="Show dialog" Click="ShowDialog_Click" />
+                        <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
+                    </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
