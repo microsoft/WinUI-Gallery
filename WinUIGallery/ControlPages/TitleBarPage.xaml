@@ -157,7 +157,7 @@
                            Microsoft.UI.AppWindowTitlebar
                         </Hyperlink>
                         and
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.InputNonClientPointerSource</Hyperlink>
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.Input.InputNonClientPointerSource</Hyperlink>
                         <Italic>apis</Italic>
                         <LineBreak></LineBreak>
                         <LineBreak></LineBreak>
