@@ -134,7 +134,7 @@ namespace UITests.Tests
                 {
                     Logger.LogMessage("Window closed. Reinitializing session.");
                     SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
-                    SessionManager.TryInitializeSession();
+                    SessionManager.Setup(null);
                 }
                 else
                 {
