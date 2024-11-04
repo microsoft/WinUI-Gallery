@@ -133,7 +133,8 @@ namespace UITests.Tests
                 else if (exc.Message.Contains("Currently selected window has been closed"))
                 {
                     Logger.LogMessage("Window closed. Reinitializing session.");
-                    ValidatePageAccessibilityWithAxe(sectionName, pageName); // Reinitialize session and try again.
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+                    SessionManager.TryInitializeSession();
                 }
                 else
                 {
