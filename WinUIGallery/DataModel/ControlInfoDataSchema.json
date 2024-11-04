@@ -14,7 +14,7 @@
                     },
                     "Title": {
                         "type": "string",
-                        "description": "Title appears on the control group page"
+                        "description": "The name of the control group. Will be displayed on the control group page and navigation"
                     },
                     "Subtitle": {
                         "type": "string",
@@ -30,7 +30,7 @@
                     },
                     "IconGlyph": {
                         "type": "string",
-                        "description": "Appears as an icon for the NavigationViewItem of this control group"
+                        "description": "Glyph of this control group. Will be displayed as an icon for the NavigationViewItem of this control group"
                     },
                     "ApiNamespace": {
                         "type": "string",
@@ -38,7 +38,7 @@
                     },
                     "IsSpecialSection": {
                         "type": "boolean",
-                        "description": "Special section is hard-coded in NavigationRootPage.xaml",
+                        "description": "Indicates that this section is not a regular control section but is added to the navigation differently",
                         "default": true
                     },
                     "Folder": {
@@ -58,7 +58,7 @@
                                 },
                                 "Title": {
                                     "type": "string",
-                                    "description": "Title appears on the overview card and control page of this control"
+                                    "description": "Name of this control. Will be displayed in the overview card and on top of the control page of this control"
                                 },
                                 "ApiNamespace": {
                                     "type": "string",
@@ -66,15 +66,15 @@
                                 },
                                 "Subtitle": {
                                     "type": "string",
-                                    "description": "Subtitle appears on the overview card of this control"
+                                    "description": "Brief usage of this control. Will be displayed on the overview card of this control"
                                 },
                                 "Description": {
                                     "type": "string",
-                                    "description": "Appears on the control page"
+                                    "description": "Description of this control. Will be displayed on the control page, below the Title of this control"
                                 },
                                 "ImagePath": {
                                     "type": "string",
-                                    "description": "Appears as the image of this control on the overriew card. Should be a uri starts with ms-appx:///Assets/ControlImages/..."
+                                    "description": "An image icon of this control. Will be displayed on the overriew card of this control. Should be a uri starts with ms-appx:///Assets/ControlImages/..."
                                 },
                                 "IconGlyph": {
                                     "type": "string",
@@ -87,12 +87,12 @@
                                 "IsNew": {
                                     "type": "boolean",
                                     "default": true,
-                                    "description": "Show on the Recently Added Sample section on the main page and will add a dot on the overview card of this control"
+                                    "description": "Whether this is a newly added control. If true, it will be displayed in the Recently Added Sample section on the main page and will have a dot on the overview card of this control"
                                 },
                                 "IsUpdated": {
                                     "type": "boolean",
                                     "default": true,
-                                    "description": "Show on the Recently Updated Sample section on the main page and will add a dot on the overview card of this control"
+                                    "description": "Whether the example page of this control has been updated lately. If true, it will be displayed in the Recently Updated Sample section on the main page and will have a dot on the overview card of this control"
                                 },
                                 "Docs": {
                                     "type": "array",
@@ -116,7 +116,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "description": "Name of the related control"
+                                        "description": "ID of the related control"
                                     },
                                     "description": "Array of names of the related control"
                                 }
