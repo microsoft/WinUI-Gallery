@@ -118,6 +118,7 @@
                             IsClickEnabled="True">
                             <TextBlock
                                 x:Name="gitCloneTextBlock"
+                                FontFamily="Consolas"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 IsTextSelectionEnabled="True"
                                 Text="git clone https://github.com/microsoft/WinUI-Gallery" />
