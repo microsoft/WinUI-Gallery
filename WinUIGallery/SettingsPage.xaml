@@ -111,11 +111,19 @@
                         IsTextSelectionEnabled="True"
                         Text="{x:Bind Version}" />
                     <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard Header="To clone this repository">
+                        <toolkit:SettingsCard
+                            x:Name="toCloneRepoCard"
+                            Click="toCloneRepoCard_Click"
+                            Header="To clone this repository"
+                            IsClickEnabled="True">
                             <TextBlock
+                                x:Name="gitCloneTextBlock"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 IsTextSelectionEnabled="True"
                                 Text="git clone https://github.com/microsoft/WinUI-Gallery" />
+                            <toolkit:SettingsCard.ActionIcon>
+                                <FontIcon Glyph="&#xE8C8;" />
+                            </toolkit:SettingsCard.ActionIcon>
                         </toolkit:SettingsCard>
                         <toolkit:SettingsCard
                             x:Name="bugRequestCard"
