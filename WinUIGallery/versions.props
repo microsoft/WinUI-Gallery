@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WindowsAppRuntimeVersionA>1.5.241001000</WindowsAppRuntimeVersionA>
+    <WindowsAppRuntimeVersionB>1.6.240923002</WindowsAppRuntimeVersionB>
+  </PropertyGroup>
+</Project>

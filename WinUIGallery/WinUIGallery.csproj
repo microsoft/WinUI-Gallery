@@ -37,6 +37,14 @@
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
+
+        <!--A/B loading settings-->
+        <WindowsAppSDKDynamicRuntime>true</WindowsAppSDKDynamicRuntime>
+        <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+        <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+        <WindowsPackageType>None</WindowsPackageType>
+        <WindowsAppSdkUndockedRegFreeWinRTInitialize>false</WindowsAppSdkUndockedRegFreeWinRTInitialize>
+        <ShouldComputeInputPris>false</ShouldComputeInputPris>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -313,4 +321,67 @@
             </_NoneWithTargetPath>
         </ItemGroup>
     </Target> 
+
+
+  <!--
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\VersionALoader\VersionALoader.vcxproj" />
+    <ProjectReference Include="..\VersionBLoader\VersionBLoader.vcxproj" />
+  </ItemGroup>
+
+  <!--
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
+  <!--Generate C# source to capture MSBuild paths-->    
+  <PropertyGroup>
+    <WindowsAppRuntimeVersions>$(GeneratedFilesDir)WindowsAppRuntimeVersions.cs</WindowsAppRuntimeVersions>
+    <PrepareForBuildDependsOn>$(PrepareForBuildDependsOn);CreateWindowsAppRuntimeVersions</PrepareForBuildDependsOn>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|x86'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|x64'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Unpackaged|ARM64'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|x86'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|x64'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>    
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Unpackaged|ARM64'">
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>
+  <Target Name="CreateWindowsAppRuntimeVersions">
+    <PropertyGroup>
+      <WindowsAppRuntimeVersionsLines>
+namespace $(RootNamespace)
+{
+  internal static class WindowsAppRuntimeVersions
+  {
+    internal static string VersionA =&gt; @"$(WindowsAppRuntimeVersionA)"%3b
+    internal static string VersionB =&gt; @"$(WindowsAppRuntimeVersionB)"%3b
+  }
+}
+      </WindowsAppRuntimeVersionsLines>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(WindowsAppRuntimeVersions)" Lines="$(WindowsAppRuntimeVersionsLines)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+  </Target>
 </Project>

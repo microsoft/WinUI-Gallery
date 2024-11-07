@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Override a few targets in Microsoft.WindowsAppSDK.SelfContained.targets to enable A/B dynamic runtime loading behavior -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <!--Override to enable A/B loading, via WindowsAppSDKDynamicRuntime--> 
+    <Target Name="CreateWinRTRegistration"
+        BeforeTargets="AssignTargetPaths;CoreCompile"
+        DependsOnTargets="GetNewAppManifestValues;ExtractMicrosoftWindowsAppSDKMsixFiles"
+        Inputs="$(UserApplicationManifest);$(WindowsAppSDKAppxManifest)"
+        Outputs="$(ApplicationManifest)"
+        Condition="'$(MSBuildProjectExtension)' != '.wapproj'">
+        <MakeDir Directories="$(SelfContainedIntermediateOutputPath)Manifests\" />
+        <PropertyGroup>
+            <WindowsAppSDKAppManifest>$(SelfContainedIntermediateOutputPath)Manifests\WindowsAppSDK.manifest</WindowsAppSDKAppManifest>
+            <WindowsAppSDKRedirectDlls>false</WindowsAppSDKRedirectDlls>
+            <WindowsAppSDKRedirectDlls Condition="'$(WindowsAppSDKDynamicRuntime)'=='true'">true</WindowsAppSDKRedirectDlls>
+        </PropertyGroup>
+        <GenerateAppManifestFromAppx
+            RedirectDlls="$(WindowsAppSDKRedirectDlls)"
+            MsixContentDir="$(MicrosoftWindowsAppSDKMsixContent)"
+            InAppxManifest="$(WindowsAppSDKAppxManifest)"
+            OutAppManifest="$(WindowsAppSDKAppManifest)">
+        </GenerateAppManifestFromAppx>
+        <ItemGroup>
+            <MtMergeInputs Include="$(WindowsAppSDKAppManifest)" />
+            <MtMergeInputs Condition="'$(UserApplicationManifest)'!=''" Include="$(UserApplicationManifest)" />
+            <UpToDateCheckInput Condition="'$(UserApplicationManifest)'!=''" Include="$(UserApplicationManifest)" />
+        </ItemGroup>
+        <Message Importance="low" Text="WindowsAppSDKDynamicRuntime merging manifests: @(MtMergeInputs)" />
+        <Exec
+            Command="&quot;$(ManifestTool)&quot; -nologo -manifest @(MtMergeInputs->'&quot;%(Identity)&quot;', ' ') -out:&quot;$(ApplicationManifest)&quot;"
+            WorkingDirectory="$(MSBuildProjectDirectory)" >
+        </Exec>
+        <Touch Files="$(ApplicationManifest)" />
+    </Target>
+
+    <Target Name="ExtractMicrosoftWindowsAppSDKMsixFiles"
+      Condition="'$(MSBuildProjectExtension)' != '.wapproj'"
+      Inputs="@(MicrosoftWindowsAppSDKMsix)"
+      Outputs="$(MicrosoftWindowsAppSDKMsixContent)\Microsoft.UI.Xaml.Controls.pri;$(WindowsAppSDKAppxManifest)"
+      DependsOnTargets="GetExtractMicrosoftWindowsAppSDKMsixFilesInputs">
+        <Unzip
+          SourceFiles="@(MicrosoftWindowsAppSDKMsix)"
+          DestinationFolder="$(MicrosoftWindowsAppSDKMsixContent)"
+          SkipUnchangedFiles="true"
+          OverwriteReadOnlyFiles="true" />
+        <!--Reverse the rename of Microsoft.UI.Xaml.Controls.pri to resources.pri to enable use of both from the app -->
+        <!-- <Move SourceFiles="$(MicrosoftWindowsAppSDKMsixContent)\resources.pri" DestinationFiles="$(MicrosoftWindowsAppSDKMsixContent)\Microsoft.UI.Xaml.Controls.pri"/> -->
+    </Target>
+    
+  <Target Name="AddMicrosoftWindowsAppSDKPayloadFiles"
+    Condition="'$(WindowsAppSDKDynamicRuntimeDirectory)' != ''"
+    BeforeTargets="AssignTargetPaths;CoreCompile"
+    DependsOnTargets="ExtractMicrosoftWindowsAppSDKMsixFiles" >
+    <ItemGroup>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.dll"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\restartAgent.exe"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\map.html"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.mui"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.png"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.winmd"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.xaml"/>
+      <MicrosoftWindowsAppSDKFiles Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.xbf"/>
+      <MicrosoftWindowsAppSDKFiles Remove="@(MicrosoftWindowsAppSDKFilesExcluded)"/>
+      <MicrosoftWindowsAppSDKFilesRes Include="$(MicrosoftWindowsAppSDKMsixContent)\**\*.pri"/>
+    </ItemGroup>
+    <CreateItem Include="@(MicrosoftWindowsAppSDKFiles)"
+        AdditionalMetadata="CopyToOutputDirectory=PreserveNewest;Link=$(WindowsAppSDKDynamicRuntimeDirectory)\%(MicrosoftWindowsAppSDKFiles.RecursiveDir)%(MicrosoftWindowsAppSDKFiles.Filename)%(MicrosoftWindowsAppSDKFiles.Extension)" >
+      <Output TaskParameter="Include" ItemName="None"/>
+    </CreateItem>
+    <CreateItem Include="@(MicrosoftWindowsAppSDKFilesRes)"
+        AdditionalMetadata="CopyToOutputDirectory=PreserveNewest;Link=$(WindowsAppSDKDynamicRuntimeDirectory)\%(MicrosoftWindowsAppSDKFilesRes.RecursiveDir)%(MicrosoftWindowsAppSDKFilesRes.Filename)%(MicrosoftWindowsAppSDKFilesRes.Extension)" >
+      <!-- <Output TaskParameter="Include" ItemName="ReferenceCopyLocalPaths"/> -->
+      <Output TaskParameter="Include" ItemName="None"/>
+    </CreateItem>
+  </Target>
+
+</Project>
