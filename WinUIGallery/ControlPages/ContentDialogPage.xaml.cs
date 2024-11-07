@@ -12,6 +12,9 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Media.Imaging;
+using System.Threading.Tasks;
+using WinUIGallery.Shaders;
 
 namespace WinUIGallery.ControlPages
 {
@@ -36,6 +39,7 @@ namespace WinUIGallery.ControlPages
             dialog.DefaultButton = ContentDialogButton.Primary;
             dialog.Content = new ContentDialogContent();
             dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
+            dialog.Closing += Dialog_Closing;
 
             var result = await dialog.ShowAsync();
 
@@ -52,5 +56,37 @@ namespace WinUIGallery.ControlPages
                 DialogResult.Text = "User cancelled the dialog";
             }
         }
+
+        private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+            // Get a deferral until the shader starts rendering.
+            var deferral = args.GetDeferral();
+
+            m_dialogRect = await sender.CaptureTo(m_bitmap);
+
+            var dialogShaderPanel = new ShaderPanel();
+            dialogShaderPanel.InitializeForShader<TwirlDismiss>();
+            dialogShaderPanel.Width = m_dialogRect.Width;
+            dialogShaderPanel.Height = m_dialogRect.Height;
+
+            Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
+
+            // We need to do some shenanigans because the render actually happens on a background thread,
+            // which is where the event gets fired.
+            var dispatcher = DispatcherQueue;
+            dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
+
+            await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
+
+            overlayPanel.AddOverlay(dialogShaderPanel, offset);
+
+            await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
+
+            overlayPanel.ClearOverlays();
+        }
+
+        private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
+        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
+        private Rect m_dialogRect = new();
     }
 }

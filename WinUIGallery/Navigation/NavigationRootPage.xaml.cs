@@ -26,6 +26,13 @@ using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI;
+using Microsoft.UI.Composition;
+using WinUIGallery.Shaders;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Media.Animation;
+using System.Security.AccessControl;
 
 namespace WinUIGallery
 {
@@ -150,18 +157,70 @@ namespace WinUIGallery
             });
         }
 
-        // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
-        // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
-        public void Navigate(
+        public void NavigateHelper(
             Type pageType,
             object targetPageArguments = null,
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
+            // We've stored the type of the page to navigate to in the Tag of the navigation view item
             NavigationRootPageArgs args = new NavigationRootPageArgs();
             args.NavigationRootPage = this;
             args.Parameter = targetPageArguments;
             rootFrame.Navigate(pageType, args, navigationTransitionInfo);
         }
+
+        // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
+        // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
+        public async void Navigate(
+            Type pageType,
+            object targetPageArguments = null,
+            Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
+        {
+            // Don't do the animation for the first navigation
+            if (firstNavigation)
+            {
+                firstNavigation = false;
+                NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+            }
+            else
+            {
+                await CaptureHelper.CaptureTo(this, m_fullBitmap);
+
+                overlayPanel.ClearOverlays();
+
+                var shaderPanel = new ShaderPanel();
+                shaderPanel.InitializeForShader<RippleFade>();
+                shaderPanel.Width = rootFrame.ActualWidth;
+                shaderPanel.Height = rootFrame.ActualHeight;
+
+                var transform = rootFrame.TransformToVisual(null);
+                Point offset = transform.TransformPoint(new Point(0, 0));
+                Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
+
+                await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
+                overlayPanel.AddOverlay(shaderPanel, offset);
+
+                float transitionDuration = 1.0f;
+                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                var compositor = overlayVisual.Compositor;
+                var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+                opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
+                opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
+                opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+                opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
+                overlayVisual.StartAnimation("Opacity", opacityAnimation);
+
+                NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+
+                // Delay the navigation for animation
+                await Task.Delay(TimeSpan.FromSeconds(transitionDuration));
+
+                overlayPanel.ClearOverlay(shaderPanel);
+            }
+        }
+
+        private bool firstNavigation = true;
+        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
 
         public void EnsureNavigationSelection(string id)
         {
