@@ -130,15 +130,15 @@ namespace WinUIGallery.Shaders
 
         private static PixelShaderEffect<RippleFade> DrawRippleFade(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
         {
-            PixelShaderEffect<RippleFade> rippleFade = new PixelShaderEffect<RippleFade>();
-            sources = rippleFade.Sources;
+            PixelShaderEffect<RippleFade> effect = new PixelShaderEffect<RippleFade>();
+            sources = effect.Sources;
 
             drawFunc = (ShaderDrawData drawData) =>
             {
-                rippleFade.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
+                effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
             };
 
-            return rippleFade;
+            return effect;
         }
 
         //private static PixelShaderEffect<ColorfulInfinitySolo> DrawColorfulInfinitySolo(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
@@ -156,15 +156,15 @@ namespace WinUIGallery.Shaders
 
         private static PixelShaderEffect<TwirlDismiss> DrawTwirlDismiss(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
         {
-            PixelShaderEffect<TwirlDismiss> rippleFade = new PixelShaderEffect<TwirlDismiss>();
-            sources = rippleFade.Sources;
+            PixelShaderEffect<TwirlDismiss> effect = new PixelShaderEffect<TwirlDismiss>();
+            sources = effect.Sources;
 
             drawFunc = (ShaderDrawData drawData) =>
             {
-                rippleFade.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
+                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
             };
 
-            return rippleFade;
+            return effect;
         }
     }
 

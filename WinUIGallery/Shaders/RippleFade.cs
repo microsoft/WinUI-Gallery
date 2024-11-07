@@ -6,15 +6,13 @@ using Windows.UI.ViewManagement.Core;
 namespace WinUIGallery.Shaders;
 
 /// <summary>
-/// A shader creating an abstract and colorful animation.
+/// A shader for creating a ripple and fade out effect.
 /// Ported from <see href="https://www.shadertoy.com/view/WtjyzR"/>.
-/// <para>Created by Benoit Marini.</para>
-/// <para>License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</para>
+/// <para>Created by Geoffrey Trousdale.</para>
 /// </summary>
 /// <param name="time">The current time since the start of the application.</param>
 /// <param name="dispatchSize">The dispatch size for the current output.</param>
 [D2DInputCount(1)]
-[D2DInputSimple(0)]
 [D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
 [D2DGeneratedPixelShaderDescriptor]
