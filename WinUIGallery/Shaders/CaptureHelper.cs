@@ -43,8 +43,8 @@ namespace WinUIGallery.Shaders
             {
                 X = 0,
                 Y = 0,
-                Width = dialogContent.ActualWidth,
-                Height = dialogContent.ActualHeight
+                Width = dialogContent.Width,
+                Height = dialogContent.Height
             };
 
             var transformedBounds = transform.TransformBounds(originalBounds);
