@@ -38,7 +38,11 @@ namespace Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS
         private static IntPtr DynamicRuntimeDllResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
             var libraryPath = Path.Combine(DynamicRuntime.GetBaseDirectory(), libraryName);
-            return NativeLibrary.Load(libraryPath, assembly, DllImportSearchPath.LegacyBehavior);
+            if (File.Exists(libraryPath))
+            {
+                return NativeLibrary.Load(libraryPath, assembly, DllImportSearchPath.LegacyBehavior);
+            }
+            return NativeLibrary.Load(libraryName, assembly, searchPath);
         }
     }
 }

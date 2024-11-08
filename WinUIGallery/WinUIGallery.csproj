@@ -46,6 +46,7 @@
         <WindowsPackageType>None</WindowsPackageType>
         <WindowsAppSdkUndockedRegFreeWinRTInitialize>false</WindowsAppSdkUndockedRegFreeWinRTInitialize>
         <ShouldComputeInputPris>false</ShouldComputeInputPris>
+        <OutDir>$(SolutionDir)\..\$(Platform)\$(Configuration)\</OutDir>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">

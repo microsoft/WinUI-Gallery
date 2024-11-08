@@ -450,7 +450,7 @@ namespace WinUIGallery
 
     internal static class NativeMethods
     {
-        [DllImport("Kernel32.dll", SetLastError = true)]
+        [DllImport("kernel32.dll", SetLastError = true)]
         public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
 
         [DllImport("kernel32.dll", SetLastError = true)]
