@@ -18,7 +18,7 @@ namespace WinUIGallery
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr GetModuleHandle(IntPtr moduleName);
 
-        [DllImport("User32.dll")]
+        [DllImport("user32.dll")]
         internal static extern int GetDpiForWindow(IntPtr hwnd);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
@@ -36,7 +36,7 @@ namespace WinUIGallery
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         private static extern int SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hInstance, int threadId);
 
-        [DllImport("User32.dll", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
 
 
