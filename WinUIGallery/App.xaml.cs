@@ -26,6 +26,7 @@ using Windows.System;
 using System.Runtime.InteropServices;
 using static WinUIGallery.Win32;
 using WinUIGallery;
+using Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS;
 
 /// <summary>
 /// Program class
@@ -63,6 +64,9 @@ namespace Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS
                 string verionA = "1.5.241001000";
                 string versionB = "1.6.240923002";
                 string version = (isShift == 0 ? verionA : versionB);
+
+                global::System.Diagnostics.Debug.WriteLine("isShift: {0}", isShift);
+                global::System.Diagnostics.Debug.WriteLine("Windows App SDK Version: {0}", version);
                 WindowsAppRuntimeVersion = "Microsoft.WindowsAppSDK." + version;
             }
             return AppContext.BaseDirectory + WindowsAppRuntimeVersion + "\\";
@@ -87,9 +91,12 @@ namespace WinUIGallery
 
         public static string WinAppSdkDetails
         {
+            
             // TODO: restore patch number and version tag when WinAppSDK supports them both
-            get => string.Format("Windows App SDK {0}.{1}",
-                WASDK.Release.Major, WASDK.Release.Minor);
+            get => string.Format("Built on Windows App SDK {0}.{1}, Running on {2}",
+                WASDK.Release.Major,
+                WASDK.Release.Minor,
+                DynamicRuntime.WindowsAppRuntimeVersion);
         }
 
         public static string WinAppSdkRuntimeDetails
