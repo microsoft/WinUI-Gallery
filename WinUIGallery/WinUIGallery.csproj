@@ -46,6 +46,8 @@
         <WindowsAppSdkUndockedRegFreeWinRTInitialize>false</WindowsAppSdkUndockedRegFreeWinRTInitialize>
         <ShouldComputeInputPris>false</ShouldComputeInputPris>
         <OutDir>$(SolutionDir)\..\$(Platform)\$(Configuration)\</OutDir>
+        <Flavor Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">Debug</Flavor>
+        <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Debug</Flavor>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -337,6 +339,16 @@
     <ProjectReference Include="..\VersionALoader\VersionALoader.vcxproj" />
     <ProjectReference Include="..\VersionBLoader\VersionBLoader.vcxproj" />
   </ItemGroup>
+
+  <!-- HACKHACK : need to get the pri files into the WASDK dirs -->
+  <Target Name="CopyExtraFiles" AfterTargets="Build">
+    <Message Importance="high" Text="HACKHACK: Copying resources.pri files" />
+    <Copy SourceFiles="$(SolutionDir)\$(Platform)\$(Flavor)\VersionA\Microsoft.WindowsAppSDK.1.5.241001000\resources.pri"
+          DestinationFolder="$(OutDir)\Microsoft.WindowsAppSDK.1.5.241001000\" 
+          />
+    <Copy SourceFiles="$(SolutionDir)\$(Platform)\$(Flavor)\VersionB\Microsoft.WindowsAppSDK.1.6.240923002\resources.pri"
+          DestinationFolder="$(OutDir)\Microsoft.WindowsAppSDK.1.6.240923002\" />
+  </Target>
 
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
