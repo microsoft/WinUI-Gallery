@@ -161,7 +161,8 @@
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="True"
             Loaded="OnNavigationViewControlLoaded"
-            SelectionChanged="OnNavigationViewSelectionChanged">
+            SelectionChanged="OnNavigationViewSelectionChanged"
+            Background="{ThemeResource GalleryBackgroundBrush}">
 
             <!-- Custom TitleBar with NavigationView L-Pattern Overwriting resources -->
             <NavigationView.Resources>

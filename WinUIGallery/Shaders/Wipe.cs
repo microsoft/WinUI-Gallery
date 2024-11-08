@@ -1,6 +1,5 @@
 using ComputeSharp;
 using ComputeSharp.D2D1;
-using Microsoft.UI.Composition.Interactions;
 using System;
 using Windows.UI.ViewManagement.Core;
 
@@ -17,14 +16,14 @@ namespace WinUIGallery.Shaders;
 [D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
 [D2DGeneratedPixelShaderDescriptor]
-internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1PixelShader
+internal readonly partial struct Wipe(float t, int2 resolution) : ID2D1PixelShader
 {
     /// <inheritdoc/>
     public float4 Execute()
     {
         int2 xy = (int2)D2D.GetScenePosition().XY;
         float resolution1D = Hlsl.Max(resolution.X, resolution.Y);
-        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to 0-1;
+        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to -0.5 to 0.5;
 
         // Wave math
         float amplitude = 30.0f*t;
@@ -52,20 +51,15 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
         float2 uvGreen = (sampleOffset * 1.3f);
         float2 uvBlue = (sampleOffset * 1.6f);
 
-        uvRed = Hlsl.Clamp(xy+uvRed, new float2(1, 1), resolution - new float2(1,1));
-        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(1, 1), resolution - new float2(1, 1));
-        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(1, 1), resolution - new float2(1, 1));
+        //uvRed = Hlsl.Clamp(uv + uvRed, new float2(-0.499f, -0.499f), new float2(0.499f,0.499f));
+        //uvGreen = Hlsl.Clamp(uv + uvGreen, new float2(-0.499f, -0.499f), new float2(0.499f, 0.499f));
+        //uvBlue = Hlsl.Clamp(uv + uvBlue, new float2(-0.499f, -0.499f), new float2(0.499f, 0.499f));
 
-        float4 red = D2D.SampleInputAtPosition(0, uvRed);
-        float4 green = D2D.SampleInputAtPosition(0, uvGreen);
-        float4 blue = D2D.SampleInputAtPosition(0, uvBlue);
+        uv = uv * 2.0f + new float2(0.5f, 0.5f);
+        float red = D2D.SampleInput(0, uv+uvRed/resolution).R;
+        float green = D2D.SampleInput(0, uv+uvGreen / resolution).G;
+        float blue = D2D.SampleInput(0, uv+uvBlue / resolution).B;
 
-        return new float4(red.R, green.G, blue.B, 1);
-
-        //float red = D2D.SampleInputAtOffset(0, uvRed).R;
-        //float green = D2D.SampleInputAtOffset(0, uvGreen).G;
-        //float blue = D2D.SampleInputAtOffset(0, uvBlue).B;
-
-        //return new(red, green, blue, 1);
+        return new(red, green, blue, 1);
     }
 }

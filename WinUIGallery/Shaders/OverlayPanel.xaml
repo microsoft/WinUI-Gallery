@@ -8,5 +8,5 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Canvas Background="Transparent" x:Name="overlayRootCanvas" IsHitTestVisible="False" />
+    <Canvas x:Name="overlayRootCanvas" IsHitTestVisible="False" />
 </UserControl>

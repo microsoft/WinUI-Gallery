@@ -188,12 +188,13 @@ namespace WinUIGallery
 
                 overlayPanel.ClearOverlays();
 
+                UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.InitializeForShader<RippleFade>();
-                shaderPanel.Width = rootFrame.ActualWidth;
-                shaderPanel.Height = rootFrame.ActualHeight;
+                shaderPanel.Width = frame.RenderSize.Width;
+                shaderPanel.Height = frame.RenderSize.Height;
 
-                var transform = rootFrame.TransformToVisual(null);
+                var transform = frame.TransformToVisual(null);
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 

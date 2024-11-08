@@ -52,7 +52,7 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
             return new(0, 0, 0, 0);
         }
 
-        float3 tex = D2D.SampleInput(0, uvFinal).RGB;
+        float4 tex = D2D.SampleInput(0, uvFinal);
 
         return new(tex.X, tex.Y, tex.Z, 1.0f);
     }

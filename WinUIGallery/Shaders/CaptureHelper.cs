@@ -64,7 +64,7 @@ namespace WinUIGallery.Shaders
 
             return transformedBounds;
         }
-
+         
         private static float GetDpi(UIElement element)
         {
             var window = WindowHelper.GetWindowForElement(element);
