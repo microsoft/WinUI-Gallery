@@ -299,14 +299,14 @@
       <Folder Include="ControlPages\Accessibility\" />
     </ItemGroup>
     <ItemGroup>
-      <Page Update="Shaders\OverlayPanel.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
+        <Page Update="Shaders\OverlayPanel.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="Shaders\ShaderPanel.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
+        <Page Update="Shaders\ShaderPanel.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
