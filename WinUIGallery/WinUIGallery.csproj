@@ -47,7 +47,7 @@
         <ShouldComputeInputPris>false</ShouldComputeInputPris>
         <OutDir>$(SolutionDir)\..\$(Platform)\$(Configuration)\</OutDir>
         <Flavor Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">Debug</Flavor>
-        <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Debug</Flavor>
+        <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Release</Flavor>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
