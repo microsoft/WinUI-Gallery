@@ -60,35 +60,38 @@ namespace WinUIGallery.ControlPages
 
         private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-            // Get a deferral until the shader starts rendering.
-            var deferral = args.GetDeferral();
+            if (SettingsPage.useComputeSharpAnimations)
+            {
+                // Get a deferral until the shader starts rendering.
+                var deferral = args.GetDeferral();
 
-            m_dialogRect = await sender.CaptureTo(m_bitmap);
+                m_dialogRect = await sender.CaptureTo(m_bitmap);
 
-            // Calculate offset from Window root to the overlay element
-            var transform = this.XamlRoot.Content.TransformToVisual(overlayPanel);
-            var overlayOffset = transform.TransformPoint(new Point(0, 0));
-            var dialogShaderPanel = new ShaderPanel();
-            dialogShaderPanel.InitializeForShader<TwirlDismiss>();
-            dialogShaderPanel.Translation = new Vector3((float)overlayOffset.X, (float)overlayOffset.Y, 0);
-            dialogShaderPanel.Width = m_dialogRect.Width;
-            dialogShaderPanel.Height = m_dialogRect.Height;
+                // Calculate offset from Window root to the overlay element
+                var transform = this.XamlRoot.Content.TransformToVisual(overlayPanel);
+                var overlayOffset = transform.TransformPoint(new Point(0, 0));
+                var dialogShaderPanel = new ShaderPanel();
+                dialogShaderPanel.InitializeForShader<TwirlDismiss>();
+                dialogShaderPanel.Translation = new Vector3((float)overlayOffset.X, (float)overlayOffset.Y, 0);
+                dialogShaderPanel.Width = m_dialogRect.Width;
+                dialogShaderPanel.Height = m_dialogRect.Height;
 
-            // Offset from the overlay element to the dialog
-            Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
+                // Offset from the overlay element to the dialog
+                Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
 
-            // We need to do some shenanigans because the render actually happens on a background thread,
-            // which is where the event gets fired.
-            var dispatcher = DispatcherQueue;
-            dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
+                // We need to do some shenanigans because the render actually happens on a background thread,
+                // which is where the event gets fired.
+                var dispatcher = DispatcherQueue;
+                dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
 
-            await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
+                await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
 
-            overlayPanel.AddOverlay(dialogShaderPanel, offset);
+                overlayPanel.AddOverlay(dialogShaderPanel, offset);
 
-            await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
+                await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
 
-            overlayPanel.ClearOverlays();
+                overlayPanel.ClearOverlays();
+            }   
         }
 
         private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();

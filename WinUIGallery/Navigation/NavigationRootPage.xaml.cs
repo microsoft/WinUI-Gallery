@@ -177,7 +177,7 @@ namespace WinUIGallery
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
             // Don't do the animation for the first navigation
-            if (firstNavigation)
+            if (firstNavigation || !SettingsPage.useComputeSharpAnimations)
             {
                 firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);

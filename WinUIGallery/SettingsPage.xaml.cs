@@ -36,6 +36,7 @@ namespace WinUIGallery
 
         public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
         private int lastNavigationSelectionMode = 0;
+        public static bool useComputeSharpAnimations = true;
 
         public SettingsPage()
         {
@@ -161,6 +162,11 @@ namespace WinUIGallery
         {
             await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
         
+        }
+
+        private void computeSharpAnimations_Toggled(object sender, RoutedEventArgs e)
+        {
+            useComputeSharpAnimations = !useComputeSharpAnimations;
         }
     }
 }
