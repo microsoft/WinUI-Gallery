@@ -1,3 +1,4 @@
+using Microsoft.Graphics.Display;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using WinUIGallery.Helper;
 
 namespace WinUIGallery.Shaders
 {
@@ -22,7 +24,10 @@ namespace WinUIGallery.Shaders
         public static async Task CaptureTo(this UIElement uiElement, RenderTargetBitmap renderTarget)
         {
             var root = GetRoot(uiElement);
-            await renderTarget.RenderAsync(root);
+
+            var dpi = GetDpi(uiElement);
+
+            await renderTarget.RenderAsync(root, (int)(uiElement.RenderSize.Width * 96.0f / dpi), (int)(uiElement.RenderSize.Height * 96.0f / dpi));
         }
 
         public static async Task<Rect> CaptureTo(this ContentDialog dialog, RenderTargetBitmap renderTarget)
@@ -35,6 +40,7 @@ namespace WinUIGallery.Shaders
             var child3 = VisualTreeHelper.GetChild(child2, 0);
 
             var dialogContent = child3 as Border;
+            var dpi = GetDpi(dialog);
 
             // Get transform from dialog content to the window wide dialog.
             // This will let us position things later.
@@ -43,15 +49,29 @@ namespace WinUIGallery.Shaders
             {
                 X = 0,
                 Y = 0,
-                Width = dialogContent.Width,
-                Height = dialogContent.Height
+                Width = dialogContent.RenderSize.Width,
+                Height = dialogContent.RenderSize.Height
             };
+
+            GeneralTransform xfm;
 
             var transformedBounds = transform.TransformBounds(originalBounds);
 
-            await renderTarget.RenderAsync(dialogContent);
+            transformedBounds.X = transformedBounds.X;
+            transformedBounds.Y = transformedBounds.Y;
+            transformedBounds.Width = transformedBounds.Width;
+            transformedBounds.Height = transformedBounds.Height;
+
+            await renderTarget.RenderAsync(dialogContent, (int)(dialogContent.RenderSize.Width * 96.0f / dpi), (int)(dialogContent.RenderSize.Height * 96.0f / dpi));
 
             return transformedBounds;
+        }
+
+        private static float GetDpi(UIElement element)
+        {
+            var window = WindowHelper.GetWindowForElement(element);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+            return Win32.GetDpiForWindow(hwnd);
         }
 
         private static UIElement GetRoot(UIElement element)
