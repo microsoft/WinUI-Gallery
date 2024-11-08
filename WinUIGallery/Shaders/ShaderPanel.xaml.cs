@@ -100,5 +100,9 @@ namespace WinUIGallery.Shaders
             canvasAnimatedControl.Invalidate(); // Request a redraw
         }
 
+        private void canvasAnimatedControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+        }
     }
 }

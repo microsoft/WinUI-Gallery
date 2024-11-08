@@ -13,7 +13,6 @@ namespace WinUIGallery.Shaders;
 /// <param name="time">The current time since the start of the application.</param>
 /// <param name="dispatchSize">The dispatch size for the current output.</param>
 [D2DInputCount(1)]
-[D2DInputSimple(0)]
 [D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
 [D2DGeneratedPixelShaderDescriptor]
