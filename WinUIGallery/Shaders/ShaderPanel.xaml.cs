@@ -70,7 +70,8 @@ namespace WinUIGallery.Shaders
                 CanvasDevice = CanvasDevice,
                 CanvasSize = sender.Size,
                 EventArgs = args,
-                Duration = DateTime.Now - startTime
+                Duration = DateTime.Now - startTime,
+                Dpi = CaptureHelper.GetDpi(this)
             };
 
             Renderer.Draw(drawData);

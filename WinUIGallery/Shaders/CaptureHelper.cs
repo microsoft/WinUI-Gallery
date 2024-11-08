@@ -40,7 +40,7 @@ namespace WinUIGallery.Shaders
             var child3 = VisualTreeHelper.GetChild(child2, 0);
 
             var dialogContent = child3 as Border;
-            var dpi = GetDpi(dialog);
+            var dpi = GetDpi(dialog) / 96.0f;
 
             // Get transform from dialog content to the window wide dialog.
             // This will let us position things later.
@@ -55,17 +55,12 @@ namespace WinUIGallery.Shaders
 
             var transformedBounds = transform.TransformBounds(originalBounds);
 
-            transformedBounds.X = transformedBounds.X;
-            transformedBounds.Y = transformedBounds.Y;
-            transformedBounds.Width = transformedBounds.Width;
-            transformedBounds.Height = transformedBounds.Height;
-
-            await renderTarget.RenderAsync(dialogContent, (int)(dialogContent.RenderSize.Width * 96.0f / dpi), (int)(dialogContent.RenderSize.Height * 96.0f / dpi));
+            await renderTarget.RenderAsync(dialogContent, (int)(transformedBounds.Width / dpi), (int)(transformedBounds.Height / dpi));
 
             return transformedBounds;
         }
-         
-        private static float GetDpi(UIElement element)
+
+        public static float GetDpi(UIElement element)
         {
             var window = WindowHelper.GetWindowForElement(element);
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);

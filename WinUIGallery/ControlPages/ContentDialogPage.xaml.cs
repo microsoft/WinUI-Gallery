@@ -91,7 +91,7 @@ namespace WinUIGallery.ControlPages
                 await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
 
                 overlayPanel.ClearOverlays();
-            }   
+            }
         }
 
         private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
