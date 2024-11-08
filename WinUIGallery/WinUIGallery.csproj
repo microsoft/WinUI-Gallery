@@ -37,6 +37,7 @@
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
+        <CsWinRTIIDOptimizerOptOut>true</CsWinRTIIDOptimizerOptOut>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -99,6 +100,8 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
     <ItemGroup>
+        <PackageReference Include="ComputeSharp.D2D1.WinUI" Version="3.1.0-preview2" />
+        <PackageReference Include="ComputeSharp.WinUI" Version="3.1.0-preview2" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
@@ -115,14 +118,14 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
-        <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
+        <PackageReference Update="Microsoft.Graphics.Win2D" Version="1.3.0" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
         <PackageReference Update="System.Private.Uri" Version="4.3.2" />
@@ -171,6 +174,8 @@
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="DataModel\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="Shaders\OverlayPanel.xaml" />
+        <None Remove="Shaders\ShaderPanel.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -292,6 +297,16 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Page Update="Shaders\OverlayPanel.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+    </ItemGroup>
+    <ItemGroup>
+        <Page Update="Shaders\ShaderPanel.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 

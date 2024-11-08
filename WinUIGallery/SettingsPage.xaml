@@ -100,6 +100,13 @@
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
 
+                <toolkit:SettingsCard Header="ComputeSharp Animations">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xECAD;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ToggleSwitch x:Name="computeSharpAnimations" Toggled="computeSharpAnimations_Toggled" IsOn="True"/>
+                </toolkit:SettingsCard>
+
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                 <toolkit:SettingsExpander Description="© 2024 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">

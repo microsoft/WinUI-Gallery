@@ -5,17 +5,21 @@
     xmlns:local="using:WinUIGallery"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shaders="using:WinUIGallery.Shaders"
     mc:Ignorable="d">
-    <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A basic content dialog with content."
+    <Grid>
+        <StackPanel>
+            <local:ControlExample x:Name="Example1" HeaderText="A basic content dialog with content."
             CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
             XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
-            <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ShowDialog" Content="Show dialog" Click="ShowDialog_Click" />
-                    <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
-                </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-    </StackPanel>
+                <local:ControlExample.Example>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ShowDialog" Content="Show dialog" Click="ShowDialog_Click" />
+                        <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
+                    </StackPanel>
+                </local:ControlExample.Example>
+            </local:ControlExample>
+        </StackPanel>
+        <shaders:OverlayPanel x:Name="overlayPanel"/>
+    </Grid>
 </Page>

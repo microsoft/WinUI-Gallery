@@ -31,7 +31,7 @@ namespace WinUIGallery.Helper
         {
             Window newWindow = new Window
             {
-                SystemBackdrop = new MicaBackdrop()
+                //SystemBackdrop = new MicaBackdrop()
             };
             TrackWindow(newWindow);
             return newWindow;

@@ -12,6 +12,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Media.Imaging;
+using System.Threading.Tasks;
+using WinUIGallery.Shaders;
+using System.Numerics;
 
 namespace WinUIGallery.ControlPages
 {
@@ -36,6 +40,7 @@ namespace WinUIGallery.ControlPages
             dialog.DefaultButton = ContentDialogButton.Primary;
             dialog.Content = new ContentDialogContent();
             dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
+            dialog.Closing += Dialog_Closing;
 
             var result = await dialog.ShowAsync();
 
@@ -52,5 +57,45 @@ namespace WinUIGallery.ControlPages
                 DialogResult.Text = "User cancelled the dialog";
             }
         }
+
+        private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+            if (SettingsPage.useComputeSharpAnimations)
+            {
+                // Get a deferral until the shader starts rendering.
+                var deferral = args.GetDeferral();
+
+                m_dialogRect = await sender.CaptureTo(m_bitmap);
+
+                // Calculate offset from Window root to the overlay element
+                var transform = this.XamlRoot.Content.TransformToVisual(overlayPanel);
+                var overlayOffset = transform.TransformPoint(new Point(0, 0));
+                var dialogShaderPanel = new ShaderPanel();
+                dialogShaderPanel.InitializeForShader<TwirlDismiss>();
+                dialogShaderPanel.Translation = new Vector3((float)overlayOffset.X, (float)overlayOffset.Y, 0);
+                dialogShaderPanel.Width = m_dialogRect.Width;
+                dialogShaderPanel.Height = m_dialogRect.Height;
+
+                // Offset from the overlay element to the dialog
+                Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
+
+                // We need to do some shenanigans because the render actually happens on a background thread,
+                // which is where the event gets fired.
+                var dispatcher = DispatcherQueue;
+                dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
+
+                await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
+
+                overlayPanel.AddOverlay(dialogShaderPanel, offset);
+
+                await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
+
+                overlayPanel.ClearOverlays();
+            }   
+        }
+
+        private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
+        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
+        private Rect m_dialogRect = new();
     }
 }
