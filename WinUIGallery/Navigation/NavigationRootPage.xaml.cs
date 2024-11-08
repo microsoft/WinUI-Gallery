@@ -200,7 +200,7 @@ namespace WinUIGallery
                 await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
                 overlayPanel.AddOverlay(shaderPanel, offset);
 
-                float transitionDuration = 1.0f;
+                float transitionDuration = 1.5f;
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 var compositor = overlayVisual.Compositor;
                 var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();

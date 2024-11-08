@@ -20,6 +20,6 @@
                 </local:ControlExample.Example>
             </local:ControlExample>
         </StackPanel>
-        <shaders:OverlayPanel x:Name="overlayPanel"/>
+        <shaders:OverlayPanel x:Name="overlayPanel" Width="500" Height="500"/>
     </Grid>
 </Page>
