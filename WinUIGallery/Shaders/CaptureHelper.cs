@@ -53,8 +53,6 @@ namespace WinUIGallery.Shaders
                 Height = dialogContent.RenderSize.Height
             };
 
-            GeneralTransform xfm;
-
             var transformedBounds = transform.TransformBounds(originalBounds);
 
             transformedBounds.X = transformedBounds.X;

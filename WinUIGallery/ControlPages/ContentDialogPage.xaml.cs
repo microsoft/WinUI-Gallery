@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
 using WinUIGallery.Shaders;
+using System.Numerics;
 
 namespace WinUIGallery.ControlPages
 {
@@ -64,11 +65,16 @@ namespace WinUIGallery.ControlPages
 
             m_dialogRect = await sender.CaptureTo(m_bitmap);
 
+            // Calculate offset from Window root to the overlay element
+            var transform = this.XamlRoot.Content.TransformToVisual(overlayPanel);
+            var overlayOffset = transform.TransformPoint(new Point(0, 0));
             var dialogShaderPanel = new ShaderPanel();
             dialogShaderPanel.InitializeForShader<TwirlDismiss>();
+            dialogShaderPanel.Translation = new Vector3((float)overlayOffset.X, (float)overlayOffset.Y, 0);
             dialogShaderPanel.Width = m_dialogRect.Width;
             dialogShaderPanel.Height = m_dialogRect.Height;
 
+            // Offset from the overlay element to the dialog
             Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
 
             // We need to do some shenanigans because the render actually happens on a background thread,
