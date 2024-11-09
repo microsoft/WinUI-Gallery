@@ -74,5 +74,4 @@
       <Output TaskParameter="Include" ItemName="None"/>
     </CreateItem>
   </Target>
-
 </Project>
