@@ -19,7 +19,7 @@
             WMC1501 <!-- x is for evaluation purposes only and is subject to change or removal in future updates. -->
         </MSBuildWarningsAsMessages>
         <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-        <Configurations>Debug-Unpackaged;Release-Unpackaged</Configurations>
+        <Configurations>Debug;Release;Debug-Unpackaged;Release-Unpackaged</Configurations>
         <Release>true</Release>
         <Release Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">false</Release>
         <Packaged>true</Packaged>
