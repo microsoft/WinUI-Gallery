@@ -28,6 +28,9 @@ using static WinUIGallery.Win32;
 using WinUIGallery;
 using Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS;
 
+
+#if AB_BUILD
+
 /// <summary>
 /// Program class
 /// </summary>
@@ -46,6 +49,7 @@ public static class Program
     }
 }
 
+#endif
 
 namespace Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS
 {
@@ -103,10 +107,10 @@ namespace WinUIGallery
         {
             
             // TODO: restore patch number and version tag when WinAppSDK supports them both
-            get => string.Format("Built on Windows App SDK {0}.{1}, Running on {2}",
+            get => string.Format("Built on Windows App SDK {0}.{1}{2}",
                 WASDK.Release.Major,
                 WASDK.Release.Minor,
-                DynamicRuntime.WindowsAppRuntimeVersionFriendly);
+                DynamicRuntime.WindowsAppRuntimeVersionFriendly == null ? "" : " - Running on " + DynamicRuntime.WindowsAppRuntimeVersionFriendly);
         }
 
         public static string WinAppSdkRuntimeDetails
