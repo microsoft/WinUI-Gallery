@@ -375,5 +375,5 @@
     <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
   </PropertyGroup>
 
-  <Import Project="$(SolutionDir)DynamicLoader.targets" />
+  
 </Project>
