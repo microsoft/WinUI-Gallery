@@ -55,19 +55,29 @@ namespace Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS
         public static extern short GetAsyncKeyState(int virtualKeyCode);
 
         public static string WindowsAppRuntimeVersion { get; private set; }
+        public static string WindowsAppRuntimeVersionFriendly { get; private set; }
+
+        // pinvoke for win32 MessageBox
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern int MessageBox(IntPtr hWnd, string text, string caption, int options);
 
         internal static string GetBaseDirectory()
         {
             if (WindowsAppRuntimeVersion == null)
             {
                 var isShift = GetAsyncKeyState(0x10);
-                string verionA = "1.5.241001000";
+                string versionA = "1.5.241001000";
                 string versionB = "1.6.240923002";
-                string version = (isShift == 0 ? verionA : versionB);
+
+                // Show win32 message box with yes/no option
+                var result = MessageBox(IntPtr.Zero, "Use newer version?", "Use newer version?", 4 /*MB_YESNO*/);
+
+                string version = (result == 6 ? versionB : versionA);
 
                 global::System.Diagnostics.Debug.WriteLine("isShift: {0}", isShift);
                 global::System.Diagnostics.Debug.WriteLine("Windows App SDK Version: {0}", version);
                 WindowsAppRuntimeVersion = "Microsoft.WindowsAppSDK." + version;
+                WindowsAppRuntimeVersionFriendly = "Windows App SDK " + version.Substring(0,3);
             }
             return AppContext.BaseDirectory + WindowsAppRuntimeVersion + "\\";
         }
@@ -96,7 +106,7 @@ namespace WinUIGallery
             get => string.Format("Built on Windows App SDK {0}.{1}, Running on {2}",
                 WASDK.Release.Major,
                 WASDK.Release.Minor,
-                DynamicRuntime.WindowsAppRuntimeVersion);
+                DynamicRuntime.WindowsAppRuntimeVersionFriendly);
         }
 
         public static string WinAppSdkRuntimeDetails
