@@ -14,7 +14,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
+#if !AB_BUILD
 using WinUIGallery.Shaders;
+#endif // #if !AB_BUILD
 using System.Numerics;
 
 namespace WinUIGallery.ControlPages
@@ -60,6 +62,7 @@ namespace WinUIGallery.ControlPages
 
         private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
+#if !AB_BUILD
             if (SettingsPage.useComputeSharpAnimations)
             {
                 // Get a deferral until the shader starts rendering.
@@ -91,7 +94,8 @@ namespace WinUIGallery.ControlPages
                 await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
 
                 overlayPanel.ClearOverlays();
-            }   
+            }
+#endif // #if !AB_BUILD
         }
 
         private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();

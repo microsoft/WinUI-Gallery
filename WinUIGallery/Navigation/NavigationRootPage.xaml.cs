@@ -29,7 +29,9 @@ using WinUIGallery.DesktopWap.Helper;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI;
 using Microsoft.UI.Composition;
+#if !AB_BUILD
 using WinUIGallery.Shaders;
+#endif
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
@@ -184,6 +186,7 @@ namespace WinUIGallery
             }
             else
             {
+#if !AB_BUILD
                 await CaptureHelper.CaptureTo(this, m_fullBitmap);
 
                 overlayPanel.ClearOverlays();
@@ -216,6 +219,9 @@ namespace WinUIGallery
                 await Task.Delay(TimeSpan.FromSeconds(transitionDuration));
 
                 overlayPanel.ClearOverlay(shaderPanel);
+#else
+                NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+#endif // #if !AB_BUILD
             }
         }
 

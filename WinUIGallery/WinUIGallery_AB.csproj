@@ -106,6 +106,7 @@
       <None Remove="Assets\ControlIcons\**" />
       <Page Remove="Assets\ControlIcons\**" />
       <PRIResource Remove="Assets\ControlIcons\**" />
+      <Compile Remove="Shaders\**" />
     </ItemGroup>
 
     <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
@@ -148,6 +149,8 @@
         <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
         <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
         <Page Remove="ControlPages\InputValidationPage.xaml" />
+        <Page Remove="Shaders\**" />
+        <Page Include="Shaders\OverlayPanel.xaml" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
         <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
