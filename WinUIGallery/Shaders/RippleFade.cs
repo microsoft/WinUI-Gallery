@@ -1,5 +1,6 @@
 using ComputeSharp;
 using ComputeSharp.D2D1;
+using Microsoft.UI.Composition.Interactions;
 using System;
 using Windows.UI.ViewManagement.Core;
 
@@ -23,11 +24,11 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
     {
         int2 xy = (int2)D2D.GetScenePosition().XY;
         float resolution1D = Hlsl.Max(resolution.X, resolution.Y);
-        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to 0-1;
+        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to -0.5 to 0.5;
 
         // Wave math
         float amplitude = 30.0f*t;
-        float wavelength = .2f;// 1.0f / (6*t + 1.5f) + 0.1f;
+        float wavelength = .2f;
 
         // Distance from center
         float dist = Hlsl.Length(uv);
@@ -51,10 +52,14 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
         float2 uvGreen = (sampleOffset * 1.3f);
         float2 uvBlue = (sampleOffset * 1.6f);
 
-        float red = D2D.SampleInputAtOffset(0, uvRed).R;
-        float green = D2D.SampleInputAtOffset(0, uvGreen).G;
-        float blue = D2D.SampleInputAtOffset(0, uvBlue).B;
+        uvRed = Hlsl.Clamp(xy+uvRed, new float2(1, 1), resolution - new float2(1,1));
+        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(1, 1), resolution - new float2(1, 1));
+        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(1, 1), resolution - new float2(1, 1));
 
-        return new(red, green, blue, 1);
+        float4 red = D2D.SampleInputAtPosition(0, uvRed);
+        float4 green = D2D.SampleInputAtPosition(0, uvGreen);
+        float4 blue = D2D.SampleInputAtPosition(0, uvBlue);
+
+        return new float4(red.R, green.G, blue.B, 1);
     }
 }

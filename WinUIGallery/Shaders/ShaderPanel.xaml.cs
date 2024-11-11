@@ -18,6 +18,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Diagnostics;
+using Windows.UI;
+using System.Numerics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,6 +38,9 @@ namespace WinUIGallery.Shaders
         }
 
         public event EventHandler FirstRender;
+
+        // Variable to be passed through to the shader
+        public Vector2 WipeDirection { get; set; } = new Vector2(1,0);
 
         private PixelShaderRenderer Renderer { get; } = new();
 
@@ -68,7 +74,9 @@ namespace WinUIGallery.Shaders
                 CanvasDevice = CanvasDevice,
                 CanvasSize = sender.Size,
                 EventArgs = args,
-                Duration = DateTime.Now - startTime
+                Duration = DateTime.Now - startTime,
+                Dpi = CaptureHelper.GetDpi(this),
+                WipeDirection = WipeDirection
             };
 
             Renderer.Draw(drawData);

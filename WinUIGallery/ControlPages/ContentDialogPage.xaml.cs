@@ -102,8 +102,10 @@ namespace WinUIGallery.ControlPages
 
         private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
         private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
+
 #if !AB_BUILD
         private Rect m_dialogRect = new();
 #endif // #if !AB_BUILD
     }
 }
+
