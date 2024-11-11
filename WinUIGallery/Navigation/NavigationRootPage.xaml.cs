@@ -178,7 +178,7 @@ namespace WinUIGallery
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
             // Don't do the animation for the first navigation
-            if (firstNavigation || !SettingsPage.useComputeSharpAnimations)
+            if (firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
@@ -195,7 +195,7 @@ namespace WinUIGallery
                 shaderPanel.Height = frame.RenderSize.Height;
 
                 float transitionDuration = 1.5f;
-                if (true)
+                if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
                     shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;

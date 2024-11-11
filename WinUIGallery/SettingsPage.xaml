@@ -102,9 +102,13 @@
 
                 <toolkit:SettingsCard Header="ComputeSharp Animations">
                     <toolkit:SettingsCard.HeaderIcon>
-                        <FontIcon Glyph="&#xECAD;" />
+                        <FontIcon Glyph="&#xF594;" />
                     </toolkit:SettingsCard.HeaderIcon>
-                    <ToggleSwitch x:Name="computeSharpAnimations" Toggled="computeSharpAnimations_Toggled" IsOn="True"/>
+                    <ComboBox x:Name="computeSharpAnimations" SelectionChanged="computeSharpAnimations_SelectionChanged">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Wipe" />
+                        <ComboBoxItem Content="Ripple" />
+                    </ComboBox>
                 </toolkit:SettingsCard>
 
                 <!--  About  -->
