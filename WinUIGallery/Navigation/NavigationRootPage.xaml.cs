@@ -33,6 +33,7 @@ using WinUIGallery.Shaders;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
+using System.Numerics;
 
 namespace WinUIGallery
 {
@@ -190,9 +191,29 @@ namespace WinUIGallery
 
                 UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
-                shaderPanel.InitializeForShader<RippleFade>();
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
+
+                float transitionDuration = 1.5f;
+                if (true)
+                {
+                    shaderPanel.InitializeForShader<Wipe>();
+                    float radians = (float)new Random().NextDouble() * 3.14f * 2;
+                    shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
+                    transitionDuration = 2.0f;
+                }
+                else
+                {
+                    shaderPanel.InitializeForShader<RippleFade>();
+                    var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                    var compositor = overlayVisual.Compositor;
+                    var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+                    opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+                    opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
+                    overlayVisual.StartAnimation("Opacity", opacityAnimation);
+                }
 
                 var transform = frame.TransformToVisual(null);
                 Point offset = transform.TransformPoint(new Point(0, 0));
@@ -200,16 +221,6 @@ namespace WinUIGallery
 
                 await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
                 overlayPanel.AddOverlay(shaderPanel, offset);
-
-                float transitionDuration = 1.5f;
-                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
-                var compositor = overlayVisual.Compositor;
-                var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
-                opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
-                opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
-                opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
-                opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
-                overlayVisual.StartAnimation("Opacity", opacityAnimation);
 
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
 

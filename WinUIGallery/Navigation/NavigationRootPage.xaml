@@ -270,6 +270,6 @@
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
         </NavigationView>
-        <shaders:OverlayPanel x:Name="overlayPanel"/>
+        <shaders:OverlayPanel x:Name="overlayPanel" Background="Transparent"/>
     </Grid>
 </Page>

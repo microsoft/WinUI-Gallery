@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -26,6 +27,7 @@ namespace WinUIGallery.Shaders
         public TimeSpan Duration;
         public SizeInt32 InputSize;
         public float Dpi;
+        public Vector2 WipeDirection;
 
         public int2 CanvasSizeInt2 => new int2((int)CanvasSize.Width, (int)CanvasSize.Height);
 
@@ -119,24 +121,10 @@ namespace WinUIGallery.Shaders
 
         private static readonly Dictionary<Type, ShaderDrawDelegate> s_shaderDrawMap = new()
         {
-            //{ typeof(ColorfulInfinity), DrawColorfulInfinity },
             { typeof(RippleFade), DrawRippleFade },
-            //{ typeof(ColorfulInfinitySolo), DrawColorfulInfinitySolo },
             { typeof(TwirlDismiss), DrawTwirlDismiss },
+            { typeof(Wipe), DrawWipe },
         };
-
-        //private static PixelShaderEffect<ColorfulInfinity> DrawColorfulInfinity(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
-        //{
-        //    PixelShaderEffect<ColorfulInfinity> colorfulInfinity = new PixelShaderEffect<ColorfulInfinity>();
-        //    sources = colorfulInfinity.Sources;
-
-        //    drawFunc = (ShaderDrawData drawData) =>
-        //    {
-        //        colorfulInfinity.ConstantBuffer = new ColorfulInfinity((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
-        //    };
-
-        //    return colorfulInfinity;
-        //}
 
         private static PixelShaderEffect<RippleFade> DrawRippleFade(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
         {
@@ -151,19 +139,6 @@ namespace WinUIGallery.Shaders
             return effect;
         }
 
-        //private static PixelShaderEffect<ColorfulInfinitySolo> DrawColorfulInfinitySolo(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
-        //{
-        //    PixelShaderEffect<ColorfulInfinitySolo> rippleFade = new PixelShaderEffect<ColorfulInfinitySolo>();
-        //    sources = rippleFade.Sources;
-
-        //    drawFunc = (ShaderDrawData drawData) =>
-        //    {
-        //        rippleFade.ConstantBuffer = new ColorfulInfinitySolo((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
-        //    };
-
-        //    return rippleFade;
-        //}
-
         private static PixelShaderEffect<TwirlDismiss> DrawTwirlDismiss(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
         {
             PixelShaderEffect<TwirlDismiss> effect = new PixelShaderEffect<TwirlDismiss>();
@@ -175,6 +150,19 @@ namespace WinUIGallery.Shaders
                 var originalSize = drawData.CanvasSizeInt2;
                 var size = new int2((int)(originalSize.X * scale), (int)(originalSize.Y * scale));
                 effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, size);
+            };
+
+            return effect;
+        }
+
+        private static PixelShaderEffect<Wipe> DrawWipe(out Action<ShaderDrawData> drawFunc, out EffectSourceList sources)
+        {
+            PixelShaderEffect<Wipe> effect = new PixelShaderEffect<Wipe>();
+            sources = effect.Sources;
+
+            drawFunc = (ShaderDrawData drawData) =>
+            {
+                effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2, drawData.WipeDirection);
             };
 
             return effect;
