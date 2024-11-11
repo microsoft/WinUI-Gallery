@@ -50,6 +50,7 @@
         <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Release</Flavor>
         <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN;AB_BUILD</DefineConstants>
         <UseDynamicLoader>true</UseDynamicLoader>
+        <WindowsAppSDKSingleFileVerifyConfiguration>false</WindowsAppSDKSingleFileVerifyConfiguration>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">

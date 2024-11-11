@@ -221,6 +221,7 @@ namespace WinUIGallery
                 overlayPanel.ClearOverlay(shaderPanel);
 #else
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                await Task.CompletedTask;
 #endif // #if !AB_BUILD
             }
         }
