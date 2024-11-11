@@ -60,7 +60,7 @@ namespace WinUIGallery.ControlPages
 
         private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-            if (SettingsPage.useComputeSharpAnimations)
+            if (SettingsPage.computeSharpAnimationState != SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 // Get a deferral until the shader starts rendering.
                 var deferral = args.GetDeferral();
@@ -91,7 +91,7 @@ namespace WinUIGallery.ControlPages
                 await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
 
                 overlayPanel.ClearOverlays();
-            }   
+            }
         }
 
         private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();

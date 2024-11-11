@@ -34,9 +34,8 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
         float outsideRadians = insideRadians / 2.0f;
         float size = Hlsl.Max(0.0f, 1.0f - (f * f));
         float radiansInitial = Hlsl.Atan2(xyOffset.Y, xyOffset.X);
-        float radiansDelta =  percentOut * outsideRadians + (1-percentOut) * insideRadians;
+        float radiansDelta = percentOut * outsideRadians + (1 - percentOut) * insideRadians;
         float radiansFinal = radiansInitial + radiansDelta;
-
 
         float cos = Hlsl.Cos(radiansFinal);
         float sin = Hlsl.Sin(radiansFinal);
@@ -45,14 +44,14 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
             return new(0, 0, 0, 0);
         }
         float2 offsetRotated = new float2(cos, sin) * radius / size;
-        float2 uvFinal = offsetRotated / resolution + new float2(0.5f, 0.5f);
+        float2 offsetScene = offsetRotated + (float2)resolution * 0.5f;
 
-        if (uvFinal.X < 0.0f || uvFinal.Y < 0.0f || uvFinal.X > 1.0f || uvFinal.Y > 1.0f)
+        float4 tex = D2D.SampleInputAtPosition(0, offsetScene);
+
+        if (tex.A < 0.5f)
         {
             return new(0, 0, 0, 0);
         }
-
-        float3 tex = D2D.SampleInput(0, uvFinal).RGB;
 
         return new(tex.X, tex.Y, tex.Z, 1.0f);
     }

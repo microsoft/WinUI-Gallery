@@ -33,6 +33,7 @@ using WinUIGallery.Shaders;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
+using System.Numerics;
 
 namespace WinUIGallery
 {
@@ -177,7 +178,7 @@ namespace WinUIGallery
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
             // Don't do the animation for the first navigation
-            if (firstNavigation || !SettingsPage.useComputeSharpAnimations)
+            if (firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
@@ -188,27 +189,38 @@ namespace WinUIGallery
 
                 overlayPanel.ClearOverlays();
 
+                UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
-                shaderPanel.InitializeForShader<RippleFade>();
-                shaderPanel.Width = rootFrame.ActualWidth;
-                shaderPanel.Height = rootFrame.ActualHeight;
+                shaderPanel.Width = frame.RenderSize.Width;
+                shaderPanel.Height = frame.RenderSize.Height;
 
-                var transform = rootFrame.TransformToVisual(null);
+                float transitionDuration = 1.5f;
+                if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
+                {
+                    shaderPanel.InitializeForShader<Wipe>();
+                    float radians = (float)new Random().NextDouble() * 3.14f * 2;
+                    shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
+                    transitionDuration = 2.0f;
+                }
+                else
+                {
+                    shaderPanel.InitializeForShader<RippleFade>();
+                    var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                    var compositor = overlayVisual.Compositor;
+                    var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+                    opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+                    opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
+                    overlayVisual.StartAnimation("Opacity", opacityAnimation);
+                }
+
+                var transform = frame.TransformToVisual(null);
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
                 await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
                 overlayPanel.AddOverlay(shaderPanel, offset);
-
-                float transitionDuration = 1.5f;
-                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
-                var compositor = overlayVisual.Compositor;
-                var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
-                opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
-                opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
-                opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
-                opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
-                overlayVisual.StartAnimation("Opacity", opacityAnimation);
 
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
 
