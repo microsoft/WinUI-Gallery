@@ -53,7 +53,7 @@ namespace WinUIGallery.Shaders
 
         private CanvasDevice CanvasDevice { get; set; }
 
-        public async Task SetRenderTargetBitmapAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
+        public async Task SetShaderInputAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
         {
             // It's ok if CanvasDevice is null here, the function can handle it
             await Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, clip);
