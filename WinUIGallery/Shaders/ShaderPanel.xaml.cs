@@ -18,6 +18,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Diagnostics;
+using Windows.UI;
+using System.Numerics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,6 +38,12 @@ namespace WinUIGallery.Shaders
         }
 
         public event EventHandler FirstRender;
+        public event EventHandler ShaderCompleted;
+
+        // Variable to be passed through to the shader
+        public Vector2 WipeDirection { get; set; } = new Vector2(1,0);
+
+        public TimeSpan Duration => Renderer.Duration;
 
         private PixelShaderRenderer Renderer { get; } = new();
 
@@ -44,7 +53,7 @@ namespace WinUIGallery.Shaders
 
         private CanvasDevice CanvasDevice { get; set; }
 
-        public async Task SetRenderTargetBitmapAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
+        public async Task SetShaderInputAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
         {
             // It's ok if CanvasDevice is null here, the function can handle it
             await Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, clip);
@@ -68,8 +77,17 @@ namespace WinUIGallery.Shaders
                 CanvasDevice = CanvasDevice,
                 CanvasSize = sender.Size,
                 EventArgs = args,
-                Duration = DateTime.Now - startTime
+                Duration = DateTime.Now - startTime,
+                Dpi = CaptureHelper.GetDpi(this),
+                WipeDirection = WipeDirection
             };
+
+            bool lastDraw = false;
+            if (drawData.Duration > Renderer.Duration)
+            {
+                drawData.Duration = Renderer.Duration;
+                lastDraw = true;
+            }
 
             Renderer.Draw(drawData);
 
@@ -80,6 +98,12 @@ namespace WinUIGallery.Shaders
                     FirstRender(null, null);
                 }
                 m_firstRender = true;
+            }
+
+            if (lastDraw)
+            {
+                ShaderCompleted?.Invoke(null, null);
+                ShaderCompleted = null;
             }
         }
 

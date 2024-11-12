@@ -35,6 +35,7 @@ using WinUIGallery.Shaders;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
+using System.Numerics;
 
 namespace WinUIGallery
 {
@@ -179,7 +180,7 @@ namespace WinUIGallery
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
             // Don't do the animation for the first navigation
-            if (firstNavigation || !SettingsPage.useComputeSharpAnimations)
+            if (firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
@@ -191,34 +192,40 @@ namespace WinUIGallery
 
                 overlayPanel.ClearOverlays();
 
+                UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
-                shaderPanel.InitializeForShader<RippleFade>();
-                shaderPanel.Width = rootFrame.ActualWidth;
-                shaderPanel.Height = rootFrame.ActualHeight;
+                shaderPanel.Width = frame.RenderSize.Width;
+                shaderPanel.Height = frame.RenderSize.Height;
 
-                var transform = rootFrame.TransformToVisual(null);
+                if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
+                {
+                    shaderPanel.InitializeForShader<Wipe>();
+                    float radians = (float)new Random().NextDouble() * 3.14f * 2;
+                    shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
+                }
+                else
+                {
+                    shaderPanel.InitializeForShader<RippleFade>();
+                    var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                    var compositor = overlayVisual.Compositor;
+                    var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+                    opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
+                    opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+                    opacityAnimation.Duration = shaderPanel.Duration;
+                    overlayVisual.StartAnimation("Opacity", opacityAnimation);
+                }
+
+                var transform = frame.TransformToVisual(null);
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
-                overlayPanel.AddOverlay(shaderPanel, offset);
+                await shaderPanel.SetShaderInputAsync(m_fullBitmap, clip);
 
-                float transitionDuration = 1.5f;
-                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
-                var compositor = overlayVisual.Compositor;
-                var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
-                opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
-                opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
-                opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
-                opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
-                overlayVisual.StartAnimation("Opacity", opacityAnimation);
+                overlayPanel.AddOverlay(shaderPanel, offset);
+                shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
 
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
-
-                // Delay the navigation for animation
-                await Task.Delay(TimeSpan.FromSeconds(transitionDuration));
-
-                overlayPanel.ClearOverlay(shaderPanel);
 #else
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
                 await Task.CompletedTask;

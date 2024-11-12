@@ -63,47 +63,49 @@ namespace WinUIGallery.ControlPages
         private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
 #if !AB_BUILD
-            if (SettingsPage.useComputeSharpAnimations)
+            if (SettingsPage.computeSharpAnimationState != SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 // Get a deferral until the shader starts rendering.
+                // This keeps the dialog open until the capture is complete.
                 var deferral = args.GetDeferral();
 
-                m_dialogRect = await sender.CaptureTo(m_bitmap);
+                // Capture the dialog to our bitmap and get the dialog dimensions.
+                var dialogRect = await sender.CaptureTo(m_bitmap);
 
-                // Calculate offset from Window root to the overlay element
-                var transform = this.XamlRoot.Content.TransformToVisual(overlayPanel);
+                // Calculate offset from Window root to the overlay panel
+                var transform = XamlRoot.Content.TransformToVisual(overlayPanel);
                 var overlayOffset = transform.TransformPoint(new Point(0, 0));
+
+                // Create our shader panel which will run "TwirlDismiss" on the dialog capture.
                 var dialogShaderPanel = new ShaderPanel();
                 dialogShaderPanel.InitializeForShader<TwirlDismiss>();
-                dialogShaderPanel.Translation = new Vector3((float)overlayOffset.X, (float)overlayOffset.Y, 0);
-                dialogShaderPanel.Width = m_dialogRect.Width;
-                dialogShaderPanel.Height = m_dialogRect.Height;
+                dialogShaderPanel.Width = dialogRect.Width;
+                dialogShaderPanel.Height = dialogRect.Height;
+                dialogShaderPanel.Translation = new Vector3(
+                    (float)overlayOffset.X,
+                    (float)overlayOffset.Y,
+                    0);
 
-                // Offset from the overlay element to the dialog
-                Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
+                await dialogShaderPanel.SetShaderInputAsync(m_bitmap);
 
-                // We need to do some shenanigans because the render actually happens on a background thread,
-                // which is where the event gets fired.
-                var dispatcher = DispatcherQueue;
-                dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
-
-                await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
-
+                // Display the shader panel by adding it as an overlay.
+                Point offset = new() { X = dialogRect.X, Y = dialogRect.Y };
                 overlayPanel.AddOverlay(dialogShaderPanel, offset);
 
-                await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
-
-                overlayPanel.ClearOverlays();
+                // Close the dialog once the shader starts running, and remove the shader panel when
+                // it's done.
+                dialogShaderPanel.FirstRender += (s, e) => deferral.Complete();
+                dialogShaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(dialogShaderPanel);
             }
 #else
             await Task.CompletedTask;
 #endif // #if !AB_BUILD
         }
 
-        private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
-        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
 #if !AB_BUILD
-        private Rect m_dialogRect = new();
+        // The bitmap that holds the screen capture of the dialog so we can run shaders on it.
+        private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
 #endif // #if !AB_BUILD
     }
 }
+

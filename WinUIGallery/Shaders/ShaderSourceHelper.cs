@@ -25,6 +25,8 @@ namespace WinUIGallery.Shaders
             m_sourceIndex = index;
         }
 
+        public SizeInt32 BufferSize => m_bufferSize;
+
         public async Task SetPixelsFromTarget(RenderTargetBitmap bitmap, Rect? clip = null)
         {
             SizeInt32 bitmapSize = new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
