@@ -160,7 +160,7 @@ namespace WinUIGallery.Shaders
             {
                 PixelShader = effect,
                 Sources = effect.Sources,
-                Duration = TimeSpan.FromSeconds(1.0),
+                Duration = TimeSpan.FromSeconds(1.2),
                 DrawAction = drawAction
             };
         }
