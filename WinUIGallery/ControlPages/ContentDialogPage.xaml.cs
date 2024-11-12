@@ -88,7 +88,7 @@ namespace WinUIGallery.ControlPages
 
                 overlayPanel.AddOverlay(dialogShaderPanel, offset);
 
-                await Task.Delay(TimeSpan.FromSeconds(1.0f)); // sync with duration in TwirlDismiss
+                await Task.Delay(TimeSpan.FromSeconds(1.2f)); // sync with duration in TwirlDismiss
 
                 overlayPanel.ClearOverlays();
             }
