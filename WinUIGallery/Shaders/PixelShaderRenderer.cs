@@ -43,7 +43,7 @@ namespace WinUIGallery.Shaders
         private IReadOnlyList<ShaderSourceHelper> Sources => m_shaderSources;
 
 #nullable enable
-        public async Task SetSourceBitmap(int index,RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, Rect? clip = null)
+        public async Task SetSourceBitmap(int index, RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, Rect? clip = null)
         {
             var source = Sources[index];
 
@@ -106,53 +106,49 @@ namespace WinUIGallery.Shaders
     {
         public static PixelShaderRenderImpl GetRenderImplForShader<TPixelShader>()
         {
-            var drawDelegate = s_shaderDrawMap[typeof(TPixelShader)];
-            return drawDelegate();
+            var shaderFactory = s_shaderFactoryMap[typeof(TPixelShader)];
+            return shaderFactory();
         }
 
         private PixelShaderRenderImpl() { }
 
-        public ICanvasImage? PixelShader { get; private set; }
-        public Action<ShaderDrawData>? DrawAction { get; private set; }
-        public EffectSourceList? Sources { get; private set; }
-        public TimeSpan Duration { get; private set; }
+        public required ICanvasImage PixelShader { get; set; }
+        public required Action<ShaderDrawData> DrawAction { get; set; }
+        public required EffectSourceList Sources { get; set; }
+        public required TimeSpan Duration { get; set; }
 
-        private delegate PixelShaderRenderImpl ShaderImplDelegate();
+        private delegate PixelShaderRenderImpl ShaderEffectFactory();
 
-        private static readonly Dictionary<Type, ShaderImplDelegate> s_shaderDrawMap = new()
+        private static readonly Dictionary<Type, ShaderEffectFactory> s_shaderFactoryMap = new()
         {
-            { typeof(RippleFade), DrawRippleFade },
-            { typeof(TwirlDismiss), DrawTwirlDismiss },
-            { typeof(Wipe), DrawWipe },
+            { typeof(RippleFade), RippleFadeFactory },
+            { typeof(TwirlDismiss), TwirlDismissFactory },
+            { typeof(Wipe), WipeEffectFactory },
         };
 
-        private static PixelShaderRenderImpl DrawRippleFade()
+        private static PixelShaderRenderImpl RippleFadeFactory()
         {
             PixelShaderEffect<RippleFade> effect = new PixelShaderEffect<RippleFade>();
 
-            var impl = new PixelShaderRenderImpl();
-            impl.PixelShader = effect;
-            impl.Sources = effect.Sources;
-            impl.Duration = TimeSpan.FromSeconds(1.5);
-
-            impl.DrawAction = (ShaderDrawData drawData) =>
+            var drawAction = (ShaderDrawData drawData) =>
             {
                 effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
             };
 
-            return impl;
+            return new PixelShaderRenderImpl()
+            {
+                PixelShader = effect,
+                Sources = effect.Sources,
+                Duration = TimeSpan.FromSeconds(1.5),
+                DrawAction = drawAction
+            };
         }
 
-        private static PixelShaderRenderImpl DrawTwirlDismiss()
+        private static PixelShaderRenderImpl TwirlDismissFactory()
         {
             PixelShaderEffect<TwirlDismiss> effect = new PixelShaderEffect<TwirlDismiss>();
 
-            var impl = new PixelShaderRenderImpl();
-            impl.PixelShader = effect;
-            impl.Sources = effect.Sources;
-            impl.Duration = TimeSpan.FromSeconds(1.0);
-
-            impl.DrawAction = (ShaderDrawData drawData) =>
+            var drawAction = (ShaderDrawData drawData) =>
             {
                 float scale = drawData.Dpi / 96.0f;
                 var originalSize = drawData.CanvasSizeInt2;
@@ -160,24 +156,31 @@ namespace WinUIGallery.Shaders
                 effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, size);
             };
 
-            return impl;
+            return new PixelShaderRenderImpl()
+            {
+                PixelShader = effect,
+                Sources = effect.Sources,
+                Duration = TimeSpan.FromSeconds(1.0),
+                DrawAction = drawAction
+            };
         }
 
-        private static PixelShaderRenderImpl DrawWipe()
+        private static PixelShaderRenderImpl WipeEffectFactory()
         {
             PixelShaderEffect<Wipe> effect = new PixelShaderEffect<Wipe>();
 
-            var impl = new PixelShaderRenderImpl();
-            impl.PixelShader = effect;
-            impl.Sources = effect.Sources;
-            impl.Duration = TimeSpan.FromSeconds(2.0);
-
-            impl.DrawAction = (ShaderDrawData drawData) =>
+            var drawAction = (ShaderDrawData drawData) =>
             {
                 effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2, drawData.WipeDirection);
             };
 
-            return impl;
+            return new PixelShaderRenderImpl()
+            {
+                PixelShader = effect,
+                Sources = effect.Sources,
+                Duration = TimeSpan.FromSeconds(2.0),
+                DrawAction = drawAction
+            };
         }
     }
 

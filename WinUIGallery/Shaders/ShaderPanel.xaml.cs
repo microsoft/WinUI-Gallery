@@ -43,6 +43,8 @@ namespace WinUIGallery.Shaders
         // Variable to be passed through to the shader
         public Vector2 WipeDirection { get; set; } = new Vector2(1,0);
 
+        public TimeSpan Duration => Renderer.Duration;
+
         private PixelShaderRenderer Renderer { get; } = new();
 
         private bool m_firstRender = false;
@@ -100,10 +102,7 @@ namespace WinUIGallery.Shaders
 
             if (lastDraw)
             {
-                if (ShaderCompleted != null)
-                {
-                    ShaderCompleted.Invoke(null, null);
-                }
+                ShaderCompleted?.Invoke(null, null);
                 ShaderCompleted = null;
             }
         }
