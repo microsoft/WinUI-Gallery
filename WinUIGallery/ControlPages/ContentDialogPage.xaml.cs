@@ -63,6 +63,7 @@ namespace WinUIGallery.ControlPages
             if (SettingsPage.computeSharpAnimationState != SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 // Get a deferral until the shader starts rendering.
+                // This keeps the dialog open until the capture is complete.
                 var deferral = args.GetDeferral();
 
                 m_dialogRect = await sender.CaptureTo(m_bitmap);
@@ -79,18 +80,14 @@ namespace WinUIGallery.ControlPages
                 // Offset from the overlay element to the dialog
                 Point offset = new() { X = m_dialogRect.X, Y = m_dialogRect.Y };
 
-                // We need to do some shenanigans because the render actually happens on a background thread,
-                // which is where the event gets fired.
-                var dispatcher = DispatcherQueue;
-                dialogShaderPanel.FirstRender += (s, e) => dispatcher.TryEnqueue(() => deferral.Complete());
+                // Once the ShaderPanel starts rendering, close the dialog.
+                dialogShaderPanel.FirstRender += (s, e) => deferral.Complete();
 
                 await dialogShaderPanel.SetRenderTargetBitmapAsync(m_bitmap);
 
                 overlayPanel.AddOverlay(dialogShaderPanel, offset);
 
-                await Task.Delay(TimeSpan.FromSeconds(1.2f)); // sync with duration in TwirlDismiss
-
-                overlayPanel.ClearOverlays();
+                dialogShaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(dialogShaderPanel);
             }
         }
 
