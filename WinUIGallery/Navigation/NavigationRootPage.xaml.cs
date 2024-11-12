@@ -197,13 +197,11 @@ namespace WinUIGallery
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
 
-                float transitionDuration = 1.5f;
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
                     shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
-                    transitionDuration = 2.0f;
                 }
                 else
                 {
@@ -214,7 +212,7 @@ namespace WinUIGallery
                     opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
                     opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
                     opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
-                    opacityAnimation.Duration = TimeSpan.FromSeconds(transitionDuration);
+                    opacityAnimation.Duration = shaderPanel.Duration;
                     overlayVisual.StartAnimation("Opacity", opacityAnimation);
                 }
 
@@ -222,15 +220,12 @@ namespace WinUIGallery
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                await shaderPanel.SetRenderTargetBitmapAsync(m_fullBitmap, clip);
+                await shaderPanel.SetShaderInputAsync(m_fullBitmap, clip);
+
                 overlayPanel.AddOverlay(shaderPanel, offset);
+                shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
 
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
-
-                // Delay the navigation for animation
-                await Task.Delay(TimeSpan.FromSeconds(transitionDuration));
-
-                overlayPanel.ClearOverlay(shaderPanel);
 #else
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
                 await Task.CompletedTask;
