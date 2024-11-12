@@ -63,7 +63,7 @@ namespace WinUIGallery.ControlPages
         private async void Dialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
 #if !AB_BUILD
-            if (SettingsPage.useComputeSharpAnimations)
+            if (SettingsPage.computeSharpAnimationState != SettingsPage.ComputeSharpAnimationState.NONE)
             {
                 // Get a deferral until the shader starts rendering.
                 // This keeps the dialog open until the capture is complete.
