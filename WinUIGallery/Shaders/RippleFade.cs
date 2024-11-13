@@ -17,7 +17,7 @@ namespace WinUIGallery.Shaders;
 [D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
 [D2DGeneratedPixelShaderDescriptor]
-internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1PixelShader
+internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1PixelShader
 {
     /// <inheritdoc/>
     public float4 Execute()
@@ -26,15 +26,26 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
         float resolution1D = Hlsl.Max(resolution.X, resolution.Y);
         float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to -0.5 to 0.5;
 
+        float duration = 2.0f;
+        // function that is linear with time
+        float t = time / duration;
+        // easing function that starts at 0 and asymptotes at 1 as x->infinity
+        float f = Hlsl.Min(1.0f, -(t - 1) * (t - 1) + 1);
+
         // Wave math
-        float amplitude = 30.0f*t;
-        float wavelength = .2f;
+        float startAmplitude = 12;
+        float endAmplitude = 3;
+        float amplitude = startAmplitude * (1 - f) + endAmplitude * f;
+        float startWavelength = .2f;
+        float endWavelength = .4f;
+        float wavelength = startWavelength * (1 - t) + endWavelength * t;
 
         // Distance from center
         float dist = Hlsl.Length(uv);
 
-        // Wave height
-        float d = Hlsl.Max(0, (t-dist) / wavelength);
+        // Wave distance and height
+        float waveSpeed = 1.75f;
+        float d = Hlsl.Max(0, (t*waveSpeed-dist) / wavelength);
         float h = (float)-Hlsl.Sin(d * 3.14f * 2.0f);
 
         // Wave direction
@@ -49,9 +60,10 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
 
         // Chromatic aberration
         float2 uvRed = (sampleOffset * 0.7f);
-        float2 uvGreen = (sampleOffset * 1.3f);
-        float2 uvBlue = (sampleOffset * 1.6f);
+        float2 uvGreen = (sampleOffset * 1.0f);
+        float2 uvBlue = (sampleOffset * 1.4f);
 
+        // Clamp to the image size, so we don't sample outside the image
         uvRed = Hlsl.Clamp(xy+uvRed, new float2(0, 0), resolution - new float2(1,1));
         uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(0, 0), resolution - new float2(1, 1));
         uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(0, 0), resolution - new float2(1, 1));
