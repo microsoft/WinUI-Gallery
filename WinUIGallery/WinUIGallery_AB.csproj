@@ -126,10 +126,12 @@
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
         <Manifest Include="$(ApplicationManifest)" />
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
         <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
           addresses those vulnerabilites, we need to pull it in ourselves. -->
         <PackageReference Include="System.Private.Uri" />
+        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
@@ -337,9 +339,7 @@
     </Target> 
 
   <Target Name="ValidateConfiguration" BeforeTargets="Build">
-    <Error Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Release'" 
-      Text="This project only supports Debug-Unpackaged and Release-Unpackaged configurations."
-      />
+    <Error Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Release'" Text="This project only supports Debug-Unpackaged and Release-Unpackaged configurations." />
   </Target>
 
   <!--

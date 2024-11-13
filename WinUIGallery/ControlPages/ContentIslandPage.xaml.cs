@@ -72,7 +72,7 @@ namespace WinUIGallery.ControlPages
 
             _keepAlive.Add(childContentLink);
 #else
-            return Task.CompletedTask;
+            await Task.CompletedTask;
 #endif
         }
 
