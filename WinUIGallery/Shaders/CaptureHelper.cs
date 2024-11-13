@@ -23,11 +23,12 @@ namespace WinUIGallery.Shaders
         
         public static async Task CaptureTo(this UIElement uiElement, RenderTargetBitmap renderTarget)
         {
-            var root = GetRoot(uiElement);
+            //var root = GetRoot(uiElement);
 
-            var dpi = GetDpi(uiElement);
+            //var dpi = GetDpi(uiElement);
 
-            await renderTarget.RenderAsync(root, (int)(uiElement.RenderSize.Width * 96.0f / dpi), (int)(uiElement.RenderSize.Height * 96.0f / dpi));
+            //await renderTarget.RenderAsync(root, (int)(uiElement.RenderSize.Width * 96.0f / dpi), (int)(uiElement.RenderSize.Height * 96.0f / dpi));
+            await renderTarget.RenderAsync(uiElement);
         }
 
         public static async Task<Rect> CaptureTo(this ContentDialog dialog, RenderTargetBitmap renderTarget)
@@ -63,6 +64,11 @@ namespace WinUIGallery.Shaders
         public static float GetDpi(UIElement element)
         {
             var window = WindowHelper.GetWindowForElement(element);
+            if (window == null)
+            {
+                return 1.0f;
+            }
+
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
             return Win32.GetDpiForWindow(hwnd);
         }

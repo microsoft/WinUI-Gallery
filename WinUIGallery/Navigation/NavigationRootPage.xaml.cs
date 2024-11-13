@@ -196,6 +196,7 @@ namespace WinUIGallery
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
+                shaderPanel.AdjustForDpi(XamlRoot.RasterizationScale);
 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {

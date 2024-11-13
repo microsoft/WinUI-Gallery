@@ -43,7 +43,7 @@ namespace WinUIGallery.Shaders
         private IReadOnlyList<ShaderSourceHelper> Sources => m_shaderSources;
 
 #nullable enable
-        public async Task SetSourceBitmap(int index, RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, Rect? clip = null)
+        public async Task SetSourceBitmap(int index, RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, RectInt32? clip = null)
         {
             var source = Sources[index];
 
@@ -124,6 +124,7 @@ namespace WinUIGallery.Shaders
             { typeof(RippleFade), RippleFadeFactory },
             { typeof(TwirlDismiss), TwirlDismissFactory },
             { typeof(Wipe), WipeEffectFactory },
+            { typeof(IdentityShader), IdentityShaderFactory },
         };
 
         private static PixelShaderRenderImpl RippleFadeFactory()
@@ -179,6 +180,24 @@ namespace WinUIGallery.Shaders
                 PixelShader = effect,
                 Sources = effect.Sources,
                 Duration = TimeSpan.FromSeconds(2.0),
+                DrawAction = drawAction
+            };
+        }
+
+        private static PixelShaderRenderImpl IdentityShaderFactory()
+        {
+            PixelShaderEffect<IdentityShader> effect = new PixelShaderEffect<IdentityShader>();
+
+            var drawAction = (ShaderDrawData drawData) =>
+            {
+                effect.ConstantBuffer = new IdentityShader();
+            };
+
+            return new PixelShaderRenderImpl()
+            {
+                PixelShader = effect,
+                Sources = effect.Sources,
+                Duration = TimeSpan.FromSeconds(5.0), // extra long to help with debugging
                 DrawAction = drawAction
             };
         }
