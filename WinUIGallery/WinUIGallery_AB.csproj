@@ -51,6 +51,8 @@
         <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN;AB_BUILD</DefineConstants>
         <UseDynamicLoader>true</UseDynamicLoader>
         <WindowsAppSDKSingleFileVerifyConfiguration>false</WindowsAppSDKSingleFileVerifyConfiguration>
+
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -108,6 +110,8 @@
       <Page Remove="Assets\ControlIcons\**" />
       <PRIResource Remove="Assets\ControlIcons\**" />
       <Compile Remove="Shaders\**" />
+      <Compile Remove="SceneNode\**" />
+      <Compile Remove="**\ContentIslandPage.xaml.cs" />
     </ItemGroup>
 
     <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
@@ -188,6 +192,7 @@
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="DataModel\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="ContentIslandPage.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -216,6 +221,7 @@
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
+        <Content Include="Assets\SceneNode\*" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />

@@ -38,6 +38,9 @@
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
         <CsWinRTIIDOptimizerOptOut>true</CsWinRTIIDOptimizerOptOut>
+
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -118,7 +121,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.7.241010005-experimental1" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
@@ -205,6 +208,7 @@
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
+        <Content Include="Assets\SceneNode\*" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />

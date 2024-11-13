@@ -193,6 +193,8 @@ namespace WinUIGallery
             win32WindowHelper = new Win32WindowHelper(startupWindow);
             win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
 
+            startupWindow.Closed += StartupWindow_Closed;
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -204,6 +206,12 @@ namespace WinUIGallery
             registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
 
             EnsureWindow();
+        }
+
+        private void StartupWindow_Closed(object sender, WindowEventArgs args)
+        {
+            // Make sure we exit fast and clean.
+            Process.GetCurrentProcess().Kill();
         }
 
         private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
