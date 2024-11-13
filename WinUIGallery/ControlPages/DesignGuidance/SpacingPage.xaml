@@ -91,7 +91,9 @@
                         HorizontalAlignment="Center"
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="Page with cards layout" />
-                    <Image Grid.Row="1" Source="{ThemeResource CardsImage}" />
+                    <controls:SampleThemeListener Grid.Row="1">
+                        <Image Source="{ThemeResource CardsImage}" />
+                    </controls:SampleThemeListener>
                 </Grid>
                 <Grid VerticalAlignment="Top" RowSpacing="12">
                     <Grid.RowDefinitions>
@@ -102,7 +104,9 @@
                         HorizontalAlignment="Center"
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="Form layout" />
-                    <Image Grid.Row="1" Source="{ThemeResource DialogImage}" />
+                    <controls:SampleThemeListener Grid.Row="1">
+                        <Image Source="{ThemeResource DialogImage}" />
+                    </controls:SampleThemeListener>
                 </Grid>
             </StackPanel>
         </ScrollView>
