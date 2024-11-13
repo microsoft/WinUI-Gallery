@@ -197,6 +197,8 @@ namespace WinUIGallery
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
                 shaderPanel.AdjustForDpi(XamlRoot.RasterizationScale);
+                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                overlayVisual.Opacity = 1.0f;
 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
@@ -207,7 +209,6 @@ namespace WinUIGallery
                 else
                 {
                     shaderPanel.InitializeForShader<RippleFade>();
-                    var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                     var compositor = overlayVisual.Compositor;
                     var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
                     opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
