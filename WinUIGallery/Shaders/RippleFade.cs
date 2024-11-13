@@ -52,13 +52,14 @@ internal readonly partial struct RippleFade(float t, int2 resolution) : ID2D1Pix
         float2 uvGreen = (sampleOffset * 1.3f);
         float2 uvBlue = (sampleOffset * 1.6f);
 
-        uvRed = Hlsl.Clamp(xy+uvRed, new float2(1, 1), resolution - new float2(1,1));
-        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(1, 1), resolution - new float2(1, 1));
-        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(1, 1), resolution - new float2(1, 1));
+        uvRed = Hlsl.Clamp(xy+uvRed, new float2(0, 0), resolution - new float2(1,1));
+        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(0, 0), resolution - new float2(1, 1));
+        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(0, 0), resolution - new float2(1, 1));
 
-        float4 red = D2D.SampleInputAtPosition(0, uvRed);
-        float4 green = D2D.SampleInputAtPosition(0, uvGreen);
-        float4 blue = D2D.SampleInputAtPosition(0, uvBlue);
+        float2 halvesies = new float2(0.5f, 0.5f);
+        float4 red = D2D.SampleInputAtPosition(0, uvRed + halvesies);
+        float4 green = D2D.SampleInputAtPosition(0, uvGreen + halvesies);
+        float4 blue = D2D.SampleInputAtPosition(0, uvBlue + halvesies);
 
         return new float4(red.R, green.G, blue.B, 1);
     }

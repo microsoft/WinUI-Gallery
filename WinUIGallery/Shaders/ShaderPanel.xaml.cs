@@ -21,6 +21,7 @@ using Windows.Foundation.Collections;
 using System.Diagnostics;
 using Windows.UI;
 using System.Numerics;
+using Windows.Graphics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -45,6 +46,8 @@ namespace WinUIGallery.Shaders
 
         public TimeSpan Duration => Renderer.Duration;
 
+        public double DpiScale { get; private set; } = 1.0f;
+
         private PixelShaderRenderer Renderer { get; } = new();
 
         private bool m_firstRender = false;
@@ -55,8 +58,32 @@ namespace WinUIGallery.Shaders
 
         public async Task SetShaderInputAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
         {
+            // Clip comes in as DIPs and we want it as pixels
+            RectInt32? pixelClip;
+            if (clip.HasValue)
+            {
+                RectInt32 scaledClip = new RectInt32();
+                scaledClip.X = (int)(clip.Value.X * DpiScale);
+                scaledClip.Y = (int)(clip.Value.Y * DpiScale);
+                scaledClip.Width = (int)(clip.Value.Width * DpiScale);
+                scaledClip.Height = (int)(clip.Value.Height * DpiScale);
+                pixelClip = scaledClip;
+
+                // Make our Win2D canvas match exactly the pixels we're drawing
+                canvasAnimatedControl.Width = scaledClip.Width;
+                canvasAnimatedControl.Height = scaledClip.Height;
+            }
+            else
+            {
+                pixelClip = null;
+
+                // Make our Win2D canvas match exactly the pixels we're drawing
+                canvasAnimatedControl.Width = renderTargetBitmap.PixelWidth;
+                canvasAnimatedControl.Height = renderTargetBitmap.PixelHeight;
+            }
+
             // It's ok if CanvasDevice is null here, the function can handle it
-            await Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, clip);
+            await Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, pixelClip);
         }
 
         public void InitializeForShader<T>()
@@ -109,6 +136,10 @@ namespace WinUIGallery.Shaders
 
         private void CanvasAnimatedControl_Loaded(object sender, RoutedEventArgs e)
         {
+            // Change the canvas to be in pixels - we've already undone the DPI scale in "AdjustForDpi" below.
+            canvasAnimatedControl.DpiScale = 1.0f; // 1.0 after the scale and everything is applied
+            canvasAnimatedControl.RasterizationScale = 1.0f;
+
             // Initialize and start the timer
             timer = new DispatcherTimer
             {
@@ -127,6 +158,14 @@ namespace WinUIGallery.Shaders
         private void canvasAnimatedControl_Unloaded(object sender, RoutedEventArgs e)
         {
             timer.Stop();
+        }
+
+        internal void AdjustForDpi(double dpiScale)
+        {
+            DpiScale = dpiScale;
+            Width *= dpiScale;
+            Height *= dpiScale;
+            Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
         }
     }
 }

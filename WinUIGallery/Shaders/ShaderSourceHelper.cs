@@ -27,7 +27,7 @@ namespace WinUIGallery.Shaders
 
         public SizeInt32 BufferSize => m_bufferSize;
 
-        public async Task SetPixelsFromTarget(RenderTargetBitmap bitmap, Rect? clip = null)
+        public async Task SetPixelsFromTarget(RenderTargetBitmap bitmap, RectInt32? clip = null)
         {
             SizeInt32 bitmapSize = new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
             var pixelBuffer = await bitmap.GetPixelsAsync();
@@ -75,14 +75,14 @@ namespace WinUIGallery.Shaders
             m_dirty = false;
         }
 
-        private IBuffer ClipBuffer(IBuffer buffer, SizeInt32 bufferSize, Rect clip, out SizeInt32 newBufferSize)
+        private IBuffer ClipBuffer(IBuffer buffer, SizeInt32 bufferSize, RectInt32 clip, out SizeInt32 newBufferSize)
         {
             byte[] pixels = buffer.ToArray();
             int stride = bufferSize.Width * 4; // Assuming 4 bytes per pixel (BGRA)
 
             // Extract the cropped pixels
-            int cropX = (int)clip.X;
-            int cropY = (int)clip.Y;
+            int cropX = clip.X;
+            int cropY = clip.Y;
             int cropWidth = Math.Min((int)clip.Width, bufferSize.Width - cropX);
             int cropHeight = Math.Min((int)clip.Height, bufferSize.Height - cropY);
             byte[] croppedPixels = new byte[cropWidth * cropHeight * 4];
