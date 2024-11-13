@@ -132,7 +132,7 @@
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="Microsoft.Graphics.Win2D" Version="1.3.0" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
-        <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
+        <PackageReference Update="Microsoft.Windows.CsWinRT" Version="2.2.0" />
         <PackageReference Update="System.Private.Uri" Version="4.3.2" />
       </ItemGroup>
 
@@ -304,6 +304,9 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\CompositionInteropProjection\CompositionInteropProjection.csproj" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="Shaders\OverlayPanel.xaml">

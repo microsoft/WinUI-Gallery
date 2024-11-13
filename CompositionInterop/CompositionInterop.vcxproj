@@ -7,7 +7,7 @@
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
     <MinimalCoreWin>true</MinimalCoreWin>
-    <ProjectGuid>{67798009-de32-4ca7-9d71-ba1c2cab3b01}</ProjectGuid>
+    <ProjectGuid>{cb7d6ae1-58e4-49b7-b88c-4863e3aec64c}</ProjectGuid>
     <ProjectName>CompositionInterop</ProjectName>
     <RootNamespace>CompositionInterop</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -114,7 +114,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Class.cpp" />
-    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)\module.g.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Class.idl">

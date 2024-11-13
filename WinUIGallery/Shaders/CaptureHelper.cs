@@ -18,6 +18,7 @@ using Windows.Storage.Pickers;
 using WinUIGallery.Helper;
 using Windows.Graphics;
 using WinRT;
+using System.Diagnostics;
 
 namespace WinUIGallery.Shaders
 {
@@ -84,6 +85,8 @@ namespace WinUIGallery.Shaders
                 0);
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
+            int test = CompositionInterop.Class.MyProperty;
+            Debug.WriteLine(test);
         }
 
         public static float GetDpi(UIElement element)
