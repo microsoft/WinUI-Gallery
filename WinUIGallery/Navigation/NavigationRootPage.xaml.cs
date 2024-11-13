@@ -209,7 +209,7 @@ namespace WinUIGallery
                     //var referenceWindow = WindowHelper.GetWindowForElement(this);
                     //await m_fullBitmap.SaveAsBitmapAsync(referenceWindow);
 
-                    shaderPanel.InitializeForShader<IdentityShader>();
+                    shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
                 }
