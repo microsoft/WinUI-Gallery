@@ -165,7 +165,10 @@ namespace WinUIGallery.Shaders
             DpiScale = dpiScale;
             Width *= dpiScale;
             Height *= dpiScale;
-            Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
+            //Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
+
+            double inverseDpi = 1 / dpiScale;
+            RenderTransform = new CompositeTransform() { ScaleX = inverseDpi, ScaleY = inverseDpi, TranslateX = 5, TranslateY = 5 };
         }
     }
 }
