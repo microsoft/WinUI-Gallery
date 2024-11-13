@@ -8,7 +8,7 @@ namespace winrt::CompositionInterop::implementation
     {
         SurfaceHelper() = default;
 
-        static void CopySurface(winrt::Microsoft::UI::Composition::CompositionDrawingSurface sourceSurface, winrt::Windows::Foundation::IInspectable destinationResource, int destinationOffsetX, int destinationOffsetY, Windows::Foundation::Rect sourceRectangle);
+        void CopySurface(winrt::Microsoft::UI::Composition::CompositionDrawingSurface sourceSurface, winrt::Windows::Foundation::IInspectable destinationResource, int destinationOffsetX, int destinationOffsetY, Windows::Foundation::Rect sourceRectangle);
     };
 }
 

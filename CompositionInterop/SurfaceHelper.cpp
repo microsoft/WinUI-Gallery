@@ -12,7 +12,7 @@ using namespace winrt::Windows::Foundation;
 
 namespace winrt::CompositionInterop::implementation
 {
-    static void CopySurface(CompositionDrawingSurface sourceSurface, IInspectable destinationResource, int destinationOffsetX, int destinationOffsetY, Rect sourceRectangle)
+    void SurfaceHelper::CopySurface(CompositionDrawingSurface sourceSurface, IInspectable destinationResource, int destinationOffsetX, int destinationOffsetY, Rect sourceRectangle)
     {
         com_ptr<ICompositionDrawingSurfaceInterop2> interopSurface = sourceSurface.as< ICompositionDrawingSurfaceInterop2>();
         ::RECT rect{ (long)sourceRectangle.X, sourceRectangle.Y, sourceRectangle.Width, sourceRectangle.Height };
