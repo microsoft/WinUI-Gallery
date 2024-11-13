@@ -36,6 +36,9 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
 using System.Numerics;
+using Windows.Storage.Pickers;
+using WinRT.Interop;
+using Windows.Graphics.Imaging;
 
 namespace WinUIGallery
 {
@@ -202,6 +205,10 @@ namespace WinUIGallery
 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
+                    // Commented out - uncomment to save the capture we got to a file.
+                    //var referenceWindow = WindowHelper.GetWindowForElement(this);
+                    //await m_fullBitmap.SaveAsBitmapAsync(referenceWindow);
+
                     shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));

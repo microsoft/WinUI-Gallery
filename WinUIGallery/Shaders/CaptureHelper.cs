@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Storage.Pickers;
 using WinUIGallery.Helper;
 
 namespace WinUIGallery.Shaders
@@ -71,6 +73,43 @@ namespace WinUIGallery.Shaders
 
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
             return Win32.GetDpiForWindow(hwnd);
+        }
+
+        public static async Task SaveAsBitmapAsync(this RenderTargetBitmap bitmap, Window referenceWindow)
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            savePicker.FileTypeChoices.Add("Bitmap", new List<string>() { ".bmp" });
+            savePicker.SuggestedFileName = "image";
+
+            var windowNative = WinRT.Interop.WindowNative.GetWindowHandle(referenceWindow);
+            WinRT.Interop.InitializeWithWindow.Initialize(savePicker, windowNative);
+
+            var outputFile = await savePicker.PickSaveFileAsync();
+
+            if (outputFile == null)
+            {
+                return;
+            }
+
+            using (var stream = await outputFile.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+            {
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, stream);
+
+                uint width = (uint)bitmap.PixelWidth;
+                uint height = (uint)bitmap.PixelHeight;
+
+                encoder.BitmapTransform.ScaledWidth = width;
+                encoder.BitmapTransform.ScaledHeight = height;
+                encoder.BitmapTransform.InterpolationMode = BitmapInterpolationMode.NearestNeighbor;
+
+                var buffer = await bitmap.GetPixelsAsync();
+
+                var softwareBitmap = SoftwareBitmap.CreateCopyFromBuffer(buffer, BitmapPixelFormat.Bgra8, bitmap.PixelWidth, bitmap.PixelHeight);
+                encoder.SetSoftwareBitmap(softwareBitmap);
+
+                await encoder.FlushAsync();
+            }
         }
 
         private static UIElement GetRoot(UIElement element)
