@@ -136,12 +136,8 @@ namespace WinUIGallery.Shaders
 
         private void CanvasAnimatedControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // Change the canvas to be in pixels
-            //canvasAnimatedControl.Width = Width * DpiScale;
-            //canvasAnimatedControl.Height = Height * DpiScale;
-            //canvasAnimatedControl.Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
+            // Change the canvas to be in pixels - we've already undone the DPI scale in "AdjustForDpi" below.
             canvasAnimatedControl.DpiScale = 1.0f; // 1.0 after the scale and everything is applied
-            //canvasAnimatedControl.DpiScale = (float)DpiScale;
             canvasAnimatedControl.RasterizationScale = 1.0f;
 
             // Initialize and start the timer
@@ -170,7 +166,6 @@ namespace WinUIGallery.Shaders
             Width *= dpiScale;
             Height *= dpiScale;
             Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
-            // RenderTransform = new ScaleTransform() { ScaleX = 1 / DpiScale, ScaleY = 1 / DpiScale };
         }
     }
 }
