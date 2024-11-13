@@ -17,6 +17,7 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace WinUIGallery
 {
@@ -155,6 +156,13 @@ namespace WinUIGallery
         private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
+        }
+
+        private void toCloneRepoCard_Click(object sender, RoutedEventArgs e)
+        {
+            DataPackage package = new DataPackage();
+            package.SetText(gitCloneTextBlock.Text);
+            Clipboard.SetContent(package);
         }
 
         private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
