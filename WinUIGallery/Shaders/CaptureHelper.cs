@@ -85,7 +85,7 @@ namespace WinUIGallery.Shaders
                 0);
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
-            int test = CompositionInterop.Class.MyProperty;
+            int test = CompositionInterop.SurfaceHelper.CopySurface();
             Debug.WriteLine(test);
         }
 

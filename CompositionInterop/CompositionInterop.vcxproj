@@ -108,6 +108,10 @@
     <ClInclude Include="Class.h">
       <DependentUpon>Class.cpp</DependentUpon>
     </ClInclude>
+    <ClInclude Include="SurfaceHelper.h">
+      <DependentUpon>SurfaceHelper.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -115,11 +119,18 @@
     </ClCompile>
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)\module.g.cpp" />
+    <ClCompile Include="SurfaceHelper.cpp">
+      <DependentUpon>SurfaceHelper.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Class.idl">
       <SubType>Code</SubType>
       <DependentUpon>Class.cpp</DependentUpon>
+    </Midl>
+    <Midl Include="SurfaceHelper.idl">
+      <SubType>Designer</SubType>
     </Midl>
   </ItemGroup>
   <ItemGroup>
