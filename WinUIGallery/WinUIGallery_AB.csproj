@@ -111,7 +111,6 @@
       <PRIResource Remove="Assets\ControlIcons\**" />
       <Compile Remove="Shaders\**" />
       <Compile Remove="SceneNode\**" />
-      <Compile Remove="**\ContentIslandPage.xaml.cs" />
     </ItemGroup>
 
     <!-- In the WinUI repo, package reference versions are controlled centrally by a Packages.props.  We will
@@ -173,6 +172,7 @@
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <None Remove="ControlPages\ContentIslandPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
@@ -192,7 +192,6 @@
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="DataModel\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
-        <None Remove="ContentIslandPage.xaml" />
     </ItemGroup>
 
     <ItemGroup>

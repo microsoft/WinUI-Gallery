@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Content;
 using Microsoft.UI.Xaml;
@@ -48,6 +49,7 @@ namespace WinUIGallery.ControlPages
 
         public async void SetupHelmet()
         {
+#if !AB_BUILD
             ContentIsland parentIsland = this.XamlRoot.TryGetContentIsland();
 
             Microsoft.UI.Xaml.Shapes.Rectangle rect = GetNextHostElement();
@@ -69,6 +71,9 @@ namespace WinUIGallery.ControlPages
             childContentLink.Connect(helmetIsland);
 
             _keepAlive.Add(childContentLink);
+#else
+            return Task.CompletedTask;
+#endif
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
