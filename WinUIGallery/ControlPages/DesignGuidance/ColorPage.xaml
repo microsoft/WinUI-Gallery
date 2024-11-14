@@ -20,9 +20,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <core:ControlExample Grid.Row="0">
+        <TextBlock
+            Grid.Row="0"
+            Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
+        <core:ControlExample Grid.Row="1">
             <core:ControlExample.Example>
                 <TextBlock
                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
@@ -34,7 +38,7 @@
         </core:ControlExample>
         <SelectorBar
             x:Name="PageSelector"
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="-12,32,0,0"
             AutomationProperties.Name="PageSelector"
             Loaded="PageSelector_Loaded"
@@ -46,7 +50,7 @@
             <SelectorBarItem Text="Signal" />
             <SelectorBarItem Text="High Contrast" />
         </SelectorBar>
-        <controls1:SampleThemeListener Grid.Row="2">
+        <controls1:SampleThemeListener Grid.Row="3">
             <Frame x:Name="NavigationFrame" />
         </controls1:SampleThemeListener>
     </Grid>
