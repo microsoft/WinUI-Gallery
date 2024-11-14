@@ -151,14 +151,15 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2);
+                // Multiply size by DPI since we don't bother capturing TwirlDismiss at full resolution
+                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, new ComputeSharp.Int2((int)(drawData.InputSizeInt2.X * drawData.Dpi / 96.0f), (int)(drawData.InputSizeInt2.Y * drawData.Dpi / 96.0f)));
             };
 
             return new PixelShaderRenderImpl()
             {
                 PixelShader = effect,
                 Sources = effect.Sources,
-                Duration = TimeSpan.FromSeconds(1.2),
+                Duration = TimeSpan.FromSeconds(1.0),
                 DrawAction = drawAction
             };
         }

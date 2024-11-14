@@ -264,7 +264,6 @@ namespace WinUIGallery
 
         private bool firstNavigation = true;
         private CanvasRenderTarget m_fullBitmap;
-        private TaskCompletionSource<bool> tcs;
 
         public void EnsureNavigationSelection(string id)
         {
