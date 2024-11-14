@@ -196,7 +196,8 @@
             <Frame
                 x:Name="rootFrame"
                 Navigated="OnRootFrameNavigated"
-                Navigating="OnRootFrameNavigating" />
+                Navigating="OnRootFrameNavigating"
+                Background="{ThemeResource GalleryBackgroundBrush}"/>
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Name="Home"
