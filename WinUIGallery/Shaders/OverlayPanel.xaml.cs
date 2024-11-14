@@ -33,23 +33,7 @@ namespace WinUIGallery.Shaders
             compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
         }
 
-        public void AddOverlay(Rect position)
-        {
-            var overlayRoot = ElementCompositionPreview.GetElementChildVisual(overlayRootCanvas) as ContainerVisual;
-            if (overlayRoot == null)
-            {
-                overlayRoot = compositor.CreateContainerVisual();
-                overlayRoot.IsHitTestVisible = false; // Overlays are not interactable
-                ElementCompositionPreview.SetElementChildVisual(overlayRootCanvas, overlayRoot);
-            }
-
-            var overlayVisual = compositor.CreateSpriteVisual();
-            overlayVisual.Brush = compositor.CreateColorBrush(Colors.Blue);
-            overlayVisual.Offset = new() { X = (float)position.X, Y = (float)position.Y };
-            overlayVisual.Size = new() { X = (float)position.Width, Y = (float)position.Height };
-
-            overlayRoot.Children.InsertAtTop(overlayVisual);
-        }
+        public int ChildCount => overlayRootCanvas.Children.Count;
 
         public void AddOverlay(UIElement uiElement, Point offset)
         {

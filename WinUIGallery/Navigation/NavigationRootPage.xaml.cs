@@ -194,8 +194,14 @@ namespace WinUIGallery
             else
             {
 #if !AB_BUILD
+                if (overlayPanel.ChildCount > 0)
+                {
+                    // We already have a transition effect in progress. Navigate, but don't start a new effect.
+                    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                    return;
+                }
 
-                overlayPanel.ClearOverlays();
+                // overlayPanel.ClearOverlays();
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 var compositor = overlayVisual.Compositor;
                 var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
