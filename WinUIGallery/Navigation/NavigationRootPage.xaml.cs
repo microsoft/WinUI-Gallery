@@ -203,13 +203,18 @@ namespace WinUIGallery
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 overlayVisual.Opacity = 1.0f;
 
+                
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
+                    var renderTargetBitmap = await rootFrame.CaptureTo2();
+
+                    await renderTargetBitmap.SaveAsync("D:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
+
                     // Commented out - uncomment to save the capture we got to a file.
                     //var referenceWindow = WindowHelper.GetWindowForElement(this);
                     //await m_fullBitmap.SaveAsBitmapAsync(referenceWindow);
 
-                    shaderPanel.InitializeForShader<Wipe>();
+                    shaderPanel.InitializeForShader<IdentityShader>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
                 }

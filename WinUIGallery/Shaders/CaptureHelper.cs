@@ -70,23 +70,30 @@ namespace WinUIGallery.Shaders
             return transformedBounds;
         }
 
-        public static async void CaptureTo2(this UIElement element)
+        public static async Task<CanvasRenderTarget> CaptureTo2(this UIElement element)
         {
             Visual backingVisual = ElementCompositionPreview.GetElementVisual(element);
             var compositor = backingVisual.Compositor;
             var canvasDevice = CanvasDevice.GetSharedDevice();
             var compositionGraphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(compositor, canvasDevice);
 
+            var intSize = new SizeInt32((int)element.RenderSize.Width, (int)element.RenderSize.Height);
+
             ICompositionSurface captureSurface = await compositionGraphicsDevice.CaptureAsync(
                 backingVisual,
-                new SizeInt32((int)element.RenderSize.Width, (int)element.RenderSize.Height),
+                intSize,
                 Microsoft.Graphics.DirectX.DirectXPixelFormat.B8G8R8A8UIntNormalized,
                 Microsoft.Graphics.DirectX.DirectXAlphaMode.Premultiplied,
                 0);
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
-            int test = CompositionInterop.SurfaceHelper.CopySurface();
-            Debug.WriteLine(test);
+
+            CanvasRenderTarget bitmap = new CanvasRenderTarget(canvasDevice, intSize.Width, intSize.Height, 96.0f);
+
+            var surfaceHelper = new CompositionInterop.SurfaceHelper();
+            surfaceHelper.CopySurface(drawingSurface, bitmap);
+
+            return bitmap;
         }
 
         public static float GetDpi(UIElement element)

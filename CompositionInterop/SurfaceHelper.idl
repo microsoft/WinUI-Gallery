@@ -4,6 +4,6 @@ namespace CompositionInterop
     runtimeclass SurfaceHelper
     {
         SurfaceHelper();
-        void CopySurface(Microsoft.UI.Composition.CompositionDrawingSurface surface, IInspectable destinationResource, Int32 destinationOffsetX, Int32 destinationOffsetY, Windows.Foundation.Rect sourceRectangle);
+        void CopySurface(Microsoft.UI.Composition.CompositionDrawingSurface surface, IInspectable destinationResource);
     }
 }
