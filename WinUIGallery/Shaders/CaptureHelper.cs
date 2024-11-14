@@ -94,16 +94,20 @@ namespace WinUIGallery.Shaders
                 (int)bitmap.Size.Height
                 );
 
-            // Scale up the element to account for DPI
-            var scaleElementVisual = ElementCompositionPreview.GetElementVisual(scaleElement);
-            var originalScale = scaleElementVisual.Scale;
-            var newScale = originalScale;
-            newScale.X *= dpiScale;
-            newScale.Y *= dpiScale;
-            scaleElementVisual.Scale = newScale;
+            Visual scaleElementVisual = null;
+            Vector3 originalScale = Vector3.One;
 
-            //await compositor.RequestCommitAsync();
-            //backingVisual.Size = new Vector2(sizePixels.Width, sizePixels.Height);
+            if (scaleElement != null)
+            {
+                // Scale up the element to account for DPI
+                scaleElementVisual = ElementCompositionPreview.GetElementVisual(scaleElement);
+                originalScale = scaleElementVisual.Scale;
+                var newScale = originalScale;
+                newScale.X *= dpiScale;
+                newScale.Y *= dpiScale;
+                scaleElementVisual.Scale = newScale;
+            }
+
             ICompositionSurface captureSurface = await compositionGraphicsDevice.CaptureAsync(
                 backingVisual,
                 sizePixels,
@@ -111,7 +115,10 @@ namespace WinUIGallery.Shaders
                 Microsoft.Graphics.DirectX.DirectXAlphaMode.Premultiplied,
                 0);
 
-            scaleElementVisual.Scale = originalScale;
+            if (scaleElement != null)
+            {
+                scaleElementVisual.Scale = originalScale;
+            }
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
 
@@ -119,6 +126,19 @@ namespace WinUIGallery.Shaders
             surfaceHelper.CopySurface(drawingSurface, bitmap);
 
             return bitmap;
+        }
+
+        public static Border GetDialogContent(this ContentDialog dialog)
+        {
+            // The dialog is actually a full window element because it darkens the screen
+            // when it appears. Drill in a bit to get to the actual element that contains
+            // what we think of as the "dialog".
+            var child1 = VisualTreeHelper.GetChild(dialog, 0);
+            var child2 = VisualTreeHelper.GetChild(child1, 0);
+            var child3 = VisualTreeHelper.GetChild(child2, 0);
+
+            var dialogContent = child3 as Border;
+            return dialogContent;
         }
 
         public static float GetDpi(UIElement element)

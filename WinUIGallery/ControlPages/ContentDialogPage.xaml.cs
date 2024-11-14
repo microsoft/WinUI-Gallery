@@ -71,8 +71,15 @@ namespace WinUIGallery.ControlPages
                 // This keeps the dialog open until the capture is complete.
                 var deferral = args.GetDeferral();
 
-                // Capture the dialog to our bitmap and get the dialog dimensions.
-                m_canvasRenderTarget = await sender.CaptureTo2(sender);
+                // A dialog is actually a full window sized element because it darkens the window
+                // underneath it. Get the "real" dialog content that we think of as the dialog.
+                var realDialog = sender.GetDialogContent();
+
+                var dialogToWindowTransform = realDialog.TransformToVisual(sender);
+                var dialogOffset = dialogToWindowTransform.TransformPoint(new Point(0, 0));
+
+                // Capture the dialog to our bitmap.
+                m_canvasRenderTarget = await realDialog.CaptureTo2(null);
 
                 // Calculate offset from Window root to the overlay panel
                 var transform = XamlRoot.Content.TransformToVisual(overlayPanel);
@@ -81,8 +88,8 @@ namespace WinUIGallery.ControlPages
                 // Create our shader panel which will run "TwirlDismiss" on the dialog capture.
                 var dialogShaderPanel = new ShaderPanel();
                 dialogShaderPanel.InitializeForShader<TwirlDismiss>();
-                dialogShaderPanel.Width = sender.Width;
-                dialogShaderPanel.Height = sender.Height;
+                dialogShaderPanel.Width = m_canvasRenderTarget.Size.Width;
+                dialogShaderPanel.Height = m_canvasRenderTarget.Size.Height;
                 dialogShaderPanel.Translation = new Vector3(
                     (float)overlayOffset.X,
                     (float)overlayOffset.Y,
@@ -91,8 +98,7 @@ namespace WinUIGallery.ControlPages
                 dialogShaderPanel.SetShaderInputAsync(m_canvasRenderTarget);
 
                 // Display the shader panel by adding it as an overlay.
-                Point offset = new() { X = 0, Y = 0};
-                overlayPanel.AddOverlay(dialogShaderPanel, offset);
+                overlayPanel.AddOverlay(dialogShaderPanel, dialogOffset);
 
                 // Close the dialog once the shader starts running, and remove the shader panel when
                 // it's done.
