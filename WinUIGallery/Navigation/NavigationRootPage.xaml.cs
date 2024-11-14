@@ -236,7 +236,7 @@ namespace WinUIGallery
                 m_isCapturePending = true;
                 // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
-                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                m_fullBitmap = await CaptureHelper.CaptureElementAsync(rootFrameParent, rootFrame);
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
                 m_isCapturePending = false;
 

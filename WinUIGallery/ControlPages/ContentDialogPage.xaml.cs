@@ -72,14 +72,14 @@ namespace WinUIGallery.ControlPages
                 var deferral = args.GetDeferral();
 
                 // A dialog is actually a full window sized element because it darkens the window
-                // underneath it. Get the "real" dialog content that we think of as the dialog.
-                var realDialog = sender.GetDialogContent();
+                // underneath it. Get the "real" dialog box inside of it.
+                var dialogBox = sender.GetDialogBox();
 
-                var dialogToWindowTransform = realDialog.TransformToVisual(sender);
+                var dialogToWindowTransform = dialogBox.TransformToVisual(sender);
                 var dialogOffset = dialogToWindowTransform.TransformPoint(new Point(0, 0));
 
                 // Capture the dialog to our bitmap.
-                m_canvasRenderTarget = await realDialog.CaptureTo2(null);
+                m_canvasRenderTarget = await CaptureHelper.CaptureElementAsync(dialogBox);
 
                 // Calculate offset from Window root to the overlay panel
                 var transform = XamlRoot.Content.TransformToVisual(overlayPanel);
