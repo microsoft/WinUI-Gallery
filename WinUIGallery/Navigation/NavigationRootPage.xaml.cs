@@ -186,22 +186,31 @@ namespace WinUIGallery
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
             // Don't do the animation for the first navigation
-            if (firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
+            if (m_firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
             {
-                firstNavigation = false;
+                m_firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
             }
             else
             {
 #if !AB_BUILD
-                //if (overlayPanel.ChildCount > 0)
-                //{
-                //    // We already have a transition effect in progress. Navigate, but don't start a new effect.
-                //    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
-                //    return;
-                //}
+                // If programmatically calling Navigate, it will result in the selection changing
+                // which will call Navigate a second time. This double Navigate call looks wrong if
+                // ComputeSharp animations are enabled.
+                // Also bad things happen if we start animations while a capture is happening.
+                // Block the animation if we detect either of these things.
+                // Don't block the Navigate, because if we do the Selected item is out of sync.
+                if (m_isCapturePending ||
+                    (DateTime.Now - m_lastNavigationTime) < TimeSpan.FromMilliseconds(200))
+                {
+                    // Navigate directly, don't start an animation.
+                    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                    return;
+                }
 
-                // overlayPanel.ClearOverlays();
+                m_lastNavigationTime = DateTime.Now;
+                overlayPanel.ClearOverlays();
+
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 var compositor = overlayVisual.Compositor;
                 var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
@@ -219,10 +228,12 @@ namespace WinUIGallery
                 spriteVisual.Brush = surfaceBrush;
                 spriteVisual.Size = size;
 
+                m_isCapturePending = true;
                 // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
                 m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
+                m_isCapturePending = false;
 
                 // Commented out - uncomment to save the capture we got to a file.
                 //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
@@ -268,8 +279,10 @@ namespace WinUIGallery
             }
         }
 
-        private bool firstNavigation = true;
+        private bool m_firstNavigation = true;
+        private bool m_isCapturePending = false;
         private CanvasRenderTarget m_fullBitmap;
+        private DateTime m_lastNavigationTime = DateTime.Now;
 
         public void EnsureNavigationSelection(string id)
         {
