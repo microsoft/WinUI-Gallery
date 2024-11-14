@@ -167,7 +167,11 @@ namespace WinUIGallery.Shaders
 
         private void canvasAnimatedControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            timer.Stop();
+            // Unload can happen without a Load in the right circumstances.
+            if (timer != null)
+            {
+                timer.Stop();
+            }
         }
     }
 }
