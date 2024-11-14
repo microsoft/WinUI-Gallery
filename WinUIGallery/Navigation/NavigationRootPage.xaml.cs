@@ -185,6 +185,11 @@ namespace WinUIGallery
             object targetPageArguments = null,
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
+            if (m_blockNavigate)
+            {
+                return;
+            }
+
             // Don't do the animation for the first navigation
             if (m_firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
             {
@@ -281,6 +286,7 @@ namespace WinUIGallery
 
         private bool m_firstNavigation = true;
         private bool m_isCapturePending = false;
+        private bool m_blockNavigate = false;
         private CanvasRenderTarget m_fullBitmap;
         private DateTime m_lastNavigationTime = DateTime.Now;
 
@@ -296,9 +302,14 @@ namespace WinUIGallery
                         {
                             if ((string)item.Tag == id)
                             {
+                                // Setting SelectedItem normally calls "Navigate". That's unintended here.
+                                m_blockNavigate = true;
+
                                 group.IsExpanded = true;
                                 NavigationView.SelectedItem = item;
                                 item.IsSelected = true;
+
+                                m_blockNavigate = false;
                                 return;
                             }
                             else if (item.MenuItems.Count > 0)
@@ -309,10 +320,15 @@ namespace WinUIGallery
                                     {
                                         if ((string)innerItem.Tag == id)
                                         {
+                                            // Setting SelectedItem normally calls "Navigate". That's unintended here.
+                                            m_blockNavigate = true;
+
                                             group.IsExpanded = true;
                                             item.IsExpanded = true;
                                             NavigationView.SelectedItem = innerItem;
                                             innerItem.IsSelected = true;
+
+                                            m_blockNavigate = false;
                                             return;
                                         }
                                     }
