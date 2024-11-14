@@ -77,18 +77,35 @@ namespace WinUIGallery.Shaders
             var canvasDevice = CanvasDevice.GetSharedDevice();
             var compositionGraphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(compositor, canvasDevice);
 
-            var intSize = new SizeInt32((int)element.RenderSize.Width, (int)element.RenderSize.Height);
+            float dpi = GetDpi(element);
+            float dpiScale = dpi / 96.0f;
+
+            var size = new Size(element.RenderSize.Width, element.RenderSize.Height);
+
+            CanvasRenderTarget bitmap = new CanvasRenderTarget(canvasDevice, (float)size.Width, (float)size.Height, dpi);
+
+            var sizePixels = new SizeInt32(
+                (int)bitmap.SizeInPixels.Width,
+                (int)bitmap.SizeInPixels.Height);
+
+            //var originalScale = backingVisual.Scale;
+            //var newScale = originalScale;
+            //newScale.X *= dpiScale;
+            //newScale.Y *= dpiScale;
+            //backingVisual.Scale = newScale;
+
+            //await compositor.RequestCommitAsync();
 
             ICompositionSurface captureSurface = await compositionGraphicsDevice.CaptureAsync(
                 backingVisual,
-                intSize,
+                sizePixels,
                 Microsoft.Graphics.DirectX.DirectXPixelFormat.B8G8R8A8UIntNormalized,
                 Microsoft.Graphics.DirectX.DirectXAlphaMode.Premultiplied,
                 0);
 
-            CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
+            //backingVisual.Scale = originalScale;
 
-            CanvasRenderTarget bitmap = new CanvasRenderTarget(canvasDevice, intSize.Width, intSize.Height, 96.0f);
+            CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
 
             var surfaceHelper = new CompositionInterop.SurfaceHelper();
             surfaceHelper.CopySurface(drawingSurface, bitmap);

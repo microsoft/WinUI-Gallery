@@ -206,7 +206,6 @@ namespace WinUIGallery
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 overlayVisual.Opacity = 1.0f;
 
-                
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
                     shaderPanel.InitializeForShader<Wipe>();
