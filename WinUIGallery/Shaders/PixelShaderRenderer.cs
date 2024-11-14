@@ -43,11 +43,11 @@ namespace WinUIGallery.Shaders
         private IReadOnlyList<ShaderSourceHelper> Sources => m_shaderSources;
 
 #nullable enable
-        public async Task SetSourceBitmap(int index, RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, RectInt32? clip = null)
+        public void SetSourceBitmap(int index, CanvasBitmap renderTargetBitmap, CanvasDevice? canvasDevice, RectInt32? clip = null)
         {
             var source = Sources[index];
 
-            await source.SetPixelsFromTarget(renderTargetBitmap, clip);
+            source.SetPixelsFromTarget(renderTargetBitmap, clip);
 
             if (canvasDevice != null && m_impl != null)
             {
@@ -75,7 +75,7 @@ namespace WinUIGallery.Shaders
 
                 if (m_shaderSources.Count > 0)
                 {
-                    data.InputSize = m_shaderSources[0].BufferSize;
+                    data.InputSize = m_shaderSources[0].InputSize;
                 }
 
                 m_impl.DrawAction(data);

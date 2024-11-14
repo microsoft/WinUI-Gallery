@@ -14,6 +14,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
+using Microsoft.Graphics.Canvas;
+
 #if !AB_BUILD
 using WinUIGallery.Shaders;
 #endif // #if !AB_BUILD
@@ -70,7 +72,7 @@ namespace WinUIGallery.ControlPages
                 var deferral = args.GetDeferral();
 
                 // Capture the dialog to our bitmap and get the dialog dimensions.
-                var dialogRect = await sender.CaptureTo(m_bitmap);
+                m_canvasRenderTarget = await sender.CaptureTo2();
 
                 // Calculate offset from Window root to the overlay panel
                 var transform = XamlRoot.Content.TransformToVisual(overlayPanel);
@@ -79,17 +81,17 @@ namespace WinUIGallery.ControlPages
                 // Create our shader panel which will run "TwirlDismiss" on the dialog capture.
                 var dialogShaderPanel = new ShaderPanel();
                 dialogShaderPanel.InitializeForShader<TwirlDismiss>();
-                dialogShaderPanel.Width = dialogRect.Width;
-                dialogShaderPanel.Height = dialogRect.Height;
+                dialogShaderPanel.Width = sender.Width;
+                dialogShaderPanel.Height = sender.Height;
                 dialogShaderPanel.Translation = new Vector3(
                     (float)overlayOffset.X,
                     (float)overlayOffset.Y,
                     0);
 
-                await dialogShaderPanel.SetShaderInputAsync(m_bitmap);
+                dialogShaderPanel.SetShaderInputAsync(m_canvasRenderTarget);
 
                 // Display the shader panel by adding it as an overlay.
-                Point offset = new() { X = dialogRect.X, Y = dialogRect.Y };
+                Point offset = new() { X = 0, Y = 0};
                 overlayPanel.AddOverlay(dialogShaderPanel, offset);
 
                 // Close the dialog once the shader starts running, and remove the shader panel when
@@ -104,7 +106,7 @@ namespace WinUIGallery.ControlPages
 
 #if !AB_BUILD
         // The bitmap that holds the screen capture of the dialog so we can run shaders on it.
-        private RenderTargetBitmap m_bitmap = new RenderTargetBitmap();
+        private CanvasRenderTarget m_canvasRenderTarget;
 #endif // #if !AB_BUILD
     }
 }

@@ -56,7 +56,7 @@ namespace WinUIGallery.Shaders
 
         private CanvasDevice CanvasDevice { get; set; }
 
-        public async Task SetShaderInputAsync(RenderTargetBitmap renderTargetBitmap, Rect? clip = null)
+        public void SetShaderInputAsync(CanvasBitmap renderTargetBitmap, Rect? clip = null)
         {
             // Clip comes in as DIPs and we want it as pixels
             RectInt32? pixelClip;
@@ -78,12 +78,22 @@ namespace WinUIGallery.Shaders
                 pixelClip = null;
 
                 // Make our Win2D canvas match exactly the pixels we're drawing
-                canvasAnimatedControl.Width = renderTargetBitmap.PixelWidth;
-                canvasAnimatedControl.Height = renderTargetBitmap.PixelHeight;
+                canvasAnimatedControl.Width = renderTargetBitmap.Size.Width;
+                canvasAnimatedControl.Height = renderTargetBitmap.Size.Height;
             }
 
             // It's ok if CanvasDevice is null here, the function can handle it
-            await Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, pixelClip);
+            Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, pixelClip);
+        }
+
+        public void SetShaderInputAsync(CanvasRenderTarget renderTargetBitmap)
+        {
+            // Make our Win2D canvas match exactly the pixels we're drawing
+            canvasAnimatedControl.Width = renderTargetBitmap.Size.Width;
+            canvasAnimatedControl.Height = renderTargetBitmap.Size.Height;
+
+            // It's ok if CanvasDevice is null here, the function can handle it
+            Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, null);
         }
 
         public void InitializeForShader<T>()

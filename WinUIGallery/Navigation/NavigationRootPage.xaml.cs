@@ -39,6 +39,7 @@ using System.Numerics;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
 using Windows.Graphics.Imaging;
+using Microsoft.Graphics.Canvas;
 
 namespace WinUIGallery
 {
@@ -191,7 +192,9 @@ namespace WinUIGallery
             else
             {
 #if !AB_BUILD
-                await CaptureHelper.CaptureTo(this, m_fullBitmap);
+                m_fullBitmap = await rootFrame.CaptureTo2();
+                // Commented out - uncomment to save the capture we got to a file.
+                //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
 
                 overlayPanel.ClearOverlays();
 
@@ -206,15 +209,7 @@ namespace WinUIGallery
                 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
-                    var renderTargetBitmap = await rootFrame.CaptureTo2();
-
-                    await renderTargetBitmap.SaveAsync("D:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
-
-                    // Commented out - uncomment to save the capture we got to a file.
-                    //var referenceWindow = WindowHelper.GetWindowForElement(this);
-                    //await m_fullBitmap.SaveAsBitmapAsync(referenceWindow);
-
-                    shaderPanel.InitializeForShader<IdentityShader>();
+                    shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
                 }
@@ -234,7 +229,7 @@ namespace WinUIGallery
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                await shaderPanel.SetShaderInputAsync(m_fullBitmap, clip);
+                shaderPanel.SetShaderInputAsync(m_fullBitmap);
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
@@ -248,7 +243,7 @@ namespace WinUIGallery
         }
 
         private bool firstNavigation = true;
-        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
+        private CanvasRenderTarget m_fullBitmap;
 
         public void EnsureNavigationSelection(string id)
         {
