@@ -195,54 +195,33 @@ namespace WinUIGallery
             {
 #if !AB_BUILD
 
+                overlayPanel.ClearOverlays();
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 var compositor = overlayVisual.Compositor;
-
                 var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
-                if (dpiScale != 1.0f)
-                {
-                    // As part of capture, we scale the Visual up for DPI.
-                    // To cover those couple frames, we will use a non-scaled capture
-                    //m_reducedBitmap = m_fullBitmap = await rootFrameParent.CaptureTo2(null);
-                    //tcs = new TaskCompletionSource<bool>();
-                    //lowResCanvasControl.Opacity = 1.0f;
-                    //lowResCanvasControl.Invalidate();
-                    //await tcs.Task;
 
+                // As part of capture, we scale the UIElement to account for DPI.
+                // To cover those couple frames, we will use a non-scaled capture using VisualSurface
+                var size = new Vector2((float)(rootFrame.RenderSize.Width), (float)(rootFrame.RenderSize.Height));
+                CompositionVisualSurface visualSurface = compositor.CreateVisualSurface();
+                visualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(rootFrame);
+                visualSurface.SourceSize = size;
+                var spriteVisual = compositor.CreateSpriteVisual();
+                var surfaceBrush = compositor.CreateSurfaceBrush();
+                surfaceBrush.Surface = visualSurface;
+                surfaceBrush.Stretch = CompositionStretch.None;
+                spriteVisual.Brush = surfaceBrush;
+                spriteVisual.Size = size;
 
-                    CompositionVisualSurface visualSurface = compositor.CreateVisualSurface();
-                    visualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(rootFrame);
-                    visualSurface.SourceSize = new Vector2((float)rootFrame.RenderSize.Width, (float)rootFrame.RenderSize.Height);
-                    var spriteVisual = compositor.CreateSpriteVisual();
-                    var surfaceBrush = compositor.CreateSurfaceBrush();
-                    surfaceBrush.Surface = visualSurface;
-                    //spriteVisual.Brush = compositor.CreateColorBrush(Colors.CornflowerBlue);
+                // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
+                ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
+                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
 
-                    GaussianBlurEffect blurEffect = new GaussianBlurEffect()
-                    {
-                        Name = "Blur",
-                        BlurAmount = 2.0f,
-                        BorderMode = EffectBorderMode.Hard,
-                        Optimization = EffectOptimization.Balanced
-                    };
-                    blurEffect.Source = new CompositionEffectSourceParameter("source");
-
-                    CompositionEffectFactory blurEffectFactory = compositor.CreateEffectFactory(blurEffect);
-                    CompositionEffectBrush blurBrush = blurEffectFactory.CreateBrush();
-                    blurBrush.SetSourceParameter("source", surfaceBrush);
-
-                    spriteVisual.Brush = surfaceBrush;
-
-                    spriteVisual.Size = new Vector2((float)rootFrame.RenderSize.Width, (float)rootFrame.RenderSize.Height);
-                    ElementCompositionPreview.SetElementChildVisual(rootFrameScale, spriteVisual);
-                }
-
-                overlayPanel.ClearOverlays();
-
-                m_fullBitmap = await rootFrameBehind.CaptureTo2(rootFrameScale);
                 // Commented out - uncomment to save the capture we got to a file.
                 //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
 
+                // Set up the UIElement to hold the shader
                 UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.Width = frame.RenderSize.Width;
@@ -271,12 +250,6 @@ namespace WinUIGallery
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
                 shaderPanel.SetShaderInputAsync(m_fullBitmap);
-                shaderPanel.FirstRender += (object sender, EventArgs e) =>
-                {
-                    m_reducedBitmap = null;
-                    lowResCanvasControl.Opacity = 0;
-                    lowResCanvasControl.Invalidate();
-                };
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
@@ -289,18 +262,8 @@ namespace WinUIGallery
             }
         }
 
-        private void lowResCanvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
-        {
-            if (m_reducedBitmap != null)
-            {
-                args.DrawingSession.DrawImage(m_reducedBitmap);
-                tcs.TrySetResult(true);
-            }
-        }
-
         private bool firstNavigation = true;
         private CanvasRenderTarget m_fullBitmap;
-        private CanvasRenderTarget m_reducedBitmap;
         private TaskCompletionSource<bool> tcs;
 
         public void EnsureNavigationSelection(string id)

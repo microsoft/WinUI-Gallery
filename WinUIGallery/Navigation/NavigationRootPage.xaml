@@ -195,17 +195,13 @@
             </NavigationView.AutoSuggestBox>
             <Grid>
                 <Grid x:Name="rootFrameParent">
-                    <Grid x:Name="rootFrameBehind">
-                        <Grid x:Name="rootFrameScale" />
-                    </Grid>
-
                     <Frame
                         x:Name="rootFrame"
                         Navigated="OnRootFrameNavigated"
                         Navigating="OnRootFrameNavigating"
                         Background="{ThemeResource GalleryBackgroundBrush}"/>
                 </Grid>
-                <canvas:CanvasControl x:Name="lowResCanvasControl" Background="Transparent" Draw="lowResCanvasControl_Draw" IsHitTestVisible="False" />
+                <Grid x:Name="rootFrameInFront"/>
             </Grid>
             <NavigationView.MenuItems>
                 <NavigationViewItem

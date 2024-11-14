@@ -169,13 +169,5 @@ namespace WinUIGallery.Shaders
         {
             timer.Stop();
         }
-
-        internal void AdjustForDpi(double dpiScale)
-        {
-            DpiScale = dpiScale;
-            Width *= dpiScale;
-            Height *= dpiScale;
-            Scale = new Vector3((float)(1 / DpiScale), (float)(1 / DpiScale), 1.0f);
-        }
     }
 }

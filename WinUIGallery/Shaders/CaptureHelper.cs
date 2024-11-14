@@ -81,24 +81,6 @@ namespace WinUIGallery.Shaders
             float dpi = GetDpi(element);
             float dpiScale = dpi / 96.0f;
 
-            Visual scaleElementVisual = null;
-            Vector3 originalScale = new Vector3(1,1,1);
-            if (scaleElement != null)
-            {
-                // Scale up the element to account for DPI
-                scaleElementVisual = ElementCompositionPreview.GetElementVisual(scaleElement);
-                originalScale = scaleElementVisual.Scale;
-                var newScale = originalScale;
-                newScale.X *= dpiScale;
-                newScale.Y *= dpiScale;
-                scaleElementVisual.Scale = newScale;
-            }
-            else
-            {
-                // Capture at 100% size
-                dpi = 96.0f;
-            }
-
             var size = new Size(element.RenderSize.Width, element.RenderSize.Height);
 
             CanvasRenderTarget bitmap = new CanvasRenderTarget(canvasDevice, (float)size.Width, (float)size.Height, dpi);
@@ -112,6 +94,14 @@ namespace WinUIGallery.Shaders
                 (int)bitmap.Size.Height
                 );
 
+            // Scale up the element to account for DPI
+            var scaleElementVisual = ElementCompositionPreview.GetElementVisual(scaleElement);
+            var originalScale = scaleElementVisual.Scale;
+            var newScale = originalScale;
+            newScale.X *= dpiScale;
+            newScale.Y *= dpiScale;
+            scaleElementVisual.Scale = newScale;
+
             //await compositor.RequestCommitAsync();
             //backingVisual.Size = new Vector2(sizePixels.Width, sizePixels.Height);
             ICompositionSurface captureSurface = await compositionGraphicsDevice.CaptureAsync(
@@ -121,10 +111,7 @@ namespace WinUIGallery.Shaders
                 Microsoft.Graphics.DirectX.DirectXAlphaMode.Premultiplied,
                 0);
 
-            if (scaleElement != null)
-            {
-                scaleElementVisual.Scale = originalScale;
-            }
+            scaleElementVisual.Scale = originalScale;
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
 
