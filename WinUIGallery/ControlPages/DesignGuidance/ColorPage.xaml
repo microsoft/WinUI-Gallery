@@ -5,7 +5,9 @@
     x:Class="WinUIGallery.ControlPages.ColorPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:core="using:WinUIGallery"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -20,12 +22,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RichTextBlock>
-            <Paragraph>
-                <Run>The brushes below are part of WinUI 3. You can reference them in your app using:</Run>
-                <Run FontStyle="Italic">Foreground="{ThemeResource TextFillColorPrimaryBrush}"</Run>.
-            </Paragraph>
-        </RichTextBlock>
+        <core:ControlExample Grid.Row="0">
+            <core:ControlExample.Example>
+                <TextBlock
+                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                    Text="Theme resource brush example" />
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                &lt;TextBlock Text="Theme resource brush example" Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
         <SelectorBar
             x:Name="PageSelector"
             Grid.Row="1"
