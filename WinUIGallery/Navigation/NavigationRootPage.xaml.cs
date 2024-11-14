@@ -41,6 +41,7 @@ using WinRT.Interop;
 using Windows.Graphics.Imaging;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI.Xaml;
+using Microsoft.Graphics.Canvas.Effects;
 
 namespace WinUIGallery
 {
@@ -193,21 +194,52 @@ namespace WinUIGallery
             else
             {
 #if !AB_BUILD
+
+                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                var compositor = overlayVisual.Compositor;
+
                 var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
                 if (dpiScale != 1.0f)
                 {
                     // As part of capture, we scale the Visual up for DPI.
                     // To cover those couple frames, we will use a non-scaled capture
-                    m_reducedBitmap = m_fullBitmap = await rootFrameParent.CaptureTo2(null);
-                    tcs = new TaskCompletionSource<bool>();
-                    lowResCanvasControl.Opacity = 1.0f;
-                    lowResCanvasControl.Invalidate();
-                    await tcs.Task;
+                    //m_reducedBitmap = m_fullBitmap = await rootFrameParent.CaptureTo2(null);
+                    //tcs = new TaskCompletionSource<bool>();
+                    //lowResCanvasControl.Opacity = 1.0f;
+                    //lowResCanvasControl.Invalidate();
+                    //await tcs.Task;
+
+
+                    CompositionVisualSurface visualSurface = compositor.CreateVisualSurface();
+                    visualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(rootFrame);
+                    visualSurface.SourceSize = new Vector2((float)rootFrame.RenderSize.Width, (float)rootFrame.RenderSize.Height);
+                    var spriteVisual = compositor.CreateSpriteVisual();
+                    var surfaceBrush = compositor.CreateSurfaceBrush();
+                    surfaceBrush.Surface = visualSurface;
+                    //spriteVisual.Brush = compositor.CreateColorBrush(Colors.CornflowerBlue);
+
+                    GaussianBlurEffect blurEffect = new GaussianBlurEffect()
+                    {
+                        Name = "Blur",
+                        BlurAmount = 2.0f,
+                        BorderMode = EffectBorderMode.Hard,
+                        Optimization = EffectOptimization.Balanced
+                    };
+                    blurEffect.Source = new CompositionEffectSourceParameter("source");
+
+                    CompositionEffectFactory blurEffectFactory = compositor.CreateEffectFactory(blurEffect);
+                    CompositionEffectBrush blurBrush = blurEffectFactory.CreateBrush();
+                    blurBrush.SetSourceParameter("source", surfaceBrush);
+
+                    spriteVisual.Brush = surfaceBrush;
+
+                    spriteVisual.Size = new Vector2((float)rootFrame.RenderSize.Width, (float)rootFrame.RenderSize.Height);
+                    ElementCompositionPreview.SetElementChildVisual(rootFrameScale, spriteVisual);
                 }
 
                 overlayPanel.ClearOverlays();
 
-                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                m_fullBitmap = await rootFrameBehind.CaptureTo2(rootFrameScale);
                 // Commented out - uncomment to save the capture we got to a file.
                 //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
 
@@ -215,7 +247,6 @@ namespace WinUIGallery
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
-                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 overlayVisual.Opacity = 1.0f;
 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
@@ -227,7 +258,6 @@ namespace WinUIGallery
                 else
                 {
                     shaderPanel.InitializeForShader<RippleFade>();
-                    var compositor = overlayVisual.Compositor;
                     var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
                     opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
                     opacityAnimation.InsertKeyFrame(0.5f, 1.0f);

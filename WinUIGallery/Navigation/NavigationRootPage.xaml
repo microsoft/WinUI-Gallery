@@ -195,6 +195,10 @@
             </NavigationView.AutoSuggestBox>
             <Grid>
                 <Grid x:Name="rootFrameParent">
+                    <Grid x:Name="rootFrameBehind">
+                        <Grid x:Name="rootFrameScale" />
+                    </Grid>
+
                     <Frame
                         x:Name="rootFrame"
                         Navigated="OnRootFrameNavigated"
