@@ -43,11 +43,11 @@ namespace WinUIGallery.Shaders
         private IReadOnlyList<ShaderSourceHelper> Sources => m_shaderSources;
 
 #nullable enable
-        public async Task SetSourceBitmap(int index, RenderTargetBitmap renderTargetBitmap, CanvasDevice? canvasDevice, RectInt32? clip = null)
+        public void SetSourceBitmap(int index, CanvasBitmap renderTargetBitmap, CanvasDevice? canvasDevice, RectInt32? clip = null)
         {
             var source = Sources[index];
 
-            await source.SetPixelsFromTarget(renderTargetBitmap, clip);
+            source.SetPixelsFromTarget(renderTargetBitmap, clip);
 
             if (canvasDevice != null && m_impl != null)
             {
@@ -75,7 +75,7 @@ namespace WinUIGallery.Shaders
 
                 if (m_shaderSources.Count > 0)
                 {
-                    data.InputSize = m_shaderSources[0].BufferSize;
+                    data.InputSize = m_shaderSources[0].InputSize;
                 }
 
                 m_impl.DrawAction(data);
@@ -133,7 +133,7 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
+                effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2);
             };
 
             return new PixelShaderRenderImpl()
@@ -151,17 +151,15 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                float scale = drawData.Dpi / 96.0f;
-                var originalSize = drawData.CanvasSizeInt2;
-                var size = new int2((int)(originalSize.X * scale), (int)(originalSize.Y * scale));
-                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, size);
+                // Multiply size by DPI since we don't bother capturing TwirlDismiss at full resolution
+                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, new ComputeSharp.Int2((int)(drawData.InputSizeInt2.X * drawData.Dpi / 96.0f), (int)(drawData.InputSizeInt2.Y * drawData.Dpi / 96.0f)));
             };
 
             return new PixelShaderRenderImpl()
             {
                 PixelShader = effect,
                 Sources = effect.Sources,
-                Duration = TimeSpan.FromSeconds(1.2),
+                Duration = TimeSpan.FromSeconds(1.0),
                 DrawAction = drawAction
             };
         }
@@ -172,7 +170,7 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2, drawData.WipeDirection);
+                effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2, drawData.WipeDirection);
             };
 
             return new PixelShaderRenderImpl()

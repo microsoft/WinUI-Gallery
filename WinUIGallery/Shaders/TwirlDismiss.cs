@@ -33,10 +33,10 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
     public float4 Execute()
     {
         // Pixel coordinate
-        int2 xy = (int2)D2D.GetScenePosition().XY;
+        float2 xy = D2D.GetScenePosition().XY;
 
         // Time
-        float duration = 1.0f;
+        float duration = 0.9f;
         float f = time / duration;
 
         // Calculate offset from center and initial radial coordinate
@@ -48,8 +48,16 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
         float inscribedCircleRadius = Hlsl.Min(resolution.X, resolution.Y) * 0.5f;
 
         // Rotation for inside and outside edges
-        float insideRadians = 20 * f * f;
+        float insideRadians = 10 * f * f;
         float outsideRadians = insideRadians / 20.0f;
+        if (insideRadians < 1.57f)
+        {
+            outsideRadians = insideRadians;
+        }
+        else
+        {
+            outsideRadians = 1.57f + ((insideRadians - 1.57f) / 20.0f);
+        }
         // Measure of how far "out" the pixel is from center - 0 is center, 1 is perimeter of rect
         float fracOutFromCenterRect = initialRadius / (Hlsl.Length(resolution) * 0.5f);
         float radiansDelta = fracOutFromCenterRect * outsideRadians + (1 - fracOutFromCenterRect) * insideRadians;
@@ -92,8 +100,7 @@ internal readonly partial struct TwirlDismiss(float time, int2 resolution) : ID2
         float finalRadius = morphedRadius;
 
         // Shrink as the animation goes on
-        float delay = 0.2f;
-        float size = Hlsl.Clamp(1.0f - ((f - delay) * (f - delay)), 0.0f, 1.0f);
+        float size = Hlsl.Clamp(1.0f - (f * f), 0.0f, 1.0f);
         if (size == 0)
         {
             return new(0, 0, 0, 0);

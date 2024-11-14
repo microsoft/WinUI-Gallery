@@ -39,6 +39,9 @@ using System.Numerics;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
 using Windows.Graphics.Imaging;
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI.Xaml;
+using Microsoft.Graphics.Canvas.Effects;
 
 namespace WinUIGallery
 {
@@ -191,24 +194,48 @@ namespace WinUIGallery
             else
             {
 #if !AB_BUILD
-                await CaptureHelper.CaptureTo(this, m_fullBitmap);
+                if (overlayPanel.ChildCount > 0)
+                {
+                    // We already have a transition effect in progress. Navigate, but don't start a new effect.
+                    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                    return;
+                }
 
-                overlayPanel.ClearOverlays();
+                // overlayPanel.ClearOverlays();
+                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+                var compositor = overlayVisual.Compositor;
+                var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
 
+                // As part of capture, we scale the UIElement to account for DPI.
+                // To cover those couple frames, we will use a non-scaled capture using VisualSurface
+                var size = new Vector2((float)(rootFrame.RenderSize.Width), (float)(rootFrame.RenderSize.Height));
+                CompositionVisualSurface visualSurface = compositor.CreateVisualSurface();
+                visualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(rootFrame);
+                visualSurface.SourceSize = size;
+                var spriteVisual = compositor.CreateSpriteVisual();
+                var surfaceBrush = compositor.CreateSurfaceBrush();
+                surfaceBrush.Surface = visualSurface;
+                surfaceBrush.Stretch = CompositionStretch.None;
+                spriteVisual.Brush = surfaceBrush;
+                spriteVisual.Size = size;
+
+                // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
+                ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
+                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
+
+                // Commented out - uncomment to save the capture we got to a file.
+                //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
+
+                // Set up the UIElement to hold the shader
                 UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
-                shaderPanel.AdjustForDpi(XamlRoot.RasterizationScale);
-                var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 overlayVisual.Opacity = 1.0f;
 
                 if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
                 {
-                    // Commented out - uncomment to save the capture we got to a file.
-                    //var referenceWindow = WindowHelper.GetWindowForElement(this);
-                    //await m_fullBitmap.SaveAsBitmapAsync(referenceWindow);
-
                     shaderPanel.InitializeForShader<Wipe>();
                     float radians = (float)new Random().NextDouble() * 3.14f * 2;
                     shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
@@ -216,7 +243,6 @@ namespace WinUIGallery
                 else
                 {
                     shaderPanel.InitializeForShader<RippleFade>();
-                    var compositor = overlayVisual.Compositor;
                     var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
                     opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
                     opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
@@ -229,7 +255,7 @@ namespace WinUIGallery
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                await shaderPanel.SetShaderInputAsync(m_fullBitmap, clip);
+                shaderPanel.SetShaderInputAsync(m_fullBitmap);
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
@@ -243,7 +269,7 @@ namespace WinUIGallery
         }
 
         private bool firstNavigation = true;
-        private RenderTargetBitmap m_fullBitmap = new RenderTargetBitmap();
+        private CanvasRenderTarget m_fullBitmap;
 
         public void EnsureNavigationSelection(string id)
         {
@@ -678,7 +704,6 @@ namespace WinUIGallery
         private static extern void DebugBreak();
 
         #endregion
-
     }
 
     public class NavigationRootPageArgs

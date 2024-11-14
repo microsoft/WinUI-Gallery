@@ -1,0 +1,9 @@
+namespace CompositionInterop
+{
+    [default_interface]
+    runtimeclass SurfaceHelper
+    {
+        SurfaceHelper();
+        void CopySurface(Microsoft.UI.Composition.CompositionDrawingSurface surface, IInspectable destinationResource);
+    }
+}
