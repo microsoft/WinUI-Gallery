@@ -70,8 +70,6 @@ class SceneNodeCommon
         var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
         var buffer = await FileIO.ReadBufferAsync(file);
         return CopyToMemoryBuffer(buffer);
-
-        return null;
     }
 
     public static MemoryBuffer CopyToMemoryBuffer(IBuffer buffer)

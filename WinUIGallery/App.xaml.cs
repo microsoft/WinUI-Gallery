@@ -26,8 +26,6 @@ using Windows.System;
 using System.Runtime.InteropServices;
 using static WinUIGallery.Win32;
 using WinUIGallery;
-using Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS;
-
 
 #if AB_BUILD
 
@@ -51,45 +49,6 @@ public static class Program
 
 #endif
 
-namespace Microsoft.Windows.Foundation.UndockedRegFreeWinRTCS
-{
-    internal static class DynamicRuntime
-    {
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern short GetAsyncKeyState(int virtualKeyCode);
-
-        public static string WindowsAppRuntimeVersion { get; private set; }
-        public static string WindowsAppRuntimeVersionFriendly { get; private set; }
-
-        // pinvoke for win32 MessageBox
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern int MessageBox(IntPtr hWnd, string text, string caption, int options);
-
-        internal static string GetBaseDirectory()
-        {
-            if (WindowsAppRuntimeVersion == null)
-            {
-                var isShift = GetAsyncKeyState(0x10);
-                string versionA = "1.5.241001000";
-                string versionB = "1.6.240923002";
-
-                // Show win32 message box with yes/no option
-                var result = MessageBox(IntPtr.Zero, "Use newer version?", "Use newer version?", 4 /*MB_YESNO*/);
-
-                string version = (result == 6 ? versionB : versionA);
-
-                global::System.Diagnostics.Debug.WriteLine("isShift: {0}", isShift);
-                global::System.Diagnostics.Debug.WriteLine("Windows App SDK Version: {0}", version);
-                WindowsAppRuntimeVersion = "Microsoft.WindowsAppSDK." + version;
-                WindowsAppRuntimeVersionFriendly = "Windows App SDK " + version.Substring(0,3);
-            }
-            return AppContext.BaseDirectory + WindowsAppRuntimeVersion + "\\";
-        }
-
-    }
-}
-
-
 namespace WinUIGallery
 {
     /// <summary>
@@ -105,12 +64,16 @@ namespace WinUIGallery
 
         public static string WinAppSdkDetails
         {
-            
-            // TODO: restore patch number and version tag when WinAppSDK supports them both
+#if AB_BUILD
             get => string.Format("Built on Windows App SDK {0}.{1}{2}",
                 WASDK.Release.Major,
                 WASDK.Release.Minor,
-                DynamicRuntime.WindowsAppRuntimeVersionFriendly == null ? "" : " - Running on " + DynamicRuntime.WindowsAppRuntimeVersionFriendly);
+                WinUIGallery.DynamicRuntime.WindowsAppRuntimeVersionFriendly == null ? "" : " - Running on " + DynamicRuntime.WindowsAppRuntimeVersionFriendly);
+#else
+            get => string.Format("Built on Windows App SDK {0}.{1}",
+                WASDK.Release.Major,
+                WASDK.Release.Minor);
+#endif
         }
 
         public static string WinAppSdkRuntimeDetails
