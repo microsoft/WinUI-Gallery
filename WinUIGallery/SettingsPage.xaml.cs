@@ -38,7 +38,7 @@ namespace WinUIGallery
         private int lastNavigationSelectionMode = 0;
 
         public enum ComputeSharpAnimationState { NONE, WIPE, RIPPLE };
-        public static ComputeSharpAnimationState computeSharpAnimationState = ComputeSharpAnimationState.NONE;
+        public static ComputeSharpAnimationState computeSharpAnimationState = ComputeSharpAnimationState.WIPE;
 
         public SettingsPage()
         {

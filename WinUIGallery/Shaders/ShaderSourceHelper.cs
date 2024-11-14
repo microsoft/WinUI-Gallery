@@ -25,7 +25,7 @@ namespace WinUIGallery.Shaders
             m_sourceIndex = index;
         }
 
-        public SizeInt32 InputSize => new SizeInt32((int)m_canvasBitmap.Size.Width, (int)m_canvasBitmap.Size.Height);
+        public SizeInt32 InputSize => new SizeInt32((int)m_canvasBitmap.SizeInPixels.Width, (int)m_canvasBitmap.SizeInPixels.Height);
 
         public void SetPixelsFromTarget(CanvasBitmap bitmap, RectInt32? clip = null)
         {

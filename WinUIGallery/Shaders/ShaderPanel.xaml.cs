@@ -89,8 +89,8 @@ namespace WinUIGallery.Shaders
         public void SetShaderInputAsync(CanvasRenderTarget renderTargetBitmap)
         {
             // Make our Win2D canvas match exactly the pixels we're drawing
-            canvasAnimatedControl.Width = renderTargetBitmap.Size.Width;
-            canvasAnimatedControl.Height = renderTargetBitmap.Size.Height;
+            //canvasAnimatedControl.Width = renderTargetBitmap.Size.Width;
+            //canvasAnimatedControl.Height = renderTargetBitmap.Size.Height;
 
             // It's ok if CanvasDevice is null here, the function can handle it
             Renderer.SetSourceBitmap(0, renderTargetBitmap, CanvasDevice, null);

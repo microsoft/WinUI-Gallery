@@ -22,7 +22,7 @@ internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1
     /// <inheritdoc/>
     public float4 Execute()
     {
-        int2 xy = (int2)D2D.GetScenePosition().XY;
+        float2 xy = D2D.GetScenePosition().XY;
         float resolution1D = Hlsl.Max(resolution.X, resolution.Y);
         float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to -0.5 to 0.5;
 
@@ -64,14 +64,13 @@ internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1
         float2 uvBlue = (sampleOffset * 1.4f);
 
         // Clamp to the image size, so we don't sample outside the image
-        uvRed = Hlsl.Clamp(xy+uvRed, new float2(0, 0), resolution - new float2(1,1));
-        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(0, 0), resolution - new float2(1, 1));
-        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(0, 0), resolution - new float2(1, 1));
+        uvRed = Hlsl.Clamp(xy+uvRed, new float2(0.5f, 0.5f), resolution - new float2(0.5f,0.5f));
+        uvGreen = Hlsl.Clamp(xy+uvGreen, new float2(0.5f, 0.5f), resolution - new float2(0.5f, 0.5f));
+        uvBlue = Hlsl.Clamp(xy+uvBlue, new float2(0.5f, 0.5f), resolution - new float2(0.5f, 0.5f));
 
-        float2 halvesies = new float2(0.5f, 0.5f);
-        float4 red = D2D.SampleInputAtPosition(0, uvRed + halvesies);
-        float4 green = D2D.SampleInputAtPosition(0, uvGreen + halvesies);
-        float4 blue = D2D.SampleInputAtPosition(0, uvBlue + halvesies);
+        float4 red = D2D.SampleInputAtPosition(0, uvRed);
+        float4 green = D2D.SampleInputAtPosition(0, uvGreen);
+        float4 blue = D2D.SampleInputAtPosition(0, uvBlue);
 
         return new float4(red.R, green.G, blue.B, 1);
     }

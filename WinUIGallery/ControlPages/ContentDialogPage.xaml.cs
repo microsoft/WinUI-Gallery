@@ -72,7 +72,7 @@ namespace WinUIGallery.ControlPages
                 var deferral = args.GetDeferral();
 
                 // Capture the dialog to our bitmap and get the dialog dimensions.
-                m_canvasRenderTarget = await sender.CaptureTo2();
+                m_canvasRenderTarget = await sender.CaptureTo2(sender);
 
                 // Calculate offset from Window root to the overlay panel
                 var transform = XamlRoot.Content.TransformToVisual(overlayPanel);

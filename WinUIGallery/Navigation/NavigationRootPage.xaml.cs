@@ -40,6 +40,7 @@ using Windows.Storage.Pickers;
 using WinRT.Interop;
 using Windows.Graphics.Imaging;
 using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 
 namespace WinUIGallery
 {
@@ -192,17 +193,28 @@ namespace WinUIGallery
             else
             {
 #if !AB_BUILD
-                m_fullBitmap = await rootFrame.CaptureTo2();
-                // Commented out - uncomment to save the capture we got to a file.
-                //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
+                var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
+                if (dpiScale != 1.0f)
+                {
+                    // As part of capture, we scale the Visual up for DPI.
+                    // To cover those couple frames, we will use a non-scaled capture
+                    m_reducedBitmap = m_fullBitmap = await rootFrameParent.CaptureTo2(null);
+                    tcs = new TaskCompletionSource<bool>();
+                    lowResCanvasControl.Opacity = 1.0f;
+                    lowResCanvasControl.Invalidate();
+                    await tcs.Task;
+                }
 
                 overlayPanel.ClearOverlays();
+
+                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                // Commented out - uncomment to save the capture we got to a file.
+                //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
 
                 UIElement frame = rootFrame;
                 var shaderPanel = new ShaderPanel();
                 shaderPanel.Width = frame.RenderSize.Width;
                 shaderPanel.Height = frame.RenderSize.Height;
-                shaderPanel.AdjustForDpi(XamlRoot.RasterizationScale);
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 overlayVisual.Opacity = 1.0f;
 
@@ -229,6 +241,12 @@ namespace WinUIGallery
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
                 shaderPanel.SetShaderInputAsync(m_fullBitmap);
+                shaderPanel.FirstRender += (object sender, EventArgs e) =>
+                {
+                    m_reducedBitmap = null;
+                    lowResCanvasControl.Opacity = 0;
+                    lowResCanvasControl.Invalidate();
+                };
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
@@ -241,8 +259,19 @@ namespace WinUIGallery
             }
         }
 
+        private void lowResCanvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
+        {
+            if (m_reducedBitmap != null)
+            {
+                args.DrawingSession.DrawImage(m_reducedBitmap);
+                tcs.TrySetResult(true);
+            }
+        }
+
         private bool firstNavigation = true;
         private CanvasRenderTarget m_fullBitmap;
+        private CanvasRenderTarget m_reducedBitmap;
+        private TaskCompletionSource<bool> tcs;
 
         public void EnsureNavigationSelection(string id)
         {
@@ -677,7 +706,6 @@ namespace WinUIGallery
         private static extern void DebugBreak();
 
         #endregion
-
     }
 
     public class NavigationRootPageArgs

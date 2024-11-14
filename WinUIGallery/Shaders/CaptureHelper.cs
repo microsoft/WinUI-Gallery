@@ -19,6 +19,7 @@ using WinUIGallery.Helper;
 using Windows.Graphics;
 using WinRT;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace WinUIGallery.Shaders
 {
@@ -70,7 +71,7 @@ namespace WinUIGallery.Shaders
             return transformedBounds;
         }
 
-        public static async Task<CanvasRenderTarget> CaptureTo2(this UIElement element)
+        public static async Task<CanvasRenderTarget> CaptureTo2(this UIElement element, UIElement scaleElement)
         {
             Visual backingVisual = ElementCompositionPreview.GetElementVisual(element);
             var compositor = backingVisual.Compositor;
@@ -80,6 +81,24 @@ namespace WinUIGallery.Shaders
             float dpi = GetDpi(element);
             float dpiScale = dpi / 96.0f;
 
+            Visual scaleElementVisual = null;
+            Vector3 originalScale = new Vector3(1,1,1);
+            if (scaleElement != null)
+            {
+                // Scale up the element to account for DPI
+                scaleElementVisual = ElementCompositionPreview.GetElementVisual(scaleElement);
+                originalScale = scaleElementVisual.Scale;
+                var newScale = originalScale;
+                newScale.X *= dpiScale;
+                newScale.Y *= dpiScale;
+                scaleElementVisual.Scale = newScale;
+            }
+            else
+            {
+                // Capture at 100% size
+                dpi = 96.0f;
+            }
+
             var size = new Size(element.RenderSize.Width, element.RenderSize.Height);
 
             CanvasRenderTarget bitmap = new CanvasRenderTarget(canvasDevice, (float)size.Width, (float)size.Height, dpi);
@@ -88,14 +107,13 @@ namespace WinUIGallery.Shaders
                 (int)bitmap.SizeInPixels.Width,
                 (int)bitmap.SizeInPixels.Height);
 
-            //var originalScale = backingVisual.Scale;
-            //var newScale = originalScale;
-            //newScale.X *= dpiScale;
-            //newScale.Y *= dpiScale;
-            //backingVisual.Scale = newScale;
+            var sizeDips = new SizeInt32(
+                (int)bitmap.Size.Width,
+                (int)bitmap.Size.Height
+                );
 
             //await compositor.RequestCommitAsync();
-
+            //backingVisual.Size = new Vector2(sizePixels.Width, sizePixels.Height);
             ICompositionSurface captureSurface = await compositionGraphicsDevice.CaptureAsync(
                 backingVisual,
                 sizePixels,
@@ -103,7 +121,10 @@ namespace WinUIGallery.Shaders
                 Microsoft.Graphics.DirectX.DirectXAlphaMode.Premultiplied,
                 0);
 
-            //backingVisual.Scale = originalScale;
+            if (scaleElement != null)
+            {
+                scaleElementVisual.Scale = originalScale;
+            }
 
             CompositionDrawingSurface drawingSurface = captureSurface.As<CompositionDrawingSurface>();
 

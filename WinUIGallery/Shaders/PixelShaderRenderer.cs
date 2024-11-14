@@ -133,7 +133,7 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2);
+                effect.ConstantBuffer = new RippleFade((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2);
             };
 
             return new PixelShaderRenderImpl()
@@ -151,10 +151,7 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                float scale = drawData.Dpi / 96.0f;
-                var originalSize = drawData.CanvasSizeInt2;
-                var size = new int2((int)(originalSize.X * scale), (int)(originalSize.Y * scale));
-                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, size);
+                effect.ConstantBuffer = new TwirlDismiss((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2);
             };
 
             return new PixelShaderRenderImpl()
@@ -172,7 +169,7 @@ namespace WinUIGallery.Shaders
 
             var drawAction = (ShaderDrawData drawData) =>
             {
-                effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.CanvasSizeInt2, drawData.WipeDirection);
+                effect.ConstantBuffer = new Wipe((float)drawData.Duration.TotalSeconds, drawData.InputSizeInt2, drawData.WipeDirection);
             };
 
             return new PixelShaderRenderImpl()
