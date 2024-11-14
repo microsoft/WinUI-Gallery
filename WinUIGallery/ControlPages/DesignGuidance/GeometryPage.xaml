@@ -40,7 +40,7 @@
         <RichTextBlock>
             <Paragraph>
                 <Run>Geometry describes the shape, size and position of UI elements on screen. These fundamental design elements help experiences feel coherent across the entire design system. WinUI uses three levels of rounding depending on what UI component is being rounded and how that component is arranged relative to neighboring elements.</Run>
-                <Run>You can reference built-in corner radii styles using:</Run>
+                <Run>You can reference built-in corner radius styles using:</Run>
                 <Run FontStyle="Italic">CornerRadius="{StaticResource ControlCornerRadius}"</Run>
                 .</Paragraph>
         </RichTextBlock>
