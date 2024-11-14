@@ -80,6 +80,11 @@ namespace WinUIGallery.Shaders
 
             float dpi = GetDpi(element);
             float dpiScale = dpi / 96.0f;
+            if (scaleElement == null)
+            {
+                dpi = 96.0f;
+                dpiScale = 1.0f;
+            }
 
             var size = new Size(element.RenderSize.Width, element.RenderSize.Height);
 
