@@ -185,23 +185,37 @@ namespace WinUIGallery
             object targetPageArguments = null,
             Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
         {
-            // Don't do the animation for the first navigation
-            if (firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
+            if (m_blockNavigate)
             {
-                firstNavigation = false;
+                return;
+            }
+
+            // Don't do the animation for the first navigation
+            if (m_firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
+            {
+                m_firstNavigation = false;
                 NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
             }
             else
             {
 #if !AB_BUILD
-                //if (overlayPanel.ChildCount > 0)
-                //{
-                //    // We already have a transition effect in progress. Navigate, but don't start a new effect.
-                //    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
-                //    return;
-                //}
+                // If programmatically calling Navigate, it will result in the selection changing
+                // which will call Navigate a second time. This double Navigate call looks wrong if
+                // ComputeSharp animations are enabled.
+                // Also bad things happen if we start animations while a capture is happening.
+                // Block the animation if we detect either of these things.
+                // Don't block the Navigate, because if we do the Selected item is out of sync.
+                if (m_isCapturePending ||
+                    (DateTime.Now - m_lastNavigationTime) < TimeSpan.FromMilliseconds(200))
+                {
+                    // Navigate directly, don't start an animation.
+                    NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                    return;
+                }
 
-                // overlayPanel.ClearOverlays();
+                m_lastNavigationTime = DateTime.Now;
+                overlayPanel.ClearOverlays();
+
                 var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
                 var compositor = overlayVisual.Compositor;
                 var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
@@ -219,10 +233,12 @@ namespace WinUIGallery
                 spriteVisual.Brush = surfaceBrush;
                 spriteVisual.Size = size;
 
+                m_isCapturePending = true;
                 // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
-                m_fullBitmap = await rootFrameParent.CaptureTo2(rootFrame);
+                m_fullBitmap = await CaptureHelper.CaptureElementAsync(rootFrameParent, rootFrame);
                 ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
+                m_isCapturePending = false;
 
                 // Commented out - uncomment to save the capture we got to a file.
                 //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
@@ -255,7 +271,7 @@ namespace WinUIGallery
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                shaderPanel.SetShaderInputAsync(m_fullBitmap);
+                shaderPanel.SetShaderInput(m_fullBitmap);
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
@@ -268,8 +284,11 @@ namespace WinUIGallery
             }
         }
 
-        private bool firstNavigation = true;
+        private bool m_firstNavigation = true;
+        private bool m_isCapturePending = false;
+        private bool m_blockNavigate = false;
         private CanvasRenderTarget m_fullBitmap;
+        private DateTime m_lastNavigationTime = DateTime.Now;
 
         public void EnsureNavigationSelection(string id)
         {
@@ -283,9 +302,14 @@ namespace WinUIGallery
                         {
                             if ((string)item.Tag == id)
                             {
+                                // Setting SelectedItem normally calls "Navigate". That's unintended here.
+                                m_blockNavigate = true;
+
                                 group.IsExpanded = true;
                                 NavigationView.SelectedItem = item;
                                 item.IsSelected = true;
+
+                                m_blockNavigate = false;
                                 return;
                             }
                             else if (item.MenuItems.Count > 0)
@@ -296,10 +320,15 @@ namespace WinUIGallery
                                     {
                                         if ((string)innerItem.Tag == id)
                                         {
+                                            // Setting SelectedItem normally calls "Navigate". That's unintended here.
+                                            m_blockNavigate = true;
+
                                             group.IsExpanded = true;
                                             item.IsExpanded = true;
                                             NavigationView.SelectedItem = innerItem;
                                             innerItem.IsSelected = true;
+
+                                            m_blockNavigate = false;
                                             return;
                                         }
                                     }
