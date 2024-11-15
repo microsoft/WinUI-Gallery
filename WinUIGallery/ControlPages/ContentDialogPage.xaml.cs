@@ -75,10 +75,11 @@ namespace WinUIGallery.ControlPages
                 // underneath it. Get the "real" dialog box inside of it.
                 var dialogBox = sender.GetDialogBox();
 
-                // Capture the dialog to our bitmap.
+                // Capture the dialog to our bitmap using the Composition VisualCapture API.
                 m_canvasRenderTarget = await CaptureHelper.CaptureElementAsync(dialogBox);
 
                 // Create our shader panel which will run "TwirlDismiss" on the dialog capture.
+                // ShaderPanel is a thin wrapper around Win2D's CanvasControl
                 var dialogShaderPanel = new ShaderPanel();
                 dialogShaderPanel.InitializeForShader<TwirlDismiss>();
                 dialogShaderPanel.Width = m_canvasRenderTarget.Size.Width;

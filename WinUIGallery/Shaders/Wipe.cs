@@ -53,7 +53,6 @@ internal readonly partial struct Wipe(float t, int2 resolution, float2 wipeDirec
 
         // Right side
         float4 tex = D2D.SampleInput(0, xy / resolution);
-        //float4 tex = D2D.SampleInputAtPosition(0, xy + new float2(0.5f,0.5f));
         if (projectionAlongWipe > borderMax)
         {
             return new(tex.RGB, 1.0f);
