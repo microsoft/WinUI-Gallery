@@ -75,30 +75,26 @@ namespace WinUIGallery.ControlPages
                 // underneath it. Get the "real" dialog box inside of it.
                 var dialogBox = sender.GetDialogBox();
 
-                var dialogToWindowTransform = dialogBox.TransformToVisual(sender);
-                var dialogOffset = dialogToWindowTransform.TransformPoint(new Point(0, 0));
-
                 // Capture the dialog to our bitmap.
                 m_canvasRenderTarget = await CaptureHelper.CaptureElementAsync(dialogBox);
-
-                // Calculate offset from Window root to the overlay panel
-                var transform = XamlRoot.Content.TransformToVisual(overlayPanel);
-                var overlayOffset = transform.TransformPoint(new Point(0, 0));
 
                 // Create our shader panel which will run "TwirlDismiss" on the dialog capture.
                 var dialogShaderPanel = new ShaderPanel();
                 dialogShaderPanel.InitializeForShader<TwirlDismiss>();
                 dialogShaderPanel.Width = m_canvasRenderTarget.Size.Width;
                 dialogShaderPanel.Height = m_canvasRenderTarget.Size.Height;
-                dialogShaderPanel.Translation = new Vector3(
-                    (float)overlayOffset.X,
-                    (float)overlayOffset.Y,
-                    0);
 
-                dialogShaderPanel.SetShaderInputAsync(m_canvasRenderTarget);
+                dialogShaderPanel.SetShaderInput(m_canvasRenderTarget);
 
-                // Display the shader panel by adding it as an overlay.
-                overlayPanel.AddOverlay(dialogShaderPanel, dialogOffset);
+                // Calculate the offset of the dialog box from our overlays.
+                var dialogToWindowTransform = dialogBox.TransformToVisual(sender);
+                var windowToOverlayTransform = XamlRoot.Content.TransformToVisual(overlayPanel);
+                var offsetFromWindow = dialogToWindowTransform.TransformPoint(new Point(0, 0));
+                var offsetFromOverlay = windowToOverlayTransform.TransformPoint(offsetFromWindow);
+
+                // Display the shader panel by adding it as an overlay in the same position as the
+                // dialog box.
+                overlayPanel.AddOverlay(dialogShaderPanel, offsetFromOverlay);
 
                 // Close the dialog once the shader starts running, and remove the shader panel when
                 // it's done.

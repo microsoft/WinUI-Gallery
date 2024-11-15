@@ -271,7 +271,7 @@ namespace WinUIGallery
                 Point offset = transform.TransformPoint(new Point(0, 0));
                 Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
 
-                shaderPanel.SetShaderInputAsync(m_fullBitmap);
+                shaderPanel.SetShaderInput(m_fullBitmap);
 
                 overlayPanel.AddOverlay(shaderPanel, offset);
                 shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
