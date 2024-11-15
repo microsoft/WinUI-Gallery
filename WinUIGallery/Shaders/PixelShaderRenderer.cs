@@ -1,11 +1,13 @@
 using ComputeSharp.D2D1;
 using ComputeSharp.D2D1.Descriptors;
+using ComputeSharp.D2D1.Interop;
 using ComputeSharp.D2D1.WinUI;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -130,6 +132,8 @@ namespace WinUIGallery.Shaders
         private static PixelShaderRenderImpl RippleFadeFactory()
         {
             PixelShaderEffect<RippleFade> effect = new PixelShaderEffect<RippleFade>();
+            var s = D2D1ReflectionServices.GetShaderInfo<RippleFade>().HlslSource;
+            Debug.WriteLine(s);
 
             var drawAction = (ShaderDrawData drawData) =>
             {

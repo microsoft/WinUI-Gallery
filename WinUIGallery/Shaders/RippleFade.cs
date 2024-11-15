@@ -22,14 +22,17 @@ internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1
     /// <inheritdoc/>
     public float4 Execute()
     {
+        // Fragment scene position (0,0) to (resolution,resolution)
         float2 xy = D2D.GetScenePosition().XY;
         float resolution1D = Hlsl.Max(resolution.X, resolution.Y);
-        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; // Normalized to -0.5 to 0.5;
+
+        // Fragment position normalized to -0.5 to 0.5;
+        float2 uv = (xy - ((float2)resolution * 0.5f)) / resolution1D; 
 
         float duration = 2.0f;
-        // function that is linear with time
+        // function that is linear with time (0-1)
         float t = time / duration;
-        // easing function that starts at 0 and asymptotes at 1 as x->infinity
+        // fast-in slow-out easing function (0-1)
         float f = Hlsl.Min(1.0f, -(t - 1) * (t - 1) + 1);
 
         // Wave math
@@ -40,12 +43,14 @@ internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1
         float endWavelength = .4f;
         float wavelength = startWavelength * (1 - t) + endWavelength * t;
 
-        // Distance from center
-        float dist = Hlsl.Length(uv);
+        // Fragment distance from center
+        float distFromCenter = Hlsl.Length(uv);
 
-        // Wave distance and height
+        // Fragment distance from the wave crest
         float waveSpeed = 1.75f;
-        float d = Hlsl.Max(0, (t*waveSpeed-dist) / wavelength);
+        float d = Hlsl.Max(0, (t*waveSpeed- distFromCenter) / wavelength);
+
+        // Wave height
         float h = (float)-Hlsl.Sin(d * 3.14f * 2.0f);
 
         // Wave direction

@@ -29,7 +29,7 @@ using Windows.Graphics;
 namespace WinUIGallery.Shaders
 {
     /// <summary>
-    /// Simple wrapper around CanvasAnimatedControl to draw a ComputeSharp shader
+    /// Simple wrapper around CanvasControl to draw a ComputeSharp shader
     /// </summary>
     public sealed partial class ShaderPanel : UserControl
     {
@@ -70,16 +70,16 @@ namespace WinUIGallery.Shaders
                 pixelClip = scaledClip;
 
                 // Make our Win2D canvas match exactly the pixels we're drawing
-                canvasAnimatedControl.Width = scaledClip.Width;
-                canvasAnimatedControl.Height = scaledClip.Height;
+                canvasControl.Width = scaledClip.Width;
+                canvasControl.Height = scaledClip.Height;
             }
             else
             {
                 pixelClip = null;
 
                 // Make our Win2D canvas match exactly the pixels we're drawing
-                canvasAnimatedControl.Width = renderTargetBitmap.Size.Width;
-                canvasAnimatedControl.Height = renderTargetBitmap.Size.Height;
+                canvasControl.Width = renderTargetBitmap.Size.Width;
+                canvasControl.Height = renderTargetBitmap.Size.Height;
             }
 
             // It's ok if CanvasDevice is null here, the function can handle it
@@ -98,11 +98,11 @@ namespace WinUIGallery.Shaders
             Renderer.InitializeForShader<T>();
         }
 
-        private void CanvasAnimatedControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
+        private void CanvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
         {
             if (CanvasDevice == null)
             {
-                CanvasDevice = canvasAnimatedControl.Device;
+                CanvasDevice = canvasControl.Device;
             }
 
             ShaderDrawData drawData = new()
@@ -140,11 +140,11 @@ namespace WinUIGallery.Shaders
             }
         }
 
-        private void CanvasAnimatedControl_Loaded(object sender, RoutedEventArgs e)
+        private void CanvasControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Change the canvas to be in pixels - we've already undone the DPI scale in "AdjustForDpi" below.
-            canvasAnimatedControl.DpiScale = 1.0f; // 1.0 after the scale and everything is applied
-            canvasAnimatedControl.RasterizationScale = 1.0f;
+            canvasControl.DpiScale = 1.0f; // 1.0 after the scale and everything is applied
+            canvasControl.RasterizationScale = 1.0f;
 
             // Initialize and start the timer
             timer = new DispatcherTimer
@@ -158,10 +158,10 @@ namespace WinUIGallery.Shaders
 
         private void OnTick(object sender, object e)
         {
-            canvasAnimatedControl.Invalidate(); // Request a redraw
+            canvasControl.Invalidate(); // Request a redraw
         }
 
-        private void canvasAnimatedControl_Unloaded(object sender, RoutedEventArgs e)
+        private void canvasControl_Unloaded(object sender, RoutedEventArgs e)
         {
             // Unload can happen without a Load in the right circumstances.
             if (timer != null)
