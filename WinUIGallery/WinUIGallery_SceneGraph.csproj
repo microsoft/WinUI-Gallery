@@ -41,6 +41,10 @@
 
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 
+        <Flavor Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">Debug</Flavor>
+        <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Release</Flavor>
+        <OutDir>$(SolutionDir)\..\$(Platform)\$(Flavor)\</OutDir>
+
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">

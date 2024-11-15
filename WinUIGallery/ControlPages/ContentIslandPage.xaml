@@ -15,7 +15,7 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock>Here's an island in a ScrollViewer.  Notice now the content scrolls and clips correctly.</TextBlock>
-            <Button Click="Button_Click_1">Load Helmet</Button>
+            <Button Click="Button_Click_1" IsEnabled="False">Load Helmet (currently disabled for unpackaged deployment)</Button>
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <Grid x:Name="_rectanglePanel" HorizontalAlignment="Center">

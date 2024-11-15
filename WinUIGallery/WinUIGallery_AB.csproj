@@ -44,10 +44,10 @@
         <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
         <WindowsPackageType>None</WindowsPackageType>
         <WindowsAppSdkUndockedRegFreeWinRTInitialize>false</WindowsAppSdkUndockedRegFreeWinRTInitialize>
-        <ShouldComputeInputPris>false</ShouldComputeInputPris>
-        <OutDir>$(SolutionDir)\..\$(Platform)\$(Configuration)\</OutDir>
+        <ShouldComputeInputPris>false</ShouldComputeInputPris>        
         <Flavor Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">Debug</Flavor>
         <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Release</Flavor>
+        <OutDir>$(SolutionDir)\..\$(Platform)\$(Flavor)\</OutDir>
         <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN;AB_BUILD</DefineConstants>
         <UseDynamicLoader>true</UseDynamicLoader>
         <WindowsAppSDKSingleFileVerifyConfiguration>false</WindowsAppSDKSingleFileVerifyConfiguration>
