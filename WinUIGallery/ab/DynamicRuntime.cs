@@ -11,7 +11,6 @@ namespace WinUIGallery
     public class DynamicRuntime
     {
         public static string WindowsAppRuntimeVersion { get; private set; }
-        public static string WindowsAppRuntimeVersionFriendly { get; private set; }
         public static string WindowsAppRuntimeBaseDirectory { get; private set; }
 
         // This is a ModuleInitializer so that it will run very early in app startup.
@@ -25,12 +24,11 @@ namespace WinUIGallery
             // Show win32 message box with yes/no option
             var result = NativeMethods.MessageBox(IntPtr.Zero, "Use newer version?", "Use newer version?", 4 /*MB_YESNO*/);
 
-            string version = (result == 6 /*YES*/ ? versionB : versionA);
+            WindowsAppRuntimeVersion = (result == 6 /*YES*/ ? versionB : versionA);
 
-            WindowsAppRuntimeVersion = "Microsoft.WindowsAppSDK." + version;
-            WindowsAppRuntimeVersionFriendly = "Windows App SDK " + version.Substring(0, 3);
-
-            WindowsAppRuntimeBaseDirectory = AppContext.BaseDirectory + WindowsAppRuntimeVersion + "\\";
+            WindowsAppRuntimeBaseDirectory =
+                Path.Combine(AppContext.BaseDirectory, "Microsoft.WindowsAppSDK." + WindowsAppRuntimeVersion) +
+                Path.DirectorySeparatorChar;
 
             // Set base directory env var for PublishSingleFile support.
             // This will tell UndockedRegFreeWinRT where to find the implementation DLLs.
@@ -41,6 +39,8 @@ namespace WinUIGallery
             // This is a .net API that allows us to customize the DLL resolution process.
             // We'll use it to point at the right WindowsAppRuntime directory.
             NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), DynamicRuntimeDllResolver);
+
+            // After this next line we can start calling WinAppSDK APIs.
             NativeMethods.WindowsAppRuntime_EnsureIsLoaded();
         }
 

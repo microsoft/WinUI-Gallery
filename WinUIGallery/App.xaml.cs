@@ -64,17 +64,21 @@ namespace WinUIGallery
 
         public static string WinAppSdkDetails
         {
-#if AB_BUILD
-            get => string.Format("Built on Windows App SDK {0}.{1}{2}",
-                WASDK.Release.Major,
-                WASDK.Release.Minor,
-                WinUIGallery.DynamicRuntime.WindowsAppRuntimeVersionFriendly == null ? "" : " - Running on " + DynamicRuntime.WindowsAppRuntimeVersionFriendly);
-#else
             get => string.Format("Built on Windows App SDK {0}.{1}",
                 WASDK.Release.Major,
                 WASDK.Release.Minor);
+        }
+
+        public static string WinAppSdkDetails2
+        {
+#if AB_BUILD
+            get => string.Format("\U0001F680 Running on {0}",
+                DynamicRuntime.WindowsAppRuntimeVersion.Substring(0,3));
+#else
+            get => "";
 #endif
         }
+
 
         public static string WinAppSdkRuntimeDetails
         {

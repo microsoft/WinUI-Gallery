@@ -80,6 +80,11 @@
                             FontSize="18"
                             Text="{x:Bind WinAppSdkDetails}" />
                         <TextBlock
+                            x:Name="smallHeaderSubtitleText2"
+                            FontSize="18"
+                            Visibility="{x:Bind VersionVisible}"
+                            Text="{x:Bind WinAppSdkDetails2}" />
+                        <TextBlock
                             x:Name="smallHeaderText"
                             Style="{StaticResource TitleLargeTextBlockStyle}"
                             Text="{StaticResource AppTitleName}" />

@@ -12,6 +12,7 @@ using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml;
 
 namespace WinUIGallery
 {
@@ -23,6 +24,8 @@ namespace WinUIGallery
         }
 
         public string WinAppSdkDetails => App.WinAppSdkDetails;
+        public string WinAppSdkDetails2 => App.WinAppSdkDetails2;
+        public Visibility VersionVisible => string.IsNullOrEmpty(App.WinAppSdkDetails2) ? Visibility.Collapsed : Visibility.Visible;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
