@@ -35,9 +35,7 @@
             SampleType="XAML">
             <controls:SampleCodePresenter.Code>
                 <x:String xml:space="preserve">
-&lt;TextBlock
-    Text="Theme resource brush example"
-    Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
+&lt;TextBlock Text="..." Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
                 </x:String>
             </controls:SampleCodePresenter.Code>
         </controls:SampleCodePresenter>
