@@ -46,7 +46,10 @@ namespace WinUIGallery.ControlPages
         private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
         {
             // Needs to run as task to unblock UI thread
-            new Task(mediaCapture.Dispose).Start();
+            if (mediaCapture != null)
+            {
+                new Task(mediaCapture.Dispose).Start();
+            }
         }
 
         private MediaFrameSourceGroup mediaFrameSourceGroup;
