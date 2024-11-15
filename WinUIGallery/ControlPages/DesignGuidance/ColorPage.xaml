@@ -16,7 +16,8 @@
         <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
     </Page.Resources>
 
-    <Grid VerticalAlignment="Stretch">
+    <Grid
+        VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -26,20 +27,24 @@
         <TextBlock
             Grid.Row="0"
             Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
-        <core:ControlExample Grid.Row="1">
-            <core:ControlExample.Example>
-                <TextBlock
-                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                    Text="Theme resource brush example" />
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
-                &lt;TextBlock Text="Theme resource brush example" Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+        <controls:SampleCodePresenter
+            x:Name="XamlPresenter"
+            Grid.Row="1"
+            Margin="0,16,0,16"
+            VerticalContentAlignment="Center"
+            SampleType="XAML">
+            <controls:SampleCodePresenter.Code>
+                <x:String xml:space="preserve">
+&lt;TextBlock
+    Text="Theme resource brush example"
+    Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
+                </x:String>
+            </controls:SampleCodePresenter.Code>
+        </controls:SampleCodePresenter>
         <SelectorBar
             x:Name="PageSelector"
             Grid.Row="2"
-            Margin="-12,32,0,0"
+            Margin="-12,0,0,0"
             AutomationProperties.Name="PageSelector"
             Loaded="PageSelector_Loaded"
             SelectionChanged="PageSelector_SelectionChanged">
