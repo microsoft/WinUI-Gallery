@@ -197,7 +197,8 @@
                     ColumnDefinitions="Auto, *">
                     <TextBlock Text="Scroll with animation" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
-                    <ComboBox Grid.Column="1" x:Name="cmbVerticalAnimation" SelectedIndex="0" HorizontalAlignment="Stretch" AutomationProperties.Name="vertical animation options">
+                    <ComboBox Grid.Column="1" x:Name="cmbVerticalAnimation" SelectedIndex="0" HorizontalAlignment="Stretch" AutomationProperties.Name="vertical animation options"
+                              SelectionChanged="cmbVerticalAnimation_SelectionChanged">
                         <ComboBoxItem>Default</ComboBoxItem>
                         <ComboBoxItem>Accordion</ComboBoxItem>
                         <ComboBoxItem>Teleportation</ComboBoxItem>
@@ -213,7 +214,8 @@
                         SpinButtonPlacementMode="Inline"
                         SmallChange="500"
                         LargeChange="1000"
-                        AutomationProperties.Name="animation duration">
+                        AutomationProperties.Name="animation duration"
+                        ValueChanged="nbAnimationDuration_ValueChanged">
                     </NumberBox>
 
                     <Button x:Name="btnScrollWithAnimation" Content="Scroll with animation" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" AutomationProperties.Name="scroll with animation" Click="BtnScrollWithAnimation_Click"/>

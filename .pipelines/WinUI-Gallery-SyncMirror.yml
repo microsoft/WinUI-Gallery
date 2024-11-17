@@ -1,0 +1,69 @@
+# Sync branches in a mirror repository to a base repo by running this pipeline
+# from the mirror repo, and supplying the base repo as a parameter
+name: $(BuildDefinitionName)_$(date:yyMMdd)$(rev:.r)
+
+parameters:
+  - name: "SourceToTargetBranches"
+    type: object
+    default:
+      main: main
+  - name: "SourceRepository"
+    type: string
+    default: "https://github.com/microsoft/WinUI-Gallery.git"
+
+resources:
+  repositories: 
+    - repository: templates
+      type: git
+      name: OneBranch.Pipelines/GovernedTemplates
+      ref: refs/heads/main
+    - repository: InternalWinUIGallery
+      type: git
+      name: WinUI/WinUI-Gallery-Mirror
+      ref: refs/heads/main
+
+jobs:
+  - job: SyncMirror
+    pool:
+      vmImage: "windows-2022"
+    strategy:
+      matrix:
+        ${{ each branches in parameters.SourceToTargetBranches }}:
+          ${{ branches.key }}:
+            SourceBranch: ${{ branches.key }}
+            TargetBranch: ${{ branches.value }}
+
+    dependsOn: []
+    steps:
+      - checkout: InternalWinUIGallery
+        path: s/
+        persistCredentials: true
+
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            Write-Host "SourceBranch " + "$(SourceBranch)"
+            Write-Host "TargetBranch " + "$(TargetBranch)"
+
+            $repo = "${{ parameters.SourceRepository }}"
+            git remote add sourcerepo $repo
+            git remote
+
+            $target = "$(TargetBranch)"
+            git fetch origin $target
+            git checkout $target
+            git pull origin $target
+
+            $source = "$(SourceBranch)"
+
+            git config --global user.email "ControlsGallery@microsoft.com"
+            git config --global user.name "Controls Gallery"
+
+            git fetch sourcerepo $source
+            git pull sourcerepo $source
+
+      - task: CmdLine@2
+        inputs:
+          script: |
+            git push

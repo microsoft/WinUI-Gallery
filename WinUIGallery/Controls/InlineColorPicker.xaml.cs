@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using WinUIGallery.Controls;
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -41,7 +40,7 @@ namespace WinUIGallery.DesktopWap.Controls
             }
         }
         public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.Register("Color", typeof(Color), typeof(InlineColorPicker), new PropertyMetadata(Colors.White));
+            DependencyProperty.Register("Color", typeof(Color), typeof(InlineColorPicker), new PropertyMetadata(Microsoft.UI.Colors.White));
 
         public SolidColorBrush ColorBrush
         {
@@ -49,7 +48,7 @@ namespace WinUIGallery.DesktopWap.Controls
             set { SetValue(ColorBrushProperty, value); }
         }
         public static readonly DependencyProperty ColorBrushProperty =
-            DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Colors.White)));
+            DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Microsoft.UI.Colors.White)));
         
         public event EventHandler<Color> ColorChanged;
 
@@ -70,7 +69,7 @@ namespace WinUIGallery.DesktopWap.Controls
             byte r = (byte)(Convert.ToUInt32(hex.Substring(0, 2), 16));
             byte g = (byte)(Convert.ToUInt32(hex.Substring(2, 2), 16));
             byte b = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
-            SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, r, g, b));
+            SolidColorBrush myBrush = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(255, r, g, b));
             return myBrush;
         }
 
