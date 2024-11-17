@@ -10,16 +10,14 @@
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabView x:Name="Tabs" 
-                             VerticalAlignment="Stretch"
-                             AddTabButtonClick="Tabs_AddTabButtonClick"
-                             TabCloseRequested="Tabs_TabCloseRequested"
-                             AllowDropTabs="True"
-                             CanDragTabs="True"
-                             CanReorderTabs="True"
-                             TabDroppedOutside="Tabs_TabDroppedOutside"
-                             TabStripDragOver="Tabs_TabStripDragOver"
-                             TabStripDrop="Tabs_TabStripDrop"
-                             TabDragStarting="Tabs_TabDragStarting" >
+                 VerticalAlignment="Stretch"
+                 AddTabButtonClick="Tabs_AddTabButtonClick"
+                 TabCloseRequested="Tabs_TabCloseRequested"
+                 CanTearOutTabs="True"
+                 TabTearOutWindowRequested="Tabs_TabTearOutWindowRequested"
+                 TabTearOutRequested="Tabs_TabTearOutRequested"
+                 ExternalTornOutTabsDropping="Tabs_ExternalTornOutTabsDropping"
+                 ExternalTornOutTabsDropped="Tabs_ExternalTornOutTabsDropped">
             <TabView.TabStripHeader>
                 <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
             </TabView.TabStripHeader>

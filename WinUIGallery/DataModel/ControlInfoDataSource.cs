@@ -44,6 +44,7 @@ namespace WinUIGallery.Data
     {
         public string UniqueId { get; set; }
         public string Title { get; set; }
+        public string[] BaseClasses { get; set; }
         public string ApiNamespace { get; set; }
         public string Subtitle { get; set; }
         public string Description { get; set; }
@@ -213,7 +214,7 @@ namespace WinUIGallery.Data
                     {
                         Groups.Add(group);
                     }
-                }
+        }
             }
         }
     }

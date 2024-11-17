@@ -23,9 +23,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <TextBlock
+            Grid.Row="0"
             AutomationProperties.AutomationId="PageHeader"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="{x:Bind Item.Title}"

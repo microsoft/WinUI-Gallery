@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using System.Threading;
+using static System.Net.WebRequestMethods;
 
 namespace UITests.Tests
 {
@@ -23,7 +26,12 @@ namespace UITests.Tests
         public static string[] ExclusionList =
         {
             "WebView2", // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
-            "Icons" // https://github.com/CommunityToolkit/Windows/issues/240 External toolkit SettingsExpander does not pass Axe testing
+            "Icons", // https://github.com/CommunityToolkit/Windows/issues/240 External toolkit SettingsExpander does not pass Axe testing
+            // https://github.com/microsoft/axe-windows/issues/662
+            // AxeWindowsAutomationException: Failed to get the root element(s) of the specified process error for following pages:
+            "PersonPicture",
+            "MapControl",
+            "TabView"
         };
 
         public class ControlInfoData
@@ -88,23 +96,58 @@ namespace UITests.Tests
         {
             try
             {
+                Logger.LogMessage($"Opening page \"{pageName}\".");
+
                 // Click into page and check for accessibility issues.
                 var page = Session.FindElementByAccessibilityId(pageName);
                 page.Click();
 
                 AxeHelper.AssertNoAccessibilityErrors();
             }
-            catch
+            catch (OpenQA.Selenium.WebDriverException exc)
             {
-                // If element is not found, expand tree view as it is nested.
-                var section = Session.FindElementByAccessibilityId(sectionName);
-                section.Click();
+                if (exc.Message.Contains("element could not be located"))
+                {
+                    try
+                    {
+                        Logger.LogMessage($"Page not found. Opening section \"{sectionName}\" first.");
 
-                // Click into page and check for accessibility issues.
-                var page = Session.FindElementByAccessibilityId(pageName);
-                page.Click();
+                        // If element is not found, expand tree view as it is nested.
+                        var section = Session.FindElementByAccessibilityId(sectionName);
+                        section.Click();
 
-                AxeHelper.AssertNoAccessibilityErrors();
+                        // wait for tree to expand
+                        Thread.Sleep(1000);
+
+                        // Click into page and check for accessibility issues.
+                        var page = Session.FindElementByAccessibilityId(pageName);
+                        page.Click();
+
+                        AxeHelper.AssertNoAccessibilityErrors();
+                    }
+                    catch (OpenQA.Selenium.WebDriverException exc2)
+                    {
+                        Logger.LogMessage($"Section \"{sectionName}\" not found either.");
+                        Logger.LogMessage(exc2.Message);
+
+                        SessionManager.DumpTree();
+                        SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+
+                        throw;
+                    }
+                }
+                else if (exc.Message.Contains("Currently selected window has been closed"))
+                {
+                    Logger.LogMessage("Window closed. Reinitializing session.");
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+                    SessionManager.Setup(null);
+                }
+                else
+                {
+                    Logger.LogMessage(exc.Message);
+                    SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
+                }
+               
             }
         }
 
