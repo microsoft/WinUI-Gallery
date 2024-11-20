@@ -182,16 +182,11 @@
     <Content Include="Assets\Tiles\StoreLogo-sdk.scale-150.png" />
     <Content Include="Assets\Tiles\StoreLogo-sdk.scale-200.png" />
     <Content Include="Assets\Tiles\StoreLogo-sdk.scale-400.png" />
-    <Content Include="Assets\Tiles\Tile_General.png" />
     <Content Include="Assets\Tiles\WideTile.scale-100.png" />
     <Content Include="Assets\Tiles\WideTile.scale-125.png" />
     <Content Include="Assets\Tiles\WideTile.scale-150.png" />
     <Content Include="Assets\Tiles\WideTile.scale-200.png" />
     <Content Include="Assets\Tiles\WideTile.scale-400.png" />
-    <Content Include="Assets\Tiles\widelogo.scale-100.png" />
-    <Content Include="Assets\Tiles\widelogo.scale-140.png" />
-    <Content Include="Assets\Tiles\widelogo.scale-180.png" />
-    <Content Include="Assets\Tiles\WideLogo.scale-80.png" />
     <Content Include="ControlPagesSampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="ControlPagesSampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />

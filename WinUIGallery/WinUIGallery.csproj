@@ -148,6 +148,7 @@
         <None Remove="Assets\Design\Dialog.light.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
+        <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
@@ -188,14 +189,13 @@
         <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
-        <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />
+        <Content Include="Assets\HomeHeaderTiles\Header-WinUI.png" />
         <Content Include="Assets\Tiles\GalleryIcon.ico" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-16.png" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-24.png" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-256.png" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-32.png" />
         <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-48.png" />
-        <Content Include="Assets\Tiles\TitlebarLogo.png" />
         <Content Include="Assets\Design\Typography.dark.png" />
         <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />

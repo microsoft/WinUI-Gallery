@@ -60,7 +60,7 @@
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
             <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
-                <Image Width="18" VerticalAlignment="Center" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
+                <Image Width="18" VerticalAlignment="Center" Source="ms-appx:///Assets/Tiles/GalleryIcon.ico" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="12,0,0,0"
