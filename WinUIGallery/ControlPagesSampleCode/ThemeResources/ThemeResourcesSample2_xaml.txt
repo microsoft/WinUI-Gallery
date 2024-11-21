@@ -1,0 +1,27 @@
+﻿<Page ...>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="BackgroundBrush" Color="White" />
+                    <SolidColorBrush x:Key="TextBrush" Color="Black" />
+                    <x:String x:Key="ThemeString">Light Theme</x:String>
+                    <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Light_Image.png</ImageSource>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BackgroundBrush" Color="Black" />
+                    <SolidColorBrush x:Key="TextBrush" Color="White" />
+                    <x:String x:Key="ThemeString">Dark Theme</x:String>
+                    <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource BackgroundBrush}" Padding="8" MaxWidth="700">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{ThemeResource ThemeString}" Foreground="{ThemeResource TextBrush}" FontSize="24" />
+            <Image Source="{ThemeResource ImageSource}"/>
+        </StackPanel>
+    </Grid>
+</Page>

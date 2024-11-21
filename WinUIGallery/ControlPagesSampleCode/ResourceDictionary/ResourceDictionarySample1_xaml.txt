@@ -1,0 +1,19 @@
+﻿<!--App.xaml-->
+<Application ...>
+    <Application.Resources>
+        <!-- Define resources inside a resource dictionary -->
+        <ResourceDictionary>
+            <x:Double x:Key="HeaderFontSize">24</x:Double>
+            <Color x:Key="AccentColor">#4CAF50</Color>
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+            <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+<!--YourPage.xaml-->
+<Grid Background="{StaticResource AccentBrush}">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="{StaticResource AppTitle}" FontSize="{StaticResource HeaderFontSize}" Foreground="White" />
+    </StackPanel>
+</Grid>

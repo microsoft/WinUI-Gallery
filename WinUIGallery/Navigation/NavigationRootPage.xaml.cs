@@ -357,6 +357,30 @@ namespace WinUIGallery
                 {
                     Navigate(typeof(ItemPage), "AccessibilityColorContrast");
                 }
+                else if (selectedItem == ResourcesPage)
+                {
+                    Navigate(typeof(ItemPage), "Resources");
+                }
+                else if (selectedItem == ResourceDictionaryPage)
+                {
+                    Navigate(typeof(ItemPage), "ResourceDictionary");
+                }
+                else if (selectedItem == ThemeResourcesPage)
+                {
+                    Navigate(typeof(ItemPage), "ThemeResources");
+                }
+                else if (selectedItem == XamlStylesPage)
+                {
+                    Navigate(typeof(ItemPage), "XamlStyles");
+                }
+                else if (selectedItem == BindingPage)
+                {
+                    Navigate(typeof(ItemPage), "Binding");
+                }
+                else if (selectedItem == TemplatesPage)
+                {
+                    Navigate(typeof(ItemPage), "Templates");
+                }
                 else
                 {
                     if (selectedItem.DataContext is ControlInfoDataGroup)

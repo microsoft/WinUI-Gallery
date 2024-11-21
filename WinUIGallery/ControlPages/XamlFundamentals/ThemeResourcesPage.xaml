@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="WinUIGallery.ControlPages.ThemeResourcesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:WinUIGallery"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="BackgroundBrush"
+                                     Color="White" />
+                    <SolidColorBrush x:Key="TextBrush"
+                                     Color="Black" />
+                    <x:String x:Key="ThemeString">Light Theme</x:String>
+                    <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Light_Image.png</ImageSource>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BackgroundBrush"
+                                     Color="Black" />
+                    <SolidColorBrush x:Key="TextBrush"
+                                     Color="White" />
+                    <x:String x:Key="ThemeString">Dark Theme</x:String>
+                    <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackPanel>
+        <Expander HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  Margin="0 12 0 0">
+            <Expander.Header>
+                <TextBlock Text="Understanding Theme Resources in WinUI 3"
+                           Margin="0 24" />
+            </Expander.Header>
+            <StackPanel>
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Run Text="Where Can You Create Theme Resources?"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="The placement of theme resources is the same as regular XAML resources " />
+                        <Run Text="(App-Level, Page-Level, Control-Level)."
+                             FontStyle="Italic" />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run Text="Key Points:"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="1. "
+                             FontWeight="Bold" />
+                        <Run Text="Use " />
+                        <Run Text="ThemeResource "
+                             FontWeight="Bold"
+                             FontStyle="Italic" />
+                        <Run Text="for dynamic theme-based updates." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="2. "
+                             FontWeight="Bold" />
+                        <Run Text="Place theme resources globally, on pages, or in specific controls, depending on the scope." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="3. "
+                             FontWeight="Bold" />
+                        <Run Text="Define " />
+                        <Run Text="ThemeDictionaries "
+                             FontWeight="Bold"
+                             FontStyle="Italic" />
+                        <Run Text="to provide different values for Light and Dark themes." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="4. "
+                             FontWeight="Bold" />
+                        <Run Text="Always provide a fallback value to ensure compatibility with undefined themes." />
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Expander>
+
+        <local:ControlExample HeaderText="StaticResource vs ThemeResource"
+                              XamlSource="ThemeResources\ThemeResourcesSample1_xaml.txt">
+            <local:ControlExample.Example>
+                <StackPanel>
+                    <Grid Background="{StaticResource SolidBackgroundFillColorBaseBrush}">
+                        <TextBlock Text="- StaticResource uses the value defined when the app starts and does not update when the theme changes."
+                                   Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                                   FontSize="16"
+                                   TextWrapping="Wrap" />
+                    </Grid>
+
+                    <Grid Background="{ThemeResource SolidBackgroundFillColorBaseBrush}">
+                        <TextBlock Text="- ThemeResource adapts automatically to the current theme. If the app switches from Light to Dark, the color defined by ThemeResource changes."
+                                   Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                   FontSize="16"
+                                   TextWrapping="Wrap" />
+                    </Grid>
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <InfoBar Width="240"
+                         IsOpen="True"
+                         Severity="Warning"
+                         IsClosable="False"
+                         Message="Toggle the theme using the theme switch button at the top right corner." />
+            </local:ControlExample.Options>
+        </local:ControlExample>
+        <InfoBar IsOpen="True"
+                 IsClosable="False"
+                 Title="Explore Built-In Theme Resources"
+                 Message="WinUI 3 includes built-in theme resources for commonly used colors, such as `CardBackgroundFillColorDefaultBrush` and `TextFillColorPrimaryBrush`. For a deeper understanding, visit the `Design guidance → Color` page in this app."
+                 Margin="0 8 0 0" />
+
+        <local:ControlExample HeaderText="Define a New Theme Resource"
+                              XamlSource="ThemeResources\ThemeResourcesSample2_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{ThemeResource BackgroundBrush}"
+                      Padding="8"
+                      MaxWidth="700">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="{ThemeResource ThemeString}"
+                                   Foreground="{ThemeResource TextBrush}"
+                                   FontSize="24" />
+                        <Image Source="{ThemeResource ImageSource}" />
+                    </StackPanel>
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.Options>
+                <InfoBar Width="240"
+                         IsOpen="True"
+                         Severity="Warning"
+                         IsClosable="False"
+                         Message="Toggle the theme using the theme switch button at the top right corner." />
+            </local:ControlExample.Options>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

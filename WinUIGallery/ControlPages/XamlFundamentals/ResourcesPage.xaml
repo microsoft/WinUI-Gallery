@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="WinUIGallery.ControlPages.ResourcesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUIGallery"
+      xmlns:controls="using:WinUIGallery.Controls"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Color x:Key="PrimaryColor">#FF5733</Color>
+        <SolidColorBrush x:Key="HighlightBrush"
+                         Color="#2196F3" />
+    </Page.Resources>
+
+    <StackPanel>
+        <Expander HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  Margin="0 12 0 0">
+            <Expander.Header>
+                <TextBlock Text="Creating and Using XAML Resources in WinUI 3"
+                           Margin="0 24" />
+            </Expander.Header>
+            <StackPanel>
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Run Text="Where Can You Create XAML Resources?"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="1. App-Level: "
+                             FontWeight="Bold" />
+                        <Run Text="Define resources globally, accessible throughout the application." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="2. Page-Level: "
+                             FontWeight="Bold" />
+                        <Run Text="Define resources that are specific to a particular page." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="3. Control-Level: "
+                             FontWeight="Bold" />
+                        <Run Text="Define resources local to a specific control, such as a button or grid." />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Run Text="How to Create and Use XAML Resources"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="You define XAML Resources using the " />
+                        <Run Text="`&lt;ResourceDictionary>`"
+                             FontFamily="Consolas"
+                             FontStyle="Italic" />
+                        <Run Text=" element. The key parts are " />
+                        <Run Text="the resource's Key"
+                             FontWeight="Bold" />
+                        <Run Text=" (a unique identifier) and the " />
+                        <Run Text="value"
+                             FontWeight="Bold" />
+                        <Run Text=" (like a color or brush)." />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run Text="Tips for Beginners:"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="- Naming: "
+                             FontWeight="Bold" />
+                        <Run Text="Always use descriptive keys for your resources to make them easier to identify." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="- Scope: "
+                             FontWeight="Bold" />
+                        <Run Text="Define resources at the narrowest scope possible to improve maintainability." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="- Access: "
+                             FontWeight="Bold" />
+                        <Run Text="Use " />
+                        <Run Text="`{StaticResource Key}`"
+                             FontFamily="Consolas"
+                             FontStyle="Italic" />
+                        <Run Text=" in XAML for most cases, and " />
+                        <Run Text="`Resources[&quot;Key&quot;]`"
+                             FontFamily="Consolas"
+                             FontStyle="Italic" />
+                        <Run Text=" in C# for runtime access." />
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Expander>
+
+        <local:ControlExample HeaderText="Define and Use a Color Resource in App-Level."
+                              XamlSource="Resources\ResourcesSample1_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{StaticResource PrimaryColor}">
+                    <TextBlock Text="Hello, World!"
+                               Foreground="White"
+                               FontSize="24" />
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+                    
+//You can retrieve a resource defined in your application resources by using its key.
+var primaryColor = (Windows.UI.Color)Application.Current.Resources["PrimaryColor"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Define a Brush Resource at the Page Level."
+                              XamlSource="Resources\ResourcesSample2_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{StaticResource HighlightBrush}">
+                    <Button Content="Click Me"
+                            Foreground="White" />
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+                    
+//You can retrieve a resource defined at the current page level, by accessing it via the Resources dictionary.
+var highlightBrush = (SolidColorBrush)this.Resources["HighlightBrush"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Define and Use Double and String Resources in Control-Level."
+                              XamlSource="Resources\ResourcesSample3_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid x:Name="newGrid">
+                    <Grid.Resources>
+                        <!-- Define a font size -->
+                        <x:Double x:Key="HeaderFontSize">24</x:Double>
+                        <x:String x:Key="WelcomeMessage">Welcome to WinUI 3 Gallery!</x:String>
+                    </Grid.Resources>
+
+                    <TextBlock Text="{StaticResource WelcomeMessage}"
+                               FontSize="{StaticResource HeaderFontSize}" />
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+                    
+//You can retrieve a resource defined at the control level, by accessing it via the Resources dictionary.
+var headerFontSize = (double)newGrid.Resources["HeaderFontSize"];
+var welcomeMessage = (string)newGrid.Resources["WelcomeMessage"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

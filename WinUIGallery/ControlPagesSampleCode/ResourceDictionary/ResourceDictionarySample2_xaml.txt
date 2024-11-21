@@ -1,0 +1,13 @@
+﻿<!--YourPage.xaml-->
+<Page ...>
+    <Page.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="WelcomeMessage">Welcome to this Page</x:String>
+            <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource PageBackgroundBrush}">
+        <TextBlock Text="{StaticResource WelcomeMessage}" FontSize="20" Foreground="Black" />
+    </Grid>
+</Page>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="WinUIGallery.ControlPages.ResourceDictionaryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:WinUIGallery"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="HeaderFontSize">24</x:Double>
+            <Color x:Key="AccentColor">#4CAF50</Color>
+            <SolidColorBrush x:Key="AccentBrush"
+                             Color="{StaticResource AccentColor}" />
+            <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
+
+            <x:String x:Key="WelcomeMessage">Welcome to this Page</x:String>
+            <SolidColorBrush x:Key="PageBackgroundBrush"
+                             Color="#E8EAF6" />
+
+            <Color x:Key="SecondaryColor">#2196F3</Color>
+            <SolidColorBrush x:Key="SecondaryBrush"
+                             Color="{StaticResource SecondaryColor}" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackPanel>
+        <Expander HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  Margin="0 12 0 0">
+            <Expander.Header>
+                <TextBlock Text="Understanding and Using Resource Dictionaries in WinUI 3"
+                           Margin="0 24" />
+            </Expander.Header>
+            <StackPanel>
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Run Text="Where Can You Create a Resource Dictionary?"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="1. "
+                             FontWeight="Bold" />
+                        <Run Text="Inline (App-Level): "
+                             FontWeight="Bold" />
+                        <Run Text="Define it in " />
+                        <Run Text="`App.xaml`"
+                             FontFamily="Consolas"
+                             FontStyle="Italic" />
+                        <Run Text=" to make resources globally available across the entire app." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="2. "
+                             FontWeight="Bold" />
+                        <Run Text="Inline (Page-Level): "
+                             FontWeight="Bold" />
+                        <Run Text="Define it in a specific page to limit the scope to that page." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="3. "
+                             FontWeight="Bold" />
+                        <Run Text="Standalone File: "
+                             FontWeight="Bold" />
+                        <Run Text="Define it in a separate " />
+                        <Run Text="`.xaml`"
+                             FontFamily="Consolas"
+                             FontStyle="Italic" />
+                        <Run Text=" file to organize resources and reuse them in different parts of your app." />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run Text="Why Use Resource Dictionaries?"
+                             FontWeight="Bold" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="1. "
+                             FontWeight="Bold" />
+                        <Run Text="Reusability: "
+                             FontWeight="Bold" />
+                        <Run Text="Define once and use many times." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="2. "
+                             FontWeight="Bold" />
+                        <Run Text="Organization: "
+                             FontWeight="Bold" />
+                        <Run Text="Keeps resources modular and separated." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="3. "
+                             FontWeight="Bold" />
+                        <Run Text="Maintainability: "
+                             FontWeight="Bold" />
+                        <Run Text="Makes it easier to update values across the app." />
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Expander>
+
+        <local:ControlExample HeaderText="Define and Use ResourceDictionary Inline in App.xaml"
+                              XamlSource="ResourceDictionary\ResourceDictionarySample1_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{StaticResource AccentBrush}">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="{StaticResource AppTitle}"
+                                   FontSize="{StaticResource HeaderFontSize}"
+                                   Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+
+//You can retrieve resources defined at the ResourceDictionary like this
+var appTitle = (string)Application.Current.Resources["AppTitle"];
+var headerFontSize = (double)Application.Current.Resources["HeaderFontSize"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Define Page-Level ResourceDictionary"
+                              XamlSource="ResourceDictionary\ResourceDictionarySample2_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{StaticResource PageBackgroundBrush}">
+                    <TextBlock Text="{StaticResource WelcomeMessage}"
+                               FontSize="20"
+                               Foreground="Black" />
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+
+//You can retrieve the resource defined at the ResourceDictionary like this
+var welcomeMessage = (string)this.Resources["WelcomeMessage"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="Define a separate ResourceDictionary file by adding a new .xaml file (e.g., Colors.xaml) to the project"
+                              XamlSource="ResourceDictionary\ResourceDictionarySample3_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid Background="{StaticResource SecondaryBrush}">
+                    <TextBlock Text="Using Colors from Resource Dictionary"
+                               Foreground="White" />
+                </Grid>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+//YourPage.xaml.cs
+
+//You can retrieve the resource defined at the ResourceDictionary like this
+var secondaryBrush = (SolidColorBrush)Application.Current.Resources["SecondaryBrush"];
+                </x:String>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

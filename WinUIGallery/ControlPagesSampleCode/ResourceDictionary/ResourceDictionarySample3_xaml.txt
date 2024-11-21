@@ -1,0 +1,23 @@
+﻿<!--Colors.xaml-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="SecondaryColor">#2196F3</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+</ResourceDictionary>
+
+<!--App.xaml-->
+<Application ...>
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Link the File in App.xaml or Page-Level-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+<!--YourPage.xaml-->
+<Grid Background="{StaticResource SecondaryBrush}">
+    <TextBlock Text="Using Colors from Resource Dictionary" Foreground="White" />
+</Grid>

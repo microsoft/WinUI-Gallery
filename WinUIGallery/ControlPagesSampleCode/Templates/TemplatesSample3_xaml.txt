@@ -1,0 +1,22 @@
+﻿<Page...>
+    <Page.Resources>
+        <DataTemplate x:Key="CustomComboBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Width="10" Height="10" Fill="Blue" Margin="0 0 8 0" />
+                <TextBlock Text="{Binding}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <ComboBox ItemTemplate="{StaticResource CustomComboBoxItemTemplate}">
+            <ComboBox Header="Options"
+                      SelectedIndex="0"
+                      ItemTemplate="{StaticResource CustomComboBoxItemTemplate}">
+                <x:String>Option 1</x:String>
+                <x:String>Option 2</x:String>
+                <x:String>Option 3</x:String>
+            </ComboBox.Items>
+        </ComboBox>
+    </Grid>
+</Page>

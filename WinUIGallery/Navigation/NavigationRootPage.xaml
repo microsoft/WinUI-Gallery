@@ -262,6 +262,44 @@
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
+                <NavigationViewItem x:Name="XamlFundamentalsItem" AutomationProperties.AutomationId="XamlFundamentalsItem" Content="XAML Fundamentals" Tag="XamlFundamentals">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE943;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                                    x:Name="ResourcesPage"
+                                    AutomationProperties.AutomationId="Resources"
+                                    Content="Resources"
+                                    Tag="Resources" />
+                        <NavigationViewItem
+                                    x:Name="ResourceDictionaryPage"
+                                    AutomationProperties.AutomationId="ResourceDictionary"
+                                    Content="ResourceDictionary"
+                                    Tag="ResourceDictionary" />
+                        <NavigationViewItem
+                                    x:Name="ThemeResourcesPage"
+                                    AutomationProperties.AutomationId="ThemeResources"
+                                    Content="Theme resources"
+                                    Tag="ThemeResources" />
+                        <NavigationViewItem
+                                    x:Name="XamlStylesPage"
+                                    AutomationProperties.AutomationId="XamlStyles"
+                                    Content="XAML styles"
+                                    Tag="XamlStyles" />
+                        <NavigationViewItem
+                                    x:Name="BindingPage"
+                                    AutomationProperties.AutomationId="Binding"
+                                    Content="Binding"
+                                    Tag="Binding" />
+                        <NavigationViewItem
+                                    x:Name="TemplatesPage"
+                                    AutomationProperties.AutomationId="Templates"
+                                    Content="Templates"
+                                    Tag="Templates" />
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                
                 <NavigationViewItem
                     x:Name="AllControlsItem"
                     Content="All samples"

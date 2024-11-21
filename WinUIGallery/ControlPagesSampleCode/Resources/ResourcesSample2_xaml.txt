@@ -1,0 +1,11 @@
+﻿<!--YourPage.xaml-->
+<Page ...>
+    <Page.Resources>
+        <!-- Define a solid color brush -->
+        <SolidColorBrush x:Key="HighlightBrush" Color="#2196F3" />
+    </Page.Resources>
+
+    <Grid Background="{StaticResource HighlightBrush}">
+        <Button Content="Click Me" Foreground="White" />
+    </Grid>
+</Page>

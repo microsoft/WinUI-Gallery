@@ -1,0 +1,21 @@
+﻿using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml;
+using System;
+
+namespace YourNamespace
+{
+    public class BooleanToVisibilityConverter : IValueConverter
+    {
+        // Converts the boolean value to Visibility (Visible or Collapsed)
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        // Converts back from Visibility to boolean (not necessary for this example)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            return (Visibility)value == Visibility.Visible;
+        }
+    }
+}

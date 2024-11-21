@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="WinUIGallery.ControlPages.BindingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:WinUIGallery.ControlPages"
+      xmlns:core="using:WinUIGallery"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Page.Resources>
+
+    <StackPanel>
+        <Expander HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  Margin="0 12 0 0">
+            <Expander.Header>
+                <TextBlock Text="Understanding Binding in WinUI 3"
+                           Margin="0 24" />
+            </Expander.Header>
+            <RichTextBlock>
+                <Paragraph>
+                    <Bold>Key Concepts:</Bold>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="1. " />
+                    <Bold>Target</Bold>
+                    <Run Text=": The property of a control that you want to bind to (e.g., " />
+                    <Italic>Text</Italic>
+                    <Run Text=", " />
+                    <Italic>Background</Italic>
+                    <Run Text=", " />
+                    <Italic>Visibility</Italic>
+                    <Run Text=")." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="2. " />
+                    <Bold>Source</Bold>
+                    <Run Text=": The data you are binding to, like a property in a class, another control, or a static resource." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="3. " />
+                    <Bold>Binding Modes</Bold>
+                    <Run Text=":" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="   - " />
+                    <Bold>OneWay</Bold>
+                    <Run Text=": Updates the target when the source changes." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="   - " />
+                    <Bold>TwoWay</Bold>
+                    <Run Text=": Updates both the target and the source." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="   - " />
+                    <Bold>OneTime</Bold>
+                    <Run Text=": Sets the target once and doesn’t update afterward." />
+                </Paragraph>
+            </RichTextBlock>
+        </Expander>
+
+        <core:ControlExample HeaderText="Binding Between Controls">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="10">
+                    <TextBox x:Name="SourceTextBox"
+                             Width="200"
+                             PlaceholderText="Enter text here"
+                             HorizontalAlignment="Left" />
+                    <TextBox x:Name="TargetTextBox"
+                             Width="200"
+                             Text="{Binding Text, ElementName=SourceTextBox, Mode=TwoWay}"
+                             PlaceholderText="Mirrors above text"
+                             HorizontalAlignment="Left" />
+                    <RichTextBlock x:Name="BindingModeDescription" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBox x:Name="SourceTextBox" Width="200" PlaceholderText="Enter text here" /&gt;
+&lt;TextBox Width="200" Text="{Binding Text, ElementName=SourceTextBox, Mode=$(BindingMode)}" PlaceholderText="Mirrors above text" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+            <core:ControlExample.Options>
+                <RadioButtons x:Name="BindingModeGroup"
+                              Header="Select Binding Mode:"
+                              SelectedIndex="0"
+                              SelectionChanged="BindingModeGroup_SelectionChanged">
+                    <x:String>OneWay</x:String>
+                    <x:String>TwoWay</x:String>
+                </RadioButtons>
+            </core:ControlExample.Options>
+            <core:ControlExample.Substitutions>
+                <core:ControlExampleSubstitution Key="BindingMode"
+                                                 Value="{x:Bind BindingModeGroup.SelectedItem, Mode=OneWay}" />
+            </core:ControlExample.Substitutions>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Binding to a Property in Code-Behind">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="10">
+                    <TextBlock>Binding a <Bold>Slider</Bold> to update the width of a <Bold>Rectangle</Bold>.</TextBlock>
+                    <Slider x:Name="WidthSlider"
+                            Minimum="50"
+                            Maximum="300"
+                            Value="100"
+                            Width="300" />
+                    <Rectangle Width="{Binding Value, ElementName=WidthSlider}"
+                               Height="50"
+                               Fill="#088" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Slider x:Name="WidthSlider" Minimum="50" Maximum="300" Value="100" Width="300" /&gt;
+&lt;Rectangle Width="{Binding Value, ElementName=WidthSlider}" Height="50" Fill="#808" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Binding to a ViewModel"
+                             CSharpSource="Binding\BindingSample3_csharp.txt">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Title:"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding Title}"
+                               FontSize="18" />
+
+                    <TextBlock Text="Description:"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding Description}"
+                               FontSize="18" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBlock Text="Title:" FontWeight="Bold" /&gt;
+&lt;TextBlock Text="{Binding Title}" FontSize="18" /&gt;
+
+&lt;TextBlock Text="Description:" FontWeight="Bold" /&gt;
+&lt;TextBlock Text="{Binding Description}" FontSize="18" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        <InfoBar IsOpen="True"
+                 IsClosable="False"
+                 Title="For your information"
+                 Message="There is a library called the MVVM Toolkit, part of the Windows Community Toolkit, designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
+                 Margin="0 8 0 0">
+            <InfoBar.ActionButton>
+                <HyperlinkButton x:Name="mvvmToolkitSampleAppHyperlinkButton"
+                                 Content="Visit MVVM Toolkit Sample App"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+
+        <core:ControlExample HeaderText="Binding to Resources">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="10"
+                            Orientation="Horizontal">
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{ThemeResource SystemFillColorSuccessBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{StaticResource SystemFillColorCautionBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{ThemeResource SystemFillColorCriticalBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{StaticResource SystemFillColorAttentionBrush}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorSuccessBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorCautionBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorCriticalBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorAttentionBrush}" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Using `Converter` in Binding"
+                             XamlSource="Binding\BindingSample5_xaml.txt"
+                             CSharpSource="Binding\BindingSample5_csharp.txt">
+            <core:ControlExample.Example>
+                <StackPanel>
+                    <CheckBox x:Name="ToggleCheckBox"
+                              Content="Show Rectangle" />
+                    <Rectangle Width="100"
+                               Height="100"
+                               Fill="Red"
+                               Visibility="{Binding IsChecked, ElementName=ToggleCheckBox, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+        </core:ControlExample>
+    </StackPanel>
+</Page>
