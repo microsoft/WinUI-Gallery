@@ -319,5 +319,4 @@
             </_NoneWithTargetPath>
         </ItemGroup>
     </Target>
-    <ProjectExtensions><VisualStudio><UserProperties datamodel_4iconsdata_1json__JsonSchema="IconsDataSchema.json" /></VisualStudio></ProjectExtensions> 
 </Project>
