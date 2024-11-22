@@ -1,21 +1,13 @@
-﻿<Page ...>
-    <Page.Resources>
+﻿<StackPanel Spacing="4">
+    <StackPanel.Resources>
         <Style TargetType="Button" x:Key="CustomButtonStyle">
             <Setter Property="Background" Value="DarkBlue" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="18" />
             <Setter Property="Padding" Value="10,5" />
         </Style>
-    </Page.Resources>
-
-    <StackPanel Spacing="4">
-        <!--Default Style-->
-        <Button Content="Default Button" />
-
-        <!--Applying the Style-->
-        <Button Content="Styled Button" Style="{StaticResource CustomButtonStyle}" />
-
-        <!--Overriding the Style Locally (Background)-->
-        <Button Content="Styled Button (Overridden)" Style="{StaticResource CustomButtonStyle}" Background="DarkRed" />
-    </StackPanel>
-</Page>
+    </StackPanel.Resources>
+    <Button Content="Default Button" />
+    <Button Content="Styled Button" Style="{StaticResource CustomButtonStyle}" />
+    <Button Content="Styled Button (Overridden)" Style="{StaticResource CustomButtonStyle}" Background="DarkRed" />
+</StackPanel>

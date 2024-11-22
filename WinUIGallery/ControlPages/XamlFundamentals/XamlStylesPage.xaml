@@ -7,20 +7,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
 
-    <Page.Resources>
-        <Style TargetType="Button"
-               x:Key="CustomButtonStyle">
-            <Setter Property="Background"
-                    Value="DarkBlue" />
-            <Setter Property="Foreground"
-                    Value="White" />
-            <Setter Property="FontSize"
-                    Value="18" />
-            <Setter Property="Padding"
-                    Value="10,5" />
-        </Style>
-    </Page.Resources>
-
     <StackPanel>
         <Expander HorizontalAlignment="Stretch"
                   HorizontalContentAlignment="Left"
@@ -74,6 +60,19 @@
                               XamlSource="XamlStyles\XamlStylesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Spacing="4">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button"
+                               x:Key="CustomButtonStyle">
+                            <Setter Property="Background"
+                                    Value="DarkBlue" />
+                            <Setter Property="Foreground"
+                                    Value="White" />
+                            <Setter Property="FontSize"
+                                    Value="18" />
+                            <Setter Property="Padding"
+                                    Value="10,5" />
+                        </Style>
+                    </StackPanel.Resources>
                     <Button Content="Default Button" />
                     <Button Content="Styled Button"
                             Style="{StaticResource CustomButtonStyle}" />
