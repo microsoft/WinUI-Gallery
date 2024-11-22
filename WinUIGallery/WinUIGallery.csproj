@@ -152,7 +152,7 @@
         <None Remove="Assets\SampleMedia\Dark_Image.png" />
         <None Remove="Assets\SampleMedia\Light_Image.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
         <None Remove="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
         <None Remove="ControlPagesSampleCode\Binding\BindingSample5_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
@@ -228,7 +228,7 @@
         <Content Include="Assets\Tiles\TitlebarLogo.png" />
         <Content Include="Assets\Design\Typography.dark.png" />
         <Content Include="Assets\Design\Typography.light.png" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
         <Content Include="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
         <Content Include="ControlPagesSampleCode\Binding\BindingSample5_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />

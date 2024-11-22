@@ -268,6 +268,10 @@
           "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
           "Docs": [
             {
+              "Title": "Data Binding",
+              "Uri": "https://learn.microsoft.com/en-us/windows/apps/develop/data-binding/"
+            },
+            {
               "Title": "Binding - API",
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
             },

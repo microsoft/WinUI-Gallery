@@ -20,47 +20,236 @@
                 <TextBlock Text="Understanding Binding in WinUI 3"
                            Margin="0 24" />
             </Expander.Header>
-            <RichTextBlock>
-                <Paragraph>
-                    <Bold>Key Concepts:</Bold>
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="1. " />
-                    <Bold>Target</Bold>
-                    <Run Text=": The property of a control that you want to bind to (e.g., " />
-                    <Italic>Text</Italic>
-                    <Run Text=", " />
-                    <Italic>Background</Italic>
-                    <Run Text=", " />
-                    <Italic>Visibility</Italic>
-                    <Run Text=")." />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="2. " />
-                    <Bold>Source</Bold>
-                    <Run Text=": The data you are binding to, like a property in a class, another control, or a static resource." />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="3. " />
-                    <Bold>Binding Modes</Bold>
-                    <Run Text=":" />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="   - " />
-                    <Bold>OneWay</Bold>
-                    <Run Text=": Updates the target when the source changes." />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="   - " />
-                    <Bold>TwoWay</Bold>
-                    <Run Text=": Updates both the target and the source." />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="   - " />
-                    <Bold>OneTime</Bold>
-                    <Run Text=": Sets the target once and doesn’t update afterward." />
-                </Paragraph>
-            </RichTextBlock>
+            <StackPanel>
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Bold>Key Concepts:</Bold>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="1. " />
+                        <Bold>Target</Bold>
+                        <Run Text=": The property of a control that you want to bind to (e.g., " />
+                        <Italic>Text</Italic>
+                        <Run Text=", " />
+                        <Italic>Background</Italic>
+                        <Run Text=", " />
+                        <Italic>Visibility</Italic>
+                        <Run Text=")." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="2. " />
+                        <Bold>Source</Bold>
+                        <Run Text=": The data you are binding to, like a property in a class, another control, or a static resource." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="3. " />
+                        <Bold>Binding Modes</Bold>
+                        <Run Text=":" />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="   - " />
+                        <Bold>OneWay</Bold>
+                        <Run Text=": Updates the target when the source changes." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="   - " />
+                        <Bold>TwoWay</Bold>
+                        <Run Text=": Updates both the target and the source." />
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="   - " />
+                        <Bold>OneTime</Bold>
+                        <Run Text=": Sets the target once and doesn’t update afterward." />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <RichTextBlock Margin="0 0 0 12">
+                    <Paragraph>
+                        <Bold>
+                            <Run Text="Comparison of " />
+                            <Run Text="x:Bind"
+                                 FontFamily="Consolas" />
+                            <Run Text=" and " />
+                            <Run Text="Binding"
+                                 FontFamily="Consolas" />
+                            <Run Text="in WinUI 3" />
+                        </Bold>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run Text="There are two main binding systems in WinUI 3: " />
+                        <Bold>
+                            <Run Text="x:Bind" FontFamily="Consolas"/>
+                        </Bold>
+                        <Run Text=" and " />
+                        <Bold>
+                            <Run Text="Binding" />
+                        </Bold>
+                        <Run Text=", and the following table explains them and highlights their differences." />
+                    </Paragraph>
+                </RichTextBlock>
+
+                <Grid BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                      BorderThickness="1"
+                      CornerRadius="4"
+                      Background="{ThemeResource LayerFillColorDefaultBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!-- Header Row -->
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <!-- First Column -->
+                        <ColumnDefinition Width="3*" />
+                        <!-- x:Bind Column -->
+                        <ColumnDefinition Width="3*" />
+                        <!-- Binding Column -->
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Header Row -->
+                    <Border Grid.Row="0"
+                            Grid.Column="0"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="Binding system"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10" />
+                    </Border>
+                    <Border Grid.Row="0"
+                            Grid.Column="1"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="x:Bind"
+                                   FontWeight="Bold"
+                                   FontFamily="Consolas"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10" />
+                    </Border>
+                    <Border Grid.Row="0"
+                            Grid.Column="2"
+                            BorderThickness="0 0 0 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="Binding"
+                                   FontWeight="Bold"
+                                   FontFamily="Consolas"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10" />
+                    </Border>
+
+
+                    <!-- Row 1 -->
+                    <Border Grid.Row="1"
+                            Grid.Column="0"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="What it is"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Grid.Row="1"
+                            Grid.Column="1"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                        <TextBlock Text="A performance-optimized binding system with compile-time checks."
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Grid.Row="1"
+                            Grid.Column="2"
+                            BorderThickness="0 0 0 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                        <TextBlock Text="A flexible data-binding system for UI elements and data sources."
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+
+                    <!-- Row 2 -->
+                    <Border Grid.Row="2"
+                            Grid.Column="0"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="Default data source"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Grid.Row="2"
+                            Grid.Column="1"
+                            BorderThickness="0 0 1 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                        <TextBlock Text="Property bound directly from code-behind or controls, no DataContext required."
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Grid.Row="2"
+                            Grid.Column="2"
+                            BorderThickness="0 0 0 1"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                        <TextBlock Text="DataContext (or manually set ElementName, Source)."
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <!-- Row 3 -->
+                    <Border Grid.Row="3"
+                            Grid.Column="0"
+                            BorderThickness="0 0 1 0"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
+                            Background="{StaticResource LayerFillColorAltBrush}">
+                        <TextBlock Text="Key Features"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Padding="10"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Grid.Row="3"
+                            Grid.Column="1"
+                            BorderThickness="0 0 1 0"
+                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                        <TextBlock Padding="10"
+                                   TextWrapping="Wrap">
+                            <TextBlock.Inlines>
+                                <Run Text="- Faster" />
+                                <LineBreak />
+                                <Run Text="- Compile-time checked" />
+                                <LineBreak />
+                                <Run Text="- No converters or multi-bindings" />
+                            </TextBlock.Inlines>
+                        </TextBlock>
+                    </Border>
+                    <TextBlock Grid.Row="3"
+                               Grid.Column="2"
+                               Padding="10"
+                               TextWrapping="Wrap">
+                        <TextBlock.Inlines>
+                            <Run Text="- Supports converters" />
+                            <LineBreak />
+                            <Run Text="- Multi-binding" />
+                            <LineBreak />
+                            <Run Text="- Dynamic data" />
+                            <LineBreak />
+                            <Run Text="- Runtime-based, no compile-time checks" />
+                        </TextBlock.Inlines>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
         </Expander>
 
         <core:ControlExample HeaderText="Binding Between Controls">
@@ -72,7 +261,7 @@
                              HorizontalAlignment="Left" />
                     <TextBox x:Name="TargetTextBox"
                              Width="200"
-                             Text="{Binding Text, ElementName=SourceTextBox, Mode=TwoWay}"
+                             Text="{x:Bind SourceTextBox.Text, Mode=OneWay}"
                              PlaceholderText="Mirrors above text"
                              HorizontalAlignment="Left" />
                     <RichTextBlock x:Name="BindingModeDescription" />
@@ -81,8 +270,8 @@
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TextBox x:Name="SourceTextBox" Width="200" PlaceholderText="Enter text here" /&gt;
-&lt;TextBox Width="200" Text="{Binding Text, ElementName=SourceTextBox, Mode=$(BindingMode)}" PlaceholderText="Mirrors above text" /&gt;
-                </x:String>
+&lt;TextBox Width="200" Text="{x:Bind SourceTextBox.Text, Mode=OneWay}" PlaceholderText="Mirrors above text" /&gt;
+        </x:String>
             </core:ControlExample.Xaml>
             <core:ControlExample.Options>
                 <RadioButtons x:Name="BindingModeGroup"
@@ -108,7 +297,7 @@
                             Maximum="300"
                             Value="100"
                             Width="300" />
-                    <Rectangle Width="{Binding Value, ElementName=WidthSlider}"
+                    <Rectangle Width="{x:Bind WidthSlider.Value, Mode=OneWay}"
                                Height="50"
                                Fill="#088" />
                 </StackPanel>
@@ -116,13 +305,41 @@
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Slider x:Name="WidthSlider" Minimum="50" Maximum="300" Value="100" Width="300" /&gt;
-&lt;Rectangle Width="{Binding Value, ElementName=WidthSlider}" Height="50" Fill="#808" /&gt;
+&lt;Rectangle Width="{x:Bind WidthSlider.Value, Mode=OneWay}" Height="50" Fill="#088" /&gt;
+        </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Binding to Resources">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="10"
+                            Orientation="Horizontal">
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{ThemeResource SystemFillColorSuccessBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{StaticResource SystemFillColorCautionBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{ThemeResource SystemFillColorCriticalBrush}" />
+                    <Rectangle Width="50"
+                               Height="50"
+                               Fill="{StaticResource SystemFillColorAttentionBrush}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorSuccessBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorCautionBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorCriticalBrush}" /&gt;
+&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorAttentionBrush}" /&gt;
                 </x:String>
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
         <core:ControlExample HeaderText="Binding to a ViewModel"
-                             CSharpSource="Binding\BindingSample3_csharp.txt">
+                             CSharpSource="Binding\BindingSample4_csharp.txt">
             <core:ControlExample.Example>
                 <StackPanel Spacing="10">
                     <TextBlock Text="Title:"
@@ -158,34 +375,6 @@
                                  VerticalAlignment="Center" />
             </InfoBar.ActionButton>
         </InfoBar>
-
-        <core:ControlExample HeaderText="Binding to Resources">
-            <core:ControlExample.Example>
-                <StackPanel Spacing="10"
-                            Orientation="Horizontal">
-                    <Rectangle Width="50"
-                               Height="50"
-                               Fill="{ThemeResource SystemFillColorSuccessBrush}" />
-                    <Rectangle Width="50"
-                               Height="50"
-                               Fill="{StaticResource SystemFillColorCautionBrush}" />
-                    <Rectangle Width="50"
-                               Height="50"
-                               Fill="{ThemeResource SystemFillColorCriticalBrush}" />
-                    <Rectangle Width="50"
-                               Height="50"
-                               Fill="{StaticResource SystemFillColorAttentionBrush}" />
-                </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorSuccessBrush}" /&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorCautionBrush}" /&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorCriticalBrush}" /&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorAttentionBrush}" /&gt;
-                </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
 
         <core:ControlExample HeaderText="Using `Converter` in Binding"
                              XamlSource="Binding\BindingSample5_xaml.txt"
