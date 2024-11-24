@@ -113,8 +113,8 @@
                     <Border Grid.Row="0"
                             Grid.Column="0"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="Binding system"
                                    FontWeight="Bold"
                                    TextAlignment="Center"
@@ -124,8 +124,8 @@
                     <Border Grid.Row="0"
                             Grid.Column="1"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="x:Bind"
                                    FontWeight="Bold"
                                    FontFamily="Consolas"
@@ -136,8 +136,8 @@
                     <Border Grid.Row="0"
                             Grid.Column="2"
                             BorderThickness="0 0 0 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="Binding"
                                    FontWeight="Bold"
                                    FontFamily="Consolas"
@@ -151,8 +151,8 @@
                     <Border Grid.Row="1"
                             Grid.Column="0"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="What it is"
                                    FontWeight="Bold"
                                    TextAlignment="Center"
@@ -163,7 +163,7 @@
                     <Border Grid.Row="1"
                             Grid.Column="1"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                         <TextBlock Text="A performance-optimized binding system with compile-time checks."
                                    Padding="10"
                                    TextWrapping="Wrap" />
@@ -171,7 +171,7 @@
                     <Border Grid.Row="1"
                             Grid.Column="2"
                             BorderThickness="0 0 0 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                         <TextBlock Text="A flexible data-binding system for UI elements and data sources."
                                    Padding="10"
                                    TextWrapping="Wrap" />
@@ -181,8 +181,8 @@
                     <Border Grid.Row="2"
                             Grid.Column="0"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="Default data source"
                                    FontWeight="Bold"
                                    TextAlignment="Center"
@@ -193,7 +193,7 @@
                     <Border Grid.Row="2"
                             Grid.Column="1"
                             BorderThickness="0 0 1 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                         <TextBlock Text="Property bound directly from code-behind or controls, no DataContext required."
                                    Padding="10"
                                    TextWrapping="Wrap" />
@@ -201,7 +201,7 @@
                     <Border Grid.Row="2"
                             Grid.Column="2"
                             BorderThickness="0 0 0 1"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                         <TextBlock Text="DataContext (or manually set ElementName, Source)."
                                    Padding="10"
                                    TextWrapping="Wrap" />
@@ -210,8 +210,8 @@
                     <Border Grid.Row="3"
                             Grid.Column="0"
                             BorderThickness="0 0 1 0"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}"
-                            Background="{StaticResource LayerFillColorAltBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            Background="{ThemeResource LayerFillColorAltBrush}">
                         <TextBlock Text="Key Features"
                                    FontWeight="Bold"
                                    TextAlignment="Center"
@@ -222,7 +222,7 @@
                     <Border Grid.Row="3"
                             Grid.Column="1"
                             BorderThickness="0 0 1 0"
-                            BorderBrush="{StaticResource DividerStrokeColorDefaultBrush}">
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                         <TextBlock Padding="10"
                                    TextWrapping="Wrap">
                             <TextBlock.Inlines>
