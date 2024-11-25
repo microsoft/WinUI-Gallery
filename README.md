@@ -1,7 +1,7 @@
 ![WinUI Gallery hero image](README_Images/WinUIGalleryLanding.PNG)
 
 <h1 align="center">
-    WinUI Gallery
+    WinUI 3 Gallery
 </h1>
 
 <p align="center">
