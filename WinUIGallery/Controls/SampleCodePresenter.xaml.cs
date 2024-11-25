@@ -91,7 +91,6 @@ namespace WinUIGallery.Controls
 
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
-            ReevaluateVisibility();
             VisualStateManager.GoToState(this, GetSampleLanguageVisualState(), false);
             if (Substitutions != null)
             {
