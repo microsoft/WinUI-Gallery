@@ -87,10 +87,15 @@ namespace WinUIGallery.Controls
             {
                 Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                Visibility = Visibility.Visible;
+            }
         }
 
         private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
         {
+            ReevaluateVisibility();
             VisualStateManager.GoToState(this, GetSampleLanguageVisualState(), false);
             if (Substitutions != null)
             {
