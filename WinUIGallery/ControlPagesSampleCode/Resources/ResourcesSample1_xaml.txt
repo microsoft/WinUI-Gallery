@@ -8,5 +8,5 @@
 
 <!--YourPage.xaml-->
 <Grid Background="{StaticResource PrimaryColor}">
-    <TextBlock Text="Hello, World!" Foreground="White" FontSize="24"/>
+    <TextBlock Text="Hello, WinUI 3!" Foreground="White" FontSize="24"/>
 </Grid>

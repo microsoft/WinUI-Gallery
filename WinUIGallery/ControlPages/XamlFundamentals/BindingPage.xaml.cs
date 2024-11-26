@@ -28,7 +28,7 @@ namespace WinUIGallery.ControlPages
             ViewModel = new ExampleViewModel
             {
                 Title = "Welcome to WinUI 3",
-                Description = "This is an example of binding to a ViewModel."
+                Description = "This is an example of binding to a view model."
             };
             DataContext = ViewModel;
 
@@ -72,7 +72,7 @@ namespace WinUIGallery.ControlPages
                 paragraph.Inlines.Add(new Bold { Inlines = { new Run { Text = "OneWay" } } });
                 paragraph.Inlines.Add(new Run
                 {
-                    Text = " Binding Mode, changes in the source (`SourceTextBox`) are reflected in the target (`TargetTextBox`), but not vice versa."
+                    Text = " binding mode, changes in the source (`SourceTextBox`) are reflected in the target, but not vice versa."
                 });
             }
             else if (bindingMode == BindingMode.TwoWay)

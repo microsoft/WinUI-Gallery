@@ -19,35 +19,35 @@
                   HorizontalContentAlignment="Left"
                   Margin="0 12 0 0">
             <Expander.Header>
-                <TextBlock Text="Creating and Using XAML Resources in WinUI 3"
+                <TextBlock Text="Creating and using XAML resources in WinUI 3"
                            Margin="0 24" />
             </Expander.Header>
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Run Text="Where Can You Create XAML Resources?"
+                        <Run Text="Where can you create XAML resources?"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. App-Level: "
+                        <Run Text="1. App-level: "
                              FontWeight="Bold" />
-                        <Run Text="Define resources globally, accessible throughout the application." />
+                        <Run Text="define resources globally, accessible throughout the application." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. Page-Level: "
+                        <Run Text="2. Page-level: "
                              FontWeight="Bold" />
-                        <Run Text="Define resources that are specific to a particular page." />
+                        <Run Text="define resources that are specific to a particular page." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. Control-Level: "
+                        <Run Text="3. Control-level: "
                              FontWeight="Bold" />
-                        <Run Text="Define resources local to a specific control, such as a button or grid." />
+                        <Run Text="define resources local to a specific control, such as a button or grid." />
                     </Paragraph>
                 </RichTextBlock>
 
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Run Text="How to Create and Use XAML Resources"
+                        <Run Text="How to create and use XAML resources?"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
@@ -56,7 +56,7 @@
                              FontFamily="Consolas"
                              FontStyle="Italic" />
                         <Run Text=" element. The key parts are " />
-                        <Run Text="the resource's Key"
+                        <Run Text="the resource's key"
                              FontWeight="Bold" />
                         <Run Text=" (a unique identifier) and the " />
                         <Run Text="value"
@@ -67,23 +67,23 @@
 
                 <RichTextBlock>
                     <Paragraph>
-                        <Run Text="Tips for Beginners:"
+                        <Run Text="Tips for beginners:"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Naming: "
                              FontWeight="Bold" />
-                        <Run Text="Always use descriptive keys for your resources to make them easier to identify." />
+                        <Run Text="always use descriptive keys for your resources to make them easier to identify." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Scope: "
                              FontWeight="Bold" />
-                        <Run Text="Define resources at the narrowest scope possible to improve maintainability." />
+                        <Run Text="define resources at the narrowest scope possible to improve maintainability." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Access: "
                              FontWeight="Bold" />
-                        <Run Text="Use " />
+                        <Run Text="use " />
                         <Run Text="`{StaticResource Key}`"
                              FontFamily="Consolas"
                              FontStyle="Italic" />
@@ -97,11 +97,11 @@
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Define and Use a Color Resource in App-Level."
+        <local:ControlExample HeaderText="Define and use a color resource in app-level"
                               XamlSource="Resources\ResourcesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Background="{StaticResource PrimaryColor}">
-                    <TextBlock Text="Hello, World!"
+                    <TextBlock Text="Hello, WinUI 3!"
                                Foreground="White"
                                FontSize="24" />
                 </Grid>
@@ -116,11 +116,11 @@ var primaryColor = (Windows.UI.Color)Application.Current.Resources["PrimaryColor
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define a Brush Resource at the Page Level."
+        <local:ControlExample HeaderText="Define a Brush resource at the page level"
                               XamlSource="Resources\ResourcesSample2_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Background="{StaticResource HighlightBrush}">
-                    <Button Content="Click Me"
+                    <Button Content="Click me"
                             Foreground="White" />
                 </Grid>
             </local:ControlExample.Example>
@@ -134,14 +134,14 @@ var highlightBrush = (SolidColorBrush)this.Resources["HighlightBrush"];
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define and Use Double and String Resources in Control-Level."
+        <local:ControlExample HeaderText="Define and use double and string resources in control-level"
                               XamlSource="Resources\ResourcesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid x:Name="newGrid">
                     <Grid.Resources>
                         <!-- Define a font size -->
                         <x:Double x:Key="HeaderFontSize">24</x:Double>
-                        <x:String x:Key="WelcomeMessage">Welcome to WinUI 3 Gallery!</x:String>
+                        <x:String x:Key="WelcomeMessage">Welcome to "WinUI 3 Gallery"!</x:String>
                     </Grid.Resources>
 
                     <TextBlock Text="{StaticResource WelcomeMessage}"

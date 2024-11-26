@@ -6,6 +6,6 @@
     </Page.Resources>
 
     <Grid Background="{StaticResource HighlightBrush}">
-        <Button Content="Click Me" Foreground="White" />
+        <Button Content="Click me" Foreground="White" />
     </Grid>
 </Page>

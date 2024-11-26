@@ -7,7 +7,7 @@
             <Setter Property="Padding" Value="10,5" />
         </Style>
     </StackPanel.Resources>
-    <Button Content="Default Button" />
-    <Button Content="Styled Button" Style="{StaticResource CustomButtonStyle}" />
-    <Button Content="Styled Button (Overridden)" Style="{StaticResource CustomButtonStyle}" Background="DarkRed" />
+    <Button Content="Default button" />
+    <Button Content="Styled button" Style="{StaticResource CustomButtonStyle}" />
+    <Button Content="Styled button (overridden)" Style="{StaticResource CustomButtonStyle}" Background="DarkCyan" />
 </StackPanel>

@@ -17,18 +17,18 @@
                   HorizontalContentAlignment="Left"
                   Margin="0 12 0 0">
             <Expander.Header>
-                <TextBlock Text="Understanding Binding in WinUI 3"
+                <TextBlock Text="Understanding binding in WinUI 3"
                            Margin="0 24" />
             </Expander.Header>
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Bold>Key Concepts:</Bold>
+                        <Bold>Key concepts:</Bold>
                     </Paragraph>
                     <Paragraph>
                         <Run Text="1. " />
                         <Bold>Target</Bold>
-                        <Run Text=": The property of a control that you want to bind to (e.g., " />
+                        <Run Text=": the property of a control that you want to bind to (e.g., " />
                         <Italic>Text</Italic>
                         <Run Text=", " />
                         <Italic>Background</Italic>
@@ -39,27 +39,27 @@
                     <Paragraph>
                         <Run Text="2. " />
                         <Bold>Source</Bold>
-                        <Run Text=": The data you are binding to, like a property in a class, another control, or a static resource." />
+                        <Run Text=": the data you are binding to, like a property in a class, another control, or a static resource." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3. " />
-                        <Bold>Binding Modes</Bold>
+                        <Bold>Binding modes</Bold>
                         <Run Text=":" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Bold>OneWay</Bold>
-                        <Run Text=": Updates the target when the source changes." />
+                        <Run Text=": updates the target when the source changes." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Bold>TwoWay</Bold>
-                        <Run Text=": Updates both the target and the source." />
+                        <Run Text=": updates both the target and the source." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Bold>OneTime</Bold>
-                        <Run Text=": Sets the target once and doesn’t update afterward." />
+                        <Run Text=": sets the target once and doesn’t update afterward." />
                     </Paragraph>
                 </RichTextBlock>
 
@@ -252,7 +252,7 @@
             </StackPanel>
         </Expander>
 
-        <core:ControlExample HeaderText="Binding Between Controls">
+        <core:ControlExample HeaderText="Binding between controls">
             <core:ControlExample.Example>
                 <StackPanel Spacing="10">
                     <TextBox x:Name="SourceTextBox"
@@ -275,7 +275,7 @@
             </core:ControlExample.Xaml>
             <core:ControlExample.Options>
                 <RadioButtons x:Name="BindingModeGroup"
-                              Header="Select Binding Mode:"
+                              Header="Select binding mode"
                               SelectedIndex="0"
                               SelectionChanged="BindingModeGroup_SelectionChanged">
                     <x:String>OneWay</x:String>
@@ -288,7 +288,7 @@
             </core:ControlExample.Substitutions>
         </core:ControlExample>
 
-        <core:ControlExample HeaderText="Binding to a Property in Code-Behind">
+        <core:ControlExample HeaderText="Binding to a property in code-behind">
             <core:ControlExample.Example>
                 <StackPanel Spacing="10">
                     <TextBlock>Binding a <Bold>Slider</Bold> to update the width of a <Bold>Rectangle</Bold>.</TextBlock>
@@ -310,7 +310,7 @@
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
-        <core:ControlExample HeaderText="Binding to Resources">
+        <core:ControlExample HeaderText="Binding to resources">
             <core:ControlExample.Example>
                 <StackPanel Spacing="10"
                             Orientation="Horizontal">
@@ -338,7 +338,7 @@
             </core:ControlExample.Xaml>
         </core:ControlExample>
 
-        <core:ControlExample HeaderText="Binding to a ViewModel"
+        <core:ControlExample HeaderText="Binding to a view model"
                              CSharpSource="Binding\BindingSample4_csharp.txt">
             <core:ControlExample.Example>
                 <StackPanel Spacing="10">
@@ -376,13 +376,13 @@
             </InfoBar.ActionButton>
         </InfoBar>
 
-        <core:ControlExample HeaderText="Using `Converter` in Binding"
+        <core:ControlExample HeaderText="Using `Converter` in binding"
                              XamlSource="Binding\BindingSample5_xaml.txt"
                              CSharpSource="Binding\BindingSample5_csharp.txt">
             <core:ControlExample.Example>
                 <StackPanel>
                     <CheckBox x:Name="ToggleCheckBox"
-                              Content="Show Rectangle" />
+                              Content="Show rectangle" />
                     <Rectangle Width="100"
                                Height="100"
                                Fill="Red"

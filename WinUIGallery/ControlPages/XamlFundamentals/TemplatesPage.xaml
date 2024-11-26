@@ -22,24 +22,24 @@
                   HorizontalContentAlignment="Left"
                   Margin="0 12 0 0">
             <Expander.Header>
-                <TextBlock Text="Understanding and Using Templates in WinUI 3"
+                <TextBlock Text="Understanding and using templates in WinUI 3"
                            Margin="0 24" />
             </Expander.Header>
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Run Text="Where Can You Create Templates?"
+                        <Run Text="Where can you create templates?"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="You can define templates at the " />
-                        <Run Text="App"
+                        <Run Text="app"
                              FontWeight="Bold" />
                         <Run Text=", " />
-                        <Run Text="Page"
+                        <Run Text="page"
                              FontWeight="Bold" />
                         <Run Text=", or " />
-                        <Run Text="Control"
+                        <Run Text="control"
                              FontWeight="Bold" />
                         <Run Text=" level, just like styles and resources. The placement depends on where and how you want the template to be reused." />
                     </Paragraph>
@@ -47,7 +47,7 @@
 
                 <RichTextBlock>
                     <Paragraph>
-                        <Run Text="Key Points:"
+                        <Run Text="Key points:"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
@@ -60,36 +60,36 @@
                         <Run Text="2. " />
                         <Run Text="Placement: "
                              FontWeight="Bold" />
-                        <Run Text="Templates can be defined at the App, Page, or Control level, depending on the desired scope." />
+                        <Run Text="templates can be defined at the App, Page, or Control level, depending on the desired scope." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3. " />
-                        <Run Text="Types of Templates: "
+                        <Run Text="Types of templates: "
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Run Text="ControlTemplate: "
                              FontWeight="Bold" />
-                        <Run Text="Customizes the structure of a control." />
+                        <Run Text="customizes the structure of a control." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Run Text="ItemsPanelTemplate: "
                              FontWeight="Bold" />
-                        <Run Text="Defines how a collection of items is laid out." />
+                        <Run Text="defines how a collection of items is laid out." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="   - " />
                         <Run Text="DataTemplate: "
                              FontWeight="Bold" />
-                        <Run Text="Changes how individual items are displayed in a control like a ComboBox or ListView." />
+                        <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Customize the Look of a TextBox with a ControlTemplate"
+        <local:ControlExample HeaderText="Customize the look of a TextBox with a ControlTemplate"
                               XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>

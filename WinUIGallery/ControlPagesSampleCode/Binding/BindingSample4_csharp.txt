@@ -17,7 +17,7 @@ namespace YourNamespace
             ViewModel = new ExampleViewModel
             {
                 Title = "Welcome to WinUI 3", // Set initial value for Title.
-                Description = "This is an example of binding to a ViewModel.", // Set initial value for Description.
+                Description = "This is an example of binding to a view model.", // Set initial value for Description.
             };
 
             // Set the DataContext of the page to the ViewModel.

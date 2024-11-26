@@ -3,7 +3,7 @@
     <Grid.Resources>
         <!-- Define a font size -->
         <x:Double x:Key="HeaderFontSize">24</x:Double>
-        <x:String x:Key="WelcomeMessage">Welcome to WinUI 3 Gallery!</x:String>
+        <x:String x:Key="WelcomeMessage">Welcome to "WinUI 3 Gallery!</x:String>
     </Grid.Resources>
 
     <TextBlock Text="{StaticResource WelcomeMessage}" FontSize="{StaticResource HeaderFontSize}" />

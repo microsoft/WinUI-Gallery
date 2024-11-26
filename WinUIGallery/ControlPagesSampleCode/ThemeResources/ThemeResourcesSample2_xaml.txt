@@ -2,7 +2,7 @@
     <Grid.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
+                <ResourceDictionary x:Key="Default">
                     <SolidColorBrush x:Key="BackgroundBrush" Color="White" />
                     <SolidColorBrush x:Key="TextBrush" Color="#333" />
                     <x:String x:Key="ThemeString">Light Theme</x:String>

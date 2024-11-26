@@ -12,18 +12,18 @@
                   HorizontalContentAlignment="Left"
                   Margin="0 12 0 0">
             <Expander.Header>
-                <TextBlock Text="Understanding Theme Resources in WinUI 3"
+                <TextBlock Text="Understanding theme resources in WinUI 3"
                            Margin="0 24" />
             </Expander.Header>
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Run Text="Where Can You Create Theme Resources?"
+                        <Run Text="Where can you create theme resources?"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="The placement of theme resources is the same as regular XAML resources " />
-                        <Run Text="(App-Level, Page-Level, Control-Level)."
+                        <Run Text="(app-level, page-level, control-level)."
                              FontStyle="Italic" />
                     </Paragraph>
                 </RichTextBlock>
@@ -54,7 +54,7 @@
                         <Run Text="ThemeDictionaries "
                              FontWeight="Bold"
                              FontStyle="Italic" />
-                        <Run Text="to provide different values for Light and Dark themes." />
+                        <Run Text="to provide different values for light and dark themes." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="4. "
@@ -65,7 +65,7 @@
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="StaticResource vs ThemeResource"
+        <local:ControlExample HeaderText="StaticResource vs. ThemeResource"
                               XamlSource="ThemeResources\ThemeResourcesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel>
@@ -77,7 +77,7 @@
                     </Grid>
 
                     <Grid Background="{ThemeResource SolidBackgroundFillColorBaseBrush}">
-                        <TextBlock Text="- ThemeResource adapts automatically to the current theme. If the app switches from Light to Dark, the color defined by ThemeResource changes."
+                        <TextBlock Text="- ThemeResource adapts automatically to the current theme. If the app switches from light to dark, the color defined by ThemeResource changes."
                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                    FontSize="16"
                                    TextWrapping="Wrap" />
@@ -94,23 +94,23 @@
         </local:ControlExample>
         <InfoBar IsOpen="True"
                  IsClosable="False"
-                 Title="Explore Built-In Theme Resources"
+                 Title="Explore built-in theme resources"
                  Message="WinUI 3 includes built-in theme resources for commonly used colors, such as `CardBackgroundFillColorDefaultBrush` and `TextFillColorPrimaryBrush`. For a deeper understanding, visit the `Design guidance → Color` page in this app."
                  Margin="0 8 0 0" />
 
-        <local:ControlExample HeaderText="Define a New Theme Resource"
+        <local:ControlExample HeaderText="Define a new theme resource"
                               XamlSource="ThemeResources\ThemeResourcesSample2_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
                         <ResourceDictionary>
                             <ResourceDictionary.ThemeDictionaries>
-                                <ResourceDictionary x:Key="Light">
+                                <ResourceDictionary x:Key="Default">
                                     <SolidColorBrush x:Key="BackgroundBrush"
                                                      Color="White" />
                                     <SolidColorBrush x:Key="TextBrush"
                                                      Color="#333" />
-                                    <x:String x:Key="ThemeString">Light Theme</x:String>
+                                    <x:String x:Key="ThemeString">Light theme</x:String>
                                     <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Light_Image.png</ImageSource>
                                 </ResourceDictionary>
                                 <ResourceDictionary x:Key="Dark">
@@ -118,7 +118,7 @@
                                                      Color="#333" />
                                     <SolidColorBrush x:Key="TextBrush"
                                                      Color="White" />
-                                    <x:String x:Key="ThemeString">Dark Theme</x:String>
+                                    <x:String x:Key="ThemeString">Dark theme</x:String>
                                     <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
                                 </ResourceDictionary>
                             </ResourceDictionary.ThemeDictionaries>

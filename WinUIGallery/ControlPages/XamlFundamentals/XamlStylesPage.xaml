@@ -12,25 +12,25 @@
                   HorizontalContentAlignment="Left"
                   Margin="0 12 0 0">
             <Expander.Header>
-                <TextBlock Text="Organizing and Applying XAML Styles Effectively"
+                <TextBlock Text="Organizing and applying XAML styles effectively"
                            Margin="0 24" />
             </Expander.Header>
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Run Text="Where Can You Create XAML Styles?"
+                        <Run Text="Where can you create XAML styles?"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="The placement of styles is the same as other resources " />
-                        <Run Text="(App-Level, Page-Level, Control-Level)."
+                        <Run Text="(app-level, page-level, control-level)."
                              FontStyle="Italic" />
                     </Paragraph>
                 </RichTextBlock>
 
                 <RichTextBlock>
                     <Paragraph>
-                        <Run Text="Key Points:"
+                        <Run Text="Key points:"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
@@ -56,7 +56,7 @@
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Creating and Applying a Style"
+        <local:ControlExample HeaderText="Creating and applying a style"
                               XamlSource="XamlStyles\XamlStylesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Spacing="4">
@@ -73,17 +73,17 @@
                                     Value="10,5" />
                         </Style>
                     </StackPanel.Resources>
-                    <Button Content="Default Button" />
-                    <Button Content="Styled Button"
+                    <Button Content="Default button" />
+                    <Button Content="Styled button"
                             Style="{StaticResource CustomButtonStyle}" />
-                    <Button Content="Styled Button (Overridden)"
+                    <Button Content="Styled button (overridden)"
                             Style="{StaticResource CustomButtonStyle}"
-                            Background="DarkRed" />
+                            Background="DarkCyan" />
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Style Without a Key (Implicit Style)"
+        <local:ControlExample HeaderText="Style without a key (implicit style)"
                               XamlSource="XamlStyles\XamlStylesSample2_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel>
@@ -109,12 +109,12 @@
             <local:ControlExample.Example>
                 <Grid>
                     <Button x:Name="MyButton"
-                            Content="Click Me" />
+                            Content="Click me" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Button x:Name="MyButton" Content="Click Me" /&gt;
+&lt;Button x:Name="myButton" Content="Click me" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>

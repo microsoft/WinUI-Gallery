@@ -19,5 +19,5 @@
 
 <!--YourPage.xaml-->
 <Grid Background="{StaticResource SecondaryBrush}">
-    <TextBlock Text="Using Colors from Resource Dictionary" Foreground="White" />
+    <TextBlock Text="Using colors from ResourceDictionary" Foreground="White" />
 </Grid>

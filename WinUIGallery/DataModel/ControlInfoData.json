@@ -180,7 +180,7 @@
     },
     {
       "UniqueId": "XamlFundamentalsItem",
-      "Title": "XAML Fundamentals",
+      "Title": "XAML fundamentals",
       "IsSpecialSection": true,
       "Folder": "XamlFundamentals",
       "Items": [
@@ -189,7 +189,7 @@
           "Title": "Resources",
           "Subtitle": "Reusable definitions for values like colors, brushes, and objects.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML Resources in WinUI 3 are reusable objects that you can define in XAML and use throughout your application. These resources allow you to share values like colors, brushes, fonts, or strings in multiple places without repeating them. Resources help you maintain consistency and make your app easier to update. For example, if you use the same color in many places, defining it as a resource means you can change it in one place to update all its uses.",
+          "Description": "XAML resources in WinUI 3 are reusable objects that you can define in XAML and use throughout your application. These resources allow you to share values like colors, brushes, fonts, or strings in multiple places without repeating them. Resources help you maintain consistency and make your app easier to update. For example, if you use the same color in many places, defining it as a resource means you can change it in one place to update all its uses.",
           "Docs": [
             {
               "Title": "ResourceDictionary and XAML resource references",
@@ -207,7 +207,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "A Resource Dictionary in WinUI 3 is a container for organizing and storing reusable resources like colors, brushes, strings, or other objects. It helps keep your code clean, consistent, and manageable by grouping related resources together. Resources defined in a dictionary can be reused across your app without duplication, making it easier to maintain and update.",
+          "Description": "A ResourceDictionary in WinUI 3 is a container for organizing and storing reusable resources like colors, brushes, strings, or other objects. It helps keep your code clean, consistent, and manageable by grouping related resources together. Resources defined in a dictionary can be reused across your app without duplication, making it easier to maintain and update.",
           "Docs": [
             {
               "Title": "ResourceDictionary - API",
@@ -224,7 +224,7 @@
           "Title": "Theme resources",
           "Subtitle": "Dynamic resources adapting to Light or Dark themes in XAML.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML Theme Resources in WinUI 3 are special types of resources that automatically adapt to the app's current theme (like Light or Dark). Unlike regular `StaticResource`, theme resources update their values when the theme changes, making them ideal for building apps that look good in different themes without manual updates.",
+          "Description": "XAML theme resources in WinUI 3 are special types of resources that automatically adapt to the app's current theme (like light or dark). Unlike regular `StaticResource`, theme resources update their values when the theme changes, making them ideal for building apps that look good in different themes without manual updates.",
           "Docs": [
             {
               "Title": "XAML theme resources",
@@ -235,7 +235,7 @@
         {
           "UniqueId": "XamlStyles",
           "Title": "Style",
-          "Subtitle": "A XAML Style is a Reusable property settings to define consistent UI design elements.",
+          "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
           "BaseClasses": [
             "Object",
             "DependencyObject"
@@ -292,7 +292,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "In WinUI 3, a Template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
+          "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
           "Docs": [
             {
               "Title": "ControlTemplate - API",

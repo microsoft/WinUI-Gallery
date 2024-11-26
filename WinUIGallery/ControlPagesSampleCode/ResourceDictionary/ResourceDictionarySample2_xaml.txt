@@ -2,7 +2,7 @@
 <Page ...>
     <Page.Resources>
         <ResourceDictionary>
-            <x:String x:Key="WelcomeMessage">Welcome to this Page</x:String>
+            <x:String x:Key="WelcomeMessage">Welcome to this page</x:String>
             <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
         </ResourceDictionary>
     </Page.Resources>

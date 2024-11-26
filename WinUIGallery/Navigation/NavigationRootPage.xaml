@@ -262,7 +262,7 @@
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="XamlFundamentalsItem" AutomationProperties.AutomationId="XamlFundamentalsItem" Content="XAML Fundamentals" Tag="XamlFundamentals">
+                <NavigationViewItem x:Name="XamlFundamentalsItem" AutomationProperties.AutomationId="XamlFundamentalsItem" Content="XAML fundamentals" Tag="XamlFundamentals">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE943;" />
                     </NavigationViewItem.Icon>
