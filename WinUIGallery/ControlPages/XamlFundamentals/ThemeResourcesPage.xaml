@@ -95,7 +95,7 @@
         <InfoBar IsOpen="True"
                  IsClosable="False"
                  Title="Explore built-in theme resources"
-                 Message="WinUI 3 includes built-in theme resources for commonly used colors, such as `CardBackgroundFillColorDefaultBrush` and `TextFillColorPrimaryBrush`. For a deeper understanding, visit the `Design guidance → Color` page in this app."
+                 Message="WinUI 3 includes built-in theme resources for commonly used colors, such as `CardBackgroundFillColorDefaultBrush` and `TextFillColorPrimaryBrush`. For a deeper understanding, visit the `Design guidance > Color` page in this app."
                  Margin="0 8 0 0" />
 
         <local:ControlExample HeaderText="Define a new theme resource"
