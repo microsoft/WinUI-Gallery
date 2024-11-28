@@ -33,7 +33,7 @@
                 Background="{ThemeResource CardStrokeColorDefaultBrush}"
                 ColorBrushName="CardStrokeColorDefaultBrush"
                 ColorExplanation="Card layer and strokes"
-                ColorName="Control Stroke / Default"
+                ColorName="Card Stroke / Default"
                 ColorValue="#000000 (0F, 6.78%)" />
             <designguidance:ColorTile
                 Grid.Column="1"
@@ -252,7 +252,7 @@
         <designguidance:ColorPageExample
             Title="Divider Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme.">
+            Description="Used for divider and graphic lines.">
             <Grid
                 Width="120"
                 Height="40"
@@ -288,7 +288,7 @@
         <designguidance:ColorPageExample
             Title="Focus Stroke"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme..">
+            Description="Used for divider and graphic lines. Theme inverse; dark in light theme and light in dark theme.">
             <Grid
                 BorderBrush="{ThemeResource FocusStrokeColorOuterBrush}"
                 BorderThickness="2"
