@@ -20,7 +20,7 @@ namespace WinUIGallery.ControlPages
 {
     public sealed partial class ScrollViewPage : Page
     {
-        private double prvAnimationDuration;
+        private double prvAnimationDuration = 1500;
 
         public ScrollViewPage()
         {
@@ -48,6 +48,7 @@ namespace WinUIGallery.ControlPages
             };
             nbZoomFactor.NumberFormatter = formatter;
 
+            nbAnimationDuration.Value = prvAnimationDuration;
             Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
             prvAnimationDuration = nbAnimationDuration.Value;
 
