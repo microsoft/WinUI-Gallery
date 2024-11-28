@@ -243,13 +243,13 @@ namespace WinUIGallery
             {
                 if (selectedItem.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
                 {
-                    XamlPresenter.Visibility = Visibility.Visible;
-                    CSharpPresenter.Visibility = Visibility.Collapsed;
+                    XamlContentPresenter.Visibility = Visibility.Visible;
+                    CSharpContentPresenter.Visibility = Visibility.Collapsed;
                 }
                 else if (selectedItem.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
                 {
-                    CSharpPresenter.Visibility = Visibility.Visible;
-                    XamlPresenter.Visibility = Visibility.Collapsed;
+                    CSharpContentPresenter.Visibility = Visibility.Visible;
+                    XamlContentPresenter.Visibility = Visibility.Collapsed;
                 }
             }
         }
