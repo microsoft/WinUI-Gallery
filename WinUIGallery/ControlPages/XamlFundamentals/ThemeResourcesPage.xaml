@@ -107,7 +107,7 @@
                             <ResourceDictionary.ThemeDictionaries>
                                 <ResourceDictionary x:Key="Default">
                                     <SolidColorBrush x:Key="BackgroundBrush"
-                                                     Color="White" />
+                                                     Color="#EEE" />
                                     <SolidColorBrush x:Key="TextBrush"
                                                      Color="#333" />
                                     <x:String x:Key="ThemeString">Light theme</x:String>
@@ -117,7 +117,7 @@
                                     <SolidColorBrush x:Key="BackgroundBrush"
                                                      Color="#333" />
                                     <SolidColorBrush x:Key="TextBrush"
-                                                     Color="White" />
+                                                     Color="#EEE" />
                                     <x:String x:Key="ThemeString">Dark theme</x:String>
                                     <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
                                 </ResourceDictionary>

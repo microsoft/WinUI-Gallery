@@ -89,7 +89,7 @@
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Customize the look of a TextBox with a ControlTemplate"
+        <local:ControlExample HeaderText="Customize the look of a TextBox with a `ControlTemplate`"
                               XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
@@ -102,12 +102,12 @@
                                 <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="2"
-                                        CornerRadius="5"
+                                        CornerRadius="4"
                                         MinWidth="200">
                                     <StackPanel Orientation="Horizontal"
                                                 Margin="5">
                                         <SymbolIcon Symbol="Edit"
-                                                    Margin="0,0,5,0" />
+                                                    Margin="0,0,4,0" />
                                         <ScrollViewer x:Name="ContentElement"
                                                       HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                       VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
@@ -119,14 +119,14 @@
                     </Grid.Resources>
                     <TextBox Header="Enter text here"
                              Template="{StaticResource CustomTextBoxTemplate}"
-                             BorderBrush="DarkBlue"
-                             Padding="10" />
+                             BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                             Padding="8" />
                 </Grid>
             </local:ControlExample.Example>
         </local:ControlExample>
 
         <local:ControlExample x:Name="Example2"
-                              HeaderText="Customize an ItemsControl with an ItemsPanelTemplate"
+                              HeaderText="Customize an ItemsControl with an `ItemsPanelTemplate`"
                               XamlSource="Templates\TemplatesSample2_WrapGrid_xaml.txt"
                               HorizontalContentAlignment="Stretch">
             <local:ControlExample.Example>
@@ -174,16 +174,16 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate"
+        <local:ControlExample HeaderText="Customize a ComboBox's `ItemTemplate`"
                               XamlSource="Templates\TemplatesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
                         <DataTemplate x:Key="CustomComboBoxItemTemplate">
                             <StackPanel Orientation="Horizontal">
-                                <Ellipse Width="10"
-                                         Height="10"
-                                         Fill="Blue"
+                                <Ellipse Width="8"
+                                         Height="8"
+                                         Fill="{ThemeResource AccentFillColorDefaultBrush}"
                                          Margin="0 0 8 0" />
                                 <TextBlock Text="{Binding}" />
                             </StackPanel>

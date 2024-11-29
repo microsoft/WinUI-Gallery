@@ -3,14 +3,14 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
-                    <SolidColorBrush x:Key="BackgroundBrush" Color="White" />
+                    <SolidColorBrush x:Key="BackgroundBrush" Color="#EEE" />
                     <SolidColorBrush x:Key="TextBrush" Color="#333" />
                     <x:String x:Key="ThemeString">Light Theme</x:String>
                     <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Light_Image.png</ImageSource>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="BackgroundBrush" Color="#333" />
-                    <SolidColorBrush x:Key="TextBrush" Color="White" />
+                    <SolidColorBrush x:Key="TextBrush" Color="#EEE" />
                     <x:String x:Key="ThemeString">Dark Theme</x:String>
                     <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
                 </ResourceDictionary>
