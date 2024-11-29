@@ -40,7 +40,7 @@
             <Setter Property="TextWrapping"
                     Value="Wrap" />
             <Setter Property="TextAlignment"
-                    Value="Center" />
+                    Value="Left" />
             <Setter Property="VerticalAlignment"
                     Value="Center" />
         </Style>
@@ -48,6 +48,8 @@
         <Style x:Key="HeaderTextStyle"
                BasedOn="{StaticResource TextBlockStyle}"
                TargetType="TextBlock">
+            <Setter Property="TextAlignment"
+                    Value="Center" />
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>
@@ -55,6 +57,8 @@
         <Style x:Key="CodeTextStyle"
                BasedOn="{StaticResource TextBlockStyle}"
                TargetType="TextBlock">
+            <Setter Property="TextAlignment"
+                    Value="Center" />
             <Setter Property="FontFamily"
                     Value="Consolas" />
             <Setter Property="FontWeight"
@@ -268,8 +272,6 @@
                                 <Run Text="- Dynamic data" />
                                 <LineBreak />
                                 <Run Text="- Runtime-based, no compile-time checks" />
-                                <LineBreak />
-                                <Run Text="- Supports FallbackValue &amp; TargetNullValue" />
                             </TextBlock.Inlines>
                         </TextBlock>
                     </Border>
