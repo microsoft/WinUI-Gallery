@@ -68,9 +68,9 @@
                             <Setter Property="Foreground"
                                     Value="White" />
                             <Setter Property="FontSize"
-                                    Value="18" />
+                                    Value="16" />
                             <Setter Property="Padding"
-                                    Value="10,5" />
+                                    Value="8 4" />
                         </Style>
                     </StackPanel.Resources>
                     <Button Content="Default button" />
@@ -104,8 +104,51 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="Using `BasedOn` property in XAML styles"
+                              XamlSource="XamlStyles\XamlStylesSample3_xaml.txt">
+            <local:ControlExample.Example>
+                <StackPanel Spacing="8"
+                            Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style x:Key="BaseBorderStyle"
+                               TargetType="Border">
+                            <Setter Property="BorderThickness"
+                                    Value="2" />
+                            <Setter Property="CornerRadius"
+                                    Value="8" />
+                            <Setter Property="Background"
+                                    Value="LightGray" />
+                            <Setter Property="BorderBrush"
+                                    Value="DarkGray" />
+                        </Style>
+
+                        <Style x:Key="HighlightBorderStyle"
+                               TargetType="Border"
+                               BasedOn="{StaticResource BaseBorderStyle}">
+                            <Setter Property="Background"
+                                    Value="Green" />
+                            <Setter Property="BorderBrush"
+                                    Value="DarkGreen" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Border Style="{StaticResource BaseBorderStyle}"
+                            Width="100"
+                            Height="100">
+                        <Ellipse Fill="White" />
+                    </Border>
+
+                    <Border Style="{StaticResource HighlightBorderStyle}"
+                            Width="100"
+                            Height="100">
+                        <Ellipse Fill="White" />
+                    </Border>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+        
         <local:ControlExample HeaderText="Using Style in C# Programmatically"
-                              CSharpSource="XamlStyles\XamlStylesSample3_csharp.txt">
+                              CSharpSource="XamlStyles\XamlStylesSample4_csharp.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Button x:Name="MyButton"
