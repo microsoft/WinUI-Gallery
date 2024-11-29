@@ -152,9 +152,11 @@
         <None Remove="Assets\SampleMedia\Dark_Image.png" />
         <None Remove="Assets\SampleMedia\Light_Image.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample5_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\ResourceDictionary\ResourceDictionarySample1_xaml.txt" />
@@ -230,7 +232,9 @@
         <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
         <Content Include="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample5_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\ResourceDictionary\ResourceDictionarySample1_xaml.txt" />

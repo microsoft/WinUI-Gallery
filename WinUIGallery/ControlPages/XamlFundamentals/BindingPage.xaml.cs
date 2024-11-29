@@ -28,11 +28,12 @@ namespace WinUIGallery.ControlPages
             ViewModel = new ExampleViewModel
             {
                 Title = "Welcome to WinUI 3",
-                Description = "This is an example of binding to a view model."
+                Description = "This is an example of binding to a view model.",
+                NullString = null
             };
             DataContext = ViewModel;
 
-            mvvmToolkitSampleAppHyperlinkButton.NavigateUri = new Uri("https://apps.microsoft.com/detail/9nklcf1lvz5h?hl=en-us&gl=US");
+            mvvmToolkitSampleAppHyperlinkButton.NavigateUri = new Uri("https://github.com/CommunityToolkit/MVVM-Samples");
         }
 
         private void BindingModeGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,11 +85,23 @@ namespace WinUIGallery.ControlPages
                 paragraph.Inlines.Add(new Bold { Inlines = { new Run { Text = "TwoWay" } } });
                 paragraph.Inlines.Add(new Run
                 {
-                    Text = " Binding Mode, changes in either box update the other."
+                    Text = " binding mode, changes in either box update the other."
                 });
             }
 
             BindingModeDescription.Blocks.Add(paragraph);
+        }
+
+        public string FormatDate(DateTimeOffset? date)
+        {
+            if (date.HasValue)
+            {
+                return "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy");
+            }
+            else
+            {
+                return "No date selected";
+            }
         }
     }
 
@@ -96,6 +109,7 @@ namespace WinUIGallery.ControlPages
     {
         private string _title;
         private string _description;
+        private string _nullString;
 
         public string Title
         {
@@ -119,6 +133,19 @@ namespace WinUIGallery.ControlPages
                 {
                     _description = value;
                     OnPropertyChanged(nameof(Description));
+                }
+            }
+        }
+
+        public string NullString
+        {
+            get => _nullString;
+            set
+            {
+                if (_nullString != value)
+                {
+                    _nullString = value;
+                    OnPropertyChanged(nameof(_nullString));
                 }
             }
         }
