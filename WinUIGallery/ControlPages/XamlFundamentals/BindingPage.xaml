@@ -337,7 +337,7 @@
             </core:ControlExample.Xaml>
         </core:ControlExample>
         
-        <core:ControlExample HeaderText="Using `Converter` in `x:Bind`"
+        <core:ControlExample HeaderText="Using `Function` in `x:Bind`"
                              XamlSource="Binding\BindingSample3_xaml.txt"
                              CSharpSource="Binding\BindingSample3_csharp.txt">
             <core:ControlExample.Example>
