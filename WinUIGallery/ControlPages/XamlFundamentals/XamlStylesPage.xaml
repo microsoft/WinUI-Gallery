@@ -22,9 +22,7 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="The placement of styles is the same as other resources " />
-                        <Run Text="(app-level, page-level, control-level)."
-                             FontStyle="Italic" />
+                        <Run Text="The placement of styles is the same as other resources: app-level, page-level, control-level." />
                     </Paragraph>
                 </RichTextBlock>
 
