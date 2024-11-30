@@ -22,7 +22,7 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="The placement of styles is the same as other resources: app-level, page-level, control-level." />
+                        <Run Text="The placement of styles is the same as other resources (app-level, page-level, control-level)." />
                     </Paragraph>
                 </RichTextBlock>
 
@@ -32,22 +32,22 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="• " />
-                        <Run Text="Styles "
+                        <Run Text="•" />
+                        <Run Text="Styles"
                              FontWeight="Bold" />
                         <Run Text="are reusable collections of property settings for a specific control type." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="• " />
+                        <Run Text="•" />
                         <Run Text="Use a"/>
                         <Run Text="keyed style" FontWeight="Bold" />
-                        <Run Text="for explicit application or an " />
-                        <Run Text="implicit style "
+                        <Run Text="for explicit application or an" />
+                        <Run Text="implicit style"
                              FontWeight="Bold" />
                         <Run Text="for automatic application to all controls of a type." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="• " />
+                        <Run Text="•" />
                         <Run Text="Styles improve maintainability, consistency, and reduce repetition in your XAML code." />
                     </Paragraph>
                 </RichTextBlock>

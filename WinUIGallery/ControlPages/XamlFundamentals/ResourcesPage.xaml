@@ -29,17 +29,17 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. App-level: "
+                        <Run Text="1. App-level:"
                              FontWeight="Bold" />
                         <Run Text="define resources globally, accessible throughout the application." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. Page-level: "
+                        <Run Text="2. Page-level:"
                              FontWeight="Bold" />
                         <Run Text="define resources that are specific to a particular page." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. Control-level: "
+                        <Run Text="3. Control-level:"
                              FontWeight="Bold" />
                         <Run Text="define resources local to a specific control, such as a button or grid." />
                     </Paragraph>
@@ -51,17 +51,17 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="You define XAML Resources using the " />
-                        <Run Text="`&lt;ResourceDictionary>`"
+                        <Run Text="You define XAML Resources using the" />
+                        <Run Text="&lt;ResourceDictionary>"
                              FontFamily="Consolas"
-                             FontStyle="Italic" />
-                        <Run Text=" element. The key parts are " />
+                             FontWeight="Bold" />
+                        <Run Text="element. The key parts are" />
                         <Run Text="the resource's key"
                              FontWeight="Bold" />
-                        <Run Text=" (a unique identifier) and the " />
+                        <Run Text="(a unique identifier) and the" />
                         <Run Text="value"
                              FontWeight="Bold" />
-                        <Run Text=" (like a color or brush)." />
+                        <Run Text="(like a color or brush)." />
                     </Paragraph>
                 </RichTextBlock>
 
@@ -71,27 +71,27 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="- Naming: "
+                        <Run Text="- Naming:"
                              FontWeight="Bold" />
                         <Run Text="always use descriptive keys for your resources to make them easier to identify." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="- Scope: "
+                        <Run Text="- Scope:"
                              FontWeight="Bold" />
                         <Run Text="define resources at the narrowest scope possible to improve maintainability." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="- Access: "
+                        <Run Text="- Access:"
                              FontWeight="Bold" />
-                        <Run Text="use " />
-                        <Run Text="`{StaticResource Key}`"
+                        <Run Text="use" />
+                        <Run Text="{}{StaticResource Key}"
                              FontFamily="Consolas"
-                             FontStyle="Italic" />
-                        <Run Text=" in XAML for most cases, and " />
-                        <Run Text="`Resources[&quot;Key&quot;]`"
+                             FontWeight="Bold" />
+                        <Run Text=" in XAML for most cases, and" />
+                        <Run Text="Resources[&quot;Key&quot;]"
                              FontFamily="Consolas"
-                             FontStyle="Italic" />
-                        <Run Text=" in C# for runtime access." />
+                             FontWeight="Bold" />
+                        <Run Text="in C# for runtime access." />
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>

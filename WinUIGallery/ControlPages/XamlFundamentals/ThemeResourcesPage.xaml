@@ -22,9 +22,7 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="The placement of theme resources is the same as regular XAML resources " />
-                        <Run Text="(app-level, page-level, control-level)."
-                             FontStyle="Italic" />
+                        <Run Text="The placement of theme resources is the same as regular XAML resources (app-level, page-level, control-level)." />
                     </Paragraph>
                 </RichTextBlock>
 
@@ -34,26 +32,24 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. "
+                        <Run Text="1."
                              FontWeight="Bold" />
-                        <Run Text="Use " />
-                        <Run Text="ThemeResource "
-                             FontWeight="Bold"
-                             FontStyle="Italic" />
+                        <Run Text="Use" />
+                        <Run Text="ThemeResource"
+                             FontWeight="Bold" />
                         <Run Text="for dynamic theme-based updates." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. "
+                        <Run Text="2."
                              FontWeight="Bold" />
                         <Run Text="Place theme resources globally, on pages, or in specific controls, depending on the scope." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. "
+                        <Run Text="3."
                              FontWeight="Bold" />
-                        <Run Text="Define " />
-                        <Run Text="ThemeDictionaries "
-                             FontWeight="Bold"
-                             FontStyle="Italic" />
+                        <Run Text="Define" />
+                        <Run Text="ThemeDictionaries"
+                             FontWeight="Bold" />
                         <Run Text="to provide different values for light and dark themes." />
                     </Paragraph>
                     <Paragraph>

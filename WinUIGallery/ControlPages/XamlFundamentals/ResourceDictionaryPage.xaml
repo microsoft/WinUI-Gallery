@@ -40,32 +40,32 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. "
+                        <Run Text="1."
                              FontWeight="Bold" />
-                        <Run Text="Inline (app-level): "
+                        <Run Text="Inline (app-level):"
                              FontWeight="Bold" />
-                        <Run Text="define it in " />
-                        <Run Text="`App.xaml`"
+                        <Run Text="define it in" />
+                        <Run Text="App.xaml"
                              FontFamily="Consolas"
-                             FontStyle="Italic" />
+                             FontWeight="Bold" />
                         <Run Text=" to make resources globally available across the entire app." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. "
+                        <Run Text="2."
                              FontWeight="Bold" />
-                        <Run Text="Inline (page-level): "
+                        <Run Text="Inline (page-level):"
                              FontWeight="Bold" />
                         <Run Text="define it in a specific page to limit the scope to that page." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. "
+                        <Run Text="3."
                              FontWeight="Bold" />
-                        <Run Text="Standalone file: "
+                        <Run Text="Standalone file:"
                              FontWeight="Bold" />
-                        <Run Text="define it in a separate " />
-                        <Run Text="`.xaml`"
+                        <Run Text="define it in a separate" />
+                        <Run Text=".xaml"
                              FontFamily="Consolas"
-                             FontStyle="Italic" />
+                             FontWeight="Bold" />
                         <Run Text=" file to organize resources and reuse them in different parts of your app." />
                     </Paragraph>
                 </RichTextBlock>

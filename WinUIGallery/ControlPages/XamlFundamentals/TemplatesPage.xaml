@@ -32,16 +32,7 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="You can define templates at the " />
-                        <Run Text="app"
-                             FontWeight="Bold" />
-                        <Run Text=", " />
-                        <Run Text="page"
-                             FontWeight="Bold" />
-                        <Run Text=", or " />
-                        <Run Text="control"
-                             FontWeight="Bold" />
-                        <Run Text=" level, just like styles and resources. The placement depends on where and how you want the template to be reused." />
+                        <Run Text="You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused." />
                     </Paragraph>
                 </RichTextBlock>
 
@@ -51,37 +42,37 @@
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. " />
-                        <Run Text="Templates "
+                        <Run Text="1." />
+                        <Run Text="Templates"
                              FontWeight="Bold" />
                         <Run Text="allow you to redefine how a control is built visually while keeping its behavior intact." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. " />
-                        <Run Text="Placement: "
+                        <Run Text="2." />
+                        <Run Text="Placement:"
                              FontWeight="Bold" />
                         <Run Text="templates can be defined at the App, Page, or Control level, depending on the desired scope." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. " />
-                        <Run Text="Types of templates: "
+                        <Run Text="3." />
+                        <Run Text="Types of templates:"
                              FontWeight="Bold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   - " />
-                        <Run Text="ControlTemplate: "
+                        <Run Text="   -" />
+                        <Run Text="ControlTemplate:"
                              FontWeight="Bold" />
                         <Run Text="customizes the structure of a control." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   - " />
-                        <Run Text="ItemsPanelTemplate: "
+                        <Run Text="   -" />
+                        <Run Text="ItemsPanelTemplate:"
                              FontWeight="Bold" />
                         <Run Text="defines how a collection of items is laid out." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   - " />
-                        <Run Text="DataTemplate: "
+                        <Run Text="   -" />
+                        <Run Text="DataTemplate:"
                              FontWeight="Bold" />
                         <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
                     </Paragraph>
