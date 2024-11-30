@@ -193,7 +193,7 @@
           "Docs": [
             {
               "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-resource-dictionary"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
             }
           ]
         },
@@ -211,11 +211,11 @@
           "Docs": [
             {
               "Title": "ResourceDictionary - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
             },
             {
               "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-resource-dictionary"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
             }
           ]
         },
@@ -228,7 +228,7 @@
           "Docs": [
             {
               "Title": "XAML theme resources",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-theme-resources"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
             }
           ]
         },
@@ -246,11 +246,11 @@
           "Docs": [
             {
               "Title": "Style - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
             },
             {
               "Title": "XAML styles",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-styles"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
             }
           ]
         },
@@ -269,23 +269,23 @@
           "Docs": [
             {
               "Title": "Data binding",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/develop/data-binding/"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
             },
             {
               "Title": "{x:Bind} markup extension",
-              "Uri": "https://learn.microsoft.com/en-gb/windows/uwp/xaml-platform/x-bind-markup-extension"
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
             },
             {
               "Title": "{Binding} markup extension",
-              "Uri": "https://learn.microsoft.com/en-gb/windows/uwp/xaml-platform/binding-markup-extension"
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
             },
             {
               "Title": "Binding - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
             },
             {
               "Title": "IValueConverter Interface - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
             }
           ]
         },
@@ -304,19 +304,19 @@
           "Docs": [
             {
               "Title": "ControlTemplate - API",
-              "Uri": "https://learn.microsoft.com/en-gb/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
             },
             {
               "Title": "XAML Control Templates",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-control-templates"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
             },
             {
               "Title": "ItemsPanelTemplate - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
             },
             {
               "Title": "DataTemplate - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
             }
           ]
         }
