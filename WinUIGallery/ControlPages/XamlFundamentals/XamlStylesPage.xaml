@@ -39,8 +39,8 @@
                     </Paragraph>
                     <Paragraph>
                         <Run Text="• " />
-                        <Run Text="Use a keyed style "
-                             FontWeight="Bold" />
+                        <Run Text="Use a"/>
+                        <Run Text="keyed style" FontWeight="Bold" />
                         <Run Text="for explicit application or an " />
                         <Run Text="implicit style "
                              FontWeight="Bold" />
