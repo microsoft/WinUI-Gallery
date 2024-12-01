@@ -84,7 +84,7 @@
                     <Paragraph>
                         <Run Text="1." />
                         <Bold>Target:</Bold>
-                        <Run Text="the property of a control that you want to bind to (e.g., Text, Background, Background" />
+                        <Run Text="the property of a control that you want to bind to (e.g. Text, Background, Visibility" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2." />
