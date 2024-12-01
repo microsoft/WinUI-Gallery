@@ -118,7 +118,7 @@
                             <Run Text="Comparison of" />
                             <Run Text="x:Bind"
                                  FontFamily="Consolas" />
-                            <Run Text=" and" />
+                            <Run Text="and" />
                             <Run Text="Binding"
                                  FontFamily="Consolas" />
                             <Run Text="in WinUI 3" />
