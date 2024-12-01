@@ -26,21 +26,21 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="Where can you create XAML resources?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="1. App-level:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define resources globally, accessible throughout the application." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2. Page-level:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define resources that are specific to a particular page." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3. Control-level:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define resources local to a specific control, such as a button or grid." />
                     </Paragraph>
                 </RichTextBlock>
@@ -48,19 +48,19 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="How to create and use XAML resources?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="You define XAML Resources using the" />
                         <Run Text="&lt;ResourceDictionary>"
                              FontFamily="Consolas"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="element. The key parts are" />
                         <Run Text="the resource's key"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="(a unique identifier) and the" />
                         <Run Text="value"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="(like a color or brush)." />
                     </Paragraph>
                 </RichTextBlock>
@@ -68,29 +68,29 @@
                 <RichTextBlock>
                     <Paragraph>
                         <Run Text="Tips for beginners:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Naming:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="always use descriptive keys for your resources to make them easier to identify." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Scope:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define resources at the narrowest scope possible to improve maintainability." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="- Access:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="use" />
                         <Run Text="{}{StaticResource Key}"
                              FontFamily="Consolas"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="in XAML for most cases, and" />
                         <Run Text="Resources[&quot;Key&quot;]"
                              FontFamily="Consolas"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="in C# for runtime access." />
                     </Paragraph>
                 </RichTextBlock>

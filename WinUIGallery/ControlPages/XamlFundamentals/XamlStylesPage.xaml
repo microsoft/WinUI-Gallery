@@ -19,7 +19,7 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="Where can you create XAML styles?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="The placement of styles is the same as other resources (app-level, page-level, control-level)." />
@@ -29,26 +29,24 @@
                 <RichTextBlock>
                     <Paragraph>
                         <Run Text="Key points:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="•" />
+                        <Run Text="-" />
                         <Run Text="Styles"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="are reusable collections of property settings for a specific control type." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="•" />
-                        <Run Text="Use a"/>
-                        <Run Text="keyed style" FontWeight="Bold" />
+                        <Run Text="- Use a"/>
+                        <Run Text="keyed style" FontWeight="SemiBold" />
                         <Run Text="for explicit application or an" />
                         <Run Text="implicit style"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="for automatic application to all controls of a type." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="•" />
-                        <Run Text="Styles improve maintainability, consistency, and reduce repetition in your XAML code." />
+                        <Run Text="- Styles improve maintainability, consistency, and reduce repetition in your XAML code." />
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>

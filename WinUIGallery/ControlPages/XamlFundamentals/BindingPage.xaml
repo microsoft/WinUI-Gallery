@@ -51,7 +51,7 @@
             <Setter Property="TextAlignment"
                     Value="Center" />
             <Setter Property="FontWeight"
-                    Value="Bold" />
+                    Value="SemiBold" />
         </Style>
 
         <Style x:Key="CodeTextStyle"
@@ -62,7 +62,7 @@
             <Setter Property="FontFamily"
                     Value="Consolas" />
             <Setter Property="FontWeight"
-                    Value="Bold" />
+                    Value="SemiBold" />
         </Style>
 
         <local:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
@@ -79,62 +79,63 @@
             <StackPanel>
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Bold>Key concepts:</Bold>
+                        <Run Text="Key concepts:"
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1." />
-                        <Bold>Target:</Bold>
-                        <Run Text="the property of a control that you want to bind to (e.g. Text, Background, Visibility" />
+                        <Run Text="1. Target:"
+                             FontWeight="SemiBold" />
+                        <Run Text="the property of a control that you want to bind to (e.g. Text, Background, Visibility)." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2." />
-                        <Bold>Source:</Bold>
+                        <Run Text="2. Source:"
+                             FontWeight="SemiBold" />
                         <Run Text="the data you are binding to, like a property in a class, another control, or a static resource." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3." />
-                        <Bold>Binding modes:</Bold>
+                        <Run Text="3. Binding modes:"
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
-                        <Bold>OneWay:</Bold>
+                        <Run Text="    - OneWay:"
+                             FontWeight="SemiBold" />
                         <Run Text="updates the target when the source changes." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
-                        <Bold>TwoWay:</Bold>
+                        <Run Text="    - TwoWay:"
+                             FontWeight="SemiBold" />
                         <Run Text="updates both the target and the source." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
-                        <Bold>OneTime:</Bold>
+                        <Run Text="    - OneTime:"
+                             FontWeight="SemiBold" />
                         <Run Text="sets the target once and doesn’t update afterward." />
                     </Paragraph>
                 </RichTextBlock>
 
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
-                        <Bold>
-                            <Run Text="Comparison of" />
-                            <Run Text="x:Bind"
-                                 FontFamily="Consolas" />
-                            <Run Text="and" />
-                            <Run Text="Binding"
-                                 FontFamily="Consolas" />
-                            <Run Text="in WinUI 3" />
-                        </Bold>
+                        <Run Text="Comparison of"
+                             FontWeight="SemiBold" />
+                        <Run Text="x:Bind"
+                             FontFamily="Consolas"
+                             FontWeight="SemiBold" />
+                        <Run Text="and" />
+                        <Run Text="Binding"
+                             FontFamily="Consolas"
+                             FontWeight="SemiBold" />
+                        <Run Text="in WinUI 3"
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="There are two main binding systems in WinUI 3:" />
-                        <Bold>
-                            <Run Text="x:Bind"
-                                 FontFamily="Consolas" />
-                        </Bold>
+                        <Run Text="x:Bind"
+                             FontFamily="Consolas"
+                             FontWeight="SemiBold" />
                         <Run Text="and" />
-                        <Bold>
-                            <Run Text="Binding"
-                                 FontFamily="Consolas" />
-                        </Bold>
+                        <Run Text="Binding"
+                             FontFamily="Consolas"
+                             FontWeight="SemiBold" />
                         <Run Text=", and the following table explains them and highlights their differences." />
                     </Paragraph>
                 </RichTextBlock>
@@ -311,7 +312,7 @@
         <core:ControlExample HeaderText="Binding to a property in code-behind">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock>Binding a <Bold>Slider</Bold> to update the width of a <Bold>Rectangle</Bold>.</TextBlock>
+                    <TextBlock>Binding a `Slider` to update the width of a `Rectangle`.</TextBlock>
                     <Slider x:Name="WidthSlider"
                             Minimum="50"
                             Maximum="300"
@@ -362,22 +363,22 @@
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="Title:"
-                               FontWeight="Bold" />
+                               FontWeight="SemiBold" />
                     <TextBlock Text="{Binding Title}"
                                FontSize="16" />
 
                     <TextBlock Text="Description:"
-                               FontWeight="Bold" />
+                               FontWeight="SemiBold" />
                     <TextBlock Text="{Binding Description}"
                                FontSize="16" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;TextBlock Text="Title:" FontWeight="Bold" /&gt;
+&lt;TextBlock Text="Title:" FontWeight="SemiBold" /&gt;
 &lt;TextBlock Text="{Binding Title}" FontSize="16" /&gt;
 
-&lt;TextBlock Text="Description:" FontWeight="Bold" /&gt;
+&lt;TextBlock Text="Description:" FontWeight="SemiBold" /&gt;
 &lt;TextBlock Text="{Binding Description}" FontSize="16" /&gt;
                 </x:String>
             </core:ControlExample.Xaml>

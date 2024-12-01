@@ -37,35 +37,35 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="Where can you create a resource dictionary?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="1."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Inline (app-level):"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define it in" />
                         <Run Text="App.xaml"
                              FontFamily="Consolas"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="to make resources globally available across the entire app." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Inline (page-level):"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define it in a specific page to limit the scope to that page." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Standalone file:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="define it in a separate" />
                         <Run Text=".xaml"
                              FontFamily="Consolas"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="file to organize resources and reuse them in different parts of your app." />
                     </Paragraph>
                 </RichTextBlock>
@@ -73,27 +73,21 @@
                 <RichTextBlock>
                     <Paragraph>
                         <Run Text="Why use resource dictionaries?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="1. "
-                             FontWeight="Bold" />
-                        <Run Text="Reusability: "
-                             FontWeight="Bold" />
+                        <Run Text="1. Reusability: "
+                             FontWeight="SemiBold" />
                         <Run Text="define once and use many times." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="2. "
-                             FontWeight="Bold" />
-                        <Run Text="Organization: "
-                             FontWeight="Bold" />
+                        <Run Text="2. Organization: "
+                             FontWeight="SemiBold" />
                         <Run Text="keeps resources modular and separated." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="3. "
-                             FontWeight="Bold" />
-                        <Run Text="Maintainability: "
-                             FontWeight="Bold" />
+                        <Run Text="3. Maintainability: "
+                             FontWeight="SemiBold" />
                         <Run Text="makes it easier to update values across the app." />
                     </Paragraph>
                 </RichTextBlock>

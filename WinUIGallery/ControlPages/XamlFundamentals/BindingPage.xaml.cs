@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Documents;
 using System.ComponentModel;
+using Microsoft.UI.Text;
 
 namespace WinUIGallery.ControlPages
 {
@@ -70,7 +71,7 @@ namespace WinUIGallery.ControlPages
                 {
                     Text = "In ",
                 });
-                paragraph.Inlines.Add(new Bold { Inlines = { new Run { Text = "OneWay" } } });
+                paragraph.Inlines.Add(new Run { Text = "OneWay", FontWeight = FontWeights.SemiBold });
                 paragraph.Inlines.Add(new Run
                 {
                     Text = " binding mode, changes in the source (`SourceTextBox`) are reflected in the target, but not vice versa."
@@ -82,7 +83,7 @@ namespace WinUIGallery.ControlPages
                 {
                     Text = "In ",
                 });
-                paragraph.Inlines.Add(new Bold { Inlines = { new Run { Text = "TwoWay" } } });
+                paragraph.Inlines.Add(new Run { Text = "TwoWay", FontWeight = FontWeights.SemiBold });
                 paragraph.Inlines.Add(new Run
                 {
                     Text = " binding mode, changes in either box update the other."

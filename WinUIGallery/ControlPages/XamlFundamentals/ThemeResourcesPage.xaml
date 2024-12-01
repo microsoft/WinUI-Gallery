@@ -19,7 +19,7 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="Where can you create theme resources?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="The placement of theme resources is the same as regular XAML resources (app-level, page-level, control-level)." />
@@ -29,32 +29,32 @@
                 <RichTextBlock>
                     <Paragraph>
                         <Run Text="Key Points:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="1."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Use" />
                         <Run Text="ThemeResource"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="for dynamic theme-based updates." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Place theme resources globally, on pages, or in specific controls, depending on the scope." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3."
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="Define" />
                         <Run Text="ThemeDictionaries"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="to provide different values for light and dark themes." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="4. "
-                             FontWeight="Bold" />
+                        <Run Text="4."
+                             FontWeight="SemiBold" />
                         <Run Text="Always provide a fallback value to ensure compatibility with undefined themes." />
                     </Paragraph>
                 </RichTextBlock>

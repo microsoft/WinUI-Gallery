@@ -29,7 +29,7 @@
                 <RichTextBlock Margin="0 0 0 12">
                     <Paragraph>
                         <Run Text="Where can you create templates?"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused." />
@@ -39,41 +39,41 @@
                 <RichTextBlock>
                     <Paragraph>
                         <Run Text="Key points:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="1." />
                         <Run Text="Templates"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="allow you to redefine how a control is built visually while keeping its behavior intact." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2." />
                         <Run Text="Placement:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="templates can be defined at the App, Page, or Control level, depending on the desired scope." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="3." />
                         <Run Text="Types of templates:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
+                        <Run Text="    -" />
                         <Run Text="ControlTemplate:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="customizes the structure of a control." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
+                        <Run Text="    -" />
                         <Run Text="ItemsPanelTemplate:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="defines how a collection of items is laid out." />
                     </Paragraph>
                     <Paragraph>
-                        <Run Text="   -" />
+                        <Run Text="    -" />
                         <Run Text="DataTemplate:"
-                             FontWeight="Bold" />
+                             FontWeight="SemiBold" />
                         <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
                     </Paragraph>
                 </RichTextBlock>
