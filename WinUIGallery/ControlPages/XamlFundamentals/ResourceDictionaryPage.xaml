@@ -48,7 +48,7 @@
                         <Run Text="App.xaml"
                              FontFamily="Consolas"
                              FontWeight="Bold" />
-                        <Run Text=" to make resources globally available across the entire app." />
+                        <Run Text="to make resources globally available across the entire app." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="2."
