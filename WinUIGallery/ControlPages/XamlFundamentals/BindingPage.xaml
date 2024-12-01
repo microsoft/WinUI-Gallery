@@ -130,7 +130,7 @@
                             <Run Text="x:Bind"
                                  FontFamily="Consolas" />
                         </Bold>
-                        <Run Text=" and" />
+                        <Run Text="and" />
                         <Bold>
                             <Run Text="Binding"
                                  FontFamily="Consolas" />
