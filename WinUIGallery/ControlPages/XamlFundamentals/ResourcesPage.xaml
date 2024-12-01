@@ -87,7 +87,7 @@
                         <Run Text="{}{StaticResource Key}"
                              FontFamily="Consolas"
                              FontWeight="Bold" />
-                        <Run Text=" in XAML for most cases, and" />
+                        <Run Text="in XAML for most cases, and" />
                         <Run Text="Resources[&quot;Key&quot;]"
                              FontFamily="Consolas"
                              FontWeight="Bold" />
