@@ -21,5 +21,10 @@ namespace WinUIGallery.ControlPages
         {
             this.InitializeComponent();
         }
+
+        private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "Color");
+        }
     }
 }

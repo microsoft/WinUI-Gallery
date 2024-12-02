@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Page x:Class="WinUIGallery.ControlPages.TemplatesPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:WinUIGallery"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="WinUIGallery.ControlPages.TemplatesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <ItemsPanelTemplate x:Key="WrapGridTemplate">
@@ -18,113 +19,89 @@
     </Page.Resources>
 
     <StackPanel>
-        <Expander HorizontalAlignment="Stretch"
-                  HorizontalContentAlignment="Left"
-                  Margin="0 12 0 0">
-            <Expander.Header>
-                <TextBlock Text="Understanding and using templates in WinUI 3"
-                           Margin="0 24" />
-            </Expander.Header>
-            <StackPanel>
-                <RichTextBlock Margin="0 0 0 12">
-                    <Paragraph>
-                        <Run Text="Where can you create templates?"
-                             FontWeight="SemiBold" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused." />
-                    </Paragraph>
+        <Expander
+            Margin="0,12,0,0"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Left"
+            Header="Understanding and using templates in WinUI 3">
+            <StackPanel Spacing="12">
+                <RichTextBlock>
+                    <Paragraph FontWeight="SemiBold">Where can you create templates?</Paragraph>
+                    <Paragraph>You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused.</Paragraph>
                 </RichTextBlock>
 
                 <RichTextBlock>
-                    <Paragraph>
-                        <Run Text="Key points:"
-                             FontWeight="SemiBold" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="1." />
-                        <Run Text="Templates"
-                             FontWeight="SemiBold" />
-                        <Run Text="allow you to redefine how a control is built visually while keeping its behavior intact." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="2." />
-                        <Run Text="Placement:"
-                             FontWeight="SemiBold" />
-                        <Run Text="templates can be defined at the App, Page, or Control level, depending on the desired scope." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="3." />
-                        <Run Text="Types of templates:"
-                             FontWeight="SemiBold" />
-                    </Paragraph>
+                    <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
+                    <Paragraph>- Templates allow you to redefine how a control is built visually while keeping its behavior intact.</Paragraph>
+                    <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
+                    <Paragraph>- Types of templates:</Paragraph>
                     <Paragraph>
                         <Run Text="    -" />
-                        <Run Text="ControlTemplate:"
-                             FontWeight="SemiBold" />
+                        <Run FontWeight="SemiBold" Text="ControlTemplate" />
                         <Run Text="customizes the structure of a control." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="    -" />
-                        <Run Text="ItemsPanelTemplate:"
-                             FontWeight="SemiBold" />
+                        <Run FontWeight="SemiBold" Text="ItemsPanelTemplate" />
                         <Run Text="defines how a collection of items is laid out." />
                     </Paragraph>
                     <Paragraph>
                         <Run Text="    -" />
-                        <Run Text="DataTemplate:"
-                             FontWeight="SemiBold" />
+                        <Run FontWeight="SemiBold" Text="DataTemplate" />
                         <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
                     </Paragraph>
                 </RichTextBlock>
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Customize the look of a TextBox with a `ControlTemplate`"
-                              XamlSource="Templates\TemplatesSample1_xaml.txt">
+        <local:ControlExample HeaderText="Customize the look of a TextBox with a `ControlTemplate`" XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
-                        <ControlTemplate x:Key="CustomTextBoxTemplate"
-                                         TargetType="TextBox">
-                            <StackPanel>
-                                <TextBlock Text="{TemplateBinding Header}"
-                                           Margin="4" />
-                                <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="2"
-                                        CornerRadius="4"
-                                        MinWidth="200">
-                                    <StackPanel Orientation="Horizontal"
-                                                Margin="5">
-                                        <SymbolIcon Symbol="Edit"
-                                                    Margin="0,0,4,0" />
-                                        <ScrollViewer x:Name="ContentElement"
-                                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                                      Padding="{TemplateBinding Padding}" />
+                        <ControlTemplate x:Key="CustomTextBoxTemplate" TargetType="TextBox">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="{TemplateBinding Header}" />
+                                <Border
+                                    MinWidth="200"
+                                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="2"
+                                    CornerRadius="4">
+                                    <StackPanel
+                                        Margin="4"
+                                        Orientation="Horizontal"
+                                        Spacing="4">
+                                        <SymbolIcon Symbol="Edit" />
+                                        <ScrollViewer
+                                            x:Name="ContentElement"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
                         </ControlTemplate>
                     </Grid.Resources>
-                    <TextBox Header="Enter text here"
-                             Template="{StaticResource CustomTextBoxTemplate}"
-                             BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
-                             Padding="8" />
+                    <TextBox
+                        Padding="8"
+                        BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                        Header="Enter text here"
+                        Template="{StaticResource CustomTextBoxTemplate}" />
                 </Grid>
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample x:Name="Example2"
-                              HeaderText="Customize an ItemsControl with an `ItemsPanelTemplate`"
-                              XamlSource="Templates\TemplatesSample2_WrapGrid_xaml.txt"
-                              HorizontalContentAlignment="Stretch">
+        <local:ControlExample
+            x:Name="Example2"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="Customize an ItemsControl with an `ItemsPanelTemplate`"
+            XamlSource="Templates\TemplatesSample2_WrapGrid_xaml.txt">
             <local:ControlExample.Example>
                 <ScrollView>
-                    <ListView x:Name="MyListView"
-                              MaxHeight="200"
-                              HorizontalAlignment="Stretch">
+                    <ListView
+                        x:Name="MyListView"
+                        MaxHeight="200"
+                        HorizontalAlignment="Stretch">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid Orientation="Horizontal" />
@@ -156,33 +133,33 @@
             </local:ControlExample.Example>
             <local:ControlExample.Options>
                 <RadioButtons SelectionChanged="LayoutSelector_SelectionChanged">
-                    <RadioButton Content="Use WrapGrid"
-                                 Tag="WrapGrid"
-                                 IsChecked="True" />
-                    <RadioButton Content="Use StackPanel"
-                                 Tag="StackPanel" />
+                    <RadioButton
+                        Content="WrapGrid"
+                        IsChecked="True"
+                        Tag="WrapGrid" />
+                    <RadioButton Content="StackPanel" Tag="StackPanel" />
                 </RadioButtons>
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Customize a ComboBox's `ItemTemplate`"
-                              XamlSource="Templates\TemplatesSample3_xaml.txt">
+        <local:ControlExample HeaderText="Customize a ComboBox's `ItemTemplate`" XamlSource="Templates\TemplatesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
                         <DataTemplate x:Key="CustomComboBoxItemTemplate">
-                            <StackPanel Orientation="Horizontal">
-                                <Ellipse Width="8"
-                                         Height="8"
-                                         Fill="{ThemeResource AccentFillColorDefaultBrush}"
-                                         Margin="0 0 8 0" />
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Ellipse
+                                    Width="8"
+                                    Height="8"
+                                    Fill="{ThemeResource AccentFillColorDefaultBrush}" />
                                 <TextBlock Text="{Binding}" />
                             </StackPanel>
                         </DataTemplate>
                     </Grid.Resources>
-                    <ComboBox Header="Options"
-                              SelectedIndex="0"
-                              ItemTemplate="{StaticResource CustomComboBoxItemTemplate}">
+                    <ComboBox
+                        Header="Options"
+                        ItemTemplate="{StaticResource CustomComboBoxItemTemplate}"
+                        SelectedIndex="0">
                         <ComboBox.Items>
                             <x:String>Option 1</x:String>
                             <x:String>Option 2</x:String>

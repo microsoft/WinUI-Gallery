@@ -7,6 +7,6 @@
                     
     <ListViewItem>Item 01</ListViewItem>
     <ListViewItem>Item 02</ListViewItem>
-    <!--Other items-->
+    <!-- ... -->
     <ListViewItem>Item 20</ListViewItem>
 </ListView>

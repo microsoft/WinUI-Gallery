@@ -1,26 +1,29 @@
 ﻿<Grid>
     <Grid.Resources>
         <ControlTemplate x:Key="CustomTextBoxTemplate" TargetType="TextBox">
-            <StackPanel>
-                <TextBlock Text="{TemplateBinding Header}" Margin="4" />
-                <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
-                        BorderBrush="{TemplateBinding BorderBrush}" 
-                        BorderThickness="2" 
-                        CornerRadius="5" 
-                        MinWidth="200">
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <SymbolIcon Symbol="Edit" Margin="0,0,5,0" />
-                        <ScrollViewer x:Name="ContentElement" 
-                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" 
-                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
-                                      Padding="{TemplateBinding Padding}" />
+            <StackPanel Spacing="8">
+                <TextBlock Text="{TemplateBinding Header}" />
+                <Border
+                    MinWidth="200"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="2"
+                    CornerRadius="4">
+                    <StackPanel Margin="4" Orientation="Horizontal" Spacing="4">
+                        <SymbolIcon Symbol="Edit" />
+                        <ScrollViewer
+                            x:Name="ContentElement"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
                     </StackPanel>
                 </Border>
             </StackPanel>
         </ControlTemplate>
     </Grid.Resources>
-    <TextBox Header="Enter text here" 
-             Template="{StaticResource CustomTextBoxTemplate}" 
-             BorderBrush="DarkBlue" 
-             Padding="10" />
+    <TextBox
+        Padding="8"
+        BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+        Header="Enter text here"
+        Template="{StaticResource CustomTextBoxTemplate}" />
 </Grid>
