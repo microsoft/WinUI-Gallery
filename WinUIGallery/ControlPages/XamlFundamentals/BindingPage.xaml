@@ -53,8 +53,8 @@
                         <Run Text="The following table highlights a few differences between" />
                         <Run FontFamily="Consolas" Text="x:Bind" />
                         <Run Text="and" />
-                        <Run FontFamily="Consolas" Text="Binding" />
-                        .<Run Text="Go to" />
+                        <Run FontFamily="Consolas" Text="Binding" />.
+                        <Run Text="Go to" />
                         <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>
                         <Run Text="for a full list." />
                     </Paragraph>

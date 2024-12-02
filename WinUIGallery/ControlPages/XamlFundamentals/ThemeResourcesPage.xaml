@@ -19,7 +19,8 @@
                     <Paragraph>
                         WinUI 3 includes built-in theme resources for commonly used colors. For a better understanding, visit the
                         <Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
-                        in this app.</Paragraph>
+                        in this app.
+                    </Paragraph>
                 </RichTextBlock>
                 <RichTextBlock>
                     <Paragraph FontWeight="SemiBold">Where can you create theme resources?</Paragraph>
