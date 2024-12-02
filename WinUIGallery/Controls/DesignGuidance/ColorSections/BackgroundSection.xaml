@@ -77,7 +77,7 @@
             <designguidance:ColorTile
                 Background="{ThemeResource SmokeFillColorDefaultBrush}"
                 ColorBrushName="SmokeFillColorDefaultBrush"
-                ColorExplanation="Dims background behind dialogs"
+                ColorExplanation="Dims the background behind dialogs"
                 ColorName="Smoke / Default"
                 ColorValue="#000000 (4D, 30%) " />
         </Grid>
