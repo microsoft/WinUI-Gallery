@@ -28,12 +28,12 @@ namespace WinUIGallery.ControlPages
             if (e.AddedItems[0] is RadioButton selectedRadioButton)
             {
                 // Check the content of the selected RadioButton
-                if (selectedRadioButton.Content.ToString() == "Use WrapGrid")
+                if (selectedRadioButton.Tag.ToString() == "WrapGrid")
                 {
                     MyListView.ItemsPanel = (ItemsPanelTemplate)this.Resources["WrapGridTemplate"];
                     Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_WrapGrid_xaml");
                 }
-                else if (selectedRadioButton.Content.ToString() == "Use StackPanel")
+                else if (selectedRadioButton.Tag.ToString() == "StackPanel")
                 {
                     MyListView.ItemsPanel = (ItemsPanelTemplate)this.Resources["StackPanelTemplate"];
                     Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_StackPanel_xaml");
