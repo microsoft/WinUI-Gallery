@@ -13,7 +13,5 @@
 
 <!--YourPage.xaml-->
 <Grid Background="{StaticResource AccentBrush}">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{StaticResource AppTitle}" FontSize="{StaticResource HeaderFontSize}" Foreground="White" />
-    </StackPanel>
+    <TextBlock Text="{StaticResource AppTitle}" Foreground="White" FontSize="{StaticResource HeaderFontSize}" />
 </Grid>

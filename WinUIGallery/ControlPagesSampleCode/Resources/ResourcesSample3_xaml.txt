@@ -6,5 +6,5 @@
         <x:String x:Key="WelcomeMessage">Welcome to "WinUI 3 Gallery!</x:String>
     </Grid.Resources>
 
-    <TextBlock Text="{StaticResource WelcomeMessage}" FontSize="{StaticResource HeaderFontSize}" />
+    <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{StaticResource WelcomeMessage}" />
 </Grid>

@@ -33,8 +33,6 @@ namespace WinUIGallery.ControlPages
                 NullString = null
             };
             DataContext = ViewModel;
-
-            mvvmToolkitSampleAppHyperlinkButton.NavigateUri = new Uri("https://github.com/CommunityToolkit/MVVM-Samples");
         }
 
         private void BindingModeGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,7 +72,7 @@ namespace WinUIGallery.ControlPages
                 paragraph.Inlines.Add(new Run { Text = "OneWay", FontWeight = FontWeights.SemiBold });
                 paragraph.Inlines.Add(new Run
                 {
-                    Text = " binding mode, changes in the source (`SourceTextBox`) are reflected in the target, but not vice versa."
+                    Text = " binding mode, changes in the source (SourceTextBox) are reflected in the target, but not vice versa."
                 });
             }
             else if (bindingMode == BindingMode.TwoWay)

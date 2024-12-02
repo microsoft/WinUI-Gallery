@@ -3,9 +3,10 @@
     <Page.Resources>
         <!-- Define a solid color brush -->
         <SolidColorBrush x:Key="HighlightBrush" Color="#2196F3" />
+        <SolidColorBrush x:Key="FontColor" Color="White" />
     </Page.Resources>
 
     <Grid Background="{StaticResource HighlightBrush}">
-        <Button Content="Click me" Foreground="White" />
+        <Button Content="Click me" Foreground="{StaticResource FontColor}" />
     </Grid>
 </Page>

@@ -2,13 +2,13 @@
     x:Class="WinUIGallery.ControlExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:contract7Present="using:Microsoft.UI.Xaml.Controls?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
@@ -16,24 +16,28 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <animations:ImplicitAnimationSet x:Name="ShowTransitions">
-            <animations:OffsetAnimation EasingMode="EaseOut"
-                                        From="0,24,0"
-                                        To="0"
-                                        Duration="0:0:0.4" />
-            <animations:OpacityAnimation EasingMode="EaseOut"
-                                         From="0"
-                                         To="1"
-                                         Duration="0:0:0.2" />
+            <animations:OffsetAnimation
+                EasingMode="EaseOut"
+                From="0,24,0"
+                To="0"
+                Duration="0:0:0.4" />
+            <animations:OpacityAnimation
+                EasingMode="EaseOut"
+                From="0"
+                To="1"
+                Duration="0:0:0.2" />
         </animations:ImplicitAnimationSet>
         <animations:ImplicitAnimationSet x:Name="HideTransitions">
-            <animations:OffsetAnimation EasingMode="EaseOut"
-                                        From="0"
-                                        To="0,24,0"
-                                        Duration="0:0:0.2" />
-            <animations:OpacityAnimation EasingMode="EaseOut"
-                                         From="1"
-                                         To="0"
-                                         Duration="0:0:0.1" />
+            <animations:OffsetAnimation
+                EasingMode="EaseOut"
+                From="0"
+                To="0,24,0"
+                Duration="0:0:0.2" />
+            <animations:OpacityAnimation
+                EasingMode="EaseOut"
+                From="1"
+                To="0"
+                Duration="0:0:0.1" />
         </animations:ImplicitAnimationSet>
     </UserControl.Resources>
     <Grid x:Name="rootGrid">
@@ -162,34 +166,45 @@
                 </muxc:Expander.Header>
                 <Grid RowSpacing="16">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
-                    <SelectorBar x:Name="SelectorBarControl" Margin="-12,0,0,0" SelectionChanged="SelectorBarControl_SelectionChanged">
-                        <SelectorBarItem x:Name="SelectorBarXamlItem" Loaded="SelectorBarItem_Loaded" Tag="Xaml" Text="XAML" />
-                        <SelectorBarItem x:Name="SelectorBarCSharpItem" Loaded="SelectorBarItem_Loaded" Tag="CSharp" Text="C#" />
+                    <SelectorBar
+                        x:Name="SelectorBarControl"
+                        Margin="-12,0,0,0"
+                        SelectionChanged="SelectorBarControl_SelectionChanged">
+                        <SelectorBarItem
+                            x:Name="SelectorBarXamlItem"
+                            Loaded="SelectorBarItem_Loaded"
+                            Tag="Xaml"
+                            Text="XAML" />
+                        <SelectorBarItem
+                            x:Name="SelectorBarCSharpItem"
+                            Loaded="SelectorBarItem_Loaded"
+                            Tag="CSharp"
+                            Text="C#" />
                     </SelectorBar>
 
-                    <!-- using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
-                    <Grid x:DefaultBindMode="OneWay" Grid.Row="1">
+                    <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
+                    <Grid Grid.Row="1" x:DefaultBindMode="OneWay">
                         <controls:SampleCodePresenter
                             x:Name="XamlPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind Xaml}"
-                            SampleType="XAML"
-                            CodeSourceFile="{x:Bind XamlSource}"
-                            Substitutions="{x:Bind Substitutions}"
                             animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Code="{x:Bind Xaml}"
+                            CodeSourceFile="{x:Bind XamlSource}"
+                            SampleType="XAML"
+                            Substitutions="{x:Bind Substitutions}"
+                            Visibility="Collapsed" />
                         <controls:SampleCodePresenter
                             x:Name="CSharpPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind CSharp}"
-                            SampleType="CSharp"
-                            CodeSourceFile="{x:Bind CSharpSource}"
-                            Substitutions="{x:Bind Substitutions}"
                             animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Code="{x:Bind CSharp}"
+                            CodeSourceFile="{x:Bind CSharpSource}"
+                            SampleType="CSharp"
+                            Substitutions="{x:Bind Substitutions}"
+                            Visibility="Collapsed" />
                     </Grid>
                 </Grid>
             </muxc:Expander>

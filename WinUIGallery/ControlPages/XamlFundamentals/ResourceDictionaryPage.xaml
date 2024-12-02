@@ -1,109 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Page x:Class="WinUIGallery.ControlPages.ResourceDictionaryPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:WinUIGallery"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="WinUIGallery.ControlPages.ResourceDictionaryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <ResourceDictionary>
             <x:Double x:Key="HeaderFontSize">24</x:Double>
             <Color x:Key="AccentColor">#4CAF50</Color>
-            <SolidColorBrush x:Key="AccentBrush"
-                             Color="{StaticResource AccentColor}" />
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
             <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
 
             <x:String x:Key="WelcomeMessage">Welcome to this page</x:String>
-            <SolidColorBrush x:Key="PageBackgroundBrush"
-                             Color="#E8EAF6" />
+            <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
 
             <Color x:Key="SecondaryColor">#2196F3</Color>
-            <SolidColorBrush x:Key="SecondaryBrush"
-                             Color="{StaticResource SecondaryColor}" />
+            <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
         </ResourceDictionary>
     </Page.Resources>
 
     <StackPanel>
-        <Expander HorizontalAlignment="Stretch"
-                  HorizontalContentAlignment="Left"
-                  Margin="0 12 0 0">
-            <Expander.Header>
-                <TextBlock Text="Understanding and using resource dictionaries in WinUI 3"
-                           Margin="0 24" />
-            </Expander.Header>
-            <StackPanel>
-                <RichTextBlock Margin="0 0 0 12">
+        <Expander
+            Margin="0,12,0,0"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Left"
+            Header="Understanding and using resource dictionaries in WinUI 3">
+            <StackPanel Spacing="12">
+                <RichTextBlock>
+                    <Paragraph FontWeight="SemiBold">Where can you create a resource dictionary?</Paragraph>
                     <Paragraph>
-                        <Run Text="Where can you create a resource dictionary?"
-                             FontWeight="SemiBold" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="1."
-                             FontWeight="SemiBold" />
-                        <Run Text="Inline (app-level):"
-                             FontWeight="SemiBold" />
-                        <Run Text="define it in" />
-                        <Run Text="App.xaml"
-                             FontFamily="Consolas"
-                             FontWeight="SemiBold" />
+                        <Run Text="1. Inline (app-level): define it in" />
+                        <Run FontFamily="Consolas" Text="App.xaml" />
                         <Run Text="to make resources globally available across the entire app." />
                     </Paragraph>
+                    <Paragraph>2. Inline (page-level): define it in a specific page to limit the scope to that page.</Paragraph>
                     <Paragraph>
-                        <Run Text="2."
-                             FontWeight="SemiBold" />
-                        <Run Text="Inline (page-level):"
-                             FontWeight="SemiBold" />
-                        <Run Text="define it in a specific page to limit the scope to that page." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="3."
-                             FontWeight="SemiBold" />
-                        <Run Text="Standalone file:"
-                             FontWeight="SemiBold" />
-                        <Run Text="define it in a separate" />
-                        <Run Text=".xaml"
-                             FontFamily="Consolas"
-                             FontWeight="SemiBold" />
+                        <Run Text="3. Standalone file: define it in a separate" />
+                        <Run FontFamily="Consolas" Text=".xaml" />
                         <Run Text="file to organize resources and reuse them in different parts of your app." />
                     </Paragraph>
                 </RichTextBlock>
 
                 <RichTextBlock>
-                    <Paragraph>
-                        <Run Text="Why use resource dictionaries?"
-                             FontWeight="SemiBold" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="1. Reusability: "
-                             FontWeight="SemiBold" />
-                        <Run Text="define once and use many times." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="2. Organization: "
-                             FontWeight="SemiBold" />
-                        <Run Text="keeps resources modular and separated." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="3. Maintainability: "
-                             FontWeight="SemiBold" />
-                        <Run Text="makes it easier to update values across the app." />
-                    </Paragraph>
+                    <Paragraph FontWeight="SemiBold">Why use resource dictionaries?</Paragraph>
+                    <Paragraph>1. Reusability: define once and use many times.</Paragraph>
+                    <Paragraph>2. Organization: keeps resources modular and separated.</Paragraph>
+                    <Paragraph>3. Maintainability: makes it easier to update values across the app.</Paragraph>
                 </RichTextBlock>
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Define and use ResourceDictionary inline in App.xaml"
-                              XamlSource="ResourceDictionary\ResourceDictionarySample1_xaml.txt">
+        <local:ControlExample HeaderText="Define ResourceDictionary in App.xaml" XamlSource="ResourceDictionary\ResourceDictionarySample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Background="{StaticResource AccentBrush}">
-                    <StackPanel HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
-                        <TextBlock Text="{StaticResource AppTitle}"
-                                   FontSize="{StaticResource HeaderFontSize}"
-                                   Foreground="White" />
-                    </StackPanel>
+                    <TextBlock
+                        FontSize="{StaticResource HeaderFontSize}"
+                        Foreground="White"
+                        Text="{StaticResource AppTitle}" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.CSharp>
@@ -117,13 +74,13 @@ var headerFontSize = (double)Application.Current.Resources["HeaderFontSize"];
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define page-level ResourceDictionary"
-                              XamlSource="ResourceDictionary\ResourceDictionarySample2_xaml.txt">
+        <local:ControlExample HeaderText="Define a ResourceDictionary at page level" XamlSource="ResourceDictionary\ResourceDictionarySample2_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Background="{StaticResource PageBackgroundBrush}">
-                    <TextBlock Text="{StaticResource WelcomeMessage}"
-                               FontSize="20"
-                               Foreground="Black" />
+                    <TextBlock
+                        FontSize="20"
+                        Foreground="Black"
+                        Text="{StaticResource WelcomeMessage}" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.CSharp>
@@ -136,12 +93,10 @@ var welcomeMessage = (string)this.Resources["WelcomeMessage"];
             </local:ControlExample.CSharp>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define a separate ResourceDictionary file by adding a new .xaml file (e.g., Colors.xaml) to the project"
-                              XamlSource="ResourceDictionary\ResourceDictionarySample3_xaml.txt">
+        <local:ControlExample HeaderText="Define a separate ResourceDictionary by adding a .xaml file to the project" XamlSource="ResourceDictionary\ResourceDictionarySample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid Background="{StaticResource SecondaryBrush}">
-                    <TextBlock Text="Using colors from ResourceDictionary"
-                               Foreground="White" />
+                    <TextBlock Foreground="White" Text="Using colors from ResourceDictionary" />
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.CSharp>
