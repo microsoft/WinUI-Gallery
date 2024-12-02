@@ -10,20 +10,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Style x:Key="BorderStyle" TargetType="Border">
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
-            <Setter Property="BorderThickness" Value="0,0,0,1" />
-        </Style>
-
-        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Padding" Value="8" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-        </Style>
-
-        <Style
-            x:Key="HeaderTextStyle"
-            BasedOn="{StaticResource TextBlockStyle}"
-            TargetType="TextBlock">
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
@@ -63,8 +50,7 @@
                 <Grid
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1,1,1,0"
-                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    BorderThickness="1,1,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -72,67 +58,49 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="3*" />
                     </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Padding" Value="8"/>
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </Grid.Resources>
 
                     <!--  Header Row  -->
-                    <Border
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Binding system" />
+                    <Border Grid.Row="0" Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold" Text="Binding kind" />
                     </Border>
-                    <Border
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="x:Bind" />
+                    <Border Grid.Row="0" Grid.Column="1">
+                        <TextBlock FontWeight="SemiBold" Text="x:Bind" />
                     </Border>
-                    <Border
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Binding" />
+                    <Border Grid.Row="0" Grid.Column="2">
+                        <TextBlock FontWeight="SemiBold" Text="Binding" />
                     </Border>
 
                     <!--  Row 1  -->
-                    <Border
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock
-                            Style="{StaticResource HeaderTextStyle}"
-                            Text="What it is"
-                            Visibility="Collapsed" />
+                    <Border Grid.Row="1" Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold" Text="What it is" Visibility="Collapsed" />
                     </Border>
-                    <Border
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="A performance-optimized binding system with compile-time checks." />
+                    <Border Grid.Row="1" Grid.Column="1">
+                        <TextBlock Text="A performance-optimized binding system with compile-time checks." />
                     </Border>
-                    <Border
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="A flexible data-binding system for UI elements and data sources." />
+                    <Border Grid.Row="1" Grid.Column="2">
+                        <TextBlock Text="A flexible data-binding system for UI elements and data sources." />
                     </Border>
 
                     <!--  Row 2  -->
-                    <Border
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Key features" />
+                    <Border Grid.Row="2" Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold" Text="Key features" />
                     </Border>
-                    <Border
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Style="{StaticResource BorderStyle}">
+                    <Border Grid.Row="2" Grid.Column="1">
                         <TextBlock Padding="8">
                             <TextBlock.Inlines>
                                 <Run Text="- Faster" />
@@ -143,10 +111,7 @@
                             </TextBlock.Inlines>
                         </TextBlock>
                     </Border>
-                    <Border
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Style="{StaticResource BorderStyle}">
+                    <Border Grid.Row="2" Grid.Column="2">
                         <TextBlock Padding="8">
                             <TextBlock.Inlines>
                                 <Run Text="- Dynamic data" />
@@ -157,43 +122,25 @@
                     </Border>
 
                     <!--  Row 3  -->
-                    <Border
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Default data source" />
+                    <Border Grid.Row="3" Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold" Text="Default data source" />
                     </Border>
-                    <Border
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="Property bound directly from code-behind or controls, no DataContext required." />
+                    <Border Grid.Row="3" Grid.Column="1">
+                        <TextBlock Text="Property bound directly from code-behind or controls, no DataContext required." />
                     </Border>
-                    <Border
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="DataContext (or manually set ElementName, Source)." />
+                    <Border Grid.Row="3" Grid.Column="2">
+                        <TextBlock Text="DataContext (or manually set ElementName, Source)." />
                     </Border>
 
                     <!--  Row 4  -->
-                    <Border
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Default binding mode" />
+                    <Border Grid.Row="4" Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold" Text="Default binding mode" />
                     </Border>
-                    <Border
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="OneTime" />
+                    <Border Grid.Row="4" Grid.Column="1">
+                        <TextBlock Text="OneTime" />
                     </Border>
-                    <Border
-                        Grid.Row="4"
-                        Grid.Column="2"
-                        Style="{StaticResource BorderStyle}">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="OneWay" />
+                    <Border Grid.Row="4" Grid.Column="2">
+                        <TextBlock Text="OneWay" />
                     </Border>
                 </Grid>
             </StackPanel>
