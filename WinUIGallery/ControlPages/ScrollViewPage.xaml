@@ -209,6 +209,7 @@
                     <NumberBox x:Name="nbAnimationDuration"
                         Grid.Row="1" Grid.Column="1"
                         Minimum="1000"
+                        Value="1500"
                         Maximum="5000"
                         SpinButtonPlacementMode="Inline"
                         SmallChange="500"
