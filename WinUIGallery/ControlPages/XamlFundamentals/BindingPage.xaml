@@ -9,14 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="SemiBold" />
-        </Style>
-
-        <local:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
-    </Page.Resources>
-
     <StackPanel>
         <Expander
             Margin="0,12,0,0"
@@ -231,7 +223,7 @@
                         Width="100"
                         Height="100"
                         Fill="{ThemeResource SystemFillColorAttentionBrush}"
-                        Visibility="{Binding IsChecked, ElementName=ToggleCheckBox, Converter={StaticResource BoolToVisibility}}" />
+                        Visibility="{Binding IsChecked, ElementName=ToggleCheckBox}" />
                 </StackPanel>
             </core:ControlExample.Example>
         </core:ControlExample>
