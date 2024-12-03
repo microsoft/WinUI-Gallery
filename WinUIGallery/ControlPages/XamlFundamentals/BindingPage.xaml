@@ -179,25 +179,27 @@
         <core:ControlExample HeaderText="Binding to a property in code-behind">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock>Binding a Slider to update the width of a Rectangle.</TextBlock>
-                    <Slider
-                        x:Name="WidthSlider"
-                        Width="300"
-                        Maximum="300"
-                        Minimum="50"
-                        Value="100" />
-                    <Rectangle
-                        Width="{x:Bind WidthSlider.Value, Mode=OneWay}"
-                        Height="50"
-                        Fill="{ThemeResource SystemAccentColor}" />
+                    <TextBlock Text="{x:Bind GreetingMessage}"
+                               FontSize="24"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Slider x:Name="WidthSlider" Minimum="50" Maximum="300" Value="100" Width="300" /&gt;
-&lt;Rectangle Width="{x:Bind WidthSlider.Value, Mode=OneWay}" Height="50" Fill="#088" /&gt;
-        </x:String>
+&lt;TextBlock
+    Text="{x:Bind GreetingMessage}"
+    FontSize="24"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center" /&gt;
+                </x:String>
             </core:ControlExample.Xaml>
+            <core:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// Code-behind
+public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
+                </x:String>
+            </core:ControlExample.CSharp>
         </core:ControlExample>
 
         <core:ControlExample
@@ -292,43 +294,6 @@ public YourPage()
 }
                 </x:String>
             </core:ControlExample.CSharp>
-        </core:ControlExample>
-
-        <core:ControlExample HeaderText="Binding to resources">
-            <core:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock Margin="0,0,0,12" Text="Toggle the theme using the theme switch button in the top right corner." />
-
-                    <StackPanel Orientation="Horizontal" Spacing="8">
-                        <Rectangle
-                            Width="50"
-                            Height="50"
-                            Fill="{StaticResource SystemFillColorAttentionBrush}" />
-                        <Rectangle
-                            Width="50"
-                            Height="50"
-                            Fill="{StaticResource SystemFillColorCautionBrush}" />
-                        <Rectangle
-                            Width="50"
-                            Height="50"
-                            Fill="{ThemeResource SystemFillColorCriticalBrush}" />
-                        <Rectangle
-                            Width="50"
-                            Height="50"
-                            Fill="{ThemeResource SystemFillColorSuccessBrush}" />
-                    </StackPanel>
-                </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;!--Binding Static Resources--&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorAttentionBrush}" /&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{StaticResource SystemFillColorCautionBrush}" /&gt;
-&lt;!--Binding Theme Resources--&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorCriticalBrush}" /&gt;
-&lt;Rectangle Width="50" Height="100" Fill="{ThemeResource SystemFillColorSuccessBrush}" /&gt;
-                </x:String>
-            </core:ControlExample.Xaml>
         </core:ControlExample>
     </StackPanel>
 </Page>

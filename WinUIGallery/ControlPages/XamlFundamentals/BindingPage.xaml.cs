@@ -20,6 +20,8 @@ namespace WinUIGallery.ControlPages
 {
     public sealed partial class BindingPage : Page
     {
+        public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
+
         public ExampleViewModel ViewModel { get; set; }
 
         public BindingPage()
