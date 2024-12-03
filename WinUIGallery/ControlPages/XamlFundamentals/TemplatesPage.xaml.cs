@@ -27,21 +27,21 @@ namespace WinUIGallery.ControlPages
         {
             if (e.AddedItems[0] is RadioButton selectedRadioButton)
             {
-                // Check the content of the selected RadioButton
+                // Check the tag of the selected RadioButton
                 if (selectedRadioButton.Tag.ToString() == "WrapGrid")
                 {
-                    MyListView.ItemsPanel = (ItemsPanelTemplate)this.Resources["WrapGridTemplate"];
+                    MyListView.ItemsPanel = (ItemsPanelTemplate)Resources["WrapGridTemplate"];
                     Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_WrapGrid_xaml");
                 }
                 else if (selectedRadioButton.Tag.ToString() == "StackPanel")
                 {
-                    MyListView.ItemsPanel = (ItemsPanelTemplate)this.Resources["StackPanelTemplate"];
+                    MyListView.ItemsPanel = (ItemsPanelTemplate)Resources["StackPanelTemplate"];
                     Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_StackPanel_xaml");
                 }
             }
         }
 
-        private string ReadSampleCodeFileContent(string sampleCodeFileName)
+        private static string ReadSampleCodeFileContent(string sampleCodeFileName)
         {
             StorageFolder folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
             return File.ReadAllText($"{folder.Path}\\ControlPagesSampleCode\\Templates\\{sampleCodeFileName}.txt");

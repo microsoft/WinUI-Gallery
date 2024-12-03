@@ -106,7 +106,7 @@ namespace WinUIGallery.ControlPages
         }
     }
 
-    public class ExampleViewModel : INotifyPropertyChanged
+    public partial class ExampleViewModel : INotifyPropertyChanged
     {
         private string _title;
         private string _description;
@@ -156,19 +156,6 @@ namespace WinUIGallery.ControlPages
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class BooleanToVisibilityConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            return (Visibility)value == Visibility.Visible;
         }
     }
 }

@@ -24,12 +24,12 @@ namespace WinUIGallery.ControlPages
             ApplyButtonStyle(MyButton);
         }
 
-        private void ApplyButtonStyle(Button myButton)
+        private static void ApplyButtonStyle(Button myButton)
         {
             var buttonStyle = new Style(typeof(Button));
-            buttonStyle.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Microsoft.UI.Colors.LightGreen)));
-            buttonStyle.Setters.Add(new Setter(Button.ForegroundProperty, new SolidColorBrush(Microsoft.UI.Colors.Black)));
-            buttonStyle.Setters.Add(new Setter(Button.FontSizeProperty, 20));
+            buttonStyle.Setters.Add(new Setter(BackgroundProperty, new SolidColorBrush(Microsoft.UI.Colors.LightGreen)));
+            buttonStyle.Setters.Add(new Setter(ForegroundProperty, new SolidColorBrush(Microsoft.UI.Colors.Black)));
+            buttonStyle.Setters.Add(new Setter(FontSizeProperty, 20));
 
             myButton.Style = buttonStyle;
         }

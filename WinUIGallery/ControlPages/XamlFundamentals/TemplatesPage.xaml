@@ -54,7 +54,7 @@
             </StackPanel>
         </Expander>
 
-        <local:ControlExample HeaderText="Customize the look of a TextBox with a `ControlTemplate`" XamlSource="Templates\TemplatesSample1_xaml.txt">
+        <local:ControlExample HeaderText="Customize the look of a TextBox with a ControlTemplate" XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
@@ -94,7 +94,7 @@
         <local:ControlExample
             x:Name="Example2"
             HorizontalContentAlignment="Stretch"
-            HeaderText="Customize an ItemsControl with an `ItemsPanelTemplate`"
+            HeaderText="Customize an ItemsControl with an ItemsPanelTemplate"
             XamlSource="Templates\TemplatesSample2_WrapGrid_xaml.txt">
             <local:ControlExample.Example>
                 <ScrollView>
@@ -142,7 +142,7 @@
             </local:ControlExample.Options>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Customize a ComboBox's `ItemTemplate`" XamlSource="Templates\TemplatesSample3_xaml.txt">
+        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate" XamlSource="Templates\TemplatesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
