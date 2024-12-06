@@ -39,6 +39,8 @@
                 TextTrimming="CharacterEllipsis"
                 TextWrapping="NoWrap" />
             <Button
+                x:Name="APIDetailsBtn"
+                Margin="0,0,0,1"
                 Padding="4"
                 VerticalAlignment="Bottom"
                 AutomationProperties.Name="API details"
