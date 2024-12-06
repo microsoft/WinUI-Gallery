@@ -30,16 +30,68 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Grid.Row="0"
-            AutomationProperties.AutomationId="PageHeader"
-            Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind Item.Title}"
-            TextTrimming="CharacterEllipsis"
-            TextWrapping="NoWrap" />
+        <StackPanel Orientation="Horizontal" Spacing="4">
+            <TextBlock
+                Grid.Row="0"
+                AutomationProperties.AutomationId="PageHeader"
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="{x:Bind Item.Title}"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="NoWrap" />
+            <Button
+                Padding="4"
+                VerticalAlignment="Bottom"
+                AutomationProperties.Name="API details"
+                Style="{StaticResource SubtleButtonStyle}"
+                ToolTipService.ToolTip="Details of the API like inheritance and namespace">
+                <FontIcon FontSize="14" Glyph="&#xE946;" />
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
+                        <StackPanel x:Name="APIPanel" Spacing="16">
+                            <StackPanel
+                                x:Name="APISourcePanel"
+                                Spacing="8"
+                                Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Namespace" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="Consolas"
+                                    IsTextSelectionEnabled="True"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind Item.ApiNamespace}" />
+                            </StackPanel>
+                            <MenuFlyoutSeparator Margin="-12,0,-12,0" />
+                            <StackPanel
+                                x:Name="InheritanceSourcePanel"
+                                Margin="0,0,0,4"
+                                Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Inheritance" />
+                                <BreadcrumbBar IsHitTestVisible="False" ItemsSource="{x:Bind Item.BaseClasses}">
+                                    <BreadcrumbBar.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock
+                                                FontFamily="Consolas"
+                                                Style="{StaticResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind}" />
+                                        </DataTemplate>
+                                    </BreadcrumbBar.ItemTemplate>
+                                </BreadcrumbBar>
+                            </StackPanel>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
         <Grid Grid.Row="1" Margin="0,12,0,12">
             <StackPanel Orientation="Horizontal" Spacing="4">
-
                 <DropDownButton
                     AutomationProperties.Name="Documentation"
                     ToolTipService.ToolTip="Documentation"
@@ -165,57 +217,6 @@
                                     ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
                                     <TextBlock Text="C#" />
                                 </HyperlinkButton>
-                            </StackPanel>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                </DropDownButton>
-                <DropDownButton AutomationProperties.Name="API" ToolTipService.ToolTip="Details of the API like inheritance and namespace">
-                    <DropDownButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <FontIcon FontSize="16" Glyph="&#xE946;" />
-                            <TextBlock Text="API" />
-                        </StackPanel>
-                    </DropDownButton.Content>
-                    <DropDownButton.Flyout>
-                        <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
-                            <StackPanel x:Name="APIPanel" Spacing="16">
-                                <StackPanel
-                                    x:Name="APISourcePanel"
-                                    Spacing="8"
-                                    Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="Namespace" />
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontFamily="Consolas"
-                                        IsTextSelectionEnabled="True"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{x:Bind Item.ApiNamespace}" />
-                                </StackPanel>
-                                <MenuFlyoutSeparator Margin="-12,0,-12,0" />
-                                <StackPanel
-                                    x:Name="InheritanceSourcePanel"
-                                    Margin="0,0,0,4"
-                                    Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="Inheritance" />
-                                    <BreadcrumbBar IsHitTestVisible="False" ItemsSource="{x:Bind Item.BaseClasses}">
-                                        <BreadcrumbBar.ItemTemplate>
-                                            <DataTemplate x:DataType="x:String">
-                                                <TextBlock
-                                                    FontFamily="Consolas"
-                                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                                    Text="{x:Bind}" />
-                                            </DataTemplate>
-                                        </BreadcrumbBar.ItemTemplate>
-                                    </BreadcrumbBar>
-                                </StackPanel>
                             </StackPanel>
                         </Flyout>
                     </DropDownButton.Flyout>
