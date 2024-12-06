@@ -139,7 +139,7 @@
                         Description="An overview of app development options, tools, and samples."
                         Link="https://learn.microsoft.com/windows/apps/get-started/">
                         <local:HeaderTile.Source>
-                            <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
+                            <Image Source="/Assets/HomeHeaderTiles/Header-WinUI.png" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile

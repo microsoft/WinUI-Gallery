@@ -26,29 +26,6 @@
             <RowDefinition Height="*" />
             <!--  NavView  -->
         </Grid.RowDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="TitleBarStates">
-                <VisualState x:Name="Default" />
-                <VisualState x:Name="Compact">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Margin" Value="96,0,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Top">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitleBar.Margin" Value="16,0,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-            <VisualStateGroup x:Name="WindowActivationStates">
-                <VisualState x:Name="Activated" />
-                <VisualState x:Name="Deactivated">
-                    <VisualState.Setters>
-                        <Setter Target="AppTitle.Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
 
         <Border
             x:Name="AppTitleBar"
@@ -60,14 +37,23 @@
             Canvas.ZIndex="1"
             IsHitTestVisible="True">
             <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
-                <Image Width="18" VerticalAlignment="Center" Source="ms-appx:///Assets/Tiles/TitlebarLogo.png" />
+                <Image
+                    Width="18"
+                    VerticalAlignment="Center"
+                    Source="ms-appx:///Assets/Tiles/BadgeLogo.png" />
                 <TextBlock
                     x:Name="AppTitle"
                     Margin="12,0,0,0"
                     VerticalAlignment="Center"
                     Style="{StaticResource CaptionTextBlockStyle}"
                     Text="{x:Bind AppTitleText}" />
-                <TextBox x:Name="AppTitleBarTextBox" MinWidth="300" Height="40" Margin="16,0,0,0" Visibility="Collapsed"  PlaceholderText="Enter any text" /> 
+                <TextBox
+                    x:Name="AppTitleBarTextBox"
+                    Height="40"
+                    MinWidth="300"
+                    Margin="16,0,0,0"
+                    PlaceholderText="Enter any text"
+                    Visibility="Collapsed" />
             </StackPanel>
         </Border>
 
@@ -162,13 +148,13 @@
             Loaded="OnNavigationViewControlLoaded"
             SelectionChanged="OnNavigationViewSelectionChanged">
 
-            <!-- Custom TitleBar with NavigationView L-Pattern Overwriting resources -->
+            <!--  Custom TitleBar with NavigationView L-Pattern Overwriting resources  -->
             <NavigationView.Resources>
-                <!-- This top margin is the height of the custom titleBar -->
+                <!--  This top margin is the height of the custom titleBar  -->
                 <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
                 <Thickness x:Key="NavigationViewMinimalContentMargin">0,48,0,0</Thickness>
                 <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
-                <!-- This is the rounded corner on the Top left of the L Pattern -->
+                <!--  This is the rounded corner on the Top left of the L Pattern  -->
                 <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
             </NavigationView.Resources>
             <NavigationView.AutoSuggestBox>
@@ -211,54 +197,78 @@
                         <FontIcon Glyph="&#xEB3C;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem x:Name="ColorItem" AutomationProperties.AutomationId="Color" Content="Color" Tag="Color">
+                        <NavigationViewItem
+                            x:Name="ColorItem"
+                            AutomationProperties.AutomationId="Color"
+                            Content="Color"
+                            Tag="Color">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE790;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="GeometryItem" AutomationProperties.AutomationId="Geometry" Content="Geometry" Tag="Geometry">
+                        <NavigationViewItem
+                            x:Name="GeometryItem"
+                            AutomationProperties.AutomationId="Geometry"
+                            Content="Geometry"
+                            Tag="Geometry">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE743;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="IconographyItem" AutomationProperties.AutomationId="Iconography" Content="Iconography" Tag="Iconography">
+                        <NavigationViewItem
+                            x:Name="IconographyItem"
+                            AutomationProperties.AutomationId="Iconography"
+                            Content="Iconography"
+                            Tag="Iconography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xED58;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="SpacingItem" AutomationProperties.AutomationId="Spacing" Content="Spacing" Tag="Spacing">
+                        <NavigationViewItem
+                            x:Name="SpacingItem"
+                            AutomationProperties.AutomationId="Spacing"
+                            Content="Spacing"
+                            Tag="Spacing">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8A9;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem x:Name="TypographyItem" AutomationProperties.AutomationId="Typography" Content="Typography" Tag="Typography">
+                        <NavigationViewItem
+                            x:Name="TypographyItem"
+                            AutomationProperties.AutomationId="Typography"
+                            Content="Typography"
+                            Tag="Typography">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE8D2;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                
-                <NavigationViewItem x:Name="AccessibilityItem" AutomationProperties.AutomationId="AccessibilityItem" Content="Accessibility" Tag="Accessibility">
+
+                <NavigationViewItem
+                    x:Name="AccessibilityItem"
+                    AutomationProperties.AutomationId="AccessibilityItem"
+                    Content="Accessibility"
+                    Tag="Accessibility">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE776;" />
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem
-                                    x:Name="AccessibilityScreenReaderPage"
-                                    AutomationProperties.AutomationId="AccessibilityScreenReader"
-                                    Content="Screen reader support"
-                                    Tag="AccessibilityScreenReader" />
+                            x:Name="AccessibilityScreenReaderPage"
+                            AutomationProperties.AutomationId="AccessibilityScreenReader"
+                            Content="Screen reader support"
+                            Tag="AccessibilityScreenReader" />
                         <NavigationViewItem
-                                    x:Name="AccessibilityKeyboardPage"
-                                    AutomationProperties.AutomationId="AccessibilityKeyboard"
-                                    Content="Keyboard support"
-                                    Tag="AccessibilityKeyboard" />
+                            x:Name="AccessibilityKeyboardPage"
+                            AutomationProperties.AutomationId="AccessibilityKeyboard"
+                            Content="Keyboard support"
+                            Tag="AccessibilityKeyboard" />
                         <NavigationViewItem
-                                    x:Name="AccessibilityContrastPage"
-                                    AutomationProperties.AutomationId="AccessibilityColorContrast"
-                                    Content="Color contrast"
-                                    Tag="AccessibilityColorContrast" />
+                            x:Name="AccessibilityContrastPage"
+                            AutomationProperties.AutomationId="AccessibilityColorContrast"
+                            Content="Color contrast"
+                            Tag="AccessibilityColorContrast" />
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
@@ -269,5 +279,28 @@
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
         </NavigationView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="TitleBarStates">
+                <VisualState x:Name="Default" />
+                <VisualState x:Name="Compact">
+                    <VisualState.Setters>
+                        <Setter Target="AppTitleBar.Margin" Value="96,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Top">
+                    <VisualState.Setters>
+                        <Setter Target="AppTitleBar.Margin" Value="16,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="WindowActivationStates">
+                <VisualState x:Name="Activated" />
+                <VisualState x:Name="Deactivated">
+                    <VisualState.Setters>
+                        <Setter Target="AppTitle.Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
