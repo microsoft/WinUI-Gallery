@@ -43,7 +43,7 @@
             <local:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <StackPanel.Resources>
-                        <Style x:Key="CustomButtonStyle" TargetType="Button">
+                        <Style x:Key="CustomButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
                             <Setter Property="Background" Value="DarkBlue" />
                             <Setter Property="Foreground" Value="White" />
                             <Setter Property="FontSize" Value="16" />
