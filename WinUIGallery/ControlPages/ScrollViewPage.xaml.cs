@@ -11,6 +11,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
@@ -20,7 +21,8 @@ namespace WinUIGallery.ControlPages
 {
     public sealed partial class ScrollViewPage : Page
     {
-        private double prvAnimationDuration;
+        // Cache for storing Example3 C# sample code content
+        private readonly Dictionary<string, string> _example3CodeCache = new();
 
         public ScrollViewPage()
         {
@@ -47,9 +49,6 @@ namespace WinUIGallery.ControlPages
                 NumberRounder = rounder
             };
             nbZoomFactor.NumberFormatter = formatter;
-
-            Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
-            prvAnimationDuration = nbAnimationDuration.Value;
 
             this.Loaded -= ScrollViewPage_Loaded;
         }
@@ -266,40 +265,55 @@ namespace WinUIGallery.ControlPages
 
         private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ComboBox combo)
-            {
-                switch (combo.SelectedIndex)
-                {
-                    case 0:
-                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_DefaultAnimation_cs");
-                        break;
-                    case 1:
-                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_AccordionAnimation_cs");
-                        break;
-                    case 2:
-                        Example3.CSharp = ReadSampleCodeFileContent("ScrollViewSample3_TeleportationAnimation_cs");
-                        break;
-                }
-        
-                if (nbAnimationDuration != null)
-                {
-                    Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
-                }
-        
-                Example3.UpdateLayout();
-            }
+            UpdateExample3Content();
         }
 
         private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
         {
-            Example3.CSharp = Example3.CSharp.Replace(prvAnimationDuration.ToString(),nbAnimationDuration.Value.ToString());
-            prvAnimationDuration = nbAnimationDuration.Value;
+            UpdateExample3Content();
         }
 
-        private string ReadSampleCodeFileContent(string sampleCodeFileName)
+        private void UpdateExample3Content()
         {
-            StorageFolder folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            return File.ReadAllText($"{folder.Path}\\ControlPagesSampleCode\\ScrollView\\{sampleCodeFileName}.txt");
+            string sampleCodeFileName = null;
+
+            switch (cmbVerticalAnimation.SelectedIndex)
+            {
+                case 0:
+                    sampleCodeFileName = "ScrollViewSample3_DefaultAnimation_cs";
+                    break;
+                case 1:
+                    sampleCodeFileName = "ScrollViewSample3_AccordionAnimation_cs";
+                    break;
+                case 2:
+                    sampleCodeFileName = "ScrollViewSample3_TeleportationAnimation_cs";
+                    break;
+                default:
+                    sampleCodeFileName = null;
+                    break;
+            }
+
+            if (sampleCodeFileName != null)
+            {
+                Example3.CSharp = GetExample3CodeContent(sampleCodeFileName);
+
+                if (nbAnimationDuration != null)
+                {
+                    Example3.CSharp = Example3.CSharp.Replace("nbAnimationDuration.Value", nbAnimationDuration.Value.ToString());
+                }
+            }
+        }
+
+        // Method to get sample code content (with caching)
+        private string GetExample3CodeContent(string sampleCodeFileName)
+        {
+            if (!_example3CodeCache.TryGetValue(sampleCodeFileName, out var content))
+            {
+                var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+                content = File.ReadAllText($"{folder.Path}\\ControlPagesSampleCode\\ScrollView\\{sampleCodeFileName}.txt");
+                _example3CodeCache[sampleCodeFileName] = content; // Cache the content
+            }
+            return content;
         }
     }
 }

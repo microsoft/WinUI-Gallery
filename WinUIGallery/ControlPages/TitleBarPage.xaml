@@ -143,7 +143,14 @@
                     </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
-
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!--UIElement set as titlebar--&gt;
+&lt;Border x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top"&gt;
+    &lt;TextBlock x:Name="AppTitle" Text="{StaticResource AppTitleName}" VerticalAlignment="Top" Margin="0,8,0,0" /&gt;
+&lt;/Border&gt;
+            </x:String>
+            </local:ControlExample.Xaml>
         </local:ControlExample>
         <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
                               CSharpSource="Window\TitleBar\TitleBarSample3.txt">
