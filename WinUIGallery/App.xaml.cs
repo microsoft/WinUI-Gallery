@@ -24,6 +24,8 @@ using WASDK = Microsoft.WindowsAppSDK;
 using System.Text;
 using Windows.System;
 using System.Runtime.InteropServices;
+using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 using static WinUIGallery.Win32;
 
 namespace WinUIGallery
@@ -84,6 +86,7 @@ namespace WinUIGallery
         public App()
         {
             this.InitializeComponent();
+            this.UnhandledException += HandleExceptions;
 
 #if WINUI_PRERELEASE
             this.Suspending += OnSuspending;
@@ -269,6 +272,28 @@ namespace WinUIGallery
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
+
+        /// <summary>
+        /// Prevents the app from crashing when a exception gets thrown and notifies the user.
+        /// </summary>
+        /// <param name="sender">The app as an object.</param>
+        /// <param name="e">Details about the exception.</param>
+        private void HandleExceptions(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true; //Don't crash the app.
+
+            //Create the notification.
+            var notification = new AppNotificationBuilder()
+                .AddText("An exception was thrown.")
+                .AddText($"Type: {e.Exception.GetType()}")
+                .AddText($"Message: {e.Message}\r\n" +
+                         $"HResult: {e.Exception.HResult}")
+                .BuildNotification();
+
+            //Show the notification
+            AppNotificationManager.Default.Show(notification);
+        }
+
 
 #if WINUI_PRERELEASE
         /// <summary>

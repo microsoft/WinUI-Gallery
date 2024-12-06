@@ -172,24 +172,28 @@
 
                     <!-- using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
                     <Grid x:DefaultBindMode="OneWay" Grid.Row="1">
-                        <controls:SampleCodePresenter
-                            x:Name="XamlPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind Xaml}"
-                            SampleType="XAML"
-                            CodeSourceFile="{x:Bind XamlSource}"
-                            Substitutions="{x:Bind Substitutions}"
-                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
-                        <controls:SampleCodePresenter
-                            x:Name="CSharpPresenter"
-                            Visibility="Collapsed"
-                            Code="{x:Bind CSharp}"
-                            SampleType="CSharp"
-                            CodeSourceFile="{x:Bind CSharpSource}"
-                            Substitutions="{x:Bind Substitutions}"
-                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"/>
+                        <ContentPresenter x:Name="XamlContentPresenter"
+                                          Visibility="Collapsed">
+                            <controls:SampleCodePresenter
+                                x:Name="XamlPresenter"
+                                Code="{x:Bind Xaml}"
+                                SampleType="XAML"
+                                CodeSourceFile="{x:Bind XamlSource}"
+                                Substitutions="{x:Bind Substitutions}"
+                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}" />
+                        </ContentPresenter>
+                        <ContentPresenter x:Name="CSharpContentPresenter"
+                                          Visibility="Collapsed">
+                            <controls:SampleCodePresenter
+                                x:Name="CSharpPresenter"
+                                Code="{x:Bind CSharp}"
+                                SampleType="CSharp"
+                                CodeSourceFile="{x:Bind CSharpSource}"
+                                Substitutions="{x:Bind Substitutions}"
+                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}" />
+                        </ContentPresenter>
                     </Grid>
                 </Grid>
             </muxc:Expander>

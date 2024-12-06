@@ -1,0 +1,28 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "Code": {
+                "type": "string",
+                "description": "Glyph code",
+                "uniqueItems": true
+            },
+            "Name": {
+                "type": "string",
+                "description": "Name of the glyph",
+                "uniqueItems": true
+            },
+            "Tags": {
+                "type": "array",
+                "description": "Array of tags related to this glyph",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "required": ["Code", "Name"]
+    }
+}
