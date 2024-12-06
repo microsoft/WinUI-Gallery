@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Page
-    x:Class="WinUIGallery.ControlPages.BindingPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:core="using:WinUIGallery"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery.ControlPages"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+<Page x:Class="WinUIGallery.ControlPages.BindingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:core="using:WinUIGallery"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUIGallery.ControlPages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
 
     <StackPanel>
-        <Expander
-            Margin="0,12,0,0"
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Left"
-            Header="Understanding binding in WinUI 3">
+        <Expander Margin="0,12,0,0"
+                  HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Left"
+                  Header="Understanding binding in WinUI 3">
             <StackPanel Spacing="12">
                 <RichTextBlock>
                     <Paragraph FontWeight="SemiBold">Key concepts:</Paragraph>
@@ -30,19 +28,20 @@
                     <Paragraph FontWeight="SemiBold">{x:Bind} and {Binding} feature comparison</Paragraph>
                     <Paragraph>
                         <Run Text="The following table highlights a few differences between" />
-                        <Run FontFamily="Consolas" Text="x:Bind" />
+                        <Run FontFamily="Consolas"
+                             Text="x:Bind" />
                         <Run Text="and" />
-                        <Run FontFamily="Consolas" Text="Binding" />.
+                        <Run FontFamily="Consolas"
+                             Text="Binding" /> .
                         <Run Text="Go to" />
                         <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>
                         <Run Text="for a full list." />
                     </Paragraph>
                 </RichTextBlock>
 
-                <Grid
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1,1,1,0">
+                <Grid Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                      BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                      BorderThickness="1,1,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -57,42 +56,60 @@
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
-                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            <Setter Property="BorderBrush"
+                                    Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+                            <Setter Property="BorderThickness"
+                                    Value="0,0,0,1" />
                         </Style>
                         <Style TargetType="TextBlock">
-                            <Setter Property="Padding" Value="8"/>
-                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="Padding"
+                                    Value="8" />
+                            <Setter Property="TextWrapping"
+                                    Value="Wrap" />
                         </Style>
                     </Grid.Resources>
 
                     <!--  Header Row  -->
-                    <Border Grid.Row="0" Grid.Column="0">
-                        <TextBlock FontWeight="SemiBold" Text="Binding kind" />
+                    <Border Grid.Row="0"
+                            Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="Binding kind" />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="1">
-                        <TextBlock FontWeight="SemiBold" Text="x:Bind" />
+                    <Border Grid.Row="0"
+                            Grid.Column="1">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="x:Bind" />
                     </Border>
-                    <Border Grid.Row="0" Grid.Column="2">
-                        <TextBlock FontWeight="SemiBold" Text="Binding" />
+                    <Border Grid.Row="0"
+                            Grid.Column="2">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="Binding" />
                     </Border>
 
                     <!--  Row 1  -->
-                    <Border Grid.Row="1" Grid.Column="0">
-                        <TextBlock FontWeight="SemiBold" Text="What it is" Visibility="Collapsed" />
+                    <Border Grid.Row="1"
+                            Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="What it is"
+                                   Visibility="Collapsed" />
                     </Border>
-                    <Border Grid.Row="1" Grid.Column="1">
+                    <Border Grid.Row="1"
+                            Grid.Column="1">
                         <TextBlock Text="A performance-optimized binding system with compile-time checks." />
                     </Border>
-                    <Border Grid.Row="1" Grid.Column="2">
+                    <Border Grid.Row="1"
+                            Grid.Column="2">
                         <TextBlock Text="A flexible data-binding system for UI elements and data sources." />
                     </Border>
 
                     <!--  Row 2  -->
-                    <Border Grid.Row="2" Grid.Column="0">
-                        <TextBlock FontWeight="SemiBold" Text="Key features" />
+                    <Border Grid.Row="2"
+                            Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="Key features" />
                     </Border>
-                    <Border Grid.Row="2" Grid.Column="1">
+                    <Border Grid.Row="2"
+                            Grid.Column="1">
                         <TextBlock Padding="8">
                             <TextBlock.Inlines>
                                 <Run Text="- Faster" />
@@ -103,7 +120,8 @@
                             </TextBlock.Inlines>
                         </TextBlock>
                     </Border>
-                    <Border Grid.Row="2" Grid.Column="2">
+                    <Border Grid.Row="2"
+                            Grid.Column="2">
                         <TextBlock Padding="8">
                             <TextBlock.Inlines>
                                 <Run Text="- Dynamic data" />
@@ -114,24 +132,32 @@
                     </Border>
 
                     <!--  Row 3  -->
-                    <Border Grid.Row="3" Grid.Column="0">
-                        <TextBlock FontWeight="SemiBold" Text="Default data source" />
+                    <Border Grid.Row="3"
+                            Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="Default data source" />
                     </Border>
-                    <Border Grid.Row="3" Grid.Column="1">
+                    <Border Grid.Row="3"
+                            Grid.Column="1">
                         <TextBlock Text="Property bound directly from code-behind or controls, no DataContext required." />
                     </Border>
-                    <Border Grid.Row="3" Grid.Column="2">
+                    <Border Grid.Row="3"
+                            Grid.Column="2">
                         <TextBlock Text="DataContext (or manually set ElementName, Source)." />
                     </Border>
 
                     <!--  Row 4  -->
-                    <Border Grid.Row="4" Grid.Column="0">
-                        <TextBlock FontWeight="SemiBold" Text="Default binding mode" />
+                    <Border Grid.Row="4"
+                            Grid.Column="0">
+                        <TextBlock FontWeight="SemiBold"
+                                   Text="Default binding mode" />
                     </Border>
-                    <Border Grid.Row="4" Grid.Column="1">
+                    <Border Grid.Row="4"
+                            Grid.Column="1">
                         <TextBlock Text="OneTime" />
                     </Border>
-                    <Border Grid.Row="4" Grid.Column="2">
+                    <Border Grid.Row="4"
+                            Grid.Column="2">
                         <TextBlock Text="OneWay" />
                     </Border>
                 </Grid>
@@ -141,17 +167,15 @@
         <core:ControlExample HeaderText="Binding between controls">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBox
-                        x:Name="SourceTextBox"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        PlaceholderText="Enter text here" />
-                    <TextBox
-                        x:Name="TargetTextBox"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        PlaceholderText="Mirrors above text"
-                        Text="{x:Bind SourceTextBox.Text, Mode=OneWay}" />
+                    <TextBox x:Name="SourceTextBox"
+                             Width="200"
+                             HorizontalAlignment="Left"
+                             PlaceholderText="Enter text here" />
+                    <TextBox x:Name="TargetTextBox"
+                             Width="200"
+                             HorizontalAlignment="Left"
+                             PlaceholderText="Mirrors above text"
+                             Text="{x:Bind SourceTextBox.Text, Mode=OneWay}" />
                     <RichTextBlock x:Name="BindingModeDescription" />
                 </StackPanel>
             </core:ControlExample.Example>
@@ -162,17 +186,17 @@
         </x:String>
             </core:ControlExample.Xaml>
             <core:ControlExample.Options>
-                <RadioButtons
-                    x:Name="BindingModeGroup"
-                    Header="Select binding mode"
-                    SelectedIndex="0"
-                    SelectionChanged="BindingModeGroup_SelectionChanged">
+                <RadioButtons x:Name="BindingModeGroup"
+                              Header="Select binding mode"
+                              SelectedIndex="0"
+                              SelectionChanged="BindingModeGroup_SelectionChanged">
                     <x:String>OneWay</x:String>
                     <x:String>TwoWay</x:String>
                 </RadioButtons>
             </core:ControlExample.Options>
             <core:ControlExample.Substitutions>
-                <core:ControlExampleSubstitution Key="BindingMode" Value="{x:Bind BindingModeGroup.SelectedItem, Mode=OneWay}" />
+                <core:ControlExampleSubstitution Key="BindingMode"
+                                                 Value="{x:Bind BindingModeGroup.SelectedItem, Mode=OneWay}" />
             </core:ControlExample.Substitutions>
         </core:ControlExample>
 
@@ -202,42 +226,46 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             </core:ControlExample.CSharp>
         </core:ControlExample>
 
-        <core:ControlExample
-            CSharpSource="Binding\BindingSample3_csharp.txt"
-            HeaderText="Using a function in x:Bind"
-            XamlSource="Binding\BindingSample3_xaml.txt">
+        <core:ControlExample HeaderText="Using a function in x:Bind"
+                             CSharpSource="Binding\BindingSample3_csharp.txt"
+                             XamlSource="Binding\BindingSample3_xaml.txt">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <DatePicker x:Name="DatePickerControl" Header="Select a date" />
+                    <DatePicker x:Name="DatePickerControl"
+                                Header="Select a date" />
                     <TextBlock Text="{x:Bind FormatDate(DatePickerControl.SelectedDate), Mode=OneWay}" />
                 </StackPanel>
             </core:ControlExample.Example>
         </core:ControlExample>
 
-        <core:ControlExample
-            CSharpSource="Binding\BindingSample4_csharp.txt"
-            HeaderText="Using a converter in Binding"
-            XamlSource="Binding\BindingSample4_xaml.txt">
+        <core:ControlExample HeaderText="Using a converter in Binding"
+                             CSharpSource="Binding\BindingSample4_csharp.txt"
+                             XamlSource="Binding\BindingSample4_xaml.txt">
             <core:ControlExample.Example>
                 <StackPanel>
-                    <CheckBox x:Name="ToggleCheckBox" Content="Show rectangle" />
-                    <Rectangle
-                        Width="100"
-                        Height="100"
-                        Fill="{ThemeResource SystemFillColorAttentionBrush}"
-                        Visibility="{Binding IsChecked, ElementName=ToggleCheckBox}" />
+                    <CheckBox x:Name="ToggleCheckBox"
+                              Content="Show rectangle" />
+                    <Rectangle Width="100"
+                               Height="100"
+                               Fill="{ThemeResource SystemFillColorAttentionBrush}"
+                               Visibility="{Binding IsChecked, ElementName=ToggleCheckBox}" />
                 </StackPanel>
             </core:ControlExample.Example>
         </core:ControlExample>
 
-        <core:ControlExample CSharpSource="Binding\BindingSample5_csharp.txt" HeaderText="Binding to a view model">
+        <core:ControlExample HeaderText="Binding to a view model"
+                             CSharpSource="Binding\BindingSample5_csharp.txt">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock FontWeight="SemiBold" Text="Title:" />
-                    <TextBlock FontSize="16" Text="{Binding Title}" />
+                    <TextBlock FontWeight="SemiBold"
+                               Text="Title:" />
+                    <TextBlock FontSize="16"
+                               Text="{Binding Title}" />
 
-                    <TextBlock FontWeight="SemiBold" Text="Description:" />
-                    <TextBlock FontSize="16" Text="{Binding Description}" />
+                    <TextBlock FontWeight="SemiBold"
+                               Text="Description:" />
+                    <TextBlock FontSize="16"
+                               Text="{Binding Description}" />
                 </StackPanel>
             </core:ControlExample.Example>
             <core:ControlExample.Xaml>
@@ -250,18 +278,16 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
                 </x:String>
             </core:ControlExample.Xaml>
         </core:ControlExample>
-        <InfoBar
-            Title="MVVM Toolkit"
-            Margin="0,8,0,0"
-            IsClosable="False"
-            IsOpen="True"
-            Message="There is a library called the MVVM Toolkit, part of the Windows Community Toolkit, designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
-            Severity="Informational">
+        <InfoBar Title="MVVM Toolkit"
+                 Margin="0,8,0,0"
+                 IsClosable="False"
+                 IsOpen="True"
+                 Message="There is a library called the MVVM Toolkit, part of the Windows Community Toolkit, designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
+                 Severity="Informational">
             <InfoBar.ActionButton>
-                <HyperlinkButton
-                    x:Name="mvvmToolkitSampleAppHyperlinkButton"
-                    Content="Go to the MVVM Toolkit repository"
-                    NavigateUri="https://github.com/CommunityToolkit/MVVM-Samples" />
+                <HyperlinkButton x:Name="mvvmToolkitSampleAppHyperlinkButton"
+                                 Content="Go to the MVVM Toolkit repository"
+                                 NavigateUri="https://github.com/CommunityToolkit/MVVM-Samples" />
             </InfoBar.ActionButton>
         </InfoBar>
 
