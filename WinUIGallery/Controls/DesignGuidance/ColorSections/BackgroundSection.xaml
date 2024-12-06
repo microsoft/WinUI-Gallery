@@ -17,14 +17,14 @@
         <designguidance:ColorPageExample
             Title="Card Background"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used to create 'cards' - content blocks that live on page and layer backgrounds">
+            Description="Used to create 'cards' - content blocks that live on page and layer backgrounds.">
             <Border
                 Width="60"
                 Height="30"
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="4" />
+                CornerRadius="{StaticResource ControlCornerRadius}" />
         </designguidance:ColorPageExample>
         <Grid Style="{StaticResource GalleryTileGridStyle}">
             <Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
             <designguidance:ColorTile
                 Background="{ThemeResource SmokeFillColorDefaultBrush}"
                 ColorBrushName="SmokeFillColorDefaultBrush"
-                ColorExplanation="Dims backgrounds behind dialogs"
+                ColorExplanation="Dims the background behind dialogs"
                 ColorName="Smoke / Default"
                 ColorValue="#000000 (4D, 30%) " />
         </Grid>
@@ -88,7 +88,7 @@
         <designguidance:ColorPageExample
             Title="Layer"
             Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-            Description="Used on background colors of any material to create layering">
+            Description="Used on background colors of any material to create layering.">
             <Grid
                 Width="120"
                 Height="40"
@@ -232,7 +232,7 @@
                 Background="{ThemeResource GalleryBackgroundBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1"
-                CornerRadius="4" />
+                CornerRadius="{StaticResource ControlCornerRadius}" />
         </designguidance:ColorPageExample>
 
         <Grid Style="{StaticResource GalleryTileGridStyle}">
