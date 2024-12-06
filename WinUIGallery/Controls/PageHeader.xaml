@@ -10,6 +10,7 @@
     xmlns:data="using:WinUIGallery.Data"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
     <UserControl.Resources>
