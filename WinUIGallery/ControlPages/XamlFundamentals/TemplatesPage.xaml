@@ -19,41 +19,39 @@
     </Page.Resources>
 
     <StackPanel>
-        <Expander
-            Margin="0,12,0,0"
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Left"
-            Header="Understanding and using templates in WinUI 3">
-            <StackPanel Spacing="12">
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">Where can you create templates?</Paragraph>
-                    <Paragraph>You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused.</Paragraph>
-                </RichTextBlock>
+        <StackPanel Spacing="12"
+                    Margin="0,12,0,0">
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">Where can you create templates?</Paragraph>
+                <Paragraph>You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused.</Paragraph>
+            </RichTextBlock>
 
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
-                    <Paragraph>- Templates allow you to redefine how a control is built visually while keeping its behavior intact.</Paragraph>
-                    <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
-                    <Paragraph>- Types of templates:</Paragraph>
-                    <Paragraph>
-                        <Run Text="    -" />
-                        <Run FontWeight="SemiBold" Text="ControlTemplate" />
-                        <Run Text="customizes the structure of a control." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="    -" />
-                        <Run FontWeight="SemiBold" Text="ItemsPanelTemplate" />
-                        <Run Text="defines how a collection of items is laid out." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="    -" />
-                        <Run FontWeight="SemiBold" Text="DataTemplate" />
-                        <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
-                    </Paragraph>
-                </RichTextBlock>
-            </StackPanel>
-        </Expander>
-
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
+                <Paragraph>- Templates allow you to redefine how a control is built visually while keeping its behavior intact.</Paragraph>
+                <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
+                <Paragraph>- Types of templates:</Paragraph>
+                <Paragraph>
+                    <Run Text="    -" />
+                    <Run FontWeight="SemiBold"
+                         Text="ControlTemplate" />
+                    <Run Text="customizes the structure of a control." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="    -" />
+                    <Run FontWeight="SemiBold"
+                         Text="ItemsPanelTemplate" />
+                    <Run Text="defines how a collection of items is laid out." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="    -" />
+                    <Run FontWeight="SemiBold"
+                         Text="DataTemplate" />
+                    <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+        
         <local:ControlExample HeaderText="Customize the look of a TextBox with a ControlTemplate" XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>

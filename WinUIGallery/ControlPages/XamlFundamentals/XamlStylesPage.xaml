@@ -9,35 +9,30 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <Expander
-            Margin="0,12,0,0"
-            HorizontalAlignment="Stretch"
-            HorizontalContentAlignment="Left"
-            Header="Organizing and applying XAML styles effectively">
-            <StackPanel Spacing="12">
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">Where can you create XAML styles?</Paragraph>
-                    <Paragraph>The placement of styles is the same as other resources: app-level, page-level, control-level.</Paragraph>
-                </RichTextBlock>
+        <StackPanel Spacing="12"
+                    Margin="0,12,0,0">
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">Where can you create XAML styles?</Paragraph>
+                <Paragraph>The placement of styles is the same as other resources: app-level, page-level, control-level.</Paragraph>
+            </RichTextBlock>
 
-                <RichTextBlock>
-                    <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
-                    <Paragraph>
-                        <Run Text="-" />
-                        <Run FontWeight="SemiBold" Text="Styles" />
-                        <Run Text="are reusable collections of property settings for a specific control type." />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="- Use a" />
-                        <Run FontWeight="SemiBold" Text="keyed style" />
-                        <Run Text="for explicit application or an" />
-                        <Run FontWeight="SemiBold" Text="implicit style" />
-                        <Run Text="for automatic application to all controls of a type." />
-                    </Paragraph>
-                    <Paragraph>- Styles improve maintainability, consistency, and reduce repetition in your XAML code.</Paragraph>
-                </RichTextBlock>
-            </StackPanel>
-        </Expander>
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
+                <Paragraph>
+                    <Run Text="-" />
+                    <Run FontWeight="SemiBold" Text="Styles" />
+                    <Run Text="are reusable collections of property settings for a specific control type." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="- Use a" />
+                    <Run FontWeight="SemiBold" Text="keyed style" />
+                    <Run Text="for explicit application or an" />
+                    <Run FontWeight="SemiBold" Text="implicit style" />
+                    <Run Text="for automatic application to all controls of a type." />
+                </Paragraph>
+                <Paragraph>- Styles improve maintainability, consistency, and reduce repetition in your XAML code.</Paragraph>
+            </RichTextBlock>
+        </StackPanel>
 
         <local:ControlExample HeaderText="Creating and applying a style" XamlSource="XamlStyles\XamlStylesSample1_xaml.txt">
             <local:ControlExample.Example>
