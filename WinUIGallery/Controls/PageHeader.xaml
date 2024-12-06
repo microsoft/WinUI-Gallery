@@ -33,7 +33,6 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
             <TextBlock
-                Grid.Row="0"
                 AutomationProperties.AutomationId="PageHeader"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{x:Bind Item.Title}"
@@ -46,8 +45,8 @@
                 VerticalAlignment="Bottom"
                 AutomationProperties.Name="API details"
                 Style="{StaticResource SubtleButtonStyle}"
-                ToolTipService.ToolTip="Details of the API like inheritance and namespace">
-                <FontIcon FontSize="14" Glyph="&#xE946;" />
+                ToolTipService.ToolTip="API details like inheritance and namespace">
+                <FontIcon FontSize="16" Glyph="&#xE946;" />
                 <Button.Flyout>
                     <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
                         <StackPanel x:Name="APIPanel" Spacing="16">
@@ -68,10 +67,7 @@
                                     Text="{x:Bind Item.ApiNamespace}" />
                             </StackPanel>
                             <MenuFlyoutSeparator Margin="-12,0,-12,0" />
-                            <StackPanel
-                                x:Name="InheritanceSourcePanel"
-                                Margin="0,0,0,4"
-                                Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
+                            <StackPanel x:Name="InheritanceSourcePanel" Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     Foreground="{ThemeResource TextFillColorSecondaryBrush}"
