@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="WinUIGallery.SamplePages.SampleOverlappedPresenterWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery.SamplePages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ToggleSwitch Header="HasBorder" IsOn="{x:Bind HasBorder, Mode=TwoWay}"/>
+        <ToggleSwitch Header="HasTitleBar" IsOn="{x:Bind HasTitleBar, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsAlwaysOnTop" IsOn="{x:Bind IsAlwaysOnTop, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsMaximizable" IsOn="{x:Bind IsMaximizable, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsMinimizable" IsOn="{x:Bind IsMinimizable, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsModal" IsOn="{x:Bind IsModal, Mode=TwoWay}"/>
+        <ToggleSwitch Header="IsResizable" IsOn="{x:Bind IsResizable, Mode=TwoWay}"/>
+
+        <ToggleButton Click="ToggleButton_Click" HorizontalAlignment="Center" Margin="0,20">ExtendsContentIntoTitleBar</ToggleButton>
+    </StackPanel>
+</Window>
