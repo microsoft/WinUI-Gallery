@@ -39,7 +39,6 @@
     <Content Include="Assets\ControlImages\ConnectedAnimation.png" />
     <Content Include="Assets\ControlImages\ContentDialog.png" />
     <Content Include="Assets\ControlImages\CreateMultipleWindows.png" />
-    <Content Include="Assets\ControlImages\DataGrid.png" />
     <Content Include="Assets\ControlImages\DatePicker.png" />
     <Content Include="Assets\ControlImages\DropDownButton.png" />
     <Content Include="Assets\ControlImages\EasingFunction.png" />
