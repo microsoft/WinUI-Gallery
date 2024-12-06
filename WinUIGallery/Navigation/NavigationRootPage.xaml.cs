@@ -357,17 +357,9 @@ namespace WinUIGallery
                 {
                     Navigate(typeof(ItemPage), "AccessibilityColorContrast");
                 }
-                else if (selectedItem == ResourcesPage)
+                else if (selectedItem == XamlResourcesPage)
                 {
-                    Navigate(typeof(ItemPage), "Resources");
-                }
-                else if (selectedItem == ResourceDictionaryPage)
-                {
-                    Navigate(typeof(ItemPage), "ResourceDictionary");
-                }
-                else if (selectedItem == ThemeResourcesPage)
-                {
-                    Navigate(typeof(ItemPage), "ThemeResources");
+                    Navigate(typeof(ItemPage), "XamlResources");
                 }
                 else if (selectedItem == XamlStylesPage)
                 {

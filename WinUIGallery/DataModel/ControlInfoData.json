@@ -185,47 +185,25 @@
       "Folder": "XamlFundamentals",
       "Items": [
         {
-          "UniqueId": "Resources",
-          "Title": "Resources",
-          "Subtitle": "Reusable definitions for values like colors, brushes, and objects.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML resources in WinUI 3 are reusable objects that you can define in XAML and use throughout your application. These resources allow you to share values like colors, brushes, fonts, or strings in multiple places without repeating them. Resources help you maintain consistency and make your app easier to update. For example, if you use the same color in many places, defining it as a resource means you can change it in one place to update all its uses.",
-          "Docs": [
-            {
-              "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
-            }
-          ]
-        },
-        {
-          "UniqueId": "ResourceDictionary",
-          "Title": "ResourceDictionary",
-          "Subtitle": "A container for organizing and managing reusable XAML resources.",
+          "UniqueId": "XamlResources",
+          "Title": "XAML resources",
+          "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
           "BaseClasses": [
             "Object",
             "DependencyObject"
           ],
           "ApiNamespace": "Microsoft.UI.Xaml",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "A ResourceDictionary in WinUI 3 is a container for organizing and storing reusable resources like colors, brushes, strings, or other objects. It helps keep your code clean, consistent, and manageable by grouping related resources together. Resources defined in a dictionary can be reused across your app without duplication, making it easier to maintain and update.",
+          "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
           "Docs": [
+            {
+              "Title": "ResourceDictionary and XAML resource references",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
+            },
             {
               "Title": "ResourceDictionary - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
             },
-            {
-              "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
-            }
-          ]
-        },
-        {
-          "UniqueId": "ThemeResources",
-          "Title": "Theme resources",
-          "Subtitle": "Dynamic resources adapting to Light or Dark themes in XAML.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML theme resources in WinUI 3 are special types of resources that automatically adapt to the app's current theme (like light or dark). Unlike StaticResource, theme resources update their values when the theme changes, making them ideal for building apps that look good in different themes without manual updates.",
-          "Docs": [
             {
               "Title": "XAML theme resources",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"

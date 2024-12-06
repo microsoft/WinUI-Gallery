@@ -278,20 +278,10 @@
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.MenuItems>
                         <NavigationViewItem
-                                    x:Name="ResourcesPage"
-                                    AutomationProperties.AutomationId="Resources"
-                                    Content="Resources"
-                                    Tag="Resources" />
-                        <NavigationViewItem
-                                    x:Name="ResourceDictionaryPage"
-                                    AutomationProperties.AutomationId="ResourceDictionary"
-                                    Content="ResourceDictionary"
-                                    Tag="ResourceDictionary" />
-                        <NavigationViewItem
-                                    x:Name="ThemeResourcesPage"
-                                    AutomationProperties.AutomationId="ThemeResources"
-                                    Content="Theme resources"
-                                    Tag="ThemeResources" />
+                                    x:Name="XamlResourcesPage"
+                                    AutomationProperties.AutomationId="XamlResources"
+                                    Content="XAML resources"
+                                    Tag="XamlResources" />
                         <NavigationViewItem
                                     x:Name="XamlStylesPage"
                                     AutomationProperties.AutomationId="XamlStyles"

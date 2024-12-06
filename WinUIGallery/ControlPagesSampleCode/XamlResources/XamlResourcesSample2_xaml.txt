@@ -1,0 +1,53 @@
+﻿<!-- App.xaml -->
+<Application ...>
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Define application-wide resources -->
+            <x:Double x:Key="HeaderFontSize">24</x:Double>
+            <Color x:Key="AccentColor">#4CAF50</Color>
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+            <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
+
+            <!-- Link external ResourceDictionary -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
+<!-- Colors.xaml -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Define external resources -->
+    <Color x:Key="SecondaryColor">#2196F3</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+</ResourceDictionary>
+
+<!-- YourPage.xaml -->
+<Page ...>
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- Define page-specific resources -->
+            <x:String x:Key="WelcomeMessage">Welcome to this page</x:String>
+            <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <StackPanel Spacing="8">
+        <!-- Using application-level resources -->
+        <Grid Background="{StaticResource AccentBrush}">
+            <TextBlock Text="{StaticResource AppTitle}" Foreground="White" FontSize="{StaticResource HeaderFontSize}" />
+        </Grid>
+
+        <!-- Using page-level resources -->
+        <Grid Background="{StaticResource PageBackgroundBrush}">
+            <TextBlock Text="{StaticResource WelcomeMessage}" FontSize="20" Foreground="Black" />
+        </Grid>
+
+        <!-- Using external ResourceDictionary resources -->
+        <Grid Background="{StaticResource SecondaryBrush}">
+            <TextBlock Text="Using colors from ResourceDictionary" FontSize="16" Foreground="White" />
+        </Grid>
+    </StackPanel>
+</Page>

@@ -1,0 +1,38 @@
+﻿<!-- App.xaml -->
+<Application>
+    <Application.Resources>
+        <!-- Define an application-wide color resource -->
+        <Color x:Key="PrimaryColor">#FF5733</Color>
+    </Application.Resources>
+</Application>
+
+<!-- YourPage.xaml -->
+<Page>
+    <Page.Resources>
+        <!-- Define page-level solid color brushes -->
+        <SolidColorBrush x:Key="HighlightBrush" Color="#2196F3" />
+        <SolidColorBrush x:Key="FontColor" Color="White" />
+    </Page.Resources>
+
+    <StackPanel Spacing="8">
+        <!-- Grid using the application-level resource 'PrimaryColor' -->
+        <Grid Background="{StaticResource PrimaryColor}">
+            <TextBlock Text="Using application-level resources" Foreground="White" FontSize="24" />
+        </Grid>
+
+        <!-- Grid using the page-level resource 'HighlightBrush' -->
+        <Grid Background="{StaticResource HighlightBrush}">
+            <TextBlock Text="Using page-level resources" Foreground="{StaticResource FontColor}" FontSize="24" />
+        </Grid>
+
+        <!-- Grid with control-level resources defined within the Grid's Resources -->
+        <Grid x:Name="newGrid">
+            <Grid.Resources>
+                <!-- Define control-level resources for font size and text -->
+                <x:Double x:Key="HeaderFontSize">24</x:Double>
+                <x:String x:Key="Description">Using control-level resources</x:String>
+            </Grid.Resources>
+            <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{StaticResource Description}" />
+        </Grid>
+    </StackPanel>
+</Page>
