@@ -1,43 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Page x:Class="WinUIGallery.ControlPages.XamlResourcesPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:WinUIGallery"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="WinUIGallery.ControlPages.XamlResourcesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <Color x:Key="PrimaryColor">#FF5733</Color>
-        <SolidColorBrush x:Key="HighlightBrush"
-                         Color="#1464A2" />
-        <SolidColorBrush x:Key="FontColor"
-                         Color="White" />
+        <SolidColorBrush x:Key="HighlightBrush" Color="#1464A2" />
+        <SolidColorBrush x:Key="FontColor" Color="White" />
 
         <x:Double x:Key="HeaderFontSize">24</x:Double>
         <Color x:Key="AccentColor">#4CAF50</Color>
-        <SolidColorBrush x:Key="AccentBrush"
-                         Color="{StaticResource AccentColor}" />
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
         <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
 
         <x:String x:Key="WelcomeMessage">Welcome to this page</x:String>
-        <SolidColorBrush x:Key="PageBackgroundBrush"
-                         Color="#E8EAF6" />
+        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
 
         <Color x:Key="SecondaryColor">#2196F3</Color>
-        <SolidColorBrush x:Key="SecondaryBrush"
-                         Color="{StaticResource SecondaryColor}" />
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock Text="Creating and using XAML resources"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
-                   Margin="0 12" />
+        <TextBlock
+            Margin="0,12"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Creating and using XAML resources" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
-                    <Run FontWeight="SemiBold"
-                         Text="Where can you create XAML resources?" />
+                    <Run FontWeight="SemiBold" Text="Where can you create XAML resources?" />
                 </Paragraph>
                 <Paragraph>1. App-level: define resources globally, accessible throughout the application.</Paragraph>
                 <Paragraph>2. Page-level: define resources that are specific to a particular page.</Paragraph>
@@ -48,14 +44,11 @@
                 <Paragraph FontWeight="SemiBold">How to create and use XAML resources?</Paragraph>
                 <Paragraph>
                     <Run Text="You define XAML Resources using the" />
-                    <Run FontFamily="Consolas"
-                         Text="ResourceDictionary" />
+                    <Run FontFamily="Consolas" Text="ResourceDictionary" />
                     <Run Text="element. The important parts are" />
-                    <Run FontWeight="SemiBold"
-                         Text="the resource's key" />
+                    <Run FontWeight="SemiBold" Text="the resource's key" />
                     <Run Text="(a unique identifier) and" />
-                    <Run FontWeight="SemiBold"
-                         Text="the value" />
+                    <Run FontWeight="SemiBold" Text="the value" />
                     <Run Text="(like a color or brush)." />
                 </Paragraph>
             </RichTextBlock>
@@ -66,30 +59,29 @@
                 <Paragraph>- Scope: define resources at the narrowest scope possible to improve maintainability.</Paragraph>
                 <Paragraph>
                     <Run Text="- Access: use" />
-                    <Run FontFamily="Consolas"
-                         Text="{}{StaticResource Key}" />
+                    <Run FontFamily="Consolas" Text="{}{StaticResource Key}" />
                     <Run Text="in XAML for most cases, and" />
-                    <Run FontFamily="Consolas"
-                         Text="Resources[&quot;Key&quot;]" />
+                    <Run FontFamily="Consolas" Text="Resources[&quot;Key&quot;]" />
                     <Run Text="in C# for runtime access." />
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
 
-        <local:ControlExample XamlSource="XamlResources\XamlResourcesSample1_xaml.txt"
-                              CSharpSource="XamlResources\XamlResourcesSample1_csharp.txt">
+        <local:ControlExample CSharpSource="XamlResources\XamlResourcesSample1_csharp.txt" XamlSource="XamlResources\XamlResourcesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <Grid Background="{StaticResource PrimaryColor}">
-                        <TextBlock Text="Using application-level resources"
-                                   Foreground="White"
-                                   FontSize="24" />
+                        <TextBlock
+                            FontSize="24"
+                            Foreground="White"
+                            Text="Using application-level resources" />
                     </Grid>
 
                     <Grid Background="{StaticResource HighlightBrush}">
-                        <TextBlock Text="Using page-level resources"
-                                   Foreground="{StaticResource FontColor}"
-                                   FontSize="24" />
+                        <TextBlock
+                            FontSize="24"
+                            Foreground="{StaticResource FontColor}"
+                            Text="Using page-level resources" />
                     </Grid>
 
                     <Grid x:Name="newGrid">
@@ -97,30 +89,28 @@
                             <x:Double x:Key="HeaderFontSize">24</x:Double>
                             <x:String x:Key="Description">Using control-level resources</x:String>
                         </Grid.Resources>
-                        <TextBlock FontSize="{StaticResource HeaderFontSize}"
-                                   Text="{StaticResource Description}" />
+                        <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{StaticResource Description}" />
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock Text="Resource dictionaries"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
-                   Margin="0 16 0 12" />
+        <TextBlock
+            Margin="0,16,0,12"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Resource dictionaries" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Where can you create a resource dictionary?</Paragraph>
                 <Paragraph>
                     <Run Text="1. Inline (app-level): define it in" />
-                    <Run FontFamily="Consolas"
-                         Text="App.xaml" />
+                    <Run FontFamily="Consolas" Text="App.xaml" />
                     <Run Text="to make resources globally available across the entire app." />
                 </Paragraph>
                 <Paragraph>2. Inline (page-level): define it in a specific page to limit the scope to that page.</Paragraph>
                 <Paragraph>
                     <Run Text="3. Standalone file: define it in a separate" />
-                    <Run FontFamily="Consolas"
-                         Text=".xaml" />
+                    <Run FontFamily="Consolas" Text=".xaml" />
                     <Run Text="file to organize resources and reuse them in different parts of your app." />
                 </Paragraph>
             </RichTextBlock>
@@ -137,36 +127,38 @@
             <local:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <Grid Background="{StaticResource AccentBrush}">
-                        <TextBlock Text="{StaticResource AppTitle}"
-                                   Foreground="White"
-                                   FontSize="{StaticResource HeaderFontSize}" />
+                        <TextBlock
+                            FontSize="{StaticResource HeaderFontSize}"
+                            Foreground="White"
+                            Text="{StaticResource AppTitle}" />
                     </Grid>
 
                     <Grid Background="{StaticResource PageBackgroundBrush}">
-                        <TextBlock Text="{StaticResource WelcomeMessage}"
-                                   FontSize="20"
-                                   Foreground="Black" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="{StaticResource WelcomeMessage}" />
                     </Grid>
 
                     <Grid Background="{StaticResource SecondaryBrush}">
-                        <TextBlock Text="Using colors from ResourceDictionary"
-                                   FontSize="16"
-                                   Foreground="White" />
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="White"
+                            Text="Using colors from ResourceDictionary" />
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock Text="Theme resources"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
-                   Margin="0 16 0 12" />
+        <TextBlock
+            Margin="0,16,0,12"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Theme resources" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
-                    WinUI 3 includes built-in theme resources for commonly used colors. For a better understanding, visit the
-                    <Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
-                    in this app.
-                </Paragraph>
+                    WinUI 3 includes built-in theme resources for commonly used colors. For a better understanding, visit the<Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
+                    in this app.</Paragraph>
             </RichTextBlock>
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Where can you create theme resources?</Paragraph>
@@ -177,85 +169,78 @@
                 <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
                 <Paragraph>
                     <Run Text="- Use" />
-                    <Run FontWeight="SemiBold"
-                         Text="ThemeResource" />
+                    <Run FontWeight="SemiBold" Text="ThemeResource" />
                     <Run Text="for dynamic theme-based updates." />
                 </Paragraph>
                 <Paragraph>- Place theme resources globally, on pages, or in specific controls, depending on the scope.</Paragraph>
                 <Paragraph>
                     <Run Text="- Define" />
-                    <Run FontWeight="SemiBold"
-                         Text="ThemeDictionaries" />
+                    <Run FontWeight="SemiBold" Text="ThemeDictionaries" />
                     <Run Text="to provide different values for light and dark themes." />
                 </Paragraph>
                 <Paragraph>- Always provide a fallback value to ensure compatibility with undefined themes.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 
-        <local:ControlExample HeaderText="StaticResource versus ThemeResource"
-                              XamlSource="XamlResources\XamlResourcesSample3_xaml.txt">
+        <local:ControlExample HeaderText="StaticResource versus ThemeResource" XamlSource="XamlResources\XamlResourcesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel>
-                    <TextBlock Margin="0,0,0,16"
-                               Text="Toggle the theme using the theme switch button in the top right corner." />
+                    <TextBlock Margin="0,0,0,16" Text="Toggle the theme using the theme switch button in the top right corner." />
 
                     <Grid Background="{StaticResource SolidBackgroundFillColorBaseBrush}">
-                        <TextBlock FontSize="16"
-                                   Foreground="{StaticResource TextFillColorPrimaryBrush}"
-                                   Text="StaticResource uses the value defined when the app starts and does not update when the theme changes."
-                                   TextWrapping="Wrap" />
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="{StaticResource TextFillColorPrimaryBrush}"
+                            Text="StaticResource uses the value defined when the app starts and does not update when the theme changes."
+                            TextWrapping="Wrap" />
                     </Grid>
 
                     <Grid Background="{ThemeResource SolidBackgroundFillColorBaseBrush}">
-                        <TextBlock FontSize="16"
-                                   Foreground="{ThemeResource TextFillColorPrimaryBrush}"
-                                   Text="ThemeResource adapts automatically to the current theme. If the app switches from light to dark, the color defined by ThemeResource changes."
-                                   TextWrapping="Wrap" />
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                            Text="ThemeResource adapts automatically to the current theme. If the app switches from light to dark, the color defined by ThemeResource changes."
+                            TextWrapping="Wrap" />
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define a new theme resource"
-                              XamlSource="XamlResources\XamlResourcesSample4_xaml.txt">
+        <local:ControlExample HeaderText="Define a new theme resource" XamlSource="XamlResources\XamlResourcesSample4_xaml.txt">
             <local:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock Margin="0,0,0,12"
-                               Text="Toggle the theme using the theme switch button in the top right corner." />
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Toggle the theme using the theme switch button in the top right corner." />
                     <Grid>
                         <Grid.Resources>
                             <ResourceDictionary>
                                 <ResourceDictionary.ThemeDictionaries>
                                     <ResourceDictionary x:Key="Default">
-                                        <SolidColorBrush x:Key="BackgroundBrush"
-                                                         Color="#EEE" />
-                                        <SolidColorBrush x:Key="TextBrush"
-                                                         Color="#333" />
+                                        <SolidColorBrush x:Key="BackgroundBrush" Color="#EEE" />
+                                        <SolidColorBrush x:Key="TextBrush" Color="#333" />
                                         <x:String x:Key="ThemeString">Light theme</x:String>
                                         <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Light_Image.png</ImageSource>
                                     </ResourceDictionary>
                                     <ResourceDictionary x:Key="Dark">
-                                        <SolidColorBrush x:Key="BackgroundBrush"
-                                                         Color="#333" />
-                                        <SolidColorBrush x:Key="TextBrush"
-                                                         Color="#EEE" />
+                                        <SolidColorBrush x:Key="BackgroundBrush" Color="#333" />
+                                        <SolidColorBrush x:Key="TextBrush" Color="#EEE" />
                                         <x:String x:Key="ThemeString">Dark theme</x:String>
                                         <ImageSource x:Key="ImageSource">ms-appx:///Assets/SampleMedia/Dark_Image.png</ImageSource>
                                     </ResourceDictionary>
                                 </ResourceDictionary.ThemeDictionaries>
                             </ResourceDictionary>
                         </Grid.Resources>
-                        <Grid MaxWidth="700"
-                              Padding="8"
-                              Background="{ThemeResource BackgroundBrush}">
-                            <StackPanel HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
-                                <TextBlock Foreground="{ThemeResource TextBrush}"
-                                           Style="{StaticResource SubtitleTextBlockStyle}"
-                                           Text="{ThemeResource ThemeString}" />
-                                <Image Source="{ThemeResource ImageSource}" />
-                            </StackPanel>
-                        </Grid>
+                        <StackPanel
+                            MaxWidth="700"
+                            Padding="8"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="{ThemeResource BackgroundBrush}">
+                            <TextBlock
+                                Foreground="{ThemeResource TextBrush}"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                Text="{ThemeResource ThemeString}" />
+                            <Image Source="{ThemeResource ImageSource}" />
+                        </StackPanel>
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Example>
