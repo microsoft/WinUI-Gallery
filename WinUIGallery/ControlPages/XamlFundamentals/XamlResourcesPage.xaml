@@ -26,10 +26,9 @@
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock
-            Margin="0,12"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Creating and using XAML resources" />
+        <TextBlock Text="Creating and using XAML resources"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   Margin="0 12" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
@@ -95,10 +94,9 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock
-            Margin="0,16,0,12"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Resource dictionaries" />
+        <TextBlock Text="Resource dictionaries"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   Margin="0 16 0 12" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Where can you create a resource dictionary?</Paragraph>
