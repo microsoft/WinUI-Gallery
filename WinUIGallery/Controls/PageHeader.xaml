@@ -45,7 +45,7 @@
                 VerticalAlignment="Bottom"
                 AutomationProperties.Name="API details"
                 Style="{StaticResource SubtleButtonStyle}"
-                ToolTipService.ToolTip="API details like inheritance and namespace">
+                ToolTipService.ToolTip="API namespace and inheritance">
                 <FontIcon FontSize="16" Glyph="&#xE946;" />
                 <Button.Flyout>
                     <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
