@@ -30,7 +30,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock Text="Creating and using XAML resources in WinUI 3"
+        <TextBlock Text="Creating and using XAML resources"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    Margin="0 12" />
         <StackPanel Spacing="12">
@@ -104,7 +104,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock Text="Understanding and using resource dictionaries in WinUI 3"
+        <TextBlock Text="Resource dictionaries"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    Margin="0 16 0 12" />
         <StackPanel Spacing="12">
@@ -157,7 +157,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock Text="Understanding theme resources in WinUI 3"
+        <TextBlock Text="Theme resources"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    Margin="0 16 0 12" />
         <StackPanel Spacing="12">
