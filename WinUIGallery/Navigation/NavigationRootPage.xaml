@@ -280,7 +280,7 @@
                         <NavigationViewItem
                                     x:Name="XamlResourcesPage"
                                     AutomationProperties.AutomationId="XamlResources"
-                                    Content="XAML resources"
+                                    Content="Resources"
                                     Tag="XamlResources" />
                         <NavigationViewItem
                                     x:Name="XamlStylesPage"
