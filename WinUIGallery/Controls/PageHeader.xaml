@@ -46,7 +46,7 @@
                 AutomationProperties.Name="API details"
                 Style="{StaticResource SubtleButtonStyle}"
                 ToolTipService.ToolTip="API namespace and inheritance">
-                <FontIcon FontSize="16" Glyph="&#xE946;" />
+                <FontIcon FontSize="14" Glyph="&#xE946;" />
                 <Button.Flyout>
                     <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
                         <StackPanel x:Name="APIPanel" Spacing="16">
@@ -66,7 +66,7 @@
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{x:Bind Item.ApiNamespace}" />
                             </StackPanel>
-                            <MenuFlyoutSeparator Margin="-12,0,-12,0" />
+                            <MenuFlyoutSeparator Margin="-12" />
                             <StackPanel x:Name="InheritanceSourcePanel" Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
                                 <TextBlock
                                     VerticalAlignment="Center"
