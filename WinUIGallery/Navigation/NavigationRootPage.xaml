@@ -285,7 +285,7 @@
                         <NavigationViewItem
                                     x:Name="XamlStylesPage"
                                     AutomationProperties.AutomationId="XamlStyles"
-                                    Content="XAML styles"
+                                    Content="Styles"
                                     Tag="XamlStyles" />
                         <NavigationViewItem
                                     x:Name="BindingPage"
