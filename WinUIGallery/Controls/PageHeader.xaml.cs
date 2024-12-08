@@ -91,5 +91,13 @@ namespace WinUIGallery.DesktopWap.Controls
         {
              await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && Item.BaseClasses == null))
+            {
+                APIDetailsBtn.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
