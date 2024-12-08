@@ -272,6 +272,34 @@
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
+                <NavigationViewItem x:Name="XamlFundamentalsItem" AutomationProperties.AutomationId="XamlFundamentalsItem" Content="XAML fundamentals" Tag="XamlFundamentals">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE943;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                                    x:Name="XamlResourcesPage"
+                                    AutomationProperties.AutomationId="XamlResources"
+                                    Content="XAML resources"
+                                    Tag="XamlResources" />
+                        <NavigationViewItem
+                                    x:Name="XamlStylesPage"
+                                    AutomationProperties.AutomationId="XamlStyles"
+                                    Content="XAML styles"
+                                    Tag="XamlStyles" />
+                        <NavigationViewItem
+                                    x:Name="BindingPage"
+                                    AutomationProperties.AutomationId="Binding"
+                                    Content="Binding"
+                                    Tag="Binding" />
+                        <NavigationViewItem
+                                    x:Name="TemplatesPage"
+                                    AutomationProperties.AutomationId="Templates"
+                                    Content="Templates"
+                                    Tag="Templates" />
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                
                 <NavigationViewItem
                     x:Name="AllControlsItem"
                     Content="All samples"
