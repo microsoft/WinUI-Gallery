@@ -23,7 +23,7 @@
                     Margin="0,12,0,0">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Where can you create templates?</Paragraph>
-                <Paragraph>You can define templates at the app, page, or control level, just like styles and resources. The placement depends on where and how you want the template to be reused.</Paragraph>
+                <Paragraph>Templates can be defined at the app, page, or control level, similar to styles and resources. The placement is determined by the intended scope and reuse of the template.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
