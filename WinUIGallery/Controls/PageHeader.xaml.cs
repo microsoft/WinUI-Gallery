@@ -2,10 +2,12 @@
 // Licensed under the MIT License.
 
 using System;
-using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Data;
+using WinUIGallery.Helper;
 using Uri = System.Uri;
 
 namespace WinUIGallery.DesktopWap.Controls
@@ -43,8 +45,8 @@ namespace WinUIGallery.DesktopWap.Controls
             // Pagetype is not null!
             // So lets generate the github links and set them!
             var pageName = PageName + ".xaml";
-            PageCodeGitHubLink.NavigateUri = new Uri(BaseUri + pageName + ".cs");
             PageMarkupGitHubLink.NavigateUri = new Uri(BaseUri + pageName);
+            PageCodeGitHubLink.NavigateUri = new Uri(BaseUri + pageName + ".cs");
         }
 
         public void SetControlSourceLink(string BaseUri, string SourceLink)
@@ -63,11 +65,11 @@ namespace WinUIGallery.DesktopWap.Controls
 
         private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
         {
-            this.CopyLinkAction?.Invoke();
+            CopyLinkAction?.Invoke();
 
             if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
             {
-                this.CopyLinkButtonTeachingTip.IsOpen = true;
+                CopyLinkButtonTeachingTip.IsOpen = true;
             }
         }
 
@@ -80,16 +82,58 @@ namespace WinUIGallery.DesktopWap.Controls
         private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
         {
             ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
-            this.CopyLinkButtonTeachingTip.IsOpen = false;
+            CopyLinkButtonTeachingTip.IsOpen = false;
         }
 
         private void OnCopyLink()
         {
-            ProtocolActivationClipboardHelper.Copy(this.Item);
+            ProtocolActivationClipboardHelper.Copy(Item);
         }
+
         public async void OnFeedBackButtonClick(object sender, RoutedEventArgs e)
         {
              await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
+        }
+
+        [GeneratedComInterface]
+        [Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
+        [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        public partial interface IDataTransferManagerInterop
+        {
+            IntPtr GetForWindow(in IntPtr appWindow, in Guid riid);
+            void ShowShareUIForWindow(IntPtr appWindow);
+        }
+
+        private static Guid _dtm_iid =
+            new(0xa5caee9b, 0x8708, 0x49d1, 0x8d, 0x36, 0x67, 0xd2, 0x5a, 0x8d, 0xa0, 0x0c);
+
+        public void ShareButton_Click(object sender, RoutedEventArgs e)
+        {
+            // https://learn.microsoft.com/windows/apps/develop/ui-input/display-ui-objects#for-classes-that-implement-idatatransfermanagerinterop
+
+            return; // CODE DOESN'T WORK -- GetWindowHandle(this) -- 'this' should equal MainWindow.Xaml.cs
+
+            // Retrieve the window handle (HWND) of the current WinUI 3 window.
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+            IDataTransferManagerInterop interop =
+            Windows.ApplicationModel.DataTransfer.DataTransferManager.As
+                <IDataTransferManagerInterop>();
+
+            IntPtr result = interop.GetForWindow(hWnd, riid: in _dtm_iid);
+            var dataTransferManager = WinRT.MarshalInterface
+                <Windows.ApplicationModel.DataTransfer.DataTransferManager>.FromAbi(result);
+
+            dataTransferManager.DataRequested += (sender, args) =>
+            {
+                args.Request.Data.Properties.Title = "In a desktop app...";
+                args.Request.Data.SetText("...display WinRT UI objects that depend on CoreWindow.");
+                args.Request.Data.RequestedOperation =
+                    Windows.ApplicationModel.DataTransfer.DataPackageOperation.Copy;
+            };
+
+            // Show the Share UI
+            interop.ShowShareUIForWindow(hWnd);
         }
     }
 }
