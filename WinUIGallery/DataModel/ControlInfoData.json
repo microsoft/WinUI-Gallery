@@ -186,7 +186,7 @@
       "Items": [
         {
           "UniqueId": "XamlResources",
-          "Title": "XAML resources",
+          "Title": "Resources",
           "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
           "BaseClasses": [
             "Object",

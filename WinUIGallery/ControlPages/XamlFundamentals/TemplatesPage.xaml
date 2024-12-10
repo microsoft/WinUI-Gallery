@@ -22,13 +22,13 @@
         <StackPanel Spacing="12"
                     Margin="0,12,0,0">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Where can you create templates?</Paragraph>
+                <Paragraph FontWeight="SemiBold">Placement of Templates:</Paragraph>
                 <Paragraph>Templates can be defined at the app, page, or control level, similar to styles and resources. The placement is determined by the intended scope and reuse of the template.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
-                <Paragraph>- Templates allow you to redefine how a control is built visually while keeping its behavior intact.</Paragraph>
+                <Paragraph>- Templates allow the visual structure of a control to be redefined while keeping its behavior intact.</Paragraph>
                 <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
                 <Paragraph>- Types of templates:</Paragraph>
                 <Paragraph>
