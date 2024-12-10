@@ -11,7 +11,7 @@
         {
           "UniqueId": "Color",
           "Title": "Color",
-          "Subtitle": "Color is a powerful tool for creating visual interest and conveying information.",
+          "Subtitle": "Balanced color design creates clarity and aesthetic harmony.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
           "Docs": [
             {
@@ -31,7 +31,7 @@
         {
           "UniqueId": "Geometry",
           "Title": "Geometry",
-          "Subtitle": "Clear shapes and consistent layouts ensure visual coherence.",
+          "Subtitle": "Clear geometric design ensures visual coherence and structure.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Shape.png",
           "Docs": [
             {
@@ -47,7 +47,7 @@
         {
           "UniqueId": "Iconography",
           "Title": "Iconography",
-          "Subtitle": "Icons are a visual language that can be used to communicate information quickly and effectively.",
+          "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
           "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
             {
@@ -63,7 +63,7 @@
         {
           "UniqueId": "Spacing",
           "Title": "Spacing",
-          "Subtitle": " Thoughtful spacing enhances readability and reduces visual clutter.",
+          "Subtitle": "Thoughtful spacing design enhances readability and flow.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
           "Docs": [
             {
@@ -75,7 +75,7 @@
         {
           "UniqueId": "Typography",
           "Title": "Typography",
-          "Subtitle": "Intuitive fonts and hierarchy guide attention effortlessly.",
+          "Subtitle": "Typography design guides attention with intuitive fonts and hierarchy.",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
           "ImagePath": "ms-appx:///Assets/ControlImages/TextBlock.png",
           "Docs": [
@@ -104,7 +104,7 @@
         {
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color Contrast",
-          "Subtitle": "A balanced palette creates clarity and aesthetic harmony.",
+          "Subtitle": "High contrast design ensures accessibility for all users.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
@@ -120,7 +120,7 @@
         {
           "UniqueId": "AccessibilityKeyboard",
           "Title": "Keyboard Navigation",
-          "Subtitle": "Seamless navigation for efficient keyboard interactions.",
+          "Subtitle": "Keyboard-friendly design enables seamless interactions.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
@@ -160,7 +160,7 @@
         {
           "UniqueId": "AccessibilityScreenReader",
           "Title": "Screen Reader",
-          "Subtitle": "Inclusive design with meaningful content for assistive technologies",
+          "Subtitle": "Inclusive design ensures meaningful content for assistive technologies.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
