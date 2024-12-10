@@ -9,158 +9,33 @@
       mc:Ignorable="d">
 
     <StackPanel>
-
         <StackPanel Spacing="12"
                     Margin="0,12,0,0">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key concepts:</Paragraph>
-                <Paragraph>1. Target: the property of a control that you want to bind to (e.g. Text, Background, Visibility).</Paragraph>
-                <Paragraph>2. Source: the data you are binding to, like a property in a class, another control, or a static resource.</Paragraph>
-                <Paragraph>3. Binding modes:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Key Concepts:</Paragraph>
+                <Paragraph>1. Target: The property of a control to which data is bound (e.g., Text, Background, Visibility).</Paragraph>
+                <Paragraph>2. Source: The data being bound, such as a property in a class, another control, or a static resource.</Paragraph>
+                <Paragraph>3. Binding Modes:</Paragraph>
                 <Paragraph xml:space="preserve">    - OneWay updates the target when the source changes.</Paragraph>
                 <Paragraph xml:space="preserve">    - TwoWay updates both the target and the source.</Paragraph>
-                <Paragraph xml:space="preserve">    - OneTime sets the target once and doesn't update afterward.</Paragraph>
+                <Paragraph xml:space="preserve">    - OneTime sets the target once and does not update afterward.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">{x:Bind} and {Binding} feature comparison</Paragraph>
                 <Paragraph>
-                    <Run Text="The following table highlights a few differences between" />
+                    <Run Text="Learn more about the differences between" />
                     <Run FontFamily="Consolas"
                          Text="x:Bind" />
                     <Run Text="and" />
                     <Run FontFamily="Consolas"
-                         Text="Binding" /> .
-                    <Run Text="Go to" />
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>
-                    <Run Text="for a full list." />
+                         Text="Binding" />
+                    <Run Text="by visiting" />
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
+                        Microsoft Learn
+                    </Hyperlink> .
                 </Paragraph>
             </RichTextBlock>
-
-            <Grid Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                  BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                  BorderThickness="1,1,1,0"
-                  MaxWidth="1024"
-                  HorizontalAlignment="Left">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-                <Grid.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="BorderBrush"
-                                Value="{ThemeResource CardStrokeColorDefaultBrush}" />
-                        <Setter Property="BorderThickness"
-                                Value="0,0,0,1" />
-                    </Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Padding"
-                                Value="8" />
-                        <Setter Property="TextWrapping"
-                                Value="Wrap" />
-                    </Style>
-                </Grid.Resources>
-
-                <!--  Header Row  -->
-                <Border Grid.Row="0"
-                        Grid.Column="0">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="Binding kind" />
-                </Border>
-                <Border Grid.Row="0"
-                        Grid.Column="1">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="x:Bind" />
-                </Border>
-                <Border Grid.Row="0"
-                        Grid.Column="2">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="Binding" />
-                </Border>
-
-                <!--  Row 1  -->
-                <Border Grid.Row="1"
-                        Grid.Column="0">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="What it is"
-                               Visibility="Collapsed" />
-                </Border>
-                <Border Grid.Row="1"
-                        Grid.Column="1">
-                    <TextBlock Text="A performance-optimized binding system with compile-time checks." />
-                </Border>
-                <Border Grid.Row="1"
-                        Grid.Column="2">
-                    <TextBlock Text="A flexible data-binding system for UI elements and data sources." />
-                </Border>
-
-                <!--  Row 2  -->
-                <Border Grid.Row="2"
-                        Grid.Column="0">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="Key features" />
-                </Border>
-                <Border Grid.Row="2"
-                        Grid.Column="1">
-                    <TextBlock Padding="8">
-                        <TextBlock.Inlines>
-                            <Run Text="- Faster" />
-                            <LineBreak />
-                            <Run Text="- Compile-time checked" />
-                            <LineBreak />
-                            <Run Text="- Simplified syntax (strongly typed)" />
-                        </TextBlock.Inlines>
-                    </TextBlock>
-                </Border>
-                <Border Grid.Row="2"
-                        Grid.Column="2">
-                    <TextBlock Padding="8">
-                        <TextBlock.Inlines>
-                            <Run Text="- Dynamic data" />
-                            <LineBreak />
-                            <Run Text="- Runtime-based, no compile-time checks" />
-                        </TextBlock.Inlines>
-                    </TextBlock>
-                </Border>
-
-                <!--  Row 3  -->
-                <Border Grid.Row="3"
-                        Grid.Column="0">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="Default data source" />
-                </Border>
-                <Border Grid.Row="3"
-                        Grid.Column="1">
-                    <TextBlock Text="Property bound directly from code-behind or controls, no DataContext required." />
-                </Border>
-                <Border Grid.Row="3"
-                        Grid.Column="2">
-                    <TextBlock Text="DataContext (or manually set ElementName, Source)." />
-                </Border>
-
-                <!--  Row 4  -->
-                <Border Grid.Row="4"
-                        Grid.Column="0">
-                    <TextBlock FontWeight="SemiBold"
-                               Text="Default binding mode" />
-                </Border>
-                <Border Grid.Row="4"
-                        Grid.Column="1">
-                    <TextBlock Text="OneTime" />
-                </Border>
-                <Border Grid.Row="4"
-                        Grid.Column="2">
-                    <TextBlock Text="OneWay" />
-                </Border>
-            </Grid>
         </StackPanel>
         
         <core:ControlExample HeaderText="Binding between controls">
