@@ -39,14 +39,14 @@
                 <Paragraph>
                     <Run Text="    -" />
                     <Run FontWeight="SemiBold"
-                         Text="ItemsPanelTemplate" />
-                    <Run Text="defines how a collection of items is laid out." />
+                         Text="DataTemplate" />
+                    <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="    -" />
                     <Run FontWeight="SemiBold"
-                         Text="DataTemplate" />
-                    <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
+                         Text="ItemsPanelTemplate" />
+                    <Run Text="defines how a collection of items is laid out." />
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
@@ -88,11 +88,39 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
+        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate" XamlSource="Templates\TemplatesSample2_xaml.txt">
+            <local:ControlExample.Example>
+                <Grid>
+                    <Grid.Resources>
+                        <DataTemplate x:Key="CustomComboBoxItemTemplate">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Ellipse
+                                    Width="8"
+                                    Height="8"
+                                    Fill="{ThemeResource AccentFillColorDefaultBrush}" />
+                                <TextBlock Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Grid.Resources>
+                    <ComboBox
+                        Header="Options"
+                        ItemTemplate="{StaticResource CustomComboBoxItemTemplate}"
+                        SelectedIndex="0">
+                        <ComboBox.Items>
+                            <x:String>Option 1</x:String>
+                            <x:String>Option 2</x:String>
+                            <x:String>Option 3</x:String>
+                        </ComboBox.Items>
+                    </ComboBox>
+                </Grid>
+            </local:ControlExample.Example>
+        </local:ControlExample>
+
         <local:ControlExample
-            x:Name="Example2"
+            x:Name="Example3"
             HorizontalContentAlignment="Stretch"
             HeaderText="Customize an ItemsControl with an ItemsPanelTemplate"
-            XamlSource="Templates\TemplatesSample2_WrapGrid_xaml.txt">
+            XamlSource="Templates\TemplatesSample3_WrapGrid_xaml.txt">
             <local:ControlExample.Example>
                 <ScrollView>
                     <ListView
@@ -137,34 +165,6 @@
                     <RadioButton Content="StackPanel" Tag="StackPanel" />
                 </RadioButtons>
             </local:ControlExample.Options>
-        </local:ControlExample>
-
-        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate" XamlSource="Templates\TemplatesSample3_xaml.txt">
-            <local:ControlExample.Example>
-                <Grid>
-                    <Grid.Resources>
-                        <DataTemplate x:Key="CustomComboBoxItemTemplate">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Ellipse
-                                    Width="8"
-                                    Height="8"
-                                    Fill="{ThemeResource AccentFillColorDefaultBrush}" />
-                                <TextBlock Text="{Binding}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </Grid.Resources>
-                    <ComboBox
-                        Header="Options"
-                        ItemTemplate="{StaticResource CustomComboBoxItemTemplate}"
-                        SelectedIndex="0">
-                        <ComboBox.Items>
-                            <x:String>Option 1</x:String>
-                            <x:String>Option 2</x:String>
-                            <x:String>Option 3</x:String>
-                        </ComboBox.Items>
-                    </ComboBox>
-                </Grid>
-            </local:ControlExample.Example>
         </local:ControlExample>
     </StackPanel>
 </Page>

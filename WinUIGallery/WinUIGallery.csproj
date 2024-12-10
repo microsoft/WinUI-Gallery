@@ -292,9 +292,6 @@
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Templates\TemplatesSample2_StackPanel_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Templates\TemplatesSample2_WrapGrid_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Templates\TemplatesSample3_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
         <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
@@ -485,9 +482,9 @@
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_StackPanel_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_WrapGrid_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_StackPanel_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_WrapGrid_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample3_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample4_xaml.txt" />

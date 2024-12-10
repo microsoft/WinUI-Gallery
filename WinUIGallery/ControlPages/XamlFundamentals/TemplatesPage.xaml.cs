@@ -31,12 +31,12 @@ namespace WinUIGallery.ControlPages
                 if (selectedRadioButton.Tag.ToString() == "WrapGrid")
                 {
                     MyListView.ItemsPanel = (ItemsPanelTemplate)Resources["WrapGridTemplate"];
-                    Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_WrapGrid_xaml");
+                    Example3.Xaml = ReadSampleCodeFileContent("TemplatesSample3_WrapGrid_xaml");
                 }
                 else if (selectedRadioButton.Tag.ToString() == "StackPanel")
                 {
                     MyListView.ItemsPanel = (ItemsPanelTemplate)Resources["StackPanelTemplate"];
-                    Example2.Xaml = ReadSampleCodeFileContent("TemplatesSample2_StackPanel_xaml");
+                    Example3.Xaml = ReadSampleCodeFileContent("TemplatesSample3_StackPanel_xaml");
                 }
             }
         }
