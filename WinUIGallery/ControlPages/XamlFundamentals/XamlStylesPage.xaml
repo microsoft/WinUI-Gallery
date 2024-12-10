@@ -17,7 +17,6 @@
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key Points:</Paragraph>
                 <Paragraph>
                     <Run Text="-" />
                     <Run FontWeight="SemiBold" Text="Styles" />
