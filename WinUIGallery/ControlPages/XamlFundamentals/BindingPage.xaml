@@ -33,7 +33,7 @@
                     <Run Text="by visiting" />
                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
                         Microsoft Learn
-                    </Hyperlink> .
+                    </Hyperlink>.
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
