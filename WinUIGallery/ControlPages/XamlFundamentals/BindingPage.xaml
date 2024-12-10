@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUIGallery.ControlPages.BindingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:core="using:WinUIGallery"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUIGallery.ControlPages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <StackPanel>
+        <StackPanel Spacing="12"
+                    Margin="0,12,0,0">
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">Key concepts:</Paragraph>
+                <Paragraph>1. Target: The property of a control to which data is bound (e.g., Text, Background, Visibility).</Paragraph>
+                <Paragraph>2. Source: The data being bound, such as a property in a class, another control, or a static resource.</Paragraph>
+                <Paragraph>3. Binding Modes:</Paragraph>
+                <Paragraph xml:space="preserve">    - OneWay updates the target when the source changes.</Paragraph>
+                <Paragraph xml:space="preserve">    - TwoWay updates both the target and the source.</Paragraph>
+                <Paragraph xml:space="preserve">    - OneTime sets the target once and does not update afterward.</Paragraph>
+            </RichTextBlock>
+
+            <RichTextBlock>
+                <Paragraph FontWeight="SemiBold">{x:Bind} and {Binding} feature comparison</Paragraph>
+                <Paragraph>
+                    <Run Text="Learn more about the differences between" />
+                    <Run FontFamily="Consolas"
+                         Text="x:Bind" />
+                    <Run Text="and" />
+                    <Run FontFamily="Consolas"
+                         Text="Binding" />
+                    <Run Text="by visiting" />
+                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
+                        Microsoft Learn
+                    </Hyperlink>.
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+        
+        <core:ControlExample HeaderText="Binding between controls">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBox x:Name="SourceTextBox"
+                             Width="200"
+                             HorizontalAlignment="Left"
+                             PlaceholderText="Enter text here" />
+                    <TextBox x:Name="TargetTextBox"
+                             Width="200"
+                             HorizontalAlignment="Left"
+                             PlaceholderText="Mirrors above text"
+                             Text="{x:Bind SourceTextBox.Text, Mode=OneWay}" />
+                    <RichTextBlock x:Name="BindingModeDescription" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBox x:Name="SourceTextBox" Width="200" PlaceholderText="Enter text here" /&gt;
+&lt;TextBox Width="200" Text="{x:Bind SourceTextBox.Text, Mode=$(BindingMode)}" PlaceholderText="Mirrors above text" /&gt;
+        </x:String>
+            </core:ControlExample.Xaml>
+            <core:ControlExample.Options>
+                <RadioButtons x:Name="BindingModeGroup"
+                              Header="Select binding mode"
+                              SelectedIndex="0"
+                              SelectionChanged="BindingModeGroup_SelectionChanged">
+                    <x:String>OneWay</x:String>
+                    <x:String>TwoWay</x:String>
+                </RadioButtons>
+            </core:ControlExample.Options>
+            <core:ControlExample.Substitutions>
+                <core:ControlExampleSubstitution Key="BindingMode"
+                                                 Value="{x:Bind BindingModeGroup.SelectedItem, Mode=OneWay}" />
+            </core:ControlExample.Substitutions>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Binding to a property in code-behind">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{x:Bind GreetingMessage}"
+                               FontSize="24"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBlock
+    Text="{x:Bind GreetingMessage}"
+    FontSize="24"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+            <core:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// Code-behind
+public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
+                </x:String>
+            </core:ControlExample.CSharp>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Using a function in x:Bind"
+                             CSharpSource="Binding\BindingSample3_csharp.txt"
+                             XamlSource="Binding\BindingSample3_xaml.txt">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <DatePicker x:Name="DatePickerControl"
+                                Header="Select a date" />
+                    <TextBlock Text="{x:Bind FormatDate(DatePickerControl.SelectedDate), Mode=OneWay}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Using a converter in Binding"
+                             CSharpSource="Binding\BindingSample4_csharp.txt"
+                             XamlSource="Binding\BindingSample4_xaml.txt">
+            <core:ControlExample.Example>
+                <StackPanel>
+                    <CheckBox x:Name="ToggleCheckBox"
+                              Content="Show rectangle" />
+                    <Rectangle Width="100"
+                               Height="100"
+                               Fill="{ThemeResource SystemFillColorAttentionBrush}"
+                               Visibility="{Binding IsChecked, ElementName=ToggleCheckBox}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+        </core:ControlExample>
+
+        <core:ControlExample HeaderText="Binding to a view model"
+                             CSharpSource="Binding\BindingSample5_csharp.txt">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock FontWeight="SemiBold"
+                               Text="Title:" />
+                    <TextBlock FontSize="16"
+                               Text="{Binding Title}" />
+
+                    <TextBlock FontWeight="SemiBold"
+                               Text="Description:" />
+                    <TextBlock FontSize="16"
+                               Text="{Binding Description}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TextBlock Text="Title:" FontWeight="SemiBold" /&gt;
+&lt;TextBlock Text="{Binding Title}" FontSize="16" /&gt;
+
+&lt;TextBlock Text="Description:" FontWeight="SemiBold" /&gt;
+&lt;TextBlock Text="{Binding Description}" FontSize="16" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+        </core:ControlExample>
+        <InfoBar Title="MVVM Toolkit"
+                 Margin="0,8,0,0"
+                 IsClosable="False"
+                 IsOpen="True"
+                 Message="There is a library called the MVVM Toolkit, part of the Windows Community Toolkit, designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
+                 Severity="Informational">
+            <InfoBar.ActionButton>
+                <HyperlinkButton x:Name="mvvmToolkitSampleAppHyperlinkButton"
+                                 Content="Go to the MVVM Toolkit repository"
+                                 NavigateUri="https://github.com/CommunityToolkit/MVVM-Samples" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+
+        <core:ControlExample HeaderText="Binding with FallbackValue and TargetNullValue">
+            <core:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" />
+                    <TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" />
+                </StackPanel>
+            </core:ControlExample.Example>
+            <core:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;!--FallbackValue and TargetNullValue properties help handle scenarios where the binding source is missing or null--&gt;
+&lt;TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" /&gt;
+&lt;TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" /&gt;
+                </x:String>
+            </core:ControlExample.Xaml>
+            <core:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public YourPage()
+{
+    this.InitializeComponent();
+
+    ViewModel = new ExampleViewModel
+    {
+        NullString = null
+    };
+                    
+    DataContext = ViewModel;
+}
+                </x:String>
+            </core:ControlExample.CSharp>
+        </core:ControlExample>
+    </StackPanel>
+</Page>
