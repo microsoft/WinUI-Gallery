@@ -27,7 +27,6 @@
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
                 <Paragraph>- Templates allow the visual structure of a control to be redefined while keeping its behavior intact.</Paragraph>
                 <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
                 <Paragraph>- Types of templates:</Paragraph>
