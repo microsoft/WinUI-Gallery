@@ -20,18 +20,6 @@ namespace WinUIGallery.ControlPages
         public XamlStylesPage()
         {
             this.InitializeComponent();
-
-            ApplyButtonStyle(MyButton);
-        }
-
-        private static void ApplyButtonStyle(Button myButton)
-        {
-            var buttonStyle = new Style(typeof(Button));
-            buttonStyle.Setters.Add(new Setter(BackgroundProperty, new SolidColorBrush(Microsoft.UI.Colors.LightGreen)));
-            buttonStyle.Setters.Add(new Setter(ForegroundProperty, new SolidColorBrush(Microsoft.UI.Colors.Black)));
-            buttonStyle.Setters.Add(new Setter(FontSizeProperty, 20));
-
-            myButton.Style = buttonStyle;
         }
     }
 }

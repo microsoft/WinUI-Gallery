@@ -12,25 +12,25 @@
         <StackPanel Spacing="12"
                     Margin="0,12,0,0">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Where can you create XAML styles?</Paragraph>
+                <Paragraph FontWeight="SemiBold">Placement of XAML Styles:</Paragraph>
                 <Paragraph>The placement of styles is the same as other resources: app-level, page-level, control-level.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key points:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Key Points:</Paragraph>
                 <Paragraph>
                     <Run Text="-" />
                     <Run FontWeight="SemiBold" Text="Styles" />
                     <Run Text="are reusable collections of property settings for a specific control type." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="- Use a" />
+                    <Run Text="- A" />
                     <Run FontWeight="SemiBold" Text="keyed style" />
-                    <Run Text="for explicit application or an" />
+                    <Run Text="is used for explicit application, while an " />
                     <Run FontWeight="SemiBold" Text="implicit style" />
-                    <Run Text="for automatic application to all controls of a type." />
+                    <Run Text="is used for automatic application to all controls of a type." />
                 </Paragraph>
-                <Paragraph>- Styles improve maintainability, consistency, and reduce repetition in your XAML code.</Paragraph>
+                <Paragraph>- Styles improve maintainability, consistency, and reduce repetition in XAML code.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 
@@ -72,52 +72,47 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Using BasedOn property in XAML styles" XamlSource="XamlStyles\XamlStylesSample3_xaml.txt">
+        <local:ControlExample HeaderText="Using BasedOn property in XAML styles"
+                              XamlSource="XamlStyles\XamlStylesSample3_xaml.txt">
             <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal" Spacing="8">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8">
                     <StackPanel.Resources>
-                        <Style x:Key="BaseBorderStyle" TargetType="Border">
-                            <Setter Property="BorderThickness" Value="2" />
-                            <Setter Property="CornerRadius" Value="8" />
-                            <Setter Property="Background" Value="LightGray" />
-                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        <Style x:Key="BaseBorderStyle"
+                               TargetType="Border">
+                            <Setter Property="BorderThickness"
+                                    Value="2" />
+                            <Setter Property="CornerRadius"
+                                    Value="8" />
+                            <Setter Property="Background"
+                                    Value="LightGray" />
+                            <Setter Property="BorderBrush"
+                                    Value="DarkGray" />
                         </Style>
 
-                        <Style
-                            x:Key="HighlightBorderStyle"
-                            BasedOn="{StaticResource BaseBorderStyle}"
-                            TargetType="Border">
-                            <Setter Property="Background" Value="Green" />
-                            <Setter Property="BorderBrush" Value="DarkGreen" />
+                        <Style x:Key="HighlightBorderStyle"
+                               BasedOn="{StaticResource BaseBorderStyle}"
+                               TargetType="Border">
+                            <Setter Property="Background"
+                                    Value="Green" />
+                            <Setter Property="BorderBrush"
+                                    Value="DarkGreen" />
                         </Style>
                     </StackPanel.Resources>
 
-                    <Border
-                        Width="100"
-                        Height="100"
-                        Style="{StaticResource BaseBorderStyle}">
+                    <Border Width="100"
+                            Height="100"
+                            Style="{StaticResource BaseBorderStyle}">
                         <Ellipse Fill="White" />
                     </Border>
 
-                    <Border
-                        Width="100"
-                        Height="100"
-                        Style="{StaticResource HighlightBorderStyle}">
+                    <Border Width="100"
+                            Height="100"
+                            Style="{StaticResource HighlightBorderStyle}">
                         <Ellipse Fill="White" />
                     </Border>
                 </StackPanel>
             </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <local:ControlExample CSharpSource="XamlStyles\XamlStylesSample4_csharp.txt" HeaderText="Using Style in C# Programmatically">
-            <local:ControlExample.Example>
-                <Button x:Name="MyButton" Content="Click me" />
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button x:Name="myButton" Content="Click me" /&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
         </local:ControlExample>
     </StackPanel>
 </Page>
