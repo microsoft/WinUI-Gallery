@@ -84,7 +84,6 @@
     <Content Include="Assets\ControlImages\RatingControl.png" />
     <Content Include="Assets\ControlImages\RelativePanel.png" />
     <Content Include="Assets\ControlImages\RepeatButton.png" />
-    <Content Include="Assets\ControlImages\RevealFocus.png" />
     <Content Include="Assets\ControlImages\RichEditBox.png" />
     <Content Include="Assets\ControlImages\RichTextBlock.png" />
     <Content Include="Assets\ControlImages\ScratchPad.png" />
