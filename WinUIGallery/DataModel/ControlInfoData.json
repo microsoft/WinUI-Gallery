@@ -11,14 +11,16 @@
         {
           "UniqueId": "Color",
           "Title": "Color",
+          "Subtitle": "Color is a powerful tool for creating visual interest and conveying information.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
           "Docs": [
             {
               "Title": "Colors in Windows 11",
               "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/color"
             },
             {
-              "Title": "Windows UI Toolkit (Figma)",
-              "Uri": "https://www.figma.com/community/file/1159947337437047524"
+              "Title": "Windows UI Kit (Figma)",
+              "Uri": "https://aka.ms/WinUI/3.0-figma-toolkit"
             },
             {
               "Title": "WinUI Theme Resources (GitHub)",
@@ -29,6 +31,8 @@
         {
           "UniqueId": "Geometry",
           "Title": "Geometry",
+          "Subtitle": "Clear shapes and consistent layouts ensure visual coherence.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Shape.png",
           "Docs": [
             {
               "Title": "Geometry in Windows 11",
@@ -43,6 +47,8 @@
         {
           "UniqueId": "Iconography",
           "Title": "Iconography",
+          "Subtitle": "Icons are a visual language that can be used to communicate information quickly and effectively.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
             {
               "Title": "Iconography in Windows 11",
@@ -57,6 +63,8 @@
         {
           "UniqueId": "Spacing",
           "Title": "Spacing",
+          "Subtitle": " Thoughtful spacing enhances readability and reduces visual clutter.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
           "Docs": [
             {
               "Title": "Content design basics",
@@ -67,7 +75,9 @@
         {
           "UniqueId": "Typography",
           "Title": "Typography",
+          "Subtitle": "Intuitive fonts and hierarchy guide attention effortlessly.",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TextBlock.png",
           "Docs": [
             {
               "Title": "Typography in Windows Apps",
@@ -94,7 +104,8 @@
         {
           "UniqueId": "AccessibilityColorContrast",
           "Title": "Color Contrast",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "Subtitle": "A balanced palette creates clarity and aesthetic harmony.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
               "Title": "Accessibility",
@@ -108,8 +119,9 @@
         },
         {
           "UniqueId": "AccessibilityKeyboard",
-          "Title": "Keyboard Support",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "Title": "Keyboard Navigation",
+          "Subtitle": "Seamless navigation for efficient keyboard interactions.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
               "Title": "Accessibility",
@@ -147,8 +159,9 @@
         },
         {
           "UniqueId": "AccessibilityScreenReader",
-          "Title": "Screen Reader Support",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "Title": "Screen Reader",
+          "Subtitle": "Inclusive design with meaningful content for assistive technologies",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
               "Title": "Accessibility",
