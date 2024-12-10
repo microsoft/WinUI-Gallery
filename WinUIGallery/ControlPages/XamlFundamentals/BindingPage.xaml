@@ -12,7 +12,7 @@
         <StackPanel Spacing="12"
                     Margin="0,12,0,0">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key Concepts:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Key concepts:</Paragraph>
                 <Paragraph>1. Target: The property of a control to which data is bound (e.g., Text, Background, Visibility).</Paragraph>
                 <Paragraph>2. Source: The data being bound, such as a property in a class, another control, or a static resource.</Paragraph>
                 <Paragraph>3. Binding Modes:</Paragraph>
