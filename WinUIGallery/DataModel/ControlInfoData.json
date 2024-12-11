@@ -2829,29 +2829,6 @@
           ]
         },
         {
-          "UniqueId": "RevealFocus",
-          "Title": "Reveal Focus",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "Customize the style of your focus rectangles.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/RevealFocus.png",
-          "Description": "Reveal focus allows you to adapt focus rectangles to look like the focus rectangles available on Xbox.",
-          "Content": "<p>Look at the <i>RevealFocusPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
-          "SourcePath": "/Materials/Reveal",
-          "Docs": [
-            {
-              "Title": "Reveal Focus - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.focusvisualkind#Windows_UI_Xaml_Application_FocusVisualKind"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/reveal-focus"
-            }
-          ],
-          "RelatedControls": [
-          ]
-        },
-        {
           "UniqueId": "Shape",
           "Title": "Shape",
           "BaseClasses": [
