@@ -145,6 +145,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
@@ -309,6 +310,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
