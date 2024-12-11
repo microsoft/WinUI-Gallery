@@ -99,6 +99,9 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
     <ItemGroup>
+        <!-- https://github.com/microsoft/WindowsAppSDK/issues/4836 -->
+        <!-- Explicitly added latest version of WebView2 as temporary workaround for Windows Store validation error. -->
+        <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
@@ -143,6 +146,7 @@
 
     <ItemGroup>
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
+        <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
@@ -326,6 +330,7 @@
 
     <ItemGroup>
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
+        <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
