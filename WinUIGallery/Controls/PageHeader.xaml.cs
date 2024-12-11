@@ -109,7 +109,7 @@ namespace WinUIGallery.DesktopWap.Controls
 
         public void ShareButton_Click(object sender, RoutedEventArgs e)
         {
-            // https://learn.microsoft.com/windows/apps/develop/ui-input/display-ui-objects#for-classes-that-implement-idatatransfermanagerinterop
+            // example: https://learn.microsoft.com/windows/apps/develop/ui-input/display-ui-objects#for-classes-that-implement-idatatransfermanagerinterop
 
             return; // CODE DOESN'T WORK -- GetWindowHandle(this) -- 'this' should equal MainWindow.Xaml.cs
 
