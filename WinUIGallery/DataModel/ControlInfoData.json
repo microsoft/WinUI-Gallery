@@ -2745,33 +2745,6 @@
           ]
         },
         {
-          "UniqueId": "ColorPaletteResources",
-          "Title": "ColorPaletteResources",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "ResourceDictionary"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "A type of resource that allows you to apply custom colors to your controls.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
-          "Description": "Apply custom colors to your controls through this cascading API, or scope them to a local subset.",
-          "Docs": [
-            {
-              "Title": "Theme Editor (GitHub)",
-              "Uri": "https://github.com/Microsoft/fluent-xaml-theme-editor"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/color#scoping-with-a-resourcedictionary"
-            },
-            {
-              "Title": "ColorPaletteResources - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.colorpaletteresources"
-            }
-          ]
-        },
-        {
           "UniqueId": "CompactSizing",
           "Title": "Compact Sizing",
           "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
@@ -2852,8 +2825,7 @@
             }
           ],
           "RelatedControls": [
-            "Acrylic",
-            "ColorPaletteResources"
+            "Acrylic"
           ]
         },
         {
