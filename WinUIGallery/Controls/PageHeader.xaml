@@ -40,13 +40,16 @@
                 TextWrapping="NoWrap" />
             <Button
                 x:Name="APIDetailsBtn"
-                Margin="0,0,0,1"
+                Margin="0,0,0,2"
                 Padding="4"
                 VerticalAlignment="Bottom"
                 AutomationProperties.Name="API details"
                 Style="{StaticResource SubtleButtonStyle}"
                 ToolTipService.ToolTip="API namespace and inheritance">
-                <FontIcon FontSize="14" Glyph="&#xE946;" />
+                <FontIcon
+                    FontSize="14"
+                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                    Glyph="&#xE946;" />
                 <Button.Flyout>
                     <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
                         <StackPanel x:Name="APIPanel" Spacing="16">
