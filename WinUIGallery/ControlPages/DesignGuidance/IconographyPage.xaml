@@ -206,6 +206,14 @@
                         <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="C#" />
                         <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                        <TextBlock Text="Tags" />
+                        <ItemsControl ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Button Content="{x:Bind Mode=OneWay}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
                         <StackPanel Orientation="Vertical" Visibility="Collapsed">
                             <TextBlock
