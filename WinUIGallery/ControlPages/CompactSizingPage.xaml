@@ -42,12 +42,6 @@
                 <LineBreak />
                 <Run Text="• DatePicker" />
                 <LineBreak />
-                <Run Text="• DatePicker" />
-                <LineBreak />
-                <Run Text="• ListView" />
-                <LineBreak />
-                <Run Text="• ListView" />
-                <LineBreak />
                 <Run Text="• TimePicker" />
                 <LineBreak />
                 <Run Text="• TreeView" />
