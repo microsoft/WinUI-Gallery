@@ -186,18 +186,6 @@
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
-                        Title="Template Studio"
-                        Description="Accelerates the creation of new WinUI apps using a wizard-based experience.."
-                        Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">
-                        <local:HeaderTile.Source>
-                            <PathIcon Data="{StaticResource TemplateStudioIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform ScaleX="1.2" ScaleY="1.2" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
-                        </local:HeaderTile.Source>
-                    </local:HeaderTile>
-                    <local:HeaderTile
                         Title="Partner Center"
                         Description="Upload your app to the Store."
                         Link="https://developer.microsoft.com/windows/">
