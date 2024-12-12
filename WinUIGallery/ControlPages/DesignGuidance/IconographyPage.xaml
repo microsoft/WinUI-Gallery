@@ -205,7 +205,7 @@
                         <TextBlock Text="C#" />
                         <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Tags" />
-                        <ItemsControl ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}">
+                        <ItemsControl ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}" Margin="0,4,0,4">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <toolkit:WrapPanel Orientation="Horizontal" HorizontalSpacing="4" VerticalSpacing="4" />
