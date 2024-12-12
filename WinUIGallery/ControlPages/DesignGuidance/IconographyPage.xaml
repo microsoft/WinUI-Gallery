@@ -213,7 +213,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <Button Content="{x:Bind Mode=OneWay}" />
+                                    <Button Content="{x:Bind Mode=OneWay}" Click="TagButton_Click" />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
