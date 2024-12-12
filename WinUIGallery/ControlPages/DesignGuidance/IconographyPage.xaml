@@ -36,7 +36,7 @@
             <Setter Property="SampleType" Value="Inline" />
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0,4,0,16" />
+            <Setter Property="Margin" Value="0,4,0,4" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
