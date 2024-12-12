@@ -2,7 +2,10 @@
   {
     "Code": "E700",
     "Name": "GlobalNavButton",
-    "Tags": []
+    "Tags": [
+      "menu",
+      "humberger"
+    ]
   },
   {
     "Code": "E701",
@@ -5495,7 +5498,9 @@
   {
     "Code": "EDE3",
     "Name": "ButtonMenu",
-    "Tags": []
+    "Tags": [
+      "humberger"
+    ]
   },
   {
     "Code": "EDE4",
