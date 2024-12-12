@@ -9,6 +9,7 @@
 //*********************************************************
 
 using Microsoft.UI;
+using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
@@ -16,7 +17,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
+using WinRT;
 using WinRT.Interop;
+using static WinUIGallery.Win32;
 
 namespace WinUIGallery.Helper
 {
@@ -25,7 +28,7 @@ namespace WinUIGallery.Helper
     // of all active Windows.  The app code must call WindowHelper.CreateWindow
     // rather than "new Window" so we can keep track of all the relevant
     // windows.  In the future, we would like to support this in platform APIs.
-    public class WindowHelper
+    public static class WindowHelper
     {
         static public Window CreateWindow()
         {
@@ -98,6 +101,28 @@ namespace WinUIGallery.Helper
                 localFolder = ApplicationData.Current.LocalFolder;
             }
             return localFolder;
+        }
+
+        public static void SetTitleBarBackdrop(this Window window, SystemBackdrop backdrop)
+        {
+            var backdropType = DwmSystemBackdropType.DWMSBT_AUTO;
+
+            if (backdrop is MicaBackdrop micaBackdrop)
+                backdropType = micaBackdrop.Kind == MicaKind.Base ? DwmSystemBackdropType.DWMSBT_MAINWINDOW : DwmSystemBackdropType.DWMSBT_TABBEDWINDOW;
+            else if (backdrop is DesktopAcrylicBackdrop)
+                backdropType = DwmSystemBackdropType.DWMSBT_TRANSIENTWINDOW;
+            else if (backdrop is null)
+                backdropType = DwmSystemBackdropType.DWMSBT_NONE;
+
+            var backdropTypeInt = ((int)backdropType);
+            int hResult = DwmSetWindowAttribute(WindowNative.GetWindowHandle(window), DwmWindowAttribute.DWMWA_SYSTEMBACKDROP_TYPE, ref backdropTypeInt, sizeof(DwmSystemBackdropType));
+            ExceptionHelpers.ThrowExceptionForHR(hResult);
+        }
+
+        public static void SetTitleBarTheme(this Window window)
+        {
+            int darkMode = ((FrameworkElement)window.Content).ActualTheme == ElementTheme.Dark ? 1 : 0;
+            DwmSetWindowAttribute(WindowNative.GetWindowHandle(window), DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref darkMode, sizeof(int));
         }
     }
 }

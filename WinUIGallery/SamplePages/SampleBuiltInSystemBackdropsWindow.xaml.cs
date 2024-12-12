@@ -1,28 +1,31 @@
-using WinUIGallery.Helper;
+using System.Linq;
+using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
+using WinUIGallery.Helper;
 
 namespace WinUIGallery.SamplePages
 {
     public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
     {
-        BackdropType m_currentBackdrop;
+        BackdropType currentBackdrop;
+        public BackdropType[] AllowedBackdrops;
 
         public SampleBuiltInSystemBackdropsWindow()
         {
-            this.InitializeComponent();
-            ((FrameworkElement)this.Content).RequestedTheme = WinUIGallery.Helper.ThemeHelper.RootTheme;
-            ExtendsContentIntoTitleBar = true;
-            SetTitleBar(titleBar);
+            InitializeComponent();
+            AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
+            ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
+            this.SetTitleBarTheme();
             SetBackdrop(BackdropType.Mica);
         }
 
-
         public enum BackdropType
         {
+            None,
             Mica,
             MicaAlt,
-            DesktopAcrylic,
-            DefaultColor,
+            Acrylic
         }
 
         public void SetBackdrop(BackdropType type)
@@ -35,22 +38,23 @@ namespace WinUIGallery.SamplePages
             //       call RemoveSystemBackdropTarget() on the old controller and then setup the new
             //       controller, reusing any existing m_configurationSource and Activated/Closed
             //       event handlers.
-            m_currentBackdrop = BackdropType.DefaultColor;
-            tbCurrentBackdrop.Text = "None (default theme color)";
+
+            currentBackdrop = BackdropType.None;
+            tbCurrentBackdrop.Text = "None";
             tbChangeStatus.Text = "";
-            this.SystemBackdrop = null;
+            SystemBackdrop = null;
 
             if (type == BackdropType.Mica)
             {
                 if (TrySetMicaBackdrop(false))
                 {
                     tbCurrentBackdrop.Text = "Built-in Mica";
-                    m_currentBackdrop = type;
+                    currentBackdrop = type;
                 }
                 else
                 {
                     // Mica isn't supported. Try Acrylic.
-                    type = BackdropType.DesktopAcrylic;
+                    type = BackdropType.Acrylic;
                     tbChangeStatus.Text += "  Mica isn't supported. Trying Acrylic.";
                 }
             }
@@ -59,21 +63,21 @@ namespace WinUIGallery.SamplePages
                 if (TrySetMicaBackdrop(true))
                 {
                     tbCurrentBackdrop.Text = "Built-in MicaAlt";
-                    m_currentBackdrop = type;
+                    currentBackdrop = type;
                 }
                 else
                 {
                     // MicaAlt isn't supported. Try Acrylic.
-                    type = BackdropType.DesktopAcrylic;
+                    type = BackdropType.Acrylic;
                     tbChangeStatus.Text += "  MicaAlt isn't supported. Trying Acrylic.";
                 }
             }
-            if (type == BackdropType.DesktopAcrylic)
+            if (type == BackdropType.Acrylic)
             {
                 if (TrySetAcrylicBackdrop())
                 {
                     tbCurrentBackdrop.Text = "Built-in Acrylic";
-                    m_currentBackdrop = type;
+                    currentBackdrop = type;
                 }
                 else
                 {
@@ -82,17 +86,17 @@ namespace WinUIGallery.SamplePages
                 }
             }
 
+            this.SetTitleBarBackdrop(SystemBackdrop);
+
             // Announce visual change to automation.
             UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
         }
 
         bool TrySetMicaBackdrop(bool useMicaAlt)
         {
-            if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
+            if (MicaController.IsSupported())
             {
-                Microsoft.UI.Xaml.Media.MicaBackdrop micaBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
-                micaBackdrop.Kind = useMicaAlt ? Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt : Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
-                this.SystemBackdrop = micaBackdrop;
+                SystemBackdrop = new MicaBackdrop { Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base }; ;
                 return true;
             }
 
@@ -101,9 +105,9 @@ namespace WinUIGallery.SamplePages
 
         bool TrySetAcrylicBackdrop()
         {
-            if (Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController.IsSupported())
+            if (DesktopAcrylicController.IsSupported())
             {
-                this.SystemBackdrop = new Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop();
+                SystemBackdrop = new DesktopAcrylicBackdrop();
                 return true;
             }
 
@@ -112,15 +116,19 @@ namespace WinUIGallery.SamplePages
 
         void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
         {
-            BackdropType newType;
-
-            switch (m_currentBackdrop)
+            var newType = currentBackdrop switch
             {
-                case BackdropType.Mica:           newType = BackdropType.MicaAlt; break;
-                case BackdropType.MicaAlt:        newType = BackdropType.DesktopAcrylic; break;
-                case BackdropType.DesktopAcrylic: newType = BackdropType.DefaultColor; break;
-                default:
-                case BackdropType.DefaultColor:   newType = BackdropType.Mica; break;
+                BackdropType.Mica => BackdropType.MicaAlt,
+                BackdropType.MicaAlt => BackdropType.Acrylic,
+                BackdropType.Acrylic => BackdropType.None,
+                _ => BackdropType.Mica,
+            };
+
+            if(!AllowedBackdrops.Any(b => b == newType))
+            {
+                currentBackdrop = newType;
+                ChangeBackdropButton_Click(sender, e);
+                return;
             }
 
             SetBackdrop(newType);

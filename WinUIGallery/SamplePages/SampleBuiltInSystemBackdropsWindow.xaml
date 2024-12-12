@@ -4,29 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Title="SystemBackdrop sample window">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid x:Name="titleBar" Background="Transparent" />
-        <StackPanel
+    <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="12">
-            <TextBlock HorizontalAlignment="Center">
+        <TextBlock HorizontalAlignment="Center">
                 <Run Text="Current backdrop: " />
                 <Run x:Name="tbCurrentBackdrop" FontWeight="SemiBold" />
-            </TextBlock>
-            <Button
+        </TextBlock>
+        <Button
                 x:Name="btnChangeBackdrop"
                 HorizontalAlignment="Center"
                 Click="ChangeBackdropButton_Click"
                 Content="Change Backdrop" />
-            <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
-        </StackPanel>
-    </Grid>
+        <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
+    </StackPanel>
 </Window>
