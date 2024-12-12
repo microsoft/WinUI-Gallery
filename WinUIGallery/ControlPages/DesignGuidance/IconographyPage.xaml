@@ -194,8 +194,6 @@
                             FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
 
-                        <TextBlock Text="Icon name" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Unicode point" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.Code, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Text glyph" />
