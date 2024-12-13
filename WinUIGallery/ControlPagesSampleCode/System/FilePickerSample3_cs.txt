@@ -1,5 +1,9 @@
 ﻿private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
 {
+    //disable the button to avoid double-clicking
+    var senderButton = sender as Button;
+    senderButton.IsEnabled = false;
+
     // Clear previous returned file name, if it exists, between iterations of this scenario
     PickFilesOutputTextBlock.Text = "";
 
@@ -35,4 +39,7 @@
     {
         PickFilesOutputTextBlock.Text = "Operation cancelled.";
     }
+
+    //re-enable the button
+    senderButton.IsEnabled = true;
 }
