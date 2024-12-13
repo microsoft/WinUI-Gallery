@@ -17,32 +17,31 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-namespace WinUIGalleryUnitTests
+namespace WinUIGalleryUnitTests;
+
+public partial class UnitTestApp : Application
 {
-    public partial class UnitTestApp : Application
+    public UnitTestApp()
     {
-        public UnitTestApp()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {
-            Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
+    protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+    {
+        Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 
-            s_window = new UnitTestAppWindow();
-            s_window.Activate();
+        s_window = new UnitTestAppWindow();
+        s_window.Activate();
 
-            UITestMethodAttribute.DispatcherQueue = s_window.DispatcherQueue;
+        UITestMethodAttribute.DispatcherQueue = s_window.DispatcherQueue;
 
-            Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.Run(Environment.CommandLine);
-        }
+        Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.Run(Environment.CommandLine);
+    }
 
-        private static UnitTestAppWindow s_window;
+    private static UnitTestAppWindow s_window;
 
-        public static UnitTestAppWindow UnitTestAppWindow
-        {
-            get { return s_window; }
-        }
+    public static UnitTestAppWindow UnitTestAppWindow
+    {
+        get { return s_window; }
     }
 }

@@ -1,12 +1,11 @@
-﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class PersonPicturePage : Page
 {
-    public sealed partial class PersonPicturePage : Page
+    public PersonPicturePage()
     {
-        public PersonPicturePage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,13 +13,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.SamplePages
+namespace WinUIGallery.SamplePages;
+
+public sealed partial class SamplePage3 : Page
 {
-    public sealed partial class SamplePage3 : Page
+    public SamplePage3()
     {
-        public SamplePage3()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

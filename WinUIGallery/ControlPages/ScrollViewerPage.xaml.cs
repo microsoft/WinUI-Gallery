@@ -12,96 +12,95 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class ScrollViewerPage : Page
 {
-    public sealed partial class ScrollViewerPage : Page
+    public ScrollViewerPage()
     {
-        public ScrollViewerPage()
-        {
-            this.InitializeComponent();
-            ScrollViewerControl.ZoomToFactor(4.0f);
-        }
+        this.InitializeComponent();
+        ScrollViewerControl.ZoomToFactor(4.0f);
+    }
 
-        private void ZoomModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ZoomModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null && ZoomSlider != null)
         {
-            if (ScrollViewerControl != null && ZoomSlider != null)
+            if (sender is ComboBox cb)
             {
-                if (sender is ComboBox cb)
-                {
-                    ScrollViewerControl.ZoomMode = (ZoomMode)cb.SelectedIndex;
-                    ZoomSlider.IsEnabled = cb.SelectedIndex == 1;
+                ScrollViewerControl.ZoomMode = (ZoomMode)cb.SelectedIndex;
+                ZoomSlider.IsEnabled = cb.SelectedIndex == 1;
 
-                    if (!ZoomSlider.IsEnabled)
-                    {
-                        ScrollViewerControl.ZoomToFactor(2.0f);
-                    }
+                if (!ZoomSlider.IsEnabled)
+                {
+                    ScrollViewerControl.ZoomToFactor(2.0f);
                 }
             }
         }
+    }
 
-        private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null)
         {
-            if (ScrollViewerControl != null)
+            ScrollViewerControl.ChangeView(null, null, (float)e.NewValue);
+        }
+    }
+
+    private void hsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null)
+        {
+            if (sender is ComboBox cb)
             {
-                ScrollViewerControl.ChangeView(null, null, (float)e.NewValue);
+                ScrollViewerControl.HorizontalScrollMode = (ScrollMode)cb.SelectedIndex;
             }
         }
+    }
 
-        private void hsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void hsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null)
         {
-            if (ScrollViewerControl != null)
+            if (sender is ComboBox cb)
             {
-                if (sender is ComboBox cb)
-                {
-                    ScrollViewerControl.HorizontalScrollMode = (ScrollMode)cb.SelectedIndex;
-                }
+                ScrollViewerControl.HorizontalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
             }
         }
+    }
 
-        private void hsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void vsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null)
         {
-            if (ScrollViewerControl != null)
+            if (sender is ComboBox cb)
             {
-                if (sender is ComboBox cb)
-                {
-                    ScrollViewerControl.HorizontalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
-                }
+                ScrollViewerControl.VerticalScrollMode = (ScrollMode)cb.SelectedIndex;
             }
         }
+    }
 
-        private void vsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void vsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ScrollViewerControl != null)
         {
-            if (ScrollViewerControl != null)
+            if (sender is ComboBox cb)
             {
-                if (sender is ComboBox cb)
-                {
-                    ScrollViewerControl.VerticalScrollMode = (ScrollMode)cb.SelectedIndex;
-                }
+                ScrollViewerControl.VerticalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
             }
         }
+    }
 
-        private void vsbvCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ScrollViewerControl != null)
-            {
-                if (sender is ComboBox cb)
-                {
-                    ScrollViewerControl.VerticalScrollBarVisibility = (ScrollBarVisibility)cb.SelectedIndex;
-                }
-            }
-        }
+    private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+    {
+        ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
+    }
 
-        private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+    private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+    {
+        if (!e.IsIntermediate)
         {
             ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
-        }
-
-        private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            if (!e.IsIntermediate)
-            {
-                ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
-            }
         }
     }
 }

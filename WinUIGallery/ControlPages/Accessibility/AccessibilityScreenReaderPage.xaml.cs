@@ -10,13 +10,12 @@
 
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class AccessibilityScreenReaderPage : Page
 {
-    public sealed partial class AccessibilityScreenReaderPage : Page
+    public AccessibilityScreenReaderPage()
     {
-        public AccessibilityScreenReaderPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

@@ -14,13 +14,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class LinePage : Page
 {
-    public sealed partial class LinePage : Page
+    public LinePage()
     {
-        public LinePage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }
