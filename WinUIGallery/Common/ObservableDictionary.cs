@@ -3,142 +3,141 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation.Collections;
 
-namespace WinUIGallery.Common
+namespace WinUIGallery.Common;
+
+/// <summary>
+/// Implementation of IObservableMap that supports reentrancy for use as a default view
+/// model.
+/// </summary>
+public class ObservableDictionary : IObservableMap<string, object>
 {
-    /// <summary>
-    /// Implementation of IObservableMap that supports reentrancy for use as a default view
-    /// model.
-    /// </summary>
-    public class ObservableDictionary : IObservableMap<string, object>
+    private class ObservableDictionaryChangedEventArgs : IMapChangedEventArgs<string>
     {
-        private class ObservableDictionaryChangedEventArgs : IMapChangedEventArgs<string>
+        public ObservableDictionaryChangedEventArgs(CollectionChange change, string key)
         {
-            public ObservableDictionaryChangedEventArgs(CollectionChange change, string key)
-            {
-                this.CollectionChange = change;
-                this.Key = key;
-            }
-
-            public CollectionChange CollectionChange { get; private set; }
-            public string Key { get; private set; }
+            this.CollectionChange = change;
+            this.Key = key;
         }
 
-        private Dictionary<string, object> _dictionary = new Dictionary<string, object>();
-        public event MapChangedEventHandler<string, object> MapChanged;
+        public CollectionChange CollectionChange { get; private set; }
+        public string Key { get; private set; }
+    }
 
-        private void InvokeMapChanged(CollectionChange change, string key)
+    private Dictionary<string, object> _dictionary = new Dictionary<string, object>();
+    public event MapChangedEventHandler<string, object> MapChanged;
+
+    private void InvokeMapChanged(CollectionChange change, string key)
+    {
+        MapChanged?.Invoke(this, new ObservableDictionaryChangedEventArgs(change, key));
+    }
+
+    public void Add(string key, object value)
+    {
+        this._dictionary.Add(key, value);
+        this.InvokeMapChanged(CollectionChange.ItemInserted, key);
+    }
+
+    public void Add(KeyValuePair<string, object> item)
+    {
+        this.Add(item.Key, item.Value);
+    }
+
+    public bool Remove(string key)
+    {
+        if (this._dictionary.Remove(key))
         {
-            MapChanged?.Invoke(this, new ObservableDictionaryChangedEventArgs(change, key));
+            this.InvokeMapChanged(CollectionChange.ItemRemoved, key);
+            return true;
         }
+        return false;
+    }
 
-        public void Add(string key, object value)
+    public bool Remove(KeyValuePair<string, object> item)
+    {
+        if (this._dictionary.TryGetValue(item.Key, out object currentValue) &&
+            Object.Equals(item.Value, currentValue) && this._dictionary.Remove(item.Key))
         {
-            this._dictionary.Add(key, value);
-            this.InvokeMapChanged(CollectionChange.ItemInserted, key);
+            this.InvokeMapChanged(CollectionChange.ItemRemoved, item.Key);
+            return true;
         }
+        return false;
+    }
 
-        public void Add(KeyValuePair<string, object> item)
+    public object this[string key]
+    {
+        get
         {
-            this.Add(item.Key, item.Value);
+            return this._dictionary[key];
         }
-
-        public bool Remove(string key)
+        set
         {
-            if (this._dictionary.Remove(key))
-            {
-                this.InvokeMapChanged(CollectionChange.ItemRemoved, key);
-                return true;
-            }
-            return false;
+            this._dictionary[key] = value;
+            this.InvokeMapChanged(CollectionChange.ItemChanged, key);
         }
+    }
 
-        public bool Remove(KeyValuePair<string, object> item)
+    public void Clear()
+    {
+        var priorKeys = this._dictionary.Keys.ToArray();
+        this._dictionary.Clear();
+        foreach (var key in priorKeys)
         {
-            if (this._dictionary.TryGetValue(item.Key, out object currentValue) &&
-                Object.Equals(item.Value, currentValue) && this._dictionary.Remove(item.Key))
-            {
-                this.InvokeMapChanged(CollectionChange.ItemRemoved, item.Key);
-                return true;
-            }
-            return false;
+            this.InvokeMapChanged(CollectionChange.ItemRemoved, key);
         }
+    }
 
-        public object this[string key]
-        {
-            get
-            {
-                return this._dictionary[key];
-            }
-            set
-            {
-                this._dictionary[key] = value;
-                this.InvokeMapChanged(CollectionChange.ItemChanged, key);
-            }
-        }
+    public ICollection<string> Keys
+    {
+        get { return this._dictionary.Keys; }
+    }
 
-        public void Clear()
-        {
-            var priorKeys = this._dictionary.Keys.ToArray();
-            this._dictionary.Clear();
-            foreach (var key in priorKeys)
-            {
-                this.InvokeMapChanged(CollectionChange.ItemRemoved, key);
-            }
-        }
+    public bool ContainsKey(string key)
+    {
+        return this._dictionary.ContainsKey(key);
+    }
 
-        public ICollection<string> Keys
-        {
-            get { return this._dictionary.Keys; }
-        }
+    public bool TryGetValue(string key, out object value)
+    {
+        return this._dictionary.TryGetValue(key, out value);
+    }
 
-        public bool ContainsKey(string key)
-        {
-            return this._dictionary.ContainsKey(key);
-        }
+    public ICollection<object> Values
+    {
+        get { return this._dictionary.Values; }
+    }
 
-        public bool TryGetValue(string key, out object value)
-        {
-            return this._dictionary.TryGetValue(key, out value);
-        }
+    public bool Contains(KeyValuePair<string, object> item)
+    {
+        return this._dictionary.Contains(item);
+    }
 
-        public ICollection<object> Values
-        {
-            get { return this._dictionary.Values; }
-        }
+    public int Count
+    {
+        get { return this._dictionary.Count; }
+    }
 
-        public bool Contains(KeyValuePair<string, object> item)
-        {
-            return this._dictionary.Contains(item);
-        }
+    public bool IsReadOnly
+    {
+        get { return false; }
+    }
 
-        public int Count
-        {
-            get { return this._dictionary.Count; }
-        }
+    public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+    {
+        return this._dictionary.GetEnumerator();
+    }
 
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+    {
+        return this._dictionary.GetEnumerator();
+    }
 
-        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+    public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
+    {
+        int arraySize = array.Length;
+        foreach (var pair in this._dictionary)
         {
-            return this._dictionary.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return this._dictionary.GetEnumerator();
-        }
-
-        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
-        {
-            int arraySize = array.Length;
-            foreach (var pair in this._dictionary)
-            {
-                if (arrayIndex >= arraySize) break;
-                array[arrayIndex++] = pair;
-            }
+            if (arrayIndex >= arraySize) break;
+            array[arrayIndex++] = pair;
         }
     }
 }

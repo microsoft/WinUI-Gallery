@@ -11,28 +11,27 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class TeachingTipPage : Page
 {
-    public sealed partial class TeachingTipPage : Page
+    public TeachingTipPage()
     {
-        public TeachingTipPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void TestButtonClick1(object sender, RoutedEventArgs e)
-        {
-            ToggleThemeTeachingTip1.IsOpen = true;
-        }
+    private void TestButtonClick1(object sender, RoutedEventArgs e)
+    {
+        ToggleThemeTeachingTip1.IsOpen = true;
+    }
 
-        private void TestButtonClick2(object sender, RoutedEventArgs e)
-        {
-            ToggleThemeTeachingTip2.IsOpen = true;
-        }
+    private void TestButtonClick2(object sender, RoutedEventArgs e)
+    {
+        ToggleThemeTeachingTip2.IsOpen = true;
+    }
 
-        private void TestButtonClick3(object sender, RoutedEventArgs e)
-        {
-            ToggleThemeTeachingTip3.IsOpen = true;
-        }
+    private void TestButtonClick3(object sender, RoutedEventArgs e)
+    {
+        ToggleThemeTeachingTip3.IsOpen = true;
     }
 }

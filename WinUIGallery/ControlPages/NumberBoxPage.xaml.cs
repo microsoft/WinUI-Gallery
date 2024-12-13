@@ -11,46 +11,45 @@ using Windows.Globalization.NumberFormatting;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class NumberBoxPage : Page
 {
-    public sealed partial class NumberBoxPage : Page
+    public NumberBoxPage()
     {
-        public NumberBoxPage()
-        {
-            this.InitializeComponent();
-            SetNumberBoxNumberFormatter();
-        }
+        this.InitializeComponent();
+        SetNumberBoxNumberFormatter();
+    }
 
-        private void SetNumberBoxNumberFormatter()
+    private void SetNumberBoxNumberFormatter()
+    {
+        IncrementNumberRounder rounder = new IncrementNumberRounder
         {
-            IncrementNumberRounder rounder = new IncrementNumberRounder
-            {
-                Increment = 0.25,
-                RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
-            };
+            Increment = 0.25,
+            RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
+        };
 
-            DecimalFormatter formatter = new DecimalFormatter
-            {
-                IntegerDigits = 1,
-                FractionDigits = 2,
-                NumberRounder = rounder
-            };
-            FormattedNumberBox.NumberFormatter = formatter;
-        }
-
-        private void SpinButtonPlacementGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        DecimalFormatter formatter = new DecimalFormatter
         {
-            if (sender is RadioButtons radioButtons)
+            IntegerDigits = 1,
+            FractionDigits = 2,
+            NumberRounder = rounder
+        };
+        FormattedNumberBox.NumberFormatter = formatter;
+    }
+
+    private void SpinButtonPlacementGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is RadioButtons radioButtons)
+        {
+            switch (radioButtons.SelectedIndex)
             {
-                switch (radioButtons.SelectedIndex)
-                {
-                    case 0:
-                        NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Inline;
-                        break;
-                    case 1:
-                        NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Compact;
-                        break;
-                }
+                case 0:
+                    NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Inline;
+                    break;
+                case 1:
+                    NumberBoxSpinButtonPlacementExample.SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Compact;
+                    break;
             }
         }
     }

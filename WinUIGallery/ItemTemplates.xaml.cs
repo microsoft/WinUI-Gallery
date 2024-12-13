@@ -9,13 +9,12 @@
 //*********************************************************
 using Microsoft.UI.Xaml;
 
-namespace WinUIGallery
+namespace WinUIGallery;
+
+public sealed partial class ItemTemplates : ResourceDictionary
 {
-    public sealed partial class ItemTemplates : ResourceDictionary
+    public ItemTemplates()
     {
-        public ItemTemplates()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

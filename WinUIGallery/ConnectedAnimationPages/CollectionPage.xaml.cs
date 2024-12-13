@@ -6,73 +6,72 @@ using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.ControlPages;
 using Windows.Foundation.Metadata;
 
-namespace WinUIGallery.ConnectedAnimationPages
+namespace WinUIGallery.ConnectedAnimationPages;
+
+public sealed partial class CollectionPage : Page
 {
-    public sealed partial class CollectionPage : Page
+    CustomDataObject _storeditem;
+
+    public CollectionPage()
     {
-        CustomDataObject _storeditem;
+        this.InitializeComponent();
 
-        public CollectionPage()
+        // Ensure that the MainPage is only created once, and cached during navigation.
+        this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
+        collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+    }
+
+    private async void collection_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (_storeditem != null)
         {
-            this.InitializeComponent();
+            // If the connected item appears outside the viewport, scroll it into view.
+            collection.ScrollIntoView(_storeditem, ScrollIntoViewAlignment.Default);
+            collection.UpdateLayout();
 
-            // Ensure that the MainPage is only created once, and cached during navigation.
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
-
-            collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
-        }
-
-        private async void collection_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (_storeditem != null)
+            // Play the second connected animation. 
+            ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
+            if (animation != null)
             {
-                // If the connected item appears outside the viewport, scroll it into view.
-                collection.ScrollIntoView(_storeditem, ScrollIntoViewAlignment.Default);
-                collection.UpdateLayout();
-
-                // Play the second connected animation. 
-                ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
-                if (animation != null)
+                // Setup the "back" configuration if the API is present. 
+                if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
                 {
-                    // Setup the "back" configuration if the API is present. 
-                    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
-                    {
-                        animation.Configuration = new DirectConnectedAnimationConfiguration();
-                    }
-
-                    await collection.TryStartConnectedAnimationAsync(animation, _storeditem, "connectedElement");
+                    animation.Configuration = new DirectConnectedAnimationConfiguration();
                 }
 
-                // Set focus on the list
-                collection.Focus(FocusState.Programmatic);
-            }
-        }
-
-        private void collection_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // Get the collection item corresponding to the clicked item.
-            if (collection.ContainerFromItem(e.ClickedItem) is ListViewItem container)
-            {
-                // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
-                _storeditem = container.Content as CustomDataObject;
-
-                // Prepare the connected animation.
-                // Notice that the stored item is passed in, as well as the name of the connected element. 
-                // The animation will actually start on the Detailed info page.
-                collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+                await collection.TryStartConnectedAnimationAsync(animation, _storeditem, "connectedElement");
             }
 
-            // Navigate to the DetailedInfoPage.
-            // Note that we suppress the default animation. 
-            Frame.Navigate(typeof(DetailedInfoPage), _storeditem, new SuppressNavigationTransitionInfo());
+            // Set focus on the list
+            collection.Focus(FocusState.Programmatic);
         }
+    }
 
-        private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
+    private void collection_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        // Get the collection item corresponding to the clicked item.
+        if (collection.ContainerFromItem(e.ClickedItem) is ListViewItem container)
         {
-            var textBlock = sender as TextBlock;
-            var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
+            // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
+            _storeditem = container.Content as CustomDataObject;
 
-            ToolTipService.SetToolTip(textBlock, text);
+            // Prepare the connected animation.
+            // Notice that the stored item is passed in, as well as the name of the connected element. 
+            // The animation will actually start on the Detailed info page.
+            collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
         }
+
+        // Navigate to the DetailedInfoPage.
+        // Note that we suppress the default animation. 
+        Frame.Navigate(typeof(DetailedInfoPage), _storeditem, new SuppressNavigationTransitionInfo());
+    }
+
+    private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
+    {
+        var textBlock = sender as TextBlock;
+        var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
+
+        ToolTipService.SetToolTip(textBlock, text);
     }
 }
