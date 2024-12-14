@@ -27,6 +27,10 @@ public sealed partial class FilePickerPage : Page
 
     private async void PickAFileButton_Click(object sender, RoutedEventArgs e)
     {
+        //disable the button to avoid double-clicking
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickAFileOutputTextBlock.Text = "";
 
@@ -57,7 +61,7 @@ public sealed partial class FilePickerPage : Page
             Run run2 = new Run();
             run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
             run2.Text = file.Name;
-            
+
             span.Inlines.Add(run1);
             span.Inlines.Add(run2);
             PickAFileOutputTextBlock.Inlines.Add(span);
@@ -67,10 +71,17 @@ public sealed partial class FilePickerPage : Page
             PickAFileOutputTextBlock.Text = "Operation cancelled.";
         }
 
+        //re-enable the button
+        senderButton.IsEnabled = true;
         UIHelper.AnnounceActionForAccessibility(sender as Button, PickAFileOutputTextBlock.Text, "FilePickedNotificationId");
     }
+
     private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
     {
+        //disable the button to avoid double-clicking
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickAPhotoOutputTextBlock.Text = "";
 
@@ -114,11 +125,17 @@ public sealed partial class FilePickerPage : Page
             PickAPhotoOutputTextBlock.Text = "Operation cancelled.";
         }
 
+        //re-enable the button
+        senderButton.IsEnabled = true;
         UIHelper.AnnounceActionForAccessibility(sender as Button, PickAPhotoOutputTextBlock.Text, "PhotoPickedNotificationId");
     }
 
     private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
     {
+        //disable the button to avoid double-clicking
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickFilesOutputTextBlock.Text = "";
 
@@ -164,11 +181,17 @@ public sealed partial class FilePickerPage : Page
             PickFilesOutputTextBlock.Text = "Operation cancelled.";
         }
 
+        //re-enable the button
+        senderButton.IsEnabled = true;
         UIHelper.AnnounceActionForAccessibility(sender as Button, PickFilesOutputTextBlock.Text, "FilesPickedNotificationId");
     }
 
     private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
     {
+        //disable the button to avoid double-clicking
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickFolderOutputTextBlock.Text = "";
 
@@ -211,11 +234,17 @@ public sealed partial class FilePickerPage : Page
             PickFolderOutputTextBlock.Text = "Operation cancelled.";
         }
 
+        //re-enable the button
+        senderButton.IsEnabled = true;
         UIHelper.AnnounceActionForAccessibility(sender as Button, PickFolderOutputTextBlock.Text, "FolderPickedNotificationId");
     }
 
     private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
     {
+        //disable the button to avoid double-clicking
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
         // Clear previous returned file name, if it exists, between iterations of this scenario
         SaveFileOutputTextBlock.Text = "";
 
@@ -239,7 +268,7 @@ public sealed partial class FilePickerPage : Page
         savePicker.SuggestedFileName = enteredFileName.Text;
 
         // Open the picker for the user to pick a file
-        StorageFile file= await savePicker.PickSaveFileAsync();
+        StorageFile file = await savePicker.PickSaveFileAsync();
         if (file != null)
         {
             // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.
@@ -256,7 +285,7 @@ public sealed partial class FilePickerPage : Page
             }
             // Another way to write a string to the file is to use this instead:
             // await FileIO.WriteTextAsync(file, "Example file contents.");
-            
+
             // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
             // Completing updates may require Windows to ask for user input.
             FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
@@ -278,6 +307,8 @@ public sealed partial class FilePickerPage : Page
             SaveFileOutputTextBlock.Text = "Operation cancelled.";
         }
 
+        //re-enable the button
+        senderButton.IsEnabled = true;
         UIHelper.AnnounceActionForAccessibility(sender as Button, SaveFileOutputTextBlock.Text, "FileSavedNotificationId");
     }
 }
