@@ -9,23 +9,13 @@
 //*********************************************************
 using System;
 using System.Linq;
-using System.Numerics;
 using System.Reflection;
-using WinUIGallery.Data;
-using WinUIGallery.Helper;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.System;
-using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Hosting;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.Data;
 using WinUIGallery.DesktopWap.Controls;
-using WASDK = Microsoft.WindowsAppSDK;
+using WinUIGallery.Helper;
 
 namespace WinUIGallery
 {

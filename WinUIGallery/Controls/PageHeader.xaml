@@ -10,6 +10,7 @@
     xmlns:data="using:WinUIGallery.Data"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -17,6 +18,13 @@
             x:Name="collectionConverter"
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
+        <Style
+            x:Key="CustomFlyoutPresenterStyle"
+            BasedOn="{StaticResource DefaultFlyoutPresenterStyle}"
+            TargetType="FlyoutPresenter">
+            <Setter Property="MinWidth" Value="420" />
+            <Setter Property="MaxWidth" Value="800" />
+        </Style>
     </UserControl.Resources>
 
     <Grid ColumnSpacing="8">
@@ -76,6 +84,7 @@
                             </BreadcrumbBar>
 
                             <MenuFlyoutSeparator />
+
 
                             <TextBlock Text="Documentation" />
                             <ItemsControl IsTabStop="False" ItemsSource="{x:Bind Item.Docs}">
