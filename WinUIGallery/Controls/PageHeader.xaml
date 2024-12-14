@@ -136,10 +136,19 @@
                                     ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available" />
                             </StackPanel>
                             <HyperlinkButton
-                                x:Name="ControlSourceLink"
-                                Content="{x:Bind Item.Title}"
-                                ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri}" />
+                                x:Name="PageMarkupGitHubLink"
+                                Content="XAML"
+                                ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri}" />
+                            <HyperlinkButton
+                                x:Name="PageCodeGitHubLink"
+                                Content="C#"
+                                ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri}" />
                         </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+            <AppBarSeparator />
 
             <AppBarButton
                 x:Name="CopyLinkButton"
