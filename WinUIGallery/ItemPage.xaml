@@ -29,11 +29,14 @@
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
     </Page.Resources>
-    <Grid x:Name="rootPanel">
+    
+    <Grid x:Name="rootPanel" RowSpacing="8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
+        <!--  Page Header  -->
         <controls:PageHeader
             x:Name="pageHeader"
             Margin="36,24,36,0"
@@ -52,12 +55,11 @@
                 </Grid.RowDefinitions>
                 <TextBlock
                     x:Name="descriptionText"
-                    Grid.ColumnSpan="2"
-                    Margin="0,4,24,0"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Text="{x:Bind Item.Description}"
                     Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}" />
-                <Frame x:Name="contentFrame" Grid.Row="2" />
+
+                <Frame x:Name="contentFrame" Grid.Row="1" />
             </Grid>
         </ScrollViewer>
 
