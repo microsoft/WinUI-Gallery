@@ -2,42 +2,80 @@
   {
     "Code": "E700",
     "Name": "GlobalNavButton",
-    "Tags": []
+    "Tags": [
+      "menu",
+      "hamburger",
+      "line",
+      "three"
+    ]
   },
   {
     "Code": "E701",
     "Name": "Wifi",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "E702",
     "Name": "Bluetooth",
-    "Tags": []
+    "Tags": [
+      "device",
+      "connection"
+    ]
   },
   {
     "Code": "E703",
     "Name": "Connect",
-    "Tags": []
+    "Tags": [
+      "device",
+      "connection"
+    ]
   },
   {
     "Code": "E704",
     "Name": "InternetSharing",
-    "Tags": []
+    "Tags": [
+      "network",
+      "wifi",
+      "connection",
+      "signal"
+    ]
   },
   {
     "Code": "E705",
     "Name": "VPN",
-    "Tags": []
+    "Tags": [
+      "shield",
+      "privacy",
+      "security",
+      "lock",
+      "protection"
+    ]
   },
   {
     "Code": "E706",
     "Name": "Brightness",
-    "Tags": []
+    "Tags": [
+      "sun",
+      "light",
+      "dark"
+    ]
   },
   {
     "Code": "E707",
     "Name": "MapPin",
-    "Tags": []
+    "Tags": [
+      "location",
+      "marker",
+      "destination",
+      "place",
+      "position"
+    ]
   },
   {
     "Code": "E708",
@@ -50,38 +88,78 @@
   {
     "Code": "E709",
     "Name": "Airplane",
-    "Tags": []
+    "Tags": [
+      "flight",
+      "vehicle",
+      "travel"
+    ]
   },
   {
     "Code": "E70A",
     "Name": "Tablet",
-    "Tags": []
+    "Tags": [
+      "device",
+      "screen",
+      "physical",
+      "analog",
+      "watch",
+      "view",
+      "video",
+      "computer",
+      "pc"
+    ]
   },
   {
     "Code": "E70B",
     "Name": "QuickNote",
-    "Tags": []
+    "Tags": [
+      "note",
+      "sticky note",
+      "sketch",
+      "reminder"
+    ]
   },
   {
     "Code": "E70C",
     "Name": "RememberedDevice",
-    "Tags": []
+    "Tags": [
+      "device",
+      "memory",
+      "trusted",
+      "saved",
+      "access"
+    ]
   },
   {
     "Code": "E70D",
     "Name": "ChevronDown",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "dropdown",
+      "direction",
+      "expand",
+      "contract"
+    ]
   },
   {
     "Code": "E70E",
     "Name": "ChevronUp",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "dropdown",
+      "direction",
+      "expand",
+      "contract"
+    ]
   },
   {
     "Code": "E70F",
     "Name": "Edit",
     "Tags": [
-      "pencil"
+      "pencil",
+      "update",
+      "create",
+      "draw"
     ]
   },
   {
@@ -89,6 +167,8 @@
     "Name": "Add",
     "Tags": [
       "+",
+      "plus",
+      "addition",
       "new"
     ]
   },
@@ -96,7 +176,12 @@
     "Code": "E711",
     "Name": "Cancel",
     "Tags": [
-      "x"
+      "x",
+      "close",
+      "stop",
+      "exit",
+      "abort",
+      "reject"
     ]
   },
   {
@@ -104,88 +189,171 @@
     "Name": "More",
     "Tags": [
       "...",
-      "dots"
+      "dots",
+      "overflow",
+      "menu",
+      "navigation"
     ]
   },
   {
     "Code": "E713",
     "Name": "Settings",
-    "Tags": []
+    "Tags": [
+      "gear",
+      "options",
+      "cog"
+    ]
   },
   {
     "Code": "E714",
     "Name": "Video",
     "Tags": [
-      "camera"
+      "film",
+      "clip",
+      "media",
+      "content",
+      "camera",
+      "recording",
+      "capture"
     ]
   },
   {
     "Code": "E715",
     "Name": "Mail",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "letter"
+    ]
   },
   {
     "Code": "E716",
     "Name": "People",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "group",
+      "team",
+      "organization",
+      "contact",
+      "guest"
     ]
   },
   {
     "Code": "E717",
     "Name": "Phone",
-    "Tags": []
+    "Tags": [
+      "device",
+      "mobile",
+      "small screen",
+      "cellular telephone",
+      "apple",
+      "android"
+    ]
   },
   {
     "Code": "E718",
     "Name": "Pin",
-    "Tags": []
+    "Tags": [
+      "save",
+      "share",
+      "post",
+      "favorite"
+    ]
   },
   {
     "Code": "E719",
     "Name": "Shop",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "purchase",
+      "retail",
+      "cart",
+      "online",
+      "currency",
+      "product"
+    ]
   },
   {
     "Code": "E71A",
     "Name": "Stop",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "start",
+      "begin"
+    ]
   },
   {
     "Code": "E71B",
     "Name": "Link",
-    "Tags": []
+    "Tags": [
+      "link",
+      "share",
+      "web",
+      "internet"
+    ]
   },
   {
     "Code": "E71C",
     "Name": "Filter",
-    "Tags": []
+    "Tags": [
+      "dropdown",
+      "sort",
+      "line"
+    ]
   },
   {
     "Code": "E71D",
     "Name": "AllApps",
-    "Tags": []
+    "Tags": [
+      "plugin",
+      "square",
+      "stack"
+    ]
   },
   {
     "Code": "E71E",
     "Name": "Zoom",
-    "Tags": []
+    "Tags": [
+      "zoom in",
+      "zoom out",
+      "magnifying glass",
+      "search"
+    ]
   },
   {
     "Code": "E71F",
     "Name": "ZoomOut",
-    "Tags": []
+    "Tags": [
+      "zoom in",
+      "zoom out",
+      "magnifying glass",
+      "search"
+    ]
   },
   {
     "Code": "E720",
     "Name": "Microphone",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "voice",
+      "record",
+      "sound",
+      "speech"
+    ]
   },
   {
     "Code": "E721",
     "Name": "Search",
-    "Tags": []
+    "Tags": [
+      "magnifying glass",
+      "zoom",
+      "inspect",
+      "review"
+    ]
   },
   {
     "Code": "E722",
@@ -195,7 +363,11 @@
   {
     "Code": "E723",
     "Name": "Attach",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photography",
+      "picture"
+    ]
   },
   {
     "Code": "E724",
@@ -205,94 +377,180 @@
   {
     "Code": "E725",
     "Name": "SendFill",
-    "Tags": []
+    "Tags": [
+      "paper plane",
+      "mail",
+      "message",
+      "email"
+    ]
   },
   {
     "Code": "E726",
     "Name": "WalkSolid",
-    "Tags": []
+    "Tags": [
+      "person",
+      "user",
+      "movement",
+      "step",
+      "pedestrian",
+      "journey",
+      "foot"
+    ]
   },
   {
     "Code": "E727",
     "Name": "InPrivate",
-    "Tags": []
+    "Tags": [
+      "private",
+      "mode",
+      "browser",
+      "person"
+    ]
   },
   {
     "Code": "E728",
     "Name": "FavoriteList",
     "Tags": [
-      "star"
+      "star",
+      "like"
     ]
   },
   {
     "Code": "E729",
     "Name": "PageSolid",
-    "Tags": []
+    "Tags": [
+      "document",
+      "file",
+      "sheet",
+      "paper",
+      "text"
+    ]
   },
   {
     "Code": "E72A",
     "Name": "Forward",
     "Tags": [
-      "arrow"
+      "arrow",
+      "next",
+      "send",
+      "right",
+      "proceed"
     ]
   },
   {
     "Code": "E72B",
     "Name": "Back",
     "Tags": [
-      "arrow"
+      "arrow",
+      "previous",
+      "return",
+      "left",
+      "rewind"
     ]
   },
   {
     "Code": "E72C",
     "Name": "Refresh",
     "Tags": [
-      "arrow"
+      "reload",
+      "update",
+      "restart",
+      "circle",
+      "sync"
     ]
   },
   {
     "Code": "E72D",
     "Name": "Share",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "square",
+      "forward",
+      "right",
+      "send"
+    ]
   },
   {
     "Code": "E72E",
     "Name": "Lock",
     "Tags": [
-      "private"
+      "private",
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
     ]
   },
   {
     "Code": "E730",
     "Name": "ReportHacked",
     "Tags": [
-      "!"
+      "!",
+      "security",
+      "alert",
+      "breach",
+      "shield",
+      "warning"
     ]
   },
   {
     "Code": "E731",
     "Name": "EMI",
-    "Tags": []
+    "Tags": [
+      "company",
+      "building",
+      "office",
+      "enterprise",
+      "corporate",
+      "business"
+    ]
   },
   {
     "Code": "E734",
     "Name": "FavoriteStar",
-    "Tags": []
+    "Tags": [
+      "star",
+      "favorite",
+      "highlight",
+      "bookmark",
+      "like"
+    ]
   },
   {
     "Code": "E735",
     "Name": "FavoriteStarFill",
-    "Tags": []
+    "Tags": [
+      "star",
+      "favorite",
+      "highlight",
+      "bookmark",
+      "like"
+    ]
   },
   {
     "Code": "E736",
     "Name": "ReadingMode",
-    "Tags": []
+    "Tags": [
+      "read",
+      "list",
+      "content",
+      "collection",
+      "news"
+    ]
   },
   {
     "Code": "E737",
     "Name": "Favicon",
-    "Tags": []
+    "Tags": [
+      "logo",
+      "icon",
+      "brand",
+      "shortcut",
+      "symbol"
+    ]
   },
   {
     "Code": "E738",
@@ -305,178 +563,307 @@
   {
     "Code": "E739",
     "Name": "Checkbox",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "E73A",
     "Name": "CheckboxComposite",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "E73B",
     "Name": "CheckboxFill",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "E73C",
     "Name": "CheckboxIndeterminate",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "E73D",
     "Name": "CheckboxCompositeReversed",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "E73E",
     "Name": "CheckMark",
-    "Tags": []
+    "Tags": [
+      "approval",
+      "selected"
+    ]
   },
   {
     "Code": "E73F",
     "Name": "BackToWindow",
     "Tags": [
-      "arrow"
+      "arrow",
+      "restore",
+      "window",
+      "return"
     ]
   },
   {
     "Code": "E740",
     "Name": "FullScreen",
     "Tags": [
-      "arrow"
+      "arrow",
+      "expand",
+      "maximize",
+      "view",
+      "screen",
+      "zoom"
     ]
   },
   {
     "Code": "E741",
     "Name": "ResizeTouchLarger",
     "Tags": [
-      "arrow"
+      "arrow",
+      "expand",
+      "grow",
+      "touch",
+      "increase",
+      "size"
     ]
   },
   {
     "Code": "E742",
     "Name": "ResizeTouchSmaller",
     "Tags": [
-      "arrow"
+      "arrow",
+      "shrink",
+      "reduce",
+      "decrease",
+      "minimize",
+      "touch"
     ]
   },
   {
     "Code": "E743",
     "Name": "ResizeMouseSmall",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "resize-handle"
+    ]
   },
   {
     "Code": "E744",
     "Name": "ResizeMouseMedium",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "resize-handle"
+    ]
   },
   {
     "Code": "E745",
     "Name": "ResizeMouseWide",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "resize-handle"
+    ]
   },
   {
     "Code": "E746",
     "Name": "ResizeMouseTall",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "resize-handle"
+    ]
   },
   {
     "Code": "E747",
     "Name": "ResizeMouseLarge",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "resize-handle"
+    ]
   },
   {
     "Code": "E748",
     "Name": "SwitchUser",
     "Tags": [
-      "person"
+      "person",
+      "user",
+      "switch",
+      "profile",
+      "account",
+      "login"
     ]
   },
   {
     "Code": "E749",
     "Name": "Print",
-    "Tags": []
+    "Tags": [
+      "printer",
+      "paper",
+      "copy",
+      "fax",
+      "analog",
+      "office",
+      "ink"
+    ]
   },
   {
     "Code": "E74A",
     "Name": "Up",
     "Tags": [
-      "arrow"
+      "arrow",
+      "increase",
+      "rise"
     ]
   },
   {
     "Code": "E74B",
     "Name": "Down",
     "Tags": [
-      "arrow"
+      "arrow",
+      "decrease",
+      "drop"
     ]
   },
   {
     "Code": "E74C",
     "Name": "OEM",
-    "Tags": []
+    "Tags": [
+      "brand",
+      "manufacturer",
+      "original"
+    ]
   },
   {
     "Code": "E74D",
     "Name": "Delete",
     "Tags": [
       "bin",
-      "trash"
+      "trash",
+      "can",
+      "remove",
+      "edit",
+      "byee"
     ]
   },
   {
     "Code": "E74E",
     "Name": "Save",
     "Tags": [
-      "floppy"
+      "floppy",
+      "disk",
+      "device",
+      "old"
     ]
   },
   {
     "Code": "E74F",
     "Name": "Mute",
     "Tags": [
+      "sound",
+      "silence",
       "volume"
     ]
   },
   {
     "Code": "E750",
     "Name": "BackSpaceQWERTY",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "backward",
+      "remove",
+      "keyboard"
+    ]
   },
   {
     "Code": "E751",
     "Name": "ReturnKey",
     "Tags": [
-      "arrow"
+      "arrow",
+      "enter",
+      "submit",
+      "keyboard"
     ]
   },
   {
     "Code": "E752",
     "Name": "UpArrowShiftKey",
-    "Tags": []
+    "Tags": [
+      "keyboard"
+    ]
   },
   {
     "Code": "E753",
     "Name": "Cloud",
-    "Tags": []
+    "Tags": [
+      "storage",
+      "upload",
+      "download",
+      "save",
+      "sync"
+    ]
   },
   {
     "Code": "E754",
     "Name": "Flashlight",
-    "Tags": []
+    "Tags": [
+      "torch",
+      "lamp"
+    ]
   },
   {
     "Code": "E755",
     "Name": "RotationLock",
     "Tags": [
-      "arrow"
+      "arrow",
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
     ]
   },
   {
     "Code": "E756",
     "Name": "CommandPrompt",
     "Tags": [
-      "terminal"
+      "terminal",
+      "console",
+      "cmd"
     ]
   },
   {
@@ -497,91 +884,166 @@
   {
     "Code": "E75C",
     "Name": "EraseTool",
-    "Tags": []
+    "Tags": [
+      "undo",
+      "remove",
+      "delete"
+    ]
   },
   {
     "Code": "E75D",
     "Name": "UnderscoreSpace",
-    "Tags": []
+    "Tags": [
+      "separation"
+    ]
   },
   {
     "Code": "E75E",
     "Name": "GripperTool",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "handle"
+    ]
   },
   {
     "Code": "E75F",
     "Name": "Dialpad",
     "Tags": [
       "dots",
-      "phone"
+      "phone",
+      "call",
+      "number"
     ]
   },
   {
     "Code": "E760",
     "Name": "PageLeft",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "previous",
+      "back"
+    ]
   },
   {
     "Code": "E761",
     "Name": "PageRight",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "next",
+      "forward"
+    ]
   },
   {
     "Code": "E762",
     "Name": "MultiSelect",
-    "Tags": []
+    "Tags": [
+      "checkmark",
+      "task",
+      "list",
+      "type"
+    ]
   },
   {
     "Code": "E763",
     "Name": "KeyboardLeftHanded",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "type",
+      "key",
+      "device",
+      "analog"
+    ]
   },
   {
     "Code": "E764",
     "Name": "KeyboardRightHanded",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "type",
+      "key",
+      "device",
+      "analog"
+    ]
   },
   {
     "Code": "E765",
     "Name": "KeyboardClassic",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "type",
+      "key",
+      "device",
+      "digital"
+    ]
   },
   {
     "Code": "E766",
     "Name": "KeyboardSplit",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "type",
+      "key",
+      "device",
+      "analog"
+    ]
   },
   {
     "Code": "E767",
     "Name": "Volume",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "level",
+      "speaker"
+    ]
   },
   {
     "Code": "E768",
     "Name": "Play",
-    "Tags": []
+    "Tags": [      "control",
+      "playback",
+      "start",
+      "begin"]
   },
   {
     "Code": "E769",
     "Name": "Pause",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "freeze"
+    ]
   },
   {
     "Code": "E76B",
     "Name": "ChevronLeft",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "dropdown",
+      "direction",
+      "expand",
+      "contract"
+    ]
   },
   {
     "Code": "E76C",
     "Name": "ChevronRight",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "dropdown",
+      "direction",
+      "expand",
+      "contract"
+    ]
   },
   {
     "Code": "E76D",
     "Name": "InkingTool",
     "Tags": [
-      "pen"
+      "pen",
+      "edit",
+      "create",
+      "draw"
     ]
   },
   {
@@ -589,59 +1051,90 @@
     "Name": "Emoji2",
     "Tags": [
       "face",
-      "smiley"
+      "smiley",
+      "emote",
+      "feeling"
     ]
   },
   {
     "Code": "E76F",
     "Name": "GripperBarHorizontal",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "handle"
+    ]
   },
   {
     "Code": "E770",
     "Name": "System",
-    "Tags": []
+    "Tags": [
+      "rectangle",
+      "shape"
+    ]
   },
   {
     "Code": "E771",
     "Name": "Personalize",
     "Tags": [
-      "brush"
+      "brush",
+      "customize"
     ]
   },
   {
     "Code": "E772",
     "Name": "Devices",
-    "Tags": []
+    "Tags": [
+      "hardware",
+      "connections",
+      "peripherals",
+      "electronics",
+      "gadgets"
+    ]
   },
   {
     "Code": "E773",
     "Name": "SearchAndApps",
-    "Tags": []
+    "Tags": [
+      "magnifying glass",
+      "zoom",
+      "inspect",
+      "review"
+    ]
   },
   {
     "Code": "E774",
     "Name": "Globe",
-    "Tags": []
+    "Tags": [
+      "web",
+      "world",
+      "earth",
+      "global"
+    ]
   },
   {
     "Code": "E775",
     "Name": "TimeLanguage",
-    "Tags": []
+    "Tags": [
+      "clock",
+      "region"
+    ]
   },
   {
     "Code": "E776",
     "Name": "EaseOfAccess",
     "Tags": [
       "person",
-      "user"
+      "inclusive"
     ]
   },
   {
     "Code": "E777",
     "Name": "UpdateRestore",
     "Tags": [
-      "arrow"
+      "arrow",
+      "refresh",
+      "recover",
+      "repair"
     ]
   },
   {
@@ -656,13 +1149,20 @@
     "Name": "ContactInfo",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "details"
     ]
   },
   {
     "Code": "E77A",
     "Name": "Unpin",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "delete",
+      "unattach",
+      "clear",
+      "disengage"
+    ]
   },
   {
     "Code": "E77B",
@@ -675,86 +1175,143 @@
   {
     "Code": "E77C",
     "Name": "Memo",
-    "Tags": []
+    "Tags": [
+      "voicemail",
+      "tape",
+      "playback",
+      "audio",
+      "recording",
+      "message"
+    ]
   },
   {
     "Code": "E77E",
     "Name": "IncomingCall",
     "Tags": [
-      "phone"
+      "phone",
+      "receive"
     ]
   },
   {
     "Code": "E77F",
     "Name": "Paste",
     "Tags": [
-      "clipboard"
+      "clipboard",
+      "copy",
+      "memory",
+      "analog"
     ]
   },
   {
     "Code": "E780",
     "Name": "PhoneBook",
-    "Tags": []
+    "Tags": [
+      "contacts",
+      "directory",
+      "list"
+    ]
   },
   {
     "Code": "E781",
     "Name": "LEDLight",
-    "Tags": []
+    "Tags": [
+      "light",
+      "illuminate"
+    ]
   },
   {
     "Code": "E783",
     "Name": "Error",
     "Tags": [
-      "!"
+      "!",
+      "exclamation",
+      "alert"
     ]
   },
   {
     "Code": "E784",
     "Name": "GripperBarVertical",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "handle"
+    ]
   },
   {
     "Code": "E785",
     "Name": "Unlock",
-    "Tags": []
+    "Tags": [
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
+    ]
   },
   {
     "Code": "E786",
     "Name": "Slideshow",
-    "Tags": []
+    "Tags": [
+      "images",
+      "presentation",
+      "gallery",
+      "photos",
+      "show"
+    ]
   },
   {
     "Code": "E787",
     "Name": "Calendar",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "E788",
     "Name": "GripperResize",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "handle"
+    ]
   },
   {
     "Code": "E789",
     "Name": "Megaphone",
     "Tags": [
-      "announcement"
+      "announcement",
+      "shout"
     ]
   },
   {
     "Code": "E78A",
     "Name": "Trim",
-    "Tags": []
+    "Tags": [
+      "cut",
+      "edit",
+      "shorten",
+      "clip",
+      "crop"
+    ]
   },
   {
     "Code": "E78B",
     "Name": "NewWindow",
-    "Tags": []
+    "Tags": [
+      "open",
+      "launch"
+    ]
   },
   {
     "Code": "E78C",
     "Name": "SaveLocal",
     "Tags": [
-      "floppy"
+      "floppy",
+      "disk",
+      "device",
+      "old"
     ]
   },
   {
@@ -762,7 +1319,10 @@
     "Name": "Color",
     "Tags": [
       "theme",
-      "palette"
+      "palette",
+      "art",
+      "edit",
+      "paint"
     ]
   },
   {
@@ -776,13 +1336,22 @@
     "Code": "E792",
     "Name": "SaveAs",
     "Tags": [
-      "floppy"
+      "floppy",
+      "disk",
+      "device",
+      "old"
     ]
   },
   {
     "Code": "E793",
     "Name": "Light",
-    "Tags": []
+    "Tags": [
+      "brightness",
+      "sun",
+      "dark",
+      "theme",
+      "toggle"
+    ]
   },
   {
     "Code": "E799",
@@ -792,20 +1361,27 @@
   {
     "Code": "E7A5",
     "Name": "DataSenseBar",
-    "Tags": []
+    "Tags": [
+      "bars"
+    ]
   },
   {
     "Code": "E7A6",
     "Name": "Redo",
     "Tags": [
-      "arrow"
+      "arrow",
+      "restore",
+      "forward"
     ]
   },
   {
     "Code": "E7A7",
     "Name": "Undo",
     "Tags": [
-      "arrow"
+      "arrow",
+      "revert",
+      "back",
+      "cancel"
     ]
   },
   {
@@ -816,19 +1392,37 @@
   {
     "Code": "E7AC",
     "Name": "OpenWith",
-    "Tags": []
+    "Tags": [
+      "application",
+      "program",
+      "associate",
+      "file",
+      "choose",
+      "viewer"
+    ]
   },
   {
     "Code": "E7AD",
     "Name": "Rotate",
     "Tags": [
-      "arrow"
+      "arrow",
+      "edit",
+      "create",
+      "canvas",
+      "horizontal",
+      "vertical",
+      "flip"
     ]
   },
   {
     "Code": "E7B3",
     "Name": "RedEye",
-    "Tags": []
+    "Tags": [
+      "blink",
+      "pupil",
+      "show",
+      "hide"
+    ]
   },
   {
     "Code": "E7B5",
@@ -838,51 +1432,99 @@
   {
     "Code": "E7B7",
     "Name": "MapPin2",
-    "Tags": []
+    "Tags": [
+      "location",
+      "marker",
+      "destination",
+      "place",
+      "position"
+    ]
   },
   {
     "Code": "E7B8",
     "Name": "Package",
-    "Tags": []
+    "Tags": [
+      "archive",
+      "bundle",
+      "file",
+      "collection",
+      "install"
+    ]
   },
   {
     "Code": "E7BA",
     "Name": "Warning",
     "Tags": [
       "!",
-      "alert"
+      "alert",
+      "exclamation",
+      "triangle",
+      "issue"
     ]
   },
   {
     "Code": "E7BC",
     "Name": "ReadingList",
-    "Tags": []
+    "Tags": [
+      "read",
+      "list",
+      "content",
+      "collection",
+      "news"
+    ]
   },
   {
     "Code": "E7BE",
     "Name": "Education",
-    "Tags": []
+    "Tags": [
+      "learning",
+      "knowledge",
+      "school",
+      "study",
+      "college",
+      "university",
+      "graduation"
+    ]
   },
   {
     "Code": "E7BF",
     "Name": "ShoppingCart",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "purchase",
+      "retail",
+      "online",
+      "currency",
+      "product"
+    ]
   },
   {
     "Code": "E7C0",
     "Name": "Train",
-    "Tags": []
+    "Tags": [
+      "rail",
+      "transport",
+      "travel",
+      "track",
+      "station"
+    ]
   },
   {
     "Code": "E7C1",
     "Name": "Flag",
-    "Tags": []
+    "Tags": [
+      "urgent",
+      "important",
+      "look"
+    ]
   },
   {
     "Code": "E7C2",
     "Name": "Move",
     "Tags": [
-      "arrow"
+      "arrow",
+      "drag",
+      "handle"
     ]
   },
   {
@@ -893,60 +1535,104 @@
   {
     "Code": "E7C4",
     "Name": "TaskView",
-    "Tags": []
+    "Tags": [
+      "document",
+      "file",
+      "sheet",
+      "paper",
+      "text"
+    ]
   },
   {
     "Code": "E7C5",
     "Name": "BrowsePhotos",
-    "Tags": []
+    "Tags": [
+      "magnifying glass",
+      "zoom",
+      "inspect",
+      "review",
+      "gallery",
+      "images",
+      "pictures",
+      "search"
+    ]
   },
   {
     "Code": "E7C6",
     "Name": "HalfStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score"
+    ]
   },
   {
     "Code": "E7C7",
     "Name": "HalfStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score"
+    ]
   },
   {
     "Code": "E7C8",
     "Name": "Record",
     "Tags": [
-      "circle"
+      "circle",
+      "control",
+      "playback",
+      "wait",
+      "stop",
+      "transcribe"
     ]
   },
   {
     "Code": "E7C9",
     "Name": "TouchPointer",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "interact",
+      "click",
+      "hand"
+    ]
   },
   {
     "Code": "E7DE",
     "Name": "LangJPN",
-    "Tags": []
+    "Tags": [
+      "language",
+      "kanji",
+      "japan"
+    ]
   },
   {
     "Code": "E7E3",
     "Name": "Ferry",
     "Tags": [
       "boat",
-      "ship"
+      "ship",
+      "ocean",
+      "travel"
     ]
   },
   {
     "Code": "E7E6",
     "Name": "Highlight",
     "Tags": [
-      "marker"
+      "marker",
+      "edit",
+      "draw",
+      "focus"
     ]
   },
   {
     "Code": "E7E7",
     "Name": "ActionCenterNotification",
     "Tags": [
-      "message"
+      "message",
+      "alert",
+      "reminder",
+      "warning",
+      "update"
     ]
   },
   {
@@ -982,7 +1668,10 @@
     "Code": "E7ED",
     "Name": "RingerSilent",
     "Tags": [
-      "bell"
+      "bell",
+      "sound",
+      "mute",
+      "volume"
     ]
   },
   {
@@ -995,169 +1684,306 @@
   {
     "Code": "E7EF",
     "Name": "Admin",
-    "Tags": []
+    "Tags": [
+      "elevated",
+      "permissions",
+      "control",
+      "rights"
+    ]
   },
   {
     "Code": "E7F0",
     "Name": "CC",
-    "Tags": []
+    "Tags": [
+      "subtitles",
+      "text",
+      "caption",
+      "speech",
+      "accessibility"
+    ]
   },
   {
     "Code": "E7F1",
     "Name": "SDCard",
-    "Tags": []
+    "Tags": [
+      "storage",
+      "memory",
+      "external",
+      "device"
+    ]
   },
   {
     "Code": "E7F2",
     "Name": "CallForwarding",
     "Tags": [
-      "phone"
+      "phone",
+      "handset",
+      "audio"
     ]
   },
   {
     "Code": "E7F3",
     "Name": "SettingsDisplaySound",
     "Tags": [
-      "volume"
+      "volume",
+      "sound",
+      "audio",
+      "device",
+      "wave"
     ]
   },
   {
     "Code": "E7F4",
     "Name": "TVMonitor",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "display",
+      "television",
+      "view"
+    ]
   },
   {
     "Code": "E7F5",
     "Name": "Speakers",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume"
+    ]
   },
   {
     "Code": "E7F6",
     "Name": "Headphone",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device",
+      "analog"
+    ]
   },
   {
     "Code": "E7F7",
     "Name": "DeviceLaptopPic",
-    "Tags": []
+    "Tags": [
+      "projection",
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "E7F8",
     "Name": "DeviceLaptopNoPic",
-    "Tags": []
+    "Tags": [
+      "projection",
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "E7F9",
     "Name": "DeviceMonitorRightPic",
-    "Tags": []
+    "Tags": [
+      "projection",
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "E7FA",
     "Name": "DeviceMonitorLeftPic",
-    "Tags": []
+    "Tags": [
+      "projection",
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "E7FB",
     "Name": "DeviceMonitorNoPic",
-    "Tags": []
+    "Tags": [
+      "projection",
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "E7FC",
     "Name": "Game",
-    "Tags": []
+    "Tags": [
+      "videogame",
+      "controller"
+    ]
   },
   {
     "Code": "E7FD",
     "Name": "HorizontalTabKey",
     "Tags": [
-      "arrow"
+      "arrow",
+      "keyboard"
     ]
   },
   {
     "Code": "E802",
     "Name": "StreetsideSplitMinimize",
-    "Tags": []
+    "Tags": [
+      "view",
+      "map"
+    ]
   },
   {
     "Code": "E803",
     "Name": "StreetsideSplitExpand",
-    "Tags": []
+    "Tags": [
+      "view",
+      "map"
+    ]
   },
   {
     "Code": "E804",
     "Name": "Car",
-    "Tags": []
+    "Tags": [
+      "vehicle",
+      "transportation",
+      "drive",
+      "automobile",
+      "road"
+    ]
   },
   {
     "Code": "E805",
     "Name": "Walk",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "movement",
+      "step",
+      "pedestrian",
+      "journey",
+      "foot"
     ]
   },
   {
     "Code": "E806",
     "Name": "Bus",
-    "Tags": []
+    "Tags": [
+      "vehicle",
+      "transportation",
+      "public",
+      "travel"
+    ]
   },
   {
     "Code": "E809",
     "Name": "TiltUp",
-    "Tags": []
+    "Tags": [
+      "angle",
+      "rotate",
+      "elevation"
+    ]
   },
   {
     "Code": "E80A",
     "Name": "TiltDown",
-    "Tags": []
+    "Tags": [
+      "angle",
+      "rotate",
+      "elevation"
+    ]
   },
   {
     "Code": "E80B",
     "Name": "CallControl",
     "Tags": [
-      "phone"
+      "phone",
+      "handset",
+      "audio"
     ]
   },
   {
     "Code": "E80C",
     "Name": "RotateMapRight",
     "Tags": [
-      "arrow"
+      "arrow",
+      "edit",
+      "create",
+      "canvas",
+      "horizontal",
+      "vertical",
+      "travel",
+      "navigation",
+      "flip"
     ]
   },
   {
     "Code": "E80D",
     "Name": "RotateMapLeft",
     "Tags": [
-      "arrow"
+      "arrow",
+      "edit",
+      "create",
+      "canvas",
+      "horizontal",
+      "vertical",
+      "travel",
+      "navigation",
+      "flip"
     ]
   },
   {
     "Code": "E80F",
     "Name": "Home",
     "Tags": [
-      "house"
+      "house",
+      "safety",
+      "location",
+      "space",
+      "wfh"
     ]
   },
   {
     "Code": "E811",
     "Name": "ParkingLocation",
     "Tags": [
-      "car"
+      "car",
+      "spot",
+      "space"
     ]
   },
   {
     "Code": "E812",
     "Name": "MapCompassTop",
     "Tags": [
-      "triangle"
+      "triangle",
+      "up"
     ]
   },
   {
     "Code": "E813",
     "Name": "MapCompassBottom",
     "Tags": [
-      "triangle"
+      "triangle",
+      "down"
     ]
   },
   {
@@ -1167,34 +1993,56 @@
       "!",
       "error",
       "warning",
-      "alert"
+      "alert",
+      "exclamation",
+      "issue"
     ]
   },
   {
     "Code": "E815",
     "Name": "Touch",
-    "Tags": []
+    "Tags": [
+      "finger",
+      "tap",
+      "gesture",
+      "screen",
+      "touchscreen"
+    ]
   },
   {
     "Code": "E816",
     "Name": "MapDirections",
-    "Tags": []
+    "Tags": [
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "E819",
     "Name": "StartPoint",
-    "Tags": []
+    "Tags": [
+      "map",
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "E81A",
     "Name": "StopPoint",
-    "Tags": []
+    "Tags": [
+      "map",
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "E81B",
     "Name": "EndPoint",
     "Tags": [
-      "flag"
+      "flag",
+      "map",
+      "travel",
+      "navigation"
     ]
   },
   {
@@ -1203,18 +2051,29 @@
     "Tags": [
       "clock",
       "time",
-      "arrow"
+      "arrow",
+      "back",
+      "undo"
     ]
   },
   {
     "Code": "E81D",
     "Name": "Location",
-    "Tags": []
+    "Tags": [
+      "pin",
+      "marker",
+      "map",
+      "location",
+      "travel"
+    ]
   },
   {
     "Code": "E81E",
     "Name": "MapLayers",
-    "Tags": []
+    "Tags": [
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "E81F",
@@ -1226,14 +2085,20 @@
   {
     "Code": "E821",
     "Name": "Work",
-    "Tags": []
+    "Tags": [
+      "bag",
+      "handbag",
+      "briefcase",
+      "office"
+    ]
   },
   {
     "Code": "E822",
     "Name": "Construction",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "work"
     ]
   },
   {
@@ -1241,91 +2106,155 @@
     "Name": "Recent",
     "Tags": [
       "clock",
-      "time"
+      "time",
+      "history",
+      "latest",
+      "new",
+      "update"
     ]
   },
   {
     "Code": "E825",
     "Name": "Bank",
-    "Tags": []
+    "Tags": [
+      "finance",
+      "money",
+      "account",
+      "deposit",
+      "institution"
+    ]
   },
   {
     "Code": "E826",
     "Name": "DownloadMap",
-    "Tags": []
+    "Tags": [
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "E829",
     "Name": "InkingToolFill2",
-    "Tags": []
+    "Tags": [
+      "draw",
+      "paint",
+      "sketch"
+    ]
   },
   {
     "Code": "E82A",
     "Name": "HighlightFill2",
-    "Tags": []
+    "Tags": [
+      "marker",
+      "edit",
+      "draw",
+      "focus"
+    ]
   },
   {
     "Code": "E82B",
     "Name": "EraseToolFill",
-    "Tags": []
+    "Tags": [
+      "undo",
+      "remove",
+      "delete"
+    ]
   },
   {
     "Code": "E82C",
     "Name": "EraseToolFill2",
-    "Tags": []
+    "Tags": [
+      "undo",
+      "remove",
+      "delete"
+    ]
   },
   {
     "Code": "E82D",
     "Name": "Dictionary",
     "Tags": [
-      "book"
+      "book",
+      "reference"
     ]
   },
   {
     "Code": "E82E",
     "Name": "DictionaryAdd",
     "Tags": [
-      "book"
+      "+",
+      "plus",
+      "book",
+      "reference"
     ]
   },
   {
     "Code": "E82F",
     "Name": "ToolTip",
     "Tags": [
-      "light"
+      "light",
+      "lightbulb",
+      "light",
+      "illuminate",
+      "knowledge",
+      "smart",
+      "idea"
     ]
   },
   {
     "Code": "E830",
     "Name": "ChromeBack",
     "Tags": [
-      "arrow"
+      "arrow",
+      "back",
+      "navigate",
+      "browser"
     ]
   },
   {
     "Code": "E835",
     "Name": "ProvisioningPackage",
-    "Tags": []
+    "Tags": [
+      "configuration",
+      "settings"
+    ]
   },
   {
     "Code": "E836",
     "Name": "AddRemoteDevice",
-    "Tags": []
+    "Tags": [
+      "connect",
+      "remote",
+      "pair"
+    ]
   },
   {
     "Code": "E838",
     "Name": "FolderOpen",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "E839",
     "Name": "Ethernet",
-    "Tags": []
+    "Tags": [
+      "cable",
+      "network",
+      "connection",
+      "wired",
+      "internet"
+    ]
   },
   {
     "Code": "E83A",
     "Name": "ShareBroadband",
-    "Tags": []
+    "Tags": [
+      "arrow"
+    ]
   },
   {
     "Code": "E83B",
@@ -1336,54 +2265,91 @@
     "Code": "E83C",
     "Name": "DialUp",
     "Tags": [
-      "phone"
+      "phone",
+      "call",
+      "number"
     ]
   },
   {
     "Code": "E83D",
     "Name": "DefenderApp",
-    "Tags": []
+    "Tags": [
+      "shield",
+      "security",
+      "protection",
+      "safety"
+    ]
   },
   {
     "Code": "E83E",
     "Name": "BatteryCharging9",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E83F",
     "Name": "Battery10",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E840",
     "Name": "Pinned",
-    "Tags": []
+    "Tags": [
+      "save",
+      "share",
+      "post",
+      "favorite"
+    ]
   },
   {
     "Code": "E841",
     "Name": "PinFill",
-    "Tags": []
+    "Tags": [
+      "save",
+      "share",
+      "post",
+      "favorite"
+    ]
   },
   {
     "Code": "E842",
     "Name": "PinnedFill",
-    "Tags": []
+    "Tags": [      "save",
+      "share",
+      "post",
+      "favorite"
+    ]
   },
   {
     "Code": "E843",
     "Name": "PeriodKey",
-    "Tags": []
+    "Tags": [
+      "dot",
+      "keyboard",
+      "punctuation"
+    ]
   },
   {
     "Code": "E844",
     "Name": "PuncKey",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "keyboard",
+      "punctuation"
+    ]
   },
   {
     "Code": "E845",
     "Name": "RevToggleKey",
     "Tags": [
-      "arrow"
+      "arrow",
+      "reverse",
+      "keyboard"
     ]
   },
   {
@@ -1399,36 +2365,56 @@
   {
     "Code": "E848",
     "Name": "LeftQuote",
-    "Tags": []
+    "Tags": [
+      "opening",
+      "text",
+      "symbol",
+      "mark"
+    ]
   },
   {
     "Code": "E849",
     "Name": "RightQuote",
-    "Tags": []
+    "Tags": [
+      "ending",
+      "text",
+      "symbol",
+      "mark"
+    ]
   },
   {
     "Code": "E84A",
     "Name": "DownShiftKey",
     "Tags": [
-      "abc"
+      "abc",
+      "lowercase"
     ]
   },
   {
     "Code": "E84B",
     "Name": "UpShiftKey",
     "Tags": [
-      "abc"
+      "abc",
+      "uppercase"
     ]
   },
   {
     "Code": "E84C",
     "Name": "PuncKey0",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "keyboard",
+      "punctuation"
+    ]
   },
   {
     "Code": "E84D",
     "Name": "PuncKeyLeftBottom",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "keyboard",
+      "punctuation"
+    ]
   },
   {
     "Code": "E84E",
@@ -1443,202 +2429,327 @@
   {
     "Code": "E850",
     "Name": "Battery0",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E851",
     "Name": "Battery1",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E852",
     "Name": "Battery2",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E853",
     "Name": "Battery3",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E854",
     "Name": "Battery4",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E855",
     "Name": "Battery5",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E856",
     "Name": "Battery6",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E857",
     "Name": "Battery7",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E858",
     "Name": "Battery8",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E859",
     "Name": "Battery9",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E85A",
     "Name": "BatteryCharging0",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E85B",
     "Name": "BatteryCharging1",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E85C",
     "Name": "BatteryCharging2",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E85D",
     "Name": "BatteryCharging3",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E85E",
     "Name": "BatteryCharging4",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E85F",
     "Name": "BatteryCharging5",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E860",
     "Name": "BatteryCharging6",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E861",
     "Name": "BatteryCharging7",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E862",
     "Name": "BatteryCharging8",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "E863",
     "Name": "BatterySaver0",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E864",
     "Name": "BatterySaver1",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E865",
     "Name": "BatterySaver2",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E866",
     "Name": "BatterySaver3",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E867",
     "Name": "BatterySaver4",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E868",
     "Name": "BatterySaver5",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E869",
     "Name": "BatterySaver6",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E86A",
     "Name": "BatterySaver7",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E86B",
     "Name": "BatterySaver8",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "E86C",
     "Name": "SignalBars1",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E86D",
     "Name": "SignalBars2",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E86E",
     "Name": "SignalBars3",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E86F",
     "Name": "SignalBars4",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E870",
     "Name": "SignalBars5",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E871",
     "Name": "SignalNotConnected",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E872",
     "Name": "Wifi1",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "E873",
     "Name": "Wifi2",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "E874",
     "Name": "Wifi3",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "E875",
     "Name": "MobSIMLock",
-    "Tags": []
+    "Tags": [
+      "security",
+      "phone",
+      "restricted"
+    ]
   },
   {
     "Code": "E876",
     "Name": "MobSIMMissing",
-    "Tags": []
+    "Tags": [
+      "error",
+      "phone",
+      "absent"
+    ]
   },
   {
     "Code": "E877",
     "Name": "Vibrate",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "notification",
+      "alert",
+      "silent",
+      "alert"
+    ]
   },
   {
     "Code": "E878",
@@ -1672,159 +2783,266 @@
     "Code": "E87C",
     "Name": "JpnRomaji",
     "Tags": [
-      "english"
+      "english",
+      "Japanese",
+      "transliteration",
+      "alphabet",
+      "language"
     ]
   },
   {
     "Code": "E87D",
     "Name": "JpnRomajiLock",
     "Tags": [
-      "english"
+      "english",
+      "Japanese",
+      "transliteration",
+      "alphabet",
+      "language"
     ]
   },
   {
     "Code": "E87E",
     "Name": "JpnRomajiShift",
     "Tags": [
-      "english"
+      "english",
+      "Japanese",
+      "transliteration",
+      "alphabet",
+      "language"
     ]
   },
   {
     "Code": "E87F",
     "Name": "JpnRomajiShiftLock",
-    "Tags": []
+    "Tags": [
+      "Japanese",
+      "transliteration",
+      "alphabet",
+      "language"
+    ]
   },
   {
     "Code": "E880",
     "Name": "StatusDataTransfer",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E881",
     "Name": "StatusDataTransferVPN",
-    "Tags": []
+    "Tags": [
+      "secure",
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E882",
     "Name": "StatusDualSIM2",
     "Tags": [
-      "number"
+      "number",
+      "connection",
+      "network"
     ]
   },
   {
     "Code": "E883",
     "Name": "StatusDualSIM2VPN",
-    "Tags": []
+    "Tags": [
+      "secure",
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E884",
     "Name": "StatusDualSIM1",
     "Tags": [
-      "number"
+      "number",
+      "network",
+      "connection"
     ]
   },
   {
     "Code": "E885",
     "Name": "StatusDualSIM1VPN",
-    "Tags": []
+    "Tags": [
+      "secure",
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E886",
     "Name": "StatusSGLTE",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E887",
     "Name": "StatusSGLTECell",
     "Tags": [
-      "phone"
+      "phone",
+      "network",
+      "connection"
     ]
   },
   {
     "Code": "E888",
     "Name": "StatusSGLTEDataVPN",
-    "Tags": []
+    "Tags": [
+      "secure",
+      "network",
+      "connection"
+    ]
   },
   {
     "Code": "E889",
     "Name": "StatusVPN",
     "Tags": [
-      "lock"
+      "lock",
+      "secure",
+      "network",
+      "connection"
     ]
   },
   {
     "Code": "E88A",
     "Name": "WifiHotspot",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "network",
+      "share"
+    ]
   },
   {
     "Code": "E88B",
     "Name": "LanguageKor",
     "Tags": [
-      "korean"
+      "korean",
+      "transliteration",
+      "alphabet",
+      "language"
     ]
   },
   {
     "Code": "E88C",
     "Name": "LanguageCht",
     "Tags": [
-      "chinese"
+      "chinese",
+      "transliteration",
+      "alphabet",
+      "language"
     ]
   },
   {
     "Code": "E88D",
     "Name": "LanguageChs",
-    "Tags": []
+    "Tags": [      "chinese",
+      "transliteration",
+      "alphabet",
+      "language"
+    ]
   },
   {
     "Code": "E88E",
     "Name": "USB",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "device",
+      "universal series bus",
+      "storage",
+      "drive"
+    ]
   },
   {
     "Code": "E88F",
     "Name": "InkingToolFill",
-    "Tags": []
+    "Tags": [
+      "draw",
+      "paint",
+      "sketch"
+    ]
   },
   {
     "Code": "E890",
     "Name": "View",
-    "Tags": []
+    "Tags": [
+      "vision",
+      "see",
+      "eye",
+      "focus",
+      "look"
+    ]
   },
   {
     "Code": "E891",
     "Name": "HighlightFill",
-    "Tags": []
+    "Tags": [
+      "marker",
+      "edit",
+      "draw",
+      "focus"
+    ]
   },
   {
     "Code": "E892",
     "Name": "Previous",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "start",
+      "begin"
+    ]
   },
   {
     "Code": "E893",
     "Name": "Next",
-    "Tags": []
+    "Tags": [
+      "video",
+      "skip",
+      "jump",
+      "fast forward",
+      "play"
+    ]
   },
   {
     "Code": "E894",
     "Name": "Clear",
     "Tags": [
-      "x"
+      "x",
+      "close",
+      "cancel",
+      "delete",
+      "remove",
+      "exit"
     ]
   },
   {
     "Code": "E895",
     "Name": "Sync",
     "Tags": [
-      "arrow"
+      "arrow",
+      "update",
+      "refresh",
+      "sync",
+      "refresh"
     ]
   },
   {
     "Code": "E896",
     "Name": "Download",
     "Tags": [
-      "arrow"
+      "arrow",
+      "file",
+      "save",
+      "retrieve",
+      "transfer"
     ]
   },
   {
@@ -1832,331 +3050,663 @@
     "Name": "Help",
     "Tags": [
       "?",
-      "question"
+      "question",
+      "support",
+      "guide",
+      "assistance",
+      "info"
     ]
   },
   {
     "Code": "E898",
     "Name": "Upload",
-    "Tags": []
+    "Tags": [
+      "file",
+      "send",
+      "transfer",
+      "cloud"
+    ]
   },
   {
     "Code": "E899",
     "Name": "Emoji",
     "Tags": [
       "face",
-      "smiley"
+      "smiley",
+      "emote",
+      "feeling"
     ]
   },
   {
     "Code": "E89A",
     "Name": "TwoPage",
-    "Tags": []
+    "Tags": [
+      "2",
+      "document",
+      "file",
+      "sheet",
+      "paper",
+      "text"
+    ]
   },
   {
     "Code": "E89B",
     "Name": "LeaveChat",
-    "Tags": []
+    "Tags": [
+      "exit",
+      "leave",
+      "message",
+      "conversation",
+      "disconnect"
+    ]
   },
   {
     "Code": "E89C",
     "Name": "MailForward",
-    "Tags": []
+    "Tags": [
+      "send",
+      "arrow",
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "letter"
+    ]
   },
   {
     "Code": "E89E",
     "Name": "RotateCamera",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photography",
+      "picture",
+      "flip",
+      "switch",
+      "direction"
+    ]
   },
   {
     "Code": "E89F",
     "Name": "ClosePane",
-    "Tags": []
+    "Tags": [
+      "sidebar",
+      "hide",
+      "exit",
+      "collapse"
+    ]
   },
   {
     "Code": "E8A0",
     "Name": "OpenPane",
-    "Tags": []
+    "Tags": [
+      "sidebar",
+      "expand",
+      "menu",
+      "show"
+    ]
   },
   {
     "Code": "E8A1",
     "Name": "PreviewLink",
-    "Tags": []
+    "Tags": [
+      "content",
+      "block"
+    ]
   },
   {
     "Code": "E8A2",
     "Name": "AttachCamera",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photography",
+      "picture"
+    ]
   },
   {
     "Code": "E8A3",
     "Name": "ZoomIn",
-    "Tags": []
+    "Tags": [
+      "zoom out",
+      "magnifying glass",
+      "search"
+    ]
   },
   {
     "Code": "E8A4",
     "Name": "Bookmarks",
-    "Tags": []
+    "Tags": [
+      "read",
+      "list",
+      "bullet points",
+      "formatting"
+    ]
   },
   {
     "Code": "E8A5",
     "Name": "Document",
     "Tags": [
-      "page"
+      "page",
+      "file",
+      "sheet",
+      "paper",
+      "text"
     ]
   },
   {
     "Code": "E8A6",
     "Name": "ProtectedDocument",
-    "Tags": []
+    "Tags": [
+      "page",
+      "file",
+      "sheet",
+      "paper",
+      "text",
+      "secure",
+      "lock"
+    ]
   },
   {
     "Code": "E8A7",
     "Name": "OpenInNewWindow",
-    "Tags": []
+    "Tags": [
+      "expand",
+      "external",
+      "launch",
+      "view",
+      "shortcut"
+    ]
   },
   {
     "Code": "E8A8",
     "Name": "MailFill",
-    "Tags": []
+    "Tags": [
+      "email",
+      "message"
+    ]
   },
   {
     "Code": "E8A9",
     "Name": "ViewAll",
-    "Tags": []
+    "Tags": [
+      "list",
+      "browse",
+      "expand"
+    ]
   },
   {
     "Code": "E8AA",
     "Name": "VideoChat",
-    "Tags": []
+    "Tags": [
+      "call",
+      "camera",
+      "conversation",
+      "meeting",
+      "connect"
+    ]
   },
   {
     "Code": "E8AB",
     "Name": "Switch",
     "Tags": [
-      "arrow"
+      "arrow",
+      "change",
+      "swap",
+      "toggle",
+      "shift",
+      "alternate"
     ]
   },
   {
     "Code": "E8AC",
     "Name": "Rename",
-    "Tags": []
+    "Tags": [
+      "input",
+      "text",
+      "type",
+      "info",
+      "ui",
+      "box",
+      "form",
+      "edit",
+      "change",
+      "modify",
+      "label",
+      "update"
+    ]
   },
   {
     "Code": "E8AD",
     "Name": "Go",
     "Tags": [
-      "arrow"
+      "arrow",
+      "start",
+      "move",
+      "launch",
+      "begin"
     ]
   },
   {
     "Code": "E8AE",
     "Name": "SurfaceHub",
-    "Tags": []
+    "Tags": [
+      "device",
+      "physical",
+      "product",
+      "screen",
+      "touch screen",
+      "presentation"
+    ]
   },
   {
     "Code": "E8AF",
     "Name": "Remote",
-    "Tags": []
+    "Tags": [
+      "cloud",
+      "connect",
+      "device"
+    ]
   },
   {
     "Code": "E8B0",
     "Name": "Click",
     "Tags": [
-      "pointer"
+      "pointer",
+      "tap",
+      "press",
+      "select",
+      "activate",
+      "choose"
     ]
   },
   {
     "Code": "E8B1",
     "Name": "Shuffle",
     "Tags": [
-      "arrow"
+      "arrow",
+      "random",
+      "mix",
+      "rearrange",
+      "order"
     ]
   },
   {
     "Code": "E8B2",
     "Name": "Movies",
-    "Tags": []
+    "Tags": [
+      "cinema",
+      "entertainment",
+      "video",
+      "screen"
+    ]
   },
   {
     "Code": "E8B3",
     "Name": "SelectAll",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark",
+      "check multiple"
+    ]
   },
   {
     "Code": "E8B4",
     "Name": "Orientation",
-    "Tags": []
+    "Tags": [
+      "rotate",
+      "horizontal",
+      "vertical"
+    ]
   },
   {
     "Code": "E8B5",
     "Name": "Import",
     "Tags": [
-      "arrow"
+      "arrow",
+      "upload",
+      "file",
+      "add",
+      "transfer"
     ]
   },
   {
     "Code": "E8B6",
     "Name": "ImportAll",
     "Tags": [
-      "arrow"
+      "arrow",
+      "arrow",
+      "upload",
+      "file",
+      "add",
+      "transfer"
     ]
   },
   {
     "Code": "E8B7",
     "Name": "Folder",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "E8B8",
     "Name": "Webcam",
-    "Tags": []
+    "Tags": [
+      "capture",
+      "stream",
+      "meeting"
+    ]
   },
   {
     "Code": "E8B9",
     "Name": "Picture",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photo",
+      "snapshot",
+      "portrait",
+      "frame",
+      "gallery",
+      "canvas",
+      "visual",
+      "view"
+    ]
   },
   {
     "Code": "E8BA",
     "Name": "Caption",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photo",
+      "snapshot",
+      "portrait",
+      "frame",
+      "gallery",
+      "canvas",
+      "visual",
+      "view",
+      "label",
+      "text"
+    ]
   },
   {
     "Code": "E8BB",
     "Name": "ChromeClose",
     "Tags": [
-      "x"
+      "x",
+      "exit",
+      "cancel",
+      "shut",
+      "dismiss"
     ]
   },
   {
     "Code": "E8BC",
     "Name": "ShowResults",
-    "Tags": []
+    "Tags": [
+      "list",
+      "bullet points",
+      "formatting",
+      "display",
+      "view"
+    ]
   },
   {
     "Code": "E8BD",
     "Name": "Message",
-    "Tags": []
+    "Tags": [
+      "chat",
+      "message",
+      "text",
+      "notification",
+      "bubble"
+    ]
   },
   {
     "Code": "E8BE",
     "Name": "Leaf",
-    "Tags": []
+    "Tags": [
+      "nature",
+      "eco",
+      "environment",
+      "sustainability",
+      "green"
+    ]
   },
   {
     "Code": "E8BF",
     "Name": "CalendarDay",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "E8C0",
     "Name": "CalendarWeek",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "E8C1",
     "Name": "Characters",
-    "Tags": []
+    "Tags": [
+      "letters",
+      "symbols",
+      "alphabet",
+      "writing",
+      "glyphs"
+    ]
   },
   {
     "Code": "E8C2",
     "Name": "MailReplyAll",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "respond",
+      "letter"
+    ]
   },
   {
     "Code": "E8C3",
     "Name": "Read",
     "Tags": [
-      "mail"
+      "mail",
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "letter"
     ]
   },
   {
     "Code": "E8C4",
     "Name": "ShowBcc",
-    "Tags": []
+    "Tags": [
+      "email",
+      "recipient",
+      "hidden"
+    ]
   },
   {
     "Code": "E8C5",
     "Name": "HideBcc",
-    "Tags": []
+    "Tags": [
+      "email",
+      "bcc",
+      "hide",
+      "privacy",
+      "recipient"
+    ]
   },
   {
     "Code": "E8C6",
     "Name": "Cut",
-    "Tags": []
+    "Tags": [
+      "copy",
+      "paste",
+      "share",
+      "move",
+      "transfer",
+      "clipboard",
+      "clip",
+      "edit",
+      "trim",
+      "divide"
+    ]
   },
   {
     "Code": "E8C7",
     "Name": "PaymentCard",
-    "Tags": []
+    "Tags": [
+      "currency",
+      "money",
+      "credit card"
+    ]
   },
   {
     "Code": "E8C8",
     "Name": "Copy",
-    "Tags": []
+    "Tags": [
+      "share",
+      "paste",
+      "clipboard"
+    ]
   },
   {
     "Code": "E8C9",
     "Name": "Important",
     "Tags": [
-      "!"
+      "!",
+      "priority",
+      "highlight",
+      "urgent",
+      "attention",
+      "critical"
     ]
   },
   {
     "Code": "E8CA",
     "Name": "MailReply",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "respond",
+      "letter"
+    ]
   },
   {
     "Code": "E8CB",
     "Name": "Sort",
     "Tags": [
-      "arrow"
+      "arrow",
+      "arrange",
+      "order",
+      "filter",
+      "organize",
+      "sequence"
     ]
   },
   {
     "Code": "E8CC",
     "Name": "MobileTablet",
-    "Tags": []
+    "Tags": [
+      "device",
+      "screen",
+      "physical",
+      "analog",
+      "watch",
+      "view",
+      "video",
+      "phone"
+    ]
   },
   {
     "Code": "E8CD",
     "Name": "DisconnectDrive",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "unmount",
+      "eject"
+    ]
   },
   {
     "Code": "E8CE",
     "Name": "MapDrive",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connect",
+      "link"
+    ]
   },
   {
     "Code": "E8CF",
     "Name": "ContactPresence",
-    "Tags": []
+    "Tags": [
+      "status",
+      "availability",
+      "online"
+    ]
   },
   {
     "Code": "E8D0",
     "Name": "Priority",
     "Tags": [
       "!",
-      "arrow"
+      "arrow",
+      "importance",
+      "urgent",
+      "priority",
+      "focus",
+      "high"
     ]
   },
   {
     "Code": "E8D1",
     "Name": "GotoToday",
-    "Tags": []
+    "Tags": [
+      "calendar",
+      "date",
+      "time",
+      "planning",
+      "jump",
+      "current"
+    ]
   },
   {
     "Code": "E8D2",
     "Name": "Font",
-    "Tags": []
+    "Tags": [
+      "text",
+      "style",
+      "size",
+      "lettering",
+      "typography"
+    ]
   },
   {
     "Code": "E8D3",
     "Name": "FontColor",
-    "Tags": []
+    "Tags": [
+      "text",
+      "style",
+      "size",
+      "lettering",
+      "typography"
+    ]
   },
   {
     "Code": "E8D4",
@@ -2169,7 +3719,13 @@
   {
     "Code": "E8D5",
     "Name": "FolderFill",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "E8D6",
@@ -2177,151 +3733,268 @@
     "Tags": [
       "music",
       "sound",
-      "note"
+      "note",
+      "play"
     ]
   },
   {
     "Code": "E8D7",
     "Name": "Permissions",
     "Tags": [
-      "key"
+      "key",
+      "security",
+      "password",
+      "access"
     ]
   },
   {
     "Code": "E8D8",
     "Name": "DisableUpdates",
     "Tags": [
-      "arrow"
+      "arrow",
+      "settings",
+      "off",
+      "pause"
     ]
   },
   {
     "Code": "E8D9",
     "Name": "Unfavorite",
     "Tags": [
-      "star"
+      "star",
+      "remove",
+      "unlike",
+      "delete"
     ]
   },
   {
     "Code": "E8DA",
     "Name": "OpenLocal",
-    "Tags": []
+    "Tags": [
+      "folder",
+      "directory",
+      "file"
+    ]
   },
   {
     "Code": "E8DB",
     "Name": "Italic",
-    "Tags": []
+    "Tags": [
+      "text",
+      "style",
+      "slant",
+      "font",
+      "emphasis"
+    ]
   },
   {
     "Code": "E8DC",
     "Name": "Underline",
-    "Tags": []
+    "Tags": [
+      "text",
+      "style",
+      "font",
+      "emphasis"
+    ]
   },
   {
     "Code": "E8DD",
     "Name": "Bold",
-    "Tags": []
+    "Tags": [
+      "text",
+      "style",
+      "strong",
+      "font",
+      "emphasis"
+    ]
   },
   {
     "Code": "E8DE",
     "Name": "MoveToFolder",
-    "Tags": []
+    "Tags": [
+      "file",
+      "organize",
+      "transfer"
+    ]
   },
   {
     "Code": "E8DF",
     "Name": "LikeDislike",
-    "Tags": []
+    "Tags": [
+      "reaction",
+      "feedback",
+      "vote"
+    ]
   },
   {
     "Code": "E8E0",
     "Name": "Dislike",
     "Tags": [
-      "thumb"
+      "thumb",
+      "positive",
+      "approve",
+      "favor",
+      "agree"
     ]
   },
   {
     "Code": "E8E1",
     "Name": "Like",
     "Tags": [
-      "thumb"
+      "thumb",
+      "negative",
+      "reject",
+      "disapprove",
+      "oppose"
     ]
   },
   {
     "Code": "E8E2",
     "Name": "AlignRight",
-    "Tags": []
+    "Tags": [
+      "text",
+      "justify",
+      "position"
+    ]
   },
   {
     "Code": "E8E3",
     "Name": "AlignCenter",
-    "Tags": []
+    "Tags": [
+      "text",
+      "justify",
+      "position",
+      "middle"
+    ]
   },
   {
     "Code": "E8E4",
     "Name": "AlignLeft",
-    "Tags": []
+    "Tags": [
+      "text",
+      "justify",
+      "position"
+    ]
   },
   {
     "Code": "E8E5",
     "Name": "OpenFile",
-    "Tags": []
+    "Tags": [
+      "document",
+      "page",
+      "view",
+      "access"
+    ]
   },
   {
     "Code": "E8E6",
     "Name": "ClearSelection",
-    "Tags": []
+    "Tags": [
+      "check",
+      "checkmark",
+      "check multiple"
+    ]
   },
   {
     "Code": "E8E7",
     "Name": "FontDecrease",
-    "Tags": []
+    "Tags": [
+      "text",
+      "size",
+      "smaller",
+      "reduce",
+      "adjust"
+    ]
   },
   {
     "Code": "E8E8",
     "Name": "FontIncrease",
-    "Tags": []
+    "Tags": [
+      "text",
+      "size",
+      "larger",
+      "enlarge",
+      "adjust"
+    ]
   },
   {
     "Code": "E8E9",
     "Name": "FontSize",
-    "Tags": []
+    "Tags": [
+      "text",
+      "adjust"
+    ]
   },
   {
     "Code": "E8EA",
     "Name": "CellPhone",
-    "Tags": []
+    "Tags": [
+      "device",
+      "mobile",
+      "small screen",
+      "cellular telephone",
+      "apple",
+      "android"
+    ]
   },
   {
     "Code": "E8EB",
     "Name": "Reshare",
     "Tags": [
-      "arrow"
+      "arrow",
+      "repost",
+      "forward",
+      "distribute",
+      "spread"
     ]
   },
   {
     "Code": "E8EC",
     "Name": "Tag",
     "Tags": [
-      "label"
+      "label",
+      "price",
+      "information",
+      "detail",
+      "metadata",
+      "purchase",
+      "sort"
     ]
   },
   {
     "Code": "E8ED",
     "Name": "RepeatOne",
     "Tags": [
-      "arrow"
+      "arrow",
+      "single",
+      "loop",
+      "song",
+      "track"
     ]
   },
   {
     "Code": "E8EE",
     "Name": "RepeatAll",
     "Tags": [
-      "arrow"
+      "arrow",
+      "loop",
+      "song",
+      "track",
+      "playlist",
+      "continuous"
     ]
   },
   {
     "Code": "E8EF",
     "Name": "Calculator",
-    "Tags": []
+    "Tags": [
+      "math",
+      "formulas",
+      "add",
+      "subtract",
+      "multiply",
+      "divde"
+    ]
   },
   {
     "Code": "E8F0",
@@ -2333,13 +4006,23 @@
   {
     "Code": "E8F1",
     "Name": "Library",
-    "Tags": []
+    "Tags": [
+      "books",
+      "collection",
+      "library",
+      "archive",
+      "resources"
+    ]
   },
   {
     "Code": "E8F2",
     "Name": "ChatBubbles",
     "Tags": [
-      "message"
+      "message",
+      "text",
+      "message",
+      "conversation",
+      "talk"
     ]
   },
   {
@@ -2350,70 +4033,136 @@
   {
     "Code": "E8F4",
     "Name": "NewFolder",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage",
+      "plus",
+      "new",
+      "+"
+    ]
   },
   {
     "Code": "E8F5",
     "Name": "CalendarReply",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "E8F6",
     "Name": "UnsyncFolder",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage",
+      "disconnect",
+      "offline",
+      "remove"
+    ]
   },
   {
     "Code": "E8F7",
     "Name": "SyncFolder",
-    "Tags": []
+    "Tags": [
+      "analog",
+      "collection",
+      "directory",
+      "file",
+      "storage",
+      "connect",
+      "update",
+      "refresh"
+    ]
   },
   {
     "Code": "E8F8",
     "Name": "BlockContact",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "restrict",
+      "privacy",
+      "remove"
     ]
   },
   {
     "Code": "E8F9",
     "Name": "SwitchApps",
-    "Tags": []
+    "Tags": [
+      "change",
+      "transition"
+    ]
   },
   {
     "Code": "E8FA",
     "Name": "AddFriend",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "connect",
+      "social",
+      "relationship"
     ]
   },
   {
     "Code": "E8FB",
     "Name": "Accept",
     "Tags": [
-      "check"
+      "check",
+      "agree",
+      "approve",
+      "confirm",
+      "approve"
     ]
   },
   {
     "Code": "E8FC",
     "Name": "GoToStart",
-    "Tags": []
+    "Tags": [
+      "home",
+      "begin",
+      "windows",
+      "navigate"
+    ]
   },
   {
     "Code": "E8FD",
     "Name": "BulletedList",
-    "Tags": []
+    "Tags": [
+      "organize",
+      "items",
+      "points"
+    ]
   },
   {
     "Code": "E8FE",
     "Name": "Scan",
-    "Tags": []
+    "Tags": [
+      "camera",
+      "aperture",
+      "image",
+      "picture",
+      "scan"
+    ]
   },
   {
     "Code": "E8FF",
     "Name": "Preview",
-    "Tags": []
+    "Tags": [
+      "document",
+      "preview",
+      "view",
+      "file",
+      "read",
+      "page"
+    ]
   },
   {
     "Code": "E902",
@@ -2421,40 +4170,75 @@
     "Tags": [
       "person",
       "user",
-      "people"
+      "people",
+      "team",
+      "crowd",
+      "community"
     ]
   },
   {
     "Code": "E904",
     "Name": "ZeroBars",
-    "Tags": []
+    "Tags": [
+      "no signal",
+      "connection",
+      "lost",
+      "weak",
+      "empty"
+    ]
   },
   {
     "Code": "E905",
     "Name": "OneBar",
-    "Tags": []
+    "Tags": [
+      "weak signal",
+      "connection",
+      "low",
+      "signal",
+      "poor"
+    ]
   },
   {
     "Code": "E906",
     "Name": "TwoBars",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "connection",
+      "fair",
+      "moderate",
+      "average"
+    ]
   },
   {
     "Code": "E907",
     "Name": "ThreeBars",
-    "Tags": []
+    "Tags": [
+      "good signal",
+      "connection",
+      "strong",
+      "stable",
+      "high"
+    ]
   },
   {
     "Code": "E908",
     "Name": "FourBars",
-    "Tags": []
+    "Tags": [
+      "full signal",
+      "excellent",
+      "connection",
+      "strong",
+      "maximum"
+    ]
   },
   {
     "Code": "E909",
     "Name": "World",
     "Tags": [
       "globe",
-      "earth"
+      "earth",
+      "international",
+      "global"
     ]
   },
   {
@@ -2462,42 +4246,72 @@
     "Name": "Comment",
     "Tags": [
       "chat",
-      "message"
+      "message",
+      "mention",
+      "discussion"
     ]
   },
   {
     "Code": "E90B",
     "Name": "MusicInfo",
-    "Tags": []
+    "Tags": [
+      "musician",
+      "art",
+      "music",
+      "info",
+      "song",
+      "track",
+      "details"
+    ]
   },
   {
     "Code": "E90C",
     "Name": "DockLeft",
-    "Tags": []
+    "Tags": [
+      "position",
+      "side",
+      "panel"
+    ]
   },
   {
     "Code": "E90D",
     "Name": "DockRight",
-    "Tags": []
+    "Tags": [
+      "position",
+      "side",
+      "panel"
+    ]
   },
   {
     "Code": "E90E",
     "Name": "DockBottom",
-    "Tags": []
+    "Tags": [
+      "position",
+      "side",
+      "panel"
+    ]
   },
   {
     "Code": "E90F",
     "Name": "Repair",
     "Tags": [
       "wrench",
-      "tool"
+      "tool",
+      "fix",
+      "restore",
+      "correct"
     ]
   },
   {
     "Code": "E910",
     "Name": "Accounts",
     "Tags": [
-      "@"
+      "@",
+      "at",
+      "email",
+      "address",
+      "symbol",
+      "communication"
     ]
   },
   {
@@ -2508,17 +4322,38 @@
   {
     "Code": "E912",
     "Name": "Manage",
-    "Tags": []
+    "Tags": [
+      "bag",
+      "handbag",
+      "briefcase",
+      "control",
+      "organize",
+      "administer",
+      "oversee",
+      "handle"
+    ]
   },
   {
     "Code": "E913",
     "Name": "Street",
-    "Tags": []
+    "Tags": [
+      "road",
+      "address",
+      "location",
+      "avenue",
+      "way"
+    ]
   },
   {
     "Code": "E914",
     "Name": "Printer3D",
-    "Tags": []
+    "Tags": [
+      "design",
+      "model",
+      "fabricate",
+      "technology",
+      "create"
+    ]
   },
   {
     "Code": "E915",
@@ -2539,7 +4374,17 @@
   {
     "Code": "E91B",
     "Name": "Photo",
-    "Tags": []
+    "Tags": [
+      "image",
+      "picture",
+      "snapshot",
+      "portrait",
+      "frame",
+      "gallery",
+      "canvas",
+      "visual",
+      "view"
+    ]
   },
   {
     "Code": "E91C",
