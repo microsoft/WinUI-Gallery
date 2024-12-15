@@ -3563,7 +3563,8 @@
       "clip",
       "edit",
       "trim",
-      "divide"
+      "divide",
+      "scissors"
     ]
   },
   {
@@ -4391,140 +4392,263 @@
     "Name": "ActionCenter",
     "Tags": [
       "notification",
-      "message"
+      "message",
+      "settings",
+      "control",
+      "quick access",
+      "system"
     ]
   },
   {
     "Code": "E91F",
     "Name": "FullCircleMask",
-    "Tags": []
+    "Tags": [
+      "shape",
+      "round",
+      "border"
+    ]
   },
   {
     "Code": "E921",
     "Name": "ChromeMinimize",
-    "Tags": []
+    "Tags": [
+      "window",
+      "shrink",
+      "small",
+      "collapse",
+      "resize"
+    ]
   },
   {
     "Code": "E922",
     "Name": "ChromeMaximize",
-    "Tags": []
+    "Tags": [
+      "window",
+      "expand",
+      "full screen",
+      "enlarge",
+      "width",
+      "height",
+      "resize",
+      "fill",
+      "fit"
+    ]
   },
   {
     "Code": "E923",
     "Name": "ChromeRestore",
-    "Tags": []
+    "Tags": [
+      "window",
+      "resize",
+      "default",
+      "revert"
+    ]
   },
   {
     "Code": "E924",
     "Name": "Annotation",
-    "Tags": []
+    "Tags": [
+      "cut",
+      "edit",
+      "scissors",
+      "mark",
+      "highlight"
+    ]
   },
   {
     "Code": "E925",
     "Name": "BackSpaceQWERTYSm",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "backward",
+      "remove",
+      "keyboard"
+    ]
   },
   {
     "Code": "E926",
     "Name": "BackSpaceQWERTYMd",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "backward",
+      "remove",
+      "keyboard"
+    ]
   },
   {
     "Code": "E927",
     "Name": "Swipe",
-    "Tags": []
+    "Tags": [
+      "gesture",
+      "touch screen",
+      "mobile",
+      "tablet"
+    ]
   },
   {
     "Code": "E928",
     "Name": "Fingerprint",
-    "Tags": []
+    "Tags": [
+      "scan",
+      "security",
+      "hand"
+    ]
   },
   {
     "Code": "E929",
     "Name": "Handwriting",
-    "Tags": []
+    "Tags": [
+      "write",
+      "pen",
+      "gesture",
+      "scribble",
+      "draw"
+    ]
   },
   {
     "Code": "E92C",
     "Name": "ChromeBackToWindow",
     "Tags": [
-      "arrow"
+      "arrow",
+      "restore",
+      "return",
+      "minimize"
     ]
   },
   {
     "Code": "E92D",
     "Name": "ChromeFullScreen",
     "Tags": [
-      "arrow"
+      "arrow",
+      "expand",
+      "maximize",
+      "window",
+      "view"
     ]
   },
   {
     "Code": "E92E",
     "Name": "KeyboardStandard",
-    "Tags": []
+    "Tags": [
+      "type",
+      "key",
+      "device",
+      "analog",
+      "hardware"
+    ]
   },
   {
     "Code": "E92F",
     "Name": "KeyboardDismiss",
-    "Tags": []
+    "Tags": [
+      "type",
+      "key",
+      "device",
+      "analog",
+      "hardware",
+      "close",
+      "hide",
+      "exit"
+    ]
   },
   {
     "Code": "E930",
     "Name": "Completed",
     "Tags": [
-      "check"
+      "check",
+      "finished",
+      "done",
+      "achieved",
+      "success"
     ]
   },
   {
     "Code": "E931",
     "Name": "ChromeAnnotate",
     "Tags": [
-      "cut"
+      "cut",
+      "edit",
+      "scissors",
+      "mark",
+      "highlight"
     ]
   },
   {
     "Code": "E932",
     "Name": "Label",
     "Tags": [
-      "edit"
+      "edit",
+      "tag",
+      "identifier",
+      "caption",
+      "name",
+      "marker"
     ]
   },
   {
     "Code": "E933",
     "Name": "IBeam",
-    "Tags": []
+    "Tags": [
+      "cursor",
+      "text",
+      "select",
+      "pointer",
+      "edit"
+    ]
   },
   {
     "Code": "E934",
     "Name": "IBeamOutline",
-    "Tags": []
+    "Tags": [
+      "cursor",
+      "text",
+      "select",
+      "pointer",
+      "edit"
+    ]
   },
   {
     "Code": "E935",
     "Name": "FlickDown",
     "Tags": [
-      "triangle"
+      "triangle",
+      "gesture",
+      "swipe",
+      "scroll",
+      "move"
     ]
   },
   {
     "Code": "E936",
     "Name": "FlickUp",
     "Tags": [
-      "triangle"
+      "triangle",
+      "gesture",
+      "swipe",
+      "scroll",
+      "move"
     ]
   },
   {
     "Code": "E937",
     "Name": "FlickLeft",
     "Tags": [
-      "triangle"
+      "triangle",
+      "gesture",
+      "swipe",
+      "scroll",
+      "navigate"
     ]
   },
   {
     "Code": "E938",
     "Name": "FlickRight",
     "Tags": [
-      "triangle"
+      "triangle",
+      "gesture",
+      "swipe",
+      "scroll",
+      "navigate"
     ]
   },
   {
@@ -4532,186 +4656,324 @@
     "Name": "FeedbackApp",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "review",
+      "response",
+      "evaluation"
     ]
   },
   {
     "Code": "E93C",
     "Name": "MusicAlbum",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "tracks",
+      "playlist"
+    ]
   },
   {
     "Code": "E93E",
     "Name": "Streaming",
-    "Tags": []
+    "Tags": [
+      "media",
+      "live",
+      "video",
+      "broadcast",
+      "online"
+    ]
   },
   {
     "Code": "E943",
     "Name": "Code",
-    "Tags": []
+    "Tags": [
+      "bracket",
+      "slash"
+    ]
   },
   {
     "Code": "E944",
     "Name": "ReturnToWindow",
     "Tags": [
-      "arrow"
+      "arrow",
+      "restore",
+      "back",
+      "minimize"
     ]
   },
   {
     "Code": "E945",
     "Name": "LightningBolt",
     "Tags": [
-      "thunder"
+      "thunder",
+      "energy",
+      "power",
+      "electricity",
+      "shock",
+      "storm"
     ]
   },
   {
     "Code": "E946",
     "Name": "Info",
     "Tags": [
-      "!"
+      "!",
+      "information",
+      "details",
+      "content"
     ]
   },
   {
     "Code": "E947",
     "Name": "CalculatorMultiply",
     "Tags": [
-      "x"
+      "x",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E948",
     "Name": "CalculatorAddition",
     "Tags": [
-      "+"
+      "+",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E949",
     "Name": "CalculatorSubtract",
     "Tags": [
-      "-"
+      "-",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E94A",
     "Name": "CalculatorDivide",
     "Tags": [
-      "/"
+      "/",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E94B",
     "Name": "CalculatorSquareroot",
-    "Tags": []
+    "Tags": [
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
+    ]
   },
   {
     "Code": "E94C",
     "Name": "CalculatorPercentage",
     "Tags": [
-      "%"
+      "%",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E94D",
     "Name": "CalculatorNegate",
     "Tags": [
-      "-"
+      "-",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E94E",
     "Name": "CalculatorEqualTo",
     "Tags": [
-      "="
+      "=",
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
     ]
   },
   {
     "Code": "E94F",
     "Name": "CalculatorBackspace",
-    "Tags": []
+    "Tags": [
+      "math",
+      "operation",
+      "symbol",
+      "arithmetic"
+    ]
   },
   {
     "Code": "E950",
     "Name": "Component",
     "Tags": [
       "chip",
-      "semiconductor"
+      "semiconductor",
+      "processor",
+      "circuit",
+      "electronics",
+      "technology",
+      "hardware"
     ]
   },
   {
     "Code": "E951",
     "Name": "DMC",
-    "Tags": []
+    "Tags": [
+      "control",
+      "remote",
+      "device",
+      "access",
+      "operate"
+    ]
   },
   {
     "Code": "E952",
     "Name": "Dock",
-    "Tags": []
+    "Tags": [
+      "device",
+      "analog"
+    ]
   },
   {
     "Code": "E953",
     "Name": "MultimediaDMS",
-    "Tags": []
+    "Tags": [
+      "server",
+      "stream",
+      "share",
+      "content"
+    ]
   },
   {
     "Code": "E954",
     "Name": "MultimediaDVR",
-    "Tags": []
+    "Tags": [
+      "record",
+      "video",
+      "tv",
+      "capture"
+    ]
   },
   {
     "Code": "E955",
     "Name": "MultimediaPMP",
-    "Tags": []
+    "Tags": [
+      "player",
+      "portable",
+      "music",
+      "device"
+    ]
   },
   {
     "Code": "E956",
     "Name": "PrintfaxPrinterFile",
-    "Tags": []
+    "Tags": [
+      "document",
+      "page"
+    ]
   },
   {
     "Code": "E957",
     "Name": "Sensor",
-    "Tags": []
+    "Tags": [
+      "device",
+      "measurement",
+      "detection",
+      "technology",
+      "input"
+    ]
   },
   {
     "Code": "E958",
     "Name": "StorageOptical",
-    "Tags": []
+    "Tags": [
+      "disk",
+      "media",
+      "drive"
+    ]
   },
   {
     "Code": "E95A",
     "Name": "Communications",
-    "Tags": []
+    "Tags": [
+      "cast",
+      "connect",
+      "wifi",
+      "share"
+    ]
   },
   {
     "Code": "E95B",
     "Name": "Headset",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device",
+      "analog",
+      "support",
+      "help"
+    ]
   },
   {
     "Code": "E95D",
     "Name": "Projector",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "display",
+      "project",
+      "visual",
+      "presentation"
+    ]
   },
   {
     "Code": "E95E",
     "Name": "Health",
     "Tags": [
-      "heart"
+      "heart",
+      "health",
+      "medical",
+      "care",
+      "wellness",
+      "fitness"
     ]
   },
   {
     "Code": "E95F",
     "Name": "Wire",
     "Tags": [
-      "plug"
+      "plug",
+      "electricity",
+      "connection",
+      "power",
+      "cord"
     ]
   },
   {
     "Code": "E960",
     "Name": "Webcam2",
     "Tags": [
-      "camera"
+      "camera",
+      "capture",
+      "stream",
+      "meeting"
     ]
   },
   {
@@ -4719,134 +4981,226 @@
     "Name": "Input",
     "Tags": [
       "keyboard",
-      "mouse"
+      "mouse",
+      "hardware"
     ]
   },
   {
     "Code": "E962",
     "Name": "Mouse",
-    "Tags": []
+    "Tags": [
+      "pointer",
+      "device",
+      "input",
+      "click"
+    ]
   },
   {
     "Code": "E963",
     "Name": "Smartcard",
-    "Tags": []
+    "Tags": [
+      "chip",
+      "security",
+      "payment"
+    ]
   },
   {
     "Code": "E964",
     "Name": "SmartcardVirtual",
-    "Tags": []
+    "Tags": [
+      "virtual",
+      "security",
+      "digital",
+      "chip"
+    ]
   },
   {
     "Code": "E965",
     "Name": "MediaStorageTower",
-    "Tags": []
+    "Tags": [
+      "device",
+      "backup"
+    ]
   },
   {
     "Code": "E966",
     "Name": "ReturnKeySm",
     "Tags": [
-      "arrow"
+      "arrow",
+      "enter",
+      "submit",
+      "keyboard"
     ]
   },
   {
     "Code": "E967",
     "Name": "GameConsole",
-    "Tags": []
+    "Tags": [
+      "device",
+      "entertainment"
+    ]
   },
   {
     "Code": "E968",
     "Name": "Network",
     "Tags": [
-      "remote"
+      "remote",
+      "network adapter",
+      "hardware",
+      "device"
     ]
   },
   {
     "Code": "E969",
     "Name": "StorageNetworkWireless",
     "Tags": [
-      "remote"
+      "remote",
+      "data",
+      "connection"
     ]
   },
   {
     "Code": "E96A",
     "Name": "StorageTape",
     "Tags": [
-      "cassette"
+      "cassette",
+      "backup",
+      "media",
+      "archival"
     ]
   },
   {
     "Code": "E96D",
     "Name": "ChevronUpSmall",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E96E",
     "Name": "ChevronDownSmall",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E96F",
     "Name": "ChevronLeftSmall",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E970",
     "Name": "ChevronRightSmall",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E971",
     "Name": "ChevronUpMed",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E972",
     "Name": "ChevronDownMed",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E973",
     "Name": "ChevronLeftMed",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E974",
     "Name": "ChevronRightMed",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "E975",
     "Name": "Devices2",
-    "Tags": []
+    "Tags": [
+      "hardware",
+      "connections",
+      "peripherals",
+      "electronics",
+      "gadgets"
+    ]
   },
   {
     "Code": "E976",
     "Name": "ExpandTile",
-    "Tags": []
+    "Tags": [
+      "maximize",
+      "view",
+      "window"
+    ]
   },
   {
     "Code": "E977",
     "Name": "PC1",
-    "Tags": []
+    "Tags": [
+      "computer",
+      "personal",
+      "device",
+      "desktop",
+      "technology"
+    ]
   },
   {
     "Code": "E978",
     "Name": "PresenceChicklet",
-    "Tags": []
+    "Tags": [
+      "stop",
+      "pause",
+      "end",
+      "cease",
+      "interrupt"
+    ]
   },
   {
     "Code": "E979",
     "Name": "PresenceChickletVideo",
     "Tags": [
-      "camera"
+      "camera",
+      "image",
+      "photography",
+      "picture"
     ]
   },
   {
     "Code": "E97A",
     "Name": "Reply",
     "Tags": [
-      "arrow"
+      "arrow",
+      "respond",
+      "answer",
+      "return"
     ]
   },
   {
@@ -4864,17 +5218,30 @@
   {
     "Code": "E97D",
     "Name": "Korean",
-    "Tags": []
+    "Tags": [
+      "language",
+      "Korean",
+      "hangul",
+      "alphabet"
+    ]
   },
   {
     "Code": "E97E",
     "Name": "HalfAlpha",
-    "Tags": []
+    "Tags": [
+      "letter",
+      "character",
+      "symbol"
+    ]
   },
   {
     "Code": "E97F",
     "Name": "FullAlpha",
-    "Tags": []
+    "Tags": [
+      "letter",
+      "character",
+      "symbol"
+    ]
   },
   {
     "Code": "E980",
@@ -5937,7 +6304,10 @@
     "Code": "EB97",
     "Name": "ReturnKeyLg",
     "Tags": [
-      "arrow"
+      "arrow",
+      "enter",
+      "submit",
+      "keyboard"
     ]
   },
   {
