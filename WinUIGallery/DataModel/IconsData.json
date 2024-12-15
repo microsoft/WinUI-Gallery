@@ -2952,7 +2952,8 @@
   {
     "Code": "E88D",
     "Name": "LanguageChs",
-    "Tags": [      "chinese",
+    "Tags": [
+      "chinese",
       "transliteration",
       "alphabet",
       "language"
