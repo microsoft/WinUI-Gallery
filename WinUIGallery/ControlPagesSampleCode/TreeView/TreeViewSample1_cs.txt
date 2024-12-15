@@ -1,0 +1,21 @@
+﻿private void InitializeSampleTreeView(TreeView sampleTreeView)
+{
+    TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
+    workFolder.IsExpanded = true;
+
+    workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
+    workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
+
+    TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
+    remodelFolder.IsExpanded = true;
+
+    remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
+    remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
+
+    TreeViewNode personalFolder = new TreeViewNode() { Content = "Personal Documents" };
+    personalFolder.IsExpanded = true;
+    personalFolder.Children.Add(remodelFolder);
+
+    sampleTreeView.RootNodes.Add(workFolder);
+    sampleTreeView.RootNodes.Add(personalFolder);
+}
