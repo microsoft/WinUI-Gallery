@@ -2574,7 +2574,8 @@
     "Name": "BatterySaver0",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2582,7 +2583,8 @@
     "Name": "BatterySaver1",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2590,7 +2592,8 @@
     "Name": "BatterySaver2",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2598,7 +2601,8 @@
     "Name": "BatterySaver3",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2606,7 +2610,8 @@
     "Name": "BatterySaver4",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2614,7 +2619,8 @@
     "Name": "BatterySaver5",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2622,7 +2628,8 @@
     "Name": "BatterySaver6",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2630,7 +2637,8 @@
     "Name": "BatterySaver7",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -2638,7 +2646,8 @@
     "Name": "BatterySaver8",
     "Tags": [
       "charge",
-      "power"
+      "power",
+      "economic"
     ]
   },
   {
@@ -5246,12 +5255,20 @@
   {
     "Code": "E980",
     "Name": "Key12On",
-    "Tags": []
+    "Tags": [
+      "language",
+      "Korean",
+      "hangul"
+    ]
   },
   {
     "Code": "E981",
     "Name": "ChineseChangjie",
-    "Tags": []
+    "Tags": [
+      "input",
+      "method",
+      "characters"
+    ]
   },
   {
     "Code": "E982",
@@ -5264,141 +5281,260 @@
     "Code": "E983",
     "Name": "QWERTYOff",
     "Tags": [
+      "chinese",
       "english"
     ]
   },
   {
     "Code": "E984",
     "Name": "ChineseQuick",
-    "Tags": []
+    "Tags": [
+      "character",
+      "language"
+    ]
   },
   {
     "Code": "E985",
     "Name": "Japanese",
-    "Tags": []
+    "Tags": [
+      "Kanji",
+      "character",
+      "language"
+    ]
   },
   {
     "Code": "E986",
     "Name": "FullHiragana",
     "Tags": [
-      "japanese"
+      "japanese",
+      "character",
+      "language"
     ]
   },
   {
     "Code": "E987",
     "Name": "FullKatakana",
     "Tags": [
-      "japanese"
+      "japanese",
+      "character",
+      "language"
     ]
   },
   {
     "Code": "E988",
     "Name": "HalfKatakana",
     "Tags": [
-      "japanese"
+      "japanese",
+      "character",
+      "language"
     ]
   },
   {
     "Code": "E989",
     "Name": "ChineseBoPoMoFo",
-    "Tags": []
+    "Tags": [
+      "character",
+      "language"
+    ]
   },
   {
     "Code": "E98A",
     "Name": "ChinesePinyin",
-    "Tags": []
+    "Tags": [
+      "character",
+      "language"
+    ]
   },
   {
     "Code": "E98F",
     "Name": "ConstructionCone",
-    "Tags": []
+    "Tags": [
+      "warning",
+      "caution",
+      "barrier"
+    ]
   },
   {
     "Code": "E990",
     "Name": "XboxOneConsole",
-    "Tags": []
+    "Tags": [
+      "device",
+      "videogame",
+      "game"
+    ]
   },
   {
     "Code": "E992",
     "Name": "Volume0",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "level",
+      "speaker"
+    ]
   },
   {
     "Code": "E993",
     "Name": "Volume1",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "level",
+      "speaker"
+    ]
   },
   {
     "Code": "E994",
     "Name": "Volume2",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "level",
+      "speaker"
+    ]
   },
   {
     "Code": "E995",
     "Name": "Volume3",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "level",
+      "speaker"
+    ]
   },
   {
     "Code": "E996",
     "Name": "BatteryUnknown",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power",
+      "status"
+    ]
   },
   {
     "Code": "E998",
     "Name": "WifiAttentionOverlay",
-    "Tags": []
+    "Tags": [
+      "!",
+      "warning",
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "E99A",
     "Name": "Robot",
-    "Tags": []
+    "Tags": [
+      "automation",
+      "machine",
+      "technology",
+      "AI",
+      "Artificial",
+      "intelligence"
+    ]
   },
   {
     "Code": "E9A1",
     "Name": "TapAndSend",
-    "Tags": []
+    "Tags": [
+      "hand",
+      "touch",
+      "gesture",
+      "physical",
+      "paper plane",
+      "mail",
+      "message"
+    ]
   },
   {
     "Code": "E9A6",
     "Name": "FitPage",
-    "Tags": []
+    "Tags": [
+      "resize",
+      "view",
+      "adjust"
+    ]
   },
   {
     "Code": "E9A8",
     "Name": "PasswordKeyShow",
-    "Tags": []
+    "Tags": [
+      "reveal",
+      "security",
+      "visibility",
+      "protection",
+      "access"
+    ]
   },
   {
     "Code": "E9A9",
     "Name": "PasswordKeyHide",
-    "Tags": []
+    "Tags": [
+      "conceal",
+      "security",
+      "visibility",
+      "protection",
+      "access"
+    ]
   },
   {
     "Code": "E9AA",
     "Name": "BidiLtr",
-    "Tags": []
+    "Tags": [
+      "text",
+      "left",
+      "direction",
+      "language",
+      "alignment"
+    ]
   },
   {
     "Code": "E9AB",
     "Name": "BidiRtl",
-    "Tags": []
+    "Tags": [
+      "text",
+      "right",
+      "direction",
+      "language",
+      "alignment"
+    ]
   },
   {
     "Code": "E9AC",
     "Name": "ForwardSm",
     "Tags": [
-      "arrow"
+      "arrow",
+      "next",
+      "send",
+      "right",
+      "proceed"
     ]
   },
   {
     "Code": "E9AD",
     "Name": "CommaKey",
-    "Tags": []
+    "Tags": [
+      "`",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
+    ]
   },
   {
     "Code": "E9AE",
     "Name": "DashKey",
-    "Tags": []
+    "Tags": [
+      "-",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
+    ]
   },
   {
     "Code": "E9AF",
@@ -5418,14 +5554,24 @@
     "Code": "E9B1",
     "Name": "RightDoubleQuote",
     "Tags": [
-      "\""
+      "\"",
+      "punctuation",
+      "key",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
     "Code": "E9B2",
     "Name": "LeftDoubleQuote",
     "Tags": [
-      "\""
+      "\"",
+      "punctuation",
+      "key",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5442,7 +5588,11 @@
     "Tags": [
       "@",
       "&",
-      "#"
+      "#",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5451,7 +5601,11 @@
     "Tags": [
       "\\",
       "|",
-      "/"
+      "/",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5460,7 +5614,11 @@
     "Tags": [
       "+",
       "=",
-      "-"
+      "-",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5469,7 +5627,11 @@
     "Tags": [
       ".",
       "*",
-      "&"
+      "&",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5478,14 +5640,22 @@
     "Tags": [
       "<",
       "^",
-      ">"
+      ">",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
     "Code": "E9B9",
     "Name": "PuncKey6",
     "Tags": [
-      "~"
+      "~",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
@@ -5494,52 +5664,102 @@
     "Tags": [
       ":",
       ";",
-      "_"
+      "_",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
     "Code": "E9BB",
     "Name": "PuncKey7",
-    "Tags": []
+    "Tags": [
+      "$",
+      "¥",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
+    ]
   },
   {
     "Code": "E9BC",
     "Name": "PuncKey8",
     "Tags": [
-      "x"
+      "x",
+      "×",
+      "÷",
+      "math",
+      "punctuation",
+      "symbol",
+      "character",
+      "keyboard"
     ]
   },
   {
     "Code": "E9CA",
     "Name": "Frigid",
     "Tags": [
-      "temperature"
+      "temperature",
+      "thermometer",
+      "measurement",
+      "heat"
     ]
   },
   {
     "Code": "E9CE",
     "Name": "Unknown",
-    "Tags": []
+    "Tags": [
+      "?",
+      "question",
+      "uncertain"
+    ]
   },
   {
     "Code": "E9D2",
     "Name": "AreaChart",
-    "Tags": []
+    "Tags": [
+      "graph",
+      "data",
+      "visual",
+      "analysis",
+      "statistics",
+      "representation"
+    ]
   },
   {
     "Code": "E9D5",
     "Name": "CheckList",
-    "Tags": []
+    "Tags": [
+      "tasks",
+      "items",
+      "organize",
+      "progress",
+      "completion"
+    ]
   },
   {
     "Code": "E9D9",
     "Name": "Diagnostic",
-    "Tags": []
+    "Tags": [
+      "analysis",
+      "assessment",
+      "evaluation",
+      "rate",
+      "heart",
+      "beat"
+    ]
   },
   {
     "Code": "E9E9",
     "Name": "Equalizer",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "music",
+      "volume"
+    ]
   },
   {
     "Code": "E9F3",
@@ -5956,17 +6176,27 @@
   {
     "Code": "EA93",
     "Name": "BatteryCharging10",
-    "Tags": []
+    "Tags": [
+      "power"
+    ]
   },
   {
     "Code": "EA94",
     "Name": "BatterySaver9",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EA95",
     "Name": "BatterySaver10",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EA97",
@@ -6313,182 +6543,343 @@
   {
     "Code": "EB9D",
     "Name": "FastForward",
-    "Tags": []
+    "Tags": [
+      "video",
+      "speed",
+      "arrow"
+    ]
   },
   {
     "Code": "EB9E",
     "Name": "Rewind",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "back"
+    ]
   },
   {
     "Code": "EB9F",
     "Name": "Photo2",
-    "Tags": []
+    "Tags": [
+      "image",
+      "picture",
+      "snapshot",
+      "portrait",
+      "frame",
+      "gallery",
+      "canvas",
+      "visual",
+      "view"
+    ]
   },
   {
     "Code": "EBA0",
     "Name": "MobBattery0",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA1",
     "Name": "MobBattery1",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA2",
     "Name": "MobBattery2",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA3",
     "Name": "MobBattery3",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA4",
     "Name": "MobBattery4",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA5",
     "Name": "MobBattery5",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA6",
     "Name": "MobBattery6",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA7",
     "Name": "MobBattery7",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA8",
     "Name": "MobBattery8",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBA9",
     "Name": "MobBattery9",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAA",
     "Name": "MobBattery10",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAB",
     "Name": "MobBatteryCharging0",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAC",
     "Name": "MobBatteryCharging1",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAD",
     "Name": "MobBatteryCharging2",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAE",
     "Name": "MobBatteryCharging3",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBAF",
     "Name": "MobBatteryCharging4",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB0",
     "Name": "MobBatteryCharging5",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB1",
     "Name": "MobBatteryCharging6",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB2",
     "Name": "MobBatteryCharging7",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB3",
     "Name": "MobBatteryCharging8",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB4",
     "Name": "MobBatteryCharging9",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB5",
     "Name": "MobBatteryCharging10",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "EBB6",
     "Name": "MobBatterySaver0",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBB7",
     "Name": "MobBatterySaver1",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBB8",
     "Name": "MobBatterySaver2",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBB9",
     "Name": "MobBatterySaver3",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBA",
     "Name": "MobBatterySaver4",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBB",
     "Name": "MobBatterySaver5",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBC",
     "Name": "MobBatterySaver6",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBD",
     "Name": "MobBatterySaver7",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBE",
     "Name": "MobBatterySaver8",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBBF",
     "Name": "MobBatterySaver9",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBC0",
     "Name": "MobBatterySaver10",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "charge",
+      "power",
+      "economic"
+    ]
   },
   {
     "Code": "EBC3",
