@@ -16,6 +16,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
@@ -77,6 +78,9 @@
                 </Grid>
             </ItemContainer>
         </DataTemplate>
+
+        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToFalseConverter" EmptyValue="False" NotEmptyValue="True" />
+        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToTrueConverter" EmptyValue="True" NotEmptyValue="False" />
     </Page.Resources>
 
     <Grid HorizontalAlignment="Stretch" RowSpacing="8">
@@ -205,7 +209,11 @@
                         <TextBlock Text="C#" />
                         <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Tags" />
-                        <ItemsControl ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}" Margin="0,4,0,4">
+                        <ItemsControl
+                            x:Name="TagsItemsControl"
+                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
+                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}"
+                            Margin="0,4,0,4">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <toolkit:WrapPanel Orientation="Horizontal" HorizontalSpacing="4" VerticalSpacing="4" />
@@ -217,6 +225,10 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                        <TextBlock
+                            x:Name="NoTagsTextBlock"
+                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
+                            Text="No tags" />
 
                         <StackPanel Orientation="Vertical" Visibility="Collapsed">
                             <TextBlock
