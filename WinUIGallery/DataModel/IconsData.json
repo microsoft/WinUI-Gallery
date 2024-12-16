@@ -841,7 +841,8 @@
       "upload",
       "download",
       "save",
-      "sync"
+      "sync",
+      "remote"
     ]
   },
   {
@@ -1009,10 +1010,12 @@
   {
     "Code": "E768",
     "Name": "Play",
-    "Tags": [      "control",
+    "Tags": [
+      "control",
       "playback",
       "start",
-      "begin"]
+      "begin"
+    ]
   },
   {
     "Code": "E769",
@@ -2329,7 +2332,8 @@
   {
     "Code": "E842",
     "Name": "PinnedFill",
-    "Tags": [      "save",
+    "Tags": [
+      "save",
       "share",
       "post",
       "favorite"
@@ -2365,12 +2369,20 @@
   {
     "Code": "E846",
     "Name": "RightArrowKeyTime1",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "forward",
+      "progress"
+    ]
   },
   {
     "Code": "E847",
     "Name": "RightArrowKeyTime2",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "forward",
+      "progress"
+    ]
   },
   {
     "Code": "E848",
@@ -2429,12 +2441,20 @@
   {
     "Code": "E84E",
     "Name": "RightArrowKeyTime3",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "forward",
+      "progress"
+    ]
   },
   {
     "Code": "E84F",
     "Name": "RightArrowKeyTime4",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "forward",
+      "progress"
+    ]
   },
   {
     "Code": "E850",
@@ -2585,7 +2605,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2594,7 +2614,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2603,7 +2623,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2612,7 +2632,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2621,7 +2641,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2630,7 +2650,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2639,7 +2659,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2648,7 +2668,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -2657,7 +2677,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -6486,7 +6506,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -6495,7 +6515,7 @@
     "Tags": [
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -6763,77 +6783,151 @@
   {
     "Code": "EB55",
     "Name": "EthernetError",
-    "Tags": []
+    "Tags": [
+      "x",
+      "network",
+      "connection",
+      "cable"
+    ]
   },
   {
     "Code": "EB56",
     "Name": "EthernetWarning",
-    "Tags": []
+    "Tags": [
+      "!",
+      "network",
+      "connection",
+      "cable"
+    ]
   },
   {
     "Code": "EB57",
     "Name": "StatusConnecting1",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection",
+      "loading"
+    ]
   },
   {
     "Code": "EB58",
     "Name": "StatusConnecting2",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection",
+      "loading"
+    ]
   },
   {
     "Code": "EB59",
     "Name": "StatusUnsecure",
-    "Tags": []
+    "Tags": [
+      "warning",
+      "connection",
+      "risk",
+      "alert",
+      "shield"
+    ]
   },
   {
     "Code": "EB5A",
     "Name": "WifiError0",
-    "Tags": []
+    "Tags": [
+      "x",
+      "connection",
+      "failed",
+      "network"
+    ]
   },
   {
     "Code": "EB5B",
     "Name": "WifiError1",
-    "Tags": []
+    "Tags": [
+      "x",
+      "connection",
+      "failed",
+      "network"
+    ]
   },
   {
     "Code": "EB5C",
     "Name": "WifiError2",
-    "Tags": []
+    "Tags": [
+      "x",
+      "connection",
+      "failed",
+      "network"
+    ]
   },
   {
     "Code": "EB5D",
     "Name": "WifiError3",
-    "Tags": []
+    "Tags": [
+      "x",
+      "connection",
+      "failed",
+      "network"
+    ]
   },
   {
     "Code": "EB5E",
     "Name": "WifiError4",
-    "Tags": []
+    "Tags": [
+      "x",
+      "connection",
+      "failed",
+      "network"
+    ]
   },
   {
     "Code": "EB5F",
     "Name": "WifiWarning0",
-    "Tags": []
+    "Tags": [
+      "!",
+      "signal",
+      "connection",
+      "alert"
+    ]
   },
   {
     "Code": "EB60",
     "Name": "WifiWarning1",
-    "Tags": []
+    "Tags": [
+      "!",
+      "signal",
+      "connection",
+      "alert"
+    ]
   },
   {
     "Code": "EB61",
     "Name": "WifiWarning2",
-    "Tags": []
+    "Tags": [
+      "!",
+      "signal",
+      "connection",
+      "alert"
+    ]
   },
   {
     "Code": "EB62",
     "Name": "WifiWarning3",
-    "Tags": []
+    "Tags": [
+      "!",
+      "signal",
+      "connection",
+      "alert"
+    ]
   },
   {
     "Code": "EB63",
     "Name": "WifiWarning4",
-    "Tags": []
+    "Tags": [
+      "!",
+      "signal",
+      "connection",
+      "alert"
+    ]
   },
   {
     "Code": "EB66",
@@ -6849,23 +6943,35 @@
   {
     "Code": "EB67",
     "Name": "NUIIris",
-    "Tags": []
+    "Tags": [
+      "eye"
+    ]
   },
   {
     "Code": "EB68",
     "Name": "NUIFace",
-    "Tags": []
+    "Tags": [
+      "emoji",
+      "smiley"
+    ]
   },
   {
     "Code": "EB77",
     "Name": "GatewayRouter",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection",
+      "internet"
+    ]
   },
   {
     "Code": "EB7E",
     "Name": "EditMirrored",
     "Tags": [
-      "pencil"
+      "pencil",
+      "update",
+      "create",
+      "draw"
     ]
   },
   {
@@ -6932,23 +7038,38 @@
     "Code": "EB90",
     "Name": "StatusErrorFull",
     "Tags": [
-      "x"
+      "x",
+      "problem",
+      "failure",
+      "alert"
     ]
   },
   {
     "Code": "EB91",
     "Name": "TaskViewExpanded",
-    "Tags": []
+    "Tags": [
+      "overview",
+      "window"
+    ]
   },
   {
     "Code": "EB95",
     "Name": "Certificate",
-    "Tags": []
+    "Tags": [
+      "diploma",
+      "education",
+      "ribbon"
+    ]
   },
   {
     "Code": "EB96",
     "Name": "BackSpaceQWERTYLg",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "backward",
+      "remove",
+      "keyboard"
+    ]
   },
   {
     "Code": "EB97",
@@ -7198,7 +7319,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7208,7 +7329,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7218,7 +7339,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7228,7 +7349,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7238,7 +7359,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7248,7 +7369,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7258,7 +7379,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7268,7 +7389,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7278,7 +7399,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7288,7 +7409,7 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
@@ -7298,38 +7419,76 @@
       "phone",
       "charge",
       "power",
-      "economic"
+      "eco-friendly"
     ]
   },
   {
     "Code": "EBC3",
     "Name": "DictionaryCloud",
-    "Tags": []
+    "Tags": [
+      "book",
+      "reference",
+      "storage",
+      "upload",
+      "download",
+      "save",
+      "sync",
+      "remote"
+    ]
   },
   {
     "Code": "EBC4",
     "Name": "ResetDrive",
-    "Tags": []
+    "Tags": [
+      "storage",
+      "reboot",
+      "refresh"
+    ]
   },
   {
     "Code": "EBC5",
     "Name": "VolumeBars",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "level",
+      "audio"
+    ]
   },
   {
     "Code": "EBC6",
     "Name": "Project",
-    "Tags": []
+    "Tags": [
+      "present",
+      "presentation",
+      "view",
+      "slide",
+      "lecture",
+      "analog"
+    ]
   },
   {
     "Code": "EBD2",
     "Name": "AdjustHologram",
-    "Tags": []
+    "Tags": [
+      "3D",
+      "cube",
+      "projection",
+      "virtual",
+      "illusion",
+      "tech",
+      "interactive"
+    ]
   },
   {
     "Code": "EBD3",
     "Name": "CloudDownload",
-    "Tags": []
+    "Tags": [
+      "storage",
+      "upload",
+      "save",
+      "sync",
+      "remote"
+    ]
   },
   {
     "Code": "EBD4",
@@ -7339,27 +7498,46 @@
   {
     "Code": "EBD5",
     "Name": "MobWifiCall0",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "bars"
+    ]
   },
   {
     "Code": "EBD6",
     "Name": "MobWifiCall1",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "communication",
+      "phone"
+    ]
   },
   {
     "Code": "EBD7",
     "Name": "MobWifiCall2",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "communication",
+      "phone"
+    ]
   },
   {
     "Code": "EBD8",
     "Name": "MobWifiCall3",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "communication",
+      "phone"
+    ]
   },
   {
     "Code": "EBD9",
     "Name": "MobWifiCall4",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "communication",
+      "phone"
+    ]
   },
   {
     "Code": "EBDA",
@@ -7380,76 +7558,152 @@
   {
     "Code": "EBDE",
     "Name": "DeviceDiscovery",
-    "Tags": []
+    "Tags": [
+      "search",
+      "scan",
+      "connect",
+      "network",
+      "pair"
+    ]
   },
   {
     "Code": "EBE6",
     "Name": "WindDirection",
-    "Tags": []
+    "Tags": [
+      "weather",
+      "compass",
+      "forecast",
+      "breeze",
+      "navigation"
+    ]
   },
   {
     "Code": "EBE7",
     "Name": "RightArrowKeyTime0",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "forward",
+      "progress"
+    ]
   },
   {
     "Code": "EBE8",
     "Name": "Bug",
-    "Tags": []
+    "Tags": [
+      "error",
+      "debug",
+      "issue",
+      "problem",
+      "glitch",
+      "software",
+      "report"
+    ]
   },
   {
     "Code": "EBFC",
     "Name": "TabletMode",
-    "Tags": []
+    "Tags": [
+      "touchscreen",
+      "convertible",
+      "device"
+    ]
   },
   {
     "Code": "EBFD",
     "Name": "StatusCircleLeft",
-    "Tags": []
+    "Tags": [
+      "indicator",
+      "progress"
+    ]
   },
   {
     "Code": "EBFE",
     "Name": "StatusTriangleLeft",
-    "Tags": []
+    "Tags": [
+      "indicator",
+      "progress",
+      "alert",
+      "warning"
+    ]
   },
   {
     "Code": "EBFF",
     "Name": "StatusErrorLeft",
     "Tags": [
-      "x"
+      "x",
+      "indicator",
+      "progress",
+      "problem",
+      "issue"
     ]
   },
   {
     "Code": "EC00",
     "Name": "StatusWarningLeft",
     "Tags": [
-      "!"
+      "!",
+      "indicator",
+      "progress",
+      "caution",
+      "attention"
     ]
   },
   {
     "Code": "EC02",
     "Name": "MobBatteryUnknown",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power",
+      "status",
+      "phone"
+    ]
   },
   {
     "Code": "EC05",
     "Name": "NetworkTower",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "cell",
+      "communication",
+      "coverage",
+      "internet"
+    ]
   },
   {
     "Code": "EC06",
     "Name": "CityNext",
-    "Tags": []
+    "Tags": [
+      "building",
+      "skyline",
+      "urban",
+      "metropolis",
+      "architecture",
+      "downtown"
+    ]
   },
   {
     "Code": "EC07",
     "Name": "CityNext2",
-    "Tags": []
+    "Tags": [
+      "building",
+      "skyline",
+      "urban",
+      "metropolis",
+      "architecture",
+      "downtown"
+    ]
   },
   {
     "Code": "EC08",
     "Name": "Courthouse",
-    "Tags": []
+    "Tags": [
+      "law",
+      "government",
+      "justice",
+      "court",
+      "legal",
+      "building"
+    ]
   },
   {
     "Code": "EC09",
@@ -7459,12 +7713,25 @@
   {
     "Code": "EC0A",
     "Name": "Sustainable",
-    "Tags": []
+    "Tags": [
+      "leaf",
+      "green",
+      "power",
+      "eco-friendly",
+      "renewable"
+    ]
   },
   {
     "Code": "EC0B",
     "Name": "BuildingEnergy",
-    "Tags": []
+    "Tags": [
+      "sustainability",
+      "efficiency",
+      "green",
+      "power",
+      "eco-friendly",
+      "renewable"
+    ]
   },
   {
     "Code": "EC11",
