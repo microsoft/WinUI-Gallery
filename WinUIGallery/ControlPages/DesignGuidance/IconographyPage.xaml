@@ -144,7 +144,7 @@
                 MinWidth="304"
                 MaxWidth="320"
                 HorizontalAlignment="Left"
-                PlaceholderText="Search icons by name, code, tags..."
+                PlaceholderText="Search icons by name, code, or tags.."
                 QueryIcon="Find"
                 TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
