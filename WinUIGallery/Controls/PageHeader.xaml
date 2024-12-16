@@ -10,6 +10,7 @@
     xmlns:data="using:WinUIGallery.Data"
     xmlns:local="using:WinUIGallery.DesktopWap.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -17,31 +18,81 @@
             x:Name="collectionConverter"
             EmptyValue="Collapsed"
             NotEmptyValue="Visible" />
+        <Style
+            x:Key="CustomFlyoutPresenterStyle"
+            BasedOn="{StaticResource DefaultFlyoutPresenterStyle}"
+            TargetType="FlyoutPresenter">
+            <Setter Property="MinWidth" Value="420" />
+            <Setter Property="MaxWidth" Value="800" />
+        </Style>
     </UserControl.Resources>
     <Grid x:Name="headerGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Grid.Row="0"
-            AutomationProperties.AutomationId="PageHeader"
-            Style="{StaticResource TitleTextBlockStyle}"
-            Text="{x:Bind Item.Title}"
-            TextTrimming="CharacterEllipsis"
-            TextWrapping="NoWrap" />
-        <TextBlock
-            x:Name="NamespaceTextBlock"
-            Grid.Row="1"
-            Margin="0,4,0,0"
-            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-            IsTextSelectionEnabled="True"
-            Style="{StaticResource CaptionTextBlockStyle}"
-            Text="{x:Bind Item.ApiNamespace}"
-            Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}" />
-        <Grid Grid.Row="2" Margin="0,12,0,12">
+        <StackPanel Orientation="Horizontal" Spacing="4">
+            <TextBlock
+                AutomationProperties.AutomationId="PageHeader"
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="{x:Bind Item.Title}"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="NoWrap" />
+            <Button
+                x:Name="APIDetailsBtn"
+                Margin="0,0,0,3"
+                Padding="4"
+                VerticalAlignment="Bottom"
+                AutomationProperties.Name="API details"
+                Style="{StaticResource SubtleButtonStyle}"
+                ToolTipService.ToolTip="API namespace and inheritance">
+                <FontIcon
+                    FontSize="14"
+                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                    Glyph="&#xE946;" />
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
+                        <StackPanel x:Name="APIPanel" Spacing="16">
+                            <StackPanel
+                                x:Name="APISourcePanel"
+                                Spacing="8"
+                                Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Namespace" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontFamily="Consolas"
+                                    IsTextSelectionEnabled="True"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind Item.ApiNamespace}" />
+                            </StackPanel>
+                            <MenuFlyoutSeparator Margin="-12" />
+                            <StackPanel x:Name="InheritanceSourcePanel" Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Inheritance" />
+                                <BreadcrumbBar IsHitTestVisible="False" ItemsSource="{x:Bind Item.BaseClasses}">
+                                    <BreadcrumbBar.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock
+                                                FontFamily="Consolas"
+                                                Style="{StaticResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind}" />
+                                        </DataTemplate>
+                                    </BreadcrumbBar.ItemTemplate>
+                                </BreadcrumbBar>
+                            </StackPanel>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,12,0,12">
             <StackPanel Orientation="Horizontal" Spacing="4">
                 <DropDownButton
                     AutomationProperties.Name="Documentation"
@@ -67,9 +118,11 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate x:DataType="data:ControlInfoDocLink">
-                                        <HyperlinkButton HorizontalAlignment="Stretch"
-                                                         HorizontalContentAlignment="Left"
-                                                         NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
+                                        <HyperlinkButton
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Left"
+                                            NavigateUri="{Binding Uri}"
+                                            ToolTipService.ToolTip="{Binding Uri}">
                                             <TextBlock Text="{x:Bind Title}" />
                                         </HyperlinkButton>
                                     </DataTemplate>
@@ -78,19 +131,19 @@
                         </Flyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
-                <DropDownButton AutomationProperties.Name="Source code"
-                                ToolTipService.ToolTip="Source code of this sample page">
+                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code of this sample page">
                     <DropDownButton.Content>
-                        <StackPanel Orientation="Horizontal"
-                                    Spacing="8">
-                            <PathIcon Margin="-3,-3,-16,-3"
-                                      VerticalAlignment="Center"
-                                      Data="{StaticResource GitHubIconPath}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <PathIcon
+                                Margin="-3,-3,-16,-3"
+                                VerticalAlignment="Center"
+                                Data="{StaticResource GitHubIconPath}">
                                 <PathIcon.RenderTransform>
-                                    <CompositeTransform ScaleX="0.65"
-                                                        ScaleY="0.65"
-                                                        TranslateX="-5"
-                                                        TranslateY="5" />
+                                    <CompositeTransform
+                                        ScaleX="0.65"
+                                        ScaleY="0.65"
+                                        TranslateX="-5"
+                                        TranslateY="5" />
                                 </PathIcon.RenderTransform>
                             </PathIcon>
                             <TextBlock Text="Source" />
@@ -98,65 +151,72 @@
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <StackPanel x:Name="SourcePanel"
-                                        Margin="0,-8,0,-12">
-                                <StackPanel x:Name="ControlSourcePanel"
-                                            Margin="0,0,0,4">
-                                    <StackPanel Orientation="Horizontal"
-                                                Spacing="8">
-                                        <TextBlock VerticalAlignment="Center"
-                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                                   Style="{StaticResource CaptionTextBlockStyle}"
-                                                   Text="Control source code" />
-                                        <Button Padding="6,5,6,6"
-                                                Style="{ThemeResource SubtleButtonStyle}"
-                                                ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available">
-                                            <FontIcon VerticalAlignment="Center"
-                                                      FontSize="14"
-                                                      Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                      Glyph="&#xE946;" />
+                            <StackPanel x:Name="SourcePanel" Margin="0,-8,0,-12">
+                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,4">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Control source code" />
+                                        <Button
+                                            Padding="6,5,6,6"
+                                            Style="{ThemeResource SubtleButtonStyle}"
+                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available">
+                                            <FontIcon
+                                                VerticalAlignment="Center"
+                                                FontSize="14"
+                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                Glyph="&#xE946;" />
                                         </Button>
                                     </StackPanel>
-                                    <HyperlinkButton x:Name="ControlSourceLink"
-                                                     HorizontalAlignment="Stretch"
-                                                     HorizontalContentAlignment="Left"
-                                                     Margin="-12,4,-12,0"
-                                                     ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri, Mode=OneWay}">
+                                    <HyperlinkButton
+                                        x:Name="ControlSourceLink"
+                                        Margin="-12,4,-12,0"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Left"
+                                        ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri, Mode=OneWay}">
                                         <TextBlock Text="{x:Bind Item.Title}" />
                                     </HyperlinkButton>
                                 </StackPanel>
 
                                 <MenuFlyoutSeparator Margin="-12" />
 
-                                <StackPanel Orientation="Horizontal"
-                                            Spacing="8"
-                                            Margin="0,8,0,0">
-                                    <TextBlock VerticalAlignment="Center"
-                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                               Style="{StaticResource CaptionTextBlockStyle}"
-                                               Text="Sample page source code" />
-                                    <Button Padding="6,5,6,6"
-                                            Style="{ThemeResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository">
-                                        <FontIcon VerticalAlignment="Center"
-                                                  FontSize="14"
-                                                  Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                  Glyph="&#xE946;" />
+                                <StackPanel
+                                    Margin="0,8,0,0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="Sample page source code" />
+                                    <Button
+                                        Padding="6,5,6,6"
+                                        Style="{ThemeResource SubtleButtonStyle}"
+                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository">
+                                        <FontIcon
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                            Glyph="&#xE946;" />
                                     </Button>
 
                                 </StackPanel>
-                                <HyperlinkButton x:Name="PageMarkupGitHubLink"
-                                                 HorizontalAlignment="Stretch"
-                                                 HorizontalContentAlignment="Left"
-                                                 Margin="-12,4,-12,0"
-                                                 ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
+                                <HyperlinkButton
+                                    x:Name="PageMarkupGitHubLink"
+                                    Margin="-12,4,-12,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
                                     <TextBlock Text="XAML" />
                                 </HyperlinkButton>
-                                <HyperlinkButton x:Name="PageCodeGitHubLink"
-                                                 HorizontalAlignment="Stretch"
-                                                 HorizontalContentAlignment="Left"
-                                                 Margin="-12,4,-12,0"
-                                                 ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
+                                <HyperlinkButton
+                                    x:Name="PageCodeGitHubLink"
+                                    Margin="-12,4,-12,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
                                     <TextBlock Text="C#" />
                                 </HyperlinkButton>
                             </StackPanel>
