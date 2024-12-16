@@ -13,31 +13,30 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-namespace WinUIGalleryUnitTests
+namespace WinUIGalleryUnitTests;
+
+public sealed partial class UnitTestAppWindow : Window
 {
-    public sealed partial class UnitTestAppWindow : Window
+    public UnitTestAppWindow()
     {
-        public UnitTestAppWindow()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        public Grid RootGrid
+    public Grid RootGrid
+    {
+        get
         {
-            get
-            {
-                return rootGrid;
-            }
+            return rootGrid;
         }
+    }
 
-        public void AddToVisualTree(UIElement element)
-        {
-            this.RootGrid.Children.Add(element);
-        }
+    public void AddToVisualTree(UIElement element)
+    {
+        this.RootGrid.Children.Add(element);
+    }
 
-        public void CleanupVisualTree()
-        {
-            this.RootGrid.Children.Clear();
-        }
+    public void CleanupVisualTree()
+    {
+        this.RootGrid.Children.Clear();
     }
 }

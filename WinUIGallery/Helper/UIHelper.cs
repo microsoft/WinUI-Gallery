@@ -4,64 +4,63 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
 
-namespace WinUIGallery.Helper
+namespace WinUIGallery.Helper;
+
+public static class UIHelper
 {
-    public static class UIHelper
+    static UIHelper()
     {
-        static UIHelper()
+    }
+
+    public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
+    {
+        return start.GetDescendants().OfType<T>();
+    }
+
+    public static IEnumerable<DependencyObject> GetDescendants(this DependencyObject start)
+    {
+        var queue = new Queue<DependencyObject>();
+        var count1 = VisualTreeHelper.GetChildrenCount(start);
+
+        for (int i = 0; i < count1; i++)
         {
+            var child = VisualTreeHelper.GetChild(start, i);
+            yield return child;
+            queue.Enqueue(child);
         }
 
-        public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
+        while (queue.Count > 0)
         {
-            return start.GetDescendants().OfType<T>();
-        }
+            var parent = queue.Dequeue();
+            var count2 = VisualTreeHelper.GetChildrenCount(parent);
 
-        public static IEnumerable<DependencyObject> GetDescendants(this DependencyObject start)
-        {
-            var queue = new Queue<DependencyObject>();
-            var count1 = VisualTreeHelper.GetChildrenCount(start);
-
-            for (int i = 0; i < count1; i++)
+            for (int i = 0; i < count2; i++)
             {
-                var child = VisualTreeHelper.GetChild(start, i);
+                var child = VisualTreeHelper.GetChild(parent, i);
                 yield return child;
                 queue.Enqueue(child);
             }
+        }
+    }
 
-            while (queue.Count > 0)
+    static public UIElement FindElementByName(UIElement element, string name)
+    {
+        if (element.XamlRoot != null && element.XamlRoot.Content != null)
+        {
+            var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
+            if (ele != null)
             {
-                var parent = queue.Dequeue();
-                var count2 = VisualTreeHelper.GetChildrenCount(parent);
-
-                for (int i = 0; i < count2; i++)
-                {
-                    var child = VisualTreeHelper.GetChild(parent, i);
-                    yield return child;
-                    queue.Enqueue(child);
-                }
+                return ele as UIElement;
             }
         }
+        return null;
+    }
 
-        static public UIElement FindElementByName(UIElement element, string name)
-        {
-            if (element.XamlRoot != null && element.XamlRoot.Content != null)
-            {
-                var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
-                if (ele != null)
-                {
-                    return ele as UIElement;
-                }
-            }
-            return null;
-        }
-
-        // Confirmation of Action
-        static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
-        {
-            var peer = FrameworkElementAutomationPeer.FromElement(ue);
-            peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
-                                        AutomationNotificationProcessing.ImportantMostRecent, annoucement, activityID);
-        }
+    // Confirmation of Action
+    static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
+    {
+        var peer = FrameworkElementAutomationPeer.FromElement(ue);
+        peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
+                                    AutomationNotificationProcessing.ImportantMostRecent, annoucement, activityID);
     }
 }

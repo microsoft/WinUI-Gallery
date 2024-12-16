@@ -1,12 +1,11 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.SamplePages
+namespace WinUIGallery.SamplePages;
+
+public sealed partial class SamplePage6 : Page
 {
-    public sealed partial class SamplePage6 : Page
+    public SamplePage6()
     {
-        public SamplePage6()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

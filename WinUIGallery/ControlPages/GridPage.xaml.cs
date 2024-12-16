@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -22,13 +22,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class GridPage : Page
 {
-    public sealed partial class GridPage : Page
+    public GridPage()
     {
-        public GridPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

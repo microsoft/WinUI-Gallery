@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,23 +14,22 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Documents;
 
-namespace WinUIGallery.ControlPages
-{
-    public sealed partial class ImagePage : Page
-    {
-        public ImagePage()
-        {
-            this.InitializeComponent();
-        }
+namespace WinUIGallery.ControlPages;
 
-        private void ImageStretch_Checked(object sender, RoutedEventArgs e)
+public sealed partial class ImagePage : Page
+{
+    public ImagePage()
+    {
+        this.InitializeComponent();
+    }
+
+    private void ImageStretch_Checked(object sender, RoutedEventArgs e)
+    {
+        if (StretchImage != null)
         {
-            if (StretchImage != null)
-            {
-                var strStretch = (sender as RadioButton).Content.ToString();
-                var stretch = (Stretch)Enum.Parse(typeof(Stretch), strStretch);
-                StretchImage.Stretch = stretch;
-            }
+            var strStretch = (sender as RadioButton).Content.ToString();
+            var stretch = (Stretch)Enum.Parse(typeof(Stretch), strStretch);
+            StretchImage.Stretch = stretch;
         }
     }
 }

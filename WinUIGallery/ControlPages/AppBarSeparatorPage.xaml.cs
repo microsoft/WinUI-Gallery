@@ -12,13 +12,12 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
-{
-    public sealed partial class AppBarSeparatorPage : Page
-    { 
-        public AppBarSeparatorPage()
-        {
-            this.InitializeComponent();
-        }
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class AppBarSeparatorPage : Page
+{ 
+    public AppBarSeparatorPage()
+    {
+        this.InitializeComponent();
     }
 }

@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,39 +12,38 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class MenuFlyoutPage : Page
 {
-    public sealed partial class MenuFlyoutPage : Page
+    public MenuFlyoutPage()
     {
-        public MenuFlyoutPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is MenuFlyoutItem selectedItem)
         {
-            if (sender is MenuFlyoutItem selectedItem)
+            string sortOption = selectedItem.Tag.ToString();
+            switch (sortOption)
             {
-                string sortOption = selectedItem.Tag.ToString();
-                switch (sortOption)
-                {
-                    case "rating":
-                        //SortByRating();
-                        break;
-                    case "match":
-                        //SortByMatch();
-                        break;
-                    case "distance":
-                        //SortByDistance();
-                        break;
-                }
-                Control1Output.Text = "Sort by: " + sortOption;
+                case "rating":
+                    //SortByRating();
+                    break;
+                case "match":
+                    //SortByMatch();
+                    break;
+                case "distance":
+                    //SortByDistance();
+                    break;
             }
+            Control1Output.Text = "Sort by: " + sortOption;
         }
+    }
 
-        private void Example5_Loaded(object sender, RoutedEventArgs e)
-        {
+    private void Example5_Loaded(object sender, RoutedEventArgs e)
+    {
 
-        }
     }
 }

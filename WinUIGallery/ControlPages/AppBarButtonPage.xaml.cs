@@ -13,44 +13,43 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class AppBarButtonPage : Page
 {
-    public sealed partial class AppBarButtonPage : Page
+    public AppBarButtonPage()
     {
-        public AppBarButtonPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+    private void AppBarButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b)
         {
-            if (sender is Button b)
+            string name = b.Name;
+
+            switch (name)
             {
-                string name = b.Name;
-
-                switch (name)
-                {
-                    case "Button1":
-                        Control1Output.Text = "You clicked: " + name;
-                        UIHelper.AnnounceActionForAccessibility(Button1, Control1Output.Text, "AppBarButtonSuccessNotificationId");
-                        break;
-                    case "Button2":
-                        Control2Output.Text = "You clicked: " + name;
-                        UIHelper.AnnounceActionForAccessibility(Button2, Control2Output.Text, "AppBarButtonSuccessNotificationId");
-                        break;
-                    case "Button3":
-                        Control3Output.Text = "You clicked: " + name;
-                        UIHelper.AnnounceActionForAccessibility(Button3, Control3Output.Text, "AppBarButtonSuccessNotificationId");
-                        break;
-                    case "Button4":
-                        Control4Output.Text = "You clicked: " + name;
-                        UIHelper.AnnounceActionForAccessibility(Button4, Control4Output.Text, "AppBarButtonSuccessNotificationId");
-                        break;
-                    case "Button5":
-                        Control5Output.Text = "You clicked: " + name;
-                        UIHelper.AnnounceActionForAccessibility(Button5, Control5Output.Text, "AppBarButtonSuccessNotificationId");
-                        break;
-                }
+                case "Button1":
+                    Control1Output.Text = "You clicked: " + name;
+                    UIHelper.AnnounceActionForAccessibility(Button1, Control1Output.Text, "AppBarButtonSuccessNotificationId");
+                    break;
+                case "Button2":
+                    Control2Output.Text = "You clicked: " + name;
+                    UIHelper.AnnounceActionForAccessibility(Button2, Control2Output.Text, "AppBarButtonSuccessNotificationId");
+                    break;
+                case "Button3":
+                    Control3Output.Text = "You clicked: " + name;
+                    UIHelper.AnnounceActionForAccessibility(Button3, Control3Output.Text, "AppBarButtonSuccessNotificationId");
+                    break;
+                case "Button4":
+                    Control4Output.Text = "You clicked: " + name;
+                    UIHelper.AnnounceActionForAccessibility(Button4, Control4Output.Text, "AppBarButtonSuccessNotificationId");
+                    break;
+                case "Button5":
+                    Control5Output.Text = "You clicked: " + name;
+                    UIHelper.AnnounceActionForAccessibility(Button5, Control5Output.Text, "AppBarButtonSuccessNotificationId");
+                    break;
             }
         }
     }

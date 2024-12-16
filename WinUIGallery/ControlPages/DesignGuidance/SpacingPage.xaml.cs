@@ -10,13 +10,12 @@
 
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class SpacingPage : Page
 {
-    public sealed partial class SpacingPage : Page
+    public SpacingPage()
     {
-        public SpacingPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -6,138 +6,137 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery
+namespace WinUIGallery;
+
+/// <summary>
+/// The OrientedSize structure is used to abstract the growth direction from
+/// the layout algorithms of WrapPanel.  When the growth direction is
+/// oriented horizontally (ex: the next element is arranged on the side of
+/// the previous element), then the Width grows directly with the placement
+/// of elements and Height grows indirectly with the size of the largest
+/// element in the row.  When the orientation is reversed, so is the
+/// directional growth with respect to Width and Height.
+/// </summary>
+/// <QualityBand>Mature</QualityBand>
+[StructLayout(LayoutKind.Sequential)]
+internal struct OrientedSize
 {
     /// <summary>
-    /// The OrientedSize structure is used to abstract the growth direction from
-    /// the layout algorithms of WrapPanel.  When the growth direction is
-    /// oriented horizontally (ex: the next element is arranged on the side of
-    /// the previous element), then the Width grows directly with the placement
-    /// of elements and Height grows indirectly with the size of the largest
-    /// element in the row.  When the orientation is reversed, so is the
-    /// directional growth with respect to Width and Height.
+    /// The orientation of the structure.
     /// </summary>
-    /// <QualityBand>Mature</QualityBand>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct OrientedSize
+    private Orientation _orientation;
+
+    /// <summary>
+    /// Gets the orientation of the structure.
+    /// </summary>
+    public Orientation Orientation
     {
-        /// <summary>
-        /// The orientation of the structure.
-        /// </summary>
-        private Orientation _orientation;
+        get { return _orientation; }
+    }
 
-        /// <summary>
-        /// Gets the orientation of the structure.
-        /// </summary>
-        public Orientation Orientation
+    /// <summary>
+    /// The size dimension that grows directly with layout placement.
+    /// </summary>
+    private double _direct;
+
+    /// <summary>
+    /// Gets or sets the size dimension that grows directly with layout
+    /// placement.
+    /// </summary>
+    public double Direct
+    {
+        get { return _direct; }
+        set { _direct = value; }
+    }
+
+    /// <summary>
+    /// The size dimension that grows indirectly with the maximum value of
+    /// the layout row or column.
+    /// </summary>
+    private double _indirect;
+
+    /// <summary>
+    /// Gets or sets the size dimension that grows indirectly with the
+    /// maximum value of the layout row or column.
+    /// </summary>
+    public double Indirect
+    {
+        get { return _indirect; }
+        set { _indirect = value; }
+    }
+
+    /// <summary>
+    /// Gets or sets the width of the size.
+    /// </summary>
+    public double Width
+    {
+        get
         {
-            get { return _orientation; }
+            return (Orientation == Orientation.Horizontal) ?
+                Direct :
+                Indirect;
         }
-
-        /// <summary>
-        /// The size dimension that grows directly with layout placement.
-        /// </summary>
-        private double _direct;
-
-        /// <summary>
-        /// Gets or sets the size dimension that grows directly with layout
-        /// placement.
-        /// </summary>
-        public double Direct
+        set
         {
-            get { return _direct; }
-            set { _direct = value; }
-        }
-
-        /// <summary>
-        /// The size dimension that grows indirectly with the maximum value of
-        /// the layout row or column.
-        /// </summary>
-        private double _indirect;
-
-        /// <summary>
-        /// Gets or sets the size dimension that grows indirectly with the
-        /// maximum value of the layout row or column.
-        /// </summary>
-        public double Indirect
-        {
-            get { return _indirect; }
-            set { _indirect = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the width of the size.
-        /// </summary>
-        public double Width
-        {
-            get
+            if (Orientation == Orientation.Horizontal)
             {
-                return (Orientation == Orientation.Horizontal) ?
-                    Direct :
-                    Indirect;
+                Direct = value;
             }
-            set
+            else
             {
-                if (Orientation == Orientation.Horizontal)
-                {
-                    Direct = value;
-                }
-                else
-                {
-                    Indirect = value;
-                }
+                Indirect = value;
             }
         }
+    }
 
-        /// <summary>
-        /// Gets or sets the height of the size.
-        /// </summary>
-        public double Height
+    /// <summary>
+    /// Gets or sets the height of the size.
+    /// </summary>
+    public double Height
+    {
+        get
         {
-            get
+            return (Orientation != Orientation.Horizontal) ?
+                Direct :
+                Indirect;
+        }
+        set
+        {
+            if (Orientation != Orientation.Horizontal)
             {
-                return (Orientation != Orientation.Horizontal) ?
-                    Direct :
-                    Indirect;
+                Direct = value;
             }
-            set
+            else
             {
-                if (Orientation != Orientation.Horizontal)
-                {
-                    Direct = value;
-                }
-                else
-                {
-                    Indirect = value;
-                }
+                Indirect = value;
             }
         }
+    }
 
-        /// <summary>
-        /// Initializes a new OrientedSize structure.
-        /// </summary>
-        /// <param name="orientation">Orientation of the structure.</param>
-        public OrientedSize(Orientation orientation) :
-            this(orientation, 0.0, 0.0)
-        {
-        }
+    /// <summary>
+    /// Initializes a new OrientedSize structure.
+    /// </summary>
+    /// <param name="orientation">Orientation of the structure.</param>
+    public OrientedSize(Orientation orientation) :
+        this(orientation, 0.0, 0.0)
+    {
+    }
 
-        /// <summary>
-        /// Initializes a new OrientedSize structure.
-        /// </summary>
-        /// <param name="orientation">Orientation of the structure.</param>
-        /// <param name="width">Un-oriented width of the structure.</param>
-        /// <param name="height">Un-oriented height of the structure.</param>
-        public OrientedSize(Orientation orientation, double width, double height)
-        {
-            _orientation = orientation;
+    /// <summary>
+    /// Initializes a new OrientedSize structure.
+    /// </summary>
+    /// <param name="orientation">Orientation of the structure.</param>
+    /// <param name="width">Un-oriented width of the structure.</param>
+    /// <param name="height">Un-oriented height of the structure.</param>
+    public OrientedSize(Orientation orientation, double width, double height)
+    {
+        _orientation = orientation;
 
-            // All fields must be initialized before we access the this pointer
-            _direct = 0.0;
-            _indirect = 0.0;
+        // All fields must be initialized before we access the this pointer
+        _direct = 0.0;
+        _indirect = 0.0;
 
-            Width = width;
-            Height = height;
-        }
+        Width = width;
+        Height = height;
     }
 }

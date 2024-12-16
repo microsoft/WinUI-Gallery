@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -11,13 +11,12 @@ using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class WebView2Page : Page
 {
-    public sealed partial class WebView2Page : Page
+    public WebView2Page()
     {
-        public WebView2Page()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }
