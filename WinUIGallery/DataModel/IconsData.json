@@ -358,7 +358,11 @@
   {
     "Code": "E722",
     "Name": "Camera",
-    "Tags": []
+    "Tags": [
+      "image",
+      "photography",
+      "picture"
+    ]
   },
   {
     "Code": "E723",
@@ -372,7 +376,12 @@
   {
     "Code": "E724",
     "Name": "Send",
-    "Tags": []
+    "Tags": [
+      "paper plane",
+      "mail",
+      "message",
+      "email"
+    ]
   },
   {
     "Code": "E725",
@@ -667,7 +676,7 @@
       "resize",
       "adjust",
       "pointer",
-      "resize-handle"
+      "handle"
     ]
   },
   {
@@ -678,7 +687,7 @@
       "resize",
       "adjust",
       "pointer",
-      "resize-handle"
+      "handle"
     ]
   },
   {
@@ -689,7 +698,7 @@
       "resize",
       "adjust",
       "pointer",
-      "resize-handle"
+      "handle"
     ]
   },
   {
@@ -700,7 +709,7 @@
       "resize",
       "adjust",
       "pointer",
-      "resize-handle"
+      "handle"
     ]
   },
   {
@@ -711,7 +720,7 @@
       "resize",
       "adjust",
       "pointer",
-      "resize-handle"
+      "handle"
     ]
   },
   {
@@ -1273,6 +1282,7 @@
     "Code": "E788",
     "Name": "GripperResize",
     "Tags": [
+      "triangle",
       "drag",
       "handle"
     ]
@@ -4726,7 +4736,6 @@
     "Code": "E946",
     "Name": "Info",
     "Tags": [
-      "!",
       "information",
       "details",
       "content"
@@ -5766,127 +5775,209 @@
     "Code": "E9F3",
     "Name": "Process",
     "Tags": [
-      "arrow"
+      "arrow",
+      "workflow",
+      "operation"
     ]
   },
   {
     "Code": "E9F5",
     "Name": "Processing",
     "Tags": [
-      "settings"
+      "settings",
+      "workflow",
+      "operation"
     ]
   },
   {
     "Code": "E9F9",
     "Name": "ReportDocument",
-    "Tags": []
+    "Tags": [
+      "summary",
+      "file",
+      "analysis"
+    ]
   },
   {
     "Code": "EA0C",
     "Name": "VideoSolid",
     "Tags": [
-      "camera"
+      "camera",
+      "image",
+      "photography",
+      "picture"
     ]
   },
   {
     "Code": "EA0D",
     "Name": "MixedMediaBadge",
-    "Tags": []
+    "Tags": [
+      "shield",
+      "window"
+    ]
   },
   {
     "Code": "EA14",
     "Name": "DisconnectDisplay",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "monitor",
+      "remove"
+    ]
   },
   {
     "Code": "EA18",
     "Name": "Shield",
-    "Tags": []
+    "Tags": [
+      "security",
+      "protection",
+      "safety"
+    ]
   },
   {
     "Code": "EA1F",
     "Name": "Info2",
-    "Tags": []
+    "Tags": [
+      "information",
+      "details",
+      "content"
+    ]
   },
   {
     "Code": "EA21",
     "Name": "ActionCenterAsterisk",
-    "Tags": []
+    "Tags": [
+      "*",
+      "notification",
+      "alert"
+    ]
   },
   {
     "Code": "EA24",
     "Name": "Beta",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "letter",
+      "math"
+    ]
   },
   {
     "Code": "EA35",
     "Name": "SaveCopy",
     "Tags": [
-      "floppy"
+      "floppy",
+      "floppy disk",
+      "device",
+      "old"
     ]
   },
   {
     "Code": "EA37",
     "Name": "List",
-    "Tags": []
+    "Tags": [
+      "text",
+      "line",
+      "view"
+    ]
   },
   {
     "Code": "EA38",
     "Name": "Asterisk",
     "Tags": [
-      "*"
+      "*",
+      "star",
+      "symbol",
+      "wildcard",
+      "mark",
+      "notation"
     ]
   },
   {
     "Code": "EA39",
     "Name": "ErrorBadge",
     "Tags": [
-      "x"
+      "x",
+      "warning",
+      "alert",
+      "problem",
+      "notification"
     ]
   },
   {
     "Code": "EA3A",
     "Name": "CircleRing",
-    "Tags": []
+    "Tags": [
+      "shape",
+      "geometry"
+    ]
   },
   {
     "Code": "EA3B",
     "Name": "CircleFill",
-    "Tags": []
+    "Tags": [
+      "shape",
+      "geometry"
+    ]
   },
   {
     "Code": "EA3C",
     "Name": "MergeCall",
     "Tags": [
-      "arrow"
+      "arrow",
+      "combine",
+      "conference",
+      "phone"
     ]
   },
   {
     "Code": "EA3D",
     "Name": "PrivateCall",
     "Tags": [
-      "arrow"
+      "arrow",
+      "secure",
+      "confidential",
+      "phone"
     ]
   },
   {
     "Code": "EA3F",
     "Name": "Record2",
-    "Tags": []
+    "Tags": [
+      "circle",
+      "control",
+      "playback",
+      "wait",
+      "stop",
+      "transcribe"
+    ]
   },
   {
     "Code": "EA40",
     "Name": "AllAppsMirrored",
-    "Tags": []
+    "Tags": [
+      "plugin",
+      "square",
+      "stack"
+    ]
   },
   {
     "Code": "EA41",
     "Name": "BookmarksMirrored",
-    "Tags": []
+    "Tags": [
+      "read",
+      "list",
+      "bullet points",
+      "formatting"
+    ]
   },
   {
     "Code": "EA42",
     "Name": "BulletedListMirrored",
-    "Tags": []
+    "Tags": [
+      "organize",
+      "items",
+      "points"
+    ]
   },
   {
     "Code": "EA43",
@@ -5906,228 +5997,416 @@
     "Code": "EA47",
     "Name": "ChromeBackMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "back",
+      "navigate",
+      "browser"
     ]
   },
   {
     "Code": "EA48",
     "Name": "ClearSelectionMirrored",
-    "Tags": []
+    "Tags": [
+      "check",
+      "checkmark",
+      "check multiple"
+    ]
   },
   {
     "Code": "EA49",
     "Name": "ClosePaneMirrored",
-    "Tags": []
+    "Tags": [
+      "sidebar",
+      "hide",
+      "exit",
+      "collapse"
+    ]
   },
   {
     "Code": "EA4A",
     "Name": "ContactInfoMirrored",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "details"
     ]
   },
   {
     "Code": "EA4B",
     "Name": "DockRightMirrored",
-    "Tags": []
+    "Tags": [
+      "position",
+      "side",
+      "panel"
+    ]
   },
   {
     "Code": "EA4C",
     "Name": "DockLeftMirrored",
-    "Tags": []
+    "Tags": [
+      "position",
+      "side",
+      "panel"
+    ]
   },
   {
     "Code": "EA4E",
     "Name": "ExpandTileMirrored",
-    "Tags": []
+    "Tags": [
+      "maximize",
+      "view",
+      "window"
+    ]
   },
   {
     "Code": "EA4F",
     "Name": "GoMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "start",
+      "move",
+      "launch",
+      "begin"
     ]
   },
   {
     "Code": "EA50",
     "Name": "GripperResizeMirrored",
     "Tags": [
-      "triangle"
+      "triangle",
+      "drag",
+      "handle"
     ]
   },
   {
     "Code": "EA51",
     "Name": "HelpMirrored",
     "Tags": [
-      "?"
+      "?",
+      "question",
+      "support",
+      "guide",
+      "assistance",
+      "info"
     ]
   },
   {
     "Code": "EA52",
     "Name": "ImportMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "upload",
+      "file",
+      "add",
+      "transfer"
     ]
   },
   {
     "Code": "EA53",
     "Name": "ImportAllMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "upload",
+      "file",
+      "add",
+      "transfer"
     ]
   },
   {
     "Code": "EA54",
     "Name": "LeaveChatMirrored",
-    "Tags": []
+    "Tags": [
+      "exit",
+      "leave",
+      "message",
+      "conversation",
+      "disconnect"
+    ]
   },
   {
     "Code": "EA55",
     "Name": "ListMirrored",
-    "Tags": []
+    "Tags": [
+      "text",
+      "line",
+      "view"
+    ]
   },
   {
     "Code": "EA56",
     "Name": "MailForwardMirrored",
-    "Tags": []
+    "Tags": [
+      "send",
+      "arrow",
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "letter"
+    ]
   },
   {
     "Code": "EA57",
     "Name": "MailReplyMirrored",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "respond",
+      "letter"
+    ]
   },
   {
     "Code": "EA58",
     "Name": "MailReplyAllMirrored",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "respond",
+      "letter"
+    ]
   },
   {
     "Code": "EA5B",
     "Name": "OpenPaneMirrored",
-    "Tags": []
+    "Tags": [
+      "sidebar",
+      "expand",
+      "menu",
+      "show"
+    ]
   },
   {
     "Code": "EA5C",
     "Name": "OpenWithMirrored",
-    "Tags": []
+    "Tags": [
+      "application",
+      "program",
+      "associate",
+      "file",
+      "choose",
+      "viewer"
+    ]
   },
   {
     "Code": "EA5E",
     "Name": "ParkingLocationMirrored",
     "Tags": [
-      "car"
+      "car",
+      "spot",
+      "space"
     ]
   },
   {
     "Code": "EA5F",
     "Name": "ResizeMouseMediumMirrored",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "handle"
+    ]
   },
   {
     "Code": "EA60",
     "Name": "ResizeMouseSmallMirrored",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "handle"
+    ]
   },
   {
     "Code": "EA61",
     "Name": "ResizeMouseTallMirrored",
-    "Tags": []
+    "Tags": [
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "handle"
+    ]
   },
   {
     "Code": "EA62",
     "Name": "ResizeTouchNarrowerMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "drag",
+      "resize",
+      "adjust",
+      "pointer",
+      "handle"
     ]
   },
   {
     "Code": "EA63",
     "Name": "SendMirrored",
-    "Tags": []
+    "Tags": [
+      "paper plane",
+      "mail",
+      "message",
+      "email"
+    ]
   },
   {
     "Code": "EA64",
     "Name": "SendFillMirrored",
-    "Tags": []
+    "Tags": [
+      "paper plane",
+      "mail",
+      "message",
+      "email"
+    ]
   },
   {
     "Code": "EA65",
     "Name": "ShowResultsMirrored",
-    "Tags": []
+    "Tags": [
+      "list",
+      "bullet points",
+      "formatting",
+      "display",
+      "view"
+    ]
   },
   {
     "Code": "EA69",
     "Name": "Media",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "video",
+      "content",
+      "entertainment",
+      "streaming"
+    ]
   },
   {
     "Code": "EA6A",
     "Name": "SyncError",
     "Tags": [
       "arrow",
-      "!"
+      "!",
+      "failure",
+      "problem",
+      "update"
     ]
   },
   {
     "Code": "EA6C",
     "Name": "Devices3",
-    "Tags": []
+    "Tags": [
+      "hardware",
+      "connections",
+      "peripherals",
+      "electronics",
+      "gadgets"
+    ]
   },
   {
     "Code": "EA79",
     "Name": "SlowMotionOn",
-    "Tags": []
+    "Tags": [
+      "playback",
+      "video",
+      "effect",
+      "speed"
+    ]
   },
   {
     "Code": "EA80",
     "Name": "Lightbulb",
-    "Tags": []
+    "Tags": [
+      "light",
+      "illuminate",
+      "knowledge",
+      "smart",
+      "idea",
+      "tip"
+    ]
   },
   {
     "Code": "EA81",
     "Name": "StatusCircle",
-    "Tags": []
+    "Tags": [
+      "indicator",
+      "circle",
+      "check",
+      "signal"
+    ]
   },
   {
     "Code": "EA82",
     "Name": "StatusTriangle",
-    "Tags": []
+    "Tags": [
+      "indicator",
+      "warning",
+      "alert"
+    ]
   },
   {
     "Code": "EA83",
     "Name": "StatusError",
     "Tags": [
-      "x"
+      "x",
+      "problem",
+      "failure",
+      "alert"
     ]
   },
   {
     "Code": "EA84",
     "Name": "StatusWarning",
     "Tags": [
-      "!"
+      "!",
+      "caution",
+      "alert",
+      "attention"
     ]
   },
   {
     "Code": "EA86",
     "Name": "Puzzle",
-    "Tags": []
+    "Tags": [
+      "piece",
+      "game",
+      "solution",
+      "challenge"
+    ]
   },
   {
     "Code": "EA89",
     "Name": "CalendarSolid",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "EA8A",
     "Name": "HomeSolid",
-    "Tags": []
+    "Tags": [
+      "house",
+      "safety",
+      "location",
+      "space",
+      "wfh"
+    ]
   },
   {
     "Code": "EA8B",
     "Name": "ParkingLocationSolid",
     "Tags": [
-      "car"
+      "car",
+      "spot",
+      "space"
     ]
   },
   {
@@ -6135,13 +6414,18 @@
     "Name": "ContactSolid",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "details"
     ]
   },
   {
     "Code": "EA8D",
     "Name": "ConstructionSolid",
-    "Tags": []
+    "Tags": [
+      "person",
+      "user",
+      "work"
+    ]
   },
   {
     "Code": "EA8E",
@@ -6154,25 +6438,40 @@
     "Code": "EA8F",
     "Name": "Ringer",
     "Tags": [
-      "bell"
+      "bell",
+      "notification",
+      "alert"
     ]
   },
   {
     "Code": "EA90",
     "Name": "PDF",
-    "Tags": []
+    "Tags": [
+      "document",
+      "file",
+      "portable",
+      "format",
+      "view"
+    ]
   },
   {
     "Code": "EA91",
     "Name": "ThoughtBubble",
     "Tags": [
-      "cloud"
+      "cloud",
+      "idea",
+      "concept",
+      "conversation"
     ]
   },
   {
     "Code": "EA92",
     "Name": "HeartBroken",
-    "Tags": []
+    "Tags": [
+      "love",
+      "emotion",
+      "sadness"
+    ]
   },
   {
     "Code": "EA93",
@@ -6203,149 +6502,263 @@
     "Code": "EA97",
     "Name": "CallForwardingMirrored",
     "Tags": [
-      "phone"
+      "phone",
+      "handset",
+      "audio"
     ]
   },
   {
     "Code": "EA98",
     "Name": "MultiSelectMirrored",
-    "Tags": []
+    "Tags": [
+      "checkmark",
+      "task",
+      "list",
+      "type"
+    ]
   },
   {
     "Code": "EA99",
     "Name": "Broom",
-    "Tags": []
+    "Tags": [
+      "sweep",
+      "clean",
+      "brush"
+    ]
   },
   {
     "Code": "EAC2",
     "Name": "ForwardCall",
     "Tags": [
-      "arrow"
+      "arrow",
+      "phone"
     ]
   },
   {
     "Code": "EADF",
     "Name": "Trackers",
     "Tags": [
-      "check"
+      "check",
+      "monitor",
+      "progress",
+      "list"
     ]
   },
   {
     "Code": "EAFC",
     "Name": "Market",
     "Tags": [
-      "arrow"
+      "arrow",
+      "stocks",
+      "finance",
+      "trading",
+      "investment"
     ]
   },
   {
     "Code": "EB05",
     "Name": "PieSingle",
     "Tags": [
-      "chart"
+      "chart",
+      "graph",
+      "data",
+      "visual",
+      "analysis",
+      "statistics",
+      "representation"
     ]
   },
   {
     "Code": "EB0F",
     "Name": "StockUp",
     "Tags": [
-      "triangle"
+      "increase",
+      "growth",
+      "rise",
+      "market"
     ]
   },
   {
     "Code": "EB11",
     "Name": "StockDown",
     "Tags": [
-      "triangle"
+      "decrease",
+      "decline",
+      "fall",
+      "market"
     ]
   },
   {
     "Code": "EB3C",
     "Name": "Design",
-    "Tags": []
+    "Tags": [
+      "ruler",
+      "triangle",
+      "measurement",
+      "drafting",
+      "geometry",
+      "sketch",
+      "precision"
+    ]
   },
   {
     "Code": "EB41",
     "Name": "Website",
-    "Tags": []
+    "Tags": [
+      "web",
+      "internet",
+      "site",
+      "online",
+      "page"
+    ]
   },
   {
     "Code": "EB42",
     "Name": "Drop",
-    "Tags": []
+    "Tags": [
+      "water",
+      "liquid",
+      "spill",
+      "paint"
+    ]
   },
   {
     "Code": "EB44",
     "Name": "Radar",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "tracking",
+      "detection",
+      "monitoring"
+    ]
   },
   {
     "Code": "EB47",
     "Name": "BusSolid",
-    "Tags": []
+    "Tags": [
+      "vehicle",
+      "transportation",
+      "public",
+      "travel"
+    ]
   },
   {
     "Code": "EB48",
     "Name": "FerrySolid",
     "Tags": [
       "boat",
-      "ship"
+      "ship",
+      "ocean",
+      "travel"
     ]
   },
   {
     "Code": "EB49",
     "Name": "StartPointSolid",
-    "Tags": []
+    "Tags": [
+      "map",
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "EB4A",
     "Name": "StopPointSolid",
-    "Tags": []
+    "Tags": [
+      "map",
+      "travel",
+      "navigation"
+    ]
   },
   {
     "Code": "EB4B",
     "Name": "EndPointSolid",
     "Tags": [
-      "flag"
+      "flag",
+      "map",
+      "travel",
+      "navigation"
     ]
   },
   {
     "Code": "EB4C",
     "Name": "AirplaneSolid",
-    "Tags": []
+    "Tags": [
+      "flight",
+      "vehicle",
+      "travel"
+    ]
   },
   {
     "Code": "EB4D",
     "Name": "TrainSolid",
-    "Tags": []
+    "Tags": [
+      "rail",
+      "transport",
+      "travel",
+      "track",
+      "station"
+    ]
   },
   {
     "Code": "EB4E",
     "Name": "WorkSolid",
-    "Tags": []
+    "Tags": [
+      "bag",
+      "handbag",
+      "briefcase",
+      "office"
+    ]
   },
   {
     "Code": "EB4F",
     "Name": "ReminderFill",
     "Tags": [
-      "light"
+      "light",
+      "illuminate",
+      "knowledge",
+      "smart",
+      "idea",
+      "tip",
+      "alert",
+      "notification",
+      "task",
+      "prompt"
     ]
   },
   {
     "Code": "EB50",
     "Name": "Reminder",
     "Tags": [
-      "light"
+      "light",
+      "illuminate",
+      "knowledge",
+      "smart",
+      "idea",
+      "tip",
+      "alert",
+      "notification",
+      "task",
+      "prompt"
     ]
   },
   {
     "Code": "EB51",
     "Name": "Heart",
-    "Tags": []
+    "Tags": [
+      "love",
+      "emotion",
+      "like"
+    ]
   },
   {
     "Code": "EB52",
     "Name": "HeartFill",
-    "Tags": []
+    "Tags": [
+      "love",
+      "emotion",
+      "like"
+    ]
   },
   {
     "Code": "EB55",
@@ -6425,7 +6838,13 @@
   {
     "Code": "EB66",
     "Name": "Devices4",
-    "Tags": []
+    "Tags": [
+      "hardware",
+      "connections",
+      "peripherals",
+      "electronics",
+      "gadgets"
+    ]
   },
   {
     "Code": "EB67",
@@ -7196,7 +7615,11 @@
   {
     "Code": "EC40",
     "Name": "MobAirplane",
-    "Tags": []
+    "Tags": [
+      "flight",
+      "vehicle",
+      "travel"
+    ]
   },
   {
     "Code": "EC41",
@@ -7389,14 +7812,18 @@
     "Code": "EC7E",
     "Name": "MobCallForwarding",
     "Tags": [
-      "phone"
+      "phone",
+      "handset",
+      "audio"
     ]
   },
   {
     "Code": "EC7F",
     "Name": "MobCallForwardingMirrored",
     "Tags": [
-      "phone"
+      "phone",
+      "handset",
+      "audio"
     ]
   },
   {
@@ -8569,21 +8996,30 @@
     "Code": "F0D5",
     "Name": "ChromeBackContrast",
     "Tags": [
-      "arrow"
+      "arrow",
+      "back",
+      "navigate",
+      "browser"
     ]
   },
   {
     "Code": "F0D6",
     "Name": "ChromeBackContrastMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "back",
+      "navigate",
+      "browser"
     ]
   },
   {
     "Code": "F0D7",
     "Name": "ChromeBackToWindowContrast",
     "Tags": [
-      "arrow"
+      "arrow",
+      "back",
+      "navigate",
+      "browser"
     ]
   },
   {
