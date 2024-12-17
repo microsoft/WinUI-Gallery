@@ -1,15 +1,17 @@
 ﻿<Button
-    x:Name="HeroButton"
-    Click="TestButtonClick3"
+    x:Name="TestButton3"
+    Click="TestButton3Click"
     Content="Show TeachingTip" />
 <TeachingTip
-    x:Name="ToggleThemeTeachingTip3"
+    x:Name="TestButton3TeachingTip"
     Title="This is the title"
     PreferredPlacement="Bottom"
     Subtitle="And this is the subtitle"
-    Target="{x:Bind HeroButton}">
+    Target="{x:Bind TestButton3}">
     <TeachingTip.HeroContent>
-        <Image AutomationProperties.Name="Sunset" Source="/Assets/SampleMedia/sunset.jpg" />
+        <Image
+            AutomationProperties.Name="Sunset"
+            Source="/Assets/SampleMedia/sunset.jpg" />
     </TeachingTip.HeroContent>
     <TeachingTip.Content>
         <TextBlock

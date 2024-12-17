@@ -1,8 +1,8 @@
 ﻿<Button
-    Click="TestButtonClick2"
+    Click="TestButton2Click"
     Content="Show TeachingTip" />
 <TeachingTip
-    x:Name="ToggleThemeTeachingTip2"
+    x:Name="TestButton2TeachingTip"
     Title="This is the title"
     ActionButtonContent="Action button"
     CloseButtonContent="Close button"

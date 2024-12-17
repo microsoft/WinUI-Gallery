@@ -20,19 +20,19 @@
     <StackPanel HorizontalAlignment="Left">
         <local:ControlExample
             CSharpSource="TeachingTip/TeachingTipSample1_cs.txt"
-            HeaderText="Show a targeted TeachingTip on the Toggle Theme button."
+            HeaderText="Show a targeted TeachingTip on a button."
             XamlSource="TeachingTip/TeachingTipSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Button
-                        x:Name="ThemeButton"
-                        Click="TestButtonClick1"
+                        x:Name="TestButton1"
+                        Click="TestButton1Click"
                         Content="Show TeachingTip" />
                     <TeachingTip
-                        x:Name="ToggleThemeTeachingTip1"
+                        x:Name="TestButton1TeachingTip"
                         Title="This is the title"
                         Subtitle="And this is the subtitle"
-                        Target="{x:Bind ThemeButton}">
+                        Target="{x:Bind TestButton1}">
                         <TeachingTip.IconSource>
                             <SymbolIconSource Symbol="Refresh" />
                         </TeachingTip.IconSource>
@@ -48,10 +48,10 @@
             <local:ControlExample.Example>
                 <Grid>
                     <Button
-                        Click="TestButtonClick2"
+                        Click="TestButton2Click"
                         Content="Show TeachingTip" />
                     <TeachingTip
-                        x:Name="ToggleThemeTeachingTip2"
+                        x:Name="TestButton2TeachingTip"
                         Title="This is the title"
                         ActionButtonContent="Action button"
                         CloseButtonContent="Close button"
@@ -65,22 +65,24 @@
 
         <local:ControlExample
             CSharpSource="TeachingTip/TeachingTipSample3_cs.txt"
-            HeaderText="Show a targeted TeachingTip with hero content on the Toggle Theme button."
+            HeaderText="Show a targeted TeachingTip with hero content on a button."
             XamlSource="TeachingTip/TeachingTipSample3_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Button
-                        x:Name="HeroButton"
-                        Click="TestButtonClick3"
+                        x:Name="TestButton3"
+                        Click="TestButton3Click"
                         Content="Show TeachingTip" />
                     <TeachingTip
-                        x:Name="ToggleThemeTeachingTip3"
+                        x:Name="TestButton3TeachingTip"
                         Title="This is the title"
                         PreferredPlacement="Bottom"
                         Subtitle="And this is the subtitle"
-                        Target="{x:Bind HeroButton}">
+                        Target="{x:Bind TestButton3}">
                         <TeachingTip.HeroContent>
-                            <Image AutomationProperties.Name="Sunset" Source="/Assets/SampleMedia/sunset.jpg" />
+                            <Image
+                                AutomationProperties.Name="Sunset"
+                                Source="/Assets/SampleMedia/sunset.jpg" />
                         </TeachingTip.HeroContent>
                         <TeachingTip.Content>
                             <TextBlock
