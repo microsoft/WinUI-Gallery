@@ -20,19 +20,19 @@ namespace WinUIGallery.ControlPages
             this.InitializeComponent();
         }
 
-        private void TestButtonClick1(object sender, RoutedEventArgs e)
+        private void TestButton1Click(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip1.IsOpen = true;
+            TestButton1TeachingTip.IsOpen = true;
         }
 
-        private void TestButtonClick2(object sender, RoutedEventArgs e)
+        private void TestButton2Click(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip2.IsOpen = true;
+            TestButton2TeachingTip.IsOpen = true;
         }
 
-        private void TestButtonClick3(object sender, RoutedEventArgs e)
+        private void TestButton3Click(object sender, RoutedEventArgs e)
         {
-            ToggleThemeTeachingTip3.IsOpen = true;
+            TestButton3TeachingTip.IsOpen = true;
         }
     }
 }

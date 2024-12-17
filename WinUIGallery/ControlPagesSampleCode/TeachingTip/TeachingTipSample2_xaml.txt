@@ -1,12 +1,12 @@
-﻿<Button Content="Show TeachingTip" Click="TestButtonClick2" />
-
-<TeachingTip x:Name="ToggleThemeTeachingTip2"                   
-	Title="Change themes without hassle"
-	Subtitle="It's easier than ever to see control samples in both light and dark theme!"
-	PreferredPlacement="Auto"                                              
-	PlacementMargin="20"
-	IsLightDismissEnabled="True"
-	ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
-	ActionButtonContent="Toggle theme now"
-	CloseButtonContent="Got it!">
-</TeachingTip>
+﻿<Button
+    Click="TestButton2Click"
+    Content="Show TeachingTip" />
+<TeachingTip
+    x:Name="TestButton2TeachingTip"
+    Title="This is the title"
+    ActionButtonContent="Action button"
+    CloseButtonContent="Close button"
+    IsLightDismissEnabled="True"
+    PlacementMargin="20"
+    PreferredPlacement="Auto"
+    Subtitle="And this is the subtitle" />
