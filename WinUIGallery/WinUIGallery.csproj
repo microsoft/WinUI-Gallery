@@ -106,7 +106,6 @@
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
         <PackageReference Include="Microsoft.Windows.CsWinRT" />
-        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
@@ -122,7 +121,6 @@
         <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.Controls.Primitives" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
