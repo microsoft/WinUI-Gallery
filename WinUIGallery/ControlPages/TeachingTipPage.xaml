@@ -47,7 +47,9 @@
             XamlSource="TeachingTip/TeachingTipSample2_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
-                    <Button Click="TestButtonClick2" Content="Show TeachingTip" />
+                    <Button
+                        Click="TestButtonClick2"
+                        Content="Show TeachingTip" />
                     <TeachingTip
                         x:Name="ToggleThemeTeachingTip2"
                         Title="This is the title"
