@@ -101,7 +101,6 @@
       "device",
       "screen",
       "physical",
-      "analog",
       "watch",
       "view",
       "video",
@@ -743,7 +742,6 @@
       "paper",
       "copy",
       "fax",
-      "analog",
       "office",
       "ink"
     ]
@@ -960,8 +958,7 @@
       "keyboard",
       "type",
       "key",
-      "device",
-      "analog"
+      "device"
     ]
   },
   {
@@ -971,8 +968,7 @@
       "keyboard",
       "type",
       "key",
-      "device",
-      "analog"
+      "device"
     ]
   },
   {
@@ -993,8 +989,7 @@
       "keyboard",
       "type",
       "key",
-      "device",
-      "analog"
+      "device"
     ]
   },
   {
@@ -1210,8 +1205,7 @@
     "Tags": [
       "clipboard",
       "copy",
-      "memory",
-      "analog"
+      "memory"
     ]
   },
   {
@@ -1771,8 +1765,7 @@
       "audio",
       "sound",
       "volume",
-      "device",
-      "analog"
+      "device"
     ]
   },
   {
@@ -1784,8 +1777,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -1797,8 +1789,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -1810,8 +1801,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -1823,8 +1813,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -1836,8 +1825,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -2076,7 +2064,6 @@
       "pin",
       "marker",
       "map",
-      "location",
       "travel"
     ]
   },
@@ -2244,7 +2231,6 @@
     "Code": "E838",
     "Name": "FolderOpen",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -2993,7 +2979,6 @@
     "Code": "E88E",
     "Name": "USB",
     "Tags": [
-      "analog",
       "device",
       "universal series bus",
       "storage",
@@ -3425,7 +3410,6 @@
     "Code": "E8B7",
     "Name": "Folder",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -3668,7 +3652,6 @@
       "device",
       "screen",
       "physical",
-      "analog",
       "watch",
       "view",
       "video",
@@ -3761,7 +3744,6 @@
     "Code": "E8D5",
     "Name": "FolderFill",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -4075,7 +4057,6 @@
     "Code": "E8F4",
     "Name": "NewFolder",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -4098,7 +4079,6 @@
     "Code": "E8F6",
     "Name": "UnsyncFolder",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -4112,7 +4092,6 @@
     "Code": "E8F7",
     "Name": "SyncFolder",
     "Tags": [
-      "analog",
       "collection",
       "directory",
       "file",
@@ -4573,7 +4552,6 @@
       "type",
       "key",
       "device",
-      "analog",
       "hardware"
     ]
   },
@@ -4584,7 +4562,6 @@
       "type",
       "key",
       "device",
-      "analog",
       "hardware",
       "close",
       "hide",
@@ -4886,8 +4863,7 @@
     "Code": "E952",
     "Name": "Dock",
     "Tags": [
-      "device",
-      "analog"
+      "device"
     ]
   },
   {
@@ -4966,7 +4942,6 @@
       "sound",
       "volume",
       "device",
-      "analog",
       "support",
       "help"
     ]
@@ -7462,8 +7437,7 @@
       "presentation",
       "view",
       "slide",
-      "lecture",
-      "analog"
+      "lecture"
     ]
   },
   {
@@ -7596,7 +7570,8 @@
       "problem",
       "glitch",
       "software",
-      "report"
+      "report",
+      "code"
     ]
   },
   {
@@ -7736,148 +7711,264 @@
   {
     "Code": "EC11",
     "Name": "ToggleFilled",
-    "Tags": []
+    "Tags": [
+      "switch",
+      "on",
+      "active"
+    ]
   },
   {
     "Code": "EC12",
     "Name": "ToggleBorder",
-    "Tags": []
+    "Tags": [
+      "switch",
+      "off",
+      "inactive"
+    ]
   },
   {
     "Code": "EC13",
     "Name": "SliderThumb",
-    "Tags": []
+    "Tags": [
+      "control",
+      "handle",
+      "adjust"
+    ]
   },
   {
     "Code": "EC14",
     "Name": "ToggleThumb",
     "Tags": [
-      "circle"
+      "circle",
+      "switch",
+      "knob",
+      "control"
     ]
   },
   {
     "Code": "EC15",
     "Name": "MiracastLogoSmall",
-    "Tags": []
+    "Tags": [
+      "wireless",
+      "display",
+      "screen"
+    ]
   },
   {
     "Code": "EC16",
     "Name": "MiracastLogoLarge",
-    "Tags": []
+    "Tags": [
+      "wireless",
+      "display",
+      "screen"
+    ]
   },
   {
     "Code": "EC19",
     "Name": "PLAP",
-    "Tags": []
+    "Tags": [
+      "lock",
+      "key",
+      "security",
+      "access",
+      "safety",
+      "permission",
+      "access",
+      "protection",
+      "password"
+    ]
   },
   {
     "Code": "EC1B",
     "Name": "Badge",
-    "Tags": []
+    "Tags": [
+      "badge",
+      "award",
+      "achievement",
+      "medal",
+      "recognition"
+    ]
   },
   {
     "Code": "EC1E",
     "Name": "SignalRoaming",
     "Tags": [
-      "triangle"
+      "triangle",
+      "network",
+      "coverage",
+      "mobile"
     ]
   },
   {
     "Code": "EC20",
     "Name": "MobileLocked",
-    "Tags": []
+    "Tags": [
+      "security",
+      "phone",
+      "device",
+      "protection",
+      "restricted"
+    ]
   },
   {
     "Code": "EC24",
     "Name": "InsiderHubApp",
     "Tags": [
-      "announcement"
+      "announcement",
+      "beta",
+      "program",
+      "preview",
+      "early access"
     ]
   },
   {
     "Code": "EC25",
     "Name": "PersonalFolder",
     "Tags": [
-      "user"
+      "user",
+      "documents",
+      "files",
+      "storage",
+      "private",
+      "directory"
     ]
   },
   {
     "Code": "EC26",
     "Name": "HomeGroup",
-    "Tags": []
+    "Tags": [
+      "network",
+      "sharing",
+      "devices",
+      "chemical",
+      "formaldehyde"
+    ]
   },
   {
     "Code": "EC27",
     "Name": "MyNetwork",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "devices",
+      "shared",
+      "local"
+    ]
   },
   {
     "Code": "EC31",
     "Name": "KeyboardFull",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "type",
+      "key",
+      "device"
+    ]
   },
   {
     "Code": "EC32",
     "Name": "Cafe",
     "Tags": [
       "coffee",
-      "cup"
+      "cup",
+      "restaurant",
+      "beverage",
+      "break",
+      "snack"
     ]
   },
   {
     "Code": "EC37",
     "Name": "MobSignal1",
     "Tags": [
-      "bar"
+      "bar",
+      "network",
+      "coverage",
+      "cellular"
     ]
   },
   {
     "Code": "EC38",
     "Name": "MobSignal2",
     "Tags": [
-      "bar"
+      "bar",
+      "network",
+      "coverage",
+      "cellular"
     ]
   },
   {
     "Code": "EC39",
     "Name": "MobSignal3",
     "Tags": [
-      "bar"
+      "bar",
+      "network",
+      "coverage",
+      "cellular"
     ]
   },
   {
     "Code": "EC3A",
     "Name": "MobSignal4",
     "Tags": [
-      "bar"
+      "bar",
+      "network",
+      "coverage",
+      "cellular"
     ]
   },
   {
     "Code": "EC3B",
     "Name": "MobSignal5",
     "Tags": [
-      "bar"
+      "bar",
+      "network",
+      "coverage",
+      "cellular"
     ]
   },
   {
     "Code": "EC3C",
     "Name": "MobWifi1",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "EC3D",
     "Name": "MobWifi2",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "EC3E",
     "Name": "MobWifi3",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "EC3F",
     "Name": "MobWifi4",
-    "Tags": []
+    "Tags": [
+      "wireless fidelity",
+      "connect",
+      "internet",
+      "web",
+      "connection"
+    ]
   },
   {
     "Code": "EC40",
@@ -7891,7 +7982,10 @@
   {
     "Code": "EC41",
     "Name": "MobBluetooth",
-    "Tags": []
+    "Tags": [
+      "device",
+      "connection"
+    ]
   },
   {
     "Code": "EC42",
@@ -7904,18 +7998,30 @@
   {
     "Code": "EC43",
     "Name": "MobLocation",
-    "Tags": []
+    "Tags": [
+      "pin",
+      "marker",
+      "map",
+      "travel"
+    ]
   },
   {
     "Code": "EC44",
     "Name": "MobWifiHotspot",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "network",
+      "share"
+    ]
   },
   {
     "Code": "EC45",
     "Name": "LanguageJpn",
     "Tags": [
-      "japanese"
+      "japanese",
+      "Kanji",
+      "character",
+      "language"
     ]
   },
   {
@@ -7936,92 +8042,196 @@
   {
     "Code": "EC48",
     "Name": "SpeedOff",
-    "Tags": []
+    "Tags": [
+      "disabled",
+      "inactive",
+      "pause",
+      "performance"
+    ]
   },
   {
     "Code": "EC49",
     "Name": "SpeedMedium",
-    "Tags": []
+    "Tags": [
+      "average",
+      "moderate",
+      "balance",
+      "performance"
+    ]
   },
   {
     "Code": "EC4A",
     "Name": "SpeedHigh",
-    "Tags": []
+    "Tags": [
+      "fast",
+      "quick",
+      "maximum",
+      "performance"
+
+    ]
   },
   {
     "Code": "EC4E",
     "Name": "ThisPC",
-    "Tags": []
+    "Tags": [
+      "computer",
+      "device",
+      "files",
+      "explorer",
+      "desktop"
+    ]
   },
   {
     "Code": "EC4F",
     "Name": "MusicNote",
-    "Tags": []
+    "Tags": [
+      "concert",
+      "musician",
+      "art",
+      "event"
+    ]
   },
   {
     "Code": "EC50",
     "Name": "FileExplorer",
-    "Tags": []
+    "Tags": [
+      "application",
+      "manager",
+      "browser",
+      "documents",
+      "folder"
+    ]
   },
   {
     "Code": "EC51",
     "Name": "FileExplorerApp",
-    "Tags": []
+    "Tags": [
+      "application",
+      "manager",
+      "browser",
+      "documents",
+      "folder"
+    ]
   },
   {
     "Code": "EC52",
     "Name": "LeftArrowKeyTime0",
-    "Tags": []
+    "Tags": [
+      "navigation",
+      "previous",
+      "rewind"
+    ]
   },
   {
     "Code": "EC54",
     "Name": "MicOff",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "mute",
+      "audio",
+      "silent",
+      "disabled"
+    ]
   },
   {
     "Code": "EC55",
     "Name": "MicSleep",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "audio",
+      "idle",
+      "standby",
+      "inactive"
+    ]
   },
   {
     "Code": "EC56",
     "Name": "MicError",
-    "Tags": []
+    "Tags": [
+      "x",
+      "microphone",
+      "audio",
+      "issue",
+      "fault",
+      "problem"
+    ]
   },
   {
     "Code": "EC57",
     "Name": "PlaybackRate1x",
-    "Tags": []
+    "Tags": [
+      "normal",
+      "speed",
+      "video",
+      "audio",
+      "standard"
+    ]
   },
   {
     "Code": "EC58",
     "Name": "PlaybackRateOther",
-    "Tags": []
+    "Tags": [
+      "normal",
+      "speed",
+      "video",
+      "audio",
+      "standard"
+    ]
   },
   {
     "Code": "EC59",
     "Name": "CashDrawer",
-    "Tags": []
+    "Tags": [
+      "register",
+      "money",
+      "payment",
+      "transaction",
+      "pointofsale"
+    ]
   },
   {
     "Code": "EC5A",
     "Name": "BarcodeScanner",
-    "Tags": []
+    "Tags": [
+      "inventory",
+      "product",
+      "retail",
+      "checkout",
+      "pointofsale"
+    ]
   },
   {
     "Code": "EC5B",
     "Name": "ReceiptPrinter",
-    "Tags": []
+    "Tags": [
+      "paper",
+      "receiptpaper",
+      "transaction",
+      "purchase",
+      "sale",
+      "pointofsale"
+    ]
   },
   {
     "Code": "EC5C",
     "Name": "MagStripeReader",
-    "Tags": []
+    "Tags": [
+      "card",
+      "payment",
+      "swipe",
+      "transaction"
+    ]
   },
   {
     "Code": "EC61",
     "Name": "CompletedSolid",
-    "Tags": []
+    "Tags": [
+      "check",
+      "finished",
+      "done",
+      "achieved",
+      "success"
+    ]
   },
   {
     "Code": "EC64",
@@ -8033,7 +8243,13 @@
   {
     "Code": "EC6C",
     "Name": "Favicon2",
-    "Tags": []
+    "Tags": [
+      "logo",
+      "icon",
+      "brand",
+      "shortcut",
+      "symbol"
+    ]
   },
   {
     "Code": "EC6D",
@@ -8043,12 +8259,26 @@
   {
     "Code": "EC71",
     "Name": "MicOn",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "audio",
+      "active",
+      "sound",
+      "enabled",
+      "recording"
+    ]
   },
   {
     "Code": "EC72",
     "Name": "MicClipping",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "audio",
+      "distortion",
+      "overload",
+      "volume",
+      "peak"
+    ]
   },
   {
     "Code": "EC74",
@@ -8299,8 +8529,10 @@
     "Name": "ActionCenterNotificationMirrored",
     "Tags": [
       "message",
-      "notification",
-      "chat"
+      "alert",
+      "reminder",
+      "warning",
+      "update"
     ]
   },
   {
