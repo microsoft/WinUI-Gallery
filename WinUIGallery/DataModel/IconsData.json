@@ -17,7 +17,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -1428,7 +1429,8 @@
       "blink",
       "pupil",
       "show",
-      "hide"
+      "hide",
+      "password"
     ]
   },
   {
@@ -2591,7 +2593,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2600,7 +2602,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2609,7 +2611,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2618,7 +2620,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2627,7 +2629,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2636,7 +2638,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2645,7 +2647,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2654,7 +2656,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2663,7 +2665,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -2722,7 +2724,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -2733,7 +2736,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -2744,7 +2748,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -2942,7 +2947,8 @@
     "Tags": [
       "connection",
       "network",
-      "share"
+      "share",
+      "network"
     ]
   },
   {
@@ -3002,7 +3008,8 @@
       "see",
       "eye",
       "focus",
-      "look"
+      "look",
+      "password"
     ]
   },
   {
@@ -5427,7 +5434,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -6465,7 +6473,8 @@
     "Tags": [
       "love",
       "emotion",
-      "sadness"
+      "sadness",
+      "dislike"
     ]
   },
   {
@@ -6481,7 +6490,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -6490,7 +6499,7 @@
     "Tags": [
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -6861,7 +6870,8 @@
       "!",
       "signal",
       "connection",
-      "alert"
+      "alert",
+      "network"
     ]
   },
   {
@@ -6871,7 +6881,8 @@
       "!",
       "signal",
       "connection",
-      "alert"
+      "alert",
+      "network"
     ]
   },
   {
@@ -6881,7 +6892,8 @@
       "!",
       "signal",
       "connection",
-      "alert"
+      "alert",
+      "network"
     ]
   },
   {
@@ -6891,7 +6903,8 @@
       "!",
       "signal",
       "connection",
-      "alert"
+      "alert",
+      "network"
     ]
   },
   {
@@ -6901,7 +6914,8 @@
       "!",
       "signal",
       "connection",
-      "alert"
+      "alert",
+      "network"
     ]
   },
   {
@@ -6919,7 +6933,8 @@
     "Code": "EB67",
     "Name": "NUIIris",
     "Tags": [
-      "eye"
+      "eye",
+      "password"
     ]
   },
   {
@@ -7294,7 +7309,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7304,7 +7319,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7314,7 +7329,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7324,7 +7339,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7334,7 +7349,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7344,7 +7359,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7354,7 +7369,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7364,7 +7379,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7374,7 +7389,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7384,7 +7399,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7394,7 +7409,7 @@
       "phone",
       "charge",
       "power",
-      "eco-friendly"
+      "eco friendly"
     ]
   },
   {
@@ -7467,14 +7482,19 @@
   {
     "Code": "EBD4",
     "Name": "MobWifiCallBars",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "network"
+    ]
   },
   {
     "Code": "EBD5",
     "Name": "MobWifiCall0",
     "Tags": [
       "signal",
-      "bars"
+      "connection",
+      "communication",
+      "phone"
     ]
   },
   {
@@ -7692,7 +7712,7 @@
       "leaf",
       "green",
       "power",
-      "eco-friendly",
+      "eco friendly",
       "renewable"
     ]
   },
@@ -7704,7 +7724,7 @@
       "efficiency",
       "green",
       "power",
-      "eco-friendly",
+      "eco friendly",
       "renewable"
     ]
   },
@@ -7934,7 +7954,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -7945,7 +7966,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -7956,7 +7978,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -7967,7 +7990,8 @@
       "connect",
       "internet",
       "web",
-      "connection"
+      "connection",
+      "network"
     ]
   },
   {
@@ -8011,7 +8035,8 @@
     "Tags": [
       "connection",
       "network",
-      "share"
+      "share",
+      "network"
     ]
   },
   {
@@ -8283,27 +8308,51 @@
   {
     "Code": "EC74",
     "Name": "TabletSelected",
-    "Tags": []
+    "Tags": [
+      "device",
+      "touchscreen",
+      "display",
+      "checked"
+    ]
   },
   {
     "Code": "EC75",
     "Name": "MobileSelected",
-    "Tags": []
+    "Tags": [
+      "phone",
+      "smartphone",
+      "device",
+      "checked"
+    ]
   },
   {
     "Code": "EC76",
     "Name": "LaptopSelected",
-    "Tags": []
+    "Tags": [
+      "notebook",
+      "device",
+      "portable",
+      "checked"
+    ]
   },
   {
     "Code": "EC77",
     "Name": "TVMonitorSelected",
-    "Tags": []
+    "Tags": [
+      "selected",
+      "display",
+      "screen",
+      "checked"
+    ]
   },
   {
     "Code": "EC7A",
     "Name": "DeveloperTools",
-    "Tags": []
+    "Tags": [
+      "debugging",
+      "coding",
+      "software"
+    ]
   },
   {
     "Code": "EC7E",
@@ -8326,22 +8375,39 @@
   {
     "Code": "EC80",
     "Name": "BodyCam",
-    "Tags": []
+    "Tags": [
+      "camera",
+      "body",
+      "recording",
+      "security"
+    ]
   },
   {
     "Code": "EC81",
     "Name": "PoliceCar",
-    "Tags": []
+    "Tags": [
+      "vehicle",
+      "emergency",
+      "law"
+    ]
   },
   {
     "Code": "EC87",
     "Name": "Draw",
-    "Tags": []
+    "Tags": [
+      "edit",
+      "create",
+      "pencil"
+    ]
   },
   {
     "Code": "EC88",
     "Name": "DrawSolid",
-    "Tags": []
+    "Tags": [
+      "edit",
+      "create",
+      "pencil"
+    ]
   },
   {
     "Code": "EC8A",
@@ -8354,35 +8420,55 @@
   {
     "Code": "EC8F",
     "Name": "ScrollUpDown",
-    "Tags": []
+    "Tags": [
+      "navigate",
+      "vertical",
+      "move"
+    ]
   },
   {
     "Code": "EC92",
     "Name": "DateTime",
-    "Tags": []
+    "Tags": [
+      "planning"
+    ]
   },
   {
     "Code": "EC94",
     "Name": "HoloLens",
-    "Tags": []
+    "Tags": [
+      "augmented",
+      "reality",
+      "mixed",
+      "virtual",
+      "headset"
+    ]
   },
   {
     "Code": "ECA5",
     "Name": "Tiles",
-    "Tags": []
+    "Tags": [
+      "grid",
+      "layout",
+      "dashboard",
+      "pattern"
+    ]
   },
   {
     "Code": "ECA7",
     "Name": "PartyLeader",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "Badge"
     ]
   },
   {
     "Code": "ECAA",
     "Name": "AppIconDefault",
-    "Tags": []
+    "Tags": [
+      "application"
+    ]
   },
   {
     "Code": "ECAD",
@@ -8394,47 +8480,83 @@
   {
     "Code": "ECAF",
     "Name": "POI",
-    "Tags": []
+    "Tags": [
+      "Point",
+      "Interest",
+      "location",
+      "landmark",
+      "destination",
+      "map"
+    ]
   },
   {
     "Code": "ECB9",
     "Name": "BandBattery0",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBA",
     "Name": "BandBattery1",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBB",
     "Name": "BandBattery2",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBC",
     "Name": "BandBattery3",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBD",
     "Name": "BandBattery4",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBE",
     "Name": "BandBattery5",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECBF",
     "Name": "BandBattery6",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "ECC4",
     "Name": "AddSurfaceHub",
-    "Tags": []
+    "Tags": [
+      "+",
+      "device",
+      "physical",
+      "product",
+      "screen",
+      "touch screen",
+      "presentation"
+    ]
   },
   {
     "Code": "ECC5",
@@ -8472,57 +8594,104 @@
   {
     "Code": "ECCA",
     "Name": "RadioBtnOff",
-    "Tags": []
+    "Tags": [
+      "dot",
+      "circle"
+    ]
   },
   {
     "Code": "ECCB",
     "Name": "RadioBtnOn",
-    "Tags": []
+    "Tags": [
+      "dot",
+      "circle",
+      "selected"
+    ]
   },
   {
     "Code": "ECCC",
     "Name": "RadioBullet2",
-    "Tags": []
+    "Tags": [
+      "dot",
+      "circle"
+    ]
   },
   {
     "Code": "ECCD",
     "Name": "ExploreContent",
-    "Tags": []
+    "Tags": [
+      "+",
+      "discover",
+      "browse",
+      "navigate"
+    ]
   },
   {
     "Code": "ECE4",
     "Name": "Blocked2",
-    "Tags": []
+    "Tags": [
+      "-"
+    ]
   },
   {
     "Code": "ECE7",
     "Name": "ScrollMode",
-    "Tags": []
+    "Tags": [
+      "movement",
+      "vertical",
+      "navigate"
+    ]
   },
   {
     "Code": "ECE8",
     "Name": "ZoomMode",
-    "Tags": []
+    "Tags": [
+      "+",
+      "-",
+      "shrink",
+      "scale"
+    ]
   },
   {
     "Code": "ECE9",
     "Name": "PanMode",
-    "Tags": []
+    "Tags": [
+      "window",
+      "view",
+      "layout",
+      "section"
+    ]
   },
   {
     "Code": "ECF0",
     "Name": "WiredUSB",
-    "Tags": []
+    "Tags": [
+      "USB",
+      "cable",
+      "connection",
+      "port"
+    ]
   },
   {
     "Code": "ECF1",
     "Name": "WirelessUSB",
-    "Tags": []
+    "Tags": [
+      "USB",
+      "bluetooth",
+      "connection",
+      "adapter",
+      "port"
+    ]
   },
   {
     "Code": "ECF3",
     "Name": "USBSafeConnect",
-    "Tags": []
+    "Tags": [
+      "USB",
+      "secure",
+      "connect",
+      "protection"
+    ]
   },
   {
     "Code": "ED0C",
@@ -8554,17 +8723,29 @@
   {
     "Code": "ED10",
     "Name": "ResetDevice",
-    "Tags": []
+    "Tags": [
+      "factoryreset",
+      "reboot",
+      "restore",
+      "restart",
+      "settings"
+    ]
   },
   {
     "Code": "ED11",
     "Name": "SubscriptionAddMirrored",
-    "Tags": []
+    "Tags": [
+      "+"
+    ]
   },
   {
     "Code": "ED14",
     "Name": "QRCode",
-    "Tags": []
+    "Tags": [
+      "scanner",
+      "barcode",
+      "matrix"
+    ]
   },
   {
     "Code": "ED15",
@@ -8577,133 +8758,262 @@
   {
     "Code": "ED1A",
     "Name": "Hide",
-    "Tags": []
+    "Tags": [
+      "eye",
+      "password",
+      "conceal",
+      "view",
+      "privacy"
+    ]
   },
   {
     "Code": "ED1E",
     "Name": "Subtitles",
-    "Tags": []
+    "Tags": [
+      "caption",
+      "text",
+      "dialogue",
+      "speech",
+      "language",
+      "cc"
+    ]
   },
   {
     "Code": "ED1F",
     "Name": "SubtitlesAudio",
-    "Tags": []
+    "Tags": [
+      "caption",
+      "text",
+      "dialogue",
+      "speech",
+      "language",
+      "cc"
+    ]
   },
   {
     "Code": "ED25",
     "Name": "OpenFolderHorizontal",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "ED28",
     "Name": "CalendarMirrored",
-    "Tags": []
+    "Tags": [
+      "time",
+      "date",
+      "planning"
+    ]
   },
   {
     "Code": "ED2A",
     "Name": "MobeSIM",
-    "Tags": []
+    "Tags": [
+      "mobile",
+      "network",
+      "cellular",
+      "status"
+    ]
   },
   {
     "Code": "ED2B",
     "Name": "MobeSIMNoProfile",
-    "Tags": []
+    "Tags": [
+      "mobile",
+      "network",
+      "cellular",
+      "status"
+    ]
   },
   {
     "Code": "ED2C",
     "Name": "MobeSIMLocked",
-    "Tags": []
+    "Tags": [
+      "mobile",
+      "network",
+      "cellular",
+      "status"
+    ]
   },
   {
     "Code": "ED2D",
     "Name": "MobeSIMBusy",
-    "Tags": []
+    "Tags": [
+      "mobile",
+      "network",
+      "cellular",
+      "status"
+    ]
   },
   {
     "Code": "ED2E",
     "Name": "SignalError",
     "Tags": [
-      "x"
+      "x",
+      "SIM",
+      "mobile",
+      "network",
+      "cellular",
+      "status"
     ]
   },
   {
     "Code": "ED2F",
     "Name": "StreamingEnterprise",
-    "Tags": []
+    "Tags": [
+      "media",
+      "live",
+      "video",
+      "online",
+      "work",
+      "business"
+    ]
   },
   {
     "Code": "ED30",
     "Name": "Headphone0",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device"
+    ]
   },
   {
     "Code": "ED31",
     "Name": "Headphone1",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device"
+    ]
   },
   {
     "Code": "ED32",
     "Name": "Headphone2",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device"
+    ]
   },
   {
     "Code": "ED33",
     "Name": "Headphone3",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "sound",
+      "volume",
+      "device"
+    ]
   },
   {
     "Code": "ED35",
     "Name": "Apps",
-    "Tags": []
+    "Tags": [
+      "applications"
+    ]
   },
   {
     "Code": "ED39",
     "Name": "KeyboardBrightness",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "light",
+      "control",
+      "adjust"
+    ]
   },
   {
     "Code": "ED3A",
     "Name": "KeyboardLowerBrightness",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "light",
+      "control",
+      "adjust"
+    ]
   },
   {
     "Code": "ED3C",
     "Name": "SkipBack10",
     "Tags": [
-      "number"
+      "number",
+      "seek",
+      "time",
+      "navigation",
+      "media",
+      "video"
     ]
   },
   {
     "Code": "ED3D",
     "Name": "SkipForward30",
     "Tags": [
-      "number"
+      "number",
+      "seek",
+      "time",
+      "navigation",
+      "media",
+      "video"
     ]
   },
   {
     "Code": "ED41",
     "Name": "TreeFolderFolder",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "ED42",
     "Name": "TreeFolderFolderFill",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "ED43",
     "Name": "TreeFolderFolderOpen",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "ED44",
     "Name": "TreeFolderFolderOpenFill",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "ED47",
     "Name": "MultimediaDMP",
-    "Tags": []
+    "Tags": [
+      "device",
+      "playback",
+      "streaming",
+      "content",
+      "network"
+    ]
   },
   {
     "Code": "ED4C",
@@ -10399,7 +10709,15 @@
   {
     "Code": "F4BE",
     "Name": "SurfaceHubSelected",
-    "Tags": []
+    "Tags": [
+      "checked",
+      "device",
+      "physical",
+      "product",
+      "screen",
+      "touch screen",
+      "presentation"
+    ]
   },
   {
     "Code": "F4BF",
