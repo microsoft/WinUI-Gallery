@@ -19,38 +19,26 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel Spacing="12"
-                    Margin="0,12,0,0">
+        <StackPanel Margin="0,12,0,0" Spacing="12">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Placement of Templates:</Paragraph>
                 <Paragraph>Templates can be defined at the app, page, or control level, similar to styles and resources. The placement is determined by the intended scope and reuse of the template.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph>- Templates allow the visual structure of a control to be redefined while keeping its behavior intact.</Paragraph>
-                <Paragraph>- Templates can be defined at the App, Page, or Control level, depending on the desired scope.</Paragraph>
-                <Paragraph>- Types of templates:</Paragraph>
+                <Paragraph>There are 3 types of templates:</Paragraph>
                 <Paragraph>
-                    <Run Text="    -" />
-                    <Run FontWeight="SemiBold"
-                         Text="ControlTemplate" />
-                    <Run Text="customizes the structure of a control." />
+                    <Run Text="• ControlTemplate: customizes the structure of a control." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="    -" />
-                    <Run FontWeight="SemiBold"
-                         Text="DataTemplate" />
-                    <Run Text="changes how individual items are displayed in a control like a ComboBox or ListView." />
+                    <Run Text="• DataTemplate: changes how individual items are displayed in a control like a ComboBox or ListView." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="    -" />
-                    <Run FontWeight="SemiBold"
-                         Text="ItemsPanelTemplate" />
-                    <Run Text="defines how a collection of items is laid out." />
+                    <Run Text="• ItemsPanelTemplate: defines how a collection of items is laid out." />
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
-        
+
         <local:ControlExample HeaderText="Customize the look of a TextBox with a ControlTemplate" XamlSource="Templates\TemplatesSample1_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>

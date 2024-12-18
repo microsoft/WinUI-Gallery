@@ -26,41 +26,35 @@
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock Text="Creating and using XAML resources"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
-                   Margin="0 12" />
+        <TextBlock
+            Margin="0,12,0,4"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Creating and using XAML resources" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
                     <Run Text="XAML Resources are defined using the" />
-                    <Run FontFamily="Consolas"
-                         Text="ResourceDictionary" />
+                    <Run FontFamily="Consolas" Text="ResourceDictionary" />
                     <Run Text="element. The important parts are" />
-                    <Run FontWeight="SemiBold"
-                         Text="the resource's key" />
+                    <Run FontWeight="SemiBold" Text="the resource's key" />
                     <Run Text="(a unique identifier) and" />
-                    <Run FontWeight="SemiBold"
-                         Text="the value" />
+                    <Run FontWeight="SemiBold" Text="the value" />
                     <Run Text="(like a color or brush)." />
                 </Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph>
-                    <Run FontWeight="SemiBold"
-                         Text="Placement of XAML Resources:" />
-                </Paragraph>
-                <Paragraph>1. App-level: Resources are defined globally, accessible throughout the application.</Paragraph>
-                <Paragraph>2. Page-level: Resources are defined specific to a particular page.</Paragraph>
-                <Paragraph>3. Control-level: Resources are defined local to a specific control, such as a button or grid.</Paragraph>
+                <Paragraph>• App-level: Resources are defined globally, accessible throughout the application.</Paragraph>
+                <Paragraph>• Page-level: Resources are defined specific to a particular page.</Paragraph>
+                <Paragraph>• Control-level: Resources are defined local to a specific control, such as a Button or Grid.</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Tips:</Paragraph>
-                <Paragraph>- Naming: Descriptive keys should always be used for resources to make them easier to identify.</Paragraph>
-                <Paragraph>- Scope: Resources should be defined at the narrowest scope possible to improve maintainability.</Paragraph>
+                <Paragraph>• Naming: descriptive keys should always be used for resources to make them easier to identify.</Paragraph>
+                <Paragraph>• Scope: Resources should be defined at the narrowest scope possible to improve maintainability.</Paragraph>
                 <Paragraph>
-                    <Run Text="- Access:" />
+                    <Run Text="• Access:" />
                     <Run FontFamily="Consolas" Text="{}{StaticResource Key}" />
                     <Run Text="is used in XAML for most cases, and" />
                     <Run FontFamily="Consolas" Text="Resources[&quot;Key&quot;]" />
@@ -74,22 +68,16 @@
             <local:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <Grid Background="{StaticResource PrimaryColor}">
-                        <TextBlock
-                            FontSize="24"
-                            Foreground="White"
-                            Text="Using application-level resources" />
+                        <TextBlock Foreground="White" Text="Using application-level resources" />
                     </Grid>
 
                     <Grid Background="{StaticResource HighlightBrush}">
-                        <TextBlock
-                            FontSize="24"
-                            Foreground="{StaticResource FontColor}"
-                            Text="Using page-level resources" />
+                        <TextBlock Foreground="{StaticResource FontColor}" Text="Using page-level resources" />
                     </Grid>
 
                     <Grid x:Name="newGrid">
                         <Grid.Resources>
-                            <x:Double x:Key="HeaderFontSize">24</x:Double>
+                            <x:Double x:Key="HeaderFontSize">14</x:Double>
                             <x:String x:Key="Description">Using control-level resources</x:String>
                         </Grid.Resources>
                         <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{StaticResource Description}" />
@@ -98,20 +86,21 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <TextBlock Text="Resource dictionaries"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
-                   Margin="0 16 0 12" />
+        <TextBlock
+            Margin="0,24,0,4"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Resource dictionaries" />
         <StackPanel Spacing="12">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Placement of Resource Dictionary:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Definition of a Resource Dictionary:</Paragraph>
                 <Paragraph>
-                    <Run Text="1. Inline (app-level): Defined in" />
+                    <Run Text="• Inline (app-level): Defined in" />
                     <Run FontFamily="Consolas" Text="App.xaml" />
                     <Run Text="to make resources globally available across the entire app." />
                 </Paragraph>
-                <Paragraph>2. Inline (page-level): Defined in a specific page to limit the scope to that page.</Paragraph>
+                <Paragraph>• Inline (page-level): Defined in a specific page to limit the scope to that page.</Paragraph>
                 <Paragraph>
-                    <Run Text="3. Standalone file: Defined in a separate" />
+                    <Run Text="• Standalone file: Defined in a separate" />
                     <Run FontFamily="Consolas" Text=".xaml" />
                     <Run Text="file to organize resources and reuse them in different parts of the app." />
                 </Paragraph>
@@ -119,9 +108,9 @@
 
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Reasons for using resource dictionaries:</Paragraph>
-                <Paragraph>1. Reusability: define once and use many times.</Paragraph>
-                <Paragraph>2. Organization: keeps resources modular and separated.</Paragraph>
-                <Paragraph>3. Maintainability: makes it easier to update values across the app.</Paragraph>
+                <Paragraph>• Reusability: define once and use many times.</Paragraph>
+                <Paragraph>• Organization: keeps resources modular and separated.</Paragraph>
+                <Paragraph>• Maintainability: makes it easier to update values across the app.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 
@@ -136,51 +125,39 @@
                     </Grid>
 
                     <Grid Background="{StaticResource PageBackgroundBrush}">
-                        <TextBlock
-                            FontSize="20"
-                            Foreground="Black"
-                            Text="{StaticResource WelcomeMessage}" />
+                        <TextBlock Foreground="Black" Text="{StaticResource WelcomeMessage}" />
                     </Grid>
 
                     <Grid Background="{StaticResource SecondaryBrush}">
-                        <TextBlock
-                            FontSize="16"
-                            Foreground="White"
-                            Text="Using colors from ResourceDictionary" />
+                        <TextBlock Foreground="White" Text="Using colors from ResourceDictionary" />
                     </Grid>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
 
         <TextBlock
-            Margin="0,16,0,12"
+            Margin="0,24,0,4"
             Style="{ThemeResource SubtitleTextBlockStyle}"
             Text="Theme resources" />
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
-                    WinUI 3 includes built-in theme resources for commonly used colors. For a better understanding, visit the
-                    <Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
-                    in this app.</Paragraph>
-            </RichTextBlock>
-            <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Placement of theme resources:</Paragraph>
-                <Paragraph>The placement of theme resources is the same as regular XAML resources: app-level, page-level, control-level.</Paragraph>
+                    WinUI 3 includes built-in theme resources for commonly used colors. See all brushes on the <Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
+                    .</Paragraph>
             </RichTextBlock>
 
             <RichTextBlock>
                 <Paragraph>
-                    <Run Text="-" />
+                    <Run Text="•" />
                     <Run FontWeight="SemiBold" Text="ThemeResource" />
                     <Run Text="is used for dynamic theme-based updates." />
                 </Paragraph>
-                <Paragraph>- Theme resources are placed globally, on pages, or in specific controls, depending on the scope.</Paragraph>
                 <Paragraph>
-                    <Run Text="-" />
+                    <Run Text="•" />
                     <Run FontWeight="SemiBold" Text="ThemeDictionaries" />
                     <Run Text="are defined to provide different values for light and dark themes." />
                 </Paragraph>
-                <Paragraph>- A fallback value should always be provided to ensure compatibility with undefined themes.</Paragraph>
+                <Paragraph>• A fallback value should always be provided to ensure compatibility with undefined themes.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 
@@ -236,7 +213,8 @@
                             Padding="8"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Background="{ThemeResource BackgroundBrush}">
+                            Background="{ThemeResource BackgroundBrush}"
+                            Spacing="4">
                             <TextBlock
                                 Foreground="{ThemeResource TextBrush}"
                                 Style="{StaticResource SubtitleTextBlockStyle}"
