@@ -1,6 +1,7 @@
 using System.Linq;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using WinUIGallery.Helper;
 
@@ -18,6 +19,7 @@ namespace WinUIGallery.SamplePages
             ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
             this.SetTitleBarTheme();
             SetBackdrop(BackdropType.Mica);
+            ThemeComboBox.SelectedIndex = 0;
         }
 
         public enum BackdropType
@@ -132,6 +134,17 @@ namespace WinUIGallery.SamplePages
             }
 
             SetBackdrop(newType);
+        }
+
+        private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((FrameworkElement)Content).RequestedTheme = ThemeComboBox.SelectedIndex switch
+            {
+                1 => ElementTheme.Light,
+                2 => ElementTheme.Dark,
+                _ => ElementTheme.Default
+            };
+            this.SetTitleBarTheme();
         }
     }
 }

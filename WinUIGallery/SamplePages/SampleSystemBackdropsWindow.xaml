@@ -7,20 +7,32 @@
     mc:Ignorable="d"
     Title="SystemBackdrop sample window">
 
-    <StackPanel
+    <ScrollViewer>
+        <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="12">
-        <TextBlock HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center">
                 <Run Text="Current backdrop: " />
                 <Run x:Name="tbCurrentBackdrop" FontWeight="SemiBold" />
-        </TextBlock>
-        <Button
+            </TextBlock>
+
+            <Button
                 x:Name="btnChangeBackdrop"
                 HorizontalAlignment="Center"
                 Click="ChangeBackdropButton_Click"
                 Content="Change Backdrop" />
-        <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
-    </StackPanel>
+            <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
+
+            <ComboBox x:Name="ThemeComboBox"
+                  HorizontalAlignment="Stretch"
+                  SelectionChanged="ThemeComboBox_SelectionChanged"
+                  Header="Window theme:">
+                <ComboBoxItem Content="Use system setting"/>
+                <ComboBoxItem Content="Light"/>
+                <ComboBoxItem Content="Dark"/>
+            </ComboBox>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

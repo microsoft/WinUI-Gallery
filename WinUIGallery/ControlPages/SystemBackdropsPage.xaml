@@ -20,6 +20,7 @@
 
     <StackPanel>
         <TextBlock Margin="0 30 0 0" FontSize="24">Backdrop types:</TextBlock>
+        
         <local:ControlExample HeaderText="MicaBackdrop:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
             <local:ControlExample.Xaml>
@@ -74,6 +75,7 @@
         </local:ControlExample>
 
         <TextBlock Margin="0 40 0 0" FontSize="24">Backdrop controllers:</TextBlock>
+        
         <local:ControlExample HeaderText="Create a window with a customizable Mica system backdrop."
                               CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
             <Button Click="createCustomMicaWindow_Click">Create Window with customizable Mica</Button>
@@ -84,9 +86,16 @@
             <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="A helper class to ensure a Windows.System.DispatcherQueue exists."
+        <TextBlock Margin="0 40 0 0" FontSize="24">Helpers:</TextBlock>
+
+        <local:ControlExample HeaderText="SetTitleBarBackdrop:"
+                              CSharpSource="SystemBackdrops\SystemBackdropsTitleBarBackdrops.txt">
+            <TextBlock Text="The sets the backdrop of a title bar for a window that has ExtendsContentIntoTitleBar set to false." TextWrapping="WrapWholeWords" />
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper: "
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
-            <TextBlock Text="A Windows.System.DispatcherQueue must exist on the thread to use MicaController or DesktopAcrylicController. This helper class exposes and uses the underlying create function." TextWrapping="WrapWholeWords" />
+            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica or DesktopAcrylicController. This helper class improts and uses the underlying create function." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
     </StackPanel>
 </Page>

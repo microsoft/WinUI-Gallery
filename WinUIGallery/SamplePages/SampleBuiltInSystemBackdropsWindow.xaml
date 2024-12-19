@@ -22,5 +22,13 @@
                 Click="ChangeBackdropButton_Click"
                 Content="Change Backdrop" />
         <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
+        <ComboBox x:Name="ThemeComboBox"
+                  HorizontalAlignment="Stretch"
+                  SelectionChanged="ThemeComboBox_SelectionChanged"
+                  Header="Window theme:">
+            <ComboBoxItem Content="Use system setting"/>
+            <ComboBoxItem Content="Light"/>
+            <ComboBoxItem Content="Dark"/>
+        </ComboBox>
     </StackPanel>
 </Window>

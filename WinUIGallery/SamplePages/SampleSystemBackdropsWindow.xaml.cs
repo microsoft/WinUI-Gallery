@@ -2,52 +2,16 @@ using System;
 using System.Runtime.InteropServices; // For DllImport
 using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
-using WinRT;
+using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
 using Microsoft.UI.Composition.SystemBackdrops;
 using System.Linq;
-using Microsoft.UI.Xaml.Media; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 
 namespace WinUIGallery.SamplePages
 {
-    class WindowsSystemDispatcherQueueHelper
-    {
-        [StructLayout(LayoutKind.Sequential)]
-        struct DispatcherQueueOptions
-        {
-            internal int dwSize;
-            internal int threadType;
-            internal int apartmentType;
-        }
-        
-        [DllImport("CoreMessaging.dll")]
-        private static unsafe extern int CreateDispatcherQueueController(DispatcherQueueOptions options, IntPtr* instance);
-
-        IntPtr m_dispatcherQueueController = IntPtr.Zero;
-        public void EnsureWindowsSystemDispatcherQueueController()
-        {
-            if (Windows.System.DispatcherQueue.GetForCurrentThread() != null)
-            {
-                // one already exists, so we'll just use it.
-                return;
-            }
-
-            if (m_dispatcherQueueController == IntPtr.Zero)
-            {
-                DispatcherQueueOptions options;
-                options.dwSize = Marshal.SizeOf(typeof(DispatcherQueueOptions));
-                options.threadType = 2;    // DQTYPE_THREAD_CURRENT
-                options.apartmentType = 2; // DQTAT_COM_STA
-
-                unsafe
-                {
-                    IntPtr dispatcherQueueController;
-                    CreateDispatcherQueueController(options, &dispatcherQueueController);
-                    m_dispatcherQueueController = dispatcherQueueController;
-                }
-            }
-        }
-    }
-
     public sealed partial class SampleSystemBackdropsWindow : Window
     {
         public SampleSystemBackdropsWindow()
@@ -60,7 +24,10 @@ namespace WinUIGallery.SamplePages
             AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
             this.SetTitleBarTheme();
             SetBackdrop(BackdropType.Mica);
+
+            ThemeComboBox.SelectedIndex = 0;
         }
+
 
         public enum BackdropType
         {
@@ -91,21 +58,18 @@ namespace WinUIGallery.SamplePages
             currentBackdrop = BackdropType.None;
             tbCurrentBackdrop.Text = "None";
             tbChangeStatus.Text = "";
-            if (micaController != null)
-            {
-                micaController.Dispose();
-                micaController = null;
-            }
-            if (acrylicController != null)
-            {
-                acrylicController.Dispose();
-                acrylicController = null;
-            }
-            Activated -= Window_Activated;
-            Closed -= Window_Closed;
-            ((FrameworkElement)Content).ActualThemeChanged -= Window_ThemeChanged;
+
+            micaController?.Dispose();
+            micaController = null;
+            acrylicController?.Dispose();
+            acrylicController = null;
             configurationSource = null;
 
+            if (type == BackdropType.None)
+            {
+                micaController?.RemoveAllSystemBackdropTargets();
+                acrylicController?.RemoveAllSystemBackdropTargets();
+            }
             if (type == BackdropType.Mica)
             {
                 if (TrySetMicaBackdrop(false))
@@ -239,18 +203,15 @@ namespace WinUIGallery.SamplePages
         {
             // Make sure any Mica/Acrylic controller is disposed so it doesn't try to
             // use this closed window.
-            if (micaController != null)
-            {
-                micaController.Dispose();
-                micaController = null;
-            }
-            if (acrylicController != null)
-            {
-                acrylicController.Dispose();
-                acrylicController = null;
-            }
-            Activated -= Window_Activated;
+            micaController?.Dispose();
+            micaController = null;
+            acrylicController?.Dispose();
+            acrylicController = null;
             configurationSource = null;
+
+            Activated -= Window_Activated;
+            Closed -= Window_Closed;
+            ((FrameworkElement)Content).ActualThemeChanged -= Window_ThemeChanged;
         }
 
         private void Window_ThemeChanged(FrameworkElement sender, object args)
@@ -263,12 +224,7 @@ namespace WinUIGallery.SamplePages
 
         private void SetConfigurationSourceTheme()
         {
-            switch (((FrameworkElement)Content).ActualTheme)
-            {
-                case ElementTheme.Dark:    configurationSource.Theme = SystemBackdropTheme.Dark; break;
-                case ElementTheme.Light:   configurationSource.Theme = SystemBackdropTheme.Light; break;
-                case ElementTheme.Default: configurationSource.Theme = SystemBackdropTheme.Default; break;
-            }
+            configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
         }
 
         void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
@@ -290,6 +246,17 @@ namespace WinUIGallery.SamplePages
             }
 
             SetBackdrop(newType);
+        }
+
+        private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((FrameworkElement)Content).RequestedTheme = ThemeComboBox.SelectedIndex switch
+            {
+                1 => ElementTheme.Light,
+                2 => ElementTheme.Dark,
+                _ => ElementTheme.Default
+            };
+            this.SetTitleBarTheme();
         }
     }
 }
