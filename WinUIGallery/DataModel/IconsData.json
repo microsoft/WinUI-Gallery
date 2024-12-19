@@ -9018,18 +9018,35 @@
   {
     "Code": "ED4C",
     "Name": "KeyboardOneHanded",
-    "Tags": []
+    "Tags": [
+      "typing",
+      "compact",
+      "mobile",
+      "input",
+      "ergonomic"
+    ]
   },
   {
     "Code": "ED4D",
     "Name": "Narrator",
-    "Tags": []
+    "Tags": [
+      "accessibility",
+      "voice",
+      "audio",
+      "screen",
+      "reader",
+      "text",
+      "assistive"
+    ]
   },
   {
     "Code": "ED53",
     "Name": "EmojiTabPeople",
     "Tags": [
-      "face"
+      "face",
+      "expressions",
+      "emotions",
+      "human"
     ]
   },
   {
@@ -9037,7 +9054,10 @@
     "Name": "EmojiTabSmilesAnimals",
     "Tags": [
       "face",
-      "smiley"
+      "smiley",
+      "cute",
+      "pets",
+      "happy"
     ]
   },
   {
@@ -9045,215 +9065,384 @@
     "Name": "EmojiTabCelebrationObjects",
     "Tags": [
       "balloon",
-      "party"
+      "party",
+      "objects",
+      "festive",
+      "joy"
     ]
   },
   {
     "Code": "ED56",
     "Name": "EmojiTabFoodPlants",
     "Tags": [
-      "pizza"
+      "pizza",
+      "meals"
     ]
   },
   {
     "Code": "ED57",
     "Name": "EmojiTabTransitPlaces",
     "Tags": [
-      "car"
+      "car",
+      "places",
+      "travel",
+      "locations",
+      "journey"
     ]
   },
   {
     "Code": "ED58",
     "Name": "EmojiTabSymbols",
-    "Tags": []
+    "Tags": [
+      "shapes",
+      "icons",
+      "signs",
+      "patterns"
+    ]
   },
   {
     "Code": "ED59",
     "Name": "EmojiTabTextSmiles",
-    "Tags": []
+    "Tags": [
+      "faces",
+      "emotions",
+      "characters"
+    ]
   },
   {
     "Code": "ED5A",
     "Name": "EmojiTabFavorites",
     "Tags": [
-      "clock"
+      "clock",
+      "saved",
+      "liked",
+      "common"
     ]
   },
   {
     "Code": "ED5B",
     "Name": "EmojiSwatch",
     "Tags": [
-      "circle"
+      "circle",
+      "colors",
+      "palette",
+      "emoji",
+      "design"
     ]
   },
   {
     "Code": "ED5C",
     "Name": "ConnectApp",
-    "Tags": []
+    "Tags": [
+      "pair",
+      "devices"
+    ]
   },
   {
     "Code": "ED5D",
     "Name": "CompanionDeviceFramework",
-    "Tags": []
+    "Tags": [
+      "lock",
+      "connection",
+      "integration"
+    ]
   },
   {
     "Code": "ED5E",
     "Name": "Ruler",
-    "Tags": []
+    "Tags": [
+      "measure",
+      "length",
+      "straight",
+      "tool",
+      "precision"
+    ]
   },
   {
     "Code": "ED5F",
     "Name": "FingerInking",
-    "Tags": []
+    "Tags": [
+      "touch",
+      "draw",
+      "handwriting",
+      "ink",
+      "gesture"
+    ]
   },
   {
     "Code": "ED60",
     "Name": "StrokeErase",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "drawing",
+      "line",
+      "correction"
+    ]
   },
   {
     "Code": "ED61",
     "Name": "PointErase",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "spot",
+      "dot",
+      "edit"
+    ]
   },
   {
     "Code": "ED62",
     "Name": "ClearAllInk",
-    "Tags": []
+    "Tags": [
+      "reset",
+      "erase",
+      "drawing"
+    ]
   },
   {
     "Code": "ED63",
     "Name": "Pencil",
-    "Tags": []
+    "Tags": [
+      "write",
+      "draw",
+      "sketch",
+      "tool",
+      "creative"
+    ]
   },
   {
     "Code": "ED64",
     "Name": "Marker",
-    "Tags": []
+    "Tags": [
+      "highlight",
+      "color",
+      "draw",
+      "ink",
+      "tool"
+    ]
   },
   {
     "Code": "ED65",
     "Name": "InkingCaret",
-    "Tags": []
+    "Tags": [
+      "text",
+      "cursor",
+      "writing"
+    ]
   },
   {
     "Code": "ED66",
     "Name": "InkingColorOutline",
     "Tags": [
-      "circle"
+      "circle",
+      "border",
+      "outline",
+      "draw"
     ]
   },
   {
     "Code": "ED67",
     "Name": "InkingColorFill",
     "Tags": [
-      "circle"
+      "circle",
+      "ink",
+      "paint",
+      "design"
     ]
   },
   {
     "Code": "EDA2",
     "Name": "HardDrive",
-    "Tags": []
+    "Tags": [
+      "storage",
+      "disk",
+      "data",
+      "backup",
+      "memory"
+    ]
   },
   {
     "Code": "EDA3",
     "Name": "NetworkAdapter",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "Wifi",
+      "Ethernet",
+      "internet",
+      "device"
+    ]
   },
   {
     "Code": "EDA4",
     "Name": "Touchscreen",
-    "Tags": []
+    "Tags": [
+      "display",
+      "interactive",
+      "tablet"
+    ]
   },
   {
     "Code": "EDA5",
     "Name": "NetworkPrinter",
-    "Tags": []
+    "Tags": [
+      "print",
+      "wireless",
+      "office",
+      "device"
+    ]
   },
   {
     "Code": "EDA6",
     "Name": "CloudPrinter",
-    "Tags": []
+    "Tags": [
+      "online",
+      "remote",
+      "document"
+    ]
   },
   {
     "Code": "EDA7",
     "Name": "KeyboardShortcut",
-    "Tags": []
+    "Tags": [
+      "keys",
+      "command"
+    ]
   },
   {
     "Code": "EDA8",
     "Name": "BrushSize",
-    "Tags": []
+    "Tags": [
+      "draw",
+      "tool",
+      "paint",
+      "editing"
+    ]
   },
   {
     "Code": "EDA9",
     "Name": "NarratorForward",
-    "Tags": []
+    "Tags": [
+      "accessibility",
+      "voice",
+      "audio",
+      "screen",
+      "reader",
+      "text",
+      "assistive"
+    ]
   },
   {
     "Code": "EDAA",
     "Name": "NarratorForwardMirrored",
-    "Tags": []
+    "Tags": [
+      "accessibility",
+      "voice",
+      "audio",
+      "screen",
+      "reader",
+      "text",
+      "assistive"
+    ]
   },
   {
     "Code": "EDAB",
     "Name": "SyncBadge12",
     "Tags": [
-      "arrow"
+      "arrow",
+      "update",
+      "refresh",
+      "sync",
+      "refresh"
     ]
   },
   {
     "Code": "EDAC",
     "Name": "RingerBadge12",
     "Tags": [
-      "bell"
+      "bell",
+      "notification",
+      "alert"
     ]
   },
   {
     "Code": "EDAD",
     "Name": "AsteriskBadge12",
     "Tags": [
-      "*"
+      "*",
+      "star",
+      "symbol",
+      "wildcard",
+      "mark",
+      "notation"
     ]
   },
   {
     "Code": "EDAE",
     "Name": "ErrorBadge12",
     "Tags": [
-      "x"
+      "x",
+      "warning",
+      "alert",
+      "problem",
+      "notification"
     ]
   },
   {
     "Code": "EDAF",
     "Name": "CircleRingBadge12",
-    "Tags": []
+    "Tags": [
+      "shape",
+      "geometry"
+    ]
   },
   {
     "Code": "EDB0",
     "Name": "CircleFillBadge12",
-    "Tags": []
+    "Tags": [
+      "shape",
+      "geometry"
+    ]
   },
   {
     "Code": "EDB1",
     "Name": "ImportantBadge12",
     "Tags": [
-      "!"
+      "!",
+      "priority",
+      "highlight",
+      "urgent",
+      "attention",
+      "critical"
     ]
   },
   {
     "Code": "EDB3",
     "Name": "MailBadge12",
-    "Tags": []
+    "Tags": [
+      "envelope",
+      "email",
+      "delivery",
+      "message",
+      "letter"
+    ]
   },
   {
     "Code": "EDB4",
     "Name": "PauseBadge12",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "freeze"
+    ]
   },
   {
     "Code": "EDB5",
     "Name": "PlayBadge12",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "start",
+      "begin"
+    ]
   },
   {
     "Code": "EDC6",
