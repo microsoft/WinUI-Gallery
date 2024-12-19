@@ -76,21 +76,35 @@
 
         <TextBlock Margin="0 40 0 0" FontSize="24">Backdrop controllers:</TextBlock>
         
-        <local:ControlExample HeaderText="Create a window with a customizable Mica system backdrop."
+        <local:ControlExample HeaderText="MicaController:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
-            <Button Click="createCustomMicaWindow_Click">Create Window with customizable Mica</Button>
+            <StackPanel>
+                <TextBlock>
+        Inheritance: Object<LineBreak/> <LineBreak/>
+        
+          Manages rendering and system policy for the mica material.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomMicaWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Create a window with a customizable Desktop Acrylic system backdrop."
+        <local:ControlExample HeaderText="DesktopAcrylicController:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
-            <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
+            <StackPanel>
+                <TextBlock>
+        Inheritance: Object<LineBreak/> <LineBreak/>
+        
+          Manages rendering and system policy for the background acrylic material.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
         <TextBlock Margin="0 40 0 0" FontSize="24">Helpers:</TextBlock>
 
         <local:ControlExample HeaderText="SetTitleBarBackdrop:"
                               CSharpSource="SystemBackdrops\SystemBackdropsTitleBarBackdrops.txt">
-            <TextBlock Text="The sets the backdrop of a title bar for a window that has ExtendsContentIntoTitleBar set to false." TextWrapping="WrapWholeWords" />
+            <TextBlock Text="This helper function changes the backdrop of the title bar for a window that has ExtendsContentIntoTitleBar set to false." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
         
         <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper: "
