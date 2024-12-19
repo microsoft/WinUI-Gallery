@@ -7,13 +7,9 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using WinUIGallery.Helper;
-using System;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
+using WinUIGallery.SamplePages;
 
 namespace WinUIGallery.ControlPages
 {
@@ -21,34 +17,46 @@ namespace WinUIGallery.ControlPages
     {
         public SystemBackdropsPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void createBuiltInMicaWindow_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new WinUIGallery.SamplePages.SampleBuiltInSystemBackdropsWindow();
-            newWindow.Activate();
-        }
-
-        private void createCustomMicaWindow_Click(object sender, RoutedEventArgs e)
-        {
-            var newWindow = new WinUIGallery.SamplePages.SampleSystemBackdropsWindow();
-            newWindow.SetBackdrop(WinUIGallery.SamplePages.SampleSystemBackdropsWindow.BackdropType.Mica);
-            newWindow.Activate();
+            var micaWindow = new SampleBuiltInSystemBackdropsWindow();
+            micaWindow.AllowedBackdrops = [SampleBuiltInSystemBackdropsWindow.BackdropType.None,
+                SampleBuiltInSystemBackdropsWindow.BackdropType.Mica,
+                SampleBuiltInSystemBackdropsWindow.BackdropType.MicaAlt];
+            micaWindow.SetBackdrop(SampleBuiltInSystemBackdropsWindow.BackdropType.Mica);
+            micaWindow.Activate();
         }
 
         private void createBuiltInAcrylicWindow_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new WinUIGallery.SamplePages.SampleSystemBackdropsWindow();
-            newWindow.SetBackdrop(WinUIGallery.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
-            newWindow.Activate();
+            var acrylicWindow = new SampleBuiltInSystemBackdropsWindow();
+            acrylicWindow.AllowedBackdrops = [SampleBuiltInSystemBackdropsWindow.BackdropType.None,
+                SampleBuiltInSystemBackdropsWindow.BackdropType.Acrylic];
+            acrylicWindow.SetBackdrop(SampleBuiltInSystemBackdropsWindow.BackdropType.Acrylic);
+            acrylicWindow.Activate();
+        }
+
+        private void createCustomMicaWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var micaWindow = new SampleSystemBackdropsWindow();
+            micaWindow.AllowedBackdrops = [SampleSystemBackdropsWindow.BackdropType.None,
+                SampleSystemBackdropsWindow.BackdropType.Mica,
+                SampleSystemBackdropsWindow.BackdropType.MicaAlt];
+            micaWindow.SetBackdrop(SampleSystemBackdropsWindow.BackdropType.Mica);
+            micaWindow.Activate();
         }
 
         private void createCustomDesktopAcrylicWindow_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new WinUIGallery.SamplePages.SampleSystemBackdropsWindow();
-            newWindow.SetBackdrop(WinUIGallery.SamplePages.SampleSystemBackdropsWindow.BackdropType.DesktopAcrylicBase);
-            newWindow.Activate();
+            var acrylicWindow = new SampleSystemBackdropsWindow();
+            acrylicWindow.AllowedBackdrops = [SampleSystemBackdropsWindow.BackdropType.None,
+                SampleSystemBackdropsWindow.BackdropType.Acrylic,
+                SampleSystemBackdropsWindow.BackdropType.AcrylicThin];
+            acrylicWindow.SetBackdrop(SampleSystemBackdropsWindow.BackdropType.Acrylic);
+            acrylicWindow.Activate();
         }
     }
 }
