@@ -9447,7 +9447,12 @@
   {
     "Code": "EDC6",
     "Name": "PenWorkspace",
-    "Tags": []
+    "Tags": [
+      "inking",
+      "drawing",
+      "stylus",
+      "workspace"
+    ]
   },
   {
     "Code": "EDD5",
@@ -9514,25 +9519,49 @@
     "Code": "EDE1",
     "Name": "Export",
     "Tags": [
-      "arrow"
+      "arrow",
+      "share",
+      "save",
+      "transfer",
+      "download",
+      "output"
     ]
   },
   {
     "Code": "EDE2",
     "Name": "ExportMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "share",
+      "save",
+      "transfer",
+      "download",
+      "output"
     ]
   },
   {
     "Code": "EDE3",
     "Name": "ButtonMenu",
-    "Tags": []
+    "Tags": [
+      "navigation",
+      "hamburger",
+      "line",
+      "three",
+      "options"
+    ]
   },
   {
     "Code": "EDE4",
     "Name": "CloudSearch",
-    "Tags": []
+    "Tags": [
+      "data",
+      "online",
+      "storage",
+      "magnifying glass",
+      "zoom",
+      "inspect",
+      "review"
+    ]
   },
   {
     "Code": "EDE5",
@@ -9548,50 +9577,83 @@
     "Code": "EE35",
     "Name": "ReplyMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "respond",
+      "answer",
+      "return"
     ]
   },
   {
     "Code": "EE3F",
     "Name": "LockscreenDesktop",
-    "Tags": []
+    "Tags": [
+      "desktop",
+      "security",
+      "privacy"
+    ]
   },
   {
     "Code": "EE40",
     "Name": "TaskViewSettings",
-    "Tags": []
+    "Tags": [
+      "multitasking",
+      "management"
+    ]
   },
   {
     "Code": "EE47",
     "Name": "MiniExpand2Mirrored",
-    "Tags": []
+    "Tags": [
+      "maximize",
+      "view",
+      "minimize",
+      "document"
+    ]
   },
   {
     "Code": "EE49",
     "Name": "MiniContract2Mirrored",
-    "Tags": []
+    "Tags": [
+      "collapse",
+      "view",
+      "minimize",
+      "document"
+    ]
   },
   {
     "Code": "EE4A",
     "Name": "Play36",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "start",
+      "begin"
+    ]
   },
   {
     "Code": "EE56",
     "Name": "PenPalette",
-    "Tags": []
+    "Tags": [
+      "color",
+      "drawing",
+      "art"
+    ]
   },
   {
     "Code": "EE57",
     "Name": "GuestUser",
     "Tags": [
-      "person"
+      "person",
+      "login"
     ]
   },
   {
     "Code": "EE63",
     "Name": "SettingsBattery",
-    "Tags": []
+    "Tags": [
+      "power",
+      "charge"
+    ]
   },
   {
     "Code": "EE64",
