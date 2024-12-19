@@ -1,12 +1,11 @@
-// Option 2 - Implement Mica with codebehind.
-// Allows for toggling backdrops as shown in sample.
+// Option 2 - Implement Mica with c#.
 bool TrySetMicaBackdrop(bool useMicaAlt)
 {
-    if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
+    if (SystemBackdrops.MicaController.IsSupported())
     {
-        Microsoft.UI.Xaml.Media.MicaBackdrop micaBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
-        micaBackdrop.Kind = useMicaAlt ? Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt : Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base;
-        this.SystemBackdrop = micaBackdrop;
+        MicaBackdrop micaBackdrop = new MicaBackdrop();
+        micaBackdrop.Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base;
+        SystemBackdrop = micaBackdrop;
 
         return true; // Succeeded.
     }

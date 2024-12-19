@@ -1,0 +1,35 @@
+internal enum DwmSystemBackdropType : int
+{
+    DWMSBT_AUTO = 0, //Default
+    DWMSBT_NONE = 1, //None
+    DWMSBT_MAINWINDOW = 2, //Mica
+    DWMSBT_TRANSIENTWINDOW = 3, //Acrylic thin
+    DWMSBT_TABBEDWINDOW = 4, //Mica Alt
+}
+
+
+internal enum DwmWindowAttribute : int
+{
+    DWMWA_SYSTEMBACKDROP_TYPE = 38 //Title bar backdrop
+}
+
+
+[DllImport("DwmApi.dll")]
+public static extern int DwmSetWindowAttribute(nint hWnd, DwmWindowAttribute attribute, ref int value, int size);
+
+
+public static void SetTitleBarBackdrop(this Window window, SystemBackdrop backdrop)
+{
+    var backdropType = DwmSystemBackdropType.DWMSBT_AUTO;
+
+    if (backdrop is MicaBackdrop micaBackdrop)
+        backdropType = micaBackdrop.Kind == MicaKind.Base ? DwmSystemBackdropType.DWMSBT_MAINWINDOW : DwmSystemBackdropType.DWMSBT_TABBEDWINDOW;
+    else if (backdrop is DesktopAcrylicBackdrop)
+        backdropType = DwmSystemBackdropType.DWMSBT_TRANSIENTWINDOW;
+    else if (backdrop is null)
+        backdropType = DwmSystemBackdropType.DWMSBT_NONE;
+
+    var backdropTypeInt = ((int)backdropType);
+    int hResult = DwmSetWindowAttribute(WindowNative.GetWindowHandle(window), DwmWindowAttribute.DWMWA_SYSTEMBACKDROP_TYPE, ref backdropTypeInt, sizeof(DwmSystemBackdropType));
+    ExceptionHelpers.ThrowExceptionForHR(hResult);
+}

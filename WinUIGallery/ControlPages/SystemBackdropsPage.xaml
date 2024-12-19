@@ -19,25 +19,41 @@
       mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample HeaderText="Create a window with a built-in Mica system backdrop."
+        <TextBlock Margin="0 30 0 0" FontSize="24">Backdrop types:</TextBlock>
+        
+        <local:ControlExample HeaderText="MicaBackdrop:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-// Option 1 - implement Mica with Xaml.
+// Option 1 - Implement Mica with Xaml.
 &lt;Window.SystemBackdrop&gt;
     &lt;MicaBackdrop /&gt;
 &lt;/Window.SystemBackdrop&gt;
+                    
+//Option 1.5 Implement Mica Alt with Xaml.
+&lt;Window.SystemBackdrop&gt;
+    &lt;MicaBackdrop Kind="BaseAlt" /&gt;
+&lt;/Window.SystemBackdrop&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-            <Button Click="createBuiltInMicaWindow_Click">Create Window with built-in Mica</Button>
-        </local:ControlExample>
-        
-        <local:ControlExample HeaderText="Create a window with a customizable Mica system backdrop."
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
-            <Button Click="createCustomMicaWindow_Click">Create Window with customizable Mica</Button>
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    Inheritance: Object -> DependencyObject -> SystemBackdrop <LineBreak/> <LineBreak/>
+                    
+                      Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
+                    You can apply Mica as your application backdrop to create a visual hierarchy, aiding productivity, by increasing clarity about which window is in focus.
+                    Mica is specifically designed for app performance as it only samples the desktop wallpaper once to create its visualization.
+                    Mica is available for Windows 11 build 22000 or later. <LineBreak/> <LineBreak/>
+
+                      Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background color.
+                    You can apply Mica Alt as your app's backdrop to provide a deeper visual hierarchy than Mica, especially when creating an app with a tabbed title bar.
+                    Mica Alt is available for Windows 11 build 22000 or later.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createBuiltInMicaWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Create a window with a built-in Desktop Acrylic system backdrop."
+        <local:ControlExample HeaderText="DesktopAcrylicBackdrop:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample4.txt">
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -47,17 +63,53 @@
 &lt;/Window.SystemBackdrop&gt;
                 </x:String>
             </local:ControlExample.Xaml>
-            <Button Click="createBuiltInAcrylicWindow_Click">Create Window with built-in Acrylic</Button>
+            <StackPanel>
+                <TextBlock>
+                    Inheritance: Object -> DependencyObject -> SystemBackdrop <LineBreak/> <LineBreak/>
+                    
+                      Acrylic is a semi-transparent material that replicates the effect of frosted glass.
+                    It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createBuiltInAcrylicWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Create a window with a customizable Desktop Acrylic system backdrop."
+        <TextBlock Margin="0 40 0 0" FontSize="24">Backdrop controllers:</TextBlock>
+        
+        <local:ControlExample HeaderText="MicaController:"
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
+            <StackPanel>
+                <TextBlock>
+        Inheritance: Object<LineBreak/> <LineBreak/>
+        
+          Manages rendering and system policy for the mica material.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomMicaWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="DesktopAcrylicController:"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
-            <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
+            <StackPanel>
+                <TextBlock>
+        Inheritance: Object<LineBreak/> <LineBreak/>
+        
+          Manages rendering and system policy for the background acrylic material.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Helper class to ensure a Windows.System.DispatcherQueue exists."
+        <TextBlock Margin="0 40 0 0" FontSize="24">Helpers:</TextBlock>
+
+        <local:ControlExample HeaderText="SetTitleBarBackdrop:"
+                              CSharpSource="SystemBackdrops\SystemBackdropsTitleBarBackdrops.txt">
+            <TextBlock Text="This helper function changes the backdrop of the title bar for a window that has ExtendsContentIntoTitleBar set to false." TextWrapping="WrapWholeWords" />
+        </local:ControlExample>
+        
+        <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper: "
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
-            <TextBlock Text="A Windows.System.DispatcherQueue must exist on the thread to use MicaController or DesktopAcrylicController. This helper class exposes and uses the underlying create function." TextWrapping="WrapWholeWords" />
+            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica or DesktopAcrylicController. This helper class improts and uses the underlying create function." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
     </StackPanel>
 </Page>

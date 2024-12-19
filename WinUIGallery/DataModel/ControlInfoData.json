@@ -2900,14 +2900,31 @@
         },
         {
           "UniqueId": "SystemBackdrops",
-          "Title": "System Backdrops (Mica/Acrylic)",
+          "Title": "SystemBackdrop",
           "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
           "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
-          "Description": "System backdrops are used to provide a different background for a Window other than the default white or black (depending on Light or Dark theme). Mica and Desktop Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
+          "Description": "System backdrops provide a transparency effect for the window background. Mica and Acrylic are the current supported backdrops. There are two options for applying a backdrop: the backdrop types (little customization, but easy to use) and the backdrop controllers (more customization, but harder to use)",
           "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
           "SourcePath": "/Materials",
+          "IsUpdated": true,
+          "BaseClasses": [
+            "Object",
+            "DependencyObject"
+          ],
           "Docs": [
+            {
+              "Title": "SystemBackdrop - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.systembackdrop?view=windows-app-sdk-1.6"
+            },
+            {
+              "Title": "MicaBackdrop - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.micabackdrop?view=windows-app-sdk-1.6"
+            },
+            {
+              "Title": "DesktopAcrylicBackdrop - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.desktopacrylicbackdrop?view=windows-app-sdk-1.6"
+            },
             {
               "Title": "MicaController - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.micacontroller"
