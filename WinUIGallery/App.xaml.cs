@@ -21,9 +21,6 @@ using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
-using System.Text;
-using Windows.System;
-using System.Runtime.InteropServices;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using System.Collections.Generic;
@@ -84,7 +81,7 @@ namespace WinUIGallery
         public App()
         {
             InitializeComponent();
-            this.UnhandledException += HandleExceptions;
+            UnhandledException += HandleExceptions;
         }
 
         /// <summary>
@@ -204,8 +201,11 @@ namespace WinUIGallery
         public Frame GetRootFrame()
         {
             Frame rootFrame;
-            var rootPage = StartupWindow.Content as NavigationRootPage;
-            if (rootPage == null)
+            if (StartupWindow.Content is NavigationRootPage rootPage)
+            {
+                rootFrame = (Frame)rootPage.FindName("rootFrame");
+            }
+            else
             {
                 rootPage = new NavigationRootPage();
                 rootFrame = (Frame)rootPage.FindName("rootFrame");
@@ -218,10 +218,6 @@ namespace WinUIGallery
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 StartupWindow.Content = rootPage;
-            }
-            else
-            {
-                rootFrame = (Frame)rootPage.FindName("rootFrame");
             }
 
             return rootFrame;
