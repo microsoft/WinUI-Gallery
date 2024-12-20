@@ -124,6 +124,14 @@ namespace WinUIGallery.SamplePages
                     tbChangeStatus.Text += "  Acrylic Thin isn't supported. Switching to default color.";
                 }
             }
+            if (type == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
+            }
+            else
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
+            }
 
             SystemBackdrop backdrop = currentBackdrop switch
             {
@@ -257,6 +265,36 @@ namespace WinUIGallery.SamplePages
                 _ => ElementTheme.Default
             };
             this.SetTitleBarTheme();
+
+
+            if (currentBackdrop == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
+            }
+            else
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
+            }
+        }
+        private void CustomTitleBarSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ExtendsContentIntoTitleBar = CustomTitleBarSwitch.IsOn;
+            if (!ExtendsContentIntoTitleBar)
+            {
+                AppWindow.TitleBar.ResetToDefault();
+                SystemBackdrop backdrop = currentBackdrop switch
+                {
+                    BackdropType.Mica => new MicaBackdrop(),
+                    BackdropType.MicaAlt => new MicaBackdrop() { Kind = MicaKind.BaseAlt },
+                    BackdropType.Acrylic => new DesktopAcrylicBackdrop(),
+                    BackdropType.AcrylicThin => new DesktopAcrylicBackdrop(),
+                    _ => null
+                };
+                this.SetTitleBarBackdrop(backdrop);
+                this.SetTitleBarTheme();
+            }
+            else
+                AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
         }
     }
 }

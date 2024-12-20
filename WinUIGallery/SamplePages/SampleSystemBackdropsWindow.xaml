@@ -33,6 +33,7 @@
                 <ComboBoxItem Content="Light"/>
                 <ComboBoxItem Content="Dark"/>
             </ComboBox>
+            <ToggleSwitch x:Name="CustomTitleBarSwitch" Header="Custom title bar:" Toggled="CustomTitleBarSwitch_Toggled"/>
         </StackPanel>
     </ScrollViewer>
 </Window>

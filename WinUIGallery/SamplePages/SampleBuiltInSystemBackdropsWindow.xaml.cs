@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.UI;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -87,6 +88,14 @@ namespace WinUIGallery.SamplePages
                     tbChangeStatus.Text += "  Acrylic isn't supported. Switching to default color.";
                 }
             }
+            if (type == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
+            }
+            else
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
+            }
 
             this.SetTitleBarBackdrop(SystemBackdrop);
 
@@ -145,6 +154,28 @@ namespace WinUIGallery.SamplePages
                 _ => ElementTheme.Default
             };
             this.SetTitleBarTheme();
+
+            if (currentBackdrop == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
+            }
+            else
+            {
+                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
+            }
+        }
+
+        private void CustomTitleBarSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ExtendsContentIntoTitleBar = CustomTitleBarSwitch.IsOn;
+            if (!ExtendsContentIntoTitleBar)
+            {
+                AppWindow.TitleBar.ResetToDefault();
+                this.SetTitleBarBackdrop(SystemBackdrop);
+                this.SetTitleBarTheme();
+            }
+            else
+                AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
         }
     }
 }
