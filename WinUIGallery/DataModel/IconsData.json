@@ -6576,6 +6576,7 @@
     "Code": "EB0F",
     "Name": "StockUp",
     "Tags": [
+      "arrow",
       "increase",
       "growth",
       "rise",
@@ -6586,6 +6587,7 @@
     "Code": "EB11",
     "Name": "StockDown",
     "Tags": [
+      "arrow",
       "decrease",
       "decline",
       "fall",
@@ -9571,7 +9573,14 @@
   {
     "Code": "EDFB",
     "Name": "CalligraphyPen",
-    "Tags": []
+    "Tags": [
+      "writing",
+      "ink",
+      "art",
+      "design",
+      "brush",
+      "stylus"
+    ]
   },
   {
     "Code": "EE35",
@@ -9658,54 +9667,81 @@
   {
     "Code": "EE64",
     "Name": "TaskbarPhone",
-    "Tags": []
+    "Tags": [
+      "mobile",
+      "connect",
+      "device"
+    ]
   },
   {
     "Code": "EE65",
     "Name": "LockScreenGlance",
-    "Tags": []
+    "Tags": [
+      "display",
+      "quickview",
+      "preview",
+      "eye"
+    ]
   },
   {
     "Code": "EE6F",
     "Name": "GenericScan",
-    "Tags": []
+    "Tags": [
+      "device",
+      "document",
+      "scanner"
+    ]
   },
   {
     "Code": "EE71",
     "Name": "ImageExport",
-    "Tags": []
+    "Tags": [
+      "picture",
+      "share",
+      "save"
+    ]
   },
   {
     "Code": "EE77",
     "Name": "WifiEthernet",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection",
+      "internet"
+    ]
   },
   {
     "Code": "EE79",
     "Name": "ActionCenterQuiet",
     "Tags": [
-      "night"
+      "night",
+      "moon"
     ]
   },
   {
     "Code": "EE7A",
     "Name": "ActionCenterQuietNotification",
     "Tags": [
-      "night"
+      "night",
+      "moon"
     ]
   },
   {
     "Code": "EE92",
     "Name": "TrackersMirrored",
     "Tags": [
-      "check"
+      "check",
+      "monitor",
+      "progress",
+      "list"
     ]
   },
   {
     "Code": "EE93",
     "Name": "DateTimeMirrored",
     "Tags": [
-      "clock"
+      "clock",
+      "planning"
     ]
   },
   {
@@ -9716,76 +9752,145 @@
   {
     "Code": "EEA3",
     "Name": "VirtualMachineGroup",
-    "Tags": []
+    "Tags": [
+      "cloud",
+      "computing"
+    ]
   },
   {
     "Code": "EECA",
     "Name": "ButtonView2",
-    "Tags": []
+    "Tags": [
+      "interface",
+      "UI",
+      "toggle"
+    ]
   },
   {
     "Code": "EF15",
     "Name": "PenWorkspaceMirrored",
-    "Tags": []
+    "Tags": [
+      "inking",
+      "drawing",
+      "stylus",
+      "workspace"
+    ]
   },
   {
     "Code": "EF16",
     "Name": "PenPaletteMirrored",
-    "Tags": []
+    "Tags": [
+      "color",
+      "drawing",
+      "art"
+    ]
   },
   {
     "Code": "EF17",
     "Name": "StrokeEraseMirrored",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "drawing",
+      "line",
+      "correction"
+    ]
   },
   {
     "Code": "EF18",
     "Name": "PointEraseMirrored",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "spot",
+      "dot",
+      "edit"
+    ]
   },
   {
     "Code": "EF19",
     "Name": "ClearAllInkMirrored",
-    "Tags": []
+    "Tags": [
+      "reset",
+      "erase",
+      "drawing"
+    ]
   },
   {
     "Code": "EF1F",
     "Name": "BackgroundToggle",
-    "Tags": []
+    "Tags": [
+      "switch",
+      "mode",
+      "settings"
+    ]
   },
   {
     "Code": "EF20",
     "Name": "Marquee",
-    "Tags": []
+    "Tags": [
+      "capture",
+      "screenshot",
+      "screen",
+      "snapshot",
+      "image"
+    ]
   },
   {
     "Code": "EF2C",
     "Name": "ChromeCloseContrast",
     "Tags": [
-      "x"
+      "x",
+      "exit",
+      "cancel",
+      "shut",
+      "dismiss"
     ]
   },
   {
     "Code": "EF2D",
     "Name": "ChromeMinimizeContrast",
     "Tags": [
-      "-"
+      "-",
+      "window",
+      "shrink",
+      "small",
+      "collapse",
+      "resize"
     ]
   },
   {
     "Code": "EF2E",
     "Name": "ChromeMaximizeContrast",
-    "Tags": []
+    "Tags": [
+      "window",
+      "expand",
+      "full screen",
+      "enlarge",
+      "width",
+      "height",
+      "resize",
+      "fill",
+      "fit"
+    ]
   },
   {
     "Code": "EF2F",
     "Name": "ChromeRestoreContrast",
-    "Tags": []
+    "Tags": [
+      "window",
+      "resize",
+      "default",
+      "revert"
+    ]
   },
   {
     "Code": "EF31",
     "Name": "TrafficLight",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "control",
+      "stop",
+      "road"
+    ]
   },
   {
     "Code": "EF3B",
@@ -9798,33 +9903,67 @@
   {
     "Code": "EF3C",
     "Name": "Eyedropper",
-    "Tags": []
+    "Tags": [
+      "color",
+      "picker",
+      "sample",
+      "paint",
+      "tool"
+    ]
   },
   {
     "Code": "EF3D",
     "Name": "LineDisplay",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "output",
+      "visual",
+      "price",
+      "checkout",
+      "transaction",
+      "purchase",
+      "receipt"
+    ]
   },
   {
     "Code": "EF3E",
     "Name": "PINPad",
-    "Tags": []
+    "Tags": [
+      "payment",
+      "transaction",
+      "security",
+      "card"
+    ]
   },
   {
     "Code": "EF3F",
     "Name": "SignatureCapture",
-    "Tags": []
+    "Tags": [
+      "authentication",
+      "verification",
+      "agreement",
+      "document"
+    ]
   },
   {
     "Code": "EF40",
     "Name": "ChipCardCreditCardReader",
-    "Tags": []
+    "Tags": [
+      "payment",
+      "transaction",
+      "secure",
+      "banking"
+    ]
   },
   {
     "Code": "EF42",
     "Name": "MarketDown",
     "Tags": [
-      "arrow"
+      "arrow",
+      "decrease",
+      "decline",
+      "fall",
+      "stock"
     ]
   },
   {
@@ -9838,62 +9977,128 @@
   {
     "Code": "EF6B",
     "Name": "LandscapeOrientation",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "display",
+      "view",
+      "horizontal",
+      "wide"
+    ]
   },
   {
     "Code": "EF90",
     "Name": "Flow",
-    "Tags": []
+    "Tags": [
+      "movement",
+      "stream",
+      "direction",
+      "process",
+      "continuity",
+      "sequence",
+      "fluid"
+    ]
   },
   {
     "Code": "EFA5",
     "Name": "Touchpad",
-    "Tags": []
+    "Tags": [
+      "input",
+      "gesture",
+      "control",
+      "navigation",
+      "interface",
+      "trackpad",
+      "device"
+    ]
   },
   {
     "Code": "EFA9",
     "Name": "Speech",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "audio",
+      "talking"
     ]
   },
   {
     "Code": "F000",
     "Name": "KnowledgeArticle",
     "Tags": [
-      "page"
+      "page",
+      "document"
     ]
   },
   {
     "Code": "F003",
     "Name": "Relationship",
-    "Tags": []
+    "Tags": [
+      "data",
+      "link",
+      "connection",
+      "association",
+      "schema",
+      "model",
+      "structure",
+      "dependency"
+    ]
   },
   {
     "Code": "F012",
     "Name": "ZipFolder",
-    "Tags": []
+    "Tags": [
+      "compress",
+      "archive",
+      "zip",
+      "package",
+      "file",
+      "storage",
+      "extract"
+    ]
   },
   {
     "Code": "F080",
     "Name": "DefaultAPN",
-    "Tags": []
+    "Tags": [
+      "network",
+      "settings",
+      "connection",
+      "mobile",
+      "provider",
+      "internet",
+      "configuration"
+    ]
   },
   {
     "Code": "F081",
     "Name": "UserAPN",
-    "Tags": []
+    "Tags": [
+      "person",
+      "network",
+      "settings",
+      "connection",
+      "mobile",
+      "provider",
+      "internet",
+      "configuration"
+    ]
   },
   {
     "Code": "F085",
     "Name": "DoublePinyin",
-    "Tags": []
+    "Tags": [
+      "alphabet",
+      "translation"
+    ]
   },
   {
     "Code": "F08C",
     "Name": "BlueLight",
-    "Tags": []
+    "Tags": [
+      "brightness",
+      "sun",
+      "dark"
+    ]
   },
   {
     "Code": "F08D",
@@ -9966,90 +10171,193 @@
   {
     "Code": "F0B2",
     "Name": "QuarentinedItems",
-    "Tags": []
+    "Tags": [
+      "security",
+      "protection",
+      "virus",
+      "malware",
+      "threat",
+      "files",
+      "safety"
+    ]
   },
   {
     "Code": "F0B3",
     "Name": "QuarentinedItemsMirrored",
-    "Tags": []
+    "Tags": [
+      "security",
+      "protection",
+      "virus",
+      "malware",
+      "threat",
+      "files",
+      "safety"
+    ]
   },
   {
     "Code": "F0B4",
     "Name": "Protractor",
-    "Tags": []
+    "Tags": [
+      "measurement",
+      "angle",
+      "geometry",
+      "tool",
+      "math"
+    ]
   },
   {
     "Code": "F0B5",
     "Name": "ChecklistMirrored",
-    "Tags": []
+    "Tags": [
+      "tasks",
+      "items",
+      "organize",
+      "progress",
+      "completion"
+    ]
   },
   {
     "Code": "F0B6",
     "Name": "StatusCircle7",
-    "Tags": []
+    "Tags": [
+      "indicator",
+      "circle",
+      "check",
+      "signal"
+    ]
   },
   {
     "Code": "F0B7",
     "Name": "StatusCheckmark7",
-    "Tags": []
+    "Tags": [
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
   },
   {
     "Code": "F0B8",
     "Name": "StatusErrorCircle7",
-    "Tags": []
+    "Tags": [
+      "x",
+      "problem",
+      "failure",
+      "alert"
+    ]
   },
   {
     "Code": "F0B9",
     "Name": "Connected",
-    "Tags": []
+    "Tags": [
+      "network",
+      "connection",
+      "online",
+      "linked",
+      "paired",
+      "access",
+      "communication",
+      "status"
+    ]
   },
   {
     "Code": "F0C6",
     "Name": "PencilFill",
-    "Tags": []
+    "Tags": [
+      "write",
+      "draw",
+      "sketch",
+      "tool",
+      "creative"
+    ]
   },
   {
     "Code": "F0C7",
     "Name": "CalligraphyFill",
-    "Tags": []
+    "Tags": [
+      "writing",
+      "ink",
+      "pen",
+      "art",
+      "design",
+      "brush",
+      "stylus"
+    ]
   },
   {
     "Code": "F0CA",
     "Name": "QuarterStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0CB",
     "Name": "QuarterStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0CC",
     "Name": "ThreeQuarterStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0CD",
     "Name": "ThreeQuarterStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0CE",
     "Name": "QuietHoursBadge12",
-    "Tags": []
+    "Tags": [
+      "moon",
+      "night"
+    ]
   },
   {
     "Code": "F0D2",
     "Name": "BackMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "previous",
+      "return",
+      "left",
+      "rewind"
     ]
   },
   {
     "Code": "F0D3",
     "Name": "ForwardMirrored",
     "Tags": [
-      "arrow"
+      "arrow",
+      "next",
+      "send",
+      "right",
+      "proceed"
     ]
   },
   {
@@ -10086,138 +10394,311 @@
     "Code": "F0D8",
     "Name": "ChromeFullScreenContrast",
     "Tags": [
-      "arrow"
+      "arrow",
+      "expand",
+      "maximize",
+      "window",
+      "view"
     ]
   },
   {
     "Code": "F0E2",
     "Name": "GridView",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "design",
+      "display",
+      "structure",
+      "applications",
+      "menu",
+      "apps",
+      "programs"
+    ]
   },
   {
     "Code": "F0E3",
     "Name": "ClipboardList",
-    "Tags": []
+    "Tags": [
+      "copy",
+      "paste",
+      "data",
+      "items",
+      "records"
+    ]
   },
   {
     "Code": "F0E4",
     "Name": "ClipboardListMirrored",
-    "Tags": []
+    "Tags": [
+      "copy",
+      "paste",
+      "data",
+      "items",
+      "records"
+    ]
   },
   {
     "Code": "F0E5",
     "Name": "OutlineQuarterStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0E6",
     "Name": "OutlineQuarterStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0E7",
     "Name": "OutlineHalfStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0E8",
     "Name": "OutlineHalfStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0E9",
     "Name": "OutlineThreeQuarterStarLeft",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0EA",
     "Name": "OutlineThreeQuarterStarRight",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0EB",
     "Name": "SpatialVolume0",
-    "Tags": []
+    "Tags": [
+      "volume",
+      "sound",
+      "audio",
+      "mute"
+    ]
   },
   {
     "Code": "F0EC",
     "Name": "SpatialVolume1",
-    "Tags": []
+    "Tags": [
+      "volume",
+      "sound",
+      "audio",
+      "low"
+    ]
   },
   {
     "Code": "F0ED",
     "Name": "SpatialVolume2",
-    "Tags": []
+    "Tags": [
+      "volume",
+      "sound",
+      "audio",
+      "medium"
+    ]
   },
   {
     "Code": "F0EE",
     "Name": "SpatialVolume3",
-    "Tags": []
+    "Tags": [
+      "volume",
+      "sound",
+      "audio",
+      "hight"
+    ]
   },
   {
     "Code": "F0EF",
     "Name": "ApplicationGuard",
-    "Tags": []
+    "Tags": [
+      "defender",
+      "shield",
+      "security",
+      "protection",
+      "safety"
+    ]
   },
   {
     "Code": "F0F7",
     "Name": "OutlineStarLeftHalf",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0F8",
     "Name": "OutlineStarRightHalf",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0F9",
     "Name": "ChromeAnnotateContrast",
-    "Tags": []
+    "Tags": [
+      "rating",
+      "score",
+      "evaluation",
+      "feedback",
+      "review"
+    ]
   },
   {
     "Code": "F0FB",
     "Name": "DefenderBadge12",
-    "Tags": []
+    "Tags": [
+      "shield",
+      "security",
+      "protection",
+      "safety"
+    ]
   },
   {
     "Code": "F103",
     "Name": "DetachablePC",
-    "Tags": []
+    "Tags": [
+      "device",
+      "laptop",
+      "tablet",
+      "removable",
+      "portable",
+      "screen"
+    ]
   },
   {
     "Code": "F108",
     "Name": "LeftStick",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F109",
     "Name": "RightStick",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F10A",
     "Name": "TriggerLeft",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F10B",
     "Name": "TriggerRight",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F10C",
     "Name": "BumperLeft",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F10D",
     "Name": "BumperRight",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F10E",
     "Name": "Dpad",
-    "Tags": []
+    "Tags": [
+      "controller",
+      "gamepad",
+      "joystick",
+      "input",
+      "navigation",
+      "buttons",
+      "gaming"
+    ]
   },
   {
     "Code": "F110",
