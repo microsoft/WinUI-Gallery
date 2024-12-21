@@ -1395,7 +1395,9 @@
   {
     "Code": "E7A8",
     "Name": "Crop",
-    "Tags": []
+    "Tags": [
+      "cut"
+    ]
   },
   {
     "Code": "E7AC",
@@ -10703,17 +10705,31 @@
   {
     "Code": "F110",
     "Name": "EnglishPunctuation",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "character",
+      "keyboard"
+    ]
   },
   {
     "Code": "F111",
     "Name": "ChinesePunctuation",
-    "Tags": []
+    "Tags": [
+      "symbol",
+      "character",
+      "keyboard"
+    ]
   },
   {
     "Code": "F119",
     "Name": "HMD",
-    "Tags": []
+    "Tags": [
+      "headset",
+      "VR",
+      "virtual",
+      "display",
+      "device"
+    ]
   },
   {
     "Code": "F11B",
@@ -10737,44 +10753,79 @@
   {
     "Code": "F128",
     "Name": "StrokeErase2",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "drawing",
+      "line",
+      "correction"
+    ]
   },
   {
     "Code": "F129",
     "Name": "SmallErase",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "drawing",
+      "correction"
+    ]
   },
   {
     "Code": "F12A",
     "Name": "LargeErase",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "drawing",
+      "correction"
+    ]
   },
   {
     "Code": "F12B",
     "Name": "FolderHorizontal",
-    "Tags": []
+    "Tags": [
+      "collection",
+      "directory",
+      "file",
+      "storage"
+    ]
   },
   {
     "Code": "F12E",
     "Name": "MicrophoneListening",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "active",
+      "sound",
+      "enabled",
+      "recording"
+    ]
   },
   {
     "Code": "F12F",
     "Name": "StatusExclamationCircle7",
     "Tags": [
-      "!"
+      "!",
+      "indicator",
+      "progress",
+      "caution",
+      "attention"
     ]
   },
   {
     "Code": "F131",
     "Name": "Video360",
-    "Tags": []
+    "Tags": [
+      "immersive",
+      "VR",
+      "panorama"
+    ]
   },
   {
     "Code": "F133",
     "Name": "GiftboxOpen",
-    "Tags": []
+    "Tags": [
+      "present",
+      "unpack"
+    ]
   },
   {
     "Code": "F136",
@@ -10805,46 +10856,79 @@
     "Code": "F13B",
     "Name": "StatusTriangleExclamation",
     "Tags": [
-      "!"
+      "!",
+      "indicator",
+      "progress",
+      "caution",
+      "attention"
     ]
   },
   {
     "Code": "F13C",
     "Name": "StatusCircleExclamation",
     "Tags": [
-      "!"
+      "!",
+      "indicator",
+      "progress",
+      "caution",
+      "attention"
     ]
   },
   {
     "Code": "F13D",
     "Name": "StatusCircleErrorX",
-    "Tags": []
+    "Tags": [
+      "x",
+      "problem",
+      "failure",
+      "alert"
+    ]
   },
   {
     "Code": "F13E",
     "Name": "StatusCircleCheckmark",
-    "Tags": []
+    "Tags": [
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
   },
   {
     "Code": "F13F",
     "Name": "StatusCircleInfo",
-    "Tags": []
+    "Tags": [
+      "information",
+      "details",
+      "content"
+    ]
   },
   {
     "Code": "F140",
     "Name": "StatusCircleBlock",
-    "Tags": []
+    "Tags": [
+      "restrict"
+    ]
   },
   {
     "Code": "F141",
     "Name": "StatusCircleBlock2",
-    "Tags": []
+    "Tags": [
+      "restrict"
+    ]
   },
   {
     "Code": "F142",
     "Name": "StatusCircleQuestionMark",
     "Tags": [
-      "?"
+      "?",
+      "help",
+      "support",
+      "guide",
+      "assistance",
+      "info"
     ]
   },
   {
@@ -10969,70 +11053,125 @@
   {
     "Code": "F156",
     "Name": "DialShape1",
-    "Tags": []
+    "Tags": [
+      "stack",
+      "overlap",
+      "levels",
+      "structure"
+    ]
   },
   {
     "Code": "F157",
     "Name": "DialShape2",
-    "Tags": []
+    "Tags": [
+      "pyramid",
+      "3D",
+      "geometry",
+      "structure"
+    ]
   },
   {
     "Code": "F158",
     "Name": "DialShape3",
-    "Tags": []
+    "Tags": [
+      "cube",
+      "3D",
+      "geometry",
+      "block"
+    ]
   },
   {
     "Code": "F159",
     "Name": "DialShape4",
-    "Tags": []
+    "Tags": [
+      "octahedron",
+      "3D",
+      "geometry",
+      "shape",
+      "polygon"
+    ]
   },
   {
     "Code": "F15F",
     "Name": "ClosedCaptionsInternational",
-    "Tags": []
+    "Tags": [
+      "text",
+      "dialogue",
+      "speech",
+      "language",
+      "cc",
+      "subtitles"
+    ]
   },
   {
     "Code": "F161",
     "Name": "TollSolid",
-    "Tags": []
+    "Tags": [
+      "payment",
+      "road",
+      "fee",
+      "bridge"
+    ]
   },
   {
     "Code": "F163",
     "Name": "TrafficCongestionSolid",
     "Tags": [
-      "car"
+      "car",
+      "jam",
+      "road",
+      "delay"
     ]
   },
   {
     "Code": "F164",
     "Name": "ExploreContentSingle",
     "Tags": [
-      "+"
+      "+",
+      "discover",
+      "browse",
+      "navigate"
     ]
   },
   {
     "Code": "F165",
     "Name": "CollapseContent",
     "Tags": [
-      "-"
+      "-",
+      "shrink",
+      "small",
+      "hide",
+      "resize"
     ]
   },
   {
     "Code": "F166",
     "Name": "CollapseContentSingle",
     "Tags": [
-      "-"
+      "-",
+      "shrink",
+      "small",
+      "hide",
+      "resize"
     ]
   },
   {
     "Code": "F167",
     "Name": "InfoSolid",
-    "Tags": []
+    "Tags": [
+      "information",
+      "details",
+      "content"
+    ]
   },
   {
     "Code": "F168",
     "Name": "GroupList",
-    "Tags": []
+    "Tags": [
+      "items",
+      "collection",
+      "organization"
+    ]
   },
   {
     "Code": "F169",
@@ -11044,209 +11183,419 @@
   {
     "Code": "F16A",
     "Name": "ProgressRingDots",
-    "Tags": []
+    "Tags": [
+      "loading",
+      "indicator",
+      "status",
+      "waiting"
+    ]
   },
   {
     "Code": "F16B",
     "Name": "Checkbox14",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "F16C",
     "Name": "CheckboxComposite14",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "F16D",
     "Name": "CheckboxIndeterminateCombo14",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "F16E",
     "Name": "CheckboxIndeterminateCombo",
-    "Tags": []
+    "Tags": [
+      "selection",
+      "check",
+      "checkmark"
+    ]
   },
   {
     "Code": "F175",
     "Name": "StatusPause7",
-    "Tags": []
+    "Tags": [
+      "halted",
+      "interrupted",
+      "delay",
+      "standby"
+    ]
   },
   {
     "Code": "F17F",
     "Name": "CharacterAppearance",
-    "Tags": []
+    "Tags": [
+      "font",
+      "style",
+      "text",
+      "lettering",
+      "typography"
+    ]
   },
   {
     "Code": "F180",
     "Name": "Lexicon",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "book"
     ]
   },
   {
     "Code": "F182",
     "Name": "ScreenTime",
     "Tags": [
-      "clock"
+      "clock",
+      "monitor",
+      "usage",
+      "device"
     ]
   },
   {
     "Code": "F191",
     "Name": "HeadlessDevice",
-    "Tags": []
+    "Tags": [
+      "server",
+      "device",
+      "remote",
+      "management",
+      "network"
+    ]
   },
   {
     "Code": "F193",
     "Name": "NetworkSharing",
-    "Tags": []
+    "Tags": [
+      "printer",
+      "folder",
+      "connection"
+    ]
   },
   {
     "Code": "F19D",
     "Name": "EyeGaze",
-    "Tags": []
+    "Tags": [
+      "focus",
+      "tracking",
+      "vision"
+    ]
   },
   {
     "Code": "F19E",
     "Name": "ToggleLeft",
-    "Tags": []
+    "Tags": [
+      "switch",
+      "off",
+      "inactive"
+    ]
   },
   {
     "Code": "F19F",
     "Name": "ToggleRight",
-    "Tags": []
+    "Tags": [
+      "switch",
+      "off",
+      "inactive"
+    ]
   },
   {
     "Code": "F1AD",
     "Name": "WindowsInsider",
-    "Tags": []
+    "Tags": [
+      "program",
+      "beta",
+      "preview"
+    ]
   },
   {
     "Code": "F1CB",
     "Name": "ChromeSwitch",
     "Tags": [
-      "arrow"
+      "arrow",
+      "change",
+      "swap",
+      "toggle",
+      "shift",
+      "alternate"
     ]
   },
   {
     "Code": "F1CC",
     "Name": "ChromeSwitchContast",
     "Tags": [
-      "arrow"
+      "arrow",
+      "change",
+      "swap",
+      "toggle",
+      "shift",
+      "alternate"
     ]
   },
   {
     "Code": "F1D8",
     "Name": "StatusCheckmark",
-    "Tags": []
+    "Tags": [
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
   },
   {
     "Code": "F1D9",
     "Name": "StatusCheckmarkLeft",
-    "Tags": []
+    "Tags": [
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
   },
   {
     "Code": "F20C",
     "Name": "KeyboardLeftAligned",
-    "Tags": []
+    "Tags": [
+      "position",
+      "layout",
+      "left-align",
+      "design"
+    ]
   },
   {
     "Code": "F20D",
     "Name": "KeyboardRightAligned",
-    "Tags": []
+    "Tags": [
+      "position",
+      "layout",
+      "right-align",
+      "design"
+    ]
   },
   {
     "Code": "F210",
     "Name": "KeyboardSettings",
-    "Tags": []
+    "Tags": [
+      "preferences",
+      "adjust",
+      "controls",
+      "configuration",
+      "customization"
+    ]
   },
   {
     "Code": "F211",
     "Name": "NetworkPhysical",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "hardware",
+      "cable",
+      "data",
+      "wireless"
+    ]
   },
   {
     "Code": "F22C",
     "Name": "IOT",
-    "Tags": []
+    "Tags": [
+      "internet",
+      "devices",
+      "network",
+      "automation",
+      "sensors",
+      "connectivity",
+      "smart",
+      "chemical",
+      "formaldehyde"
+    ]
   },
   {
     "Code": "F22E",
     "Name": "UnknownMirrored",
     "Tags": [
       "?",
-      "question"
+      "question",
+      "uncertain"
     ]
   },
   {
     "Code": "F246",
     "Name": "ViewDashboard",
-    "Tags": []
+    "Tags": [
+      "interface",
+      "data",
+      "visualization",
+      "monitoring"
+    ]
   },
   {
     "Code": "F259",
     "Name": "ExploitProtectionSettings",
-    "Tags": []
+    "Tags": [
+      "security",
+      "configuration",
+      "defense"
+    ]
   },
   {
     "Code": "F260",
     "Name": "KeyboardNarrow",
-    "Tags": []
+    "Tags": [
+      "compact",
+      "size",
+      "layout",
+      "space-saving",
+      "design"
+    ]
   },
   {
     "Code": "F261",
     "Name": "Keyboard12Key",
-    "Tags": []
+    "Tags": [
+      "numeric",
+      "layout",
+      "compact",
+      "keypad",
+      "numbers"
+    ]
   },
   {
     "Code": "F26B",
     "Name": "KeyboardDock",
-    "Tags": []
+    "Tags": [
+      "attachment",
+      "mount",
+      "position",
+      "connection",
+      "setup"
+    ]
   },
   {
     "Code": "F26C",
     "Name": "KeyboardUndock",
-    "Tags": []
+    "Tags": [
+      "detachment",
+      "release",
+      "disconnection",
+      "mobile"
+    ]
   },
   {
     "Code": "F26D",
     "Name": "KeyboardLeftDock",
-    "Tags": []
+    "Tags": [
+      "attachment",
+      "position",
+      "alignment",
+      "setup"
+    ]
   },
   {
     "Code": "F26E",
     "Name": "KeyboardRightDock",
-    "Tags": []
+    "Tags": [
+      "attachment",
+      "position",
+      "alignment",
+      "setup"
+    ]
   },
   {
     "Code": "F270",
     "Name": "Ear",
-    "Tags": []
+    "Tags": [
+      "hearing",
+      "sound",
+      "audio",
+      "earphone",
+      "listening"
+    ]
   },
   {
     "Code": "F271",
     "Name": "PointerHand",
-    "Tags": []
+    "Tags": [
+      "cursor",
+      "click",
+      "select",
+      "interaction",
+      "gesture",
+      "touch"
+    ]
   },
   {
     "Code": "F272",
     "Name": "Bullseye",
-    "Tags": []
+    "Tags": [
+      "goal",
+      "target",
+      "objective",
+      "achievement",
+      "focus",
+      "precision",
+      "aim",
+      "success"
+    ]
   },
   {
     "Code": "F28B",
     "Name": "DocumentApproval",
-    "Tags": []
+    "Tags": [
+      "page",
+      "file",
+      "sheet",
+      "paper",
+      "text",
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
   },
   {
     "Code": "F2B7",
     "Name": "LocaleLanguage",
-    "Tags": []
+    "Tags": [
+      "region",
+      "localization",
+      "translation",
+      "culture",
+      "setting",
+      "preferences"
+    ]
   },
   {
     "Code": "F32A",
     "Name": "PassiveAuthentication",
-    "Tags": []
+    "Tags": [
+      "security",
+      "verification",
+      "identity",
+      "login",
+      "access",
+      "privacy",
+      "checkmark"
+    ]
   },
   {
     "Code": "F354",
@@ -11259,37 +11608,73 @@
   {
     "Code": "F384",
     "Name": "NetworkOffline",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "status",
+      "signal"
+    ]
   },
   {
     "Code": "F385",
     "Name": "NetworkConnected",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "status",
+      "online",
+      "signal"
+    ]
   },
   {
     "Code": "F386",
     "Name": "NetworkConnectedCheckmark",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "status",
+      "online",
+      "signal"
+    ]
   },
   {
     "Code": "F3B1",
     "Name": "SignOut",
-    "Tags": []
+    "Tags": [
+      "logout",
+      "exit",
+      "disconnect",
+      "leave",
+      "account",
+      "session",
+      "user"
+    ]
   },
   {
     "Code": "F3CC",
     "Name": "StatusInfo",
-    "Tags": []
+    "Tags": [
+      "information",
+      "details",
+      "content"
+    ]
   },
   {
     "Code": "F3CD",
     "Name": "StatusInfoLeft",
-    "Tags": []
+    "Tags": [
+      "information",
+      "details",
+      "content"
+    ]
   },
   {
     "Code": "F3E2",
     "Name": "NearbySharing",
-    "Tags": []
+    "Tags": [
+      "transfer",
+      "devices",
+      "connect",
+      "send",
+      "bluetooth"
+    ]
   },
   {
     "Code": "F3E7",
@@ -11299,144 +11684,289 @@
   {
     "Code": "F404",
     "Name": "InteractiveDashboard",
-    "Tags": []
+    "Tags": [
+      "interface",
+      "data",
+      "visualization",
+      "monitoring"
+    ]
   },
   {
     "Code": "F405",
     "Name": "DeclineCall",
     "Tags": [
-      "phone"
+      "phone",
+      "reject",
+      "phone",
+      "communication",
+      "hang up",
+      "contact"
     ]
   },
   {
     "Code": "F406",
     "Name": "ClippingTool",
     "Tags": [
-      "cut"
+      "cut",
+      "scissors",
+      "crop",
+      "capture",
+      "screenshot",
+      "screen",
+      "snapshot",
+      "image"
     ]
   },
   {
     "Code": "F407",
     "Name": "RectangularClipping",
-    "Tags": []
+    "Tags": [
+      "capture",
+      "screenshot",
+      "screen",
+      "snapshot",
+      "image"
+    ]
   },
   {
     "Code": "F408",
     "Name": "FreeFormClipping",
-    "Tags": []
+    "Tags": [
+      "capture",
+      "screenshot",
+      "screen",
+      "snapshot",
+      "image"
+    ]
   },
   {
     "Code": "F413",
     "Name": "CopyTo",
-    "Tags": []
+    "Tags": [
+      "share",
+      "paste",
+      "clipboard"
+    ]
   },
   {
     "Code": "F427",
     "Name": "IDBadge",
-    "Tags": []
+    "Tags": [
+      "person",
+      "user"
+    ]
   },
   {
     "Code": "F439",
     "Name": "DynamicLock",
-    "Tags": []
+    "Tags": [
+      "private",
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
+    ]
   },
   {
     "Code": "F45E",
     "Name": "PenTips",
-    "Tags": []
+    "Tags": [
+      "stylus",
+      "writing",
+      "touch",
+      "input",
+      "tool"
+    ]
   },
   {
     "Code": "F45F",
     "Name": "PenTipsMirrored",
-    "Tags": []
+    "Tags": [
+      "stylus",
+      "writing",
+      "touch",
+      "input",
+      "tool"    
+    ]
   },
   {
     "Code": "F460",
     "Name": "HWPJoin",
-    "Tags": []
+    "Tags": [
+      "combine",
+      "merge",
+      "stroke",
+      "handwriting"
+    ]
   },
   {
     "Code": "F461",
     "Name": "HWPInsert",
-    "Tags": []
+    "Tags": [
+      "insert",
+      "add",
+      "handwriting",
+      "place",
+      "input"
+    ]
   },
   {
     "Code": "F462",
     "Name": "HWPStrikeThrough",
-    "Tags": []
+    "Tags": [
+      "delete",
+      "edit",
+      "mark",
+      "handwriting"
+    ]
   },
   {
     "Code": "F463",
     "Name": "HWPScratchOut",
-    "Tags": []
+    "Tags": [
+      "erase",
+      "remove",
+      "delete",
+      "handwriting",
+      "correction"
+    ]
   },
   {
     "Code": "F464",
     "Name": "HWPSplit",
-    "Tags": []
+    "Tags": [
+      "divide",
+      "separate",
+      "handwriting",
+      "line"
+    ]
   },
   {
     "Code": "F465",
     "Name": "HWPNewLine",
-    "Tags": []
+    "Tags": [
+      "handwriting",
+      "enter",
+      "continue",
+      "paragraph",
+      "space"
+    ]
   },
   {
     "Code": "F466",
     "Name": "HWPOverwrite",
-    "Tags": []
+    "Tags": [
+      "replace",
+      "handwriting",
+      "modify",
+      "edit",
+      "correction"
+    ]
   },
   {
     "Code": "F473",
     "Name": "MobWifiWarning1",
     "Tags": [
-      "!"
+      "!",
+      "connection",
+      "network",
+      "share",
+      "network"
     ]
   },
   {
     "Code": "F474",
     "Name": "MobWifiWarning2",
     "Tags": [
-      "!"
+      "!",
+      "connection",
+      "network",
+      "share",
+      "network"
     ]
   },
   {
     "Code": "F475",
     "Name": "MobWifiWarning3",
     "Tags": [
-      "!"
+      "!",
+      "connection",
+      "network",
+      "share",
+      "network"
     ]
   },
   {
     "Code": "F476",
     "Name": "MobWifiWarning4",
     "Tags": [
-      "!"
+      "!",
+      "connection",
+      "network",
+      "share",
+      "network",
+      "alert",
+      "exclamation",
+      "triangle",
+      "issue"
     ]
   },
   {
     "Code": "F47F",
     "Name": "MicLocationCombo",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "audio"
+    ]
   },
   {
     "Code": "F49A",
     "Name": "Globe2",
-    "Tags": []
+    "Tags": [
+      "world",
+      "earth",
+      "international",
+      "global"
+    ]
   },
   {
     "Code": "F4A5",
     "Name": "SpecialEffectSize",
-    "Tags": []
+    "Tags": [
+      "stars",
+      "shine",
+      "twinkle",
+      "glitter",
+      "sparkle",
+      "glow",
+      "magic"
+    ]
   },
   {
     "Code": "F4A9",
     "Name": "GIF",
-    "Tags": []
+    "Tags": [
+      "animation",
+      "image",
+      "loop",
+      "graphic",
+      "motion",
+      "picture",
+      "media"
+    ]
   },
   {
     "Code": "F4AA",
     "Name": "Sticker2",
-    "Tags": []
+    "Tags": [
+      "emoji",
+      "expression",
+      "decoration",
+      "image"
+    ]
   },
   {
     "Code": "F4BE",
@@ -11454,22 +11984,45 @@
   {
     "Code": "F4BF",
     "Name": "HoloLensSelected",
-    "Tags": []
+    "Tags": [
+      "augmented",
+      "reality",
+      "mixed",
+      "virtual",
+      "headset",
+      "checked"
+    ]
   },
   {
     "Code": "F4C0",
     "Name": "Earbud",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "music",
+      "volume"
+    ]
   },
   {
     "Code": "F4C3",
     "Name": "MixVolumes",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "audio",
+      "music",
+      "Equalizer"
+    ]
   },
   {
     "Code": "F540",
     "Name": "Safe",
-    "Tags": []
+    "Tags": [
+      "security",
+      "protection",
+      "lock",
+      "fireproof",
+      "valuable"
+    ]
   },
   {
     "Code": "F552",
@@ -11793,7 +12346,10 @@
     "Code": "F5AB",
     "Name": "MobSIMError",
     "Tags": [
-      "x"
+      "x",
+      "problem",
+      "failure",
+      "alert"
     ]
   },
   {
