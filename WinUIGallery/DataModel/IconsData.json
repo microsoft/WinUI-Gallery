@@ -1541,7 +1541,13 @@
   {
     "Code": "E7C3",
     "Name": "Page",
-    "Tags": []
+    "Tags": [
+      "document",
+      "file",
+      "sheet",
+      "paper",
+      "text"
+    ]
   },
   {
     "Code": "E7C4",
@@ -7495,7 +7501,9 @@
     "Code": "EBD5",
     "Name": "MobWifiCall0",
     "Tags": [
+      "bars",
       "signal",
+      "network",
       "connection",
       "communication",
       "phone"
@@ -7505,6 +7513,9 @@
     "Code": "EBD6",
     "Name": "MobWifiCall1",
     "Tags": [
+      "bars",
+      "signal",
+      "network",
       "connection",
       "communication",
       "phone"
@@ -7514,6 +7525,9 @@
     "Code": "EBD7",
     "Name": "MobWifiCall2",
     "Tags": [
+      "bars",
+      "signal",
+      "network",
       "connection",
       "communication",
       "phone"
@@ -7523,6 +7537,9 @@
     "Code": "EBD8",
     "Name": "MobWifiCall3",
     "Tags": [
+      "bars",
+      "signal",
+      "network",
       "connection",
       "communication",
       "phone"
@@ -7532,6 +7549,9 @@
     "Code": "EBD9",
     "Name": "MobWifiCall4",
     "Tags": [
+      "bars",
+      "signal",
+      "network",
       "connection",
       "communication",
       "phone"
@@ -11798,8 +11818,7 @@
     "Tags": [
       "combine",
       "merge",
-      "stroke",
-      "handwriting"
+      "stroke"
     ]
   },
   {
@@ -11808,7 +11827,6 @@
     "Tags": [
       "insert",
       "add",
-      "handwriting",
       "place",
       "input"
     ]
@@ -11819,8 +11837,7 @@
     "Tags": [
       "delete",
       "edit",
-      "mark",
-      "handwriting"
+      "mark"
     ]
   },
   {
@@ -11830,7 +11847,6 @@
       "erase",
       "remove",
       "delete",
-      "handwriting",
       "correction"
     ]
   },
@@ -11840,7 +11856,6 @@
     "Tags": [
       "divide",
       "separate",
-      "handwriting",
       "line"
     ]
   },
@@ -11848,7 +11863,6 @@
     "Code": "F465",
     "Name": "HWPNewLine",
     "Tags": [
-      "handwriting",
       "enter",
       "continue",
       "paragraph",
@@ -11860,7 +11874,6 @@
     "Name": "HWPOverwrite",
     "Tags": [
       "replace",
-      "handwriting",
       "modify",
       "edit",
       "correction"
@@ -12027,22 +12040,48 @@
   {
     "Code": "F552",
     "Name": "LaptopSecure",
-    "Tags": []
+    "Tags": [
+      "protection",
+      "shield",
+      "security",
+      "device",
+      "privacy"
+    ]
   },
   {
     "Code": "F56D",
     "Name": "PrintDefault",
-    "Tags": []
+    "Tags": [
+      "checked",
+      "printer",
+      "document",
+      "settings",
+      "paper",
+      "output",
+      "device"
+    ]
   },
   {
     "Code": "F56E",
     "Name": "PageMirrored",
-    "Tags": []
+    "Tags": [
+      "document",
+      "file",
+      "sheet",
+      "paper",
+      "text"
+    ]
   },
   {
     "Code": "F56F",
     "Name": "LandscapeOrientationMirrored",
-    "Tags": []
+    "Tags": [
+      "screen",
+      "display",
+      "view",
+      "horizontal",
+      "wide"
+    ]
   },
   {
     "Code": "F570",
@@ -12055,292 +12094,558 @@
   {
     "Code": "F571",
     "Name": "PrintAllPages",
-    "Tags": []
+    "Tags": [
+      "printer",
+      "document",
+      "settings",
+      "paper",
+      "output",
+      "device"
+    ]
   },
   {
     "Code": "F572",
     "Name": "PrintCustomRange",
-    "Tags": []
+    "Tags": [
+      "printer",
+      "document",
+      "settings",
+      "paper",
+      "output",
+      "device"
+    ]
   },
   {
     "Code": "F573",
     "Name": "PageMarginPortraitNarrow",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F574",
     "Name": "PageMarginPortraitNormal",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F575",
     "Name": "PageMarginPortraitModerate",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F576",
     "Name": "PageMarginPortraitWide",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F577",
     "Name": "PageMarginLandscapeNarrow",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F578",
     "Name": "PageMarginLandscapeNormal",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F579",
     "Name": "PageMarginLandscapeModerate",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F57A",
     "Name": "PageMarginLandscapeWide",
-    "Tags": []
+    "Tags": [
+      "layout",
+      "document",
+      "balanced"
+    ]
   },
   {
     "Code": "F57B",
     "Name": "CollateLandscape",
-    "Tags": []
+    "Tags": [
+      "document",
+      "pages",
+      "layout",
+      "orientation",
+      "printing"
+    ]
   },
   {
     "Code": "F57C",
     "Name": "CollatePortrait",
-    "Tags": []
+    "Tags": [
+      "document",
+      "pages",
+      "layout",
+      "orientation",
+      "printing"
+    ]
   },
   {
     "Code": "F57D",
     "Name": "CollatePortraitSeparated",
-    "Tags": []
+    "Tags": [
+      "document",
+      "pages",
+      "layout",
+      "orientation",
+      "printing"
+    ]
   },
   {
     "Code": "F57E",
     "Name": "DuplexLandscapeOneSided",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F57F",
     "Name": "DuplexLandscapeOneSidedMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F580",
     "Name": "DuplexLandscapeTwoSidedLongEdge",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F581",
     "Name": "DuplexLandscapeTwoSidedLongEdgeMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F582",
     "Name": "DuplexLandscapeTwoSidedShortEdge",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F583",
     "Name": "DuplexLandscapeTwoSidedShortEdgeMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F584",
     "Name": "DuplexPortraitOneSided",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F585",
     "Name": "DuplexPortraitOneSidedMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F586",
     "Name": "DuplexPortraitTwoSidedLongEdge",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F587",
     "Name": "DuplexPortraitTwoSidedLongEdgeMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F588",
     "Name": "DuplexPortraitTwoSidedShortEdge",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F589",
     "Name": "DuplexPortraitTwoSidedShortEdgeMirrored",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58A",
     "Name": "PPSOneLandscape",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58B",
     "Name": "PPSTwoLandscape",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58C",
     "Name": "PPSTwoPortrait",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58D",
     "Name": "PPSFourLandscape",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58E",
     "Name": "PPSFourPortrait",
-    "Tags": []
+    "Tags": [
+      "pages",
+      "printing",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F58F",
     "Name": "HolePunchOff",
-    "Tags": []
+    "Tags": [
+      "pages",
+      "printing",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F590",
     "Name": "HolePunchPortraitLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper",
+      "office"
+    ]
   },
   {
     "Code": "F591",
     "Name": "HolePunchPortraitRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper",
+      "office"
+    ]
   },
   {
     "Code": "F592",
     "Name": "HolePunchPortraitTop",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper",
+      "office"
+    ]
   },
   {
     "Code": "F593",
     "Name": "HolePunchPortraitBottom",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F594",
     "Name": "HolePunchLandscapeLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F595",
     "Name": "HolePunchLandscapeRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F596",
     "Name": "HolePunchLandscapeTop",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F597",
     "Name": "HolePunchLandscapeBottom",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F598",
     "Name": "StaplingOff",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F599",
     "Name": "StaplingPortraitTopLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59A",
     "Name": "StaplingPortraitTopRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59B",
     "Name": "StaplingPortraitBottomRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59C",
     "Name": "StaplingPortraitTwoLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59D",
     "Name": "StaplingPortraitTwoRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59E",
     "Name": "StaplingPortraitTwoTop",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F59F",
     "Name": "StaplingPortraitTwoBottom",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A0",
     "Name": "StaplingPortraitBookBinding",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A1",
     "Name": "StaplingLandscapeTopLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A2",
     "Name": "StaplingLandscapeTopRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A3",
     "Name": "StaplingLandscapeBottomLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A4",
     "Name": "StaplingLandscapeBottomRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A5",
     "Name": "StaplingLandscapeTwoLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A6",
     "Name": "StaplingLandscapeTwoRight",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A7",
     "Name": "StaplingLandscapeTwoTop",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A8",
     "Name": "StaplingLandscapeTwoBottom",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5A9",
     "Name": "StaplingLandscapeBookBinding",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5AA",
     "Name": "StatusDataTransferRoaming",
-    "Tags": []
+    "Tags": [
+      "connection",
+      "mobile",
+      "network",
+      "signal"
+    ]
   },
   {
     "Code": "F5AB",
@@ -12355,214 +12660,394 @@
   {
     "Code": "F5AC",
     "Name": "CollateLandscapeSeparated",
-    "Tags": []
+    "Tags": [
+      "document",
+      "pages",
+      "layout",
+      "orientation",
+      "printing"
+    ]
   },
   {
     "Code": "F5AD",
     "Name": "PPSOnePortrait",
-    "Tags": []
+    "Tags": [
+      "printing",
+      "pages",
+      "layout",
+      "orientation"
+    ]
   },
   {
     "Code": "F5AE",
     "Name": "StaplingPortraitBottomLeft",
-    "Tags": []
+    "Tags": [
+      "binding",
+      "document",
+      "paper"
+    ]
   },
   {
     "Code": "F5B0",
     "Name": "PlaySolid",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "start",
+      "begin"
+    ]
   },
   {
     "Code": "F5E7",
     "Name": "RepeatOff",
     "Tags": [
-      "arrow"
+      "arrow",
+      "audio",
+      "music",
+      "playback",
+      "control",
+      "media"
     ]
   },
   {
     "Code": "F5ED",
     "Name": "Set",
-    "Tags": []
+    "Tags": [
+      "configuration",
+      "settings",
+      "option",
+      "control",
+      "adjustment"
+    ]
   },
   {
     "Code": "F5EE",
     "Name": "SetSolid",
-    "Tags": []
+    "Tags": [
+      "configuration",
+      "settings",
+      "option",
+      "control",
+      "adjustment"
+    ]
   },
   {
     "Code": "F5EF",
     "Name": "FuzzyReading",
-    "Tags": []
+    "Tags": [
+      "blurred",
+      "unclear",
+      "vision",
+      "focus",
+      "interpretation"
+    ]
   },
   {
     "Code": "F5F2",
     "Name": "VerticalBattery0",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F3",
     "Name": "VerticalBattery1",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F4",
     "Name": "VerticalBattery2",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F5",
     "Name": "VerticalBattery3",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F6",
     "Name": "VerticalBattery4",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F7",
     "Name": "VerticalBattery5",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F8",
     "Name": "VerticalBattery6",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5F9",
     "Name": "VerticalBattery7",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FA",
     "Name": "VerticalBattery8",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FB",
     "Name": "VerticalBattery9",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FC",
     "Name": "VerticalBattery10",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FD",
     "Name": "VerticalBatteryCharging0",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FE",
     "Name": "VerticalBatteryCharging1",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F5FF",
     "Name": "VerticalBatteryCharging2",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F600",
     "Name": "VerticalBatteryCharging3",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F601",
     "Name": "VerticalBatteryCharging4",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F602",
     "Name": "VerticalBatteryCharging5",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F603",
     "Name": "VerticalBatteryCharging6",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F604",
     "Name": "VerticalBatteryCharging7",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F605",
     "Name": "VerticalBatteryCharging8",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F606",
     "Name": "VerticalBatteryCharging9",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F607",
     "Name": "VerticalBatteryCharging10",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power"
+    ]
   },
   {
     "Code": "F608",
     "Name": "VerticalBatteryUnknown",
-    "Tags": []
+    "Tags": [
+      "charge",
+      "power",
+      "status"
+    ]
   },
   {
     "Code": "F618",
     "Name": "SIMError",
-    "Tags": []
+    "Tags": [
+      "problem",
+      "connection",
+      "mobile",
+      "network",
+      "issue"
+    ]
   },
   {
     "Code": "F619",
     "Name": "SIMMissing",
-    "Tags": []
+    "Tags": [
+      "absent",
+      "connection",
+      "mobile",
+      "network",
+      "problem"
+    ]
   },
   {
     "Code": "F61A",
     "Name": "SIMLock",
-    "Tags": []
+    "Tags": [
+      "security",
+      "mobile",
+      "network",
+      "protection",
+      "restriction"
+    ]
   },
   {
     "Code": "F61B",
     "Name": "eSIM",
-    "Tags": []
+    "Tags": [
+      "virtual",
+      "SIM",
+      "mobile",
+      "connection",
+      "network",
+      "technology"
+    ]
   },
   {
     "Code": "F61C",
     "Name": "eSIMNoProfile",
-    "Tags": []
+    "Tags": [
+      "missing",
+      "mobile",
+      "network",
+      "connection",
+      "problem"
+    ]
   },
   {
     "Code": "F61D",
     "Name": "eSIMLocked",
-    "Tags": []
+    "Tags": [
+      "security",
+      "mobile",
+      "network",
+      "restriction",
+      "protection"
+    ]
   },
   {
     "Code": "F61E",
     "Name": "eSIMBusy",
-    "Tags": []
+    "Tags": [
+      "active",
+      "mobile",
+      "network",
+      "connection",
+      "status"
+    ]
   },
   {
     "Code": "F61F",
     "Name": "NoiseCancelation",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "quiet",
+      "audio",
+      "filter",
+      "technology"
+    ]
   },
   {
     "Code": "F620",
     "Name": "NoiseCancelationOff",
-    "Tags": []
+    "Tags": [
+      "sound",
+      "quiet",
+      "audio",
+      "filter",
+      "technology"
+    ]
   },
   {
     "Code": "F623",
     "Name": "MusicSharing",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "streaming",
+      "sound",
+      "media",
+      "connect"
+    ]
   },
   {
     "Code": "F624",
     "Name": "MusicSharingOff",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "streaming",
+      "sound",
+      "media",
+      "disconnect"
+    ]
   },
   {
     "Code": "F63C",
@@ -12572,42 +13057,90 @@
   {
     "Code": "F657",
     "Name": "WifiCallBars",
-    "Tags": []
+    "Tags": [
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F658",
     "Name": "WifiCall0",
-    "Tags": []
+    "Tags": [
+      "bars",
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F659",
     "Name": "WifiCall1",
-    "Tags": []
+    "Tags": [
+      "bars",
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F65A",
     "Name": "WifiCall2",
-    "Tags": []
+    "Tags": [
+      "bars",
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F65B",
     "Name": "WifiCall3",
-    "Tags": []
+    "Tags": [
+      "bars",
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F65C",
     "Name": "WifiCall4",
-    "Tags": []
+    "Tags": [
+      "bars",
+      "signal",
+      "network",
+      "connection",
+      "communication"
+    ]
   },
   {
     "Code": "F69E",
     "Name": "CHTLanguageBar",
-    "Tags": []
+    "Tags": [
+      "input",
+      "keyboard",
+      "settings",
+      "switch",
+      "selection"
+    ]
   },
   {
     "Code": "F6A9",
     "Name": "ComposeMode",
-    "Tags": []
+    "Tags": [
+      "create",
+      "writing",
+      "email",
+      "message",
+      "text",
+      "draft"
+    ]
   },
   {
     "Code": "F6B8",
@@ -12619,265 +13152,565 @@
   {
     "Code": "F6BA",
     "Name": "EmojiTabMoreSymbols",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "expression",
+      "characters",
+      "emoticons",
+      "input"
+    ]
   },
   {
     "Code": "F6FA",
     "Name": "WebSearch",
-    "Tags": []
+    "Tags": [
+      "browser",
+      "internet",
+      "query",
+      "find",
+      "explore",
+      "online"
+    ]
   },
   {
     "Code": "F712",
     "Name": "Kiosk",
-    "Tags": []
+    "Tags": [
+      "machine",
+      "interactive",
+      "self service",
+      "display",
+      "screen",
+      "stand",
+      "service"
+    ]
   },
   {
     "Code": "F714",
     "Name": "RTTLogo",
-    "Tags": []
+    "Tags": [
+      "telecommunication",
+      "relay",
+      "service",
+      "call"
+    ]
   },
   {
     "Code": "F715",
     "Name": "VoiceCall",
     "Tags": [
-      "phone"
+      "phone",
+      "communication",
+      "phone",
+      "audio",
+      "telephone",
+      "talk",
+      "voicechat"
     ]
   },
   {
     "Code": "F716",
     "Name": "GoToMessage",
     "Tags": [
-      "chat"
+      "chat",
+      "notification",
+      "communication",
+      "app",
+      "jump",
+      "shortcut"
     ]
   },
   {
     "Code": "F71A",
     "Name": "ReturnToCall",
     "Tags": [
-      "arrow"
+      "arrow",
+      "communication",
+      "phone",
+      "resume",
+      "connect",
+      "audio",
+      "ongoing"
     ]
   },
   {
     "Code": "F71C",
     "Name": "StartPresenting",
-    "Tags": []
+    "Tags": [
+      "share",
+      "screen",
+      "display",
+      "show",
+      "presentation",
+      "startshare"
+    ]
   },
   {
     "Code": "F71D",
     "Name": "StopPresenting",
-    "Tags": []
+    "Tags": [
+      "share",
+      "screen",
+      "end",
+      "presentation",
+      "finish",
+      "shareend"
+    ]
   },
   {
     "Code": "F71E",
     "Name": "ProductivityMode",
-    "Tags": []
+    "Tags": [
+      "focus",
+      "efficiency",
+      "work",
+      "task",
+      "performance",
+      "organization"
+    ]
   },
   {
     "Code": "F738",
     "Name": "SetHistoryStatus",
     "Tags": [
-      "clock"
+      "clock",
+      "update",
+      "record",
+      "track",
+      "log",
+      "change"
     ]
   },
   {
     "Code": "F739",
     "Name": "SetHistoryStatus2",
     "Tags": [
-      "clock"
+      "clock",
+      "update",
+      "record",
+      "track",
+      "log",
+      "change"
     ]
   },
   {
     "Code": "F73D",
     "Name": "Keyboardsettings20",
-    "Tags": []
+    "Tags": [
+      "preferences",
+      "adjust",
+      "controls",
+      "configuration",
+      "customization"
+    ]
   },
   {
     "Code": "F73E",
     "Name": "OneHandedRight20",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "phone",
+      "gesture",
+      "adjustment",
+      "mode",
+      "easy"
+    ]
   },
   {
     "Code": "F73F",
     "Name": "OneHandedLeft20",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "phone",
+      "gesture",
+      "adjustment",
+      "mode",
+      "easy"
+    ]
   },
   {
     "Code": "F740",
     "Name": "Split20",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "phone",
+      "gesture",
+      "adjustment",
+      "mode",
+      "easy"
+    ]
   },
   {
     "Code": "F741",
     "Name": "Full20",
-    "Tags": []
+    "Tags": [
+      "keyboard",
+      "phone",
+      "gesture",
+      "adjustment",
+      "mode",
+      "easy"
+    ]
   },
   {
     "Code": "F742",
     "Name": "Handwriting20",
-    "Tags": []
+    "Tags": [
+      "pen",
+      "input",
+      "write",
+      "stylus",
+      "note",
+      "draw",
+      "sketch"
+    ]
   },
   {
     "Code": "F743",
     "Name": "ChevronLeft20",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "F744",
     "Name": "ChevronLeft32",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "F745",
     "Name": "ChevronRight20",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "F746",
     "Name": "ChevronRight32",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "direction",
+      "navigation"
+    ]
   },
   {
     "Code": "F763",
     "Name": "Event12",
-    "Tags": []
+    "Tags": [
+      "calendar",
+      "date",
+      "schedule",
+      "meeting",
+      "reminder",
+      "occasion",
+      "activity"
+    ]
   },
   {
     "Code": "F781",
     "Name": "MicOff2",
-    "Tags": []
+    "Tags": [
+      "microphone",
+      "mute",
+      "audio",
+      "silent",
+      "disabled"
+    ]
   },
   {
     "Code": "F785",
     "Name": "DeliveryOptimization",
-    "Tags": []
+    "Tags": [
+      "network",
+      "update",
+      "performance",
+      "data",
+      "speed",
+      "efficiency"
+    ]
   },
   {
     "Code": "F78A",
     "Name": "CancelMedium",
     "Tags": [
-      "x"
+      "x",
+      "close",
+      "stop",
+      "exit",
+      "abort",
+      "reject"
     ]
   },
   {
     "Code": "F78B",
     "Name": "SearchMedium",
-    "Tags": []
+    "Tags": [
+      "magnifying glass",
+      "zoom",
+      "inspect",
+      "review"
+    ]
   },
   {
     "Code": "F78C",
     "Name": "AcceptMedium",
     "Tags": [
-      "check"
+      "check",
+      "agree",
+      "approve",
+      "confirm",
+      "approve"
     ]
   },
   {
     "Code": "F78D",
     "Name": "RevealPasswordMedium",
-    "Tags": []
+    "Tags": [
+      "security",
+      "visibility",
+      "protection",
+      "access"
+    ]
   },
   {
     "Code": "F7AD",
     "Name": "DeleteWord",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "text",
+      "edit",
+      "backspace",
+      "typing",
+      "content"
+    ]
   },
   {
     "Code": "F7AE",
     "Name": "DeleteWordFill",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "text",
+      "edit",
+      "backspace",
+      "typing",
+      "content"
+    ]
   },
   {
     "Code": "F7AF",
     "Name": "DeleteLines",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "text",
+      "edit",
+      "backspace",
+      "content",
+      "clear"
+    ]
   },
   {
     "Code": "F7B0",
     "Name": "DeleteLinesFill",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "text",
+      "edit",
+      "backspace",
+      "content",
+      "clear"
+    ]
   },
   {
     "Code": "F7B1",
     "Name": "InstertWords",
-    "Tags": []
+    "Tags": [
+      "text",
+      "add",
+      "edit",
+      "content",
+      "typing",
+      "keyboard"
+    ]
   },
   {
     "Code": "F7B2",
     "Name": "InstertWordsFill",
-    "Tags": []
+    "Tags": [
+      "text",
+      "add",
+      "edit",
+      "content",
+      "typing",
+      "keyboard"
+    ]
   },
   {
     "Code": "F7B3",
     "Name": "JoinWords",
-    "Tags": []
+    "Tags": [
+      "combine",
+      "text",
+      "merge",
+      "edit",
+      "content",
+      "typing"
+    ]
   },
   {
     "Code": "F7B4",
     "Name": "JoinWordsFill",
-    "Tags": []
+    "Tags": [
+      "combine",
+      "text",
+      "merge",
+      "edit",
+      "content",
+      "typing"
+    ]
   },
   {
     "Code": "F7B5",
     "Name": "OverwriteWords",
-    "Tags": []
+    "Tags": [
+      "text",
+      "replace",
+      "edit",
+      "content",
+      "typing",
+      "keyboard"
+    ]
   },
   {
     "Code": "F7B6",
     "Name": "OverwriteWordsFill",
-    "Tags": []
+    "Tags": [
+      "text",
+      "replace",
+      "edit",
+      "content",
+      "typing",
+      "keyboard"
+    ]
   },
   {
     "Code": "F7B7",
     "Name": "AddNewLine",
-    "Tags": []
+    "Tags": [
+      "text",
+      "insert",
+      "edit",
+      "content",
+      "paragraph"
+    ]
   },
   {
     "Code": "F7B8",
     "Name": "AddNewLineFill",
-    "Tags": []
+    "Tags": [
+      "text",
+      "insert",
+      "edit",
+      "content",
+      "paragraph"
+    ]
   },
   {
     "Code": "F7B9",
     "Name": "OverwriteWordsKorean",
-    "Tags": []
+    "Tags": [
+      "text",
+      "replace",
+      "edit",
+      "content",
+      "typing"
+    ]
   },
   {
     "Code": "F7BA",
     "Name": "OverwriteWordsFillKorean",
-    "Tags": []
+    "Tags": [
+      "text",
+      "replace",
+      "edit",
+      "content",
+      "typing"
+    ]
   },
   {
     "Code": "F7BB",
     "Name": "EducationIcon",
-    "Tags": []
+    "Tags": [
+      "pencil",
+      "write"
+    ]
   },
   {
     "Code": "F7ED",
     "Name": "WindowSnipping",
-    "Tags": []
+    "Tags": [
+      "screenshot",
+      "capture",
+      "image",
+      "edit",
+      "select",
+      "tool"
+    ]
   },
   {
     "Code": "F7EE",
     "Name": "VideoCapture",
-    "Tags": []
+    "Tags": [
+      "record",
+      "camera",
+      "film",
+      "content",
+      "media",
+      "capture"
+    ]
   },
   {
     "Code": "F809",
     "Name": "StatusSecured",
     "Tags": [
-      "lock"
+      "lock",
+      "security",
+      "protected",
+      "safe",
+      "encrypted",
+      "access"
     ]
   },
   {
     "Code": "F83B",
     "Name": "NarratorApp",
-    "Tags": []
+    "Tags": [
+      "accessibility",
+      "voice",
+      "screen reader",
+      "assistive",
+      "text to speech",
+      "reading"
+    ]
   },
   {
     "Code": "F83D",
     "Name": "PowerButtonUpdate",
     "Tags": [
       "on",
-      "off"
+      "off",
+      "restart",
+      "settings",
+      "system",
+      "computer",
+      "device"
     ]
   },
   {
@@ -12885,61 +13718,136 @@
     "Name": "RestartUpdate",
     "Tags": [
       "arrow",
-      "refresh"
+      "refresh",
+      "system",
+      "refresh",
+      "reboot",
+      "settings",
+      "install",
+      "software"
     ]
   },
   {
     "Code": "F83F",
     "Name": "UpdateStatusDot",
-    "Tags": []
+    "Tags": [
+      "notification",
+      "install",
+      "progress",
+      "indicator",
+      "software"
+    ]
   },
   {
     "Code": "F847",
     "Name": "Eject",
-    "Tags": []
+    "Tags": [
+      "remove",
+      "disk",
+      "media",
+      "device",
+      "hardware",
+      "storage",
+      "button"
+    ]
   },
   {
     "Code": "F87B",
     "Name": "Spelling",
-    "Tags": []
+    "Tags": [
+      "check",
+      "text",
+      "correction",
+      "language",
+      "grammar",
+      "proofreading",
+      "editor"
+    ]
   },
   {
     "Code": "F87C",
     "Name": "SpellingKorean",
-    "Tags": []
+    "Tags": [
+      "check",
+      "text",
+      "correction",
+      "language",
+      "grammar",
+      "proofreading",
+      "editor"
+    ]
   },
   {
     "Code": "F87D",
     "Name": "SpellingSerbian",
-    "Tags": []
+    "Tags": [
+      "check",
+      "text",
+      "correction",
+      "language",
+      "grammar",
+      "proofreading",
+      "editor"
+    ]
   },
   {
     "Code": "F87E",
     "Name": "SpellingChinese",
     "Tags": [
-      "abc"
+      "abc",
+      "check",
+      "text",
+      "correction",
+      "language",
+      "grammar",
+      "proofreading",
+      "editor"
     ]
   },
   {
     "Code": "F89A",
     "Name": "FolderSelect",
-    "Tags": []
+    "Tags": [
+      "file",
+      "directory",
+      "choose",
+      "browse",
+      "system",
+      "storage"
+    ]
   },
   {
     "Code": "F8A5",
     "Name": "SmartScreen",
-    "Tags": []
+    "Tags": [
+      "protection",
+      "security",
+      "filter",
+      "safe",
+      "web",
+      "browser"
+    ]
   },
   {
     "Code": "F8A6",
     "Name": "ExploitProtection",
-    "Tags": []
+    "Tags": [
+      "security",
+      "vulnerability",
+      "threat",
+      "shield",
+      "software",
+      "defense"
+    ]
   },
   {
     "Code": "F8AA",
     "Name": "AddBold",
     "Tags": [
-      "+"
+      "+",
+      "plus",
+      "addition",
+      "new"
     ]
   },
   {
@@ -12952,45 +13860,86 @@
   {
     "Code": "F8AC",
     "Name": "BackSolidBold",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "previous",
+      "return",
+      "left",
+      "rewind"
+    ]
   },
   {
     "Code": "F8AD",
     "Name": "ForwardSolidBold",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "next",
+      "send",
+      "right",
+      "proceed"
+    ]
   },
   {
     "Code": "F8AE",
     "Name": "PauseBold",
-    "Tags": []
+    "Tags": [
+      "control",
+      "playback",
+      "freeze"
+    ]
   },
   {
     "Code": "F8AF",
     "Name": "ClickSolid",
     "Tags": [
-      "pointer"
+      "pointer",
+      "tap",
+      "press",
+      "select",
+      "activate",
+      "choose"
     ]
   },
   {
     "Code": "F8B0",
     "Name": "SettingsSolid",
-    "Tags": []
+    "Tags": [
+      "gear",
+      "options",
+      "cog"
+    ]
   },
   {
     "Code": "F8B1",
     "Name": "MicrophoneSolidBold",
-    "Tags": []
+    "Tags": [
+      "audio",
+      "voice",
+      "record",
+      "sound",
+      "speech"
+    ]
   },
   {
     "Code": "F8B2",
     "Name": "SpeechSolidBold",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "audio",
+      "talking"
     ]
   },
   {
     "Code": "F8B3",
-    "Name": "ClickedOutLoudSolidBold"
+    "Name": "ClickedOutLoudSolidBold",
+    "Tags": [
+      "sound",
+      "audio",
+      "action",
+      "press",
+      "interaction",
+      "notification"
+    ]
   }
 ]
