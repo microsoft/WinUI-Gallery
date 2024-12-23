@@ -1,10 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
-using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Media;
-using WinRT.Interop;
-using WinRT;
 using static WinUIGallery.Win32;
 
 namespace WinUIGallery.Helper

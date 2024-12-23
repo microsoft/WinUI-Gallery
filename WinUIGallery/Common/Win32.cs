@@ -57,11 +57,10 @@ namespace WinUIGallery
         public const int WA_INACTIVE = 0x00;
         public const int WH_KEYBOARD = 2;
         public const int WM_KEYDOWN = 0x0104;
-        public const int WM_SETICON = 0x0080;
 
+        public const int WM_SETICON = 0x0080;
         public const int ICON_SMALL = 0;
         public const int ICON_BIG = 1;
-
 
         internal delegate IntPtr WinProc(IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
         public delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);

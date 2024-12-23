@@ -9,7 +9,6 @@
 //*********************************************************
 
 using Microsoft.UI;
-using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
@@ -17,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WinRT;
 using WinRT.Interop;
 
 namespace WinUIGallery.Helper
@@ -27,7 +25,7 @@ namespace WinUIGallery.Helper
     // of all active Windows.  The app code must call WindowHelper.CreateWindow
     // rather than "new Window" so we can keep track of all the relevant
     // windows.  In the future, we would like to support this in platform APIs.
-    public static class WindowHelper
+    public class WindowHelper
     {
         static public Window CreateWindow()
         {
@@ -41,7 +39,7 @@ namespace WinUIGallery.Helper
 
         static public void TrackWindow(Window window)
         {
-            window.Closed += (sender,args) => {
+            window.Closed += (sender, args) => {
                 _activeWindows.Remove(window);
             };
             _activeWindows.Add(window);
@@ -84,7 +82,7 @@ namespace WinUIGallery.Helper
             return 0.0;
         }
 
-        static public List<Window> ActiveWindows { get { return _activeWindows; }}
+        static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
         static private List<Window> _activeWindows = new List<Window>();
 
