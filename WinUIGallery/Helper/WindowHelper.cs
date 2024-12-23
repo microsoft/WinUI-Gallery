@@ -39,7 +39,7 @@ namespace WinUIGallery.Helper
 
         static public void TrackWindow(Window window)
         {
-            window.Closed += (sender, args) => {
+            window.Closed += (sender,args) => {
                 _activeWindows.Remove(window);
             };
             _activeWindows.Add(window);
@@ -82,7 +82,7 @@ namespace WinUIGallery.Helper
             return 0.0;
         }
 
-        static public List<Window> ActiveWindows { get { return _activeWindows; } }
+        static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
         static private List<Window> _activeWindows = new List<Window>();
 
