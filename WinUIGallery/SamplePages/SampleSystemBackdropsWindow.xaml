@@ -14,7 +14,6 @@
         </Grid.RowDefinitions>
 
         <Border
-    Visibility="Collapsed"
     x:Name="titleBar"
     Grid.Column="1"
     Margin="8,0,0,0"
