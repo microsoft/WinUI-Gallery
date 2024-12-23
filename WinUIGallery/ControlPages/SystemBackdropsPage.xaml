@@ -19,26 +19,12 @@
       mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock Margin="0 30 0 0" FontSize="24">Backdrop types:</TextBlock>
-        
         <local:ControlExample HeaderText="MicaBackdrop:"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Option 1 - Implement Mica with Xaml.
-&lt;Window.SystemBackdrop&gt;
-    &lt;MicaBackdrop /&gt;
-&lt;/Window.SystemBackdrop&gt;
-                    
-//Option 1.5 Implement Mica Alt with Xaml.
-&lt;Window.SystemBackdrop&gt;
-    &lt;MicaBackdrop Kind="BaseAlt" /&gt;
-&lt;/Window.SystemBackdrop&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample1_cs.txt"
+                              XamlSource="SystemBackdrops\SystemBackdropsSample1_xaml.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
-                    Inheritance: Object -> DependencyObject -> SystemBackdrop <LineBreak/> <LineBreak/>
+                    Inheritance: Object > DependencyObject > SystemBackdrop <LineBreak/> <LineBreak/>
                     
                       Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
                     You can apply Mica as your application backdrop to create a visual hierarchy, aiding productivity, by increasing clarity about which window is in focus.
@@ -54,18 +40,11 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="DesktopAcrylicBackdrop:"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample4.txt">
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Option 1 - implement Acrylic with Xaml.
-&lt;Window.SystemBackdrop&gt;
-    &lt;DesktopAcrylicBackdrop /&gt;
-&lt;/Window.SystemBackdrop&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample2_cs.txt"
+                              XamlSource="SystemBackdrops\SystemBackdropsSample2_xaml.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
-                    Inheritance: Object -> DependencyObject -> SystemBackdrop <LineBreak/> <LineBreak/>
+                    Inheritance: Object > DependencyObject > SystemBackdrop <LineBreak/> <LineBreak/>
                     
                       Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
                       Acrylic's most noticeable characteristic is its transparency. There are two acrylic blend types that change what's visible through the material:
@@ -76,10 +55,8 @@
             </StackPanel>
         </local:ControlExample>
 
-        <TextBlock Margin="0 40 0 0" FontSize="24">Backdrop controllers:</TextBlock>
-        
         <local:ControlExample HeaderText="MicaController:"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
         Inheritance: Object<LineBreak/> <LineBreak/>
@@ -92,7 +69,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="DesktopAcrylicController:"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSample4.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
         Inheritance: Object<LineBreak/> <LineBreak/>
@@ -104,13 +81,6 @@
             </StackPanel>
         </local:ControlExample>
 
-        <TextBlock Margin="0 40 0 0" FontSize="24">Helpers:</TextBlock>
-
-        <local:ControlExample HeaderText="SetTitleBarBackdrop:"
-                              CSharpSource="SystemBackdrops\SystemBackdropsTitleBarBackdrops.txt">
-            <TextBlock Text="This helper function changes the backdrop of the title bar for a window that has ExtendsContentIntoTitleBar set to false." TextWrapping="WrapWholeWords" />
-        </local:ControlExample>
-        
         <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper: "
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
             <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica or DesktopAcrylicController. This helper class improts and uses the underlying create function." TextWrapping="WrapWholeWords" />

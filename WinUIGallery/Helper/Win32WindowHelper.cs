@@ -89,30 +89,4 @@ namespace WinUIGallery.Helper
             public POINT ptMaxTrackSize;
         }
     }
-
-    public static class Win32HelperExtensions
-    {
-        public static void SetTitleBarBackdrop(this Window window, SystemBackdrop backdrop)
-        {
-            var backdropType = DwmSystemBackdropType.DWMSBT_AUTO;
-
-            if (backdrop is MicaBackdrop micaBackdrop)
-                backdropType = micaBackdrop.Kind == MicaKind.Base ? DwmSystemBackdropType.DWMSBT_MAINWINDOW : DwmSystemBackdropType.DWMSBT_TABBEDWINDOW;
-            else if (backdrop is DesktopAcrylicBackdrop)
-                backdropType = DwmSystemBackdropType.DWMSBT_TRANSIENTWINDOW;
-            else if (backdrop is null)
-                backdropType = DwmSystemBackdropType.DWMSBT_NONE;
-
-            var backdropTypeInt = (int)backdropType;
-            int hResult = DwmSetWindowAttribute(WindowNative.GetWindowHandle(window), DwmWindowAttribute.DWMWA_SYSTEMBACKDROP_TYPE, ref backdropTypeInt, sizeof(DwmSystemBackdropType));
-            ExceptionHelpers.ThrowExceptionForHR(hResult);
-        }
-
-        public static void SetTitleBarTheme(this Window window, ElementTheme theme = ElementTheme.Default)
-        {
-            int darkMode = (theme == ElementTheme.Default ? ((FrameworkElement)window.Content).ActualTheme : theme) == ElementTheme.Dark ? 1 : 0;
-            int hResult = DwmSetWindowAttribute(WindowNative.GetWindowHandle(window), DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref darkMode, sizeof(int));
-            ExceptionHelpers.ThrowExceptionForHR(hResult);
-        }
-    }
 }

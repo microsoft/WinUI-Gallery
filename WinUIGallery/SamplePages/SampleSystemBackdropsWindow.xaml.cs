@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices; // For DllImport
 using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
@@ -14,20 +12,24 @@ namespace WinUIGallery.SamplePages
 {
     public sealed partial class SampleSystemBackdropsWindow : Window
     {
+        public BackdropType[] AllowedBackdrops;
+        WindowsSystemDispatcherQueueHelper wsdqHelper;
+        BackdropType currentBackdrop;
+        MicaController micaController;
+        DesktopAcrylicController acrylicController;
+        SystemBackdropConfiguration configurationSource;
+
         public SampleSystemBackdropsWindow()
         {
             InitializeComponent();
+            AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
+            ExtendsContentIntoTitleBar = true;
             ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
             wsdqHelper = new WindowsSystemDispatcherQueueHelper();
             wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
 
-            AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
-            this.SetTitleBarTheme();
-            SetBackdrop(BackdropType.Mica);
-
-            ThemeComboBox.SelectedIndex = 0;
+            themeComboBox.SelectedIndex = 0;
         }
-
 
         public enum BackdropType
         {
@@ -37,13 +39,6 @@ namespace WinUIGallery.SamplePages
             Acrylic,
             AcrylicThin
         }
-
-        WindowsSystemDispatcherQueueHelper wsdqHelper;
-        BackdropType currentBackdrop;
-        public BackdropType[] AllowedBackdrops;
-        MicaController micaController;
-        DesktopAcrylicController acrylicController;
-        SystemBackdropConfiguration configurationSource;
 
         public void SetBackdrop(BackdropType type)
         {
@@ -55,6 +50,8 @@ namespace WinUIGallery.SamplePages
             //       call RemoveSystemBackdropTarget() on the old controller and then setup the new
             //       controller, reusing any existing m_configurationSource and Activated/Closed
             //       event handlers.
+
+            //Reset the backdrop
             currentBackdrop = BackdropType.None;
             tbCurrentBackdrop.Text = "None";
             tbChangeStatus.Text = "";
@@ -65,11 +62,7 @@ namespace WinUIGallery.SamplePages
             acrylicController = null;
             configurationSource = null;
 
-            if (type == BackdropType.None)
-            {
-                micaController?.RemoveAllSystemBackdropTargets();
-                acrylicController?.RemoveAllSystemBackdropTargets();
-            }
+            //Set the backdrop
             if (type == BackdropType.Mica)
             {
                 if (TrySetMicaBackdrop(false))
@@ -124,26 +117,11 @@ namespace WinUIGallery.SamplePages
                     tbChangeStatus.Text += "  Acrylic Thin isn't supported. Switching to default color.";
                 }
             }
-            if (type == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
-            }
-            else
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
-            }
 
-            SystemBackdrop backdrop = currentBackdrop switch
-            {
-                BackdropType.Mica => new MicaBackdrop(),
-                BackdropType.MicaAlt => new MicaBackdrop() { Kind = MicaKind.BaseAlt },
-                BackdropType.Acrylic => new DesktopAcrylicBackdrop(),
-                BackdropType.AcrylicThin => new DesktopAcrylicBackdrop(),
-                _ => null
-            }; 
-            this.SetTitleBarBackdrop(backdrop);
+            //Fix the none backdrop
+            SetNoneBackdropBackground();
 
-            // announce visual change to automation
+            //Announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
         }
 
@@ -162,7 +140,6 @@ namespace WinUIGallery.SamplePages
                 SetConfigurationSourceTheme();
 
                 micaController = new MicaController();
-
                 micaController.Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base;
 
                 // Enable the system backdrop.
@@ -204,7 +181,8 @@ namespace WinUIGallery.SamplePages
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
-            configurationSource.IsInputActive = args.WindowActivationState != WindowActivationState.Deactivated;
+            if(configurationSource != null)
+                configurationSource.IsInputActive = args.WindowActivationState != WindowActivationState.Deactivated;
         }
 
         private void Window_Closed(object sender, WindowEventArgs args)
@@ -258,43 +236,27 @@ namespace WinUIGallery.SamplePages
 
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((FrameworkElement)Content).RequestedTheme = ThemeComboBox.SelectedIndex switch
+            ((FrameworkElement)Content).RequestedTheme = themeComboBox.SelectedIndex switch
             {
                 1 => ElementTheme.Light,
                 2 => ElementTheme.Dark,
                 _ => ElementTheme.Default
             };
-            this.SetTitleBarTheme();
 
-
-            if (currentBackdrop == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
-            }
-            else
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
-            }
+            SetNoneBackdropBackground();
         }
-        private void CustomTitleBarSwitch_Toggled(object sender, RoutedEventArgs e)
+
+        //Fixes the background color not changing when switching between themes.
+        void SetNoneBackdropBackground()
         {
-            ExtendsContentIntoTitleBar = CustomTitleBarSwitch.IsOn;
-            if (!ExtendsContentIntoTitleBar)
+            if (currentBackdrop == BackdropType.None && themeComboBox.SelectedIndex != 0)
             {
-                AppWindow.TitleBar.ResetToDefault();
-                SystemBackdrop backdrop = currentBackdrop switch
-                {
-                    BackdropType.Mica => new MicaBackdrop(),
-                    BackdropType.MicaAlt => new MicaBackdrop() { Kind = MicaKind.BaseAlt },
-                    BackdropType.Acrylic => new DesktopAcrylicBackdrop(),
-                    BackdropType.AcrylicThin => new DesktopAcrylicBackdrop(),
-                    _ => null
-                };
-                this.SetTitleBarBackdrop(backdrop);
-                this.SetTitleBarTheme();
+                ((Grid)Content).Background = new SolidColorBrush(themeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
             }
             else
-                AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+            {
+                ((Grid)Content).Background = new SolidColorBrush(Colors.Transparent);
+            }
         }
     }
 }

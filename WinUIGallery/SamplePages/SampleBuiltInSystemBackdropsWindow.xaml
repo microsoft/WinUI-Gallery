@@ -7,7 +7,34 @@
     mc:Ignorable="d"
     Title="SystemBackdrop sample window">
 
-    <ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+    Visibility="Collapsed"
+    x:Name="titleBar"
+    Grid.Column="1"
+    Margin="8,0,0,0"
+    VerticalAlignment="Stretch"
+    Canvas.ZIndex="1"
+    IsHitTestVisible="True">
+            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+                <Image
+            Width="18"
+            VerticalAlignment="Center"
+            Source="ms-appx:///Assets/Tiles/BadgeLogo.png" />
+                <TextBlock
+            x:Name="AppTitle"
+            Margin="12,0,0,0"
+            VerticalAlignment="Center"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind Title}" />
+            </StackPanel>
+        </Border>
+
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
@@ -23,7 +50,7 @@
                 Click="ChangeBackdropButton_Click"
                 Content="Change Backdrop" />
             <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
-            <ComboBox x:Name="ThemeComboBox"
+            <ComboBox x:Name="themeComboBox"
                   HorizontalAlignment="Stretch"
                   SelectionChanged="ThemeComboBox_SelectionChanged"
                   Header="Window theme:">
@@ -31,7 +58,6 @@
                 <ComboBoxItem Content="Light"/>
                 <ComboBoxItem Content="Dark"/>
             </ComboBox>
-            <ToggleSwitch x:Name="CustomTitleBarSwitch" Header="Custom title bar:" Toggled="CustomTitleBarSwitch_Toggled"/>
         </StackPanel>
-    </ScrollViewer>
+    </Grid>
 </Window>

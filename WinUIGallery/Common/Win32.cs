@@ -39,9 +39,6 @@ namespace WinUIGallery
         [DllImport("User32.dll", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("DwmApi.dll")]
-        public static extern int DwmSetWindowAttribute(nint hWnd, DwmWindowAttribute attribute, ref int value, int size);
-
 
         public static int SetWindowKeyHook(HookProc hookProc)
         {
@@ -78,21 +75,6 @@ namespace WinUIGallery
         internal enum WindowMessage : int
         {
             WM_GETMINMAXINFO = 0x0024,
-        }
-
-        internal enum DwmWindowAttribute : int
-        {
-            DWMWA_USE_IMMERSIVE_DARK_MODE = 20, //Dark mode
-            DWMWA_SYSTEMBACKDROP_TYPE = 38 //Title bar backdrop
-        }
-
-        internal enum DwmSystemBackdropType : int
-        {
-            DWMSBT_AUTO = 0, //Default
-            DWMSBT_NONE = 1, //None
-            DWMSBT_MAINWINDOW = 2, //Mica
-            DWMSBT_TRANSIENTWINDOW = 3, //Acrylic thin
-            DWMSBT_TABBEDWINDOW = 4, //Mica Alt
         }
     }
 }

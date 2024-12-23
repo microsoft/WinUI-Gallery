@@ -1,0 +1,9 @@
+<!-- Option 1 - Implement Mica with Xaml. -->
+<Window.SystemBackdrop>
+    <MicaBackdrop/>
+</Window.SystemBackdrop>
+                    
+<!-- Option 1.5 Implement Mica Alt with Xaml. -->
+<Window.SystemBackdrop>
+    <MicaBackdrop Kind="BaseAlt"/>
+</Window.SystemBackdrop>

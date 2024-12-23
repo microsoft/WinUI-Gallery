@@ -1,0 +1,14 @@
+// Option 2 - Implement Mica with c#.
+bool TrySetMicaBackdrop(bool useMicaAlt)
+{
+    if (SystemBackdrops.MicaController.IsSupported())
+    {
+        MicaBackdrop micaBackdrop = new MicaBackdrop();
+        micaBackdrop.Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base;
+        SystemBackdrop = micaBackdrop;
+
+        return true; // Succeeded.
+    }
+
+    return false; // Mica is not supported on this system.
+}

@@ -1,0 +1,4 @@
+<!-- Option 1 - implement Acrylic with Xaml. -->
+<Window.SystemBackdrop>
+    <DesktopAcrylicBackdrop/>
+<Window.SystemBackdrop>

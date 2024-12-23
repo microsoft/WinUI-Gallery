@@ -17,10 +17,10 @@ namespace WinUIGallery.SamplePages
         {
             InitializeComponent();
             AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
+            ExtendsContentIntoTitleBar = true;
+            themeComboBox.SelectedIndex = 0;
+
             ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
-            this.SetTitleBarTheme();
-            SetBackdrop(BackdropType.Mica);
-            ThemeComboBox.SelectedIndex = 0;
         }
 
         public enum BackdropType
@@ -39,14 +39,16 @@ namespace WinUIGallery.SamplePages
             //       common pattern of an app simply choosing one controller type which it sets at
             //       startup. If an app wants to toggle between Mica and Acrylic it could simply
             //       call RemoveSystemBackdropTarget() on the old controller and then setup the new
-            //       controller, reusing any existing m_configurationSource and Activated/Closed
+            //       controller, reusing any existing configurationSource and Activated/Closed
             //       event handlers.
 
+            //Reset the backdrop
             currentBackdrop = BackdropType.None;
             tbCurrentBackdrop.Text = "None";
             tbChangeStatus.Text = "";
             SystemBackdrop = null;
 
+            //Set the backdrop
             if (type == BackdropType.Mica)
             {
                 if (TrySetMicaBackdrop(false))
@@ -88,16 +90,9 @@ namespace WinUIGallery.SamplePages
                     tbChangeStatus.Text += "  Acrylic isn't supported. Switching to default color.";
                 }
             }
-            if (type == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
-            }
-            else
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
-            }
 
-            this.SetTitleBarBackdrop(SystemBackdrop);
+            //Fix the none backdrop
+            SetNoneBackdropBackground();
 
             // Announce visual change to automation.
             UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
@@ -147,35 +142,23 @@ namespace WinUIGallery.SamplePages
 
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((FrameworkElement)Content).RequestedTheme = ThemeComboBox.SelectedIndex switch
+            ((FrameworkElement)Content).RequestedTheme = themeComboBox.SelectedIndex switch
             {
                 1 => ElementTheme.Light,
                 2 => ElementTheme.Dark,
                 _ => ElementTheme.Default
             };
-            this.SetTitleBarTheme();
 
-            if (currentBackdrop == BackdropType.None && ThemeComboBox.SelectedIndex != 0)
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(ThemeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
-            }
-            else
-            {
-                ((ScrollViewer)Content).Background = new SolidColorBrush(Colors.Transparent);
-            }
+            SetNoneBackdropBackground();
         }
 
-        private void CustomTitleBarSwitch_Toggled(object sender, RoutedEventArgs e)
+        //Fixes the background color not changing when switching between themes.
+        void SetNoneBackdropBackground()
         {
-            ExtendsContentIntoTitleBar = CustomTitleBarSwitch.IsOn;
-            if (!ExtendsContentIntoTitleBar)
-            {
-                AppWindow.TitleBar.ResetToDefault();
-                this.SetTitleBarBackdrop(SystemBackdrop);
-                this.SetTitleBarTheme();
-            }
+            if (currentBackdrop == BackdropType.None && themeComboBox.SelectedIndex != 0)
+                ((Grid)Content).Background = new SolidColorBrush(themeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
             else
-                AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+                ((Grid)Content).Background = new SolidColorBrush(Colors.Transparent);
         }
     }
 }
