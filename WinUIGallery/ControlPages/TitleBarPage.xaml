@@ -34,9 +34,9 @@
             </TextBlock>
 
         </InfoBar>
-        
 
-        
+
+
         <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>
@@ -160,10 +160,10 @@
                         WinUI custom titlebar now allows setting custom height for the titlebar. This can be achieved by setting the PreferredHeightOption property of the titlebar.
                     </TextBlock>
                     <InfoBar IsOpen="true" IsClosable="false" Severity="Warning">
-                            <TextBlock>
+                        <TextBlock>
                                 This option will be invalid when the style of titlebar is reset to system titlebar!
-                            </TextBlock>
-                        </InfoBar>
+                        </TextBlock>
+                    </InfoBar>
                     <StackPanel>
                         <ComboBox x:Name="titlebarHeight" PlaceholderText="Set titlebar height" SelectionChanged="TitleBarHeightComboBox_SelectionChanged">
                             <ComboBoxItem Content="Collapsed" Tag="Collapsed"/>
