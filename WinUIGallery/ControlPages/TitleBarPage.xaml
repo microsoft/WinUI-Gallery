@@ -152,6 +152,28 @@
             </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+        <local:ControlExample HeaderText="Titlebar Customizations : Titlebar height"
+                              CSharpSource="Window\TitleBar\TitleBarSample4.txt">
+            <local:ControlExample.Example>
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <TextBlock TextWrapping="WrapWholeWords">
+                        WinUI custom titlebar now allows setting custom height for the titlebar. This can be achieved by setting the PreferredHeightOption property of the titlebar.
+                    </TextBlock>
+                    <StackPanel Orientation="Vertical" Spacing="10">
+                        <InfoBar IsOpen="true" IsClosable="false" Severity="Warning">
+                            <TextBlock>
+                                This option will be invalid when the style of titlebar is reset to system titlebar!
+                            </TextBlock>
+                        </InfoBar>
+                        <ComboBox x:Name="titlebarHeight" PlaceholderText="Set titlebar height" SelectionChanged="TitleBarHeightComboBox_SelectionChanged">
+                            <ComboBoxItem Content="Collapsed" Tag="Collapsed"/>
+                            <ComboBoxItem Content="Standard" Tag="Standard"/>
+                            <ComboBoxItem Content="Tall" Tag="Tall"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+        </local:ControlExample>
         <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
                               CSharpSource="Window\TitleBar\TitleBarSample3.txt">
             <local:ControlExample.Example>

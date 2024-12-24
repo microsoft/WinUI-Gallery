@@ -209,6 +209,24 @@ namespace WinUIGallery.ControlPages
             SetClickThruRegions(rectArr);
         }
 
+        private void TitleBarHeightComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedHeight = ((ComboBoxItem)titlebarHeight.SelectedItem)?.Tag?.ToString();
+            var window = WindowHelper.GetWindowForElement(this);
+
+            if (selectedHeight != null && window.ExtendsContentIntoTitleBar)
+            {
+                window.AppWindow.TitleBar.PreferredHeightOption = selectedHeight switch
+                {
+                    "Collapsed" => TitleBarHeightOption.Collapsed,
+                    "Standard" => TitleBarHeightOption.Standard,
+                    "Tall" => TitleBarHeightOption.Tall,
+                    // This case will never be reached
+                    _ => throw new InvalidOperationException("Unreachable code reached in string pattern matching.")
+                };
+            }
+        }
+
         private void AddInteractiveElements_Click(object sender, RoutedEventArgs e)
         {
             var txtBoxNonClientArea = UIHelper.FindElementByName(sender as UIElement, "AppTitleBarTextBox") as FrameworkElement;
