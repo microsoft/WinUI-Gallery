@@ -1,5 +1,5 @@
 ﻿// C# code to set titlebar height
-// Please note that the AppWindowTitleBar.ExtendsContentIntoTitleBar property must be true
+// Please note that the ExtendsContentIntoTitleBar property must be true
 // before you set the PreferredHeightOption property,
 // or an exception will be thrown.
 if (window.AppWindow.TitleBar.ExtendsContentIntoTitleBar)
