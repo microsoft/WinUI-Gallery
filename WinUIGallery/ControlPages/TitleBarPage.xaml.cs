@@ -211,18 +211,17 @@ namespace WinUIGallery.ControlPages
 
         private void TitleBarHeightComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedHeight = ((ComboBoxItem)titlebarHeight.SelectedItem)?.Tag?.ToString();
+            var selectedHeight = titlebarHeight.SelectedItem.ToString();
             var window = WindowHelper.GetWindowForElement(this);
 
-            if (selectedHeight != null && window.ExtendsContentIntoTitleBar)
+            if (selectedHeight != null && window != null && window.ExtendsContentIntoTitleBar)
             {
                 window.AppWindow.TitleBar.PreferredHeightOption = selectedHeight switch
                 {
-                    "Collapsed" => TitleBarHeightOption.Collapsed,
-                    "Standard" => TitleBarHeightOption.Standard,
                     "Tall" => TitleBarHeightOption.Tall,
-                    // This case will never be reached
-                    _ => throw new InvalidOperationException("Unreachable code reached in string pattern matching.")
+                    "Standard" => TitleBarHeightOption.Standard,
+                    "Collapsed" => TitleBarHeightOption.Collapsed,
+                    _ => TitleBarHeightOption.Tall
                 };
             }
         }
