@@ -24,7 +24,7 @@
             },
             {
               "Title": "WinUI Theme Resources (GitHub)",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/src/controls/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ]
         },
