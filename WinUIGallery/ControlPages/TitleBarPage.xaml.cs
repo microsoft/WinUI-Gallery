@@ -216,13 +216,7 @@ namespace WinUIGallery.ControlPages
 
             if (selectedHeight != null && window != null && window.ExtendsContentIntoTitleBar)
             {
-                window.AppWindow.TitleBar.PreferredHeightOption = selectedHeight switch
-                {
-                    "Tall" => TitleBarHeightOption.Tall,
-                    "Standard" => TitleBarHeightOption.Standard,
-                    "Collapsed" => TitleBarHeightOption.Collapsed,
-                    _ => TitleBarHeightOption.Tall
-                };
+                window.AppWindow.TitleBar.PreferredHeightOption = App.GetEnum<TitleBarHeightOption>(selectedHeight);
             }
         }
 
