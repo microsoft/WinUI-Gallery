@@ -1,20 +1,17 @@
-﻿<Page
-    x:Class="YourNamespace.YourPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:YourNamespace">
+﻿<Page...
+    xmlns:c="using:YourNamespace">
 
     <Page.Resources>
         <!-- Declare the converter -->
-        <local:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <c:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter" />
     </Page.Resources>
 
-    <StackPanel>
-        <!-- CheckBox to toggle visibility of Rectangle -->
-        <CheckBox x:Name="ToggleCheckBox" Content="Show Rectangle" />
+    <StackPanel Spacing="8">
+        <!-- Input TextBox -->
+        <TextBox x:Name="InputTextBox" Header="Enter Text:" Width="300" />
 
-        <!-- Rectangle whose Visibility is controlled by the CheckBox -->
-        <Rectangle Width="100" Height="100" Fill="Red" 
-                   Visibility="{Binding IsChecked, ElementName=ToggleCheckBox, Converter={StaticResource BoolToVisibility}}" />
+        <!-- TextBlock Visibility Depends on Input Text -->
+        <TextBlock Text="The input is not empty."
+                    Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
     </StackPanel>
 </Page>

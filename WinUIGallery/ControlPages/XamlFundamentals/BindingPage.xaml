@@ -5,8 +5,13 @@
       xmlns:core="using:WinUIGallery"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:WinUIGallery.ControlPages"
+      xmlns:c="using:WinUIGallery.Common"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
+
+    <Page.Resources>
+        <c:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter" />
+    </Page.Resources>
 
     <StackPanel>
         <StackPanel Spacing="12"
@@ -116,13 +121,11 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
                              CSharpSource="Binding\BindingSample4_csharp.txt"
                              XamlSource="Binding\BindingSample4_xaml.txt">
             <core:ControlExample.Example>
-                <StackPanel>
-                    <CheckBox x:Name="ToggleCheckBox"
-                              Content="Show rectangle" />
-                    <Rectangle Width="100"
-                               Height="100"
-                               Fill="{ThemeResource SystemFillColorAttentionBrush}"
-                               Visibility="{Binding IsChecked, ElementName=ToggleCheckBox}" />
+                <StackPanel Spacing="8">
+                    <TextBox x:Name="InputTextBox" Header="Enter Text:" Width="300" />
+
+                    <TextBlock Text="The input is not empty."
+                               Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
                 </StackPanel>
             </core:ControlExample.Example>
         </core:ControlExample>
