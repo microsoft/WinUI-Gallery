@@ -283,20 +283,20 @@
           "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
           "Docs": [
             {
-              "Title": "ControlTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
-            },
-            {
               "Title": "XAML Control Templates",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
             },
             {
-              "Title": "ItemsPanelTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
+              "Title": "ControlTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
             },
             {
               "Title": "DataTemplate - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
+            },
+            {
+              "Title": "ItemsPanelTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
             }
           ]
         }
