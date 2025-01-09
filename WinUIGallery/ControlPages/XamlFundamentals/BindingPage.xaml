@@ -43,40 +43,65 @@
             </RichTextBlock>
         </StackPanel>
         
-        <core:ControlExample HeaderText="Binding between controls">
+        <core:ControlExample HeaderText="Binding between controls"
+                             XamlSource="Binding\BindingSample1_xaml.txt">
             <core:ControlExample.Example>
-                <StackPanel Spacing="8">
-                    <TextBox x:Name="SourceTextBox"
-                             Width="200"
-                             HorizontalAlignment="Left"
-                             PlaceholderText="Enter text here" />
-                    <TextBox x:Name="TargetTextBox"
-                             Width="200"
-                             HorizontalAlignment="Left"
-                             PlaceholderText="Mirrors above text"
-                             Text="{x:Bind SourceTextBox.Text, Mode=OneWay}" />
-                    <RichTextBlock x:Name="BindingModeDescription" />
+                <StackPanel Spacing="12">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Spacing="8"
+                                    Grid.Column="0">
+                            <TextBlock Text="OneWay binding"
+                                       FontWeight="SemiBold" />
+                            <TextBox x:Name="SourceTextBoxOneWay"
+                                     Width="200"
+                                     HorizontalAlignment="Left"
+                                     PlaceholderText="Enter text here" />
+                            <TextBox x:Name="TargetTextBoxOneWay"
+                                     Width="200"
+                                     HorizontalAlignment="Left"
+                                     PlaceholderText="Mirrors above text"
+                                     Text="{x:Bind SourceTextBoxOneWay.Text, Mode=OneWay}" />
+                        </StackPanel>
+
+                        <AppBarSeparator Grid.Column="1" />
+
+                        <StackPanel Spacing="8"
+                                    Grid.Column="2">
+                            <TextBlock Text="TwoWay binding"
+                                       FontWeight="SemiBold" />
+                            <TextBox x:Name="SourceTextBoxTwoWay"
+                                     Width="200"
+                                     HorizontalAlignment="Left"
+                                     PlaceholderText="Enter text here" />
+                            <TextBox x:Name="TargetTextBoxTwoWay"
+                                     Width="200"
+                                     HorizontalAlignment="Left"
+                                     PlaceholderText="Mirrors and edits above text"
+                                     Text="{x:Bind SourceTextBoxTwoWay.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </Grid>
+                    <RichTextBlock>
+                        <Paragraph>
+                            <Run Text="In" />
+                            <Run Text="OneWay"
+                                 FontWeight="Semibold" />
+                            <Run Text="binding mode, changes in the source (SourceTextBox) are reflected in the target, but not vice versa." />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="In" />
+                            <Run Text="TwoWay"
+                                 FontWeight="Semibold" />
+                            <Run Text="binding mode, changes in either box update the other." />
+                        </Paragraph>
+                    </RichTextBlock>
                 </StackPanel>
             </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;TextBox x:Name="SourceTextBox" Width="200" PlaceholderText="Enter text here" /&gt;
-&lt;TextBox Width="200" Text="{x:Bind SourceTextBox.Text, Mode=$(BindingMode)}" PlaceholderText="Mirrors above text" /&gt;
-        </x:String>
-            </core:ControlExample.Xaml>
-            <core:ControlExample.Options>
-                <RadioButtons x:Name="BindingModeGroup"
-                              Header="Select binding mode"
-                              SelectedIndex="0"
-                              SelectionChanged="BindingModeGroup_SelectionChanged">
-                    <x:String>OneWay</x:String>
-                    <x:String>TwoWay</x:String>
-                </RadioButtons>
-            </core:ControlExample.Options>
-            <core:ControlExample.Substitutions>
-                <core:ControlExampleSubstitution Key="BindingMode"
-                                                 Value="{x:Bind BindingModeGroup.SelectedItem, Mode=OneWay}" />
-            </core:ControlExample.Substitutions>
         </core:ControlExample>
 
         <core:ControlExample HeaderText="Binding to a property in code-behind">

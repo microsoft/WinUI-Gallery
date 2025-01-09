@@ -37,62 +37,6 @@ namespace WinUIGallery.ControlPages
             DataContext = ViewModel;
         }
 
-        private void BindingModeGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is RadioButtons radioButtons)
-            {
-                switch (radioButtons.SelectedIndex)
-                {
-                    case 0:
-                        UpdateBindingAndDescription(BindingMode.OneWay);
-                        break;
-                    case 1:
-                        UpdateBindingAndDescription(BindingMode.TwoWay);
-                        break;
-                }
-            }
-        }
-
-        private void UpdateBindingAndDescription(BindingMode bindingMode)
-        {
-            var binding = new Binding
-            {
-                Source = SourceTextBox,
-                Path = new PropertyPath("Text"),
-                Mode = bindingMode,
-            };
-            TargetTextBox.SetBinding(TextBox.TextProperty, binding);
-
-            BindingModeDescription.Blocks.Clear();
-            var paragraph = new Paragraph();
-            if (bindingMode == BindingMode.OneWay)
-            {
-                paragraph.Inlines.Add(new Run
-                {
-                    Text = "In ",
-                });
-                paragraph.Inlines.Add(new Run { Text = "OneWay", FontWeight = FontWeights.SemiBold });
-                paragraph.Inlines.Add(new Run
-                {
-                    Text = " binding mode, changes in the source (SourceTextBox) are reflected in the target, but not vice versa."
-                });
-            }
-            else if (bindingMode == BindingMode.TwoWay)
-            {
-                paragraph.Inlines.Add(new Run
-                {
-                    Text = "In ",
-                });
-                paragraph.Inlines.Add(new Run { Text = "TwoWay", FontWeight = FontWeights.SemiBold });
-                paragraph.Inlines.Add(new Run
-                {
-                    Text = " binding mode, changes in either box update the other."
-                });
-            }
-
-            BindingModeDescription.Blocks.Add(paragraph);
-        }
-
         public string FormatDate(DateTimeOffset? date)
         {
             if (date.HasValue)
