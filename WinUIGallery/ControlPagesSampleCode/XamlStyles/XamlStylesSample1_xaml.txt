@@ -1,13 +1,15 @@
-﻿<StackPanel Spacing="4">
+﻿<StackPanel Spacing="8">
     <StackPanel.Resources>
-        <Style TargetType="Button" x:Key="CustomButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}">
-            <Setter Property="Background" Value="DarkBlue" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Padding" Value="8,4" />
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}" />
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="12,4" />
+            <Setter Property="CornerRadius" Value="4" />
         </Style>
     </StackPanel.Resources>
     <Button Content="Default button" />
     <Button Content="Styled button" Style="{StaticResource CustomButtonStyle}" />
-    <Button Content="Styled button (overridden)" Style="{StaticResource CustomButtonStyle}" Background="DarkCyan" />
+    <Button Content="Styled button (overridden)" Style="{StaticResource CustomButtonStyle}" 
+            Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}" />
 </StackPanel>
