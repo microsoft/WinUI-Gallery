@@ -201,11 +201,6 @@
           "UniqueId": "XamlResources",
           "Title": "Resources",
           "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
           "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
           "Docs": [
@@ -249,12 +244,6 @@
           "UniqueId": "Binding",
           "Title": "Binding",
           "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "BindingBase"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Data",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
           "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
           "Docs": [

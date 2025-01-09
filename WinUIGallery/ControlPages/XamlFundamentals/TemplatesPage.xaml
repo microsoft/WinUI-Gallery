@@ -76,7 +76,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate" XamlSource="Templates\TemplatesSample2_xaml.txt">
+        <local:ControlExample HeaderText="Customize a ComboBox's ItemTemplate using a DataTemplate" XamlSource="Templates\TemplatesSample2_xaml.txt">
             <local:ControlExample.Example>
                 <Grid>
                     <Grid.Resources>
