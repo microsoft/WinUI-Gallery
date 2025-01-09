@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Color x:Key="PrimaryColor">#FF5733</Color>
+        <Color x:Key="PrimaryColor">#DD5733</Color>
         <SolidColorBrush x:Key="HighlightBrush" Color="#1464A2" />
         <SolidColorBrush x:Key="FontColor" Color="White" />
 
@@ -66,22 +66,26 @@
 
         <local:ControlExample CSharpSource="XamlResources\XamlResourcesSample1_csharp.txt" XamlSource="XamlResources\XamlResourcesSample1_xaml.txt">
             <local:ControlExample.Example>
-                <StackPanel Spacing="8">
-                    <Grid Background="{StaticResource PrimaryColor}">
-                        <TextBlock Foreground="White" Text="Using application-level resources" />
-                    </Grid>
+                <!-- StackPanel using the application-level resource 'PrimaryColor' -->
+                <StackPanel Background="{StaticResource PrimaryColor}" Padding="8">
+                    <TextBlock Text="Using application-level resources" Foreground="White" FontSize="24" />
 
-                    <Grid Background="{StaticResource HighlightBrush}">
-                        <TextBlock Foreground="{StaticResource FontColor}" Text="Using page-level resources" />
-                    </Grid>
+                    <!-- StackPanel using the page-level resource 'HighlightBrush' -->
+                    <StackPanel Background="{StaticResource HighlightBrush}" Padding="8" Margin="8">
+                        <TextBlock Text="Using page-level resources" Foreground="{StaticResource FontColor}" FontSize="18" />
 
-                    <Grid x:Name="newGrid">
-                        <Grid.Resources>
-                            <x:Double x:Key="HeaderFontSize">14</x:Double>
-                            <x:String x:Key="Description">Using control-level resources</x:String>
-                        </Grid.Resources>
-                        <TextBlock FontSize="{StaticResource HeaderFontSize}" Text="{StaticResource Description}" />
-                    </Grid>
+                        <!-- StackPanel with control-level resources defined within its own Resources -->
+                        <StackPanel Padding="8" Margin="8">
+                            <StackPanel.Resources>
+                                <!-- Define control-level resources for font size and text -->
+                                <Color x:Key="BackgroundColor">#E80088</Color>
+                                <x:String x:Key="Description">Using control-level resources</x:String>
+                            </StackPanel.Resources>
+                            <Grid Background="{StaticResource BackgroundColor}" Padding="8">
+                                <TextBlock Text="{StaticResource Description}" Foreground="White"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
