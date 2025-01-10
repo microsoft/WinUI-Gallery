@@ -9,8 +9,8 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Color x:Key="PrimaryColor">#DD5733</Color>
-        <SolidColorBrush x:Key="HighlightBrush" Color="#1464A2" />
+        <Color x:Key="PrimaryColor">#0078D4</Color>
+        <SolidColorBrush x:Key="HighlightBrush" Color="#A94DC1" />
         <SolidColorBrush x:Key="FontColor" Color="White" />
 
         <x:Double x:Key="HeaderFontSize">24</x:Double>
@@ -78,7 +78,7 @@
                         <StackPanel Padding="8" Margin="8">
                             <StackPanel.Resources>
                                 <!-- Define control-level resources for font size and text -->
-                                <Color x:Key="BackgroundColor">#E80088</Color>
+                                <Color x:Key="BackgroundColor">#E2241A</Color>
                                 <x:String x:Key="Description">Using control-level resources</x:String>
                             </StackPanel.Resources>
                             <Grid Background="{StaticResource BackgroundColor}" Padding="8">
