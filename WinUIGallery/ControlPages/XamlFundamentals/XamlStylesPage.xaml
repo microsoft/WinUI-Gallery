@@ -35,12 +35,9 @@
             <local:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <StackPanel.Resources>
-                        <Style x:Key="CustomButtonStyle" TargetType="Button">
+                        <Style x:Key="CustomButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
                             <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}" />
-                            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-                            <Setter Property="FontSize" Value="14" />
-                            <Setter Property="Padding" Value="12,4" />
-                            <Setter Property="CornerRadius" Value="4" />
+                            <Setter Property="MinWidth" Value="200" />
                         </Style>
                     </StackPanel.Resources>
                     <Button Content="Default button" />
@@ -64,43 +61,6 @@
 
                     <TextBlock Text="This style is applied automatically!" />
                     <TextBlock Text="No need to set a key." />
-                </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
-        <local:ControlExample HeaderText="Using BasedOn property in XAML styles" XamlSource="XamlStyles\XamlStylesSample3_xaml.txt">
-            <local:ControlExample.Example>
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                    <StackPanel.Resources>
-                        <Style x:Key="BaseBorderStyle" TargetType="Border">
-                            <Setter Property="BorderThickness" Value="2" />
-                            <Setter Property="CornerRadius" Value="8" />
-                            <Setter Property="Background" Value="LightGray" />
-                            <Setter Property="BorderBrush" Value="DarkGray" />
-                        </Style>
-
-                        <Style
-                            x:Key="HighlightBorderStyle"
-                            BasedOn="{StaticResource BaseBorderStyle}"
-                            TargetType="Border">
-                            <Setter Property="Background" Value="Green" />
-                            <Setter Property="BorderBrush" Value="DarkGreen" />
-                        </Style>
-                    </StackPanel.Resources>
-
-                    <Border
-                        Width="100"
-                        Height="100"
-                        Style="{StaticResource BaseBorderStyle}">
-                        <Ellipse Fill="White" />
-                    </Border>
-
-                    <Border
-                        Width="100"
-                        Height="100"
-                        Style="{StaticResource HighlightBorderStyle}">
-                        <Ellipse Fill="White" />
-                    </Border>
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
