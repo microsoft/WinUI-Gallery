@@ -150,6 +150,7 @@
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
         <None Remove="Assets\Design\Dialog.light.png" />
+        <None Remove="Assets\folder.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
@@ -287,6 +288,9 @@
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
@@ -315,6 +319,7 @@
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
         <Content Include="Assets\Design\Dialog.light.png" />
+        <Content Include="Assets\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
         <Content Include="Assets\Design\Geometry.light.png" />
@@ -459,6 +464,9 @@
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
     </ItemGroup>
