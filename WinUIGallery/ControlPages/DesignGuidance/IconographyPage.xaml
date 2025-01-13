@@ -186,20 +186,16 @@
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}">
                     <StackPanel>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Style="{StaticResource SubtitleTextBlockStyle}"
-                            Text="{Binding SelectedItem.Name, Mode=OneWay}" />
                         <FontIcon
-                            Margin="0,12,0,12"
+                            Margin="0,12,0,24"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
-
-                        <TextBlock Text="Unicode point" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Code, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                        
+                        <TextBlock Text="Icon name" />
+                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Text glyph" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Code glyph" />
