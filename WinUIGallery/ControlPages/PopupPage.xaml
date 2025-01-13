@@ -13,12 +13,9 @@
             <local:ControlExample.Example>
                 <Grid x:Name="Output"
                       HorizontalAlignment="Left"
-                      VerticalAlignment="Top"
-                      >
-                    <StackPanel>
-                        <Button Content="Show Popup (using Offset)"
-                                Click="ShowPopupOffsetClicked" />
-                    </StackPanel>
+                      VerticalAlignment="Top">
+                    <Button Content="Show Popup (using Offset)"
+                            Click="ShowPopupOffsetClicked" />
                     <Popup VerticalOffset="{x:Bind VerticalOffset.Value , Mode=OneWay}"
                            HorizontalOffset="{x:Bind HorizontalOffset.Value , Mode=OneWay}"
                            IsLightDismissEnabled="{x:Bind IsLightDismissEnabledToggleSwitch.IsOn , Mode=OneWay}"
@@ -88,9 +85,7 @@ private void ClosePopupClicked(object sender, RoutedEventArgs e)
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" &gt;
-    &lt;StackPanel&gt;
-        &lt;Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" /&gt;
-    &lt;/StackPanel&gt;
+    &lt;Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" /&gt;
     &lt;Popup x:Name="StandardPopup" VerticalOffset="$(VerticalOffset) HorizontalOffset="$(HorizontalOffset)" IsLightDismissEnabled="$(IsLightDismissEnabled)"&gt;
         &lt;Border Padding="20" CornerRadius="8" Width="200" Height="150"
                 Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"&gt;
