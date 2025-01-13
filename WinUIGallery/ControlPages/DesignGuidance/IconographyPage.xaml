@@ -196,8 +196,6 @@
 
                         <TextBlock Text="Icon name" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="Unicode point" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Code, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Text glyph" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Code glyph" />
