@@ -555,6 +555,11 @@
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
     </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\PopupPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
