@@ -144,5 +144,13 @@ namespace WinUIGallery.ControlPages
 
             }
         }
+
+        private void TagButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as Button).Content is string tag)
+            {
+                IconsAutoSuggestBox.Text = tag;
+            }
+        }
     }
 }

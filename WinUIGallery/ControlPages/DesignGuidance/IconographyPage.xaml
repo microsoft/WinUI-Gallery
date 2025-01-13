@@ -16,6 +16,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
@@ -36,7 +37,7 @@
             <Setter Property="SampleType" Value="Inline" />
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0,4,0,16" />
+            <Setter Property="Margin" Value="0,4,0,4" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
@@ -77,6 +78,9 @@
                 </Grid>
             </ItemContainer>
         </DataTemplate>
+
+        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToFalseConverter" EmptyValue="False" NotEmptyValue="True" />
+        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToTrueConverter" EmptyValue="True" NotEmptyValue="False" />
     </Page.Resources>
 
     <Grid HorizontalAlignment="Stretch" RowSpacing="8">
@@ -140,7 +144,7 @@
                 MinWidth="304"
                 MaxWidth="320"
                 HorizontalAlignment="Left"
-                PlaceholderText="Search icons"
+                PlaceholderText="Search icons by name, code, or tags"
                 QueryIcon="Find"
                 TextChanged="SearchTextBox_TextChanged" />
         </StackPanel>
@@ -187,15 +191,13 @@
                             Style="{StaticResource SubtitleTextBlockStyle}"
                             Text="{Binding SelectedItem.Name, Mode=OneWay}" />
                         <FontIcon
-                            Margin="0,12,0,32"
+                            Margin="0,12,0,12"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
 
-                        <TextBlock Text="Icon name" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Unicode point" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.Code, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="Text glyph" />
@@ -206,6 +208,27 @@
                         <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock Text="C#" />
                         <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                        <TextBlock Text="Tags" />
+                        <ItemsView
+                            x:Name="TagsItemsView"
+                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
+                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}"
+                            Margin="0,4,0,4">
+                            <ItemsView.Layout>
+                                <LinedFlowLayout LineSpacing="4" MinItemSpacing="4" />
+                            </ItemsView.Layout>
+                            <ItemsView.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <ItemContainer>
+                                        <Button Content="{x:Bind Mode=OneWay}" Click="TagButton_Click" />
+                                    </ItemContainer>
+                                </DataTemplate>
+                            </ItemsView.ItemTemplate>
+                        </ItemsView>
+                        <TextBlock
+                            x:Name="NoTagsTextBlock"
+                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
+                            Text="No tags" />
 
                         <StackPanel Orientation="Vertical" Visibility="Collapsed">
                             <TextBlock
