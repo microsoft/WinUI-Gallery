@@ -14,7 +14,7 @@
                 <Grid x:Name="Output"
                       HorizontalAlignment="Left"
                       VerticalAlignment="Top"
-                      Grid.Row="1">
+                      >
                     <StackPanel>
                         <Button Content="Show Popup (using Offset)"
                                 Click="ShowPopupOffsetClicked" />
@@ -87,7 +87,7 @@ private void ClosePopupClicked(object sender, RoutedEventArgs e)
             </local:ControlExample.CSharp>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"&gt;
+&lt;Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" &gt;
     &lt;StackPanel&gt;
         &lt;Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" /&gt;
     &lt;/StackPanel&gt;
