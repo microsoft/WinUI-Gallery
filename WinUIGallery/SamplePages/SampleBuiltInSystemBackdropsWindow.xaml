@@ -38,17 +38,13 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Spacing="12">
-            <TextBlock HorizontalAlignment="Center">
-                <Run Text="Current backdrop: " />
-                <Run x:Name="tbCurrentBackdrop" FontWeight="SemiBold" />
-            </TextBlock>
+            Spacing="20">
             <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
             <ComboBox
                   x:Name="backdropComboBox"
                   HorizontalAlignment="Stretch"
                   SelectionChanged="BackdropComboBox_SelectionChanged"
-                  Header="Backdrop: ">
+                  Header="Current backdrop ">
                 <ComboBoxItem Content="Mica"/>
                 <ComboBoxItem Content="MicaAlt"/>
                 <ComboBoxItem Content="Acrylic"/>
@@ -57,7 +53,7 @@
             <ComboBox x:Name="themeComboBox"
                   HorizontalAlignment="Stretch"
                   SelectionChanged="ThemeComboBox_SelectionChanged"
-                  Header="Window theme:">
+                  Header="Window theme ">
                 <ComboBoxItem Content="Use system setting"/>
                 <ComboBoxItem Content="Light"/>
                 <ComboBoxItem Content="Dark"/>

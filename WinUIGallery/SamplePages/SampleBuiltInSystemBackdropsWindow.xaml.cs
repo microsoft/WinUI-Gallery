@@ -44,7 +44,6 @@ namespace WinUIGallery.SamplePages
 
             //Reset the backdrop
             currentBackdrop = BackdropType.None;
-            tbCurrentBackdrop.Text = "None (default theme color)";
             tbChangeStatus.Text = "";
             SystemBackdrop = null;
 
@@ -53,7 +52,6 @@ namespace WinUIGallery.SamplePages
             {
                 if (TrySetMicaBackdrop(false))
                 {
-                    tbCurrentBackdrop.Text = "Built-in Mica";
                     currentBackdrop = type;
                 }
                 else
@@ -67,7 +65,6 @@ namespace WinUIGallery.SamplePages
             {
                 if (TrySetMicaBackdrop(true))
                 {
-                    tbCurrentBackdrop.Text = "Built-in MicaAlt";
                     currentBackdrop = type;
                 }
                 else
@@ -81,7 +78,6 @@ namespace WinUIGallery.SamplePages
             {
                 if (TrySetAcrylicBackdrop())
                 {
-                    tbCurrentBackdrop.Text = "Built-in Acrylic";
                     currentBackdrop = type;
                 }
                 else
@@ -95,7 +91,7 @@ namespace WinUIGallery.SamplePages
             SetNoneBackdropBackground();
 
             // Announce visual change to automation.
-            UIHelper.AnnounceActionForAccessibility(backdropComboBox, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
+            UIHelper.AnnounceActionForAccessibility(backdropComboBox, $"Background changed to {currentBackdrop}", "BackgroundChangedNotificationActivityId");
         }
 
         bool TrySetMicaBackdrop(bool useMicaAlt)
