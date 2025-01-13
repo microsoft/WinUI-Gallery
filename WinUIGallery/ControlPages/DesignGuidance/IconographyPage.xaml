@@ -37,18 +37,18 @@
             <Setter Property="SampleType" Value="Inline" />
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0,4,0,4" />
+            <Setter Property="Margin" Value="0,0,0,8" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate">
             <ItemContainer
-                AutomationProperties.Name="{Binding Name}"
-                ToolTipService.ToolTip="{Binding Name}"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 Width="96"
                 Height="96"
-                Margin="4">
+                Margin="4"
+                AutomationProperties.Name="{Binding Name}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                ToolTipService.ToolTip="{Binding Name}">
                 <Grid>
                     <!--  Icon  -->
                     <Viewbox
@@ -79,8 +79,14 @@
             </ItemContainer>
         </DataTemplate>
 
-        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToFalseConverter" EmptyValue="False" NotEmptyValue="True" />
-        <converters:EmptyCollectionToObjectConverter x:Key="emptyCollectionToTrueConverter" EmptyValue="True" NotEmptyValue="False" />
+        <converters:EmptyCollectionToObjectConverter
+            x:Key="emptyCollectionToFalseConverter"
+            EmptyValue="False"
+            NotEmptyValue="True" />
+        <converters:EmptyCollectionToObjectConverter
+            x:Key="emptyCollectionToTrueConverter"
+            EmptyValue="True"
+            NotEmptyValue="False" />
     </Page.Resources>
 
     <Grid HorizontalAlignment="Stretch" RowSpacing="8">
@@ -94,23 +100,28 @@
 
         <toolkit:SettingsExpander
             Grid.Row="1"
-            Header="Instructions on how to use Segoe Fluent Icons"
             AutomationProperties.AccessibilityView="Raw"
+            Header="Instructions on how to use Segoe Fluent Icons"
             IsExpanded="False">
             <toolkit:SettingsExpander.Items>
-                <toolkit:SettingsCard Padding="16,8" ContentAlignment="Left" AutomationProperties.Name="How to get the font">
+                <toolkit:SettingsCard
+                    Padding="16,8"
+                    AutomationProperties.Name="How to get the font"
+                    ContentAlignment="Left">
                     <RichTextBlock TextWrapping="Wrap">
                         <Paragraph FontWeight="SemiBold">
                             How to get the font
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>                            .</Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
+                            .</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
-                <toolkit:SettingsCard Padding="16,8"
-                                      ContentAlignment="Left"
-                                      AutomationProperties.Name="How to use the font">
+                <toolkit:SettingsCard
+                    Padding="16,8"
+                    AutomationProperties.Name="How to use the font"
+                    ContentAlignment="Left">
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">
@@ -119,14 +130,15 @@
                             <Paragraph>
                                 If you don't specify a FontFamily,
                                 or you specify a FontFamily that is not available on the system at runtime,
-                                the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink> falls back to the default font family defined by the SymbolThemeFontFamily resource.
-                            </Paragraph>
+                                the<Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink>
+                                falls back to the default font family defined by the SymbolThemeFontFamily resource.</Paragraph>
                             <Paragraph>
                                 An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
                                 For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
                             </Paragraph>
                             <Paragraph>
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink> and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
+                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink>
+                                and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
                         </RichTextBlock>
                         <controls:SampleCodePresenter CodeSourceFile="Icons/FontIconSample2_xaml.txt" SampleType="XAML" />
                     </StackPanel>
@@ -169,8 +181,8 @@
                         MinWidth="100"
                         Margin="0,0,0,36"
                         HorizontalAlignment="Stretch"
-                        SelectionChanged="IconsItemsView_SelectionChanged"
                         ItemTemplate="{StaticResource IconTemplate}"
+                        SelectionChanged="IconsItemsView_SelectionChanged"
                         TabFocusNavigation="Once">
                         <ItemsView.Layout>
                             <UniformGridLayout Orientation="Horizontal" />
@@ -185,80 +197,58 @@
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     <StackPanel>
                         <FontIcon
-                            Margin="0,12,0,24"
+                            Margin="0,0,0,24"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            FontSize="{x:Bind (x:Double)FontsizeComboBox.SelectedValue, Mode=OneWay}"
+                            FontSize="48"
                             Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
-                        
-                        <TextBlock Text="Icon name" />
+
+                        <TextBlock FontWeight="SemiBold" Text="Icon name" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="Text glyph" />
+                        <TextBlock FontWeight="SemiBold" Text="Text glyph" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="Code glyph" />
+                        <TextBlock FontWeight="SemiBold" Text="Code glyph" />
                         <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="XAML" />
+                        <TextBlock FontWeight="SemiBold" Text="XAML" />
                         <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="C#" />
+                        <TextBlock FontWeight="SemiBold" Text="C#" />
                         <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock Text="Tags" />
-                        <ItemsView
-                            x:Name="TagsItemsView"
-                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
-                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}"
-                            Margin="0,4,0,4">
-                            <ItemsView.Layout>
-                                <LinedFlowLayout LineSpacing="4" MinItemSpacing="4" />
-                            </ItemsView.Layout>
-                            <ItemsView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <ItemContainer>
-                                        <Button Content="{x:Bind Mode=OneWay}" Click="TagButton_Click" />
-                                    </ItemContainer>
-                                </DataTemplate>
-                            </ItemsView.ItemTemplate>
-                        </ItemsView>
                         <TextBlock
-                            x:Name="NoTagsTextBlock"
-                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
-                            Text="No tags" />
-
-                        <StackPanel Orientation="Vertical" Visibility="Collapsed">
-                            <TextBlock
-                                Grid.Row="1"
-                                VerticalAlignment="Center"
-                                Text="Color" />
-                            <controls1:InlineColorPicker
-                                x:Name="IconColorPicker"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Color="Black" />
-
-                            <TextBlock
-                                Grid.Row="2"
-                                Padding="0,10,0,0"
-                                VerticalAlignment="Center"
-                                Text="FontSize" />
-                            <Grid
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Padding="0,10,0,0"
-                                ColumnSpacing="8">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <ComboBox
-                                    x:Name="FontsizeComboBox"
-                                    Width="100"
-                                    ItemsSource="{x:Bind FontSizes}"
-                                    SelectedIndex="3" />
-                            </Grid>
-                        </StackPanel>
+                            Margin="0,4,0,0"
+                            FontWeight="SemiBold"
+                            Text="Tags" />
                     </StackPanel>
+                    <ItemsRepeater
+                        x:Name="TagsItemsView"
+                        Grid.Row="1"
+                        Margin="0,4,0,4"
+                        x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
+                        ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}">
+                        <ItemsRepeater.Layout>
+                            <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Button
+                                    Padding="4,1,4,1"
+                                    Click="TagButton_Click"
+                                    Content="{x:Bind Mode=OneWay}"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                    <TextBlock
+                        x:Name="NoTagsTextBlock"
+                        Grid.Row="1"
+                        x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
+                        Text="No tags" />
                 </Grid>
             </Grid>
         </controls1:SampleThemeListener>
