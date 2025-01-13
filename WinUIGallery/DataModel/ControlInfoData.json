@@ -1763,7 +1763,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
           "Subtitle": "A UI element displaying temporary content over existing interface.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ContentDialog.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Popup.png",
           "Description": "The Popup Control allows your app to display temporary content above other UI elements. It can be used for lightweight interactions such as tooltips, notifications, or custom floating panels to enhance user workflows or highlight specific parts of the interface.",
           "IsNew": true,
           "Docs": [
