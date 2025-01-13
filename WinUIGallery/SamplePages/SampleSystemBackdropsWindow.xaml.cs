@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
+using WinUIGallery.DesktopWap.Helper;
 
 namespace WinUIGallery.SamplePages
 {
@@ -28,6 +29,13 @@ namespace WinUIGallery.SamplePages
             wsdqHelper = new WindowsSystemDispatcherQueueHelper();
             wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
 
+            Activated += (s, e) =>
+            {
+                foreach (BackdropType allowedBackdrop in AllowedBackdrops)
+                    backdropComboBox.Items.Add(allowedBackdrop);
+            };
+
+            backdropComboBox.SelectedIndex = 0;
             themeComboBox.SelectedIndex = 0;
         }
 
@@ -53,7 +61,7 @@ namespace WinUIGallery.SamplePages
 
             //Reset the backdrop
             currentBackdrop = BackdropType.None;
-            tbCurrentBackdrop.Text = "None";
+            tbCurrentBackdrop.Text = "None (default theme color)";
             tbChangeStatus.Text = "";
 
             micaController?.Dispose();
@@ -122,7 +130,7 @@ namespace WinUIGallery.SamplePages
             SetNoneBackdropBackground();
 
             //Announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(btnChangeBackdrop, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
+            UIHelper.AnnounceActionForAccessibility(backdropComboBox, $"Background changed to {tbCurrentBackdrop.Text}", "BackgroundChangedNotificationActivityId");
         }
 
         bool TrySetMicaBackdrop(bool useMicaAlt)
@@ -213,25 +221,9 @@ namespace WinUIGallery.SamplePages
             configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
         }
 
-        void ChangeBackdropButton_Click(object sender, RoutedEventArgs e)
+        private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var newType = currentBackdrop switch
-            {
-                BackdropType.Mica => BackdropType.MicaAlt,
-                BackdropType.MicaAlt => BackdropType.Acrylic,
-                BackdropType.Acrylic => BackdropType.AcrylicThin,
-                BackdropType.AcrylicThin => BackdropType.None,
-                _ => BackdropType.Mica,
-            };
-
-            if (!AllowedBackdrops.Any(b => b == newType))
-            {
-                currentBackdrop = newType;
-                ChangeBackdropButton_Click(sender, e);
-                return;
-            }
-
-            SetBackdrop(newType);
+            SetBackdrop((BackdropType) backdropComboBox.SelectedItem);
         }
 
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -243,6 +235,7 @@ namespace WinUIGallery.SamplePages
                 _ => ElementTheme.Default
             };
 
+            TitleBarHelper.SetCaptionButtonColors(this, ((FrameworkElement)Content).ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black);
             SetNoneBackdropBackground();
         }
 

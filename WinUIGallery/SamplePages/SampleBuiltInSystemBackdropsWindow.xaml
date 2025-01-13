@@ -43,12 +43,17 @@
                 <Run Text="Current backdrop: " />
                 <Run x:Name="tbCurrentBackdrop" FontWeight="SemiBold" />
             </TextBlock>
-            <Button
-                x:Name="btnChangeBackdrop"
-                HorizontalAlignment="Center"
-                Click="ChangeBackdropButton_Click"
-                Content="Change Backdrop" />
             <TextBlock x:Name="tbChangeStatus" HorizontalAlignment="Center" />
+            <ComboBox
+                  x:Name="backdropComboBox"
+                  HorizontalAlignment="Stretch"
+                  SelectionChanged="BackdropComboBox_SelectionChanged"
+                  Header="Backdrop: ">
+                <ComboBoxItem Content="Mica"/>
+                <ComboBoxItem Content="MicaAlt"/>
+                <ComboBoxItem Content="Acrylic"/>
+                <ComboBoxItem Content="None"/>
+            </ComboBox>
             <ComboBox x:Name="themeComboBox"
                   HorizontalAlignment="Stretch"
                   SelectionChanged="ThemeComboBox_SelectionChanged"

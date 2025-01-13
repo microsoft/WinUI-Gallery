@@ -1,9 +1,14 @@
-<!-- Option 1 - Implement Mica with Xaml. -->
+<!-- Mica -->
 <Window.SystemBackdrop>
     <MicaBackdrop/>
 </Window.SystemBackdrop>
                     
-<!-- Option 1.5 Implement Mica Alt with Xaml. -->
+<!-- Mica Alt -->
 <Window.SystemBackdrop>
     <MicaBackdrop Kind="BaseAlt"/>
 </Window.SystemBackdrop>
+
+<!-- Acrylic -->
+<Window.SystemBackdrop>
+    <DesktopAcrylicBackdrop/>
+<Window.SystemBackdrop>

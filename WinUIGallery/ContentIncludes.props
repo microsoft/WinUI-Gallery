@@ -247,10 +247,8 @@
     <Content Include="ControlPagesSampleCode\System\Window.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1_cs.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1_xaml.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2_cs.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample3.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample4.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
