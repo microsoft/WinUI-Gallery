@@ -17,6 +17,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.DesktopWap.DataModel;
 using System.Threading;
+using CommunityToolkit.WinUI.Controls;
 
 namespace WinUIGallery.ControlPages
 {
@@ -63,6 +64,7 @@ namespace WinUIGallery.ControlPages
                     SelectedItem = IconsDataSource.Icons[0];
                     SetSampleCodePresenterCode(IconsDataSource.Icons[0]);
                     IconsItemsView.Select(0);
+                    SidePanel.Visibility = Visibility.Visible;
                 });
             });
         }
@@ -143,7 +145,11 @@ namespace WinUIGallery.ControlPages
                 {
                     SelectedItem = currentItems[IconsItemsView.CurrentItemIndex];
                 }
+            }
 
+            if (TagsItemsView != null)
+            {
+                TagsItemsView.Layout = new WrapLayout { VerticalSpacing = 4, HorizontalSpacing = 4 };
             }
         }
 

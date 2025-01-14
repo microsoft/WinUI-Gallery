@@ -190,12 +190,14 @@
                 </ScrollViewer>
 
                 <Grid
+                    x:Name="SidePanel"
                     Grid.Column="1"
                     Padding="16"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0"
-                    DataContext="{x:Bind}">
+                    DataContext="{x:Bind}"
+                    Visibility="Collapsed">
                     <StackPanel>
                         <FontIcon
                             Margin="0,0,0,24"
@@ -237,16 +239,14 @@
                             Text="Tags" />
                         <ItemsView
                             x:Name="TagsItemsView"
-                            Width="264"
                             Margin="0,8,0,4"
-                            HorizontalAlignment="Left"
                             x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
                             IsItemInvokedEnabled="True"
                             ItemInvoked="TagsItemsView_ItemInvoked"
-                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}"
+                            ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
                             SelectionMode="None">
                             <ItemsView.Layout>
-                                <LinedFlowLayout LineSpacing="4" MinItemSpacing="4" />
+                                <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
                             </ItemsView.Layout>
                             <ItemsView.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
@@ -275,8 +275,9 @@
                         <TextBlock
                             x:Name="NoTagsTextBlock"
                             Grid.Row="1"
+                            Margin="0,4,0,0"
                             x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
-                            Text="No tags" />
+                            Text="No tags available." />
                     </StackPanel>
                 </Grid>
             </Grid>
