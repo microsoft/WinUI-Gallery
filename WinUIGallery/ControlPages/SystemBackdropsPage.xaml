@@ -20,8 +20,8 @@
 
     <StackPanel>
         <local:ControlExample HeaderText="Backdrop types"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample1_cs.txt"
-                              XamlSource="SystemBackdrops\SystemBackdropsSample1_xaml.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt"
+                              XamlSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">    
                       Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
@@ -43,7 +43,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="MicaController"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleMicaController.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
           Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to a app.
@@ -54,7 +54,7 @@
         </local:ControlExample>
 
         <local:ControlExample HeaderText="DesktopAcrylicController"
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
           Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type (Base / Thin) can't be changed using the DesktopAcrylicBackdrop class.
