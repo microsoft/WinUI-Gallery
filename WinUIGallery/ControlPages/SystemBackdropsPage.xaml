@@ -19,7 +19,7 @@
       mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample HeaderText="Backdrop types:"
+        <local:ControlExample HeaderText="Backdrop types"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample1_cs.txt"
                               XamlSource="SystemBackdrops\SystemBackdropsSample1_xaml.txt">
             <StackPanel>
@@ -42,7 +42,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="MicaController:"
+        <local:ControlExample HeaderText="MicaController"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
@@ -53,7 +53,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="DesktopAcrylicController:"
+        <local:ControlExample HeaderText="DesktopAcrylicController"
                               CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
@@ -64,7 +64,7 @@
             </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper: "
+        <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper"
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
             <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica or DesktopAcrylicController. This helper class improts and uses the underlying create function." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
