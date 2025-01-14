@@ -146,6 +146,7 @@
 
     <ItemGroup>
         <None Remove="Assets\ControlImages\Accessibility.png" />
+        <None Remove="Assets\ControlImages\Popup.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
@@ -315,6 +316,7 @@
 
     <ItemGroup>
         <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
@@ -562,6 +564,11 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\PopupPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
