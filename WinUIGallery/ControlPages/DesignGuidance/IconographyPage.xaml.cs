@@ -62,6 +62,7 @@ namespace WinUIGallery.ControlPages
                     IconsItemsView.ItemsSource = new List<IconData>(IconsDataSource.Icons);
                     SelectedItem = IconsDataSource.Icons[0];
                     SetSampleCodePresenterCode(IconsDataSource.Icons[0]);
+                    IconsItemsView.Select(0);
                 });
             });
         }
@@ -122,10 +123,11 @@ namespace WinUIGallery.ControlPages
                     {
                         SelectedItem = newItems[0];
                         outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
+                        IconsItemsView.Select(0);
                     }
                     else
                     {
-                        outputString = "No icon found.";
+                        outputString = "No icons found.";
                     }
 
                     UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
@@ -145,9 +147,9 @@ namespace WinUIGallery.ControlPages
             }
         }
 
-        private void TagButton_Click(object sender, RoutedEventArgs e)
+        private void TagsItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs args)
         {
-            if ((sender as Button).Content is string tag)
+            if (args.InvokedItem is string tag)
             {
                 IconsAutoSuggestBox.Text = tag;
             }

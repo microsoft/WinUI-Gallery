@@ -35,7 +35,6 @@
             <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
             <Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
             <Setter Property="SampleType" Value="Inline" />
-
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,0,0,8" />
         </Style>
@@ -234,24 +233,45 @@
                         <TextBlock
                             Margin="0,4,0,0"
                             FontSize="12"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                             Text="Tags" />
-                        <ItemsRepeater
+                        <ItemsView
                             x:Name="TagsItemsView"
+                            Width="264"
                             Margin="0,8,0,4"
+                            HorizontalAlignment="Left"
                             x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
-                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}">
-                            <ItemsRepeater.Layout>
-                                <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
-                            </ItemsRepeater.Layout>
-                            <ItemsRepeater.ItemTemplate>
+                            IsItemInvokedEnabled="True"
+                            ItemInvoked="TagsItemsView_ItemInvoked"
+                            ItemsSource="{Binding SelectedItem.Tags, Mode=OneWay}"
+                            SelectionMode="None">
+                            <ItemsView.Layout>
+                                <LinedFlowLayout LineSpacing="4" MinItemSpacing="4" />
+                            </ItemsView.Layout>
+                            <ItemsView.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <Button
-                                        Padding="4,1,4,1"
-                                        Click="TagButton_Click"
-                                        Content="{x:Bind Mode=OneWay}" />
+                                    <ItemContainer
+                                        HorizontalAlignment="Left"
+                                        AutomationProperties.Name="{x:Bind}"
+                                        CornerRadius="12">
+                                        <Grid
+                                            Padding="8,3,8,4"
+                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="12">
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                FontSize="12"
+                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                Text="{x:Bind}"
+                                                TextTrimming="CharacterEllipsis" />
+                                        </Grid>
+                                    </ItemContainer>
                                 </DataTemplate>
-                            </ItemsRepeater.ItemTemplate>
-                        </ItemsRepeater>
+                            </ItemsView.ItemTemplate>
+                        </ItemsView>
                         <TextBlock
                             x:Name="NoTagsTextBlock"
                             Grid.Row="1"
