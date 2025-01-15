@@ -554,7 +554,6 @@
           "Subtitle": "Touch gesture for quick menu actions on items.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SwipeControl.png",
           "Description": "Touch gesture for quick menu actions on items.",
-          "IsUpdated": false,
           "Docs": [
             {
               "Title": "SwipeControl - API",
@@ -1007,7 +1006,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
           "Description": "The Button control provides a Click event to respond to user input from a touch, mouse, keyboard, stylus, or other input device. You can put different kinds of content in a button, such as text or an image, or you can restyle a button to give it a new look.",
           "Content": "<p>The main purpose of a <b>Button</b> is to make something happen when a user clicks it. There are two ways you can make something happen:</p><ul><li>Handle the <b>Click</b> event.</li><li>Bind the <b>Command</b> property to an ICommand implementation that describes the command logic.</li></ul><p>Buttons often have only simple string content, but you can use any object as content. You can also change the style and template to give them any look you want.</p><p>Look at the <i>ButtonPage.xaml</i> file in Visual Studio to see the custom button style and template definitions used on this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/Button_themeresources.xaml",
           "Docs": [
             {
@@ -1186,7 +1184,6 @@
           "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitButton.png",
           "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
-          "IsUpdated": false,
           "SourcePath": "/SplitButton",
           "Docs": [
             {
@@ -1262,7 +1259,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/CheckBox.png",
           "Description": "CheckBox controls let the user select a combination of binary options. In contrast, RadioButton controls allow the user to select from mutually exclusive options. The indeterminate state is used to indicate that an option is set for some, but not all, child options. Don't allow users to set an indeterminate state directly to indicate a third option.",
           "Content": "<p>Check and uncheck these controls to see how they look in each state. The label for each <b>CheckBox</b> is defined by its <b>Content</b> property.</p><p>Use a three-state <b>CheckBox</b> to show that none, some, or all of an items sub-options are checked. You have to add some code to do this. Take a look at the methods in the <i>SelectAllMethods</i> region of <i>CheckBoxPage.xaml.cs</i> to see how we did it.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/CheckBox_themeresources.xaml",
           "Docs": [
             {
@@ -1431,7 +1427,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Slider.png",
           "Description": "Use a Slider when you want your users to be able to set defined, contiguous values (such as volume or brightness) or a range of discrete values (such as screen resolution settings).",
           "Content": "<p>Look at the <i>SliderPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/Slider_themeresources.xaml",
           "Docs": [
             {
@@ -1537,7 +1532,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/InfoBar.png",
           "Description": "Use an InfoBar control when a user should be informed of, acknowledge, or take action on a changed application state. By default the notification will remain in the content area until closed by the user but will not necessarily break user flow.",
           "Content": "<p>Look at the <i>InfoBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/InfoBar",
           "Docs": [
             {
@@ -1672,7 +1666,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ContentDialog.png",
           "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
           "Content": "<p>Look at the <i>ContentDialog.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/ContentDialog_themeresources.xaml",
           "Docs": [
             {
@@ -1904,7 +1897,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ScrollViewer.png",
           "Description": "A ScrollViewer lets a user scroll, pan, and zoom to see content that's larger than the viewable area. Many content controls, like ListView, have ScrollViewers built into their control templates to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/ScrollViewer_themeresources.xaml",
           "Docs": [
             {
@@ -2354,7 +2346,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/BreadcrumbBar.png",
           "Description": "The BreadcrumbBar control provides a common horizontal layout to display the trail of navigation taken to the current location. Resize to see the nodes crumble, starting at the root.",
           "Content": "<p>Look at the <i>BreadcrumbBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/Breadcrumb",
           "Docs": [
             {
@@ -2769,7 +2760,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/AnimatedIcon",
           "Docs": [
             {
@@ -3078,7 +3068,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/RichEditBox.png",
           "Description": "You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. By default, the RichEditBox supports spell checking. You can make a RichEditBox read-only by setting its IsReadOnly property to true.",
           "Content": "<p>On this page, you can type into the <b>RichTextBox</b> control and save it as a RichTextFormat (.rtf) document, or load an existing .rtf document. You can format the text as <b>Bold</b> or <u>Underlined</u>, and change the text color.</p><p>Look at the <i>RichEditBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "SourcePath": "/CommonStyles/RichEditBox_themeresources.xaml",
           "Docs": [
             {
@@ -3111,7 +3100,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/RichTextBlock.png",
           "Description": "RichTextBlock provides more advanced formatting features than the TextBlock control. You can apply character and paragraph formatting to the text in the RichTextBlock. For example, you can apply Bold, Italic, and Underline to any portion of the text in the control. You can use linked text containers (a RichTextBlock linked to RichTextBlockOverflow elements) to create advanced page layouts.",
           "Content": "<p>Change the width of the app to see how the <b>RichTextBlock</b> overflows into additional columns as the app gets narrower.</p><p>Look at the <i>RichTextBlockPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": false,
           "Docs": [
             {
               "Title": "RichTextBlock - API",
@@ -3470,7 +3458,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
           "Description": "Copy and paste to and from the system Clipboard.",
           "Content": "<p>Look at the <i>ClipboardPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": false,
           "Docs": [
             {
               "Title": "Clipboard - API",
@@ -3490,7 +3477,6 @@
           "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
           "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsUpdated": true,
-          "IsNew": false,
           "Docs": [
             {
               "Title": "FilePicker - API",
