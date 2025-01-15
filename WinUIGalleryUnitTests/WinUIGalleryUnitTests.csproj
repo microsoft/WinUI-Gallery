@@ -13,6 +13,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <SelfContained>true</SelfContained>
+    <BuildAppxUploadPackageForUap>false</BuildAppxUploadPackageForUap>
   </PropertyGroup>
 
   <ItemGroup>
