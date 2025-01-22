@@ -39,10 +39,6 @@
                     
 <LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
 <LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in Xaml)
-                    
-                      Acrylic's most noticeable characteristic is its transparency. There are two acrylic blend types that change what's visible through the material:
-<LineBreak/><LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
-<LineBreak/><LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrilycBrush in XAML)
                 </TextBlock>
                 <Button Margin="0 10 0 0" Click="createBuiltInWindow_Click">Show sample window</Button>
             </StackPanel>
