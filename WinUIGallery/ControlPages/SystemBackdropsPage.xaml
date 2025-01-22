@@ -23,17 +23,23 @@
                               CSharpSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt"
                               XamlSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt">
             <StackPanel>
-                <TextBlock TextWrapping="WrapWholeWords">    
+                <TextBlock TextWrapping="WrapWholeWords">
+                      There are three backdrop types: <LineBreak/>
+                    1. SystemBackdrop (The base class of every backdrop type) <LineBreak/>
+                    2. MicaBackdrop (A backdrop that uses the Mica material) <LineBreak/>
+                    3. DesktopAcrylicBackdrop (A backdrop that uses the Acrylic material) <LineBreak/> <LineBreak/>
+                    
                       Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
-                    You can apply Mica as your application backdrop to create a visual hierarchy, aiding productivity, by increasing clarity about which window is in focus.
                     Mica is specifically designed for app performance as it only samples the desktop wallpaper once to create its visualization.
-                    Mica is available for Windows 11 build 22000 or later. <LineBreak/> <LineBreak/>
-
-                      Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background color.
-                    You can apply Mica Alt as your app's backdrop to provide a deeper visual hierarchy than Mica, especially when creating an app with a tabbed title bar.
-                    Mica Alt is available for Windows 11 build 22000 or later. <LineBreak/> <LineBreak/>
+                      Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background. Recommended when creating an app with a tabbed title bar.
+                    All variants of Mica are available for Windows 11 build 22000 or later. <LineBreak/> <LineBreak/>
                     
                       Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
+                      There are two acrylic blend types that change what's visible through the material:
+                    
+<LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
+<LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in Xaml)
+                    
                       Acrylic's most noticeable characteristic is its transparency. There are two acrylic blend types that change what's visible through the material:
 <LineBreak/><LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
 <LineBreak/><LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrilycBrush in XAML)
