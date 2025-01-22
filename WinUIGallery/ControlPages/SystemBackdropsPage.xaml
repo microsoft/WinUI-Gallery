@@ -38,7 +38,7 @@
                       There are two acrylic blend types that change what's visible through the material:
                     
 <LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
-<LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in Xaml)
+<LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in XAML)
                 </TextBlock>
                 <Button Margin="0 10 0 0" Click="createBuiltInWindow_Click">Show sample window</Button>
             </StackPanel>
@@ -59,8 +59,11 @@
                               CSharpSource="SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
-          Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type (Base / Thin) can't be changed using the DesktopAcrylicBackdrop class.
-                    If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. There are 2 types of Acrylic: Base (Acrylic thin but with dimming) and Thin (No dimming). The DesktopAcrylicBackdrop class uses a version of the Base type with less dimming.
+          Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type can't be changed using the DesktopAcrylicBackdrop class.
+                   <LineBreak/>There are 2 types of Acrylic:<LineBreak/>
+                   Base (Darker)<LineBreak/>
+                   Thin (Lighter)<LineBreak/>
+                   If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.
                 </TextBlock>
                 <Button Margin="0 10 0 0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
             </StackPanel>
