@@ -60,7 +60,7 @@
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
           Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type (Base / Thin) can't be changed using the DesktopAcrylicBackdrop class.
-                    If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. There are 2 types of Acrylic: Base and Thin. The DesktopAcrylicBackdrop class uses a version of the Base type with less dimming.
+                    If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. There are 2 types of Acrylic: Base (Acrylic thin but with dimming) and Thin (No dimming). The DesktopAcrylicBackdrop class uses a version of the Base type with less dimming.
                 </TextBlock>
                 <Button Margin="0 10 0 0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
             </StackPanel>
