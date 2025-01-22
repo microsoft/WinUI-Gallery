@@ -46,7 +46,7 @@
                               CSharpSource="SystemBackdrops\SystemBackdropsSampleMicaController.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">        
-          Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to a app.
+          Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to an app.
                     This is a list of properties that can be modified: FallbackColor, Kind (Can also be set using the MicaBackdrop class), LuminosityOpacity, State, TintColor and the TintOpacity.
                 </TextBlock>
                 <Button Margin="0 10 0 0" Click="createCustomMicaWindow_Click">Show sample window</Button>
