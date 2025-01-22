@@ -66,7 +66,7 @@
 
         <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper"
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
-            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica or DesktopAcrylicController. This helper class improts and uses the underlying create function." TextWrapping="WrapWholeWords" />
+            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica- or DesktopAcrylicController. This helper class imports and uses the underlying create function." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
     </StackPanel>
 </Page>
