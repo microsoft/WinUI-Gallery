@@ -503,7 +503,6 @@
         <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample3_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample4_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
         <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample1_xaml.txt" />

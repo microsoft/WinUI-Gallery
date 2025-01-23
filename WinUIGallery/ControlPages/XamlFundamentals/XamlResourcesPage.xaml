@@ -12,17 +12,6 @@
         <Color x:Key="PrimaryColor">#0078D4</Color>
         <SolidColorBrush x:Key="HighlightBrush" Color="#A94DC1" />
         <SolidColorBrush x:Key="FontColor" Color="White" />
-
-        <x:Double x:Key="HeaderFontSize">24</x:Double>
-        <Color x:Key="AccentColor">#4CAF50</Color>
-        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
-        <x:String x:Key="AppTitle">WinUI 3 Gallery</x:String>
-
-        <x:String x:Key="WelcomeMessage">Welcome to this page</x:String>
-        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#E8EAF6" />
-
-        <Color x:Key="SecondaryColor">#2196F3</Color>
-        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
     </Page.Resources>
 
     <StackPanel>
@@ -89,56 +78,7 @@
                 </StackPanel>
             </local:ControlExample.Example>
         </local:ControlExample>
-
-        <TextBlock
-            Margin="0,24,0,4"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Resource dictionaries" />
-        <StackPanel Spacing="12">
-            <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Definition of a Resource Dictionary:</Paragraph>
-                <Paragraph>
-                    <Run Text="• Inline (app-level): Defined in" />
-                    <Run FontFamily="Consolas" Text="App.xaml" />
-                    <Run Text="to make resources globally available across the entire app." />
-                </Paragraph>
-                <Paragraph>• Inline (page-level): Defined in a specific page to limit the scope to that page.</Paragraph>
-                <Paragraph>
-                    <Run Text="• Standalone file: Defined in a separate" />
-                    <Run FontFamily="Consolas" Text=".xaml" />
-                    <Run Text="file to organize resources and reuse them in different parts of the app." />
-                </Paragraph>
-            </RichTextBlock>
-
-            <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Reasons for using resource dictionaries:</Paragraph>
-                <Paragraph>• Reusability: define once and use many times.</Paragraph>
-                <Paragraph>• Organization: keeps resources modular and separated.</Paragraph>
-                <Paragraph>• Maintainability: makes it easier to update values across the app.</Paragraph>
-            </RichTextBlock>
-        </StackPanel>
-
-        <local:ControlExample XamlSource="XamlResources\XamlResourcesSample2_xaml.txt">
-            <local:ControlExample.Example>
-                <StackPanel Spacing="8">
-                    <Grid Background="{StaticResource AccentBrush}">
-                        <TextBlock
-                            FontSize="{StaticResource HeaderFontSize}"
-                            Foreground="White"
-                            Text="{StaticResource AppTitle}" />
-                    </Grid>
-
-                    <Grid Background="{StaticResource PageBackgroundBrush}">
-                        <TextBlock Foreground="Black" Text="{StaticResource WelcomeMessage}" />
-                    </Grid>
-
-                    <Grid Background="{StaticResource SecondaryBrush}">
-                        <TextBlock Foreground="White" Text="Using colors from ResourceDictionary" />
-                    </Grid>
-                </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-
+        
         <TextBlock
             Margin="0,24,0,4"
             Style="{ThemeResource SubtitleTextBlockStyle}"
@@ -165,7 +105,7 @@
             </RichTextBlock>
         </StackPanel>
 
-        <local:ControlExample HeaderText="StaticResource versus ThemeResource" XamlSource="XamlResources\XamlResourcesSample3_xaml.txt">
+        <local:ControlExample HeaderText="StaticResource versus ThemeResource" XamlSource="XamlResources\XamlResourcesSample2_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Margin="0,0,0,16" Text="Toggle the theme using the theme switch button in the top right corner." />
@@ -189,7 +129,7 @@
             </local:ControlExample.Example>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Define a new theme resource" XamlSource="XamlResources\XamlResourcesSample4_xaml.txt">
+        <local:ControlExample HeaderText="Define a new theme resource" XamlSource="XamlResources\XamlResourcesSample3_xaml.txt">
             <local:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <TextBlock Text="Toggle the theme using the theme switch button in the top right corner." />
