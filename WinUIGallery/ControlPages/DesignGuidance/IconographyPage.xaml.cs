@@ -17,6 +17,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.DesktopWap.DataModel;
 using System.Threading;
+using CommunityToolkit.WinUI.Controls;
 
 namespace WinUIGallery.ControlPages
 {
@@ -62,6 +63,8 @@ namespace WinUIGallery.ControlPages
                     IconsItemsView.ItemsSource = new List<IconData>(IconsDataSource.Icons);
                     SelectedItem = IconsDataSource.Icons[0];
                     SetSampleCodePresenterCode(IconsDataSource.Icons[0]);
+                    IconsItemsView.Select(0);
+                    SidePanel.Visibility = Visibility.Visible;
                 });
             });
         }
@@ -122,10 +125,11 @@ namespace WinUIGallery.ControlPages
                     {
                         SelectedItem = newItems[0];
                         outputString = filteredItemsCount > 1 ? filteredItemsCount + " icons found." : "1 icon found.";
+                        IconsItemsView.Select(0);
                     }
                     else
                     {
-                        outputString = "No icon found.";
+                        outputString = "No icons found.";
                     }
 
                     UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
@@ -141,7 +145,19 @@ namespace WinUIGallery.ControlPages
                 {
                     SelectedItem = currentItems[IconsItemsView.CurrentItemIndex];
                 }
+            }
 
+            if (TagsItemsView != null)
+            {
+                TagsItemsView.Layout = new WrapLayout { VerticalSpacing = 4, HorizontalSpacing = 4 };
+            }
+        }
+
+        private void TagsItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs args)
+        {
+            if (args.InvokedItem is string tag)
+            {
+                IconsAutoSuggestBox.Text = tag;
             }
         }
     }

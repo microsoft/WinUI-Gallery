@@ -209,6 +209,17 @@ namespace WinUIGallery.ControlPages
             SetClickThruRegions(rectArr);
         }
 
+        private void TitleBarHeightComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedHeight = titlebarHeight.SelectedItem.ToString();
+            var window = WindowHelper.GetWindowForElement(this);
+
+            if (selectedHeight != null && window != null && window.ExtendsContentIntoTitleBar)
+            {
+                window.AppWindow.TitleBar.PreferredHeightOption = App.GetEnum<TitleBarHeightOption>(selectedHeight);
+            }
+        }
+
         private void AddInteractiveElements_Click(object sender, RoutedEventArgs e)
         {
             var txtBoxNonClientArea = UIHelper.FindElementByName(sender as UIElement, "AppTitleBarTextBox") as FrameworkElement;

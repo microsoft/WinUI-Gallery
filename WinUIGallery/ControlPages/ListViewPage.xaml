@@ -450,7 +450,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                             <Grid>
                                 <Grid.ContextFlyout>
                                     <MenuFlyout>
-                                        <MenuFlyoutItem Text="Delete" Click="ContactDeleteMenuyItem_Click"/>
+                                        <MenuFlyoutItem Text="Delete" Click="ContactDeleteMenuItem_Click"/>
                                     </MenuFlyout>
                                 </Grid.ContextFlyout>
 
@@ -503,7 +503,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
             &lt;Grid&gt;
                 &lt;Grid.ContextFlyout&gt;
                     &lt;MenuFlyout&gt;
-                        &lt;MenuFlyoutItem Text="Delete" Click="ContactDeleteMenuyItem_Click"/&gt;
+                        &lt;MenuFlyoutItem Text="Delete" Click="ContactDeleteMenuItem_Click"/&gt;
                     &lt;/MenuFlyout&gt;
                 &lt;/Grid.ContextFlyout&gt;
              
@@ -545,7 +545,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                 <x:String xml:space="preserve">
 ObservableCollection&lt;Contact&gt; contacts = new ObservableCollection&lt;Contact&gt;();
 
-private void ContactDeleteMenuyItem_Click(object sender, RoutedEventArgs e)
+private void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)
 {
     var item = (sender as FrameworkElement).DataContext;
     var contact = item as Contact;

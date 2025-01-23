@@ -24,7 +24,7 @@
             },
             {
               "Title": "WinUI Theme Resources (GitHub)",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/src/controls/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ]
         },
@@ -36,11 +36,11 @@
           "Docs": [
             {
               "Title": "Geometry in Windows 11",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/signature-experiences/geometry"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/geometry"
             },
             {
               "Title": "WinUI Theme Resources (GitHub)",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/winui3/release/X.Y-stable/controls/dev/CommonStyles/Common_themeresources_any.xaml"
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/src/controls/dev/CommonStyles/Common_themeresources_any.xaml"
             }
           ]
         },
@@ -68,7 +68,7 @@
           "Docs": [
             {
               "Title": "Content design basics",
-              "Uri": "https://learn.microsoft.com/en-us/windows/apps/design/basics/content-basics"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/basics/content-basics"
             }
           ]
         },
@@ -622,7 +622,7 @@
             },
             {
               "Title": "MenuFlyoutSubItem - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutsubitem"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutsubitem"
             },
             {
               "Title": "MenuFlyoutSeparator - API",
@@ -634,7 +634,7 @@
             },
             {
               "Title": "RadioMenuFlyoutItem - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiomenuflyoutitem"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiomenuflyoutitem"
             },
             {
               "Title": "Guidelines",
@@ -1831,6 +1831,30 @@
           ]
         },
         {
+          "UniqueId": "Popup",
+          "Title": "Popup",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
+          "Subtitle": "A UI element displaying temporary content over existing interface.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Popup.png",
+          "Description": "The Popup Control allows your app to display temporary content above other UI elements. It can be used for lightweight interactions such as tooltips, notifications, or custom floating panels to enhance user workflows or highlight specific parts of the interface.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Popup - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.primitives.popup"
+            }
+          ],
+          "RelatedControls": [
+            "ContentDialog"
+          ]
+        },
+        {
           "UniqueId": "TeachingTip",
           "Title": "TeachingTip",
           "BaseClasses": [
@@ -1862,7 +1886,7 @@
             "Flyout",
             "ToolTip"
           ]
-        }
+        }       
       ]
     },
     {
@@ -2692,7 +2716,7 @@
           "Docs": [
             {
               "Title": "MapControl - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
             }
           ]
         },

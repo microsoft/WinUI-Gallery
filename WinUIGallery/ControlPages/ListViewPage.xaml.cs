@@ -349,7 +349,7 @@ namespace WinUIGallery.ControlPages
         // ListView with context menu
         //===================================================================================================================
 
-        private void ContactDeleteMenuyItem_Click(object sender, RoutedEventArgs e)
+        private void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var item = (sender as FrameworkElement).DataContext;
             var contact = item as Contact;

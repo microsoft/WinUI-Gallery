@@ -110,6 +110,7 @@
         <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
         <Manifest Include="$(ApplicationManifest)" />
         <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
@@ -125,6 +126,7 @@
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Controls.Primitives" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
@@ -147,10 +149,12 @@
     <ItemGroup>
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
+        <None Remove="Assets\ControlImages\Popup.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
         <None Remove="Assets\Design\Dialog.light.png" />
+        <None Remove="Assets\folder.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
@@ -297,6 +301,9 @@
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
+        <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
         <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
@@ -332,10 +339,12 @@
     <ItemGroup>
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
         <Content Include="Assets\Design\Dialog.light.png" />
+        <Content Include="Assets\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
         <Content Include="Assets\Design\Geometry.light.png" />
@@ -501,6 +510,9 @@
         <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
         <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
+        <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
     </ItemGroup>
@@ -614,6 +626,11 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="ControlPages\XamlFundamentals\XamlStylesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\PopupPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>

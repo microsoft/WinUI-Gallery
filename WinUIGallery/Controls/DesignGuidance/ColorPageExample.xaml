@@ -11,13 +11,13 @@
     mc:Ignorable="d">
 
     <Grid
-        Margin="0,24,0,12"
+        Margin="0,36,0,8"
         Padding="12"
         Background="{x:Bind Background, Mode=OneWay}"
         BorderBrush="{ThemeResource GalleryBorderBrush}"
         BorderThickness="1"
         CornerRadius="{StaticResource OverlayCornerRadius}"
-        RowSpacing="12">
+        RowSpacing="4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -30,10 +30,13 @@
             Text="{x:Bind Title, Mode=OneWay}" />
         <TextBlock
             Grid.Row="1"
+            Foreground="{x:Bind Foreground, Mode=OneWay}"
+            Opacity="0.8"
             Style="{ThemeResource CaptionTextBlockStyle}"
             Text="{x:Bind Description, Mode=OneWay}" />
         <ContentPresenter
             Grid.Row="2"
+            Margin="0,8,0,0"
             HorizontalAlignment="Center"
             Content="{x:Bind ExampleContent, Mode=OneWay}" />
     </Grid>

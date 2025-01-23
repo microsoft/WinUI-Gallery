@@ -34,9 +34,9 @@
             </TextBlock>
 
         </InfoBar>
-        
 
-        
+
+
         <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
             <local:ControlExample.Example>
@@ -151,6 +151,44 @@
 &lt;/Border&gt;
             </x:String>
             </local:ControlExample.Xaml>
+        </local:ControlExample>
+        <local:ControlExample HeaderText="Titlebar Customizations : Titlebar height">
+            <local:ControlExample.Example>
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <TextBlock TextWrapping="Wrap">
+                        WinUI custom titlebar supports setting a custom height by configuring the PreferredHeightOption property of the titlebar. This feature is useful when you need to adjust the titlebar height to match your app's design or accommodate additional content.
+                    </TextBlock>
+                    <InfoBar IsOpen="true" IsClosable="false" Severity="Warning">
+                        <TextBlock>
+                                This option will be invalid when the style of titlebar is reset to system titlebar!
+                        </TextBlock>
+                    </InfoBar>
+                    <StackPanel>
+                        <ComboBox x:Name="titlebarHeight"
+                                  Header="Set titlebar height"
+                                  SelectionChanged="TitleBarHeightComboBox_SelectionChanged"
+                                  SelectedIndex="0">
+                            <x:String>Tall</x:String>
+                            <x:String>Standard</x:String>
+                            <x:String>Collapsed</x:String>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample.Example>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// Retrieve the main window and extend its content into the title bar for custom styling.
+Window window = App.MainWindow;
+window.ExtendsContentIntoTitleBar = true;
+
+// Set the preferred height option for the title bar
+window.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
+                </x:String>
+            </local:ControlExample.CSharp>
+            <local:ControlExample.Substitutions>
+                <local:ControlExampleSubstitution Key="TitleBarHeightOption"
+                                                  Value="{x:Bind titlebarHeight.SelectedItem, Mode=OneWay}" />
+            </local:ControlExample.Substitutions>
         </local:ControlExample>
         <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
                               CSharpSource="Window\TitleBar\TitleBarSample3.txt">
