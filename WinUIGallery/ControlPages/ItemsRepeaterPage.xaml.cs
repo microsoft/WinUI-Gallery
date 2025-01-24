@@ -360,7 +360,7 @@ namespace WinUIGallery.ControlPages
         }
         private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
         {
-#if WINUI_PRERELEASE
+#if USE_EXPERIMENTAL_WINAPPSDK
             VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
 #endif
         }

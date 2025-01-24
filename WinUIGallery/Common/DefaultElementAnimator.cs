@@ -11,7 +11,7 @@ using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUIGallery.Common
 {
-#if WINUI_PRERELEASE
+#if USE_EXPERIMENTAL_WINAPPSDK
     public class DefaultElementAnimator : ElementAnimator
     {
         private const double DefaultAnimationDurationInMs = 300.0;
