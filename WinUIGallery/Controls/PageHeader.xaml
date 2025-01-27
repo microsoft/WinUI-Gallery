@@ -134,18 +134,9 @@
                 <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code of this sample page">
                     <DropDownButton.Content>
                         <StackPanel Orientation="Horizontal" Spacing="8">
-                            <PathIcon
-                                Margin="-3,-3,-16,-3"
-                                VerticalAlignment="Center"
-                                Data="{StaticResource GitHubIconPath}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform
-                                        ScaleX="0.65"
-                                        ScaleY="0.65"
-                                        TranslateX="-5"
-                                        TranslateY="5" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
+                            <Viewbox Height="18">
+                                <PathIcon Data="{StaticResource GitHubIconPath}" />
+                            </Viewbox>
                             <TextBlock Text="Source" />
                         </StackPanel>
                     </DropDownButton.Content>

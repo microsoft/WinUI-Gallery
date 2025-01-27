@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,30 +10,29 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class VariableSizedWrapGridPage : Page
 {
-    public sealed partial class VariableSizedWrapGridPage : Page
+    public VariableSizedWrapGridPage()
     {
-        public VariableSizedWrapGridPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    {
+        if (sender is RadioButton rb && Control1 != null)
         {
-            if (sender is RadioButton rb && Control1 != null)
+            string orientationName = rb.Tag.ToString();
+
+            switch (orientationName)
             {
-                string orientationName = rb.Tag.ToString();
-
-                switch (orientationName)
-                {
-                    case "Horizontal":
-                        Control1.Orientation = Orientation.Horizontal;
-                        break;
-                    case "Vertical":
-                        Control1.Orientation = Orientation.Vertical;
-                        break;
-                }
+                case "Horizontal":
+                    Control1.Orientation = Orientation.Horizontal;
+                    break;
+                case "Vertical":
+                    Control1.Orientation = Orientation.Vertical;
+                    break;
             }
         }
     }

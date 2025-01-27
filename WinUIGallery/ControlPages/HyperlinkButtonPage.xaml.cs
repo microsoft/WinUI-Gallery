@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -10,18 +10,17 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
-{
-    public sealed partial class HyperlinkButtonPage : Page
-    {
-        public HyperlinkButtonPage()
-        {
-            this.InitializeComponent();
-        }
+namespace WinUIGallery.ControlPages;
 
-        private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "ToggleButton");
-        }
+public sealed partial class HyperlinkButtonPage : Page
+{
+    public HyperlinkButtonPage()
+    {
+        this.InitializeComponent();
+    }
+
+    private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
+    {
+        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "ToggleButton");
     }
 }

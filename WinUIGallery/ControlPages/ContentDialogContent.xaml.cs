@@ -13,13 +13,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class ContentDialogContent : Page
 {
-    public sealed partial class ContentDialogContent : Page
+    public ContentDialogContent()
     {
-        public ContentDialogContent()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

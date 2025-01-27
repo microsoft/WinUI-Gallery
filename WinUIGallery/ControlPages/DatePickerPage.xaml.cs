@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -11,26 +11,25 @@ using System;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class DatePickerPage : Page
 {
-    public sealed partial class DatePickerPage : Page
+    public DatePickerPage()
     {
-        public DatePickerPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            // Set the default date to 2 months from the current date.
-            Control2.Date = DateTimeOffset.Now.AddMonths(2);
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        // Set the default date to 2 months from the current date.
+        Control2.Date = DateTimeOffset.Now.AddMonths(2);
 
-            // Set the minimum year to the current year.
-            Control2.MinYear = DateTimeOffset.Now;
+        // Set the minimum year to the current year.
+        Control2.MinYear = DateTimeOffset.Now;
 
-            // Set the maximum year to 5 years in the future.
-            Control2.MaxYear = DateTimeOffset.Now.AddYears(5);
+        // Set the maximum year to 5 years in the future.
+        Control2.MaxYear = DateTimeOffset.Now.AddYears(5);
 
-        }
     }
 }

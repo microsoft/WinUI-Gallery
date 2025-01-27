@@ -19,13 +19,12 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections
+namespace WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
+
+public sealed partial class FillSection : Page
 {
-    public sealed partial class FillSection : Page
+    public FillSection()
     {
-        public FillSection()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }
