@@ -1,3 +1,9 @@
+# Define the folder containing the WinUIGallery relative to the script location
+$WinUIGalleryFolder = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery"
+
+# Change directory to the WinUIGallery folder
+Set-Location -Path $WinUIGalleryFolder
+
 # Define the folder containing the control pages
 $currentFolder = "ControlPages"
 
@@ -27,7 +33,7 @@ $filesWithDetails = git ls-tree -r HEAD --name-only $currentFolder | ForEach-Obj
 $sortedFiles = $filesWithDetails | Sort-Object LastCommitDate -Descending
 
 # Create a hashtable to cache processed file base names to avoid duplicates
-$cachedBaseNames = @{}
+$cachedBaseNames = @{ }
 
 # Initialize the output string for the latest updated samples
 $LatestUpdatedSamples = "Latest Updated Samples:`n"
@@ -47,3 +53,6 @@ $sortedFiles | ForEach-Object {
 
 # Output the list of latest updated samples
 Write-Output $LatestUpdatedSamples
+
+# Wait for the user to press Enter before closing the PowerShell window
+Read-Host -Prompt "Press Enter to exit"
