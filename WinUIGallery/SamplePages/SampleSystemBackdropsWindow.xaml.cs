@@ -2,18 +2,24 @@ using WinUIGallery.Helper;
 using Microsoft.UI.Xaml;
 using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
 using Microsoft.UI.Composition.SystemBackdrops;
-using System.Linq;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using WinUIGallery.DesktopWap.Helper;
+using Microsoft.UI.Composition;
+using System;
 
 namespace WinUIGallery.SamplePages;
 
 public sealed partial class SampleSystemBackdropsWindow : Window
 {
-    public BackdropType[] AllowedBackdrops;
+    public BackdropType[] AllowedBackdrops
+    {
+        get => (BackdropType[])backdropComboBox.ItemsSource;
+        set => backdropComboBox.ItemsSource = value;
+    }
+
     WindowsSystemDispatcherQueueHelper wsdqHelper;
     BackdropType currentBackdrop;
     MicaController micaController;
@@ -28,12 +34,6 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
         wsdqHelper = new WindowsSystemDispatcherQueueHelper();
         wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
-
-        Activated += (s, e) =>
-        {
-            foreach (BackdropType allowedBackdrop in AllowedBackdrops)
-                backdropComboBox.Items.Add(allowedBackdrop);
-        };
 
         backdropComboBox.SelectedIndex = 0;
         themeComboBox.SelectedIndex = 0;
@@ -73,9 +73,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         if (type == BackdropType.Mica)
         {
             if (TrySetMicaBackdrop(false))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // Mica isn't supported. Try Acrylic.
@@ -86,9 +84,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         if (type == BackdropType.MicaAlt)
         {
             if (TrySetMicaBackdrop(true))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // MicaAlt isn't supported. Try Acrylic.
@@ -99,9 +95,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         if (type == BackdropType.Acrylic)
         {
             if (TrySetAcrylicBackdrop(false))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // Acrylic isn't supported, so take the next option, which is DefaultColor, which is already set.
@@ -111,9 +105,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         if (type == BackdropType.AcrylicThin)
         {
             if (TrySetAcrylicBackdrop(true))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // Acrylic isn't supported, so take the next option, which is DefaultColor, which is already set.
@@ -142,12 +134,11 @@ public sealed partial class SampleSystemBackdropsWindow : Window
             configurationSource.IsInputActive = true;
             SetConfigurationSourceTheme();
 
-            micaController = new MicaController();
-            micaController.Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base;
+            micaController = new MicaController { Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base };
 
             // Enable the system backdrop.
             // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            micaController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+            micaController.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>());
             micaController.SetSystemBackdropConfiguration(configurationSource);
             return true; // Succeeded.
         }
@@ -169,12 +160,11 @@ public sealed partial class SampleSystemBackdropsWindow : Window
             configurationSource.IsInputActive = true;
             SetConfigurationSourceTheme();
 
-            acrylicController = new DesktopAcrylicController();
-            acrylicController.Kind = useAcrylicThin ? DesktopAcrylicKind.Thin : DesktopAcrylicKind.Base;
+            acrylicController = new DesktopAcrylicController { Kind = useAcrylicThin ? DesktopAcrylicKind.Thin : DesktopAcrylicKind.Base };
 
             // Enable the system backdrop.
             // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            acrylicController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+            acrylicController.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>());
             acrylicController.SetSystemBackdropConfiguration(configurationSource);
             return true; // Succeeded.
         }
@@ -206,9 +196,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
     private void Window_ThemeChanged(FrameworkElement sender, object args)
     {
         if (configurationSource != null)
-        {
             SetConfigurationSourceTheme();
-        }
     }
 
     private void SetConfigurationSourceTheme()
@@ -223,12 +211,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
 
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        ((FrameworkElement)Content).RequestedTheme = themeComboBox.SelectedIndex switch
-        {
-            1 => ElementTheme.Light,
-            2 => ElementTheme.Dark,
-            _ => ElementTheme.Default
-        };
+        ((FrameworkElement)Content).RequestedTheme = Enum.GetValues<ElementTheme>()[themeComboBox.SelectedIndex];
 
         TitleBarHelper.SetCaptionButtonColors(this, ((FrameworkElement)Content).ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black);
         SetNoneBackdropBackground();
@@ -238,12 +221,8 @@ public sealed partial class SampleSystemBackdropsWindow : Window
     void SetNoneBackdropBackground()
     {
         if (currentBackdrop == BackdropType.None && themeComboBox.SelectedIndex != 0)
-        {
             ((Grid)Content).Background = new SolidColorBrush(themeComboBox.SelectedIndex == 1 ? Colors.White : Colors.Black);
-        }
         else
-        {
             ((Grid)Content).Background = new SolidColorBrush(Colors.Transparent);
-        }
     }
 }

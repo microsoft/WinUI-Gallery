@@ -1,4 +1,4 @@
-using System.Linq;
+using System;
 using Microsoft.UI;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
@@ -12,6 +12,7 @@ namespace WinUIGallery.SamplePages;
 public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
 {
     BackdropType currentBackdrop;
+
     public SampleBuiltInSystemBackdropsWindow()
     {
         InitializeComponent();
@@ -51,9 +52,7 @@ public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
         if (type == BackdropType.Mica)
         {
             if (TrySetMicaBackdrop(false))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // Mica isn't supported. Try Acrylic.
@@ -64,9 +63,7 @@ public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
         if (type == BackdropType.MicaAlt)
         {
             if (TrySetMicaBackdrop(true))
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // MicaAlt isn't supported. Try Acrylic.
@@ -77,9 +74,7 @@ public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
         if (type == BackdropType.Acrylic)
         {
             if (TrySetAcrylicBackdrop())
-            {
                 currentBackdrop = type;
-            }
             else
             {
                 // Acrylic isn't supported, so take the next option, which is DefaultColor, which is already set.
@@ -129,12 +124,7 @@ public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
 
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        ((FrameworkElement)Content).RequestedTheme = themeComboBox.SelectedIndex switch
-        {
-            1 => ElementTheme.Light,
-            2 => ElementTheme.Dark,
-            _ => ElementTheme.Default
-        };
+        ((FrameworkElement)Content).RequestedTheme = Enum.GetValues<ElementTheme>()[themeComboBox.SelectedIndex];
 
         TitleBarHelper.SetCaptionButtonColors(this, ((FrameworkElement)Content).ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black);
         SetNoneBackdropBackground();

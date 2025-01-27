@@ -29,23 +29,27 @@ public sealed partial class SystemBackdropsPage : Page
 
     private void createCustomMicaWindow_Click(object sender, RoutedEventArgs e)
     {
-        var micaWindow = new SampleSystemBackdropsWindow();
-        micaWindow.AllowedBackdrops = [
-            SampleSystemBackdropsWindow.BackdropType.Mica,
-            SampleSystemBackdropsWindow.BackdropType.MicaAlt,
-            SampleSystemBackdropsWindow.BackdropType.None
-        ];
+        var micaWindow = new SampleSystemBackdropsWindow
+        {
+            AllowedBackdrops = [
+                SampleSystemBackdropsWindow.BackdropType.Mica,
+                SampleSystemBackdropsWindow.BackdropType.MicaAlt,
+                SampleSystemBackdropsWindow.BackdropType.None
+            ]
+        };
         micaWindow.Activate();
     }
 
     private void createCustomDesktopAcrylicWindow_Click(object sender, RoutedEventArgs e)
     {
-        var acrylicWindow = new SampleSystemBackdropsWindow();
-        acrylicWindow.AllowedBackdrops = [
-            SampleSystemBackdropsWindow.BackdropType.Acrylic,
-            SampleSystemBackdropsWindow.BackdropType.AcrylicThin,
-            SampleSystemBackdropsWindow.BackdropType.None
-        ];
+        var acrylicWindow = new SampleSystemBackdropsWindow
+        {
+            AllowedBackdrops = [
+                SampleSystemBackdropsWindow.BackdropType.Acrylic,
+                SampleSystemBackdropsWindow.BackdropType.AcrylicThin,
+                SampleSystemBackdropsWindow.BackdropType.None
+            ]
+        };
         acrylicWindow.Activate();
     }
 }
