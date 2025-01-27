@@ -155,14 +155,9 @@
                         Description="Explore the WinUI source code and repository."
                         Link="https://github.com/microsoft/microsoft-ui-xaml">
                         <local:HeaderTile.Source>
-                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform
-                                        ScaleX="2.05"
-                                        ScaleY="2.05"
-                                        TranslateX="-20" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
+                            <Viewbox>
+                                <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                            </Viewbox>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
