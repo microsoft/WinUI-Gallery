@@ -26,255 +26,184 @@
             <Setter Property="MaxWidth" Value="800" />
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="headerGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Spacing="4">
-            <TextBlock
-                AutomationProperties.AutomationId="PageHeader"
-                Style="{StaticResource TitleTextBlockStyle}"
-                Text="{x:Bind Item.Title}"
-                TextTrimming="CharacterEllipsis"
-                TextWrapping="NoWrap" />
-            <Button
+
+    <Grid ColumnSpacing="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Column="0"
+            AutomationProperties.AutomationId="PageHeader"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Text="{x:Bind Item.Title}"
+            TextTrimming="CharacterEllipsis"
+            TextWrapping="NoWrap" />
+        <CommandBar Grid.Column="1" HorizontalAlignment="Right">
+            <AppBarButton
+                x:Name="ThemeButton"
+                Click="OnThemeButtonClick"
+                Label="Toggle theme"
+                ToolTipService.ToolTip="Toggle theme">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE793;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarSeparator />
+
+            <AppBarButton
                 x:Name="APIDetailsBtn"
-                Margin="0,0,0,3"
-                Padding="4"
-                VerticalAlignment="Bottom"
-                AutomationProperties.Name="API details"
-                Style="{StaticResource SubtleButtonStyle}"
-                ToolTipService.ToolTip="API namespace and inheritance">
-                <FontIcon
-                    FontSize="14"
-                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                    Glyph="&#xE946;" />
-                <Button.Flyout>
-                    <Flyout FlyoutPresenterStyle="{StaticResource CustomFlyoutPresenterStyle}" Placement="Bottom">
-                        <StackPanel x:Name="APIPanel" Spacing="16">
-                            <StackPanel
-                                x:Name="APISourcePanel"
-                                Spacing="8"
-                                Visibility="{x:Bind Item.ApiNamespace, Converter={StaticResource emptyStringToVisibilityConverter}}">
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="Namespace" />
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontFamily="Consolas"
-                                    IsTextSelectionEnabled="True"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="{x:Bind Item.ApiNamespace}" />
-                            </StackPanel>
-                            <MenuFlyoutSeparator Margin="-12" />
-                            <StackPanel x:Name="InheritanceSourcePanel" Visibility="{x:Bind Item.BaseClasses, Converter={StaticResource collectionConverter}}">
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="Inheritance" />
-                                <BreadcrumbBar IsHitTestVisible="False" ItemsSource="{x:Bind Item.BaseClasses}">
-                                    <BreadcrumbBar.ItemTemplate>
-                                        <DataTemplate x:DataType="x:String">
-                                            <TextBlock
-                                                FontFamily="Consolas"
-                                                Style="{StaticResource CaptionTextBlockStyle}"
-                                                Text="{x:Bind}" />
-                                        </DataTemplate>
-                                    </BreadcrumbBar.ItemTemplate>
-                                </BreadcrumbBar>
-                            </StackPanel>
-                        </StackPanel>
-                    </Flyout>
-                </Button.Flyout>
-            </Button>
-        </StackPanel>
-        <Grid Grid.Row="1" Margin="0,12,0,12">
-            <StackPanel Orientation="Horizontal" Spacing="4">
-                <DropDownButton
-                    AutomationProperties.Name="Documentation"
-                    ToolTipService.ToolTip="Documentation"
-                    Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
-                    <DropDownButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <FontIcon FontSize="16" Glyph="&#xE8A5;" />
+                Label="About API"
+                ToolTipService.ToolTip="About API">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE946;" />
+                </AppBarButton.Icon>
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Bottom">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Namespace" />
+                            <TextBlock
+                                FontFamily="Consolas"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Item.ApiNamespace, FallbackValue='None'}" />
+
+                            <MenuFlyoutSeparator />
+
+                            <TextBlock Text="Inheritance" />
+                            <BreadcrumbBar IsHitTestVisible="False" ItemsSource="{x:Bind Item.BaseClasses}">
+                                <BreadcrumbBar.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <TextBlock
+                                            FontFamily="Consolas"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Text="{x:Bind}" />
+                                    </DataTemplate>
+                                </BreadcrumbBar.ItemTemplate>
+                            </BreadcrumbBar>
+
+                            <MenuFlyoutSeparator />
+
+
                             <TextBlock Text="Documentation" />
-                        </StackPanel>
-                    </DropDownButton.Content>
-                    <DropDownButton.Flyout>
-                        <Flyout Placement="Bottom">
-                            <ItemsControl
-                                x:Name="DocsList"
-                                Margin="-12"
-                                IsTabStop="False"
-                                ItemsSource="{x:Bind Item.Docs}">
+                            <ItemsControl IsTabStop="False" ItemsSource="{x:Bind Item.Docs}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical" />
+                                        <StackPanel />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate x:DataType="data:ControlInfoDocLink">
                                         <HyperlinkButton
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Left"
-                                            NavigateUri="{Binding Uri}"
-                                            ToolTipService.ToolTip="{Binding Uri}">
-                                            <TextBlock Text="{x:Bind Title}" />
-                                        </HyperlinkButton>
+                                            Content="{x:Bind Title}"
+                                            NavigateUri="{Binding Uri, FallbackValue=''}"
+                                            ToolTipService.ToolTip="{Binding Uri}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                </DropDownButton>
-                <DropDownButton AutomationProperties.Name="Source code" ToolTipService.ToolTip="Source code of this sample page">
-                    <DropDownButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <PathIcon
-                                Margin="-3,-3,-16,-3"
-                                VerticalAlignment="Center"
-                                Data="{StaticResource GitHubIconPath}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform
-                                        ScaleX="0.65"
-                                        ScaleY="0.65"
-                                        TranslateX="-5"
-                                        TranslateY="5" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
-                            <TextBlock Text="Source" />
-                        </StackPanel>
-                    </DropDownButton.Content>
-                    <DropDownButton.Flyout>
-                        <Flyout Placement="Bottom">
-                            <StackPanel x:Name="SourcePanel" Margin="0,-8,0,-12">
-                                <StackPanel x:Name="ControlSourcePanel" Margin="0,0,0,4">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <TextBlock
-                                            VerticalAlignment="Center"
-                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                            Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Control source code" />
-                                        <Button
-                                            Padding="6,5,6,6"
-                                            Style="{ThemeResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available">
-                                            <FontIcon
-                                                VerticalAlignment="Center"
-                                                FontSize="14"
-                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                Glyph="&#xE946;" />
-                                        </Button>
-                                    </StackPanel>
-                                    <HyperlinkButton
-                                        x:Name="ControlSourceLink"
-                                        Margin="-12,4,-12,0"
-                                        HorizontalAlignment="Stretch"
-                                        HorizontalContentAlignment="Left"
-                                        ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri, Mode=OneWay}">
-                                        <TextBlock Text="{x:Bind Item.Title}" />
-                                    </HyperlinkButton>
-                                </StackPanel>
+                            <MenuFlyoutSeparator />
 
-                                <MenuFlyoutSeparator Margin="-12" />
-
+                            <StackPanel x:Name="ControlSourcePanel" Visibility="{x:Bind Item.SourcePath, Converter={StaticResource emptyStringToVisibilityConverter}}">
                                 <StackPanel
-                                    Margin="0,8,0,0"
+                                    Margin="0,0,0,8"
                                     Orientation="Horizontal"
                                     Spacing="8">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="Sample page source code" />
-                                    <Button
-                                        Padding="6,5,6,6"
-                                        Style="{ThemeResource SubtleButtonStyle}"
-                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository">
-                                        <FontIcon
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                            Glyph="&#xE946;" />
-                                    </Button>
-
+                                    <TextBlock Text="Control source code" />
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE946;"
+                                        ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available" />
                                 </StackPanel>
                                 <HyperlinkButton
-                                    x:Name="PageMarkupGitHubLink"
-                                    Margin="-12,4,-12,0"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="XAML" />
-                                </HyperlinkButton>
-                                <HyperlinkButton
-                                    x:Name="PageCodeGitHubLink"
-                                    Margin="-12,4,-12,0"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Left"
-                                    ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri, Mode=OneWay}">
-                                    <TextBlock Text="C#" />
-                                </HyperlinkButton>
+                                    x:Name="ControlSourceLink"
+                                    Content="{x:Bind Item.Title}"
+                                    ToolTipService.ToolTip="{x:Bind ControlSourceLink.NavigateUri}" />
                             </StackPanel>
-                        </Flyout>
-                    </DropDownButton.Flyout>
-                </DropDownButton>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button
-                    x:Name="ThemeButton"
-                    Height="32"
-                    Margin="0,0,4,0"
-                    AutomationProperties.Name="Toggle theme"
-                    Click="OnThemeButtonClick"
-                    ToolTipService.ToolTip="Toggle theme"
-                    Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}">
-                    <Button.Content>
-                        <FontIcon FontSize="16" Glyph="&#xE793;" />
-                    </Button.Content>
-                </Button>
-                <AppBarSeparator Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}" />
-                <local:CopyButton
-                    x:Name="CopyLinkButton"
-                    Height="32"
-                    Margin="4,0,4,0"
-                    Padding="11,2,11,0"
-                    AutomationProperties.Name="Copy link"
-                    Click="OnCopyLinkButtonClick"
-                    Content="&#xE71B;"
-                    ToolTipService.ToolTip="Copy link">
-                    <local:CopyButton.Resources>
-                        <TeachingTip
-                            x:Name="CopyLinkButtonTeachingTip"
-                            Title="Quickly reference this sample!"
-                            ActionButtonClick="OnCopyDontShowAgainButtonClick"
-                            ActionButtonContent="Don't show again"
-                            CloseButtonContent="Got it!"
-                            FontFamily="{StaticResource ContentControlThemeFontFamily}"
-                            PreferredPlacement="Bottom"
-                            Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
-                            Target="{x:Bind CopyLinkButton}">
-                            <TeachingTip.HeroContent>
-                                <Image AutomationProperties.Name="Image of copied text in Run Dialog." Source="/Assets/CopyLinkTeachingTip.png" />
-                            </TeachingTip.HeroContent>
-                        </TeachingTip>
-                    </local:CopyButton.Resources>
-                </local:CopyButton>
-                <Button
-                    x:Name="FeedbackBtn"
-                    Height="32"
-                    AutomationProperties.Name="Send feedback"
-                    Click="OnFeedBackButtonClick"
-                    ToolTipService.ToolTip="Send feedback">
-                    <Button.Content>
-                        <FontIcon FontSize="16" Glyph="&#xED15;" />
-                    </Button.Content>
-                </Button>
-            </StackPanel>
-        </Grid>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+            <AppBarButton Label="Example source" ToolTipService.ToolTip="Example source code">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource GitHubIconPath}" />
+                </AppBarButton.Icon>
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Bottom">
+                        <StackPanel x:Name="SourcePanel">
+                            <StackPanel
+                                Margin="0,0,0,8"
+                                Orientation="Horizontal"
+                                Spacing="8">
+                                <TextBlock Text="Sample page source code" />
+                                <FontIcon
+                                    FontSize="16"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE946;"
+                                    ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available" />
+                            </StackPanel>
+                            <HyperlinkButton
+                                x:Name="PageMarkupGitHubLink"
+                                Content="XAML"
+                                ToolTipService.ToolTip="{x:Bind PageMarkupGitHubLink.NavigateUri}" />
+                            <HyperlinkButton
+                                x:Name="PageCodeGitHubLink"
+                                Content="C#"
+                                ToolTipService.ToolTip="{x:Bind PageCodeGitHubLink.NavigateUri}" />
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+            <AppBarSeparator />
+
+            <AppBarButton
+                x:Name="CopyLinkButton"
+                Click="OnCopyLinkButtonClick"
+                Label="Copy link"
+                ToolTipService.ToolTip="Copy link">
+                <AppBarButton.Icon>
+                    <!--  E8C8 = COPY, E71B = LINK, E72D = SHARE  -->
+                    <FontIcon Glyph="&#xE71B;" />
+                </AppBarButton.Icon>
+                <AppBarButton.Resources>
+                    <TeachingTip
+                        x:Name="CopyLinkButtonTeachingTip"
+                        Title="Quickly reference this sample!"
+                        ActionButtonClick="OnCopyDontShowAgainButtonClick"
+                        ActionButtonContent="Don't show again"
+                        CloseButtonContent="Got it!"
+                        PreferredPlacement="Bottom"
+                        Subtitle="Share with others or paste this link into the Run dialog to open the app to this page directly."
+                        Target="{x:Bind CopyLinkButton}">
+                        <TeachingTip.HeroContent>
+                            <Image AutomationProperties.Name="Image of copied text in Run Dialog." Source="/Assets/CopyLinkTeachingTip.png" />
+                        </TeachingTip.HeroContent>
+                    </TeachingTip>
+                </AppBarButton.Resources>
+            </AppBarButton>
+
+            <AppBarButton
+                x:Name="ShareButton"
+                Click="ShareButton_Click"
+                Label="Share"
+                ToolTipService.ToolTip="Share">
+                <AppBarButton.Icon>
+                    <!--  E8C8 = COPY, E71B = LINK, E72D = SHARE  -->
+                    <FontIcon Glyph="&#xE72D;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton
+                Click="OnFeedBackButtonClick"
+                Label="Send feedback"
+                ToolTipService.ToolTip="Send feedback">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xED15;" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
     </Grid>
 </UserControl>

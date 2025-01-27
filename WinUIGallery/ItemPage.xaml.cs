@@ -24,8 +24,8 @@ namespace WinUIGallery
     /// </summary>
     public sealed partial class ItemPage : Page
     {
-        private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
-        private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
+        private static readonly string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
+        private static readonly string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
 
         public ControlInfoDataItem Item
         {
@@ -49,7 +49,7 @@ namespace WinUIGallery
             {
                 pageHeader.ToggleThemeAction = OnToggleTheme;
                 navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
-                
+
                 this.Focus(FocusState.Programmatic);
             }
         }
@@ -145,7 +145,7 @@ namespace WinUIGallery
                 {
                     controlExample.RequestedTheme = theme;
                 }
-                if(controlExamples.Count() == 0)
+                if (!controlExamples.Any())
                 {
                     this.RequestedTheme = theme;
                 }
