@@ -20,54 +20,53 @@ using OpenQA.Selenium.Interactions;
 using System.Linq;
 using System.Threading;
 
-namespace UITests
+namespace UITests;
+
+public class TestBase
 {
-	public class TestBase
+	public static WindowsDriver<WindowsElement> Session => SessionManager.Session;
+
+	public static void OpenControlPage(string name)
 	{
-		public static WindowsDriver<WindowsElement> Session => SessionManager.Session;
+		var search = Session.FindElementByName("Search");
+		search.Clear();
 
-		public static void OpenControlPage(string name)
+		search.SendKeys(name);
+		GetElementByName(name).Click();
+
+		Assert.IsNotNull(WaitForPageHeader(name), "Failed to find matching page header for page: " + name);
+	}
+
+	public static WindowsElement GetElementByName(string name)
+	{
+		for (int i = 0; i < 100; i++)
 		{
-			var search = Session.FindElementByName("Search");
-			search.Clear();
-
-			search.SendKeys(name);
-			GetElementByName(name).Click();
-
-			Assert.IsNotNull(WaitForPageHeader(name), "Failed to find matching page header for page: " + name);
-		}
-
-		public static WindowsElement GetElementByName(string name)
-		{
-			for (int i = 0; i < 100; i++)
+			Thread.Sleep(50);
+			var element = Session.FindElementByName(name);
+			if (element != null)
 			{
-				Thread.Sleep(50);
-				var element = Session.FindElementByName(name);
-				if (element != null)
-				{
-					return element;
-				}
+				return element;
 			}
-			return null;
 		}
-		private static WindowsElement WaitForPageHeader(string name)
+		return null;
+	}
+	private static WindowsElement WaitForPageHeader(string name)
+	{
+		for (int i = 0; i < 100; i++)
 		{
-			for (int i = 0; i < 100; i++)
+			var header = Session.FindElementByAccessibilityId("PageHeader");
+			if (header != null && header.Text == name)
 			{
-				var header = Session.FindElementByAccessibilityId("PageHeader");
-				if (header != null && header.Text == name)
-				{
-					return header;
-				}
-				Thread.Sleep(50);
+				return header;
 			}
-			return null;
+			Thread.Sleep(50);
 		}
+		return null;
+	}
 
-		public static void TypeText(string text)
-		{
-			var actions = new Actions(Session);
-			actions.SendKeys(text).Perform();
-		}
+	public static void TypeText(string text)
+	{
+		var actions = new Actions(Session);
+		actions.SendKeys(text).Perform();
 	}
 }

@@ -17,50 +17,49 @@ using Windows.Globalization;
 using Windows.UI.Popups;
 using WinUIGallery.Common;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class CalendarViewPage : Page
 {
-    public sealed partial class CalendarViewPage : Page
+    public CalendarViewPage()
     {
-        public CalendarViewPage()
+        this.InitializeComponent();
+
+        List<string> calendarIdentifiers = new List<string>()
         {
-            this.InitializeComponent();
+            CalendarIdentifiers.Gregorian,
+            CalendarIdentifiers.Hebrew,
+            CalendarIdentifiers.Hijri,
+            CalendarIdentifiers.Japanese,
+            CalendarIdentifiers.Julian,
+            CalendarIdentifiers.Korean,
+            CalendarIdentifiers.Persian,
+            CalendarIdentifiers.Taiwan,
+            CalendarIdentifiers.Thai,
+            CalendarIdentifiers.UmAlQura,
+        };
 
-            List<string> calendarIdentifiers = new List<string>()
-            {
-                CalendarIdentifiers.Gregorian,
-                CalendarIdentifiers.Hebrew,
-                CalendarIdentifiers.Hijri,
-                CalendarIdentifiers.Japanese,
-                CalendarIdentifiers.Julian,
-                CalendarIdentifiers.Korean,
-                CalendarIdentifiers.Persian,
-                CalendarIdentifiers.Taiwan,
-                CalendarIdentifiers.Thai,
-                CalendarIdentifiers.UmAlQura,
-            };
+        calendarIdentifier.ItemsSource = calendarIdentifiers;
+        calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
 
-            calendarIdentifier.ItemsSource = calendarIdentifiers;
-            calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
+        var langs = new LanguageList();
+        calendarLanguages.ItemsSource = langs.Languages;
+    }
 
-            var langs = new LanguageList();
-            calendarLanguages.ItemsSource = langs.Languages;
+    private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
+        {
+            Control1.SelectionMode = selectionMode;
         }
+    }
 
-        private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void calendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        string selectedLang = calendarLanguages.SelectedValue.ToString();
+        if (Windows.Globalization.Language.IsWellFormed(selectedLang))
         {
-            if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
-            {
-                Control1.SelectionMode = selectionMode;
-            }
-        }
-
-        private void calendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string selectedLang = calendarLanguages.SelectedValue.ToString();
-            if (Windows.Globalization.Language.IsWellFormed(selectedLang))
-            {
-                Control1.Language = selectedLang;
-            }
+            Control1.Language = selectedLang;
         }
     }
 }

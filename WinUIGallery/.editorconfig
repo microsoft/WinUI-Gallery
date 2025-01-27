@@ -90,6 +90,9 @@ csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
 # IDE0016: Null check can be simplified
 csharp_style_throw_expression = true:suggestion
 
+# IDE0161: Convert to file-scoped namespace
+csharp_style_namespace_declarations = file_scoped:warning
+
 # 
 dotnet_style_coalesce_expression = true:suggestion
 

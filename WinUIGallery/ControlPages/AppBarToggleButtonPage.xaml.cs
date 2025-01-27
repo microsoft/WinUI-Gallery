@@ -12,36 +12,35 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class AppBarToggleButtonPage : Page
 {
-    public sealed partial class AppBarToggleButtonPage : Page
+    public AppBarToggleButtonPage()
     {
-        public AppBarToggleButtonPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+    private void AppBarButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is AppBarToggleButton b)
         {
-            if (sender is AppBarToggleButton b)
+            string name = b.Name;
+
+            switch (name)
             {
-                string name = b.Name;
-
-                switch (name)
-                {
-                    case "Button1":
-                        Control1Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
-                    case "Button2":
-                        Control2Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
-                    case "Button3":
-                        Control3Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
-                    case "Button4":
-                        Control4Output.Text = "IsChecked = " + b.IsChecked.ToString();
-                        break;
-                }
+                case "Button1":
+                    Control1Output.Text = "IsChecked = " + b.IsChecked.ToString();
+                    break;
+                case "Button2":
+                    Control2Output.Text = "IsChecked = " + b.IsChecked.ToString();
+                    break;
+                case "Button3":
+                    Control3Output.Text = "IsChecked = " + b.IsChecked.ToString();
+                    break;
+                case "Button4":
+                    Control4Output.Text = "IsChecked = " + b.IsChecked.ToString();
+                    break;
             }
         }
     }

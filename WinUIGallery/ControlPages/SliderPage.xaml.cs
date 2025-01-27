@@ -23,26 +23,25 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI;
 
-namespace WinUIGallery.ControlPages
-{
-    public sealed partial class SliderPage : Page
-    {
-        public SliderPage()
-        {
-            this.InitializeComponent();
-        }
+namespace WinUIGallery.ControlPages;
 
-        private void SnapsToRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+public sealed partial class SliderPage : Page
+{
+    public SliderPage()
+    {
+        this.InitializeComponent();
+    }
+
+    private void SnapsToRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        switch (SnapsToRadioButtons.SelectedItem)
         {
-            switch (SnapsToRadioButtons.SelectedItem)
-            {
-                case "StepValues":
-                    Slider3.SnapsTo = SliderSnapsTo.StepValues;
-                    break;
-                default:
-                    Slider3.SnapsTo = SliderSnapsTo.Ticks;
-                    break;
-            }
+            case "StepValues":
+                Slider3.SnapsTo = SliderSnapsTo.StepValues;
+                break;
+            default:
+                Slider3.SnapsTo = SliderSnapsTo.Ticks;
+                break;
         }
     }
 }
