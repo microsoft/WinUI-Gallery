@@ -18,7 +18,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
 using System.ComponentModel;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using System.Threading.Tasks;
 
 namespace WinUIGallery.ControlPages;

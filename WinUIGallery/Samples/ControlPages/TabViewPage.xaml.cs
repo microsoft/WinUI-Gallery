@@ -1,14 +1,9 @@
-using System;
+using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using WinUIGallery.Helpers;
 using WinUIGallery.SamplePages;
-using WinUIGallery.Helper;
-using Windows.ApplicationModel.Core;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Dispatching;
-using WinUIGallery.TabViewPages;
-using System.Collections.ObjectModel;
 
 namespace WinUIGallery.ControlPages;
 

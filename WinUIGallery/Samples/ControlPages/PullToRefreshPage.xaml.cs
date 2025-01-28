@@ -1,4 +1,4 @@
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using Windows.Foundation;

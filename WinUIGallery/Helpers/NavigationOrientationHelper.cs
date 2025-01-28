@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
 using WinUIGallery.Pages;
 
-namespace WinUIGallery.Helper;
+namespace WinUIGallery.Helpers;
 
 public static class NavigationOrientationHelper
 {

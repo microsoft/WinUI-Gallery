@@ -1,9 +1,8 @@
-using System;
 using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml;
 using static WinUIGallery.Win32;
 
-namespace WinUIGallery.Helper;
+namespace WinUIGallery.Helpers;
 
 internal class Win32WindowHelper
 {

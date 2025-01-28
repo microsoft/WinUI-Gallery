@@ -7,31 +7,21 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using WinUIGallery.DesktopWap.Helper;
 using Microsoft.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Input;
-using System.IO;
 using Windows.Foundation;
 using System;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace WinUIGallery.ControlPages;
 
-
-
-/// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
-/// </summary>
 public sealed partial class TitleBarPage : Page
 {
     private Windows.UI.Color currentBgColor = Colors.Transparent;

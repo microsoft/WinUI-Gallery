@@ -1,4 +1,4 @@
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
 using Microsoft.UI.Composition.SystemBackdrops;
@@ -6,7 +6,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Windowing;
 using Microsoft.UI;
-using WinUIGallery.DesktopWap.Helper;
 using Microsoft.UI.Composition;
 using System;
 

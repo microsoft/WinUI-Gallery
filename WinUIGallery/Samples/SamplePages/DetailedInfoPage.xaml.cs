@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.ControlPages;
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace WinUIGallery.ConnectedAnimationPages;
+namespace WinUIGallery.SamplePages;
 
 public sealed partial class DetailedInfoPage : Page
 {

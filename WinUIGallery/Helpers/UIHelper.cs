@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
 
-namespace WinUIGallery.Helper;
+namespace WinUIGallery.Helpers;
 
 public static class UIHelper
 {

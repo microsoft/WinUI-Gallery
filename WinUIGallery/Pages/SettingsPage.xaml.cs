@@ -14,8 +14,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
-using WinUIGallery.DesktopWap.Helper;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
 

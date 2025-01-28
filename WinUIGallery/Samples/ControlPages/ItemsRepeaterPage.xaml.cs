@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;

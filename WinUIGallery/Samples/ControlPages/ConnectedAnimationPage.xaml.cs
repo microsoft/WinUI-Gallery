@@ -14,14 +14,13 @@ public sealed partial class ConnectedAnimationPage : Page
         this.InitializeComponent();
 
         // For 1st sample
-        CollectionContentFrame.Navigate(typeof(ConnectedAnimationPages.CollectionPage));
+        CollectionContentFrame.Navigate(typeof(CollectionPage));
 
         // For 2nd sample
-        CardFrame.Navigate(typeof(ConnectedAnimationPages.CardPage));
+        CardFrame.Navigate(typeof(CardPage));
 
         // For 3rd sample
         ContentFrame.Navigate(typeof(SamplePage1));
-        
     }
 
     private ConnectedAnimationConfiguration GetConfiguration()

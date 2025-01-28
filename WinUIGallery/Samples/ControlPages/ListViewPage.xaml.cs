@@ -19,7 +19,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Common;
 using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;

@@ -8,7 +8,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Common;
 

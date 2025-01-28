@@ -8,7 +8,7 @@
 //
 //*********************************************************
 using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using System.Collections.Generic;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

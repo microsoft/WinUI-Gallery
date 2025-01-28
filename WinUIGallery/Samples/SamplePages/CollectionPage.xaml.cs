@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.ControlPages;
 using Windows.Foundation.Metadata;
 
-namespace WinUIGallery.ConnectedAnimationPages;
+namespace WinUIGallery.SamplePages;
 
 public sealed partial class CollectionPage : Page
 {

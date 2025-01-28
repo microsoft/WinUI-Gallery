@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using WinUIGallery.Common;
 
-namespace WinUIGallery.DesktopWap.DataModel;
+namespace WinUIGallery.Data;
 
 public class IconData
 {

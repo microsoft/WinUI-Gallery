@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 

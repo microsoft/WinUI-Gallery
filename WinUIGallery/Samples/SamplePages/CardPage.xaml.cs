@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Windows.Foundation.Metadata;
 
-namespace WinUIGallery.ConnectedAnimationPages;
+namespace WinUIGallery.SamplePages;
 
 public sealed partial class CardPage : Page
 {

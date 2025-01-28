@@ -1,10 +1,7 @@
-using System;
-using Windows.Storage;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Windows.Storage;
 
-namespace WinUIGallery.Helper;
+namespace WinUIGallery.Helpers;
 
 /// <summary>
 /// Class providing functionality around switching and restoring theme settings

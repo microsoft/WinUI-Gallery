@@ -12,12 +12,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.DesktopWap.DataModel;
 using System.Threading;
 using CommunityToolkit.WinUI.Controls;
+using WinUIGallery.Data;
 
 namespace WinUIGallery.ControlPages;
 

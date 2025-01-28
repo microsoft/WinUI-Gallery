@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Data;
 using WinUIGallery.Controls;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
 

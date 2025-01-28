@@ -136,8 +136,8 @@
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
-        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
-        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
     </ItemGroup>
 

@@ -3,7 +3,7 @@
 
 using System;
 using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;

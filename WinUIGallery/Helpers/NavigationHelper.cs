@@ -17,7 +17,7 @@ using Windows.UI.Core;
 using Microsoft.UI.Input;
 using static CommunityToolkit.WinUI.Animations.Expressions.ExpressionValues;
 
-namespace WinUIGallery.Helper;
+namespace WinUIGallery.Helpers;
 
 /// <summary>
 /// NavigationHelper aids in navigation between pages. It manages
