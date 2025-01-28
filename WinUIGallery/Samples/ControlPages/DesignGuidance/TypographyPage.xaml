@@ -193,14 +193,14 @@
                             Example="Caption"
                             ExampleStyle="{StaticResource CaptionTextBlockStyle}"
                             ResourceName="CaptionTextBlockStyle"
-                            SizeLinHeight="12/16 epx"
+                            SizeLineHeight="12/16 epx"
                             VariableFont="Small, Regular"
                             Weight="400" />
                         <controls:TypographyControl
                             Example="Body"
                             ExampleStyle="{StaticResource BodyTextBlockStyle}"
                             ResourceName="BodyTextBlockStyle"
-                            SizeLinHeight="14/20 epx"
+                            SizeLineHeight="14/20 epx"
                             VariableFont="Text, Regular"
                             Weight="400" />
                         <controls:TypographyControl
@@ -208,14 +208,14 @@
                             Example="Body Strong"
                             ExampleStyle="{StaticResource BodyStrongTextBlockStyle}"
                             ResourceName="BodyStrongTextBlockStyle"
-                            SizeLinHeight="14/20 epx"
+                            SizeLineHeight="14/20 epx"
                             VariableFont="Text, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
                             Example="Subtitle"
                             ExampleStyle="{StaticResource SubtitleTextBlockStyle}"
                             ResourceName="SubtitleTextBlockStyle"
-                            SizeLinHeight="20/28 epx"
+                            SizeLineHeight="20/28 epx"
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
@@ -223,14 +223,14 @@
                             Example="Title"
                             ExampleStyle="{StaticResource TitleTextBlockStyle}"
                             ResourceName="TitleTextBlockStyle"
-                            SizeLinHeight="28/36 epx"
+                            SizeLineHeight="28/36 epx"
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
                             Example="Title Large"
                             ExampleStyle="{StaticResource TitleLargeTextBlockStyle}"
                             ResourceName="TitleLargeTextBlockStyle"
-                            SizeLinHeight="40/52 epx"
+                            SizeLineHeight="40/52 epx"
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
@@ -238,7 +238,7 @@
                             Example="Display"
                             ExampleStyle="{StaticResource DisplayTextBlockStyle}"
                             ResourceName="DisplayTextBlockStyle"
-                            SizeLinHeight="68/92 epx"
+                            SizeLineHeight="68/92 epx"
                             VariableFont="Display, SemiBold"
                             Weight="600" />
                     </StackPanel>

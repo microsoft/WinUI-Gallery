@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local1="using:WinUIGallery.ControlPages"
+    xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:samplepages="using:WinUIGallery.SamplePages"
     mc:Ignorable="d">

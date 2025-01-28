@@ -4,7 +4,7 @@
 using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
-using WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections;
+using WinUIGallery.Controls;
 
 namespace WinUIGallery.ControlPages;
 

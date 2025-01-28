@@ -38,12 +38,12 @@ public sealed partial class TypographyControl : UserControl
         set => SetValue(VariableFontProperty, value);
     }
 
-    public static readonly DependencyProperty SizeLinHeightProperty = DependencyProperty.Register(nameof(SizeLinHeight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+    public static readonly DependencyProperty SizeLineHeightProperty = DependencyProperty.Register(nameof(SizeLineHeight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
 
-    public string SizeLinHeight
+    public string SizeLineHeight
     {
-        get => (string)GetValue(SizeLinHeightProperty);
-        set => SetValue(SizeLinHeightProperty, value);
+        get => (string)GetValue(SizeLineHeightProperty);
+        set => SetValue(SizeLineHeightProperty, value);
     }
 
     public static readonly DependencyProperty ExampleStyleProperty = DependencyProperty.Register(nameof(ExampleStyleProperty), typeof(Style), typeof(TypographyControl), new PropertyMetadata(null));
