@@ -33,6 +33,7 @@ public class UnitTests
         {
             "Design guidance",
             "Accessibility",
+            "XAML fundamentals",
             "Menus & toolbars",
             "Collections",
             "Date & time",

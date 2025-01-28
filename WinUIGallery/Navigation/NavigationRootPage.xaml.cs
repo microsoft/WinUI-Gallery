@@ -357,6 +357,22 @@ public sealed partial class NavigationRootPage : Page
             {
                 Navigate(typeof(ItemPage), "AccessibilityColorContrast");
             }
+            else if (selectedItem == XamlResourcesPage)
+            {
+                Navigate(typeof(ItemPage), "XamlResources");
+            }
+            else if (selectedItem == XamlStylesPage)
+            {
+                Navigate(typeof(ItemPage), "XamlStyles");
+            }
+            else if (selectedItem == BindingPage)
+            {
+                Navigate(typeof(ItemPage), "Binding");
+            }
+            else if (selectedItem == TemplatesPage)
+            {
+                Navigate(typeof(ItemPage), "Templates");
+            }
             else
             {
                 if (selectedItem.DataContext is ControlInfoDataGroup)
