@@ -7,7 +7,6 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;
@@ -22,7 +21,8 @@ public sealed partial class ProgressBarPage : Page
     private void ProgressValue_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
     {
         // Value might be NaN, which is not valid as value, thus we need to handle changes ourselves
-        if (!sender.Value.IsNaN())
+       
+        if (!double.IsNaN(sender.Value))
         {
             ProgressBar2.Value = sender.Value;
         }

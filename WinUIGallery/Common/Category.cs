@@ -1,4 +1,3 @@
-using System;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.Common;

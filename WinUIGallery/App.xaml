@@ -45,6 +45,9 @@
             <x:String x:Key="ControlsName">All samples</x:String>
             <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
 
+            <!--  Breakpoints  -->
+            <x:Double x:Key="Breakpoint640Plus">641</x:Double>
+
             <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
             <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
             <common:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
@@ -54,9 +57,6 @@
                 NullValue="Visible" />
             <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
             <common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
-
-            <!--  Breakpoints  -->
-            <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
             <!--  Style Overrides  -->
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent" />

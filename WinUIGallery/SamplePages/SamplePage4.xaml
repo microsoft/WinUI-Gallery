@@ -9,7 +9,7 @@
 
     <ScrollViewer>
         <StackPanel>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid>
                 <Grid.Resources>
                     <x:Double x:Key="TileHeight">150</x:Double>
                 </Grid.Resources>
@@ -27,7 +27,7 @@
                 <Grid Grid.Row="1" Grid.Column="2" MinHeight="{StaticResource TileHeight}" Background="LightCoral" Margin="5" />
                 
             </Grid>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid>
                 <Grid.Resources>
                     <x:Double x:Key="TileHeight">150</x:Double>
                 </Grid.Resources>

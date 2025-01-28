@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
             <Grid.Resources>
                 <x:Double x:Key="TileHeight">150</x:Double>
             </Grid.Resources>

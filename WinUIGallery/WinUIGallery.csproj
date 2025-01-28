@@ -133,10 +133,6 @@
     <ItemGroup>
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-        <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
-        <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
-        <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
-        <Page Remove="ControlPages\InputValidationPage.xaml" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
         <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
@@ -292,13 +288,6 @@
         <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
         <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
-        <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
-        <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
-        <None Remove="ControlPages\InfoBadgePage.xaml" />
-        <None Remove="ControlPages\LinePage.xaml" />
-        <None Remove="ControlPages\SelectorBarPage.xaml" />
-        <None Remove="ControlPages\ShapePage.xaml" />
-        <None Remove="ControlPages\Typography.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
@@ -562,7 +551,7 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="ControlPages\Accessibility\" />
+      <Folder Include="Samples\" />
     </ItemGroup>
     <ItemGroup>
       <Page Update="ControlPages\PopupPage.xaml">
