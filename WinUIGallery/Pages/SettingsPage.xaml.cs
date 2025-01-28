@@ -17,7 +17,7 @@ using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
 using WinUIGallery.Helper;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 /// <summary>
 /// A page that displays the app's settings.

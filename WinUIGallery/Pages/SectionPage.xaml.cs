@@ -11,7 +11,7 @@ using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 /// <summary>
 /// A page that displays an overview of a single group, including a preview of the items

@@ -25,6 +25,7 @@ using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using System.Collections.Generic;
 using static WinUIGallery.Win32;
+using WinUIGallery.Pages;
 
 namespace WinUIGallery;
 

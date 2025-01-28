@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
 

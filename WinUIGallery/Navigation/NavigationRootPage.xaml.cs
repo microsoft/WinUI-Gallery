@@ -27,7 +27,7 @@ using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.DesktopWap.Helper;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 public sealed partial class NavigationRootPage : Page
 {

@@ -17,7 +17,7 @@ using WinUIGallery.Data;
 using WinUIGallery.DesktopWap.Controls;
 using WinUIGallery.Helper;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 /// <summary>
 /// A page that displays details for a single item within a group.

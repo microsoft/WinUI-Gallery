@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 public sealed partial class HomePage : ItemsPageBase
 {

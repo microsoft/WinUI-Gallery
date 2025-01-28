@@ -17,7 +17,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using WinUIGallery.Data;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Pages;
 
 public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 {

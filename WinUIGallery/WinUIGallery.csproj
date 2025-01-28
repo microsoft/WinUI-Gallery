@@ -503,7 +503,7 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Pages\" />
+      <Folder Include="Styles\" />
       <Folder Include="Samples\" />
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
