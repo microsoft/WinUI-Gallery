@@ -3,10 +3,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
-    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     x:Name="RootPanel"
     Margin="0,16,0,0"
     d:DesignHeight="250"
@@ -92,7 +91,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <controls:SampleThemeListener>
+            <local:SampleThemeListener>
                 <Grid
                     x:Name="ExampleContainer"
                     x:FieldModifier="Public"
@@ -149,19 +148,19 @@
                         Content="{x:Bind Options}"
                         Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
                 </Grid>
-            </controls:SampleThemeListener>
+            </local:SampleThemeListener>
 
             <!--  Sample code display  -->
-            <muxc:Expander
+            <Expander
                 Grid.Row="1"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
                 CornerRadius="0,0,8,8">
 
-                <muxc:Expander.Header>
+                <Expander.Header>
                     <TextBlock Text="Source code" />
-                </muxc:Expander.Header>
+                </Expander.Header>
                 <Grid RowSpacing="16">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -186,7 +185,7 @@
                     <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
                     <Grid Grid.Row="1" x:DefaultBindMode="OneWay">
                         <ContentPresenter x:Name="XamlContentPresenter" Visibility="Collapsed">
-                            <controls:SampleCodePresenter
+                            <local:SampleCodePresenter
                                 x:Name="XamlPresenter"
                                 animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                                 animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
@@ -196,7 +195,7 @@
                                 Substitutions="{x:Bind Substitutions}" />
                         </ContentPresenter>
                         <ContentPresenter x:Name="CSharpContentPresenter" Visibility="Collapsed">
-                            <controls:SampleCodePresenter
+                            <local:SampleCodePresenter
                                 x:Name="CSharpPresenter"
                                 animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                                 animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
@@ -207,7 +206,7 @@
                         </ContentPresenter>
                     </Grid>
                 </Grid>
-            </muxc:Expander>
+            </Expander>
         </Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
