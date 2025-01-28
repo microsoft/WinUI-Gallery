@@ -19,13 +19,12 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace WinUIGallery.DesktopWap.Controls
+namespace WinUIGallery.DesktopWap.Controls;
+
+public sealed partial class SampleThemeListener : UserControl
 {
-    public sealed partial class SampleThemeListener : UserControl
+    public SampleThemeListener()
     {
-        public SampleThemeListener()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

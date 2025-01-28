@@ -10,31 +10,30 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class ButtonPage : Page
 {
-    public sealed partial class ButtonPage : Page
+    public ButtonPage()
     {
-        public ButtonPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b)
         {
-            if (sender is Button b)
+            string name = b.Name;
+
+            switch (name)
             {
-                string name = b.Name;
-
-                switch (name)
-                {
-                    case "Button1":
-                        Control1Output.Text = "You clicked: " + name;
-                        break;
-                    case "Button2":
-                        Control2Output.Text = "You clicked: " + name;
-                        break;
-                    
-                }
+                case "Button1":
+                    Control1Output.Text = "You clicked: " + name;
+                    break;
+                case "Button2":
+                    Control2Output.Text = "You clicked: " + name;
+                    break;
+                
             }
         }
     }

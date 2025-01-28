@@ -10,26 +10,25 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class ToggleButtonPage : Page
 {
-    public sealed partial class ToggleButtonPage : Page
+    public ToggleButtonPage()
     {
-        public ToggleButtonPage()
-        {
-            this.InitializeComponent();
+        this.InitializeComponent();
 
-            // Set initial output value.
-            Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
-        }
+        // Set initial output value.
+        Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
+    }
 
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            Control1Output.Text = "On";
-        }
+    private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+    {
+        Control1Output.Text = "On";
+    }
 
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Control1Output.Text = "Off";
-        }
+    private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+    {
+        Control1Output.Text = "Off";
     }
 }

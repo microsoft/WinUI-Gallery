@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -12,21 +12,20 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 
-namespace WinUIGallery.ControlPages
-{
-    public sealed partial class FlyoutPage : Page
-    {
-        public FlyoutPage()
-        {
-            this.InitializeComponent();
-        }
+namespace WinUIGallery.ControlPages;
 
-        private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
+public sealed partial class FlyoutPage : Page
+{
+    public FlyoutPage()
+    {
+        this.InitializeComponent();
+    }
+
+    private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
+    {
+        if (this.Control1.Flyout is Flyout f)
         {
-            if (this.Control1.Flyout is Flyout f)
-            {
-                f.Hide();
-            }
+            f.Hide();
         }
     }
 }

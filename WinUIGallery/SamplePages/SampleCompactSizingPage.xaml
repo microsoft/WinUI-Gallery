@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.SamplePages.SampleCompactSizingPage"
@@ -20,19 +20,22 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
     </Page.Resources>
-    
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
         <StackPanel Spacing="8">
             <StackPanel.Resources>
                 <Thickness x:Key="TextBoxTopHeaderMargin">0,2,0,2</Thickness>
                 <Thickness x:Key="PasswordBoxTopHeaderMargin">0,2,0,2</Thickness>
             </StackPanel.Resources>
-            <TextBlock x:Name="HeaderBlock" Text="Compact Size" FontSize="18"/>
-            <TextBox Header="First Name:" x:Name="firstName" />
-            <TextBox Header="Last Name:" x:Name="lastName"  />
-            <PasswordBox Header="Password:" x:Name="password"/>
-            <PasswordBox Header="Confirm Password:" x:Name="confirmPassword"/>
-            <DatePicker Header="Pick a date" x:Name="chosenDate"/>
+            <TextBlock
+                x:Name="HeaderBlock"
+                FontSize="18"
+                Text="Compact Size" />
+            <TextBox x:Name="firstName" Header="First Name:" />
+            <TextBox x:Name="lastName" Header="Last Name:" />
+            <PasswordBox x:Name="password" Header="Password:" />
+            <PasswordBox x:Name="confirmPassword" Header="Confirm Password:" />
+            <DatePicker x:Name="chosenDate" Header="Pick a date" />
         </StackPanel>
     </Grid>
 </Page>

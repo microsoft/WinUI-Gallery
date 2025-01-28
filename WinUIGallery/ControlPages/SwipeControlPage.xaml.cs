@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -13,101 +13,100 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using System.Collections.ObjectModel;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class SwipeControlPage : Page
 {
-    public sealed partial class SwipeControlPage : Page
+    private bool isArchived = false;
+
+    private bool isFlagged = false;
+    private bool isAccepted = false;
+
+    public SwipeControlPage()
     {
-        private bool isArchived = false;
+        this.InitializeComponent();
+        var source = @"Swipe Item 1,Swipe Item 2,Swipe Item 3,Swipe Item 4".Split(',');
+        foreach (var item in source)
+            items.Add(item);
+        lv.ItemsSource = items;
+    }
 
-        private bool isFlagged = false;
-        private bool isAccepted = false;
+    ObservableCollection<object> items = new ObservableCollection<object>();
 
-        public SwipeControlPage()
+    private void DeleteOne_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    {
+        isArchived = !isArchived;
+
+        if(isArchived)
         {
-            this.InitializeComponent();
-            var source = @"Swipe Item 1,Swipe Item 2,Swipe Item 3,Swipe Item 4".Split(',');
-            foreach (var item in source)
-                items.Add(item);
-            lv.ItemsSource = items;
+            ((TextBlock)args.SwipeControl.Content).Text = "Archived - Swipe Left";
         }
-
-        ObservableCollection<object> items = new ObservableCollection<object>();
-
-        private void DeleteOne_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+        else
         {
-            isArchived = !isArchived;
-
-            if(isArchived)
-            {
-                ((TextBlock)args.SwipeControl.Content).Text = "Archived - Swipe Left";
-            }
-            else
-            {
-                ((TextBlock)args.SwipeControl.Content).Text = "Swipe Left";
-            }
+            ((TextBlock)args.SwipeControl.Content).Text = "Swipe Left";
         }
+    }
 
-        private void DeleteItem_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    private void DeleteItem_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    {
+        items.Remove(args.SwipeControl.DataContext);
+    }
+
+    private void Accept_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    {
+        isAccepted = !isAccepted;
+        CheckAcceptFlagBool(args.SwipeControl);
+
+        if (isAccepted)
         {
-            items.Remove(args.SwipeControl.DataContext);
+            FontIconSource cancelIcon = new FontIconSource() { Glyph = "\ue711" };
+            sender.IconSource = cancelIcon;
+            sender.Text = "Cancel";
         }
-
-        private void Accept_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+        else
         {
-            isAccepted = !isAccepted;
-            CheckAcceptFlagBool(args.SwipeControl);
-
-            if (isAccepted)
-            {
-                FontIconSource cancelIcon = new FontIconSource() { Glyph = "\ue711" };
-                sender.IconSource = cancelIcon;
-                sender.Text = "Cancel";
-            }
-            else
-            {
-                FontIconSource acceptIcon = new FontIconSource() { Glyph = "\ue10B" };
-                sender.IconSource = acceptIcon;
-                sender.Text = "Accept";
-            }
+            FontIconSource acceptIcon = new FontIconSource() { Glyph = "\ue10B" };
+            sender.IconSource = acceptIcon;
+            sender.Text = "Accept";
         }
+    }
 
-        private void Flag_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    private void Flag_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+    {
+        isFlagged = !isFlagged;
+        CheckAcceptFlagBool(args.SwipeControl);
+
+        if (isFlagged)
         {
-            isFlagged = !isFlagged;
-            CheckAcceptFlagBool(args.SwipeControl);
-
-            if (isFlagged)
-            {
-                FontIconSource filledFlagIcon = new FontIconSource() { Glyph = "\ueB4B" };
-                sender.IconSource = filledFlagIcon;
-                sender.Text = "Unmark";
-            }
-            else
-            {
-                FontIconSource flagIcon = new FontIconSource() { Glyph = "\ue129" };
-                sender.IconSource = flagIcon;
-                sender.Text = "Flag";
-            }
+            FontIconSource filledFlagIcon = new FontIconSource() { Glyph = "\ueB4B" };
+            sender.IconSource = filledFlagIcon;
+            sender.Text = "Unmark";
         }
-
-        private void CheckAcceptFlagBool(SwipeControl swipeCtrl)
+        else
         {
-            if(isAccepted && !isFlagged)
-            {
-                ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted";
-            }
-            else if (isAccepted && isFlagged)
-            {
-                ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted & Flagged";
-            }
-            else if (!isAccepted && isFlagged)
-            {
-                ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Flagged";
-            }
-            else
-            {
-                ((TextBlock)swipeCtrl.Content).Text = "Swipe Right";
-            }
+            FontIconSource flagIcon = new FontIconSource() { Glyph = "\ue129" };
+            sender.IconSource = flagIcon;
+            sender.Text = "Flag";
+        }
+    }
+
+    private void CheckAcceptFlagBool(SwipeControl swipeCtrl)
+    {
+        if(isAccepted && !isFlagged)
+        {
+            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted";
+        }
+        else if (isAccepted && isFlagged)
+        {
+            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted & Flagged";
+        }
+        else if (!isAccepted && isFlagged)
+        {
+            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Flagged";
+        }
+        else
+        {
+            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right";
         }
     }
 }

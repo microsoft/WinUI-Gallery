@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,13 +13,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.ControlPages
+namespace WinUIGallery.ControlPages;
+
+public sealed partial class DropDownButtonPage : Page
 {
-    public sealed partial class DropDownButtonPage : Page
+    public DropDownButtonPage()
     {
-        public DropDownButtonPage()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }
