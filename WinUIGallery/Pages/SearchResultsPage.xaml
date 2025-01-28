@@ -10,38 +10,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="ResultStates">
-                <VisualState x:Name="ResultsFound" />
-                <!--  When there are no results, the results panel is replaced with an informational TextBlock  -->
-                <VisualState x:Name="NoResultsFound">
-                    <VisualState.Setters>
-                        <Setter Target="resultsNavView.Visibility" Value="Collapsed" />
-                        <Setter Target="noResultsTextBlock.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-            <VisualStateGroup x:Name="LayoutVisualStates">
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="resultsNavView.Margin" Value="0" />
-                        <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
-                        <Setter Target="resultsGridView.Padding" Value="12,0" />
-                        <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
-                        <Setter Target="noResultsTextBlock.Margin" Value="14,14,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
         <NavigationView
             x:Name="resultsNavView"
             Margin="0,24,0,0"
@@ -77,5 +45,36 @@
             Style="{StaticResource TitleTextBlockStyle}"
             Text="No results match your search."
             Visibility="Collapsed" />
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ResultStates">
+                <VisualState x:Name="ResultsFound" />
+                <!--  When there are no results, the results panel is replaced with an informational TextBlock  -->
+                <VisualState x:Name="NoResultsFound">
+                    <VisualState.Setters>
+                        <Setter Target="resultsNavView.Visibility" Value="Collapsed" />
+                        <Setter Target="noResultsTextBlock.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="resultsNavView.Margin" Value="0" />
+                        <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
+                        <Setter Target="resultsGridView.Padding" Value="12,0" />
+                        <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
+                        <Setter Target="noResultsTextBlock.Margin" Value="14,14,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </local:ItemsPageBase>

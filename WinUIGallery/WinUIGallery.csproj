@@ -88,10 +88,14 @@
 
     <ItemGroup>
       <Compile Remove="Assets\ControlIcons\**" />
+      <Compile Remove="Samples\SampleCode\**" />
       <Content Remove="Assets\ControlIcons\**" />
       <EmbeddedResource Remove="Assets\ControlIcons\**" />
+      <EmbeddedResource Remove="Samples\SampleCode\**" />
       <None Remove="Assets\ControlIcons\**" />
+      <None Remove="Samples\SampleCode\**" />
       <Page Remove="Assets\ControlIcons\**" />
+      <Page Remove="Samples\SampleCode\**" />
       <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
 
@@ -279,15 +283,6 @@
         <None Remove="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-        <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
-        <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
@@ -449,19 +444,8 @@
         <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-        <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <Content Include="DataModel\IconsData.json" />
         <Content Include="DataModel\ControlInfoData.json" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="ControlPages\DesignGuidance\SpacingPage.xaml">
@@ -509,33 +493,7 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\LinePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-            <SubType>Designer</SubType>
-        </Page>
-        <Page Update="ControlPages\ShapePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
         <Page Update="Controls\DesignGuidance\TypographyControl.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="ControlPages\DesignGuidance\ColorPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
     </ItemGroup>
@@ -543,20 +501,10 @@
         <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
-        <Page Update="ControlPages\SelectorBarPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="Pages\" />
       <Folder Include="Samples\" />
-    </ItemGroup>
-    <ItemGroup>
-      <Page Update="ControlPages\PopupPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 

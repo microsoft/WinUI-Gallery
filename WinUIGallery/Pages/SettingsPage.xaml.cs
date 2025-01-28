@@ -8,16 +8,14 @@
 //
 //*********************************************************
 using System;
-using WinUIGallery.Helper;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using Windows.Storage;
-using Windows.Storage.Pickers;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.DesktopWap.Helper;
-using Windows.ApplicationModel.DataTransfer;
+using WinUIGallery.Helper;
 
 namespace WinUIGallery;
 

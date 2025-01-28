@@ -138,14 +138,14 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private Uri GetDerivedSource(string sourceRelativePath)
     {
-        Uri derivedSource = new Uri(new Uri("ms-appx:///ControlPagesSampleCode/"), sourceRelativePath);
+        Uri derivedSource = new Uri(new Uri("ms-appx:///Samples/SampleCode/"), sourceRelativePath);
 
         return derivedSource;
     }
 
     private string GetDerivedSourceUnpackaged(string sourceRelativePath)
     {
-        string derviedSourceString = "ControlPagesSampleCode\\" + sourceRelativePath;
+        string derviedSourceString = "Samples\\SampleCode\\" + sourceRelativePath;
         return derviedSourceString;
     }
 
