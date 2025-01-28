@@ -7,7 +7,7 @@ using System.Threading;
 using Microsoft.UI.Dispatching;
 using Windows.Foundation;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Helpers;
 
 public class IdleSynchronizer
 {
