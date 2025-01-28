@@ -7,12 +7,10 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using WinUIGallery.Data;
-using WinUIGallery.Helper;
-using System.Collections.Generic;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.Helper;
+using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
 

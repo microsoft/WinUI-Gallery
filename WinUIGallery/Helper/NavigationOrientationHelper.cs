@@ -1,7 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
-
+using WinUIGallery.Pages;
 
 namespace WinUIGallery.Helper;
 
