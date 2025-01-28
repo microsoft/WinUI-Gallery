@@ -1,18 +1,15 @@
 # Define the folder containing the WinUIGallery relative to the script location
-$WinUIGalleryFolder = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery"
+$ControlPages = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery\ControlPages"
 
-# Change directory to the WinUIGallery folder
-Set-Location -Path $WinUIGalleryFolder
-
-# Define the folder containing the control pages
-$currentFolder = "ControlPages"
+# Path to the ControlPages folder from repository root
+$ControlPagesInRepo = "WinUIGallery/ControlPages"
 
 # Retrieve the list of files in the folder with their details
-$filesWithDetails = git ls-tree -r HEAD --name-only $currentFolder | ForEach-Object { 
+$filesWithDetails = git ls-tree -r HEAD --name-only $ControlPages | ForEach-Object { 
     $file = $_  # Current file path from the git tree
 
     # Check if the file is directly under the $currentFolder and not in subdirectories
-    if ($file -match "^$currentFolder/[^/]+$") {
+    if ($file -match "^$ControlPagesInRepo/[^/]+$") {
         # Get the date of the first commit where the file was added (diff-filter A means "added")
         $firstAddCommit = git log --diff-filter=A --reverse --format="%ai" -- $file | Select-Object -First 1
 
@@ -20,7 +17,7 @@ $filesWithDetails = git ls-tree -r HEAD --name-only $currentFolder | ForEach-Obj
         if ($firstAddCommit) {
             # Create a custom object with file name and its first added commit date
             [PSCustomObject]@{
-                File = $file.Substring($currentFolder.Length + 1)  # Remove the folder path to get the file name
+                File = $file.Substring($ControlPagesInRepo.Length + 1)  # Remove the folder path to get the file name
                 FirstAddCommitDate = $firstAddCommit  # Date of the first commit where the file was added
             }
         }
@@ -41,11 +38,12 @@ $sortedFiles | ForEach-Object {
     # Remove file extensions and standardize the file name
     $fileName = $_.File -replace '\.xaml\.cs$', '' -replace '\.xaml$', ''
     $fileName = $fileName -replace 'Page$', ''
+    $date = $_.FirstAddCommitDate
 
     # Add the file to the output if it hasn't been cached yet (to avoid duplicates)
     if (-not $cachedBaseNames.Contains($fileName)) {
         $cachedBaseNames[$fileName] = $true  # Mark the file name as cached
-        $LatestAddeddSamples += $fileName + "`n"  # Append the file name to the output list
+        $LatestAddeddSamples += $fileName + " (" + $date + ")`n"  # Append the file name to the output list
     }
 }
 

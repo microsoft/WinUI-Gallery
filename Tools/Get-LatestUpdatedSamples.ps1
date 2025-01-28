@@ -1,18 +1,15 @@
 # Define the folder containing the WinUIGallery relative to the script location
-$WinUIGalleryFolder = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery"
+$ControlPages = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery\ControlPages"
 
-# Change directory to the WinUIGallery folder
-Set-Location -Path $WinUIGalleryFolder
-
-# Define the folder containing the control pages
-$currentFolder = "ControlPages"
+# Path to the ControlPages folder from repository root
+$ControlPagesInRepo = "WinUIGallery/ControlPages"
 
 # Retrieve the list of files in the folder with their details
-$filesWithDetails = git ls-tree -r HEAD --name-only $currentFolder | ForEach-Object { 
+$filesWithDetails = git ls-tree -r HEAD --name-only $ControlPages | ForEach-Object { 
     $file = $_  # Current file path from the git tree
 
     # Check if the file is directly under the $currentFolder and not in subdirectories
-    if ($file -match "^$currentFolder/[^/]+$") {
+    if ($file -match "^$ControlPagesInRepo/[^/]+$") {
         # Get the last commit date for the file
         $lastCommitDate = git log -1 --format="%ai" -- $file
 
@@ -22,7 +19,7 @@ $filesWithDetails = git ls-tree -r HEAD --name-only $currentFolder | ForEach-Obj
         # If the file was modified ("M"), create a custom object with file details
         if ($commitStatus -eq "M") {
             [PSCustomObject]@{
-                File = $file.Substring($currentFolder.Length + 1)  # Trim the folder path to get the file name
+                File = $file.Substring($ControlPagesInRepo.Length + 1)  # Trim the folder path to get the file name
                 LastCommitDate = $lastCommitDate  # Last commit date for the file
             }
         }
@@ -43,11 +40,12 @@ $sortedFiles | ForEach-Object {
     # Remove file extensions and standardize the file name
     $fileName = $_.File -replace '\.xaml\.cs$', '' -replace '\.xaml$', ''
     $fileName = $fileName -replace 'Page$', ''
+    $date = $_.LastCommitDate
 
     # Add the file to the output if it hasn't been cached yet
     if (-not $cachedBaseNames.Contains($fileName)) {
         $cachedBaseNames[$fileName] = $true  # Mark the file name as cached
-        $LatestUpdatedSamples += $fileName + "`n"  # Append the file name to the output
+        $LatestUpdatedSamples += $fileName + " (" + $date + ")`n"  # Append the file name to the output
     }
 }
 
