@@ -144,6 +144,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
@@ -154,6 +155,8 @@
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
+        <None Remove="Assets\SampleMedia\Dark_Image.png" />
+        <None Remove="Assets\SampleMedia\Light_Image.png" />
         <None Remove="Assets\Tiles\AppList.scale-100.png" />
         <None Remove="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
         <None Remove="Assets\Tiles\AppList.scale-125.png" />
@@ -283,15 +286,28 @@
         <None Remove="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample1_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
         <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
+        <None Remove="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
         <None Remove="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
         <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
         <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
         <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
+        <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample1_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
+        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
         <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
         <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
         <None Remove="ControlPages\InfoBadgePage.xaml" />
@@ -299,6 +315,10 @@
         <None Remove="ControlPages\SelectorBarPage.xaml" />
         <None Remove="ControlPages\ShapePage.xaml" />
         <None Remove="ControlPages\Typography.xaml" />
+        <None Remove="ControlPages\XamlFundamentals\BindingPage.xaml" />
+        <None Remove="ControlPages\XamlFundamentals\TemplatesPage.xaml" />
+        <None Remove="ControlPages\XamlFundamentals\XamlResourcesPage.xaml" />
+        <None Remove="ControlPages\XamlFundamentals\XamlStylesPage.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
@@ -314,6 +334,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
@@ -329,6 +350,8 @@
         <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-WinUI.png" />
+        <Content Include="Assets\SampleMedia\Dark_Image.png" />
+        <Content Include="Assets\SampleMedia\Light_Image.png" />
         <Content Include="Assets\Tiles\AppList.scale-100.png" />
         <Content Include="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\AppList.scale-125.png" />
@@ -460,11 +483,29 @@
         <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample1_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
         <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
         <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
         <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_StackPanel_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_WrapGrid_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample2_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample3_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
+        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample1_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
+        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
         <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
         <Content Include="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
         <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
@@ -563,6 +604,26 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ControlPages\Accessibility\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\XamlFundamentals\XamlResourcesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\XamlFundamentals\BindingPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\XamlFundamentals\TemplatesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="ControlPages\XamlFundamentals\XamlStylesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
       <Page Update="ControlPages\PopupPage.xaml">
