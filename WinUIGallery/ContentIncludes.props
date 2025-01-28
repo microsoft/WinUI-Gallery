@@ -174,6 +174,12 @@
     <Content Include="Assets\Tiles\WideTile.scale-150.png" />
     <Content Include="Assets\Tiles\WideTile.scale-200.png" />
     <Content Include="Assets\Tiles\WideTile.scale-400.png" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample1_xaml.txt" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample3_csharp.txt" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample3_xaml.txt" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample4_csharp.txt" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample4_xaml.txt" />
+    <Content Include="Samples\SampleCode\Binding\BindingSample5_csharp.txt" />
     <Content Include="Samples\SampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
     <Content Include="Samples\SampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="Samples\SampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
@@ -184,6 +190,7 @@
     <Content Include="Samples\SampleCode\Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt" />
     <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample1_cs.txt" />
     <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample1_xaml.txt" />
+    <Content Include="Samples\SampleCode\Geometry\GeometrySample_xaml.txt" />
     <Content Include="Samples\SampleCode\GridView\GridViewSample1_cs.txt" />
     <Content Include="Samples\SampleCode\GridView\GridViewSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\Icons\AnimatedIconSample2_xaml.txt" />
@@ -194,6 +201,7 @@
     <Content Include="Samples\SampleCode\Icons\ImageIconSample2_xaml.txt" />
     <Content Include="Samples\SampleCode\Icons\ImageIconSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\Icons\FontIconSample1_xaml.txt" />
+    <Content Include="Samples\SampleCode\Icons\FontIconSample2_xaml.txt" />
     <Content Include="Samples\SampleCode\ItemsRepeater\ItemsRepeaterNestedSample_xaml.txt" />
     <Content Include="Samples\SampleCode\ItemsRepeater\ItemsRepeaterSample1_cs.txt" />
     <Content Include="Samples\SampleCode\ItemsRepeater\ItemsRepeaterSample1_xaml.txt" />
@@ -263,6 +271,7 @@
     <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\TreeView\TreeViewDataBindingSample_xaml.txt" />
     <Content Include="Samples\SampleCode\TreeView\TreeViewTemplateSelectorSample_xaml.txt" />
+    <Content Include="Samples\SampleCode\Typography\TypographySample_xaml.txt" />
     <Content Include="Samples\SampleCode\StandardUICommand\StandardUICommandSample1_cs.txt" />
     <Content Include="Samples\SampleCode\StandardUICommand\StandardUICommandSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
@@ -291,6 +300,9 @@
     <Content Include="Samples\SampleCode\Binding\BindingSample4_csharp.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample5_csharp.txt" />
+    <Content Include="Samples\SampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
+    <Content Include="Samples\SampleCode\TreeView\TreeViewSample1_cs.txt" />
+    <Content Include="Samples\SampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
     <Content Include="Samples\SampleCode\Templates\TemplatesSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\Templates\TemplatesSample2_xaml.txt" />
     <Content Include="Samples\SampleCode\Templates\TemplatesSample3_StackPanel_xaml.txt" />
@@ -305,5 +317,6 @@
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="DataModel\ControlInfoData.json" />
+    <Content Include="DataModel\IconsData.json" />
   </ItemGroup>
 </Project>
