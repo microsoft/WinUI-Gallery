@@ -4,13 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animatedvisuals="using:AnimatedVisuals"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
+    xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid>
-        <local:ControlExample x:Name="AnimatedVisualPlayerExample" HeaderText="Playback of a Lottie animation.">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="AnimatedVisualPlayerExample" HeaderText="Playback of a Lottie animation.">
+            <controls:ControlExample.Example>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <!--  Text  -->
                     <TextBlock TextWrapping="WrapWholeWords">
@@ -108,14 +108,14 @@
                     </Grid>
 
                 </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
     &lt;animatedvisuals:LottieLogo1/&gt;
 &lt;/AnimatedVisualPlayer&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </Grid>
 </Page>

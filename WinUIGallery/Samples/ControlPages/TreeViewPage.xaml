@@ -1,7 +1,7 @@
 <Page x:Class="WinUIGallery.ControlPages.TreeViewPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:WinUIGallery"
+      xmlns:controls="using:WinUIGallery.Controls"
       xmlns:controlpages="using:WinUIGallery.ControlPages"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -39,40 +39,40 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample HeaderText="A simple TreeView with drag and drop support"
+        <controls:ControlExample HeaderText="A simple TreeView with drag and drop support"
                               CSharpSource="TreeView\TreeViewSample1_cs.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <Grid Height="280" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
                     <TreeView x:Name="sampleTreeView" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" CanDragItems="True" AllowDrop="True" />
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TreeView x:Name="sampleTreeView" CanDragItems="True"  AllowDrop="True"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TreeView with Multi-selection enabled"
+        <controls:ControlExample HeaderText="A TreeView with Multi-selection enabled"
                               CSharpSource="TreeView\TreeViewSample1_cs.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <Grid Height="280" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
                     <TreeView x:Name="sampleTreeView2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="Multiple"/>
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TreeView x:Name="sampleTreeView" SelectionMode="Multiple" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TreeView with DataBinding Using ItemSource"
+        <controls:ControlExample HeaderText="A TreeView with DataBinding Using ItemSource"
                               XamlSource="TreeView\TreeViewDataBindingSample_xaml.txt"
                               CSharpSource="TreeView\TreeViewDataBindingSample_cs.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <Grid Height="200" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
                     <TreeView x:Name="TreeView1" 
                                           MinWidth="345" 
@@ -88,19 +88,19 @@
                         </TreeView.ItemTemplate>
                     </TreeView>
                 </Grid>
-            </local:ControlExample.Example>
-        </local:ControlExample>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TreeView with ItemTemplateSelector"
+        <controls:ControlExample HeaderText="A TreeView with ItemTemplateSelector"
                               XamlSource="TreeView\TreeViewTemplateSelectorSample_xaml.txt"
                               CSharpSource="TreeView\TreeViewTemplateSelectorSample_cs.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <Grid Height="200" BorderBrush="{ThemeResource TextControlBorderBrush}" BorderThickness="1">
                     <TreeView x:Name="FileTree" Grid.Column="2" MinWidth="345" MaxHeight="400" Margin="0,12,0,0"
                             HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind DataSource}" 
                             ItemTemplateSelector="{StaticResource ExplorerItemTemplateSelector}" />
                 </Grid>
-            </local:ControlExample.Example>
-        </local:ControlExample>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

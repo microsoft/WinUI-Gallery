@@ -12,7 +12,7 @@
 
 <Page x:Class="WinUIGallery.ControlPages.ClipboardPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
@@ -33,7 +33,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <!--COPY TO CLIPBOARD-->
-        <local:ControlExample x:Name="Example1" HeaderText="Copy text to the Clipboard">
+        <controls:ControlExample x:Name="Example1" HeaderText="Copy text to the Clipboard">
 
             <StackPanel VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal">
@@ -47,14 +47,14 @@
                     Width="800" Height="100" />
             </StackPanel>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 
 &lt;Button Content="Copy Text to the Clipboard" Click="CopyText_Click"/&gt;
 
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void CopyText_Click(object sender, RoutedEventArgs args)
 {
@@ -63,11 +63,11 @@ private void CopyText_Click(object sender, RoutedEventArgs args)
 	Clipboard.SetContent(package);
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
         <!--PASTE FROM CLIPBOARD-->
-        <local:ControlExample x:Name="Example2" HeaderText="Paste text from the Clipboard">
+        <controls:ControlExample x:Name="Example2" HeaderText="Paste text from the Clipboard">
                 <StackPanel VerticalAlignment="Top">
                     <Button Content="Paste Text from the Clipboard"
                             Click="PasteText_Click" Margin="0,0,0,10"/>
@@ -78,14 +78,14 @@ private void CopyText_Click(object sender, RoutedEventArgs args)
                                Width = "Auto" TextWrapping = "Wrap"/>
                 </StackPanel>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 
 &lt;Button Content="Paste Text from the Clipboard" Click="PasteText_Click"/&gt;
 
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private async void PasteText_Click(object sender, RoutedEventArgs args)
 {
@@ -96,8 +96,8 @@ private async void PasteText_Click(object sender, RoutedEventArgs args)
 	}
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
         
     </StackPanel>
 </Page>

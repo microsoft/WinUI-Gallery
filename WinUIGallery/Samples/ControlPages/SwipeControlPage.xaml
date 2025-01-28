@@ -10,7 +10,7 @@
 //*********************************************************
 -->
 <Page x:Class="WinUIGallery.ControlPages.SwipeControlPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 
@@ -22,8 +22,8 @@
         </StackPanel.Resources>
 
         <StackPanel>
-            <local:ControlExample x:Name="Example1" HeaderText="Swipe right to reveal actions">
-                <local:ControlExample.Example>
+            <controls:ControlExample x:Name="Example1" HeaderText="Swipe right to reveal actions">
+                <controls:ControlExample.Example>
                     <Border>
                         <Border.Resources>
                             <FontIconSource x:Key="AcceptIcon" Glyph="&#xE8FB;"/>
@@ -40,8 +40,8 @@
                                 <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
-                </local:ControlExample.Example>
-                <local:ControlExample.Xaml>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
@@ -61,11 +61,11 @@
     &lt;/SwipeControl&gt;
 &lt;/Border&gt;
                     </x:String>
-                </local:ControlExample.Xaml>
-            </local:ControlExample>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
 
-            <local:ControlExample x:Name="Example2" HeaderText="Swipe left to invoke an execute">
-                <local:ControlExample.Example>
+            <controls:ControlExample x:Name="Example2" HeaderText="Swipe left to invoke an execute">
+                <controls:ControlExample.Example>
                     <Border>
                         <Border.Resources>
                             <FontIconSource x:Key="ArchiveIcon" Glyph="&#xE7B8;"/>
@@ -78,8 +78,8 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
-                </local:ControlExample.Example>
-                <local:ControlExample.Xaml>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
@@ -97,11 +97,11 @@
     &lt;/SwipeControl&gt;
 &lt;/Border&gt;
                     </x:String>
-                </local:ControlExample.Xaml>
-            </local:ControlExample>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
 
-            <local:ControlExample x:Name="Example3" HeaderText="Custom Swipe in a ListView">
-                <local:ControlExample.Example>
+            <controls:ControlExample x:Name="Example3" HeaderText="Custom Swipe in a ListView">
+                <controls:ControlExample.Example>
                      <ListView x:Name="lv" Width="800" MinWidth="200" Height="300" Margin="12">
                          <ListView.Resources>
                              <FontIconSource x:Key="ReplyAllIcon" Glyph="&#xE8C2;"/>
@@ -130,8 +130,8 @@
                              </DataTemplate>
                          </ListView.ItemTemplate>
                      </ListView>
-                </local:ControlExample.Example>
-                <local:ControlExample.Xaml>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
                     <x:String xml:space="preserve">
 &lt;ListView x:Name="lv" Width="400" Height="300" Margin="12"&gt;
     &lt;ListView.Resources&gt;
@@ -163,11 +163,11 @@
     &lt;/ListView.ItemTemplate&gt;
 &lt;/ListView&gt;
                     </x:String>
-                </local:ControlExample.Xaml>
-            </local:ControlExample>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
 
-            <local:ControlExample x:Name="Example4" HeaderText="Gradient Background">
-                <local:ControlExample.Example>
+            <controls:ControlExample x:Name="Example4" HeaderText="Gradient Background">
+                <controls:ControlExample.Example>
                     <Border>
                         <Border.Resources>
                             <FontIconSource x:Key="LockIcon" Glyph="&#xE72E;"/>
@@ -185,8 +185,8 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
-                </local:ControlExample.Example>
-                <local:ControlExample.Xaml>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
@@ -209,11 +209,11 @@
     &lt;/SwipeControl&gt;
 &lt;/Border&gt;
                     </x:String>
-                </local:ControlExample.Xaml>
-            </local:ControlExample>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
 
-            <local:ControlExample x:Name="Example5" HeaderText="Custom icons">
-                <local:ControlExample.Example>
+            <controls:ControlExample x:Name="Example5" HeaderText="Custom icons">
+                <controls:ControlExample.Example>
                     <Border>
                         <Border.Resources>
                             <SwipeItems x:Key="left" Mode="Reveal">
@@ -228,8 +228,8 @@
                             <TextBlock Text="Swipe Right" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </SwipeControl>
                     </Border>
-                </local:ControlExample.Example>
-                <local:ControlExample.Xaml>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
                     <x:String xml:space="preserve">
 &lt;Border&gt;
     &lt;Border.Resources&gt;
@@ -249,8 +249,8 @@
     &lt;/SwipeControl&gt;
 &lt;/Border&gt;
                     </x:String>
-                </local:ControlExample.Xaml>
-            </local:ControlExample>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
 
         </StackPanel>
 

@@ -13,7 +13,7 @@
     x:Class="WinUIGallery.ControlPages.RichEditBoxPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract6Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
@@ -21,16 +21,16 @@
 
     <StackPanel>
 
-        <local:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
+        <controls:ControlExample HeaderText="A simple text editor using RichEditBox." HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
             <RichEditBox AutomationProperties.Name="simple text editor"/>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;RichEditBox x:Name="editor" AutomationProperties.Name="simple text editor"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'" 
+        <controls:ControlExample HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'" 
                               XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt"
                               CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt">
             <RichEditBox x:Name="REBCustom" AutomationProperties.Name="editor with custom menu" 
@@ -39,9 +39,9 @@
                          Loaded="REBCustom_Loaded" 
                          Unloaded="REBCustom_Unloaded"/>
 
-        </local:ControlExample>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A custom editor with RichEditBox." 
+        <controls:ControlExample HeaderText="A custom editor with RichEditBox." 
                               XamlSource="Text\RichEditBox\RichEditBoxSample3_Xaml.txt"
                               CSharpSource="Text\RichEditBox\RichEditBoxSample3_cs.txt"
                               HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
@@ -169,7 +169,7 @@
                             LostFocus="{x:Bind FindBoxRemoveHighlights}"/>
                 </StackPanel>
             </RelativePanel>
-        </local:ControlExample>
+        </controls:ControlExample>
 
     </StackPanel>
 </Page>

@@ -1,25 +1,34 @@
-<Page x:Name="pageRoot" x:Class="WinUIGallery.ControlPages.AutoSuggestBoxPage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+<Page
+    x:Class="WinUIGallery.ControlPages.AutoSuggestBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="pageRoot"
+    mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A basic autosuggest box.">
+        <controls:ControlExample x:Name="Example1" HeaderText="A basic autosuggest box.">
             <StackPanel Orientation="Horizontal">
-                <AutoSuggestBox x:Name="Control1" TextChanged="AutoSuggestBox_TextChanged"
-                        SuggestionChosen="AutoSuggestBox_SuggestionChosen" Width="300" 
-                                AutomationProperties.Name="Basic AutoSuggestBox"/>
-                <TextBlock x:Name="SuggestionOutput" Style="{StaticResource OutputTextBlockStyle}"
-                        FontFamily="Global User Interface" />
+                <AutoSuggestBox
+                    x:Name="Control1"
+                    Width="300"
+                    AutomationProperties.Name="Basic AutoSuggestBox"
+                    SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                    TextChanged="AutoSuggestBox_TextChanged" />
+                <TextBlock
+                    x:Name="SuggestionOutput"
+                    FontFamily="Global User Interface"
+                    Style="{StaticResource OutputTextBlockStyle}" />
             </StackPanel>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                 Width="300" AutomationProperties.Name="Basic AutoSuggestBox"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 // List of cats
 private List&lt;string&gt; Cats = new List&lt;string&gt;()
@@ -64,27 +73,44 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
     SuggestionOutput.Text = args.SelectedItem.ToString();
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
-        <local:ControlExample x:Name="Example2" HeaderText="An AutoSuggestBox that provides a SearchBox experience">
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="An AutoSuggestBox that provides a SearchBox experience">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <AutoSuggestBox x:Name="Control2" PlaceholderText="Type a control name"
-                        TextChanged="Control2_TextChanged" QueryIcon="Find" QuerySubmitted="Control2_QuerySubmitted"
-                        SuggestionChosen="Control2_SuggestionChosen" Width="300" HorizontalAlignment="Left"/>
-                <RelativePanel x:Name="ControlDetails" Grid.Row="1" HorizontalAlignment="Left" Visibility="Collapsed"
-                        Margin="0,8,0,0">
+                <AutoSuggestBox
+                    x:Name="Control2"
+                    Width="300"
+                    HorizontalAlignment="Left"
+                    PlaceholderText="Type a control name"
+                    QueryIcon="Find"
+                    QuerySubmitted="Control2_QuerySubmitted"
+                    SuggestionChosen="Control2_SuggestionChosen"
+                    TextChanged="Control2_TextChanged" />
+                <RelativePanel
+                    x:Name="ControlDetails"
+                    Grid.Row="1"
+                    Margin="0,8,0,0"
+                    HorizontalAlignment="Left"
+                    Visibility="Collapsed">
                     <Image x:Name="ControlImage" Height="110" />
-                    <TextBlock x:Name="ControlTitle" Style="{StaticResource BaseTextBlockStyle}"
-                            RelativePanel.RightOf="ControlImage" Margin="8,0,0,0" />
-                    <TextBlock x:Name="ControlSubtitle" TextWrapping="WrapWholeWords" RelativePanel.Below="ControlTitle"
-                            RelativePanel.AlignLeftWith="ControlTitle" Margin="8,0,0,0" />
+                    <TextBlock
+                        x:Name="ControlTitle"
+                        Margin="8,0,0,0"
+                        RelativePanel.RightOf="ControlImage"
+                        Style="{StaticResource BaseTextBlockStyle}" />
+                    <TextBlock
+                        x:Name="ControlSubtitle"
+                        Margin="8,0,0,0"
+                        RelativePanel.AlignLeftWith="ControlTitle"
+                        RelativePanel.Below="ControlTitle"
+                        TextWrapping="WrapWholeWords" />
                 </RelativePanel>
             </Grid>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;AutoSuggestBox PlaceholderText="Type a control name"
         TextChanged="Control2_TextChanged"
@@ -92,7 +118,7 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
         QuerySubmitted="Control2_QuerySubmitted"
         SuggestionChosen="Control2_SuggestionChosen"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

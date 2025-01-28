@@ -10,27 +10,27 @@
 //*********************************************************
 -->
 <Page x:Class="WinUIGallery.ControlPages.ExpanderPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
       mc:Ignorable="d">
     
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="An Expander with text in the header and content areas">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="Example1" HeaderText="An Expander with text in the header and content areas">
+            <controls:ControlExample.Example>
                 <Expander x:Name="Expander1" IsExpanded="False" ExpandDirection="Down" Header="This text is in the header" Content="This is in the content" VerticalAlignment="Top"/>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <ComboBox x:Name="ExpandDirectionComboBox" Header="ExpandDirection" SelectionChanged="ExpandDirectionComboBox_SelectionChanged" SelectedValue="Down">
                         <x:String>Down</x:String>
                         <x:String>Up</x:String>
                     </ComboBox>
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Expander
      IsExpanded="$(IsExpanded)"
@@ -39,16 +39,16 @@
      Header="This text is in the header"
      Content="This is in the content"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="IsExpanded" Value="{x:Bind Expander1.IsExpanded, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="ExpandDirection" Value="{ x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="VerticalAlignment" Value="{ x:Bind Expander1.VerticalAlignment, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="IsExpanded" Value="{x:Bind Expander1.IsExpanded, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ExpandDirection" Value="{ x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalAlignment" Value="{ x:Bind Expander1.VerticalAlignment, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
+            <controls:ControlExample.Example>
                 <Expander x:Name="Expander2">
                     <Expander.Header>
                         <ToggleButton Content ="This is a ToggleButton in the header"/>
@@ -59,8 +59,8 @@
                         </Grid>
                     </Expander.Content>
                 </Expander>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Expander x:Name="Expander2" &gt;
     &lt;Expander.Header&gt;
@@ -73,11 +73,11 @@
     &lt;/Expander.Content&gt;
 &lt;/Expander&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Modifying Expanders content alignment">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="Modifying Expanders content alignment">
+            <controls:ControlExample.Example>
                 <Expander Width="500" HorizontalContentAlignment="Left" Padding="0">
                     <Expander.Header>
                         <ToggleButton Content ="This ToggleButton is centered" HorizontalAlignment="Center"/>
@@ -86,8 +86,8 @@
                         <Button Margin="4" Content="This Button is left aligned"/>
                     </Expander.Content>
                 </Expander>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Expander Width="500" HorizontalContentAlignment="Left" Padding="0"&gt;
     &lt;Expander.Header&gt;
@@ -98,7 +98,7 @@
     &lt;/Expander.Content&gt;
 &lt;/Expander&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

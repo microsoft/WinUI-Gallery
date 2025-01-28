@@ -12,9 +12,9 @@
 <Page x:Class="WinUIGallery.ControlPages.ScrollViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery">
+    xmlns:controls="using:WinUIGallery.Controls">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
+        <controls:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
             <StackPanel Spacing="16">
                 <TextBlock Text="This ScrollView allows horizontal and vertical scrolling, as well as zooming. Change the settings on the right to alter those capabilities or the built-in scrollbars' visibility."/>
 
@@ -26,7 +26,7 @@
                 </ScrollView>
             </StackPanel>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <Grid MinWidth="200"
                     RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                     ColumnDefinitions="Auto, *"
@@ -94,9 +94,9 @@
                         <ComboBoxItem>Hidden</ComboBoxItem>
                     </ComboBox>
                 </Grid>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="266" Width="400" ContentOrientation="None"
     ZoomMode="$(ZoomMode)" IsTabStop="True"
@@ -107,18 +107,18 @@
         HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
 &lt;/ScrollView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
+            </controls:ControlExample.Xaml>
 
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)cmbZoomMode.SelectedItem).Content, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollMode.SelectedItem).Content, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollMode.SelectedItem).Content, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)cmbZoomMode.SelectedItem).Content, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollMode.SelectedItem).Content, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollMode.SelectedItem).Content, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}"/>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="Constant velocity scrolling.">
+        <controls:ControlExample x:Name="Example2" HeaderText="Constant velocity scrolling.">
             <StackPanel Spacing="16">
                 <TextBlock Text="Set the vertical velocity to a value greater than 30 to scroll down, or a value smaller than -30 to scroll up at a constant speed."/>
 
@@ -135,7 +135,7 @@
                 </ScrollView>
             </StackPanel>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <Grid MinWidth="200"
                     RowDefinitions="Auto"
                     ColumnDefinitions="Auto, *"
@@ -155,9 +155,9 @@
                         AutomationProperties.Name="vertical velocity">
                     </NumberBox>
                 </Grid>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="300" Width="400" IsTabStop="True"
     VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
@@ -169,10 +169,10 @@
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform" AutomationProperties.Name="cliff"/&gt;
 &lt;/ScrollView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="Programmatic scroll with custom animation.">
+        <controls:ControlExample x:Name="Example3" HeaderText="Programmatic scroll with custom animation.">
             <StackPanel Spacing="16">
                 <TextBlock Text="Pick an animation type and its duration and then click the button on the right to launch a programmatic scroll."/>
 
@@ -192,7 +192,7 @@
                 </ScrollView>
             </StackPanel>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <Grid MinWidth="320"
                     RowDefinitions="Auto, Auto, Auto"
                     ColumnDefinitions="Auto,*"
@@ -223,9 +223,9 @@
 
                     <Button x:Name="btnScrollWithAnimation" Content="Scroll with animation" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" AutomationProperties.Name="scroll with animation" Click="BtnScrollWithAnimation_Click"/>
                 </Grid>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ScrollView Height="300" Width="400" IsTabStop="True"
     ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
@@ -240,7 +240,7 @@
     &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg" Stretch="Uniform" AutomationProperties.Name="mountain"/&gt;
 &lt;/ScrollView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

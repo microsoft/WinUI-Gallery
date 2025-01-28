@@ -14,7 +14,7 @@
     x:Class="WinUIGallery.ControlPages.TypographyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -39,10 +39,11 @@
         </Grid.RowDefinitions>
         <RichTextBlock>
             <Paragraph>
-                Typography helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
+                Typography helps provide structure and hierarchy to UI. The default font for Windows is<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>
+                .
                 Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
         </RichTextBlock>
-        <local:ControlExample
+        <controls:ControlExample
             x:Name="Example1"
             Grid.Row="1"
             HorizontalContentAlignment="Stretch"
@@ -243,6 +244,6 @@
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
-        </local:ControlExample>
+        </controls:ControlExample>
     </Grid>
 </Page>

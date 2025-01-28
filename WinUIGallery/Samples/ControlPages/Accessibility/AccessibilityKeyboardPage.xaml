@@ -14,6 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:core="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -78,8 +79,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="4">
                     <Button Content="First" />
                     <!-- Non-interactive controls should not be in the tab order -->
@@ -89,8 +90,8 @@
                     <Button Content="(not present)" IsEnabled="False" />
                     <Button Content="Third" />
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Spacing="4"&gt;
     &lt;Button Content="First" /&gt;
@@ -102,8 +103,8 @@
     &lt;Button Content="Third" /&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <TextBlock
             Style="{ThemeResource BodyStrongTextBlockStyle}"
@@ -116,8 +117,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -178,8 +179,8 @@
                         Content="Not a stop"
                         IsTabStop="False" />
                 </Grid>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid RowSpacing="8" ColumnSpacing="8"&gt;
     &lt;Grid.RowDefinitions&gt;
@@ -210,8 +211,8 @@
     &lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" HorizontalAlignment="Stretch"/&gt;
 &lt;/Grid&gt;
                     </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
@@ -263,8 +264,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical">
                     <!-- ListViews fully support arrow keys, for example -->
                     <ListView
@@ -279,8 +280,8 @@
                         Style="{ThemeResource CaptionTextBlockStyle}"
                         Text="Tab navigates to the control, arrow keys navigate within the control" />
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- ListViews fully support arrow keys, for example --&gt;
 &lt;ListView
@@ -292,8 +293,8 @@
     &lt;ListViewItem&gt;Yellow&lt;/ListViewItem&gt;
 &lt;/ListView&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
         
         <TextBlock
             Margin="0,20,0,0"
@@ -326,8 +327,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="4">
                     <StackPanel
                         Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
@@ -364,8 +365,8 @@
                         Style="{ThemeResource CaptionTextBlockStyle}"
                         Text="Arrow keys navigate between each button, but tab still navigates between each button, and other buttons like Home/End do not work" />
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel
     Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
@@ -399,8 +400,8 @@
     &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
         
         <TextBlock
             Margin="0,20,0,0"
@@ -443,8 +444,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -511,9 +512,9 @@
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Ctrl+R, Ctrl+B, and Ctrl+G trigger Red, Blue, and Chartreuse respectively" />
                 </Grid>
-            </core:ControlExample.Example>
+            </controls:ControlExample.Example>
 
-            <core:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid ColumnSpacing="8" RowSpacing="8"&gt;
 &lt;Grid.RowDefinitions&gt;
@@ -560,8 +561,8 @@
 &lt;/Button&gt;
 &lt;/Grid&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-            <core:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void MakeRedButton_Click(object sender, RoutedEventArgs e)
 {
@@ -576,8 +577,8 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
     ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
 }
                 </x:String>
-            </core:ControlExample.CSharp>
-        </core:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
@@ -603,8 +604,8 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel
                     Orientation="Vertical">
                     <MenuBar>
@@ -654,8 +655,8 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="Press and release Alt to display Key Tips; use Alt+letter to move focus to items" />
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String
                     xml:space="preserve">
 &lt;MenuBar&gt;
@@ -678,7 +679,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
     &lt;/MenuBarItem&gt;
 &lt;/MenuBar&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

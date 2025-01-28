@@ -14,7 +14,6 @@
     x:Class="WinUIGallery.ControlPages.AccessibilityScreenReaderPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:core="using:WinUIGallery"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -85,8 +84,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <Button Content="Download survey" />
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
@@ -96,17 +95,17 @@
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Most controls automatically get names from their content --&gt;
 &lt;Button Content="Download survey" /&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <!-- Headers are promoted to name -->
                     <TextBox Header="Name"
@@ -135,8 +134,8 @@
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Headers are promoted to name --&gt;
 &lt;TextBox Header="Name" /&gt;
@@ -147,8 +146,8 @@
 &lt;!-- If both are provided, headers are name and placeholders are moved to description --&gt;
 &lt;TextBox Header="Email" PlaceholderText="test@example.com" /&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <!--  ***** List View example *****  -->
         <TextBlock Margin="0,20,0,0"
@@ -162,8 +161,8 @@
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <ListView
                         Width="300"
@@ -181,8 +180,8 @@
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Add a name to this ListView to be heard when screen reader users enter it --&gt;
 &lt;ListView Width="300"
@@ -193,12 +192,12 @@ AutomationProperties.Name="Contacts"&gt;
 &lt;ListViewItem&gt;Jessica Russel&lt;/ListViewItem&gt;
 &lt;/ListView&gt;
                     </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <!--  ***** Image sample *****  -->
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <Border CornerRadius="{StaticResource ControlCornerRadius}">
                         <Image
@@ -215,15 +214,15 @@ AutomationProperties.Name="Contacts"&gt;
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
+            </controls:ControlExample.Example>
 
-            <core:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Add "alt text" to this image so screen reader users can understand it --&gt;
 &lt;Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/grapes.jpg"/&gt;
                     </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <!--  ***** Label by sample *****  -->
         <TextBlock Margin="0,20,0,0"
@@ -237,8 +236,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock
                         x:Name="InputLabel"
@@ -256,14 +255,14 @@ AutomationProperties.Name="Contacts"&gt;
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TextBlock x:Name="InputLabel" AutomationProperties.AccessibilityView="Raw" Text="Searching Photos:"/&gt;
 &lt;TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}"/&gt;
                     </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <!--  ***** Position in set sample *****  -->
         <TextBlock Margin="0,20,0,0"
@@ -291,8 +290,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample HeaderText="Description and help text: add descriptions and help text to controls">
-            <core:ControlExample.Example>
+        <controls:ControlExample HeaderText="Description and help text: add descriptions and help text to controls">
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <!-- Use FullDescription to connect visible descriptions to their controls -->
                     <StackPanel Spacing="8">
@@ -309,8 +308,8 @@ AutomationProperties.Name="Contacts"&gt;
                             ToolTipService.ToolTip="Launch the cancellation wizard"
                             AutomationProperties.HelpText="Launch the cancellation wizard" />
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Spacing="8"&gt;
     &lt;!-- Use FullDescription to connect visible descriptions to their controls --&gt;
@@ -329,11 +328,11 @@ AutomationProperties.Name="Contacts"&gt;
             AutomationProperties.HelpText="Launch the cancellation wizard" /&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <core:ControlExample HeaderText="Position in set: indicate the position of an element within a set">
-            <core:ControlExample.Example>
+        <controls:ControlExample HeaderText="Position in set: indicate the position of an element within a set">
+            <controls:ControlExample.Example>
                 <StackPanel>
                     <!-- Many controls automatically indicate position in set -->
                     <TextBlock Text="Students"
@@ -366,8 +365,8 @@ AutomationProperties.Name="Contacts"&gt;
                                 Content="Delete" />
                     </StackPanel>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel&gt;
     &lt;!-- Many controls automatically indicate position in set --&gt;
@@ -402,8 +401,8 @@ AutomationProperties.Name="Contacts"&gt;
     &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <!--  ***** Remove from visual tree sample *****  -->
         <TextBlock Margin="0,20,0,0"
@@ -428,8 +427,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample HeaderText="Remove a control from the content visual tree">
-            <core:ControlExample.Example>
+        <controls:ControlExample HeaderText="Remove a control from the content visual tree">
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <!--
                         The image is not necessary for screen readers as it does not contain any information.
@@ -452,8 +451,8 @@ AutomationProperties.Name="Contacts"&gt;
                         To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.
                     </TextBlock>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel Orientation="Horizontal"&gt;
 &lt;!-- The image is not necessary for screen readers as it does not contain any information.
@@ -464,8 +463,8 @@ AutomationProperties.Name="Contacts"&gt;
                 To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
@@ -502,8 +501,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock
                         Margin="0,0,0,10"
@@ -565,8 +564,8 @@ AutomationProperties.Name="Contacts"&gt;
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid&gt;
     &lt;Grid.ColumnDefinitions&gt;
@@ -622,8 +621,8 @@ AutomationProperties.Name="Contacts"&gt;
     &lt;/StackPanel&gt;
 &lt;/Grid&gt;
                     </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
@@ -643,8 +642,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock
                         Margin="0,0,0,10"
@@ -685,8 +684,8 @@ AutomationProperties.Name="Contacts"&gt;
                         </TextBlock>
                     </StackPanel>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel MaxWidth="500"&gt;
 &lt;!-- Here is the main header for the whole text. It gets HeadingLevel 1 --&gt;
@@ -711,8 +710,8 @@ AutomationProperties.Name="Contacts"&gt;
                 tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
         <TextBlock
             Margin="0,20,0,0"
@@ -737,8 +736,8 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
         </RichTextBlock>
 
-        <core:ControlExample>
-            <core:ControlExample.Example>
+        <controls:ControlExample>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock
                         Style="{ThemeResource CaptionTextBlockStyle}">
@@ -776,8 +775,8 @@ AutomationProperties.Name="Contacts"&gt;
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-            </core:ControlExample.Example>
-            <core:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;StackPanel AutomationProperties.Name="Album browser"&gt;
     &lt;StackPanel AutomationProperties.Name="My albums"&gt;
@@ -802,7 +801,7 @@ AutomationProperties.Name="Contacts"&gt;
     &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
                 </x:String>
-            </core:ControlExample.Xaml>
-        </core:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

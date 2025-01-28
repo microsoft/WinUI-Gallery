@@ -15,7 +15,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
@@ -27,12 +27,12 @@
             Height="320"
             HorizontalAlignment="Left"
             Source="/Assets/SampleMedia/MapExample.png" />
-        <local:ControlExample
+        <controls:ControlExample
             HorizontalAlignment="Stretch"
             HorizontalContentAlignment="Stretch"
             CSharpSource="MapControl\MapControlSample_cs.txt"
             HeaderText="Showing a pin on the map">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <PasswordBox
@@ -47,13 +47,13 @@
                         Height="400"
                         HorizontalAlignment="Stretch" />
                 </StackPanel>
-            </local:ControlExample.Example>
+            </controls:ControlExample.Example>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
     &lt;controls:MapControl x:Name="map1" MapServiceToken="MapServiceToken" Height="600"/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

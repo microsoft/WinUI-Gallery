@@ -15,11 +15,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
+        <controls:ControlExample HeaderText="Two RadioButtons controls with strings as options.">
             <StackPanel>
                 <RadioButtons x:Name="BackgroundRadioButtons" MaxColumns="3" Header="Background" SelectedIndex="0" SelectionChanged="BackgroundColor_SelectionChanged">
                     <x:String>Green</x:String>
@@ -34,7 +34,7 @@
                 <Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
                         Height="50" Margin="0,10,0,10" />
             </StackPanel>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;RadioButtons x:Name="BackgroundRadioButtons" SelectedIndex="$(BackgroundRadioButtonsSubstitution)"  MaxColumns="3" Header="Background" SelectionChanged="BackgroundColor_SelectionChanged"&gt;
     &lt;x:String&gt;Green&lt;/x:String&gt;
@@ -50,8 +50,8 @@
 &lt;Border x:Name="ControlOutput" BorderThickness="10" BorderBrush="#FFFFD700" Background="#FFFFFFFF"
         Height="50" Margin="0,10,0,10" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void BackgroundColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
 {
@@ -93,11 +93,11 @@ private void BorderBrush_SelectionChanged(object sender, SelectionChangedEventAr
     }
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="BackgroundRadioButtonsSubstitution" Value="{x:Bind BackgroundRadioButtons.SelectedIndex, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="BorderRadioButtonsSubstitution" Value="{x:Bind BorderRadioButtons.SelectedIndex, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

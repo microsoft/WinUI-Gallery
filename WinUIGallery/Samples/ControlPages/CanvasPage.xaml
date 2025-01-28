@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
@@ -10,11 +10,11 @@
 //*********************************************************
 -->
 <Page x:Class="WinUIGallery.ControlPages.CanvasPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
         xmlns:common="using:WinUIGallery.Common" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A Canvas control.">
+        <controls:ControlExample x:Name="Example1" HeaderText="A Canvas control.">
 
             <Canvas x:Name="Control1" Width="140" Height="140" Background="Gray" VerticalAlignment="Top">
                 <Canvas.Resources>
@@ -31,7 +31,7 @@
                 <Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" />
             </Canvas>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel Orientation="Horizontal">
                     <Slider x:Name="TopSlider" Minimum="0" Maximum="100" StepFrequency="1" VerticalAlignment="Top" Orientation="Vertical" IsDirectionReversed="True" Height="110">
                         <Slider.Header>
@@ -44,8 +44,8 @@
                         <Slider x:Name="ZSlider" Header="Canvas.ZIndex" Minimum="0" Maximum="4" StepFrequency="1" Width="100" />
                     </StackPanel>
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Canvas Width="120" Height="120" Background="Gray"&gt;
     &lt;Rectangle Fill="Red" Canvas.Left="$(Left)" Canvas.Top="$(Top)" Canvas.ZIndex="$(Z)" /&gt;
@@ -54,12 +54,12 @@
     &lt;Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" /&gt;
 &lt;/Canvas&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

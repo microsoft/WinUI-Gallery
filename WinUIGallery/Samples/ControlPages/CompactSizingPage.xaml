@@ -15,7 +15,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="compactPage"
     mc:Ignorable="d">
@@ -51,14 +51,14 @@
                 <Run Text="• MenuBar" />
             </Paragraph>
         </RichTextBlock>
-        <local:ControlExample
+        <controls:ControlExample
             x:Name="Example1"
             Grid.Row="1"
             HeaderText="Compact Sizing for controls"
             Loaded="Example1_Loaded">
             <Frame x:Name="ContentFrame" />
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <RadioButtons Header="Fluent Standard and Compact Sizing">
                     <RadioButton
                         Checked="Standard_Checked"
@@ -72,15 +72,15 @@
                         GroupName="ControlSize"
                         Tag="CompactSize" />
                 </RadioButtons>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Page.Resources&gt;
     &lt;ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" /&gt;
 &lt;/Page.Resources&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </Grid>
 </Page>

@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace WinUIGallery.DesktopWap.Controls;
+namespace WinUIGallery.Controls;
 
 public sealed class CopyButton : Button
 {

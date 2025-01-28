@@ -15,7 +15,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:data="using:WinUIGallery.Data"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
@@ -23,13 +23,13 @@
     <StackPanel>
 
         <!-- LINE SAMPLE -->
-        <local:ControlExample x:Name="Example4" HeaderText="Line">
+        <controls:ControlExample x:Name="Example4" HeaderText="Line">
             <Canvas Height="200" Width="100">
                 <Line Stroke="SteelBlue" X1="{x:Bind lineSlider1.Value, Mode=TwoWay}" Y1="{x:Bind lineSlider2.Value, Mode=TwoWay}" X2="{x:Bind lineSlider3.Value, Mode=TwoWay}" Y2="{x:Bind lineSlider4.Value, Mode=TwoWay}" StrokeThickness="{x:Bind lineSlider5.Value, Mode=TwoWay}" Canvas.Top="50"/>
             </Canvas>
             
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel Width="220">
                     <Slider x:Name="lineSlider1" Header="Start point X" Minimum="0" Maximum="100" 
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
@@ -42,9 +42,9 @@
                     <Slider x:Name="lineSlider5" Header="Stroke Thickness" Minimum="5" Maximum="10" 
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Line Stroke="SteelBlue"
       X1="$(Slider1)" Y1="$(Slider2)"
@@ -52,20 +52,20 @@
       StrokeThickness="$(Slider5)"/&gt;
                 </x:String>
 
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind lineSlider1.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Slider2" Value="{x:Bind lineSlider2.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Slider3" Value="{x:Bind lineSlider3.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Slider4" Value="{x:Bind lineSlider4.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Slider5" Value="{x:Bind lineSlider5.Value, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Slider1" Value="{x:Bind lineSlider1.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Slider2" Value="{x:Bind lineSlider2.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Slider3" Value="{x:Bind lineSlider3.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Slider4" Value="{x:Bind lineSlider4.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Slider5" Value="{x:Bind lineSlider5.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
 
 
-        </local:ControlExample>
+        </controls:ControlExample>
 
         <!-- POLYLINE SAMPLE -->
-        <local:ControlExample x:Name="Example5" HeaderText="Polyline">
+        <controls:ControlExample x:Name="Example5" HeaderText="Polyline">
 
             <Canvas Width="320" Height="170">
                 <StackPanel>
@@ -83,29 +83,29 @@
                 <TextBlock Text="Point #4: (250,100)" Canvas.ZIndex="1" Canvas.Left="240" Canvas.Top="140" Visibility="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}"/>
             </Canvas>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel Width="220">
                     <ToggleSwitch x:Name="ToggleSwitch2" Header="Show points" IsOn="False" />
                     <Slider x:Name="polyLineSlider1" Header="Stroke Thickness" Minimum="2" Maximum="10"
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Polyline Stroke="Black" StrokeThickness="$(Slider1)"
           Points="10,100 60,40 200,40 250,100"/&gt;
                 </x:String>
 
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind polyLineSlider1.Value, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Slider1" Value="{x:Bind polyLineSlider1.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
 
-        </local:ControlExample>
+        </controls:ControlExample>
 
         <!-- PATH SAMPLE -->
-        <local:ControlExample x:Name="Example6" HeaderText="Path" >
+        <controls:ControlExample x:Name="Example6" HeaderText="Path" >
        
             <Canvas Width="320" Height="200">
                 <StackPanel>
@@ -124,15 +124,15 @@
                 <TextBlock Text="Point #5: (200,75)" Canvas.ZIndex="1" Canvas.Left="170" Canvas.Top="60" Visibility="{x:Bind ToggleSwitch.IsOn, Mode=OneWay}"/>
             </Canvas>
            
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel Width="220">
                     <ToggleSwitch x:Name="ToggleSwitch" Header="Show points" IsOn="False" />
                     <Slider x:Name="pathSlider1" Header="Stroke Thickness" Minimum="2" Maximum="10"
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- The first segment is a cubic Bezier curve that begins at Point #1 and ends at Point #4, which is drawn by using Point #2 and 3 as the two control points. This segment is indicated by the "C" command in the Data attribute string. --&gt;
 &lt;!-- The second segment begins with an absolute horizontal line command "H", which specifies a line drawn from the preceding subpath endpoint (Point #4) to a new endpoint (Point #5). Because it's a horizontal line command, the value specified is an x-coordinate. --&gt;
@@ -142,14 +142,14 @@
 
                       </x:String>
 
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind pathSlider1.Value, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Slider1" Value="{x:Bind pathSlider1.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
         <!-- GEOMETRY GROUP SAMPLE -->
-        <local:ControlExample x:Name="Example7" HeaderText="GeometryGroup">
+        <controls:ControlExample x:Name="Example7" HeaderText="GeometryGroup">
             <Canvas Height="170" Width="100">
                 <StackPanel>
                     <TextBlock Margin="0,0,0,15">
@@ -168,16 +168,16 @@
                 </StackPanel>
             </Canvas>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel Width="220">
                     <Slider x:Name="geogroupslider1" Header="RadiusX" Minimum="30" Maximum="40"
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
                     <Slider x:Name="geogroupslider2" Header="RadiusY" Minimum="30" Maximum="50"
                         StepFrequency="0.5" SmallChange="1" IsFocusEngagementEnabled="False"/>
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Path Stroke="Black" StrokeThickness="4" Fill="#CCCCFF">
     &lt;Path.Data&gt;
@@ -192,14 +192,14 @@
 &lt;/Path&gt;
                 </x:String>
 
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="Slider1" Value="{x:Bind geogroupslider1.Value, Mode=OneWay}" />
-                <local:ControlExampleSubstitution Key="Slider2" Value="{x:Bind geogroupslider2.Value, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Slider1" Value="{x:Bind geogroupslider1.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Slider2" Value="{x:Bind geogroupslider2.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
             
 
-        </local:ControlExample>
+        </controls:ControlExample>
 
     </StackPanel>
 </Page>

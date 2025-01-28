@@ -16,7 +16,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:data="using:WinUIGallery.Data"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
@@ -37,9 +37,9 @@
 
 
 
-        <local:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
+        <controls:ControlExample HeaderText="Default titlebar (when no user defined titlebar is set)"
                               CSharpSource="Window\TitleBar\TitleBarSample2.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
                         WinUI provides a default titlebar in such cases where the user doesn't explicitly provide a uielement, for setting the titlebar. The system titlebar (Windows-provided titlebar) disappears and client area content is extended to non client area.
@@ -55,11 +55,11 @@
                         <Button x:Name="defaultTitleBar" Click="defaultTitleBar_Click"></Button>
                     </StackPanel>
                 </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
-        <local:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+        <controls:ControlExample HeaderText="User defined UIElement as custom titlebar for the window"
                               CSharpSource="Window/TitleBar/TitleBarSample1.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
                         For finer controls, a user can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar (gets all system titlebar behavior). <LineBreak></LineBreak>
@@ -142,18 +142,18 @@
 
                     </StackPanel>
                 </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!--UIElement set as titlebar--&gt;
 &lt;Border x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top"&gt;
     &lt;TextBlock x:Name="AppTitle" Text="{StaticResource AppTitleName}" VerticalAlignment="Top" Margin="0,8,0,0" /&gt;
 &lt;/Border&gt;
             </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-        <local:ControlExample HeaderText="Titlebar Customizations : Titlebar height">
-            <local:ControlExample.Example>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample HeaderText="Titlebar Customizations : Titlebar height">
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="Wrap">
                         WinUI custom titlebar supports setting a custom height by configuring the PreferredHeightOption property of the titlebar. This feature is useful when you need to adjust the titlebar height to match your app's design or accommodate additional content.
@@ -174,8 +174,8 @@
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 // Retrieve the main window and extend its content into the title bar for custom styling.
 Window window = App.MainWindow;
@@ -184,15 +184,15 @@ window.ExtendsContentIntoTitleBar = true;
 // Set the preferred height option for the title bar
 window.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="TitleBarHeightOption"
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="TitleBarHeightOption"
                                                   Value="{x:Bind titlebarHeight.SelectedItem, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
-        <local:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+        <controls:ControlExample HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area"
                               CSharpSource="Window\TitleBar\TitleBarSample3.txt">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
                         WinUI custom titlebar now hosting interactive clickable controls within non client region of the window, when using custom titlebar.
@@ -216,8 +216,8 @@ window.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBa
                         <Button x:Name="addInteractiveElements" Click="AddInteractiveElements_Click">Add interactive control to titlebar</Button>
                     </StackPanel>
                 </StackPanel>
-            </local:ControlExample.Example>
-        </local:ControlExample>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
 
     </StackPanel>
 </Page>

@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -13,7 +13,7 @@
         </Style>
     </Page.Resources>
     <StackPanel>
-        <local:ControlExample HeaderText="Automatically animate changes to Opacity">
+        <controls:ControlExample HeaderText="Automatically animate changes to Opacity">
             <Rectangle
                 x:Name="OpacityRectangle"
                 Width="50"
@@ -23,7 +23,7 @@
                 Fill="{ThemeResource SystemAccentColor}"
                 Opacity="0.5" />
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <NumberBox
                         x:Name="OpacityNumberBox"
@@ -40,9 +40,9 @@
                         Click="OpacityButton_Click"
                         Content="Set Opacity" />
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Automatically animate changes to Opacity --&gt;
 &lt;Rectangle x:Name="rectangle" Width="50" Height="50" Opacity="0.5"&gt;
@@ -51,24 +51,24 @@
     &lt;/Rectangle.OpacityTransition&gt;
 &lt;/Rectangle&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void button_Click(object sender, RoutedEventArgs e)
 {
     rectangle.Opacity = $(Opacity);
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
                     Key="Opacity"
                     x:Name="OpacityValue"
                     Value="1.0" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Rotation">
+        <controls:ControlExample HeaderText="Automatically animate changes to Rotation">
             <Rectangle
                 x:Name="RotationRectangle"
                 Width="50"
@@ -83,7 +83,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                 </Rectangle.Fill>
             </Rectangle>
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <NumberBox
                         x:Name="RotationNumberBox"
@@ -100,9 +100,9 @@ private void button_Click(object sender, RoutedEventArgs e)
                         Click="RotationButton_Click"
                         Content="Set Rotation" />
                 </StackPanel>
-            </local:ControlExample.Options>
+            </controls:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Automatically animate changes to Rotation --&gt;
 &lt;Rectangle x:Name="rectangle" Width="50" Height="50" Rotation="0" &gt;
@@ -111,24 +111,24 @@ private void button_Click(object sender, RoutedEventArgs e)
     &lt;/Rectangle.RotationTransition&gt;
 &lt;/Rectangle&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void button_Click(object sender, RoutedEventArgs e)
 {
     rectangle.Rotation = $(Rotation);  // Clockwise, in degrees
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
                     Key="Rotation"
                     x:Name="RotationValue"
                     Value="45" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Scale">
+        <controls:ControlExample HeaderText="Automatically animate changes to Scale">
             <Rectangle
                 x:Name="ScaleRectangle"
                 Width="50"
@@ -137,7 +137,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                 VerticalAlignment="Top"
                 Fill="{ThemeResource SystemAccentColor}" />
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <Button
                         Margin="5"
@@ -185,8 +185,8 @@ private void button_Click(object sender, RoutedEventArgs e)
                         Click="ScaleButton_Click"
                         Content="Set custom scale" />
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Automatically animate changes to Scale --&gt;
 &lt;Rectangle x:Name="rectangle" Width="50" Height="50" Scale="1,1,1" &gt;
@@ -195,8 +195,8 @@ private void button_Click(object sender, RoutedEventArgs e)
     &lt;/Rectangle.ScaleTransition&gt;
 &lt;/Rectangle&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 using System.Numerics;
 private void button_Click(object sender, RoutedEventArgs e)
@@ -204,16 +204,16 @@ private void button_Click(object sender, RoutedEventArgs e)
     rectangle.Scale = new Vector3($(Scale), $(Scale), $(Scale));
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
                     Key="Scale"
                     x:Name="ScaleValue"
                     Value="1" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Automatically animate changes to Translation">
+        <controls:ControlExample HeaderText="Automatically animate changes to Translation">
             <Rectangle
                 x:Name="TranslateRectangle"
                 Width="50"
@@ -222,7 +222,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                 VerticalAlignment="Top"
                 Fill="{ThemeResource SystemAccentColor}" />
 
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <Button
                         Margin="5"
@@ -271,8 +271,8 @@ private void button_Click(object sender, RoutedEventArgs e)
                         Click="TranslateButton_Click"
                         Content="Set custom Translation" />
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Automatically animate changes to Translation --&gt;
 &lt;Rectangle x:Name="rectangle" Width="50" Height="50" Translation="0,0,0" &gt;
@@ -281,8 +281,8 @@ private void button_Click(object sender, RoutedEventArgs e)
     &lt;/Rectangle.TranslationTransition&gt;
 &lt;/Rectangle&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 using System.Numerics;
 private void button_Click(object sender, RoutedEventArgs e)
@@ -290,16 +290,16 @@ private void button_Click(object sender, RoutedEventArgs e)
     rectangle.Translation = new Vector3($(Translation), $(Translation), $(Translation));
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
                     Key="Translation"
                     x:Name="TranslationValue"
                     Value="1" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Implicitly animate when the Background changes">
+        <controls:ControlExample HeaderText="Implicitly animate when the Background changes">
             <ContentPresenter
                 x:Name="BrushPresenter"
                 Width="50"
@@ -307,13 +307,13 @@ private void button_Click(object sender, RoutedEventArgs e)
                 Margin="45,5,5,5"
                 VerticalAlignment="Top"
                 Background="Blue" />
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <Button
                     x:Name="BgColorBtn"
                     Click="BackgroundButton_Click"
                     Content="Change Background Color" />
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="50" Height="50"&gt;
     &lt;ContentPresenter.BackgroundTransition&gt;
@@ -321,8 +321,8 @@ private void button_Click(object sender, RoutedEventArgs e)
     &lt;/ContentPresenter.BackgroundTransition&gt;
 &lt;/ContentPresenter&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void button_Click(object sender, RoutedEventArgs e)
 {
@@ -337,10 +337,10 @@ private void button_Click(object sender, RoutedEventArgs e)
     }
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Implicitly animate when the Grid's theme changes">
+        <controls:ControlExample HeaderText="Implicitly animate when the Grid's theme changes">
             <Grid
                 x:Name="ThemeExampleGrid"
                 Width="300"
@@ -357,14 +357,14 @@ private void button_Click(object sender, RoutedEventArgs e)
                     <CheckBox Content="CheckBox" />
                 </StackPanel>
             </Grid>
-            <local:ControlExample.Options>
+            <controls:ControlExample.Options>
                 <Button
                     x:Name="ChangeThemeBtn"
                     VerticalAlignment="Top"
                     Click="ThemeButton_Click"
                     Content="Change Theme" />
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid x:Name="ThemeExampleGrid" Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" &gt;
     &lt;Grid.BackgroundTransition&gt;
@@ -378,15 +378,15 @@ private void button_Click(object sender, RoutedEventArgs e)
     &lt;/StackPanel&gt;
 &lt;/Grid&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void ThemeButton_Click(object sender, RoutedEventArgs e)
 {
     ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
 }
 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

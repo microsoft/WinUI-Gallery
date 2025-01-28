@@ -11,26 +11,26 @@
 -->
 <Page x:Class="WinUIGallery.ControlPages.RichTextBlockPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WinUIGallery"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A simple RichTextBlock.">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="Example1" HeaderText="A simple RichTextBlock.">
+            <controls:ControlExample.Example>
                 <RichTextBlock>
                     <Paragraph>I am a RichTextBlock.</Paragraph>
                 </RichTextBlock>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;RichTextBlock&gt;
     &lt;Paragraph&gt;I am a RichTextBlock.&lt;/Paragraph&gt;
 &lt;/RichTextBlock&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-        <local:ControlExample x:Name="Example2" HeaderText="A RichTextBlock with a custom selection highlight color.">
-            <local:ControlExample.Example>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="A RichTextBlock with a custom selection highlight color.">
+            <controls:ControlExample.Example>
                 <RichTextBlock SelectionHighlightColor="Green">
                     <Paragraph>RichTextBlock provides a rich text display container that supports
                         <Run FontStyle="Italic" FontWeight="Bold">formatted text</Run> ,
@@ -39,8 +39,8 @@
                     </Paragraph>
                     <Paragraph>RichTextBlock also supports a built-in overflow model.</Paragraph>
                 </RichTextBlock>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;RichTextBlock SelectionHighlightColor="Green"&gt;
     &lt;Paragraph&gt;RichTextBlock provides a rich text display container that supports
@@ -49,11 +49,11 @@
     &lt;Paragraph&gt;RichTextBlock also supports a built-in overflow model.&lt;/Paragraph&gt;
 &lt;/RichTextBlock&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-        <local:ControlExample x:Name="Example3" HeaderText="A RichTextBlock with overflow."
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3" HeaderText="A RichTextBlock with overflow."
                 HorizontalContentAlignment="Stretch">
-            <local:ControlExample.Example>
+            <controls:ControlExample.Example>
                 <Grid Height="300">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -70,8 +70,8 @@
                             OverflowContentTarget="{x:Bind secondOverflowContainer}" Margin="12,0" />
                     <RichTextBlockOverflow x:Name="secondOverflowContainer" AutomationProperties.Name="secondOverflowContainer" Grid.Column="2" Margin="12,0" />
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Grid&gt;
     &lt;Grid.ColumnDefinitions&gt;
@@ -90,18 +90,18 @@
     &lt;RichTextBlockOverflow x:Name="secondOverflowContainer" Grid.Column="2" Margin="12,0"/&gt;
 &lt;/Grid&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="RichTextBlock with custom TextHighlighting">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="RichTextBlock with custom TextHighlighting">
+            <controls:ControlExample.Example>
                 <RichTextBlock x:Name="TextHighlightingRichTextBlock">
                     <Paragraph>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
                     </Paragraph>
                 </RichTextBlock>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <ComboBox Header="Text highlighting color" SelectionChanged="HighlightColorCombobox_SelectionChanged">
                         <ComboBoxItem Content="Yellow" IsSelected="True"/>
@@ -109,8 +109,8 @@
                         <ComboBoxItem Content="Blue"/>
                     </ComboBox>
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;RichTextBlock x:Name="TextHighlightingRichTextBlock"&gt;
     &lt;Paragraph&gt;
@@ -118,8 +118,8 @@
     &lt;/Paragraph&gt;
 &lt;/RichTextBlock&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.CSharp>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void HighlightColorCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 {
@@ -156,7 +156,7 @@ private void HighlightColorCombobox_SelectionChanged(object sender, SelectionCha
     TextHighlightingRichTextBlock.TextHighlighters.Add(highlighter);
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

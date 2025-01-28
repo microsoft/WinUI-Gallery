@@ -15,7 +15,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="using:WinUIGallery.Data"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
@@ -55,7 +55,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A simple SemanticZoom">
+        <controls:ControlExample x:Name="Example1" HeaderText="A simple SemanticZoom">
             <SemanticZoom x:Name="Control1" Height="500">
                 <SemanticZoom.ZoomedInView>
                     <GridView
@@ -78,7 +78,7 @@
                         SelectionMode="None" />
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SemanticZoom Height="500"&gt;
     &lt;SemanticZoom.ZoomedInView&gt;
@@ -96,7 +96,7 @@
     &lt;/SemanticZoom.ZoomedOutView&gt;
 &lt;/SemanticZoom&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

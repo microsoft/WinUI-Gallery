@@ -15,15 +15,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:data="using:WinUIGallery.Data"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
    
     <StackPanel>
-        <local:ControlExample HeaderText="Create single threaded Multiple Top level Windows(MTW)."
+        <controls:ControlExample HeaderText="Create single threaded Multiple Top level Windows(MTW)."
                               CSharpSource="Window/CreateWindowSample1.txt">
             <Button x:Name="Control1" Click="createNewWindow_Click">Create new Window</Button>
-        </local:ControlExample>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

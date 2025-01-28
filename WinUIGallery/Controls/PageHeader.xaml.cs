@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
 
-namespace WinUIGallery.DesktopWap.Controls;
+namespace WinUIGallery.Controls;
 
 public sealed partial class PageHeader : UserControl
 {

@@ -1,8 +1,8 @@
-﻿<Page
+<Page
     x:Class="WinUIGallery.ControlPages.TabViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:samplepages="using:WinUIGallery.SamplePages"
@@ -10,19 +10,19 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs" CSharpSource="TabView\TabViewBasicSample_cs.txt">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="A TabView with support for adding, closing, and rearranging tabs" CSharpSource="TabView\TabViewBasicSample_cs.txt">
+            <controls:ControlExample.Example>
                 <TabView x:Name="TabView1" SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475"/>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
+            <controls:ControlExample.Example>
                 <TabView SelectedIndex="0" Margin="-12" MinHeight="475" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
                     <TabView.TabItems>
                         <TabViewItem Header="Document 0">
@@ -45,8 +45,8 @@
                         </TabViewItem>
                     </TabView.TabItems>
                 </TabView>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested"&gt;
     &lt;TabView.TabItems&gt;
@@ -71,11 +71,11 @@
     &lt;/TabView.TabItems&gt;
 &lt;/TabView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
+            <controls:ControlExample.Example>
                 <TabView x:Name="TabViewItemsSourceSample" SelectedIndex="0" Margin="-12" MinHeight="475" TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested">
                     <TabView.TabItemTemplate>
                         <DataTemplate x:DataType="local1:MyData">
@@ -83,16 +83,16 @@
                         </DataTemplate>
                     </TabView.TabItemTemplate >
                 </TabView>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with keyboarding support" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="A TabView with keyboarding support" CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt">
+            <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+T opens a new tab" />
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,0" Text="- Ctrl+W closes the selected tab" />
@@ -115,8 +115,8 @@
                         </TabView.KeyboardAccelerators>
                     </TabView>
                 </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"&gt;
     &lt;TabView.KeyboardAccelerators&gt;
@@ -134,11 +134,11 @@
     &lt;/TabView.KeyboardAccelerators&gt;
 &lt;/TabView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
+            <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="You can put any content in the TabStripHeader and TabStripFooter areas" />
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region" />
@@ -153,8 +153,8 @@
                         </TabView.TabStripFooter>
                     </TabView>
                 </StackPanel>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TabView&gt;
     &lt;TabView.TabStripHeader&gt;
@@ -165,11 +165,11 @@
     &lt;/TabView.TabStripFooter&gt;
 &lt;/TabView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected">
+            <controls:ControlExample.Example>
                 <TabView x:Name="TabView3" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
                     <TabView.TabItems>
                         <TabViewItem  Header="Home" IsClosable="False">
@@ -192,26 +192,26 @@
                         </TabViewItem>
                     </TabView.TabItems>
                 </TabView>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <ComboBox Header="TabWidthBehavior" SelectedIndex="0" SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged" Width="150">
                     <ComboBoxItem Content="SizeToContent" />
                     <ComboBoxItem Content="Equal" />
                     <ComboBoxItem Content="Compact" />
                 </ComboBox>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TabView TabWidthMode="$(TabWidthMode)" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="TabWidthMode" Value="{x:Bind TabView3.TabWidthMode, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="TabWidthMode" Value="{x:Bind TabView3.TabWidthMode, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="The close button can be persistent or only visible on hover">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="The close button can be persistent or only visible on hover">
+            <controls:ControlExample.Example>
                 <TabView x:Name="TabView4" SelectedIndex="0" Margin="-12" IsAddTabButtonVisible="False" MinHeight="475">
                     <TabView.TabItems>
                         <TabViewItem  Header="Home">
@@ -234,26 +234,26 @@
                         </TabViewItem>
                     </TabView.TabItems>
                 </TabView>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <ComboBox Header="TabViewItem CloseButtonOverlayMode" SelectedIndex="1" SelectionChanged="TabCloseButtonOverlayModeComboBox_SelectionChanged" Width="150">
                     <ComboBoxItem Content="Auto" />
                     <ComboBoxItem Content="Always" />
                     <ComboBoxItem Content="OnHover" />
                 </ComboBox>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TabView CloseButtonOverlayMode="$(CloseButtonOverlayMode)" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView4.CloseButtonOverlayMode, Mode=OneWay}" />
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView4.CloseButtonOverlayMode, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="TabView with color tab icons">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="TabView with color tab icons">
+            <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords" Margin="0,0,0,12" Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem" />
 
@@ -277,9 +277,9 @@
                         </TabView.TabItems>
                     </TabView>
                 </StackPanel>
-            </local:ControlExample.Example>
+            </controls:ControlExample.Example>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TabView&gt;
     &lt;TabView.TabItems&gt;
@@ -301,11 +301,11 @@
     &lt;/TabView.TabItems&gt;
 &lt;/TabView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample HeaderText="A TabView with accent colored TabStrip background">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="A TabView with accent colored TabStrip background">
+            <controls:ControlExample.Example>
                 <TabView SelectedIndex="0" Margin="-12" AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" MinHeight="475">
                     <TabView.Resources>
                         <ResourceDictionary>
@@ -320,8 +320,8 @@
                         </ResourceDictionary>
                     </TabView.Resources>
                 </TabView>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TabView&gt;
     &lt;TabView.Resources&gt;
@@ -338,19 +338,19 @@
     &lt;/TabView.Resources&gt;
 &lt;/TabView&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
         
-        <local:ControlExample HeaderText="Complete TabView windowing sample" x:Name="LaunchExample">
-            <local:ControlExample.Example>
+        <controls:ControlExample HeaderText="Complete TabView windowing sample" x:Name="LaunchExample">
+            <controls:ControlExample.Example>
                 <Button Content="Click here to launch the sample" Click="TabViewWindowingButton_Click"/>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     Check out the TabViewWindowingSamplePage.xaml and *.cs files to see the complete code.
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
         
     </StackPanel>
 </Page>

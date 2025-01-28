@@ -2,7 +2,7 @@
     x:Class="WinUIGallery.ControlPages.AcrylicPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -66,8 +66,8 @@
                 <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
             </Paragraph>
         </RichTextBlock>
-        <local:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">
+            <controls:ControlExample.Example>
                 <Grid x:Name="Example1Grid" MinWidth="320" Height="200">
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -76,15 +76,15 @@
                     </Grid>
                     <Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" Margin="12" />
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-        <local:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
-            <local:ControlExample.Example>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
+            <controls:ControlExample.Example>
                 <Grid x:Name="Example2Grid" Width="320" Height="200">
                     <Grid>
                         <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -93,15 +93,15 @@
                     </Grid>
                     <Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" Margin="12" />
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-        <local:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
-            <local:ControlExample.Example>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
+            <controls:ControlExample.Example>
                 <Grid x:Name="Example3Grid" MinWidth="320" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -114,8 +114,8 @@
                     </Grid>
                     <Rectangle x:Name="CustomAcrylicShapeInApp" Margin="12" Fill="{ThemeResource CustomAcrylicInAppBrush}"/>
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Tint Opacity :" Margin="0,0,0,12"/>
                     <Slider x:Name="OpacitySliderInApp" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.001" StepFrequency="0.001" 
@@ -134,8 +134,8 @@
                         <SolidColorBrush Color="Yellow"/>
                     </ComboBox>
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppBrush}" /&gt;
 
@@ -144,16 +144,16 @@
             TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
 &lt;/ResourceDictionary&gt;
 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderInApp.Value, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example4" HeaderText="Luminosity with in-app Acrylic.">
-            <local:ControlExample.Example>
+        <controls:ControlExample x:Name="Example4" HeaderText="Luminosity with in-app Acrylic.">
+            <controls:ControlExample.Example>
                 <Grid x:Name="Example4Grid" MinWidth="652" MinHeight="200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -166,8 +166,8 @@
                     </Grid>
                     <Rectangle x:Name="CustomAcrylicShapeLumin" Margin="12" Fill="{ThemeResource CustomAcrylicInAppLuminosity}"/>
                 </Grid>
-            </local:ControlExample.Example>
-            <local:ControlExample.Options>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Tint Opacity :" Margin="0,0,0,12"/>
                     <Slider x:Name="OpacitySliderLumin" ValueChanged="Slider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.001" StepFrequency="0.001" 
@@ -176,8 +176,8 @@
                     <Slider x:Name="LuminositySlider" ValueChanged="LuminositySlider_ValueChanged" Minimum="0" Maximum="1" Width="200" SmallChange="0.001" StepFrequency="0.001" 
                             HorizontalAlignment="Left" IsFocusEngagementEnabled="False" AutomationProperties.Name="tint luminosity"/>
                 </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" /&gt;
 
@@ -186,11 +186,11 @@
             TintOpacity="$(OpacitySlider)" TintLuminosityOpacity="$(TintLuminositySlider)" TintColor="SkyBlue" FallbackColor="SkyBlue" /&gt;
 &lt;/ResourceDictionary&gt;
 </x:String>
-            </local:ControlExample.Xaml>
-            <local:ControlExample.Substitutions>
-                <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderLumin.Value, Mode=OneWay}"/>
-                <local:ControlExampleSubstitution Key="TintLuminositySlider" Value="{x:Bind LuminositySlider.Value, Mode=OneWay}"/>
-            </local:ControlExample.Substitutions>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySliderLumin.Value, Mode=OneWay}"/>
+                <controls:ControlExampleSubstitution Key="TintLuminositySlider" Value="{x:Bind LuminositySlider.Value, Mode=OneWay}"/>
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

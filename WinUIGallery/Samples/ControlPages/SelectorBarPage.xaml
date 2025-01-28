@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
@@ -20,7 +20,7 @@
     </Page.Resources>
 
     <StackPanel>
-        <local:ControlExample x:Name="Example1" HeaderText="A Basic SelectorBar">
+        <controls:ControlExample x:Name="Example1" HeaderText="A Basic SelectorBar">
             <SelectorBar x:Name="SelectorBar1">
                 <SelectorBarItem
                     x:Name="SelectorBarItemRecent"
@@ -35,7 +35,7 @@
                     Icon="Favorite"
                     Text="Favorites" />
             </SelectorBar>
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SelectorBar x:Name="SelectorBar1"&gt;
     &lt;SelectorBarItem x:Name="SelectorBarItemRecent" Text="Recent" Icon="Clock" /&gt;
@@ -43,10 +43,10 @@
     &lt;SelectorBarItem x:Name="SelectorBarItemFavorites" Text="Favorites" Icon="Favorite" /&gt;
 &lt;/SelectorBar&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions">
+        <controls:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
                     <SelectorBarItem
@@ -62,7 +62,7 @@
                 <Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" />
             </StackPanel>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged"&gt;
     &lt;SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True" /&gt;
@@ -74,9 +74,9 @@
 
 &lt;Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" /&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
+            </controls:ControlExample.Xaml>
 
-            <local:ControlExample.CSharp>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
         {
@@ -110,10 +110,10 @@ private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelect
             previousSelectedIndex = currentSelectedIndex;
         }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
-        <local:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView">
+        <controls:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView">
             <StackPanel>
                 <SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged">
                     <SelectorBarItem
@@ -131,7 +131,7 @@ private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelect
                 </ItemsView>
             </StackPanel>
 
-            <local:ControlExample.Xaml>
+            <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged" &gt;
     &lt;SelectorBarItem x:Name="SelectorBarItemPink" Text="Pink" IsSelected="True" /&gt;
@@ -145,9 +145,9 @@ private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelect
     &lt;/ItemsView.Layout&gt;
 &lt;/ItemsView/&gt;
                 </x:String>
-            </local:ControlExample.Xaml>
+            </controls:ControlExample.Xaml>
 
-            <local:ControlExample.CSharp>
+            <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
 {
@@ -165,7 +165,7 @@ private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelect
     }
 }
                 </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

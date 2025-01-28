@@ -1,7 +1,7 @@
-﻿<Page x:Class="WinUIGallery.ControlPages.CommandBarFlyoutPage" 
+<Page x:Class="WinUIGallery.ControlPages.CommandBarFlyoutPage" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-      xmlns:local="using:WinUIGallery"
+      xmlns:controls="using:WinUIGallery.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
@@ -19,7 +19,7 @@
     </Page.Resources>
     
     <StackPanel>
-        <local:ControlExample HeaderText="CommandBarFlyout for commands on an in-app object" XamlSource="CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt"
+        <controls:ControlExample HeaderText="CommandBarFlyout for commands on an in-app object" XamlSource="CommandBarFlyout\CommandBarFlyoutSample1_xaml.txt"
                               CSharpSource="CommandBarFlyout\CommandBarFlyoutSample1_cs.txt">
             <StackPanel>
                 <TextBlock Text="Click or right click the image to open a CommandBarFlyout" />
@@ -29,6 +29,6 @@
                 </Button>
                 <TextBlock x:Name="SelectedOptionText" Text="" />
             </StackPanel>
-        </local:ControlExample>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

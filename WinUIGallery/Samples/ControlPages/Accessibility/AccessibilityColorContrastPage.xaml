@@ -13,7 +13,7 @@
     x:Class="WinUIGallery.ControlPages.AccessibilityColorContrastPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls1="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -63,7 +63,7 @@
             Style="{ThemeResource BodyTextBlockStyle}"
             Text="Use this tool to calculate the contrast ratio of two colors and measure them against the Web Content Accessibility Guidelines (WCAG)."
             TextWrapping="Wrap" />
-        <controls1:SampleThemeListener>
+        <controls:SampleThemeListener>
             <Grid
                 Style="{ThemeResource GalleryTileGridStyle}"
                 Padding="8"
@@ -81,7 +81,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <controls1:InlineColorPicker
+                <controls:InlineColorPicker
                     x:Name="TextColorPicker"
                     AutomationProperties.Name="TextColorPicker"
                     Grid.RowSpan="2"
@@ -89,7 +89,7 @@
                     ColorChanged="TextColorPicker_ColorChanged"
                     Color="Black" />
 
-                <controls1:InlineColorPicker
+                <controls:InlineColorPicker
                     x:Name="BackgroundColorPicker"
                     AutomationProperties.Name="BackgroundColorPicker"
                     Grid.Column="1"
@@ -295,6 +295,6 @@
                     </Grid>
                 </Grid>
             </Grid>
-        </controls1:SampleThemeListener>
+        </controls:SampleThemeListener>
     </StackPanel>
 </Page>
