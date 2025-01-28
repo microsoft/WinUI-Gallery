@@ -34,9 +34,9 @@ The goal of the `Get-LatestAddedSamples.ps1` script is to assist developers in i
 
 ## 2. Get-LatestUpdatedSamples tool
 
-### How to Use the Script
-
 The goal of the `Get-LatestUpdatedSamples.ps1` script is to help developers quickly identify files in the `ControlPages` directory that have been updated, along with their last commit dates. This information is useful for tracking changes made to the project, ensuring that developers can monitor updates to existing samples, and identifying which updated samples might need to be showcased on the home page.
+
+### How to Use the Script
 
 #### 1st Way: From File Explorer
 - Step 1: Navigate to the `Tools` folder.
