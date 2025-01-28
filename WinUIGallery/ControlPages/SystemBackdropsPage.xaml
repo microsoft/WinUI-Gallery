@@ -19,45 +19,62 @@
       mc:Ignorable="d">
 
     <StackPanel>
-        <local:ControlExample HeaderText="Create a window with a built-in Mica system backdrop."
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample3.txt">
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Option 1 - implement Mica with Xaml.
-&lt;Window.SystemBackdrop&gt;
-    &lt;MicaBackdrop /&gt;
-&lt;/Window.SystemBackdrop&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-            <Button Click="createBuiltInMicaWindow_Click">Create Window with built-in Mica</Button>
-        </local:ControlExample>
-        
-        <local:ControlExample HeaderText="Create a window with a customizable Mica system backdrop."
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample1.txt">
-            <Button Click="createCustomMicaWindow_Click">Create Window with customizable Mica</Button>
-        </local:ControlExample>
-
-        <local:ControlExample HeaderText="Create a window with a built-in Desktop Acrylic system backdrop."
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample4.txt">
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Option 1 - implement Acrylic with Xaml.
-&lt;Window.SystemBackdrop&gt;
-    &lt;DesktopAcrylicBackdrop /&gt;
-&lt;/Window.SystemBackdrop&gt;
-                </x:String>
-            </local:ControlExample.Xaml>
-            <Button Click="createBuiltInAcrylicWindow_Click">Create Window with built-in Acrylic</Button>
+        <local:ControlExample HeaderText="Backdrop types"
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt"
+                              XamlSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                      There are three backdrop types: <LineBreak/>
+                    1. SystemBackdrop (The base class of every backdrop type) <LineBreak/>
+                    2. MicaBackdrop (A backdrop that uses the Mica material) <LineBreak/>
+                    3. DesktopAcrylicBackdrop (A backdrop that uses the Acrylic material) <LineBreak/> <LineBreak/>
+                    
+                      Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
+                    Mica is specifically designed for app performance as it only samples the desktop wallpaper once to create its visualization.
+                      Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background. Recommended when creating an app with a tabbed title bar.
+                    All variants of Mica are available for Windows 11 build 22000 or later. <LineBreak/> <LineBreak/>
+                    
+                      Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
+                      There are two acrylic blend types that change what's visible through the material:
+                    
+<LineBreak/> Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.
+<LineBreak/> In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in XAML)
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createBuiltInWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Create a window with a customizable Desktop Acrylic system backdrop."
-                              CSharpSource="SystemBackdrops\SystemBackdropsSample2.txt">
-            <Button Click="createCustomDesktopAcrylicWindow_Click">Create Window with customizable Desktop Acrylic</Button>
+        <local:ControlExample HeaderText="MicaController"
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleMicaController.txt">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">        
+          Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to an app.
+                    This is a list of properties that can be modified: FallbackColor, Kind, LuminosityOpacity, TintColor and the TintOpacity.
+                     <LineBreak/>There are 2 types of Mica:<LineBreak/>
+                     1. Base (Lighter)<LineBreak/>
+                     2. Alt (Darker)<LineBreak/>
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomMicaWindow_Click">Show sample window</Button>
+            </StackPanel>
         </local:ControlExample>
 
-        <local:ControlExample HeaderText="Helper class to ensure a Windows.System.DispatcherQueue exists."
+        <local:ControlExample HeaderText="DesktopAcrylicController"
+                              CSharpSource="SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">        
+          Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type can't be changed using the DesktopAcrylicBackdrop class.
+                   <LineBreak/>There are 2 types of Acrylic:<LineBreak/>
+                   1. Base (Darker)<LineBreak/>
+                   2. Thin (Lighter)<LineBreak/>
+                   If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.
+                </TextBlock>
+                <Button Margin="0 10 0 0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </local:ControlExample>
+
+        <local:ControlExample HeaderText="WindowsSystemDispatcherQueueHelper"
                               CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt">
-            <TextBlock Text="A Windows.System.DispatcherQueue must exist on the thread to use MicaController or DesktopAcrylicController. This helper class exposes and uses the underlying create function." TextWrapping="WrapWholeWords" />
+            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica- or DesktopAcrylicController. This helper class imports and uses the underlying create function." TextWrapping="WrapWholeWords" />
         </local:ControlExample>
     </StackPanel>
 </Page>

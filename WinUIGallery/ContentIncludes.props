@@ -245,10 +245,10 @@
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_cs.txt" />
     <Content Include="ControlPagesSampleCode\System\FilePickerSample5_xaml.txt" />
     <Content Include="ControlPagesSampleCode\System\Window.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample1.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample2.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample3.txt" />
-    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSample4.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSampleMicaController.txt" />
+    <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt" />
     <Content Include="ControlPagesSampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="ControlPagesSampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
