@@ -27,7 +27,6 @@
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">{x:Bind} and {Binding} feature comparison</Paragraph>
                 <Paragraph>
                     <Run Text="Learn more about the differences between" />
                     <Run FontFamily="Consolas"
