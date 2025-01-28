@@ -1,5 +1,5 @@
 ﻿<Button x:Name="Button3" AutomationProperties.Name="Custom appearance" Click="Button_Click" 
-    contract7Present:CornerRadius="10" Padding="4,-3,4,-3" BorderThickness="1" FontWeight="Bold">
+    CornerRadius="10" Padding="4,-3,4,-3" BorderThickness="1" FontWeight="Bold">
     <Button.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>

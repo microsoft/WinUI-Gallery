@@ -11,16 +11,21 @@
         <controls:ControlExample x:Name="Example1" HeaderText="Select different looks for the person picture.">
 
             <controls:ControlExample.Example>
-                <PersonPicture x:Name="personPicture" Height="300"
-                VerticalAlignment="Top"
-                ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}"
-                DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
-                Initials="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='SB'}" />
+                <PersonPicture
+                    x:Name="personPicture"
+                    Height="300"
+                    VerticalAlignment="Top"
+                    DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
+                    Initials="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='SB'}"
+                    ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}" />
             </controls:ControlExample.Example>
 
             <controls:ControlExample.Options>
                 <RadioButtons Header="Profile type">
-                    <RadioButton x:Name="ProfileImageRadio" Content="Profile Image" IsChecked="True" />
+                    <RadioButton
+                        x:Name="ProfileImageRadio"
+                        Content="Profile Image"
+                        IsChecked="True" />
                     <RadioButton x:Name="DisplayNameRadio" Content="Display Name" />
                     <RadioButton x:Name="InitialsRadio" Content="Initials" />
                 </RadioButtons>
@@ -31,9 +36,18 @@
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="ProfilePicture" IsEnabled="{x:Bind ProfileImageRadio.IsChecked.Value, Mode=OneWay}" Value="ProfilePicture=&quot;https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png&quot;" />
-                <controls:ControlExampleSubstitution Key="DisplayName" IsEnabled="{x:Bind DisplayNameRadio.IsChecked.Value, Mode=OneWay}" Value="DisplayName=&quot;Jane Doe&quot;" />
-                <controls:ControlExampleSubstitution Key="Initials" IsEnabled="{x:Bind InitialsRadio.IsChecked.Value, Mode=OneWay}" Value="Initials=&quot;SB&quot;" />
+                <controls:ControlExampleSubstitution
+                    Key="ProfilePicture"
+                    IsEnabled="{x:Bind ProfileImageRadio.IsChecked.Value, Mode=OneWay}"
+                    Value="ProfilePicture=&quot;https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png&quot;" />
+                <controls:ControlExampleSubstitution
+                    Key="DisplayName"
+                    IsEnabled="{x:Bind DisplayNameRadio.IsChecked.Value, Mode=OneWay}"
+                    Value="DisplayName=&quot;Jane Doe&quot;" />
+                <controls:ControlExampleSubstitution
+                    Key="Initials"
+                    IsEnabled="{x:Bind InitialsRadio.IsChecked.Value, Mode=OneWay}"
+                    Value="Initials=&quot;SB&quot;" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

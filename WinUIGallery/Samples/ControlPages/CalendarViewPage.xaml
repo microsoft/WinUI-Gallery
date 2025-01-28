@@ -2,8 +2,8 @@
     x:Class="WinUIGallery.ControlPages.CalendarViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -20,8 +20,14 @@
 
             <controls:ControlExample.Options>
                 <StackPanel Margin="0,-5,0,0">
-                    <CheckBox x:Name="isGroupLabelVisible" Content="IsGroupLabelVisible" IsChecked="True" />
-                    <CheckBox x:Name="isOutOfScopeEnabled" Content="IsOutOfScopeEnabled" IsChecked="True" />
+                    <CheckBox
+                        x:Name="isGroupLabelVisible"
+                        Content="IsGroupLabelVisible"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="isOutOfScopeEnabled"
+                        Content="IsOutOfScopeEnabled"
+                        IsChecked="True" />
                     <ComboBox
                         x:Name="selectionMode"
                         Margin="0,10,0,0"
@@ -33,11 +39,21 @@
                         <x:String>Multiple</x:String>
                     </ComboBox>
 
-                    <ComboBox x:Name="calendarIdentifier" Margin="0,10,0,0" Header="CalendarIdentifier" Width="220" />
+                    <ComboBox
+                        x:Name="calendarIdentifier"
+                        Width="220"
+                        Margin="0,10,0,0"
+                        Header="CalendarIdentifier" />
 
-                    <ComboBox x:Name="calendarLanguages" Header="Language" Margin="0,10,0,0" Width="220"
-                              DisplayMemberPath="Name" SelectedIndex="0" SelectedValuePath="Code"
-                              SelectionChanged="calendarLanguages_SelectionChanged"/>
+                    <ComboBox
+                        x:Name="calendarLanguages"
+                        Width="220"
+                        Margin="0,10,0,0"
+                        DisplayMemberPath="Name"
+                        Header="Language"
+                        SelectedIndex="0"
+                        SelectedValuePath="Code"
+                        SelectionChanged="calendarLanguages_SelectionChanged" />
 
                 </StackPanel>
             </controls:ControlExample.Options>

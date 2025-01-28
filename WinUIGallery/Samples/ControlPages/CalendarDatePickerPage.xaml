@@ -6,7 +6,7 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="CalendarDatePicker with a header and placeholder text.">
             <controls:ControlExample.Example>
-                <CalendarDatePicker PlaceholderText="Pick a date" Header="Calendar" />
+                <CalendarDatePicker Header="Calendar" PlaceholderText="Pick a date" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String>

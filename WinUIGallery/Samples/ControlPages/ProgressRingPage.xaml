@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.ProgressRingPage"
@@ -18,14 +18,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        
-        <!-- INDETERMINATE PROGRESS RING -->
+
+        <!--  INDETERMINATE PROGRESS RING  -->
         <controls:ControlExample HeaderText="An indeterminate progress ring.">
-            <ProgressRing x:Name="ProgressRing1" IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" AutomationProperties.Name="Progress image" Height="60" Width="60" VerticalAlignment="Top" Margin="10,10,0,0"/>
+            <ProgressRing
+                x:Name="ProgressRing1"
+                Width="60"
+                Height="60"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                AutomationProperties.Name="Progress image"
+                IsActive="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
             <controls:ControlExample.Options>
                 <StackPanel>
-                    <ToggleSwitch x:Name="ProgressToggle" AutomationProperties.Name="Progress Options" Header="Progress Options" OffContent="Do work" OnContent="Working" IsOn="True" />
-                    <ComboBox x:Name="BackgroundComboBox1" SelectionChanged="Background_SelectionChanged"  Header="Background color" PlaceholderText="Pick a color" Width="200">
+                    <ToggleSwitch
+                        x:Name="ProgressToggle"
+                        AutomationProperties.Name="Progress Options"
+                        Header="Progress Options"
+                        IsOn="True"
+                        OffContent="Do work"
+                        OnContent="Working" />
+                    <ComboBox
+                        x:Name="BackgroundComboBox1"
+                        Width="200"
+                        Header="Background color"
+                        PlaceholderText="Pick a color"
+                        SelectionChanged="Background_SelectionChanged">
                         <x:String>Transparent</x:String>
                         <x:String>LightGray</x:String>
                     </ComboBox>
@@ -38,26 +56,43 @@
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="IsActive" Value="{x:Bind ProgressToggle.IsOn, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution x:Name="RevealBackgroundProperty1" Key="Background" Value="Background=&quot;LightGray&quot;" />
+                <controls:ControlExampleSubstitution
+                    Key="Background"
+                    x:Name="RevealBackgroundProperty1"
+                    Value="Background=&quot;LightGray&quot;" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <!-- DETERMINATE PROGRESS RING -->
+        <!--  DETERMINATE PROGRESS RING  -->
         <controls:ControlExample HeaderText="A determinate progress ring.">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <ProgressRing x:Name="ProgressRing2" Width="60" Height="60" AutomationProperties.Name="Progress image" IsIndeterminate="False" Margin="0,0,60,0"/>
-                <NumberBox x:Name="ProgressValue"
-                    AutomationProperties.Name="Progress amount"
-                    Value="0" Minimum="0" Maximum="100"
-                    SpinButtonPlacementMode="Inline"
+                <ProgressRing
+                    x:Name="ProgressRing2"
+                    Width="60"
+                    Height="60"
+                    Margin="0,0,60,0"
+                    AutomationProperties.Name="Progress image"
+                    IsIndeterminate="False" />
+                <NumberBox
+                    x:Name="ProgressValue"
                     MinWidth="120"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="Progress amount"
                     Header="Progress"
+                    Maximum="100"
+                    Minimum="0"
+                    SpinButtonPlacementMode="Inline"
                     ValueChanged="ProgressValue_ValueChanged"
-                    VerticalAlignment="Center"/>
+                    Value="0" />
             </StackPanel>
             <controls:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox x:Name="BackgroundComboBox2" SelectionChanged="Background_SelectionChanged"  Header="Background color" PlaceholderText="Pick a color" Width="200">
+                    <ComboBox
+                        x:Name="BackgroundComboBox2"
+                        Width="200"
+                        Header="Background color"
+                        PlaceholderText="Pick a color"
+                        SelectionChanged="Background_SelectionChanged">
                         <x:String>Transparent</x:String>
                         <x:String>LightGray</x:String>
                     </ComboBox>
@@ -72,7 +107,10 @@
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="DeterminateProgressValue" Value="{x:Bind ProgressRing2.Value, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution x:Name="RevealBackgroundProperty2" Key="Background" Value="Background=&quot;LightGray&quot;" />
+                <controls:ControlExampleSubstitution
+                    Key="Background"
+                    x:Name="RevealBackgroundProperty2"
+                    Value="Background=&quot;LightGray&quot;" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

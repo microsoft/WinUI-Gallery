@@ -2,47 +2,35 @@
     x:Class="WinUIGallery.ControlPages.SplitViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUIGallery.Controls"
-    xmlns:controlPages="using:WinUIGallery.ControlPages">
+    xmlns:controlPages="using:WinUIGallery.ControlPages"
+    xmlns:controls="using:WinUIGallery.Controls">
     <Page.Resources>
         <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="controlPages:NavLink">
-            <StackPanel Orientation="Horizontal" Margin="2,0,0,0" AutomationProperties.Name="{x:Bind Label}">
+            <StackPanel
+                Margin="2,0,0,0"
+                AutomationProperties.Name="{x:Bind Label}"
+                Orientation="Horizontal">
                 <SymbolIcon Symbol="{x:Bind Symbol}" />
-                <TextBlock Text="{x:Bind Label}" Margin="24,0,0,0" VerticalAlignment="Center" />
+                <TextBlock
+                    Margin="24,0,0,0"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind Label}" />
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
 
     <StackPanel>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="SystemControlBackgroundChromeMediumLowBrush" />
-                <VisualState x:Name="Red">
-                    <VisualState.Setters>
-                        <Setter Target="splitView.PaneBackground" Value="Red" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Blue">
-                    <VisualState.Setters>
-                        <Setter Target="splitView.PaneBackground" Value="Blue" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Green">
-                    <VisualState.Setters>
-                        <Setter Target="splitView.PaneBackground" Value="Green" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
         <controls:ControlExample HeaderText="A basic SplitView.">
 
             <Grid Height="300" VerticalAlignment="Top">
-                <SplitView x:Name="splitView"
-                    PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-                    IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
-                    OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
+                <SplitView
+                    x:Name="splitView"
                     CompactPaneLength="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}"
-                    DisplayMode="CompactOverlay" IsTabStop="False">
+                    DisplayMode="CompactOverlay"
+                    IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
+                    IsTabStop="False"
+                    OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
+                    PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                     <SplitView.Pane>
                         <Grid>
                             <Grid.RowDefinitions>
@@ -50,13 +38,21 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <TextBlock Text="PANE CONTENT" x:Name="PaneHeader" Margin="60,12,0,0"
-                                    Style="{StaticResource BaseTextBlockStyle}" />
-                            <ListView x:Name="NavLinksList" Margin="0,12,0,0" Grid.Row="1"
-                                    VerticalAlignment="Stretch" ItemClick="NavLinksList_ItemClick"
-                                    IsItemClickEnabled="True" ItemsSource="{x:Bind NavLinks}"
-                                    ItemTemplate="{StaticResource NavLinkItemTemplate}"
-                                    SelectionMode="Single"/>
+                            <TextBlock
+                                x:Name="PaneHeader"
+                                Margin="60,12,0,0"
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                Text="PANE CONTENT" />
+                            <ListView
+                                x:Name="NavLinksList"
+                                Grid.Row="1"
+                                Margin="0,12,0,0"
+                                VerticalAlignment="Stretch"
+                                IsItemClickEnabled="True"
+                                ItemClick="NavLinksList_ItemClick"
+                                ItemTemplate="{StaticResource NavLinkItemTemplate}"
+                                ItemsSource="{x:Bind NavLinks}"
+                                SelectionMode="Single" />
                         </Grid>
                     </SplitView.Pane>
                     <Grid>
@@ -64,9 +60,14 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0"
-                            Style="{StaticResource BaseTextBlockStyle}" />
-                        <TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0"
+                        <TextBlock
+                            Margin="12,12,0,0"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="SPLITVIEW CONTENT" />
+                        <TextBlock
+                            x:Name="content"
+                            Grid.Row="1"
+                            Margin="12,12,0,0"
                             Style="{StaticResource BodyTextBlockStyle}" />
                     </Grid>
                 </SplitView>
@@ -74,32 +75,69 @@
 
             <controls:ControlExample.Options>
                 <StackPanel>
-                    <ToggleButton x:Name="togglePaneButton" IsChecked="True" Content="IsPaneOpen" />
+                    <ToggleButton
+                        x:Name="togglePaneButton"
+                        Content="IsPaneOpen"
+                        IsChecked="True" />
 
-                    <ToggleSwitch OffContent="Left" OnContent="Right" Header="Placement" Toggled="PanePlacement_Toggled"
-                        Margin="0,12,0,0" MinWidth="120" />
+                    <ToggleSwitch
+                        MinWidth="120"
+                        Margin="0,12,0,0"
+                        Header="Placement"
+                        OffContent="Left"
+                        OnContent="Right"
+                        Toggled="PanePlacement_Toggled" />
 
-                    <ComboBox x:Name="displayModeCombobox" SelectionChanged="displayModeCombobox_SelectionChanged"
-                        Width="196" SelectedIndex="0" Margin="0,4,0,0" VerticalAlignment="Center" Header="DisplayMode">
+                    <ComboBox
+                        x:Name="displayModeCombobox"
+                        Width="196"
+                        Margin="0,4,0,0"
+                        VerticalAlignment="Center"
+                        Header="DisplayMode"
+                        SelectedIndex="0"
+                        SelectionChanged="displayModeCombobox_SelectionChanged">
                         <ComboBoxItem>Inline</ComboBoxItem>
                         <ComboBoxItem>CompactInline</ComboBoxItem>
                         <ComboBoxItem>Overlay</ComboBoxItem>
                         <ComboBoxItem>CompactOverlay</ComboBoxItem>
                     </ComboBox>
 
-                    <ComboBox x:Name="paneBackgroundCombobox" Width="196" SelectedIndex="0" VerticalAlignment="Center"
-                        Header="PaneBackground" Margin="0,12,0,0" SelectionChanged="paneBackgroundCombobox_SelectionChanged">
+                    <ComboBox
+                        x:Name="paneBackgroundCombobox"
+                        Width="196"
+                        Margin="0,12,0,0"
+                        VerticalAlignment="Center"
+                        Header="PaneBackground"
+                        SelectedIndex="0"
+                        SelectionChanged="paneBackgroundCombobox_SelectionChanged">
                         <ComboBoxItem Tag="{}{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">SystemControlBackgroundChromeMediumLowBrush</ComboBoxItem>
                         <ComboBoxItem Tag="Red">Red</ComboBoxItem>
                         <ComboBoxItem Tag="Blue">Blue</ComboBoxItem>
                         <ComboBoxItem Tag="Green">Green</ComboBoxItem>
                     </ComboBox>
 
-                    <Slider x:Name="openPaneLengthSlider" Header="OpenPaneLength" Value="256" Minimum="128" Maximum="500"
-                        Width="196" SnapsTo="StepValues" StepFrequency="8" IsFocusEngagementEnabled="False" Margin="0,12,0,0" />
+                    <Slider
+                        x:Name="openPaneLengthSlider"
+                        Width="196"
+                        Margin="0,12,0,0"
+                        Header="OpenPaneLength"
+                        IsFocusEngagementEnabled="False"
+                        Maximum="500"
+                        Minimum="128"
+                        SnapsTo="StepValues"
+                        StepFrequency="8"
+                        Value="256" />
 
-                    <Slider x:Name="compactPaneLengthSlider" Header="CompactPaneLength" Value="48" Minimum="24"
-                        Maximum="128" Width="196" SnapsTo="StepValues" StepFrequency="8" IsFocusEngagementEnabled="False"/>
+                    <Slider
+                        x:Name="compactPaneLengthSlider"
+                        Width="196"
+                        Header="CompactPaneLength"
+                        IsFocusEngagementEnabled="False"
+                        Maximum="128"
+                        Minimum="24"
+                        SnapsTo="StepValues"
+                        StepFrequency="8"
+                        Value="48" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -140,5 +178,25 @@
                 <controls:ControlExampleSubstitution Key="DisplayMode" Value="{x:Bind splitView.DisplayMode, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="SystemControlBackgroundChromeMediumLowBrush" />
+                <VisualState x:Name="Red">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Red" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Blue">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Blue" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Green">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </StackPanel>
 </Page>

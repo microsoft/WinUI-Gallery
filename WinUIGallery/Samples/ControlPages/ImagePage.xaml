@@ -1,12 +1,15 @@
-<Page x:Class="WinUIGallery.ControlPages.ImagePage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d">
+<Page
+    x:Class="WinUIGallery.ControlPages.ImagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A basic image from a local file.">
 
-            <Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" />
+            <Image Height="100" Source="/Assets/SampleMedia/treetops.jpg" />
 
             <controls:ControlExample.Xaml>
                 <x:String>
@@ -19,7 +22,7 @@
 
             <Image Height="100">
                 <Image.Source>
-                    <BitmapImage UriSource="/Assets/SampleMedia/treetops.jpg" DecodePixelHeight="100" />
+                    <BitmapImage DecodePixelHeight="100" UriSource="/Assets/SampleMedia/treetops.jpg" />
                 </Image.Source>
             </Image>
 
@@ -37,18 +40,36 @@
 
         <controls:ControlExample x:Name="Example3" HeaderText="Image stretching.">
 
-            <Image x:Name="StretchImage" Stretch="None" Height="100" Width="100" Source="/Assets/SampleMedia/valley.jpg" />
+            <Image
+                x:Name="StretchImage"
+                Width="100"
+                Height="100"
+                Source="/Assets/SampleMedia/valley.jpg"
+                Stretch="None" />
 
             <controls:ControlExample.Options>
                 <RadioButtons Header="Image stretch mode">
-                    <RadioButton x:Name="StretchNone" Content="None" GroupName="ImageStretch" IsChecked="True"
-                        Checked="ImageStretch_Checked" />
-                    <RadioButton x:Name="StretchFill" Content="Fill" GroupName="ImageStretch"
-                        Checked="ImageStretch_Checked" />
-                    <RadioButton x:Name="StretchUniform" Content="Uniform" GroupName="ImageStretch"
-                        Checked="ImageStretch_Checked" />
-                    <RadioButton x:Name="StretchUniformToFill" Content="UniformToFill" GroupName="ImageStretch"
-                        Checked="ImageStretch_Checked" />
+                    <RadioButton
+                        x:Name="StretchNone"
+                        Checked="ImageStretch_Checked"
+                        Content="None"
+                        GroupName="ImageStretch"
+                        IsChecked="True" />
+                    <RadioButton
+                        x:Name="StretchFill"
+                        Checked="ImageStretch_Checked"
+                        Content="Fill"
+                        GroupName="ImageStretch" />
+                    <RadioButton
+                        x:Name="StretchUniform"
+                        Checked="ImageStretch_Checked"
+                        Content="Uniform"
+                        GroupName="ImageStretch" />
+                    <RadioButton
+                        x:Name="StretchUniformToFill"
+                        Checked="ImageStretch_Checked"
+                        Content="UniformToFill"
+                        GroupName="ImageStretch" />
                 </RadioButtons>
             </controls:ControlExample.Options>
             <controls:ControlExample.Xaml>
@@ -65,11 +86,17 @@
 
             <StackPanel>
                 <TextBlock Text="The normal image" />
-                <Image Source="/Assets/ninegrid.gif" Height="82" />
+                <Image Height="82" Source="/Assets/ninegrid.gif" />
                 <TextBlock Text="Image stretched evenly" />
-                <Image Source="/Assets/ninegrid.gif" NineGrid="3,3,3,3" Height="164" />
+                <Image
+                    Height="164"
+                    NineGrid="3,3,3,3"
+                    Source="/Assets/ninegrid.gif" />
                 <TextBlock Text="Image stretched using nine grid" />
-                <Image Source="/Assets/ninegrid.gif" NineGrid="30,20,30,20" Height="164" />
+                <Image
+                    Height="164"
+                    NineGrid="30,20,30,20"
+                    Source="/Assets/ninegrid.gif" />
             </StackPanel>
 
             <controls:ControlExample.Xaml>
@@ -80,10 +107,10 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
-        
+
         <controls:ControlExample x:Name="Example5" HeaderText="An SVG image.">
 
-            <Image Source="/Assets/SampleMedia/MirrorPCConsent.svg" Height="100" />
+            <Image Height="100" Source="/Assets/SampleMedia/MirrorPCConsent.svg" />
 
             <controls:ControlExample.Xaml>
                 <x:String>

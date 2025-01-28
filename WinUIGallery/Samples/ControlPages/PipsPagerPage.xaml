@@ -11,16 +11,21 @@
         <controls:ControlExample x:Name="Example1" HeaderText="PipsPager integrated with a FlipView">
             <controls:ControlExample.Example>
                 <StackPanel>
-                    <FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}">
+                    <FlipView
+                        x:Name="Gallery"
+                        Height="270"
+                        MaxWidth="400"
+                        ItemsSource="{x:Bind Pictures}">
                         <FlipView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
-                                <Image Source="{x:Bind Mode=OneTime}"/>
+                                <Image Source="{x:Bind Mode=OneTime}" />
                             </DataTemplate>
                         </FlipView.ItemTemplate>
                     </FlipView>
-                    <PipsPager x:Name="FlipViewPipsPager"
+                    <PipsPager
+                        x:Name="FlipViewPipsPager"
+                        Margin="0,12,0,0"
                         HorizontalAlignment="Center"
-                        Margin="0, 12, 0, 0"
                         NumberOfPages="{x:Bind Pictures.Count}"
                         SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" />
                 </StackPanel>
@@ -41,25 +46,37 @@
         NumberOfPages="{x:Bind Pictures.Count}"
         SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" /&gt;
 &lt;/StackPanel&gt;
-                </x:String >
+                </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
         <controls:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
             <controls:ControlExample.Example>
-                <PipsPager x:Name="TestPipsPager2"/>
+                <PipsPager x:Name="TestPipsPager2" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
-                    <ComboBox x:Name="OrientationComboBox" Header="Orientation" SelectionChanged="OrientationComboBox_SelectionChanged" SelectedValue="Horizontal">
+                    <ComboBox
+                        x:Name="OrientationComboBox"
+                        Header="Orientation"
+                        SelectedValue="Horizontal"
+                        SelectionChanged="OrientationComboBox_SelectionChanged">
                         <x:String>Horizontal</x:String>
                         <x:String>Vertical</x:String>
                     </ComboBox>
-                    <ComboBox x:Name="PrevButtonComboBox" Header="Previous Button Visibility" SelectionChanged="PrevButtonComboBox_SelectionChanged" SelectedValue="Visible">
+                    <ComboBox
+                        x:Name="PrevButtonComboBox"
+                        Header="Previous Button Visibility"
+                        SelectedValue="Visible"
+                        SelectionChanged="PrevButtonComboBox_SelectionChanged">
                         <x:String>Visible</x:String>
                         <x:String>VisibleOnPointerOver</x:String>
                         <x:String>Collapsed</x:String>
                     </ComboBox>
-                    <ComboBox x:Name="NextButtonComboBox" Header="Next Button Visibility" SelectionChanged="NextButtonComboBox_SelectionChanged" SelectedValue="Visible">
+                    <ComboBox
+                        x:Name="NextButtonComboBox"
+                        Header="Next Button Visibility"
+                        SelectedValue="Visible"
+                        SelectionChanged="NextButtonComboBox_SelectionChanged">
                         <x:String>Visible</x:String>
                         <x:String>VisibleOnPointerOver</x:String>
                         <x:String>Collapsed</x:String>

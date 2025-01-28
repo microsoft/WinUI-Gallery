@@ -1,39 +1,51 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.InfoBadgePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
-    xmlns:controls="using:WinUIGallery.Controls"
     mc:Ignorable="d">
 
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="InfoBadge embedded in NavigationView " HorizontalContentAlignment="Stretch" >
+        <controls:ControlExample
+            x:Name="Example1"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="InfoBadge embedded in NavigationView ">
             <controls:ControlExample.Example>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <NavigationView x:Name="nvSample1" Height="300" PaneDisplayMode="Left">
+                    <NavigationView
+                        x:Name="nvSample1"
+                        Height="300"
+                        PaneDisplayMode="Left">
                         <NavigationView.MenuItems>
-                            <NavigationViewItem Content="Home" Icon="Home"/>
-                            <NavigationViewItem Content="Account" Icon="Contact"/>
-                            <NavigationViewItem x:Name="InboxPage" Content="Inbox" Icon="Mail" AutomationProperties.Name="Inbox, 5 notifications">
+                            <NavigationViewItem Content="Home" Icon="Home" />
+                            <NavigationViewItem Content="Account" Icon="Contact" />
+                            <NavigationViewItem
+                                x:Name="InboxPage"
+                                AutomationProperties.Name="Inbox, 5 notifications"
+                                Content="Inbox"
+                                Icon="Mail">
                                 <NavigationViewItem.InfoBadge>
-                                    <InfoBadge x:Name="infoBadge1" Value="5" Opacity="{x:Bind InfoBadgeOpacity, Mode=OneWay}"/>
+                                    <InfoBadge
+                                        x:Name="infoBadge1"
+                                        Opacity="{x:Bind InfoBadgeOpacity, Mode=OneWay}"
+                                        Value="5" />
                                 </NavigationViewItem.InfoBadge>
                             </NavigationViewItem>
                         </NavigationView.MenuItems>
@@ -44,8 +56,16 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel Width="160">
-                    <ToggleSwitch x:Name="ToggleInfoBadgeOpacity" Header="InfoBadge Opacity" Toggled="ToggleInfoBadgeOpacity_Toggled" IsOn="True"/>
-                    <ComboBox x:Name="NavigationViewDisplayMode" Header="Display Mode" SelectionChanged="NavigationViewDisplayMode_SelectionChanged" SelectedValue="LeftExpanded">
+                    <ToggleSwitch
+                        x:Name="ToggleInfoBadgeOpacity"
+                        Header="InfoBadge Opacity"
+                        IsOn="True"
+                        Toggled="ToggleInfoBadgeOpacity_Toggled" />
+                    <ComboBox
+                        x:Name="NavigationViewDisplayMode"
+                        Header="Display Mode"
+                        SelectedValue="LeftExpanded"
+                        SelectionChanged="NavigationViewDisplayMode_SelectionChanged">
                         <x:String>LeftExpanded</x:String>
                         <x:String>LeftCompact</x:String>
                         <x:String>Top</x:String>
@@ -64,18 +84,38 @@
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example2" HeaderText="Different InfoBadge Styles" HorizontalContentAlignment="Stretch" >
+        <controls:ControlExample
+            x:Name="Example2"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="Different InfoBadge Styles">
             <controls:ControlExample.Example>
-                <StackPanel Orientation="Horizontal" contract5Present:Spacing="20" HorizontalAlignment="Center">
-                    <InfoBadge x:Name="infoBadge2" Style="{StaticResource AttentionIconInfoBadgeStyle}" HorizontalAlignment="Right"/>
-                    <InfoBadge x:Name="infoBadge3" Style="{StaticResource AttentionValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10"/>
-                    <InfoBadge x:Name="infoBadge4" Style="{StaticResource AttentionDotInfoBadgeStyle}" VerticalAlignment="Center"/>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Spacing="20"
+                    Orientation="Horizontal">
+                    <InfoBadge
+                        x:Name="infoBadge2"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource AttentionIconInfoBadgeStyle}" />
+                    <InfoBadge
+                        x:Name="infoBadge3"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource AttentionValueInfoBadgeStyle}"
+                        Value="10" />
+                    <InfoBadge
+                        x:Name="infoBadge4"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource AttentionDotInfoBadgeStyle}" />
                 </StackPanel>
 
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel Width="160">
-                    <ComboBox x:Name="InfoBadgeStyleComboBox" Header="Styles" SelectionChanged="InfoBadgeStyleComboBox_SelectionChanged" SelectedValue="Attention">
+                    <ComboBox
+                        x:Name="InfoBadgeStyleComboBox"
+                        Header="Styles"
+                        SelectedValue="Attention"
+                        SelectionChanged="InfoBadgeStyleComboBox_SelectionChanged">
                         <x:String>Attention</x:String>
                         <x:String>Informational</x:String>
                         <x:String>Success</x:String>
@@ -86,7 +126,7 @@
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel Orientation="Horizontal" contract5Present:Spacing="20" HorizontalAlignment="Center"/&gt;
+&lt;StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center"/&gt;
     &lt;InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}" HorizontalAlignment="Right"/&gt;
     &lt;InfoBadge x:Name="infoBadge3" Style="{StaticResource $(Style)ValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10" /&gt;
     &lt;InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}" VerticalAlignment="Center"/&gt;
@@ -99,13 +139,31 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example3" HeaderText="Placing an InfoBadge Inside Another Control" HorizontalContentAlignment="Stretch" >
+        <controls:ControlExample
+            x:Name="Example3"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="Placing an InfoBadge Inside Another Control">
             <controls:ControlExample.Example>
-                <Button x:Name="Example3Button" AutomationProperties.Name="Example3Button" Padding="0" Width="200" Height="60" ToolTipService.ToolTip="Refresh required"
-                        HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
-                        <SymbolIcon Symbol="Sync" HorizontalAlignment="Center"/>
-                        <InfoBadge Background="#C42B1C" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button
+                    x:Name="Example3Button"
+                    Width="200"
+                    Height="60"
+                    Padding="0"
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    AutomationProperties.Name="Example3Button"
+                    ToolTipService.ToolTip="Refresh required">
+                    <Grid
+                        Width="Auto"
+                        Height="Auto"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <SymbolIcon HorizontalAlignment="Center" Symbol="Sync" />
+                        <InfoBadge
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="#C42B1C">
                             <InfoBadge.IconSource>
                                 <FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF13C;" />
                             </InfoBadge.IconSource>
@@ -136,15 +194,23 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example4" HeaderText="InfoBadge with Dynamic Value" HorizontalContentAlignment="Stretch" >
+        <controls:ControlExample
+            x:Name="Example4"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="InfoBadge with Dynamic Value">
             <controls:ControlExample.Example>
-                <InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center"/>
+                <InfoBadge x:Name="DynamicInfoBadge" HorizontalAlignment="Center" />
             </controls:ControlExample.Example>
 
             <controls:ControlExample.Options>
                 <StackPanel Width="160">
-                    <NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" Minimum="-1"
-                        SpinButtonPlacementMode="Inline" ValueChanged="ValueNumberBox_ValueChanged"/>
+                    <NumberBox
+                        x:Name="ValueNumberBox"
+                        Header="InfoBadge Value"
+                        Minimum="-1"
+                        SpinButtonPlacementMode="Inline"
+                        ValueChanged="ValueNumberBox_ValueChanged"
+                        Value="1" />
                 </StackPanel>
             </controls:ControlExample.Options>
 

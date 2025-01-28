@@ -12,8 +12,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="headerBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <Button x:Name="GoBackButton" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Click="BackButton_Click" />
+        <Grid
+            x:Name="headerBackground"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Button
+                x:Name="GoBackButton"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{ThemeResource SystemAccentColor}"
+                Click="BackButton_Click"
+                Content="Go Back" />
         </Grid>
 
         <Grid x:Name="headerContent" Margin="20,52,20,20">
@@ -22,26 +32,53 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Connected image -->
-            <Image x:Name="detailedImage" MaxHeight="400" Source="{x:Bind DetailedObject.ImageLocation}" VerticalAlignment="Top" Stretch="Uniform" />
+            <!--  Connected image  -->
+            <Image
+                x:Name="detailedImage"
+                MaxHeight="400"
+                VerticalAlignment="Top"
+                Source="{x:Bind DetailedObject.ImageLocation}"
+                Stretch="Uniform" />
 
-            <!-- Panel to be coordinated with connected animation -->
-            <StackPanel x:Name="coordinatedPanel" Grid.Column="1" VerticalAlignment="Top" Margin="20,0">
-                <TextBlock Text="{x:Bind DetailedObject.Title}" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10"  />
+            <!--  Panel to be coordinated with connected animation  -->
+            <StackPanel
+                x:Name="coordinatedPanel"
+                Grid.Column="1"
+                Margin="20,0"
+                VerticalAlignment="Top">
+                <TextBlock
+                    Margin="0,0,0,10"
+                    Style="{ThemeResource SubheaderTextBlockStyle}"
+                    Text="{x:Bind DetailedObject.Title}" />
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Views: " Style="{ThemeResource SubtitleTextBlockStyle}" FontWeight="Bold"/>
-                    <TextBlock Text="{x:Bind DetailedObject.Views}" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="5,0,0,0"/>
+                    <TextBlock
+                        FontWeight="Bold"
+                        Style="{ThemeResource SubtitleTextBlockStyle}"
+                        Text="Views: " />
+                    <TextBlock
+                        Margin="5,0,0,0"
+                        Style="{ThemeResource SubtitleTextBlockStyle}"
+                        Text="{x:Bind DetailedObject.Views}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Likes: " Style="{ThemeResource SubtitleTextBlockStyle}" FontWeight="Bold" />
-                    <TextBlock Text="{x:Bind DetailedObject.Likes}" Style="{ThemeResource SubtitleTextBlockStyle}"  Margin="5,0,0,0"/>
+                    <TextBlock
+                        FontWeight="Bold"
+                        Style="{ThemeResource SubtitleTextBlockStyle}"
+                        Text="Likes: " />
+                    <TextBlock
+                        Margin="5,0,0,0"
+                        Style="{ThemeResource SubtitleTextBlockStyle}"
+                        Text="{x:Bind DetailedObject.Likes}" />
                 </StackPanel>
             </StackPanel>
         </Grid>
 
-        <!-- Panel containing more info, to be shown after the connected animation. -->
-        <Grid x:Name="moreInfoPanel" Grid.Row="1" Margin="10">
-            <TextBlock Text="{x:Bind DetailedObject.Description}" Style="{ThemeResource SubtitleTextBlockStyle}"  />
+        <!--  Panel containing more info, to be shown after the connected animation.  -->
+        <Grid
+            x:Name="moreInfoPanel"
+            Grid.Row="1"
+            Margin="10">
+            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind DetailedObject.Description}" />
         </Grid>
 
 

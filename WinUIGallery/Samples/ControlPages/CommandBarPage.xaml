@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.CommandBarPage"
@@ -43,30 +43,61 @@
         &lt;/AppBarButton&gt;</x:String>
     </Page.Resources>
     <StackPanel>
-        <controls:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page" >
+        <controls:ControlExample x:Name="Example3" HeaderText="A command bar with labels on the side free floating in a page">
             <StackPanel>
-                <CommandBar x:Name="PrimaryCommandBar" IsOpen="False" DefaultLabelPosition="Right">
-                    <AppBarButton x:Name="addButton" Icon="Add" Label="Add" Click="OnElementClicked"/>
-                    <AppBarButton x:Name="editButton" Icon="Edit" Label="Edit" Click="OnElementClicked"/>
-                    <AppBarButton x:Name="shareButton" Icon="Share" Label="Share" Click="OnElementClicked"/>
+                <CommandBar
+                    x:Name="PrimaryCommandBar"
+                    DefaultLabelPosition="Right"
+                    IsOpen="False">
+                    <AppBarButton
+                        x:Name="addButton"
+                        Click="OnElementClicked"
+                        Icon="Add"
+                        Label="Add" />
+                    <AppBarButton
+                        x:Name="editButton"
+                        Click="OnElementClicked"
+                        Icon="Edit"
+                        Label="Edit" />
+                    <AppBarButton
+                        x:Name="shareButton"
+                        Click="OnElementClicked"
+                        Icon="Share"
+                        Label="Share" />
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton x:Name="settingsButton" Icon="Setting" Label="Settings" Click="OnElementClicked">
+                        <AppBarButton
+                            x:Name="settingsButton"
+                            Click="OnElementClicked"
+                            Icon="Setting"
+                            Label="Settings">
                             <AppBarButton.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="I" />
+                                <KeyboardAccelerator Key="I" Modifiers="Control" />
                             </AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
                     </CommandBar.SecondaryCommands>
                 </CommandBar>
-                <TextBlock x:Name="SelectedOptionText" Padding="0,8,0,0"></TextBlock>
+                <TextBlock x:Name="SelectedOptionText" Padding="0,8,0,0" />
             </StackPanel>
             <controls:ControlExample.Options>
                 <StackPanel>
                     <TextBlock Text="Show or hide" />
-                    <Button Margin="0,12,0,0" Content="Open command bar" Click="OpenButton_Click" />
-                    <Button Margin="0,12,0,0" Content="Close command bar" Click="CloseButton_Click" />
+                    <Button
+                        Margin="0,12,0,0"
+                        Click="OpenButton_Click"
+                        Content="Open command bar" />
+                    <Button
+                        Margin="0,12,0,0"
+                        Click="CloseButton_Click"
+                        Content="Close command bar" />
                     <TextBlock Margin="0,16,0,0" Text="Modify content" />
-                    <Button Margin="0,12,0,0" Content="Add secondary commands" Click="AddSecondaryCommands_Click" />
-                    <Button Margin="0,12,0,0" Content="Remove secondary commands" Click="RemoveSecondaryCommands_Click" />
+                    <Button
+                        Margin="0,12,0,0"
+                        Click="AddSecondaryCommands_Click"
+                        Content="Add secondary commands" />
+                    <Button
+                        Margin="0,12,0,0"
+                        Click="RemoveSecondaryCommands_Click"
+                        Content="Remove secondary commands" />
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.Xaml>
@@ -86,9 +117,18 @@
 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="IsOpen" IsEnabled="True" Value="{x:Bind PrimaryCommandBar.IsOpen, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="IsSticky" IsEnabled="{x:Bind PrimaryCommandBar.IsSticky, Mode=OneWay}" Value=" IsSticky=&quot;True&quot; " />
-                <controls:ControlExampleSubstitution Key="MultipleButtonsSecondaryCommands" IsEnabled="{x:Bind MultipleButtons, Mode=OneWay}" Value="{StaticResource MultipleButtonsSecondaryCommands}"/>
+                <controls:ControlExampleSubstitution
+                    Key="IsOpen"
+                    IsEnabled="True"
+                    Value="{x:Bind PrimaryCommandBar.IsOpen, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="IsSticky"
+                    IsEnabled="{x:Bind PrimaryCommandBar.IsSticky, Mode=OneWay}"
+                    Value=" IsSticky=&quot;True&quot; " />
+                <controls:ControlExampleSubstitution
+                    Key="MultipleButtonsSecondaryCommands"
+                    IsEnabled="{x:Bind MultipleButtons, Mode=OneWay}"
+                    Value="{StaticResource MultipleButtonsSecondaryCommands}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

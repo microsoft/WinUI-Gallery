@@ -18,7 +18,7 @@
     xmlns:pages="using:WinUIGallery.Pages">
 
     <pages:ItemsPageBase.Resources>
-        <DataTemplate x:Key="ImageTemplate" x:DataType="localcp:CustomDataObject">
+        <DataTemplate x:Key="ImageTemplate" x:DataType="local:CustomDataObject">
             <ItemContainer
                 Width="200"
                 Height="140"
@@ -34,7 +34,7 @@
             </ItemContainer>
         </DataTemplate>
 
-        <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
+        <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="local:CustomDataObject">
             <ItemContainer AutomationProperties.Name="{x:Bind Title}">
                 <Grid>
                     <Image
@@ -66,7 +66,7 @@
             </ItemContainer>
         </DataTemplate>
 
-        <DataTemplate x:Key="StackLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
+        <DataTemplate x:Key="StackLayoutItemTemplate" x:DataType="local:CustomDataObject">
             <ItemContainer AutomationProperties.Name="{x:Bind Title}">
                 <RelativePanel
                     Width="480"
@@ -101,7 +101,7 @@
             </ItemContainer>
         </DataTemplate>
 
-        <DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="localcp:CustomDataObject">
+        <DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="local:CustomDataObject">
             <ItemContainer AutomationProperties.Name="{x:Bind Title}">
                 <Grid Width="150">
                     <Image
@@ -152,7 +152,7 @@
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;DataTemplate x:Key="ImageTemplate" x:DataType="localcp:CustomDataObject"&gt;
+&lt;DataTemplate x:Key="ImageTemplate" x:DataType="local:CustomDataObject"&gt;
     &lt;ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}"&gt;
         &lt;Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/&gt;
     &lt;/ItemContainer&gt;
@@ -333,7 +333,7 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="localcp:CustomDataObject"&gt;
+&lt;DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="local:CustomDataObject"&gt;
     &lt;ItemContainer AutomationProperties.Name="{x:Bind Title}"&gt;
         &lt;Grid&gt;
             &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="70"/&gt;
@@ -441,7 +441,7 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="localcp:CustomDataObject"&gt;
+&lt;DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="local:CustomDataObject"&gt;
     &lt;ItemContainer AutomationProperties.Name="{x:Bind Title}"&gt;
         &lt;Grid Width="150"&gt;
             &lt;Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;

@@ -13,9 +13,8 @@
     x:Class="WinUIGallery.ControlPages.MapControlPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
@@ -42,7 +41,7 @@
                             PlaceholderText="Map service token" />
                         <Button Click="Button_Click" Content="Set token" />
                     </StackPanel>
-                    <controls:MapControl
+                    <MapControl
                         x:Name="map1"
                         Height="400"
                         HorizontalAlignment="Stretch" />
@@ -51,7 +50,7 @@
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-    &lt;controls:MapControl x:Name="map1" MapServiceToken="MapServiceToken" Height="600"/&gt;
+    &lt;MapControl x:Name="map1" MapServiceToken="MapServiceToken" Height="600"/&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>

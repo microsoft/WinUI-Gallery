@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:data="using:WinUIGallery.Data"
-    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:pages="using:WinUIGallery.Pages">
     <StackPanel>
         <controls:ControlExample

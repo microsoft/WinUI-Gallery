@@ -3,8 +3,8 @@
     x:Class="WinUIGallery.ControlPages.XamlStylesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -35,15 +35,20 @@
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <StackPanel.Resources>
-                        <Style x:Key="CustomButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
+                        <Style
+                            x:Key="CustomButtonStyle"
+                            BasedOn="{StaticResource ButtonRevealStyle}"
+                            TargetType="Button">
                             <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}" />
                             <Setter Property="MinWidth" Value="200" />
                         </Style>
                     </StackPanel.Resources>
                     <Button Content="Default button" />
                     <Button Content="Styled button" Style="{StaticResource CustomButtonStyle}" />
-                    <Button Content="Styled button (overridden)" Style="{StaticResource CustomButtonStyle}"
-                            Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}" />
+                    <Button
+                        Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"
+                        Content="Styled button (overridden)"
+                        Style="{StaticResource CustomButtonStyle}" />
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>

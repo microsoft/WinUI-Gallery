@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.ToggleButtonPage"
@@ -19,13 +19,16 @@
     mc:Ignorable="d">
     <StackPanel>
         <controls:ControlExample HeaderText="A simple ToggleButton with text content.">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                <ToggleButton x:Name="Toggle1" Content="ToggleButton"
+            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                <ToggleButton
+                    x:Name="Toggle1"
+                    Checked="ToggleButton_Checked"
+                    Content="ToggleButton"
                     IsEnabled="{x:Bind DisableToggle1.IsChecked.Value.Equals(x:False), Mode=OneWay}"
-                    Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" />
+                    Unchecked="ToggleButton_Unchecked" />
             </StackPanel>
             <controls:ControlExample.Output>
-                <TextBlock x:Name="Control1Output"/>
+                <TextBlock x:Name="Control1Output" />
             </controls:ControlExample.Output>
             <controls:ControlExample.Options>
                 <StackPanel>
@@ -38,8 +41,10 @@
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableToggle1.IsChecked.Value, Mode=OneWay}"
-                                                  Value= "IsEnabled=&quot;False&quot; "/>
+                <controls:ControlExampleSubstitution
+                    Key="IsEnabled"
+                    IsEnabled="{x:Bind DisableToggle1.IsChecked.Value, Mode=OneWay}"
+                    Value="IsEnabled=&quot;False&quot; " />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

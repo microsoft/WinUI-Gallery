@@ -1,25 +1,27 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
-<Page x:Class="WinUIGallery.ControlPages.BreadcrumbBarPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="using:WinUIGallery.Controls"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
-      xmlns:l="using:WinUIGallery.ControlPages"
-      mc:Ignorable="d">
+<Page
+    x:Class="WinUIGallery.ControlPages.BreadcrumbBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:l="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
             <controls:ControlExample.Example>
-                <BreadcrumbBar x:Name="BreadcrumbBar1"/>
+                <BreadcrumbBar x:Name="BreadcrumbBar1" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -38,7 +40,7 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
                 <BreadcrumbBar x:Name="BreadcrumbBar2">
                     <BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="l:Folder">
-                            <BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}">
+                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Name}" Content="{Binding}">
                                 <BreadcrumbBarItem.ContentTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" />
@@ -51,7 +53,10 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
             </controls:ControlExample.Example>
 
             <controls:ControlExample.Options>
-                <Button x:Name="ResetSampleBtn" Content="Reset sample" Click="ResetSampleButton_Click"/>
+                <Button
+                    x:Name="ResetSampleBtn"
+                    Click="ResetSampleButton_Click"
+                    Content="Reset sample" />
             </controls:ControlExample.Options>
 
             <controls:ControlExample.Xaml>

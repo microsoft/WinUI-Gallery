@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.ToolTipPage"
@@ -16,13 +16,12 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     mc:Ignorable="d">
 
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A button with a simple ToolTip.">
             <controls:ControlExample.Example>
-                <Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip"/>
+                <Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String>
@@ -35,7 +34,7 @@
             <controls:ControlExample.Example>
                 <TextBlock Text="TextBlock with an offset ToolTip.">
                     <ToolTipService.ToolTip>
-                        <ToolTip Content="Offset ToolTip." VerticalOffset="-80"/>
+                        <ToolTip Content="Offset ToolTip." VerticalOffset="-80" />
                     </ToolTipService.ToolTip>
                 </TextBlock>
             </controls:ControlExample.Example>
@@ -52,10 +51,17 @@
 
         <controls:ControlExample HeaderText="An Image with a ToolTip using PlacementRect.">
             <controls:ControlExample.Example>
-                <Image x:Name="textBoxToPlace" Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266">
+                <Image
+                    x:Name="textBoxToPlace"
+                    Width="400"
+                    Height="266"
+                    Source="/Assets/SampleMedia/cliff.jpg">
                     <ToolTipService.ToolTip>
-                            <ToolTip Content="Non-occluding ToolTip."  Placement="Right"
-                                contract7Present:PlacementRect="0,0,400,266" AutomationProperties.FullDescription="Non-occluding tooltip"/>
+                        <ToolTip
+                            PlacementRect="0,0,400,266"
+                            AutomationProperties.FullDescription="Non-occluding tooltip"
+                            Content="Non-occluding ToolTip."
+                            Placement="Right" />
                     </ToolTipService.ToolTip>
                 </Image>
             </controls:ControlExample.Example>

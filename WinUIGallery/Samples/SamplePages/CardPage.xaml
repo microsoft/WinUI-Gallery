@@ -7,7 +7,12 @@
     mc:Ignorable="d">
 
     <Grid>
-        <GridView x:Name="collection" IsItemClickEnabled="True" ItemClick="TipsGrid_ItemClick" HorizontalAlignment="Center" MaxWidth="1400">
+        <GridView
+            x:Name="collection"
+            MaxWidth="1400"
+            HorizontalAlignment="Center"
+            IsItemClickEnabled="True"
+            ItemClick="TipsGrid_ItemClick">
             <GridView.ItemContainerStyle>
                 <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
                     <Style.Setters>
@@ -17,42 +22,95 @@
             </GridView.ItemContainerStyle>
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid x:Name="connectedElement" Height="250" Width="190" AutomationProperties.Name="{Binding}">
+                    <Grid
+                        x:Name="connectedElement"
+                        Width="190"
+                        Height="250"
+                        AutomationProperties.Name="{Binding}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}" Height="100">
-                            <TextBlock Text="Item" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{ThemeResource TitleTextBlockStyle}" />
+                        <Grid
+                            Height="100"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemAccentColor}">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{ThemeResource TitleTextBlockStyle}"
+                                Text="Item" />
                         </Grid>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Grid.Row="1">
-                            <TextBlock Text="{Binding}" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid
+                            Grid.Row="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding}" />
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
 
-        <Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" >
+        <Grid
+            x:Name="SmokeGrid"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Visibility="Collapsed">
             <Grid.Background>
-                <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+                <SolidColorBrush Opacity="0.8" Color="{ThemeResource SystemChromeAltHighColor}" />
             </Grid.Background>
-            <Grid x:Name="destinationElement" HorizontalAlignment="Center" VerticalAlignment="Center" Width="320" Height="400" BorderThickness="1" BorderBrush="{ThemeResource SystemAccentColor}">
+            <Grid
+                x:Name="destinationElement"
+                Width="320"
+                Height="400"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderBrush="{ThemeResource SystemAccentColor}"
+                BorderThickness="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}" Height="170">
-                    <TextBlock Text="Header" Style="{ThemeResource HeaderTextBlockStyle}" Margin="12" VerticalAlignment="Center" />
-                    <Button Click="BackButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="40" Margin="5" 
-                            ToolTipService.ToolTip="Close" AutomationProperties.Name="Close">
+                <Grid
+                    Height="170"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{ThemeResource SystemAccentColor}">
+                    <TextBlock
+                        Margin="12"
+                        VerticalAlignment="Center"
+                        Style="{ThemeResource HeaderTextBlockStyle}"
+                        Text="Header" />
+                    <Button
+                        Width="40"
+                        Height="40"
+                        Margin="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Close"
+                        Click="BackButton_Click"
+                        ToolTipService.ToolTip="Close">
                         <Button.Content>
                             <SymbolIcon Symbol="Clear" />
                         </Button.Content>
                     </Button>
                 </Grid>
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Grid.Row="1">
-                    <TextBlock Text="Content" Style="{ThemeResource BaseTextBlockStyle}" Margin="12" />
+                <Grid
+                    Grid.Row="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    <TextBlock
+                        Margin="12"
+                        Style="{ThemeResource BaseTextBlockStyle}"
+                        Text="Content" />
                 </Grid>
             </Grid>
         </Grid>

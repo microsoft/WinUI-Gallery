@@ -14,7 +14,7 @@
     <ListView.GroupStyle>
         <GroupStyle>
             <GroupStyle.HeaderTemplate>
-                <DataTemplate x:DataType="local1:GroupInfoList">
+                <DataTemplate x:DataType="local:GroupInfoList">
                     <Border AutomationProperties.Name="{x:Bind Key}">
                         <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}"/>
                     </Border>

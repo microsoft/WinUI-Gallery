@@ -7,7 +7,7 @@
     ItemClick="BasicGridView_ItemClick"
     SelectionMode="Single"/>
                     
-<DataTemplate x:Key="ImageTemplate" x:DataType="local1:CustomDataObject">
+<DataTemplate x:Key="ImageTemplate" x:DataType="local:CustomDataObject">
      <Image Stretch="UniformToFill" Source="{x:Bind ImageLocation}" Width="190" Height="130"/>
 </DataTemplate>
                     

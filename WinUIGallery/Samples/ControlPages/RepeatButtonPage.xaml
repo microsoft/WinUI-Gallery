@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.RepeatButtonPage"
@@ -20,9 +20,15 @@
     <StackPanel>
         <controls:ControlExample HeaderText="A simple RepeatButton with text content.">
             <StackPanel Orientation="Horizontal">
-                <RepeatButton x:Name="Control1" Content="Click and hold" Click="RepeatButton_Click"
-                        IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
-                <TextBlock x:Name="Control1Output" Margin="8,0,0,0" VerticalAlignment="Center" />
+                <RepeatButton
+                    x:Name="Control1"
+                    Click="RepeatButton_Click"
+                    Content="Click and hold"
+                    IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
+                <TextBlock
+                    x:Name="Control1Output"
+                    Margin="8,0,0,0"
+                    VerticalAlignment="Center" />
             </StackPanel>
 
             <controls:ControlExample.Options>
@@ -35,8 +41,10 @@
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableControl1.IsChecked.Value, Mode=OneWay}"
-                                                  Value= "IsEnabled=&quot;False&quot; "/>
+                <controls:ControlExampleSubstitution
+                    Key="IsEnabled"
+                    IsEnabled="{x:Bind DisableControl1.IsChecked.Value, Mode=OneWay}"
+                    Value="IsEnabled=&quot;False&quot; " />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

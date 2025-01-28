@@ -6,7 +6,7 @@
     
 <!-- DataTemplate used: -->
 
-<DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
+<DataTemplate x:Key="ContactListViewTemplate" x:DataType="local:Contact">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

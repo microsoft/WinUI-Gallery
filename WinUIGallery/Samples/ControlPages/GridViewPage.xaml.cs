@@ -39,7 +39,7 @@ public sealed partial class GridViewPage : ItemsPageBase
         StyledGrid.ItemsSource = Items;
 
         DisplayDT.Value = @"<!-- ImageTemplate: -->
-<DataTemplate x:Key='ImageTemplate' x:DataType='local1: CustomDataObject'>
+<DataTemplate x:Key='ImageTemplate' x:DataType='local: CustomDataObject'>
     <Image Stretch = 'UniformToFill' Source = '{x:Bind ImageLocation}' 
            AutomationProperties.Name = '{x:Bind Title}' Width = '190' Height = '130' 
            AutomationProperties.AccessibilityView = 'Raw'/>
@@ -59,7 +59,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             if (template == "ImageTemplate")
             {
                 DisplayDT.Value = @"<!-- ImageTemplate: -->
-<DataTemplate x:Key='ImageTemplate' x:DataType='local1: CustomDataObject'>
+<DataTemplate x:Key='ImageTemplate' x:DataType='local: CustomDataObject'>
     <Image Stretch = 'UniformToFill' Source = '{x:Bind ImageLocation}' 
            AutomationProperties.Name = '{x:Bind Title}' Width = '190' Height = '130' 
            AutomationProperties.AccessibilityView = 'Raw'/>
@@ -69,7 +69,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             else if (template == "IconTextTemplate")
             {
                 DisplayDT.Value = @"<!-- IconTextTemplate: -->
-<DataTemplate x:Key='IconTextTemplate' x:DataType='local1:CustomDataObject'>
+<DataTemplate x:Key='IconTextTemplate' x:DataType='local:CustomDataObject'>
     <RelativePanel AutomationProperties.Name='{x:Bind Title}' Width='280' MinHeight='160'>
         <Image x:Name='image'
                Width='18'
@@ -89,7 +89,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             else if (template == "ImageTextTemplate")
             {
                 DisplayDT.Value = @"<!-- ImageTextTemplate: -->
-<DataTemplate x: Key = 'ImageTextTemplate' x: DataType = 'local1:CustomDataObject'>
+<DataTemplate x: Key = 'ImageTextTemplate' x: DataType = 'local:CustomDataObject'>
     <Grid AutomationProperties.Name = '{x:Bind Title}' Width = '280'>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = 'Auto'/>
@@ -114,7 +114,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             else
             {
                 DisplayDT.Value = @"<!-- TextTemplate: -->
-<DataTemplate x:Key='TextTemplate' x:DataType='local1: CustomDataObject'>
+<DataTemplate x:Key='TextTemplate' x:DataType='local: CustomDataObject'>
     <StackPanel Width = '240' Orientation = 'Horizontal'>
         <TextBlock Style = '{StaticResource TitleTextBlockStyle}' Margin = '8,0,0,0' Text = '{x:Bind Title}'/>
             </StackPanel>

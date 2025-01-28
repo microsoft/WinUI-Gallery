@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.ToggleSwitchPage"
@@ -20,7 +20,7 @@
 
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A simple ToggleSwitch.">
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" />
             <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/&gt;
@@ -30,8 +30,13 @@
 
         <controls:ControlExample HeaderText="A ToggleSwitch with custom header and content.">
             <StackPanel Orientation="Horizontal">
-                <ToggleSwitch x:Name="ToggleSwitch2" Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="True"/>
-                <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="32"/>
+                <ToggleSwitch
+                    x:Name="ToggleSwitch2"
+                    Header="Toggle work"
+                    IsOn="True"
+                    OffContent="Do work"
+                    OnContent="Working" />
+                <ProgressRing Width="32" IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" />
             </StackPanel>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -43,10 +48,14 @@
             </controls:ControlExample.Xaml>
 
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="isOn" IsEnabled="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}"
-                                                  Value= "True"/>
-                <controls:ControlExampleSubstitution Key="isOff" IsEnabled="{x:Bind ToggleSwitch2.IsOn.Equals(x:False), Mode=OneWay}"
-                                                  Value= "False"/>
+                <controls:ControlExampleSubstitution
+                    Key="isOn"
+                    IsEnabled="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}"
+                    Value="True" />
+                <controls:ControlExampleSubstitution
+                    Key="isOff"
+                    IsEnabled="{x:Bind ToggleSwitch2.IsOn.Equals(x:False), Mode=OneWay}"
+                    Value="False" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

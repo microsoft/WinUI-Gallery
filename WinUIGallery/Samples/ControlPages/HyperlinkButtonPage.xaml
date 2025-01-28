@@ -1,13 +1,13 @@
 <!--
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
 -->
 <Page
     x:Class="WinUIGallery.ControlPages.HyperlinkButtonPage"
@@ -21,7 +21,11 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A hyperlink button that navigates to a URI.">
             <controls:ControlExample.Example>
-                <HyperlinkButton x:Name="Control1" Content="Microsoft home page" NavigateUri="http://www.microsoft.com" IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}" />
+                <HyperlinkButton
+                    x:Name="Control1"
+                    Content="Microsoft home page"
+                    IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}"
+                    NavigateUri="http://www.microsoft.com" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
@@ -34,14 +38,19 @@
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind DisableControl1.IsChecked.Value, Mode=OneWay}"
-                                                  Value= "IsEnabled=&quot;False&quot; "/>
+                <controls:ControlExampleSubstitution
+                    Key="IsEnabled"
+                    IsEnabled="{x:Bind DisableControl1.IsChecked.Value, Mode=OneWay}"
+                    Value="IsEnabled=&quot;False&quot; " />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="A hyperlink button that handles a Click event.">
             <controls:ControlExample.Example>
-                <HyperlinkButton x:Name="Control2" Content="Go to ToggleButton" Click="GoToHyperlinkButton_Click" />
+                <HyperlinkButton
+                    x:Name="Control2"
+                    Click="GoToHyperlinkButton_Click"
+                    Content="Go to ToggleButton" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String>

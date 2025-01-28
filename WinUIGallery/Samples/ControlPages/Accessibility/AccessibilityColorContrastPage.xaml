@@ -37,21 +37,16 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
-                .
-                <LineBreak />
+                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                .<LineBreak />
                 <LineBreak />
                 To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-
                 read color combinationto for text and its background. Not only will this benefit users with lower
                 visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
-                conditions, screens, and device settings.
+                conditions, screens, and device settings.<LineBreak />
                 <LineBreak />
-                <LineBreak />
-                Check out the
-                <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
-                app to help you find and fix accessibility issues in your Windows apps.
-            </Paragraph>
+                Check out the<Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
+                app to help you find and fix accessibility issues in your Windows apps.</Paragraph>
         </RichTextBlock>
 
         <TextBlock
@@ -65,10 +60,10 @@
             TextWrapping="Wrap" />
         <controls:SampleThemeListener>
             <Grid
-                Style="{ThemeResource GalleryTileGridStyle}"
                 Padding="8"
                 ColumnSpacing="8"
-                RowSpacing="8">
+                RowSpacing="8"
+                Style="{ThemeResource GalleryTileGridStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -83,19 +78,19 @@
 
                 <controls:InlineColorPicker
                     x:Name="TextColorPicker"
-                    AutomationProperties.Name="TextColorPicker"
                     Grid.RowSpan="2"
-                    Header="Text Color"
+                    AutomationProperties.Name="TextColorPicker"
                     ColorChanged="TextColorPicker_ColorChanged"
+                    Header="Text Color"
                     Color="Black" />
 
                 <controls:InlineColorPicker
                     x:Name="BackgroundColorPicker"
-                    AutomationProperties.Name="BackgroundColorPicker"
-                    Grid.Column="1"
                     Grid.RowSpan="2"
-                    Header="Background Color"
-                    ColorChanged="BackgroundColorPicker_ColorChanged" />
+                    Grid.Column="1"
+                    AutomationProperties.Name="BackgroundColorPicker"
+                    ColorChanged="BackgroundColorPicker_ColorChanged"
+                    Header="Background Color" />
 
                 <TextBlock
                     Grid.Column="3"
@@ -142,14 +137,14 @@
 
                         <Grid Margin="12,0,0,0">
                             <Ellipse
-                            x:Name="NormalTextCheckEllipse"
-                            Width="30"
-                            Height="30"
-                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                                x:Name="NormalTextCheckEllipse"
+                                Width="30"
+                                Height="30"
+                                Fill="{ThemeResource SystemFillColorSuccess}" />
                             <FontIcon
-                            x:Name="NormalTextCheckIcon"
-                            Foreground="White"
-                            Glyph="&#xE73E;" />
+                                x:Name="NormalTextCheckIcon"
+                                Foreground="White"
+                                Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
                             x:Name="NormalTextCheckResult"
@@ -168,14 +163,14 @@
 
                         <Grid Grid.Row="1" Margin="12,0,0,0">
                             <Ellipse
-                            x:Name="LargeTextCheckEllipse"
-                            Width="30"
-                            Height="30"
-                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                                x:Name="LargeTextCheckEllipse"
+                                Width="30"
+                                Height="30"
+                                Fill="{ThemeResource SystemFillColorSuccess}" />
                             <FontIcon
-                            x:Name="LargeTextCheckIcon"
-                            Foreground="White"
-                            Glyph="&#xE73E;" />
+                                x:Name="LargeTextCheckIcon"
+                                Foreground="White"
+                                Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
                             x:Name="LargeTextCheckResult"
@@ -196,15 +191,15 @@
 
                         <Grid Grid.Row="2" Margin="10,0,0,0">
                             <Ellipse
-                            x:Name="ComponentsCheckEllipse"
-                            Width="30"
-                            Height="30"
-                            VerticalAlignment="Center"
-                            Fill="{ThemeResource SystemFillColorSuccess}" />
+                                x:Name="ComponentsCheckEllipse"
+                                Width="30"
+                                Height="30"
+                                VerticalAlignment="Center"
+                                Fill="{ThemeResource SystemFillColorSuccess}" />
                             <FontIcon
-                            x:Name="ComponentsCheckIcon"
-                            Foreground="White"
-                            Glyph="&#xE73E;" />
+                                x:Name="ComponentsCheckIcon"
+                                Foreground="White"
+                                Glyph="&#xE73E;" />
                         </Grid>
                         <TextBlock
                             x:Name="ComponentsCheckResult"

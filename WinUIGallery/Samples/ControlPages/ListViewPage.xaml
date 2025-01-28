@@ -15,7 +15,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:data="using:WinUIGallery.Data"
     xmlns:controls="using:WinUIGallery.Controls"
-    xmlns:local1="using:WinUIGallery.ControlPages"
+    xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:pages="using:WinUIGallery.Pages">
     <Page.Resources>
         <DataTemplate x:Key="ImageTextListMailFolderTemplate" x:DataType="data:ControlInfoDataItem">
@@ -38,7 +38,7 @@
         <CollectionViewSource x:Name="ContactsCVS" IsSourceGrouped="True" />
 
         <!--  When using x:Bind, you need to set x:DataType  -->
-        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local1:Contact">
+        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local:Contact">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -73,7 +73,7 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message">
+        <DataTemplate x:Key="MessageViewTemplate" x:DataType="local:Message">
             <Grid
                 Height="Auto"
                 Margin="4"
@@ -98,7 +98,7 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local1:Contact">
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="local:Contact">
             <TextBlock
                 Margin="0,5,0,5"
                 x:Phase="1"
@@ -270,7 +270,7 @@ source code for the WinUI Gallery. -->
                     <ListView.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
-                                <DataTemplate x:DataType="local1:GroupInfoList">
+                                <DataTemplate x:DataType="local:GroupInfoList">
                                     <Border AutomationProperties.AccessibilityView="Raw">
                                         <TextBlock
                                             AutomationProperties.AccessibilityView="Raw"
@@ -391,7 +391,7 @@ source code for the WinUI Gallery. -->
 &lt;!-- The data template is bound to a custom DataType called Message. --&gt;
 &lt;!-- Each Message object has a color and alignment assigned to it based on whether it was 
 sent or received, and those values are bound in the DataTemplate.--&gt;
-&lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local1:Message"&gt;
+&lt;DataTemplate x:Key="MessageViewTemplate" x:DataType="local:Message"&gt;
     &lt;Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}"&gt;
         &lt;StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{ThemeResource SystemColorHighlightColor}" CornerRadius="{StaticResource ControlCornerRadius}"&gt;
             &lt;TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemColorHighlightTextColor}"/&gt;
@@ -423,7 +423,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                 CanDragItems="True"
                 CanReorderItems="True">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local1:CustomDataObject">
+                    <DataTemplate x:DataType="local:CustomDataObject">
                         <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" MinWidth="150" />
@@ -485,7 +485,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
 &lt;!-- The data template is bound to a custom-created data type called CustomDataObject. --&gt;
 &lt;!-- The full code for the class can be found in this page's source code, but its attributes are referenced/bound below. --&gt;
 
-&lt;DataTemplate x:DataType="local1:CustomDataObject"&gt;
+&lt;DataTemplate x:DataType="local:CustomDataObject"&gt;
     &lt;Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}"&gt;
         &lt;Grid.ColumnDefinitions&gt;
             &lt;ColumnDefinition Width="Auto" MinWidth="150"/&gt;
@@ -529,7 +529,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
                     SelectionMode="Single"
                     ShowsScrollingPlaceholders="True">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local1:Contact">
+                        <DataTemplate x:DataType="local:Contact">
                             <Grid>
                                 <Grid.ContextFlyout>
                                     <MenuFlyout>
@@ -585,7 +585,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
     BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
     HorizontalAlignment="Left""&gt;
     &lt;ListView.ItemTemplate&gt;
-        &lt;DataTemplate x:DataType="local1:Contact"&gt;
+        &lt;DataTemplate x:DataType="local:Contact"&gt;
             &lt;Grid&gt;
                 &lt;Grid.ContextFlyout&gt;
                     &lt;MenuFlyout&gt;
