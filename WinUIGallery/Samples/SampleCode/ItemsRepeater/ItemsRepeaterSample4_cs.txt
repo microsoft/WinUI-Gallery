@@ -146,15 +146,7 @@ private void InitializeData()
     // ...
 }
 
-// ========================== Filtering, sorting, animating ========================== 
-private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
-{   
-    // This function calls a custom animator called DefaultElementAnimator.
-    // See the WinUI Gallery source code for full implementation in DefaultElementAnimator.cs
-    VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() 
-					? new DefaultElementAnimator() : null;
-}
-
+// ========================== Filtering, sorting, animating ==========================
 public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
 {
     UpdateSortAndFilter();

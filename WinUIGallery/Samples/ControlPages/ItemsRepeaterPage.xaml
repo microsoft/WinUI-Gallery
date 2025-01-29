@@ -454,13 +454,6 @@ private void InitializeData()
                         VerticalAlignment="Top"
                         Header="Filter by ingredient..."
                         TextChanged="FilterRecipes_FilterChanged" />
-                    <TextBlock>Enable Animations</TextBlock>
-                    <CheckBox
-                        x:Name="EnableAnimations"
-                        Margin="0,0,0,10"
-                        Checked="OnEnableAnimationsChanged"
-                        Content="Enable animations"
-                        Unchecked="OnEnableAnimationsChanged" />
                     <TextBlock Margin="0,0,0,10" Text="Sort by number of ingredients" />
                     <Button
                         Margin="0,0,0,5"
