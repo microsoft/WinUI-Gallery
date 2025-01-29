@@ -1,15 +1,14 @@
 <Project>
   <ItemGroup>
-    <Content Include="Assets\CoffeeCup.png" />
-    <Content Include="Assets\Contacts.txt" />
+    <Content Include="Assets\SampleMedia\CoffeeCup.png" />
+    <Content Include="Assets\SampleMedia\Contacts.txt" />
     <Content Include="Assets\CopyLinkTeachingTip.png" />
-    <Content Include="Assets\folder.png" />
-    <Content Include="Assets\SunBlack.png" />
-    <Content Include="Assets\SunWhite.png" />
-    <Content Include="Assets\ninegrid.gif" />
-    <Content Include="Assets\LottieLogo1.png" />
-    <Content Include="Assets\Slices.png" />
-    <Content Include="Assets\Slices2.png" />
+    <Content Include="Assets\SampleMedia\folder.png" />
+    <Content Include="Assets\SampleMedia\SunBlack.png" />
+    <Content Include="Assets\SampleMedia\SunWhite.png" />
+    <Content Include="Assets\SampleMedia\LottieLogo1.png" />
+    <Content Include="Assets\SampleMedia\Slices.png" />
+    <Content Include="Assets\SampleMedia\Slices2.png" />
     <Content Include="Assets\ControlImages\Acrylic.png" />
     <Content Include="Assets\ControlImages\AnimatedIcon.png" />
     <Content Include="Assets\ControlImages\AnimatedVisualPlayer.png" />
@@ -136,9 +135,9 @@
     <Content Include="Assets\SampleMedia\treetops.jpg" />
     <Content Include="Assets\SampleMedia\valley.jpg" />
     <Content Include="Assets\SampleMedia\MapExample.png" />
-    <Content Include="Assets\TabViewIcons\cmd.png" />
-    <Content Include="Assets\TabViewIcons\linux.png" />
-    <Content Include="Assets\TabViewIcons\powershell.png" />
+    <Content Include="Assets\SampleMedia\cmd.png" />
+    <Content Include="Assets\SampleMedia\linux.png" />
+    <Content Include="Assets\SampleMedia\powershell.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
     <Content Include="Assets\Tiles\LargeTile.scale-150.png" />

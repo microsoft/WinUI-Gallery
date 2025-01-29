@@ -48,7 +48,7 @@
                         Click="AppBarButton_Click"
                         Label="BitmapIcon">
                         <AppBarToggleButton.Icon>
-                            <BitmapIcon UriSource="ms-appx:///Assets/Slices2.png" />
+                            <BitmapIcon UriSource="ms-appx:///Assets/SampleMedia/Slices2.png" />
                         </AppBarToggleButton.Icon>
                     </AppBarToggleButton>
                     <TextBlock
@@ -61,7 +61,7 @@
                 <x:String xml:space="preserve">
 &lt;AppBarToggleButton Label="BitmapIcon" Click="AppBarButton_Click"&gt;
     &lt;AppBarToggleButton.Icon&gt;
-        &lt;BitmapIcon UriSource="ms-appx:///Assets/Slices2.png"/&gt;
+        &lt;BitmapIcon UriSource="ms-appx:///Assets/SampleMedia/Slices2.png"/&gt;
     &lt;/AppBarToggleButton.Icon&gt;
 &lt;/AppBarToggleButton&gt;
                 </x:String>

@@ -34,19 +34,10 @@
 
                         <!--  AnimatedVisualPlayer  -->
                         <AnimatedVisualPlayer x:Name="Player" AutoPlay="False">
-
                             <AnimatedVisualPlayer.Source>
                                 <!--  Codegen-ed Lottie animation source: /Assets/AnimatedVisuals/LottieLogo1.cs  -->
                                 <animatedvisuals:LottieLogo1 />
                             </AnimatedVisualPlayer.Source>
-
-
-                            <!--  Fallback since Lottie-Windows is only supported on OS version 17763 and above  -->
-                            <AnimatedVisualPlayer.FallbackContent>
-                                <DataTemplate>
-                                    <Image Source="/Assets/LottieLogo1.png" />
-                                </DataTemplate>
-                            </AnimatedVisualPlayer.FallbackContent>
                         </AnimatedVisualPlayer>
                     </Border>
 

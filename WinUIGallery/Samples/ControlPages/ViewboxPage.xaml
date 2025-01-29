@@ -45,7 +45,7 @@
                                 Height="10"
                                 Fill="Yellow" />
                         </StackPanel>
-                        <Image Source="ms-appx:///Assets/Slices.png" />
+                        <Image Source="ms-appx:///Assets/SampleMedia/Slices.png" />
                         <TextBlock HorizontalAlignment="Center" Text="This is text." />
                     </StackPanel>
                 </Border>
@@ -112,7 +112,7 @@
                 &lt;Rectangle Fill="Red" Height="10" Width="40"/&gt;
                 &lt;Rectangle Fill="Yellow" Height="10" Width="40"/&gt;
             &lt;/StackPanel&gt;
-            &lt;Image Source="ms-appx:///Assets/Slices.png"/&gt;
+            &lt;Image Source="ms-appx:///Assets/SampleMedia/Slices.png"/&gt;
             &lt;TextBlock Text="This is text." HorizontalAlignment="Center"/&gt;
         &lt;/StackPanel&gt;
     &lt;/Border&gt;

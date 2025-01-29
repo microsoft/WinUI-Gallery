@@ -61,17 +61,17 @@ public sealed partial class PullToRefreshPage : Page
             if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
                 && !accessibilitySettings.HighContrast)
             {
-                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
+                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SampleMedia/SunBlack.png"));
             }
             // Checking high contrast theme
             else if (accessibilitySettings.HighContrast
                       && accessibilitySettings.HighContrastScheme.Equals("High Contrast Black"))
             {
-                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunBlack.png"));
+                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SampleMedia/SunBlack.png"));
             }
             else
             {
-                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SunWhite.png"));
+                ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SampleMedia/SunWhite.png"));
 
             }
 

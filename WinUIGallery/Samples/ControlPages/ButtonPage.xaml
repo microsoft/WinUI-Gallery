@@ -57,7 +57,7 @@
                         Height="50"
                         AutomationProperties.Name="Pie"
                         Click="Button_Click">
-                        <Image AutomationProperties.Name="Slice" Source="/Assets/Slices.png" />
+                        <Image AutomationProperties.Name="Slice" Source="/Assets/SampleMedia/Slices.png" />
                     </Button>
                 </StackPanel>
             </controls:ControlExample.Example>
@@ -67,7 +67,7 @@
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;
-    &lt;Image Source="/Assets/Slices.png" AutomationProperties.Name="Slice"/&gt;
+    &lt;Image Source="/Assets/SampleMedia/Slices.png" AutomationProperties.Name="Slice"/&gt;
 &lt;/Button&gt;
                 </x:String>
             </controls:ControlExample.Xaml>

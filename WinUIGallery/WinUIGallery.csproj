@@ -149,7 +149,7 @@
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
         <None Remove="Assets\Design\Dialog.light.png" />
-        <None Remove="Assets\folder.png" />
+        <None Remove="Assets\SampleMedia\folder.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
@@ -311,7 +311,7 @@
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
         <Content Include="Assets\Design\Dialog.light.png" />
-        <Content Include="Assets\folder.png" />
+        <Content Include="Assets\SampleMedia\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
         <Content Include="Assets\Design\Geometry.light.png" />

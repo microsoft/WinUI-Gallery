@@ -385,17 +385,17 @@
                         <TabView.TabItems>
                             <TabViewItem Header="CMD Prompt" IsClosable="False">
                                 <TabViewItem.IconSource>
-                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/TabViewIcons/cmd.png" />
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/cmd.png" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
                             <TabViewItem Header="PowerShell" IsClosable="False">
                                 <TabViewItem.IconSource>
-                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/TabViewIcons/powershell.png" />
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/powershell.png" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
                             <TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
                                 <TabViewItem.IconSource>
-                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/TabViewIcons/linux.png" />
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/linux.png" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
                         </TabView.TabItems>

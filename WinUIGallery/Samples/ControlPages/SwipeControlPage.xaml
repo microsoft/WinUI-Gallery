@@ -293,7 +293,7 @@
                                     Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
                                     Text="Coffee">
                                     <SwipeItem.IconSource>
-                                        <BitmapIconSource UriSource="ms-appx:///Assets/CoffeeCup.png" />
+                                        <BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png" />
                                     </SwipeItem.IconSource>
                                 </SwipeItem>
                             </SwipeItems>
@@ -320,7 +320,7 @@
         &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
             &lt;SwipeItem Text="Coffee"&gt;
                 &lt;SwipeItem.IconSource&gt;
-                    &lt;BitmapIconSource UriSource="ms-appx:///Assets/CoffeeCup.png"/&gt;
+                    &lt;BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png"/&gt;
                 &lt;SwipeItem.IconSource/&gt;
             &lt;SwipeItem/&gt;
         &lt;/SwipeItems&gt;

@@ -7,7 +7,7 @@
             <TreeViewItem AutomationProperties.Name="{x:Bind Name}"
                 ItemsSource="{x:Bind Children}" IsExpanded="True">
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="20" Source="../Assets/folder.png"/>
+                    <Image Width="20" Source="../Assets/SampleMedia/folder.png"/>
                     <TextBlock Margin="0,0,10,0"/>
                     <TextBlock Text="{x:Bind Name}" />
                 </StackPanel>

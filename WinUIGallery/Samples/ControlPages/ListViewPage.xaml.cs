@@ -393,7 +393,7 @@ public class Contact
     #region Public Methods
     public async static Task<ObservableCollection<Contact>> GetContactsAsync()
     {
-        IList<string> lines = await FileLoader.LoadLines("Assets/Contacts.txt");
+        IList<string> lines = await FileLoader.LoadLines("Assets/SampleMedia/Contacts.txt");
 
         ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
 
