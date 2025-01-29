@@ -2871,6 +2871,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
+          "IsUpdated": true,
           "SourcePath": "/AnimatedIcon",
           "Docs": [
             {
