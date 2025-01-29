@@ -11,7 +11,7 @@
     <Grid>
         <controls:ControlExample x:Name="AnimatedVisualPlayerExample" HeaderText="Playback of a Lottie animation.">
             <controls:ControlExample.Example>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center">
                     <!--  Text  -->
                     <TextBlock TextWrapping="WrapWholeWords">
                         This AnimatedVisualPlayer consumes an animation created using
@@ -28,15 +28,15 @@
                         Width="400"
                         Height="400"
                         Margin="0,20,0,20"
-                        Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
-                        BorderBrush="{ThemeResource ToolTipBorderThemeBrush}"
-                        BorderThickness="5">
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
 
                         <!--  AnimatedVisualPlayer  -->
                         <AnimatedVisualPlayer x:Name="Player" AutoPlay="False">
 
                             <AnimatedVisualPlayer.Source>
-                                <!--  Codegen-ed Lottie animation source: /AnimatedVisuals/LottieLogo1.cs  -->
+                                <!--  Codegen-ed Lottie animation source: /Assets/AnimatedVisuals/LottieLogo1.cs  -->
                                 <animatedvisuals:LottieLogo1 />
                             </AnimatedVisualPlayer.Source>
 
@@ -51,7 +51,11 @@
                     </Border>
 
                     <!--  Playback Buttons  -->
-                    <Grid Width="400" ColumnSpacing="8" Margin="12" VerticalAlignment="Center">
+                    <Grid
+                        Width="400"
+                        Margin="12"
+                        VerticalAlignment="Center"
+                        ColumnSpacing="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
