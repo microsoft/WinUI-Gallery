@@ -44,7 +44,7 @@ internal class IconsDataSource
                 return icons;
             }
         }
-        var jsonText = await FileLoader.LoadText("DataModel/IconsData.json");
+        var jsonText = await FileLoader.LoadText("Data/IconsData.json");
         lock (_lock)
         {
             if (icons.Count == 0)

@@ -182,7 +182,7 @@ public sealed class ControlInfoDataSource
             }
         }
 
-        var jsonText = await FileLoader.LoadText("DataModel/ControlInfoData.json");
+        var jsonText = await FileLoader.LoadText("Data/ControlInfoData.json");
         var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), RootContext.Default) as Root;
 
         lock (_lock)

@@ -316,7 +316,7 @@
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
     <Content Include="Common\ReadMe.txt" />
-    <Content Include="DataModel\ControlInfoData.json" />
-    <Content Include="DataModel\IconsData.json" />
+    <Content Include="Data\ControlInfoData.json" />
+    <Content Include="Data\IconsData.json" />
   </ItemGroup>
 </Project>
