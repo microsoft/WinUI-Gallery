@@ -1,6 +1,6 @@
-using WinUIGallery.Data;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;

@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using WinUIGallery.Data;
+using WinUIGallery.Helpers;
 
 namespace WinUIGalleryUnitTests;
 

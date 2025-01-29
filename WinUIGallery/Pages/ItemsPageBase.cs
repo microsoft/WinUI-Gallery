@@ -15,7 +15,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
 

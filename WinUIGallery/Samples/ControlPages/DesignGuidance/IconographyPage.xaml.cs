@@ -17,7 +17,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Threading;
 using CommunityToolkit.WinUI.Controls;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.ControlPages;
 

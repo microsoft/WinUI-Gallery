@@ -11,7 +11,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

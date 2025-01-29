@@ -294,8 +294,13 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
-        <None Remove="Data\IconsData.json" />
+        <None Remove="Assets\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="Styles\Button.xaml" />
+        <None Remove="Styles\Grid.xaml" />
+        <None Remove="Styles\GridViewItem.xaml" />
+        <None Remove="Styles\ItemTemplates.xaml" />
+        <None Remove="Styles\TextBlock.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -448,8 +453,8 @@
         <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-        <Content Include="Data\IconsData.json" />
-        <Content Include="Data\ControlInfoData.json" />
+        <Content Include="Assets\Data\IconsData.json" />
+        <Content Include="Assets\Data\ControlInfoData.json" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="ControlPages\DesignGuidance\SpacingPage.xaml">
@@ -507,8 +512,32 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Styles\" />
       <Folder Include="Samples\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Styles\TextBlock.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Styles\ItemTemplates.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Styles\GridViewItem.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Styles\Grid.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Styles\Button.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 

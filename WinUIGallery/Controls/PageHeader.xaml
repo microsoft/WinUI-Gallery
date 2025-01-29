@@ -7,7 +7,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:WinUIGallery.Data"
+    xmlns:models="using:WinUIGallery.Models"
     xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Loaded="UserControl_Loaded"
@@ -117,7 +117,7 @@
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
-                                    <DataTemplate x:DataType="data:ControlInfoDocLink">
+                                    <DataTemplate x:DataType="models:ControlInfoDocLink">
                                         <HyperlinkButton
                                             HorizontalAlignment="Stretch"
                                             HorizontalContentAlignment="Left"

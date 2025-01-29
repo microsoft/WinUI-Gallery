@@ -1,28 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using WinUIGallery.Helpers;
+using WinUIGallery.Models;
 
-namespace WinUIGallery.Data;
-
-public class IconData
-{
-    public string Name { get; set; }
-    public string Code { get; set; }
-    public string[] Tags { get; set; } = [];
-
-    public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
-    public string CodeGlyph => "\\u" + Code;
-    public string TextGlyph => "&#x" + Code + ";";
-}
-[JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
-[JsonSerializable(typeof(List<IconData>))]
-internal partial class IconDataListContext : JsonSerializerContext
-{
-}
-
+namespace WinUIGallery.Helpers;
 internal class IconsDataSource
 {
     public static IconsDataSource Instance { get; } = new();
@@ -44,7 +25,7 @@ internal class IconsDataSource
                 return icons;
             }
         }
-        var jsonText = await FileLoader.LoadText("Data/IconsData.json");
+        var jsonText = await FileLoader.LoadText("Assets/Data/IconsData.json");
         lock (_lock)
         {
             if (icons.Count == 0)

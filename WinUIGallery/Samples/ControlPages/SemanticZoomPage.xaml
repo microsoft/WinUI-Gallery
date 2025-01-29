@@ -15,19 +15,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:WinUIGallery.Data"
+    xmlns:models="using:WinUIGallery.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
     <Page.Resources>
         <CollectionViewSource
             x:Name="cvsGroups"
-            d:Source="{Binding Groups, Source={d:DesignData Source=/Data/ControlInfoData.json, Type=data:ControlInfoDataSource}}"
+            d:Source="{Binding Groups, Source={d:DesignData Source=/Assets/Data/ControlInfoData.json, Type=models:ControlInfoDataSource}}"
             IsSourceGrouped="True"
             ItemsPath="Items"
             Source="{x:Bind Groups}" />
 
-        <DataTemplate x:Key="ZoomedInTemplate" x:DataType="data:ControlInfoDataItem">
+        <DataTemplate x:Key="ZoomedInTemplate" x:DataType="models:ControlInfoDataItem">
             <StackPanel MinWidth="200" Margin="12,6,12,6">
                 <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="{x:Bind Title}" />
                 <TextBlock
@@ -39,7 +39,7 @@
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="data:ControlInfoDataGroup">
+        <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="models:ControlInfoDataGroup">
             <TextBlock
                 Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
                 Style="{StaticResource SubtitleTextBlockStyle}"
@@ -49,7 +49,7 @@
         <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
             <TextBlock
                 Style="{StaticResource SubtitleTextBlockStyle}"
-                Text="{x:Bind ((data:ControlInfoDataGroup)Group).Title}"
+                Text="{x:Bind ((models:ControlInfoDataGroup)Group).Title}"
                 TextWrapping="Wrap" />
         </DataTemplate>
     </Page.Resources>

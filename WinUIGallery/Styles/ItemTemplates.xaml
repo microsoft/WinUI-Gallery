@@ -2,9 +2,9 @@
     x:Class="WinUIGallery.ItemTemplates"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:data="using:WinUIGallery.Data">
+    xmlns:models="using:WinUIGallery.Models">
 
-    <DataTemplate x:Key="ControlItemTemplate" x:DataType="data:ControlInfoDataItem">
+    <DataTemplate x:Key="ControlItemTemplate" x:DataType="models:ControlInfoDataItem">
         <UserControl>
             <Grid
                 x:Name="controlRoot"

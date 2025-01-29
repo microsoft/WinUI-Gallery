@@ -13,7 +13,7 @@ using System.Reflection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 using WinUIGallery.Controls;
 using WinUIGallery.Helpers;
 

@@ -2,7 +2,7 @@ using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.Helpers;
 

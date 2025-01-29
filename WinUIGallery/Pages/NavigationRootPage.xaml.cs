@@ -14,7 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 using WinUIGallery.Helpers;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;

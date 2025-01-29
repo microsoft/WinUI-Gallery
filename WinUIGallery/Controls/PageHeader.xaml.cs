@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
-using WinUIGallery.Data;
+using WinUIGallery.Models;
 using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
