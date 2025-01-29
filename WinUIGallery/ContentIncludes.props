@@ -6,7 +6,6 @@
     <Content Include="Assets\SampleMedia\folder.png" />
     <Content Include="Assets\SampleMedia\SunBlack.png" />
     <Content Include="Assets\SampleMedia\SunWhite.png" />
-    <Content Include="Assets\SampleMedia\LottieLogo1.png" />
     <Content Include="Assets\SampleMedia\Slices.png" />
     <Content Include="Assets\SampleMedia\Slices2.png" />
     <Content Include="Assets\ControlImages\Acrylic.png" />
