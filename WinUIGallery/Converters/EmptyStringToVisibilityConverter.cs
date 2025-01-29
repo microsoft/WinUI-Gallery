@@ -2,7 +2,7 @@ using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Converters;
 
 public class EmptyStringToVisibilityConverter : IValueConverter
 {
@@ -16,7 +16,7 @@ public class EmptyStringToVisibilityConverter : IValueConverter
         {
             return EmptyValue;
         }
-        else if(value is string stringValue && stringValue != "")
+        else if (value is string stringValue && stringValue != "")
         {
             return NonEmptyValue;
         }

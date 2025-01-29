@@ -3,15 +3,10 @@
     x:Class="WinUIGallery.ControlPages.BindingPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:c="using:WinUIGallery.Common"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Page.Resources>
-        <c:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter" />
-    </Page.Resources>
 
     <StackPanel>
         <StackPanel Margin="0,12,0,0" Spacing="12">
@@ -147,7 +142,7 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
                         Width="300"
                         Header="Enter Text:" />
 
-                    <TextBlock Text="The input is not empty." Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
+                    <TextBlock Text="The input is not empty." Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource emptyStringToVisibilityConverter}}" />
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
@@ -177,7 +172,7 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             Margin="0,8,0,0"
             IsClosable="False"
             IsOpen="True"
-            Message="There is a library called the MVVM Toolkit, part of the Windows Community Toolkit, designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
+            Message="The MVVM Toolkit, part of the .NET Community Toolkit, is designed to simplify the implementation of the Model-View-ViewModel (MVVM) pattern in applications. The toolkit includes a sample app to demonstrate its features and usage."
             Severity="Informational">
             <InfoBar.ActionButton>
                 <HyperlinkButton

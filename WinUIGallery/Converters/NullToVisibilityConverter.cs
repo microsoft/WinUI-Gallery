@@ -2,7 +2,7 @@ using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Converters;
 
 public class NullToVisibilityConverter : IValueConverter
 {
@@ -12,7 +12,7 @@ public class NullToVisibilityConverter : IValueConverter
 
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        return (value == null) ? NullValue : NonNullValue;
+        return value == null ? NullValue : NonNullValue;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -8,9 +8,8 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.Helpers;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Helpers;
 
 /// <summary>
 /// SuspensionManager captures global session state to simplify process lifetime management
@@ -135,9 +134,9 @@ internal sealed class SuspensionManager
     }
 
     private static DependencyProperty FrameSessionStateKeyProperty =
-        DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(String), typeof(SuspensionManager), new PropertyMetadata(null));
+        DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(string), typeof(SuspensionManager), new PropertyMetadata(null));
     private static DependencyProperty FrameSessionStateProperty =
-        DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<String, Object>), typeof(SuspensionManager), new PropertyMetadata(null));
+        DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<string, object>), typeof(SuspensionManager), new PropertyMetadata(null));
     private static List<WeakReference<Frame>> _registeredFrames = new List<WeakReference<Frame>>();
 
     /// <summary>

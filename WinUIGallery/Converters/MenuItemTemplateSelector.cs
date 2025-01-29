@@ -2,8 +2,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using System;
+using WinUIGallery.Models;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Converters;
 
 
 [ContentProperty(Name = "ItemTemplate")]

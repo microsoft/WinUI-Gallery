@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Windows.Foundation;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
-using LayoutContext = Microsoft.UI.Xaml.Controls.LayoutContext;
+using Windows.Foundation;
 using VirtualizingLayout = Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Layouts;
 
 class ActivityFeedLayout : VirtualizingLayout
 {
@@ -118,24 +115,24 @@ class ActivityFeedLayout : VirtualizingLayout
 
     protected override Size MeasureOverride(VirtualizingLayoutContext context, Size availableSize)
     {
-        if (this.MinItemSize == Size.Empty)
+        if (MinItemSize == Size.Empty)
         {
             var firstElement = context.GetOrCreateElementAt(0);
             firstElement.Measure(new Size(float.PositiveInfinity, float.PositiveInfinity));
 
             // setting the member value directly to skip invalidating layout
-            this._minItemSize = firstElement.DesiredSize;
+            _minItemSize = firstElement.DesiredSize;
         }
 
         // Determine which rows need to be realized.  We know every row will have the same height and
         // only contain 3 items.  Use that to determine the index for the first and last item that
         // will be within that realization rect.
         var firstRowIndex = Math.Max(
-            (int)(context.RealizationRect.Y / (this.MinItemSize.Height + this.RowSpacing)) - 1,
+            (int)(context.RealizationRect.Y / (MinItemSize.Height + RowSpacing)) - 1,
             0);
         var lastRowIndex = Math.Min(
-            (int)(context.RealizationRect.Bottom / (this.MinItemSize.Height + this.RowSpacing)) + 1,
-            (int)(context.ItemCount / 3));
+            (int)(context.RealizationRect.Bottom / (MinItemSize.Height + RowSpacing)) + 1,
+            context.ItemCount / 3);
 
         // Determine which items will appear on those rows and what the rect will be for each item
         var state = context.LayoutState as ActivityFeedLayoutState;
@@ -145,7 +142,7 @@ class ActivityFeedLayout : VirtualizingLayout
         state.FirstRealizedIndex = firstRowIndex * 3;
 
         // ideal item width that will expand/shrink to fill available space
-        double desiredItemWidth = Math.Max(this.MinItemSize.Width, (availableSize.Width - this.ColumnSpacing * 3) / 4);
+        double desiredItemWidth = Math.Max(MinItemSize.Width, (availableSize.Width - ColumnSpacing * 3) / 4);
 
         // Foreach item between the first and last index,
         //     Call GetElementOrCreateElementAt which causes an element to either be realized or retrieved
@@ -179,10 +176,10 @@ class ActivityFeedLayout : VirtualizingLayout
 
         // Calculate and return the size of all the content (realized or not) by figuring out
         // what the bottom/right position of the last item would be.
-        var extentHeight = ((int)(context.ItemCount / 3) - 1) * (this.MinItemSize.Height + this.RowSpacing) + this.MinItemSize.Height;
+        var extentHeight = (context.ItemCount / 3 - 1) * (MinItemSize.Height + RowSpacing) + MinItemSize.Height;
 
         // Report this as the desired size for the layout
-        return new Size(desiredItemWidth * 4 + this.ColumnSpacing * 2, extentHeight);
+        return new Size(desiredItemWidth * 4 + ColumnSpacing * 2, extentHeight);
     }
 
     protected override Size ArrangeOverride(VirtualizingLayoutContext context, Size finalSize)
@@ -209,9 +206,9 @@ class ActivityFeedLayout : VirtualizingLayout
     {
         var boundsForRow = new Rect[3];
 
-        var yoffset = rowIndex * (this.MinItemSize.Height + this.RowSpacing);
+        var yoffset = rowIndex * (MinItemSize.Height + RowSpacing);
         boundsForRow[0].Y = boundsForRow[1].Y = boundsForRow[2].Y = yoffset;
-        boundsForRow[0].Height = boundsForRow[1].Height = boundsForRow[2].Height = this.MinItemSize.Height;
+        boundsForRow[0].Height = boundsForRow[1].Height = boundsForRow[2].Height = MinItemSize.Height;
 
         if (rowIndex % 2 == 0)
         {
@@ -219,22 +216,22 @@ class ActivityFeedLayout : VirtualizingLayout
             boundsForRow[0].X = 0;
             boundsForRow[0].Width = desiredItemWidth;
             // Middle tile (narrow)
-            boundsForRow[1].X = boundsForRow[0].Right + this.ColumnSpacing;
+            boundsForRow[1].X = boundsForRow[0].Right + ColumnSpacing;
             boundsForRow[1].Width = desiredItemWidth;
             // Right tile (wide)
-            boundsForRow[2].X = boundsForRow[1].Right + this.ColumnSpacing;
-            boundsForRow[2].Width = desiredItemWidth * 2 + this.ColumnSpacing;
+            boundsForRow[2].X = boundsForRow[1].Right + ColumnSpacing;
+            boundsForRow[2].Width = desiredItemWidth * 2 + ColumnSpacing;
         }
         else
         {
             // Left tile (wide)
             boundsForRow[0].X = 0;
-            boundsForRow[0].Width = (desiredItemWidth * 2 + this.ColumnSpacing);
+            boundsForRow[0].Width = desiredItemWidth * 2 + ColumnSpacing;
             // Middle tile (narrow)
-            boundsForRow[1].X = boundsForRow[0].Right + this.ColumnSpacing;
+            boundsForRow[1].X = boundsForRow[0].Right + ColumnSpacing;
             boundsForRow[1].Width = desiredItemWidth;
             // Right tile (narrow)
-            boundsForRow[2].X = boundsForRow[1].Right + this.ColumnSpacing;
+            boundsForRow[2].X = boundsForRow[1].Right + ColumnSpacing;
             boundsForRow[2].Width = desiredItemWidth;
         }
 

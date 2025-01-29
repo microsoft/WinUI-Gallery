@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml;
-using static WinUIGallery.Win32;
+using static WinUIGallery.Helpers.Win32;
 
 namespace WinUIGallery.Helpers;
 

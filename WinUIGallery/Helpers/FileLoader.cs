@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WinUIGallery.Helpers;
 using System.IO;
 using System.Reflection;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Helpers;
 
 internal class FileLoader
 {

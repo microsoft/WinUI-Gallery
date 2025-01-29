@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Converters;
 
 public class NullableBooleanToBooleanConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        if(value is bool?)
+        if (value is bool?)
         {
             return (bool)value;
         }

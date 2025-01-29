@@ -13,7 +13,7 @@
     x:Class="WinUIGallery.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:WinUIGallery.Common"
+    xmlns:converters="using:WinUIGallery.Converters"
     xmlns:local="using:WinUIGallery">
     <Application.Resources>
         <ResourceDictionary>
@@ -48,15 +48,15 @@
             <!--  Breakpoints  -->
             <x:Double x:Key="Breakpoint640Plus">641</x:Double>
 
-            <common:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
-            <common:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
-            <common:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
-            <common:NullToVisibilityConverter
+            <converters:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
+            <converters:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+            <converters:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
+            <converters:NullToVisibilityConverter
                 x:Key="inverseNullToVisibilityConverter"
                 NonNullValue="Collapsed"
                 NullValue="Visible" />
-            <common:BooleanToValueConverter x:Key="booleanToValueConverter" />
-            <common:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
+            <converters:BooleanToValueConverter x:Key="booleanToValueConverter" />
+            <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
 
             <!--  Style Overrides  -->
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent" />

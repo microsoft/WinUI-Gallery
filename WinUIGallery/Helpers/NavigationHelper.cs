@@ -12,7 +12,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.Common;
 using Windows.UI.Core;
 using Microsoft.UI.Input;
 using static CommunityToolkit.WinUI.Animations.Expressions.ExpressionValues;

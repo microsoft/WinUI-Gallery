@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Helpers;
 
 class LanguageList
 {
     private List<Language> _languages;
-    public List<Language> Languages {
+    public List<Language> Languages
+    {
         get { return _languages; }
     }
 
@@ -106,7 +107,7 @@ class LanguageList
         _languages.Add(new Language("Vietnamese", "vi"));
         _languages.Add(new Language("Welsh", "cy"));
         _languages.Add(new Language("Wolof", "wo"));
-        
+
     }
 
     public class Language
@@ -114,10 +115,10 @@ class LanguageList
         public string Name { get; set; }
         public string Code { get; set; }
 
-        public Language (string name, string code)
+        public Language(string name, string code)
         {
-            this.Name = name;
-            this.Code = code;
+            Name = name;
+            Code = code;
         }
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Models;
 public class CategoryBase { }
 
 public class Category : CategoryBase

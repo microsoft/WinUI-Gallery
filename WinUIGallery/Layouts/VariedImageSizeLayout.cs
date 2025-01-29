@@ -8,7 +8,7 @@ using Windows.Foundation;
 using VirtualizingLayout = Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutContext;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Layouts;
 
 public class VariedImageSizeLayout : VirtualizingLayout
 {

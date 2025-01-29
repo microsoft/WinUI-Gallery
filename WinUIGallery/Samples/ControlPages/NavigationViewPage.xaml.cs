@@ -1,5 +1,4 @@
 using WinUIGallery.SamplePages;
-using WinUIGallery.Common;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
@@ -8,6 +7,7 @@ using Microsoft.UI.Xaml;
 using System.Linq;
 using Windows.System;
 using Microsoft.UI.Xaml.Automation;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.ControlPages;
 

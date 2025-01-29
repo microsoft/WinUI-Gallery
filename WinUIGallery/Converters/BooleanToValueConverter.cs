@@ -1,18 +1,17 @@
 using System;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
-namespace WinUIGallery.Common;
+namespace WinUIGallery.Converters;
 
-public sealed class BooleanToInvertedVisibilityConverter: IValueConverter
+public sealed class BooleanToValueConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        return ((bool)value) ? Visibility.Collapsed : Visibility.Visible;
+        return (bool)value ? parameter : null;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)
     {
-        return (Visibility)value == Visibility.Collapsed;
+        throw new NotImplementedException();
     }
 }

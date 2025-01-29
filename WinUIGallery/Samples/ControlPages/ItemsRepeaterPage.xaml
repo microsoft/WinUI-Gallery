@@ -2,7 +2,7 @@
     x:Class="WinUIGallery.ControlPages.ItemsRepeaterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:WinUIGallery.Common"
+    xmlns:layouts="using:WinUIGallery.Layouts"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery.ControlPages"
@@ -120,7 +120,7 @@
             MinColumnSpacing="8"
             MinRowSpacing="8" />
 
-        <common:ActivityFeedLayout
+        <layouts:ActivityFeedLayout
             x:Key="MyFeedLayout"
             ColumnSpacing="12"
             MinItemSize="80, 108"
@@ -439,7 +439,7 @@ private void InitializeData()
                     <ScrollViewer>
                         <ItemsRepeater x:Name="VariedImageSizeRepeater" ItemTemplate="{StaticResource RecipeTemplate}">
                             <ItemsRepeater.Layout>
-                                <common:VariedImageSizeLayout Width="200" />
+                                <layouts:VariedImageSizeLayout Width="200" />
                             </ItemsRepeater.Layout>
                         </ItemsRepeater>
                     </ScrollViewer>
