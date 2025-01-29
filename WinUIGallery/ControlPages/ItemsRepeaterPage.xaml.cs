@@ -358,12 +358,6 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
         return tempList;
     }
-    private void OnEnableAnimationsChanged(object sender, RoutedEventArgs e)
-    {
-#if WINUI_PRERELEASE
-        VariedImageSizeRepeater.Animator = EnableAnimations.IsChecked.GetValueOrDefault() ? new DefaultElementAnimator() : null;
-#endif
-    }
 
     public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
     {

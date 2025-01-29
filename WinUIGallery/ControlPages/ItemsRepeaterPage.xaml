@@ -332,8 +332,6 @@ private void InitializeData()
                              HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20"
                              TextChanged="FilterRecipes_FilterChanged"/>
                     <TextBlock>Enable Animations</TextBlock>
-                    <CheckBox Content="Enable animations" x:Name="EnableAnimations" Checked="OnEnableAnimationsChanged" 
-                              Unchecked="OnEnableAnimationsChanged" Margin="0,0,0,10"/>
                     <TextBlock Text="Sort by number of ingredients" Margin="0,0,0,10"/>
                     <Button Content="Least to most" Click="OnSortAscClick" Margin="0,0,0,5"/>
                     <Button Content="Most to least" Click="OnSortDesClick"/>
