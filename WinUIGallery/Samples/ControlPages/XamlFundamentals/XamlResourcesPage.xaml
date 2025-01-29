@@ -95,7 +95,7 @@
         <StackPanel Spacing="12">
             <RichTextBlock>
                 <Paragraph>
-                    WinUI 3 includes built-in theme resources for commonly used colors. See all brushes on the<Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
+                    WinUI 3 includes built-in theme resources for commonly used colors. See all brushes on the <Hyperlink Click="Hyperlink_Click">Color page</Hyperlink>
                     .</Paragraph>
             </RichTextBlock>
 

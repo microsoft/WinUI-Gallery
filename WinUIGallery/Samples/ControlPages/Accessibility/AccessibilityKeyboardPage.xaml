@@ -34,7 +34,7 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
                 .<LineBreak />
                 <LineBreak />
                 If your app does not provide good keyboard access, users who are blind or have mobility issues can have difficulty using your app or may not be able to use it at all.<LineBreak />
@@ -59,8 +59,8 @@
                 Try to put initial focus on the most useful or logical element.<LineBreak />
             </Paragraph>
             <Paragraph>
-                See<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
-                and<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions">Keyboard interactions</Hyperlink>
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">Keyboard accessibility</Hyperlink>
                 .</Paragraph>
         </RichTextBlock>
 
@@ -226,17 +226,17 @@
                 Groups of controls that support arrow key navigation typically support Home/End and PgUp/PgDn, too.<LineBreak />
             </Paragraph>
             <Paragraph>
-                See<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
                     Keyboard interactions#Navigation
                 </Hyperlink>
-                ,<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
+                , <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
                     Keyboard interactions#Home and End keys
                 </Hyperlink>
-                ,<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
+                , <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
                     Keyboard interactions#Page up and Page down keys
                 </Hyperlink>
                 ,
-                and<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
                     Keyboard interactions#Control group
                 </Hyperlink>
                 .</Paragraph>
@@ -299,10 +299,10 @@
                 it right can make your app a lot easier to use — for everyone.<LineBreak />
             </Paragraph>
             <Paragraph>
-                See<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/focus-navigation">
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/focus-navigation">
                     Focus navigation for keyboard, gamepad, remote control, and accessibility tools
                 </Hyperlink>
-                and<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility">
                     Keyboard accessibility
                 </Hyperlink>
                 .</Paragraph>
@@ -414,7 +414,7 @@
                 By default, WinUI adds a tooltip with the hotkey, but consider including the accelerator manually if you use a custom tooltip.<LineBreak />
             </Paragraph>
             <Paragraph>
-                See<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators">Keyboard accelerators</Hyperlink>
                 .</Paragraph>
         </RichTextBlock>
 
@@ -571,7 +571,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                 access keys, too.<LineBreak />
             </Paragraph>
             <Paragraph>
-                See<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/access-keys">Access keys</Hyperlink>
+                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/access-keys">Access keys</Hyperlink>
                 .</Paragraph>
         </RichTextBlock>
 

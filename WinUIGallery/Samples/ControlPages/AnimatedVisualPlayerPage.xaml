@@ -15,11 +15,11 @@
                     <!--  Text  -->
                     <TextBlock TextWrapping="WrapWholeWords">
                         This AnimatedVisualPlayer consumes an animation created using
-                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using<Hyperlink NavigateUri="https://aka.ms/lottie">
+                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using <Hyperlink NavigateUri="https://aka.ms/lottie">
                             Lottie-Windows
                         </Hyperlink>
                         .
-                        Since the<Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape">
+                        Since the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape">
                             CompositionShapes
                         </Hyperlink>
                         used here are supported on Windows 10 version 17763+,
@@ -28,7 +28,7 @@
                         Width="400"
                         Height="400"
                         Margin="0,20,0,20"
-                        Background="LightGray"
+                        Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
                         BorderBrush="{ThemeResource ToolTipBorderThemeBrush}"
                         BorderThickness="5">
 
@@ -51,7 +51,7 @@
                     </Border>
 
                     <!--  Playback Buttons  -->
-                    <Grid Width="400" VerticalAlignment="Center">
+                    <Grid Width="400" ColumnSpacing="8" Margin="12" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -63,7 +63,6 @@
                         <Button
                             x:Name="PlayButton"
                             Grid.Column="0"
-                            Margin="10"
                             HorizontalAlignment="Stretch"
                             AutomationProperties.Name="Play"
                             Click="PlayButton_Click"
@@ -74,7 +73,6 @@
                         <ToggleButton
                             x:Name="PauseButton"
                             Grid.Column="1"
-                            Margin="10"
                             HorizontalAlignment="Stretch"
                             AutomationProperties.Name="Pause"
                             Checked="PauseButton_Checked"
@@ -87,7 +85,6 @@
                         <Button
                             x:Name="StopButton"
                             Grid.Column="2"
-                            Margin="10"
                             HorizontalAlignment="Stretch"
                             AutomationProperties.Name="Stop"
                             Click="StopButton_Click"
@@ -98,7 +95,6 @@
                         <Button
                             x:Name="ReverseButton"
                             Grid.Column="3"
-                            Margin="10"
                             HorizontalAlignment="Stretch"
                             AutomationProperties.Name="Reverse"
                             Click="ReverseButton_Click"

@@ -18,7 +18,7 @@
                 <StackPanel>
                     <TextBlock TextWrapping="WrapWholeWords">
                         The following example is a button that the user clicks to load a search experience. The AnimatedIcon consumes the animation created using
-                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using<Hyperlink NavigateUri="https://aka.ms/lottie">
+                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using <Hyperlink NavigateUri="https://aka.ms/lottie">
                             Lottie-Windows
                         </Hyperlink>
                         .

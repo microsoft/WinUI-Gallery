@@ -37,7 +37,7 @@
                 <RichTextBlock SelectionHighlightColor="Green">
                     <Paragraph>
                         RichTextBlock provides a rich text display container that supports<Run FontStyle="Italic" FontWeight="Bold">formatted text</Run>
-                        ,<Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Documents.Hyperlink">hyperlinks</Hyperlink>
+                        , <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Documents.Hyperlink">hyperlinks</Hyperlink>
                         , inline images, and other rich content.</Paragraph>
                     <Paragraph>RichTextBlock also supports a built-in overflow model.</Paragraph>
                 </RichTextBlock>

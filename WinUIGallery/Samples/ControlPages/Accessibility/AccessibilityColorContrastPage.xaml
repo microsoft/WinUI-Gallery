@@ -37,7 +37,7 @@
         <RichTextBlock>
             <Paragraph>
                 Accessibility is about building experiences that make your Windows application usable by people of
-                all abilities. For more information about designing accessible apps:<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
+                all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
                 .<LineBreak />
                 <LineBreak />
                 To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-
@@ -45,7 +45,7 @@
                 visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
                 conditions, screens, and device settings.<LineBreak />
                 <LineBreak />
-                Check out the<Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
+                Check out the <Hyperlink NavigateUri="https://accessibilityinsights.io/">Accessibility Insights</Hyperlink>
                 app to help you find and fix accessibility issues in your Windows apps.</Paragraph>
         </RichTextBlock>
 

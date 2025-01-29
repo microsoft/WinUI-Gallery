@@ -27,7 +27,7 @@
                     <Run Text="and" />
                     <Run FontFamily="Consolas" Text="Binding" />
                     <Run Text="by visiting" />
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
+                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
                         Microsoft Learn
                     </Hyperlink>
                     .</Paragraph>

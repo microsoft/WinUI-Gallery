@@ -31,9 +31,9 @@
             IsClosable="False"
             IsOpen="True">
             <TextBlock>
-                TitleBar control is now available in<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/experimental-channel#required-c-project-changes-for-16-experimental1">Experimental</Hyperlink>
+                TitleBar control is now available in <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/experimental-channel#required-c-project-changes-for-16-experimental1">Experimental</Hyperlink>
                 !
-                Preview samples for TitleBar at<Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery/blob/feature/TitleBarExperimental/WinUIGallery/ControlPages/TitleBarPage.xaml">feature/TitleBarExperimental</Hyperlink>
+                Preview samples for TitleBar at <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery/blob/feature/TitleBarExperimental/WinUIGallery/ControlPages/TitleBarPage.xaml">feature/TitleBarExperimental</Hyperlink>
             </TextBlock>
 
         </InfoBar>
@@ -224,10 +224,10 @@ window.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBa
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <TextBlock TextWrapping="WrapWholeWords">
                         WinUI custom titlebar now hosting interactive clickable controls within non client region of the window, when using custom titlebar.<LineBreak />
-                        This is achieved by using lower level<Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar">
+                        This is achieved by using lower level <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar">
                             Microsoft.UI.AppWindowTitlebar
                         </Hyperlink>
-                        and<Hyperlink NavigateUri="https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.Input.InputNonClientPointerSource</Hyperlink>
+                        and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.Input.InputNonClientPointerSource</Hyperlink>
                         <Italic>apis</Italic>
                         <LineBreak />
                         <LineBreak />
