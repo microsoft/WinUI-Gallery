@@ -41,7 +41,7 @@
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
-        
+
         <core:ControlExample HeaderText="Binding between controls"
                              XamlSource="Binding\BindingSample1_xaml.txt">
             <core:ControlExample.Example>
@@ -195,7 +195,10 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
         <core:ControlExample HeaderText="Binding with FallbackValue and TargetNullValue">
             <core:ControlExample.Example>
                 <StackPanel Spacing="8">
+                    <!-- Setting Text directly to avoid System.Exception.
                     <TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" />
+                    -->
+                    <TextBlock Text="Default Text" />
                     <TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" />
                 </StackPanel>
             </core:ControlExample.Example>
