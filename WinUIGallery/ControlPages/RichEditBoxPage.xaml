@@ -163,7 +163,7 @@
                             RelativePanel.AlignLeftWith="editor" 
                             Margin="0,10,0,0">
                     <TextBlock x:Name="findBoxLabel" Text="Find:" VerticalAlignment="Center" Margin="0,0,0,3"/>
-                    <TextBox x:Name="findBox" Width="150" PlaceholderText="Enter search text" Margin="10,0,0,0"
+                    <TextBox x:Name="findBox" Width="225" PlaceholderText="Enter search text" Margin="10,0,0,0"
                             TextChanged="{x:Bind FindBoxHighlightMatches}" 
                             GotFocus="{x:Bind FindBoxHighlightMatches}" 
                             LostFocus="{x:Bind FindBoxRemoveHighlights}"/>
