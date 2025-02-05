@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="WinUIGallery.ControlPages.PopupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="Popup with Offset Positioning">
+            <controls:ControlExample.Example>
+                <Grid
+                    x:Name="Output"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                    <Button Click="ShowPopupOffsetClicked" Content="Show Popup (using Offset)" />
+                    <Popup
+                        x:Name="StandardPopup"
+                        Closed="PopupClosed"
+                        HorizontalOffset="{x:Bind HorizontalOffset.Value, Mode=OneWay}"
+                        IsLightDismissEnabled="{x:Bind IsLightDismissEnabledToggleSwitch.IsOn, Mode=OneWay}"
+                        VerticalOffset="{x:Bind VerticalOffset.Value, Mode=OneWay}">
+                        <Border
+                            Width="200"
+                            Height="150"
+                            Padding="20"
+                            Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8">
+                            <StackPanel
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontSize="16"
+                                    Text="Simple Popup" />
+                                <Button Click="ClosePopupClicked" Content="Close" />
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ToggleSwitch
+                        x:Name="IsLightDismissEnabledToggleSwitch"
+                        Header="IsLightDismissEnabled"
+                        IsOn="False"
+                        OffContent="False"
+                        OnContent="True" />
+                    <NumberBox
+                        x:Name="VerticalOffset"
+                        Header="VerticalOffset"
+                        LargeChange="100"
+                        Maximum="100"
+                        Minimum="-100"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Inline"
+                        Value="0" />
+                    <NumberBox
+                        x:Name="HorizontalOffset"
+                        Header="HorizontalOffset"
+                        LargeChange="100"
+                        Maximum="500"
+                        Minimum="-100"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Inline"
+                        Value="200" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// Handles the Click event on the Button on the page and opens the Popup. 
+private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
+{
+    // open the Popup if it isn't open already 
+    if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+}
+
+// Handles the Click event on the Button inside the Popup control and closes the Popup. 
+private void ClosePopupClicked(object sender, RoutedEventArgs e)
+{
+    // if the Popup is open, then close it 
+    if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" &gt;
+    &lt;Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" /&gt;
+    &lt;Popup x:Name="StandardPopup" VerticalOffset="$(VerticalOffset)" HorizontalOffset="$(HorizontalOffset)" IsLightDismissEnabled="$(IsLightDismissEnabled)"
+           BorderThickness="1" BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"&gt;
+        &lt;Border Padding="20" CornerRadius="8" Width="200" Height="150"
+                Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"&gt;
+            &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8"&gt;
+                &lt;TextBlock Text="Simple Popup" FontSize="16" HorizontalAlignment="Center" /&gt;
+                &lt;Button Content="Close" Click="ClosePopupClicked" /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Border&gt;
+    &lt;/Popup&gt;
+&lt;/Grid&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="VerticalOffset" Value="{x:Bind VerticalOffset.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HorizontalOffset" Value="{x:Bind HorizontalOffset.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsLightDismissEnabled" Value="{x:Bind IsLightDismissEnabledToggleSwitch.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

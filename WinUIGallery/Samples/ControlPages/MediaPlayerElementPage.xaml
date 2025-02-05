@@ -1,0 +1,45 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.MediaPlayerElementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A MediaPlayerElement with transport controls.">
+            <controls:ControlExample.Example>
+                <MediaPlayerElement
+                    x:Name="Player1"
+                    MaxWidth="400"
+                    AreTransportControlsEnabled="True"
+                    AutoPlay="False"
+                    Source="ms-appx:///Assets/SampleMedia/ladybug.wmv" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;MediaPlayerElement Source="/Assets/SampleMedia/ladybug.wmv"
+                    MaxWidth="400"
+                    AutoPlay="False"
+                    AreTransportControlsEnabled="True" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
+            <controls:ControlExample.Example>
+                <MediaPlayerElement
+                    x:Name="Player2"
+                    MaxWidth="400"
+                    AutoPlay="True"
+                    Source="ms-appx:///Assets/SampleMedia/fishes.wmv" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"
+                    MaxWidth="400"
+                    AutoPlay="True" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

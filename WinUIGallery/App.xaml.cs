@@ -11,20 +11,19 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using WinUIGallery.Common;
-using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using WinUIGallery.Models;
+using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.Activation;
-using WinUIGallery.DesktopWap.DataModel;
 using WASDK = Microsoft.WindowsAppSDK;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using System.Collections.Generic;
-using static WinUIGallery.Win32;
+using static WinUIGallery.Helpers.Win32;
+using WinUIGallery.Pages;
 
 namespace WinUIGallery;
 

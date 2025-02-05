@@ -1,0 +1,78 @@
+<Page
+    x:Class="WinUIGallery.SamplePages.CollectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ListView
+            x:Name="collection"
+            Grid.Row="2"
+            IsItemClickEnabled="True"
+            ItemClick="collection_ItemClick"
+            Loaded="collection_Loaded"
+            SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:CustomDataObject">
+                    <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  The image to connect between pages.  -->
+                        <Image
+                            x:Name="connectedElement"
+                            MaxHeight="100"
+                            Source="{x:Bind ImageLocation}"
+                            Stretch="Fill" />
+
+                        <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                            <TextBlock
+                                Margin="0,0,0,6"
+                                HorizontalAlignment="Left"
+                                Style="{ThemeResource SubtitleTextBlockStyle}"
+                                Text="{x:Bind Title}" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    FontWeight="Bold"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="Views: " />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind Views}" />
+
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    FontWeight="Bold"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="Likes: " />
+                                <TextBlock
+                                    Margin="5,0,0,0"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind Likes}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    MaxWidth="500"
+                                    MaxHeight="40"
+                                    Margin="0,8,0,0"
+                                    FontStyle="Italic"
+                                    IsTextTrimmedChanged="TextBlock_IsTextTrimmedChanged"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Text="{x:Bind Description}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

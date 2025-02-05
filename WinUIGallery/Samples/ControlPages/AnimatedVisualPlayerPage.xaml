@@ -1,0 +1,112 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.AnimatedVisualPlayerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animatedvisuals="using:AnimatedVisuals"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <controls:ControlExample x:Name="AnimatedVisualPlayerExample" HeaderText="Playback of a Lottie animation.">
+            <controls:ControlExample.Example>
+                <StackPanel HorizontalAlignment="Center">
+                    <!--  Text  -->
+                    <TextBlock TextWrapping="WrapWholeWords">
+                        This AnimatedVisualPlayer consumes an animation created using
+                        Adobe AfterEffects and translated into Microsoft.UI.Composition objects using <Hyperlink NavigateUri="https://aka.ms/lottie">
+                            Lottie-Windows
+                        </Hyperlink>
+                        .
+                        Since the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape">
+                            CompositionShapes
+                        </Hyperlink>
+                        used here are supported on Windows 10 version 17763+,
+                        the AnimatedVisualPlayer falls back to an Image when its Source is unavailable.</TextBlock>
+                    <Border
+                        Width="400"
+                        Height="400"
+                        Margin="0,20,0,20"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+
+                        <!--  AnimatedVisualPlayer  -->
+                        <AnimatedVisualPlayer x:Name="Player" AutoPlay="False">
+                            <AnimatedVisualPlayer.Source>
+                                <!--  Codegen-ed Lottie animation source: /Assets/AnimatedVisuals/LottieLogo1.cs  -->
+                                <animatedvisuals:LottieLogo1 />
+                            </AnimatedVisualPlayer.Source>
+                        </AnimatedVisualPlayer>
+                    </Border>
+
+                    <!--  Playback Buttons  -->
+                    <Grid
+                        Width="400"
+                        Margin="12"
+                        VerticalAlignment="Center"
+                        ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Play  -->
+                        <Button
+                            x:Name="PlayButton"
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.Name="Play"
+                            Click="PlayButton_Click"
+                            ToolTipService.ToolTip="Play">
+                            <SymbolIcon Symbol="Play" />
+                        </Button>
+                        <!--  Pause  -->
+                        <ToggleButton
+                            x:Name="PauseButton"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.Name="Pause"
+                            Checked="PauseButton_Checked"
+                            IsThreeState="False"
+                            ToolTipService.ToolTip="Pause"
+                            Unchecked="PauseButton_Unchecked">
+                            <SymbolIcon Symbol="Pause" />
+                        </ToggleButton>
+                        <!--  Resume  -->
+                        <Button
+                            x:Name="StopButton"
+                            Grid.Column="2"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.Name="Stop"
+                            Click="StopButton_Click"
+                            ToolTipService.ToolTip="Stop">
+                            <SymbolIcon Symbol="Stop" />
+                        </Button>
+                        <!--  Reverse  -->
+                        <Button
+                            x:Name="ReverseButton"
+                            Grid.Column="3"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.Name="Reverse"
+                            Click="ReverseButton_Click"
+                            ToolTipService.ToolTip="Reverse">
+                            <SymbolIcon Symbol="Previous" />
+                        </Button>
+                    </Grid>
+
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;AnimatedVisualPlayer x:Name="Player" AutoPlay="False"&gt;
+    &lt;animatedvisuals:LottieLogo1/&gt;
+&lt;/AnimatedVisualPlayer&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </Grid>
+</Page>

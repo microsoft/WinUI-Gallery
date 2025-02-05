@@ -2,13 +2,13 @@
 // Licensed under the MIT License.
 
 using System;
-using WinUIGallery.Data;
-using WinUIGallery.Helper;
+using WinUIGallery.Models;
+using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
 
-namespace WinUIGallery.DesktopWap.Controls;
+namespace WinUIGallery.Controls;
 
 public sealed partial class PageHeader : UserControl
 {

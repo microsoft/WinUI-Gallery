@@ -1,20 +1,16 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using System;
 using System.Numerics;
+using CommunityToolkit.WinUI;
+using CommunityToolkit.WinUI.Animations;
 using Microsoft.Graphics.Canvas.Effects;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Composition;
-using CommunityToolkit.WinUI.Animations;
-using Windows.UI;
-using System;
-using CommunityToolkit.WinUI;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace WinUIGallery.Controls;
 
