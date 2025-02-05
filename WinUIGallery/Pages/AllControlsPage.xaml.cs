@@ -8,6 +8,7 @@
 //
 //*********************************************************
 using System.Linq;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Helpers;
 
@@ -25,10 +26,10 @@ public sealed partial class AllControlsPage : ItemsPageBase
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-
-        var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.ElementAt(2);
-        menuItem.IsSelected = true;
+        if (e.Parameter is NavigationRootPageArgs args && args.NavigationRootPage.NavigationView.MenuItems.OfType<NavigationViewItem>().FirstOrDefault(item => item.Name == "AllControlsItem") is NavigationViewItem item)
+        {
+            item.IsSelected = true;
+        }
 
         Items = ControlInfoDataSource.Instance.Groups.Where(g => !g.IsSpecialSection).SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
     }
