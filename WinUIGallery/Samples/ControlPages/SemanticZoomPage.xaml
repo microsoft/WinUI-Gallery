@@ -22,7 +22,7 @@
     <Page.Resources>
         <CollectionViewSource
             x:Name="cvsGroups"
-            d:Source="{Binding Groups, Source={d:DesignData Source=/Assets/Data/ControlInfoData.json, Type=models:ControlInfoDataSource}}"
+            d:Source="{Binding Groups, Source={d:DesignData Source=/Samples/Data/ControlInfoData.json, Type=models:ControlInfoDataSource}}"
             IsSourceGrouped="True"
             ItemsPath="Items"
             Source="{x:Bind Groups}" />

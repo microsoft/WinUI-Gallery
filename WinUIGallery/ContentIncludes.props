@@ -313,7 +313,7 @@
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
-    <Content Include="Assets\Data\ControlInfoData.json" />
-    <Content Include="Assets\Data\IconsData.json" />
+    <Content Include="Samples\Data\ControlInfoData.json" />
+    <Content Include="Samples\Data\IconsData.json" />
   </ItemGroup>
 </Project>
