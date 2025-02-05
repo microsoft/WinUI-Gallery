@@ -5,8 +5,7 @@
     xmlns:local="using:WinUIGallery.TabViewPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <TabView x:Name="Tabs" 
@@ -17,13 +16,27 @@
                  TabTearOutWindowRequested="Tabs_TabTearOutWindowRequested"
                  TabTearOutRequested="Tabs_TabTearOutRequested"
                  ExternalTornOutTabsDropping="Tabs_ExternalTornOutTabsDropping"
-                 ExternalTornOutTabsDropped="Tabs_ExternalTornOutTabsDropped">
+                 ExternalTornOutTabsDropped="Tabs_ExternalTornOutTabsDropped"
+                 TabItemsSource="{x:Bind TabItemDataList}">
             <TabView.TabStripHeader>
                 <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
             </TabView.TabStripHeader>
             <TabView.TabStripFooter>
                 <Grid x:Name="CustomDragRegion" Background="Transparent" />
             </TabView.TabStripFooter>
+            <TabView.TabItemTemplate>
+                <DataTemplate x:DataType="local:TabItemData">
+                    <TabViewItem Header="{x:Bind Header}">
+                        <TabViewItem.ContextFlyout>
+                            <MenuFlyout Opening="TabViewContextMenu_Opening" />
+                        </TabViewItem.ContextFlyout>
+                        <TabViewItem.IconSource>
+                            <SymbolIconSource Symbol="Placeholder" />
+                        </TabViewItem.IconSource>
+                        <local:MyTabContentControl DataContext="{x:Bind Content}" IsInProgress="{x:Bind IsInProgress, Mode=TwoWay}" />
+                    </TabViewItem>
+                </DataTemplate>
+            </TabView.TabItemTemplate>
         </TabView>
     </Grid>
 </Page>

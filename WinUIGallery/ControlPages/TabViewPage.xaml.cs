@@ -9,6 +9,8 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Dispatching;
 using WinUIGallery.TabViewPages;
 using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Media;
+using System.Collections;
 
 namespace WinUIGallery.ControlPages;
 
@@ -34,7 +36,7 @@ public sealed partial class TabViewPage : Page
         InitializeDataBindingSampleData();
     }
 
-#region SharedTabViewLogic
+    #region SharedTabViewLogic
     private void TabView_Loaded(object sender, RoutedEventArgs e)
     {
         for (int i = 0; i < 3; i++)
@@ -58,7 +60,8 @@ public sealed partial class TabViewPage : Page
         TabViewItem newItem = new TabViewItem
         {
             Header = $"Document {index}",
-            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document }
+            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document },
+            ContextFlyout = TabViewContextMenu
         };
 
         // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -81,9 +84,9 @@ public sealed partial class TabViewPage : Page
 
         return newItem;
     }
-#endregion
+    #endregion
 
-#region ItemsSourceSample
+    #region ItemsSourceSample
     private void InitializeDataBindingSampleData()
     {
         myDatas = new ObservableCollection<MyData>();
@@ -133,9 +136,9 @@ public sealed partial class TabViewPage : Page
         // Remove the requested MyData object from the collection.
         myDatas.Remove(args.Item as MyData);
     }
-#endregion
+    #endregion
 
-#region KeyboardAcceleratorSample
+    #region KeyboardAcceleratorSample
     private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
         var senderTabView = args.Element as TabView;
@@ -203,7 +206,7 @@ public sealed partial class TabViewPage : Page
 
         args.Handled = true;
     }
-#endregion
+    #endregion
 
     private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -255,5 +258,10 @@ public sealed partial class TabViewPage : Page
         tabViewSample.SetupWindowMinSize(newWindow);
 
         newWindow.Activate();
+    }
+
+    private void TabViewContextMenu_Opening(object sender, object e)
+    {
+        TabViewHelper.PopulateTabViewContextMenu((MenuFlyout)sender);
     }
 }
