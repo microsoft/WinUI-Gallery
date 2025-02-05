@@ -1,0 +1,119 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.CheckBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A 2-state CheckBox.">
+            <controls:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <!--  A two-state CheckBox.  -->
+                    <CheckBox
+                        AutomationProperties.Name="Two-state"
+                        Checked="TwoState_Checked"
+                        Content="Two-state CheckBox"
+                        Unchecked="TwoState_Unchecked" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Output>
+                <TextBlock x:Name="TwoStateOutput" AutomationProperties.AutomationId="Control1Output" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;CheckBox Content="Two-state CheckBox"
+          Checked="TwoState_Checked"
+          Unchecked="TwoState_Unchecked" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample
+            x:Name="Example2"
+            HeaderText="A 3-state CheckBox."
+            RelativePanel.Below="Example1">
+            <controls:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox
+                        AutomationProperties.Name="Three-state"
+                        Checked="ThreeState_Checked"
+                        Content="Three-state CheckBox"
+                        Indeterminate="ThreeState_Indeterminate"
+                        IsThreeState="True"
+                        Unchecked="ThreeState_Unchecked" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Output>
+                <TextBlock x:Name="ThreeStateOutput" AutomationProperties.AutomationId="Control2Output" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;CheckBox Content="Three-state CheckBox"
+          IsThreeState="True"
+          Checked="ThreeState_Checked"
+          Unchecked="ThreeState_Unchecked"
+          Indeterminate="ThreeState_Indeterminate" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample
+            x:Name="Example3"
+            HeaderText="Using a 3-state CheckBox."
+            RelativePanel.Below="Example2">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <CheckBox
+                        x:Name="OptionsAllCheckBox"
+                        Checked="SelectAll_Checked"
+                        Content="Select all"
+                        Indeterminate="SelectAll_Indeterminate"
+                        IsThreeState="True"
+                        Unchecked="SelectAll_Unchecked" />
+                    <CheckBox
+                        x:Name="Option1CheckBox"
+                        Margin="24,0,0,0"
+                        Checked="Option_Checked"
+                        Content="Option 1"
+                        Unchecked="Option_Unchecked" />
+                    <CheckBox
+                        x:Name="Option2CheckBox"
+                        Margin="24,0,0,0"
+                        Checked="Option_Checked"
+                        Content="Option 2"
+                        IsChecked="True"
+                        Unchecked="Option_Unchecked" />
+                    <CheckBox
+                        x:Name="Option3CheckBox"
+                        Margin="24,0,0,0"
+                        Checked="Option_Checked"
+                        Content="Option 3"
+                        Unchecked="Option_Unchecked" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel&gt;
+    &lt;CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
+              Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked"
+              Indeterminate="SelectAll_Indeterminate" /&gt;
+    &lt;CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
+    &lt;CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" IsChecked="True" /&gt;
+    &lt;CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -1,5 +1,3 @@
-using WinUIGallery;
-using WinUIGallery.Data;
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -9,14 +7,13 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.AppContainer;
-using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.Foundation.Diagnostics;
+using WinUIGallery.Helpers;
 
 namespace WinUIGalleryUnitTests;
 
@@ -65,7 +62,7 @@ public class UnitTests
     [UITestMethod]
     public void TestWrapGrid()
     {
-        WinUIGallery.WrapPanel wrapPanel = new WinUIGallery.WrapPanel();
+        WinUIGallery.Layouts.WrapPanel wrapPanel = new WinUIGallery.Layouts.WrapPanel();
         wrapPanel.Width = 250;
         wrapPanel.Height = 250;
         for (int i = 0; i < 4; i++) 

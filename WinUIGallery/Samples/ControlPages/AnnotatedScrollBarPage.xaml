@@ -1,0 +1,97 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.AnnotatedScrollBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:media="using:Microsoft.UI.Xaml.Media">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="AnnotatedScrollBar linked to a ScrollView.">
+            <Grid ColumnDefinitions="*, Auto">
+                <ScrollView
+                    x:Name="scrollView"
+                    MaxWidth="800"
+                    MaxHeight="500"
+                    Background="LightGray"
+                    VerticalScrollBarVisibility="Hidden">
+                    <ItemsRepeater
+                        x:Name="itemsRepeater"
+                        Margin="2"
+                        ItemsSource="{x:Bind ColorCollection}"
+                        SizeChanged="ItemsRepeater_SizeChanged">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="media:SolidColorBrush">
+                                <Grid
+                                    Width="112"
+                                    Height="82"
+                                    Margin="4"
+                                    Background="{x:Bind}"
+                                    CornerRadius="4" />
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </ScrollView>
+
+                <AnnotatedScrollBar
+                    x:Name="annotatedScrollBar"
+                    Grid.Column="1"
+                    MaxHeight="500"
+                    Margin="4,0,48,0"
+                    HorizontalAlignment="Right"
+                    DetailLabelRequested="AnnotatedScrollBar_DetailLabelRequested" />
+            </Grid>
+
+            <controls:ControlExample.Options>
+                <Grid MinWidth="200" RowDefinitions="Auto, Auto">
+
+                    <TextBlock VerticalAlignment="Center" Text="Changing the AnnotatedScrollBar height refreshes its Labels layout." />
+
+                    <Slider
+                        Grid.Row="1"
+                        Margin="0,10,0,0"
+                        Header="AnnotatedScrollBar maximum height:"
+                        Maximum="500"
+                        Minimum="100"
+                        ValueChanged="AnnotatedScrollBarMaxHeightSlider_ValueChanged"
+                        Value="500" />
+                </Grid>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollView x:Name="scrollView"
+    Background="LightGray" MaxWidth="800" MaxHeight="500"
+    VerticalScrollBarVisibility="Hidden"&gt;
+    &lt;!-- ... --&gt;
+&lt;/ScrollView&gt;
+                
+&lt;AnnotatedScrollBar x:Name="annotatedScrollBar"
+    Margin="4,0,48,0" MaxHeight="500"
+    HorizontalAlignment="Right"
+    DetailLabelRequested="AnnotatedScrollBar_DetailLabelRequested"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+{
+    scrollView.ScrollPresenter.VerticalScrollController = annotatedScrollBar.ScrollController;
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

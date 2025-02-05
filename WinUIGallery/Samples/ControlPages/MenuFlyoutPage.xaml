@@ -1,0 +1,281 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.MenuFlyoutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="An AppBarButton with a MenuFlyout.">
+            <StackPanel x:Name="Control1" Orientation="Horizontal">
+                <AppBarButton
+                    AutomationProperties.Name="Sort"
+                    Icon="Sort"
+                    IsCompact="True"
+                    ToolTipService.ToolTip="Sort">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="rating"
+                                Text="By rating" />
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="match"
+                                Text="By match" />
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="distance"
+                                Text="By distance" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <TextBlock x:Name="Control1Output" Style="{StaticResource OutputTextBlockStyle}" />
+            </StackPanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;AppBarButton Icon="Sort" IsCompact="True" ToolTipService.ToolTip="Sort" AutomationProperties.Name="Sort"&gt;
+    &lt;AppBarButton.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;MenuFlyoutItem Text="By rating" Click="MenuFlyoutItem_Click" Tag="rating"/&gt;
+            &lt;MenuFlyoutItem Text="By match" Click="MenuFlyoutItem_Click" Tag="match"/&gt;
+            &lt;MenuFlyoutItem Text="By distance" Click="MenuFlyoutItem_Click" Tag="distance"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/AppBarButton.Flyout&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="A MenuFlyout with ToggleMenuFlyoutItems and MenuFlyoutSeparator.">
+            <Button x:Name="Control2" Content="Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Reset" />
+                        <MenuFlyoutSeparator />
+                        <ToggleMenuFlyoutItem
+                            x:Name="RepeatToggleMenuFlyoutItem"
+                            IsChecked="True"
+                            Text="Repeat" />
+                        <ToggleMenuFlyoutItem
+                            x:Name="ShuffleToggleMenuFlyoutItem"
+                            IsChecked="True"
+                            Text="Shuffle" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;MenuFlyoutItem Text="Reset"/&gt;
+            &lt;MenuFlyoutSeparator/&gt;
+            &lt;ToggleMenuFlyoutItem Text="Repeat" IsChecked="$(RepeatToggle)"/&gt;
+            &lt;ToggleMenuFlyoutItem Text="Shuffle" IsChecked="$(ShuffleToggle)"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="RepeatToggle" Value="{x:Bind RepeatToggleMenuFlyoutItem.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ShuffleToggle" Value="{x:Bind ShuffleToggleMenuFlyoutItem.IsChecked, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3" HeaderText="A MenuFlyout with cascading menus.">
+            <Button x:Name="Control3" Content="File Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Open" />
+                        <MenuFlyoutSubItem Text="Send to">
+                            <MenuFlyoutItem Text="Bluetooth" />
+                            <MenuFlyoutItem Text="Desktop (shortcut)" />
+                            <MenuFlyoutSubItem Text="Compressed file">
+                                <MenuFlyoutItem Text="Compress and email" />
+                                <MenuFlyoutItem Text="Compress to .7z" />
+                                <MenuFlyoutItem Text="Compress to .zip" />
+                            </MenuFlyoutSubItem>
+                        </MenuFlyoutSubItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="File Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;MenuFlyoutItem Text="Open"/&gt;
+            &lt;MenuFlyoutSubItem Text="Send to"&gt;
+                &lt;MenuFlyoutItem Text="Bluetooth" /&gt;
+                &lt;MenuFlyoutItem Text="Desktop (shortcut)" /&gt;
+                &lt;MenuFlyoutSubItem Text="Compressed file"&gt;
+                    &lt;MenuFlyoutItem Text="Compress and email" /&gt;
+                    &lt;MenuFlyoutItem Text="Compress to .7z" /&gt;
+                    &lt;MenuFlyoutItem Text="Compress to .zip" /&gt;
+                &lt;/MenuFlyoutSubItem&gt;
+            &lt;/MenuFlyoutSubItem&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example4" HeaderText="A MenuFlyout with icons.">
+            <Button x:Name="Control4" Content="Edit Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Share">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE72D;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Icon="Copy" Text="Copy" />
+                        <MenuFlyoutItem Icon="Delete" Text="Delete" />
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Text="Rename" />
+                        <MenuFlyoutItem Text="Select" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Edit Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;MenuFlyoutItem Text="Share"&gt;
+                &lt;MenuFlyoutItem.Icon&gt;
+                    &lt;FontIcon Glyph="&amp;#xE72D;"/&gt;
+                &lt;/MenuFlyoutItem.Icon&gt;
+            &lt;/MenuFlyoutItem&gt;
+            &lt;MenuFlyoutItem Text="Copy" Icon="Copy"/&gt;
+            &lt;MenuFlyoutItem Text="Delete" Icon="Delete"/&gt;
+            &lt;MenuFlyoutSeparator/&gt;
+            &lt;MenuFlyoutItem Text="Rename"/&gt;
+            &lt;MenuFlyoutItem Text="Select"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample
+            x:Name="Example5"
+            FontFamily="Segoe UI"
+            HeaderText="A MenuFlyout with icons and Keyboard Accelerators."
+            Loaded="Example5_Loaded">
+            <Button x:Name="Control5" Content="Edit Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Share">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE72D;" />
+                            </MenuFlyoutItem.Icon>
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="S" Modifiers="Control" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            FontFamily="Consolas"
+                            Icon="Copy"
+                            Text="Copy">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="C" Modifiers="Control" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            FontFamily="Segoe UI"
+                            Icon="Delete"
+                            Text="Delete">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="Delete" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Text="Rename" />
+                        <MenuFlyoutItem Text="Select" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Edit Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;MenuFlyoutItem Text="Share"&gt;
+                &lt;MenuFlyoutItem.Icon&gt;
+                    &lt;FontIcon Glyph="&amp;#xE72D;"/&gt;
+                &lt;/MenuFlyoutItem.Icon&gt;
+                &lt;MenuFlyoutItem.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Key="S" Modifiers="Control"/&gt;
+                &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
+            &lt;/MenuFlyoutItem&gt;
+            &lt;MenuFlyoutItem Text="Copy" Icon="Copy"&gt;
+                &lt;MenuFlyoutItem.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Key="C" Modifiers="Control"/&gt;
+                &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
+            &lt;/MenuFlyoutItem&gt;
+            &lt;MenuFlyoutItem Text="Delete" Icon="Delete"&gt;
+                &lt;MenuFlyoutItem.KeyboardAccelerators&gt;
+                    &lt;KeyboardAccelerator Key="Delete" /&gt;
+                &lt;/MenuFlyoutItem.KeyboardAccelerators&gt;
+            &lt;/MenuFlyoutItem&gt;
+            &lt;MenuFlyoutSeparator/&gt;
+            &lt;MenuFlyoutItem Text="Rename"/&gt;
+            &lt;MenuFlyoutItem Text="Select"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example6" HeaderText="A MenuFlyout with RadioMenuFlyoutItems">
+            <Button x:Name="Control6" Content="Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <RadioMenuFlyoutItem GroupName="OrientationGroup" Text="Landscape" />
+                        <RadioMenuFlyoutItem
+                            GroupName="OrientationGroup"
+                            IsChecked="True"
+                            Text="Portrait" />
+                        <MenuFlyoutSeparator />
+                        <RadioMenuFlyoutItem GroupName="SizeGroup" Text="Small icons" />
+                        <RadioMenuFlyoutItem
+                            GroupName="SizeGroup"
+                            IsChecked="True"
+                            Text="Medium icons" />
+                        <RadioMenuFlyoutItem GroupName="SizeGroup" Text="Large icons" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;RadioMenuFlyoutItem Text="Landscape" GroupName="OrientationGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Portrait" GroupName="OrientationGroup" IsChecked="True"/&gt;
+            &lt;MenuFlyoutSeparator/&gt;
+            &lt;RadioMenuFlyoutItem Text="Small icons" GroupName="SizeGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Medium icons" IsChecked="True" GroupName="SizeGroup"/&gt;
+            &lt;RadioMenuFlyoutItem Text="Large icons" GroupName="SizeGroup"/&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

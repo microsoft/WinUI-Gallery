@@ -88,10 +88,14 @@
 
     <ItemGroup>
       <Compile Remove="Assets\ControlIcons\**" />
+      <Compile Remove="Samples\SampleCode\**" />
       <Content Remove="Assets\ControlIcons\**" />
       <EmbeddedResource Remove="Assets\ControlIcons\**" />
+      <EmbeddedResource Remove="Samples\SampleCode\**" />
       <None Remove="Assets\ControlIcons\**" />
+      <None Remove="Samples\SampleCode\**" />
       <Page Remove="Assets\ControlIcons\**" />
+      <Page Remove="Samples\SampleCode\**" />
       <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
 
@@ -103,7 +107,6 @@
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
         <PackageReference Include="Microsoft.Windows.CsWinRT" />
-        <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
@@ -119,7 +122,6 @@
         <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
@@ -133,13 +135,9 @@
     <ItemGroup>
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-        <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
-        <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
-        <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
-        <Page Remove="ControlPages\InputValidationPage.xaml" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
-        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
-        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
     </ItemGroup>
 
@@ -151,7 +149,8 @@
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
         <None Remove="Assets\Design\Dialog.light.png" />
-        <None Remove="Assets\folder.png" />
+        <None Remove="Assets\ninegrid.gif" />
+        <None Remove="Assets\SampleMedia\folder.png" />
         <None Remove="Assets\Geometry.dark.png" />
         <None Remove="Assets\Geometry.light.png" />
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
@@ -295,39 +294,6 @@
         <None Remove="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400.png" />
         <None Remove="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample1_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
-        <None Remove="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
-        <None Remove="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
-        <None Remove="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
-        <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
-        <None Remove="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample1_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
-        <None Remove="ControlPages\DesignGuidance\ColorPage.xaml" />
-        <None Remove="ControlPages\DesignGuidance\SpacingPage.xaml" />
-        <None Remove="ControlPages\InfoBadgePage.xaml" />
-        <None Remove="ControlPages\LinePage.xaml" />
-        <None Remove="ControlPages\SelectorBarPage.xaml" />
-        <None Remove="ControlPages\ShapePage.xaml" />
-        <None Remove="ControlPages\Typography.xaml" />
-        <None Remove="ControlPages\XamlFundamentals\BindingPage.xaml" />
-        <None Remove="ControlPages\XamlFundamentals\TemplatesPage.xaml" />
-        <None Remove="ControlPages\XamlFundamentals\XamlResourcesPage.xaml" />
-        <None Remove="ControlPages\XamlFundamentals\XamlStylesPage.xaml" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
@@ -338,8 +304,13 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
-        <None Remove="DataModel\IconsData.json" />
+        <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="Styles\Button.xaml" />
+        <None Remove="Styles\Grid.xaml" />
+        <None Remove="Styles\GridViewItem.xaml" />
+        <None Remove="Styles\ItemTemplates.xaml" />
+        <None Remove="Styles\TextBlock.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -350,7 +321,8 @@
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
         <Content Include="Assets\Design\Dialog.light.png" />
-        <Content Include="Assets\folder.png" />
+        <Content Include="Assets\ninegrid.gif" />
+        <Content Include="Assets\SampleMedia\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
         <Content Include="Assets\Design\Geometry.light.png" />
@@ -501,37 +473,8 @@
         <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400.png" />
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample1_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample3_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample4_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Binding\BindingSample5_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\Geometry\GeometrySample_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_AccordionAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_DefaultAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\ScrollView\ScrollViewSample3_TeleportationAnimation_cs.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample1_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_StackPanel_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample3_WrapGrid_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\Templates\TemplatesSample2_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample2_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample3_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\XamlResources\XamlResourcesSample1_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample1_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
-        <Content Include="ControlPagesSampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewDataBindingSample_cs.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewSample1_cs.txt" />
-        <Content Include="ControlPagesSampleCode\TreeView\TreeViewTemplateSelectorSample_cs.txt" />
-        <Content Include="DataModel\IconsData.json" />
-        <Content Include="DataModel\ControlInfoData.json" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <Content Include="Samples\Data\IconsData.json" />
+        <Content Include="Samples\Data\ControlInfoData.json" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="ControlPages\DesignGuidance\SpacingPage.xaml">
@@ -579,33 +522,7 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\LinePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-            <SubType>Designer</SubType>
-        </Page>
-        <Page Update="ControlPages\ShapePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
         <Page Update="Controls\DesignGuidance\TypographyControl.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="ControlPages\DesignGuidance\ColorPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
     </ItemGroup>
@@ -613,38 +530,29 @@
         <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
-        <Page Update="ControlPages\SelectorBarPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="ControlPages\Accessibility\" />
-    </ItemGroup>
-    <ItemGroup>
-      <Page Update="ControlPages\XamlFundamentals\XamlResourcesPage.xaml">
+      <Page Update="Styles\TextBlock.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="ControlPages\XamlFundamentals\BindingPage.xaml">
+      <Page Update="Styles\ItemTemplates.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="ControlPages\XamlFundamentals\TemplatesPage.xaml">
+      <Page Update="Styles\GridViewItem.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="ControlPages\XamlFundamentals\XamlStylesPage.xaml">
+      <Page Update="Styles\Grid.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="ControlPages\PopupPage.xaml">
+      <Page Update="Styles\Button.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>

@@ -1,0 +1,105 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ComboBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample HeaderText="A ComboBox with items defined inline and its width set.">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="Combo1"
+                        Width="200"
+                        Header="Colors"
+                        PlaceholderText="Pick a color"
+                        SelectionChanged="ColorComboBox_SelectionChanged">
+                        <x:String>Blue</x:String>
+                        <x:String>Green</x:String>
+                        <x:String>Red</x:String>
+                        <x:String>Yellow</x:String>
+                    </ComboBox>
+                    <Rectangle
+                        x:Name="Control1Output"
+                        Width="100"
+                        Height="30"
+                        Margin="0,8,0,0" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ComboBox SelectionChanged="ColorComboBox_SelectionChanged" Header="Colors" PlaceholderText="Pick a color" Width="200"&gt;
+    &lt;x:String&gt;Blue&lt;/x:String&gt;
+    &lt;x:String&gt;Green&lt;/x:String&gt;
+    &lt;x:String&gt;Red&lt;/x:String&gt;
+    &lt;x:String&gt;Yellow&lt;/x:String&gt;
+&lt;/ComboBox&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A ComboBox with its ItemsSource set.">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="Combo2"
+                        MinWidth="200"
+                        DisplayMemberPath="Item1"
+                        Header="Font"
+                        ItemsSource="{x:Bind Fonts}"
+                        Loaded="Combo2_Loaded"
+                        SelectedValuePath="Item2" />
+                    <TextBlock
+                        x:Name="Control2Output"
+                        FontFamily="{x:Bind (FontFamily)Combo2.SelectedValue, Mode=OneWay}"
+                        Style="{StaticResource OutputTextBlockStyle}"
+                        Text="You can set the font used for this text." />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2"
+          Header="Font" Width="200" Loaded="Combo2_Loaded"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="An editable ComboBox.">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="Combo3"
+                        Width="200"
+                        Header="Font Size"
+                        IsEditable="True"
+                        ItemsSource="{x:Bind FontSizes}"
+                        Loaded="Combo3_Loaded" />
+                    <TextBlock
+                        x:Name="Control3Output"
+                        FontFamily="Segoe UI"
+                        FontSize="{x:Bind (x:Double)Combo3.SelectedValue, Mode=OneWay}"
+                        Style="{StaticResource OutputTextBlockStyle}"
+                        Text="You can set the font size used for this text." />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;ComboBox IsEditable="True" ItemsSource="{x:Bind FontSizes}" Width="200" TextSubmitted="Combo3_TextSubmitted"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

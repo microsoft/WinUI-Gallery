@@ -1,0 +1,194 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.XamlCompInteropPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample
+            CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt"
+            HeaderText="Use a natural motion composition animation on a UIElement"
+            Loaded="NaturalMotionExample_Loaded">
+            <StackPanel VerticalAlignment="Stretch">
+                <TextBlock
+                    Margin="0,0,0,12"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="Hover over the button to animate its scale." />
+                <Button
+                    Width="100"
+                    Height="50"
+                    Content="Item"
+                    PointerEntered="element_PointerEntered"
+                    PointerExited="element_PointerExited" />
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <RadioButtons x:Name="DampingStackPanel" Header="Damping Ratio">
+                        <RadioButton Content="0.2" />
+                        <RadioButton Content="0.4" />
+                        <RadioButton Content="0.6" IsChecked="True" />
+                        <RadioButton Content="0.8" />
+                    </RadioButtons>
+                    <Slider
+                        x:Name="PeriodSlider"
+                        Header="Period (in ms)"
+                        Maximum="200"
+                        Minimum="25"
+                        StepFrequency="25"
+                        TickFrequency="25"
+                        Value="50" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Motion/AnimationInterop/AnimationInteropSample2_cs.txt"
+            HeaderText="ExpressionAnimation on an Ellipse element"
+            Loaded="ExpressionSample_Loaded"
+            XamlSource="Motion/AnimationInterop/AnimationInteropSample2_xaml.txt">
+            <StackPanel Height="200">
+                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Hover over the square to animate its scale. Notice that the ellipse also animates." />
+                <TextBlock Margin="0,0,0,12" Text="The scale of the circle is inversely related to the scale of the square." />
+                <Grid VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                        x:Name="rectangle"
+                        Width="50"
+                        Height="50"
+                        Fill="{ThemeResource SystemAccentColor}"
+                        PointerEntered="element_PointerEntered"
+                        PointerExited="element_PointerExited" />
+                    <Ellipse
+                        x:Name="ellipse"
+                        Grid.Column="1"
+                        Width="50"
+                        Height="50"
+                        Margin="55,0"
+                        Fill="{ThemeResource SystemAccentColor}" />
+                </Grid>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Motion/AnimationInterop/AnimationInteropSample3_cs.txt"
+            HeaderText="Driving several related animations together using ExpressionAnimation"
+            Loaded="StackedButtonsExample_Loaded">
+            <StackPanel Margin="0,0,0,50">
+                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Hover over any button to animate its scale. Notice that the other buttons move out of the way." />
+                <TextBlock Margin="0,0,0,12" Text="Each button animates as a function of the previous button's scale and translation." />
+                <Button
+                    x:Name="ExpressionButton1"
+                    Width="100"
+                    Height="50"
+                    Margin="5"
+                    Content="Item 1"
+                    PointerEntered="element_PointerEntered"
+                    PointerExited="element_PointerExited" />
+                <Button
+                    x:Name="ExpressionButton2"
+                    Width="100"
+                    Height="50"
+                    Margin="5"
+                    Content="Item 2"
+                    PointerEntered="element_PointerEntered"
+                    PointerExited="element_PointerExited" />
+                <Button
+                    x:Name="ExpressionButton3"
+                    Width="100"
+                    Height="50"
+                    Margin="5"
+                    Content="Item 3"
+                    PointerEntered="element_PointerEntered"
+                    PointerExited="element_PointerExited" />
+                <Button
+                    x:Name="ExpressionButton4"
+                    Width="100"
+                    Height="50"
+                    Margin="5"
+                    Content="Item 4"
+                    PointerEntered="element_PointerEntered"
+                    PointerExited="element_PointerExited" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Motion/AnimationInterop/AnimationInteropSample4_cs.txt"
+            HeaderText="Reference ActualSize in ExpressionAnimations to make novel layouts based on size"
+            Loaded="ActualSizeExample_Loaded">
+            <controls:ControlExample.Options>
+                <Slider
+                    MinWidth="150"
+                    Header="Change radius"
+                    Maximum="400"
+                    Minimum="200"
+                    ValueChanged="RadiusSlider_ValueChanged" />
+            </controls:ControlExample.Options>
+            <Grid
+                x:Name="LayoutPanel"
+                Width="200"
+                Height="200"
+                Margin="12" />
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Motion/AnimationInterop/AnimationInteropSample5_cs.txt"
+            HeaderText="Reference ActualOffset and ActualSize in ExpressionAnimations to position elements relative to each other"
+            Loaded="ActualOffsetExample_Loaded"
+            XamlSource="Motion/AnimationInterop/AnimationInteropSample5_xaml.txt">
+            <controls:ControlExample.Options>
+                <StackPanel MinWidth="150">
+                    <Slider
+                        x:Name="FontSizeSlider"
+                        Header="Change font size"
+                        Maximum="24"
+                        Minimum="12" />
+                    <Slider
+                        x:Name="MarginSlider"
+                        Header="Change text margin"
+                        Maximum="100"
+                        Minimum="0" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <StackPanel>
+                <TextBlock
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="This sample positions a popup relative to a block of text that has variable layout size based on font size. Use the sliders to move and resize the text."
+                    TextWrapping="WrapWholeWords" />
+                <Grid Margin="0,12,0,0" HorizontalAlignment="Left">
+                    <TextBlock
+                        x:Name="PopupTarget"
+                        Width="300"
+                        Margin="{x:Bind MarginSlider.Value, Converter={StaticResource doubleToThicknessConverter}, Mode=OneWay}"
+                        FontSize="{x:Bind FontSizeSlider.Value, Mode=OneWay}"
+                        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        TextWrapping="WrapWholeWords" />
+
+                    <!--  Notice that the popup is a sibling to the target, not an ancestor.  -->
+                    <Popup x:Name="Popup" Margin="5">
+                        <Grid
+                            MinWidth="50"
+                            MinHeight="50"
+                            MaxWidth="200"
+                            Background="{ThemeResource FlyoutBackgroundThemeBrush}"
+                            BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}"
+                            BorderThickness="2">
+                            <TextBlock
+                                Margin="6"
+                                VerticalAlignment="Center"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="I am always right aligned center to the target."
+                                TextWrapping="WrapWholeWords" />
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </StackPanel>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

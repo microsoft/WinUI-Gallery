@@ -1,0 +1,92 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.Pages.ItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="pageRoot"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converters:StringVisibilityConverter
+            x:Key="stringVisibilityConverter"
+            EmptyValue="Collapsed"
+            NotEmptyValue="Visible" />
+        <converters:CollectionVisibilityConverter
+            x:Name="collectionConverter"
+            EmptyValue="Collapsed"
+            NotEmptyValue="Visible" />
+    </Page.Resources>
+    <Grid x:Name="rootPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:PageHeader
+            x:Name="pageHeader"
+            Margin="36,24,36,0"
+            Item="{x:Bind Item}" />
+
+        <!--  Content Region  -->
+        <ScrollViewer
+            x:Name="svPanel"
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
+            <Grid x:Name="contentRoot" Padding="36,0,36,36">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    x:Name="descriptionText"
+                    Grid.ColumnSpan="2"
+                    Margin="0,4,24,0"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="{x:Bind Item.Description}"
+                    Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}" />
+                <Frame x:Name="contentFrame" Grid.Row="2" />
+            </Grid>
+        </ScrollViewer>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NormalFrameContent" />
+                <VisualState x:Name="WideFrameContent">
+                    <VisualState.Setters>
+                        <Setter Target="contentFrame.Width" Value="1028" />
+                        <Setter Target="contentFrame.HorizontalAlignment" Value="Left" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pageHeader.Margin" Value="16,12,16,0" />
+                        <Setter Target="contentRoot.Padding" Value="16,0,16,16" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
