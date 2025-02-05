@@ -39,7 +39,7 @@
             </RichTextBlock>
 
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Tips:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Tips</Paragraph>
                 <Paragraph>• Naming: descriptive keys should always be used for resources to make them easier to identify.</Paragraph>
                 <Paragraph>• Scope: Resources should be defined at the narrowest scope possible to improve maintainability.</Paragraph>
                 <Paragraph>
