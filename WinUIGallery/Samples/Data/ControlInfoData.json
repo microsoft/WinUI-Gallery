@@ -3629,7 +3629,7 @@
           "Docs": [
             {
               "Title": "ContentIsland - API",
-              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
             }
           ],
           "RelatedControls": [
