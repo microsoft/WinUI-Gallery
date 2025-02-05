@@ -3622,7 +3622,7 @@
           "Title": "ContentIsland",
           "ApiNamespace": "Microsoft.UI.Content",
           "Subtitle": "Create ContentIslands to host other frameworks in your app.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/PlaceHolder.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
           "Description": "Create ContentIslands to host other frameworks in your app.",
           "Content": "<p>Look at the <i>ContentIslandPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
