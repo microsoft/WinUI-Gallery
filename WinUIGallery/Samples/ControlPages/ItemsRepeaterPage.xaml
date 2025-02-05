@@ -2,9 +2,9 @@
     x:Class="WinUIGallery.ControlPages.ItemsRepeaterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:layouts="using:WinUIGallery.Layouts"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:layouts="using:WinUIGallery.Layouts"
     xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:WinUIGallery.Pages"
@@ -463,6 +463,5 @@ private void InitializeData()
                 </StackPanel>
             </Grid>
         </controls:ControlExample>
-
     </StackPanel>
 </pages:ItemsPageBase>

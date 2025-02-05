@@ -146,7 +146,7 @@ private void InitializeData()
     // ...
 }
 
-// ========================== Filtering, sorting, animating ==========================
+// ========================== Filtering, sorting, animating ========================== 
 public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
 {
     UpdateSortAndFilter();
