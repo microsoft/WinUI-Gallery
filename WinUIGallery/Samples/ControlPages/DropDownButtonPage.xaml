@@ -1,0 +1,56 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.DropDownButtonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="using:WinUIGallery.Common"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:WinUIGallery.Data"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
+            <StackPanel x:Name="Control1" Orientation="Horizontal">
+                <DropDownButton Content="Email">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                            <MenuFlyoutItem Text="Send" />
+                            <MenuFlyoutItem Text="Reply" />
+                            <MenuFlyoutItem Text="Reply All" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="DropDownButton with Icons" XamlSource="Buttons/DropDown/DropDownButton_Icon.txt">
+            <StackPanel x:Name="Control2" Orientation="Horizontal">
+                <DropDownButton AutomationProperties.Name="Email">
+                    <DropDownButton.Content>
+                        <FontIcon Glyph="&#xE715;" />
+                    </DropDownButton.Content>
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                            <MenuFlyoutItem Text="Send">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE725;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Reply">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8CA;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Reply All">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8C2;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </StackPanel>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

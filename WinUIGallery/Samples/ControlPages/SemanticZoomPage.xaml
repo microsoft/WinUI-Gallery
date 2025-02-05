@@ -1,0 +1,102 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.SemanticZoomPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:models="using:WinUIGallery.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource
+            x:Name="cvsGroups"
+            d:Source="{Binding Groups, Source={d:DesignData Source=/Samples/Data/ControlInfoData.json, Type=models:ControlInfoDataSource}}"
+            IsSourceGrouped="True"
+            ItemsPath="Items"
+            Source="{x:Bind Groups}" />
+
+        <DataTemplate x:Key="ZoomedInTemplate" x:DataType="models:ControlInfoDataItem">
+            <StackPanel MinWidth="200" Margin="12,6,12,6">
+                <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="{x:Bind Title}" />
+                <TextBlock
+                    Width="300"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind Subtitle}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="models:ControlInfoDataGroup">
+            <TextBlock
+                Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Text="{x:Bind Title}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
+            <TextBlock
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Text="{x:Bind ((models:ControlInfoDataGroup)Group).Title}"
+                TextWrapping="Wrap" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A simple SemanticZoom">
+            <SemanticZoom x:Name="Control1" Height="500">
+                <SemanticZoom.ZoomedInView>
+                    <GridView
+                        GotFocus="List_GotFocus"
+                        ItemTemplate="{StaticResource ZoomedInTemplate}"
+                        ItemsSource="{x:Bind cvsGroups.View}"
+                        ScrollViewer.IsHorizontalScrollChainingEnabled="False"
+                        SelectionMode="None">
+                        <GridView.GroupStyle>
+                            <GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" />
+                        </GridView.GroupStyle>
+                    </GridView>
+                </SemanticZoom.ZoomedInView>
+
+                <SemanticZoom.ZoomedOutView>
+                    <ListView
+                        GotFocus="List_GotFocus"
+                        ItemTemplate="{StaticResource ZoomedOutTemplate}"
+                        ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}"
+                        SelectionMode="None" />
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;SemanticZoom Height="500"&gt;
+    &lt;SemanticZoom.ZoomedInView&gt;
+        &lt;GridView ItemsSource="{x:Bind cvsGroups.View}" SelectionMode="None"
+                  ItemTemplate="{StaticResource ZoomedInTemplate}"&gt;
+            &lt;GridView.GroupStyle&gt;
+                &lt;GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" /&gt;
+            &lt;/GridView.GroupStyle&gt;
+        &lt;/GridView&gt;
+    &lt;/SemanticZoom.ZoomedInView&gt;
+
+    &lt;SemanticZoom.ZoomedOutView&gt;
+        &lt;ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" HorizontalAlignment="Stretch"
+                  SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" /&gt;
+    &lt;/SemanticZoom.ZoomedOutView&gt;
+&lt;/SemanticZoom&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

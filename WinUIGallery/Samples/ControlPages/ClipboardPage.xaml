@@ -1,0 +1,122 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="WinUIGallery.ControlPages.ClipboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <!--  COPY TO CLIPBOARD  -->
+        <controls:ControlExample x:Name="Example1" HeaderText="Copy text to the Clipboard">
+
+            <StackPanel VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Margin="0,0,0,10"
+                        Click="CopyText_Click"
+                        Content="Copy Text to the Clipboard" />
+                    <TextBlock
+                        x:Name="ConfirmationTextBlock"
+                        Padding="20,5,0,0"
+                        Text="Text copied to clipboard!"
+                        Visibility="Collapsed" />
+                </StackPanel>
+
+                <RichEditBox
+                    x:Name="richEditBox"
+                    Width="800"
+                    Height="100"
+                    AutomationProperties.Name="editor with custom menu" />
+            </StackPanel>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+
+&lt;Button Content="Copy Text to the Clipboard" Click="CopyText_Click"/&gt;
+
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void CopyText_Click(object sender, RoutedEventArgs args)
+{
+	var package = new DataPackage();
+	package.SetText("Copy this text");
+	Clipboard.SetContent(package);
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <!--  PASTE FROM CLIPBOARD  -->
+        <controls:ControlExample x:Name="Example2" HeaderText="Paste text from the Clipboard">
+            <StackPanel VerticalAlignment="Top">
+                <Button
+                    Margin="0,0,0,10"
+                    Click="PasteText_Click"
+                    Content="Paste Text from the Clipboard" />
+                <TextBlock
+                    x:Name="PasteClipboard1"
+                    Padding="5,5,0,0"
+                    Visibility="Visible">
+                    <Underline>Clipboard:</Underline>
+                </TextBlock>
+                <TextBlock
+                    x:Name="PasteClipboard2"
+                    Width="Auto"
+                    Padding="5,5,0,0"
+                    Text="Click the button!"
+                    TextWrapping="Wrap"
+                    Visibility="Visible" />
+            </StackPanel>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+
+&lt;Button Content="Paste Text from the Clipboard" Click="PasteText_Click"/&gt;
+
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private async void PasteText_Click(object sender, RoutedEventArgs args)
+{
+	var package = Clipboard.GetContent();
+	if (package.Contains(StandardDataFormats.Text))
+	{
+		var text = await package.GetTextAsync();
+	}
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ConfirmClipboardGroups">
+                <VisualState x:Name="ConfirmationClipboardCollapsed">
+                    <VisualState.Setters>
+                        <Setter Target="ConfirmationTextBlock.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="ConfirmationClipboardVisible">
+                    <VisualState.Setters>
+                        <Setter Target="ConfirmationTextBlock.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </StackPanel>
+</Page>

@@ -1,0 +1,100 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.PageTransitionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controlpages="using:WinUIGallery.ControlPages"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="pageRoot"
+    mc:Ignorable="d">
+
+    <controls:ControlExample
+        x:Name="Example1"
+        HorizontalAlignment="Stretch"
+        HeaderText="Page transitions">
+        <controls:ControlExample.Options>
+            <StackPanel>
+                <RadioButtons Header="Transition modes">
+                    <RadioButton
+                        x:Name="DefaultRB"
+                        AutomationProperties.Name="Default NavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Default"
+                        IsChecked="True" />
+                    <RadioButton
+                        x:Name="EntranceRB"
+                        AutomationProperties.Name="EntranceNavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Entrance" />
+                    <RadioButton
+                        x:Name="DrillRB"
+                        AutomationProperties.Name="DrillInNavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="DrillIn" />
+                    <RadioButton
+                        x:Name="SuppressRB"
+                        AutomationProperties.Name="SuppressNavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Suppress" />
+                    <RadioButton
+                        x:Name="SlideFromRightRB"
+                        AutomationProperties.Name="SlideNavigationTransitionInfo From Right"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Slide from Right" />
+                    <RadioButton
+                        x:Name="SlideFromLeftRB"
+                        AutomationProperties.Name="SlideNavigationTransitionInfo From Left"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Slide from Left" />
+                </RadioButtons>
+
+                <TextBlock Margin="0,12,0,8">Navigate</TextBlock>
+                <Button
+                    Margin="0,0,0,4"
+                    HorizontalAlignment="Stretch"
+                    Click="ForwardButton1_Click"
+                    Content="Navigate Forward" />
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Click="BackwardButton1_Click"
+                    Content="Navigate Backward" />
+            </StackPanel>
+        </controls:ControlExample.Options>
+
+        <Frame
+            x:Name="ContentFrame"
+            MinHeight="600"
+            HorizontalAlignment="Stretch">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition />
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+
+        <controls:ControlExample.Xaml>
+            <x:String xml:space="preserve">
+&lt;Frame x:Name="ContentFrame"&gt;
+    &lt;Frame.ContentTransitions&gt;
+        &lt;TransitionCollection&gt;
+            &lt;NavigationThemeTransition  /&gt;
+        &lt;/TransitionCollection&gt;
+    &lt;/Frame.ContentTransitions&gt;
+&lt;/Frame&gt;
+            </x:String>
+        </controls:ControlExample.Xaml>
+        <controls:ControlExample.CSharp>
+            <x:String>
+                ContentFrame.Navigate(typeof(SamplePage), null$(TransitionParameter));
+            </x:String>
+        </controls:ControlExample.CSharp>
+        <controls:ControlExample.Substitutions>
+            <controls:ControlExampleSubstitution
+                Key="TransitionParameter"
+                x:Name="TransitionValue"
+                Value="" />
+        </controls:ControlExample.Substitutions>
+    </controls:ControlExample>
+
+</Page>

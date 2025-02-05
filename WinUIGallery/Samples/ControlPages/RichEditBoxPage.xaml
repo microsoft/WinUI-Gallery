@@ -1,0 +1,210 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.RichEditBoxPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
+            HeaderText="A simple text editor using RichEditBox.">
+            <RichEditBox AutomationProperties.Name="simple text editor" />
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;RichEditBox x:Name="editor" AutomationProperties.Name="simple text editor"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt"
+            HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'"
+            XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt">
+            <RichEditBox
+                x:Name="REBCustom"
+                Width="800"
+                Height="200"
+                AutomationProperties.Name="editor with custom menu"
+                Loaded="REBCustom_Loaded"
+                Unloaded="REBCustom_Unloaded" />
+
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
+            CSharpSource="Text\RichEditBox\RichEditBoxSample3_cs.txt"
+            HeaderText="A custom editor with RichEditBox."
+            XamlSource="Text\RichEditBox\RichEditBoxSample3_Xaml.txt">
+            <RelativePanel Margin="0,0,0,20" HorizontalAlignment="Stretch">
+                <RelativePanel.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Button">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Margin" Value="0,0,8,0" />
+                        </Style>
+
+                        <ResourceDictionary.ThemeDictionaries>
+                            <ResourceDictionary x:Key="HighContrast">
+                                <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SystemColorHighlightColor" />
+                            </ResourceDictionary>
+                        </ResourceDictionary.ThemeDictionaries>
+                    </ResourceDictionary>
+                </RelativePanel.Resources>
+                <Button
+                    x:Name="openFileButton"
+                    AutomationProperties.Name="Open file"
+                    Click="OpenButton_Click"
+                    ToolTipService.ToolTip="Open file">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE8E5;" />
+                    </Button.Content>
+                </Button>
+                <Button
+                    AutomationProperties.Name="Save file"
+                    Click="SaveButton_Click"
+                    RelativePanel.RightOf="openFileButton"
+                    ToolTipService.ToolTip="Save file">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE74E;" />
+                    </Button.Content>
+                </Button>
+                <Button
+                    AutomationProperties.Name="Bold"
+                    Click="BoldButton_Click"
+                    RelativePanel.LeftOf="italicButton"
+                    ToolTipService.ToolTip="Bold">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE8DD;" />
+                    </Button.Content>
+                </Button>
+                <Button
+                    x:Name="italicButton"
+                    AutomationProperties.Name="Italic"
+                    Click="ItalicButton_Click"
+                    RelativePanel.LeftOf="fontColorButton"
+                    ToolTipService.ToolTip="Italic">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE8DB;" />
+                    </Button.Content>
+                </Button>
+
+                <DropDownButton
+                    x:Name="fontColorButton"
+                    AutomationProperties.Name="Font color"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    RelativePanel.AlignRightWithPanel="True"
+                    ToolTipService.ToolTip="Font color">
+                    <SymbolIcon Symbol="FontColor" />
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <VariableSizedWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal">
+                                <VariableSizedWrapGrid.Resources>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Width" Value="32" />
+                                        <Setter Property="Height" Value="32" />
+                                    </Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="MinWidth" Value="0" />
+                                        <Setter Property="MinHeight" Value="0" />
+                                        <Setter Property="Margin" Value="6" />
+                                    </Style>
+                                </VariableSizedWrapGrid.Resources>
+                                <Button AutomationProperties.Name="Red" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Red" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Orange" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Orange" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Yellow" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Yellow" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Green" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Green" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Blue" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Blue" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Indigo" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Indigo" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Violet" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Violet" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Gray" Click="ColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Gray" />
+                                    </Button.Content>
+                                </Button>
+                            </VariableSizedWrapGrid>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+
+                <RichEditBox
+                    x:Name="editor"
+                    Height="200"
+                    MinWidth="300"
+                    AutomationProperties.Name="Custom editor"
+                    GotFocus="Editor_GotFocus"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="openFileButton"
+                    TextChanged="Editor_TextChanged" />
+                <StackPanel
+                    Margin="0,10,0,0"
+                    Orientation="Horizontal"
+                    RelativePanel.AlignLeftWith="editor"
+                    RelativePanel.Below="editor">
+                    <TextBlock
+                        x:Name="findBoxLabel"
+                        Margin="0,0,0,4"
+                        VerticalAlignment="Center"
+                        Text="Find:" />
+                    <TextBox
+                        x:Name="findBox"
+                        Width="224"
+                        Margin="10,0,0,0"
+                        GotFocus="{x:Bind FindBoxHighlightMatches}"
+                        LostFocus="{x:Bind FindBoxRemoveHighlights}"
+                        PlaceholderText="Enter search text"
+                        TextChanged="{x:Bind FindBoxHighlightMatches}" />
+                </StackPanel>
+            </RelativePanel>
+        </controls:ControlExample>
+
+    </StackPanel>
+</Page>

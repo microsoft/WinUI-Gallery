@@ -1,0 +1,202 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.SplitViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controlPages="using:WinUIGallery.ControlPages"
+    xmlns:controls="using:WinUIGallery.Controls">
+    <Page.Resources>
+        <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="controlPages:NavLink">
+            <StackPanel
+                Margin="2,0,0,0"
+                AutomationProperties.Name="{x:Bind Label}"
+                Orientation="Horizontal">
+                <SymbolIcon Symbol="{x:Bind Symbol}" />
+                <TextBlock
+                    Margin="24,0,0,0"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind Label}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="A basic SplitView.">
+
+            <Grid Height="300" VerticalAlignment="Top">
+                <SplitView
+                    x:Name="splitView"
+                    CompactPaneLength="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}"
+                    DisplayMode="CompactOverlay"
+                    IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
+                    IsTabStop="False"
+                    OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
+                    PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    <SplitView.Pane>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                x:Name="PaneHeader"
+                                Margin="60,12,0,0"
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                Text="PANE CONTENT" />
+                            <ListView
+                                x:Name="NavLinksList"
+                                Grid.Row="1"
+                                Margin="0,12,0,0"
+                                VerticalAlignment="Stretch"
+                                IsItemClickEnabled="True"
+                                ItemClick="NavLinksList_ItemClick"
+                                ItemTemplate="{StaticResource NavLinkItemTemplate}"
+                                ItemsSource="{x:Bind NavLinks}"
+                                SelectionMode="Single" />
+                        </Grid>
+                    </SplitView.Pane>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Margin="12,12,0,0"
+                            Style="{StaticResource BaseTextBlockStyle}"
+                            Text="SPLITVIEW CONTENT" />
+                        <TextBlock
+                            x:Name="content"
+                            Grid.Row="1"
+                            Margin="12,12,0,0"
+                            Style="{StaticResource BodyTextBlockStyle}" />
+                    </Grid>
+                </SplitView>
+            </Grid>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <ToggleButton
+                        x:Name="togglePaneButton"
+                        Content="IsPaneOpen"
+                        IsChecked="True" />
+
+                    <ToggleSwitch
+                        MinWidth="120"
+                        Margin="0,12,0,0"
+                        Header="Placement"
+                        OffContent="Left"
+                        OnContent="Right"
+                        Toggled="PanePlacement_Toggled" />
+
+                    <ComboBox
+                        x:Name="displayModeCombobox"
+                        Width="196"
+                        Margin="0,4,0,0"
+                        VerticalAlignment="Center"
+                        Header="DisplayMode"
+                        SelectedIndex="0"
+                        SelectionChanged="displayModeCombobox_SelectionChanged">
+                        <ComboBoxItem>Inline</ComboBoxItem>
+                        <ComboBoxItem>CompactInline</ComboBoxItem>
+                        <ComboBoxItem>Overlay</ComboBoxItem>
+                        <ComboBoxItem>CompactOverlay</ComboBoxItem>
+                    </ComboBox>
+
+                    <ComboBox
+                        x:Name="paneBackgroundCombobox"
+                        Width="196"
+                        Margin="0,12,0,0"
+                        VerticalAlignment="Center"
+                        Header="PaneBackground"
+                        SelectedIndex="0"
+                        SelectionChanged="paneBackgroundCombobox_SelectionChanged">
+                        <ComboBoxItem Tag="{}{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">SystemControlBackgroundChromeMediumLowBrush</ComboBoxItem>
+                        <ComboBoxItem Tag="Red">Red</ComboBoxItem>
+                        <ComboBoxItem Tag="Blue">Blue</ComboBoxItem>
+                        <ComboBoxItem Tag="Green">Green</ComboBoxItem>
+                    </ComboBox>
+
+                    <Slider
+                        x:Name="openPaneLengthSlider"
+                        Width="196"
+                        Margin="0,12,0,0"
+                        Header="OpenPaneLength"
+                        IsFocusEngagementEnabled="False"
+                        Maximum="500"
+                        Minimum="128"
+                        SnapsTo="StepValues"
+                        StepFrequency="8"
+                        Value="256" />
+
+                    <Slider
+                        x:Name="compactPaneLengthSlider"
+                        Width="196"
+                        Header="CompactPaneLength"
+                        IsFocusEngagementEnabled="False"
+                        Maximum="128"
+                        Minimum="24"
+                        SnapsTo="StepValues"
+                        StepFrequency="8"
+                        Value="48" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;SplitView x:Name="splitView" PaneBackground="$(PaneBackground)"
+           IsPaneOpen="$(IsPaneOpen)" OpenPaneLength="$(OpenPaneLength)" CompactPaneLength="$(CompactPaneLength)" DisplayMode="$(DisplayMode)"&gt;
+    &lt;SplitView.Pane&gt;
+        &lt;Grid&gt;
+            &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition Height="Auto"/&gt;
+                &lt;RowDefinition Height="*"/&gt;
+                &lt;RowDefinition Height="Auto"/&gt;
+            &lt;/Grid.RowDefinitions&gt;
+            &lt;TextBlock Text="PANE CONTENT" x:Name="PaneHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;
+            &lt;ListView x:Name="NavLinksList" Margin="0,12,0,0" SelectionMode="Single" Grid.Row="1" VerticalAlignment="Stretch"
+                    ItemClick="NavLinksList_ItemClick" IsItemClickEnabled="True"
+                    ItemsSource="{x:Bind NavLinks}" ItemTemplate="{StaticResource NavLinkItemTemplate}"/&gt;
+        &lt;/Grid&gt;
+    &lt;/SplitView.Pane&gt;
+ 
+    &lt;Grid&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height="Auto"/&gt;
+            &lt;RowDefinition Height="*"/&gt;
+        &lt;/Grid.RowDefinitions&gt;
+        &lt;TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/&gt;
+        &lt;TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" /&gt;
+    &lt;/Grid&gt;
+&lt;/SplitView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="PaneBackground" Value="{x:Bind ((ComboBoxItem)paneBackgroundCombobox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsPaneOpen" Value="{x:Bind splitView.IsPaneOpen, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="OpenPaneLength" Value="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="CompactPaneLength" Value="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="DisplayMode" Value="{x:Bind splitView.DisplayMode, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="SystemControlBackgroundChromeMediumLowBrush" />
+                <VisualState x:Name="Red">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Red" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Blue">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Blue" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Green">
+                    <VisualState.Setters>
+                        <Setter Target="splitView.PaneBackground" Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </StackPanel>
+</Page>

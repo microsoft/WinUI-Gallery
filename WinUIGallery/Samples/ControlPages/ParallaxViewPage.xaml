@@ -1,0 +1,135 @@
+<pages:ItemsPageBase
+    x:Class="WinUIGallery.ControlPages.ParallaxViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:models="using:WinUIGallery.Models"
+    xmlns:pages="using:WinUIGallery.Pages">
+    <StackPanel>
+        <controls:ControlExample
+            x:Name="Example1"
+            Height="750"
+            HeaderText="Parallax on a ListView">
+            <controls:ControlExample.Example>
+                <Grid>
+                    <ParallaxView
+                        x:Name="parallaxView"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Source="{Binding ElementName=listView}"
+                        VerticalShift="500">
+                        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
+                    </ParallaxView>
+                    <ListView
+                        x:Name="listView"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="all samples"
+                        Background="#80000000"
+                        HighContrastAdjustment="Auto"
+                        ItemsSource="{x:Bind Items}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ControlInfoDataItem">
+                                <TextBlock Foreground="{ThemeResource SystemControlForegroundAltHighBrush}" Text="{x:Bind Title}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Header>
+                            <TextBlock
+                                MaxWidth="280"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="28"
+                                Foreground="White"
+                                Text="Scroll the list to see parallaxing of image"
+                                TextWrapping="WrapWholeWords" />
+                        </ListView.Header>
+                    </ListView>
+                </Grid>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Grid&gt;
+    &lt;ParallaxView Source="{Binding ElementName=listView}" VerticalShift="500"&gt;
+        &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" /&gt;
+    &lt;/ParallaxView&gt;
+    &lt;ListView x:Name="listView" ItemsSource="{x:Bind Items}"&gt;
+        &lt;ListView.Header&gt;
+            &lt;TextBlock Text="Scroll the list to see parallaxing of image" /&gt;
+        &lt;/ListView.Header&gt;
+    &lt;/ListView&gt;
+&lt;/Grid&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            x:Name="Example2"
+            Height="750"
+            HeaderText="Parallax with a ScrollView">
+            <controls:ControlExample.Example>
+                <Grid>
+                    <ParallaxView
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Source="{Binding ElementName=scrollView}"
+                        VerticalShift="500">
+                        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
+                    </ParallaxView>
+                    <TextBlock
+                        MaxWidth="280"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        FontSize="28"
+                        Foreground="White"
+                        Text="Scroll the rectangles to see parallaxing of image"
+                        TextWrapping="WrapWholeWords" />
+                    <ScrollView
+                        x:Name="scrollView"
+                        Width="150"
+                        HorizontalAlignment="Left">
+                        <StackPanel>
+                            <Rectangle Height="150" Fill="AliceBlue" />
+                            <Rectangle Height="150" Fill="AntiqueWhite" />
+                            <Rectangle Height="150" Fill="Aqua" />
+                            <Rectangle Height="150" Fill="Aquamarine" />
+                            <Rectangle Height="150" Fill="Azure" />
+                            <Rectangle Height="150" Fill="Beige" />
+                            <Rectangle Height="150" Fill="Bisque" />
+                            <Rectangle Height="150" Fill="BlanchedAlmond" />
+                            <Rectangle Height="150" Fill="BlueViolet" />
+                            <Rectangle Height="150" Fill="Brown" />
+                            <Rectangle Height="150" Fill="BurlyWood" />
+                            <Rectangle Height="150" Fill="CadetBlue" />
+                            <Rectangle Height="150" Fill="Chartreuse" />
+                            <Rectangle Height="150" Fill="Chocolate" />
+                            <Rectangle Height="150" Fill="Coral" />
+                            <Rectangle Height="150" Fill="CornflowerBlue" />
+                            <Rectangle Height="150" Fill="Cornsilk" />
+                            <Rectangle Height="150" Fill="Crimson" />
+                            <Rectangle Height="150" Fill="Cyan" />
+                        </StackPanel>
+                    </ScrollView>
+                </Grid>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Grid&gt;
+    &lt;ParallaxView Source="{Binding ElementName=scrollView}" VerticalShift="500"&gt;
+        &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg"/&gt;
+    &lt;/ParallaxView&gt;
+    &lt;TextBlock Text="Scroll the rectangles to see parallaxing of image" MaxWidth="280"
+        HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"
+        FontSize="28" TextWrapping="WrapWholeWords"/&gt;
+    &lt;ScrollView x:Name="scrollView" Width="150" HorizontalAlignment="Left"&gt;
+        &lt;StackPanel&gt;
+            &lt;Rectangle Fill="AliceBlue" Height="150"/&gt;
+            &lt;!-- ... --&gt;
+            &lt;Rectangle Fill="Cyan" Height="150"/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Grid&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</pages:ItemsPageBase>

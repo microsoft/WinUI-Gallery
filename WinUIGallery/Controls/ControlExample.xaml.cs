@@ -15,9 +15,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
-using Windows.Foundation.Metadata;
 
-namespace WinUIGallery;
+namespace WinUIGallery.Controls;
 
 /// <summary>
 /// Describes a textual substitution in sample content.
