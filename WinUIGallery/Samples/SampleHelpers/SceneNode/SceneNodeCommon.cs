@@ -1,21 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Storage.Streams;
-using Windows.Storage;
-using WinRT;
-using Microsoft.Graphics.Canvas.UI.Composition;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.DirectX;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.Scenes;
+using Windows.Foundation;
 using Windows.Graphics;
-using WinUIGallery.Helper;
-using System.IO;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using WinRT;
+using WinUIGallery.Helpers;
+using Microsoft.Graphics.Canvas.UI.Composition;
 
 class SceneNodeCommon
 {
@@ -90,17 +87,17 @@ class SceneNodeCommon
         }
     }
 
-    public static async Task<Microsoft.Graphics.Canvas.CanvasBitmap> LoadIntoCanvasBitmap(ICanvasResourceCreator creator, string relativePath)
+    public static async Task<CanvasBitmap> LoadIntoCanvasBitmap(ICanvasResourceCreator creator, string relativePath)
     {
         if (NativeHelper.IsAppPackaged)
         {
             Uri baseUri = new Uri("ms-appx:///");
-            return await Microsoft.Graphics.Canvas.CanvasBitmap.LoadAsync(
+            return await CanvasBitmap.LoadAsync(
                 creator, new Uri(baseUri, relativePath));
         }
         else
         {
-            return await Microsoft.Graphics.Canvas.CanvasBitmap.LoadAsync(
+            return await CanvasBitmap.LoadAsync(
                 creator, relativePath);
         }
     }
@@ -128,7 +125,6 @@ class SceneNodeCommon
         return memBuffer;
     }
 
-
     public static MemoryBuffer CopyToMemoryBuffer(byte[] a)
     {
         MemoryBuffer mb = new MemoryBuffer((uint)a.Length);
@@ -147,8 +143,6 @@ class SceneNodeCommon
 
         return mb;
     }
-
-
 
     [ComImport,
     Guid("5b0d3235-4dba-4d44-865e-8f1d0e4fd04d"),

@@ -2,22 +2,14 @@
 // Licensed under the MIT License.
 
 using System;
-using System.Collections.Generic;
 using System.Numerics;
-using System.Runtime.InteropServices;
-
-using Windows.Foundation;
-using Windows.Graphics;
-using Windows.Storage;
-using Windows.Storage.Streams;
-
+using System.Threading.Tasks;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI.Composition;
 using Microsoft.Graphics.DirectX;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.Scenes;
 using Microsoft.UI.Content;
-using System.Threading.Tasks;
 
 class HelmetScenario
 {
