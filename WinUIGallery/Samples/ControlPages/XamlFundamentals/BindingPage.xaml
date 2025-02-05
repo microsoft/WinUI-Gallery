@@ -11,7 +11,7 @@
     <StackPanel>
         <StackPanel Margin="0,12,0,0" Spacing="12">
             <RichTextBlock>
-                <Paragraph FontWeight="SemiBold">Key concepts:</Paragraph>
+                <Paragraph FontWeight="SemiBold">Key concepts</Paragraph>
                 <Paragraph>• Target: The property of a control to which data is bound (e.g., Text, Background, Visibility).</Paragraph>
                 <Paragraph>• Source: The data being bound, such as a property in a class, another control, or a static resource.</Paragraph>
                 <Paragraph>• Binding Modes:</Paragraph>
@@ -27,10 +27,7 @@
                     <Run Text="and" />
                     <Run FontFamily="Consolas" Text="Binding" />
                     <Run Text="by visiting" />
-                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">
-                        Microsoft Learn
-                    </Hyperlink>
-                    .</Paragraph>
+                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 

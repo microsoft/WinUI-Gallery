@@ -11,17 +11,17 @@
     mc:Ignorable="d">
 
     <Grid
-        Background="{Binding Background, Mode=OneWay}"
-        BorderBrush="{Binding BorderBrush, Mode=OneWay}"
-        BorderThickness="{Binding BorderThickness, Mode=OneWay}"
-        CornerRadius="{Binding CornerRadius, Mode=OneWay}">
+        Background="{x:Bind Background, Mode=OneWay}"
+        BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
+        BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
+        CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <ScrollViewer
             x:Name="CodeScrollViewer"
-            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
+            VerticalAlignment="{x:Bind VerticalContentAlignment, Mode=OneWay}"
             HorizontalScrollBarVisibility="Auto"
             HorizontalScrollMode="Auto"
             VerticalScrollBarVisibility="Auto"
