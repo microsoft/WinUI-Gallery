@@ -3618,6 +3618,25 @@
           ]
         },
         {
+          "UniqueId": "ContentIsland",
+          "Title": "ContentIsland",
+          "ApiNamespace": "Microsoft.UI.Content",
+          "Subtitle": "Create ContentIslands to host other frameworks in your app.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/PlaceHolder.png",
+          "Description": "Create ContentIslands to host other frameworks in your app.",
+          "Content": "<p>Look at the <i>ContentIslandPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "ContentIsland - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            }
+          ],
+          "RelatedControls": [
+            "Clipboard"
+          ]
+        },
+        {
           "UniqueId": "ScratchPad",
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",
