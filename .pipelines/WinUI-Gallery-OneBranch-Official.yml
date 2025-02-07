@@ -148,7 +148,7 @@ extends:
           inputs:
               testSelector: "testAssemblies"
               testAssemblyVer2: |
-                  **\WinUIGallery.UITests.dll
+                  **publish\WinUIGallery.UITests.dll
                   !**\*TestAdapter.dll
                   !**\obj\**
                   !**\ref\**
