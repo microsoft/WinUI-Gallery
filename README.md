@@ -46,7 +46,7 @@ Quick start guide to building WinUI 3 Gallery locally:
 > [!NOTE]
 > The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
 
-**Required [Visual Studio components](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
+**Required [Visual Studio components](https://learn.microsoft.com/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
 - Windows application development
 
 ### 2. Clone the Repository
@@ -59,24 +59,19 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 ```shell
 .\WinUIGallery.sln
 ```
-Make sure to select `WinUIGallery Packaged` for startup project in Visual Studio.
+Ensure that `WinUIGallery Packaged` is set as the startup project in Visual Studio.
 
 ## ➡️ Further information
 
 To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
-To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
-[Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
-[WinUI](https://aka.ms/windev)  
-[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
-
-###  Related samples
-
-[RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
-[Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
-[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
+[Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
+[About WinUI](https://aka.ms/windev)
+[WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
+[WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
+[WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
