@@ -6,7 +6,7 @@ The test scenarios are written to test the controls in the WinUI 3 Gallery app. 
 
 ## Deploy WinUI 3 Gallery
 
-The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simply build WinUIGallery\WinUIGallery.sln and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
+The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simply build WinUIGallery.sln and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
 
 1. Generate the test signing certificate:
 
