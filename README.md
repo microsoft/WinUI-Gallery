@@ -57,9 +57,9 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 
 ### 3. Open .sln with Visual Studio and Build!
 ```shell
-.\WinUIGallery\WinUIGallery.DesktopWap.sln
+.\WinUIGallery.sln
 ```
-Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Visual Studio.
+Make sure to select `WinUIGallery Packaged` for startup project in Visual Studio.
 
 ## ➡️ Further information
 
