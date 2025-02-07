@@ -6,7 +6,6 @@ pool:
 
 variables:
     solutionGallery: "**/WinUIGallery.sln"
-    solutionUITests: "**/UITests.sln"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
     appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'
@@ -77,18 +76,6 @@ steps:
           errorActionPreference: "continue"
           failOnStderr: true
           workingDirectory: "$(System.DefaultWorkingDirectory)"
-
-    - task: NuGetCommand@2
-      displayName: Restore Packages for UI Tests Project
-      inputs:
-          restoreSolution: "$(solutionUITests)"
-
-    - task: VSBuild@1
-      displayName: Build UI Tests Project
-      inputs:
-          platform: "$(buildPlatform)"
-          solution: "$(solutionUITests)"
-          configuration: "$(buildConfiguration)"
 
     - task: Windows Application Driver@0
       displayName: Start Windows Application Driver
