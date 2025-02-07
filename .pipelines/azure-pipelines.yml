@@ -51,7 +51,7 @@ steps:
         failOnMinTestsNotRun: true
         minimumExpectedTests: '3'
         testAssemblyVer2: |
-          **\WinUIGalleryUnitTests.build.appxrecipe
+          **\WinUIGallery.UnitTests.build.appxrecipe
 
     - task: PowerShell@2
       displayName: Uninstall existing WinUI Gallery packages
@@ -88,7 +88,7 @@ steps:
       inputs:
           testSelector: "testAssemblies"
           testAssemblyVer2: |
-              **\UITests.dll
+              **\WinUIGallery.UITests.dll
               !**\*TestAdapter.dll
               !**\obj\**
               !**\ref\**
