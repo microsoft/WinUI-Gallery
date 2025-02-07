@@ -1,4 +1,4 @@
-![WinUI Gallery hero image](README_Images/WinUIGalleryLanding.PNG)
+![WinUI Gallery hero image](docs/images/WinUIGalleryLanding.PNG)
 
 <h1 align="center">
     WinUI 3 Gallery
@@ -11,12 +11,12 @@
 This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
 
 <p align="center">
-<img src="README_Images/winui-gallery.png" alt="WinUI 3 Gallery" width="400"/>
+<img src="docs/images/winui-gallery.png" alt="WinUI 3 Gallery" width="400"/>
 </p>
 <p align="center">
 <a href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true
 	&mode=mini">
-	<img alt="Store badge" src="README_Images/storeBadge.png" width="200"/>
+	<img alt="Store badge" src="docs/images/storeBadge.png" width="200"/>
 </a>
 </p>
 
