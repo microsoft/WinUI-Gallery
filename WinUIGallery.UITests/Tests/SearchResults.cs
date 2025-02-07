@@ -18,7 +18,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System.Threading;
 
-namespace UITests.Tests;
+namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class SearchResults : TestBase

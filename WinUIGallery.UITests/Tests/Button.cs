@@ -17,7 +17,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 
-namespace UITests.Tests;
+namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class Button : TestBase

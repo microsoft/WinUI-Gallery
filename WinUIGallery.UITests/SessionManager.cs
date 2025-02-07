@@ -27,7 +27,7 @@ using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
 
-namespace UITests;
+namespace WinUIGallery.UITests;
 
 [TestClass]
 public class SessionManager

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting.AppContainer;
 using System;
 
-namespace WinUIGalleryUnitTests;
+namespace WinUIGallery.UnitTests;
 
 public partial class UnitTestApp : Application
 {

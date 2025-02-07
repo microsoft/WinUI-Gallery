@@ -18,7 +18,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 
-namespace UITests;
+namespace WinUIGallery.UITests;
 
 [TestClass]
 public class SampleTestTemplate : TestBase

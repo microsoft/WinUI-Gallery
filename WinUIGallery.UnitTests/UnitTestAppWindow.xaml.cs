@@ -1,7 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGalleryUnitTests;
+namespace WinUIGallery.UnitTests;
 
 public sealed partial class UnitTestAppWindow : Window
 {

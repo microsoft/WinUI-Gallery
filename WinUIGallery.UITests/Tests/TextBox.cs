@@ -20,7 +20,7 @@ using OpenQA.Selenium.Appium.Windows;
 
 using System.Threading;
 
-namespace UITests.Tests;
+namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class TextBox : TestBase

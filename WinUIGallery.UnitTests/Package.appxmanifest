@@ -8,14 +8,14 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="WinUIGalleryUnitTests"
+    Name="WinUIGallery.UnitTests"
     Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" 
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="3a75d49b-f769-4a7b-91ae-850b7cd79d2d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WinUIGalleryUnitTests</DisplayName>
+    <DisplayName>WinUIGallery.UnitTests</DisplayName>
     <PublisherDisplayName>kmahone</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +34,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="WinUIGalleryUnitTests"
-        Description="WinUIGalleryUnitTests"
+        DisplayName="WinUIGallery.UnitTests"
+        Description="WinUIGallery.UnitTests"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">

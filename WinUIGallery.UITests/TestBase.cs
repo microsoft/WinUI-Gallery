@@ -20,7 +20,7 @@ using OpenQA.Selenium.Interactions;
 using System.Linq;
 using System.Threading;
 
-namespace UITests;
+namespace WinUIGallery.UITests;
 
 public class TestBase
 {

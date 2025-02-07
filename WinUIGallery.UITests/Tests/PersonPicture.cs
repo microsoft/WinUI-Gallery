@@ -17,7 +17,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 
-namespace UITests.Tests;
+namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class PersonPicture : TestBase

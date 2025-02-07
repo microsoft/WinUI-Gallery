@@ -15,7 +15,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using System.Threading;
 using static System.Net.WebRequestMethods;
 
-namespace UITests.Tests;
+namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class AxeScanAll : TestBase

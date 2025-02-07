@@ -118,7 +118,7 @@ extends:
             failOnMinTestsNotRun: true
             minimumExpectedTests: '3'
             testAssemblyVer2: |
-              **\WinUIGalleryUnitTests.build.appxrecipe
+              **\WinUIGallery.UnitTests.build.appxrecipe
 
       # Build and Run UI Tests
         - task: PowerShell@2

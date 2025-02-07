@@ -20,7 +20,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.Linq;
 
-namespace UITests;
+namespace WinUIGallery.UITests;
 
 public class AxeHelper
 {

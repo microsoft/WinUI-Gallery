@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using WinUIGallery.Helpers;
 
-namespace WinUIGalleryUnitTests;
+namespace WinUIGallery.UnitTests;
 
 [TestClass]
 public class UnitTests
