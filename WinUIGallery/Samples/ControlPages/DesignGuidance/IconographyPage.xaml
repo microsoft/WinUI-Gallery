@@ -112,8 +112,7 @@
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
-                            .</Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
                 <toolkit:SettingsCard
@@ -190,7 +189,7 @@
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}"
                     Visibility="Collapsed">
-                    <StackPanel>
+                    <StackPanel Spacing="2">
                         <FontIcon
                             Margin="0,0,0,24"
                             HorizontalAlignment="Left"
@@ -219,7 +218,6 @@
                             Text="XAML" />
                         <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock
-                            Margin="0,0,0,4"
                             FontSize="12"
                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                             Text="C#" />
