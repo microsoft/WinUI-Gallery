@@ -372,6 +372,10 @@ public sealed partial class NavigationRootPage : Page
             {
                 Navigate(typeof(ItemPage), "Templates");
             }
+            else if (selectedItem == ScratchPadPage)
+            {
+                Navigate(typeof(ItemPage), "ScratchPad");
+            }
             else
             {
                 if (selectedItem.DataContext is ControlInfoDataGroup)
