@@ -583,7 +583,7 @@ sent or received, and those values are bound in the DataTemplate.--&gt;
     Width="400"
     BorderThickness="1"
     BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
-    HorizontalAlignment="Left""&gt;
+    HorizontalAlignment="Left"&gt;
     &lt;ListView.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="local:Contact"&gt;
             &lt;Grid&gt;
