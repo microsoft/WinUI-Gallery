@@ -306,9 +306,7 @@
           "Subtitle": "Scratch pad for testing simple XAML markup",
           "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
           "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
-          "Content": "<p>Look at the <i>ScratchPadPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "isUpdated": true,
+
           "Docs": [
             {
               "Title": "XamlReader - API",
@@ -3631,22 +3629,6 @@
           ],
           "RelatedControls": [
             "Clipboard"
-          ]
-        },
-        {
-          "UniqueId": "ScratchPad",
-          "Title": "Scratch Pad",
-          "Subtitle": "Scratch pad for testing simple XAML markup.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
-          "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
-          "Content": "<p>Look at the <i>ScratchPadPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "isUpdated": true,
-          "Docs": [
-            {
-              "Title": "XamlReader - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
-            }
           ]
         }
       ]
