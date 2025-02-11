@@ -30,15 +30,12 @@ steps:
         targetType: filePath
         filePath: build/GenerateTestPFX.ps1
 
-    - task: DotNetCoreCLI@2
-      displayName: Build WinUI Gallery Package
+    - task: MSBuild@1
+      displayName: Build and Publish WinUI Gallery Package
       inputs:
-        command: 'publish'
-        publishWebProjects: false
-        projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
-        zipAfterPublish: false
-        modifyOutputPath: false
+        solution: '$(solutionGallery)'
+        msbuildArchitecture: 'x64'
+        msbuildArguments: '/target:publish /p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
 
     - script: |
         dir /b /s $(Build.ArtifactStagingDirectory)
