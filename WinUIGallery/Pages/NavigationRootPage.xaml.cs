@@ -25,6 +25,11 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
+using Microsoft.Graphics.Canvas;
+using Microsoft.UI.Xaml.Hosting;
+using WinUIGallery.Shaders;
+using System.Numerics;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUIGallery.Pages;
@@ -150,9 +155,10 @@ public sealed partial class NavigationRootPage : Page
         });
     }
 
-    // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
-    // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
-    public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
+    public void NavigateHelper(
+    Type pageType,
+    object targetPageArguments = null,
+    Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
     {
         NavigationRootPageArgs args = new NavigationRootPageArgs
         {
@@ -161,6 +167,113 @@ public sealed partial class NavigationRootPage : Page
         };
         rootFrame.Navigate(pageType, args, navigationTransitionInfo);
     }
+
+    // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
+    // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
+    public async void Navigate(
+        Type pageType,
+        object targetPageArguments = null,
+        Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
+    {
+        if (m_blockNavigate)
+        {
+            return;
+        }
+
+        // Don't do the animation for the first navigation
+        if (m_firstNavigation || SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.NONE)
+        {
+            m_firstNavigation = false;
+            NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+        }
+        else
+        {
+            // If programmatically calling Navigate, it will result in the selection changing
+            // which will call Navigate a second time. This double Navigate call looks wrong if
+            // ComputeSharp animations are enabled.
+            // Also bad things happen if we start animations while a capture is happening.
+            // Block the animation if we detect either of these things.
+            // Don't block the Navigate, because if we do the Selected item is out of sync.
+            if (m_isCapturePending ||
+                (DateTime.Now - m_lastNavigationTime) < TimeSpan.FromMilliseconds(200))
+            {
+                // Navigate directly, don't start an animation.
+                NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+                return;
+            }
+
+            m_lastNavigationTime = DateTime.Now;
+            overlayPanel.ClearOverlays();
+
+            var overlayVisual = ElementCompositionPreview.GetElementVisual(overlayPanel);
+            var compositor = overlayVisual.Compositor;
+            var dpiScale = CaptureHelper.GetDpi(rootFrame) / 96.0f;
+
+            // As part of capture, we scale the UIElement to account for DPI.
+            // To cover those couple frames, we will use a non-scaled capture using VisualSurface
+            var size = new Vector2((float)(rootFrame.RenderSize.Width), (float)(rootFrame.RenderSize.Height));
+            CompositionVisualSurface visualSurface = compositor.CreateVisualSurface();
+            visualSurface.SourceVisual = ElementCompositionPreview.GetElementVisual(rootFrame);
+            visualSurface.SourceSize = size;
+            var spriteVisual = compositor.CreateSpriteVisual();
+            var surfaceBrush = compositor.CreateSurfaceBrush();
+            surfaceBrush.Surface = visualSurface;
+            surfaceBrush.Stretch = CompositionStretch.None;
+            spriteVisual.Brush = surfaceBrush;
+            spriteVisual.Size = size;
+
+            m_isCapturePending = true;
+            // Cover the UI with the VisualSurface before capturing, because we will scale the UI to capture at high DPI
+            ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, spriteVisual);
+            m_fullBitmap = await CaptureHelper.CaptureElementAsync(rootFrameParent, rootFrame);
+            ElementCompositionPreview.SetElementChildVisual(rootFrameInFront, null);
+            m_isCapturePending = false;
+
+            // Commented out - uncomment to save the capture we got to a file.
+            //await m_fullBitmap.SaveAsync("C:\\temp\\myBitmap.bmp", Microsoft.Graphics.Canvas.CanvasBitmapFileFormat.Bmp);
+
+            // Set up the UIElement to hold the shader
+            UIElement frame = rootFrame;
+            var shaderPanel = new ShaderPanel();
+            shaderPanel.Width = frame.RenderSize.Width;
+            shaderPanel.Height = frame.RenderSize.Height;
+            overlayVisual.Opacity = 1.0f;
+
+            if (SettingsPage.computeSharpAnimationState == SettingsPage.ComputeSharpAnimationState.WIPE)
+            {
+                shaderPanel.InitializeForShader<Wipe>();
+                float radians = (float)new Random().NextDouble() * 3.14f * 2;
+                shaderPanel.WipeDirection = new Vector2(MathF.Cos(radians), MathF.Sin(radians));
+            }
+            else
+            {
+                shaderPanel.InitializeForShader<RippleFade>();
+                var opacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+                opacityAnimation.InsertKeyFrame(0.0f, 1.0f);
+                opacityAnimation.InsertKeyFrame(0.5f, 1.0f);
+                opacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+                opacityAnimation.Duration = shaderPanel.Duration;
+                overlayVisual.StartAnimation("Opacity", opacityAnimation);
+            }
+
+            var transform = frame.TransformToVisual(null);
+            Point offset = transform.TransformPoint(new Point(0, 0));
+            Rect clip = new Rect(offset.X, offset.Y, shaderPanel.Width, shaderPanel.Height);
+
+            shaderPanel.SetShaderInput(m_fullBitmap);
+
+            overlayPanel.AddOverlay(shaderPanel, offset);
+            shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
+
+            NavigateHelper(pageType, targetPageArguments, navigationTransitionInfo);
+        }
+    }
+
+    private bool m_firstNavigation = true;
+    private bool m_isCapturePending = false;
+    private bool m_blockNavigate = false;
+    private CanvasRenderTarget m_fullBitmap;
+    private DateTime m_lastNavigationTime = DateTime.Now;
 
     public void EnsureNavigationSelection(string id)
     {
@@ -174,9 +287,11 @@ public sealed partial class NavigationRootPage : Page
                     {
                         if ((string)item.Tag == id)
                         {
+                            m_blockNavigate = true;
                             group.IsExpanded = true;
                             NavigationView.SelectedItem = item;
                             item.IsSelected = true;
+                            m_blockNavigate = false;
                             return;
                         }
                         else if (item.MenuItems.Count > 0)
@@ -187,10 +302,12 @@ public sealed partial class NavigationRootPage : Page
                                 {
                                     if ((string)innerItem.Tag == id)
                                     {
+                                        m_blockNavigate = true;
                                         group.IsExpanded = true;
                                         item.IsExpanded = true;
                                         NavigationView.SelectedItem = innerItem;
                                         innerItem.IsSelected = true;
+                                        m_blockNavigate = false;
                                         return;
                                     }
                                 }

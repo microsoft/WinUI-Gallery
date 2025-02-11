@@ -34,6 +34,8 @@ public sealed partial class SettingsPage : Page
 
     public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
     private int lastNavigationSelectionMode = 0;
+    public enum ComputeSharpAnimationState { NONE, WIPE, RIPPLE };
+    public static ComputeSharpAnimationState computeSharpAnimationState = ComputeSharpAnimationState.NONE;
 
     public SettingsPage()
     {
@@ -74,6 +76,19 @@ public sealed partial class SettingsPage : Page
                 navigationLocation.SelectedIndex = 1;
             }
             lastNavigationSelectionMode = navigationLocation.SelectedIndex;
+        }
+
+        if (computeSharpAnimationState == ComputeSharpAnimationState.NONE)
+        {
+            computeSharpAnimations.SelectedIndex = 0;
+        }
+        else if (computeSharpAnimationState == ComputeSharpAnimationState.WIPE)
+        {
+            computeSharpAnimations.SelectedIndex = 1;
+        }
+        else if (computeSharpAnimationState == ComputeSharpAnimationState.RIPPLE)
+        {
+            computeSharpAnimations.SelectedIndex = 2;
         }
 
         if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
@@ -166,5 +181,21 @@ public sealed partial class SettingsPage : Page
     {
         await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
     
+    }
+
+    private void computeSharpAnimations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (computeSharpAnimations.SelectedIndex == 0)
+        {
+            computeSharpAnimationState = ComputeSharpAnimationState.NONE;
+        }
+        else if (computeSharpAnimations.SelectedIndex == 1)
+        {
+            computeSharpAnimationState = ComputeSharpAnimationState.WIPE;
+        }
+        else if (computeSharpAnimations.SelectedIndex == 2)
+        {
+            computeSharpAnimationState = ComputeSharpAnimationState.RIPPLE;
+        }
     }
 }

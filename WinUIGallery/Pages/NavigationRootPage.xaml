@@ -13,6 +13,8 @@
     x:Class="WinUIGallery.Pages.NavigationRootPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shaders="using:WinUIGallery.Shaders"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
     HighContrastAdjustment="None">
 
     <Grid>
@@ -146,7 +148,8 @@
             IsTabStop="False"
             IsTitleBarAutoPaddingEnabled="True"
             Loaded="OnNavigationViewControlLoaded"
-            SelectionChanged="OnNavigationViewSelectionChanged">
+            SelectionChanged="OnNavigationViewSelectionChanged"
+            Background="{ThemeResource GalleryBackgroundBrush}">
 
             <!--  Custom TitleBar with NavigationView L-Pattern Overwriting resources  -->
             <NavigationView.Resources>
@@ -176,17 +179,22 @@
                     </AutoSuggestBox.KeyboardAccelerators>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
-
-            <Frame
-                x:Name="rootFrame"
-                Navigated="OnRootFrameNavigated"
-                Navigating="OnRootFrameNavigating" />
+            <Grid>
+                <Grid x:Name="rootFrameParent">
+                    <Frame
+                    x:Name="rootFrame"
+                    Navigated="OnRootFrameNavigated"
+                    Navigating="OnRootFrameNavigating"
+                    Background="{ThemeResource GalleryBackgroundBrush}"/>
+                </Grid>
+                <Grid x:Name="rootFrameInFront"/>
+            </Grid>
             <NavigationView.MenuItems>
-                <NavigationViewItem
-                    x:Name="Home"
-                    AutomationProperties.AutomationId="Home"
-                    Content="Home"
-                    Icon="Home" />
+                    <NavigationViewItem
+                        x:Name="Home"
+                        AutomationProperties.AutomationId="Home"
+                        Content="Home"
+                        Icon="Home" />
 
                 <NavigationViewItem
                     x:Name="DesignGuidanceItem"
@@ -316,6 +324,7 @@
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
         </NavigationView>
+        <shaders:OverlayPanel x:Name="overlayPanel" Background="Transparent"/>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="TitleBarStates">
                 <VisualState x:Name="Default" />

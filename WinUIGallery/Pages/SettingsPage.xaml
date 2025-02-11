@@ -86,6 +86,17 @@
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
 
+                <toolkit:SettingsCard Header="ComputeSharp Animations">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xF594;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ComboBox x:Name="computeSharpAnimations" SelectionChanged="computeSharpAnimations_SelectionChanged">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Wipe" />
+                        <ComboBoxItem Content="Ripple" />
+                    </ComboBox>
+                </toolkit:SettingsCard>
+
                 <!--  About  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                 <toolkit:SettingsExpander Description="© 2024 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">

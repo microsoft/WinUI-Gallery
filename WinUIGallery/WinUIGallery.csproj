@@ -37,6 +37,11 @@
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
+        <CsWinRTIIDOptimizerOptOut>true</CsWinRTIIDOptimizerOptOut>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <Flavor Condition="'$(Configuration)' == 'Debug' Or '$(Configuration)' == 'Debug-Unpackaged'">Debug</Flavor>
+        <Flavor Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'Release-Unpackaged'">Release</Flavor>
+        <OutDir>$(SolutionDir)\..\$(Platform)\$(Flavor)\</OutDir>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -103,6 +108,8 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
     <ItemGroup>
+      <PackageReference Include="ComputeSharp.D2D1.WinUI" Version="$(ComputeSharpD2D1Version)" />
+      <PackageReference Include="ComputeSharp.WinUI" Version="$(ComputeSharpWinUIVersion)" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
@@ -302,6 +309,8 @@
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
         <None Remove="Styles\TextBlock.xaml" />
+        <None Remove="Shaders\OverlayPanel.xaml" />
+        <None Remove="Shaders\ShaderPanel.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -535,6 +544,19 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="Styles\Button.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompositionInteropProjection\CompositionInteropProjection.csproj" />
+  </ItemGroup>
+    <ItemGroup>
+      <Page Update="Shaders\OverlayPanel.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Shaders\ShaderPanel.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
