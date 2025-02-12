@@ -308,10 +308,11 @@
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
                 <NavigationViewItemHeader Content="Controls" />
-                <NavigationViewItem
-                    x:Name="AllControlsItem"
-                    Content="All"
-                    Icon="AllApps" />
+                <NavigationViewItem x:Name="AllControlsItem" Content="All">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xF0E2;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
         </NavigationView>
