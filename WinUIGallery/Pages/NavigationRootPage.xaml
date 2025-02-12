@@ -310,10 +310,9 @@
                 <NavigationViewItemHeader Content="Controls" />
                 <NavigationViewItem x:Name="AllControlsItem" Content="All">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF0E2;" />
+                        <FontIcon Glyph="&#xE8A9;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
         </NavigationView>
         <VisualStateManager.VisualStateGroups>
