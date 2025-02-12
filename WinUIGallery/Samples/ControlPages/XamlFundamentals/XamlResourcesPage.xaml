@@ -56,7 +56,10 @@
         <controls:ControlExample CSharpSource="XamlResources\XamlResourcesSample1_csharp.txt" XamlSource="XamlResources\XamlResourcesSample1_xaml.txt">
             <controls:ControlExample.Example>
                 <!--  StackPanel using the application-level resource 'PrimaryColor'  -->
-                <StackPanel Padding="8" Background="{StaticResource PrimaryColor}">
+                <StackPanel
+                    Padding="8"
+                    Background="{StaticResource PrimaryColor}"
+                    CornerRadius="{StaticResource ControlCornerRadius}">
                     <TextBlock
                         FontSize="24"
                         Foreground="White"
@@ -66,20 +69,27 @@
                     <StackPanel
                         Margin="8"
                         Padding="8"
-                        Background="{StaticResource HighlightBrush}">
+                        Background="{StaticResource HighlightBrush}"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
                         <TextBlock
                             FontSize="18"
                             Foreground="{StaticResource FontColor}"
                             Text="Using page-level resources" />
 
                         <!--  StackPanel with control-level resources defined within its own Resources  -->
-                        <StackPanel Margin="8" Padding="8">
+                        <StackPanel
+                            Margin="8"
+                            Padding="8"
+                            CornerRadius="{StaticResource ControlCornerRadius}">
                             <StackPanel.Resources>
                                 <!--  Define control-level resources for font size and text  -->
                                 <Color x:Key="BackgroundColor">#E2241A</Color>
                                 <x:String x:Key="Description">Using control-level resources</x:String>
                             </StackPanel.Resources>
-                            <Grid Padding="8" Background="{StaticResource BackgroundColor}">
+                            <Grid
+                                Padding="8"
+                                Background="{StaticResource BackgroundColor}"
+                                CornerRadius="{StaticResource ControlCornerRadius}">
                                 <TextBlock Foreground="White" Text="{StaticResource Description}" />
                             </Grid>
                         </StackPanel>
@@ -167,12 +177,15 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="{ThemeResource BackgroundBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
                             Spacing="4">
                             <TextBlock
                                 Foreground="{ThemeResource TextBrush}"
                                 Style="{StaticResource SubtitleTextBlockStyle}"
                                 Text="{ThemeResource ThemeString}" />
-                            <Image Source="{ThemeResource ImageSource}" />
+                            <Grid CornerRadius="{StaticResource ControlCornerRadius}">
+                                <Image Source="{ThemeResource ImageSource}" />
+                            </Grid>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
