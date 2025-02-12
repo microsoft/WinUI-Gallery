@@ -6,7 +6,6 @@ pool:
 
 variables:
     solutionGallery: "**/WinUIGallery.sln"
-    solutionUITests: "**/UITests.sln"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
     appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'
@@ -52,7 +51,7 @@ steps:
         failOnMinTestsNotRun: true
         minimumExpectedTests: '3'
         testAssemblyVer2: |
-          **\WinUIGalleryUnitTests.build.appxrecipe
+          **\WinUIGallery.UnitTests.build.appxrecipe
 
     - task: PowerShell@2
       displayName: Uninstall existing WinUI Gallery packages
@@ -78,18 +77,6 @@ steps:
           failOnStderr: true
           workingDirectory: "$(System.DefaultWorkingDirectory)"
 
-    - task: NuGetCommand@2
-      displayName: Restore Packages for UI Tests Project
-      inputs:
-          restoreSolution: "$(solutionUITests)"
-
-    - task: VSBuild@1
-      displayName: Build UI Tests Project
-      inputs:
-          platform: "$(buildPlatform)"
-          solution: "$(solutionUITests)"
-          configuration: "$(buildConfiguration)"
-
     - task: Windows Application Driver@0
       displayName: Start Windows Application Driver
       inputs:
@@ -101,7 +88,7 @@ steps:
       inputs:
           testSelector: "testAssemblies"
           testAssemblyVer2: |
-              **\UITests.dll
+              **\publish\WinUIGallery.UITests.dll
               !**\*TestAdapter.dll
               !**\obj\**
               !**\ref\**
