@@ -28,9 +28,9 @@ public class UnitTests
 
         var expectedGroups = new List<string>
         {
-            "Fundamentals",
-            "Design",
+            "Design guidance",
             "Accessibility",
+            "XAML fundamentals",
             "Menus & toolbars",
             "Collections",
             "Date & time",
