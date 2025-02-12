@@ -27,12 +27,12 @@
         <StaticResource x:Key="GridViewItemForegroundSelected" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
 
         <Style x:Key="CodeValuePresenterStyle" TargetType="controls:SampleCodePresenter">
-            <Setter Property="BorderBrush" Value="{ThemeResource ControlStrokeColorSecondaryBrush}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="MinHeight" Value="32" />
             <Setter Property="Padding" Value="24" />
-            <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
-            <Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="SampleType" Value="Inline" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,0,0,8" />
@@ -112,8 +112,7 @@
                         </Paragraph>
                         <Paragraph>
                             On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
-                            .</Paragraph>
+                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
                 <toolkit:SettingsCard
@@ -169,24 +168,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="316" />
                 </Grid.ColumnDefinitions>
-                <ScrollViewer
-                    Padding="4"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    AutomationProperties.Name="Icons">
-                    <ItemsView
+                <ItemsView
                         x:Name="IconsItemsView"
                         MinWidth="100"
-                        Margin="0,0,0,36"
                         HorizontalAlignment="Stretch"
                         ItemTemplate="{StaticResource IconTemplate}"
                         SelectionChanged="IconsItemsView_SelectionChanged"
                         TabFocusNavigation="Once">
-                        <ItemsView.Layout>
-                            <UniformGridLayout Orientation="Horizontal" />
-                        </ItemsView.Layout>
-                    </ItemsView>
-                </ScrollViewer>
+                    <ItemsView.Layout>
+                        <UniformGridLayout Orientation="Horizontal" />
+                    </ItemsView.Layout>
+                </ItemsView>
 
                 <Grid
                     x:Name="SidePanel"
@@ -197,7 +189,7 @@
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}"
                     Visibility="Collapsed">
-                    <StackPanel>
+                    <StackPanel Spacing="2">
                         <FontIcon
                             Margin="0,0,0,24"
                             HorizontalAlignment="Left"
@@ -226,7 +218,6 @@
                             Text="XAML" />
                         <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
                         <TextBlock
-                            Margin="0,0,0,4"
                             FontSize="12"
                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                             Text="C#" />

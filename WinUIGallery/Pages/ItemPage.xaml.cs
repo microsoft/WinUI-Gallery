@@ -25,7 +25,7 @@ namespace WinUIGallery.Pages;
 public sealed partial class ItemPage : Page
 {
     private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
-    private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/ControlPages/";
+    private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/Samples/ControlPages/";
 
     public ControlInfoDataItem Item
     {

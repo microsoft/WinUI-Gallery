@@ -301,6 +301,11 @@
                             AutomationProperties.AutomationId="Templates"
                             Content="Templates"
                             Tag="Templates" />
+                        <NavigationViewItem
+                            x:Name="ScratchPadPage"
+                            AutomationProperties.AutomationId="ScratchPad"
+                            Content="Scratch Pad"
+                            Tag="ScratchPad" />
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
