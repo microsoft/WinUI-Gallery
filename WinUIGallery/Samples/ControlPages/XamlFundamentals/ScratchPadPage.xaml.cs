@@ -1,26 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Media.Capture.Frames;
-using Windows.Media.Capture;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Windows.Media.MediaProperties;
-using Windows.Storage.Streams;
-using System.ComponentModel;
-using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Markup;
-using System.Xml;
 using Windows.Storage;
 
 namespace WinUIGallery.ControlPages;
