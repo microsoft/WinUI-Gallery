@@ -16,7 +16,7 @@
                 ItemsSource="{x:Bind Children}">
 
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="20" Source="../Assets/SampleMedia/folder.png" />
+                    <Image Width="20" Source="ms-appx:///Assets/SampleMedia/folder.png" />
                     <TextBlock Margin="0,0,10,0" />
                     <TextBlock Text="{x:Bind Name}" />
                 </StackPanel>
