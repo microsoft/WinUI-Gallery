@@ -10,7 +10,7 @@
         Margin="0,12,0,0"
         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
         BorderThickness="1"
-        CornerRadius="8">
+        CornerRadius="{StaticResource OverlayCornerRadius}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -29,17 +29,17 @@
             Padding="12"
             Background="{ThemeResource ExpanderContentBackground}"
             BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-            BorderThickness="0,1,0,0"
-            CornerRadius="{ThemeResource ControlCornerRadius}">
+            BorderThickness="0,1,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
             <Grid ColumnSpacing="12" RowSpacing="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" MinWidth="168" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
                 <RichEditBox
                     x:Name="textbox"
                     AcceptsReturn="True"
@@ -58,7 +58,7 @@
                     Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Spacing="12">
+                    Spacing="8">
                     <Button
                         x:Name="loadButton"
                         HorizontalAlignment="Stretch"
