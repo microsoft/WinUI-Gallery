@@ -1,4 +1,4 @@
-![WinUI Gallery hero image](README_Images/WinUIGalleryLanding.PNG)
+![WinUI Gallery hero image](docs/images/WinUIGalleryLanding.PNG)
 
 <h1 align="center">
     WinUI 3 Gallery
@@ -11,12 +11,12 @@
 This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
 
 <p align="center">
-<img src="README_Images/winui-gallery.png" alt="WinUI 3 Gallery" width="400"/>
+<img src="docs/images/winui-gallery.png" alt="WinUI 3 Gallery" width="400"/>
 </p>
 <p align="center">
 <a href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true
 	&mode=mini">
-	<img alt="Store badge" src="README_Images/storeBadge.png" width="200"/>
+	<img alt="Store badge" src="docs/images/storeBadge.png" width="200"/>
 </a>
 </p>
 
@@ -46,7 +46,7 @@ Quick start guide to building WinUI 3 Gallery locally:
 > [!NOTE]
 > The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
 
-**Required [Visual Studio components](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
+**Required [Visual Studio components](https://learn.microsoft.com/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
 - Windows application development
 
 ### 2. Clone the Repository
@@ -57,26 +57,21 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 
 ### 3. Open .sln with Visual Studio and Build!
 ```shell
-.\WinUIGallery\WinUIGallery.DesktopWap.sln
+.\WinUIGallery.sln
 ```
-Make sure to select `WinUIGallery.DesktopWap.Package` for startup project in Visual Studio.
+Ensure that `WinUIGallery Packaged` is set as the startup project in Visual Studio.
 
 ## ➡️ Further information
 
 To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
-To contact the authors, please reach out to ControlsGallery@microsoft.com
 
 ### Related topics
 
-[Get started with building WinUI apps](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here)  
-[WinUI](https://aka.ms/windev)  
-[Template Studio for WinUI](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs)
-
-###  Related samples
-
-[RSS reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)  
-[Lunch Scheduler app sample](https://github.com/Microsoft/Windows-appsample-lunch-scheduler)  
-[Customers Orders Database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
+[Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
+[About WinUI](https://aka.ms/windev)
+[WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
+[WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
+[WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
