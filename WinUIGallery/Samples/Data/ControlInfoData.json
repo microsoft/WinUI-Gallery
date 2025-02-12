@@ -2,11 +2,136 @@
   "$schema": "ControlInfoDataSchema.json",
   "Groups": [
     {
-      "UniqueId": "Design_Guidance",
-      "Title": "Design guidance",
+      "UniqueId": "FundamentalsItem",
+      "Title": "Fundamentals",
+      "IsSpecialSection": true,
+      "Folder": "Fundamentals",
+      "Items": [
+        {
+          "UniqueId": "XamlResources",
+          "Title": "Resources",
+          "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
+          "Docs": [
+            {
+              "Title": "ResourceDictionary and XAML resource references",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
+            },
+            {
+              "Title": "ResourceDictionary - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
+            },
+            {
+              "Title": "XAML theme resources",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
+            }
+          ]
+        },
+        {
+          "UniqueId": "XamlStyles",
+          "Title": "Style",
+          "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "XAML Styles in WinUI 3 are reusable sets of property values that you can apply to multiple controls. They help maintain a consistent look and feel across your app. Instead of setting the same properties on every control, you define a style once and then reuse it wherever needed.",
+          "Docs": [
+            {
+              "Title": "Style - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
+            },
+            {
+              "Title": "XAML styles",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Binding",
+          "Title": "Binding",
+          "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
+          "Docs": [
+            {
+              "Title": "Data binding",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
+            },
+            {
+              "Title": "{x:Bind} markup extension",
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
+            },
+            {
+              "Title": "{Binding} markup extension",
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
+            },
+            {
+              "Title": "Binding - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
+            },
+            {
+              "Title": "IValueConverter Interface - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Templates",
+          "Title": "Templates",
+          "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "FrameworkTemplate"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
+          "Docs": [
+            {
+              "Title": "XAML Control Templates",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
+            },
+            {
+              "Title": "ControlTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
+            },
+            {
+              "Title": "DataTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
+            },
+            {
+              "Title": "ItemsPanelTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
+            }
+          ]
+        },
+        {
+          "UniqueId": "ScratchPad",
+          "Title": "Scratch Pad",
+          "Subtitle": "Scratch pad for testing simple XAML markup",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
+          "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
+
+          "Docs": [
+            {
+              "Title": "XamlReader - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "DesignItem",
+      "Title": "Design",
       "IconGlyph": "",
       "IsSpecialSection": true,
-      "Folder": "DesignGuidance",
+      "Folder": "Design",
       "Items": [
         {
           "UniqueId": "Color",
@@ -186,131 +311,6 @@
             {
               "Title": "Complete guide to Narrator",
               "Uri": "https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "UniqueId": "XamlFundamentalsItem",
-      "Title": "XAML fundamentals",
-      "IsSpecialSection": true,
-      "Folder": "XamlFundamentals",
-      "Items": [
-        {
-          "UniqueId": "XamlResources",
-          "Title": "Resources",
-          "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
-          "Docs": [
-            {
-              "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
-            },
-            {
-              "Title": "ResourceDictionary - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
-            },
-            {
-              "Title": "XAML theme resources",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
-            }
-          ]
-        },
-        {
-          "UniqueId": "XamlStyles",
-          "Title": "Style",
-          "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML Styles in WinUI 3 are reusable sets of property values that you can apply to multiple controls. They help maintain a consistent look and feel across your app. Instead of setting the same properties on every control, you define a style once and then reuse it wherever needed.",
-          "Docs": [
-            {
-              "Title": "Style - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
-            },
-            {
-              "Title": "XAML styles",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Binding",
-          "Title": "Binding",
-          "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
-          "Docs": [
-            {
-              "Title": "Data binding",
-              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
-            },
-            {
-              "Title": "{x:Bind} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
-            },
-            {
-              "Title": "{Binding} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
-            },
-            {
-              "Title": "Binding - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
-            },
-            {
-              "Title": "IValueConverter Interface - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Templates",
-          "Title": "Templates",
-          "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "FrameworkTemplate"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
-          "Docs": [
-            {
-              "Title": "XAML Control Templates",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
-            },
-            {
-              "Title": "ControlTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
-            },
-            {
-              "Title": "DataTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
-            },
-            {
-              "Title": "ItemsPanelTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
-            }
-          ]
-        },
-        {
-          "UniqueId": "ScratchPad",
-          "Title": "Scratch Pad",
-          "Subtitle": "Scratch pad for testing simple XAML markup",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
-          "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
-
-          "Docs": [
-            {
-              "Title": "XamlReader - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
             }
           ]
         }
