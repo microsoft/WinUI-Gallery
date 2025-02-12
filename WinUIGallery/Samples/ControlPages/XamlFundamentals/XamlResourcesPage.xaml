@@ -86,7 +86,10 @@
                                 <Color x:Key="BackgroundColor">#E2241A</Color>
                                 <x:String x:Key="Description">Using control-level resources</x:String>
                             </StackPanel.Resources>
-                            <Grid Padding="8" Background="{StaticResource BackgroundColor}">
+                            <Grid
+                                Padding="8"
+                                Background="{StaticResource BackgroundColor}"
+                                CornerRadius="{StaticResource ControlCornerRadius}">
                                 <TextBlock Foreground="White" Text="{StaticResource Description}" />
                             </Grid>
                         </StackPanel>
