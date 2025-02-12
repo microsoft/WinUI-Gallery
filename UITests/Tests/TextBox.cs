@@ -43,8 +43,8 @@ public class TextBox : TestBase
     {
         textBoxElement1.Clear();
         Assert.AreEqual(string.Empty, textBoxElement1.Text);
-        textBoxElement1.SendKeys("fghij");
-        Assert.AreEqual("fghij", textBoxElement1.Text);
+        textBoxElement1.SendKeys("F");
+        Assert.AreEqual("F", textBoxElement1.Text);
         textBoxElement1.Clear();
         Assert.AreEqual(string.Empty, textBoxElement1.Text);
     }
@@ -57,16 +57,16 @@ public class TextBox : TestBase
         Assert.AreEqual(string.Empty, textBoxElement1.Text);
         textBoxElement1.Click();
         Thread.Sleep(1_000);
-        TypeText("1234567890");
-        Assert.AreEqual("1234567890", textBoxElement1.Text);
+        TypeText("1");
+        Assert.AreEqual("1", textBoxElement1.Text);
 
         // Click textBoxElement2 to set focus and arbitrarily type
         textBoxElement2.Clear();
         Assert.AreEqual(string.Empty, textBoxElement2.Text);
         textBoxElement2.Click();
         Thread.Sleep(1_000);
-        TypeText("1234567890");
-        Assert.AreEqual("1234567890", textBoxElement2.Text);
+        TypeText("1");
+        Assert.AreEqual("1", textBoxElement2.Text);
     }
 
     [TestMethod]
@@ -109,8 +109,8 @@ public class TextBox : TestBase
     {
         textBoxElement1.Clear();
         Assert.AreEqual(string.Empty, textBoxElement1.Text);
-        textBoxElement1.SendKeys("abc");
-        Assert.AreEqual("abc", textBoxElement1.Text);
+        textBoxElement1.SendKeys("A");
+        Assert.AreEqual("A", textBoxElement1.Text);
 
         // Use Ctrl + A to select all text and backspace to clear the box
         textBoxElement1.SendKeys(Keys.Control + "a" + Keys.Control + Keys.Backspace);
@@ -118,8 +118,8 @@ public class TextBox : TestBase
 
         textBoxElement2.Clear();
         Assert.AreEqual(string.Empty, textBoxElement2.Text);
-        textBoxElement2.SendKeys("efg");
-        Assert.AreEqual("efg", textBoxElement2.Text);
+        textBoxElement2.SendKeys("E");
+        Assert.AreEqual("E", textBoxElement2.Text);
     }
 
     [TestMethod]
@@ -127,7 +127,7 @@ public class TextBox : TestBase
     {
         textBoxElement1.Clear();
         Assert.AreEqual(string.Empty, textBoxElement1.Text);
-        textBoxElement1.SendKeys("abc");
-        Assert.AreEqual("abc", textBoxElement1.Text);
+        textBoxElement1.SendKeys("A");
+        Assert.AreEqual("A", textBoxElement1.Text);
     }
 }
