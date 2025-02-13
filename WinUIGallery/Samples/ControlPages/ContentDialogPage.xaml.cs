@@ -103,6 +103,5 @@ namespace WinUIGallery.ControlPages;
                 dialogShaderPanel.FirstRender += (s, e) => deferral.Complete();
                 dialogShaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(dialogShaderPanel);
             }
-            //await Task.CompletedTask;
         }
     }

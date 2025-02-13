@@ -31,7 +31,7 @@ steps:
         filePath: build/GenerateTestPFX.ps1
 
     - task: MSBuild@1
-      displayName: Build and Publish WinUI Gallery Package
+      displayName: Build WinUI Gallery Package
       inputs:
         solution: '$(solutionGallery)'
         msbuildArchitecture: 'x64'
