@@ -50,7 +50,7 @@
             HorizontalContentAlignment="Stretch"
             XamlSource="Geometry/GeometrySample_xaml.txt">
             <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" VerticalScrollBarVisibility="Hidden">
                     <Canvas
                         Width="505"
                         Height="271"
@@ -115,7 +115,7 @@
                     </Canvas>
                 </ScrollViewer>
 
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
                         <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>

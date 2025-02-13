@@ -115,7 +115,7 @@
             Grid.Row="2"
             Margin="0,36,0,0"
             Style="{StaticResource GalleryTileGridStyle}">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Padding="12,24,12,12">
                     <!--  header  -->
                     <Grid Margin="16,0,0,0" HorizontalAlignment="Stretch">
