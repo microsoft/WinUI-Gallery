@@ -55,11 +55,9 @@ Quick start guide for building the WinUI 3 Gallery locally:
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
-### 3. Open .sln with Visual Studio and Build!
-```shell
-WinUIGallery.DesktopWap.sln
-```
-Ensure that the `WinUIGallery.DesktopWap.Packaged` is set as the startup project in Visual Studio.
+### 3. Open WinUIGallery.sln with Visual Studio and Build!
+
+Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
 
 ## ➡️ Further Information
 
