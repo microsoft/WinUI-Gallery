@@ -20,7 +20,7 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 </a>
 </p>
 
-## ⭐ Features:
+## ⭐ Features
 
 - **WinUI Controls Samples:** Each control page shows the markup and codebehind used to create each example.
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
@@ -39,7 +39,7 @@ Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?
 You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
 
 ## 🚀 Getting Started
-Quick start guide to building WinUI 3 Gallery locally:
+Quick start guide for building the WinUI 3 Gallery locally:
 
 ### 1. Set up the Environment
 
@@ -55,23 +55,22 @@ Quick start guide to building WinUI 3 Gallery locally:
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
-### 3. Open .sln with Visual Studio and Build!
-```shell
-.\WinUIGallery.sln
-```
-Ensure that `WinUIGallery Packaged` is set as the startup project in Visual Studio.
+### 3. Open WinUIGallery.sln with Visual Studio and Build!
 
-## ➡️ Further information
+Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
+## ➡️ Further Information
 
-### Related topics
+To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
 
-[Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
-[About WinUI](https://aka.ms/windev)
-[WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
-[WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
-[WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
+### Related Topics
+
+
+- [Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
+- [About WinUI](https://aka.ms/windev)
+- [WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
+- [WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
+- [WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
