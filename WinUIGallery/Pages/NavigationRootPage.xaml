@@ -226,7 +226,7 @@
 
                 <NavigationViewItem
                     x:Name="DesignItem"
-                    AutomationProperties.AutomationId="Design"
+                    AutomationProperties.AutomationId="DesignItem"
                     Content="Design"
                     Tag="Design">
                     <NavigationViewItem.Icon>
