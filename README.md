@@ -38,7 +38,8 @@ Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?
 
 You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
 
-## 🚀 Getting Started
+## 🚀 Getting started
+
 Quick start guide for building the WinUI 3 Gallery locally:
 
 ### 1. Set up the environment
