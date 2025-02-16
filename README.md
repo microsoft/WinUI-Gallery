@@ -42,7 +42,8 @@ You can also learn more about current happenings with WinUI Gallery in the [proj
 
 ## 🚀 Getting started
 
-Quick start guide for building the WinUI 3 Gallery locally:
+Quick start guide to building the WinUI 3 Gallery:
+
 
 ### 1. Set up the environment
 
