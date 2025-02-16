@@ -41,7 +41,7 @@ You can also learn more about current happenings with WinUI Gallery in the [proj
 ## 🚀 Getting Started
 Quick start guide for building the WinUI 3 Gallery locally:
 
-### 1. Set up the Environment
+### 1. Set up the environment
 
 > [!NOTE]
 > The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
