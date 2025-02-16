@@ -65,7 +65,8 @@ Ensure that the `WinUIGallery` project is set as the startup project in Visual S
 
 ## ➡️ Further information
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
+To learn more about Windows app development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
+
 
 ### Related topics
 
