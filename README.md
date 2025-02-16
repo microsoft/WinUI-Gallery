@@ -20,14 +20,16 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 </a>
 </p>
 
-## ⭐ Features:
+## ⭐ Features
 
-- **WinUI Controls Samples:** Each control page shows the markup and codebehind used to create each example.
-- **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
-- **Basic Layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
-- **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
-- **Design & Accessibility Guidance**: Design and accessibility pages help make the gallery a useful developer companion app. 
-- **Version Adaptive Code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
+- **WinUI controls samples:** each control page shows the markup and codebehind used to create each example.
+
+- **Use the Microsoft.UI.Xaml (WinUI) library:** the app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
+
+- **Adaptive UI:** in addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
+
+- **Design & accessibility guidance**: design and accessibility pages help make the gallery a useful developer companion app. 
+
 
 
 ## 👏 Contribute to WinUI Gallery
@@ -38,10 +40,12 @@ Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?
 
 You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
 
-## 🚀 Getting Started
-Quick start guide to building WinUI 3 Gallery locally:
+## 🚀 Getting started
 
-### 1. Set up the Environment
+Quick start guide to building the WinUI 3 Gallery:
+
+
+### 1. Set up the environment
 
 > [!NOTE]
 > The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
@@ -55,23 +59,23 @@ Quick start guide to building WinUI 3 Gallery locally:
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
-### 3. Open .sln with Visual Studio and Build!
-```shell
-.\WinUIGallery.sln
-```
-Ensure that `WinUIGallery Packaged` is set as the startup project in Visual Studio.
+### 3. Open WinUIGallery.sln with Visual Studio and build!
+
+Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
 
 ## ➡️ Further information
 
-To obtain information about Windows 11 development, go to the [Windows Dev Center](https://developer.microsoft.com/windows)  
+To learn more about Windows app development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
+
 
 ### Related topics
 
-[Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
-[About WinUI](https://aka.ms/windev)
-[WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
-[WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
-[WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
+
+- [Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
+- [About WinUI](https://aka.ms/windev)
+- [WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
+- [WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
+- [WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
 
 ## 🏆 Contributors
 Thanks to our amazing contributors!
