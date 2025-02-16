@@ -28,7 +28,8 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 
 - **Basic Layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
-- **Design & Accessibility Guidance**: Design and accessibility pages help make the gallery a useful developer companion app. 
+- **Design & accessibility guidance**: design and accessibility pages help make the gallery a useful developer companion app. 
+
 - **Version Adaptive Code:** This sample shows how to write version adaptive code so that the app can run on previous versions of Windows while also using the latest capabilities on the most recent verison of Windows.
 
 
