@@ -32,6 +32,6 @@ public sealed partial class TemplatesPage : Page
     private static string ReadSampleCodeFileContent(string sampleCodeFileName)
     {
         StorageFolder folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-        return File.ReadAllText($"{folder.Path}\\ControlPagesSampleCode\\Templates\\{sampleCodeFileName}.txt");
+        return File.ReadAllText($"{folder.Path}\\Samples\\SampleCode\\Templates\\{sampleCodeFileName}.txt");
     }
 }
