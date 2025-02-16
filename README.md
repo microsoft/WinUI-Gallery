@@ -22,7 +22,8 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 
 ## ⭐ Features
 
-- **WinUI Controls Samples:** Each control page shows the markup and codebehind used to create each example.
+- **WinUI controls samples:** each control page shows the markup and codebehind used to create each example.
+
 - **Use the Microsoft.UI.Xaml (WinUI) Library:** The app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
 - **Basic Layout:** This sample will show all of the possible layout options for your app and allow you to interact with the panels to show how to achieve any layout you are looking for.
 - **Adaptive UI:** In addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
