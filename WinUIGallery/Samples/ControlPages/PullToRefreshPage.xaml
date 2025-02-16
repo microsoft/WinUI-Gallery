@@ -5,36 +5,35 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <ScrollViewer>
-        <StackPanel>
-            <controls:ControlExample x:Name="Example1" HeaderText="Basic PullToRefresh">
-                <controls:ControlExample.Example>
-                    <Grid>
-                        <RefreshContainer
-                            x:Name="rc"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            RefreshRequested="rc_RefreshRequested">
-                            <ListView
-                                x:Name="lv"
-                                Height="200"
-                                MinWidth="200"
-                                BorderBrush="{ThemeResource TextControlBorderBrush}"
-                                BorderThickness="1" />
-                        </RefreshContainer>
-                    </Grid>
-                </controls:ControlExample.Example>
+    mc:Ignorable="d">   
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="Basic PullToRefresh">
+            <controls:ControlExample.Example>
+                <Grid>
+                    <RefreshContainer
+                        x:Name="rc"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RefreshRequested="rc_RefreshRequested">
+                        <ListView
+                            x:Name="lv"
+                            Height="200"
+                            MinWidth="200"
+                            BorderBrush="{ThemeResource TextControlBorderBrush}"
+                            BorderThickness="1" />
+                    </RefreshContainer>
+                </Grid>
+            </controls:ControlExample.Example>
 
-                <controls:ControlExample.Xaml>
-                    <x:String xml:space="preserve">
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
 &lt;RefreshContainer x:Name="rc" RefreshRequested="rc_RefreshRequested"&gt;
     &lt;ListView x:Name="lv" Width="300" Height="300" BorderThickness="1" BorderBrush="Black"/&gt;
 &lt;/RefreshContainer&gt;
-                </x:String>
-                </controls:ControlExample.Xaml>
-                <controls:ControlExample.CSharp>
-                    <x:String xml:space="preserve">
+            </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
 ObservableCollection&lt;string&gt; items = new ObservableCollection&lt;string&gt;();
 listview.ItemsSource = items;
 
@@ -55,22 +54,22 @@ private void WorkCompleted()
         this.RefreshCompletionDeferral = null;
     }
 }
-                    </x:String>
-                </controls:ControlExample.CSharp>
-            </controls:ControlExample>
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
-            <controls:ControlExample x:Name="Example2" HeaderText="Custom Icon PullToRefresh">
-                <controls:ControlExample.Example>
-                    <Grid x:Name="Ex2Grid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </controls:ControlExample.Example>
+        <controls:ControlExample x:Name="Example2" HeaderText="Custom Icon PullToRefresh">
+            <controls:ControlExample.Example>
+                <Grid x:Name="Ex2Grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </controls:ControlExample.Example>
 
-                <controls:ControlExample.Xaml>
-                    <x:String xml:space="preserve">
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
 &lt;RefreshContainer x:Name="rc" RefreshRequested="rc_RefreshRequested"&gt;
     &lt;RefreshContainer.Visualizer&gt;
         &lt;RefreshVisualizer RefreshStateChanged="rv2_RefreshStateChanged"&gt;
@@ -81,10 +80,10 @@ private void WorkCompleted()
     &lt;/RefreshContainer.Visualizer&gt;
     &lt;ListView x:Name="lv" Width="300" Height="300" BorderThickness="1" BorderBrush="Black"/&gt;
 &lt;/RefreshContainer&gt;
-                </x:String>
-                </controls:ControlExample.Xaml>
-                <controls:ControlExample.CSharp>
-                    <x:String xml:space="preserve">
+            </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
 ObservableCollection&lt;string&gt; items = new ObservableCollection&lt;string&gt;();
 listview.ItemsSource = items;
 
@@ -110,10 +109,9 @@ private void rv2_RefreshStateChanged()
     var visualizerContentVisual = ElementCompositionPreview.GetElementVisual(rv2.Content);
     visualizerContentVisual.StopAnimation("RotationAngle");
 }
-                    </x:String>
-                </controls:ControlExample.CSharp>
-            </controls:ControlExample>
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
 
-        </StackPanel>
-    </ScrollViewer>
+    </StackPanel>
 </Page>
