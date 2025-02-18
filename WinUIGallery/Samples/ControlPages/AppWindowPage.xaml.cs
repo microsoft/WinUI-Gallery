@@ -26,7 +26,32 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 appWindow = new SampleWindow1((string)WindowTitle.SelectedItem, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
-        appWindow.Activate();
+        SampleWindow1 window = new SampleWindow1((string)WindowTitle.SelectedItem, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
+        window.Activate();
     }
+
+    private void ShowSampleWindow2(object sender, RoutedEventArgs e)
+    {
+        SampleWindow2 window = new SampleWindow2(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn);
+        window.Activate();
+    }
+
+    private void HasBorder_Toggled(object sender, RoutedEventArgs e)
+    {
+        if(!HasBorder.IsOn)
+        {
+            HasTitleBar.IsOn = false;
+        }
+    }
+
+    private void HasTitleBar_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (HasTitleBar.IsOn)
+        {
+            HasBorder.IsOn = true;
+        }
+    }
+
+    string BoolToLowerString(bool value) => value.ToString().ToLower();
+
 }

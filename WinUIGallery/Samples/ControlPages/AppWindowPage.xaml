@@ -13,7 +13,7 @@
             <controls:ControlExample.Example>
 
                 <StackPanel>
-                    <Button Margin="0,10,0,0"
+                    <Button Margin="0,8,0,0"
                             Click="ShowSampleWindow1">Show sample window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
@@ -86,9 +86,7 @@
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Window ...&gt;
-    &lt;StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Spacing="10"&gt;
+    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10"&gt;
         &lt;TextBlock Text="This is a sample window" /&gt;
     &lt;/StackPanel&gt;
 &lt;/Window&gt;
@@ -140,6 +138,154 @@ public sealed partial class SampleWindow1 : Window
                                                      Value="{x:Bind XPoint.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Y"
                                                      Value="{x:Bind YPoint.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+        
+        <controls:ControlExample HeaderText="AppWindow with Overlaped presenter">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
+                    <Button Margin="0,8,0,0"
+                            Click="ShowSampleWindow2">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ToggleSwitch x:Name="IsAlwaysOnTop"
+                                  Header="IsAlwaysOnTop"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="False">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Keeps the window above all other windows when enabled."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsMaximizable"
+                                  Header="IsMaximizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Allows the window to be maximized to full screen."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsMinimizable"
+                                  Header="IsMinimizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Enables minimizing the window to the taskbar."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsResizable"
+                                  Header="IsResizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Allows resizing the window by dragging its edges."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="HasBorder"
+                                  Header="HasBorder"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true"
+                                  Toggled="HasBorder_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Determines if the window has a visible outer border."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="HasTitleBar"
+                                  Header="HasTitleBar"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true"
+                                  Toggled="HasTitleBar_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Specifies whether the window includes a system title bar."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Window ...>
+    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        &lt;Button x:Name="MaximizeBtn" Content="Maximize" Click="MaximizeBtn_Click" Width="150" />
+        &lt;Button x:Name="RestoreBtn" Content="Restore" Click="RestoreBtn_Click" Width="150" />
+        &lt;Button x:Name="MinimizeBtn" Content="Minimize" Click="MinimizeBtn_Click" Width="150" />
+    &lt;/StackPanel>
+&lt;/Window>
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public sealed partial class SampleWindow2 : Window
+{
+    OverlappedPresenter presenter;
+
+    public SampleWindow2()
+    {
+        this.InitializeComponent();
+
+        AppWindow appWindow = GetAppWindowForCurrentWindow();
+
+        presenter = OverlappedPresenter.Create();
+        presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
+        presenter.IsMaximizable = $(IsMaximizable);
+        presenter.IsMinimizable = $(IsMinimizable);
+        presenter.IsResizable = $(IsResizable);
+        presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
+
+        appWindow.SetPresenter(presenter);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Maximize();
+    }
+
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Minimize();
+    }
+
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Restore();
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="IsAlwaysOnTop"
+                                                     Value="{x:Bind BoolToLowerString(IsAlwaysOnTop.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsMaximizable"
+                                                     Value="{x:Bind BoolToLowerString(IsMaximizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsMinimizable"
+                                                     Value="{x:Bind BoolToLowerString(IsMinimizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsResizable"
+                                                     Value="{x:Bind BoolToLowerString(IsResizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HasBorder"
+                                                     Value="{x:Bind BoolToLowerString(HasBorder.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HasTitleBar"
+                                                     Value="{x:Bind BoolToLowerString(HasTitleBar.IsOn), Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>
