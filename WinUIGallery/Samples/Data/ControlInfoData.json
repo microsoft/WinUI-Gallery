@@ -3531,6 +3531,23 @@
       "IconGlyph": "",
       "Items": [
         {
+          "UniqueId": "AppWindow",
+          "Title": "AppWindow",
+          "ApiNamespace": "Microsoft.UI.Windowing",
+          "Subtitle": "An example demonstrating the use of AppWindow to manage windowing behaviors.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
+          "Description": "This sample shows how to use the AppWindow API to customize and manage app windows, including resizing, positioning, and extending into the title bar.",
+          "Content": "<p>Look at the <i>AppWindowPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "AppWindow - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindow"
+            }
+          ],
+          "RelatedControls": []
+        },
+        {
           "UniqueId": "CreateMultipleWindows",
           "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
