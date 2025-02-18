@@ -461,6 +461,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow1.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Update="Samples\ControlPages\AppWindowPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>

@@ -3538,7 +3538,7 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
           "Description": "This sample shows how to use the AppWindow API to customize and manage app windows, including resizing, positioning, and extending into the title bar.",
           "Content": "<p>Look at the <i>AppWindowPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
+          "IsNew": true,
           "Docs": [
             {
               "Title": "AppWindow - API",

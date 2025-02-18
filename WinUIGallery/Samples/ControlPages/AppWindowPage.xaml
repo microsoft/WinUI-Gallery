@@ -5,9 +5,142 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
     mc:Ignorable="d">
 
     <StackPanel>
-        
+        <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance">
+            <controls:ControlExample.Example>
+
+                <StackPanel>
+                    <Button Margin="0,10,0,0"
+                            Click="ShowSampleWindow1">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Window title" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="WindowTitle" SelectedIndex="0">
+                        <x:String>Window title 1</x:String>
+                        <x:String>Window title 2</x:String>
+                        <x:String>Window title 3</x:String>
+                    </ComboBox>
+                    
+                    <TextBlock Text="Window size" FontWeight="SemiBold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <NumberBox Header="Width"
+                                   x:Name="WindowWidth"
+                                   Grid.Column="0"
+                                   LargeChange="100"
+                                   Maximum="1000"
+                                   Minimum="200"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="800"
+                                   Margin="0 0 8 0" />
+                        <NumberBox Header="Hieght"
+                                   x:Name="WindowHeight"
+                                   Grid.Column="1"
+                                   LargeChange="100"
+                                   Maximum="700"
+                                   Minimum="200"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="500" />
+                    </Grid>
+                    
+                    <TextBlock Text="Window postion" FontWeight="SemiBold"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <NumberBox Header="X"
+                                   x:Name="XPoint"
+                                   Grid.Column="0"
+                                   LargeChange="100"
+                                   Maximum="800"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50"
+                                   Margin="0 0 8 0" />
+                        <NumberBox Header="Y"
+                                   x:Name="YPoint"
+                                   Grid.Column="1"
+                                   LargeChange="100"
+                                   Maximum="300"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50" />
+                    </Grid>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Window ...&gt;
+    &lt;StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="10"&gt;
+        &lt;TextBlock Text="This is a sample window" /&gt;
+    &lt;/StackPanel&gt;
+&lt;/Window&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public sealed partial class SampleWindow1 : Window
+{
+    public SampleWindow1()
+    {
+        this.InitializeComponent();
+
+        AppWindow appWindow = GetAppWindowForCurrentWindow();
+
+        // Set the window title
+        appWindow.Title = "$(WindowTitle)";
+
+        // Set the window size (including borders)
+        appWindow.Resize(new Windows.Graphics.SizeInt32($(Width), $(Height)));
+
+        // Set the window position on screen
+        appWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
+
+        // Set the window icon
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+}
+
+                </x:String>
+            </controls:ControlExample.CSharp>
+            
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="WindowTitle"
+                                                     Value="{x:Bind WindowTitle.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Width"
+                                                     Value="{x:Bind WindowWidth.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Height"
+                                                     Value="{x:Bind WindowHeight.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="X"
+                                                     Value="{x:Bind XPoint.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Y"
+                                                     Value="{x:Bind YPoint.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>
