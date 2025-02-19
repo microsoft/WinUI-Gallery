@@ -54,4 +54,9 @@ public sealed partial class AppWindowPage : Page
 
     string BoolToLowerString(bool value) => value.ToString().ToLower();
 
+    private void ShowSampleWindow4(object sender, RoutedEventArgs e)
+    {
+        SampleWindow4 window = new SampleWindow4();
+        window.Activate();
+    }
 }

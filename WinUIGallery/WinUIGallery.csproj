@@ -299,6 +299,7 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow4.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
@@ -459,6 +460,12 @@
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <Content Include="Samples\Data\IconsData.json" />
         <Content Include="Samples\Data\ControlInfoData.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow4.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
