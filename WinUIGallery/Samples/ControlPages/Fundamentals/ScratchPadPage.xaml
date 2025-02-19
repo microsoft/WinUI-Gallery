@@ -1,0 +1,81 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ScratchPadPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid
+        Margin="0,12,0,0"
+        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1"
+        CornerRadius="{StaticResource OverlayCornerRadius}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:SampleThemeListener>
+            <ScrollViewer
+                x:Name="scratchPad"
+                Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+                HorizontalScrollBarVisibility="Visible"
+                HorizontalScrollMode="Auto"
+                VerticalScrollMode="Auto" />
+        </controls:SampleThemeListener>
+
+        <Grid
+            Grid.Row="1"
+            Padding="12"
+            Background="{ThemeResource ExpanderContentBackground}"
+            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+            BorderThickness="0,1,0,0"
+            ColumnSpacing="12"
+            RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MinWidth="168" />
+            </Grid.ColumnDefinitions>
+
+            <RichEditBox
+                x:Name="textbox"
+                AcceptsReturn="True"
+                ActualThemeChanged="textbox_ActualThemeChanged"
+                AutomationProperties.Name="XAML markup textbox"
+                FontFamily="Consolas"
+                FontSize="12"
+                IsSpellCheckEnabled="False"
+                KeyDown="textbox_KeyDown"
+                PreviewKeyDown="textbox_PreviewKeyDown"
+                PreviewKeyUp="textbox_PreviewKeyUp"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                TextChanged="textbox_TextChanged" />
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Spacing="8">
+                <Button
+                    x:Name="loadButton"
+                    HorizontalAlignment="Stretch"
+                    Click="LoadClick"
+                    Content="Load"
+                    Style="{StaticResource AccentButtonStyle}" />
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Click="ResetToDefaultClick"
+                    Content="Reset"
+                    ToolTipService.ToolTip="Resets to the default scratch pad content" />
+            </StackPanel>
+            <TextBlock
+                x:Name="loadStatus"
+                Grid.Row="1"
+                Grid.ColumnSpan="2" />
+        </Grid>
+    </Grid>
+</Page>
