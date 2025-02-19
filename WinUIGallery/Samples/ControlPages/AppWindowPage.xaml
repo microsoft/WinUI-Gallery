@@ -21,12 +21,8 @@
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
                     <TextBlock Text="Window title" FontWeight="SemiBold"/>
-                    <ComboBox x:Name="WindowTitle" SelectedIndex="0">
-                        <x:String>Window title 1</x:String>
-                        <x:String>Window title 2</x:String>
-                        <x:String>Window title 3</x:String>
-                    </ComboBox>
-                    
+                    <TextBox x:Name="WindowTitle" HorizontalAlignment="Stretch" Text="This is title" PlaceholderText="Enter window title"/>
+
                     <TextBlock Text="Window size" FontWeight="SemiBold"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -129,7 +125,7 @@ public sealed partial class SampleWindow1 : Window
             
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="WindowTitle"
-                                                     Value="{x:Bind WindowTitle.SelectedItem, Mode=OneWay}" />
+                                                     Value="{x:Bind WindowTitle.Text, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Width"
                                                      Value="{x:Bind WindowWidth.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Height"
