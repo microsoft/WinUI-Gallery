@@ -34,6 +34,7 @@ public sealed partial class SampleWindow4 : Window
         // Show the modal AppWindow.
         appWindow.Show();
 
+        Closed += SampleWindow4_Closed;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -69,5 +70,10 @@ public sealed partial class SampleWindow4 : Window
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
         this.Close();
+    }
+
+    private void SampleWindow4_Closed(object sender, WindowEventArgs args)
+    {
+        App.StartupWindow.Activate();
     }
 }
