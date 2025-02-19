@@ -43,7 +43,7 @@
                                    SpinButtonPlacementMode="Inline"
                                    Value="800"
                                    Margin="0 0 8 0" />
-                        <NumberBox Header="Hieght"
+                        <NumberBox Header="Height"
                                    x:Name="WindowHeight"
                                    Grid.Column="1"
                                    LargeChange="100"
