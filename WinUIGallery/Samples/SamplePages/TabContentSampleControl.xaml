@@ -13,7 +13,7 @@
         <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}" />
         <TextBlock Text="Drag the Tab outside of the window to spawn a new window." Style="{ThemeResource SubtitleTextBlockStyle}" />
         <TextBlock Text="Notice that the state of the Tab is maintained in the new window. For example, if you toggle the ToggleSwitch ON, it will remain ON in the new window." Style="{ThemeResource BodyTextBlockStyle}" />
-        <ToggleSwitch x:Name="ControlToggle" Header="Turn on ProgressRing" Margin="0,8" />
-        <ProgressRing IsActive="{x:Bind ControlToggle.IsOn, Mode=OneWay}" HorizontalAlignment="Left" />
+        <ToggleSwitch x:Name="ControlToggle" Header="Turn on ProgressRing" Margin="0,8" IsOn="{x:Bind IsInProgress, Mode=TwoWay}" />
+        <ProgressRing IsActive="{x:Bind IsInProgress, Mode=OneWay}" HorizontalAlignment="Left" />
     </StackPanel>
 </UserControl>

@@ -558,4 +558,8 @@
             </_NoneWithTargetPath>
         </ItemGroup>
     </Target>
+    <!-- Needed in order for running unpackaged to work properly. -->
+    <Target Name="CopyContentToOutputDirectory" AfterTargets="Build">
+        <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutDir)%(Identity)')" SkipUnchangedFiles="true" Condition="!$([System.IO.Path]::IsPathRooted('%(Identity)'))" />
+    </Target>
 </Project>
