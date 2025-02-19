@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Content;
@@ -41,6 +42,22 @@ public sealed partial class ContentIslandPage : Page
         Vector2 size = rect.ActualSize;
 
         ChildSiteLink childSiteLink = ChildSiteLink.Create(parentIsland, placementVisual);
+
+        // We also need to keep the offset of the ChildContentLink within the parent ContentIsland in sync
+        // with that of the placementElement for UIA to work correctly.
+        var layoutUpdatedEventHandler = new EventHandler<object>((s, e) =>
+        {
+            // NOTE: Do as little work in here as possible because it gets called for every
+            // xaml layout change on this thread!
+            var transform = rect.TransformToVisual(null);
+            var point = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
+            childSiteLink.LocalToParentTransformMatrix = System.Numerics.Matrix4x4.CreateTranslation(
+                (float)(point.X),
+                (float)(point.Y),
+                0);
+        });
+        rect.LayoutUpdated += layoutUpdatedEventHandler;
+        layoutUpdatedEventHandler.Invoke(null, null);
 
         placementVisual.Size = size;
         childSiteLink.ActualSize = size;
