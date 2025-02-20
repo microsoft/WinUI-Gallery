@@ -258,15 +258,24 @@ public sealed partial class SampleWindow1 : Window
             </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-public sealed partial class SampleWindow2 : Window
-{
-    OverlappedPresenter presenter;
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
 
-    public SampleWindow2()
+namespace YourNameSpace;
+                    
+public sealed partial class SampleWindow3 : Window
+{
+    privare AppWindow appWindow;
+    private OverlappedPresenter presenter;
+
+    public SampleWindow3()
     {
         this.InitializeComponent();
 
-        AppWindow appWindow = GetAppWindowForCurrentWindow();
+        appWindow = GetAppWindowForCurrentWindow();
 
         presenter = OverlappedPresenter.Create();
         presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);

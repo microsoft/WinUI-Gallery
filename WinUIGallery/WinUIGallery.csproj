@@ -298,7 +298,6 @@
         <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
-        <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow4.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
@@ -469,7 +468,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Update="Samples\SamplePages\SampleWindow2.xaml">
+      <Page Update="Samples\SamplePages\SampleWindow3.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
