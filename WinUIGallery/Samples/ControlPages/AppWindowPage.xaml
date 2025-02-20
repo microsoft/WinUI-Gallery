@@ -176,7 +176,7 @@ public sealed partial class SampleWindow1 : Window
                 <StackPanel>
                     <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
                     <Button Margin="0,8,0,0"
-                            Click="ShowSampleWindow2">Show sample window</Button>
+                            Click="ShowSampleWindow3">Show sample window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
