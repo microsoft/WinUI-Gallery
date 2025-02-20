@@ -21,7 +21,7 @@
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
                     <TextBlock Text="Window title" FontWeight="SemiBold"/>
-                    <TextBox x:Name="WindowTitle" HorizontalAlignment="Stretch" Text="This is title" PlaceholderText="Enter window title"/>
+                    <TextBox x:Name="WindowTitle" HorizontalAlignment="Stretch" Text="This is a title" PlaceholderText="Enter window title"/>
 
                     <TextBlock Text="Window size" FontWeight="SemiBold"/>
                     <Grid>
@@ -82,22 +82,36 @@
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;Window ...&gt;
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10"&gt;
-        &lt;TextBlock Text="This is a sample window" /&gt;
-    &lt;/StackPanel&gt;
-&lt;/Window&gt;
+    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        &lt;Button x:Name="Show" Content="Show" Click="Show_Click" Width="150" />
+        &lt;Button x:Name="Hide" Content="Hide" Click="Hide_Click" Width="150" />
+        
+        &lt;Button x:Name="Close" Content="Close" Click="Close_Click" Width="150" Margin="0,16,0,0" />
+    &lt;/StackPanel>
+&lt;/Window>
                 </x:String>
             </controls:ControlExample.Xaml>
             
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNameSpace;
+                    
 public sealed partial class SampleWindow1 : Window
 {
+    private AppWindow appWindow;
+                    
     public SampleWindow1()
     {
         this.InitializeComponent();
 
-        AppWindow appWindow = GetAppWindowForCurrentWindow();
+        // Retrieve the AppWindow instance for the current window
+        appWindow = GetAppWindowForCurrentWindow();
 
         // Set the window title
         appWindow.Title = "$(WindowTitle)";
@@ -112,14 +126,34 @@ public sealed partial class SampleWindow1 : Window
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
     }
 
+    //Returrns the AppWindow instance associated with the current window.
     private AppWindow GetAppWindowForCurrentWindow()
     {
+        // Get the native window handle
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
+
+        // Retrieve the WindowId from the window handle
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+
+        // Return the AppWindow instance associated with the given WindowId
         return AppWindow.GetFromWindowId(myWndId);
     }
-}
+                    
+    private void Show_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Show();
+    }
 
+    private void Hide_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Hide();
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}
                 </x:String>
             </controls:ControlExample.CSharp>
             

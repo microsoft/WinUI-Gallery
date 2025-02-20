@@ -1,25 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using WinRT.Interop;
 
 namespace WinUIGallery.Samples.SamplePages;
 
 public sealed partial class SampleWindow1 : Window
 {
+    private AppWindow appWindow;
+
     public SampleWindow1()
     {
         this.InitializeComponent();
@@ -29,7 +19,8 @@ public sealed partial class SampleWindow1 : Window
     {
         this.InitializeComponent();
 
-        AppWindow appWindow = GetAppWindowForCurrentWindow();
+        // Retrieve the AppWindow instance for the current window
+        appWindow = GetAppWindowForCurrentWindow();
 
         // Set the window title
         appWindow.Title = WindowTitle;
@@ -44,10 +35,31 @@ public sealed partial class SampleWindow1 : Window
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
     }
 
+    //Returrns the AppWindow instance associated with the current window.
     private AppWindow GetAppWindowForCurrentWindow()
     {
+        // Get the native window handle
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
+
+        // Retrieve the WindowId from the window handle
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+
+        // Return the AppWindow instance associated with the given WindowId
         return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void Show_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Show();
+    }
+
+    private void Hide_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Hide();
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
     }
 }
