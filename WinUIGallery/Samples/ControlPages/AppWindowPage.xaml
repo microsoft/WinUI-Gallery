@@ -405,7 +405,7 @@ public sealed partial class SampleWindow6 : Window
         presenter = CompactOverlayPresenter.Create();
 
         // Sets the initial size of the CompactOverlay window
-        presenter.InitialSize = CompactOverlaySize.$(InitialSize); // Placeholder, should be replaced with an actual value
+        presenter.InitialSize = CompactOverlaySize.$(InitialSize);
 
         // Applies the CompactOverlay presenter to the window
         appWindow.SetPresenter(presenter);
