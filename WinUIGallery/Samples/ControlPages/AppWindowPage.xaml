@@ -10,7 +10,9 @@
 
     <StackPanel>
         <TextBlock Text="General use of AppWindow" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16"/>
-        <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance">
+        
+        <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance"
+                                 XamlSource="AppWindow\AppWindowSample1_xaml.txt">
             <controls:ControlExample.Example>
 
                 <StackPanel>
@@ -21,10 +23,15 @@
 
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
-                    <TextBlock Text="Window title" FontWeight="SemiBold"/>
-                    <TextBox x:Name="WindowTitle" HorizontalAlignment="Stretch" Text="This is a title" PlaceholderText="Enter window title"/>
+                    <TextBlock Text="Window title"
+                               FontWeight="SemiBold" />
+                    <TextBox x:Name="WindowTitle"
+                             HorizontalAlignment="Stretch"
+                             Text="This is a title"
+                             PlaceholderText="Enter window title" />
 
-                    <TextBlock Text="Window size" FontWeight="SemiBold"/>
+                    <TextBlock Text="Window size"
+                               FontWeight="SemiBold" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -50,8 +57,9 @@
                                    SpinButtonPlacementMode="Inline"
                                    Value="500" />
                     </Grid>
-                    
-                    <TextBlock Text="Window postion" FontWeight="SemiBold"/>
+
+                    <TextBlock Text="Window postion"
+                               FontWeight="SemiBold" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -80,19 +88,6 @@
                 </StackPanel>
             </controls:ControlExample.Options>
 
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...&gt;
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-        &lt;Button x:Name="Show" Content="Show" Click="Show_Click" Width="150" />
-        &lt;Button x:Name="Hide" Content="Hide" Click="Hide_Click" Width="150" />
-        
-        &lt;Button x:Name="Close" Content="Close" Click="Close_Click" Width="150" Margin="0,16,0,0" />
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
-            
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 using System;
@@ -172,76 +167,18 @@ public sealed partial class SampleWindow1 : Window
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="Centering AppWindow on the screen using the available display area.">
+        <controls:ControlExample HeaderText="Centering AppWindow on the screen using the available display area"
+                                 XamlSource="AppWindow\AppWindowSample2_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample2_cs.txt">
             <controls:ControlExample.Example>
                 <Button Click="ShowSampleWindow2">Show centered sample window</Button>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...>
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-        &lt;TextBlock Text="This is a centred sample window" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
-            <controls:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using Windows.Graphics;
-using WinRT.Interop;
-
-namespace YourNameSpace;
-
-public sealed partial class SampleWindow2 : Window
-{
-    private AppWindow appWindow;
-
-    public SampleWindow2()
-    {
-        this.InitializeComponent();
-        appWindow = GetAppWindowForCurrentWindow();
-
-        // Center the window on the screen.
-        CenterWindow(appWindow);
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    // Centers the given AppWindow on the screen based on the available display area.
-    private void CenterWindow(AppWindow appWindow)
-    {
-        if (appWindow == null) return; // Ensure the AppWindow instance is valid.
-
-        // Get the display area associated with the window.
-        DisplayArea displayArea = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Nearest);
-        if (displayArea == null) return; // Ensure the display area is valid.
-
-        // Calculate the centered position within the work area.
-        RectInt32 workArea = displayArea.WorkArea;
-        PointInt32 centeredPosition = new PointInt32(
-            (workArea.Width - appWindow.Size.Width) / 2,
-            (workArea.Height - appWindow.Size.Height) / 2
-        );
-
-        appWindow.Move(centeredPosition); // Move the window to the calculated position.
-    }
-}
-                </x:String>
-            </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
         <TextBlock Text="AppWindow Presenters" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16" />
 
-        <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter">
+        <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter"
+                                 XamlSource="AppWindow\AppWindowSample3_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
@@ -315,17 +252,6 @@ public sealed partial class SampleWindow2 : Window
                     </ToggleSwitch>
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...>
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-        &lt;Button x:Name="MaximizeBtn" Content="Maximize" Click="MaximizeBtn_Click" Width="150" />
-        &lt;Button x:Name="RestoreBtn" Content="Restore" Click="RestoreBtn_Click" Width="150" />
-        &lt;Button x:Name="MinimizeBtn" Content="Minimize" Click="MinimizeBtn_Click" Width="150" />
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 using System;
@@ -398,7 +324,9 @@ public sealed partial class SampleWindow3 : Window
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="Modal window with OverlappedPresenter using AppWindow">
+        <controls:ControlExample HeaderText="Modal window with OverlappedPresenter using AppWindow"
+                                 XamlSource="AppWindow\AppWindowSample4_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample4_cs.txt">
             <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Text="A modal window is a separate window that blocks interaction with its parent window until it is closed, often used for critical actions like confirmations, authentication, or settings. Unlike a ContentDialog, which is a lightweight pop-up within the same window, a modal window is a fully independent window, making it suitable for multi-window applications or scenarios requiring more flexibility in layout and behavior."
@@ -407,111 +335,11 @@ public sealed partial class SampleWindow3 : Window
                             Click="ShowSampleWindow4">Show modal window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...>
-
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-
-        &lt;TextBlock Text="Modal Window" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
-
-        &lt;TextBlock Text="This is a modal window created using AppWindow with OverlappedPresenter." Style="{ThemeResource BodyTextBlockStyle}" TextAlignment="Center" TextWrapping="Wrap" />
-
-        &lt;StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
-            &lt;Button Content="OK" Width="80" Click="OKButton_Click" />
-            &lt;Button Content="Cancel" Width="80" Click="CancelButton_Click" />
-        &lt;/StackPanel>
-
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
-            <controls:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-using System;
-using System.Runtime.InteropServices;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using WinRT.Interop;
-
-namespace YourNamespace;
-
-public sealed partial class SampleWindow4 : Window
-{
-    private AppWindow appWindow;
-
-    public SampleWindow4()
-    {
-        this.InitializeComponent();
-
-        appWindow = GetAppWindowForCurrentWindow();
-        appWindow.Resize(new Windows.Graphics.SizeInt32(400, 300));
-
-        // Create an OverlappedPresenter configured for a dialog window.
-        // This ensures the window behaves like a modal dialog with appropriate styling.
-        OverlappedPresenter presenter = OverlappedPresenter.CreateForDialog();
-
-        // Set the owner of the modal window to ensure it remains linked to the main window.
-        SetOwner(appWindow);
-
-        // Enable modal behavior, preventing interaction with the main window until this window is closed.
-        presenter.IsModal = true;
-
-        // Apply the OverlappedPresenter configuration to the AppWindow.
-        appWindow.SetPresenter(presenter);
-
-        // Show the modal AppWindow.
-        appWindow.Show();
-
-        Closed += SampleWindow4_Closed;
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    private void SetOwner(AppWindow childAppWindow)
-    {
-        // Get HWND of the main window
-        // The main window can be retrieved from App.xaml.cs if it's set as a static property.
-        IntPtr parentHwnd = WindowNative.GetWindowHandle(App.StartupWindow);
-
-        // Get HWND of the AppWindow
-        IntPtr childHwnd = Win32Interop.GetWindowFromWindowId(childAppWindow.Id);
-
-        // Set the owner using SetWindowLongPtr
-        SetWindowLongPtr(childHwnd, -8, parentHwnd); // -8 = GWLP_HWNDPARENT
-    }
-
-    // Imports the SetWindowLongPtr function from user32.dll, allowing modification of window properties.
-    // This is used to set the owner of the child AppWindow by changing its parent window handle.
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
-
-    private void OKButton_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
-
-    private void CancelButton_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
-
-    private void SampleWindow4_Closed(object sender, WindowEventArgs args)
-    {
-        App.StartupWindow.Activate();
-    }
-}                    
-                </x:String>
-            </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="AppWindow with FullScreenPresenter">
+        <controls:ControlExample HeaderText="AppWindow with FullScreenPresenter"
+                                 XamlSource="AppWindow\AppWindowSample5_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample5_cs.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
@@ -519,55 +347,10 @@ public sealed partial class SampleWindow4 : Window
                     <Button Click="ShowSampleWindow5">Show sample window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...>
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-        &lt;TextBlock Text="This window is running in Fullscreen mode" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
-        &lt;Button x:Name="Close" Content="Close" Click="Close_Click" Width="150" HorizontalAlignment="Center" />
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
-            <controls:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using WinRT.Interop;
-
-namespace YourNameSpace;
-
-public sealed partial class SampleWindow5 : Window
-{
-    private AppWindow appWindow;
-
-    public SampleWindow5()
-    {
-        this.InitializeComponent();
-        appWindow = GetAppWindowForCurrentWindow();
-
-        appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    private void Close_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
-}
-                </x:String>
-            </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter">
+        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter"
+                                 XamlSource="AppWindow\AppWindowSample6_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)."
@@ -592,16 +375,6 @@ public sealed partial class SampleWindow5 : Window
                                TextWrapping="Wrap" />
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Window ...>
-
-    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-        &lt;TextBlock Text="This window is set to CompactOverlay (Picture-in-Picture) mode." TextAlignment="Center" TextWrapping="Wrap" />
-    &lt;/StackPanel>
-&lt;/Window>
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 using System;

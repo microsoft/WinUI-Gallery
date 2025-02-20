@@ -1,0 +1,7 @@
+﻿<Window ...>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <Button x:Name="MaximizeBtn" Content="Maximize" Click="MaximizeBtn_Click" Width="150" />
+        <Button x:Name="RestoreBtn" Content="Restore" Click="RestoreBtn_Click" Width="150" />
+        <Button x:Name="MinimizeBtn" Content="Minimize" Click="MinimizeBtn_Click" Width="150" />
+    </StackPanel>
+</Window>

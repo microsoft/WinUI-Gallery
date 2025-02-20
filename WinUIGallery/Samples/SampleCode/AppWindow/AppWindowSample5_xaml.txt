@@ -1,0 +1,6 @@
+﻿<Window ...>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <TextBlock Text="This window is running in Fullscreen mode" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
+        <Button x:Name="Close" Content="Close" Click="Close_Click" Width="150" HorizontalAlignment="Center" />
+    </StackPanel>
+</Window>

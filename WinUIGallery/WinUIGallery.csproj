@@ -462,6 +462,15 @@
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <Content Include="Samples\Data\IconsData.json" />
         <Content Include="Samples\Data\ControlInfoData.json" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample1_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample3_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
     </ItemGroup>
 
     <ItemGroup>

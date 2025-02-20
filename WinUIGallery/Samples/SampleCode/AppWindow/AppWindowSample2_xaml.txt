@@ -1,0 +1,5 @@
+﻿<Window ...>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <TextBlock Text="This is a centred sample window" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
+    </StackPanel>
+</Window>
