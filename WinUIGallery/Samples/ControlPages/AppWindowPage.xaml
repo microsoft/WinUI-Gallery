@@ -182,6 +182,26 @@ public sealed partial class SampleWindow1 : Window
             <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
+                    <InfoBar Title="Warning"
+                             Severity="Warning"
+                             IsOpen="True"
+                             IsClosable="False">
+                        <RichTextBlock IsTextSelectionEnabled="False" Margin="0,-16,16,8">
+                            <Paragraph>
+                                For an
+                                <Run FontWeight="SemiBold">AppWindow</Run> with
+                                <Run FontWeight="SemiBold">OverlappedPresenter</Run> , if the title bar 
+            (
+                                <Run FontWeight="SemiBold">HasTitleBar = true</Run> ) is enabled, the window must have a border 
+            (
+                                <Run FontWeight="SemiBold">HasBorder = true</Run> ). Setting
+                                <Run FontWeight="SemiBold">HasBorder</Run> to
+                                <Run FontWeight="SemiBold">false</Run> while
+                                <Run FontWeight="SemiBold">HasTitleBar</Run> is
+                                <Run FontWeight="SemiBold">true</Run> will result in a fatal error.
+                            </Paragraph>
+                        </RichTextBlock>
+                    </InfoBar>
                     <Button Margin="0,8,0,0"
                             Click="ShowSampleWindow3">Show sample window</Button>
                 </StackPanel>
