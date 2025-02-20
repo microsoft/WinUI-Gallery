@@ -175,18 +175,18 @@ public sealed partial class SampleWindow1 : Window
             </controls:ControlExample.Example>
         </controls:ControlExample>
 
-        <TextBlock Text="AppWindow Presenters" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16" />
+        <TextBlock Text="AppWindow Presenters" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,-16" />
 
         <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter"
                                  XamlSource="AppWindow\AppWindowSample3_xaml.txt">
             <controls:ControlExample.Example>
-                <StackPanel>
+                <StackPanel Spacing="8">
                     <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
                     <InfoBar Title="Warning"
                              Severity="Warning"
                              IsOpen="True"
                              IsClosable="False">
-                        <RichTextBlock IsTextSelectionEnabled="False" Margin="0,-16,16,8">
+                        <RichTextBlock IsTextSelectionEnabled="False" Margin="0,-16,16,16">
                             <Paragraph>
                                 For an
                                 <Run FontWeight="SemiBold">AppWindow</Run> with
@@ -202,8 +202,7 @@ public sealed partial class SampleWindow1 : Window
                             </Paragraph>
                         </RichTextBlock>
                     </InfoBar>
-                    <Button Margin="0,8,0,0"
-                            Click="ShowSampleWindow3">Show sample window</Button>
+                    <Button Click="ShowSampleWindow3">Show sample window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -369,7 +368,7 @@ public sealed partial class SampleWindow3 : Window
                 <StackPanel Spacing="8">
                     <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key or close button, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
                                TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow5">Show sample window</Button>
+                    <Button Click="ShowSampleWindow5">Show sample window (Fullscreen mode)</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
@@ -380,7 +379,7 @@ public sealed partial class SampleWindow3 : Window
                 <StackPanel Spacing="8">
                     <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)."
                                TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow6">Show sample window</Button>
+                    <Button Click="ShowSampleWindow6">Show sample window (Picture-in-Picture mode)</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
