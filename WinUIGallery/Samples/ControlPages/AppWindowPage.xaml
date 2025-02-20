@@ -367,7 +367,7 @@ public sealed partial class SampleWindow3 : Window
                                  CSharpSource="AppWindow\AppWindowSample5_cs.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
+                    <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key or close button, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
                                TextWrapping="Wrap" />
                     <Button Click="ShowSampleWindow5">Show sample window</Button>
                 </StackPanel>
