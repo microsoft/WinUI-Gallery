@@ -74,6 +74,7 @@ public sealed partial class SampleWindow4 : Window
 
     private void SampleWindow4_Closed(object sender, WindowEventArgs args)
     {
+        //Ensuring the main window is activated after closing the modal window
         App.StartupWindow.Activate();
     }
 }    

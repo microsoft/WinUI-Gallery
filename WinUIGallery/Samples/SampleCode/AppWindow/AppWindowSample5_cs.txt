@@ -15,6 +15,7 @@ public sealed partial class SampleWindow5 : Window
         this.InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
 
+        // Set the window to Full-Screen mode
         appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
     }
 

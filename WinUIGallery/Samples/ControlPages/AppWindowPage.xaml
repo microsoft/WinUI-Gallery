@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock Text="General use of AppWindow" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16"/>
+        <TextBlock Text="General usage of AppWindow" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16"/>
         
         <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance"
                                  XamlSource="AppWindow\AppWindowSample1_xaml.txt">
@@ -396,9 +396,13 @@ public sealed partial class SampleWindow6 : Window
 
         appWindow = GetAppWindowForCurrentWindow();
 
+        // Creates a CompactOverlay (Picture-in-Picture) presenter
         presenter = CompactOverlayPresenter.Create();
-        presenter.InitialSize = CompactOverlaySize.$(InitialSize);
 
+        // Sets the initial size of the CompactOverlay window
+        presenter.InitialSize = CompactOverlaySize.$(InitialSize); // Placeholder, should be replaced with an actual value
+
+        // Applies the CompactOverlay presenter to the window
         appWindow.SetPresenter(presenter);
     }
 
