@@ -30,6 +30,12 @@ public sealed partial class AppWindowPage : Page
         window.Activate();
     }
 
+    private void ShowSampleWindow2(object sender, RoutedEventArgs e)
+    {
+        SampleWindow2 window = new SampleWindow2();
+        window.Activate();
+    }
+
     private void ShowSampleWindow3(object sender, RoutedEventArgs e)
     {
         SampleWindow3 window = new SampleWindow3(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn);
