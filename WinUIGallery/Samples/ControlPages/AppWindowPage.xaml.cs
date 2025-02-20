@@ -71,4 +71,29 @@ public sealed partial class AppWindowPage : Page
         SampleWindow5 window = new SampleWindow5();
         window.Activate();
     }
+
+    private void ShowSampleWindow6(object sender, RoutedEventArgs e)
+    {
+        SampleWindow6 window = new SampleWindow6((string)InitialSize.SelectedItem);
+        window.Activate();
+    }
+
+    private void InitialSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (InitialSizeDescription == null)
+        {
+            return;
+        }
+
+        string size = InitialSize.SelectedItem.ToString();
+        string percentage = size switch
+        {
+            "Small" => "5%",
+            "Medium" => "15%",
+            "Large" => "25%",
+            _ => "Unknown"
+        };
+
+        InitialSizeDescription.Text = $"{size}: Window size is approximately {percentage} of the display's work area.";
+    }
 }

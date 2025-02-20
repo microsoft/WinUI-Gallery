@@ -9,6 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <TextBlock Text="General use of AppWindow" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16"/>
         <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance">
             <controls:ControlExample.Example>
 
@@ -237,7 +238,9 @@ public sealed partial class SampleWindow2 : Window
                 </x:String>
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
-        
+
+        <TextBlock Text="AppWindow Presenters" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16" />
+
         <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter">
             <controls:ControlExample.Example>
                 <StackPanel>
@@ -510,7 +513,11 @@ public sealed partial class SampleWindow4 : Window
 
         <controls:ControlExample HeaderText="AppWindow with FullScreenPresenter">
             <controls:ControlExample.Example>
-                <Button Click="ShowSampleWindow5">Show sample window</Button>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
+                               TextWrapping="Wrap" />
+                    <Button Click="ShowSampleWindow5">Show sample window</Button>
+                </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -560,5 +567,81 @@ public sealed partial class SampleWindow5 : Window
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
+        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)."
+                               TextWrapping="Wrap" />
+                    <Button Click="ShowSampleWindow6">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ComboBox x:Name="InitialSize"
+                              Header="InitialSize"
+                              SelectedIndex="0"
+                              Width="150"
+                              SelectionChanged="InitialSize_SelectionChanged">
+                        <x:String>Small</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Large</x:String>
+                    </ComboBox>
+                    <TextBlock x:Name="InitialSizeDescription"
+                               Text="Small: Window size is approximately 5% of the display's work area."
+                               Width="250"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Window ...>
+
+    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        &lt;TextBlock Text="This window is set to CompactOverlay (Picture-in-Picture) mode." TextAlignment="Center" TextWrapping="Wrap" />
+    &lt;/StackPanel>
+&lt;/Window>
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNameSpace;
+
+public sealed partial class SampleWindow6 : Window
+{
+    private AppWindow appWindow;
+    private CompactOverlayPresenter presenter;
+
+    public SampleWindow6()
+    {
+        this.InitializeComponent();
+
+        appWindow = GetAppWindowForCurrentWindow();
+
+        presenter = CompactOverlayPresenter.Create();
+        presenter.InitialSize = CompactOverlaySize.$(InitialSize);
+
+        appWindow.SetPresenter(presenter);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="InitialSize"
+                                                     Value="{x:Bind InitialSize.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>
