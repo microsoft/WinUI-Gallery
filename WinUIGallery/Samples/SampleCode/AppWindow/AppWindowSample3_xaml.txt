@@ -7,5 +7,8 @@
         <Button x:Name="MaximizeBtn" Content="Maximize" Click="MaximizeBtn_Click" Width="150" />
         <Button x:Name="RestoreBtn" Content="Restore" Click="RestoreBtn_Click" Width="150" />
         <Button x:Name="MinimizeBtn" Content="Minimize" Click="MinimizeBtn_Click" Width="150" />
+
+        <Button x:Name="CloseBtn" Content="Close" Click="CloseBtn_Click" Width="150" Margin="0,16,0,0"
+                Style="{StaticResource AccentButtonStyle}" />
     </StackPanel>
 </Window>

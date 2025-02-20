@@ -48,4 +48,9 @@ public sealed partial class SampleWindow3 : Window
     {
         presenter.Restore();
     }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
 }

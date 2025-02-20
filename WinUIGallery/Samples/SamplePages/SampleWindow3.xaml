@@ -27,5 +27,12 @@
                 Content="Minimize"
                 Click="MinimizeBtn_Click"
                 Width="150" />
+        
+        <Button x:Name="CloseBtn"
+                Content="Close"
+                Click="CloseBtn_Click"
+                Width="150"
+                Margin="0,16,0,0"
+                Style="{StaticResource AccentButtonStyle}" />
     </StackPanel>
 </Window>

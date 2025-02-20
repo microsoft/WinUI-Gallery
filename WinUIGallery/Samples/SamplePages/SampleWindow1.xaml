@@ -36,7 +36,8 @@
                 Content="Close"
                 Click="Close_Click"
                 Width="150"
-                Margin="0,16,0,0">
+                Margin="0,16,0,0"
+                Style="{StaticResource AccentButtonStyle}">
             <ToolTipService.ToolTip>
                 <TextBlock Text="Closes the window and releases all resources."
                            TextWrapping="Wrap" />
