@@ -65,4 +65,10 @@ public sealed partial class AppWindowPage : Page
         SampleWindow4 window = new SampleWindow4();
         window.Activate();
     }
+
+    private void ShowSampleWindow5(object sender, RoutedEventArgs e)
+    {
+        SampleWindow5 window = new SampleWindow5();
+        window.Activate();
+    }
 }

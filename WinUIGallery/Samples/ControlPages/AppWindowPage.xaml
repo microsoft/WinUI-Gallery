@@ -507,5 +507,58 @@ public sealed partial class SampleWindow4 : Window
                 </x:String>
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="AppWindow with FullScreenPresenter">
+            <controls:ControlExample.Example>
+                <Button Click="ShowSampleWindow5">Show sample window</Button>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Window ...>
+    &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        &lt;TextBlock Text="This window is running in Fullscreen mode" Style="{ThemeResource TitleTextBlockStyle}" TextAlignment="Center" />
+        &lt;Button x:Name="Close" Content="Close" Click="Close_Click" Width="150" HorizontalAlignment="Center" />
+    &lt;/StackPanel>
+&lt;/Window>
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNameSpace;
+
+public sealed partial class SampleWindow5 : Window
+{
+    private AppWindow appWindow;
+
+    public SampleWindow5()
+    {
+        this.InitializeComponent();
+        appWindow = GetAppWindowForCurrentWindow();
+
+        appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
     </StackPanel>
 </Page>
