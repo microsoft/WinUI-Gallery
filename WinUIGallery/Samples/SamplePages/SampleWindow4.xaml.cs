@@ -53,14 +53,30 @@ public sealed partial class SampleWindow4 : Window
         // Get HWND of the AppWindow
         IntPtr childHwnd = Win32Interop.GetWindowFromWindowId(childAppWindow.Id);
 
-        // Set the owner using SetWindowLongPtr
-        SetWindowLongPtr(childHwnd, -8, parentHwnd); // -8 = GWLP_HWNDPARENT
+        // Attempt to set the owner (parent) window , falling back to 32-bit if needed.
+        try
+        {
+            SetWindowLongPtr64(childHwnd, -8, parentHwnd); // -8 = GWLP_HWNDPARENT (64-bit)
+        }
+        catch
+        {
+            SetWindowLongPtr32(childHwnd, -8, parentHwnd); // -8 = GWLP_HWNDPARENT (32-bit)
+        }
     }
 
-    // Imports the SetWindowLongPtr function from user32.dll, allowing modification of window properties.
-    // This is used to set the owner of the child AppWindow by changing its parent window handle.
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+    // Import the 64-bit version of SetWindowLongPtr for modifying window properties.
+    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLongPtr")]
+    public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+    // Import the 32-bit version of SetWindowLong for modifying window properties.
+    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
+    public static extern IntPtr SetWindowLongPtr32(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+    private void SampleWindow4_Closed(object sender, WindowEventArgs args)
+    {
+        //Ensuring the main window is activated after closing the modal widow
+        App.StartupWindow.Activate();
+    }
 
     private void OKButton_Click(object sender, RoutedEventArgs e)
     {
@@ -70,11 +86,5 @@ public sealed partial class SampleWindow4 : Window
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
         this.Close();
-    }
-
-    private void SampleWindow4_Closed(object sender, WindowEventArgs args)
-    {
-        //Ensuring the main window is activated after closing the modal widow
-        App.StartupWindow.Activate();
     }
 }
