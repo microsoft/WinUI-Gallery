@@ -16,8 +16,7 @@
             <controls:ControlExample.Example>
 
                 <StackPanel>
-                    <Button Margin="0,8,0,0"
-                            Click="ShowSampleWindow1">Show sample window</Button>
+                    <Button Click="ShowSampleWindow1">Show sample window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
 
@@ -281,7 +280,7 @@ namespace YourNameSpace;
                     
 public sealed partial class SampleWindow3 : Window
 {
-    privare AppWindow appWindow;
+    private AppWindow appWindow;
     private OverlappedPresenter presenter;
 
     public SampleWindow3()
