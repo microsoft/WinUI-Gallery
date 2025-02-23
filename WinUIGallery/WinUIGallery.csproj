@@ -299,7 +299,6 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
-        <None Remove="Samples\SamplePages\SampleWindow4.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow5.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow6.xaml" />
         <None Remove="Styles\Button.xaml" />
@@ -492,7 +491,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Update="Samples\SamplePages\SampleWindow4.xaml">
+      <Page Update="Samples\SamplePages\ModalWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>

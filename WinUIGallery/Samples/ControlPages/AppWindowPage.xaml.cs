@@ -62,7 +62,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow4(object sender, RoutedEventArgs e)
     {
-        SampleWindow4 window = new SampleWindow4();
+        ModalWindow window = new ModalWindow();
         window.Activate();
     }
 
