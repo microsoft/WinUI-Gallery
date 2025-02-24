@@ -142,6 +142,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\AppWindow.png" />
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
@@ -309,6 +310,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\AppWindow.png" />
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\ControlImages\Popup.png" />

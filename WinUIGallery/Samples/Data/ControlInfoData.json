@@ -3536,6 +3536,9 @@
           "Title": "AppWindow",
           "ApiNamespace": "Microsoft.UI.Windowing",
           "Subtitle": "A flexible, customizable window management system for app development.",
+          "BaseClasses": [
+            "Object"
+          ],
           "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
           "Description": "AppWindow provides advanced window management, allowing customization of size, position, and presentation. This sample showcases different ways to create, display, and control windows for enhanced flexibility.",
           "Content": "<p>Look at the <i>AppWindowPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
