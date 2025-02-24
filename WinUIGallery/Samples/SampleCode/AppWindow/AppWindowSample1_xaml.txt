@@ -1,0 +1,17 @@
+﻿<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <Button x:Name="Show" Content="Show" Click="Show_Click" Width="150" />
+        <Button x:Name="Hide" Content="Hide" Click="Hide_Click" Width="150" />
+        
+        <Button x:Name="Close" Click="Close_Click" Width="150" Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel" Margin="0,0,4,0" Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                <TextBlock Text="Close" Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>
