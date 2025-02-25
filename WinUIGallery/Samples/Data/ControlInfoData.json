@@ -111,6 +111,34 @@
           ]
         },
         {
+          "UniqueId": "CustomUserControls",
+          "Title": "Custom & User Controls",
+          "Subtitle": "Create reusable UI components with custom functionality and appearance.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CustomControlsIcon.png",
+          "Description": "Custom controls and user controls allow developers to create reusable UI components with unique behavior and styling. A UserControl is a simple way to encapsulate a UI layout, while a custom control provides full styling and templating flexibility. Both approaches help in building modular and maintainable XAML applications.",
+          "Docs": [
+            {
+              "Title": "Build XAML controls",
+              "Uri": "https://learn.microsoft.com/windows/apps/winui/winui3/xaml-templated-controls-csharp-winui-3"
+            },
+            {
+              "Title": "Control - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control"
+            },
+            {
+              "Title": "UserControl - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.usercontrol"
+            }
+          ]
+        },
+        {
           "UniqueId": "ScratchPad",
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",

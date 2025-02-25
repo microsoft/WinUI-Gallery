@@ -295,6 +295,9 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Styles\Button.xaml" />
@@ -457,6 +460,28 @@
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <Content Include="Samples\Data\IconsData.json" />
         <Content Include="Samples\Data\ControlInfoData.json" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_xaml.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
