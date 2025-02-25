@@ -93,11 +93,15 @@
                     <Run Text="A UserControl is a reusable component that combines existing controls and logic into a cohesive unit. It allows for encapsulation of functionality and a consistent design across multiple instances." />
                 </Paragraph>
             </RichTextBlock>
-
-            <RichTextBlock>
-                <Paragraph>• Encapsulation: UserControls encapsulate a set of controls and their behavior, promoting reusability and maintainability.</Paragraph>
-                <Paragraph>• Design-Time Support: They offer a visual design experience, making it easier to construct complex interfaces.</Paragraph>
-            </RichTextBlock>
         </StackPanel>
+        <controls:ControlExample HeaderText="Synonym finder UserControl example"
+                                 CSharpSource="CustomUserControls/CustomUserControlsSample4_cs.txt"
+                                 XamlSource="CustomUserControls/CustomUserControlsSample4_xaml.txt">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Try these words: happy, fast, smart" />
+                <customUserControls:SynonymFinderControl x:Name="SynonymFinder"
+                                                         Header="Find Synonyms" />
+            </StackPanel>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

@@ -296,6 +296,7 @@
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\Controls\SynonymFinderControl.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
@@ -464,6 +465,14 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\Controls\SynonymFinderControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>

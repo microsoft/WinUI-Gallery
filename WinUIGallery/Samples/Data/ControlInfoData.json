@@ -122,7 +122,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "ImagePath": "ms-appx:///Assets/ControlImages/CustomControlsIcon.png",
-          "Description": "Custom controls and user controls allow developers to create reusable UI components with unique behavior and styling. A UserControl is a simple way to encapsulate a UI layout, while a custom control provides full styling and templating flexibility. Both approaches help in building modular and maintainable XAML applications.",
+          "Description": "Custom controls and user controls allow to create reusable UI components with unique behavior and styling. A UserControl is a simple way to encapsulate a UI layout, while a custom control provides full styling and templating flexibility. Both approaches help in building modular and maintainable applications.",
           "Docs": [
             {
               "Title": "Build XAML controls",
