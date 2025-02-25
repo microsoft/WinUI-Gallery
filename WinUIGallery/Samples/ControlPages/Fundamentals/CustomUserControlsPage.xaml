@@ -70,7 +70,7 @@
                                  XamlSource="CustomUserControls/CustomUserControlsSample2_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <customUserControls:ValidatedPasswordBox x:Name="Password"
+                    <customUserControls:ValidatedPasswordBox x:Name="PasswordInput"
                                                              MinLength="8"
                                                              Width="240"
                                                              HorizontalAlignment="Left"
@@ -78,7 +78,7 @@
                                                              PlaceholderText="Enter password..." />
 
                     <Button Content="Submit"
-                            IsEnabled="{x:Bind Password.IsValid, Mode=OneWay}"
+                            IsEnabled="{x:Bind PasswordInput.IsValid, Mode=OneWay}"
                             Style="{StaticResource AccentButtonStyle}"
                             Width="240" />
                     </StackPanel>

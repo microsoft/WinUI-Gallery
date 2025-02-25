@@ -46,9 +46,9 @@
 <Page ...
       xmlns:controls="using:YourNamesapace">
     <StackPanel Spacing="8">
-        <controls:ValidatedPasswordBox x:Name="Password" MinLength="8" Width="240" HorizontalAlignment="Left"
+        <controls:ValidatedPasswordBox x:Name="PasswordInput" MinLength="8" Width="240" HorizontalAlignment="Left"
                                        Header="Password" PlaceholderText="Enter password..." />
-        <Button Content="Submit" IsEnabled="{x:Bind Password.IsValid, Mode=OneWay}"
+        <Button Content="Submit" IsEnabled="{x:Bind PasswordInput.IsValid, Mode=OneWay}"
                 Style="{StaticResource AccentButtonStyle}" Width="240" />
     </StackPanel>
 </Page>
