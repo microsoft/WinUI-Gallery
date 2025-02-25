@@ -87,6 +87,17 @@
         <TextBlock Text="UserControl"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    Margin="0,24,0,8" />
+        <StackPanel Spacing="8">
+            <RichTextBlock>
+                <Paragraph>
+                    <Run Text="A UserControl is a reusable component that combines existing controls and logic into a cohesive unit. It allows for encapsulation of functionality and a consistent design across multiple instances." />
+                </Paragraph>
+            </RichTextBlock>
 
+            <RichTextBlock>
+                <Paragraph>• Encapsulation: UserControls encapsulate a set of controls and their behavior, promoting reusability and maintainability.</Paragraph>
+                <Paragraph>• Design-Time Support: They offer a visual design experience, making it easier to construct complex interfaces.</Paragraph>
+            </RichTextBlock>
+        </StackPanel>
     </StackPanel>
 </Page>
