@@ -1,0 +1,76 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Window
+    x:Class="WinUI3React.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3React"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Padding="20" Background="{StaticResource SolidBackgroundFillColorBaseBrush}" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Grid.Row="0">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="WinUI 3"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Text" MinWidth="120"/>
+            
+                <TextBox MinHeight="112" MinWidth="160" HorizontalAlignment="Left" MaxWidth="250" Header="Tell us more" PlaceholderText="Give as much details as you can but do not include any provate information." TextWrapping="Wrap" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                
+                </StackPanel>
+                <CheckBox Content="Include Screenshot" IsChecked="True"/>
+                <CheckBox Content="Reproduce the problem"/>
+                <CheckBox Content="Attach a file"/>
+                <TextBlock Text="Mark this feedback as public?" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+                <CheckBox Content="Yes, make public"/>
+                <ComboBox HorizontalAlignment="Left" Header="ComboBox" PlaceholderText="Pick a color" Width="200">
+                    <x:String>Blue</x:String>
+                    <x:String>Green</x:String>
+                    <x:String>Red</x:String>
+                    <x:String>Yellow</x:String>
+                </ComboBox>
+                <Slider HorizontalAlignment="Left" Header="Slider" Width="200" Minimum="500" Maximum="1000" StepFrequency="10"
+                    SmallChange="10" Value="800" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Bottom" Grid.Row="2">
+                <TextBlock Style="{StaticResource CaptionTextBlockStyle}" MaxWidth="300" TextWrapping="Wrap" Text="When you send us this feedback, you agree we may combine this information which may include Windows diagnostic data with data from other Microsoft products and services - to help us improve Microsoft products and services. We may share your feedback with partners including Windows Diagnostic Data to help them troubleshoot their products and services."/>
+                <HyperlinkButton HorizontalAlignment="Left" Content="Microsoft home page" NavigateUri="http://www.microsoft.com"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancel" MinWidth="120"/>
+                    <Button Style="{StaticResource AccentButtonStyle}" Content="Submit" MinWidth="120"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Loaded="Grid_Loaded">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="0,20,0,0" Style="{StaticResource TitleTextBlockStyle}" Text="Fluent UI React"/>
+            <WebView2 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+                    Source="{x:Bind BaseSource}" Name="webView" CoreWebView2Initialized="webView_CoreWebView2Initialized"/>
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <TextBlock Text="{x:Bind BaseSource}" />
+                <Button Content="Say Hi to web" Click="Button_Click"/>
+                <TextBlock Text="{x:Bind ViewModel.WebMessage,Mode=OneWay}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
