@@ -58,7 +58,6 @@ public sealed partial class TitleBarPage : Page
         {
             titleBarElement.Visibility = Visibility.Collapsed;
             window.ExtendsContentIntoTitleBar = false;
-            window.SetTitleBar(null);
             TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
         }
         UpdateButtonText();
