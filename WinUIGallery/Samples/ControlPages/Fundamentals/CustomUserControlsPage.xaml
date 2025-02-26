@@ -53,7 +53,7 @@
             </RichTextBlock>
         </StackPanel>
         
-        <controls:ControlExample HeaderText="Simple Counter Control with Increment/Decrement Mode"
+        <controls:ControlExample HeaderText="Counter Control with Increment/Decrement Mode"
                                  CSharpSource="CustomUserControls/CustomUserControlsSample1_cs.txt"
                                  XamlSource="CustomUserControls/CustomUserControlsSample1_xaml.txt">
             <controls:ControlExample.Example>
@@ -94,6 +94,11 @@
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
+        <controls:ControlExample HeaderText="Temperature Converter UserControl example"
+                                 CSharpSource="CustomUserControls/CustomUserControlsSample3_cs.txt"
+                                 XamlSource="CustomUserControls/CustomUserControlsSample3_xaml.txt">
+            <customUserControls:TemperatureConverterControl />
+        </controls:ControlExample>
         <controls:ControlExample HeaderText="Synonym finder UserControl example"
                                  CSharpSource="CustomUserControls/CustomUserControlsSample4_cs.txt"
                                  XamlSource="CustomUserControls/CustomUserControlsSample4_xaml.txt">

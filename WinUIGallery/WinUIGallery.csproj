@@ -465,6 +465,8 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
     </ItemGroup>
