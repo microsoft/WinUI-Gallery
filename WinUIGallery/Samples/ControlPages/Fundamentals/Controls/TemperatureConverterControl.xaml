@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="WinUIGallery.Samples.ControlPages.Fundamentals.Controls.TemperatureConverterControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery.Samples.ControlPages.Fundamentals.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="8">
+        <TextBox Header="Enter Temperature in Celsius" x:Name="InputTextBox"
+                 Width="200"
+                 PlaceholderText="Celsius" />
+        <Button Content="Convert to Fahrenheit"
+                Width="200"
+                Click="Button_Click"/>
+        <TextBlock x:Name="ResultTextBlock"
+                   FontWeight="SemiBold" />
+    </StackPanel>
+</UserControl>

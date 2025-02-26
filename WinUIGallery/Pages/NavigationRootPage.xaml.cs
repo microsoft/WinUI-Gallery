@@ -368,6 +368,10 @@ public sealed partial class NavigationRootPage : Page
             {
                 Navigate(typeof(ItemPage), "Templates");
             }
+            else if (selectedItem == CustomUserControlsPage)
+            {
+                Navigate(typeof(ItemPage), "CustomUserControls");
+            }
             else if (selectedItem == ScratchPadPage)
             {
                 Navigate(typeof(ItemPage), "ScratchPad");
