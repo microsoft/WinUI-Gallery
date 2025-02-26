@@ -51,7 +51,7 @@ public sealed partial class TitleBarPage : Page
         {
             titleBarElement.Visibility = Visibility.Visible;
             window.ExtendsContentIntoTitleBar = true;
-            window.SetTitleBar(titlebar);
+            window.SetTitleBar(titlebar == null? titleBarElement : titlebar);
             TitleBarHelper.SetCaptionButtonBackgroundColors(window, Colors.Transparent);
         }
         else
