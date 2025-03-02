@@ -220,7 +220,7 @@ public sealed partial class SampleWindow1 : Window
                                   OnContent="true"
                                   IsOn="true">
                         <ToolTipService.ToolTip>
-                            <TextBlock Text="Allows the window to be maximized to full screen."
+                            <TextBlock Text="Controls the visibility and enable state of the maximize button."
                                        TextWrapping="Wrap" />
                         </ToolTipService.ToolTip>
                     </ToggleSwitch>
@@ -230,7 +230,7 @@ public sealed partial class SampleWindow1 : Window
                                   OnContent="true"
                                   IsOn="true">
                         <ToolTipService.ToolTip>
-                            <TextBlock Text="Enables minimizing the window to the taskbar."
+                            <TextBlock Text="Controls the visibility and enable state of the minimize button."
                                        TextWrapping="Wrap" />
                         </ToolTipService.ToolTip>
                     </ToggleSwitch>
