@@ -84,6 +84,7 @@
                     </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
+        
         <TextBlock Text="UserControl"
                    Style="{ThemeResource SubtitleTextBlockStyle}"
                    Margin="0,24,0,8" />
@@ -94,19 +95,11 @@
                 </Paragraph>
             </RichTextBlock>
         </StackPanel>
+        
         <controls:ControlExample HeaderText="Temperature Converter UserControl example"
                                  CSharpSource="CustomUserControls/CustomUserControlsSample3_cs.txt"
                                  XamlSource="CustomUserControls/CustomUserControlsSample3_xaml.txt">
             <customUserControls:TemperatureConverterControl />
-        </controls:ControlExample>
-        <controls:ControlExample HeaderText="Synonym finder UserControl example"
-                                 CSharpSource="CustomUserControls/CustomUserControlsSample4_cs.txt"
-                                 XamlSource="CustomUserControls/CustomUserControlsSample4_xaml.txt">
-            <StackPanel Spacing="8">
-                <TextBlock Text="Try these words: happy, fast, smart" />
-                <customUserControls:SynonymFinderControl x:Name="SynonymFinder"
-                                                         Header="Find Synonyms" />
-            </StackPanel>
         </controls:ControlExample>
     </StackPanel>
 </Page>
