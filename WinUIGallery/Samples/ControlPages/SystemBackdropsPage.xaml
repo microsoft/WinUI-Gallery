@@ -1,0 +1,74 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.SystemBackdropsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local2="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample
+            CSharpSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt"
+            HeaderText="Backdrop types"
+            XamlSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    There are three backdrop types:<LineBreak />
+                    1. SystemBackdrop (The base class of every backdrop type)<LineBreak />
+                    2. MicaBackdrop (A backdrop that uses the Mica material)<LineBreak />
+                    3. DesktopAcrylicBackdrop (A backdrop that uses the Acrylic material)<LineBreak /> <LineBreak />
+                    Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
+                    Mica is specifically designed for app performance as it only samples the desktop wallpaper once to create its visualization.
+                    Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background. Recommended when creating an app with a tabbed title bar.
+                    All variants of Mica are available for Windows 11 build 22000 or later.<LineBreak /> <LineBreak />
+                    Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
+                    There are two acrylic blend types that change what's visible through the material:<LineBreak />
+                    Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.<LineBreak />
+                    In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in XAML)</TextBlock>
+                <Button Margin="0,10,0,0" Click="createBuiltInWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsSampleMicaController.txt" HeaderText="MicaController">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to an app.
+                    This is a list of properties that can be modified: FallbackColor, Kind, LuminosityOpacity, TintColor and the TintOpacity.<LineBreak />
+                    There are 2 types of Mica:<LineBreak />
+                    1. Base (Lighter)<LineBreak />
+                    2. Alt (Darker)<LineBreak />
+                </TextBlock>
+                <Button Margin="0,10,0,0" Click="createCustomMicaWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt" HeaderText="DesktopAcrylicController">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type can't be changed using the DesktopAcrylicBackdrop class.<LineBreak />
+                    There are 2 types of Acrylic:<LineBreak />
+                    1. Base (Darker)<LineBreak />
+                    2. Thin (Lighter)<LineBreak />
+                    If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.</TextBlock>
+                <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" HeaderText="WindowsSystemDispatcherQueueHelper">
+            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica- or DesktopAcrylicController. This helper class imports and uses the underlying create function." TextWrapping="WrapWholeWords" />
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

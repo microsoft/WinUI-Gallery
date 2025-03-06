@@ -1,0 +1,159 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.SplitButtonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="SwatchSize">32</x:Double>
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:ControlExample
+            x:Name="Example1"
+            HeaderText="A SplitButton controlling text color in a RichEditBox"
+            WebViewHeight="150"
+            XamlSource="Buttons\SplitButton\SplitButtonSample1.txt">
+            <Grid x:Name="Control1" ColumnSpacing="24">
+
+                <SplitButton
+                    x:Name="myColorButton"
+                    MinWidth="0"
+                    MinHeight="0"
+                    Padding="0"
+                    VerticalAlignment="Top"
+                    AutomationProperties.Name="Font color"
+                    Click="myColorButton_Click">
+                    <Border
+                        x:Name="CurrentColor"
+                        Width="{StaticResource SwatchSize}"
+                        Height="{StaticResource SwatchSize}"
+                        Margin="0"
+                        Background="Green"
+                        CornerRadius="4,0,0,4" />
+                    <SplitButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <GridView IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
+                                <GridView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </GridView.ItemsPanel>
+                                <GridView.Resources>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Width" Value="{StaticResource SwatchSize}" />
+                                        <Setter Property="Height" Value="{StaticResource SwatchSize}" />
+                                        <Setter Property="RadiusX" Value="4" />
+                                        <Setter Property="RadiusY" Value="4" />
+                                    </Style>
+                                </GridView.Resources>
+                                <GridView.Items>
+                                    <Rectangle AutomationProperties.Name="Red" Fill="Red" />
+                                    <Rectangle AutomationProperties.Name="Orange" Fill="Orange" />
+                                    <Rectangle AutomationProperties.Name="Yellow" Fill="Yellow" />
+                                    <Rectangle AutomationProperties.Name="Green" Fill="Green" />
+                                    <Rectangle AutomationProperties.Name="Blue" Fill="Blue" />
+                                    <Rectangle AutomationProperties.Name="Indigo" Fill="Indigo" />
+                                    <Rectangle AutomationProperties.Name="Violet" Fill="Violet" />
+                                    <Rectangle AutomationProperties.Name="Gray" Fill="Gray" />
+                                </GridView.Items>
+                            </GridView>
+
+                        </Flyout>
+                    </SplitButton.Flyout>
+                </SplitButton>
+            </Grid>
+            <controls:ControlExample.Options>
+                <RichEditBox
+                    x:Name="myRichEditBox"
+                    Width="240"
+                    MinHeight="96"
+                    PlaceholderText="Type something here"
+                    TextChanged="MyRichEditBox_TextChanged" />
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A SplitButton with text" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
+            <controls:ControlExample.Example>
+                <SplitButton
+                    x:Name="myColorButtonReveal"
+                    MinWidth="0"
+                    MinHeight="0"
+                    Padding="5"
+                    VerticalAlignment="Top"
+                    AutomationProperties.Name="Font color with text">
+                    Choose color
+                    <SplitButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <VariableSizedWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal">
+                                <VariableSizedWrapGrid.Resources>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Width" Value="{StaticResource SwatchSize}" />
+                                        <Setter Property="Height" Value="{StaticResource SwatchSize}" />
+                                        <Setter Property="RadiusX" Value="4" />
+                                        <Setter Property="RadiusY" Value="4" />
+                                    </Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="MinWidth" Value="0" />
+                                        <Setter Property="MinHeight" Value="0" />
+                                        <Setter Property="Margin" Value="6" />
+                                        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
+                                    </Style>
+                                </VariableSizedWrapGrid.Resources>
+                                <Button AutomationProperties.Name="Red" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Red" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Orange" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Orange" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Yellow" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Yellow" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Green" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Green" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Blue" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Blue" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Indigo" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Indigo" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Violet" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Violet" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Gray" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Gray" />
+                                    </Button.Content>
+                                </Button>
+                                <Button AutomationProperties.Name="Black" Click="RevealColorButton_Click">
+                                    <Button.Content>
+                                        <Rectangle Fill="Black" />
+                                    </Button.Content>
+                                </Button>
+                            </VariableSizedWrapGrid>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                </SplitButton>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

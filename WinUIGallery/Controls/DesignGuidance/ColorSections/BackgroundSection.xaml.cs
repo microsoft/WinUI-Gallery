@@ -3,13 +3,12 @@
 
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorSections
+namespace WinUIGallery.Controls;
+
+public sealed partial class BackgroundSection : Page
 {
-    public sealed partial class BackgroundSection : Page
+    public BackgroundSection()
     {
-        public BackgroundSection()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
     }
 }

@@ -1,0 +1,197 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ScrollViewerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollViewer.">
+
+            <!--
+                There's a known issue with zooming where we get into a layout cycle if we specify a height but not a width.
+                As a workaround for now, set an explicit height/width to match the natural size of the image.
+            -->
+            <ScrollViewer
+                x:Name="ScrollViewerControl"
+                Width="400"
+                Height="266"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                IsTabStop="True"
+                IsVerticalScrollChainingEnabled="True"
+                ViewChanged="ScrollViewerControl_ViewChanged"
+                ZoomMode="Enabled">
+                <Image
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    AutomationProperties.Name="cliff"
+                    Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
+                    Stretch="None" />
+            </ScrollViewer>
+
+            <controls:ControlExample.Options>
+                <Grid
+                    MinWidth="200"
+                    ColumnDefinitions="Auto, *"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                    <TextBlock
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        Text="ZoomMode" />
+
+                    <ComboBox
+                        x:Name="zoomCombo"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="zoom mode"
+                        SelectedIndex="1"
+                        SelectionChanged="ZoomModeComboBox_SelectionChanged">
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                    </ComboBox>
+
+                    <Slider
+                        x:Name="ZoomSlider"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,10,0,0"
+                        Header="Zoom"
+                        IsEnabled="True"
+                        Maximum="{x:Bind ScrollViewerControl.MaxZoomFactor, Mode=OneWay}"
+                        Minimum="{x:Bind ScrollViewerControl.MinZoomFactor, Mode=OneWay}"
+                        ValueChanged="ZoomSlider_ValueChanged"
+                        Value="4" />
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Margin="0,12"
+                        HorizontalAlignment="Center"
+                        Text="ScrollMode" />
+
+                    <TextBlock
+                        Grid.Row="3"
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        Text="Horizontal" />
+
+                    <ComboBox
+                        x:Name="hsmCombo"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="horizontal scroll mode"
+                        SelectedIndex="1"
+                        SelectionChanged="hsmCombo_SelectionChanged">
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="4"
+                        Margin="0,8,10,0"
+                        VerticalAlignment="Center"
+                        Text="Vertical" />
+
+                    <ComboBox
+                        x:Name="vsmCombo"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="vertical scroll mode"
+                        SelectedIndex="1"
+                        SelectionChanged="vsmCombo_SelectionChanged">
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Margin="0,20,0,12"
+                        HorizontalAlignment="Center"
+                        Text="ScrollbarVisibility" />
+
+                    <TextBlock
+                        Grid.Row="6"
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        Text="Horizontal" />
+
+                    <ComboBox
+                        x:Name="hsbvCombo"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="horizontal scroll bar visibility"
+                        SelectedIndex="1"
+                        SelectionChanged="hsbvCombo_SelectionChanged">
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                        <ComboBoxItem>Hidden</ComboBoxItem>
+                        <ComboBoxItem>Visible</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="7"
+                        Margin="0,8,10,0"
+                        VerticalAlignment="Center"
+                        Text="Vertical" />
+
+                    <ComboBox
+                        x:Name="vsbvCombo"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="vertical scroll bar visibility"
+                        SelectedIndex="1"
+                        SelectionChanged="vsbvCombo_SelectionChanged">
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                        <ComboBoxItem>Hidden</ComboBoxItem>
+                        <ComboBoxItem>Visible</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollViewer Height="266" Width="400" ZoomMode="$(ZoomMode)"
+            IsTabStop="True" IsVerticalScrollChainingEnabled="True"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            ViewChanged="ScrollViewerControl_ViewChanged"
+            HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+            VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
+           HorizontalAlignment="Left" VerticalAlignment="Top"/&gt;
+&lt;/ScrollViewer&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)zoomCombo.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)hsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)hsbvCombo.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)vsmCombo.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)vsbvCombo.SelectedItem).Content, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

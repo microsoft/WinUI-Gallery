@@ -1,0 +1,45 @@
+﻿private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
+{
+    //disable the button to avoid double-clicking
+    var senderButton = sender as Button;
+    senderButton.IsEnabled = false;
+
+    // Clear previous returned file name, if it exists, between iterations of this scenario
+    PickFilesOutputTextBlock.Text = "";
+
+    // Create a file picker
+    var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+
+    // See the sample code below for how to make the window accessible from the App class.
+    var window = App.MainWindow;
+
+    // Retrieve the window handle (HWND) of the current WinUI 3 window.
+    var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+    // Initialize the file picker with the window handle (HWND).
+    WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+
+    // Set options for your file picker
+    openPicker.ViewMode = PickerViewMode.List;
+    openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+    openPicker.FileTypeFilter.Add("*");
+
+    // Open the picker for the user to pick a file
+    IReadOnlyList<StorageFile> files = await openPicker.PickMultipleFilesAsync();
+    if (files.Count > 0)
+    {
+        StringBuilder output = new StringBuilder("Picked files:\n");
+        foreach (StorageFile file in files)
+        {
+            output.Append(file.Name + "\n");
+        }
+        PickFilesOutputTextBlock.Text = output.ToString();
+    }
+    else
+    {
+        PickFilesOutputTextBlock.Text = "Operation cancelled.";
+    }
+
+    //re-enable the button
+    senderButton.IsEnabled = true;
+}

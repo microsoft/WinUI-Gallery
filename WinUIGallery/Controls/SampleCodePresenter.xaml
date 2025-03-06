@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     VerticalContentAlignment="Top"
     ActualThemeChanged="SampleCodePresenter_ActualThemeChanged"
@@ -11,28 +11,21 @@
     mc:Ignorable="d">
 
     <Grid
-        Background="{Binding Background, Mode=OneWay}"
-        BorderBrush="{Binding BorderBrush, Mode=OneWay}"
-        BorderThickness="{Binding BorderThickness, Mode=OneWay}"
-        CornerRadius="{Binding CornerRadius, Mode=OneWay}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
+        Background="{x:Bind Background, Mode=OneWay}"
+        BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
+        BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
+        CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="SampleHeader" FontWeight="SemiBold" />
         <ScrollViewer
             x:Name="CodeScrollViewer"
-            Grid.Row="1"
-            VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
+            VerticalAlignment="{x:Bind VerticalContentAlignment, Mode=OneWay}"
             HorizontalScrollBarVisibility="Auto"
             HorizontalScrollMode="Auto"
-            VerticalScrollBarVisibility="Disabled"
-            VerticalScrollMode="Disabled">
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
             <ContentPresenter
                 x:Name="CodePresenter"
                 Margin="0,0,0,16"
@@ -40,30 +33,21 @@
         </ScrollViewer>
         <local:CopyButton
             x:Name="CopyCodeButton"
-            Grid.Row="0"
+            Grid.Column="1"
+            Margin="5,0,0,0"
             HorizontalAlignment="Right"
+            VerticalAlignment="Top"
             Click="CopyCodeButton_Click"
             Content="&#xE8C8;" />
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
-                <VisualState x:Name="XAMLSample">
-                    <VisualState.Setters>
-                        <Setter Target="SampleHeader.Text" Value="XAML" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="CSharpSample">
-                    <VisualState.Setters>
-                        <Setter Target="SampleHeader.Text" Value="C#" />
-                    </VisualState.Setters>
-                </VisualState>
+                <VisualState x:Name="XAMLSample" />
+                <VisualState x:Name="CSharpSample" />
                 <VisualState x:Name="InlineSample">
                     <VisualState.Setters>
-                        <Setter Target="SampleHeader.Visibility" Value="Collapsed" />
-                        <Setter Target="CodeScrollViewer.(Grid.Row)" Value="0" />
                         <Setter Target="CodeScrollViewer.HorizontalScrollMode" Value="Disabled" />
                         <Setter Target="CodeScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-                        <Setter Target="CopyCodeButton.(Grid.Column)" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

@@ -1,0 +1,103 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ColorPickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample
+            x:Name="Example1"
+            HorizontalContentAlignment="Left"
+            HeaderText="ColorPicker Properties.">
+
+            <ColorPicker
+                x:Name="colorPicker"
+                IsAlphaEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}"
+                IsAlphaSliderVisible="{x:Bind alphaSlider.IsChecked.Value, Mode=OneWay}"
+                IsAlphaTextInputVisible="{x:Bind alphaTextInput.IsChecked.Value, Mode=OneWay}"
+                IsColorChannelTextInputVisible="{x:Bind colorChannelInput.IsChecked.Value, Mode=OneWay}"
+                IsColorSliderVisible="{x:Bind colorSlider.IsChecked.Value, Mode=OneWay}"
+                IsHexInputVisible="{x:Bind hexInput.IsChecked.Value, Mode=OneWay}"
+                IsMoreButtonVisible="{x:Bind moreBtn.IsChecked.Value, Mode=OneWay}" />
+
+            <controls:ControlExample.Options>
+                <StackPanel Width="250" Margin="0,-5,0,0">
+                    <CheckBox
+                        x:Name="moreBtn"
+                        Content="IsMoreButtonVisible"
+                        IsChecked="False" />
+                    <CheckBox
+                        x:Name="colorSlider"
+                        Content="IsColorSliderVisible"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="colorChannelInput"
+                        Content="IsColorChannelTextInputVisible"
+                        IsChecked="True" />
+                    <CheckBox
+                        x:Name="hexInput"
+                        Content="IsHexInputVisible"
+                        IsChecked="True" />
+                    <CheckBox x:Name="alpha" Content="Alpha Enabled" />
+                    <CheckBox
+                        x:Name="alphaSlider"
+                        Content="IsAlphaSliderVisible"
+                        IsChecked="True"
+                        IsEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}" />
+                    <CheckBox
+                        x:Name="alphaTextInput"
+                        Content="IsAlphaTextInputVisible"
+                        IsChecked="True"
+                        IsEnabled="{x:Bind alpha.IsChecked.Value, Mode=OneWay}" />
+                    <RadioButtons
+                        x:Name="ColorSpectrumShapeRadioButtons"
+                        Header="Colorspectrum shape"
+                        SelectedIndex="0"
+                        SelectionChanged="ColorSpectrumShapeRadioButtons_SelectionChanged">
+                        <x:String>Box</x:String>
+                        <x:String>Ring</x:String>
+                    </RadioButtons>
+                    <StackPanel Margin="0,12,0,0">
+                        <TextBlock Text="ColorPicker applied on a Rectangle" />
+                        <Rectangle
+                            x:Name="previewRect"
+                            Height="100"
+                            Margin="0,12,0,0"
+                            Stroke="{ThemeResource TextControlBorderBrush}"
+                            StrokeThickness="1">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{x:Bind colorPicker.Color, Mode=OneWay}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </StackPanel>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ColorPicker
+      ColorSpectrumShape="$(ColorSpectrumShape)"
+      IsMoreButtonVisible="$(IsMoreButtonVisible)"
+      IsColorSliderVisible="$(IsColorSliderVisible)"
+      IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
+      IsHexInputVisible="$(IsHexInputVisible)"
+      IsAlphaEnabled="$(IsAlphaEnabled)"
+      IsAlphaSliderVisible="$(IsAlphaSliderVisible)"
+      IsAlphaTextInputVisible="$(IsAlphaTextInputVisible)" /&gt;
+</x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ColorSpectrumShape" Value="{x:Bind ColorSpectrumShapeRadioButtons.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsMoreButtonVisible" Value="{x:Bind moreBtn.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsColorSliderVisible" Value="{x:Bind colorSlider.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsColorChannelTextInputVisible" Value="{x:Bind colorChannelInput.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsHexInputVisible" Value="{x:Bind hexInput.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsAlphaEnabled" Value="{x:Bind alpha.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsAlphaSliderVisible" Value="{x:Bind alphaSlider.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsAlphaTextInputVisible" Value="{x:Bind alphaTextInput.IsChecked, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

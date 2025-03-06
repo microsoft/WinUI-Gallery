@@ -1,0 +1,110 @@
+trigger:
+    - main
+
+pool:
+    vmImage: "windows-2022"
+
+variables:
+    solutionGallery: "**/WinUIGallery.sln"
+    buildPlatform: "x64"
+    buildConfiguration: "Debug"
+    appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'
+
+steps:
+    - task: NuGetToolInstaller@1
+      displayName: Install NuGet 5.8.0
+      inputs:
+          versionSpec: 5.8.0
+
+    - task: NuGetCommand@2
+      displayName: Restore NuGet Packages for WinUI Gallery
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+
+    - task: PowerShell@2
+      displayName: Generate Test Signing Certificate
+      inputs:
+        targetType: filePath
+        filePath: build/GenerateTestPFX.ps1
+
+    - task: DotNetCoreCLI@2
+      displayName: Build WinUI Gallery Package
+      inputs:
+        command: 'publish'
+        publishWebProjects: false
+        projects: '$(solutionGallery)'
+        arguments: '/p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
+        zipAfterPublish: false
+        modifyOutputPath: false
+
+    - script: |
+        dir /b /s $(Build.ArtifactStagingDirectory)
+        dir /b /s $(System.DefaultWorkingDirectory)
+      displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
+
+    - task: VSTest@2
+      displayName: 'Run Sample Unit Tests'
+      inputs:
+        failOnMinTestsNotRun: true
+        minimumExpectedTests: '3'
+        testAssemblyVer2: |
+          **\WinUIGallery.UnitTests.build.appxrecipe
+
+    - task: PowerShell@2
+      displayName: Uninstall existing WinUI Gallery packages
+      inputs:
+          targetType: "inline"
+          script: |
+              Get-AppxPackage Microsoft.WinUI3ControlsGallery* | ForEach-Object { Remove-AppxPackage $_.PackageFullName }
+          errorActionPreference: "continue"
+          failOnStderr: true
+          workingDirectory: "$(System.DefaultWorkingDirectory)"
+
+    - task: PowerShell@2
+      displayName: Install WinUI Gallery package
+      inputs:
+          targetType: "inline"
+          script: |
+              cd $(appxPackageDir)
+
+              $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
+              cd $AppBundle
+              ./Install.ps1 -Force
+          errorActionPreference: "continue"
+          failOnStderr: true
+          workingDirectory: "$(System.DefaultWorkingDirectory)"
+
+    - task: Windows Application Driver@0
+      displayName: Start Windows Application Driver
+      inputs:
+          OperationType: "Start"
+          AgentResolution: "1080p"
+
+    - task: VSTest@2
+      displayName: Run UI Tests
+      inputs:
+          testSelector: "testAssemblies"
+          testAssemblyVer2: |
+              **\publish\WinUIGallery.UITests.dll
+              !**\*TestAdapter.dll
+              !**\obj\**
+              !**\ref\**
+          searchFolder: "$(System.DefaultWorkingDirectory)"
+          resultsFolder: "$(Build.ArtifactStagingDirectory)\\TestResults"
+          overrideTestrunParameters: '-ArtifactStagingDirectory "$(Build.ArtifactStagingDirectory)"'
+
+    - task: Windows Application Driver@0
+      displayName: Stop Windows Application Driver
+      inputs:
+          OperationType: "Stop"
+      condition: always()
+
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish build artifacts"
+      inputs:
+        PathToPublish: "$(Build.ArtifactStagingDirectory)"
+        ArtifactName: "drop"
+      condition: always()

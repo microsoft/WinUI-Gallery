@@ -1,0 +1,342 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.SwipeControlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="ListViewItem">
+                <Setter Property="Padding" Value="0" />
+            </Style>
+        </StackPanel.Resources>
+
+        <StackPanel>
+            <controls:ControlExample x:Name="Example1" HeaderText="Swipe right to reveal actions">
+                <controls:ControlExample.Example>
+                    <Border>
+                        <Border.Resources>
+                            <FontIconSource x:Key="AcceptIcon" Glyph="&#xE8FB;" />
+                            <FontIconSource x:Key="FlagIcon" Glyph="&#xE7C1;" />
+
+                            <SwipeItems x:Key="left" Mode="Reveal">
+                                <SwipeItem
+                                    Background="{ThemeResource ButtonBackgroundThemeBrush}"
+                                    Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
+                                    IconSource="{StaticResource AcceptIcon}"
+                                    Invoked="Accept_ItemInvoked"
+                                    Text="Accept" />
+                                <SwipeItem
+                                    Background="{ThemeResource ButtonBackgroundThemeBrush}"
+                                    Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
+                                    IconSource="{StaticResource FlagIcon}"
+                                    Invoked="Flag_ItemInvoked"
+                                    Text="Flag" />
+                            </SwipeItems>
+                        </Border.Resources>
+                        <SwipeControl
+                            Width="500"
+                            Height="68"
+                            Margin="12"
+                            BorderBrush="{ThemeResource ButtonBackground}"
+                            BorderThickness="1"
+                            LeftItems="{StaticResource left}">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Swipe Right" />
+                        </SwipeControl>
+                    </Border>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Border&gt;
+    &lt;Border.Resources&gt;
+        &lt;FontIconSource x:Key="AcceptIcon" Glyph="&amp;#xE8FB;"/&gt;
+        &lt;FontIconSource x:Key="FlagIcon" Glyph="&amp;#xE7C1;"/&gt;
+
+        &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
+            &lt;SwipeItem Text="Accept" IconSource="{StaticResource AcceptIcon}" Invoked="Accept_ItemInvoked"/&gt;
+            &lt;SwipeItem Text="Flag" IconSource="{StaticResource FlagIcon}" Invoked="Flag_ItemInvoked"/&gt;
+        &lt;/SwipeItems&gt;
+    &lt;/Border.Resources&gt;
+    &lt;SwipeControl BorderThickness="1"
+        LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"
+        Width="300" Margin="12" Height="68"&gt;
+            &lt;TextBlock Text="Swipe Right" Margin="12"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+    &lt;/SwipeControl&gt;
+&lt;/Border&gt;
+                    </x:String>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
+
+            <controls:ControlExample x:Name="Example2" HeaderText="Swipe left to invoke an execute">
+                <controls:ControlExample.Example>
+                    <Border>
+                        <Border.Resources>
+                            <FontIconSource x:Key="ArchiveIcon" Glyph="&#xE7B8;" />
+                            <SwipeItems x:Key="right" Mode="Execute">
+                                <SwipeItem
+                                    BehaviorOnInvoked="Close"
+                                    IconSource="{StaticResource ArchiveIcon}"
+                                    Invoked="DeleteOne_ItemInvoked"
+                                    Text="Archive" />
+                            </SwipeItems>
+                        </Border.Resources>
+                        <SwipeControl
+                            Width="500"
+                            Height="68"
+                            Margin="12"
+                            BorderBrush="{ThemeResource ButtonBackground}"
+                            BorderThickness="1"
+                            RightItems="{StaticResource right}">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Swipe Left" />
+                        </SwipeControl>
+                    </Border>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Border&gt;
+    &lt;Border.Resources&gt;
+        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE74D;"/&gt;
+        &lt;SwipeItems x:Key="right" Mode="Execute"&gt;
+            &lt;SwipeItem Text="Archive" IconSource="{StaticResource ArchiveIcon}"
+                       BehaviorOnInvoked="Close" Invoked="DeleteOne_ItemInvoked"/&gt;
+        &lt;/SwipeItems&gt;
+    &lt;/Border.Resources&gt;
+    &lt;SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"
+        RightItems="{StaticResource right}"
+        Width="300" Margin="12" Height="68"&gt;
+        &lt;TextBlock Text="Swipe Left" Margin="12"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+    &lt;/SwipeControl&gt;
+&lt;/Border&gt;
+                    </x:String>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
+
+            <controls:ControlExample x:Name="Example3" HeaderText="Custom Swipe in a ListView">
+                <controls:ControlExample.Example>
+                    <ListView
+                        x:Name="lv"
+                        Width="800"
+                        Height="300"
+                        MinWidth="200"
+                        Margin="12">
+                        <ListView.Resources>
+                            <FontIconSource x:Key="ReplyAllIcon" Glyph="&#xE8C2;" />
+                            <FontIconSource x:Key="ReadIcon" Glyph="&#xE8C3;" />
+                            <FontIconSource x:Key="DeleteIcon" Glyph="&#xE74D;" />
+
+                            <SwipeItems x:Key="left" Mode="Reveal">
+                                <SwipeItem
+                                    Background="#FF3e6fa7"
+                                    Foreground="White"
+                                    IconSource="{StaticResource ReplyAllIcon}"
+                                    Text="Reply All" />
+                                <SwipeItem
+                                    Background="#FFff9501"
+                                    Foreground="White"
+                                    IconSource="{StaticResource ReadIcon}"
+                                    Text="Open" />
+                            </SwipeItems>
+                            <SwipeItems x:Key="right" Mode="Execute">
+                                <SwipeItem
+                                    Background="Red"
+                                    IconSource="{StaticResource DeleteIcon}"
+                                    Invoked="DeleteItem_ItemInvoked"
+                                    Text="Delete" />
+                            </SwipeItems>
+                        </ListView.Resources>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeControl
+                                    Height="68"
+                                    MinWidth="200"
+                                    BorderBrush="{ThemeResource ButtonBackground}"
+                                    BorderThickness="0,1,0,0"
+                                    LeftItems="{StaticResource left}"
+                                    RightItems="{StaticResource right}">
+                                    <TextBlock
+                                        Margin="12"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Center"
+                                        FontSize="24"
+                                        Text="{Binding}" />
+                                </SwipeControl>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;ListView x:Name="lv" Width="400" Height="300" Margin="12"&gt;
+    &lt;ListView.Resources&gt;
+        &lt;FontIconSource x:Key="ReplyAllIcon" Glyph="&amp;#xE8C2;"/&gt;
+        &lt;FontIconSource x:Key="ReadIcon" Glyph="&amp;#xE8C3;"/&gt;
+        &lt;FontIconSource x:Key="DeleteIcon" Glyph="&amp;#xE74D;"/&gt;
+
+        &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
+            &lt;SwipeItem Text="Reply All" IconSource="{StaticResource ReplyAllIcon}"
+                       Background="#FF3e6fa7" Foreground="White"/&gt;
+            &lt;SwipeItem Text="Open" IconSource="{StaticResource ReadIcon}"
+                       Background="#FFff9501" Foreground="White"/&gt;
+        &lt;/SwipeItems&gt;
+        &lt;SwipeItems x:Key="right" Mode="Execute"&gt;
+            &lt;SwipeItem Text="Delete" IconSource="{StaticResource DeleteIcon}"
+                       Background="#FFF4B183" Invoked="DeleteItem_ItemInvoked"/&gt;
+        &lt;/SwipeItems&gt;
+    &lt;/ListView.Resources&gt;
+
+    &lt;ListView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68"
+                       Width="800" MinWidth="200" LeftItems="{StaticResource left}"
+                          RightItems="{StaticResource right}"&gt;
+                &lt;TextBlock Text="{Binding}" FontSize="24" Margin="12"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Center"/&gt;
+            &lt;/SwipeControl&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListView.ItemTemplate&gt;
+&lt;/ListView&gt;
+                    </x:String>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
+
+            <controls:ControlExample x:Name="Example4" HeaderText="Gradient Background">
+                <controls:ControlExample.Example>
+                    <Border>
+                        <Border.Resources>
+                            <FontIconSource x:Key="LockIcon" Glyph="&#xE72E;" />
+                            <LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Offset="0.0" Color="#ff8990f9" />
+                                <GradientStop Offset="0.5" Color="#ff5b66fb" />
+                                <GradientStop Offset="1.0" Color="#ff5c1df4" />
+                            </LinearGradientBrush>
+                            <SwipeItems x:Key="right" Mode="Execute">
+                                <SwipeItem
+                                    Background="{StaticResource PurpleGradient}"
+                                    BehaviorOnInvoked="Close"
+                                    IconSource="{StaticResource LockIcon}"
+                                    Text="Lock" />
+                            </SwipeItems>
+                        </Border.Resources>
+                        <SwipeControl
+                            Width="500"
+                            Height="68"
+                            Margin="12"
+                            BorderBrush="{ThemeResource ButtonBackground}"
+                            BorderThickness="1"
+                            RightItems="{StaticResource right}">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Swipe Left" />
+                        </SwipeControl>
+                    </Border>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Border&gt;
+    &lt;Border.Resources&gt;
+        &lt;FontIconSource x:Key="LockIcon" Glyph="&amp;#xE72E;"/&gt;
+        &lt;LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5"&gt;
+            &lt;GradientStop Color="#ff8990f9" Offset="0.0"/&gt;
+            &lt;GradientStop Color="#ff5b66fb" Offset="0.5"/&gt;
+            &lt;GradientStop Color="#ff5c1df4" Offset="1.0"/&gt;
+        &lt;LinearGradientBrush/&gt;
+        &lt;SwipeItems x:Key="right" Mode="Execute"&gt;
+            &lt;SwipeItem Text="Lock" Background="{StaticResource PurpleGradient}" 
+                       BehaviorOnInvoked="Close" IconSource="{StaticResource LockIcon}"/&gt;
+        &lt;/SwipeItems&gt;
+    &lt;/Border.Resources&gt;
+    &lt;SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"
+        RightItems="{StaticResource right}"
+        Width="500" Margin="12" Height="68"&gt;
+        &lt;TextBlock Text="Swipe Left" Margin="12"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+    &lt;/SwipeControl&gt;
+&lt;/Border&gt;
+                    </x:String>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
+
+            <controls:ControlExample x:Name="Example5" HeaderText="Custom icons">
+                <controls:ControlExample.Example>
+                    <Border>
+                        <Border.Resources>
+                            <SwipeItems x:Key="left" Mode="Reveal">
+                                <SwipeItem
+                                    Background="{ThemeResource ButtonBackgroundThemeBrush}"
+                                    Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
+                                    Text="Coffee">
+                                    <SwipeItem.IconSource>
+                                        <BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png" />
+                                    </SwipeItem.IconSource>
+                                </SwipeItem>
+                            </SwipeItems>
+                        </Border.Resources>
+                        <SwipeControl
+                            Width="500"
+                            Height="68"
+                            Margin="12"
+                            BorderBrush="{ThemeResource ButtonBackground}"
+                            BorderThickness="1"
+                            LeftItems="{StaticResource left}">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Swipe Right" />
+                        </SwipeControl>
+                    </Border>
+                </controls:ControlExample.Example>
+                <controls:ControlExample.Xaml>
+                    <x:String xml:space="preserve">
+&lt;Border&gt;
+    &lt;Border.Resources&gt;
+        &lt;SwipeItems x:Key="left" Mode="Reveal"&gt;
+            &lt;SwipeItem Text="Coffee"&gt;
+                &lt;SwipeItem.IconSource&gt;
+                    &lt;BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png"/&gt;
+                &lt;SwipeItem.IconSource/&gt;
+            &lt;SwipeItem/&gt;
+        &lt;/SwipeItems&gt;
+    &lt;/Border.Resources&gt;
+    &lt;SwipeControl BorderThickness="1"
+        LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"
+        Width="300" Margin="12" Height="68"&gt;
+            &lt;TextBlock Text="Swipe Right" Margin="12"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+    &lt;/SwipeControl&gt;
+&lt;/Border&gt;
+                    </x:String>
+                </controls:ControlExample.Xaml>
+            </controls:ControlExample>
+
+        </StackPanel>
+
+    </StackPanel>
+</Page>

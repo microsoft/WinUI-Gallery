@@ -1,0 +1,108 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.CanvasPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="using:WinUIGallery.Common"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A Canvas control.">
+
+            <Canvas
+                x:Name="Control1"
+                Width="140"
+                Height="140"
+                VerticalAlignment="Top"
+                Background="Gray">
+                <Canvas.Resources>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="Width" Value="40" />
+                    </Style>
+                </Canvas.Resources>
+                <Rectangle
+                    Canvas.Left="{x:Bind LeftSlider.Value, Mode=OneWay}"
+                    Canvas.Top="{x:Bind TopSlider.Value, Mode=OneWay}"
+                    Canvas.ZIndex="{x:Bind (x:Int32)ZSlider.Value, Mode=OneWay}"
+                    Fill="Red" />
+                <Rectangle
+                    Canvas.Left="20"
+                    Canvas.Top="20"
+                    Canvas.ZIndex="1"
+                    Fill="Blue" />
+                <Rectangle
+                    Canvas.Left="40"
+                    Canvas.Top="40"
+                    Canvas.ZIndex="2"
+                    Fill="Green" />
+                <Rectangle
+                    Canvas.Left="60"
+                    Canvas.Top="60"
+                    Canvas.ZIndex="3"
+                    Fill="Yellow" />
+            </Canvas>
+
+            <controls:ControlExample.Options>
+                <StackPanel Orientation="Horizontal">
+                    <Slider
+                        x:Name="TopSlider"
+                        Height="110"
+                        VerticalAlignment="Top"
+                        IsDirectionReversed="True"
+                        Maximum="100"
+                        Minimum="0"
+                        Orientation="Vertical"
+                        StepFrequency="1">
+                        <Slider.Header>
+                            <TextBlock Margin="0,0,0,10" Text="Canvas.Top" />
+                        </Slider.Header>
+                    </Slider>
+                    <StackPanel Margin="16,0,0,0">
+                        <Slider
+                            x:Name="LeftSlider"
+                            Width="100"
+                            Header="Canvas.Left"
+                            Maximum="100"
+                            Minimum="0"
+                            StepFrequency="1" />
+                        <Slider
+                            x:Name="ZSlider"
+                            Width="100"
+                            Header="Canvas.ZIndex"
+                            Maximum="4"
+                            Minimum="0"
+                            StepFrequency="1" />
+                    </StackPanel>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Canvas Width="120" Height="120" Background="Gray"&gt;
+    &lt;Rectangle Fill="Red" Canvas.Left="$(Left)" Canvas.Top="$(Top)" Canvas.ZIndex="$(Z)" /&gt;
+    &lt;Rectangle Fill="Blue" Canvas.Left="20" Canvas.Top="20" Canvas.ZIndex="1" /&gt;
+    &lt;Rectangle Fill="Green" Canvas.Left="40" Canvas.Top="40" Canvas.ZIndex="2" /&gt;
+    &lt;Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" /&gt;
+&lt;/Canvas&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Left" Value="{x:Bind LeftSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Top" Value="{x:Bind TopSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Z" Value="{x:Bind ZSlider.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

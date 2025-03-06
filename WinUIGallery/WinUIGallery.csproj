@@ -41,8 +41,7 @@
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
         <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
-        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
-        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
+        <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -94,10 +93,14 @@
 
     <ItemGroup>
       <Compile Remove="Assets\ControlIcons\**" />
+      <Compile Remove="Samples\SampleCode\**" />
       <Content Remove="Assets\ControlIcons\**" />
       <EmbeddedResource Remove="Assets\ControlIcons\**" />
+      <EmbeddedResource Remove="Samples\SampleCode\**" />
       <None Remove="Assets\ControlIcons\**" />
+      <None Remove="Samples\SampleCode\**" />
       <Page Remove="Assets\ControlIcons\**" />
+      <Page Remove="Samples\SampleCode\**" />
       <PRIResource Remove="Assets\ControlIcons\**" />
     </ItemGroup>
 
@@ -109,10 +112,10 @@
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
         <PackageReference Include="Microsoft.Windows.CsWinRT" />
-        <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
         <Manifest Include="$(ApplicationManifest)" />
         <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
@@ -124,10 +127,10 @@
         <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
-        <PackageReference Update="CommunityToolkit.WinUI.Controls.Segmented" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="CommunityToolkit.WinUI.Controls.Primitives" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
@@ -137,26 +140,156 @@
     <ItemGroup>
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
-        <Compile Remove="ControlPages\ScrollViewer2Page.xaml.cs" />
-        <Compile Remove="ControlPages\InputValidationPage.xaml.cs" />
-        <Page Remove="ControlPages\ScrollViewer2Page.xaml" />
-        <Page Remove="ControlPages\InputValidationPage.xaml" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->
-        <Compile Remove="Helper\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
-        <Compile Remove="Helper\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\RichTextBlockFormatter.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
+        <Compile Remove="Helpers\ColorCode.internal\ExtensionMethods.cs" Condition="'$(IsInWinUIRepo)' != 'true'" />
         <Content Remove="@(Content)" />
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\CodeTagIcon.png" />
+        <None Remove="Assets\ControlImages\Accessibility.png" />
+        <None Remove="Assets\ControlImages\Popup.png" />
+        <None Remove="Assets\Design\Cards.dark.png" />
+        <None Remove="Assets\Design\Cards.light.png" />
+        <None Remove="Assets\Design\Dialog.dark.png" />
+        <None Remove="Assets\Design\Dialog.light.png" />
+        <None Remove="Assets\ninegrid.gif" />
+        <None Remove="Assets\SampleMedia\folder.png" />
+        <None Remove="Assets\Geometry.dark.png" />
+        <None Remove="Assets\Geometry.light.png" />
+        <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
+        <None Remove="Assets\SampleMedia\Dark_Image.png" />
+        <None Remove="Assets\SampleMedia\Light_Image.png" />
+        <None Remove="Assets\Tiles\AppList.scale-100.png" />
+        <None Remove="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\AppList.scale-125.png" />
+        <None Remove="Assets\Tiles\AppList.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\AppList.scale-150.png" />
+        <None Remove="Assets\Tiles\AppList.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\AppList.scale-200.png" />
+        <None Remove="Assets\Tiles\AppList.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\AppList.scale-400.png" />
+        <None Remove="Assets\Tiles\AppList.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-16.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-16_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-16_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-20.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-20_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-20_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-24.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-24_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-24_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-256.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-256_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-256_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-30.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-30_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-30_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-32.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-32_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-32_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-36.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-36_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-36_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-40.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-40_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-40_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-48.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-48_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-48_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-56.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-56_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-56_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-60.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-60_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-60_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-64.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-64_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-64_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-72.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-72_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-72_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-80.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-80_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-80_altform-unplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-96.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-96_altform-lightunplated.png" />
+        <None Remove="Assets\Tiles\AppList.targetsize-96_altform-unplated.png" />
+        <None Remove="Assets\Tiles\BadgeLogo.scale-100.png" />
+        <None Remove="Assets\Tiles\BadgeLogo.scale-125.png" />
+        <None Remove="Assets\Tiles\BadgeLogo.scale-150.png" />
+        <None Remove="Assets\Tiles\BadgeLogo.scale-200.png" />
+        <None Remove="Assets\Tiles\BadgeLogo.scale-400.png" />
         <None Remove="Assets\Tiles\GalleryIcon.ico" />
-        <None Remove="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <None Remove="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
-        <None Remove="ControlPages\DesignGuidance\ColorsPage.xaml" />
-        <None Remove="ControlPages\InfoBadgePage.xaml" />
-        <None Remove="ControlPages\LinePage.xaml" />
-        <None Remove="ControlPages\SelectorBarPage.xaml" />
-        <None Remove="ControlPages\ShapePage.xaml" />
-        <None Remove="ControlPages\Typography.xaml" />
+        <None Remove="Assets\Tiles\LargeTile.scale-100.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-125.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-150.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-200.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-400.png" />
+        <None Remove="Assets\Tiles\LargeTile.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-100.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-125.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-150.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-200.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-400.png" />
+        <None Remove="Assets\Tiles\MedTile.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-100.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-125.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-150.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-200.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-400.png" />
+        <None Remove="Assets\Tiles\SmallTile.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-100.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-dark.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-125.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-dark.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-150.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-dark.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-200.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-dark.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-400.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-dark.png" />
+        <None Remove="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\StoreDisplay-150.png" />
+        <None Remove="Assets\Tiles\StoreDisplay-300.png" />
+        <None Remove="Assets\Tiles\StoreDisplay-71.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-100.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-125.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-150.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-200.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-400.png" />
+        <None Remove="Assets\Tiles\StoreLogo.scale-400_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-100.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-100_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-125.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-125_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-150.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-150_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-200.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-400.png" />
+        <None Remove="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <None Remove="Controls\CopyButton\CopyButton.xaml" />
         <None Remove="Controls\DesignGuidance\ColorPageExample.xaml" />
         <None Remove="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml" />
@@ -167,32 +300,168 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
-        <None Remove="DataModel\IconsData.json" />
+        <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="Styles\Button.xaml" />
+        <None Remove="Styles\Grid.xaml" />
+        <None Remove="Styles\GridViewItem.xaml" />
+        <None Remove="Styles\ItemTemplates.xaml" />
+        <None Remove="Styles\TextBlock.xaml" />
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\CodeTagIcon.png" />
+        <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\Popup.png" />
+        <Content Include="Assets\Design\Cards.dark.png" />
+        <Content Include="Assets\Design\Cards.light.png" />
+        <Content Include="Assets\Design\Dialog.dark.png" />
+        <Content Include="Assets\Design\Dialog.light.png" />
+        <Content Include="Assets\ninegrid.gif" />
+        <Content Include="Assets\SampleMedia\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
+        <Content Include="Assets\Design\Geometry.dark.png" />
+        <Content Include="Assets\Design\Geometry.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
         <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
-        <Content Include="Assets\HomeHeaderTiles\Header-WinUIGallery.png" />
+        <Content Include="Assets\HomeHeaderTiles\Header-WinUI.png" />
+        <Content Include="Assets\SampleMedia\Dark_Image.png" />
+        <Content Include="Assets\SampleMedia\Light_Image.png" />
+        <Content Include="Assets\Tiles\AppList.scale-100.png" />
+        <Content Include="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\AppList.scale-125.png" />
+        <Content Include="Assets\Tiles\AppList.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\AppList.scale-150.png" />
+        <Content Include="Assets\Tiles\AppList.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\AppList.scale-200.png" />
+        <Content Include="Assets\Tiles\AppList.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\AppList.scale-400.png" />
+        <Content Include="Assets\Tiles\AppList.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-16.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-16_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-16_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-20.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-20_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-20_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-24.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-24_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-24_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-256.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-256_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-256_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-30.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-30_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-30_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-32.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-32_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-32_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-36.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-36_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-36_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-40.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-40_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-40_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-48.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-48_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-48_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-56.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-56_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-56_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-60.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-60_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-60_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-64.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-64_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-64_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-72.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-72_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-72_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-80.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-80_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-80_altform-unplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-96.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-96_altform-lightunplated.png" />
+        <Content Include="Assets\Tiles\AppList.targetsize-96_altform-unplated.png" />
+        <Content Include="Assets\Tiles\BadgeLogo.scale-100.png" />
+        <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
+        <Content Include="Assets\Tiles\BadgeLogo.scale-150.png" />
+        <Content Include="Assets\Tiles\BadgeLogo.scale-200.png" />
+        <Content Include="Assets\Tiles\BadgeLogo.scale-400.png" />
+        <Content Include="Assets\Design\Typography.dark.png" />
+        <Content Include="Assets\Design\Typography.light.png" />
         <Content Include="Assets\Tiles\GalleryIcon.ico" />
-        <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-16.png" />
-        <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-24.png" />
-        <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-256.png" />
-        <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-32.png" />
-        <Content Include="Assets\Tiles\SmallTile-sdk.altform-lightunplated_targetsize-48.png" />
-        <Content Include="Assets\Tiles\TitlebarLogo.png" />
-        <Content Include="Assets\Typography.dark.png" />
-        <Content Include="Assets\Typography.light.png" />
-        <Content Include="ControlPagesSampleCode\Icons\FontIconSample2_xaml.txt" />
-        <Content Include="DataModel\IconsData.json" />
-        <Content Include="DataModel\ControlInfoData.json" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="ControlPagesSampleCode\Typography\TypographySample_xaml.txt" />
+        <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-150.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-200.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-400.png" />
+        <Content Include="Assets\Tiles\LargeTile.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-100.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-125.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-150.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-200.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-400.png" />
+        <Content Include="Assets\Tiles\MedTile.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-100.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-125.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-150.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-200.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-400.png" />
+        <Content Include="Assets\Tiles\SmallTile.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-100.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-dark.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-125.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-dark.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-150.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-dark.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-200.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-dark.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-400.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-dark.png" />
+        <Content Include="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\StoreDisplay-150.png" />
+        <Content Include="Assets\Tiles\StoreDisplay-300.png" />
+        <Content Include="Assets\Tiles\StoreDisplay-71.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-100.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-125.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-150.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-200.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-400.png" />
+        <Content Include="Assets\Tiles\StoreLogo.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-100.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-100_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-125.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-125_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-150.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-150_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-200.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-400.png" />
+        <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
+        <Content Include="Samples\Data\IconsData.json" />
+        <Content Include="Samples\Data\ControlInfoData.json" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
@@ -202,9 +471,6 @@
     <ItemGroup>
         <Page Update="ControlPages\InfoBadgePage.xaml">
             <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml">
-          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
     <ItemGroup>
@@ -223,62 +489,29 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorSections\SignalSection.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="Controls\DesignGuidance\ColorTile.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
+      <Page Update="Styles\TextBlock.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorPageExample.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
+      <Page Update="Styles\ItemTemplates.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\Typography.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="ControlPages\LinePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-            <SubType>Designer</SubType>
-        </Page>
-        <Page Update="ControlPages\ShapePage.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
+      <Page Update="Styles\GridViewItem.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="Controls\DesignGuidance\TypographyControl.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
+      <Page Update="Styles\Grid.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\DesignGuidance\ColorsPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="ControlPages\SelectorBarPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="ControlPages\Accessibility\" />
+      <Page Update="Styles\Button.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <Import Project="ContentIncludes.props" />
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
@@ -299,5 +532,5 @@
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </_NoneWithTargetPath>
         </ItemGroup>
-    </Target> 
+    </Target>
 </Project>

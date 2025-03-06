@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="WinUIGallery.ControlPages.SelectorBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ColorsTemplate" x:DataType="media:SolidColorBrush">
+            <ItemContainer
+                Width="112"
+                Height="82"
+                Margin="4"
+                Background="{x:Bind}" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A Basic SelectorBar">
+            <SelectorBar x:Name="SelectorBar1">
+                <SelectorBarItem
+                    x:Name="SelectorBarItemRecent"
+                    Icon="Clock"
+                    Text="Recent" />
+                <SelectorBarItem
+                    x:Name="SelectorBarItemShared"
+                    Icon="Share"
+                    Text="Shared" />
+                <SelectorBarItem
+                    x:Name="SelectorBarItemFavorites"
+                    Icon="Favorite"
+                    Text="Favorites" />
+            </SelectorBar>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;SelectorBar x:Name="SelectorBar1"&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemRecent" Text="Recent" Icon="Clock" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemShared" Text="Shared" Icon="Share" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemFavorites" Text="Favorites" Icon="Favorite" /&gt;
+&lt;/SelectorBar&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example2" HeaderText="SelectorBar with Frame Slide Transitions">
+            <StackPanel>
+                <SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
+                    <SelectorBarItem
+                        x:Name="SelectorBarItemPage1"
+                        IsSelected="True"
+                        Text="Page1" />
+                    <SelectorBarItem x:Name="SelectorBarItemPage2" Text="Page2" />
+                    <SelectorBarItem x:Name="SelectorBarItemPage3" Text="Page3" />
+                    <SelectorBarItem x:Name="SelectorBarItemPage4" Text="Page4" />
+                    <SelectorBarItem x:Name="SelectorBarItemPage5" Text="Page5" />
+                </SelectorBar>
+
+                <Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" />
+            </StackPanel>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged"&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage2" Text="Page2" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage3" Text="Page3" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage4" Text="Page4" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPage5" Text="Page5" /&gt;
+&lt;/SelectorBar&gt;
+
+&lt;Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        {
+            SelectorBarItem selectedItem = sender.SelectedItem;
+            int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
+            System.Type pageType;
+
+            switch (currentSelectedIndex)
+            {
+                case 0:
+                    pageType = typeof(SamplePage1);
+                    break;
+                case 1:
+                    pageType = typeof(SamplePage2);
+                    break;
+                case 2:
+                    pageType = typeof(SamplePage3);
+                    break;
+                case 3:
+                    pageType = typeof(SamplePage4);
+                    break;
+                default:
+                    pageType = typeof(SamplePage5);
+                    break;
+            }
+
+            var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
+
+            ContentFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
+
+            previousSelectedIndex = currentSelectedIndex;
+        }
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example3" HeaderText="SelectorBar Displaying Different Collections Using ItemsView">
+            <StackPanel>
+                <SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged">
+                    <SelectorBarItem
+                        x:Name="SelectorBarItemPink"
+                        IsSelected="True"
+                        Text="Pink" />
+                    <SelectorBarItem x:Name="SelectorBarItemPlum" Text="Plum" />
+                    <SelectorBarItem x:Name="SelectorBarItemPowderBlue" Text="PowderBlue" />
+                </SelectorBar>
+
+                <ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}">
+                    <ItemsView.Layout>
+                        <StackLayout Orientation="Horizontal" />
+                    </ItemsView.Layout>
+                </ItemsView>
+            </StackPanel>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged" &gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPink" Text="Pink" IsSelected="True" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPlum" Text="Plum" /&gt;
+    &lt;SelectorBarItem x:Name="SelectorBarItemPowderBlue" Text="PowderBlue" /&gt;
+&lt;/SelectorBar&gt;
+
+&lt;ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}" /&gt;
+    &lt;ItemsView.Layout&gt;
+        &lt;UniformGridLayout /&gt;
+    &lt;/ItemsView.Layout&gt;
+&lt;/ItemsView/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+{
+    if (sender.SelectedItem == SelectorBarItemPink)
+    {
+        ItemsView3.ItemsSource = PinkColorCollection;
+    }
+    else if (sender.SelectedItem == SelectorBarItemPlum)
+    {
+        ItemsView3.ItemsSource = PlumColorCollection;
+    }
+    else
+    {
+        ItemsView3.ItemsSource = PowderBlueColorCollection;
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -1,0 +1,101 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.PipsPagerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="PipsPager integrated with a FlipView">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <FlipView
+                        x:Name="Gallery"
+                        Height="270"
+                        MaxWidth="400"
+                        ItemsSource="{x:Bind Pictures}">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Image Source="{x:Bind Mode=OneTime}" />
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                    <PipsPager
+                        x:Name="FlipViewPipsPager"
+                        Margin="0,12,0,0"
+                        HorizontalAlignment="Center"
+                        NumberOfPages="{x:Bind Pictures.Count}"
+                        SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve"> 
+&lt;StackPanel&gt;
+    &lt;FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}"&gt;
+        &lt;FlipView.ItemTemplate&gt;
+            &lt;DataTemplate x:DataType="x:String"&gt;
+                &lt;Image Source="{x:Bind Mode=OneTime}" /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/FlipView.ItemTemplate&gt;
+    &lt;/FlipView&gt;
+    &lt;PipsPager x:Name="FlipViewPipsPager"
+        HorizontalAlignment="Center"
+        Margin="0, 12, 0, 0"
+        NumberOfPages="{x:Bind Pictures.Count}"
+        SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
+            <controls:ControlExample.Example>
+                <PipsPager x:Name="TestPipsPager2" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="OrientationComboBox"
+                        Header="Orientation"
+                        SelectedValue="Horizontal"
+                        SelectionChanged="OrientationComboBox_SelectionChanged">
+                        <x:String>Horizontal</x:String>
+                        <x:String>Vertical</x:String>
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="PrevButtonComboBox"
+                        Header="Previous Button Visibility"
+                        SelectedValue="Visible"
+                        SelectionChanged="PrevButtonComboBox_SelectionChanged">
+                        <x:String>Visible</x:String>
+                        <x:String>VisibleOnPointerOver</x:String>
+                        <x:String>Collapsed</x:String>
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="NextButtonComboBox"
+                        Header="Next Button Visibility"
+                        SelectedValue="Visible"
+                        SelectionChanged="NextButtonComboBox_SelectionChanged">
+                        <x:String>Visible</x:String>
+                        <x:String>VisibleOnPointerOver</x:String>
+                        <x:String>Collapsed</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;PipsPager
+    Orientation="$(Orientation)"
+    PreviousButtonVisibility="$(PrevButton)"
+    NextButtonVisibility="$(NextButton)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind OrientationComboBox.SelectedValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PrevButton" Value="{x:Bind PrevButtonComboBox.SelectedValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="NextButton" Value="{x:Bind NextButtonComboBox.SelectedValue, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

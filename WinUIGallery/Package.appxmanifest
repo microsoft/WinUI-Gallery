@@ -7,12 +7,12 @@
     xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
     IgnorableNamespaces="uap mp uap3">
   <!--Note: package version and assembly version must be kept in sync-->
-  <Identity Name="Microsoft.WinUI3ControlsGallery" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="2.4.1.0" />
+  <Identity Name="Microsoft.WinUI3ControlsGallery" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="2.5.1.0" />
   <mp:PhoneIdentity PhoneProductId="863667e0-667a-4bb4-ac52-c59656c7333a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WinUI 3 Gallery</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
-    <Logo>Assets\Tiles\StoreLogo-sdk.png</Logo>
+    <Logo>Assets\Tiles\StoreLogo.png</Logo>
     <uap:SupportedUsers>multiple</uap:SupportedUsers>
   </Properties>
   <Dependencies>
@@ -23,7 +23,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
-      <uap:VisualElements DisplayName="WinUI 3 Gallery" Square150x150Logo="Assets\Tiles\squaretile-sdk.png" Square44x44Logo="Assets\Tiles\SmallTile-sdk.png" Description="WinUI 3 Gallery" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="WinUI 3 Gallery" Square150x150Logo="Assets\Tiles\MedTile.png" Square44x44Logo="Assets\Tiles\AppList.png" Description="WinUI 3 Gallery" BackgroundColor="transparent">
         <uap:DefaultTile Square310x310Logo="Assets\Tiles\LargeTile.png" Wide310x150Logo="Assets\Tiles\WideTile.png" Square71x71Logo="Assets\Tiles\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -31,7 +31,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\Tiles\splash-sdk.png"/>
+        <uap:SplashScreen Image="Assets\Tiles\SplashScreen.png"/>
       </uap:VisualElements>
       <Extensions>
         <uap3:Extension Category="windows.appUriHandler">

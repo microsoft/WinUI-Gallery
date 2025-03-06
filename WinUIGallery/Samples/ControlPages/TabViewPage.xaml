@@ -1,0 +1,490 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.TabViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:samplepages="using:WinUIGallery.SamplePages"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample CSharpSource="TabView\TabViewBasicSample_cs.txt" HeaderText="A TabView with support for adding, closing, and rearranging tabs">
+            <controls:ControlExample.Example>
+                <TabView
+                    x:Name="TabView1"
+                    MinHeight="475"
+                    Margin="-12"
+                    AddTabButtonClick="TabView_AddButtonClick"
+                    Loaded="TabView_Loaded"
+                    SelectedIndex="0"
+                    TabCloseRequested="TabView_TabCloseRequested" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A TabView with TabViewItems defined in markup">
+            <controls:ControlExample.Example>
+                <TabView
+                    MinHeight="475"
+                    Margin="-12"
+                    AddTabButtonClick="TabView_AddButtonClick"
+                    SelectedIndex="0"
+                    TabCloseRequested="TabView_TabCloseRequested">
+                    <TabView.TabItems>
+                        <TabViewItem Header="Document 0">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Placeholder" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage1 />
+                        </TabViewItem>
+                        <TabViewItem Header="Document 1">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Placeholder" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage2 />
+                        </TabViewItem>
+                        <TabViewItem Header="Document 2">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Placeholder" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage3 />
+                        </TabViewItem>
+                    </TabView.TabItems>
+                </TabView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested"&gt;
+    &lt;TabView.TabItems&gt;
+        &lt;TabViewItem Header="Document 0"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage1 /&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Document 1"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage2 /&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Document 2"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;SymbolIconSource Symbol="Placeholder" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+            &lt;samplepages:SamplePage3 /&gt;
+        &lt;/TabViewItem&gt;
+    &lt;/TabView.TabItems&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A TabView bound to a collection of MyData objects">
+            <controls:ControlExample.Example>
+                <TabView
+                    x:Name="TabViewItemsSourceSample"
+                    MinHeight="475"
+                    Margin="-12"
+                    AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick"
+                    SelectedIndex="0"
+                    TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested"
+                    TabItemsSource="{x:Bind myDatas, Mode=OneWay}">
+                    <TabView.TabItemTemplate>
+                        <DataTemplate x:DataType="local:MyData">
+                            <TabViewItem
+                                Content="{x:Bind DataContent}"
+                                Header="{x:Bind DataHeader}"
+                                IconSource="{x:Bind DataIconSource}" />
+                        </DataTemplate>
+                    </TabView.TabItemTemplate>
+                </TabView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample CSharpSource="TabView\TabViewKeyboardAcceleratorSample_cs.txt" HeaderText="A TabView with keyboarding support">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,0"
+                        Text="- Ctrl+T opens a new tab"
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Margin="0,0,0,0"
+                        Text="- Ctrl+W closes the selected tab"
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Margin="0,0,0,0"
+                        Text="- Ctrl+1 to Ctrl+8 selects that number tab"
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Margin="0,0,0,24"
+                        Text="- Ctrl+9 selects the last tab (regardless of the number of tabs)"
+                        TextWrapping="WrapWholeWords" />
+
+                    <TabView
+                        x:Name="TabView2"
+                        MinHeight="475"
+                        Margin="-12"
+                        AddTabButtonClick="TabView_AddButtonClick"
+                        Loaded="TabView_Loaded"
+                        SelectedIndex="0"
+                        TabCloseRequested="TabView_TabCloseRequested">
+                        <TabView.KeyboardAccelerators>
+                            <KeyboardAccelerator
+                                Key="T"
+                                Invoked="NewTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="W"
+                                Invoked="CloseSelectedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number1"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number2"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number3"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number4"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number5"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number6"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number7"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number8"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                            <KeyboardAccelerator
+                                Key="Number9"
+                                Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked"
+                                Modifiers="Control" />
+                        </TabView.KeyboardAccelerators>
+                    </TabView>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested" Loaded="TabView_Loaded"&gt;
+    &lt;TabView.KeyboardAccelerators&gt;
+        &lt;KeyboardAccelerator Key="T" Modifiers="Control" Invoked="NewTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="W" Modifiers="Control" Invoked="CloseSelectedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number1" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number2" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number3" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number4" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number5" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number6" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number7" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number8" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+        &lt;KeyboardAccelerator Key="Number9" Modifiers="Control" Invoked="NavigateToNumberedTabKeyboardAccelerator_Invoked" /&gt;
+    &lt;/TabView.KeyboardAccelerators&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="You can put custom content in TabStripHeader and TabStripFooter">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="You can put any content in the TabStripHeader and TabStripFooter areas"
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="If your TabView is used inside the app's titlebar area, use the TabStripFooter to specify a custom drag region"
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Margin="0,0,0,24"
+                        Text="See TabViewWindowingSamplePage.xaml and *.cs files to see the complete code"
+                        TextWrapping="WrapWholeWords" />
+
+                    <TabView
+                        BringIntoViewRequested="TabView_BringIntoViewRequested"
+                        MinHeight="475"
+                        Margin="-12"
+                        AddTabButtonClick="TabView_AddButtonClick"
+                        Loaded="TabView_Loaded"
+                        SelectedIndex="0"
+                        TabCloseRequested="TabView_TabCloseRequested"
+                        TabWidthMode="SizeToContent">
+                        <TabView.TabStripHeader>
+                            <TextBlock
+                                Margin="8,6"
+                                VerticalAlignment="Center"
+                                Style="{ThemeResource BaseTextBlockStyle}"
+                                Text="TabStripHeader Content" />
+                        </TabView.TabStripHeader>
+                        <TabView.TabStripFooter>
+                            <TextBlock
+                                Margin="6"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{ThemeResource BaseTextBlockStyle}"
+                                Text="TabStripFooter Content" />
+                        </TabView.TabStripFooter>
+                    </TabView>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.TabStripHeader&gt;
+        &lt;TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
+    &lt;/TabView.TabStripHeader&gt;
+    &lt;TabView.TabStripFooter&gt;
+        &lt;TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" /&gt;
+    &lt;/TabView.TabStripFooter&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected">
+            <controls:ControlExample.Example>
+                <TabView
+                    x:Name="TabView3"
+                    BringIntoViewRequested="TabView_BringIntoViewRequested"
+                    MinHeight="475"
+                    Margin="-12"
+                    IsAddTabButtonVisible="False"
+                    SelectedIndex="0"
+                    TabWidthMode="SizeToContent">
+                    <TabView.TabItems>
+                        <TabViewItem Header="Home" IsClosable="False">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Home" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage1 />
+                        </TabViewItem>
+                        <TabViewItem Header="Tab 2 Has Longer Text" IsClosable="False">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="MusicInfo" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage2 />
+                        </TabViewItem>
+                        <TabViewItem Header="Third Tab" IsClosable="False">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Placeholder" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage3 />
+                        </TabViewItem>
+                    </TabView.TabItems>
+                </TabView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <ComboBox
+                    Width="150"
+                    Header="TabWidthBehavior"
+                    SelectedIndex="0"
+                    SelectionChanged="TabWidthBehaviorComboBox_SelectionChanged">
+                    <ComboBoxItem Content="SizeToContent" />
+                    <ComboBoxItem Content="Equal" />
+                    <ComboBoxItem Content="Compact" />
+                </ComboBox>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;TabView TabWidthMode="$(TabWidthMode)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="TabWidthMode" Value="{x:Bind TabView3.TabWidthMode, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="The close button can be persistent or only visible on hover">
+            <controls:ControlExample.Example>
+                <TabView
+                    x:Name="TabView4"
+                    MinHeight="475"
+                    Margin="-12"
+                    IsAddTabButtonVisible="False"
+                    SelectedIndex="0">
+                    <TabView.TabItems>
+                        <TabViewItem Header="Home">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Home" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage1 />
+                        </TabViewItem>
+                        <TabViewItem Header="Tab 2 Has Longer Text">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="MusicInfo" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage2 />
+                        </TabViewItem>
+                        <TabViewItem Header="Third Tab">
+                            <TabViewItem.IconSource>
+                                <SymbolIconSource Symbol="Placeholder" />
+                            </TabViewItem.IconSource>
+                            <samplepages:SamplePage3 />
+                        </TabViewItem>
+                    </TabView.TabItems>
+                </TabView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <ComboBox
+                    Width="150"
+                    Header="TabViewItem CloseButtonOverlayMode"
+                    SelectedIndex="1"
+                    SelectionChanged="TabCloseButtonOverlayModeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Auto" />
+                    <ComboBoxItem Content="Always" />
+                    <ComboBoxItem Content="OnHover" />
+                </ComboBox>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;TabView CloseButtonOverlayMode="$(CloseButtonOverlayMode)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="CloseButtonOverlayMode" Value="{x:Bind TabView4.CloseButtonOverlayMode, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="TabView with color tab icons">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,12"
+                        Text="Use BitmapIcon.ShowAsMonochrome=&quot;False&quot; to display full color icons in the TabViewItem"
+                        TextWrapping="WrapWholeWords" />
+
+                    <TabView
+                        BringIntoViewRequested="TabView_BringIntoViewRequested"
+                        MinWidth="490"
+                        IsAddTabButtonVisible="False"
+                        SelectedIndex="0"
+                        TabWidthMode="SizeToContent">
+                        <TabView.TabItems>
+                            <TabViewItem Header="CMD Prompt" IsClosable="False">
+                                <TabViewItem.IconSource>
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/cmd.png" />
+                                </TabViewItem.IconSource>
+                            </TabViewItem>
+                            <TabViewItem Header="PowerShell" IsClosable="False">
+                                <TabViewItem.IconSource>
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/powershell.png" />
+                                </TabViewItem.IconSource>
+                            </TabViewItem>
+                            <TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
+                                <TabViewItem.IconSource>
+                                    <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/linux.png" />
+                                </TabViewItem.IconSource>
+                            </TabViewItem>
+                        </TabView.TabItems>
+                    </TabView>
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.TabItems&gt;
+        &lt;TabViewItem Header="CMD Prompt"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="PowerShell"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+        &lt;TabViewItem Header="Windows Subsystem for Linux"&gt;
+            &lt;TabViewItem.IconSource&gt;
+                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
+            &lt;/TabViewItem.IconSource&gt;
+        &lt;/TabViewItem&gt;
+    &lt;/TabView.TabItems&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A TabView with accent colored TabStrip background">
+            <controls:ControlExample.Example>
+                <TabView
+                    MinHeight="475"
+                    Margin="-12"
+                    AddTabButtonClick="TabView_AddButtonClick"
+                    Loaded="TabView_Loaded"
+                    SelectedIndex="0"
+                    TabCloseRequested="TabView_TabCloseRequested">
+                    <TabView.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorLight2}" />
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorDark2}" />
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </TabView.Resources>
+                </TabView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TabView&gt;
+    &lt;TabView.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;ResourceDictionary.ThemeDictionaries&gt;
+                &lt;ResourceDictionary x:Key="Light"&gt;
+                    &lt;SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorLight2}"/&gt;
+                &lt;/ResourceDictionary&gt;
+                &lt;ResourceDictionary x:Key="Dark"&gt;
+                    &lt;SolidColorBrush x:Key="TabViewBackground" Color="{ThemeResource SystemAccentColorDark2}"/&gt;
+                &lt;/ResourceDictionary&gt;
+            &lt;/ResourceDictionary.ThemeDictionaries&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/TabView.Resources&gt;
+&lt;/TabView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="LaunchExample" HeaderText="Complete TabView windowing sample">
+            <controls:ControlExample.Example>
+                <Button Click="TabViewWindowingButton_Click" Content="Click here to launch the sample" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    Check out the TabViewWindowingSamplePage.xaml and *.cs files to see the complete code.
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+    </StackPanel>
+</Page>

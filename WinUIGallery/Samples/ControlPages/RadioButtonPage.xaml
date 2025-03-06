@@ -1,0 +1,52 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.RadioButtonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample HeaderText="A group of RadioButton controls in a RadioButtons group.">
+            <StackPanel>
+                <RadioButtons Header="Options:">
+                    <RadioButton
+                        AutomationProperties.AutomationId="Option1RadioButton"
+                        Checked="RadioButton_Checked"
+                        Content="Option 1" />
+                    <RadioButton
+                        AutomationProperties.AutomationId="Option2RadioButton"
+                        Checked="RadioButton_Checked"
+                        Content="Option 2" />
+                    <RadioButton
+                        AutomationProperties.AutomationId="Option3RadioButton"
+                        Checked="RadioButton_Checked"
+                        Content="Option 3" />                
+                </RadioButtons>
+            </StackPanel>
+            <controls:ControlExample.Output>
+                <TextBlock x:Name="Control1Output" Text="Select an option." />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RadioButtons Header="Options:"&gt;
+    &lt;RadioButton Content="Option 1" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 2" Checked="RadioButton_Checked"/&gt;
+    &lt;RadioButton Content="Option 3" Checked="RadioButton_Checked"/&gt;
+&lt;/RadioButtons&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -136,53 +136,36 @@
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <local:HeaderTile
                         Title="Getting started"
-                        Description="An overview of app development options, tools, and samples."
+                        Description="Get started with WinUI and explore detailed documentation."
                         Link="https://learn.microsoft.com/windows/apps/get-started/">
                         <local:HeaderTile.Source>
-                            <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
+                            <Image Source="/Assets/HomeHeaderTiles/Header-WinUI.png" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
-                        Title="Windows design"
-                        Description="Design guidelines and toolkits for creating native app experiences."
+                        Title="Design"
+                        Description="Guidelines and toolkits for creating stunning WinUI experiences."
                         Link="https://learn.microsoft.com/windows/apps/design/">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-WindowsDesign.png" />
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
-                        Title="WinUI GitHub"
-                        Description="The latest Windows native controls and styles for your applications."
+                        Title="WinUI on GitHub"
+                        Description="Explore the WinUI source code and repository."
                         Link="https://github.com/microsoft/microsoft-ui-xaml">
                         <local:HeaderTile.Source>
-                            <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform
-                                        ScaleX="2.05"
-                                        ScaleY="2.05"
-                                        TranslateX="-20" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
+                            <Viewbox>
+                                <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                            </Viewbox>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile
                         Title="Community Toolkit"
-                        Description="A collection of helper functions, custom controls, and app services."
+                        Description="An open-source collection of helper functions, controls, and app services."
                         Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
-                        </local:HeaderTile.Source>
-                    </local:HeaderTile>
-                    <local:HeaderTile
-                        Title="Template Studio"
-                        Description="Accelerates the creation of new WinUI apps using a wizard-based experience.."
-                        Link="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">
-                        <local:HeaderTile.Source>
-                            <PathIcon Data="{StaticResource TemplateStudioIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}">
-                                <PathIcon.RenderTransform>
-                                    <CompositeTransform ScaleX="1.2" ScaleY="1.2" />
-                                </PathIcon.RenderTransform>
-                            </PathIcon>
                         </local:HeaderTile.Source>
                     </local:HeaderTile>
                     <local:HeaderTile

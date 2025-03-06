@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="GalleryTileGridStyle" TargetType="Grid">
+        <Setter Property="Background" Value="{ThemeResource GalleryBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource GalleryBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{StaticResource OverlayCornerRadius}" />
+    </Style>
+
+    <Style x:Key="DesignRowCardStyle" TargetType="Grid">
+        <Style.Setters>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="MinHeight" Value="68" />
+            <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
+        </Style.Setters>
+    </Style>
+
+    <Style
+        x:Key="DesignRowLightCardStyle"
+        BasedOn="{StaticResource DesignRowCardStyle}"
+        TargetType="Grid">
+        <Style.Setters>
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>

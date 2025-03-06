@@ -1,0 +1,71 @@
+<Page
+    x:Class="WinUIGallery.SamplePages.SamplePage6"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.SamplePages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.Resources>
+                <x:Double x:Key="TileHeight">150</x:Double>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="0"
+                Width="20"
+                Height="20"
+                Fill="MediumTurquoise" />
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="50"
+                Height="50"
+                Fill="SteelBlue" />
+            <Grid
+                Grid.Row="0"
+                Grid.Column="2"
+                MinHeight="{StaticResource TileHeight}"
+                Margin="5"
+                Background="SkyBlue" />
+            <Ellipse
+                Grid.Row="1"
+                Grid.Column="0"
+                Width="50"
+                Height="50"
+                Fill="PowderBlue" />
+            <Ellipse
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="20"
+                Height="20"
+                Fill="MediumTurquoise" />
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2"
+                MinHeight="{StaticResource TileHeight}"
+                Margin="5"
+                Background="SteelBlue" />
+            <Grid
+                Grid.Row="3"
+                Grid.ColumnSpan="3"
+                Margin="5">
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." TextWrapping="WrapWholeWords" />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

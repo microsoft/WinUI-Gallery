@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="198"
-    Height="220"
+    Width="220"
+    Height="216"
     mc:Ignorable="d">
 
     <Grid

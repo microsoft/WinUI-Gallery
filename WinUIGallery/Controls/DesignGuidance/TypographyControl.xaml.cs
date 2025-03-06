@@ -1,87 +1,71 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+namespace WinUIGallery.Controls;
 
-namespace WinUIGallery.DesktopWap.Controls
+public sealed partial class TypographyControl : UserControl
 {
-    public sealed partial class TypographyControl : UserControl
+    public TypographyControl()
     {
-        public TypographyControl()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register(nameof(Example), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+    public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register(nameof(Example), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
 
-        public string Example
-        {
-            get => (string)GetValue(ExampleProperty);
-            set => SetValue(ExampleProperty, value);
-        }
+    public string Example
+    {
+        get => (string)GetValue(ExampleProperty);
+        set => SetValue(ExampleProperty, value);
+    }
 
-        public static readonly DependencyProperty WeightProperty = DependencyProperty.Register(nameof(Weight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+    public static readonly DependencyProperty WeightProperty = DependencyProperty.Register(nameof(Weight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
 
-        public string Weight
-        {
-            get => (string)GetValue(WeightProperty);
-            set => SetValue(WeightProperty, value);
-        }
+    public string Weight
+    {
+        get => (string)GetValue(WeightProperty);
+        set => SetValue(WeightProperty, value);
+    }
 
-        public static readonly DependencyProperty VariableFontProperty = DependencyProperty.Register(nameof(VariableFont), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+    public static readonly DependencyProperty VariableFontProperty = DependencyProperty.Register(nameof(VariableFont), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
 
-        public string VariableFont
-        {
-            get => (string)GetValue(VariableFontProperty);
-            set => SetValue(VariableFontProperty, value);
-        }
+    public string VariableFont
+    {
+        get => (string)GetValue(VariableFontProperty);
+        set => SetValue(VariableFontProperty, value);
+    }
 
-        public static readonly DependencyProperty SizeLinHeightProperty = DependencyProperty.Register(nameof(SizeLinHeight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
+    public static readonly DependencyProperty SizeLineHeightProperty = DependencyProperty.Register(nameof(SizeLineHeight), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
 
-        public string SizeLinHeight
-        {
-            get => (string)GetValue(SizeLinHeightProperty);
-            set => SetValue(SizeLinHeightProperty, value);
-        }
+    public string SizeLineHeight
+    {
+        get => (string)GetValue(SizeLineHeightProperty);
+        set => SetValue(SizeLineHeightProperty, value);
+    }
 
-        public static readonly DependencyProperty ExampleStyleProperty = DependencyProperty.Register(nameof(ExampleStyleProperty), typeof(Style), typeof(TypographyControl), new PropertyMetadata(null));
+    public static readonly DependencyProperty ExampleStyleProperty = DependencyProperty.Register(nameof(ExampleStyleProperty), typeof(Style), typeof(TypographyControl), new PropertyMetadata(null));
 
-        public Style ExampleStyle
-        {
-            get => (Style)GetValue(ExampleStyleProperty);
-            set => SetValue(ExampleStyleProperty, value);
-        }
+    public Style ExampleStyle
+    {
+        get => (Style)GetValue(ExampleStyleProperty);
+        set => SetValue(ExampleStyleProperty, value);
+    }
 
-        public static readonly DependencyProperty ResourceNameProperty = DependencyProperty.Register(nameof(ExampleStyleProperty), typeof(string), typeof(TypographyControl), new PropertyMetadata(null));
+    public static readonly DependencyProperty ResourceNameProperty = DependencyProperty.Register(nameof(ExampleStyleProperty), typeof(string), typeof(TypographyControl), new PropertyMetadata(null));
 
-        public string ResourceName
-        {
-            get => (string)GetValue(ResourceNameProperty);
-            set => SetValue(ResourceNameProperty, value);
-        }
+    public string ResourceName
+    {
+        get => (string)GetValue(ResourceNameProperty);
+        set => SetValue(ResourceNameProperty, value);
+    }
 
-        private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataPackage package = new DataPackage();
-            package.SetText(ResourceName);
-            Clipboard.SetContent(package);
-        }
+    private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
+    {
+        DataPackage package = new DataPackage();
+        package.SetText(ResourceName);
+        Clipboard.SetContent(package);
     }
 }

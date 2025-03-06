@@ -1,0 +1,48 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.PivotPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample
+            x:Name="Example1"
+            Margin="0,0,24,0"
+            HeaderText="A basic pivot.">
+            <Pivot Title="EMAIL" MinHeight="400">
+                <PivotItem Header="All">
+                    <TextBlock Text="all emails go here." />
+                </PivotItem>
+                <PivotItem Header="Unread">
+                    <TextBlock Text="unread emails go here." />
+                </PivotItem>
+                <PivotItem Header="Flagged">
+                    <TextBlock Text="flagged emails go here." />
+                </PivotItem>
+                <PivotItem Header="Urgent">
+                    <TextBlock Text="urgent emails go here." />
+                </PivotItem>
+            </Pivot>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Pivot Title="EMAIL"&gt;
+    &lt;PivotItem Header="All"&gt;
+        &lt;TextBlock Text="all emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Unread"&gt;
+        &lt;TextBlock Text="unread emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Flagged"&gt;
+        &lt;TextBlock Text="flagged emails go here." /&gt;
+    &lt;/PivotItem&gt;
+    &lt;PivotItem Header="Urgent"&gt;
+        &lt;TextBlock Text="urgent emails go here." /&gt;
+    &lt;/PivotItem&gt;
+&lt;/Pivot&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

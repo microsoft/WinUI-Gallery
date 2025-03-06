@@ -2,12 +2,11 @@
 <!--  Licensed under the MIT License.  -->
 
 <UserControl
-    x:Class="WinUIGallery.DesktopWap.Controls.DesignGuidance.ColorTile"
+    x:Class="WinUIGallery.Controls.ColorTile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinUIGallery.DesktopWap.Controls.DesignGuidance"
-    xmlns:localControls="using:WinUIGallery.DesktopWap.Controls"
+    xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -40,25 +39,26 @@
                 Text="{x:Bind ColorName, Mode=OneWay}"
                 TextWrapping="WrapWholeWords" />
 
-            <localControls:CopyButton
+            <local:CopyButton
                 x:Name="CopyBrushNameButton"
-                AutomationProperties.Name="Copy brush name"
                 Grid.RowSpan="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
+                AutomationProperties.Name="Copy brush name"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CopyBrushNameButton_Click"
                 Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy brush name"/>
+                ToolTipService.ToolTip="Copy brush name" />
 
             <TextBlock
                 Grid.Row="1"
                 Margin="0,-4,0,0"
                 IsTextSelectionEnabled="True"
+                Opacity="0.8"
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind ColorExplanation, Mode=OneWay}"
                 TextWrapping="WrapWholeWords" />

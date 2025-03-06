@@ -1,0 +1,382 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ScrollViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
+            <StackPanel Spacing="16">
+                <TextBlock Text="This ScrollView allows horizontal and vertical scrolling, as well as zooming. Change the settings on the right to alter those capabilities or the built-in scrollbars' visibility." />
+
+                <ScrollView
+                    x:Name="scrollView1"
+                    Width="400"
+                    Height="266"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    ContentOrientation="None"
+                    IsTabStop="True"
+                    ZoomMode="Enabled">
+                    <Image
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="cliff"
+                        Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
+                        Stretch="Uniform" />
+                </ScrollView>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <Grid
+                    MinWidth="200"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                    RowSpacing="16">
+
+                    <TextBlock VerticalAlignment="Center" Text="ZoomMode" />
+
+                    <ComboBox
+                        x:Name="cmbZoomMode"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="zoom mode"
+                        SelectedIndex="0"
+                        SelectionChanged="CmbZoomMode_SelectionChanged">
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        Text="ZoomFactor" />
+
+                    <NumberBox
+                        x:Name="nbZoomFactor"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        AutomationProperties.Name="zoom factor"
+                        LargeChange="10"
+                        Maximum="10"
+                        Minimum="0.1"
+                        SmallChange="1"
+                        SpinButtonPlacementMode="Inline"
+                        ValueChanged="NbZoomFactor_ValueChanged"
+                        Value="4" />
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Text="ScrollMode" />
+
+                    <TextBlock
+                        Grid.Row="3"
+                        VerticalAlignment="Center"
+                        Text="Horizontal" />
+
+                    <ComboBox
+                        x:Name="cmbHorizontalScrollMode"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="horizontal scroll mode"
+                        SelectedIndex="2"
+                        SelectionChanged="CmbHorizontalScrollMode_SelectionChanged">
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="4"
+                        VerticalAlignment="Center"
+                        Text="Vertical" />
+
+                    <ComboBox
+                        x:Name="cmbVerticalScrollMode"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="vertical scroll mode"
+                        SelectedIndex="2"
+                        SelectionChanged="CmbVerticalScrollMode_SelectionChanged">
+                        <ComboBoxItem>Enabled</ComboBoxItem>
+                        <ComboBoxItem>Disabled</ComboBoxItem>
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Text="ScrollbarVisibility" />
+
+                    <TextBlock
+                        Grid.Row="6"
+                        VerticalAlignment="Center"
+                        Text="Horizontal" />
+
+                    <ComboBox
+                        x:Name="cmbHorizontalScrollBarVisibility"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="horizontal scroll bar visibility"
+                        SelectedIndex="0"
+                        SelectionChanged="CmbHorizontalScrollBarVisibility_SelectionChanged">
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                        <ComboBoxItem>Visible</ComboBoxItem>
+                        <ComboBoxItem>Hidden</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="7"
+                        VerticalAlignment="Center"
+                        Text="Vertical" />
+
+                    <ComboBox
+                        x:Name="cmbVerticalScrollBarVisibility"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="vertical scroll bar visibility"
+                        SelectedIndex="0"
+                        SelectionChanged="CmbVerticalScrollBarVisibility_SelectionChanged">
+                        <ComboBoxItem>Auto</ComboBoxItem>
+                        <ComboBoxItem>Visible</ComboBoxItem>
+                        <ComboBoxItem>Hidden</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollView Height="266" Width="400" ContentOrientation="None"
+    ZoomMode="$(ZoomMode)" IsTabStop="True"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+    VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
+        HorizontalAlignment="Center" VerticalAlignment="Center"/&gt;
+&lt;/ScrollView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ZoomMode" Value="{x:Bind ((ComboBoxItem)cmbZoomMode.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HorizontalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollMode.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HorizontalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbHorizontalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalScrollMode" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollMode.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalScrollBarVisibility" Value="{x:Bind ((ComboBoxItem)cmbVerticalScrollBarVisibility.SelectedItem).Content, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example2" HeaderText="Constant velocity scrolling.">
+            <StackPanel Spacing="16">
+                <TextBlock Text="Set the vertical velocity to a value greater than 30 to scroll down, or a value smaller than -30 to scroll up at a constant speed." />
+
+                <ScrollView
+                    x:Name="scrollView2"
+                    Width="400"
+                    Height="300"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsTabStop="True">
+                    <StackPanel>
+                        <Image
+                            AutomationProperties.Name="grapes"
+                            Source="ms-appx:///Assets/SampleMedia/grapes.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="rainier"
+                            Source="ms-appx:///Assets/SampleMedia/rainier.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="sunset"
+                            Source="ms-appx:///Assets/SampleMedia/sunset.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="treetops"
+                            Source="ms-appx:///Assets/SampleMedia/treetops.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="valley"
+                            Source="ms-appx:///Assets/SampleMedia/valley.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="cliff"
+                            Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
+                            Stretch="Uniform" />
+                    </StackPanel>
+                </ScrollView>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <Grid
+                    MinWidth="200"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto"
+                    RowSpacing="16">
+                    <TextBlock VerticalAlignment="Center" Text="Vertical velocity" />
+
+                    <NumberBox
+                        x:Name="nbVerticalVelocity"
+                        Grid.Column="1"
+                        AutomationProperties.Name="vertical velocity"
+                        LargeChange="30"
+                        Maximum="200"
+                        Minimum="-200"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Inline"
+                        ValueChanged="NbVerticalVelocity_ValueChanged"
+                        Value="30" />
+                </Grid>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollView Height="300" Width="400" IsTabStop="True"
+    VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" Stretch="Uniform" AutomationProperties.Name="grapes"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" Stretch="Uniform" AutomationProperties.Name="rainier"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/sunset.jpg" Stretch="Uniform" AutomationProperties.Name="sunset"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/treetops.jpg" Stretch="Uniform" AutomationProperties.Name="treetops"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/valley.jpg" Stretch="Uniform" AutomationProperties.Name="valley"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" Stretch="Uniform" AutomationProperties.Name="cliff"/&gt;
+&lt;/ScrollView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example3" HeaderText="Programmatic scroll with custom animation.">
+            <StackPanel Spacing="16">
+                <TextBlock Text="Pick an animation type and its duration and then click the button on the right to launch a programmatic scroll." />
+
+                <ScrollView
+                    x:Name="scrollView3"
+                    Width="400"
+                    Height="300"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsTabStop="True"
+                    ScrollAnimationStarting="ScrollView_ScrollAnimationStarting">
+                    <StackPanel>
+                        <Image
+                            AutomationProperties.Name="leaves"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="carousel"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="bicycles"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="pond"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage4.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="marina"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="beach"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="rampart"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg"
+                            Stretch="Uniform" />
+                        <Image
+                            AutomationProperties.Name="mountain"
+                            Source="ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg"
+                            Stretch="Uniform" />
+                    </StackPanel>
+                </ScrollView>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <Grid
+                    MinWidth="320"
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto, Auto, Auto"
+                    RowSpacing="16">
+                    <TextBlock VerticalAlignment="Center" Text="Scroll with animation" />
+
+                    <ComboBox
+                        x:Name="cmbVerticalAnimation"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="vertical animation options"
+                        SelectedIndex="0"
+                        SelectionChanged="cmbVerticalAnimation_SelectionChanged">
+                        <ComboBoxItem>Default</ComboBoxItem>
+                        <ComboBoxItem>Accordion</ComboBoxItem>
+                        <ComboBoxItem>Teleportation</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        Text="Animation duration (msec)" />
+
+                    <NumberBox
+                        x:Name="nbAnimationDuration"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        AutomationProperties.Name="animation duration"
+                        LargeChange="1000"
+                        Maximum="5000"
+                        Minimum="1000"
+                        SmallChange="500"
+                        SpinButtonPlacementMode="Inline"
+                        ValueChanged="nbAnimationDuration_ValueChanged"
+                        Value="1500" />
+
+                    <Button
+                        x:Name="btnScrollWithAnimation"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="scroll with animation"
+                        Click="BtnScrollWithAnimation_Click"
+                        Content="Scroll with animation" />
+                </Grid>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;ScrollView Height="300" Width="400" IsTabStop="True"
+    ScrollAnimationStarting="ScrollView_ScrollAnimationStarting"
+    VerticalAlignment="Top" HorizontalAlignment="Left"&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg" Stretch="Uniform" AutomationProperties.Name="leaves"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg" Stretch="Uniform" AutomationProperties.Name="carousel"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg" Stretch="Uniform" AutomationProperties.Name="bicycles"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage4.jpg" Stretch="Uniform" AutomationProperties.Name="pond"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg" Stretch="Uniform" AutomationProperties.Name="marina"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg" Stretch="Uniform" AutomationProperties.Name="beach"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg" Stretch="Uniform" AutomationProperties.Name="rampart"/&gt;
+    &lt;Image Source="ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg" Stretch="Uniform" AutomationProperties.Name="mountain"/&gt;
+&lt;/ScrollView&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -1,0 +1,467 @@
+<pages:ItemsPageBase
+    x:Class="WinUIGallery.ControlPages.ItemsRepeaterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:layouts="using:WinUIGallery.Layouts"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:WinUIGallery.Pages"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="HorizontalBarTemplate" x:DataType="local:Bar">
+            <Border Width="{x:Bind MaxLength}" Background="{ThemeResource SystemChromeLowColor}">
+                <Rectangle
+                    Width="{x:Bind Length}"
+                    Height="24"
+                    HorizontalAlignment="Left"
+                    Fill="{ThemeResource SystemAccentColor}" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="VerticalBarTemplate" x:DataType="local:Bar">
+            <Border Height="{x:Bind MaxHeight}" Background="{ThemeResource SystemChromeLowColor}">
+                <Rectangle
+                    Width="48"
+                    Height="{x:Bind Height}"
+                    VerticalAlignment="Top"
+                    Fill="{ThemeResource SystemAccentColor}" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CircularTemplate" x:DataType="local:Bar">
+            <Grid>
+                <Ellipse
+                    Width="{x:Bind MaxDiameter}"
+                    Height="{x:Bind MaxDiameter}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Fill="{ThemeResource SystemChromeLowColor}" />
+                <Ellipse
+                    Width="{x:Bind Diameter}"
+                    Height="{x:Bind Diameter}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Fill="{ThemeResource SystemAccentColor}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NormalItemTemplate" x:DataType="x:Int32">
+            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind}" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccentItemTemplate" x:DataType="x:Int32">
+            <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}"
+                    Text="{x:Bind}" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringDataTemplate" x:DataType="x:String">
+            <Grid Margin="10" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <TextBlock
+                    Padding="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{ThemeResource SystemControlForegroundChromeWhiteBrush}"
+                    Text="{x:Bind}"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IntDataTemplate" x:DataType="x:Int32">
+            <Grid Margin="10" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <TextBlock
+                    Padding="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="{x:Bind}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CategoryTemplate" x:DataType="local:NestedCategory">
+            <StackPanel>
+                <TextBlock
+                    Padding="8"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Text="{x:Bind CategoryName}" />
+                <ItemsRepeater
+                    x:Name="innerRepeater"
+                    ItemTemplate="{StaticResource StringDataTemplate}"
+                    ItemsSource="{x:Bind CategoryItems}">
+                    <ItemsRepeater.Layout>
+                        <StackLayout Orientation="Horizontal" />
+                    </ItemsRepeater.Layout>
+                </ItemsRepeater>
+            </StackPanel>
+        </DataTemplate>
+
+        <StackLayout
+            x:Name="VerticalStackLayout"
+            Orientation="Vertical"
+            Spacing="8" />
+        <StackLayout
+            x:Name="HorizontalStackLayout"
+            Orientation="Horizontal"
+            Spacing="8" />
+        <UniformGridLayout
+            x:Name="UniformGridLayout"
+            MinColumnSpacing="8"
+            MinRowSpacing="8" />
+
+        <layouts:ActivityFeedLayout
+            x:Key="MyFeedLayout"
+            ColumnSpacing="12"
+            MinItemSize="80, 108"
+            RowSpacing="12" />
+        <UniformGridLayout
+            x:Key="UniformGridLayout2"
+            MinColumnSpacing="12"
+            MinItemHeight="108"
+            MinItemWidth="108"
+            MinRowSpacing="12" />
+
+        <DataTemplate x:Key="RecipeTemplate" x:DataType="local:Recipe">
+            <StackPanel
+                Margin="5"
+                Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                BorderThickness="1">
+                <StackPanel
+                    Height="75"
+                    Margin="8"
+                    Background="{x:Bind Color}"
+                    Opacity=".8">
+                    <TextBlock
+                        Padding="12"
+                        FontSize="35"
+                        Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"
+                        Text="{x:Bind Num.ToString()}"
+                        TextAlignment="Center" />
+                </StackPanel>
+                <TextBlock
+                    x:Name="recipeName"
+                    Margin="15,0,10,0"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Text="{x:Bind Name}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="15,0,15,15"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind Ingredients}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <local:MyDataTemplateSelector
+            x:Key="MyDataTemplateSelector"
+            Accent="{StaticResource AccentItemTemplate}"
+            Normal="{StaticResource NormalItemTemplate}" />
+
+        <local:StringOrIntTemplateSelector
+            x:Key="StringOrIntTemplateSelector"
+            IntTemplate="{StaticResource IntDataTemplate}"
+            StringTemplate="{StaticResource StringDataTemplate}" />
+    </Page.Resources>
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="Basic, non-interactive items laid out by ItemsRepeater">
+            <ScrollViewer
+                MaxHeight="500"
+                HorizontalScrollBarVisibility="Auto"
+                HorizontalScrollMode="Auto"
+                IsVerticalScrollChainingEnabled="False"
+                VerticalScrollBarVisibility="Auto">
+                <ItemsRepeater
+                    x:Name="repeater"
+                    ItemTemplate="{StaticResource HorizontalBarTemplate}"
+                    ItemsSource="{x:Bind BarItems}"
+                    Layout="{StaticResource VerticalStackLayout}" />
+            </ScrollViewer>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <Button
+                        x:Name="AddBtn"
+                        MinWidth="150"
+                        Click="AddBtn_Click"
+                        Content="Add Item" />
+                    <Button
+                        x:Name="DeleteBtn"
+                        MinWidth="150"
+                        Click="DeleteBtn_Click"
+                        Content="Remove Item" />
+
+                    <RadioButtons Header="Layout" SelectionChanged="RadioBtn_Click">
+                        <RadioButton
+                            x:Name="VStackBtn"
+                            Content="StackLayout - Vertical"
+                            IsChecked="True"
+                            Tag="VerticalStackLayout" />
+                        <RadioButton
+                            x:Name="HStackBtn"
+                            Content="StackLayout - Horizontal"
+                            Tag="HorizontalStackLayout" />
+                        <RadioButton
+                            x:Name="HGridBtn"
+                            Content="UniformGridLayout"
+                            Tag="UniformGridLayout" />
+                    </RadioButtons>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+
+&lt;!-- The ItemsRepeater and ScrollViewer used: --&gt;
+&lt;ScrollViewer HorizontalScrollBarVisibility="Auto" 
+              HorizontalScrollMode="Auto" 
+              IsVerticalScrollChainingEnabled="False"
+              MaxHeight="500"&gt;
+    &lt;ItemsRepeater
+               ItemsSource="{x:Bind BarItems}"
+               Layout="{StaticResource $(Layout)}"
+               ItemTemplate="{StaticResource $(ElementGenerator)}" /&gt;
+&lt;/ScrollViewer&gt;
+                    
+&lt;!-- The Layout specifications used: --&gt;
+                    
+$(SampleCodeLayout)     
+                    
+&lt;!-- The DataTemplate used: $(ElementGenerator)--&gt;
+                    
+$(SampleCodeDT)                    
+                    
+    </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// The ItemsSource used is a list of custom-class Bar objects called BarItems
+
+public class Bar
+{
+    public Bar(double length, int max)
+    {
+        Length = length;
+        MaxLength = max;
+
+        Height = length / 4;
+        MaxHeight = max / 4;
+
+        Diameter = length / 6;
+        MaxDiameter = max / 6;
+    }
+    public double Length { get; set; }
+    public int MaxLength { get; set; }
+
+    public double Height { get; set; }
+    public double MaxHeight { get; set; }
+
+    public double Diameter { get; set; }
+    public double MaxDiameter { get; set; }
+}
+
+public ObservableCollection&lt;Bar&gt; BarItems;
+private int MaxLength = 425;
+
+private void InitializeData()
+{
+    if (BarItems == null)
+    {
+        BarItems = new ObservableCollection&lt;Bar&gt;();
+    }
+    BarItems.Add(new Bar(300, this.MaxLength));
+    BarItems.Add(new Bar(25, this.MaxLength));
+    BarItems.Add(new Bar(175, this.MaxLength));
+}
+                    </x:String>
+            </controls:ControlExample.CSharp>
+
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="Layout"
+                    x:Name="layout"
+                    Value="VerticalStackLayout" />
+                <controls:ControlExampleSubstitution
+                    Key="ElementGenerator"
+                    x:Name="elementGenerator"
+                    Value="HorizontalBarTemplate" />
+                <controls:ControlExampleSubstitution Key="SampleCodeLayout" x:Name="SampleCodeLayout" />
+                <controls:ControlExampleSubstitution Key="SampleCodeDT" x:Name="SampleCodeDT" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HorizontalContentAlignment="Stretch"
+            CSharpSource="ItemsRepeater/ItemsRepeaterSample2_cs.txt"
+            HeaderText="Virtualizing, scrollable list of items laid out by ItemsRepeater"
+            XamlSource="ItemsRepeater/ItemsRepeaterSample2_xaml.txt">
+
+            <!--
+                ItemsRepeaterScrollHost enables ItemsRepeater to coordinate with ScrollViewer down-level.
+                It's not needed on 17700+ builds.
+            -->
+            <ItemsRepeaterScrollHost>
+                <ScrollViewer
+                    x:Name="scrollViewer"
+                    Height="400"
+                    Padding="0,0,16,0"
+                    IsVerticalScrollChainingEnabled="False">
+                    <ItemsRepeater
+                        x:Name="repeater2"
+                        Margin="0,0,12,0"
+                        HorizontalAlignment="Stretch"
+                        ItemTemplate="{StaticResource MyDataTemplateSelector}"
+                        Layout="{StaticResource MyFeedLayout}" />
+                </ScrollViewer>
+            </ItemsRepeaterScrollHost>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButton
+                        Click="LayoutBtn_Click"
+                        Content="Uniform grid"
+                        GroupName="Sample2Layouts"
+                        Tag="UniformGridLayout2" />
+                    <RadioButton
+                        Click="LayoutBtn_Click"
+                        Content="Custom virtualizing layout"
+                        GroupName="Sample2Layouts"
+                        IsChecked="True"
+                        Tag="MyFeedLayout" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="Layout"
+                    x:Name="layout2"
+                    Value="MyFeedLayout" />
+                <controls:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
+                <controls:ControlExampleSubstitution Key="SampleCodeLayout2" x:Name="SampleCodeLayout2" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="ItemsRepeater/ItemsRepeaterSample1_cs.txt"
+            HeaderText="ItemsRepeater with mixed-type collection"
+            XamlSource="ItemsRepeater/ItemsRepeaterSample1_xaml.txt">
+            <StackPanel>
+                <TextBlock Text="This is an ItemsRepeater that displays both integer and string items. It uses a DataTemplateSelector to choose the correct layout for each of its items." TextWrapping="Wrap" />
+                <ItemsRepeater
+                    x:Name="MixedTypeRepeater"
+                    Margin="0,0,12,0"
+                    HorizontalAlignment="Stretch"
+                    ItemTemplate="{StaticResource StringOrIntTemplateSelector}">
+
+                    <ItemsRepeater.Layout>
+                        <UniformGridLayout MinItemHeight="200" MinItemWidth="200" />
+                    </ItemsRepeater.Layout>
+                </ItemsRepeater>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Laying out nested ItemsRepeaters" XamlSource="ItemsRepeater/ItemsRepeaterNestedSample_xaml.txt">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto">
+                <ItemsRepeater
+                    x:Name="outerRepeater"
+                    VerticalAlignment="Top"
+                    ItemTemplate="{StaticResource CategoryTemplate}">
+                    <ItemsRepeater.Layout>
+                        <StackLayout Orientation="Vertical" />
+                    </ItemsRepeater.Layout>
+                </ItemsRepeater>
+            </ScrollViewer>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="ItemsRepeater/ItemsRepeaterSample3_cs.txt"
+            HeaderText="Animated Scrolling and Content Display"
+            XamlSource="ItemsRepeater/ItemsRepeaterSample3_xaml.txt">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer
+                    x:Name="Animated_ScrollViewer"
+                    Grid.Column="0"
+                    Width="250"
+                    Height="175">
+                    <ItemsRepeater
+                        x:Name="animatedScrollRepeater"
+                        GettingFocus="OnAnimatedScrollRepeaterGettingFocus"
+                        KeyDown="OnAnimatedScrollRepeaterKeyDown">
+                        <DataTemplate x:DataType="x:String">
+                            <Button
+                                HorizontalAlignment="Stretch"
+                                Background="{x:Bind}"
+                                Click="OnAnimatedItemClicked"
+                                Content="{x:Bind}"
+                                Foreground="{ThemeResource TextFillColorInverseBrush}"
+                                GotFocus="OnAnimatedItemGotFocus" />
+                        </DataTemplate>
+                    </ItemsRepeater>
+                </ScrollViewer>
+
+                <Rectangle
+                    x:Name="colorRectangle"
+                    Grid.Column="1"
+                    Width="150"
+                    Height="150"
+                    Margin="10,0,0,0"
+                    AutomationProperties.Name="ColorRectangle"
+                    Stroke="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+            </Grid>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="ItemsRepeater/ItemsRepeaterSample4_cs.txt"
+            HeaderText="Virtualized, Content-Heavy Layout with Filtering and Sorting"
+            XamlSource="ItemsRepeater/ItemsRepeaterSample4_xaml.txt">
+            <Grid Height="600">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <ItemsRepeaterScrollHost x:Name="tracker" Grid.Column="0">
+                    <ScrollViewer>
+                        <ItemsRepeater x:Name="VariedImageSizeRepeater" ItemTemplate="{StaticResource RecipeTemplate}">
+                            <ItemsRepeater.Layout>
+                                <layouts:VariedImageSizeLayout Width="200" />
+                            </ItemsRepeater.Layout>
+                        </ItemsRepeater>
+                    </ScrollViewer>
+                </ItemsRepeaterScrollHost>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <TextBox
+                        x:Name="FilterRecipes"
+                        Width="200"
+                        Margin="0,0,0,20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Header="Filter by ingredient..."
+                        TextChanged="FilterRecipes_FilterChanged" />
+                    <TextBlock Margin="0,0,0,10" Text="Sort by number of ingredients" />
+                    <Button
+                        Margin="0,0,0,5"
+                        Click="OnSortAscClick"
+                        Content="Least to most" />
+                    <Button Click="OnSortDesClick" Content="Most to least" />
+                </StackPanel>
+            </Grid>
+        </controls:ControlExample>
+    </StackPanel>
+</pages:ItemsPageBase>

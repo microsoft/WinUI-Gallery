@@ -1,0 +1,88 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ProgressBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="An indeterminate progress bar.">
+
+            <ProgressBar
+                Width="130"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                IsIndeterminate="True"
+                ShowError="{x:Bind ErrorRB.IsChecked.Value, Mode=OneWay}"
+                ShowPaused="{x:Bind PausedRB.IsChecked.Value, Mode=OneWay}" />
+
+            <controls:ControlExample.Options>
+                <RadioButtons Header="Progress state">
+                    <RadioButton
+                        x:Name="RunningRB"
+                        Content="Running"
+                        IsChecked="True" />
+                    <RadioButton x:Name="PausedRB" Content="Paused" />
+                    <RadioButton x:Name="ErrorRB" Content="Error" />
+                </RadioButtons>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ShowPaused" Value="{x:Bind PausedRB.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ShowError" Value="{x:Bind ErrorRB.IsChecked, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="A determinate progress bar.">
+            <StackPanel x:Name="Control2" Orientation="Horizontal">
+                <ProgressBar
+                    x:Name="ProgressBar2"
+                    Width="130"
+                    AutomationProperties.Name="Determinate ProgressBar example" />
+                <TextBlock
+                    x:Name="Control2Output"
+                    Width="60"
+                    Style="{ThemeResource OutputTextBlockStyle}"
+                    TextAlignment="Center" />
+                <TextBlock
+                    x:Name="ProgressLabel"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    Text="Progress" />
+                <NumberBox
+                    x:Name="ProgressValue"
+                    AutomationProperties.LabeledBy="{Binding ElementName=ProgressLabel}"
+                    AutomationProperties.Name="NumberBox controlling ProgressBar2 value"
+                    Maximum="100"
+                    Minimum="0"
+                    SpinButtonPlacementMode="Inline"
+                    ValueChanged="ProgressValue_ValueChanged"
+                    Value="0" />
+            </StackPanel>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;ProgressBar Width="130" Value="$(DeterminateProgressValue)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="DeterminateProgressValue" Value="{x:Bind ProgressBar2.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

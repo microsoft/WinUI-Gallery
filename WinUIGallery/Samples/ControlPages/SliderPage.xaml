@@ -1,0 +1,221 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.SliderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--  SIMPLE SLIDER  -->
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
+            <StackPanel Orientation="Horizontal">
+                <Slider
+                    x:Name="Slider1"
+                    Width="200"
+                    AutomationProperties.Name="simple slider" />
+            </StackPanel>
+            <controls:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String>
+                    &lt;Slider AutomationProperties.Name="simple slider" Width="200"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <!--  SLIDER WITH RANGE AND STEPS  -->
+        <controls:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
+            <controls:ControlExample.Options>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" MinWidth="80" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        x:Name="MinimumLabel"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,0,0,0"
+                        Text="Minimum:" />
+                    <NumberBox
+                        x:Name="MinimumValue"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,-5,0,0"
+                        AutomationProperties.AccessibilityView="Raw"
+                        AutomationProperties.Name="Minimum"
+                        SpinButtonPlacementMode="Compact"
+                        Value="500" />
+
+                    <TextBlock
+                        x:Name="MaximumLabel"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,7,0,0"
+                        Text="Maximum:" />
+                    <NumberBox
+                        x:Name="MaximumValue"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10,5,0,0"
+                        AutomationProperties.AccessibilityView="Raw"
+                        AutomationProperties.Name="Maximum"
+                        SpinButtonPlacementMode="Compact"
+                        Value="1000" />
+
+                    <TextBlock
+                        x:Name="StepFrequencyLabel"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0,5,0,0"
+                        Text="StepFrequency:" />
+                    <NumberBox
+                        x:Name="StepFrequencyValue"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="10,5,0,0"
+                        AutomationProperties.AccessibilityView="Raw"
+                        AutomationProperties.Name="Step Frequency"
+                        Minimum="1"
+                        SpinButtonPlacementMode="Compact"
+                        Value="10" />
+
+                    <TextBlock
+                        x:Name="SmallChangeLabel"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="0,5,0,0"
+                        Text="SmallChange:" />
+                    <NumberBox
+                        x:Name="SmallChangeValue"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="10,5,0,0"
+                        AutomationProperties.AccessibilityView="Raw"
+                        AutomationProperties.Name="Small Change"
+                        SpinButtonPlacementMode="Compact"
+                        Value="10" />
+                </Grid>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Example>
+                <StackPanel
+                    x:Name="Control2"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Slider
+                        x:Name="Slider2"
+                        Width="200"
+                        Margin="0,0,10,0"
+                        Header="Control header"
+                        Maximum="{x:Bind MaximumValue.Value, Mode=OneWay}"
+                        Minimum="{x:Bind MinimumValue.Value, Mode=OneWay}"
+                        SmallChange="{x:Bind SmallChangeValue.Value, Mode=OneWay}"
+                        StepFrequency="{x:Bind StepFrequencyValue.Value, Mode=OneWay}"
+                        Value="800" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Slider Width="200" Minimum="$(MinimumValue)" Maximum="$(MaximumValue)" StepFrequency="$(StepFrequencyValue)"
+        SmallChange="$(SmallChangeValue)" Value="$(Value)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="MinimumValue" Value="{x:Bind MinimumValue.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MaximumValue" Value="{x:Bind MaximumValue.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="StepFrequencyValue" Value="{x:Bind StepFrequencyValue.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SmallChangeValue" Value="{x:Bind SmallChangeValue.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Value" Value="{x:Bind Slider2.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <!--  SLIDER WITH TICK MARKS  -->
+        <controls:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
+            <StackPanel Orientation="Horizontal">
+                <Slider
+                    x:Name="Slider3"
+                    Width="290"
+                    AutomationProperties.Name="Slider with ticks"
+                    TickFrequency="20"
+                    TickPlacement="Outside" />
+            </StackPanel>
+            <controls:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider3.Value.ToString(), Mode=OneWay}" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <RadioButtons
+                        x:Name="SnapsToRadioButtons"
+                        Header="Snaps to:"
+                        SelectedIndex="0"
+                        SelectionChanged="SnapsToRadioButtons_SelectionChanged">
+                        <x:String>StepValues</x:String>
+                        <x:String>Ticks</x:String>
+                    </RadioButtons>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Slider
+     AutomationProperties.Name="Slider with ticks"
+     TickFrequency="20"
+     TickPlacement="Outside"
+     SnapsTo="$(SnapsTo)" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="SnapsTo" Value="{x:Bind SnapsToRadioButtons.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <!--  VERTICAL SLIDER  -->
+        <controls:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
+            <StackPanel Orientation="Horizontal">
+                <Slider
+                    x:Name="Slider4"
+                    Width="100"
+                    Height="100"
+                    AutomationProperties.Name="vertical slider"
+                    Maximum="50"
+                    Minimum="-50"
+                    Orientation="Vertical"
+                    TickFrequency="10"
+                    TickPlacement="Outside" />
+            </StackPanel>
+            <controls:ControlExample.Output>
+                <TextBlock Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Slider AutomationProperties.Name="vertical slider" Width="100" Orientation="Vertical"
+    TickFrequency="10" TickPlacement="Outside" Maximum="50" Minimum="-50"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

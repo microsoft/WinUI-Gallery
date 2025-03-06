@@ -1,0 +1,106 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.BreadcrumbBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:l="using:WinUIGallery.ControlPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
+            <controls:ControlExample.Example>
+                <BreadcrumbBar x:Name="BreadcrumbBar1" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;BreadcrumbBar x:Name="BreadcrumbBar1"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example2" HeaderText="BreadCrumbBar Control with Custom DataTemplate">
+            <controls:ControlExample.Example>
+                <BreadcrumbBar x:Name="BreadcrumbBar2">
+                    <BreadcrumbBar.ItemTemplate>
+                        <DataTemplate x:DataType="l:Folder">
+                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Name}" Content="{Binding}">
+                                <BreadcrumbBarItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </BreadcrumbBarItem.ContentTemplate>
+                            </BreadcrumbBarItem>
+                        </DataTemplate>
+                    </BreadcrumbBar.ItemTemplate>
+                </BreadcrumbBar>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <Button
+                    x:Name="ResetSampleBtn"
+                    Click="ResetSampleButton_Click"
+                    Content="Reset sample" />
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;BreadcrumbBar x:Name="BreadcrumbBar2"&gt;
+    &lt;BreadcrumbBar.ItemTemplate&gt;
+        &lt;DataTemplate x:DataType="l:Folder"&gt;
+            &lt;BreadcrumbBarItem Content="{Binding}" AutomationProperties.Name="{Binding Name}"&gt;
+                &lt;BreadcrumbBarItem.ContentTemplate&gt;
+                    &lt;DataTemplate&gt;
+                        &lt;TextBlock Text="{Binding Name}" /&gt;
+                    &lt;/DataTemplate&gt;
+                &lt;/BreadcrumbBarItem.ContentTemplate&gt;
+            &lt;/BreadcrumbBarItem&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/BreadcrumbBar.ItemTemplate&gt;
+&lt;/BreadcrumbBar&gt;
+                    </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+public class Folder
+{
+    public string Name { get; set; }
+}
+
+BreadcrumbBar2.ItemsSource = new ObservableCollection&lt;Folder&gt;{
+        new Folder { Name = "Home"},
+        new Folder { Name = "Folder1" },
+        new Folder { Name = "Folder2" },
+        new Folder { Name = "Folder3" },
+};
+BreadcrumbBar2.ItemClicked += BreadcrumbBar2_ItemClicked;
+
+private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+{
+    var items = BreadcrumbBar2.ItemsSource as ObservableCollection&lt;Folder&gt;;
+    for (int i = items.Count - 1; i >= args.Index + 1; i--)
+    {
+        items.RemoveAt(i);
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

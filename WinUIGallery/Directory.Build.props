@@ -3,8 +3,6 @@
   <PropertyGroup>
     <!-- We have two projects in the same directory here, so we'll add a differentiator folder to output directories. -->
     <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
-    <!-- Work around DefaultElementAnimator.cs compiler error from missing experimental types -->
-    <MUXFinalRelease>true</MUXFinalRelease>
   </PropertyGroup>
     
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
