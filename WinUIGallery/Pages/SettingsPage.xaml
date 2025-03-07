@@ -2,8 +2,7 @@
     x:Class="WinUIGallery.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
-    MaxWidth="1064">
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls">
     <Page.Resources>
         <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
         <!--  Reference SettingsExpander Page in Windows Community Toolkit Gallery for the full sample  -->
@@ -30,32 +29,30 @@
             x:Name="PageHeader"
             Margin="36,24,36,0"
             Style="{StaticResource TitleTextBlockStyle}"
-            Text="Settings" />
-        <ScrollViewer
-            x:Name="contentSV"
-            Grid.Row="1"
-            Padding="36,0,36,0"
-            IsTabStop="False"
-            UseSystemFocusVisuals="False"
-            VerticalScrollBarVisibility="Auto"
-            VerticalScrollMode="Auto">
-            <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
-                <StackPanel.ChildrenTransitions>
-                    <EntranceThemeTransition FromVerticalOffset="50" />
-                    <RepositionThemeTransition IsStaggeringEnabled="False" />
-                </StackPanel.ChildrenTransitions>
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
-                <toolkit:SettingsCard Description="Select which app theme to display" Header="App theme">
+            Text="Settings"
+            MaxWidth="1064" />
+        <ScrollView Grid.Row="1"
+                    Padding="36,0,36,0"
+                    VerticalScrollBarVisibility="Auto"
+                    VerticalScrollMode="Auto">
+            <StackPanel Spacing="{StaticResource SettingsCardSpacing}"
+                        MaxWidth="1064">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="Appearance &amp; behavior" />
+                <toolkit:SettingsCard Description="Select which app theme to display"
+                                      Header="App theme">
                     <toolkit:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE790;" />
                     </toolkit:SettingsCard.HeaderIcon>
-                    <ComboBox
-                        x:Name="themeMode"
-                        AutomationProperties.AutomationId="themeModeComboBox"
-                        SelectionChanged="themeMode_SelectionChanged">
-                        <ComboBoxItem Content="Light" Tag="Light" />
-                        <ComboBoxItem Content="Dark" Tag="Dark" />
-                        <ComboBoxItem Content="Use system setting" Tag="Default" />
+                    <ComboBox x:Name="themeMode"
+                              AutomationProperties.AutomationId="themeModeComboBox"
+                              SelectionChanged="themeMode_SelectionChanged">
+                        <ComboBoxItem Content="Light"
+                                      Tag="Light" />
+                        <ComboBoxItem Content="Dark"
+                                      Tag="Dark" />
+                        <ComboBoxItem Content="Use system setting"
+                                      Tag="Default" />
                     </ComboBox>
                 </toolkit:SettingsCard>
 
@@ -63,107 +60,100 @@
                     <toolkit:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xF594;" />
                     </toolkit:SettingsCard.HeaderIcon>
-                    <ComboBox x:Name="navigationLocation" SelectionChanged="navigationLocation_SelectionChanged">
+                    <ComboBox x:Name="navigationLocation"
+                              SelectionChanged="navigationLocation_SelectionChanged">
                         <ComboBoxItem Content="Left" />
                         <ComboBoxItem Content="Top" />
                     </ComboBox>
                 </toolkit:SettingsCard>
 
-                <toolkit:SettingsExpander Description="Controls provide audible feedback" Header="Sound">
+                <toolkit:SettingsExpander Description="Controls provide audible feedback"
+                                          Header="Sound">
                     <toolkit:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xEC4F;" />
                     </toolkit:SettingsExpander.HeaderIcon>
-                    <ToggleSwitch x:Name="soundToggle" Toggled="soundToggle_Toggled" />
+                    <ToggleSwitch x:Name="soundToggle"
+                                  Toggled="soundToggle_Toggled" />
                     <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard
-                            x:Name="SpatialAudioCard"
-                            Header="Enable Spatial Audio"
-                            IsEnabled="False">
+                        <toolkit:SettingsCard x:Name="SpatialAudioCard"
+                                              Header="Enable Spatial Audio"
+                                              IsEnabled="False">
                             <toolkit:SettingsCard.Description>
-                                <HyperlinkButton Click="soundPageHyperlink_Click" Content="Learn more about enabling sounds in your app" />
+                                <HyperlinkButton Click="soundPageHyperlink_Click"
+                                                 Content="Learn more about enabling sounds in your app" />
                             </toolkit:SettingsCard.Description>
-                            <ToggleSwitch x:Name="spatialSoundBox" Toggled="spatialSoundBox_Toggled" />
+                            <ToggleSwitch x:Name="spatialSoundBox"
+                                          Toggled="spatialSoundBox_Toggled" />
                         </toolkit:SettingsCard>
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
 
                 <!--  About  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
-                <toolkit:SettingsExpander Description="© 2025 Microsoft. All rights reserved." Header="{StaticResource AppTitleName}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="About" />
+                <toolkit:SettingsExpander Description="© 2025 Microsoft. All rights reserved."
+                                          Header="{StaticResource AppTitleName}"
+                                          Margin="0 0 0 24">
                     <toolkit:SettingsExpander.HeaderIcon>
-                        <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Tiles/BadgeLogo.png" />
+                        <BitmapIcon ShowAsMonochrome="False"
+                                    UriSource="/Assets/Tiles/BadgeLogo.png" />
                     </toolkit:SettingsExpander.HeaderIcon>
-                    <TextBlock
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                        IsTextSelectionEnabled="True"
-                        Text="{x:Bind Version}" />
+                    <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               IsTextSelectionEnabled="True"
+                               Text="{x:Bind Version}" />
                     <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard
-                            x:Name="toCloneRepoCard"
-                            Click="toCloneRepoCard_Click"
-                            Header="To clone this repository"
-                            IsClickEnabled="True">
-                            <TextBlock
-                                x:Name="gitCloneTextBlock"
-                                FontFamily="Consolas"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                IsTextSelectionEnabled="True"
-                                Text="git clone https://github.com/microsoft/WinUI-Gallery" />
+                        <toolkit:SettingsCard x:Name="toCloneRepoCard"
+                                              Click="toCloneRepoCard_Click"
+                                              Header="To clone this repository"
+                                              IsClickEnabled="True">
+                            <TextBlock x:Name="gitCloneTextBlock"
+                                       FontFamily="Consolas"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                       IsTextSelectionEnabled="True"
+                                       Text="git clone https://github.com/microsoft/WinUI-Gallery" />
                             <toolkit:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8C8;" />
                             </toolkit:SettingsCard.ActionIcon>
                         </toolkit:SettingsCard>
-                        <toolkit:SettingsCard
-                            x:Name="bugRequestCard"
-                            Click="bugRequestCard_Click"
-                            Header="File a bug or request new sample"
-                            IsClickEnabled="True">
+                        <toolkit:SettingsCard x:Name="bugRequestCard"
+                                              Click="bugRequestCard_Click"
+                                              Header="File a bug or request new sample"
+                                              IsClickEnabled="True">
                             <toolkit:SettingsCard.ActionIcon>
                                 <FontIcon Glyph="&#xE8A7;" />
                             </toolkit:SettingsCard.ActionIcon>
                         </toolkit:SettingsCard>
-                        <toolkit:SettingsCard
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical"
-                            Header="Dependencies &amp; references">
-                            <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                <HyperlinkButton Content="{x:Bind WinAppSdkRuntimeDetails}" NavigateUri="https://aka.ms/windowsappsdk" />
-                                <HyperlinkButton Content="Windows UI Library" NavigateUri="https://aka.ms/winui" />
-                                <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://aka.ms/toolkit/windows" />
-                                <HyperlinkButton Content="ColorCode-Universal" NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal" />
-                                <HyperlinkButton Content="Win2D" NavigateUri="https://github.com/Microsoft/Win2D" />
+                        <toolkit:SettingsCard HorizontalContentAlignment="Left"
+                                              ContentAlignment="Vertical"
+                                              Header="Dependencies &amp; references">
+                            <StackPanel Margin="-12,0,0,0"
+                                        Orientation="Vertical">
+                                <HyperlinkButton Content="{x:Bind WinAppSdkRuntimeDetails}"
+                                                 NavigateUri="https://aka.ms/windowsappsdk" />
+                                <HyperlinkButton Content="Windows UI Library"
+                                                 NavigateUri="https://aka.ms/winui" />
+                                <HyperlinkButton Content="Windows Community Toolkit"
+                                                 NavigateUri="https://aka.ms/toolkit/windows" />
+                                <HyperlinkButton Content="ColorCode-Universal"
+                                                 NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal" />
+                                <HyperlinkButton Content="Win2D"
+                                                 NavigateUri="https://github.com/Microsoft/Win2D" />
                             </StackPanel>
                         </toolkit:SettingsCard>
-                        <toolkit:SettingsCard
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical"
-                            Header="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.">
-                            <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                <HyperlinkButton Content="Microsoft Services Agreement" NavigateUri="https://go.microsoft.com/fwlink/?LinkId=822631" />
-                                <HyperlinkButton Content="Microsoft Privacy Statement" NavigateUri="https://go.microsoft.com/fwlink/?LinkId=521839" />
+                        <toolkit:SettingsCard HorizontalContentAlignment="Left"
+                                              ContentAlignment="Vertical"
+                                              Header="THIS CODE AND INFORMATION IS PROVIDED ‘AS IS’ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.">
+                            <StackPanel Margin="-12,0,0,0"
+                                        Orientation="Vertical">
+                                <HyperlinkButton Content="Microsoft Services Agreement"
+                                                 NavigateUri="https://go.microsoft.com/fwlink/?LinkId=822631" />
+                                <HyperlinkButton Content="Microsoft Privacy Statement"
+                                                 NavigateUri="https://go.microsoft.com/fwlink/?LinkId=521839" />
                             </StackPanel>
                         </toolkit:SettingsCard>
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
             </StackPanel>
-        </ScrollViewer>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="contentSV.Padding" Value="16,0" />
-                        <Setter Target="PageHeader.Margin" Value="16,48,0,0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </ScrollView>
     </Grid>
 </Page>
