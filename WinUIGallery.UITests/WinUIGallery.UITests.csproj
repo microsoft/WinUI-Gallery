@@ -4,7 +4,7 @@
         <RootNamespace>WinUIGallery.UITests</RootNamespace>
         <IsPackable>false</IsPackable>
         <Configurations>Debug;Release;Sideload;Stable;Preview;Store</Configurations>
-        <Platforms>x86;x64;ARM64</Platforms>
+        <Platforms>x86;x64;ARM64;ARM64EC</Platforms>
         <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64;win10-arm64ec</RuntimeIdentifiers>
     </PropertyGroup>
 
