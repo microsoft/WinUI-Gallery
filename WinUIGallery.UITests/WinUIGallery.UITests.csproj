@@ -6,6 +6,7 @@
         <Configurations>Debug;Release;Sideload;Stable;Preview;Store</Configurations>
         <Platforms>x86;x64;ARM64;ARM64EC</Platforms>
         <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+        <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     </PropertyGroup>
 
     <ItemGroup>
