@@ -206,7 +206,7 @@ public sealed partial class TitleBarPage : Page
 
         if (selectedHeight != null && window != null && window.ExtendsContentIntoTitleBar)
         {
-            window.AppWindow.TitleBar.PreferredHeightOption = App.GetEnum<TitleBarHeightOption>(selectedHeight);
+            window.AppWindow.TitleBar.PreferredHeightOption = EnumHelper.GetEnum<TitleBarHeightOption>(selectedHeight);
         }
     }
 
