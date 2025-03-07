@@ -350,7 +350,7 @@ public sealed partial class SampleWindow3 : Window
                                  CSharpSource="AppWindow\AppWindowSample4_cs.txt">
             <controls:ControlExample.Example>
                 <StackPanel>
-                    <TextBlock Text="A modal window is a separate window that blocks interaction with its parent window until it is closed, often used for critical actions like confirmations, authentication, or settings. Unlike a ContentDialog, which is a lightweight pop-up within the same window, a modal window is a fully independent window, making it suitable for multi-window applications or scenarios requiring more flexibility in layout and behavior."
+                    <TextBlock Text="A modal window is a separate window that blocks interaction with its owner window until it is closed, often used for critical actions like confirmations, authentication, or settings. Unlike a ContentDialog, which is a lightweight pop-up within the same window, a modal window is a fully independent window, making it suitable for multi-window applications or scenarios requiring more flexibility in layout and behavior."
                                TextWrapping="Wrap" />
                     <Button Margin="0,8,0,0"
                             Click="ShowSampleWindow4">Show modal window</Button>
