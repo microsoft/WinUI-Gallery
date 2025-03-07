@@ -156,7 +156,8 @@
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-                CornerRadius="0,0,8,8">
+                CornerRadius="0,0,8,8"
+                Padding="16,0">
 
                 <Expander.Header>
                     <TextBlock Text="Source code" />
