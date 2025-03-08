@@ -31,12 +31,12 @@
             <TitleBar.CenterContent>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
-                    Width="320"
+                    Width="480"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
                     KeyboardAcceleratorPlacementMode="Hidden"
-                    PlaceholderText="Search"
+                    PlaceholderText="Search samples.."
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
                     TextChanged="OnControlsSearchBoxTextChanged">
@@ -49,10 +49,7 @@
                 </AutoSuggestBox>
             </TitleBar.CenterContent>
         </TitleBar>
-        <Grid
-            x:Name="AutomationHelpersPanel"
-            Grid.Row="1"
-            Grid.Column="1">
+        <Grid x:Name="AutomationHelpersPanel" Grid.Row="1">
             <Grid.Resources>
                 <Style x:Key="AutomationHelperStyle" TargetType="Control">
                     <Setter Property="IsTabStop" Value="False" />
@@ -130,7 +127,6 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"
-            Grid.Column="1"
             Canvas.ZIndex="0"
             DisplayModeChanged="OnPaneDisplayModeChanged"
             IsBackButtonVisible="Collapsed"
@@ -138,7 +134,6 @@
             IsTabStop="False"
             Loaded="OnNavigationViewControlLoaded"
             SelectionChanged="OnNavigationViewSelectionChanged">
-
             <Frame
                 x:Name="rootFrame"
                 Navigated="OnRootFrameNavigated"
