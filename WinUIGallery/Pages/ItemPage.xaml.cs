@@ -44,45 +44,41 @@ public sealed partial class ItemPage : Page
 
     public void SetInitialVisuals()
     {
-        var navigationRootPage = NavigationRootPage.GetForElement(this);
-        if (navigationRootPage != null)
-        {
-            pageHeader.ToggleThemeAction = OnToggleTheme;
-            navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
-            
-            this.Focus(FocusState.Programmatic);
-        }
+        pageHeader.ToggleThemeAction = OnToggleTheme;
+        App.MainWindow.NavigationViewLoaded = OnNavigationViewLoaded;
+        this.Focus(FocusState.Programmatic);
     }
+
     private void OnNavigationViewLoaded()
     {
-        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
+        App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
-        NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-        var uniqueId = (string)args.Parameter;
-        var group = await ControlInfoDataSource.GetGroupFromItemAsync(uniqueId);
-        var item = group?.Items.FirstOrDefault(x => x.UniqueId.Equals(uniqueId));
-
-        if (item != null)
+        if (e.Parameter is string uniqueId)
         {
-            Item = item;
+            var group = await ControlInfoDataSource.GetGroupFromItemAsync(uniqueId);
+            var item = group?.Items.FirstOrDefault(x => x.UniqueId.Equals(uniqueId));
 
-            // Load control page into frame.
-            Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
-
-            if (pageType != null)
+            if (item != null)
             {
-                var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
-                pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
-                pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
-                System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
-                this.contentFrame.Navigate(pageType);
-            }
-            args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
-        }
+                Item = item;
 
+                // Load control page into frame.
+                Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
+
+                if (pageType != null)
+                {
+                    var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
+                    pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
+                    pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
+                    System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
+                    this.contentFrame.Navigate(pageType);
+                }
+                App.MainWindow.EnsureNavigationSelection(item?.UniqueId);
+            }
+        }
         base.OnNavigatedTo(e);
     }
 
@@ -94,24 +90,21 @@ public sealed partial class ItemPage : Page
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
-        var navigationRootPage = NavigationRootPage.GetForElement(this);
-        if (navigationRootPage != null)
-        {
-            navigationRootPage.NavigationViewLoaded = null;
-            pageHeader.ToggleThemeAction = null;
-            pageHeader.CopyLinkAction = null;
-        }
 
-        // We use reflection to call the OnNavigatedFrom function the user leaves this page
-        // See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
-        Frame contentFrameAsFrame = contentFrame as Frame;
-        Page innerPage = contentFrameAsFrame.Content as Page;
-        if (innerPage != null)
-        {
-            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
-        }
+        App.MainWindow.NavigationViewLoaded = null;
+        pageHeader.ToggleThemeAction = null;
+        pageHeader.CopyLinkAction = null;
+
+        //// We use reflection to call the OnNavigatedFrom function the user leaves this page
+        //// See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
+        //Frame contentFrameAsFrame = contentFrame as Frame;
+        //Page innerPage = contentFrameAsFrame.Content as Page;
+        //if (innerPage != null)
+        //{
+        //    MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+        //        BindingFlags.NonPublic | BindingFlags.Instance);
+        //    dynMethod.Invoke(innerPage, new object[] { e });
+        //}
 
         base.OnNavigatedFrom(e);
     }
@@ -145,7 +138,7 @@ public sealed partial class ItemPage : Page
             {
                 controlExample.RequestedTheme = theme;
             }
-            if(controlExamples.Count() == 0)
+            if (controlExamples.Count() == 0)
             {
                 this.RequestedTheme = theme;
             }

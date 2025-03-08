@@ -29,9 +29,9 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
+    public static void IsLeftModeForElement(bool isLeftMode)
     {
-        UpdateNavigationViewForElement(isLeftMode, element);
+        UpdateNavigationViewForElement(isLeftMode);
         if (NativeHelper.IsAppPackaged)
         {
             ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
@@ -42,19 +42,16 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void UpdateNavigationViewForElement(bool isLeftMode, UIElement element)
+    public static void UpdateNavigationViewForElement(bool isLeftMode)
     {
-        NavigationView _navView = NavigationRootPage.GetForElement(element).NavigationView;
+        NavigationView _navView = App.MainWindow.NavigationView;
         if (isLeftMode)
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
-            Grid.SetRow(_navView, 0);
         }
         else
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-            Grid.SetRow(_navView, 1);
         }
     }
-    
 }

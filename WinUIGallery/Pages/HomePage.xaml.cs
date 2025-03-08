@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Helpers;
 
@@ -26,9 +27,7 @@ public sealed partial class HomePage : ItemsPageBase
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-        var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
-        menuItem.IsSelected = true;
+        ((NavigationViewItem)App.MainWindow.NavigationView.MenuItems.First()).IsSelected = true;
 
         Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
         itemsCVS.Source = FormatData();

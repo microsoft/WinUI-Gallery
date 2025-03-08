@@ -119,7 +119,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.6.250205002" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.7.250208002-preview1" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="2.0.15" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
@@ -295,6 +295,7 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="MainWindow.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Styles\Button.xaml" />
@@ -457,6 +458,12 @@
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <Content Include="Samples\Data\IconsData.json" />
         <Content Include="Samples\Data\ControlInfoData.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
         <Page Update="Controls\CopyButton\CopyButton.xaml">

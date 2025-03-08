@@ -12,6 +12,6 @@ public sealed partial class XamlResourcesPage : Page
 
     private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
     {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "Color");
+        App.MainWindow.Navigate(typeof(ItemPage), "Color");
     }
 }
