@@ -310,6 +310,7 @@
     <ItemGroup>
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\CustomControls.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
