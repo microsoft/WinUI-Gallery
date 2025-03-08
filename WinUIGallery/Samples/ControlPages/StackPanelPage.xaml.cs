@@ -7,7 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Microsoft.UI.Xaml;
+using System;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;
@@ -19,21 +19,15 @@ public sealed partial class StackPanelPage : Page
         this.InitializeComponent();
     }
 
-    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+    private void OrientationGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (sender is RadioButton rb && Control1 != null)
+        if ((sender as RadioButtons)?.SelectedItem is not RadioButton selectedItem ||
+            Enum.TryParse<Orientation>(selectedItem.Tag?.ToString(), out var orientation) is false ||
+            Control1 is null)
         {
-            string orientationName = rb.Tag.ToString();
-
-            switch (orientationName)
-            {
-                case "Horizontal":
-                    Control1.Orientation = Orientation.Horizontal;
-                    break;
-                case "Vertical":
-                    Control1.Orientation = Orientation.Vertical;
-                    break;
-            }
+            return;
         }
+
+        Control1.Orientation = orientation;
     }
 }
