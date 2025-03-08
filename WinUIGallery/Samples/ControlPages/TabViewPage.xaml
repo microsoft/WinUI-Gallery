@@ -233,6 +233,7 @@
                         TextWrapping="WrapWholeWords" />
 
                     <TabView
+                        BringIntoViewRequested="TabView_BringIntoViewRequested"
                         MinHeight="475"
                         Margin="-12"
                         AddTabButtonClick="TabView_AddButtonClick"
@@ -276,10 +277,12 @@
             <controls:ControlExample.Example>
                 <TabView
                     x:Name="TabView3"
+                    BringIntoViewRequested="TabView_BringIntoViewRequested"
                     MinHeight="475"
                     Margin="-12"
                     IsAddTabButtonVisible="False"
-                    SelectedIndex="0">
+                    SelectedIndex="0"
+                    TabWidthMode="SizeToContent">
                     <TabView.TabItems>
                         <TabViewItem Header="Home" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
@@ -383,6 +386,7 @@
                         TextWrapping="WrapWholeWords" />
 
                     <TabView
+                        BringIntoViewRequested="TabView_BringIntoViewRequested"
                         MinWidth="490"
                         IsAddTabButtonVisible="False"
                         SelectedIndex="0"

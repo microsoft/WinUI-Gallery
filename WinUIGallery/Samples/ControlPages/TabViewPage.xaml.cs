@@ -29,13 +29,20 @@ public sealed partial class TabViewPage : Page
         InitializeDataBindingSampleData();
     }
 
-#region SharedTabViewLogic
+    #region SharedTabViewLogic
     private void TabView_Loaded(object sender, RoutedEventArgs e)
     {
         for (int i = 0; i < 3; i++)
         {
             (sender as TabView).TabItems.Add(CreateNewTab(i));
         }
+    }
+
+    private void TabView_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args)
+    {
+        // The TabView control is firing this event when TabWidthMode is set to `SizeToContent` or `Compact`.
+        // This will work around an auto-scroll issue when the page is loaded.
+        args.Handled = true;
     }
 
     private void TabView_AddButtonClick(TabView sender, object args)
@@ -77,9 +84,9 @@ public sealed partial class TabViewPage : Page
 
         return newItem;
     }
-#endregion
+    #endregion
 
-#region ItemsSourceSample
+    #region ItemsSourceSample
     private void InitializeDataBindingSampleData()
     {
         myDatas = new ObservableCollection<MyData>();
@@ -129,9 +136,9 @@ public sealed partial class TabViewPage : Page
         // Remove the requested MyData object from the collection.
         myDatas.Remove(args.Item as MyData);
     }
-#endregion
+    #endregion
 
-#region KeyboardAcceleratorSample
+    #region KeyboardAcceleratorSample
     private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
         var senderTabView = args.Element as TabView;
@@ -199,7 +206,7 @@ public sealed partial class TabViewPage : Page
 
         args.Handled = true;
     }
-#endregion
+    #endregion
 
     private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

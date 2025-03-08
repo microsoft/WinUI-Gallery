@@ -126,7 +126,7 @@ private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelect
 
                 <ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}">
                     <ItemsView.Layout>
-                        <UniformGridLayout />
+                        <StackLayout Orientation="Horizontal" />
                     </ItemsView.Layout>
                 </ItemsView>
             </StackPanel>

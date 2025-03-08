@@ -7,7 +7,7 @@
         <TargetPlatformMinVersion>$(WindowsAppSdkTargetPlatformVersion)</TargetPlatformMinVersion>
         <UseWinUI>true</UseWinUI>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <Platforms>x86;x64;ARM64</Platforms>
+        <Platforms>x86;x64;ARM64;ARM64EC</Platforms>
         <NoWarn>8305</NoWarn>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -459,10 +459,6 @@
         <Content Include="Samples\Data\ControlInfoData.json" />
     </ItemGroup>
     <ItemGroup>
-        <Page Update="ControlPages\DesignGuidance\SpacingPage.xaml">
-          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-          <SubType>Designer</SubType>
-        </Page>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
@@ -470,9 +466,6 @@
     <ItemGroup>
         <Page Update="ControlPages\InfoBadgePage.xaml">
             <Generator>MSBuild:Compile</Generator>
-        </Page>
-        <Page Update="Controls\DesignGuidance\ColorSections\HighContrastSection.xaml">
-          <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
         </Page>
     </ItemGroup>
     <ItemGroup>
@@ -487,29 +480,6 @@
     </ItemGroup>
     <ItemGroup>
         <Page Update="Controls\PageHeader.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorSections\SignalSection.xaml">
-            <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        </Page>
-        <Page Update="Controls\DesignGuidance\ColorTile.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorPageExample.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="Controls\DesignGuidance\TypographyControl.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <Page Update="Controls\DesignGuidance\ColorSections\TextSection.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
     </ItemGroup>

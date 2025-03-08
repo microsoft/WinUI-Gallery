@@ -25,6 +25,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
+using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUIGallery.Pages;
 
@@ -151,14 +152,13 @@ public sealed partial class NavigationRootPage : Page
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
-    public void Navigate(
-        Type pageType,
-        object targetPageArguments = null,
-        Microsoft.UI.Xaml.Media.Animation.NavigationTransitionInfo navigationTransitionInfo = null)
+    public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
     {
-        NavigationRootPageArgs args = new NavigationRootPageArgs();
-        args.NavigationRootPage = this;
-        args.Parameter = targetPageArguments;
+        NavigationRootPageArgs args = new NavigationRootPageArgs
+        {
+            NavigationRootPage = this,
+            Parameter = targetPageArguments
+        };
         rootFrame.Navigate(pageType, args, navigationTransitionInfo);
     }
 
@@ -320,10 +320,6 @@ public sealed partial class NavigationRootPage : Page
                     Navigate(typeof(HomePage));
                 }
             }
-            else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)
-            {
-                //Navigate(typeof(SectionPage), "Design_Guidance");
-            }
             else if (selectedItem == ColorItem)
             {
                 Navigate(typeof(ItemPage), "Color");
@@ -371,6 +367,10 @@ public sealed partial class NavigationRootPage : Page
             else if (selectedItem == TemplatesPage)
             {
                 Navigate(typeof(ItemPage), "Templates");
+            }
+            else if (selectedItem == ScratchPadPage)
+            {
+                Navigate(typeof(ItemPage), "ScratchPad");
             }
             else
             {
