@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIGallery.ControlPages.AppWindowPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <TextBlock Text="General usage of AppWindow" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16,0,-16"/>
+        
+        <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance"
+                                 XamlSource="AppWindow\AppWindowSample1_xaml.txt">
+            <controls:ControlExample.Example>
+
+                <StackPanel>
+                    <Button Click="ShowSampleWindow1">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Window title"
+                               FontWeight="SemiBold" />
+                    <TextBox x:Name="WindowTitle"
+                             HorizontalAlignment="Stretch"
+                             Text="This is a title"
+                             PlaceholderText="Enter window title" />
+
+                    <TextBlock Text="Window size"
+                               FontWeight="SemiBold" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <NumberBox Header="Width"
+                                   x:Name="WindowWidth"
+                                   Grid.Column="0"
+                                   LargeChange="100"
+                                   Maximum="1000"
+                                   Minimum="200"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="800"
+                                   Margin="0 0 8 0" />
+                        <NumberBox Header="Height"
+                                   x:Name="WindowHeight"
+                                   Grid.Column="1"
+                                   LargeChange="100"
+                                   Maximum="700"
+                                   Minimum="200"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="500" />
+                    </Grid>
+
+                    <TextBlock Text="Window postion"
+                               FontWeight="SemiBold" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <NumberBox Header="X"
+                                   x:Name="XPoint"
+                                   Grid.Column="0"
+                                   LargeChange="100"
+                                   Maximum="800"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50"
+                                   Margin="0 0 8 0" />
+                        <NumberBox Header="Y"
+                                   x:Name="YPoint"
+                                   Grid.Column="1"
+                                   LargeChange="100"
+                                   Maximum="300"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50" />
+                    </Grid>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNamespace;
+                    
+public sealed partial class SampleWindow1 : Window
+{
+    private AppWindow appWindow;
+                    
+    public SampleWindow1()
+    {
+        this.InitializeComponent();
+
+        // Retrieve the AppWindow instance for the current window
+        appWindow = GetAppWindowForCurrentWindow();
+
+        // Set the window title
+        appWindow.Title = "$(WindowTitle)";
+
+        // Set the window size (including borders)
+        appWindow.Resize(new Windows.Graphics.SizeInt32($(Width), $(Height)));
+
+        // Set the window position on screen
+        appWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
+
+        // Set the window icon
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+    }
+
+    //Returrns the AppWindow instance associated with the current window.
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        // Get the native window handle
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+
+        // Retrieve the WindowId from the window handle
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+
+        // Return the AppWindow instance associated with the given WindowId
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+                    
+    private void Show_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Show();
+    }
+
+    private void Hide_Click(object sender, RoutedEventArgs e)
+    {
+        appWindow.Hide();
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="WindowTitle"
+                                                     Value="{x:Bind WindowTitle.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Width"
+                                                     Value="{x:Bind WindowWidth.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Height"
+                                                     Value="{x:Bind WindowHeight.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="X"
+                                                     Value="{x:Bind XPoint.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Y"
+                                                     Value="{x:Bind YPoint.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Centering AppWindow on the screen using the available display area"
+                                 XamlSource="AppWindow\AppWindowSample2_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample2_cs.txt">
+            <controls:ControlExample.Example>
+                <Button Click="ShowSampleWindow2">Show centered sample window</Button>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <TextBlock Text="AppWindow Presenters" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,24,0,-16" />
+
+        <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter"
+                                 XamlSource="AppWindow\AppWindowSample3_xaml.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="OverlappedPresenter is the default presenter for AppWindow, providing a standard resizable window with system buttons. It is used for typical app windows and can be customized to control resizing and button visibility." TextWrapping="Wrap"/>
+                    <InfoBar Title="Warning"
+                             Severity="Warning"
+                             IsOpen="True"
+                             IsClosable="False">
+                        <RichTextBlock IsTextSelectionEnabled="False" Margin="0,-16,16,16">
+                            <Paragraph>
+                                For an
+                                <Run FontWeight="SemiBold">AppWindow</Run> with
+                                <Run FontWeight="SemiBold">OverlappedPresenter</Run>, if the title bar
+                                (<Run FontWeight="SemiBold">HasTitleBar = true</Run>) is enabled, the window must have a border
+                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting
+                                <Run FontWeight="SemiBold">HasBorder</Run> to
+                                <Run FontWeight="SemiBold">false</Run> while
+                                <Run FontWeight="SemiBold">HasTitleBar</Run> is
+                                <Run FontWeight="SemiBold">true</Run> will result in a fatal error.
+                            </Paragraph>
+                        </RichTextBlock>
+                    </InfoBar>
+                    <Button Click="ShowSampleWindow3">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ToggleSwitch x:Name="IsAlwaysOnTop"
+                                  Header="IsAlwaysOnTop"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="False">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Keeps the window above all other windows when enabled."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsMaximizable"
+                                  Header="IsMaximizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Controls the visibility and enable state of the maximize button."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsMinimizable"
+                                  Header="IsMinimizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Controls the visibility and enable state of the minimize button."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="IsResizable"
+                                  Header="IsResizable"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Allows resizing the window by dragging its edges."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="HasBorder"
+                                  Header="HasBorder"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true"
+                                  Toggled="HasBorder_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Determines if the window has a visible outer border."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch x:Name="HasTitleBar"
+                                  Header="HasTitleBar"
+                                  OffContent="false"
+                                  OnContent="true"
+                                  IsOn="true"
+                                  Toggled="HasTitleBar_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Specifies whether the window includes a system title bar."
+                                       TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNamespace;
+                    
+public sealed partial class SampleWindow3 : Window
+{
+    private AppWindow appWindow;
+    private OverlappedPresenter presenter;
+
+    public SampleWindow3()
+    {
+        this.InitializeComponent();
+
+        appWindow = GetAppWindowForCurrentWindow();
+
+        presenter = OverlappedPresenter.Create();
+        presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
+        presenter.IsMaximizable = $(IsMaximizable);
+        presenter.IsMinimizable = $(IsMinimizable);
+        presenter.IsResizable = $(IsResizable);
+        presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
+
+        appWindow.SetPresenter(presenter);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Maximize();
+    }
+
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Minimize();
+    }
+
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Restore();
+    }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="IsAlwaysOnTop"
+                                                     Value="{x:Bind BoolToLowerString(IsAlwaysOnTop.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsMaximizable"
+                                                     Value="{x:Bind BoolToLowerString(IsMaximizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsMinimizable"
+                                                     Value="{x:Bind BoolToLowerString(IsMinimizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="IsResizable"
+                                                     Value="{x:Bind BoolToLowerString(IsResizable.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HasBorder"
+                                                     Value="{x:Bind BoolToLowerString(HasBorder.IsOn), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HasTitleBar"
+                                                     Value="{x:Bind BoolToLowerString(HasTitleBar.IsOn), Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Modal window with OverlappedPresenter using AppWindow"
+                                 XamlSource="AppWindow\AppWindowSample4_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample4_cs.txt">
+            <controls:ControlExample.Example>
+                <StackPanel>
+                    <TextBlock Text="A modal window is a separate window that blocks interaction with its owner window until it is closed, often used for critical actions like confirmations, authentication, or settings. Unlike a ContentDialog, which is a lightweight pop-up within the same window, a modal window is a fully independent window, making it suitable for multi-window applications or scenarios requiring more flexibility in layout and behavior."
+                               TextWrapping="Wrap" />
+                    <Button Margin="0,8,0,0"
+                            Click="ShowSampleWindow4">Show modal window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="AppWindow with FullScreenPresenter"
+                                 XamlSource="AppWindow\AppWindowSample5_xaml.txt"
+                                 CSharpSource="AppWindow\AppWindowSample5_cs.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key or close button, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks."
+                               TextWrapping="Wrap" />
+                    <Button Click="ShowSampleWindow5">Show sample window (Fullscreen mode)</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter"
+                                 XamlSource="AppWindow\AppWindowSample6_xaml.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)."
+                               TextWrapping="Wrap" />
+                    <Button Click="ShowSampleWindow6">Show sample window (Picture-in-Picture mode)</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ComboBox x:Name="InitialSize"
+                              Header="InitialSize"
+                              SelectedIndex="0"
+                              Width="150"
+                              SelectionChanged="InitialSize_SelectionChanged">
+                        <x:String>Small</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Large</x:String>
+                    </ComboBox>
+                    <TextBlock x:Name="InitialSizeDescription"
+                               Text="Small: Window size is approximately 5% of the display's work area."
+                               Width="250"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNamespace;
+
+public sealed partial class SampleWindow6 : Window
+{
+    private AppWindow appWindow;
+    private CompactOverlayPresenter presenter;
+
+    public SampleWindow6()
+    {
+        this.InitializeComponent();
+
+        appWindow = GetAppWindowForCurrentWindow();
+
+        // Creates a CompactOverlay (Picture-in-Picture) presenter
+        presenter = CompactOverlayPresenter.Create();
+
+        // Sets the initial size of the CompactOverlay window
+        presenter.InitialSize = CompactOverlaySize.$(InitialSize);
+
+        // Applies the CompactOverlay presenter to the window
+        appWindow.SetPresenter(presenter);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="InitialSize"
+                                                     Value="{x:Bind InitialSize.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

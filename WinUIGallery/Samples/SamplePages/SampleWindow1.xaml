@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="WinUIGallery.Samples.SamplePages.SampleWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="8">
+        <Button x:Name="Show"
+                Content="Show"
+                Click="Show_Click"
+                Width="150">
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Shows the window and activates it."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+        </Button>
+        <Button x:Name="Hide"
+                Content="Hide"
+                Click="Hide_Click"
+                Width="150">
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Hides the window from all UX representations in the system but keeps the object alive."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+        </Button>
+      
+        <Button x:Name="Close"
+                Click="Close_Click"
+                Width="150"
+                Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel"
+                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                            Margin="0,0,4,0" />
+                <TextBlock Text="Close"
+                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Closes the window and releases all resources."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+        </Button>
+    </StackPanel>
+</Window>
