@@ -230,12 +230,12 @@ public sealed partial class SampleCodePresenter : UserControl
         var formatter = GenerateRichTextFormatter();
         if (SampleType == SampleCodePresenterType.Inline)
         {
-            CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
+            CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas, Cascadia Code"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
             CodeScrollViewer.UpdateLayout();
         }
         else
         {
-            sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
+            sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas, Cascadia Code") };
             formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
             CodePresenter.Content = sampleCodeRTB;
             CodeScrollViewer.Content = CodePresenter;
