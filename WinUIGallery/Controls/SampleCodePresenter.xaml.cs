@@ -22,6 +22,7 @@ using Microsoft.UI.Xaml.Media;
 using System.Reflection;
 using System.IO;
 using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls.Primitives;
 
 namespace WinUIGallery.Controls;
 
@@ -66,6 +67,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private string actualCode = "";
     private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+    private RichTextBlock sampleCodeRTB;
 
     public SampleCodePresenter()
     {
@@ -233,10 +235,26 @@ public sealed partial class SampleCodePresenter : UserControl
         }
         else
         {
-            var sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
+            sampleCodeRTB = new RichTextBlock { FontFamily = new FontFamily("Consolas") };
             formatter.FormatRichTextBlock(sampleString, highlightLanguage, sampleCodeRTB);
             CodePresenter.Content = sampleCodeRTB;
             CodeScrollViewer.Content = CodePresenter;
+            sampleCodeRTB.SelectionChanged += SampleCodeRTB_SelectionChanged;
+        }
+    }
+
+    private void SampleCodeRTB_SelectionChanged(object sender, RoutedEventArgs e)
+    {
+        if (sender is RichTextBlock sampleCode)
+        {
+            if (!string.IsNullOrEmpty(sampleCode.SelectedText))
+            {
+                CopyCodeButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CopyCodeButton.Visibility = Visibility.Visible;
+            }
         }
     }
 
@@ -299,5 +317,69 @@ public sealed partial class SampleCodePresenter : UserControl
         DataPackage package = new DataPackage();
         package.SetText(actualCode);
         Clipboard.SetContent(package);
+    }
+
+    private void CodeScrollViewer_Loaded(object sender, RoutedEventArgs e)
+    {
+        ScrollBar horizontalScrollBar = FindHorizontalScrollBar(CodeScrollViewer);
+        if (horizontalScrollBar != null)
+        {
+            // Create a timer and store it in the ScrollBar's Tag property.
+            DispatcherTimer scrollTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500)
+            };
+            scrollTimer.Tick += (s, args) =>
+            {
+                scrollTimer.Stop();
+                if (sampleCodeRTB != null && string.IsNullOrEmpty(sampleCodeRTB.SelectedText))
+                {
+                    CopyCodeButton.Visibility = Visibility.Visible;
+                }
+            };
+            horizontalScrollBar.Tag = scrollTimer;
+
+            horizontalScrollBar.Scroll += HorizontalScrollBar_Scroll;
+        }
+    }
+
+    private void HorizontalScrollBar_Scroll(object sender, ScrollEventArgs e)
+    {
+        if (sender is ScrollBar scrollBar)
+        {
+            // Immediately collapse the button when scrolling starts.
+            CopyCodeButton.Visibility = Visibility.Collapsed;
+
+            // Retrieve the timer from the ScrollBar's Tag.
+            if (scrollBar.Tag is DispatcherTimer scrollTimer)
+            {
+                // Restart the timer so that it ticks only after scrolling stops.
+                if (scrollTimer.IsEnabled)
+                {
+                    scrollTimer.Stop();
+                }
+                scrollTimer.Start();
+            }
+        }
+    }
+
+    private ScrollBar FindHorizontalScrollBar(DependencyObject element)
+    {
+        if (element is ScrollBar sb && sb.Orientation == Orientation.Horizontal)
+        {
+            return sb;
+        }
+
+        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+        {
+            var child = VisualTreeHelper.GetChild(element, i);
+            var result = FindHorizontalScrollBar(child);
+            if (result != null)
+            {
+                return result;
+            }
+        }
+
+        return null;
     }
 }
