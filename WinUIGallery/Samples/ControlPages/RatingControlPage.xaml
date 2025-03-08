@@ -27,11 +27,11 @@
             <controls:ControlExample.Options>
                 <StackPanel Width="220">
                     <CheckBox x:Name="clearEnabledCheck" Content="IsClearEnabled" />
-                    <TextBlock Text="Swipe left to clear your rating." TextWrapping="WrapWholeWords" />
+                    <TextBlock Text="Swipe left or click again to clear your rating." TextWrapping="WrapWholeWords" />
                     <CheckBox
                         x:Name="readOnlyCheck"
                         Margin="0,12,0,0"
-                        Content="Is Read Only" />
+                        Content="IsReadOnly" />
                 </StackPanel>
             </controls:ControlExample.Options>
 

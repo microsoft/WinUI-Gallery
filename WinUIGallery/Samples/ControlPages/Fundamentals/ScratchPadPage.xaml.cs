@@ -1,11 +1,13 @@
 using System;
 using System.Linq;
 using Microsoft.UI.Input;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
 using Windows.Storage;
+using Windows.System;
 
 namespace WinUIGallery.ControlPages;
 
@@ -24,7 +26,7 @@ public sealed partial class ScratchPadPage : Page
         }
 
         m_oldText = xamlStr;
-        textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
+        textbox.TextDocument.SetText(TextSetOptions.None, m_oldText);
         var formatter = new XamlTextFormatter(textbox);
         formatter.ApplyColors();
 
@@ -57,10 +59,10 @@ public sealed partial class ScratchPadPage : Page
 
     public string ReadScratchPadXAMLinLocalSettings()
     {
-        var appData = Windows.Storage.ApplicationData.Current;
+        var appData = ApplicationData.Current;
         if (appData.LocalSettings.Containers.ContainsKey("ScratchPad"))
         {
-            var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Existing);
+            var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", ApplicationDataCreateDisposition.Existing);
             if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey("ScratchPadXAML"))
             {
                 // String values are limited to 4K characters. Use a composite value to support a longer string.
@@ -79,8 +81,8 @@ public sealed partial class ScratchPadPage : Page
 
     public void SaveScratchPadXAMLinLocalSettings(string xamlStr)
     {
-        var appData = Windows.Storage.ApplicationData.Current;
-        var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", Windows.Storage.ApplicationDataCreateDisposition.Always);
+        var appData = ApplicationData.Current;
+        var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", ApplicationDataCreateDisposition.Always);
         // String values are limited to 4K characters. Use a composite value to support a longer string.
         var compositeStr = new ApplicationDataCompositeValue();
         int count = 0;
@@ -109,7 +111,7 @@ public sealed partial class ScratchPadPage : Page
         if (result == ContentDialogResult.Primary)
         {
             m_oldText = GetDefaultScratchXAML();
-            textbox.TextDocument.SetText(Microsoft.UI.Text.TextSetOptions.None, m_oldText);
+            textbox.TextDocument.SetText(TextSetOptions.None, m_oldText);
             var formatter = new XamlTextFormatter(textbox);
             formatter.ApplyColors();
 
@@ -136,7 +138,7 @@ public sealed partial class ScratchPadPage : Page
     private void LoadContent()
     {
         string newText;
-        textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
         //System.Diagnostics.Debug.WriteLine("new text: " + newText);
 
         SaveScratchPadXAMLinLocalSettings(newText);
@@ -180,7 +182,7 @@ public sealed partial class ScratchPadPage : Page
     private string GetTextboxTextPreviousLine()
     {
         string newText;
-        textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
         var selectionIndex = textbox.TextDocument.Selection.StartPosition;
         if (selectionIndex > 0)
         {
@@ -230,7 +232,7 @@ public sealed partial class ScratchPadPage : Page
                     var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(Windows.System.VirtualKey.Shift) &
                         (int)Windows.UI.Core.CoreVirtualKeyStates.Down) == (int)Windows.UI.Core.CoreVirtualKeyStates.Down;
                     string text;
-                    textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out text);
+                    textbox.TextDocument.GetText(TextGetOptions.None, out text);
 
                     var selectionStart = textbox.TextDocument.Selection.StartPosition;
                     var selectionEnd = selectionStart + textbox.TextDocument.Selection.Length;
@@ -246,12 +248,12 @@ public sealed partial class ScratchPadPage : Page
                             selectionStart += 4;
                             selectionEnd += 4;
 
-                            range.Move(Microsoft.UI.Text.TextRangeUnit.Paragraph, 1);
+                            range.Move(TextRangeUnit.Paragraph, 1);
                             while (range.StartPosition < selectionEnd)
                             {
                                 range.Text = "    ";
                                 selectionEnd += 4;
-                                range.Move(Microsoft.UI.Text.TextRangeUnit.Paragraph, 1);
+                                range.Move(TextRangeUnit.Paragraph, 1);
                             }
                         }
                         else // Unindent
@@ -259,7 +261,7 @@ public sealed partial class ScratchPadPage : Page
                             bool firstLine = true;
                             while (range.StartPosition < selectionEnd)
                             {
-                                range.MoveEnd(Microsoft.UI.Text.TextRangeUnit.Character, 4);
+                                range.MoveEnd(TextRangeUnit.Character, 4);
                                 var numWhitespace = range.Text.Count(char.IsWhiteSpace);
                                 range = textbox.TextDocument.GetRange(range.StartPosition, range.StartPosition + numWhitespace);
                                 range.Text = "";
@@ -269,7 +271,7 @@ public sealed partial class ScratchPadPage : Page
                                     selectionStart -= numWhitespace;
                                 }
                                 selectionEnd -= numWhitespace;
-                                range.Move(Microsoft.UI.Text.TextRangeUnit.Paragraph, 1);
+                                range.Move(TextRangeUnit.Paragraph, 1);
                             }
                         }
 
@@ -287,11 +289,11 @@ public sealed partial class ScratchPadPage : Page
         m_lastChangeFromTyping = true;
         switch (e.Key)
         {
-            case Windows.System.VirtualKey.F5:
+            case VirtualKey.F5:
                 LoadContentAndApplyFormatting();
                 break;
 
-            case Windows.System.VirtualKey.Enter:
+            case VirtualKey.Enter:
                 HandleEnter();
                 break;
         }
@@ -318,7 +320,7 @@ public sealed partial class ScratchPadPage : Page
             }
 
             string newText;
-            textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out newText);
+            textbox.TextDocument.GetText(TextGetOptions.None, out newText);
             if (newText.Length == m_oldText.Length + 1)
             {
                 // Added just one character
@@ -367,12 +369,12 @@ public sealed partial class ScratchPadPage : Page
         }
 
         // Save the text so next time we can compare against the new text
-        textbox.TextDocument.GetText(Microsoft.UI.Text.TextGetOptions.None, out m_oldText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out m_oldText);
     }
 
     private void textbox_ActualThemeChanged(FrameworkElement sender, object args)
     {
-        // Updating the formating for theme change
+        // Updating the formatting for theme change
         var formatter = new XamlTextFormatter(textbox);
         formatter.ApplyColors();
     }
@@ -405,7 +407,7 @@ public class XamlTextFormatter
         doc.BeginUndoGroup();
 
         string rebText;
-        doc.GetText(Microsoft.UI.Text.TextGetOptions.None, out rebText);
+        doc.GetText(TextGetOptions.None, out rebText);
 
         var startIndex = 0;
         var currentZoneType = ZoneType.Unknown;

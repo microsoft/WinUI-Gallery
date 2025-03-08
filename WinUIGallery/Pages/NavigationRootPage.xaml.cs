@@ -437,10 +437,6 @@ public sealed partial class NavigationRootPage : Page
                     Navigate(typeof(HomePage));
                 }
             }
-            else if (selectedItem == DesignGuidanceItem || selectedItem == AccessibilityItem)
-            {
-                //Navigate(typeof(SectionPage), "Design_Guidance");
-            }
             else if (selectedItem == ColorItem)
             {
                 Navigate(typeof(ItemPage), "Color");

@@ -2,11 +2,136 @@
   "$schema": "ControlInfoDataSchema.json",
   "Groups": [
     {
-      "UniqueId": "Design_Guidance",
-      "Title": "Design guidance",
+      "UniqueId": "FundamentalsItem",
+      "Title": "Fundamentals",
+      "IsSpecialSection": true,
+      "Folder": "Fundamentals",
+      "Items": [
+        {
+          "UniqueId": "XamlResources",
+          "Title": "Resources",
+          "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
+          "Docs": [
+            {
+              "Title": "ResourceDictionary and XAML resource references",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
+            },
+            {
+              "Title": "ResourceDictionary - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
+            },
+            {
+              "Title": "XAML theme resources",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
+            }
+          ]
+        },
+        {
+          "UniqueId": "XamlStyles",
+          "Title": "Style",
+          "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "XAML Styles in WinUI 3 are reusable sets of property values that you can apply to multiple controls. They help maintain a consistent look and feel across your app. Instead of setting the same properties on every control, you define a style once and then reuse it wherever needed.",
+          "Docs": [
+            {
+              "Title": "Style - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
+            },
+            {
+              "Title": "XAML styles",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Binding",
+          "Title": "Binding",
+          "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
+          "Docs": [
+            {
+              "Title": "Data binding",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
+            },
+            {
+              "Title": "{x:Bind} markup extension",
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
+            },
+            {
+              "Title": "{Binding} markup extension",
+              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
+            },
+            {
+              "Title": "Binding - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
+            },
+            {
+              "Title": "IValueConverter Interface - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
+            }
+          ]
+        },
+        {
+          "UniqueId": "Templates",
+          "Title": "Templates",
+          "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "FrameworkTemplate"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
+          "Docs": [
+            {
+              "Title": "XAML Control Templates",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
+            },
+            {
+              "Title": "ControlTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
+            },
+            {
+              "Title": "DataTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
+            },
+            {
+              "Title": "ItemsPanelTemplate - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
+            }
+          ]
+        },
+        {
+          "UniqueId": "ScratchPad",
+          "Title": "Scratch Pad",
+          "Subtitle": "Scratch pad for testing simple XAML markup",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
+          "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
+
+          "Docs": [
+            {
+              "Title": "XamlReader - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "DesignItem",
+      "Title": "Design",
       "IconGlyph": "",
       "IsSpecialSection": true,
-      "Folder": "DesignGuidance",
+      "Folder": "Design",
       "Items": [
         {
           "UniqueId": "Color",
@@ -192,194 +317,12 @@
       ]
     },
     {
-      "UniqueId": "XamlFundamentalsItem",
-      "Title": "XAML fundamentals",
-      "IsSpecialSection": true,
-      "Folder": "XamlFundamentals",
-      "Items": [
-        {
-          "UniqueId": "XamlResources",
-          "Title": "Resources",
-          "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
-          "Docs": [
-            {
-              "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
-            },
-            {
-              "Title": "ResourceDictionary - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary"
-            },
-            {
-              "Title": "XAML theme resources",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
-            }
-          ]
-        },
-        {
-          "UniqueId": "XamlStyles",
-          "Title": "Style",
-          "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "XAML Styles in WinUI 3 are reusable sets of property values that you can apply to multiple controls. They help maintain a consistent look and feel across your app. Instead of setting the same properties on every control, you define a style once and then reuse it wherever needed.",
-          "Docs": [
-            {
-              "Title": "Style - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style"
-            },
-            {
-              "Title": "XAML styles",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Binding",
-          "Title": "Binding",
-          "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
-          "Docs": [
-            {
-              "Title": "Data binding",
-              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
-            },
-            {
-              "Title": "{x:Bind} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
-            },
-            {
-              "Title": "{Binding} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
-            },
-            {
-              "Title": "Binding - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding"
-            },
-            {
-              "Title": "IValueConverter Interface - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
-            }
-          ]
-        },
-        {
-          "UniqueId": "Templates",
-          "Title": "Templates",
-          "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "FrameworkTemplate"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
-          "Description": "A template defines the structure and appearance of a control. Unlike styles, which set properties, templates allow you to completely customize how a control looks by redefining its visual tree (the XAML elements that make up the control). Templates provide the flexibility to change the look of controls while maintaining their functionality.",
-          "Docs": [
-            {
-              "Title": "XAML Control Templates",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
-            },
-            {
-              "Title": "ControlTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate"
-            },
-            {
-              "Title": "DataTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate"
-            },
-            {
-              "Title": "ItemsPanelTemplate - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
-            }
-          ]
-        },
-        {
-          "UniqueId": "ScratchPad",
-          "Title": "Scratch Pad",
-          "Subtitle": "Scratch pad for testing simple XAML markup",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
-          "Description": "Provides an edit box where you can type in some markup and load it to see how it looks and behaves.",
-
-          "Docs": [
-            {
-              "Title": "XamlReader - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "UniqueId": "MenusAndToolbars",
       "Title": "Menus & toolbars",
       "ImagePath": "",
       "IconGlyph": "",
       "Items": [
-        {
-          "UniqueId": "XamlUICommand",
-          "Title": "XamlUICommand",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Input",
-          "Subtitle": "An object which is used to define the look and feel of a given command.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
-          "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls.",
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-xamluicommand-class"
-            },
-            {
-              "Title": "XamlUICommand - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.xamluicommand"
-            }
-          ],
-          "RelatedControls": [
-            "StandardUICommand",
-            "AppBarButton",
-            "AppBarToggleButton",
-            "CommandBar"
-          ]
-        },
-        {
-          "UniqueId": "StandardUICommand",
-          "Title": "StandardUICommand",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "XamlUICommand"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Input",
-          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
-          "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls. E.g. Save, Open, Copy, Paste, etc.",
-          "Docs": [
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-standarduicommand-class"
-            },
-            {
-              "Title": "StandardUICommand - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.standarduicommand"
-            }
-          ],
-          "RelatedControls": [
-            "XamlUICommand",
-            "AppBarButton",
-            "AppBarToggleButton",
-            "CommandBar"
-          ]
-        },
+
         {
           "UniqueId": "AppBarButton",
           "Title": "AppBarButton",
@@ -549,38 +492,6 @@
           ]
         },
         {
-          "UniqueId": "MenuBar",
-          "Title": "MenuBar",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/MenuBar.png",
-          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
-          "SourcePath": "/MenuBar",
-          "Docs": [
-            {
-              "Title": "MenuBar - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.MenuBar"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
-            }
-          ],
-          "RelatedControls": [
-            "CommandBar",
-            "MenuFlyout",
-            "StandardUICommand",
-            "XamlUICommand"
-          ]
-        },
-        {
           "UniqueId": "CommandBarFlyout",
           "Title": "CommandBarFlyout",
           "BaseClasses": [
@@ -608,6 +519,38 @@
             "MenuFlyout",
             "RichEditBox",
             "TextBox",
+            "StandardUICommand",
+            "XamlUICommand"
+          ]
+        },
+        {
+          "UniqueId": "MenuBar",
+          "Title": "MenuBar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A classic menu, allowing the display of MenuItems containing MenuFlyoutItems.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/MenuBar.png",
+          "Description": "The Menubar simplifies the creation of basic applications by providing a set of menus at the top of the app or window.",
+          "SourcePath": "/MenuBar",
+          "Docs": [
+            {
+              "Title": "MenuBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.MenuBar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
+            }
+          ],
+          "RelatedControls": [
+            "CommandBar",
+            "MenuFlyout",
             "StandardUICommand",
             "XamlUICommand"
           ]
@@ -701,6 +644,64 @@
             "GridView",
             "ListView"
           ]
+        },
+        {
+          "UniqueId": "StandardUICommand",
+          "Title": "StandardUICommand",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "XamlUICommand"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Input",
+          "Subtitle": "A StandardUICommand is a built-in 'XamlUICommand' which represents a commonly used command, e.g. 'Save'.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "Description": "StandardUICommands are a set of built-in XamlUICommands represeting commonly used commands. Including the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls. E.g. Save, Open, Copy, Paste, etc.",
+          "Docs": [
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-standarduicommand-class"
+            },
+            {
+              "Title": "StandardUICommand - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.standarduicommand"
+            }
+          ],
+          "RelatedControls": [
+            "XamlUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
+          ]
+        },
+        {
+          "UniqueId": "XamlUICommand",
+          "Title": "XamlUICommand",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Input",
+          "Subtitle": "An object which is used to define the look and feel of a given command.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
+          "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls.",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-xamluicommand-class"
+            },
+            {
+              "Title": "XamlUICommand - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.xamluicommand"
+            }
+          ],
+          "RelatedControls": [
+            "StandardUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
+          ]
         }
       ]
     },
@@ -778,6 +779,46 @@
             "ListView",
             "FlipView",
             "SemanticZoom"
+          ]
+        },
+        {
+          "UniqueId": "ItemsRepeater",
+          "Title": "ItemsRepeater",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A flexible, primitive control for data-driven layouts.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
+          "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
+          "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Docs": [
+            {
+              "Title": "ItemsRepeater - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemsrepeater"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/items-repeater"
+            },
+            {
+              "Title": "StackLayout - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.stacklayout"
+            },
+            {
+              "Title": "UniformGridLayout - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.uniformgridlayout"
+            }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ScrollView",
+            "ScrollViewer",
+            "ListView",
+            "GridView"
           ]
         },
         {
@@ -1101,19 +1142,6 @@
       "ImagePath": "",
       "IconGlyph": "",
       "Items": [
-        {
-          "UniqueId": "InputValidation",
-          "Title": "InputValidation",
-          "Subtitle": "A feature to display developer-defined errors for text values.",
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "ImagePath": "ms-appx:///Assets/ControlImages/InputValidation.png",
-          "Description": "A feature that will display an error for invalid text. The app is notified when text has been changed by the user and is responsible for determining whether the text is valid and the error message",
-          "Content": "<p>Look at the <i>InputValidationPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "RelatedControls": [
-            "TextBox",
-            "PasswordBox"
-          ]
-        },
         {
           "UniqueId": "Button",
           "Title": "Button",
@@ -2176,46 +2204,6 @@
           ]
         },
         {
-          "UniqueId": "ItemsRepeater",
-          "Title": "ItemsRepeater",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A flexible, primitive control for data-driven layouts.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
-          "Description": "The ItemsRepeater is like a markup-based loop that supports virtualization.",
-          "Content": "<p>A <b>ItemsRepeater</b> is more basic than an <b>ItemsControl</b>.  It does not have default styling or a control template.  It can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>And, optionally set the <b>Layout</b> to define how items are sized and positioned. By default, it uses a simple vertical stacking layout.</p><p>Look at the <i>ItemsRepeaterPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "Docs": [
-            {
-              "Title": "ItemsRepeater - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemsrepeater"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/items-repeater"
-            },
-            {
-              "Title": "StackLayout - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.stacklayout"
-            },
-            {
-              "Title": "UniformGridLayout - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.uniformgridlayout"
-            }
-          ],
-          "RelatedControls": [
-            "ItemsView",
-            "ScrollView",
-            "ScrollViewer",
-            "ListView",
-            "GridView"
-          ]
-        },
-        {
           "UniqueId": "Grid",
           "Title": "Grid",
           "BaseClasses": [
@@ -2968,27 +2956,32 @@
           ]
         },
         {
-          "UniqueId": "RadialGradientBrush",
-          "Title": "RadialGradientBrush",
+          "UniqueId": "Line",
+          "Title": "Line",
           "BaseClasses": [
             "Object",
             "DependencyObject",
-            "Brush",
-            "XamlCompositionBrushBase"
+            "UIElement",
+            "FrameworkElement",
+            "Shape"
           ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Media",
-          "Subtitle": "A brush to show radial gradients.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Canvas.png",
-          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
-          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
+          "ApiNamespace": "Microsoft.UI.Xaml.Shapes",
+          "Subtitle": "Draws a straight line between two points.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Line.png",
+          "Description": "Draws a straight line between two points.",
+          "Content": "<p>Look at the <i>LinePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
             {
-              "Title": "RadialGradientBrush - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.RadialGradientBrush"
+              "Title": "Lines - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.shapes"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
             }
           ],
           "RelatedControls": [
-            "Acrylic"
+            "Shape"
           ]
         },
         {
@@ -3020,32 +3013,27 @@
           ]
         },
         {
-          "UniqueId": "Line",
-          "Title": "Line",
+          "UniqueId": "RadialGradientBrush",
+          "Title": "RadialGradientBrush",
           "BaseClasses": [
             "Object",
             "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Shape"
+            "Brush",
+            "XamlCompositionBrushBase"
           ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Shapes",
-          "Subtitle": "Draws a straight line between two points.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Line.png",
-          "Description": "Draws a straight line between two points.",
-          "Content": "<p>Look at the <i>LinePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
+          "Subtitle": "A brush to show radial gradients.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Canvas.png",
+          "Description": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
+          "Content": "The RadialGradientBrush is similar in programming model to the LinearGradientBrush. However, the linear gradient has a start and an end point to define the gradient vector, while the radial gradient has a circle, along with a focal point, to define the gradient behavior. The circle defines the end point of the gradient. The parameters can be provided as a ratio or absolute value by picking the mapping mode.",
           "Docs": [
             {
-              "Title": "Lines - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.shapes"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
+              "Title": "RadialGradientBrush - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.RadialGradientBrush"
             }
           ],
           "RelatedControls": [
-            "Shape"
+            "Acrylic"
           ]
         },
         {
@@ -3339,6 +3327,31 @@
       "IconGlyph": "",
       "Items": [
         {
+          "UniqueId": "XamlCompInterop",
+          "Title": "Animation interop",
+          "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
+          "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
+          "Content": "<p>Look at the <i>XamlCompInteropPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
+          "Docs": [
+            {
+              "Title": "Quickstart: Motion",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+            },
+            {
+              "Title": "Composition Animation - API",
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
+            },
+            {
+              "Title": "Guidelines - Xaml Property Animations",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
+            }
+          ],
+          "RelatedControls": [
+            "EasingFunction"
+          ]
+        },
+        {
           "UniqueId": "ConnectedAnimation",
           "Title": "Connected Animation",
           "BaseClasses": [
@@ -3401,6 +3414,33 @@
           ]
         },
         {
+          "UniqueId": "ImplicitTransition",
+          "Title": "Implicit Transitions",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ImplicitTransition.png",
+          "Description": "Use Implicit Transitions to automatically animate changes to properties.",
+          "Content": "<p>Look at the <i>ImplicitTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Docs": [
+            {
+              "Title": "Transitions - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/motion-in-practice#implicit-animations"
+            },
+            {
+              "Title": "Quickstart: Motion",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+            }
+          ],
+          "RelatedControls": [
+            "PageTransition",
+            "ThemeTransition"
+          ]
+        },
+        {
           "UniqueId": "PageTransition",
           "Title": "Page Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
@@ -3452,58 +3492,6 @@
           "RelatedControls": [
             "ImplicitTransition",
             "PageTransition"
-          ]
-        },
-        {
-          "UniqueId": "XamlCompInterop",
-          "Title": "Animation interop",
-          "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
-          "Description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
-          "Content": "<p>Look at the <i>XamlCompInteropPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
-          "Docs": [
-            {
-              "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
-            },
-            {
-              "Title": "Composition Animation - API",
-              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
-            },
-            {
-              "Title": "Guidelines - Xaml Property Animations",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
-            }
-          ],
-          "RelatedControls": [
-            "EasingFunction"
-          ]
-        },
-        {
-          "UniqueId": "ImplicitTransition",
-          "Title": "Implicit Transitions",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ImplicitTransition.png",
-          "Description": "Use Implicit Transitions to automatically animate changes to properties.",
-          "Content": "<p>Look at the <i>ImplicitTransitionPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "Docs": [
-            {
-              "Title": "Transitions - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/motion-in-practice#implicit-animations"
-            },
-            {
-              "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
-            }
-          ],
-          "RelatedControls": [
-            "PageTransition",
-            "ThemeTransition"
           ]
         },
         {

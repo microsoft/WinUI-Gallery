@@ -1,8 +1,8 @@
-# Define the folder containing the WinUIGallery relative to the script location
-$WinUIGalleryFolder = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery"
+# Define the folder containing the WinUIGallery Samples relative to the script location
+$SamplesFolder = Join-Path -Path $PSScriptRoot -ChildPath "..\WinUIGallery\Samples"
 
 # Change directory to the WinUIGallery folder
-Set-Location -Path $WinUIGalleryFolder
+Set-Location -Path $SamplesFolder
 
 # Define the folder containing the control pages
 $currentFolder = "ControlPages"
