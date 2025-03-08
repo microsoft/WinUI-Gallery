@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="WinUIGallery.Samples.SamplePages.ModalWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery.Samples.SamplePages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+    
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="8">
+
+        <TextBlock Text="Modal Window"
+                   Style="{ThemeResource TitleTextBlockStyle}"
+                   TextAlignment="Center" />
+
+        <TextBlock Text="This is a modal window created using AppWindow with OverlappedPresenter."
+                   Style="{ThemeResource BodyTextBlockStyle}"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="8">
+            <Button Content="OK"
+                    Width="80"
+                    Click="OKButton_Click"
+                    Style="{StaticResource AccentButtonStyle}"/>
+            <Button Content="Cancel"
+                    Width="80"
+                    Click="CancelButton_Click" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>
