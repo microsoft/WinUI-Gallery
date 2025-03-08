@@ -7,6 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
+using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -30,9 +31,11 @@ public sealed partial class ViewboxPage : Page
                 case "UpOnly":
                     Control1.StretchDirection = StretchDirection.UpOnly;
                     break;
+
                 case "DownOnly":
                     Control1.StretchDirection = StretchDirection.DownOnly;
                     break;
+
                 case "Both":
                     Control1.StretchDirection = StretchDirection.Both;
                     break;
@@ -50,16 +53,43 @@ public sealed partial class ViewboxPage : Page
                 case "None":
                     Control1.Stretch = Stretch.None;
                     break;
+
                 case "Fill":
                     Control1.Stretch = Stretch.Fill;
                     break;
+
                 case "Uniform":
                     Control1.Stretch = Stretch.Uniform;
                     break;
+
                 case "UniformToFill":
                     Control1.Stretch = Stretch.UniformToFill;
                     break;
             }
         }
+    }
+
+    private void Stretch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((sender as RadioButtons)?.SelectedItem is not RadioButton selectedItem ||
+            Enum.TryParse<Stretch>(selectedItem.Tag?.ToString(), out var stretch) is false ||
+            Control1 is null)
+        {
+            return;
+        }
+
+        Control1.Stretch = stretch;
+    }
+
+    private void StretchDirection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((sender as RadioButtons)?.SelectedItem is not RadioButton selectedItem ||
+            Enum.TryParse<StretchDirection>(selectedItem.Tag?.ToString(), out var stretchDirection) is false ||
+            Control1 is null)
+        {
+            return;
+        }
+
+        Control1.StretchDirection = stretchDirection;
     }
 }
