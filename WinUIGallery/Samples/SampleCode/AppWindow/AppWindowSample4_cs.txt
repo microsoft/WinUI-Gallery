@@ -46,7 +46,7 @@ public sealed partial class ModalWindow : Window
     private void SetOwnership(AppWindow ownedAppWindow, Window ownerWindow)
     {
         // Get the HWND (window handle) of the owner window (main window).
-        IntPtr parentHwnd = WindowNative.GetWindowHandle(ownerWindow);
+        IntPtr ownerHwnd = WindowNative.GetWindowHandle(ownerWindow);
 
         // Get the HWND of the AppWindow (modal window).
         IntPtr ownedHwnd = Win32Interop.GetWindowFromWindowId(ownedAppWindow.Id);
@@ -55,11 +55,11 @@ public sealed partial class ModalWindow : Window
         // or SetWindowLong for 32-bit systems.
         if (IntPtr.Size == 8) // Check if the system is 64-bit
         {
-            SetWindowLongPtr(ownedHwnd, -8, parentHwnd); // -8 = GWLP_HWNDPARENT
+            SetWindowLongPtr(ownedHwnd, -8, ownerHwnd); // -8 = GWLP_HWNDPARENT
         }
         else // 32-bit system
         {
-            SetWindowLong(ownedHwnd, -8, parentHwnd);
+            SetWindowLong(ownedHwnd, -8, ownerHwnd);
         }
     }
 
