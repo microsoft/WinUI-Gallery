@@ -24,22 +24,20 @@
             Loaded="CodeScrollViewer_Loaded">
             <ContentPresenter
                 x:Name="CodePresenter"
-                Margin="0,0,0,16"
-                Padding="16,0"
+                Margin="0,0,0,16" Padding="16,0"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
-        <Grid x:Name="CopyButtonGrid"
-              Margin="0,0,8,0"
-              CornerRadius="{ThemeResource ControlCornerRadius}"
-              Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
-              HorizontalAlignment="Right"
-              VerticalAlignment="Top"
-              Width="30"
-              Height="30">
+        <Border x:Name="CopyButtonBorder"
+                Margin="0,0,8,0"
+                CornerRadius="{ThemeResource ControlCornerRadius}"
+                Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="30" Height="30">
             <local:CopyButton x:Name="CopyCodeButton"                              
                               Click="CopyCodeButton_Click"
                               Content="&#xE8C8;" />
-        </Grid>
+        </Border>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
                 <VisualState x:Name="XAMLSample" />

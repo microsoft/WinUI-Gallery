@@ -249,11 +249,11 @@ public sealed partial class SampleCodePresenter : UserControl
         {
             if (!string.IsNullOrEmpty(sampleCode.SelectedText))
             {
-                CopyButtonGrid.Visibility = Visibility.Collapsed;
+                CopyButtonBorder.Visibility = Visibility.Collapsed;
             }
             else
             {
-                CopyButtonGrid.Visibility = Visibility.Visible;
+                CopyButtonBorder.Visibility = Visibility.Visible;
             }
         }
     }
@@ -334,7 +334,7 @@ public sealed partial class SampleCodePresenter : UserControl
                 scrollTimer.Stop();
                 if (sampleCodeRTB != null && string.IsNullOrEmpty(sampleCodeRTB.SelectedText))
                 {
-                    CopyButtonGrid.Visibility = Visibility.Visible;
+                    CopyButtonBorder.Visibility = Visibility.Visible;
                 }
             };
             horizontalScrollBar.Tag = scrollTimer;
@@ -348,7 +348,7 @@ public sealed partial class SampleCodePresenter : UserControl
         if (sender is ScrollBar scrollBar)
         {
             // Immediately collapse the button when scrolling starts.
-            CopyButtonGrid.Visibility = Visibility.Collapsed;
+            CopyButtonBorder.Visibility = Visibility.Collapsed;
 
             // Retrieve the timer from the ScrollBar's Tag.
             if (scrollBar.Tag is DispatcherTimer scrollTimer)
