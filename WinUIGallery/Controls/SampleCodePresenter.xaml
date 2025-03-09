@@ -24,7 +24,7 @@
             Loaded="CodeScrollViewer_Loaded">
             <ContentPresenter
                 x:Name="CodePresenter"
-                Margin="0,0,0,16" Padding="16,0"
+                Padding="16,0,16,16"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
         <Border x:Name="CopyButtonBorder"
