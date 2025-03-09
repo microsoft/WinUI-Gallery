@@ -29,7 +29,7 @@ public static class ThemeHelper
                 }
             }
 
-            return WinUIGallery.App.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
+            return EnumHelper.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
         }
     }
 
@@ -75,7 +75,7 @@ public static class ThemeHelper
 
             if (savedTheme != null)
             {
-                RootTheme = WinUIGallery.App.GetEnum<ElementTheme>(savedTheme);
+                RootTheme = EnumHelper.GetEnum<ElementTheme>(savedTheme);
             }
         }
     }
