@@ -216,6 +216,11 @@
                             Content="Templates"
                             Tag="Templates" />
                         <NavigationViewItem
+                            x:Name="CustomUserControlsPage"
+                            AutomationProperties.AutomationId="CustomUserControls"
+                            Content="Custom &amp; User Controls"
+                            Tag="CustomUserControls" />
+                        <NavigationViewItem
                             x:Name="ScratchPadPage"
                             AutomationProperties.AutomationId="ScratchPad"
                             Content="Scratch Pad"
