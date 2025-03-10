@@ -43,7 +43,7 @@ public sealed partial class TitleBarPage : Page
         ResetTitlebarSettings();
     }
 
-    private void SetTitleBar(UIElement titlebar, bool forceCustomTitlebar = false)
+    private void SetTitleBar(bool forceCustomTitlebar = false)
     {
         var window = WindowHelper.GetWindowForElement(this as UIElement);
         var titleBarElement = UIHelper.FindElementByName(this as UIElement, "AppTitleBar");
@@ -51,14 +51,13 @@ public sealed partial class TitleBarPage : Page
         {
             titleBarElement.Visibility = Visibility.Visible;
             window.ExtendsContentIntoTitleBar = true;
-            window.SetTitleBar(titlebar);
+            window.SetTitleBar(titleBarElement);
             TitleBarHelper.SetCaptionButtonBackgroundColors(window, Colors.Transparent);
         }
         else
         {
             titleBarElement.Visibility = Visibility.Collapsed;
             window.ExtendsContentIntoTitleBar = false;
-            window.SetTitleBar(null);
             TitleBarHelper.SetCaptionButtonBackgroundColors(window, null);
         }
         UpdateButtonText();
@@ -68,8 +67,7 @@ public sealed partial class TitleBarPage : Page
     private void ResetTitlebarSettings()
     {
         var window = WindowHelper.GetWindowForElement(this as UIElement);
-        UIElement titleBarElement = UIHelper.FindElementByName(this as UIElement, "AppTitleBar");
-        SetTitleBar(titleBarElement, forceCustomTitlebar: true);
+        SetTitleBar(forceCustomTitlebar: true);
         ClearClickThruRegions();
         var txtBoxNonClientArea = UIHelper.FindElementByName(this as UIElement, "AppTitleBarTextBox") as FrameworkElement;
         txtBoxNonClientArea.Visibility = Visibility.Collapsed;
@@ -169,14 +167,13 @@ public sealed partial class TitleBarPage : Page
 
     private void customTitleBar_Click(object sender, RoutedEventArgs e)
     {
-        UIElement titleBarElement = UIHelper.FindElementByName(sender as UIElement, "AppTitleBar");
-        SetTitleBar(titleBarElement);
+        SetTitleBar();
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");
     }
     private void defaultTitleBar_Click(object sender, RoutedEventArgs e)
     {
-        SetTitleBar(null);
+        SetTitleBar();
 
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(sender as UIElement, "TitleBar size and width changed", "TitleBarChangedNotificationActivityId");

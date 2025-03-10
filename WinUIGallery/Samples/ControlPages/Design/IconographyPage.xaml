@@ -183,7 +183,7 @@
                 <Grid
                     x:Name="SidePanel"
                     Grid.Column="1"
-                    Padding="16"
+                    Padding="16,16,8,16"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0"

@@ -10,36 +10,34 @@
     Loaded="SampleCodePresenter_Loaded"
     mc:Ignorable="d">
 
-    <Grid
-        Background="{x:Bind Background, Mode=OneWay}"
-        BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
-        BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
-        CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <Grid Background="{x:Bind Background, Mode=OneWay}"
+          BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
+          BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
+          CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
         <ScrollViewer
             x:Name="CodeScrollViewer"
             VerticalAlignment="{x:Bind VerticalContentAlignment, Mode=OneWay}"
             HorizontalScrollBarVisibility="Auto"
             HorizontalScrollMode="Auto"
             VerticalScrollBarVisibility="Auto"
-            VerticalScrollMode="Auto">
+            VerticalScrollMode="Auto"
+            Loaded="CodeScrollViewer_Loaded">
             <ContentPresenter
                 x:Name="CodePresenter"
-                Margin="0,0,0,16"
+                Padding="16,0,16,16"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
-        <local:CopyButton
-            x:Name="CopyCodeButton"
-            Grid.Column="1"
-            Margin="5,0,0,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Click="CopyCodeButton_Click"
-            Content="&#xE8C8;" />
-
+        <Border x:Name="CopyButtonBorder"
+                Margin="0,0,8,0"
+                CornerRadius="{ThemeResource ControlCornerRadius}"
+                Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="30" Height="30">
+            <local:CopyButton x:Name="CopyCodeButton"                              
+                              Click="CopyCodeButton_Click"
+                              Content="&#xE8C8;" />
+        </Border>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
                 <VisualState x:Name="XAMLSample" />
