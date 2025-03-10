@@ -44,13 +44,14 @@
             </VariableSizedWrapGrid>
 
             <controls:ControlExample.Options>
-                <RadioButtons x:Name="OrientationGroup" Header="Orientation">
+                <RadioButtons
+                    x:Name="OrientationGroup"
+                    Header="Orientation"
+                    SelectionChanged="OrientationGroup_SelectionChanged">
                     <RadioButton
-                        Checked="RadioButton_Checked"
                         Content="Horizontal"
                         Tag="Horizontal" />
                     <RadioButton
-                        Checked="RadioButton_Checked"
                         Content="Vertical"
                         IsChecked="True"
                         Tag="Vertical" />
@@ -70,7 +71,6 @@
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
-
         </controls:ControlExample>
     </StackPanel>
 </Page>

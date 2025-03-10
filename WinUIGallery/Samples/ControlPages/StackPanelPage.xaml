@@ -13,7 +13,6 @@
     x:Class="WinUIGallery.ControlPages.StackPanelPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:WinUIGallery.Common"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -36,13 +35,14 @@
             </StackPanel>
 
             <controls:ControlExample.Options>
-                <RadioButtons x:Name="OrientationGroup" Header="Orientation">
+                <RadioButtons
+                    x:Name="OrientationGroup"
+                    Header="Orientation"
+                    SelectionChanged="OrientationGroup_SelectionChanged">
                     <RadioButton
-                        Checked="RadioButton_Checked"
                         Content="Horizontal"
                         Tag="Horizontal" />
                     <RadioButton
-                        Checked="RadioButton_Checked"
                         Content="Vertical"
                         IsChecked="True"
                         Tag="Vertical" />

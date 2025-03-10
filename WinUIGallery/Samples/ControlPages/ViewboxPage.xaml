@@ -60,39 +60,36 @@
                         Minimum="20"
                         Value="200" />
 
-                    <RadioButtons Header="Stretch">
+                    <RadioButtons
+                        Header="Stretch"
+                        SelectionChanged="Stretch_SelectionChanged">
                         <RadioButton
-                            Checked="StretchButton_Checked"
                             Content="None"
                             Tag="None" />
                         <RadioButton
-                            Checked="StretchButton_Checked"
                             Content="Fill"
                             Tag="Fill" />
                         <RadioButton
-                            Checked="StretchButton_Checked"
                             Content="Uniform"
                             IsChecked="True"
                             Tag="Uniform" />
                         <RadioButton
-                            Checked="StretchButton_Checked"
                             Content="UniformToFill"
                             Tag="UniformToFill" />
                     </RadioButtons>
 
-                    <RadioButtons Header="StretchDirection">
+                    <RadioButtons
+                        Header="StretchDirection"
+                        SelectionChanged="StretchDirection_SelectionChanged">
                         <RadioButton
-                            Checked="StretchDirectionButton_Checked"
                             Content="UpOnly"
                             GroupName="StretchDirection"
                             Tag="UpOnly" />
                         <RadioButton
-                            Checked="StretchDirectionButton_Checked"
                             Content="DownOnly"
                             GroupName="StretchDirection"
                             Tag="DownOnly" />
                         <RadioButton
-                            Checked="StretchDirectionButton_Checked"
                             Content="Both"
                             GroupName="StretchDirection"
                             IsChecked="True"

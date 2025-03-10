@@ -111,6 +111,34 @@
           ]
         },
         {
+          "UniqueId": "CustomUserControls",
+          "Title": "Custom & User Controls",
+          "Subtitle": "Create reusable UI components with custom functionality and appearance.",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CustomControls.png",
+          "Description": "Custom controls and user controls allow to create reusable UI components with unique behavior and styling. A UserControl is a simple way to encapsulate a UI layout, while a custom control provides full styling and templating flexibility. Both approaches help in building modular and maintainable applications.",
+          "Docs": [
+            {
+              "Title": "Build XAML controls",
+              "Uri": "https://learn.microsoft.com/windows/apps/winui/winui3/xaml-templated-controls-csharp-winui-3"
+            },
+            {
+              "Title": "Control - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control"
+            },
+            {
+              "Title": "UserControl - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.usercontrol"
+            }
+          ]
+        },
+        {
           "UniqueId": "ScratchPad",
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",
@@ -3531,6 +3559,45 @@
       "ImagePath": "",
       "IconGlyph": "",
       "Items": [
+        {
+          "UniqueId": "AppWindow",
+          "Title": "AppWindow",
+          "ApiNamespace": "Microsoft.UI.Windowing",
+          "Subtitle": "A flexible, customizable window management system for app development.",
+          "BaseClasses": [
+            "Object"
+          ],
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
+          "Description": "AppWindow provides advanced window management, allowing customization of size, position, and presentation. This sample showcases different ways to create, display, and control windows for enhanced flexibility.",
+          "Content": "<p>Look at the <i>AppWindowPage.xaml.cs</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AppWindow - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindow"
+            },
+            {
+              "Title": "Window - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
+            },
+            {
+              "Title": "AppWindowPresenter - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowpresenter"
+            },
+            {
+              "Title": "OverlappedPresenter - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.overlappedpresenter"
+            },
+            {
+              "Title": "FullScreenPresenter - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.fullscreenpresenter"
+            },
+            {
+              "Title": "CompactOverlayPresenter - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.compactoverlaypresenter"
+            }
+          ]
+        },
         {
           "UniqueId": "CreateMultipleWindows",
           "Title": "Multiple windows",
