@@ -22,7 +22,7 @@ public sealed partial class HomePage : ItemsPageBase
         this.InitializeComponent();
     }
 
-    public string WinAppSdkDetails => App.WinAppSdkDetails;
+    public string WinAppSdkDetails => VersionHelper.WinAppSdkDetails;
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
