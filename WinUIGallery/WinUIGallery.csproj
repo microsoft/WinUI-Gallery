@@ -296,6 +296,7 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="MainWindow.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
@@ -533,6 +534,12 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="Samples\ControlPages\AppWindowPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
