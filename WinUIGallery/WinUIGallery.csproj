@@ -143,6 +143,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\AppWindow.png" />
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
@@ -296,8 +297,15 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
+        <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
+        <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow5.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow6.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
@@ -306,8 +314,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\AppWindow.png" />
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\CustomControls.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
@@ -458,6 +468,74 @@
         <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
         <Content Include="Samples\Data\IconsData.json" />
         <Content Include="Samples\Data\ControlInfoData.json" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample1_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample3_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_cs.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_xaml.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
+        <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow6.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>  
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow5.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>   
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow2.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\ModalWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow3.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\SampleWindow1.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\AppWindowPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
     <ItemGroup>
         <Page Update="Controls\CopyButton\CopyButton.xaml">
