@@ -90,21 +90,20 @@ public sealed partial class ItemPage : Page
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
-
         App.MainWindow.NavigationViewLoaded = null;
         pageHeader.ToggleThemeAction = null;
         pageHeader.CopyLinkAction = null;
 
         //// We use reflection to call the OnNavigatedFrom function the user leaves this page
         //// See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
-        //Frame contentFrameAsFrame = contentFrame as Frame;
-        //Page innerPage = contentFrameAsFrame.Content as Page;
-        //if (innerPage != null)
-        //{
-        //    MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
-        //        BindingFlags.NonPublic | BindingFlags.Instance);
-        //    dynMethod.Invoke(innerPage, new object[] { e });
-        //}
+        Frame contentFrameAsFrame = contentFrame as Frame;
+        Page innerPage = contentFrameAsFrame.Content as Page;
+        if (innerPage != null)
+        {
+            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            dynMethod.Invoke(innerPage, new object[] { e });
+        }
 
         base.OnNavigatedFrom(e);
     }
