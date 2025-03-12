@@ -11,6 +11,7 @@ public sealed partial class TitleBarWindow : Window
     {
         this.InitializeComponent();
         this.ExtendsContentIntoTitleBar = true; // Extend the content into the title bar and hide the default title bar
+        this.AppWindow.TitleBar.PreferredHeightOption = Microsoft.UI.Windowing.TitleBarHeightOption.Tall;
         this.SetTitleBar(titleBar); // Set the custom title bar
         navView.SelectedItem = navView.MenuItems.OfType<NavigationViewItem>().First();
     }
