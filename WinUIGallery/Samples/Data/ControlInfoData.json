@@ -3622,7 +3622,7 @@
         {
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
-          "ApiNamespace": "Microsoft.UI.Xaml",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
           "Description": "The TitleBar control provides a simple way to create a modern titlebar UX with interactive content.",
