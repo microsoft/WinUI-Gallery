@@ -410,7 +410,6 @@ public sealed partial class MainWindow : Window
         {
             Navigate(typeof(SearchResultsPage), args.QueryText);
         }
-        sender.Text = string.Empty;
     }
 
     public bool EnsureItemIsVisibleInNavigation(string name)
