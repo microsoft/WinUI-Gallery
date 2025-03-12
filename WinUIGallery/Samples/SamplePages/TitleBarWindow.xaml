@@ -46,6 +46,7 @@
             Grid.Row="1"
             IsBackButtonVisible="Collapsed"
             IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="False"
             SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem
