@@ -25,6 +25,7 @@
                 <ResourceDictionary Source="/Styles/Grid.xaml" />
                 <ResourceDictionary Source="/Styles/GridViewItem.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Styles/TitleBar.xaml" />
                 <ResourceDictionary Source="/Samples/ControlPages/Fundamentals/Controls/CounterControl.xaml" />
                 <ResourceDictionary Source="/Samples/ControlPages/Fundamentals/Controls/ValidatedPasswordBox.xaml" />
             </ResourceDictionary.MergedDictionaries>

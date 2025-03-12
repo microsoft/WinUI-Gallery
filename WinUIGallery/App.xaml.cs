@@ -29,7 +29,6 @@ sealed partial class App : Application
 {
     internal static MainWindow MainWindow { get; private set; } = null!;
 
-    private static Win32WindowHelper win32WindowHelper;
     private static int registeredKeyPressedHook = 0;
     private HookProc keyEventHook;
 

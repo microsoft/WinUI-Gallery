@@ -24,6 +24,7 @@
             IsBackButtonVisible="{x:Bind rootFrame.CanGoBack, Mode=OneWay}"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="TitleBar_PaneToggleRequested"
+            Style="{StaticResource StretchableContentTitleBarStyle}"
             Subtitle="Dev">
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
@@ -31,7 +32,7 @@
             <TitleBar.CenterContent>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
-                    Width="480"
+                    MaxWidth="480"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"

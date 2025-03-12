@@ -311,6 +311,7 @@
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
         <None Remove="Styles\TextBlock.xaml" />
+        <None Remove="Styles\TitleBar.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -485,6 +486,12 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Styles\TitleBar.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
