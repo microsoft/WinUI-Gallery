@@ -12,7 +12,6 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
@@ -55,9 +54,6 @@ sealed partial class App : Application
 
         MainWindow = new MainWindow();
         WindowHelper.TrackWindow(MainWindow);
-
-        win32WindowHelper = new Win32WindowHelper(MainWindow);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
 
 #if DEBUG
         if (Debugger.IsAttached)

@@ -39,26 +39,34 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         this.InitializeComponent();
+        SetWindowProperties();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-
         _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
         NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
+        _settings = new UISettings();
+        _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+    }
+
+    private void SetWindowProperties()
+    {
 #if DEBUG
         this.Title = "WinUI 3 Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
-        window.Title = "WinUI 3 Gallery";
+        this.Title = "WinUI 3 Gallery";
 #endif
-
-        this.ExtendsContentIntoTitleBar = true;     
+        this.ExtendsContentIntoTitleBar = true;
+        this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-        _settings = new UISettings();
-        _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+
+        // TO DO: replace this with the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable
+        Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
+        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
