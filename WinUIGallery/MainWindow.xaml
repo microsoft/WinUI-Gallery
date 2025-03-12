@@ -32,7 +32,7 @@
             <TitleBar.CenterContent>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
-                    MaxWidth="480"
+                    Width="320"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     x:FieldModifier="public"

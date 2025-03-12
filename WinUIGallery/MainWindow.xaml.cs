@@ -66,7 +66,7 @@ public sealed partial class MainWindow : Window
 
         // TO DO: replace this with the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable
         Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
+        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)

@@ -117,7 +117,7 @@
                             Visibility="Collapsed">
                             <ContentPresenter
                                 x:Name="PART_CenterContentPresenter"
-                                HorizontalAlignment="Stretch"
+                                HorizontalAlignment="Center"
                                 Content="{TemplateBinding CenterContent}" />
                         </Grid>
 
