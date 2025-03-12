@@ -220,11 +220,6 @@
                             AutomationProperties.AutomationId="CustomUserControls"
                             Content="Custom &amp; User Controls"
                             Tag="CustomUserControls" />
-                        <NavigationViewItem
-                            x:Name="ScratchPadPage"
-                            AutomationProperties.AutomationId="ScratchPad"
-                            Content="Scratch Pad"
-                            Tag="ScratchPad" />
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
 
@@ -318,6 +313,17 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem
+                    x:Name="ScratchPadPage"
+                    AutomationProperties.AutomationId="ScratchPad"
+                    Content="Scratch Pad"
+                    Tag="ScratchPad">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE70F;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
         </NavigationView>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="TitleBarStates">
