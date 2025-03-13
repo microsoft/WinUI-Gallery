@@ -77,41 +77,6 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
-        <controls:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
-            <controls:ControlExample.Example>
-                <Grid
-                    x:Name="Example2Grid"
-                    Width="320"
-                    Height="200">
-                    <Grid>
-                        <Rectangle
-                            Width="100"
-                            Height="200"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Fill="Aqua" />
-                        <Ellipse
-                            Width="152"
-                            Height="152"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Fill="Magenta" />
-                        <Rectangle
-                            Width="80"
-                            Height="100"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Fill="Yellow" />
-                    </Grid>
-                    <Rectangle Margin="12" Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" />
-                </Grid>
-            </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
-        </controls:ControlExample>
         <controls:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
             <controls:ControlExample.Example>
                 <Grid
