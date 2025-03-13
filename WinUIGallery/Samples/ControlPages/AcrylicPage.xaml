@@ -39,8 +39,11 @@
         <RichTextBlock>
             <Paragraph>
                 Acrylic Brush might fall back to SolidColorbrush in certain scenarios.
-                If you can't see the Acrylic effect, please refer to <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>
-                .</Paragraph>
+                If you can't see the Acrylic effect, please refer to
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
+                Acrylic Brush uses in-app acrylic. See
+                <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrops (Mica/Acrylic)</Hyperlink> for background acrylic.
+            </Paragraph>
         </RichTextBlock>
         <controls:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">
             <controls:ControlExample.Example>
