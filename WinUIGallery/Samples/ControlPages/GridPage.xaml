@@ -62,13 +62,51 @@
             <controls:ControlExample.Options>
                 <Grid
                     ColumnDefinitions="Auto,Auto"
-                    RowDefinitions="Auto,Auto"
+                    RowDefinitions="Auto,Auto,Auto,Auto"
                     ColumnSpacing="12"
                     RowSpacing="12">
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Grid" />
+                    <Slider
+                        x:Name="ColumnSpacingSlider"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Margin="16,0,0,0"
+                        Header="ColumnSpacing"
+                        Maximum="16"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8" />
+                    <Slider
+                        x:Name="RowSpacingSlider"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Height="100"
+                        VerticalAlignment="Top"
+                        IsDirectionReversed="True"
+                        Maximum="16"
+                        Minimum="0"
+                        Orientation="Vertical"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8">
+                        <Slider.Header>
+                            <TextBlock Margin="0,0,0,10" Text="RowSpacing" />
+                        </Slider.Header>
+                    </Slider>
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Red block" />
                     <Slider
                         x:Name="ColumnSlider"
-                        Grid.Row="0"
                         Grid.Column="0"
+                        Grid.Row="3"
                         Margin="16,0,0,0"
                         Header="Grid.Column"
                         Maximum="2"
@@ -78,8 +116,8 @@
                         TickFrequency="1" />
                     <Slider
                         x:Name="RowSlider"
-                        Grid.Row="0"
                         Grid.Column="1"
+                        Grid.Row="3"
                         Height="100"
                         VerticalAlignment="Top"
                         IsDirectionReversed="True"
@@ -93,36 +131,7 @@
                             <TextBlock Margin="0,0,0,10" Text="Grid.Row" />
                         </Slider.Header>
                     </Slider>
-                    <Slider
-                        x:Name="ColumnSpacingSlider"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="16,0,0,0"
-                        Header="Grid ColumnSpacing"
-                        Maximum="16"
-                        Minimum="0"
-                        SnapsTo="Ticks"
-                        StepFrequency="1"
-                        TickFrequency="1"
-                        Value="8" />
-                    <Slider
-                        x:Name="RowSpacingSlider"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Height="100"
-                        VerticalAlignment="Top"
-                        IsDirectionReversed="True"
-                        Maximum="16"
-                        Minimum="0"
-                        Orientation="Vertical"
-                        SnapsTo="Ticks"
-                        StepFrequency="1"
-                        TickFrequency="1"
-                        Value="8">
-                        <Slider.Header>
-                            <TextBlock Margin="0,0,0,10" Text="Grid RowSpacing" />
-                        </Slider.Header>
-                    </Slider>
+
                 </Grid>
             </controls:ControlExample.Options>
 
