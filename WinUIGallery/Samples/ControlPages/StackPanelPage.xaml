@@ -58,7 +58,8 @@
                         Minimum="0"
                         SnapsTo="Ticks"
                         StepFrequency="1"
-                        TickFrequency="1" />
+                        TickFrequency="1"
+                        Value="8" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
