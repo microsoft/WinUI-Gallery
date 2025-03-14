@@ -21,7 +21,10 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A StackPanel control.">
 
-            <StackPanel x:Name="Control1" VerticalAlignment="Top">
+            <StackPanel
+                x:Name="Control1"
+                Spacing="{x:Bind SpacingSlider.Value, Mode=OneWay}"
+                VerticalAlignment="Top">
                 <StackPanel.Resources>
                     <Style TargetType="Rectangle">
                         <Setter Property="Height" Value="40" />
@@ -35,23 +38,35 @@
             </StackPanel>
 
             <controls:ControlExample.Options>
-                <RadioButtons
-                    x:Name="OrientationGroup"
-                    Header="Orientation"
-                    SelectionChanged="OrientationGroup_SelectionChanged">
-                    <RadioButton
-                        Content="Horizontal"
-                        Tag="Horizontal" />
-                    <RadioButton
-                        Content="Vertical"
-                        IsChecked="True"
-                        Tag="Vertical" />
-                </RadioButtons>
+                <StackPanel Spacing="12">
+                    <RadioButtons
+                        x:Name="OrientationGroup"
+                        Header="Orientation"
+                        SelectionChanged="OrientationGroup_SelectionChanged">
+                        <RadioButton
+                            Content="Horizontal"
+                            Tag="Horizontal" />
+                        <RadioButton
+                            Content="Vertical"
+                            IsChecked="True"
+                            Tag="Vertical" />
+                    </RadioButtons>
+                    <Slider
+                        x:Name="SpacingSlider"
+                        Header="Spacing"
+                        Maximum="16"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1" />
+                </StackPanel>
             </controls:ControlExample.Options>
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;StackPanel Orientation="$(Orientation)"&gt;
+&lt;StackPanel
+    Orientation="$(Orientation)"
+    Spacing="$(Spacing)"&gt;
     &lt;Rectangle Fill="Red"/&gt;
     &lt;Rectangle Fill="Blue"/&gt;
     &lt;Rectangle Fill="Green"/&gt;
@@ -60,6 +75,7 @@
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Spacing" Value="{x:Bind Control1.Spacing, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
