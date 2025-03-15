@@ -1292,7 +1292,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
           "Subtitle": "A button that raises its Click event repeatedly from the time it's pressed until it's released.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/RepeatButton.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/CommonStyles/RepeatButton_themeresources.xaml",
