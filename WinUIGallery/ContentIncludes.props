@@ -51,8 +51,6 @@
     <Content Include="Assets\ControlImages\ImplicitTransition.png" />
     <Content Include="Assets\ControlImages\InfoBadge.png" />
     <Content Include="Assets\ControlImages\InfoBar.png" />
-    <Content Include="Assets\ControlImages\InkCanvas.png" />
-    <Content Include="Assets\ControlImages\InkToolbar.png" />
     <Content Include="Assets\ControlImages\ItemsRepeater.png" />
     <Content Include="Assets\ControlImages\ItemsView.png" />
     <Content Include="Assets\ControlImages\Line.png" />
