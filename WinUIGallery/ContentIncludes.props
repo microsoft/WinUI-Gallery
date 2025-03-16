@@ -16,7 +16,6 @@
     <Content Include="Assets\ControlImages\AppBarButton.png" />
     <Content Include="Assets\ControlImages\AppBarSeparator.png" />
     <Content Include="Assets\ControlImages\AppBarToggleButton.png" />
-    <Content Include="Assets\ControlImages\AutomationProperties.png" />
     <Content Include="Assets\ControlImages\AutoSuggestBox.png" />
     <Content Include="Assets\ControlImages\Border.png" />
     <Content Include="Assets\ControlImages\BreadcrumbBar.png" />
