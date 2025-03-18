@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Windows.System;
 using WinUIGallery.Helpers;
+using System;
 
 namespace WinUIGallery.SamplePages;
 
@@ -81,6 +82,11 @@ public sealed partial class TabViewWindowingSamplePage : Page
             // Otherwise, it won't be set to anything, so we should set it to the window we're currently dragging.
             var inputNonClientPointerSource = InputNonClientPointerSource.GetForWindowId(currentWindow.AppWindow.Id);
 
+            double scaleAdjustment = currentWindow.Content.XamlRoot.RasterizationScale;
+            double titleContentWidth = CustomDragRegion.Width;
+            double titleContentHeight = CustomDragRegion.Height;
+            Windows.Graphics.RectInt32 titleBarRect = new Windows.Graphics.RectInt32(0, 0, (int)Math.Round(titleContentWidth * scaleAdjustment), (int)Math.Round(titleContentHeight * scaleAdjustment));
+            inputNonClientPointerSource.SetRegionRects(NonClientRegionKind.Passthrough, new Windows.Graphics.RectInt32[] { titleBarRect });
             inputNonClientPointerSource.EnteredMoveSize += (s, args) =>
             {
                 if (tabTearOutWindow == null)
