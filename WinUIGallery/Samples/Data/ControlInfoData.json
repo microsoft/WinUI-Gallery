@@ -2871,6 +2871,7 @@
           "Subtitle": "A translucent material recommended for panel backgrounds.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "Description": "A translucent material recommended for panel backgrounds.",
+          "IsUpdated": true,
           "SourcePath": "/Materials/Acrylic",
           "Docs": [
             {
