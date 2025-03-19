@@ -28,7 +28,7 @@
                             <!--  3: Left Content Presenter  -->
                             <ColumnDefinition Width="Auto" />
                             <!--  4: Left Content Padding Column  -->
-                            <ColumnDefinition x:Name="LeftContentPaddingColumn" Width="{ThemeResource TitleBarLeftContentPaddingWidth}" />
+                            <ColumnDefinition x:Name="LeftContentPaddingColumn" Width="{ThemeResource TitleBarLeftHeaderPaddingWidth}" />
                             <!--  5: Icon  -->
                             <ColumnDefinition Width="Auto" />
                             <!--  6: Title  -->
