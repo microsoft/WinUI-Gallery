@@ -32,7 +32,7 @@ public sealed partial class SettingsPage : Page
         }
     }
 
-    public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
+    public string WinAppSdkRuntimeDetails => VersionHelper.WinAppSdkRuntimeDetails;
     private int lastNavigationSelectionMode = 0;
 
     public SettingsPage()
@@ -62,19 +62,16 @@ public sealed partial class SettingsPage : Page
                 break;
         }
 
-        NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
-        if (navigationRootPage != null)
+
+        if (App.MainWindow.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
         {
-            if (navigationRootPage.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
-            {
-                navigationLocation.SelectedIndex = 0;
-            }
-            else
-            {
-                navigationLocation.SelectedIndex = 1;
-            }
-            lastNavigationSelectionMode = navigationLocation.SelectedIndex;
+            navigationLocation.SelectedIndex = 0;
         }
+        else
+        {
+            navigationLocation.SelectedIndex = 1;
+        }
+        lastNavigationSelectionMode = navigationLocation.SelectedIndex;
 
         if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
             soundToggle.IsOn = true;
@@ -89,7 +86,7 @@ public sealed partial class SettingsPage : Page
         string color;
         if (selectedTheme != null)
         {
-            ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
+            ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
             if (selectedTheme == "Dark")
             {
                 TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
@@ -102,7 +99,7 @@ public sealed partial class SettingsPage : Page
             }
             else
             {
-                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
+                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White ? "Dark" : "Light";
             }
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
@@ -133,7 +130,7 @@ public sealed partial class SettingsPage : Page
         // need to check if this is an actual update
         if (navigationLocation.SelectedIndex != lastNavigationSelectionMode)
         {
-            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0, this);
+            NavigationOrientationHelper.IsLeftModeForElement(navigationLocation.SelectedIndex == 0);
             lastNavigationSelectionMode = navigationLocation.SelectedIndex;
         }
     }
@@ -152,7 +149,7 @@ public sealed partial class SettingsPage : Page
 
     private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
     {
-        this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
+        App.MainWindow.Navigate(typeof(ItemPage), "Sound");
     }
 
     private void toCloneRepoCard_Click(object sender, RoutedEventArgs e)

@@ -6,11 +6,11 @@ namespace WinUIGallery.Helpers;
 
 internal class TitleBarHelper
 {
-    // workaround as Appwindow titlebar doesn't update caption button colors correctly when changed while app is running
+    // workaround as AppWindow TitleBar doesn't update caption button colors correctly when changed while app is running
     // https://task.ms/44172495
     public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
     {
-        var frame = (Application.Current as WinUIGallery.App).GetRootFrame() as FrameworkElement;
+        var frame = App.MainWindow.GetRootFrame() as FrameworkElement;
         Windows.UI.Color color;
         if (frame.ActualTheme == ElementTheme.Dark)
         {
@@ -20,7 +20,7 @@ internal class TitleBarHelper
         {
             color = Colors.Black;
         }
-        SetCaptionButtonColors(window,color);
+        SetCaptionButtonColors(window, color);
         return color;
     }
 
