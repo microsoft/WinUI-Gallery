@@ -131,7 +131,7 @@
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
         <PackageReference Update="System.Private.Uri" Version="4.3.2" />
-      </ItemGroup>
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="CollectionsInterop.cs" />

@@ -10,20 +10,16 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using WinUIGallery.Models;
-using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.AppLifecycle;
-using Windows.ApplicationModel.Activation;
-using WASDK = Microsoft.WindowsAppSDK;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
-using System.Collections.Generic;
-using static WinUIGallery.Helpers.Win32;
+using Windows.ApplicationModel.Activation;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
+using static WinUIGallery.Helpers.Win32;
 
 namespace WinUIGallery;
 
@@ -36,34 +32,6 @@ sealed partial class App : Application
     private static Win32WindowHelper win32WindowHelper;
     private static int registeredKeyPressedHook = 0;
     private HookProc keyEventHook;
-
-
-    public static string WinAppSdkDetails
-    {
-        // TODO: restore patch number and version tag when WinAppSDK supports them both
-        get => string.Format("Windows App SDK {0}.{1}",
-            WASDK.Release.Major, WASDK.Release.Minor);
-    }
-
-    public static string WinAppSdkRuntimeDetails
-    {
-        get
-        {
-            try
-            {
-                // Retrieve Windows App Runtime version info dynamically
-                IEnumerable<FileVersionInfo> windowsAppRuntimeVersion =
-                    from module in Process.GetCurrentProcess().Modules.OfType<ProcessModule>()
-                    where module.FileName.EndsWith("Microsoft.WindowsAppRuntime.Insights.Resource.dll")
-                    select FileVersionInfo.GetVersionInfo(module.FileName);
-                return WinAppSdkDetails + ", Windows App Runtime " + windowsAppRuntimeVersion.First().FileVersion;
-            }
-            catch
-            {
-                return WinAppSdkDetails + $", Windows App Runtime {WASDK.Runtime.Version.Major}.{WASDK.Runtime.Version.Minor}";
-            }
-        }
-    }
 
     /// <summary>
     /// Get the initial window created for this app.
@@ -81,22 +49,6 @@ sealed partial class App : Application
     {
         InitializeComponent();
         UnhandledException += HandleExceptions;
-    }
-
-    /// <summary>
-    /// Converts a string into a enum.
-    /// </summary>
-    /// <typeparam name="TEnum">The output enum type.</typeparam>
-    /// <param name="text">The input text.</param>
-    /// <returns>The parsed enum.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the TEnum type is not a enum.</exception>
-    public static TEnum GetEnum<TEnum>(string text) where TEnum : struct
-    {
-        if (!typeof(TEnum).GetTypeInfo().IsEnum)
-        {
-            throw new InvalidOperationException("Generic parameter 'TEnum' must be an enum.");
-        }
-        return (TEnum)Enum.Parse(typeof(TEnum), text);
     }
 
     /// <summary>
