@@ -27,19 +27,19 @@
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
             </TitleBar.IconSource>
-            <TitleBar.RightContent>
+            <TitleBar.RightHeader>
                 <PersonPicture
                     Width="30"
                     Height="30"
                     Initials="JD" />
-            </TitleBar.RightContent>
-            <TitleBar.CenterContent>
+            </TitleBar.RightHeader>
+            <TitleBar.Content>
                 <AutoSuggestBox
                     Width="360"
                     VerticalAlignment="Center"
                     PlaceholderText="Search.."
                     QueryIcon="Find" />
-            </TitleBar.CenterContent>
+            </TitleBar.Content>
         </TitleBar>
         <NavigationView
             x:Name="navView"

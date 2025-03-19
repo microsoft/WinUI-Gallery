@@ -29,7 +29,7 @@
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
             </TitleBar.IconSource>
-            <TitleBar.CenterContent>
+            <TitleBar.Content>
                 <AutoSuggestBox
                     x:Name="controlsSearchBox"
                     Width="320"
@@ -48,7 +48,7 @@
                             Modifiers="Control" />
                     </AutoSuggestBox.KeyboardAccelerators>
                 </AutoSuggestBox>
-            </TitleBar.CenterContent>
+            </TitleBar.Content>
         </TitleBar>
         <Grid x:Name="AutomationHelpersPanel" Grid.Row="1">
             <Grid.Resources>

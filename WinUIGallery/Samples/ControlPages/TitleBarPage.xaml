@@ -45,19 +45,19 @@
                         <TitleBar.IconSource>
                             <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
                         </TitleBar.IconSource>
-                        <TitleBar.RightContent>
+                        <TitleBar.RightHeader>
                             <PersonPicture
                                 Width="30"
                                 Height="30"
                                 Initials="JD" />
-                        </TitleBar.RightContent>
-                        <TitleBar.CenterContent>
+                        </TitleBar.RightHeader>
+                        <TitleBar.Content>
                             <AutoSuggestBox
                                 Width="360"
                                 VerticalAlignment="Center"
                                 PlaceholderText="Search.."
                                 QueryIcon="Find" />
-                        </TitleBar.CenterContent>
+                        </TitleBar.Content>
                     </TitleBar>
                 </Grid>
 
@@ -95,19 +95,19 @@
     &lt;TitleBar.IconSource&gt;
         &lt;ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" /&gt;
     &lt;/TitleBar.IconSource&gt;
-    &lt;TitleBar.CenterContent&gt;
+    &lt;TitleBar.Content&gt;
         &lt;AutoSuggestBox
             Width="360"
             VerticalAlignment="Center"
             PlaceholderText="Search.."
             QueryIcon="Find" /&gt;
-    &lt;/TitleBar.CenterContent&gt;
-    &lt;TitleBar.RightContent&gt;
+    &lt;/TitleBar.Content&gt;
+    &lt;TitleBar.RightHeader&gt;
         &lt;PersonPicture
             Width="30"
             Height="30"
             Initials="JD" /&gt;
-    &lt;/TitleBar.RightContent&gt;
+    &lt;/TitleBar.RightHeader&gt;
 &lt;/TitleBar&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
