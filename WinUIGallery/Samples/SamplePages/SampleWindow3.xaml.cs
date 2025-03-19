@@ -11,17 +11,21 @@ public sealed partial class SampleWindow3 : Window
     private AppWindow appWindow;
     private OverlappedPresenter presenter;
 
-    public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
+    public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar, int MinWidth, int MinHeight, int MaxWidth, int MaxHeight)
     {
         this.InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
-
+        appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
         presenter = OverlappedPresenter.Create();
         presenter.IsAlwaysOnTop = IsAlwaysOnTop;
         presenter.IsMaximizable = IsMaximizable;
         presenter.IsMinimizable = IsMinimizable;
         presenter.IsResizable = IsResizable;
+        presenter.PreferredMinimumWidth = MinWidth;
+        presenter.PreferredMinimumHeight = MinHeight;
+        presenter.PreferredMaximumWidth = MaxWidth;
+        presenter.PreferredMaximumHeight = MaxHeight;
         presenter.SetBorderAndTitleBar(HasBorder,HasTitleBar);
 
         appWindow.SetPresenter(presenter);

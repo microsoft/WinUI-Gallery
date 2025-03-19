@@ -38,7 +38,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow3(object sender, RoutedEventArgs e)
     {
-        SampleWindow3 window = new SampleWindow3(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn);
+        SampleWindow3 window = new SampleWindow3(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn, (int)MinWidthBox.Value, (int)MinHeightBox.Value, (int)MaxWidthBox.Value, (int)MaxHeightBox.Value);
         window.Activate();
     }
 
