@@ -189,10 +189,10 @@ public sealed partial class SampleWindow1 : Window
                         <RichTextBlock Margin="0,-16,16,16" IsTextSelectionEnabled="False">
                             <Paragraph>
                                 For an <Run FontWeight="SemiBold">AppWindow</Run>
-                                with <Run FontWeight="SemiBold">OverlappedPresenter</Run>, if the title bar
-                                (<Run FontWeight="SemiBold">HasTitleBar = true</Run>
-                                ) is enabled, the window must have a border
-                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting <Run FontWeight="SemiBold">HasBorder</Run>
+                                with <Run FontWeight="SemiBold">OverlappedPresenter</Run>
+                                , if the title bar
+                                (<Run FontWeight="SemiBold">HasTitleBar = true</Run>) is enabled, the window must have a border
+                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting<Run FontWeight="SemiBold">HasBorder</Run>
                                 to <Run FontWeight="SemiBold">false</Run>
                                 while <Run FontWeight="SemiBold">HasTitleBar</Run>
                                 is <Run FontWeight="SemiBold">true</Run>
@@ -203,100 +203,70 @@ public sealed partial class SampleWindow1 : Window
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
-                <Grid Width="360" ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-
-                    <StackPanel Spacing="8">
-                        <ToggleSwitch
-                            x:Name="IsAlwaysOnTop"
-                            Header="IsAlwaysOnTop"
-                            IsOn="False"
-                            OffContent="false"
-                            OnContent="true">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Keeps the window above all other windows when enabled." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                        <ToggleSwitch
-                            x:Name="IsMaximizable"
-                            Header="IsMaximizable"
-                            IsOn="true"
-                            OffContent="false"
-                            OnContent="true">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Controls the visibility and enable state of the maximize button." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                        <ToggleSwitch
-                            x:Name="IsMinimizable"
-                            Header="IsMinimizable"
-                            IsOn="true"
-                            OffContent="false"
-                            OnContent="true">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Controls the visibility and enable state of the minimize button." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                        <ToggleSwitch
-                            x:Name="IsResizable"
-                            Header="IsResizable"
-                            IsOn="true"
-                            OffContent="false"
-                            OnContent="true">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Allows resizing the window by dragging its edges." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                        <ToggleSwitch
-                            x:Name="HasBorder"
-                            Header="HasBorder"
-                            IsOn="true"
-                            OffContent="false"
-                            OnContent="true"
-                            Toggled="HasBorder_Toggled">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Determines if the window has a visible outer border." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                        <ToggleSwitch
-                            x:Name="HasTitleBar"
-                            Header="HasTitleBar"
-                            IsOn="true"
-                            OffContent="false"
-                            OnContent="true"
-                            Toggled="HasTitleBar_Toggled">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="Specifies whether the window includes a system title bar." TextWrapping="Wrap" />
-                            </ToolTipService.ToolTip>
-                        </ToggleSwitch>
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Column="1"
-                        Orientation="Vertical"
-                        Spacing="8">
-                        <NumberBox
-                            x:Name="MinWidthBox"
-                            Header="PreferredMinimumWidth"
-                            Value="400" />
-                        <NumberBox
-                            x:Name="MinHeightBox"
-                            Header="PreferredMinimumHeight"
-                            Value="400" />
-                        <NumberBox
-                            x:Name="MaxWidthBox"
-                            Header="PreferredMaximumWidth"
-                            Value="1000" />
-                        <NumberBox
-                            x:Name="MaxHeightBox"
-                            Header="PreferredMaximumHeight"
-                            Value="1000" />
-                    </StackPanel>
-                </Grid>
-
+                <StackPanel Spacing="8">
+                    <ToggleSwitch
+                        x:Name="IsAlwaysOnTop"
+                        Header="IsAlwaysOnTop"
+                        IsOn="False"
+                        OffContent="false"
+                        OnContent="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Keeps the window above all other windows when enabled." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch
+                        x:Name="IsMaximizable"
+                        Header="IsMaximizable"
+                        IsOn="true"
+                        OffContent="false"
+                        OnContent="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Controls the visibility and enable state of the maximize button." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch
+                        x:Name="IsMinimizable"
+                        Header="IsMinimizable"
+                        IsOn="true"
+                        OffContent="false"
+                        OnContent="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Controls the visibility and enable state of the minimize button." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch
+                        x:Name="IsResizable"
+                        Header="IsResizable"
+                        IsOn="true"
+                        OffContent="false"
+                        OnContent="true">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Allows resizing the window by dragging its edges." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch
+                        x:Name="HasBorder"
+                        Header="HasBorder"
+                        IsOn="true"
+                        OffContent="false"
+                        OnContent="true"
+                        Toggled="HasBorder_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Determines if the window has a visible outer border." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                    <ToggleSwitch
+                        x:Name="HasTitleBar"
+                        Header="HasTitleBar"
+                        IsOn="true"
+                        OffContent="false"
+                        OnContent="true"
+                        Toggled="HasTitleBar_Toggled">
+                        <ToolTipService.ToolTip>
+                            <TextBlock Text="Specifies whether the window includes a system title bar." TextWrapping="Wrap" />
+                        </ToolTipService.ToolTip>
+                    </ToggleSwitch>
+                </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -324,10 +294,6 @@ public sealed partial class SampleWindow3 : Window
         presenter.IsMaximizable = $(IsMaximizable);
         presenter.IsMinimizable = $(IsMinimizable);
         presenter.IsResizable = $(IsResizable);
-        presenter.PreferredMinimumWidth = $(MinWidth);
-        presenter.PreferredMinimumHeight = $(MinHeight);
-        presenter.PreferredMaximumWidth = $(MaxWidth);
-        presenter.PreferredMaximumHeight = $(MaxHeight);
         presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
 
         appWindow.SetPresenter(presenter);
@@ -362,7 +328,6 @@ public sealed partial class SampleWindow3 : Window
 }
                 </x:String>
             </controls:ControlExample.CSharp>
-
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="IsAlwaysOnTop" Value="{x:Bind BoolToLowerString(IsAlwaysOnTop.IsOn), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="IsMaximizable" Value="{x:Bind BoolToLowerString(IsMaximizable.IsOn), Mode=OneWay}" />
@@ -370,6 +335,98 @@ public sealed partial class SampleWindow3 : Window
                 <controls:ControlExampleSubstitution Key="IsResizable" Value="{x:Bind BoolToLowerString(IsResizable.IsOn), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="HasBorder" Value="{x:Bind BoolToLowerString(HasBorder.IsOn), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="HasTitleBar" Value="{x:Bind BoolToLowerString(HasTitleBar.IsOn), Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+
+        <controls:ControlExample HeaderText="Setting the minimum and maximum width / height on an AppWindow" XamlSource="AppWindow\AppWindowSample3_xaml.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="The minimum and maximum width and height can be set on an AppWindow. When setting the maximum width or height, it's recommended to disable the window maximization." TextWrapping="Wrap" />
+                    <Button Click="ShowSampleWindow4">Show sample window</Button>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Orientation="Vertical" Spacing="8">
+                    <NumberBox
+                        x:Name="MinWidthBox"
+                        Header="PreferredMinimumWidth"
+                        Value="400" />
+                    <NumberBox
+                        x:Name="MinHeightBox"
+                        Header="PreferredMinimumHeight"
+                        Value="400" />
+                    <NumberBox
+                        x:Name="MaxWidthBox"
+                        Header="PreferredMaximumWidth"
+                        Value="1000" />
+                    <NumberBox
+                        x:Name="MaxHeightBox"
+                        Header="PreferredMaximumHeight"
+                        Value="1000" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using System;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
+
+namespace YourNamespace;
+                    
+public sealed partial class SampleWindow4 : Window
+{
+    private AppWindow appWindow;
+    private OverlappedPresenter presenter;
+
+    public SampleWindow4()
+    {
+        this.InitializeComponent();
+
+        appWindow = GetAppWindowForCurrentWindow();
+        appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
+        presenter = OverlappedPresenter.Create();
+        presenter.IsMaximizable = false;
+        presenter.PreferredMinimumWidth = $(MinWidth);
+        presenter.PreferredMinimumHeight = $(MinHeight);
+        presenter.PreferredMaximumWidth = $(MaxWidth);
+        presenter.PreferredMaximumHeight = $(MaxHeight);
+
+        appWindow.SetPresenter(presenter);
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Maximize();
+    }
+
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Minimize();
+    }
+
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Restore();
+    }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="MinWidth" Value="{x:Bind MinWidthBox.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="MinHeight" Value="{x:Bind MinHeightBox.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="MaxWidth" Value="{x:Bind MaxWidthBox.Value, Mode=OneWay}" />
@@ -378,34 +435,34 @@ public sealed partial class SampleWindow3 : Window
         </controls:ControlExample>
 
         <controls:ControlExample
-            CSharpSource="AppWindow\AppWindowSample4_cs.txt"
+            CSharpSource="AppWindow\AppWindowSample5_cs.txt"
             HeaderText="Modal window with OverlappedPresenter using AppWindow"
-            XamlSource="AppWindow\AppWindowSample4_xaml.txt">
+            XamlSource="AppWindow\AppWindowSample5_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel>
                     <TextBlock Text="A modal window is a separate window that blocks interaction with its owner window until it is closed, often used for critical actions like confirmations, authentication, or settings. Unlike a ContentDialog, which is a lightweight pop-up within the same window, a modal window is a fully independent window, making it suitable for multi-window applications or scenarios requiring more flexibility in layout and behavior." TextWrapping="Wrap" />
-                    <Button Margin="0,8,0,0" Click="ShowSampleWindow4">Show modal window</Button>
+                    <Button Margin="0,8,0,0" Click="ShowSampleWindow5">Show modal window</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
 
         <controls:ControlExample
-            CSharpSource="AppWindow\AppWindowSample5_cs.txt"
+            CSharpSource="AppWindow\AppWindowSample6_cs.txt"
             HeaderText="AppWindow with FullScreenPresenter"
-            XamlSource="AppWindow\AppWindowSample5_xaml.txt">
+            XamlSource="AppWindow\AppWindowSample6_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key or close button, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks." TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow5">Show sample window (Fullscreen mode)</Button>
+                    <Button Click="ShowSampleWindow6">Show sample window (Fullscreen mode)</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter" XamlSource="AppWindow\AppWindowSample6_xaml.txt">
+        <controls:ControlExample HeaderText="AppWindow with CompactOverlayPresenter" XamlSource="AppWindow\AppWindowSample7_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)." TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow6">Show sample window (Picture-in-Picture mode)</Button>
+                    <Button Click="ShowSampleWindow7">Show sample window (Picture-in-Picture mode)</Button>
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -437,12 +494,12 @@ using WinRT.Interop;
 
 namespace YourNamespace;
 
-public sealed partial class SampleWindow6 : Window
+public sealed partial class SampleWindow7 : Window
 {
     private AppWindow appWindow;
     private CompactOverlayPresenter presenter;
 
-    public SampleWindow6()
+    public SampleWindow7()
     {
         this.InitializeComponent();
 
