@@ -3669,25 +3669,6 @@
           ]
         },
         {
-          "UniqueId": "FilePicker",
-          "Title": "FilePicker",
-          "ApiNamespace": "Windows.Storage.Pickers",
-          "Subtitle": "Access files and folders through the file pickers.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
-          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
-          "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "FilePicker - API",
-              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
-            }
-          ],
-          "RelatedControls": [
-            "Clipboard"
-          ]
-        },
-        {
           "UniqueId": "ContentIsland",
           "Title": "ContentIsland",
           "ApiNamespace": "Microsoft.UI.Content",
@@ -3700,6 +3681,22 @@
             {
               "Title": "ContentIsland - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            }
+          ]
+        },
+        {
+          "UniqueId": "FilePicker",
+          "Title": "FilePicker",
+          "ApiNamespace": "Windows.Storage.Pickers",
+          "Subtitle": "Access files and folders through the file pickers.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
+          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
+          "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "FilePicker - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
             }
           ],
           "RelatedControls": [

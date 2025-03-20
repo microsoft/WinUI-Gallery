@@ -69,6 +69,7 @@ public sealed partial class ContentIslandPage : Page
 
     private void LoadModel_Click(object sender, RoutedEventArgs e)
     {
+        _rectanglePanel.Visibility = Visibility.Visible;
         LoadModel();
     }
 }
