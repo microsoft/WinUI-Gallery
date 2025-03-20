@@ -153,11 +153,12 @@
             <!--  Sample code display  -->
             <Expander
                 Grid.Row="1"
+                Padding="0"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"
                 Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
                 CornerRadius="0,0,8,8"
-                Padding="0">
+                Visibility="{x:Bind SourceCodeVisibility, Mode=OneWay}">
 
                 <Expander.Header>
                     <TextBlock Text="Source code" />
