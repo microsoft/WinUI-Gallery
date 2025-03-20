@@ -65,7 +65,7 @@ Ensure that the `WinUIGallery` project is set as the startup project in Visual S
 
 > [!WARNING]
 > Try deleting [`nuget.config`](nuget.config) and building again if you get the following build error:
-> > `Assets file 'C:\Users\...\source\repos\WinUI-Gallery\WinUIGallery\obj\WinUIGallery\project.assets.json' not found. Run a NuGet package restore to generate this file.`
+> > Assets file 'C:\Users\...\source\repos\WinUI-Gallery\WinUIGallery\obj\WinUIGallery\project.assets.json' not found. Run a NuGet package restore to generate this file.
 >
 > See [issue #1659: Broken repo build](https://github.com/microsoft/WinUI-Gallery/issues/1659).
 
