@@ -13,7 +13,6 @@
     x:Class="WinUIGallery.ControlPages.GridPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="using:WinUIGallery.Common"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -25,8 +24,10 @@
                 Width="240"
                 Height="160"
                 Background="Gray"
-                ColumnDefinitions="50, Auto, *"
-                RowDefinitions="50, Auto, *">
+                ColumnDefinitions="50, 50, 50"
+                RowDefinitions="50, 50, 50"
+                ColumnSpacing="{x:Bind (x:Int32)ColumnSpacingSlider.Value, Mode=OneWay}"
+                RowSpacing="{x:Bind (x:Int32)RowSpacingSlider.Value, Mode=OneWay}">
                 <Grid.Resources>
                     <Style TargetType="Rectangle">
                         <Setter Property="Height" Value="40" />
@@ -35,24 +36,89 @@
                 </Grid.Resources>
                 <Rectangle
                     x:Name="Rectangle1"
-                    Grid.Row="{x:Bind (x:Int32)RowSlider.Value, Mode=OneWay}"
                     Grid.Column="{x:Bind (x:Int32)ColumnSlider.Value, Mode=OneWay}"
+                    Grid.Row="{x:Bind (x:Int32)RowSlider.Value, Mode=OneWay}"
                     Width="50"
                     Height="50"
                     Fill="Red" />
-                <Rectangle Grid.Row="1" Fill="Blue" />
-                <Rectangle Grid.Column="1" Fill="Green" />
                 <Rectangle
                     Grid.Row="1"
+                    Fill="Blue"
+                    Width="50"
+                    Height="50" />
+                <Rectangle
                     Grid.Column="1"
-                    Fill="Yellow" />
+                    Fill="Green"
+                    Width="50"
+                    Height="50" />
+                <Rectangle
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Fill="Yellow"
+                    Width="50"
+                    Height="50" />
             </Grid>
 
             <controls:ControlExample.Options>
-                <StackPanel Orientation="Horizontal">
+                <Grid
+                    ColumnDefinitions="Auto,Auto"
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    ColumnSpacing="12"
+                    RowSpacing="12">
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Grid" />
+                    <Slider
+                        x:Name="ColumnSpacingSlider"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Margin="16,0,0,0"
+                        Header="ColumnSpacing"
+                        Maximum="16"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8" />
+                    <Slider
+                        x:Name="RowSpacingSlider"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Height="100"
+                        VerticalAlignment="Top"
+                        IsDirectionReversed="True"
+                        Maximum="16"
+                        Minimum="0"
+                        Orientation="Vertical"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8">
+                        <Slider.Header>
+                            <TextBlock Margin="0,0,0,10" Text="RowSpacing" />
+                        </Slider.Header>
+                    </Slider>
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Red block" />
+                    <Slider
+                        x:Name="ColumnSlider"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Margin="16,0,0,0"
+                        Header="Grid.Column"
+                        Maximum="2"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1" />
                     <Slider
                         x:Name="RowSlider"
-                        Height="110"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Height="100"
                         VerticalAlignment="Top"
                         IsDirectionReversed="True"
                         Maximum="2"
@@ -65,32 +131,32 @@
                             <TextBlock Margin="0,0,0,10" Text="Grid.Row" />
                         </Slider.Header>
                     </Slider>
-                    <Slider
-                        x:Name="ColumnSlider"
-                        Width="100"
-                        Margin="16,0,0,0"
-                        Header="Grid.Column"
-                        Maximum="2"
-                        Minimum="0"
-                        SnapsTo="Ticks"
-                        StepFrequency="1"
-                        TickFrequency="1" />
-                </StackPanel>
+
+                </Grid>
             </controls:ControlExample.Options>
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Grid Width="240" Height="120" Background="Gray" ColumnDefinitions="50, Auto, *" RowDefinitions ="50, Auto, *"&gt;
+&lt;Grid
+    Width="240"
+    Height="120"
+    Background="Gray"
+    ColumnDefinitions="50, 50, 50"
+    RowDefinitions ="50, 50, 50"
+    ColumnSpacing="$(ColumnSpacing)"
+    RowSpacing="$(RowSpacing)"&gt;
     &lt;Rectangle Fill="Red" Grid.Column="$(Column)" Grid.Row="$(Row)" /&gt;
     &lt;Rectangle Fill="Blue" Grid.Row="1" /&gt;
     &lt;Rectangle Fill="Green" Grid.Column="1" /&gt;
-    &lt;Rectangle Fill="Yellow" Grid.Row="1" Grid.Column="1" /&gt;
+    &lt;Rectangle Fill="Yellow" Grid.Column="1" Grid.Row="1" /&gt;
 &lt;/Grid&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="Column" Value="{x:Bind ColumnSlider.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Row" Value="{x:Bind RowSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ColumnSpacing" Value="{x:Bind ColumnSpacingSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="RowSpacing" Value="{x:Bind RowSpacingSlider.Value, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>
