@@ -42,6 +42,12 @@ public sealed partial class AppWindowPage : Page
         window.Activate();
     }
 
+    private void ShowSampleWindow4(object sender, RoutedEventArgs e)
+    {
+        SampleWindow4 window = new SampleWindow4((int)MinWidthBox.Value, (int)MinHeightBox.Value, (int)MaxWidthBox.Value, (int)MaxHeightBox.Value);
+        window.Activate();
+    }
+
     private void HasBorder_Toggled(object sender, RoutedEventArgs e)
     {
         if(!HasBorder.IsOn)
@@ -60,21 +66,21 @@ public sealed partial class AppWindowPage : Page
 
     string BoolToLowerString(bool value) => value.ToString().ToLower();
 
-    private void ShowSampleWindow4(object sender, RoutedEventArgs e)
+    private void ShowSampleWindow5(object sender, RoutedEventArgs e)
     {
         ModalWindow window = new ModalWindow();
         window.Activate();
     }
 
-    private void ShowSampleWindow5(object sender, RoutedEventArgs e)
+    private void ShowSampleWindow6(object sender, RoutedEventArgs e)
     {
-        SampleWindow5 window = new SampleWindow5();
+        SampleWindow6 window = new SampleWindow6();
         window.Activate();
     }
 
-    private void ShowSampleWindow6(object sender, RoutedEventArgs e)
+    private void ShowSampleWindow7(object sender, RoutedEventArgs e)
     {
-        SampleWindow6 window = new SampleWindow6((string)InitialSize.SelectedItem);
+        SampleWindow7 window = new SampleWindow7((string)InitialSize.SelectedItem);
         window.Activate();
     }
 

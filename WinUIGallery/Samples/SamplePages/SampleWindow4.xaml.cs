@@ -6,21 +6,23 @@ using WinRT.Interop;
 
 namespace WinUIGallery.Samples.SamplePages;
 
-public sealed partial class SampleWindow3 : Window
+public sealed partial class SampleWindow4 : Window
 {
     private AppWindow appWindow;
     private OverlappedPresenter presenter;
 
-    public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
+    public SampleWindow4(int MinWidth, int MinHeight, int MaxWidth, int MaxHeight)
     {
         this.InitializeComponent();
+
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
         presenter = OverlappedPresenter.Create();
-        presenter.IsAlwaysOnTop = IsAlwaysOnTop;
-        presenter.IsMaximizable = IsMaximizable;
-        presenter.IsMinimizable = IsMinimizable;
-        presenter.IsResizable = IsResizable;
-        presenter.SetBorderAndTitleBar(HasBorder,HasTitleBar);
+        presenter.PreferredMinimumWidth = MinWidth;
+        presenter.PreferredMinimumHeight = MinHeight;
+        presenter.PreferredMaximumWidth = MaxWidth;
+        presenter.PreferredMaximumHeight = MaxHeight;
+        presenter.IsMaximizable = false;
         appWindow.SetPresenter(presenter);
     }
 
@@ -29,11 +31,6 @@ public sealed partial class SampleWindow3 : Window
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
         return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Maximize();
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
