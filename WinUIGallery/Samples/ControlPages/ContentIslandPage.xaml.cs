@@ -30,7 +30,7 @@ public sealed partial class ContentIslandPage : Page
 
     public async void LoadModel()
     {
-        ContentIsland parentIsland = this.XamlRoot.TryGetContentIsland();
+        ContentIsland parentIsland = this.XamlRoot.ContentIsland;
 
         Rectangle rect = GetNextHostElement();
         if (rect == null)
