@@ -1292,7 +1292,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
           "Subtitle": "A button that raises its Click event repeatedly from the time it's pressed until it's released.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Button.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/RepeatButton.png",
           "Description": "The RepeatButton control is like a standard Button, except that the Click event occurs continuously while the user presses the RepeatButton.",
           "Content": "<p>A <b>RepeatButton</b> looks just like a regular <b>Button</b>, but it's <b>Click</b> event occurs continuously while the button is pressed.</p><p>Look at the <i>RepeatButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/CommonStyles/RepeatButton_themeresources.xaml",
@@ -2548,7 +2548,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Presents information from different sources in a tabbed view.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Pivot.png",
           "Description": "Pivot is not recommended for Windows 11 design patterns. Please use the SelectorBar and SelectorBarItem. A Pivot allows you to show a collection of items from different sources in a tabbed view.",
           "Content": "<p>This page shows a simplified <b>Pivot</b> control with minimal content to demonstrate basic <b>Pivot</b> usage. Look at the <i>PivotPage.xaml</i> file in Visual Studio to see the full code for this page.</p><p>A <b>Pivot</b> control typically takes up the full page.</p>",
           "SourcePath": "/CommonStyles/Pivot_themeresources.xaml",
@@ -2871,6 +2871,7 @@
           "Subtitle": "A translucent material recommended for panel backgrounds.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "Description": "A translucent material recommended for panel backgrounds.",
+          "IsUpdated": true,
           "SourcePath": "/Materials/Acrylic",
           "Docs": [
             {
