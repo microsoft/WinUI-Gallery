@@ -25,14 +25,7 @@ public sealed partial class BindingPage : Page
 
     public string FormatDate(DateTimeOffset? date)
     {
-        if (date.HasValue)
-        {
-            return "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy");
-        }
-        else
-        {
-            return "No date selected";
-        }
+        return date.HasValue ? "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy") : "No date selected";
     }
 }
 

@@ -66,12 +66,7 @@ public sealed class ControlExampleSubstitution : DependencyObject
             value = ((SolidColorBrush)value).Color;
         }
 
-        if (value == null)
-        {
-            return string.Empty;
-        }
-
-        return value.ToString();
+        return value == null ? string.Empty : value.ToString();
     }
 }
 

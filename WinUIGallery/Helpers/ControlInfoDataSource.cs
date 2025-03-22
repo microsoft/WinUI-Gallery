@@ -56,8 +56,7 @@ public sealed class ControlInfoDataSource
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
         var matches = _instance.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
-        if (matches.Count() == 1) return matches.First();
-        return null;
+        return matches.Count() == 1 ? matches.First() : null;
     }
 
     public static async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
@@ -65,16 +64,14 @@ public sealed class ControlInfoDataSource
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
         var matches = _instance.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
-        if (matches.Count() > 0) return matches.First();
-        return null;
+        return matches.Count() > 0 ? matches.First() : null;
     }
 
     public static async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
     {
         await _instance.GetControlInfoDataAsync();
         var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
-        if (matches.Count() == 1) return matches.First();
-        return null;
+        return matches.Count() == 1 ? matches.First() : null;
     }
 
     private async Task GetControlInfoDataAsync()

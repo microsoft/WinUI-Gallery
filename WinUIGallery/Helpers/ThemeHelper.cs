@@ -82,10 +82,8 @@ public static class ThemeHelper
 
     public static bool IsDarkTheme()
     {
-        if (RootTheme == ElementTheme.Default)
-        {
-            return Application.Current.RequestedTheme == ApplicationTheme.Dark;
-        }
-        return RootTheme == ElementTheme.Dark;
+        return RootTheme == ElementTheme.Default
+            ? Application.Current.RequestedTheme == ApplicationTheme.Dark
+            : RootTheme == ElementTheme.Dark;
     }
 }

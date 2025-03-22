@@ -48,13 +48,7 @@ public sealed partial class NavigationViewPage : Page
 
     public NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
     {
-        if (toggleOn)
-        {
-            return NavigationViewPaneDisplayMode.Left;
-        } else
-        {
-            return NavigationViewPaneDisplayMode.Top;
-        }
+        return toggleOn ? NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.Top;
     }
 
     private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

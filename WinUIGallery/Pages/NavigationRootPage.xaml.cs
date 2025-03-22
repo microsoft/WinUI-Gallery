@@ -41,11 +41,7 @@ public sealed partial class NavigationRootPage : Page
     {
         UIElement element = (UIElement)obj;
         Window window = WindowHelper.GetWindowForElement(element);
-        if (window != null)
-        {
-            return (NavigationRootPage)window.Content;
-        }
-        return null;
+        return window != null ? (NavigationRootPage)window.Content : null;
     }
 
     public NavigationView NavigationView

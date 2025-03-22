@@ -120,11 +120,7 @@ public sealed partial class ItemPage : Page
     {
         UIElement element = (UIElement)obj;
         Window window = WindowHelper.GetWindowForElement(element);
-        if (window != null)
-        {
-            return (ItemPage)window.Content;
-        }
-        return null;
+        return window != null ? (ItemPage)window.Content : null;
     }
 
     private void OnToggleTheme()

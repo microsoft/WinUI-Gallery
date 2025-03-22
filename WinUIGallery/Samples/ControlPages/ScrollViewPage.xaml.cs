@@ -239,14 +239,9 @@ public sealed partial class ScrollViewPage : Page
 
     private double GetTargetVerticalOffset()
     {
-        if (scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0)
-        {
-            return scrollView3.ScrollableHeight / 5.0;
-        }
-        else
-        {
-            return 4.0 * scrollView3.ScrollableHeight / 5.0;
-        }
+        return scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0
+            ? scrollView3.ScrollableHeight / 5.0
+            : 4.0 * scrollView3.ScrollableHeight / 5.0;
     }
 
     private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e)

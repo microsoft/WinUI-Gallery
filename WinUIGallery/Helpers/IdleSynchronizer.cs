@@ -55,12 +55,7 @@ public class IdleSynchronizer
                     eventNamePrefix));
         }
 
-        if (!handle.IsValid)
-        {
-            throw new Exception("Failed to open " + eventName + " handle.");
-        }
-
-        return handle;
+        return !handle.IsValid ? throw new Exception("Failed to open " + eventName + " handle.") : handle;
     }
 
     private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
@@ -99,12 +94,7 @@ public class IdleSynchronizer
     {
         get
         {
-            if (instance == null)
-            {
-                throw new Exception("Init() must be called on the UI thread before retrieving Instance.");
-            }
-
-            return instance;
+            return instance == null ? throw new Exception("Init() must be called on the UI thread before retrieving Instance.") : instance;
         }
     }
 
@@ -250,36 +240,27 @@ public class IdleSynchronizer
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_rootVisualResetHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for root visual reset handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for root visual reset handle returned an invalid value."
+            : string.Empty;
     }
 
     private string WaitForImageDecodingIdle()
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_imageDecodingIdleHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for image decoding idle handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for image decoding idle handle returned an invalid value."
+            : string.Empty;
     }
 
     string WaitForFontDownloadsIdle()
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_fontDownloadsIdleHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for font downloads handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for font downloads handle returned an invalid value."
+            : string.Empty;
     }
 
     void WaitForIdleDispatcher()
