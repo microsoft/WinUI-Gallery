@@ -84,7 +84,7 @@ public sealed partial class ComboBoxPage : Page
     {
         Combo3.SelectedIndex = 2;
 
-        if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
         {
             Combo3.TextSubmitted += Combo3_TextSubmitted;
         }

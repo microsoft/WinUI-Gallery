@@ -327,7 +327,7 @@ public class IdleSynchronizer
 
         AddLog("WaitForAnimationsComplete: After Wait(m_hasAnimationsHandle)");
 
-        bool hasAnimations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasAnimations = waitResult == NativeMethods.WAIT_OBJECT_0;
 
         if (hasAnimations)
         {
@@ -374,7 +374,7 @@ public class IdleSynchronizer
             return "HasDeferredAnimationOperations handle wait returned an invalid value.";
         }
 
-        bool hasDeferredAnimationOperations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasDeferredAnimationOperations = waitResult == NativeMethods.WAIT_OBJECT_0;
 
         if (hasDeferredAnimationOperations)
         {

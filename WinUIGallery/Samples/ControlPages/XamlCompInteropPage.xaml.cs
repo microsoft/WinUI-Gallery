@@ -64,14 +64,14 @@ public sealed partial class XamlCompInteropPage : Page
     {
         UpdateSpringAnimation(1.5f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(sender as UIElement, _springAnimation);
     }
 
     private void element_PointerExited(object sender, PointerRoutedEventArgs e)
     {
         UpdateSpringAnimation(1f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(sender as UIElement, _springAnimation);
     }
 
 

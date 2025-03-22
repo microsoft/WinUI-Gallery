@@ -68,7 +68,7 @@ public sealed partial class NavigationViewPage : Page
             var selectedItem = (NavigationViewItem)args.SelectedItem;
             if (selectedItem != null)
             {
-                string selectedItemTag = ((string)selectedItem.Tag);
+                string selectedItemTag = (string)selectedItem.Tag;
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 Type pageType = Type.GetType(pageName);
@@ -88,7 +88,7 @@ public sealed partial class NavigationViewPage : Page
             else
             {
                 var selectedItem = (NavigationViewItem)args.SelectedItem;
-                string selectedItemTag = ((string)selectedItem.Tag);
+                string selectedItemTag = (string)selectedItem.Tag;
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 Type pageType = Type.GetType(pageName);
                 contentFrame2.Navigate(pageType);
@@ -127,7 +127,7 @@ public sealed partial class NavigationViewPage : Page
         else
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
-            string selectedItemTag = ((string)selectedItem.Tag);
+            string selectedItemTag = (string)selectedItem.Tag;
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
             Type pageType = Type.GetType(pageName);
@@ -171,7 +171,7 @@ public sealed partial class NavigationViewPage : Page
         and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
 
         // Get the sample number
-        string sampleNum = (sender.Name).Substring(8);
+        string sampleNum = sender.Name.Substring(8);
         Debug.Print("num: " + sampleNum + "\n");
 
         if (args.IsSettingsSelected)
@@ -181,7 +181,7 @@ public sealed partial class NavigationViewPage : Page
         else
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
-            string selectedItemTag = ((string)selectedItem.Tag);
+            string selectedItemTag = (string)selectedItem.Tag;
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
             Type pageType = Type.GetType(pageName);

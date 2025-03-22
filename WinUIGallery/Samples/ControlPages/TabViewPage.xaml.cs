@@ -148,7 +148,7 @@ public sealed partial class TabViewPage : Page
 
     private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        var InvokedTabView = args.Element as TabView;
 
         // Only close the selected tab if it is closeable
         if (((TabViewItem)InvokedTabView.SelectedItem).IsClosable)
@@ -161,7 +161,7 @@ public sealed partial class TabViewPage : Page
 
     private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        var InvokedTabView = args.Element as TabView;
 
         int tabToSelect = 0;
 

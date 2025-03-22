@@ -55,9 +55,9 @@ public sealed partial class AccessibilityColorContrastPage : Page
     public static SolidColorBrush GetSolidColorBrush(string hex)
     {
         hex = hex.Replace("#", string.Empty);
-        byte r = (byte)(Convert.ToUInt32(hex.Substring(0, 2), 16));
-        byte g = (byte)(Convert.ToUInt32(hex.Substring(2, 2), 16));
-        byte b = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
+        byte r = (byte)Convert.ToUInt32(hex.Substring(0, 2), 16);
+        byte g = (byte)Convert.ToUInt32(hex.Substring(2, 2), 16);
+        byte b = (byte)Convert.ToUInt32(hex.Substring(4, 2), 16);
         SolidColorBrush myBrush = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(255, r, g, b));
         return myBrush;
     }
@@ -78,9 +78,9 @@ public sealed partial class AccessibilityColorContrastPage : Page
         var gSRGB = c.G / 255.0;
         var bSRGB = c.B / 255.0;
 
-        var r = rSRGB <= 0.04045 ? rSRGB / 12.92 : Math.Pow(((rSRGB + 0.055) / 1.055), 2.4);
-        var g = gSRGB <= 0.04045 ? gSRGB / 12.92 : Math.Pow(((gSRGB + 0.055) / 1.055), 2.4);
-        var b = bSRGB <= 0.04045 ? bSRGB / 12.92 : Math.Pow(((bSRGB + 0.055) / 1.055), 2.4);
+        var r = rSRGB <= 0.04045 ? rSRGB / 12.92 : Math.Pow((rSRGB + 0.055) / 1.055, 2.4);
+        var g = gSRGB <= 0.04045 ? gSRGB / 12.92 : Math.Pow((gSRGB + 0.055) / 1.055, 2.4);
+        var b = bSRGB <= 0.04045 ? bSRGB / 12.92 : Math.Pow((bSRGB + 0.055) / 1.055, 2.4);
         return 0.2126 * r + 0.7152 * g + 0.0722 * b;
     }
 

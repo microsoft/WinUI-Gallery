@@ -32,7 +32,7 @@ public sealed partial class ImplicitTransitionPage : Page
     private void OpacityButton_Click(object sender, RoutedEventArgs e)
     {
         // If the implicit animation API is not present, simply no-op. 
-        if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
+        if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)) return;
         var customValue = EnsureValueIsNumber(OpacityNumberBox);
         OpacityRectangle.Opacity = customValue;
         OpacityValue.Value = customValue;
