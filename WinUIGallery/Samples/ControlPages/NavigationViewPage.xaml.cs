@@ -303,13 +303,10 @@ public sealed partial class NavigationViewPage : Page
 
     private void panePositionLeftCompact_Checked(object sender, RoutedEventArgs e)
     {
-        if ((sender as RadioButton).IsChecked == true)
+        if ((sender as RadioButton).IsChecked == true && (sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
         {
-            if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
-            {
-                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
-                nvSample8.IsPaneOpen = false;
-            }
+            nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
+            nvSample8.IsPaneOpen = false;
         }
     }
 
