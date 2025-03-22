@@ -372,8 +372,8 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
         // Sort the recipes by whichever sorting mode was last selected (least to most ingredients by default)
         var sortedFilteredTypes = IsSortDescending ?
-            filteredTypes.OrderByDescending(i => i.IngList.Count()) :
-            filteredTypes.OrderBy(i => i.IngList.Count());
+            filteredTypes.OrderByDescending(i => i.IngList.Count) :
+            filteredTypes.OrderBy(i => i.IngList.Count);
         // Re-initialize MyItemsSource object with this newly filtered data
         filteredRecipeData.InitializeCollection(sortedFilteredTypes);
 
@@ -498,7 +498,7 @@ public class Recipe
     {
         get
         {
-            return IngList.Count();
+            return IngList.Count;
         }
     }
 

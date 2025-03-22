@@ -78,7 +78,7 @@ public sealed class ControlInfoDataSource
     {
         lock (_lock)
         {
-            if (Groups.Count() != 0)
+            if (Groups.Count != 0)
             {
                 return;
             }
