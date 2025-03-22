@@ -1,9 +1,7 @@
 using Windows.Foundation.Metadata;
-using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 
 namespace WinUIGallery.ControlPages;
 

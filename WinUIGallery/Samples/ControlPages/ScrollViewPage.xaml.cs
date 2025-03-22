@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
-using Windows.Storage;
 
 namespace WinUIGallery.ControlPages;
 

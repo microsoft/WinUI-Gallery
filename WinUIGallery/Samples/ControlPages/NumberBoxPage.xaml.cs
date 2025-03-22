@@ -8,7 +8,6 @@
 //
 //*********************************************************
 using Windows.Globalization.NumberFormatting;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;

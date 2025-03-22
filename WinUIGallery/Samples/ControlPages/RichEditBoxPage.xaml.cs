@@ -8,7 +8,6 @@
 //
 //*********************************************************
 using System;
-using System.Collections.Generic;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -20,7 +19,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
 using System.Runtime.InteropServices;
-using WinRT;
 
 namespace WinUIGallery.ControlPages;
 

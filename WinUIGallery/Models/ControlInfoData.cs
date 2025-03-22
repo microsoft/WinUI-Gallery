@@ -7,14 +7,8 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using WinUIGallery.Helpers;
 using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
