@@ -369,15 +369,21 @@ public sealed partial class NavigationRootPage : Page
             }
             else
             {
-                if (selectedItem.DataContext is ControlInfoDataGroup)
+                switch (selectedItem.DataContext)
                 {
-                    var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                    Navigate(typeof(SectionPage), itemId);
-                }
-                else if (selectedItem.DataContext is ControlInfoDataItem)
-                {
-                    var item = (ControlInfoDataItem)selectedItem.DataContext;
-                    Navigate(typeof(ItemPage), item.UniqueId);
+                    case ControlInfoDataGroup group:
+                        {
+                            var itemId = group.UniqueId;
+                            Navigate(typeof(SectionPage), itemId);
+                            break;
+                        }
+
+                    case ControlInfoDataItem:
+                        {
+                            var item = (ControlInfoDataItem)selectedItem.DataContext;
+                            Navigate(typeof(ItemPage), item.UniqueId);
+                            break;
+                        }
                 }
             }
         }
@@ -451,7 +457,7 @@ public sealed partial class NavigationRootPage : Page
         foreach (object rawItem in NavigationView.MenuItems)
         {
             // Check if we encountered the separator
-            if (!(rawItem is NavigationViewItem))
+            if (rawItem is not NavigationViewItem)
             {
                 // Skipping this item
                 continue;
