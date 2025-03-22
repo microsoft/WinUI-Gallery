@@ -16,7 +16,8 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+      xmlns:local="using:WinUIGallery.ControlPages"
+      mc:Ignorable="d">
 
     <StackPanel>
 
@@ -206,5 +207,143 @@
             </RelativePanel>
         </controls:ControlExample>
 
+        <controls:ControlExample x:Name="MathModeExample" HeaderText="Rich edit text document in math mode">
+            <controls:ControlExample.Resources>
+                <Style x:Key="ItemStyle1"
+                       TargetType="Grid">
+                    <Setter Property="Background"
+                            Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+                </Style>
+                <Style x:Key="ItemStyle2"
+                       TargetType="Grid">
+                    <Setter Property="Background"
+                            Value="{ThemeResource CardBackgroundFillColorSecondaryBrush}" />
+                </Style>
+            </controls:ControlExample.Resources>
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBlock x:Name="MathModeDescription"
+                               TextWrapping="Wrap"/>
+                    <RichEditBox x:Name="MathEditor"
+                                 Height="160"
+                                 Width="624"
+                                 FontSize="16"
+                                 HorizontalAlignment="Left" />
+                    <SelectorBar Margin="-12 0 0 0">
+                        <SelectorBarItem Text="Symbols"
+                                         IsSelected="True" />
+                        <SelectorBarItem Text="Structures" />
+                        <SelectorBarItem Text="Integrals" />
+                        <SelectorBarItem Text="Large Operators" />
+                        <SelectorBarItem Text="Accent" />
+                        <SelectorBarItem Text="Limits &amp; Log" />
+                        <SelectorBarItem Text="Matrixes" />
+                    </SelectorBar>
+                    <ContentPresenter>
+                        <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                              CornerRadius="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid HorizontalAlignment="Stretch"
+                                  Padding="12 16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                           Text="Symbol"
+                                           Padding="8 0"/>
+                                <TextBlock Grid.Column="1"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                           Text="Name" />
+                                <TextBlock Grid.Column="2"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                           Text="Command" />
+                                <TextBlock Grid.Column="3"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Style="{StaticResource CaptionTextBlockStyle}"
+                                           Text="Unicode" />
+                            </Grid>
+                            <ScrollView Grid.Row="1"
+                                        HorizontalScrollBarVisibility="Auto"
+                                        HorizontalScrollMode="Auto"
+                                        MaxHeight="500"
+                                        CornerRadius="0">
+                                <ItemsRepeater x:Name="MathSymbolsItems">
+                                    <ItemsRepeater.Resources>
+                                        
+                                    </ItemsRepeater.Resources>
+                                    <ItemsRepeater.Layout>
+                                        <StackLayout x:Name="VerticalStackLayout"
+                                                     Orientation="Vertical" />
+                                    </ItemsRepeater.Layout>
+                                    <ItemsRepeater.ItemTemplate>
+                                        <DataTemplate x:DataType="local:MathSymbol">
+                                            <Grid x:Name="SymbolDataTemplate"
+                                                  Padding="12"
+                                                  Loading="SymbolDataTemplate_Loading">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100" />
+                                                    <ColumnDefinition Width="200" />
+                                                    <ColumnDefinition Width="150" />
+                                                    <ColumnDefinition Width="150" />
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="InsertSymbolBtn"
+                                                        Width="48"
+                                                        VerticalAlignment="Center"
+                                                        Click="InsertSymbolBtn_Click"
+                                                        Tag="{x:Bind Command}">
+                                                    <TextBlock Grid.Column="0"
+                                                               Text="{x:Bind Value}"
+                                                               TextWrapping="Wrap"
+                                                               FontFamily="Cambria"
+                                                               FontWeight="SemiBold"/>
+                                                    <ToolTipService.ToolTip>
+                                                        Insert Symbol
+                                                    </ToolTipService.ToolTip>
+                                                </Button>
+                                                <TextBlock Grid.Column="1"
+                                                           Text="{x:Bind Name}"
+                                                           TextWrapping="Wrap"
+                                                           VerticalAlignment="Center" />
+                                                <TextBlock Grid.Column="2"
+                                                           Text="{x:Bind Command}"
+                                                           TextWrapping="Wrap"
+                                                           FontFamily="Consolas"
+                                                           IsTextSelectionEnabled="True"
+                                                           VerticalAlignment="Center" />
+                                                <TextBlock Grid.Column="3"
+                                                           Text="{x:Bind Unicode}"
+                                                           TextWrapping="Wrap"
+                                                           FontFamily="Consolas"
+                                                           IsTextSelectionEnabled="True"
+                                                           VerticalAlignment="Center" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsRepeater.ItemTemplate>
+                                </ItemsRepeater>
+                            </ScrollView>
+                        </Grid>
+                    </ContentPresenter>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RichEditBox x:Name="mathEditor" FontSize="16" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
     </StackPanel>
 </Page>
