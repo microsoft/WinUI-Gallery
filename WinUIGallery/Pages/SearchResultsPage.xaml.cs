@@ -97,7 +97,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
                         }
                         return flag;
                     }).ToList();
-                int numberOfMatchingItems = matchingItems.Count();
+                int numberOfMatchingItems = matchingItems.Count;
 
                 if (numberOfMatchingItems > 0)
                 {
