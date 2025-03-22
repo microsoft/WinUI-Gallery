@@ -88,15 +88,9 @@ public class WindowHelper
 
     static public StorageFolder GetAppLocalFolder()
     {
-        StorageFolder localFolder;
-        if (!NativeHelper.IsAppPackaged)
-        {
-            localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(AppContext.BaseDirectory)).Result;
-        }
-        else
-        {
-            localFolder = ApplicationData.Current.LocalFolder;
-        }
+        StorageFolder localFolder = !NativeHelper.IsAppPackaged
+            ? Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(AppContext.BaseDirectory)).Result
+            : ApplicationData.Current.LocalFolder;
         return localFolder;
     }
 }

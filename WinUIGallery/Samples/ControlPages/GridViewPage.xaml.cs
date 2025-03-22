@@ -148,14 +148,7 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e)
     {
-        if (ContentGridView.FlowDirection == FlowDirection.LeftToRight)
-        {
-            ContentGridView.FlowDirection = FlowDirection.RightToLeft;
-        }
-        else
-        {
-            ContentGridView.FlowDirection = FlowDirection.LeftToRight;
-        }
+        ContentGridView.FlowDirection = ContentGridView.FlowDirection == FlowDirection.LeftToRight ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
     }
 
     private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -138,25 +138,11 @@ public sealed partial class ScrollViewPage : Page
                 // Only value smaller than -30 or greater than 30 trigger a scroll
                 if (e.NewValue < e.OldValue)
                 {
-                    if (scrollView2.VerticalOffset == 0)
-                    {
-                        verticalConstantVelocity = 30;
-                    }
-                    else
-                    {
-                        verticalConstantVelocity = -30;
-                    }
+                    verticalConstantVelocity = scrollView2.VerticalOffset == 0 ? 30 : -30;
                 }
                 else
                 {
-                    if (scrollView2.VerticalOffset == scrollView2.ScrollableHeight)
-                    {
-                        verticalConstantVelocity = -30;
-                    }
-                    else
-                    {
-                        verticalConstantVelocity = 30;
-                    }
+                    verticalConstantVelocity = scrollView2.VerticalOffset == scrollView2.ScrollableHeight ? -30 : 30;
                 }
             }
             else if (e.NewValue < 30.0 && scrollView2.VerticalOffset == 0)

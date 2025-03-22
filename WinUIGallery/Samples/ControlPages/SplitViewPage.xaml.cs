@@ -47,14 +47,7 @@ public sealed partial class SplitViewPage : Page
     private void PanePlacement_Toggled(object sender, RoutedEventArgs e)
     {
         var ts = sender as ToggleSwitch;
-        if (ts.IsOn)
-        {
-            splitView.PanePlacement = SplitViewPanePlacement.Right;
-        }
-        else
-        {
-            splitView.PanePlacement = SplitViewPanePlacement.Left;
-        }
+        splitView.PanePlacement = ts.IsOn ? SplitViewPanePlacement.Right : SplitViewPanePlacement.Left;
     }
 
     private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

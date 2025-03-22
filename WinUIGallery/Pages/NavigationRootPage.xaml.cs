@@ -434,14 +434,9 @@ public sealed partial class NavigationRootPage : Page
                     suggestions.Add(item);
                 }
             }
-            if (suggestions.Count > 0)
-            {
-                controlsSearchBox.ItemsSource = suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title);
-            }
-            else
-            {
-                controlsSearchBox.ItemsSource = new string[] { "No results found" };
-            }
+            controlsSearchBox.ItemsSource = suggestions.Count > 0
+                ? suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title)
+                : (new string[] { "No results found" });
         }
     }
 

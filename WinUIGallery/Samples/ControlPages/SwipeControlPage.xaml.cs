@@ -37,14 +37,7 @@ public sealed partial class SwipeControlPage : Page
     {
         isArchived = !isArchived;
 
-        if(isArchived)
-        {
-            ((TextBlock)args.SwipeControl.Content).Text = "Archived - Swipe Left";
-        }
-        else
-        {
-            ((TextBlock)args.SwipeControl.Content).Text = "Swipe Left";
-        }
+        ((TextBlock)args.SwipeControl.Content).Text = isArchived ? "Archived - Swipe Left" : "Swipe Left";
     }
 
     private void DeleteItem_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)

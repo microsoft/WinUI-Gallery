@@ -141,14 +141,9 @@ public sealed partial class TitleBarPage : Page
 
         (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // Changing titlebar uielement's color.
 
-        if (currentFgColor != Colors.Transparent)
-        {
-            (titleBarAppNameElement as TextBlock).Foreground = new SolidColorBrush(currentFgColor);
-        }
-        else
-        {
-            (titleBarAppNameElement as TextBlock).Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
-        }
+        (titleBarAppNameElement as TextBlock).Foreground = currentFgColor != Colors.Transparent
+            ? new SolidColorBrush(currentFgColor)
+            : (Brush)(Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush);
 
         TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
 

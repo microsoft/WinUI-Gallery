@@ -248,14 +248,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     {
         if (StickySwitch != null)
         {
-            if (StickySwitch.IsOn == true)
-            {
-                stackPanelObj.AreStickyGroupHeadersEnabled = true;
-            }
-            else
-            {
-                stackPanelObj.AreStickyGroupHeadersEnabled = false;
-            }
+            stackPanelObj.AreStickyGroupHeadersEnabled = StickySwitch.IsOn == true;
         }
     }
 

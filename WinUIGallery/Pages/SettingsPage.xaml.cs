@@ -65,14 +65,7 @@ public sealed partial class SettingsPage : Page
         NavigationRootPage navigationRootPage = NavigationRootPage.GetForElement(this);
         if (navigationRootPage != null)
         {
-            if (navigationRootPage.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto)
-            {
-                navigationLocation.SelectedIndex = 0;
-            }
-            else
-            {
-                navigationLocation.SelectedIndex = 1;
-            }
+            navigationLocation.SelectedIndex = navigationRootPage.NavigationView.PaneDisplayMode == NavigationViewPaneDisplayMode.Auto ? 0 : 1;
             lastNavigationSelectionMode = navigationLocation.SelectedIndex;
         }
 
@@ -140,14 +133,7 @@ public sealed partial class SettingsPage : Page
 
     private void spatialSoundBox_Toggled(object sender, RoutedEventArgs e)
     {
-        if (soundToggle.IsOn == true)
-        {
-            ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
-        }
-        else
-        {
-            ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
-        }
+        ElementSoundPlayer.SpatialAudioMode = soundToggle.IsOn == true ? ElementSpatialAudioMode.Off : ElementSpatialAudioMode.On;
     }
 
     private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)

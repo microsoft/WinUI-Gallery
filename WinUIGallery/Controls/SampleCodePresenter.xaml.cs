@@ -85,14 +85,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private void ReevaluateVisibility()
     {
-        if (IsEmpty)
-        {
-            Visibility = Visibility.Collapsed;
-        }
-        else
-        {
-            Visibility = Visibility.Visible;
-        }
+        Visibility = IsEmpty ? Visibility.Collapsed : Visibility.Visible;
     }
 
     private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
@@ -247,14 +240,7 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sender is RichTextBlock sampleCode)
         {
-            if (!string.IsNullOrEmpty(sampleCode.SelectedText))
-            {
-                CopyButtonBorder.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                CopyButtonBorder.Visibility = Visibility.Visible;
-            }
+            CopyButtonBorder.Visibility = !string.IsNullOrEmpty(sampleCode.SelectedText) ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 

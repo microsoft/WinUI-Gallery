@@ -164,10 +164,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         {
             var suggestions = SearchControls(sender.Text);
 
-            if (suggestions.Count > 0)
-                sender.ItemsSource = suggestions;
-            else
-                sender.ItemsSource = new string[] { "No results found" };
+            sender.ItemsSource = suggestions.Count > 0 ? suggestions : (new string[] { "No results found" });
         }
     }
 

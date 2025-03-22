@@ -56,13 +56,6 @@ public sealed partial class TileGallery : UserControl
 
     private void UpdateScrollButtonsVisibility()
     {
-        if (scroller.ScrollableWidth > 0)
-        {
-            ScrollForwardBtn.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            ScrollForwardBtn.Visibility = Visibility.Collapsed;
-        }
+        ScrollForwardBtn.Visibility = scroller.ScrollableWidth > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 }
