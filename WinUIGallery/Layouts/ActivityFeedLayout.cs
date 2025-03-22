@@ -92,7 +92,7 @@ class ActivityFeedLayout : VirtualizingLayout
     protected override void InitializeForContextCore(VirtualizingLayoutContext context)
     {
         base.InitializeForContextCore(context);
-        if (!(context.LayoutState is ActivityFeedLayoutState))
+        if (context.LayoutState is not ActivityFeedLayoutState)
         {
             // Store any state we might need since (in theory) the layout could be in use by multiple
             // elements simultaneously
