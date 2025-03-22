@@ -27,12 +27,8 @@ public sealed partial class DetailedInfoPage : Page
         DetailedObject = e.Parameter as CustomDataObject;
 
         ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
-        if (imageAnimation != null)
-        {
-            // Connected animation + coordinated animation
-            imageAnimation.TryStart(detailedImage, new UIElement[] { coordinatedPanel });
-
-        }
+        // Connected animation + coordinated animation
+        imageAnimation?.TryStart(detailedImage, new UIElement[] { coordinatedPanel });
     }
 
     // Create connected animation back to collection page.

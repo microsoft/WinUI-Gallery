@@ -208,18 +208,12 @@ public sealed partial class ControlExample : UserControl
     private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
-        }
+        ctrl?.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
     }
     private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
-        }
+        ctrl?.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
     }
 
     private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args) => HandlePresenterVisibility();

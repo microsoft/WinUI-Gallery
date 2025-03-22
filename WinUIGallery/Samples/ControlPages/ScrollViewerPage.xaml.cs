@@ -40,10 +40,7 @@ public sealed partial class ScrollViewerPage : Page
 
     private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
-        if (ScrollViewerControl != null)
-        {
-            ScrollViewerControl.ChangeView(null, null, (float)e.NewValue);
-        }
+        ScrollViewerControl?.ChangeView(null, null, (float)e.NewValue);
     }
 
     private void hsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

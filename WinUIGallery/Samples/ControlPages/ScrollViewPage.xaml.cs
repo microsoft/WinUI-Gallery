@@ -65,10 +65,7 @@ public sealed partial class ScrollViewPage : Page
 
     private void NbZoomFactor_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs e)
     {
-        if (scrollView1 != null)
-        {
-            scrollView1.ZoomTo((float)e.NewValue, null);
-        }
+        scrollView1?.ZoomTo((float)e.NewValue, null);
     }
 
     private void CmbHorizontalScrollMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -164,10 +161,7 @@ public sealed partial class ScrollViewPage : Page
     // Example3
     private void BtnScrollWithAnimation_Click(object sender, RoutedEventArgs e)
     {
-        if (scrollView3 != null)
-        {
-            scrollView3.ScrollTo(scrollView3.HorizontalOffset, GetTargetVerticalOffset(), new ScrollingScrollOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
-        }
+        scrollView3?.ScrollTo(scrollView3.HorizontalOffset, GetTargetVerticalOffset(), new ScrollingScrollOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
     }
 
     private void ScrollView_ScrollAnimationStarting(ScrollView sender, ScrollingScrollAnimationStartingEventArgs e)

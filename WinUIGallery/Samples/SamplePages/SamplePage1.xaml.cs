@@ -27,9 +27,6 @@ public sealed partial class SamplePage1 : Page
         base.OnNavigatedTo(e);
 
         var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackwardConnectedAnimation");
-        if (anim != null)
-        {
-            anim.TryStart(SourceElement);
-        }
+        anim?.TryStart(SourceElement);
     }
 }

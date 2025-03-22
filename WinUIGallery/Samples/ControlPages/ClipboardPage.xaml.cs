@@ -32,14 +32,11 @@ public sealed partial class ClipboardPage : Page
         Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
         // Automatically hide the confirmation text after 2 seconds
-        if (dispatcherQueue != null)
-        {
-            dispatcherQueue.TryEnqueue(async () =>
+        dispatcherQueue?.TryEnqueue(async () =>
             {
                 await Task.Delay(2000);
                 VisualStateManager.GoToState(this, "ConfirmationClipboardCollapsed", false);
             });
-        }
 
     }
 
