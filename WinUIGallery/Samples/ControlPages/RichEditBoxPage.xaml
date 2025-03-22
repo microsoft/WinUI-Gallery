@@ -16,8 +16,8 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:local="using:WinUIGallery.ControlPages"
-      mc:Ignorable="d">
+    xmlns:helper="using:WinUIGallery.Helpers"
+    mc:Ignorable="d">
 
     <StackPanel>
 
@@ -285,7 +285,7 @@
                                                      Orientation="Vertical" />
                                     </ItemsRepeater.Layout>
                                     <ItemsRepeater.ItemTemplate>
-                                        <DataTemplate x:DataType="local:MathSymbol">
+                                        <DataTemplate x:DataType="helper:MathSymbol">
                                             <Grid x:Name="SymbolDataTemplate"
                                                   Padding="12"
                                                   Loading="SymbolDataTemplate_Loading">
@@ -299,14 +299,15 @@
                                                         Width="48"
                                                         VerticalAlignment="Center"
                                                         Click="InsertSymbolBtn_Click"
-                                                        Tag="{x:Bind Command}">
+                                                        Tag="{x:Bind Command}"
+                                                        IsTabStop="False">
                                                     <TextBlock Grid.Column="0"
                                                                Text="{x:Bind Value}"
                                                                TextWrapping="Wrap"
                                                                FontFamily="Cambria"
                                                                FontWeight="SemiBold"/>
                                                     <ToolTipService.ToolTip>
-                                                        Insert Symbol
+                                                        <x:String>Insert Symbol</x:String>
                                                     </ToolTipService.ToolTip>
                                                 </Button>
                                                 <TextBlock Grid.Column="1"
