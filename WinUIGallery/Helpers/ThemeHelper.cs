@@ -29,7 +29,7 @@ public static class ThemeHelper
                 }
             }
 
-            return EnumHelper.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
+            return EnumHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
         }
     }
 

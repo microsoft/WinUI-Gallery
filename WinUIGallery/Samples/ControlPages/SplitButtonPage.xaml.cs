@@ -17,7 +17,7 @@ public sealed partial class SplitButtonPage : Page
         this.InitializeComponent();
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-        myRichEditBox.Document.Selection.SetText(Microsoft.UI.Text.TextSetOptions.None,
+        myRichEditBox.Document.Selection.SetText(TextSetOptions.None,
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
             "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
     }
@@ -29,7 +29,7 @@ public sealed partial class SplitButtonPage : Page
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
         CurrentColor.Background = new SolidColorBrush(color);
 
-        myRichEditBox.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
+        myRichEditBox.Focus(FocusState.Keyboard);
         currentColor = color;
 
         // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350

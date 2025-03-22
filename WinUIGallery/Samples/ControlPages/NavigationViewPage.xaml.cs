@@ -50,10 +50,10 @@ public sealed partial class NavigationViewPage : Page
     {
         if (toggleOn)
         {
-            return Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+            return NavigationViewPaneDisplayMode.Left;
         } else
         {
-            return Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+            return NavigationViewPaneDisplayMode.Top;
         }
     }
 
@@ -212,11 +212,11 @@ public sealed partial class NavigationViewPage : Page
     {
         if ((sender as CheckBox).IsChecked == true)
         {
-            nvSample.IsBackButtonVisible = Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible;
+            nvSample.IsBackButtonVisible = NavigationViewBackButtonVisible.Visible;
         }
         else
         {
-            nvSample.IsBackButtonVisible = Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed;
+            nvSample.IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
         }
     }
 
@@ -277,18 +277,18 @@ public sealed partial class NavigationViewPage : Page
         {
             if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
             {
-                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 nvSample.IsPaneOpen = true;
                 FooterStackPanel.Orientation = Orientation.Vertical;
             }
             else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
             {
-                nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 nvSample8.IsPaneOpen = true;
             }
             else if ((sender as RadioButton).Name == "nvSample9Left" && nvSample9 != null)
             {
-                nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 nvSample9.IsPaneOpen = true;
             }
         }
@@ -301,18 +301,18 @@ public sealed partial class NavigationViewPage : Page
         {
             if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
             {
-                nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                 nvSample.IsPaneOpen = false;
                 FooterStackPanel.Orientation = Orientation.Horizontal;
             }
             else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
             {
-                nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                 nvSample8.IsPaneOpen = false;
             }
             else if ((sender as RadioButton).Name == "nvSample9Top" && nvSample9 != null)
             {
-                nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                 nvSample9.IsPaneOpen = false;
             }
         }
@@ -324,7 +324,7 @@ public sealed partial class NavigationViewPage : Page
         {
             if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
             {
-                nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                 nvSample8.IsPaneOpen = false;
             }
         }
@@ -334,11 +334,11 @@ public sealed partial class NavigationViewPage : Page
     {
         if ((sender as CheckBox).IsChecked == true)
         {
-            nvSample.SelectionFollowsFocus = Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled;
+            nvSample.SelectionFollowsFocus = NavigationViewSelectionFollowsFocus.Enabled;
         }
         else
         {
-            nvSample.SelectionFollowsFocus = Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled;
+            nvSample.SelectionFollowsFocus = NavigationViewSelectionFollowsFocus.Disabled;
         }
     }
 

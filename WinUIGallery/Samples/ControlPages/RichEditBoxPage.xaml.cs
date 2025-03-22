@@ -28,7 +28,7 @@ public sealed partial class RichEditBoxPage : Page
 {
     [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
     public static extern IntPtr GetActiveWindow();
-    private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
+    private Windows.UI.Color currentColor = Colors.Green;
 
     public RichEditBoxPage()
     {
@@ -80,7 +80,7 @@ public sealed partial class RichEditBoxPage : Page
         if (file != null)
         {
             using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
+                await file.OpenAsync(FileAccessMode.Read))
             {
                 // Load the file into the Document property of the RichEditBox.
                 editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
@@ -116,7 +116,7 @@ public sealed partial class RichEditBoxPage : Page
             CachedFileManager.DeferUpdates(file);
             // write to file
             using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                await file.OpenAsync(FileAccessMode.ReadWrite))
             {
                 editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
             }
@@ -153,7 +153,7 @@ public sealed partial class RichEditBoxPage : Page
         editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
         fontColorButton.Flyout.Hide();
-        editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
+        editor.Focus(FocusState.Keyboard);
         currentColor = color;
     }
 
@@ -161,8 +161,8 @@ public sealed partial class RichEditBoxPage : Page
     {
         FindBoxRemoveHighlights();
 
-        Windows.UI.Color highlightBackgroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightColor"];
-        Windows.UI.Color highlightForegroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightTextColor"];
+        Windows.UI.Color highlightBackgroundColor = (Windows.UI.Color)Application.Current.Resources["SystemColorHighlightColor"];
+        Windows.UI.Color highlightForegroundColor = (Windows.UI.Color)Application.Current.Resources["SystemColorHighlightTextColor"];
 
         string textToFind = findBox.Text;
         if (textToFind != null)
@@ -192,7 +192,7 @@ public sealed partial class RichEditBoxPage : Page
         
         // reset colors to correct defaults for Focused state
         ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
-        SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
+        SolidColorBrush background = (SolidColorBrush)Application.Current.Resources["TextControlBackgroundFocused"];
 
         if (background != null)
         {

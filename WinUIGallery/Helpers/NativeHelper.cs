@@ -28,10 +28,10 @@ internal class NativeHelper
         {
             int bufferSize = 0;
             byte byteBuffer = 0;
-            uint lastError = NativeHelper.GetCurrentPackageId(ref bufferSize, out byteBuffer);
+            uint lastError = GetCurrentPackageId(ref bufferSize, out byteBuffer);
             bool isPackaged = true;
 
-            if (lastError == NativeHelper.APPMODEL_ERROR_NO_PACKAGE)
+            if (lastError == APPMODEL_ERROR_NO_PACKAGE)
             {
                 isPackaged = false;
             }

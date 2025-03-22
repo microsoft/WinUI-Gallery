@@ -14,10 +14,10 @@ public sealed partial class ColorPickerPage : Page
         switch(ColorSpectrumShapeRadioButtons.SelectedItem)
         {
             case "Box":
-                colorPicker.ColorSpectrumShape = Microsoft.UI.Xaml.Controls.ColorSpectrumShape.Box;
+                colorPicker.ColorSpectrumShape = ColorSpectrumShape.Box;
                 break;
             default:
-                colorPicker.ColorSpectrumShape = Microsoft.UI.Xaml.Controls.ColorSpectrumShape.Ring;
+                colorPicker.ColorSpectrumShape = ColorSpectrumShape.Ring;
                 break;
         }
     }

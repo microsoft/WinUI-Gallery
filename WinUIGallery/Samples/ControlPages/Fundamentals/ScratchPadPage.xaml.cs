@@ -226,10 +226,10 @@ public sealed partial class ScratchPadPage : Page
         m_lastChangeFromTyping = true;
         switch (e.Key)
         {
-            case Windows.System.VirtualKey.Tab:
+            case VirtualKey.Tab:
                 if (textbox.TextDocument.Selection.Length > 1)
                 {
-                    var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(Windows.System.VirtualKey.Shift) &
+                    var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) &
                         (int)Windows.UI.Core.CoreVirtualKeyStates.Down) == (int)Windows.UI.Core.CoreVirtualKeyStates.Down;
                     string text;
                     textbox.TextDocument.GetText(TextGetOptions.None, out text);

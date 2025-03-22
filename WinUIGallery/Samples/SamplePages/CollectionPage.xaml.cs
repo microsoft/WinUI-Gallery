@@ -19,7 +19,7 @@ public sealed partial class CollectionPage : Page
         // Ensure that the MainPage is only created once, and cached during navigation.
         this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
-        collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+        collection.ItemsSource = CustomDataObject.GetDataObjects();
     }
 
     private async void collection_Loaded(object sender, RoutedEventArgs e)

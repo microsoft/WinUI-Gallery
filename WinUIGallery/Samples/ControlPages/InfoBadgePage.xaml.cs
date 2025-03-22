@@ -26,17 +26,17 @@ public sealed partial class InfoBadgePage : Page
         switch (paneDisplayMode)
         {
             case "LeftExpanded":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 nvSample1.IsPaneOpen = true;
                 break;
 
             case "LeftCompact":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                 nvSample1.IsPaneOpen = false;
                 break;
 
             case "Top":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                 nvSample1.IsPaneOpen = true;
                 break;
         }

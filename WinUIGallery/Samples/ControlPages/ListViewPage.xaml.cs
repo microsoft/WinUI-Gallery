@@ -64,7 +64,7 @@ public sealed partial class ListViewPage : ItemsPageBase
         contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
         DragDropListView2.ItemsSource = contacts2;
 
-        Control4.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+        Control4.ItemsSource = CustomDataObject.GetDataObjects();
         ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
 
         // Initialize list of contacts to be filtered

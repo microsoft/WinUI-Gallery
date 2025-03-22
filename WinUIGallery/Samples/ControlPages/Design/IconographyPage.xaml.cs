@@ -101,9 +101,9 @@ public sealed partial class IconographyPage : Page
                     return;
                 }
 
-                var fitsFilter = filter.All(entry => item.Code.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                        || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                        || item.Tags.Any(tag => string.IsNullOrEmpty(tag) is false && tag.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)));
+                var fitsFilter = filter.All(entry => item.Code.Contains(entry, StringComparison.CurrentCultureIgnoreCase)
+                        || item.Name.Contains(entry, StringComparison.CurrentCultureIgnoreCase)
+                        || item.Tags.Any(tag => string.IsNullOrEmpty(tag) is false && tag.Contains(entry, StringComparison.CurrentCultureIgnoreCase)));
 
                 if (fitsFilter)
                 {
