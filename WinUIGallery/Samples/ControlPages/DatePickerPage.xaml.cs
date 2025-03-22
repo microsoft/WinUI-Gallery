@@ -17,7 +17,7 @@ public sealed partial class DatePickerPage : Page
 {
     public DatePickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

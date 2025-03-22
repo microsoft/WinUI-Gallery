@@ -19,6 +19,6 @@ public sealed partial class PivotPage : Page
 {
     public PivotPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

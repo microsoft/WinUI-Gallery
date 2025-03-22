@@ -19,7 +19,7 @@ public sealed partial class MediaPlayerElementPage : Page
 {
     public MediaPlayerElementPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

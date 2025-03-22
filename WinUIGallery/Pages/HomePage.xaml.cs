@@ -19,7 +19,7 @@ public sealed partial class HomePage : ItemsPageBase
 {
     public HomePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public string WinAppSdkDetails => VersionHelper.WinAppSdkDetails;
@@ -36,7 +36,7 @@ public sealed partial class HomePage : ItemsPageBase
 
     private ObservableCollection<GroupInfoList> FormatData()
     {
-        var query = from item in this.Items
+        var query = from item in Items
                     group item by item.BadgeString into g
                     orderby g.Key
                     select new GroupInfoList(g) { Key = g.Key };

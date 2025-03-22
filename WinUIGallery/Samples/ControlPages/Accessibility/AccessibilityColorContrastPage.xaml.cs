@@ -20,7 +20,7 @@ public sealed partial class AccessibilityColorContrastPage : Page
 {
     public AccessibilityColorContrastPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void RecalculateContrastRatio()

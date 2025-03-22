@@ -11,7 +11,7 @@ public sealed partial class CommandBarFlyoutPage : Page
 {
     public CommandBarFlyoutPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

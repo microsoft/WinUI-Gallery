@@ -12,7 +12,7 @@ public sealed partial class SampleWindow5 : Window
 
     public SampleWindow5()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
 
         // Set the window to Full-Screen mode
@@ -28,6 +28,6 @@ public sealed partial class SampleWindow5 : Window
 
     private void Close_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 }

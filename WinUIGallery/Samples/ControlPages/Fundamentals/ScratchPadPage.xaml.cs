@@ -15,7 +15,7 @@ public sealed partial class ScratchPadPage : Page
 {
     public ScratchPadPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         var xamlStr = ReadScratchPadXAMLinLocalSettings();
 
@@ -100,7 +100,7 @@ public sealed partial class ScratchPadPage : Page
     private async void ResetToDefaultClick(object sender, RoutedEventArgs e)
     {
         ContentDialog dialog = new ContentDialog();
-        dialog.XamlRoot = this.XamlRoot;
+        dialog.XamlRoot = XamlRoot;
         dialog.Title = "Are you sure you want to reset?";
         dialog.Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?";
         dialog.PrimaryButtonText = "Reset";

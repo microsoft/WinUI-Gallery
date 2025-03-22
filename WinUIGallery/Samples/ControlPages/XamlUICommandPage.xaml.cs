@@ -13,7 +13,7 @@ public sealed partial class XamlUICommandPage : Page
 {
     public XamlUICommandPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void CustomXamlUICommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)

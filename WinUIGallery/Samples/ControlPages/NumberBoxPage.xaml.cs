@@ -17,7 +17,7 @@ public sealed partial class NumberBoxPage : Page
 {
     public NumberBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         SetNumberBoxNumberFormatter();
     }
 

@@ -32,7 +32,7 @@ public sealed partial class ListBoxPage : Page
     }
     public ListBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -28,6 +28,6 @@ public sealed partial class TimePickerPage : Page
 {
     public TimePickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

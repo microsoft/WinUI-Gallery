@@ -61,6 +61,6 @@ public sealed partial class HeaderTile : UserControl
 
     public HeaderTile()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

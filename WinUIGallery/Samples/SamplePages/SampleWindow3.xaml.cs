@@ -13,7 +13,7 @@ public sealed partial class SampleWindow3 : Window
 
     public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
 
@@ -51,6 +51,6 @@ public sealed partial class SampleWindow3 : Window
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 }

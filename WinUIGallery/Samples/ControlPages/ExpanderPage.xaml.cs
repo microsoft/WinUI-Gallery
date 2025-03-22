@@ -6,7 +6,7 @@ public sealed partial class ExpanderPage : Page
 {
     public ExpanderPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ExpandDirectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

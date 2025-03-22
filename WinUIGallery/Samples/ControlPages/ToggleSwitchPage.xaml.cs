@@ -28,6 +28,6 @@ public sealed partial class ToggleSwitchPage : Page
 {
     public ToggleSwitchPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

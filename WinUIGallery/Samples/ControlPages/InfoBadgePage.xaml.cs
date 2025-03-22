@@ -8,7 +8,7 @@ public sealed partial class InfoBadgePage : Page
 {
     public InfoBadgePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
     public double InfoBadgeOpacity
     {

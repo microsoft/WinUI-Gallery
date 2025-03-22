@@ -13,7 +13,7 @@ public sealed partial class ModalWindow : Window
 
     public ModalWindow()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.Resize(new Windows.Graphics.SizeInt32(400,300));
 
@@ -79,11 +79,11 @@ public sealed partial class ModalWindow : Window
 
     private void OKButton_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 }

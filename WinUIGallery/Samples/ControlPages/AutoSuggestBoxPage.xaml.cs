@@ -114,7 +114,7 @@ public sealed partial class AutoSuggestBoxPage : Page
 
     public AutoSuggestBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

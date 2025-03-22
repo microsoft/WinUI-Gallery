@@ -20,7 +20,7 @@ public sealed partial class ImagePage : Page
 {
     public ImagePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ImageStretch_Checked(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@ public sealed partial class ProgressBarPage : Page
 {
     public ProgressBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ProgressValue_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)

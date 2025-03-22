@@ -8,7 +8,7 @@ public sealed partial class InfoBarPage : Page
 {
     public InfoBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

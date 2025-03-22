@@ -18,7 +18,7 @@ public sealed partial class RadioButtonPage : Page
 {
     public RadioButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void RadioButton_Checked(object sender, RoutedEventArgs e)

@@ -15,6 +15,6 @@ public sealed partial class LinePage : Page
 {
     public LinePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

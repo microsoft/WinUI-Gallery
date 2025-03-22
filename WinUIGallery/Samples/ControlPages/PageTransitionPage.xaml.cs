@@ -22,7 +22,7 @@ public sealed partial class PageTransitionPage : Page
 
     public PageTransitionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         ContentFrame.Navigate(typeof(SamplePages.SamplePage1));
     }

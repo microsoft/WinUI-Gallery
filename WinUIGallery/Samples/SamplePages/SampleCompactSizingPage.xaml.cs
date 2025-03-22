@@ -25,7 +25,7 @@ public sealed partial class SampleCompactSizingPage : Page
 
     public SampleCompactSizingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public void CopyState(SampleStandardSizingPage page)

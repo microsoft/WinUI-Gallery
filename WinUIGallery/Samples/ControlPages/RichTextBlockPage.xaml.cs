@@ -30,7 +30,7 @@ public sealed partial class RichTextBlockPage : Page
 {
     public RichTextBlockPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
 

@@ -11,7 +11,7 @@ public sealed partial class TypographyControl : UserControl
 {
     public TypographyControl()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register(nameof(Example), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));

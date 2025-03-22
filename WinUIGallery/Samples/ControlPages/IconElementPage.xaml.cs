@@ -20,7 +20,7 @@ public sealed partial class IconElementPage : Page
 {
     public IconElementPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void MonochromeButton_CheckedChanged(object sender, RoutedEventArgs e)

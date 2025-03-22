@@ -28,6 +28,6 @@ public sealed partial class GridPage : Page
 {
     public GridPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

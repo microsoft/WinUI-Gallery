@@ -19,7 +19,7 @@ public sealed partial class SoundPage : Page
 {
     public SoundPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
             soundToggle.IsOn = true;

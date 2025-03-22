@@ -14,7 +14,7 @@ public sealed partial class SplitButtonPage : Page
 
     public SplitButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
         myRichEditBox.Document.Selection.SetText(TextSetOptions.None,

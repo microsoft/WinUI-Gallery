@@ -12,12 +12,12 @@ public sealed partial class SampleWindow1 : Window
 
     public SampleWindow1()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y)
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Retrieve the AppWindow instance for the current window
         appWindow = GetAppWindowForCurrentWindow();
@@ -60,6 +60,6 @@ public sealed partial class SampleWindow1 : Window
 
     private void Close_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 }

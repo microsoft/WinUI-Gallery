@@ -64,7 +64,7 @@ namespace WinUIGallery.Helpers;
 public class NavigationHelper : DependencyObject
 {
     private Page Page { get; set; }
-    private Frame Frame { get { return this.Page.Frame; } }
+    private Frame Frame { get { return Page.Frame; } }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationHelper"/> class.
@@ -73,7 +73,7 @@ public class NavigationHelper : DependencyObject
     /// This reference allows for frame manipulation.</param>
     public NavigationHelper(Page page)
     {
-        this.Page = page;
+        Page = page;
     }
 
     #region Process lifetime management
@@ -103,15 +103,15 @@ public class NavigationHelper : DependencyObject
     /// property provides the group to be displayed.</param>
     public void OnNavigatedTo(NavigationEventArgs e)
     {
-        var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
-        this._pageKey = "Page-" + this.Frame.BackStackDepth;
+        var frameState = SuspensionManager.SessionStateForFrame(Frame);
+        _pageKey = "Page-" + Frame.BackStackDepth;
 
         if (e.NavigationMode == NavigationMode.New)
         {
             // Clear existing state for forward navigation when adding a new page to the
             // navigation stack
-            var nextPageKey = this._pageKey;
-            int nextPageIndex = this.Frame.BackStackDepth;
+            var nextPageKey = _pageKey;
+            int nextPageIndex = Frame.BackStackDepth;
             while (frameState.Remove(nextPageKey))
             {
                 nextPageIndex++;
@@ -119,14 +119,14 @@ public class NavigationHelper : DependencyObject
             }
 
             // Pass the navigation parameter to the new page
-            this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
+            LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
         }
         else
         {
             // Pass the navigation parameter and preserved page state to the page, using
             // the same strategy for loading suspended state and recreating pages discarded
             // from cache
-            this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>)frameState[this._pageKey]));
+            LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>)frameState[_pageKey]));
         }
     }
 
@@ -139,9 +139,9 @@ public class NavigationHelper : DependencyObject
     /// property provides the group to be displayed.</param>
     public void OnNavigatedFrom(NavigationEventArgs e)
     {
-        var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
+        var frameState = SuspensionManager.SessionStateForFrame(Frame);
         var pageState = new Dictionary<string, object>();
-        this.SaveState?.Invoke(this, new SaveStateEventArgs(pageState));
+        SaveState?.Invoke(this, new SaveStateEventArgs(pageState));
         frameState[_pageKey] = pageState;
     }
 
@@ -186,13 +186,13 @@ public class RootFrameNavigationHelper
             return;
         }
 
-        this.Frame = rootFrame;
-        this.Frame.Navigated += (s, e) =>
+        Frame = rootFrame;
+        Frame.Navigated += (s, e) =>
         {
             // Update the Back button whenever a navigation occurs.
             UpdateBackButton();
         };
-        this.CurrentNavView = currentNavView;
+        CurrentNavView = currentNavView;
 
         CurrentNavView.BackRequested += NavView_BackRequested;
         CurrentNavView.PointerPressed += CurrentNavView_PointerPressed;
@@ -272,14 +272,14 @@ public class RootFrameNavigationHelper
     {
         bool navigated = false;
         // Don't go back if the nav pane is overlayed.
-        if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
+        if (CurrentNavView.IsPaneOpen && (CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
         {
             return navigated;
         }
 
-        if (this.Frame.CanGoBack)
+        if (Frame.CanGoBack)
         {
-            this.Frame.GoBack();
+            Frame.GoBack();
             navigated = true;
         }
 
@@ -289,9 +289,9 @@ public class RootFrameNavigationHelper
     private bool TryGoForward()
     {
         bool navigated = false;
-        if (this.Frame.CanGoForward)
+        if (Frame.CanGoForward)
         {
-            this.Frame.GoForward();
+            Frame.GoForward();
             navigated = true;
         }
         return navigated;
@@ -299,7 +299,7 @@ public class RootFrameNavigationHelper
 
     private void UpdateBackButton()
     {
-        this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
+        CurrentNavView.IsBackEnabled = Frame.CanGoBack ? true : false;
     }
 }
 
@@ -342,8 +342,8 @@ public class LoadStateEventArgs : EventArgs
     public LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState)
         : base()
     {
-        this.NavigationParameter = navigationParameter;
-        this.PageState = pageState;
+        NavigationParameter = navigationParameter;
+        PageState = pageState;
     }
 }
 /// <summary>
@@ -363,6 +363,6 @@ public class SaveStateEventArgs : EventArgs
     public SaveStateEventArgs(Dictionary<string, object> pageState)
         : base()
     {
-        this.PageState = pageState;
+        PageState = pageState;
     }
 }

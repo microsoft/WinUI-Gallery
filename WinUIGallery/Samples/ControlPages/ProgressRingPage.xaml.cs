@@ -18,7 +18,7 @@ public sealed partial class ProgressRingPage : Page
 {
     public ProgressRingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ProgressValue_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)

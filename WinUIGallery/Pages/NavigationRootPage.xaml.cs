@@ -71,7 +71,7 @@ public sealed partial class NavigationRootPage : Page
 
     public NavigationRootPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
         _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
@@ -79,7 +79,7 @@ public sealed partial class NavigationRootPage : Page
         SetDeviceFamily();
         AddNavigationMenuItems();
 
-        this.GotFocus += (object sender, RoutedEventArgs e) =>
+        GotFocus += (object sender, RoutedEventArgs e) =>
         {
             // helpful for debugging focus problems w/ keyboard & gamepad
             if (FocusManager.GetFocusedElement() is FrameworkElement focus)
@@ -98,7 +98,7 @@ public sealed partial class NavigationRootPage : Page
             window.Title = AppTitleText;
             window.ExtendsContentIntoTitleBar = true;
             window.Activated += Window_Activated;
-            window.SetTitleBar(this.AppTitleBar);
+            window.SetTitleBar(AppTitleBar);
 
             AppWindow appWindow = WindowHelper.GetAppWindow(window);
             appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
@@ -164,7 +164,7 @@ public sealed partial class NavigationRootPage : Page
 
     public void EnsureNavigationSelection(string id)
     {
-        foreach (object rawGroup in this.NavigationView.MenuItems)
+        foreach (object rawGroup in NavigationView.MenuItems)
         {
             if (rawGroup is NavigationViewItem group)
             {
@@ -209,7 +209,7 @@ public sealed partial class NavigationRootPage : Page
             var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.IconGlyph) };
 
             var groupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {group.Title} samples", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
-            groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+            groupMenuFlyoutItem.Click += OnMenuFlyoutItemClick;
             itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
 
             AutomationProperties.SetName(itemGroup, group.Title);
@@ -220,7 +220,7 @@ public sealed partial class NavigationRootPage : Page
                 var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
 
                 var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
-                itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                itemInGroupMenuFlyoutItem.Click += OnMenuFlyoutItemClick;
                 itemInGroup.ContextFlyout = new MenuFlyout() { Items = { itemInGroupMenuFlyoutItem } };
 
                 itemGroup.MenuItems.Add(itemInGroup);
@@ -280,7 +280,7 @@ public sealed partial class NavigationRootPage : Page
     private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
     {
         // Delay necessary to ensure NavigationView visual state can match navigation
-        Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
+        Task.Delay(500).ContinueWith(_ => NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
 
         var navigationView = sender as NavigationView;
         navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
@@ -576,9 +576,9 @@ public sealed partial class NavigationRootPage : Page
 
     private void GoBackInvokerButton_Click(object sender, RoutedEventArgs e)
     {
-        if (this.rootFrame.CanGoBack)
+        if (rootFrame.CanGoBack)
         {
-            this.rootFrame.GoBack();
+            rootFrame.GoBack();
         }
     }
 

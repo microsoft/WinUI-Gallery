@@ -34,9 +34,9 @@ public sealed partial class AnnotatedScrollBarPage : Page
 
     public AnnotatedScrollBarPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
-        this.Loaded += AnnotatedScrollBarPage_Loaded;
+        InitializeComponent();
+        DataContext = this;
+        Loaded += AnnotatedScrollBarPage_Loaded;
 
         PopulateColorCollection();
     }
@@ -78,35 +78,35 @@ public sealed partial class AnnotatedScrollBarPage : Page
 
         for (int colorInstance = 0; colorInstance < AzureCount; colorInstance++)
         {
-            this.ColorCollection.Add(solidColorBrush);
+            ColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Crimson);
 
         for (int colorInstance = 0; colorInstance < CrimsonCount; colorInstance++)
         {
-            this.ColorCollection.Add(solidColorBrush);
+            ColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Cyan);
 
         for (int colorInstance = 0; colorInstance < CyanCount; colorInstance++)
         {
-            this.ColorCollection.Add(solidColorBrush);
+            ColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Fuchsia);
 
         for (int colorInstance = 0; colorInstance < FuchsiaCount; colorInstance++)
         {
-            this.ColorCollection.Add(solidColorBrush);
+            ColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Gold);
 
         for (int colorInstance = 0; colorInstance < GoldCount; colorInstance++)
         {
-            this.ColorCollection.Add(solidColorBrush);
+            ColorCollection.Add(solidColorBrush);
         }
     }
 

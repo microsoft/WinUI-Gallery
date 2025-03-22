@@ -22,8 +22,8 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     public GridViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
+        InitializeComponent();
+        DataContext = this;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -53,7 +53,7 @@ public sealed partial class GridViewPage : ItemsPageBase
         if (tag != null)
         {
             string template = tag.ToString();
-            ContentGridView.ItemTemplate = (DataTemplate)this.Resources[template];
+            ContentGridView.ItemTemplate = (DataTemplate)Resources[template];
             itemTemplate.Value = template;
 
             if (template == "ImageTemplate")

@@ -30,7 +30,7 @@ public sealed partial class TitleBarPage : Page
 
     public TitleBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += (object sender, RoutedEventArgs e) =>
         {
             (sender as TitleBarPage).UpdateTitleBarColor();

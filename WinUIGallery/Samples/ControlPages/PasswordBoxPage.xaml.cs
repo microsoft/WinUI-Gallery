@@ -16,7 +16,7 @@ public sealed partial class PasswordBoxPage : Page
 {
     public PasswordBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

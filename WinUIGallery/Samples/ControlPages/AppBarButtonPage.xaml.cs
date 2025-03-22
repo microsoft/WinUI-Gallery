@@ -19,7 +19,7 @@ public sealed partial class AppBarButtonPage : Page
 {
     public AppBarButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void AppBarButton_Click(object sender, RoutedEventArgs e)

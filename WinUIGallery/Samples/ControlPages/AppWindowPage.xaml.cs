@@ -21,7 +21,7 @@ public sealed partial class AppWindowPage : Page
 {
     public AppWindowPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@ public sealed partial class BindingPage : Page
 
     public BindingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         ViewModel = new ExampleViewModel
         {

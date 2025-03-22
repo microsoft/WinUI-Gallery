@@ -17,6 +17,6 @@ public sealed partial class WebView2Page : Page
 {
     public WebView2Page()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

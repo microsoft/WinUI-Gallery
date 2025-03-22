@@ -40,8 +40,8 @@ public sealed partial class InlineColorPicker : UserControl
 
     public InlineColorPicker()
     {
-        this.InitializeComponent();
-        this.Loaded += InlineColorPicker_Loaded;
+        InitializeComponent();
+        Loaded += InlineColorPicker_Loaded;
     }
 
     private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e)

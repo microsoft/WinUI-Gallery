@@ -14,7 +14,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
     public TabViewWindowingSamplePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         Loaded += TabViewWindowingSamplePage_Loaded;
     }

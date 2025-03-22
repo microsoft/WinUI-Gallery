@@ -32,12 +32,12 @@ public sealed partial class SearchResultsPage : ItemsPageBase
     public IEnumerable<Filter> Filters
     {
         get { return _filters; }
-        set { this.SetProperty(ref _filters, value); }
+        set { SetProperty(ref _filters, value); }
     }
 
     public SearchResultsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -156,10 +156,10 @@ public sealed class Filter : INotifyPropertyChanged
 
     public Filter(string name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
     {
-        this.Name = name;
-        this.Count = count;
-        this.Active = active;
-        this.Items = controlInfoList;
+        Name = name;
+        Count = count;
+        Active = active;
+        Items = controlInfoList;
     }
 
     public override string ToString()
@@ -170,25 +170,25 @@ public sealed class Filter : INotifyPropertyChanged
     public List<ControlInfoDataItem> Items
     {
         get { return _items; }
-        set { this.SetProperty(ref _items, value); }
+        set { SetProperty(ref _items, value); }
     }
 
     public string Name
     {
         get { return _name; }
-        set { if (this.SetProperty(ref _name, value)) this.NotifyPropertyChanged(nameof(Description)); }
+        set { if (SetProperty(ref _name, value)) NotifyPropertyChanged(nameof(Description)); }
     }
 
     public int Count
     {
         get { return _count; }
-        set { if (this.SetProperty(ref _count, value)) this.NotifyPropertyChanged(nameof(Description)); }
+        set { if (SetProperty(ref _count, value)) NotifyPropertyChanged(nameof(Description)); }
     }
 
     public bool? Active
     {
         get { return _active; }
-        set { this.SetProperty(ref _active, value); }
+        set { SetProperty(ref _active, value); }
     }
 
     public string Description
@@ -218,7 +218,7 @@ public sealed class Filter : INotifyPropertyChanged
         if (Equals(storage, value)) return false;
 
         storage = value;
-        this.NotifyPropertyChanged(propertyName);
+        NotifyPropertyChanged(propertyName);
         return true;
     }
 
@@ -230,6 +230,6 @@ public sealed class Filter : INotifyPropertyChanged
     /// that support <see cref="CallerMemberNameAttribute"/>.</param>
     private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

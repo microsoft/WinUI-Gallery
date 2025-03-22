@@ -18,7 +18,7 @@ public sealed partial class ScrollViewerPage : Page
 {
     public ScrollViewerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         ScrollViewerControl.ZoomToFactor(4.0f);
     }
 

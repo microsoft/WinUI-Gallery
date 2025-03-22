@@ -18,7 +18,7 @@ public sealed partial class MenuFlyoutPage : Page
 {
     public MenuFlyoutPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)

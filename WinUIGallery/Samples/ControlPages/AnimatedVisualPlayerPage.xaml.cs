@@ -7,7 +7,7 @@ public sealed partial class AnimatedVisualPlayerPage : Page
 {
     public AnimatedVisualPlayerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void PlayButton_Click(object sender, RoutedEventArgs e)

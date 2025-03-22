@@ -6,6 +6,6 @@ public sealed partial class XamlStylesPage : Page
 {
     public XamlStylesPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

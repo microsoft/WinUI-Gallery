@@ -26,9 +26,9 @@ public sealed partial class ScrollViewPage : Page
 
     public ScrollViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
-        this.Loaded += ScrollViewPage_Loaded;
+        Loaded += ScrollViewPage_Loaded;
     }
 
     // Example1
@@ -50,7 +50,7 @@ public sealed partial class ScrollViewPage : Page
         };
         nbZoomFactor.NumberFormatter = formatter;
 
-        this.Loaded -= ScrollViewPage_Loaded;
+        Loaded -= ScrollViewPage_Loaded;
     }
 
     private void CmbZoomMode_SelectionChanged(object sender, SelectionChangedEventArgs e)

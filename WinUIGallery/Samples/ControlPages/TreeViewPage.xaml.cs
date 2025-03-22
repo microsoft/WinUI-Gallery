@@ -10,8 +10,8 @@ public sealed partial class TreeViewPage : Page
 
     public TreeViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
+        InitializeComponent();
+        DataContext = this;
         DataSource = GetData();
 
         InitializeSampleTreeView(sampleTreeView);

@@ -11,7 +11,7 @@ public sealed partial class ConnectedAnimationPage : Page
 {
     public ConnectedAnimationPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // For 1st sample
         CollectionContentFrame.Navigate(typeof(CollectionPage));
@@ -25,7 +25,7 @@ public sealed partial class ConnectedAnimationPage : Page
 
     private ConnectedAnimationConfiguration GetConfiguration()
     {
-        if(this.ConfigurationPanel == null)
+        if(ConfigurationPanel == null)
         {
             return null;
         }

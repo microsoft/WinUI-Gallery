@@ -17,7 +17,7 @@ public sealed partial class TypographyPage : Page
 {
     public TypographyPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ShowTypographyButtonClick1(object sender, RoutedEventArgs e)

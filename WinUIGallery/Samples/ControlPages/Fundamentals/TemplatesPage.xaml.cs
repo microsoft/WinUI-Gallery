@@ -8,7 +8,7 @@ public sealed partial class TemplatesPage : Page
 {
     public TemplatesPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void LayoutSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)

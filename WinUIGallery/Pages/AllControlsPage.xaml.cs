@@ -21,7 +21,7 @@ public sealed partial class AllControlsPage : ItemsPageBase
 {
     public AllControlsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

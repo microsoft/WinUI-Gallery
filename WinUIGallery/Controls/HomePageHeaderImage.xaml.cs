@@ -29,7 +29,7 @@ public sealed partial class HomePageHeaderImage : UserControl
     private const string GradientSizeKey = "GradientSize";
     public HomePageHeaderImage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)

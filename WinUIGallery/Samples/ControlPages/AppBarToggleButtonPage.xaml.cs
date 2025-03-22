@@ -18,7 +18,7 @@ public sealed partial class AppBarToggleButtonPage : Page
 {
     public AppBarToggleButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void AppBarButton_Click(object sender, RoutedEventArgs e)

@@ -7,6 +7,6 @@ public sealed partial class CustomUserControlsPage : Page
 {
     public CustomUserControlsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

@@ -15,7 +15,7 @@ public sealed partial class XamlCompInteropPage : Page
 {
     public XamlCompInteropPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();

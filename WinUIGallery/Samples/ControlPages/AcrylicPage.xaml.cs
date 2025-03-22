@@ -13,7 +13,7 @@ public sealed partial class AcrylicPage : Page
 {
     public AcrylicPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += AcrylicPage_Loaded;
     }
 

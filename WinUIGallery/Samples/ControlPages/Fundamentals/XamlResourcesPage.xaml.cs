@@ -7,7 +7,7 @@ public sealed partial class XamlResourcesPage : Page
 {
     public XamlResourcesPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)

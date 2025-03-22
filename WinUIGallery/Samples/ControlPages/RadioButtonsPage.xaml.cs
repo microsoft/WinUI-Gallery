@@ -17,7 +17,7 @@ public sealed partial class RadioButtonsPage : Page
 {
     public RadioButtonsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void BackgroundColor_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -25,7 +25,7 @@ namespace WinUIGallery.ControlPages
     {
         public PopupPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         // Handles the Click event on the Button on the page and opens the Popup. 

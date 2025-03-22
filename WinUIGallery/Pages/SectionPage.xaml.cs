@@ -21,7 +21,7 @@ public sealed partial class SectionPage : ItemsPageBase
 {
     public SectionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)

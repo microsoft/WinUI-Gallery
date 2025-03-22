@@ -19,9 +19,9 @@ public sealed partial class MapControlPage : Page
 {
     public MapControlPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
-        this.Loaded += MapControlPage_Loaded;
+        Loaded += MapControlPage_Loaded;
     }
 
     private void MapControlPage_Loaded(object sender, RoutedEventArgs e)

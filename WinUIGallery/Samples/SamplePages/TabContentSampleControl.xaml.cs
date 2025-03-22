@@ -6,6 +6,6 @@ public sealed partial class TabContentSampleControl : UserControl
 {
     public TabContentSampleControl()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

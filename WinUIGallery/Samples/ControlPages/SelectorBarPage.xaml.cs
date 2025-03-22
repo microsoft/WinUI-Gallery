@@ -27,7 +27,7 @@ public sealed partial class SelectorBarPage : Page
 
     public SelectorBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         PopulateColorCollections();
     }
@@ -86,21 +86,21 @@ public sealed partial class SelectorBarPage : Page
 
         for (int colorInstance = 0; colorInstance < 5; colorInstance++)
         {
-            this.PinkColorCollection.Add(solidColorBrush);
+            PinkColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Plum);
 
         for (int colorInstance = 0; colorInstance < 7; colorInstance++)
         {
-            this.PlumColorCollection.Add(solidColorBrush);
+            PlumColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.PowderBlue);
 
         for (int colorInstance = 0; colorInstance < 4; colorInstance++)
         {
-            this.PowderBlueColorCollection.Add(solidColorBrush);
+            PowderBlueColorCollection.Add(solidColorBrush);
         }
     }
 }

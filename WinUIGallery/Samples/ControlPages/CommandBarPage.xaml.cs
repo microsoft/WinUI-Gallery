@@ -40,7 +40,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
     public CommandBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         AddKeyboardAccelerators();
     }
 

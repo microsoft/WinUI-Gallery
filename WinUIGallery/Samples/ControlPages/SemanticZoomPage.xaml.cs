@@ -22,11 +22,11 @@ public sealed partial class SemanticZoomPage : Page
 
     public SemanticZoomPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
     public IEnumerable<ControlInfoDataGroup> Groups
     {
-        get { return this._groups; }
+        get { return _groups; }
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

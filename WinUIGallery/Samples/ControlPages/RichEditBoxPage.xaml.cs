@@ -32,7 +32,7 @@ public sealed partial class RichEditBoxPage : Page
 
     public RichEditBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Menu_Opening(object sender, object e)

@@ -43,7 +43,7 @@ public sealed partial class PullToRefreshPage : Page
 
     public PullToRefreshPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
         {
@@ -111,14 +111,14 @@ public sealed partial class PullToRefreshPage : Page
                 items2.Add(c);
             lv2.ItemsSource = items2;
 
-            this.Loaded += PullToRefreshPage_Loaded;
+            Loaded += PullToRefreshPage_Loaded;
         }
     }
 
     private void PullToRefreshPage_Loaded(object sender, RoutedEventArgs e)
     {
         visualizerContentVisual = ElementCompositionPreview.GetElementVisual(rv2.Content);
-        this.Loaded -= PullToRefreshPage_Loaded;
+        Loaded -= PullToRefreshPage_Loaded;
     }
 
     private void Timer1_Tick(object sender, object e)
@@ -157,11 +157,11 @@ public sealed partial class PullToRefreshPage : Page
     {
         items1.Insert(0, "NewControl " + items1AddedCount++);
         timer1.Stop();
-        if (this.RefreshCompletionDeferral1 != null)
+        if (RefreshCompletionDeferral1 != null)
         {
-            this.RefreshCompletionDeferral1.Complete();
-            this.RefreshCompletionDeferral1.Dispose();
-            this.RefreshCompletionDeferral1 = null;
+            RefreshCompletionDeferral1.Complete();
+            RefreshCompletionDeferral1.Dispose();
+            RefreshCompletionDeferral1 = null;
         }
     }
 
@@ -169,11 +169,11 @@ public sealed partial class PullToRefreshPage : Page
     {
         items2.Insert(0, "New Friend " + items2AddedCount++);
         timer2.Stop();
-        if (this.RefreshCompletionDeferral2 != null)
+        if (RefreshCompletionDeferral2 != null)
         {
-            this.RefreshCompletionDeferral2.Complete();
-            this.RefreshCompletionDeferral2.Dispose();
-            this.RefreshCompletionDeferral2 = null;
+            RefreshCompletionDeferral2.Complete();
+            RefreshCompletionDeferral2.Dispose();
+            RefreshCompletionDeferral2 = null;
         }
     }
 
@@ -186,13 +186,13 @@ public sealed partial class PullToRefreshPage : Page
 
     private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
     {
-        this.RefreshCompletionDeferral1 = args.GetDeferral();
+        RefreshCompletionDeferral1 = args.GetDeferral();
         //Do some work to show new content!
         timer1.Start();
     }
     private void rc2_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
     {
-        this.RefreshCompletionDeferral2 = args.GetDeferral();
+        RefreshCompletionDeferral2 = args.GetDeferral();
         //Do some work to show new content!
         timer2.Start();
     }

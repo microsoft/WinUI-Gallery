@@ -9,6 +9,6 @@ public sealed partial class StrokeSection : Page
 {
     public StrokeSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

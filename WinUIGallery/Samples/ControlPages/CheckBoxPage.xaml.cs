@@ -17,7 +17,7 @@ public sealed partial class CheckBoxPage : Page
 {
     public CheckBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += CheckBoxPage_Loaded;
     }
 

@@ -19,6 +19,6 @@ public sealed partial class SampleSettingsPage : Page
 {
     public SampleSettingsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

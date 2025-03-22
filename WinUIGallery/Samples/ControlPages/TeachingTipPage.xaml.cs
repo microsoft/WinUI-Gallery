@@ -17,7 +17,7 @@ public sealed partial class TeachingTipPage : Page
 {
     public TeachingTipPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void TestButton1Click(object sender, RoutedEventArgs e)

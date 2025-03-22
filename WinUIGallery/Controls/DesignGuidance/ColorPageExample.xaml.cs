@@ -38,6 +38,6 @@ public sealed partial class ColorPageExample : UserControl
 
     public ColorPageExample()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

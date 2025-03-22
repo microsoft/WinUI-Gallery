@@ -19,6 +19,6 @@ public sealed partial class ContentDialogContent : Page
 {
     public ContentDialogContent()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

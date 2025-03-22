@@ -18,7 +18,7 @@ public sealed partial class PipsPagerPage : Page
     };
     public PipsPagerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

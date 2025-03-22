@@ -18,6 +18,6 @@ public sealed partial class AppBarSeparatorPage : Page
 { 
     public AppBarSeparatorPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

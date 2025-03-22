@@ -19,7 +19,7 @@ public sealed partial class AccessibilityKeyboardPage : Page
 {
     public AccessibilityKeyboardPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void MakeRedButton_Click(object sender, RoutedEventArgs e)

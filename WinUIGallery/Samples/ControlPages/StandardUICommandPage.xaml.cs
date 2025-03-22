@@ -26,7 +26,7 @@ public sealed partial class StandardUICommandPage : Page
 
     public StandardUICommandPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)

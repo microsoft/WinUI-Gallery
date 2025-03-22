@@ -13,7 +13,7 @@ public sealed partial class SampleWindow2 : Window
 
     public SampleWindow2()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
 
         // Center the window on the screen.

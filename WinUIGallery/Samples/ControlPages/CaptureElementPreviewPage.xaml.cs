@@ -27,7 +27,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 {
     public CaptureElementPreviewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         StartCaptureElement();
 
@@ -40,7 +40,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         captureContainer.Children.Add(expandToFillContainer);
         expandToFillContainer.Children.Add(sv);
 
-        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
+        Unloaded += CaptureElementPreviewPage_Unloaded;
     }
 
     private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         mediaCapture = new MediaCapture();
         var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
         {
-            SourceGroup = this.mediaFrameSourceGroup,
+            SourceGroup = mediaFrameSourceGroup,
             SharingMode = MediaCaptureSharingMode.SharedReadOnly,
             StreamingCaptureMode = StreamingCaptureMode.Video,
             MemoryPreference = MediaCaptureMemoryPreference.Cpu
@@ -77,7 +77,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
 
         // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-        var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+        var frameSource = mediaCapture.FrameSources[mediaFrameSourceGroup.SourceInfos[0].Id];
         captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
     }
 

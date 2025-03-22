@@ -16,7 +16,7 @@ public sealed partial class VariableSizedWrapGridPage : Page
 {
     public VariableSizedWrapGridPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OrientationGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)

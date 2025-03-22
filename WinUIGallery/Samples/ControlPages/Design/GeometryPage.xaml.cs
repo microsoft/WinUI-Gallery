@@ -19,7 +19,7 @@ public sealed partial class GeometryPage : Page
 {
     public GeometryPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ShowGeometryButtonClick1(object sender, RoutedEventArgs e)

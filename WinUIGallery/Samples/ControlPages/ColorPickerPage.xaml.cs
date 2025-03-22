@@ -6,7 +6,7 @@ public sealed partial class ColorPickerPage : Page
 {
     public ColorPickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ColorSpectrumShapeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)

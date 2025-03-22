@@ -12,7 +12,7 @@ public sealed class CopyButton : Button
 {
     public CopyButton()
     {
-        this.DefaultStyleKey = typeof(CopyButton);
+        DefaultStyleKey = typeof(CopyButton);
     }
 
     private void CopyButton_Click(object sender, RoutedEventArgs e)

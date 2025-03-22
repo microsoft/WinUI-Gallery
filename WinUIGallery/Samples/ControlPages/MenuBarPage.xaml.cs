@@ -19,7 +19,7 @@ public sealed partial class MenuBarPage : Page
 {
     public MenuBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OnElementClicked(object sender, RoutedEventArgs e)

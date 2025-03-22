@@ -28,6 +28,6 @@ public sealed partial class TextBlockPage : Page
 {
     public TextBlockPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

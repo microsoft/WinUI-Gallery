@@ -10,7 +10,7 @@ public sealed partial class TileGallery : UserControl
 {
     public TileGallery()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void scroller_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)

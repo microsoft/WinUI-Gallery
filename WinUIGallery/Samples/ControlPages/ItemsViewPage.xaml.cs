@@ -31,14 +31,14 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
     public ItemsViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
-        this.Loaded += ItemsViewPage_Loaded;
+        InitializeComponent();
+        DataContext = this;
+        Loaded += ItemsViewPage_Loaded;
     }
 
     private void ItemsViewPage_Loaded(object sender, RoutedEventArgs e)
     {
-        this.Loaded -= ItemsViewPage_Loaded;
+        Loaded -= ItemsViewPage_Loaded;
 
         if (SwappableLayoutsItemsView != null)
         {

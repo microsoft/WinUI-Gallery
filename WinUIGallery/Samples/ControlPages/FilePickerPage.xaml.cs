@@ -22,7 +22,7 @@ public sealed partial class FilePickerPage : Page
 
     public FilePickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private async void PickAFileButton_Click(object sender, RoutedEventArgs e)

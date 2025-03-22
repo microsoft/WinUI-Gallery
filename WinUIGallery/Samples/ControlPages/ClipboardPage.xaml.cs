@@ -15,7 +15,7 @@ public sealed partial class ClipboardPage : Page
 
     public ClipboardPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         richEditBox.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, "This text will be copied to the clipboard.");
 
     }

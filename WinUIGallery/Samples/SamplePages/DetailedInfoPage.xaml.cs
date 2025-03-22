@@ -11,7 +11,7 @@ public sealed partial class DetailedInfoPage : Page
     public CustomDataObject DetailedObject { get; set; }
     public DetailedInfoPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         GoBackButton.Loaded += GoBackButton_Loaded;
     }
 

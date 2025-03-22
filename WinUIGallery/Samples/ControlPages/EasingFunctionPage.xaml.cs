@@ -22,8 +22,8 @@ public class NamedEasingFunction
     public EasingFunctionBase EasingFunctionBase { get; private set; }
     public NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
     {
-        this.Name = name;
-        this.EasingFunctionBase = easingFunctionBase;
+        Name = name;
+        EasingFunctionBase = easingFunctionBase;
     }
 }
 
@@ -46,7 +46,7 @@ public sealed partial class EasingFunctionPage : Page
 
     public EasingFunctionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Button1_Click(object sender, RoutedEventArgs e)

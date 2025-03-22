@@ -28,6 +28,6 @@ public sealed partial class CanvasPage : Page
 {
     public CanvasPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

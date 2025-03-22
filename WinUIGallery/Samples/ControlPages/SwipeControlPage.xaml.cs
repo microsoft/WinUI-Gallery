@@ -24,7 +24,7 @@ public sealed partial class SwipeControlPage : Page
 
     public SwipeControlPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         var source = @"Swipe Item 1,Swipe Item 2,Swipe Item 3,Swipe Item 4".Split(',');
         foreach (var item in source)
             items.Add(item);

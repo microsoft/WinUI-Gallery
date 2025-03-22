@@ -48,7 +48,7 @@ public sealed partial class IconographyPage : Page
     public IconographyPage()
     {
         // Fill filtered items
-        this.InitializeComponent();
+        InitializeComponent();
         IconsItemsView.Loaded += IconsItemsView_Loaded;
     }
 

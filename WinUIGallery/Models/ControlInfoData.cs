@@ -64,7 +64,7 @@ public class ControlInfoDataItem
 
     public override string ToString()
     {
-        return this.Title;
+        return Title;
     }
 }
 
@@ -72,8 +72,8 @@ public class ControlInfoDocLink
 {
     public ControlInfoDocLink(string title, string uri)
     {
-        this.Title = title;
-        this.Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
+        Title = title;
+        Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
     }
     public string Title { get; set; }
     public string Uri { get; set; }
@@ -98,6 +98,6 @@ public class ControlInfoDataGroup
 
     public override string ToString()
     {
-        return this.Title;
+        return Title;
     }
 }

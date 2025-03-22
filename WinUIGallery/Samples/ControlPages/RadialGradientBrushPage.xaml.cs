@@ -19,7 +19,7 @@ public sealed partial class RadialGradientBrushPage : Page
 {
     public RadialGradientBrushPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += OnPageLoaded;
     }
 

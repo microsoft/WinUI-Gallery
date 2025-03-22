@@ -19,7 +19,7 @@ public sealed partial class ContentDialogPage : Page
 {
     public ContentDialogPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private async void ShowDialog_Click(object sender, RoutedEventArgs e)
@@ -27,7 +27,7 @@ public sealed partial class ContentDialogPage : Page
         ContentDialogExample dialog = new ContentDialogExample();
 
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
-        dialog.XamlRoot = this.XamlRoot;
+        dialog.XamlRoot = XamlRoot;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         dialog.Title = "Save your work?";
         dialog.PrimaryButtonText = "Save";

@@ -16,7 +16,7 @@ public sealed partial class StackPanelPage : Page
 {
     public StackPanelPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OrientationGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -9,7 +9,7 @@ public sealed partial class CompactSizingPage : Page
 {
     public CompactSizingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
     }
 

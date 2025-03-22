@@ -36,7 +36,7 @@ public sealed partial class SplitViewPage : Page
 
     public SplitViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)

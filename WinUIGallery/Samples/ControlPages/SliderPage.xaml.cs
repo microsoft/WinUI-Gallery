@@ -29,7 +29,7 @@ public sealed partial class SliderPage : Page
 {
     public SliderPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void SnapsToRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)

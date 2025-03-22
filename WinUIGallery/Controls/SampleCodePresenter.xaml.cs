@@ -71,7 +71,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     public SampleCodePresenter()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private static void OnDependencyPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)

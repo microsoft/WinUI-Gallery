@@ -19,6 +19,6 @@ public sealed partial class RelativePanelPage : Page
 {
     public RelativePanelPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

@@ -37,7 +37,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     public ListViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         // Add first item to inverted list so it's not empty
         AddItemToEnd();
         BaseExample.Loaded += BaseExample_Loaded;

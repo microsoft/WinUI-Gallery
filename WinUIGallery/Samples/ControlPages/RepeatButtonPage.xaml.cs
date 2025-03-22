@@ -16,7 +16,7 @@ public sealed partial class RepeatButtonPage : Page
 {
     public RepeatButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private static int _clicks = 0;

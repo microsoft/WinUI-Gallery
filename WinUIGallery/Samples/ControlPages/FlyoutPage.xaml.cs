@@ -18,12 +18,12 @@ public sealed partial class FlyoutPage : Page
 {
     public FlyoutPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
     {
-        if (this.Control1.Flyout is Flyout f)
+        if (Control1.Flyout is Flyout f)
         {
             f.Hide();
         }

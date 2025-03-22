@@ -37,7 +37,7 @@ public sealed partial class SettingsPage : Page
 
     public SettingsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += OnSettingsPageLoaded;
     }
 
@@ -152,7 +152,7 @@ public sealed partial class SettingsPage : Page
 
     private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
     {
-        this.Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
+        Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
     }
 
     private void toCloneRepoCard_Click(object sender, RoutedEventArgs e)

@@ -9,6 +9,6 @@ public sealed partial class FillSection : Page
 {
     public FillSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

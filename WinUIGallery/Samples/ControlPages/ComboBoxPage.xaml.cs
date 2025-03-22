@@ -48,7 +48,7 @@ public sealed partial class ComboBoxPage : Page
 
     public ComboBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

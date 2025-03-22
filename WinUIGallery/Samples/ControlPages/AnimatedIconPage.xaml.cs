@@ -20,17 +20,17 @@ public sealed partial class AnimatedIconPage : Page
 {
     public AnimatedIconPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
     {
-        AnimatedIcon.SetState(this.SearchAnimatedIcon, "PointerOver");
+        AnimatedIcon.SetState(SearchAnimatedIcon, "PointerOver");
     }
 
     private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
     {
-        AnimatedIcon.SetState(this.SearchAnimatedIcon, "Normal");
+        AnimatedIcon.SetState(SearchAnimatedIcon, "Normal");
     }
 
     public static IAnimatedVisualSource2 GetAnimationSourceFromString(object selection)

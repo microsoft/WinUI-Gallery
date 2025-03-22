@@ -10,7 +10,7 @@ public sealed partial class ToggleSplitButtonPage : Page
     private MarkerType _type = MarkerType.Bullet;
     public ToggleSplitButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void BulletButton_Click(object sender, RoutedEventArgs e)

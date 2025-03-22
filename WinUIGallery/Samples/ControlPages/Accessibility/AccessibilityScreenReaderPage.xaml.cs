@@ -16,6 +16,6 @@ public sealed partial class AccessibilityScreenReaderPage : Page
 {
     public AccessibilityScreenReaderPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

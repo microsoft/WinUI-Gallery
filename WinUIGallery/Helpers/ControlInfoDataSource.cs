@@ -41,7 +41,7 @@ public sealed class ControlInfoDataSource
     private readonly IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
     public IList<ControlInfoDataGroup> Groups
     {
-        get { return this._groups; }
+        get { return _groups; }
     }
 
     public async Task<IEnumerable<ControlInfoDataGroup>> GetGroupsAsync()
@@ -81,7 +81,7 @@ public sealed class ControlInfoDataSource
     {
         lock (_lock)
         {
-            if (this.Groups.Count() != 0)
+            if (Groups.Count() != 0)
             {
                 return;
             }

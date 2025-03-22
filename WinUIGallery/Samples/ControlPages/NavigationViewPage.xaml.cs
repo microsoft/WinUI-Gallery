@@ -23,7 +23,7 @@ public sealed partial class NavigationViewPage : Page
 
     public NavigationViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         nvSample2.SelectedItem = nvSample2.MenuItems.OfType<NavigationViewItem>().First();
         nvSample5.SelectedItem = nvSample5.MenuItems.OfType<NavigationViewItem>().First();

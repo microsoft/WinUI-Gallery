@@ -20,7 +20,7 @@ public sealed partial class TabViewPage : Page
 
     public TabViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Launching isn't supported yet on Desktop
         // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes app to crash

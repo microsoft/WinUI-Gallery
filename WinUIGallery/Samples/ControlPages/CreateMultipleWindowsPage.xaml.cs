@@ -18,7 +18,7 @@ public sealed partial class CreateMultipleWindowsPage : Page
 {
     public CreateMultipleWindowsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void createNewWindow_Click(object sender, RoutedEventArgs e)

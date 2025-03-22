@@ -22,7 +22,7 @@ public sealed partial class ThemeTransitionPage : Page
     private int _itemCount = 10;
     public ThemeTransitionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         for (int i = 0; i < _itemCount; i++)
         {

@@ -66,7 +66,7 @@ public sealed partial class ColorTile : UserControl
 
     public ColorTile()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void CopyBrushNameButton_Click(object sender, RoutedEventArgs e)

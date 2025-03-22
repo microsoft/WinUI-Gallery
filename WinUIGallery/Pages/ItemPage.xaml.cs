@@ -38,7 +38,7 @@ public sealed partial class ItemPage : Page
 
     public ItemPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += (s, e) => SetInitialVisuals();
     }
 
@@ -50,12 +50,12 @@ public sealed partial class ItemPage : Page
             pageHeader.ToggleThemeAction = OnToggleTheme;
             navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
             
-            this.Focus(FocusState.Programmatic);
+            Focus(FocusState.Programmatic);
         }
     }
     private void OnNavigationViewLoaded()
     {
-        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
+        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(Item.UniqueId);
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -78,7 +78,7 @@ public sealed partial class ItemPage : Page
                 pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
                 pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                 System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
-                this.contentFrame.Navigate(pageType);
+                contentFrame.Navigate(pageType);
             }
             args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
         }
@@ -136,7 +136,7 @@ public sealed partial class ItemPage : Page
 
     private void SetControlExamplesTheme(ElementTheme theme)
     {
-        var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
+        var controlExamples = (contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
 
         if (controlExamples != null)
         {
@@ -147,7 +147,7 @@ public sealed partial class ItemPage : Page
             }
             if(controlExamples.Count() == 0)
             {
-                this.RequestedTheme = theme;
+                RequestedTheme = theme;
             }
         }
     }

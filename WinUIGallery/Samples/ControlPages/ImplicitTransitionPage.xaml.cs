@@ -14,7 +14,7 @@ public sealed partial class ImplicitTransitionPage : Page
 {
     public ImplicitTransitionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         SetupImplicitTransitionsIfAPIAvailable();
     }

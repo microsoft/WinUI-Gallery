@@ -10,7 +10,7 @@ public sealed partial class CalendarViewPage : Page
 {
     public CalendarViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         List<string> calendarIdentifiers = new List<string>()
         {

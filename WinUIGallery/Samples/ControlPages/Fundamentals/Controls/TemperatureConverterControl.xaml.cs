@@ -7,7 +7,7 @@ public sealed partial class TemperatureConverterControl : UserControl
 {
     public TemperatureConverterControl()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)

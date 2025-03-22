@@ -30,7 +30,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     public ItemsRepeaterPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         InitializeData();
         repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
@@ -64,9 +64,9 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         {
             BarItems = new ObservableCollection<Bar>();
         }
-        BarItems.Add(new Bar(300, this.MaxLength));
-        BarItems.Add(new Bar(25, this.MaxLength));
-        BarItems.Add(new Bar(175, this.MaxLength));
+        BarItems.Add(new Bar(300, MaxLength));
+        BarItems.Add(new Bar(25, MaxLength));
+        BarItems.Add(new Bar(175, MaxLength));
 
         List<object> basicData = new List<object>
         {
@@ -143,7 +143,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     // ==========================================================================
     private void AddBtn_Click(object sender, RoutedEventArgs e)
     {
-        BarItems.Add(new Bar(random.Next(this.MaxLength), this.MaxLength));
+        BarItems.Add(new Bar(random.Next(MaxLength), MaxLength));
         DeleteBtn.IsEnabled = true;
     }
 
@@ -170,7 +170,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         }
         var layoutKey = ((FrameworkElement)selected).Tag as string;
 
-        if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
+        if (layoutKey.Equals(nameof(VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
         {
             layout.Value = layoutKey;
             itemTemplateKey = "HorizontalBarTemplate";
@@ -185,7 +185,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Border>
 </DataTemplate>";
         }
-        else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
+        else if (layoutKey.Equals(nameof(HorizontalStackLayout)))
         {
             layout.Value = layoutKey;
             itemTemplateKey = "VerticalBarTemplate";
@@ -200,7 +200,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Border>
 </DataTemplate>";
         }
-        else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
+        else if (layoutKey.Equals(nameof(UniformGridLayout)))
         {
             layout.Value = layoutKey;
             itemTemplateKey = "CircularTemplate";
@@ -567,7 +567,7 @@ public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
     }
 
     #region IReadOnlyList<T>
-    public int Count => this.inner != null ? this.inner.Count : 0;
+    public int Count => inner != null ? inner.Count : 0;
 
     public object this[int index]
     {
@@ -582,7 +582,7 @@ public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
         }
     }
 
-    public IEnumerator<Recipe> GetEnumerator() => this.inner.GetEnumerator();
+    public IEnumerator<Recipe> GetEnumerator() => inner.GetEnumerator();
 
     #endregion
 
