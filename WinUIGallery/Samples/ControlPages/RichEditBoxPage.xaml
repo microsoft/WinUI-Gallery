@@ -226,113 +226,122 @@
                                TextWrapping="Wrap"/>
                     <RichEditBox x:Name="MathEditor"
                                  Height="160"
-                                 Width="624"
+                                 Width="478"
                                  FontSize="16"
                                  HorizontalAlignment="Left" />
-                    <SelectorBar Margin="-12 0 0 0">
-                        <SelectorBarItem Text="Symbols"
-                                         IsSelected="True" />
-                        <SelectorBarItem Text="Structures" />
-                        <SelectorBarItem Text="Integrals" />
-                        <SelectorBarItem Text="Large Operators" />
-                        <SelectorBarItem Text="Accent" />
-                        <SelectorBarItem Text="Limits &amp; Log" />
-                        <SelectorBarItem Text="Matrixes" />
-                    </SelectorBar>
-                    <ContentPresenter>
-                        <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                              CornerRadius="4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid HorizontalAlignment="Stretch"
-                                  Padding="12 16">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="200" />
-                                    <ColumnDefinition Width="150" />
-                                    <ColumnDefinition Width="150" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           Style="{StaticResource CaptionTextBlockStyle}"
-                                           Text="Symbol"
-                                           Padding="8 0"/>
-                                <TextBlock Grid.Column="1"
-                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           Style="{StaticResource CaptionTextBlockStyle}"
-                                           Text="Name" />
-                                <TextBlock Grid.Column="2"
-                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           Style="{StaticResource CaptionTextBlockStyle}"
-                                           Text="Command" />
-                                <TextBlock Grid.Column="3"
-                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           Style="{StaticResource CaptionTextBlockStyle}"
-                                           Text="Unicode" />
-                            </Grid>
-                            <ScrollView Grid.Row="1"
-                                        HorizontalScrollBarVisibility="Auto"
-                                        HorizontalScrollMode="Auto"
-                                        MaxHeight="500"
-                                        CornerRadius="0">
-                                <ItemsRepeater x:Name="MathSymbolsItems">
-                                    <ItemsRepeater.Resources>
-                                        
-                                    </ItemsRepeater.Resources>
-                                    <ItemsRepeater.Layout>
-                                        <StackLayout x:Name="VerticalStackLayout"
-                                                     Orientation="Vertical" />
-                                    </ItemsRepeater.Layout>
-                                    <ItemsRepeater.ItemTemplate>
-                                        <DataTemplate x:DataType="helper:MathSymbol">
-                                            <Grid x:Name="SymbolDataTemplate"
-                                                  Padding="12"
-                                                  Loading="SymbolDataTemplate_Loading">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="100" />
-                                                    <ColumnDefinition Width="200" />
-                                                    <ColumnDefinition Width="150" />
-                                                    <ColumnDefinition Width="150" />
-                                                </Grid.ColumnDefinitions>
-                                                <Button x:Name="InsertSymbolBtn"
-                                                        Width="48"
-                                                        VerticalAlignment="Center"
-                                                        Click="InsertSymbolBtn_Click"
-                                                        Tag="{x:Bind Command}"
-                                                        IsTabStop="False">
-                                                    <TextBlock Grid.Column="0"
-                                                               Text="{x:Bind Value}"
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                  HorizontalScrollMode="Auto"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Margin="0 12 0 0">
+                        <SelectorBar Padding="-12 0 0 16">
+                            <SelectorBarItem Text="Symbols"
+                                             IsSelected="True" />
+                            <SelectorBarItem Text="Structures" />
+                            <SelectorBarItem Text="Integrals" />
+                            <SelectorBarItem Text="Large Operators" />
+                            <SelectorBarItem Text="Accent" />
+                            <SelectorBarItem Text="Limits &amp; Log" />
+                            <SelectorBarItem Text="Matrices" />
+                        </SelectorBar> 
+                    </ScrollViewer>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                  HorizontalScrollMode="Auto"
+                                  VerticalScrollBarVisibility="Hidden">
+                        <ContentPresenter>
+                            <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                                  CornerRadius="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid HorizontalAlignment="Stretch"
+                                      Padding="12 16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="150" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"
+                                               Text="Symbol"
+                                               Padding="8 0" />
+                                    <TextBlock Grid.Column="1"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"
+                                               Text="Name" />
+                                    <TextBlock Grid.Column="2"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"
+                                               Text="Command" />
+                                    <TextBlock Grid.Column="3"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Style="{StaticResource CaptionTextBlockStyle}"
+                                               Text="Unicode" />
+                                </Grid>
+                                <ScrollView Grid.Row="1"
+                                            HorizontalScrollBarVisibility="Auto"
+                                            HorizontalScrollMode="Auto"
+                                            MaxHeight="450"
+                                            CornerRadius="0">
+                                    <ItemsRepeater x:Name="MathSymbolsItems">
+                                        <ItemsRepeater.Resources>
+
+                                        </ItemsRepeater.Resources>
+                                        <ItemsRepeater.Layout>
+                                            <StackLayout x:Name="VerticalStackLayout"
+                                                         Orientation="Vertical" />
+                                        </ItemsRepeater.Layout>
+                                        <ItemsRepeater.ItemTemplate>
+                                            <DataTemplate x:DataType="helper:MathSymbol">
+                                                <Grid x:Name="SymbolDataTemplate"
+                                                      Padding="12"
+                                                      Loading="SymbolDataTemplate_Loading">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="150" />
+                                                        <ColumnDefinition Width="150" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button x:Name="InsertSymbolBtn"
+                                                            Width="48"
+                                                            VerticalAlignment="Center"
+                                                            Click="InsertSymbolBtn_Click"
+                                                            Tag="{x:Bind Command}"
+                                                            IsTabStop="False">
+                                                        <TextBlock Grid.Column="0"
+                                                                   Text="{x:Bind Value}"
+                                                                   TextWrapping="Wrap"
+                                                                   FontFamily="Cambria"
+                                                                   FontWeight="SemiBold" />
+                                                        <ToolTipService.ToolTip>
+                                                            <x:String>Insert Symbol</x:String>
+                                                        </ToolTipService.ToolTip>
+                                                    </Button>
+                                                    <TextBlock Grid.Column="1"
+                                                               Text="{x:Bind Name}"
                                                                TextWrapping="Wrap"
-                                                               FontFamily="Cambria"
-                                                               FontWeight="SemiBold"/>
-                                                    <ToolTipService.ToolTip>
-                                                        <x:String>Insert Symbol</x:String>
-                                                    </ToolTipService.ToolTip>
-                                                </Button>
-                                                <TextBlock Grid.Column="1"
-                                                           Text="{x:Bind Name}"
-                                                           TextWrapping="Wrap"
-                                                           VerticalAlignment="Center" />
-                                                <TextBlock Grid.Column="2"
-                                                           Text="{x:Bind Command}"
-                                                           TextWrapping="Wrap"
-                                                           FontFamily="Consolas"
-                                                           IsTextSelectionEnabled="True"
-                                                           VerticalAlignment="Center" />
-                                                <TextBlock Grid.Column="3"
-                                                           Text="{x:Bind Unicode}"
-                                                           TextWrapping="Wrap"
-                                                           FontFamily="Consolas"
-                                                           IsTextSelectionEnabled="True"
-                                                           VerticalAlignment="Center" />
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsRepeater.ItemTemplate>
-                                </ItemsRepeater>
-                            </ScrollView>
-                        </Grid>
-                    </ContentPresenter>
+                                                               VerticalAlignment="Center" />
+                                                    <TextBlock Grid.Column="2"
+                                                               Text="{x:Bind Command}"
+                                                               TextWrapping="Wrap"
+                                                               FontFamily="Consolas"
+                                                               IsTextSelectionEnabled="True"
+                                                               VerticalAlignment="Center" />
+                                                    <TextBlock Grid.Column="3"
+                                                               Text="{x:Bind Unicode}"
+                                                               TextWrapping="Wrap"
+                                                               FontFamily="Consolas"
+                                                               IsTextSelectionEnabled="True"
+                                                               VerticalAlignment="Center" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsRepeater.ItemTemplate>
+                                    </ItemsRepeater>
+                                </ScrollView>
+                            </Grid>
+                        </ContentPresenter>
+                    </ScrollViewer>
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>

@@ -35,7 +35,7 @@ public sealed partial class RichEditBoxPage : Page
         this.InitializeComponent();
 
         MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
-        MathModeDescription.Text = "Math mode enables users to have input automatically recognized and converted to MathML while being received. For example, \"4^2\" is converted to \"4\u00b2\", and \"\\pi\" is converted to \"\u03c0\".\r\nMath mode might change formatting (fonts), context menus, and other aspects of the input.";
+        MathModeDescription.Text = "Math mode enables users to have input automatically recognized and converted to MathML while being received.\r\nFor example, \"4^2\" is converted to \"4\u00b2\", and \"\\pi\" is converted to \"\u03c0\".\r\nMath mode might change formatting (fonts), context menus, and other aspects of the input.";
         MathSymbolsItems.ItemsSource = SymbolsCollection;
     }
 
