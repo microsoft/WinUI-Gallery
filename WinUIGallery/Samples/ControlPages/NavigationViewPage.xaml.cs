@@ -220,18 +220,22 @@ public sealed partial class NavigationViewPage : Page
 
     private void autoSuggestCheck_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        switch ((sender as CheckBox).IsChecked)
         {
-            AutoSuggestBox asb = new() { QueryIcon = new SymbolIcon(Symbol.Find) };
-            asb.SetValue(AutomationProperties.NameProperty, "search");
-            nvSample.AutoSuggestBox = asb;
+            case true:
+                {
+                    AutoSuggestBox asb = new() { QueryIcon = new SymbolIcon(Symbol.Find) };
+                    asb.SetValue(AutomationProperties.NameProperty, "search");
+                    nvSample.AutoSuggestBox = asb;
 
-            setASBSubstitutionString();
-        }
-        else
-        {
-            nvSample.AutoSuggestBox = null;
-            navViewASB.Value = null;
+                    setASBSubstitutionString();
+                    break;
+                }
+
+            default:
+                nvSample.AutoSuggestBox = null;
+                navViewASB.Value = null;
+                break;
         }
     }
 
@@ -254,21 +258,21 @@ public sealed partial class NavigationViewPage : Page
     {
         if ((sender as RadioButton).IsChecked == true)
         {
-            if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
+            switch ((sender as RadioButton).Name)
             {
-                nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                nvSample.IsPaneOpen = true;
-                FooterStackPanel.Orientation = Orientation.Vertical;
-            }
-            else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
-            {
-                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                nvSample8.IsPaneOpen = true;
-            }
-            else if ((sender as RadioButton).Name == "nvSample9Left" && nvSample9 != null)
-            {
-                nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                nvSample9.IsPaneOpen = true;
+                case "nvSampleLeft" when nvSample != null:
+                    nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                    nvSample.IsPaneOpen = true;
+                    FooterStackPanel.Orientation = Orientation.Vertical;
+                    break;
+                case "nvSample8Left" when nvSample8 != null:
+                    nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                    nvSample8.IsPaneOpen = true;
+                    break;
+                case "nvSample9Left" when nvSample9 != null:
+                    nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                    nvSample9.IsPaneOpen = true;
+                    break;
             }
         }
     }
@@ -278,21 +282,21 @@ public sealed partial class NavigationViewPage : Page
     {
         if ((sender as RadioButton).IsChecked == true)
         {
-            if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
+            switch ((sender as RadioButton).Name)
             {
-                nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                nvSample.IsPaneOpen = false;
-                FooterStackPanel.Orientation = Orientation.Horizontal;
-            }
-            else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
-            {
-                nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                nvSample8.IsPaneOpen = false;
-            }
-            else if ((sender as RadioButton).Name == "nvSample9Top" && nvSample9 != null)
-            {
-                nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                nvSample9.IsPaneOpen = false;
+                case "nvSampleTop" when nvSample != null:
+                    nvSample.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                    nvSample.IsPaneOpen = false;
+                    FooterStackPanel.Orientation = Orientation.Horizontal;
+                    break;
+                case "nvSample8Top" when nvSample8 != null:
+                    nvSample8.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                    nvSample8.IsPaneOpen = false;
+                    break;
+                case "nvSample9Top" when nvSample9 != null:
+                    nvSample9.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                    nvSample9.IsPaneOpen = false;
+                    break;
             }
         }
     }
