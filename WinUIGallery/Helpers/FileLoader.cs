@@ -12,7 +12,7 @@ internal class FileLoader
 {
     public static async Task<string> LoadText(string relativeFilePath)
     {
-        StorageFile file = null;
+        StorageFile file;
         if (!NativeHelper.IsAppPackaged)
         {
             var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));

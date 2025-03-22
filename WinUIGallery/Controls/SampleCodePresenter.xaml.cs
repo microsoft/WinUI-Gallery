@@ -152,8 +152,7 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
         {
-            string sampleString = null;
-            StorageFile file = null;
+            StorageFile file;
             if (!NativeHelper.IsAppPackaged)
             {
                 var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
@@ -166,7 +165,7 @@ public sealed partial class SampleCodePresenter : UserControl
                 file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
             }
 
-            sampleString = await FileIO.ReadTextAsync(file);
+            string sampleString = await FileIO.ReadTextAsync(file);
 
             FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
         }
