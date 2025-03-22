@@ -38,7 +38,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         // Main Window -- add some default items
         for (int i = 0; i < 3; i++)
         {
-            Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Page {i}" } });
+            Tabs.TabItems.Add(new TabViewItem() { IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Page {i}" } });
         }
 
         Tabs.SelectedIndex = 0;

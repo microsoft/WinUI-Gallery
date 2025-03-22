@@ -22,7 +22,7 @@ public sealed partial class MenuBarPage : Page
         this.InitializeComponent();
     }
 
-    private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnElementClicked(object sender, RoutedEventArgs e)
     {
         var selectedFlyoutItem = sender as MenuFlyoutItem;
         string exampleNumber = selectedFlyoutItem.Name.Substring(0, 1);

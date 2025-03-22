@@ -21,7 +21,7 @@ public sealed partial class ProgressRingPage : Page
         this.InitializeComponent();
     }
 
-    private void ProgressValue_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void ProgressValue_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         if (!double.IsNaN(sender.Value))
         {

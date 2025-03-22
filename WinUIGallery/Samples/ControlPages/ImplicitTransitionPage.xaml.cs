@@ -41,7 +41,7 @@ public sealed partial class ImplicitTransitionPage : Page
     }
     private void RotationButton_Click(object sender, RoutedEventArgs e)
     {
-        RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
+        RotationRectangle.CenterPoint = new Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
         RotationRectangle.Rotation = EnsureValueIsNumber(RotationNumberBox);
         // announce visual change to automation

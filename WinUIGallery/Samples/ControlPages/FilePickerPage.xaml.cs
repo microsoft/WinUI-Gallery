@@ -35,7 +35,7 @@ public sealed partial class FilePickerPage : Page
         PickAFileOutputTextBlock.Text = "";
 
         // Create a file picker
-        var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+        var openPicker = new FileOpenPicker();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);
@@ -85,7 +85,7 @@ public sealed partial class FilePickerPage : Page
         PickAPhotoOutputTextBlock.Text = "";
 
         // Create a file picker
-        var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+        var openPicker = new FileOpenPicker();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);
@@ -139,7 +139,7 @@ public sealed partial class FilePickerPage : Page
         PickFilesOutputTextBlock.Text = "";
 
         // Create a file picker
-        var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+        var openPicker = new FileOpenPicker();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);
@@ -195,7 +195,7 @@ public sealed partial class FilePickerPage : Page
         PickFolderOutputTextBlock.Text = "";
 
         // Create a folder picker
-        FolderPicker openPicker = new Windows.Storage.Pickers.FolderPicker();
+        FolderPicker openPicker = new FolderPicker();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);
@@ -248,7 +248,7 @@ public sealed partial class FilePickerPage : Page
         SaveFileOutputTextBlock.Text = "";
 
         // Create a file picker
-        FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+        FileSavePicker savePicker = new FileSavePicker();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);

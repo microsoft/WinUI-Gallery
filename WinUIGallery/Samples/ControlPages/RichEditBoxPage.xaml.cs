@@ -148,7 +148,7 @@ public sealed partial class RichEditBoxPage : Page
         // Extract the color of the button that was clicked.
         Button clickedColor = (Button)sender;
         var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-        var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+        var color = ((SolidColorBrush)rectangle.Fill).Color;
 
         editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 

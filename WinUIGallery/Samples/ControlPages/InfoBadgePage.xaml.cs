@@ -79,7 +79,7 @@ public sealed partial class InfoBadgePage : Page
         }
     }
 
-    private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void ValueNumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         if ((int)args.NewValue >= -1)
         {

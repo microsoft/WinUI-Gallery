@@ -37,7 +37,7 @@ public sealed partial class ToggleSplitButtonPage : Page
         myRichEditBox.Focus(FocusState.Keyboard);
     }
 
-    private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
+    private void MyListButton_IsCheckedChanged(ToggleSplitButton sender, ToggleSplitButtonIsCheckedChangedEventArgs args)
     {
         if (sender.IsChecked)
         {

@@ -46,8 +46,8 @@ namespace WinUIGallery.Helpers;
 /// </code>
 ///
 /// 2) Register the page to call into the NavigationManager whenever the page participates
-///     in navigation by overriding the <see cref="Microsoft.UI.Xaml.Controls.Page.OnNavigatedTo"/>
-///     and <see cref="Microsoft.UI.Xaml.Controls.Page.OnNavigatedFrom"/> events.
+///     in navigation by overriding the <see cref="Page.OnNavigatedTo"/>
+///     and <see cref="Page.OnNavigatedFrom"/> events.
 /// <code>
 ///     protected override void OnNavigatedTo(NavigationEventArgs e)
 ///     {
@@ -60,7 +60,7 @@ namespace WinUIGallery.Helpers;
 ///     }
 /// </code>
 /// </example>
-[Windows.Foundation.Metadata.WebHostHidden]
+[WebHostHidden]
 public class NavigationHelper : DependencyObject
 {
     private Page Page { get; set; }
@@ -165,7 +165,7 @@ public class NavigationHelper : DependencyObject
 ///     }
 /// </code>
 /// </example>
-[Windows.Foundation.Metadata.WebHostHidden]
+[WebHostHidden]
 public class RootFrameNavigationHelper
 {
     private Frame Frame { get; set; }

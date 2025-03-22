@@ -10,7 +10,7 @@ namespace WinUIGallery.ControlPages;
 public class MyData
 {
     public string DataHeader { get; set; }
-    public Microsoft.UI.Xaml.Controls.IconSource DataIconSource { get; set; }
+    public IconSource DataIconSource { get; set; }
     public object DataContent { get; set; }
 }
 
@@ -60,7 +60,7 @@ public sealed partial class TabViewPage : Page
         TabViewItem newItem = new TabViewItem
         {
             Header = $"Document {index}",
-            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document }
+            IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
         };
 
         // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -101,7 +101,7 @@ public sealed partial class TabViewPage : Page
         var newData = new MyData
         {
             DataHeader = $"MyData Doc {index}",
-            DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }
+            DataIconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }
         };
 
         Frame frame = new Frame();
@@ -245,7 +245,7 @@ public sealed partial class TabViewPage : Page
         TabView4.CloseButtonOverlayMode = overlayMode;
     }
 
-    private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void TabViewWindowingButton_Click(object sender, RoutedEventArgs e)
     {
         var tabViewSample = new TabViewWindowingSamplePage();
 

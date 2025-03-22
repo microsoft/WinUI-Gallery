@@ -25,12 +25,12 @@ public sealed partial class NavigationViewPage : Page
     {
         this.InitializeComponent();
 
-        nvSample2.SelectedItem = nvSample2.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
-        nvSample5.SelectedItem = nvSample5.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
-        nvSample6.SelectedItem = nvSample6.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
-        nvSample7.SelectedItem = nvSample7.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
-        nvSample8.SelectedItem = nvSample8.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
-        nvSample9.SelectedItem = nvSample9.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
+        nvSample2.SelectedItem = nvSample2.MenuItems.OfType<NavigationViewItem>().First();
+        nvSample5.SelectedItem = nvSample5.MenuItems.OfType<NavigationViewItem>().First();
+        nvSample6.SelectedItem = nvSample6.MenuItems.OfType<NavigationViewItem>().First();
+        nvSample7.SelectedItem = nvSample7.MenuItems.OfType<NavigationViewItem>().First();
+        nvSample8.SelectedItem = nvSample8.MenuItems.OfType<NavigationViewItem>().First();
+        nvSample9.SelectedItem = nvSample9.MenuItems.OfType<NavigationViewItem>().First();
 
         Categories = new ObservableCollection<CategoryBase>();
         Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
@@ -46,7 +46,7 @@ public sealed partial class NavigationViewPage : Page
         nvSample2.UpdateLayout();
     }
 
-    public Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
+    public NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
     {
         if (toggleOn)
         {
@@ -57,7 +57,7 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void NavigationView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
@@ -65,7 +65,7 @@ public sealed partial class NavigationViewPage : Page
         }
         else
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             if (selectedItem != null)
             {
                 string selectedItemTag = ((string)selectedItem.Tag);
@@ -77,7 +77,7 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void NavigationView_SelectionChanged2(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged2(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (!CameFromGridChange)
         {
@@ -87,7 +87,7 @@ public sealed partial class NavigationViewPage : Page
             }
             else
             {
-                var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 Type pageType = Type.GetType(pageName);
@@ -98,7 +98,7 @@ public sealed partial class NavigationViewPage : Page
         CameFromGridChange = false;
     }
 
-    private void NavigationView_SelectionChanged4(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged4(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
@@ -118,7 +118,7 @@ public sealed partial class NavigationViewPage : Page
     }
 
 
-    private void NavigationView_SelectionChanged5(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged5(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
@@ -126,7 +126,7 @@ public sealed partial class NavigationViewPage : Page
         }
         else
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
@@ -134,7 +134,7 @@ public sealed partial class NavigationViewPage : Page
             contentFrame5.Navigate(pageType);
         }
     }
-    private void NavigationView_SelectionChanged6(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged6(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
@@ -142,14 +142,14 @@ public sealed partial class NavigationViewPage : Page
         }
         else
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
             Type pageType = Type.GetType(pageName);
             contentFrame6.Navigate(pageType);
         }
     }
 
-    private void NavigationView_SelectionChanged7(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged7(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
@@ -157,7 +157,7 @@ public sealed partial class NavigationViewPage : Page
         }
         else
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
             Type pageType = Type.GetType(pageName);
 
@@ -165,7 +165,7 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void NavigationView_SelectionChanged8(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged8(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         /* NOTE: for this function to work, every NavigationView must follow the same naming convention: nvSample# (i.e. nvSample3),
         and every corresponding content frame must follow the same naming convention: contentFrame# (i.e. contentFrame3) */
@@ -180,7 +180,7 @@ public sealed partial class NavigationViewPage : Page
         }
         else
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
@@ -189,9 +189,9 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void NavigationView_SelectionChanged9(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+    private void NavigationView_SelectionChanged9(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+        var selectedItem = (NavigationViewItem)args.SelectedItem;
         string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
         Type pageType = Type.GetType(pageName);
 

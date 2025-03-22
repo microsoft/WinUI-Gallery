@@ -162,7 +162,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     private void RadioBtn_Click(object sender, SelectionChangedEventArgs e)
     {
         string itemTemplateKey = string.Empty;
-        var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
+        var selected = (sender as RadioButtons).SelectedItem;
         if (selected == null)
         {
             // No point in continuing if selected element is null
@@ -217,7 +217,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Grid>
 </DataTemplate>";
         }
-        repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+        repeater.Layout = Resources[layoutKey] as VirtualizingLayout;
         repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
         repeater.ItemsSource = BarItems;
 
@@ -231,7 +231,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         string layoutKey = ((FrameworkElement)sender).Tag as string;
 
-        repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+        repeater2.Layout = Resources[layoutKey] as VirtualizingLayout;
 
         layout2.Value = layoutKey;
 
@@ -291,7 +291,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     /* This function occurs each time an element is made ready for use.
      * This is necessary for virtualization. */
-    private void OnElementPrepared(Microsoft.UI.Xaml.Controls.ItemsRepeater sender, Microsoft.UI.Xaml.Controls.ItemsRepeaterElementPreparedEventArgs args)
+    private void OnElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
     {
         var item = ElementCompositionPreview.GetElementVisual(args.Element);
         var svVisual = ElementCompositionPreview.GetElementVisual(Animated_ScrollViewer);
@@ -546,7 +546,7 @@ public class Recipe
 }
 
 // Custom data source class that assigns elements unique IDs, making filtering easier
-public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
 {
     private List<Recipe> inner = new List<Recipe>();
 

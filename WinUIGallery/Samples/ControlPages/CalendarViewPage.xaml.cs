@@ -35,7 +35,7 @@ public sealed partial class CalendarViewPage : Page
 
     private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
+        if (Enum.TryParse((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
         {
             Control1.SelectionMode = selectionMode;
         }

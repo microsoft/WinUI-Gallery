@@ -48,7 +48,7 @@ public sealed partial class NavigationRootPage : Page
         return null;
     }
 
-    public Microsoft.UI.Xaml.Controls.NavigationView NavigationView
+    public NavigationView NavigationView
     {
         get { return NavigationViewControl; }
     }
@@ -569,12 +569,12 @@ public sealed partial class NavigationRootPage : Page
         _error = IdleSynchronizer.TryWait(out _log);
     }
 
-    private void CloseAppInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void CloseAppInvokerButton_Click(object sender, RoutedEventArgs e)
     {
         Application.Current.Exit();
     }
 
-    private void GoBackInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void GoBackInvokerButton_Click(object sender, RoutedEventArgs e)
     {
         if (this.rootFrame.CanGoBack)
         {

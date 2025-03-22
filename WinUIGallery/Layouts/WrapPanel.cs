@@ -213,7 +213,7 @@ public class WrapPanel : Panel
     /// Measures the child elements of a
     /// <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" /> in anticipation
     /// of arranging them during the
-    /// <see cref="Microsoft.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
+    /// <see cref="FrameworkElement.ArrangeOverride(Size)" />
     /// pass.
     /// </summary>
     /// <param name="constraint">

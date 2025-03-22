@@ -10,7 +10,7 @@ internal class TitleBarHelper
     // https://task.ms/44172495
     public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
     {
-        var frame = (Application.Current as WinUIGallery.App).GetRootFrame() as FrameworkElement;
+        var frame = (Application.Current as App).GetRootFrame() as FrameworkElement;
         Windows.UI.Color color;
         if (frame.ActualTheme == ElementTheme.Dark)
         {

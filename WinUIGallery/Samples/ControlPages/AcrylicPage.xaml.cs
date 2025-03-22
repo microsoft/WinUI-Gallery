@@ -31,25 +31,25 @@ public sealed partial class AcrylicPage : Page
         if ((Slider)sender == OpacitySliderLumin)
             shape = CustomAcrylicShapeLumin;
 
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
+        ((AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
     }
 
     private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeInApp;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+        ((AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
     }
 
     private void FallbackColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeInApp;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+        ((AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
     }
 
     private void LuminositySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeLumin;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
+        ((AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
     }
 
     private void SystemBackdropLink_Click(Hyperlink sender, HyperlinkClickEventArgs args)

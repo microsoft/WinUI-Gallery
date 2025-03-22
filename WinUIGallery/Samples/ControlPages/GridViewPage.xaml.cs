@@ -192,7 +192,7 @@ public sealed partial class GridViewPage : ItemsPageBase
     }
     
 
-    private void NumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void NumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         if(StyledGridIWG == null) { return; }
 

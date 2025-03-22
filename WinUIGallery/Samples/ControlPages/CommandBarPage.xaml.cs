@@ -56,7 +56,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         PrimaryCommandBar.IsSticky = false;
     }
 
-    private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OnElementClicked(object sender, RoutedEventArgs e)
     {
         SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
     }

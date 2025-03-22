@@ -41,10 +41,10 @@ public sealed partial class SplitButtonPage : Page
         myColorButtonReveal.Flyout.Hide();
     }
 
-    private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+    private void myColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args)
     {
         var border = (Border)sender.Content;
-        var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)border.Background).Color;
+        var color = ((SolidColorBrush)border.Background).Color;
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
         currentColor = color;
