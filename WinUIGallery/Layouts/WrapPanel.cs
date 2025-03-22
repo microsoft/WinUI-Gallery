@@ -470,12 +470,10 @@ internal static class NumericExtensions
     /// </summary>
     /// <param name="value">The number to check.</param>
     /// <returns>True if the number is zero, false otherwise.</returns>
-    public static bool IsZero(this double value)
-    {
+    public static bool IsZero(this double value) =>
         // We actually consider anything within an order of magnitude of
         // epsilon to be zero
-        return Math.Abs(value) < 2.2204460492503131E-15;
-    }
+        Math.Abs(value) < 2.2204460492503131E-15;
 #endif
 
     /// <summary>
@@ -510,10 +508,7 @@ internal static class NumericExtensions
     /// True if the first number is greater than the second, false
     /// otherwise.
     /// </returns>
-    public static bool IsGreaterThan(double left, double right)
-    {
-        return (left > right) && !AreClose(left, right);
-    }
+    public static bool IsGreaterThan(double left, double right) => (left > right) && !AreClose(left, right);
 
     /// <summary>
     /// Determine if two numbers are close in value.
@@ -548,10 +543,7 @@ internal static class NumericExtensions
     /// True if the first number is less than or close to the second, false
     /// otherwise.
     /// </returns>
-    public static bool IsLessThanOrClose(double left, double right)
-    {
-        return (left < right) || AreClose(left, right);
-    }
+    public static bool IsLessThanOrClose(double left, double right) => (left < right) || AreClose(left, right);
 #endif
 }
 

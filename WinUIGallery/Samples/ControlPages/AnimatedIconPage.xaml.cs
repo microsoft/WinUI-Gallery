@@ -23,15 +23,9 @@ public sealed partial class AnimatedIconPage : Page
         InitializeComponent();
     }
 
-    private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
-    {
-        AnimatedIcon.SetState(SearchAnimatedIcon, "PointerOver");
-    }
+    private void Button_PointerEntered(object sender, PointerRoutedEventArgs e) => AnimatedIcon.SetState(SearchAnimatedIcon, "PointerOver");
 
-    private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        AnimatedIcon.SetState(SearchAnimatedIcon, "Normal");
-    }
+    private void Button_PointerExited(object sender, PointerRoutedEventArgs e) => AnimatedIcon.SetState(SearchAnimatedIcon, "Normal");
 
     public static IAnimatedVisualSource2 GetAnimationSourceFromString(object selection)
     { 

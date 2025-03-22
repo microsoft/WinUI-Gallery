@@ -120,23 +120,11 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     }
 
-    private ObservableCollection<string> GetFruits()
-    {
-        return new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
-    }
+    private ObservableCollection<string> GetFruits() => new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
 
-    private ObservableCollection<string> GetVegetables()
-    {
-        return new ObservableCollection<string> { "Broccoli", "Spinach", "Sweet potato", "Cauliflower", "Onion", "Brussels sprouts", "Carrots" };
-    }
-    private ObservableCollection<string> GetGrains()
-    {
-        return new ObservableCollection<string> { "Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley" };
-    }
-    private ObservableCollection<string> GetProteins()
-    {
-        return new ObservableCollection<string> { "Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs" };
-    }
+    private ObservableCollection<string> GetVegetables() => new ObservableCollection<string> { "Broccoli", "Spinach", "Sweet potato", "Cauliflower", "Onion", "Brussels sprouts", "Carrots" };
+    private ObservableCollection<string> GetGrains() => new ObservableCollection<string> { "Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley" };
+    private ObservableCollection<string> GetProteins() => new ObservableCollection<string> { "Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs" };
 
     // ==========================================================================
     // Basic, non-interactive ItemsRepeater
@@ -359,10 +347,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         return tempList;
     }
 
-    public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
-    {
-        UpdateSortAndFilter();
-    }
+    public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e) => UpdateSortAndFilter();
 
     private void OnSortAscClick(object sender, RoutedEventArgs e)
     {
@@ -593,10 +578,7 @@ public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
     #endregion
 
     #region IKeyIndexMapping
-    public string KeyFromIndex(int index)
-    {
-        return inner[index].Num.ToString();
-    }
+    public string KeyFromIndex(int index) => inner[index].Num.ToString();
 
     public int IndexFromKey(string key)
     {
@@ -613,50 +595,23 @@ public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
     #endregion
 
     #region Unused List methods
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        throw new NotImplementedException();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
 
-    public int Add(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public int Add(object value) => throw new NotImplementedException();
 
-    public void Clear()
-    {
-        throw new NotImplementedException();
-    }
+    public void Clear() => throw new NotImplementedException();
 
-    public bool Contains(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public bool Contains(object value) => throw new NotImplementedException();
 
-    public int IndexOf(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public int IndexOf(object value) => throw new NotImplementedException();
 
-    public void Insert(int index, object value)
-    {
-        throw new NotImplementedException();
-    }
+    public void Insert(int index, object value) => throw new NotImplementedException();
 
-    public void Remove(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public void Remove(object value) => throw new NotImplementedException();
 
-    public void RemoveAt(int index)
-    {
-        throw new NotImplementedException();
-    }
+    public void RemoveAt(int index) => throw new NotImplementedException();
 
-    public void CopyTo(Array array, int index)
-    {
-        throw new NotImplementedException();
-    }
+    public void CopyTo(Array array, int index) => throw new NotImplementedException();
 
     public bool IsFixedSize => throw new NotImplementedException();
 

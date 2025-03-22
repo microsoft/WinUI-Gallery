@@ -53,10 +53,7 @@ public sealed partial class ItemPage : Page
             Focus(FocusState.Programmatic);
         }
     }
-    private void OnNavigationViewLoaded()
-    {
-        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(Item.UniqueId);
-    }
+    private void OnNavigationViewLoaded() => NavigationRootPage.GetForElement(this).EnsureNavigationSelection(Item.UniqueId);
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {

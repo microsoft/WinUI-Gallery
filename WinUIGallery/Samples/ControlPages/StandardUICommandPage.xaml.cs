@@ -14,10 +14,7 @@ public class ListItemData
     public string Text { get; set; }
     public ICommand Command { get; set; }
 
-    public override string ToString()
-    {
-        return Text;
-    }
+    public override string ToString() => Text;
 }
 
 public sealed partial class StandardUICommandPage : Page
@@ -62,10 +59,7 @@ public sealed partial class StandardUICommandPage : Page
         }
     }
 
-    private void ListViewSwipeContainer_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        VisualStateManager.GoToState(sender as Control, "HoverButtonsHidden", true);
-    }
+    private void ListViewSwipeContainer_PointerExited(object sender, PointerRoutedEventArgs e) => VisualStateManager.GoToState(sender as Control, "HoverButtonsHidden", true);
 
     private void ControlExample_Loaded(object sender, RoutedEventArgs e)
     {

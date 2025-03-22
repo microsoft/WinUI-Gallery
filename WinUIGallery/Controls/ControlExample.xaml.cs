@@ -177,10 +177,7 @@ public sealed partial class ControlExample : UserControl
         Loaded += ControlExample_Loaded;
     }
 
-    private void ControlExample_Loaded(object sender, RoutedEventArgs e)
-    {
-        HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
-    }
+    private void ControlExample_Loaded(object sender, RoutedEventArgs e) => HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
 
     private enum SyntaxHighlightLanguage { Xml, CSharp };
 
@@ -225,10 +222,7 @@ public sealed partial class ControlExample : UserControl
         }
     }
 
-    private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
-    {
-        HandlePresenterVisibility();
-    }
+    private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args) => HandlePresenterVisibility();
 
     private void HandlePresenterVisibility()
     {

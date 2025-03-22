@@ -22,20 +22,11 @@ public sealed partial class GeometryPage : Page
         InitializeComponent();
     }
 
-    private void ShowGeometryButtonClick1(object sender, RoutedEventArgs e)
-    {
-        ShowGeometryInfoTooltip1.IsOpen = !ShowGeometryInfoTooltip1.IsOpen;
-    }
+    private void ShowGeometryButtonClick1(object sender, RoutedEventArgs e) => ShowGeometryInfoTooltip1.IsOpen = !ShowGeometryInfoTooltip1.IsOpen;
 
-    private void ShowGeometryButtonClick2(object sender, RoutedEventArgs e)
-    {
-        ShowGeometryInfoTooltip2.IsOpen = !ShowGeometryInfoTooltip2.IsOpen;
-    }
+    private void ShowGeometryButtonClick2(object sender, RoutedEventArgs e) => ShowGeometryInfoTooltip2.IsOpen = !ShowGeometryInfoTooltip2.IsOpen;
 
-    private void ShowGeometryButtonClick3(object sender, RoutedEventArgs e)
-    {
-        ShowGeometryInfoTooltip3.IsOpen = !ShowGeometryInfoTooltip3.IsOpen;
-    }
+    private void ShowGeometryButtonClick3(object sender, RoutedEventArgs e) => ShowGeometryInfoTooltip3.IsOpen = !ShowGeometryInfoTooltip3.IsOpen;
 
     private void CopyControlResourceToClipboardButton_Click(object sender, RoutedEventArgs e)
     {

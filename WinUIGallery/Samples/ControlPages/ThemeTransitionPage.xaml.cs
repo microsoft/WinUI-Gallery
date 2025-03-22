@@ -44,10 +44,7 @@ public sealed partial class ThemeTransitionPage : Page
         ShowPopupButton.Focus(FocusState.Programmatic);
     }
 
-    private void ContentRefreshButton_Click(object sender, RoutedEventArgs e)
-    {
-        AddItemsToContentListView(true);
-    }
+    private void ContentRefreshButton_Click(object sender, RoutedEventArgs e) => AddItemsToContentListView(true);
 
     private void AddItemsToContentListView(bool ShowDifferentContent = false)
     {
@@ -72,10 +69,7 @@ public sealed partial class ThemeTransitionPage : Page
             AddRemoveListView.Items.RemoveAt(0);
     }
 
-    private void RepositionButton_Click(object sender, RoutedEventArgs e)
-    {
-        MiddleElement.Visibility = MiddleElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-    }
+    private void RepositionButton_Click(object sender, RoutedEventArgs e) => MiddleElement.Visibility = MiddleElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
     private void EntranceAddButton_Click(object sender, RoutedEventArgs e)
     {
@@ -88,10 +82,7 @@ public sealed partial class ThemeTransitionPage : Page
         }
     }
 
-    private void EntranceClearButton_Click(object sender, RoutedEventArgs e)
-    {
-        EntranceStackPanel.Children.Clear();
-    }
+    private void EntranceClearButton_Click(object sender, RoutedEventArgs e) => EntranceStackPanel.Children.Clear();
 
     private void AddDeleteButton_Click(object sender, RoutedEventArgs e)
     {

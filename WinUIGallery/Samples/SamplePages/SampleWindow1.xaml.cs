@@ -48,18 +48,9 @@ public sealed partial class SampleWindow1 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void Show_Click(object sender, RoutedEventArgs e)
-    {
-        appWindow.Show();
-    }
+    private void Show_Click(object sender, RoutedEventArgs e) => appWindow.Show();
 
-    private void Hide_Click(object sender, RoutedEventArgs e)
-    {
-        appWindow.Hide();
-    }
+    private void Hide_Click(object sender, RoutedEventArgs e) => appWindow.Hide();
 
-    private void Close_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void Close_Click(object sender, RoutedEventArgs e) => Close();
 }

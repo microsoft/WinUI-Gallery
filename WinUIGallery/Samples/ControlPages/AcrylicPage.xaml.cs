@@ -52,8 +52,5 @@ public sealed partial class AcrylicPage : Page
         ((AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
     }
 
-    private void SystemBackdropLink_Click(Hyperlink sender, HyperlinkClickEventArgs args)
-    {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "SystemBackdrops");
-    }
+    private void SystemBackdropLink_Click(Hyperlink sender, HyperlinkClickEventArgs args) => NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "SystemBackdrops");
 }

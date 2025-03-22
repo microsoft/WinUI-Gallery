@@ -43,12 +43,10 @@ public sealed partial class ListViewPage : ItemsPageBase
         BaseExample.Loaded += BaseExample_Loaded;
     }
 
-    private void BaseExample_Loaded(object sender, RoutedEventArgs e)
-    {
+    private void BaseExample_Loaded(object sender, RoutedEventArgs e) =>
         // Set focus so the first item of the listview has focus
         // instead of some item which is not visible on page load
         BaseExample.Focus(FocusState.Programmatic);
-    }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -128,15 +126,9 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     }
 
-    private void Target_DragOver(object sender, DragEventArgs e)
-    {
-        e.AcceptedOperation = DataPackageOperation.Move;
-    }
+    private void Target_DragOver(object sender, DragEventArgs e) => e.AcceptedOperation = DataPackageOperation.Move;
 
-    private void Source_DragOver(object sender, DragEventArgs e)
-    {
-        e.AcceptedOperation = DataPackageOperation.Move;
-    }
+    private void Source_DragOver(object sender, DragEventArgs e) => e.AcceptedOperation = DataPackageOperation.Move;
 
     private async void ListView_Drop(object sender, DragEventArgs e)
     {
@@ -235,11 +227,9 @@ public sealed partial class ListViewPage : ItemsPageBase
         }
     }
 
-    private void Target_DragEnter(object sender, DragEventArgs e)
-    {
+    private void Target_DragEnter(object sender, DragEventArgs e) =>
         // We don't want to show the Move icon
         e.DragUIOverride.IsGlyphVisible = false;
-    }
 
     //===================================================================================================================
     // Grouped Headers Example
@@ -252,10 +242,7 @@ public sealed partial class ListViewPage : ItemsPageBase
         }
     }
 
-    private void StackPanel_loaded(object sender, RoutedEventArgs e)
-    {
-        stackPanelObj = sender as ItemsStackPanel;
-    }
+    private void StackPanel_loaded(object sender, RoutedEventArgs e) => stackPanelObj = sender as ItemsStackPanel;
 
     //===================================================================================================================
     // Filtered List Example
@@ -296,33 +283,25 @@ public sealed partial class ListViewPage : ItemsPageBase
         UIHelper.AnnounceActionForAccessibility(FilteredListView, $"Found {filtered.Count()} contacts", "ContactListViewFilteredActivityId");
     }
 
-    private bool Filter(Contact contact)
-    {
+    private bool Filter(Contact contact) =>
         // When the text in any filter is changed, contact list is ran through all three filters to make sure
         // they can properly interact with each other (i.e. they can all be applied at the same time).
 
-        return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+        contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
                contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
                contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
-    }
 
     //===================================================================================================================
     // Inverted List Example
     //===================================================================================================================
 
-    private void AddItemToEnd()
-    {
-        InvertedListView.Items.Add(
+    private void AddItemToEnd() => InvertedListView.Items.Add(
             new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Right)
             );
-    }
 
-    private void MessageReceived(object sender, RoutedEventArgs e)
-    {
-        InvertedListView.Items.Add(
+    private void MessageReceived(object sender, RoutedEventArgs e) => InvertedListView.Items.Add(
             new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
             );
-    }
 
     //===================================================================================================================
     // ListView with Images Sample
@@ -361,10 +340,7 @@ public class Message
         MsgAlignment = align;
     }
 
-    public override string ToString()
-    {
-        return MsgDateTime.ToString() + " " + MsgText;
-    }
+    public override string ToString() => MsgDateTime.ToString() + " " + MsgText;
 }
 
 public class Contact
@@ -408,10 +384,7 @@ public class Contact
         return new ObservableCollection<GroupInfoList>(query);
     }
 
-    public override string ToString()
-    {
-        return $"{Name}, {Company}";
-    }
+    public override string ToString() => $"{Name}, {Company}";
     #endregion
 }
 
@@ -422,8 +395,5 @@ public class GroupInfoList : List<object>
     }
     public object Key { get; set; }
 
-    public override string ToString()
-    {
-        return "Group " + Key.ToString();
-    }
+    public override string ToString() => "Group " + Key.ToString();
 }

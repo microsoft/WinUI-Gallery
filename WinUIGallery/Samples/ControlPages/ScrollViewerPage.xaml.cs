@@ -91,10 +91,7 @@ public sealed partial class ScrollViewerPage : Page
         }
     }
 
-    private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-    {
-        ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
-    }
+    private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e) => ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
 
     private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
     {

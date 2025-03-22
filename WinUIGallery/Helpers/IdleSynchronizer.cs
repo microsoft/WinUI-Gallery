@@ -58,10 +58,7 @@ public class IdleSynchronizer
         return !handle.IsValid ? throw new Exception("Failed to open " + eventName + " handle.") : handle;
     }
 
-    private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
-    {
-        return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
-    }
+    private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix) => OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
 
     private uint GetUIThreadId(DispatcherQueue dispatcherQueue)
     {
@@ -125,10 +122,7 @@ public class IdleSynchronizer
         instance = new IdleSynchronizer(dispatcherQueue);
     }
 
-    public static void Wait()
-    {
-        Wait(out _);
-    }
+    public static void Wait() => Wait(out _);
 
     public static void Wait(out string logMessage)
     {
@@ -140,15 +134,9 @@ public class IdleSynchronizer
         }
     }
 
-    public static string TryWait()
-    {
-        return Instance.WaitInternal(out _);
-    }
+    public static string TryWait() => Instance.WaitInternal(out _);
 
-    public static string TryWait(out string logMessage)
-    {
-        return Instance.WaitInternal(out logMessage);
-    }
+    public static string TryWait(out string logMessage) => Instance.WaitInternal(out logMessage);
 
     public void AddLog(string message)
     {

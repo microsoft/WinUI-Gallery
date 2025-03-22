@@ -186,10 +186,7 @@ sealed partial class App : Application
     /// </summary>
     /// <param name="sender">The Frame which failed navigation</param>
     /// <param name="e">Details about the navigation failure</param>
-    void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-    {
-        throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-    }
+    void OnNavigationFailed(object sender, NavigationFailedEventArgs e) => throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
 
     /// <summary>
     /// Prevents the app from crashing when a exception gets thrown and notifies the user.

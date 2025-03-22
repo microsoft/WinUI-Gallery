@@ -14,11 +14,9 @@ public sealed partial class CommandBarFlyoutPage : Page
         InitializeComponent();
     }
 
-    private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
+    private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e) =>
         // Do custom logic
         SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
-    }
 
     private void ShowMenu(bool isTransient)
     {
@@ -37,17 +35,13 @@ public sealed partial class CommandBarFlyoutPage : Page
         }
     }
 
-    private void MyImageButton_ContextRequested(Microsoft.UI.Xaml.UIElement sender, ContextRequestedEventArgs args)
-    {
+    private void MyImageButton_ContextRequested(Microsoft.UI.Xaml.UIElement sender, ContextRequestedEventArgs args) =>
         // Show a context menu in standard mode
         // Focus will move to the menu
         ShowMenu(false);
-    }
 
-    private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
+    private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e) =>
         // Show a context menu in transient mode
         // Focus will not move to the menu
         ShowMenu(true);
-    }
 }

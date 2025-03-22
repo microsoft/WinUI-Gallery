@@ -13,10 +13,7 @@ public sealed partial class CompactSizingPage : Page
 
     }
 
-    private void Example1_Loaded(object sender, RoutedEventArgs e)
-    {
-        ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
-    }
+    private void Example1_Loaded(object sender, RoutedEventArgs e) => ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
 
     private void Standard_Checked(object sender, RoutedEventArgs e)
     {

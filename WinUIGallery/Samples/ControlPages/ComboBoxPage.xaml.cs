@@ -75,10 +75,7 @@ public sealed partial class ComboBoxPage : Page
         Control1Output.Fill = new SolidColorBrush(color);
     }
 
-    private void Combo2_Loaded(object sender, RoutedEventArgs e)
-    {
-        Combo2.SelectedIndex = 2;
-    }
+    private void Combo2_Loaded(object sender, RoutedEventArgs e) => Combo2.SelectedIndex = 2;
 
     private void Combo3_Loaded(object sender, RoutedEventArgs e)
     {

@@ -137,14 +137,12 @@ public sealed partial class NavigationRootPage : Page
 
     // this handles updating the caption button colors correctly when indows system theme is changed
     // while the app is open
-    private void _settings_ColorValuesChanged(UISettings sender, object args)
-    {
+    private void _settings_ColorValuesChanged(UISettings sender, object args) =>
         // This calls comes off-thread, hence we will need to dispatch it to current app's thread
         dispatcherQueue.TryEnqueue(() =>
         {
             _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
         });
-    }
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
@@ -243,15 +241,12 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private static IconElement GetIcon(string imagePath)
-    {
-        return imagePath.ToLowerInvariant().EndsWith(".png") ?
+    private static IconElement GetIcon(string imagePath) => imagePath.ToLowerInvariant().EndsWith(".png") ?
                     (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
                     (IconElement)new FontIcon()
                     {
                         Glyph = imagePath
                     };
-    }
 
     private void SetDeviceFamily()
     {
@@ -388,15 +383,9 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
-    {
-        TestContentLoadedCheckBox.IsChecked = true;
-    }
+    private void OnRootFrameNavigated(object sender, NavigationEventArgs e) => TestContentLoadedCheckBox.IsChecked = true;
 
-    private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
-    {
-        TestContentLoadedCheckBox.IsChecked = false;
-    }
+    private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e) => TestContentLoadedCheckBox.IsChecked = false;
 
     private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
@@ -522,10 +511,7 @@ public sealed partial class NavigationRootPage : Page
         }
         return changedSelection;
     }
-    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-    {
-        controlsSearchBox.Focus(FocusState.Programmatic);
-    }
+    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args) => controlsSearchBox.Focus(FocusState.Programmatic);
 
     #region Helpers for test automation
 
@@ -555,15 +541,9 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private static void WaitForIdleWorker(IAsyncAction action)
-    {
-        _error = IdleSynchronizer.TryWait(out _log);
-    }
+    private static void WaitForIdleWorker(IAsyncAction action) => _error = IdleSynchronizer.TryWait(out _log);
 
-    private void CloseAppInvokerButton_Click(object sender, RoutedEventArgs e)
-    {
-        Application.Current.Exit();
-    }
+    private void CloseAppInvokerButton_Click(object sender, RoutedEventArgs e) => Application.Current.Exit();
 
     private void GoBackInvokerButton_Click(object sender, RoutedEventArgs e)
     {

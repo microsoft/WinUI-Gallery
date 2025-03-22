@@ -41,10 +41,7 @@ public sealed partial class SettingsPage : Page
         Loaded += OnSettingsPageLoaded;
     }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-    }
+    protected override void OnNavigatedTo(NavigationEventArgs e) => base.OnNavigatedTo(e);
 
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
@@ -131,15 +128,9 @@ public sealed partial class SettingsPage : Page
         }
     }
 
-    private void spatialSoundBox_Toggled(object sender, RoutedEventArgs e)
-    {
-        ElementSoundPlayer.SpatialAudioMode = soundToggle.IsOn == true ? ElementSpatialAudioMode.Off : ElementSpatialAudioMode.On;
-    }
+    private void spatialSoundBox_Toggled(object sender, RoutedEventArgs e) => ElementSoundPlayer.SpatialAudioMode = soundToggle.IsOn == true ? ElementSpatialAudioMode.Off : ElementSpatialAudioMode.On;
 
-    private void soundPageHyperlink_Click(object sender, RoutedEventArgs e)
-    {
-        Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
-    }
+    private void soundPageHyperlink_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(ItemPage), new NavigationRootPageArgs() { Parameter = "Sound", NavigationRootPage = NavigationRootPage.GetForElement(this) });
 
     private void toCloneRepoCard_Click(object sender, RoutedEventArgs e)
     {
@@ -148,9 +139,5 @@ public sealed partial class SettingsPage : Page
         Clipboard.SetContent(package);
     }
 
-    private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
-    {
-        await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
-    
-    }
+    private async void bugRequestCard_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
 }

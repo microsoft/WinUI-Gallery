@@ -144,10 +144,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         }
     }
 
-    private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-    {
-        SuggestionOutput.Text = args.SelectedItem.ToString();
-    }
+    private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args) => SuggestionOutput.Text = args.SelectedItem.ToString();
 
     /// <summary>
     /// This event gets fired anytime the text in the TextBox gets updated.

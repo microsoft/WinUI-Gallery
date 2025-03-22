@@ -21,10 +21,7 @@ public sealed partial class XamlCompInteropPage : Page
     Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
     private SpringVector3NaturalMotionAnimation _springAnimation;
 
-    private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e)
-    {
-        UpdateSpringAnimation(1.0f);
-    }
+    private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e) => UpdateSpringAnimation(1.0f);
 
     private void UpdateSpringAnimation(float finalValue)
     {
@@ -50,15 +47,9 @@ public sealed partial class XamlCompInteropPage : Page
         return 0.6f;
     }
 
-    TimeSpan GetPeriod()
-    {
-        return TimeSpan.FromMilliseconds(PeriodSlider.Value);
-    }
+    TimeSpan GetPeriod() => TimeSpan.FromMilliseconds(PeriodSlider.Value);
 
-    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation)
-    {
-        (sender as UIElement).StartAnimation(animation);
-    }
+    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation) => (sender as UIElement).StartAnimation(animation);
 
     private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
     {

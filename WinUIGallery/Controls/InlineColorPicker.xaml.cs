@@ -44,10 +44,7 @@ public sealed partial class InlineColorPicker : UserControl
         Loaded += InlineColorPicker_Loaded;
     }
 
-    private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e)
-    {
-        ColorHex.Text = Color.ToString().Replace("#FF","#");
-    }
+    private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e) => ColorHex.Text = Color.ToString().Replace("#FF", "#");
 
     public SolidColorBrush GetSolidColorBrush(string hex)
     {
@@ -67,10 +64,7 @@ public sealed partial class InlineColorPicker : UserControl
         ColorChanged?.Invoke(this, args.NewColor);
     }
 
-    private void PickerFlyout_Opened(object sender, object e)
-    {
-        Picker.Color = ((SolidColorBrush)ColorPreview.Fill).Color;
-    }
+    private void PickerFlyout_Opened(object sender, object e) => Picker.Color = ((SolidColorBrush)ColorPreview.Fill).Color;
 
     private void ColorHex_TextChanged(object sender, TextChangedEventArgs e)
     {

@@ -20,18 +20,9 @@ public sealed partial class TeachingTipPage : Page
         InitializeComponent();
     }
 
-    private void TestButton1Click(object sender, RoutedEventArgs e)
-    {
-        TestButton1TeachingTip.IsOpen = true;
-    }
+    private void TestButton1Click(object sender, RoutedEventArgs e) => TestButton1TeachingTip.IsOpen = true;
 
-    private void TestButton2Click(object sender, RoutedEventArgs e)
-    {
-        TestButton2TeachingTip.IsOpen = true;
-    }
+    private void TestButton2Click(object sender, RoutedEventArgs e) => TestButton2TeachingTip.IsOpen = true;
 
-    private void TestButton3Click(object sender, RoutedEventArgs e)
-    {
-        TestButton3TeachingTip.IsOpen = true;
-    }
+    private void TestButton3Click(object sender, RoutedEventArgs e) => TestButton3TeachingTip.IsOpen = true;
 }

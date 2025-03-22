@@ -33,10 +33,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public void OnPropertyChanged(string PropertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-    }
+    public void OnPropertyChanged(string PropertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
     public CommandBarPage()
     {
@@ -56,10 +53,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         PrimaryCommandBar.IsSticky = false;
     }
 
-    private void OnElementClicked(object sender, RoutedEventArgs e)
-    {
-        SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
-    }
+    private void OnElementClicked(object sender, RoutedEventArgs e) => SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
 
     private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
     {
@@ -114,10 +108,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         MultipleButtons = true;
     }
 
-    private void RemoveSecondaryCommands_Click(object sender, RoutedEventArgs e)
-    {
-        RemoveSecondaryCommands();
-    }
+    private void RemoveSecondaryCommands_Click(object sender, RoutedEventArgs e) => RemoveSecondaryCommands();
 
     protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
     {

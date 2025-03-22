@@ -70,10 +70,7 @@ public sealed partial class HomePage : ItemsPageBase
         return groupList;
     }
 
-    protected override bool GetIsNarrowLayoutState()
-    {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
-    }
+    protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }
 
 public class GroupInfoList : List<object>
@@ -84,8 +81,5 @@ public class GroupInfoList : List<object>
 
     public string Title { get; set; }
 
-    public override string ToString()
-    {
-        return Title;
-    }
+    public override string ToString() => Title;
 }

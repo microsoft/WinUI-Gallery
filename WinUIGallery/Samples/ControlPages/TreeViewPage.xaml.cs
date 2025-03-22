@@ -40,9 +40,7 @@ public sealed partial class TreeViewPage : Page
         sampleTreeView.RootNodes.Add(personalFolder);
     }
 
-    private ObservableCollection<ExplorerItem> GetData()
-    {
-        return new ObservableCollection<ExplorerItem>
+    private ObservableCollection<ExplorerItem> GetData() => new ObservableCollection<ExplorerItem>
         {
             new() {
                 Name = "Documents",
@@ -62,7 +60,6 @@ public sealed partial class TreeViewPage : Page
                 }
             }
         };
-    }
 }
 
 public class ExplorerItem

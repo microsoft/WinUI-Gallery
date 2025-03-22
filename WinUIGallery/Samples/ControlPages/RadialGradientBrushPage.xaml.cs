@@ -30,10 +30,7 @@ public sealed partial class RadialGradientBrushPage : Page
         InitializeSliders();
     }
 
-    private void OnSpreadMethodChanged(object sender, SelectionChangedEventArgs e)
-    {
-        RadialGradientBrushExample.SpreadMethod = Enum.Parse<GradientSpreadMethod>(SpreadMethodComboBox.SelectedValue.ToString());
-    }
+    private void OnSpreadMethodChanged(object sender, SelectionChangedEventArgs e) => RadialGradientBrushExample.SpreadMethod = Enum.Parse<GradientSpreadMethod>(SpreadMethodComboBox.SelectedValue.ToString());
 
     private void OnMappingModeChanged(object sender, SelectionChangedEventArgs e)
     {

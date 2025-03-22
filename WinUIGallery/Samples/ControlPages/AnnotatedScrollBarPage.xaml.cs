@@ -41,26 +41,20 @@ public sealed partial class AnnotatedScrollBarPage : Page
         PopulateColorCollection();
     }
 
-    private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
+    private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e) =>
         // Connect the ScrollView and AnnotatedScrollBar controls. The AnnotatedScrollBar provides
         // an IScrollController implementation, while the ScrollView consumes it.
         scrollView.ScrollPresenter.VerticalScrollController = annotatedScrollBar.ScrollController;
-    }
 
-    private void AnnotatedScrollBar_DetailLabelRequested(object sender, AnnotatedScrollBarDetailLabelRequestedEventArgs e)
-    {
+    private void AnnotatedScrollBar_DetailLabelRequested(object sender, AnnotatedScrollBarDetailLabelRequestedEventArgs e) =>
         // Provide a string as the tooltip content when hovering the mouse over the AnnotatedScrollBar's vertical rail. The string simply
         // represents the color of the last item in the row computed from AnnotatedScrollBarDetailLabelRequestedEventArgs.ScrollOffset.
         e.Content = GetOffsetLabel(e.ScrollOffset);
-    }
 
-    private void ItemsRepeater_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
-    {
+    private void ItemsRepeater_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e) =>
         // When the ItemsRepeater is resized, its items layout may change and thus require an update of
         // the AnnotatedScrollBar label positions.
         PopulateLabelCollection();
-    }
 
     private void AnnotatedScrollBarMaxHeightSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
@@ -151,10 +145,7 @@ public sealed partial class AnnotatedScrollBarPage : Page
         }
     }
 
-    private int GetOffsetOfItem(int itemIndex)
-    {
-        return ItemHeight * (itemIndex / GetItemsPerRow());
-    }
+    private int GetOffsetOfItem(int itemIndex) => ItemHeight * (itemIndex / GetItemsPerRow());
 
     private string GetItemColor(int itemIndex)
     {
@@ -180,8 +171,5 @@ public sealed partial class AnnotatedScrollBarPage : Page
         }
     }
 
-    private int GetItemsPerRow()
-    {
-        return (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int) Math.Max(itemsRepeater.ActualWidth / ItemWidth, 1);
-    }
+    private int GetItemsPerRow() => (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int)Math.Max(itemsRepeater.ActualWidth / ItemWidth, 1);
 }

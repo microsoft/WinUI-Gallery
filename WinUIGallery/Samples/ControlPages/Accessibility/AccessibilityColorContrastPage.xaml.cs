@@ -84,13 +84,7 @@ public sealed partial class AccessibilityColorContrastPage : Page
         return 0.2126 * r + 0.7152 * g + 0.0722 * b;
     }
 
-    private void BackgroundColorPicker_ColorChanged(object sender, Color e)
-    {
-        RecalculateContrastRatio();
-    }
+    private void BackgroundColorPicker_ColorChanged(object sender, Color e) => RecalculateContrastRatio();
 
-    private void TextColorPicker_ColorChanged(object sender, Color e)
-    {
-        RecalculateContrastRatio();
-    }
+    private void TextColorPicker_ColorChanged(object sender, Color e) => RecalculateContrastRatio();
 }

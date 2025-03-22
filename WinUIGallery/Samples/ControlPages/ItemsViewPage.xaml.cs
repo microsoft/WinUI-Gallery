@@ -76,10 +76,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     }
 
     // Example1
-    private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
-    {
-        tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
-    }
+    private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e) => tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 
     // Example2
     private void ApplyLinedFlowLayoutLineHeight()
@@ -229,10 +226,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     }
 
     // Example3
-    private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
-    {
-        tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
-    }
+    private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e) => tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 
     private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
     {

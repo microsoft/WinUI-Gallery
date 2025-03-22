@@ -9,8 +9,5 @@ public sealed partial class RatingControlPage : Page
         InitializeComponent();
     }
 
-    private void RatingControl1_ValueChanged(RatingControl sender, object args)
-    {
-        RatingControl1.Caption = "Your rating";
-    }
+    private void RatingControl1_ValueChanged(RatingControl sender, object args) => RatingControl1.Caption = "Your rating";
 }

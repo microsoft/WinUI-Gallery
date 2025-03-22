@@ -131,25 +131,13 @@ public sealed partial class GridViewPage : ItemsPageBase
         }
     }
 
-    private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
-    }
+    private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e) => ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
 
-    private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
-    }
+    private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e) => ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
 
-    private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)
-    {
-        ClickOutput.Text = string.Empty;
-    }
+    private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e) => ClickOutput.Text = string.Empty;
 
-    private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e)
-    {
-        ContentGridView.FlowDirection = ContentGridView.FlowDirection == FlowDirection.LeftToRight ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-    }
+    private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e) => ContentGridView.FlowDirection = ContentGridView.FlowDirection == FlowDirection.LeftToRight ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 
     private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

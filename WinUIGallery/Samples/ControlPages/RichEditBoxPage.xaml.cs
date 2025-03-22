@@ -133,15 +133,9 @@ public sealed partial class RichEditBoxPage : Page
         }
     }
 
-    private void BoldButton_Click(object sender, RoutedEventArgs e)
-    {
-        editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
-    }
+    private void BoldButton_Click(object sender, RoutedEventArgs e) => editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
 
-    private void ItalicButton_Click(object sender, RoutedEventArgs e)
-    {
-        editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
-    }
+    private void ItalicButton_Click(object sender, RoutedEventArgs e) => editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
 
     private void ColorButton_Click(object sender, RoutedEventArgs e)
     {

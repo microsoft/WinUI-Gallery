@@ -35,11 +35,8 @@ public sealed partial class SplitButtonPage : Page
         // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
         Task.Delay(10).ContinueWith(_ => myColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
     }
-    
-    private void RevealColorButton_Click(object sender, RoutedEventArgs e)
-    {
-        myColorButtonReveal.Flyout.Hide();
-    }
+
+    private void RevealColorButton_Click(object sender, RoutedEventArgs e) => myColorButtonReveal.Flyout.Hide();
 
     private void myColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args)
     {

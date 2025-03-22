@@ -38,10 +38,7 @@ public sealed partial class TitleBarPage : Page
         };
     }
 
-    protected override void OnNavigatedFrom(NavigationEventArgs e)
-    {
-        ResetTitlebarSettings();
-    }
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ResetTitlebarSettings();
 
     private void SetTitleBar(bool forceCustomTitlebar = false)
     {

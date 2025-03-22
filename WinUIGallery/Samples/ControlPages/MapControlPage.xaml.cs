@@ -52,10 +52,7 @@ public sealed partial class MapControlPage : Page
         map1.Layers.Add(LandmarksLayer);
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        map1.MapServiceToken = MapToken.Password;
-    }
+    private void Button_Click(object sender, RoutedEventArgs e) => map1.MapServiceToken = MapToken.Password;
 
     private void MapToken_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
     {

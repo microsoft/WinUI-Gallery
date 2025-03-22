@@ -37,8 +37,5 @@ public sealed partial class SectionPage : ItemsPageBase
         Items = group.Items.OrderBy(i => i.Title).ToList();
     }
 
-    protected override bool GetIsNarrowLayoutState()
-    {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
-    }
+    protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }

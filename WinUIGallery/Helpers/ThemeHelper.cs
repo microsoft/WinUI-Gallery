@@ -80,10 +80,7 @@ public static class ThemeHelper
         }
     }
 
-    public static bool IsDarkTheme()
-    {
-        return RootTheme == ElementTheme.Default
+    public static bool IsDarkTheme() => RootTheme == ElementTheme.Default
             ? Application.Current.RequestedTheme == ApplicationTheme.Dark
             : RootTheme == ElementTheme.Dark;
-    }
 }

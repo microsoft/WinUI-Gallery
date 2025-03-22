@@ -62,10 +62,7 @@ public class ControlInfoDataItem
 
     public string SourcePath { get; set; }
 
-    public override string ToString()
-    {
-        return Title;
-    }
+    public override string ToString() => Title;
 }
 
 public class ControlInfoDocLink
@@ -96,8 +93,5 @@ public class ControlInfoDataGroup
     public string Folder { get; set; }
     public ObservableCollection<ControlInfoDataItem> Items { get; set; }
 
-    public override string ToString()
-    {
-        return Title;
-    }
+    public override string ToString() => Title;
 }

@@ -263,10 +263,7 @@ public class RootFrameNavigationHelper
         }
     }
 
-    private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
-    {
-        TryGoBack();
-    }
+    private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => TryGoBack();
 
     private bool TryGoBack()
     {
@@ -297,10 +294,7 @@ public class RootFrameNavigationHelper
         return navigated;
     }
 
-    private void UpdateBackButton()
-    {
-        CurrentNavView.IsBackEnabled = Frame.CanGoBack;
-    }
+    private void UpdateBackButton() => CurrentNavView.IsBackEnabled = Frame.CanGoBack;
 }
 
 /// <summary>

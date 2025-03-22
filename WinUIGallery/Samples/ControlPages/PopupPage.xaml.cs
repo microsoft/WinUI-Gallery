@@ -45,9 +45,6 @@ namespace WinUIGallery.ControlPages
             IsLightDismissEnabledToggleSwitch.IsEnabled = true;
         }
 
-        private void PopupClosed(object sender, object e)
-        {
-            IsLightDismissEnabledToggleSwitch.IsEnabled = true;
-        }
+        private void PopupClosed(object sender, object e) => IsLightDismissEnabledToggleSwitch.IsEnabled = true;
     }
 }

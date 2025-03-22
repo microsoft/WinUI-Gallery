@@ -34,8 +34,5 @@ public sealed partial class SamplePage2 : Page
         }
     }
 
-    private void AddContentPanelAnimations()
-    {
-        ContentPanel.Transitions = new TransitionCollection {new EntranceThemeTransition()};
-    }
+    private void AddContentPanelAnimations() => ContentPanel.Transitions = new TransitionCollection { new EntranceThemeTransition() };
 }

@@ -18,18 +18,14 @@ public sealed partial class AnimatedVisualPlayerPage : Page
         EnsurePlaying();
     }
 
-    private void PauseButton_Checked(object sender, RoutedEventArgs e)
-    {
+    private void PauseButton_Checked(object sender, RoutedEventArgs e) =>
         // Pause the animation, if playing.
         // NOTE: Pausing does not cause PlayAsync to complete.
         Player.Pause();
-    }
 
-    private void PauseButton_Unchecked(object sender, RoutedEventArgs e)
-    {
+    private void PauseButton_Unchecked(object sender, RoutedEventArgs e) =>
         // Resume playing current animation.
         Player.Resume();
-    }
 
     private void StopButton_Click(object sender, RoutedEventArgs e)
     {

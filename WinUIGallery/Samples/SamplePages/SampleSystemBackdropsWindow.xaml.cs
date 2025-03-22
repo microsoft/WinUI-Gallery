@@ -198,15 +198,9 @@ public sealed partial class SampleSystemBackdropsWindow : Window
             SetConfigurationSourceTheme();
     }
 
-    private void SetConfigurationSourceTheme()
-    {
-        configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
-    }
+    private void SetConfigurationSourceTheme() => configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
 
-    private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        SetBackdrop((BackdropType) backdropComboBox.SelectedItem);
-    }
+    private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) => SetBackdrop((BackdropType)backdropComboBox.SelectedItem);
 
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

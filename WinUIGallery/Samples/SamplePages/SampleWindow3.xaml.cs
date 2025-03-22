@@ -34,23 +34,11 @@ public sealed partial class SampleWindow3 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Maximize();
-    }
+    private void MaximizeBtn_Click(object sender, RoutedEventArgs e) => presenter.Maximize();
 
-    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Minimize();
-    }
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e) => presenter.Minimize();
 
-    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Restore();
-    }
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e) => presenter.Restore();
 
-    private void CloseBtn_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void CloseBtn_Click(object sender, RoutedEventArgs e) => Close();
 }

@@ -197,8 +197,5 @@ public sealed partial class PullToRefreshPage : Page
         timer2.Start();
     }
 
-    private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args)
-    {
-        visualizerContentVisual.StopAnimation("RotationAngle");
-    }
+    private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args) => visualizerContentVisual.StopAnimation("RotationAngle");
 }

@@ -12,10 +12,7 @@ public static class UIHelper
     {
     }
 
-    public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
-    {
-        return start.GetDescendants().OfType<T>();
-    }
+    public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject => start.GetDescendants().OfType<T>();
 
     public static IEnumerable<DependencyObject> GetDescendants(this DependencyObject start)
     {

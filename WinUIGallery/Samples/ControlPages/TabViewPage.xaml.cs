@@ -38,22 +38,14 @@ public sealed partial class TabViewPage : Page
         }
     }
 
-    private void TabView_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args)
-    {
+    private void TabView_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args) =>
         // The TabView control is firing this event when TabWidthMode is set to `SizeToContent` or `Compact`.
         // This will work around an auto-scroll issue when the page is loaded.
         args.Handled = true;
-    }
 
-    private void TabView_AddButtonClick(TabView sender, object args)
-    {
-        sender.TabItems.Add(CreateNewTab(sender.TabItems.Count));
-    }
+    private void TabView_AddButtonClick(TabView sender, object args) => sender.TabItems.Add(CreateNewTab(sender.TabItems.Count));
 
-    private void TabView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
-    {
-        sender.TabItems.Remove(args.Tab);
-    }
+    private void TabView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) => sender.TabItems.Remove(args.Tab);
 
     private TabViewItem CreateNewTab(int index)
     {
@@ -124,17 +116,13 @@ public sealed partial class TabViewPage : Page
         return newData;
     }
 
-    private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args)
-    {
+    private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args) =>
         // Add a new MyData item to the collection. TabView automatically generates a TabViewItem.
         myDatas.Add(CreateNewMyData(myDatas.Count));
-    }
 
-    private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
-    {
+    private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) =>
         // Remove the requested MyData object from the collection.
         myDatas.Remove(args.Item as MyData);
-    }
     #endregion
 
     #region KeyboardAcceleratorSample

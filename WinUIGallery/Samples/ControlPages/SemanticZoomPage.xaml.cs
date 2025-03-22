@@ -36,8 +36,5 @@ public sealed partial class SemanticZoomPage : Page
         _groups = ControlInfoDataSource.Instance.Groups;
     }
 
-    private void List_GotFocus(object sender, RoutedEventArgs e)
-    {
-        Control1.StartBringIntoView();
-    }
+    private void List_GotFocus(object sender, RoutedEventArgs e) => Control1.StartBringIntoView();
 }

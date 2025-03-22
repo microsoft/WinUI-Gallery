@@ -39,17 +39,12 @@ internal static class Win32
     public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
 
 
-    public static int SetWindowKeyHook(HookProc hookProc)
-    {
-        return SetWindowsHookEx(WH_KEYBOARD, hookProc, GetModuleHandle(IntPtr.Zero), (int)GetCurrentThreadId());
-    }
+    public static int SetWindowKeyHook(HookProc hookProc) => SetWindowsHookEx(WH_KEYBOARD, hookProc, GetModuleHandle(IntPtr.Zero), (int)GetCurrentThreadId());
 
-    public static bool IsKeyDownHook(IntPtr lWord)
-    {
+    public static bool IsKeyDownHook(IntPtr lWord) =>
         // The 30th bit tells what the previous key state is with 0 being the "UP" state
         // For more info see https://learn.microsoft.com/windows/win32/winmsg/keyboardproc#lparam-in
-        return (lWord >> 30 & 1) == 0;
-    }
+        (lWord >> 30 & 1) == 0;
 
     public const int WM_ACTIVATE = 0x0006;
     public const int WA_ACTIVE = 0x01;

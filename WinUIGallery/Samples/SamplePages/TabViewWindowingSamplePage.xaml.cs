@@ -44,10 +44,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         Tabs.SelectedIndex = 0;
     }
 
-    public void AddTabToTabs(TabViewItem tab)
-    {
-        Tabs.TabItems.Add(tab);
-    }
+    public void AddTabToTabs(TabViewItem tab) => Tabs.TabItems.Add(tab);
 
     private void Tabs_TabTearOutWindowRequested(TabView sender, TabViewTabTearOutWindowRequestedEventArgs args)
     {
@@ -78,10 +75,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         }
     }
 
-    private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args)
-    {
-        args.AllowDrop = true;
-    }
+    private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args) => args.AllowDrop = true;
 
     private void Tabs_ExternalTornOutTabsDropped(TabView sender, TabViewExternalTornOutTabsDroppedEventArgs args)
     {

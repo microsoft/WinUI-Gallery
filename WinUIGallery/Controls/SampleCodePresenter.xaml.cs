@@ -83,10 +83,7 @@ public sealed partial class SampleCodePresenter : UserControl
         }
     }
 
-    private void ReevaluateVisibility()
-    {
-        Visibility = IsEmpty ? Visibility.Collapsed : Visibility.Visible;
-    }
+    private void ReevaluateVisibility() => Visibility = IsEmpty ? Visibility.Collapsed : Visibility.Visible;
 
     private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
     {
@@ -114,22 +111,14 @@ public sealed partial class SampleCodePresenter : UserControl
         }
     }
 
-    private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
-    {
-        GenerateSyntaxHighlightedContent();
-    }
+    private void CodePresenter_Loaded(object sender, RoutedEventArgs e) => GenerateSyntaxHighlightedContent();
 
-    private void SampleCodePresenter_ActualThemeChanged(FrameworkElement sender, object args)
-    {
+    private void SampleCodePresenter_ActualThemeChanged(FrameworkElement sender, object args) =>
         // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
         // Therefore we need to re-format the REB to use the correct colors.
         GenerateSyntaxHighlightedContent();
-    }
 
-    private void OnValueChanged(ControlExampleSubstitution sender, object e)
-    {
-        GenerateSyntaxHighlightedContent();
-    }
+    private void OnValueChanged(ControlExampleSubstitution sender, object e) => GenerateSyntaxHighlightedContent();
 
     private Uri GetDerivedSource(string sourceRelativePath)
     {

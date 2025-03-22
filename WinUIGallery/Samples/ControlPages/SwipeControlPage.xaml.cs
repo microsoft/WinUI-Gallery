@@ -40,10 +40,7 @@ public sealed partial class SwipeControlPage : Page
         ((TextBlock)args.SwipeControl.Content).Text = isArchived ? "Archived - Swipe Left" : "Swipe Left";
     }
 
-    private void DeleteItem_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
-    {
-        items.Remove(args.SwipeControl.DataContext);
-    }
+    private void DeleteItem_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args) => items.Remove(args.SwipeControl.DataContext);
 
     private void Accept_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
     {

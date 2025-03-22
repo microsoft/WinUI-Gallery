@@ -22,16 +22,7 @@ public sealed partial class AccessibilityKeyboardPage : Page
         InitializeComponent();
     }
 
-    private void MakeRedButton_Click(object sender, RoutedEventArgs e)
-    {
-        ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
-    }
-    private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
-    {
-        ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
-    }
-    private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
-    {
-        ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
-    }
+    private void MakeRedButton_Click(object sender, RoutedEventArgs e) => ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
+    private void MakeBlueButton_Click(object sender, RoutedEventArgs e) => ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
+    private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e) => ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
 }

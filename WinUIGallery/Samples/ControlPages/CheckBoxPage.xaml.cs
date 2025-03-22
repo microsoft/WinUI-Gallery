@@ -21,46 +21,22 @@ public sealed partial class CheckBoxPage : Page
         Loaded += CheckBoxPage_Loaded;
     }
 
-    void CheckBoxPage_Loaded(object sender, RoutedEventArgs e)
-    {
-        SetCheckedState();
-    }
+    void CheckBoxPage_Loaded(object sender, RoutedEventArgs e) => SetCheckedState();
 
-    private void TwoState_Checked(object sender, RoutedEventArgs e)
-    {
-        TwoStateOutput.Text = "You checked the box.";
-    }
+    private void TwoState_Checked(object sender, RoutedEventArgs e) => TwoStateOutput.Text = "You checked the box.";
 
-    private void TwoState_Unchecked(object sender, RoutedEventArgs e)
-    {
-        TwoStateOutput.Text = "You unchecked the box.";
-    }
+    private void TwoState_Unchecked(object sender, RoutedEventArgs e) => TwoStateOutput.Text = "You unchecked the box.";
 
-    private void ThreeState_Checked(object sender, RoutedEventArgs e)
-    {
-        ThreeStateOutput.Text = "CheckBox is checked.";
-    }
+    private void ThreeState_Checked(object sender, RoutedEventArgs e) => ThreeStateOutput.Text = "CheckBox is checked.";
 
-    private void ThreeState_Unchecked(object sender, RoutedEventArgs e)
-    {
-        ThreeStateOutput.Text = "CheckBox is unchecked.";
-    }
+    private void ThreeState_Unchecked(object sender, RoutedEventArgs e) => ThreeStateOutput.Text = "CheckBox is unchecked.";
 
-    private void ThreeState_Indeterminate(object sender, RoutedEventArgs e)
-    {
-        ThreeStateOutput.Text = "CheckBox state is indeterminate.";
-    }
+    private void ThreeState_Indeterminate(object sender, RoutedEventArgs e) => ThreeStateOutput.Text = "CheckBox state is indeterminate.";
 
     #region SelectAllMethods
-    private void SelectAll_Checked(object sender, RoutedEventArgs e)
-    {
-        Option1CheckBox.IsChecked = Option2CheckBox.IsChecked = Option3CheckBox.IsChecked = true;
-    }
+    private void SelectAll_Checked(object sender, RoutedEventArgs e) => Option1CheckBox.IsChecked = Option2CheckBox.IsChecked = Option3CheckBox.IsChecked = true;
 
-    private void SelectAll_Unchecked(object sender, RoutedEventArgs e)
-    {
-        Option1CheckBox.IsChecked = Option2CheckBox.IsChecked = Option3CheckBox.IsChecked = false;
-    }
+    private void SelectAll_Unchecked(object sender, RoutedEventArgs e) => Option1CheckBox.IsChecked = Option2CheckBox.IsChecked = Option3CheckBox.IsChecked = false;
 
     private void SelectAll_Indeterminate(object sender, RoutedEventArgs e)
     {
@@ -106,14 +82,8 @@ public sealed partial class CheckBoxPage : Page
         }
     }
 
-    private void Option_Checked(object sender, RoutedEventArgs e)
-    {
-        SetCheckedState();
-    }
+    private void Option_Checked(object sender, RoutedEventArgs e) => SetCheckedState();
 
-    private void Option_Unchecked(object sender, RoutedEventArgs e)
-    {
-        SetCheckedState();
-    }
+    private void Option_Unchecked(object sender, RoutedEventArgs e) => SetCheckedState();
     #endregion
 }

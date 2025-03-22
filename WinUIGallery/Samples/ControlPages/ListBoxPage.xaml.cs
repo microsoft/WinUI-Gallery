@@ -55,8 +55,5 @@ public sealed partial class ListBoxPage : Page
         }
     }
 
-    private void ListBox2_Loaded(object sender, RoutedEventArgs e)
-    {
-        ListBox2.SelectedIndex = 2;
-    }
+    private void ListBox2_Loaded(object sender, RoutedEventArgs e) => ListBox2.SelectedIndex = 2;
 }

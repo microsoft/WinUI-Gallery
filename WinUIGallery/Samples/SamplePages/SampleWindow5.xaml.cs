@@ -26,8 +26,5 @@ public sealed partial class SampleWindow5 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void Close_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void Close_Click(object sender, RoutedEventArgs e) => Close();
 }

@@ -237,22 +237,13 @@ public sealed partial class ScrollViewPage : Page
         }
     }
 
-    private double GetTargetVerticalOffset()
-    {
-        return scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0
+    private double GetTargetVerticalOffset() => scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0
             ? scrollView3.ScrollableHeight / 5.0
             : 4.0 * scrollView3.ScrollableHeight / 5.0;
-    }
 
-    private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateExample3Content();
-    }
+    private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateExample3Content();
 
-    private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
-    {
-        UpdateExample3Content();
-    }
+    private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args) => UpdateExample3Content();
 
     private void UpdateExample3Content()
     {

@@ -85,10 +85,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public void OnPropertyChanged(string PropertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-    }
+    public void OnPropertyChanged(string PropertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
     private void MirrorToggleSwitch_Toggled(object sender, RoutedEventArgs e)
     {

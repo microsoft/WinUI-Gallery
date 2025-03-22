@@ -88,8 +88,5 @@ public sealed partial class EasingFunctionPage : Page
         else return EasingMode.EaseInOut;
     }
 
-    private void EasingComboBox_Loaded(object sender, RoutedEventArgs e)
-    {
-        EasingComboBox.SelectedIndex = 0;
-    }
+    private void EasingComboBox_Loaded(object sender, RoutedEventArgs e) => EasingComboBox.SelectedIndex = 0;
 }

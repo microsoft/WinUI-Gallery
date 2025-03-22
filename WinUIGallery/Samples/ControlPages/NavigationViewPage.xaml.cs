@@ -46,10 +46,7 @@ public sealed partial class NavigationViewPage : Page
         nvSample2.UpdateLayout();
     }
 
-    public NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn)
-    {
-        return toggleOn ? NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.Top;
-    }
+    public NavigationViewPaneDisplayMode ChoosePanePosition(bool toggleOn) => toggleOn ? NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.Top;
 
     private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
@@ -192,25 +189,13 @@ public sealed partial class NavigationViewPage : Page
         contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
     }
 
-    private void headerCheck_Click(object sender, RoutedEventArgs e)
-    {
-        nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true;
-    }
+    private void headerCheck_Click(object sender, RoutedEventArgs e) => nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true;
 
-    private void settingsCheck_Click(object sender, RoutedEventArgs e)
-    {
-        nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true;
-    }
+    private void settingsCheck_Click(object sender, RoutedEventArgs e) => nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true;
 
-    private void visibleCheck_Click(object sender, RoutedEventArgs e)
-    {
-        nvSample.IsBackButtonVisible = (sender as CheckBox).IsChecked == true ? NavigationViewBackButtonVisible.Visible : NavigationViewBackButtonVisible.Collapsed;
-    }
+    private void visibleCheck_Click(object sender, RoutedEventArgs e) => nvSample.IsBackButtonVisible = (sender as CheckBox).IsChecked == true ? NavigationViewBackButtonVisible.Visible : NavigationViewBackButtonVisible.Collapsed;
 
-    private void enableCheck_Click(object sender, RoutedEventArgs e)
-    {
-        nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true;
-    }
+    private void enableCheck_Click(object sender, RoutedEventArgs e) => nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true;
 
     private void autoSuggestCheck_Click(object sender, RoutedEventArgs e)
     {
@@ -233,20 +218,11 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void setASBSubstitutionString()
-    {
-        navViewASB.Value = "\r\n    <NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "NavigationView.AutoSuggestBox> \r\n";
-    }
+    private void setASBSubstitutionString() => navViewASB.Value = "\r\n    <NavigationView.AutoSuggestBox> \r\n        <AutoSuggestBox QueryIcon=\"Find\" AutomationProperties.Name=\"Search\" /> \r\n    <" + "/" + "NavigationView.AutoSuggestBox> \r\n";
 
-    private void panemc_Check_Click(object sender, RoutedEventArgs e)
-    {
-        PaneHyperlink.Visibility = (sender as CheckBox).IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
-    }
+    private void panemc_Check_Click(object sender, RoutedEventArgs e) => PaneHyperlink.Visibility = (sender as CheckBox).IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
 
-    private void paneFooterCheck_Click(object sender, RoutedEventArgs e)
-    {
-        FooterStackPanel.Visibility = (sender as CheckBox).IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
-    }
+    private void paneFooterCheck_Click(object sender, RoutedEventArgs e) => FooterStackPanel.Visibility = (sender as CheckBox).IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
 
     private void panePositionLeft_Checked(object sender, RoutedEventArgs e)
     {
@@ -304,15 +280,9 @@ public sealed partial class NavigationViewPage : Page
         }
     }
 
-    private void sffCheck_Click(object sender, RoutedEventArgs e)
-    {
-        nvSample.SelectionFollowsFocus = (sender as CheckBox).IsChecked == true
+    private void sffCheck_Click(object sender, RoutedEventArgs e) => nvSample.SelectionFollowsFocus = (sender as CheckBox).IsChecked == true
             ? NavigationViewSelectionFollowsFocus.Enabled
             : NavigationViewSelectionFollowsFocus.Disabled;
-    }
 
-    private void suppressselectionCheck_Checked_Click(object sender, RoutedEventArgs e)
-    {
-        SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked != true;
-    }
+    private void suppressselectionCheck_Checked_Click(object sender, RoutedEventArgs e) => SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked != true;
 }

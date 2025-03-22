@@ -34,28 +34,21 @@ public sealed partial class ScratchPadPage : Page
         SetEmptyScratchPadContent();
     }
 
-    private void SetEmptyScratchPadContent()
+    private void SetEmptyScratchPadContent() => scratchPad.Content = new TextBlock()
     {
-        scratchPad.Content = new TextBlock()
-        {
-            Text = "Click the Load button to load the content below.",
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-            TextWrapping = TextWrapping.Wrap
-        };
-    }
+        Text = "Click the Load button to load the content below.",
+        HorizontalAlignment = HorizontalAlignment.Center,
+        VerticalAlignment = VerticalAlignment.Center,
+        TextWrapping = TextWrapping.Wrap
+    };
 
-    private string GetDefaultScratchXAML()
-    {
-        return
-@"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
+    private string GetDefaultScratchXAML() => @"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
     <!-- Note: {x:Bind} is not supported in Scratch Pad. -->
     <TextBlock>This is a sample TextBlock.</TextBlock>
     <Button Content=""Click me!""/>
 
     <!-- Note: Syntax highlighting updates on 'Load'. -->
 </StackPanel>";
-    }
 
     public string ReadScratchPadXAMLinLocalSettings()
     {
@@ -299,10 +292,7 @@ public sealed partial class ScratchPadPage : Page
         }
     }
 
-    private void LoadClick(object sender, RoutedEventArgs e)
-    {
-        LoadContentAndApplyFormatting();
-    }
+    private void LoadClick(object sender, RoutedEventArgs e) => LoadContentAndApplyFormatting();
 
     bool m_lastChangeFromTyping = false;
     string m_oldText = "";

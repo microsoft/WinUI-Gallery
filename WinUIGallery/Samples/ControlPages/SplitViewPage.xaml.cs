@@ -39,10 +39,7 @@ public sealed partial class SplitViewPage : Page
         InitializeComponent();
     }
 
-    private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        content.Text = (e.ClickedItem as NavLink).Label + " Page";
-    }
+    private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e) => content.Text = (e.ClickedItem as NavLink).Label + " Page";
 
     private void PanePlacement_Toggled(object sender, RoutedEventArgs e)
     {
@@ -50,10 +47,7 @@ public sealed partial class SplitViewPage : Page
         splitView.PanePlacement = ts.IsOn ? SplitViewPanePlacement.Right : SplitViewPanePlacement.Left;
     }
 
-    private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        splitView.DisplayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), (e.AddedItems[0] as ComboBoxItem).Content.ToString());
-    }
+    private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e) => splitView.DisplayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), (e.AddedItems[0] as ComboBoxItem).Content.ToString());
 
     private void paneBackgroundCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

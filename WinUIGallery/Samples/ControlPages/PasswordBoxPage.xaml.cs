@@ -37,8 +37,5 @@ public sealed partial class PasswordBoxPage : Page
         }
     }
 
-    private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e)
-    {
-        passworBoxWithRevealmode.PasswordRevealMode = revealModeCheckBox.IsChecked == true ? PasswordRevealMode.Visible : PasswordRevealMode.Hidden;
-    }
+    private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e) => passworBoxWithRevealmode.PasswordRevealMode = revealModeCheckBox.IsChecked == true ? PasswordRevealMode.Visible : PasswordRevealMode.Hidden;
 }

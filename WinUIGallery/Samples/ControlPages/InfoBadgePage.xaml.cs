@@ -42,10 +42,7 @@ public sealed partial class InfoBadgePage : Page
         }
     }
 
-    private void ToggleInfoBadgeOpacity_Toggled(object sender, RoutedEventArgs e)
-    {
-        InfoBadgeOpacity = (InfoBadgeOpacity == 0.0) ? 1.0 : 0.0;
-    }
+    private void ToggleInfoBadgeOpacity_Toggled(object sender, RoutedEventArgs e) => InfoBadgeOpacity = (InfoBadgeOpacity == 0.0) ? 1.0 : 0.0;
 
     public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

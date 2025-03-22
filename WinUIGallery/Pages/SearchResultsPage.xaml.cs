@@ -57,10 +57,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
         _selectedFilter = (Filter)resultsNavView.SelectedItem;
     }
 
-    private void OnResultsNavViewLoaded(object sender, RoutedEventArgs e)
-    {
-        resultsNavView.Focus(FocusState.Programmatic);
-    }
+    private void OnResultsNavViewLoaded(object sender, RoutedEventArgs e) => resultsNavView.Focus(FocusState.Programmatic);
 
     private void OnResultsNavViewSelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
     {
@@ -138,10 +135,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
         }
     }
 
-    protected override bool GetIsNarrowLayoutState()
-    {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
-    }
+    protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }
 
 /// <summary>
@@ -162,10 +156,7 @@ public sealed class Filter : INotifyPropertyChanged
         Items = controlInfoList;
     }
 
-    public override string ToString()
-    {
-        return Description;
-    }
+    public override string ToString() => Description;
 
     public List<ControlInfoDataItem> Items
     {
@@ -228,8 +219,5 @@ public sealed class Filter : INotifyPropertyChanged
     /// <param name="propertyName">Name of the property used to notify listeners.  This
     /// value is optional and can be provided automatically when invoked from compilers
     /// that support <see cref="CallerMemberNameAttribute"/>.</param>
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

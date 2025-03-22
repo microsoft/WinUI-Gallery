@@ -23,10 +23,7 @@ public sealed partial class BindingPage : Page
         DataContext = ViewModel;
     }
 
-    public string FormatDate(DateTimeOffset? date)
-    {
-        return date.HasValue ? "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy") : "No date selected";
-    }
+    public string FormatDate(DateTimeOffset? date) => date.HasValue ? "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy") : "No date selected";
 }
 
 public partial class ExampleViewModel : INotifyPropertyChanged
@@ -76,8 +73,5 @@ public partial class ExampleViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
