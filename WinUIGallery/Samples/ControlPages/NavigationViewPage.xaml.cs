@@ -33,7 +33,7 @@ public sealed partial class NavigationViewPage : Page
         nvSample9.SelectedItem = nvSample9.MenuItems.OfType<NavigationViewItem>().First();
 
         Categories = new ObservableCollection<CategoryBase>();
-        Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
+        Category firstCategory = new() { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
         Categories.Add(firstCategory);
         Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });
         Categories.Add(new Category { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" });
@@ -229,7 +229,7 @@ public sealed partial class NavigationViewPage : Page
     {
         if ((sender as CheckBox).IsChecked == true)
         {
-            AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
+            AutoSuggestBox asb = new() { QueryIcon = new SymbolIcon(Symbol.Find) };
             asb.SetValue(AutomationProperties.NameProperty, "search");
             nvSample.AutoSuggestBox = asb;
 

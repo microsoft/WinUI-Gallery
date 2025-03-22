@@ -145,7 +145,7 @@ public sealed partial class ControlExample : UserControl
     }
 
     private static readonly GridLength defaultExampleHeight =
-        new GridLength(1, GridUnitType.Star);
+        new(1, GridUnitType.Star);
 
     public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
     public GridLength ExampleHeight

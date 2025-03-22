@@ -21,11 +21,11 @@ public sealed partial class ComboBoxPage : Page
 {
     public List<Tuple<string, FontFamily>> Fonts { get; } = new List<Tuple<string, FontFamily>>()
         {
-            new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
-            new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
-            new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
-            new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
-            new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
+            new("Arial", new FontFamily("Arial")),
+            new("Comic Sans MS", new FontFamily("Comic Sans MS")),
+            new("Courier New", new FontFamily("Courier New")),
+            new("Segoe UI", new FontFamily("Segoe UI")),
+            new("Times New Roman", new FontFamily("Times New Roman"))
         };
 
     public List<double> FontSizes { get; } = new List<double>()

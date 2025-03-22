@@ -53,12 +53,12 @@ public sealed partial class FilePickerPage : Page
         if (file != null)
         {
             // Creating the text for the Texblock
-            Span span = new Span();
-            Run run1 = new Run();
+            Span span = new();
+            Run run1 = new();
             run1.Text = "Picked file: ";
 
             // Adding the name of the picked file in bold
-            Run run2 = new Run();
+            Run run2 = new();
             run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
             run2.Text = file.Name;
 
@@ -106,12 +106,12 @@ public sealed partial class FilePickerPage : Page
         if (file != null)
         {
             // Creating the text for the Texblock
-            Span span = new Span();
-            Run run1 = new Run();
+            Span span = new();
+            Run run1 = new();
             run1.Text = "Picked photo: ";
 
             // Adding the name of the picked file in bold
-            Run run2 = new Run();
+            Run run2 = new();
             run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
             run2.Text = file.Name;
 
@@ -158,15 +158,15 @@ public sealed partial class FilePickerPage : Page
         if (files.Count > 0)
         {
             // Creating the text for the Texblock
-            Span span = new Span();
-            Run run1 = new Run();
+            Span span = new();
+            Run run1 = new();
             run1.Text = "Picked files:\n";
             span.Inlines.Add(run1);
 
             // Adding the names of the picked files in bold
             foreach (StorageFile file in files)
             {
-                Run runTemp = new Run();
+                Run runTemp = new();
                 runTemp.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
                 runTemp.Text = file.Name + "\n";
 
@@ -195,7 +195,7 @@ public sealed partial class FilePickerPage : Page
         PickFolderOutputTextBlock.Text = "";
 
         // Create a folder picker
-        FolderPicker openPicker = new FolderPicker();
+        FolderPicker openPicker = new();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);
@@ -215,12 +215,12 @@ public sealed partial class FilePickerPage : Page
             StorageApplicationPermissions.FutureAccessList.AddOrReplace("PickedFolderToken", folder);
 
             // Creating the text for the Texblock
-            Span span = new Span();
-            Run run1 = new Run();
+            Span span = new();
+            Run run1 = new();
             run1.Text = "Picked folder: ";
 
             // Adding the name of the picked file in bold
-            Run run2 = new Run();
+            Run run2 = new();
             run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
             run2.Text = folder.Name;
 
@@ -248,7 +248,7 @@ public sealed partial class FilePickerPage : Page
         SaveFileOutputTextBlock.Text = "";
 
         // Create a file picker
-        FileSavePicker savePicker = new FileSavePicker();
+        FileSavePicker savePicker = new();
 
         // Retrieve the window handle (HWND) of the current WinUI 3 window.
         var window = WindowHelper.GetWindowForElement(this);

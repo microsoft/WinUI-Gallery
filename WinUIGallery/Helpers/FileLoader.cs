@@ -21,7 +21,7 @@ internal class FileLoader
         }
         else
         {
-            Uri sourceUri = new Uri("ms-appx:///" + relativeFilePath);
+            Uri sourceUri = new("ms-appx:///" + relativeFilePath);
             file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
 
         }

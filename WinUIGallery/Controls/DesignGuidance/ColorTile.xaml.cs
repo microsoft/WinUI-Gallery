@@ -71,7 +71,7 @@ public sealed partial class ColorTile : UserControl
 
     private void CopyBrushNameButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(ColorBrushName);
         Clipboard.SetContent(package);
 

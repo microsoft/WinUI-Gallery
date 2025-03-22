@@ -11,7 +11,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class AutoSuggestBoxPage : Page
 {
-    private List<string> Cats = new List<string>()
+    private List<string> Cats = new()
     {
         "Abyssinian",
         "Aegean",

@@ -21,9 +21,9 @@ public sealed partial class SelectorBarPage : Page
 {
     int previousSelectedIndex = 0;
 
-    public ObservableCollection<SolidColorBrush> PinkColorCollection = new ObservableCollection<SolidColorBrush>();
-    public ObservableCollection<SolidColorBrush> PlumColorCollection = new ObservableCollection<SolidColorBrush>();
-    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = new ObservableCollection<SolidColorBrush>();
+    public ObservableCollection<SolidColorBrush> PinkColorCollection = new();
+    public ObservableCollection<SolidColorBrush> PlumColorCollection = new();
+    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = new();
 
     public SelectorBarPage()
     {
@@ -82,7 +82,7 @@ public sealed partial class SelectorBarPage : Page
 
     private void PopulateColorCollections()
     {
-        SolidColorBrush solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Pink);
+        SolidColorBrush solidColorBrush = new(Microsoft.UI.Colors.Pink);
 
         for (int colorInstance = 0; colorInstance < 5; colorInstance++)
         {

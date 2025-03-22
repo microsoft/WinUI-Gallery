@@ -19,10 +19,10 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PullToRefreshPage : Page
 {
-    private ObservableCollection<string> items1 = new ObservableCollection<string>();
-    private ObservableCollection<string> items2 = new ObservableCollection<string>();
-    private DispatcherTimer timer1 = new DispatcherTimer();
-    private DispatcherTimer timer2 = new DispatcherTimer();
+    private ObservableCollection<string> items1 = new();
+    private ObservableCollection<string> items2 = new();
+    private DispatcherTimer timer1 = new();
+    private DispatcherTimer timer2 = new();
     private Visual visualizerContentVisual;
     private static RefreshContainer rc2;
     private RefreshVisualizer rv2;
@@ -55,8 +55,8 @@ public sealed partial class PullToRefreshPage : Page
             rv2.RefreshStateChanged +=
                 new TypedEventHandler<RefreshVisualizer, RefreshStateChangedEventArgs>(rv2_RefreshStateChanged);
 
-            Image ptrImage = new Image();
-            AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
+            Image ptrImage = new();
+            AccessibilitySettings accessibilitySettings = new();
             // Checking light theme
             if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
                 && !accessibilitySettings.HighContrast)
@@ -81,7 +81,7 @@ public sealed partial class PullToRefreshPage : Page
             rv2.Content = ptrImage;
             rc2.Visualizer = rv2;
 
-            ListView lv2 = new ListView
+            ListView lv2 = new()
             {
                 Width = 200,
                 Height = 200,

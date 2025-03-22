@@ -57,14 +57,14 @@ public sealed partial class TabViewPage : Page
 
     private TabViewItem CreateNewTab(int index)
     {
-        TabViewItem newItem = new TabViewItem
+        TabViewItem newItem = new()
         {
             Header = $"Document {index}",
             IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
         };
 
         // The content of the tab is often a frame that contains a page, though it could be any UIElement.
-        Frame frame = new Frame();
+        Frame frame = new();
 
         switch (index % 3)
         {
@@ -104,7 +104,7 @@ public sealed partial class TabViewPage : Page
             DataIconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }
         };
 
-        Frame frame = new Frame();
+        Frame frame = new();
 
         switch (index % 3)
         {

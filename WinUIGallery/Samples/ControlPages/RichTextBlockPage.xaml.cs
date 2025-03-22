@@ -53,12 +53,12 @@ public sealed partial class RichTextBlockPage : Page
         }
 
         // Get text range and highlighter
-        TextRange textRange = new TextRange()
+        TextRange textRange = new()
         {
             StartIndex = 28,
             Length = 11
         };
-        TextHighlighter highlighter = new TextHighlighter()
+        TextHighlighter highlighter = new()
         {
             Background = new SolidColorBrush(color),
             Ranges = { textRange }

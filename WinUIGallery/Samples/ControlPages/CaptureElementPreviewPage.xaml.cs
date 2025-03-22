@@ -119,7 +119,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         stream.Seek(0);
 
         // Show the photo in an Image element
-        BitmapImage bmpImage = new BitmapImage();
+        BitmapImage bmpImage = new();
         await bmpImage.SetSourceAsync(stream);
         var image = new Image() { Source = bmpImage };
         snapshots.Children.Insert(0, image);

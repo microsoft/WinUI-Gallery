@@ -232,16 +232,16 @@ public class WrapPanel : Panel
         // that the line might represent a row or a column depending on the
         // orientation.
         Orientation o = Orientation;
-        OrientedSize lineSize = new OrientedSize(o);
-        OrientedSize totalSize = new OrientedSize(o);
-        OrientedSize maximumSize = new OrientedSize(o, constraint.Width, constraint.Height);
+        OrientedSize lineSize = new(o);
+        OrientedSize totalSize = new(o);
+        OrientedSize maximumSize = new(o, constraint.Width, constraint.Height);
 
         // Determine the constraints for individual items
         double itemWidth = ItemWidth;
         double itemHeight = ItemHeight;
         bool hasFixedWidth = !double.IsNaN(itemWidth);
         bool hasFixedHeight = !double.IsNaN(itemHeight);
-        Size itemSize = new Size(
+        Size itemSize = new(
             hasFixedWidth ? itemWidth : constraint.Width,
             hasFixedHeight ? itemHeight : constraint.Height);
 
@@ -250,7 +250,7 @@ public class WrapPanel : Panel
         {
             // Determine the size of the element
             element.Measure(itemSize);
-            OrientedSize elementSize = new OrientedSize(
+            OrientedSize elementSize = new(
                 o,
                 hasFixedWidth ? itemWidth : element.DesiredSize.Width,
                 hasFixedHeight ? itemHeight : element.DesiredSize.Height);
@@ -315,8 +315,8 @@ public class WrapPanel : Panel
         // size available to fill.  Note that the line might represent a row
         // or a column depending on the orientation.
         Orientation o = Orientation;
-        OrientedSize lineSize = new OrientedSize(o);
-        OrientedSize maximumSize = new OrientedSize(o, finalSize.Width, finalSize.Height);
+        OrientedSize lineSize = new(o);
+        OrientedSize maximumSize = new(o, finalSize.Width, finalSize.Height);
 
         // Determine the constraints for individual items
         double itemWidth = ItemWidth;
@@ -341,7 +341,7 @@ public class WrapPanel : Panel
             UIElement element = children[lineEnd];
 
             // Get the size of the element
-            OrientedSize elementSize = new OrientedSize(
+            OrientedSize elementSize = new(
                 o,
                 hasFixedWidth ? itemWidth : element.DesiredSize.Width,
                 hasFixedHeight ? itemHeight : element.DesiredSize.Height);
@@ -417,7 +417,7 @@ public class WrapPanel : Panel
         {
             // Get the size of the element
             UIElement element = children[index];
-            OrientedSize elementSize = new OrientedSize(o, element.DesiredSize.Width, element.DesiredSize.Height);
+            OrientedSize elementSize = new(o, element.DesiredSize.Width, element.DesiredSize.Height);
 
             // Determine if we should use the element's desired size or the
             // fixed item width or height
@@ -488,7 +488,7 @@ internal static class NumericExtensions
     public static bool IsNaN(this double value)
     {
         // Get the double as an unsigned long
-        NanUnion union = new NanUnion { FloatingValue = value };
+        NanUnion union = new() { FloatingValue = value };
 
         // An IEEE 754 double precision floating point number is NaN if its
         // exponent equals 2047 and it has a non-zero mantissa.

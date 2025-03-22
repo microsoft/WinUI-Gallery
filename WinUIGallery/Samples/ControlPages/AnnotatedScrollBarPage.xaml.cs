@@ -30,7 +30,7 @@ public sealed partial class AnnotatedScrollBarPage : Page
     private const int ItemHeight = 90;
 
     // ItemsRepeater's ItemsSource.
-    public ObservableCollection<SolidColorBrush> ColorCollection = new ObservableCollection<SolidColorBrush>();
+    public ObservableCollection<SolidColorBrush> ColorCollection = new();
 
     public AnnotatedScrollBarPage()
     {
@@ -74,7 +74,7 @@ public sealed partial class AnnotatedScrollBarPage : Page
 
     private void PopulateColorCollection()
     {
-        SolidColorBrush solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Azure);
+        SolidColorBrush solidColorBrush = new(Microsoft.UI.Colors.Azure);
 
         for (int colorInstance = 0; colorInstance < AzureCount; colorInstance++)
         {

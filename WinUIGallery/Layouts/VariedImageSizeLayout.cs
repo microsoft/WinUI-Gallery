@@ -176,7 +176,7 @@ public class VariedImageSizeLayout : VirtualizingLayout
     int m_firstIndex = 0;
     int m_lastIndex = 0;
     double m_lastAvailableWidth = 0.0;
-    List<double> m_columnOffsets = new List<double>();
-    List<Rect> m_cachedBounds = new List<Rect>();
+    List<double> m_columnOffsets = new();
+    List<Rect> m_cachedBounds = new();
     private bool cachedBoundsInvalid = false;
 }

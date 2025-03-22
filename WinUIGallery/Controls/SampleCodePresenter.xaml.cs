@@ -66,7 +66,7 @@ public sealed partial class SampleCodePresenter : UserControl
     public bool IsEmpty => string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(CodeSourceFile);
 
     private string actualCode = "";
-    private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+    private static Regex SubstitutionPattern = new(@"\$\(([^\)]+)\)");
     private RichTextBlock sampleCodeRTB;
 
     public SampleCodePresenter()
@@ -140,7 +140,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private Uri GetDerivedSource(string sourceRelativePath)
     {
-        Uri derivedSource = new Uri(new Uri("ms-appx:///Samples/SampleCode/"), sourceRelativePath);
+        Uri derivedSource = new(new Uri("ms-appx:///Samples/SampleCode/"), sourceRelativePath);
 
         return derivedSource;
     }
@@ -314,7 +314,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(actualCode);
         Clipboard.SetContent(package);
     }
@@ -325,7 +325,7 @@ public sealed partial class SampleCodePresenter : UserControl
         if (horizontalScrollBar != null)
         {
             // Create a timer and store it in the ScrollBar's Tag property.
-            DispatcherTimer scrollTimer = new DispatcherTimer
+            DispatcherTimer scrollTimer = new()
             {
                 Interval = TimeSpan.FromMilliseconds(500)
             };

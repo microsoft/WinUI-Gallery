@@ -32,8 +32,8 @@ public sealed partial class GridViewPage : ItemsPageBase
 
         // Get data objects and place them into an ObservableCollection
         List<CustomDataObject> tempList = CustomDataObject.GetDataObjects();
-        ObservableCollection<CustomDataObject> Items = new ObservableCollection<CustomDataObject>(tempList);
-        ObservableCollection<CustomDataObject> Items2 = new ObservableCollection<CustomDataObject>(tempList);
+        ObservableCollection<CustomDataObject> Items = new(tempList);
+        ObservableCollection<CustomDataObject> Items2 = new(tempList);
         BasicGridView.ItemsSource = Items2;
         ContentGridView.ItemsSource = Items;
         StyledGrid.ItemsSource = Items;

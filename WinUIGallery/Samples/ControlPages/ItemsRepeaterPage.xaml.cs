@@ -17,11 +17,11 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ItemsRepeaterPage : ItemsPageBase
 {
-    private Random random = new Random();
+    private Random random = new();
     private int MaxLength = 425;
 
     public ObservableCollection<Bar> BarItems;
-    public MyItemsSource filteredRecipeData = new MyItemsSource(null);
+    public MyItemsSource filteredRecipeData = new(null);
     public List<Recipe> staticRecipeData;
     private bool IsSortDescending = false;
 
@@ -35,7 +35,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
 
-    public List<String> ColorList = new List<String>()
+    public List<String> ColorList = new()
     {
             "Blue",
             "BlueViolet",
@@ -68,7 +68,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         BarItems.Add(new Bar(25, MaxLength));
         BarItems.Add(new Bar(175, MaxLength));
 
-        List<object> basicData = new List<object>
+        List<object> basicData = new()
         {
             64,
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -82,7 +82,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         };
         MixedTypeRepeater.ItemsSource = basicData;
 
-        List<NestedCategory> nestedCategories = new List<NestedCategory>
+        List<NestedCategory> nestedCategories = new()
         {
             new NestedCategory("Fruits", GetFruits()),
             new NestedCategory("Vegetables", GetVegetables()),
@@ -333,7 +333,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         // Initialize list of recipes for varied image size layout sample
         var rnd = new Random();
-        List<Recipe> tempList = new List<Recipe>(
+        List<Recipe> tempList = new(
                                     Enumerable.Range(0, 1000).Select(k =>
                                         new Recipe
                                         {
@@ -521,10 +521,11 @@ public class Recipe
     public void RandomizeIngredients()
     {
         // To give the items different heights, give recipes random numbers of random ingredients
-        Random rndNum = new Random();
-        Random rndIng = new Random();
+        Random rndNum = new();
+        Random rndIng = new();
 
-        ObservableCollection<string> extras = new ObservableCollection<string>{
+        ObservableCollection<string> extras = new()
+        {
                                                      "Garlic",
                                                      "Lemon",
                                                      "Butter",
@@ -548,7 +549,7 @@ public class Recipe
 // Custom data source class that assigns elements unique IDs, making filtering easier
 public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
 {
-    private List<Recipe> inner = new List<Recipe>();
+    private List<Recipe> inner = new();
 
     public MyItemsSource(IEnumerable<Recipe> collection)
     {

@@ -38,7 +38,7 @@ public sealed partial class SampleWindow2 : Window
 
         // Calculate the centered position within the work area.
         RectInt32 workArea = displayArea.WorkArea;
-        PointInt32 centeredPosition = new PointInt32(
+        PointInt32 centeredPosition = new(
             (workArea.Width - appWindow.Size.Width) / 2,
             (workArea.Height - appWindow.Size.Height) / 2
         );

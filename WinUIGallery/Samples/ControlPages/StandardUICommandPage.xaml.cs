@@ -22,7 +22,7 @@ public class ListItemData
 
 public sealed partial class StandardUICommandPage : Page
 {
-    ObservableCollection<ListItemData> collection = new ObservableCollection<ListItemData>();
+    ObservableCollection<ListItemData> collection = new();
 
     public StandardUICommandPage()
     {
@@ -92,9 +92,9 @@ public sealed partial class StandardUICommandPage : Page
 
     private void ListViewRight_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
     {
-        MenuFlyout flyout = new MenuFlyout();
+        MenuFlyout flyout = new();
         ListItemData data = (ListItemData)args.Item;
-        MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command };
+        MenuFlyoutItem item = new() { Command = data.Command };
         flyout.Opened += delegate (object element, object e) {
             MenuFlyout flyoutElement = element as MenuFlyout;
             ListViewItem elementToHighlight = flyoutElement.Target as ListViewItem;

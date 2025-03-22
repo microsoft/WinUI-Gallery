@@ -5,7 +5,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PipsPagerPage : Page
 {
-    public List<string> Pictures = new List<string>()
+    public List<string> Pictures = new()
     {
         "ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg",

@@ -21,7 +21,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class SplitViewPage : Page
 {
-    private ObservableCollection<NavLink> _navLinks = new ObservableCollection<NavLink>()
+    private ObservableCollection<NavLink> _navLinks = new()
     {
         new NavLink() { Label = "People", Symbol = Symbol.People  },
         new NavLink() { Label = "Globe", Symbol = Symbol.Globe },

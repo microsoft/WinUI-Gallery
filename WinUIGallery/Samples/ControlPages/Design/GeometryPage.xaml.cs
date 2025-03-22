@@ -39,14 +39,14 @@ public sealed partial class GeometryPage : Page
 
     private void CopyControlResourceToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText("ControlCornerRadius");
         Clipboard.SetContent(package);
     }
 
     private void CopyOverlayResourceToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText("OverlayCornerRadius");
         Clipboard.SetContent(package);
     }

@@ -87,9 +87,9 @@ public class CustomDataObject
             @"Duis facilisis, quam ut laoreet commodo, elit ex aliquet massa, non varius tellus lectus et nunc. Donec vitae risus ut ante pretium semper. Phasellus consectetur volutpat orci, eu dapibus turpis. Fusce varius sapien eu mattis pharetra.",
         };
 
-        Random rand = new Random();
+        Random rand = new();
         int numberOfLocations = includeAllItems ? 13 : 8;
-        List<CustomDataObject> objects = new List<CustomDataObject>();
+        List<CustomDataObject> objects = new();
         for (int i = 0; i < numberOfLocations; i++)
         {
             objects.Add(new CustomDataObject()

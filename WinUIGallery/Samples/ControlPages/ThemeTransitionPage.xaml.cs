@@ -83,7 +83,7 @@ public sealed partial class ThemeTransitionPage : Page
 
         for (int i = 0; i < value; i++)
         {
-            Thickness thickness = new Thickness(5.0);
+            Thickness thickness = new(5.0);
             EntranceStackPanel.Children.Add(new Rectangle() { Width = 50, Height = 50, Margin = thickness, Fill = new SolidColorBrush(Microsoft.UI.Colors.LightBlue) });
         }
     }

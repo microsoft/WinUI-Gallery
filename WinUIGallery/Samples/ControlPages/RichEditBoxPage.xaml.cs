@@ -40,7 +40,7 @@ public sealed partial class RichEditBoxPage : Page
         CommandBarFlyout myFlyout = sender as CommandBarFlyout;
         if (myFlyout != null && myFlyout.Target == REBCustom)
         {
-            AppBarButton myButton = new AppBarButton
+            AppBarButton myButton = new()
             {
                 Command = new StandardUICommand(StandardUICommandKind.Share)
             };
@@ -51,7 +51,7 @@ public sealed partial class RichEditBoxPage : Page
             CommandBarFlyout muxFlyout = sender as CommandBarFlyout;
             if (muxFlyout != null && muxFlyout.Target == REBCustom)
             {
-                AppBarButton myButton = new AppBarButton
+                AppBarButton myButton = new()
                 {
                     Command = new StandardUICommand(StandardUICommandKind.Share)
                 };
@@ -64,7 +64,7 @@ public sealed partial class RichEditBoxPage : Page
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
     {
         // Open a text file.
-        FileOpenPicker open = new FileOpenPicker();
+        FileOpenPicker open = new();
         open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
         open.FileTypeFilter.Add(".rtf");
 
@@ -90,7 +90,7 @@ public sealed partial class RichEditBoxPage : Page
 
     private async void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        FileSavePicker savePicker = new FileSavePicker
+        FileSavePicker savePicker = new()
         {
             SuggestedStartLocation = PickerLocationId.DocumentsLibrary
         };
@@ -127,7 +127,7 @@ public sealed partial class RichEditBoxPage : Page
             if (status != FileUpdateStatus.Complete)
             {
                 Windows.UI.Popups.MessageDialog errorBox =
-                    new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                    new("File " + file.Name + " couldn't be saved.");
                 await errorBox.ShowAsync();
             }
         }

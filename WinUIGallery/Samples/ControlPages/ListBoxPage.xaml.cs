@@ -17,7 +17,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListBoxPage : Page
 {
-    private List<Tuple<string, FontFamily>> _fonts = new List<Tuple<string, FontFamily>>()
+    private List<Tuple<string, FontFamily>> _fonts = new()
     {
         new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
         new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),

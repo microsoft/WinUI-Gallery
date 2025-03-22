@@ -154,7 +154,7 @@ public sealed partial class NavigationRootPage : Page
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
     public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
     {
-        NavigationRootPageArgs args = new NavigationRootPageArgs
+        NavigationRootPageArgs args = new()
         {
             NavigationRootPage = this,
             Parameter = targetPageArguments

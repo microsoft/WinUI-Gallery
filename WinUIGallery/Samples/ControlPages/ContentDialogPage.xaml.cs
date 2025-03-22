@@ -24,7 +24,7 @@ public sealed partial class ContentDialogPage : Page
 
     private async void ShowDialog_Click(object sender, RoutedEventArgs e)
     {
-        ContentDialogExample dialog = new ContentDialogExample();
+        ContentDialogExample dialog = new();
 
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = XamlRoot;

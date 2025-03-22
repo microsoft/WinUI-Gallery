@@ -12,7 +12,7 @@ public sealed partial class CalendarViewPage : Page
     {
         InitializeComponent();
 
-        List<string> calendarIdentifiers = new List<string>()
+        List<string> calendarIdentifiers = new()
         {
             CalendarIdentifiers.Gregorian,
             CalendarIdentifiers.Hebrew,

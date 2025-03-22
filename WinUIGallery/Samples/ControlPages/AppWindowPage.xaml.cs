@@ -26,19 +26,19 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
+        SampleWindow1 window = new(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
         window.Activate();
     }
 
     private void ShowSampleWindow2(object sender, RoutedEventArgs e)
     {
-        SampleWindow2 window = new SampleWindow2();
+        SampleWindow2 window = new();
         window.Activate();
     }
 
     private void ShowSampleWindow3(object sender, RoutedEventArgs e)
     {
-        SampleWindow3 window = new SampleWindow3(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn);
+        SampleWindow3 window = new(IsAlwaysOnTop.IsOn, IsMaximizable.IsOn, IsMinimizable.IsOn, IsResizable.IsOn, HasBorder.IsOn, HasTitleBar.IsOn);
         window.Activate();
     }
 
@@ -62,19 +62,19 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow4(object sender, RoutedEventArgs e)
     {
-        ModalWindow window = new ModalWindow();
+        ModalWindow window = new();
         window.Activate();
     }
 
     private void ShowSampleWindow5(object sender, RoutedEventArgs e)
     {
-        SampleWindow5 window = new SampleWindow5();
+        SampleWindow5 window = new();
         window.Activate();
     }
 
     private void ShowSampleWindow6(object sender, RoutedEventArgs e)
     {
-        SampleWindow6 window = new SampleWindow6((string)InitialSize.SelectedItem);
+        SampleWindow6 window = new((string)InitialSize.SelectedItem);
         window.Activate();
     }
 

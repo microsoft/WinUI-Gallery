@@ -39,7 +39,7 @@ public class IdleSynchronizer
     private Handle OpenNamedEvent(uint processId, uint threadId, string eventNamePrefix)
     {
         string eventName = string.Format("{0}.{1}.{2}", eventNamePrefix, processId, threadId);
-        Handle handle = new Handle(
+        Handle handle = new(
             NativeMethods.OpenEvent(
                 (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
                 false /* inherit handle */,
@@ -77,7 +77,7 @@ public class IdleSynchronizer
         }
         else
         {
-            AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
+            AutoResetEvent threadIdReceivedEvent = new(false);
 
             dispatcherQueue.TryEnqueue(
                 DispatcherQueuePriority.Normal,
@@ -284,7 +284,7 @@ public class IdleSynchronizer
 
     void WaitForIdleDispatcher()
     {
-        AutoResetEvent shouldContinueEvent = new AutoResetEvent(false);
+        AutoResetEvent shouldContinueEvent = new(false);
 
         // DispatcherQueueTimer runs at below idle priority, so we can use it to ensure that we only raise the event when we're idle.
         var timer = m_dispatcherQueue.CreateTimer();

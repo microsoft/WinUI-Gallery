@@ -64,7 +64,7 @@ public sealed partial class TypographyControl : UserControl
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(ResourceName);
         Clipboard.SetContent(package);
     }

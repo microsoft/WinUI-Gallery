@@ -29,7 +29,7 @@ public class WindowHelper
 {
     static public Window CreateWindow()
     {
-        Window newWindow = new Window
+        Window newWindow = new()
         {
             SystemBackdrop = new MicaBackdrop()
         };
@@ -84,7 +84,7 @@ public class WindowHelper
 
     static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
-    static private List<Window> _activeWindows = new List<Window>();
+    static private List<Window> _activeWindows = new();
 
     static public StorageFolder GetAppLocalFolder()
     {

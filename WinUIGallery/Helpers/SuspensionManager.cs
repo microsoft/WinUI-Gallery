@@ -20,8 +20,8 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 internal sealed class SuspensionManager
 {
-    private static Dictionary<string, object> _sessionState = new Dictionary<string, object>();
-    private static List<Type> _knownTypes = new List<Type>();
+    private static Dictionary<string, object> _sessionState = new();
+    private static List<Type> _knownTypes = new();
     private const string sessionStateFilename = "_sessionState.xml";
 
     /// <summary>
@@ -70,8 +70,8 @@ internal sealed class SuspensionManager
 
             // Serialize the session state synchronously to avoid asynchronous access to shared
             // state
-            MemoryStream sessionData = new MemoryStream();
-            DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, object>), _knownTypes);
+            MemoryStream sessionData = new();
+            DataContractSerializer serializer = new(typeof(Dictionary<string, object>), _knownTypes);
             serializer.WriteObject(sessionData, _sessionState);
 
             // Get an output stream for the SessionState file and write the state asynchronously
@@ -113,7 +113,7 @@ internal sealed class SuspensionManager
             using (IInputStream inStream = await file.OpenSequentialReadAsync())
             {
                 // Deserialize the Session State
-                DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, object>), _knownTypes);
+                DataContractSerializer serializer = new(typeof(Dictionary<string, object>), _knownTypes);
                 _sessionState = (Dictionary<string, object>)serializer.ReadObject(inStream.AsStreamForRead());
             }
 
@@ -137,7 +137,7 @@ internal sealed class SuspensionManager
         DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(string), typeof(SuspensionManager), new PropertyMetadata(null));
     private static DependencyProperty FrameSessionStateProperty =
         DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<string, object>), typeof(SuspensionManager), new PropertyMetadata(null));
-    private static List<WeakReference<Frame>> _registeredFrames = new List<WeakReference<Frame>>();
+    private static List<WeakReference<Frame>> _registeredFrames = new();
 
     /// <summary>
     /// Registers a <see cref="Frame"/> instance to allow its navigation history to be saved to

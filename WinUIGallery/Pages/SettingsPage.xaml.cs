@@ -157,7 +157,7 @@ public sealed partial class SettingsPage : Page
 
     private void toCloneRepoCard_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(gitCloneTextBlock.Text);
         Clipboard.SetContent(package);
     }

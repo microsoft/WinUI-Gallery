@@ -36,13 +36,13 @@ public sealed partial class ScrollViewPage : Page
     {
         scrollView1.ZoomTo(4.0f, null, new ScrollingZoomOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
 
-        IncrementNumberRounder rounder = new IncrementNumberRounder
+        IncrementNumberRounder rounder = new()
         {
             Increment = 0.1,
             RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
         };
 
-        DecimalFormatter formatter = new DecimalFormatter
+        DecimalFormatter formatter = new()
         {
             IntegerDigits = 2,
             FractionDigits = 1,

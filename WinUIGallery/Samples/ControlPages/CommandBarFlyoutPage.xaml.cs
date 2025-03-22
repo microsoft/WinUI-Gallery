@@ -24,7 +24,7 @@ public sealed partial class CommandBarFlyoutPage : Page
     {
         if(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
         {
-            FlyoutShowOptions myOption = new FlyoutShowOptions
+            FlyoutShowOptions myOption = new()
             {
                 ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard,
                 Placement = FlyoutPlacementMode.RightEdgeAlignedTop

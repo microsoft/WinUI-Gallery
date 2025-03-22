@@ -20,19 +20,19 @@ public sealed partial class TreeViewPage : Page
 
     private void InitializeSampleTreeView(TreeView sampleTreeView)
     {
-        TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
+        TreeViewNode workFolder = new() { Content = "Work Documents" };
         workFolder.IsExpanded = true;
 
         workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
         workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
 
-        TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
+        TreeViewNode remodelFolder = new() { Content = "Home Remodel" };
         remodelFolder.IsExpanded = true;
 
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
 
-        TreeViewNode personalFolder = new TreeViewNode() { Content = "Personal Documents" };
+        TreeViewNode personalFolder = new() { Content = "Personal Documents" };
         personalFolder.IsExpanded = true;
         personalFolder.Children.Add(remodelFolder);
 
@@ -44,8 +44,7 @@ public sealed partial class TreeViewPage : Page
     {
         return new ObservableCollection<ExplorerItem>
         {
-            new ExplorerItem
-            {
+            new() {
                 Name = "Documents",
                 Type = ExplorerItem.ExplorerItemType.Folder,
                 Children =
@@ -54,8 +53,7 @@ public sealed partial class TreeViewPage : Page
                     new ExplorerItem { Name = "BudgetReport", Type = ExplorerItem.ExplorerItemType.File }
                 }
             },
-            new ExplorerItem
-            {
+            new() {
                 Name = "Projects",
                 Type = ExplorerItem.ExplorerItemType.Folder,
                 Children =

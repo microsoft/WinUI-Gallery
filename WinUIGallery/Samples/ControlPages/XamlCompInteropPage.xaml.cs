@@ -127,7 +127,7 @@ public sealed partial class XamlCompInteropPage : Page
         int totalElements = 8;
         for (int i = 0; i < totalElements; i++)
         {
-            Button element = new Button() { Content = "Button" };
+            Button element = new() { Content = "Button" };
             AutomationProperties.SetName(element, "Button " + i);
 
             LayoutPanel.Children.Add(element);

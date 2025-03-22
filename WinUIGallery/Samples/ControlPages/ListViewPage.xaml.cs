@@ -25,11 +25,11 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListViewPage : ItemsPageBase
 {
-    ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
+    ObservableCollection<Contact> contacts1 = new();
+    ObservableCollection<Contact> contacts2 = new();
+    ObservableCollection<Contact> contacts3 = new();
+    ObservableCollection<Contact> contacts3Filtered = new();
+    ObservableCollection<Contact> contacts4ContextMenu = new();
 
     ItemsStackPanel stackPanelObj;
 
@@ -111,7 +111,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     private void Source_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
     {
         // Prepare a string with one dragged item per line
-        StringBuilder items = new StringBuilder();
+        StringBuilder items = new();
         foreach (Contact item in e.Items)
         {
             if (items.Length > 0) { items.AppendLine(); }
@@ -152,7 +152,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
                 // Create Contact object from string, add to existing target ListView
                 string[] info = item.Split(" ", 3);
-                Contact temp = new Contact(info[0], info[1], info[2]);
+                Contact temp = new(info[0], info[1], info[2]);
 
                 // Find the insertion index:
                 Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
@@ -395,7 +395,7 @@ public class Contact
     {
         IList<string> lines = await FileLoader.LoadLines("Assets/SampleMedia/Contacts.txt");
 
-        ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts = new();
 
         for (int i = 0; i < lines.Count - 2; i += 3)
         {

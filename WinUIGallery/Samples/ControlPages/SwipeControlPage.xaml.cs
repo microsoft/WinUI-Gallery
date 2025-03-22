@@ -31,7 +31,7 @@ public sealed partial class SwipeControlPage : Page
         lv.ItemsSource = items;
     }
 
-    ObservableCollection<object> items = new ObservableCollection<object>();
+    ObservableCollection<object> items = new();
 
     private void DeleteOne_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
     {
@@ -59,13 +59,13 @@ public sealed partial class SwipeControlPage : Page
 
         if (isAccepted)
         {
-            FontIconSource cancelIcon = new FontIconSource() { Glyph = "\ue711" };
+            FontIconSource cancelIcon = new() { Glyph = "\ue711" };
             sender.IconSource = cancelIcon;
             sender.Text = "Cancel";
         }
         else
         {
-            FontIconSource acceptIcon = new FontIconSource() { Glyph = "\ue10B" };
+            FontIconSource acceptIcon = new() { Glyph = "\ue10B" };
             sender.IconSource = acceptIcon;
             sender.Text = "Accept";
         }
@@ -78,13 +78,13 @@ public sealed partial class SwipeControlPage : Page
 
         if (isFlagged)
         {
-            FontIconSource filledFlagIcon = new FontIconSource() { Glyph = "\ueB4B" };
+            FontIconSource filledFlagIcon = new() { Glyph = "\ueB4B" };
             sender.IconSource = filledFlagIcon;
             sender.Text = "Unmark";
         }
         else
         {
-            FontIconSource flagIcon = new FontIconSource() { Glyph = "\ue129" };
+            FontIconSource flagIcon = new() { Glyph = "\ue129" };
             sender.IconSource = flagIcon;
             sender.Text = "Flag";
         }

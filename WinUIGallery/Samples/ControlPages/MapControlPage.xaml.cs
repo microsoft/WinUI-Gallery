@@ -28,14 +28,14 @@ public sealed partial class MapControlPage : Page
     {
         var myLandmarks = new List<MapElement>();
 
-        BasicGeoposition centerPosition = new BasicGeoposition { Latitude = 0, Longitude = 0 };
-        Geopoint centerPoint = new Geopoint(centerPosition);
+        BasicGeoposition centerPosition = new() { Latitude = 0, Longitude = 0 };
+        Geopoint centerPoint = new(centerPosition);
 
         map1.Center = centerPoint;
         map1.ZoomLevel = 1;
 
-        BasicGeoposition position = new BasicGeoposition { Latitude = -30.034647, Longitude = -51.217659 };
-        Geopoint point = new Geopoint(position);
+        BasicGeoposition position = new() { Latitude = -30.034647, Longitude = -51.217659 };
+        Geopoint point = new(position);
 
         var icon = new MapIcon
         {
