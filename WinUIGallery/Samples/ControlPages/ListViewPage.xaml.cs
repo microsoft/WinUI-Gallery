@@ -25,11 +25,11 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListViewPage : ItemsPageBase
 {
-    ObservableCollection<Contact> contacts1 = new();
-    ObservableCollection<Contact> contacts2 = new();
-    ObservableCollection<Contact> contacts3 = new();
-    ObservableCollection<Contact> contacts3Filtered = new();
-    ObservableCollection<Contact> contacts4ContextMenu = new();
+    ObservableCollection<Contact> contacts1 = [];
+    ObservableCollection<Contact> contacts2 = [];
+    ObservableCollection<Contact> contacts3 = [];
+    ObservableCollection<Contact> contacts3Filtered = [];
+    ObservableCollection<Contact> contacts4ContextMenu = [];
 
     ItemsStackPanel stackPanelObj;
 
@@ -67,7 +67,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
         // Initialize list of contacts to be filtered
         contacts3 = await Contact.GetContactsAsync();
-        contacts3Filtered = new ObservableCollection<Contact>(contacts3);
+        contacts3Filtered = [.. contacts3];
 
         // Initializze list of contacts for context menu sample
         contacts4ContextMenu = await Contact.GetContactsAsync();
@@ -364,7 +364,7 @@ public class Contact
     {
         IList<string> lines = await FileLoader.LoadLines("Assets/SampleMedia/Contacts.txt");
 
-        ObservableCollection<Contact> contacts = new();
+        ObservableCollection<Contact> contacts = [];
 
         for (int i = 0; i < lines.Count - 2; i += 3)
         {
@@ -381,7 +381,7 @@ public class Contact
                     orderby g.Key
                     select new GroupInfoList(g) { Key = g.Key };
 
-        return new ObservableCollection<GroupInfoList>(query);
+        return [.. query];
     }
 
     public override string ToString() => $"{Name}, {Company}";

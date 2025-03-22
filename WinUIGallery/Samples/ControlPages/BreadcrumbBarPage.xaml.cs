@@ -7,12 +7,12 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class BreadcrumbBarPage : Page
 {
-    readonly List<Folder> folders = new() {
+    readonly List<Folder> folders = [
             new Folder { Name = "Home"},
             new Folder { Name = "Folder1" },
             new Folder { Name = "Folder2" },
             new Folder { Name = "Folder3" },
-    };
+    ];
 
     public BreadcrumbBarPage()
     {

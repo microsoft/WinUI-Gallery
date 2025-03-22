@@ -22,7 +22,7 @@ namespace WinUIGallery.ControlPages;
 public sealed partial class ScrollViewPage : Page
 {
     // Cache for storing Example3 C# sample code content
-    private readonly Dictionary<string, string> _example3CodeCache = new();
+    private readonly Dictionary<string, string> _example3CodeCache = [];
 
     public ScrollViewPage()
     {

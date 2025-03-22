@@ -84,7 +84,7 @@ public class WindowHelper
 
     static public List<Window> ActiveWindows { get { return _activeWindows; }}
 
-    static private List<Window> _activeWindows = new();
+    static private List<Window> _activeWindows = [];
 
     static public StorageFolder GetAppLocalFolder()
     {

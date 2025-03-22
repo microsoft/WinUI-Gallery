@@ -19,17 +19,17 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ComboBoxPage : Page
 {
-    public List<Tuple<string, FontFamily>> Fonts { get; } = new List<Tuple<string, FontFamily>>()
-        {
+    public List<Tuple<string, FontFamily>> Fonts { get; } =
+        [
             new("Arial", new FontFamily("Arial")),
             new("Comic Sans MS", new FontFamily("Comic Sans MS")),
             new("Courier New", new FontFamily("Courier New")),
             new("Segoe UI", new FontFamily("Segoe UI")),
             new("Times New Roman", new FontFamily("Times New Roman"))
-        };
+        ];
 
-    public List<double> FontSizes { get; } = new List<double>()
-        {
+    public List<double> FontSizes { get; } =
+        [
             8,
             9,
             10,
@@ -44,7 +44,7 @@ public sealed partial class ComboBoxPage : Page
             36,
             48,
             72
-        };
+        ];
 
     public ComboBoxPage()
     {

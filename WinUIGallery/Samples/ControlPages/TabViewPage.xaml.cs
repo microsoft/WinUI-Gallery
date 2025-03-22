@@ -80,7 +80,7 @@ public sealed partial class TabViewPage : Page
     #region ItemsSourceSample
     private void InitializeDataBindingSampleData()
     {
-        myDatas = new ObservableCollection<MyData>();
+        myDatas = [];
 
         for (int index = 0; index < 3; index++)
         {

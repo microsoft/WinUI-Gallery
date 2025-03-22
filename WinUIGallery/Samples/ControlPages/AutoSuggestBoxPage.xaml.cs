@@ -11,8 +11,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class AutoSuggestBoxPage : Page
 {
-    private List<string> Cats = new()
-    {
+    private List<string> Cats =
+    [
         "Abyssinian",
         "Aegean",
         "American Bobtail",
@@ -110,7 +110,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         "Ukrainian Levkoy",
         "Wila Krungthep",
         "York Chocolate"
-    };
+    ];
 
     public AutoSuggestBoxPage()
     {

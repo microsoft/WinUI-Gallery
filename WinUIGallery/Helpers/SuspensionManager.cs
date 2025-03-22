@@ -20,8 +20,8 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 internal sealed class SuspensionManager
 {
-    private static Dictionary<string, object> _sessionState = new();
-    private static List<Type> _knownTypes = new();
+    private static Dictionary<string, object> _sessionState = [];
+    private static List<Type> _knownTypes = [];
     private const string sessionStateFilename = "_sessionState.xml";
 
     /// <summary>
@@ -102,7 +102,7 @@ internal sealed class SuspensionManager
         Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
     public static async Task RestoreAsync()
     {
-        _sessionState = new Dictionary<string, object>();
+        _sessionState = [];
 
         try
         {
@@ -137,7 +137,7 @@ internal sealed class SuspensionManager
         DependencyProperty.RegisterAttached("_FrameSessionStateKey", typeof(string), typeof(SuspensionManager), new PropertyMetadata(null));
     private static DependencyProperty FrameSessionStateProperty =
         DependencyProperty.RegisterAttached("_FrameSessionState", typeof(Dictionary<string, object>), typeof(SuspensionManager), new PropertyMetadata(null));
-    private static List<WeakReference<Frame>> _registeredFrames = new();
+    private static List<WeakReference<Frame>> _registeredFrames = [];
 
     /// <summary>
     /// Registers a <see cref="Frame"/> instance to allow its navigation history to be saved to
@@ -222,7 +222,7 @@ internal sealed class SuspensionManager
             else
             {
                 // Frames that aren't registered have transient state
-                frameState = new Dictionary<string, object>();
+                frameState = [];
             }
             frame.SetValue(FrameSessionStateProperty, frameState);
         }

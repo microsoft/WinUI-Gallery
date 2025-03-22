@@ -38,7 +38,7 @@ public sealed class ControlInfoDataSource
 
     #endregion
 
-    private readonly IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
+    private readonly IList<ControlInfoDataGroup> _groups = [];
     public IList<ControlInfoDataGroup> Groups
     {
         get { return _groups; }

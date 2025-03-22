@@ -10,7 +10,7 @@ internal class IconsDataSource
 
     public static List<IconData> Icons => Instance.icons;
 
-    private List<IconData> icons = new();
+    private List<IconData> icons = [];
 
     private IconsDataSource() { }
 

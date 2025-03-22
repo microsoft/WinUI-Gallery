@@ -5,8 +5,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PipsPagerPage : Page
 {
-    public List<string> Pictures = new()
-    {
+    public List<string> Pictures =
+    [
         "ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg",
@@ -15,7 +15,7 @@ public sealed partial class PipsPagerPage : Page
         "ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg",
-    };
+    ];
     public PipsPagerPage()
     {
         InitializeComponent();

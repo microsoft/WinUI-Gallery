@@ -12,8 +12,8 @@ public sealed partial class CalendarViewPage : Page
     {
         InitializeComponent();
 
-        List<string> calendarIdentifiers = new()
-        {
+        List<string> calendarIdentifiers =
+        [
             CalendarIdentifiers.Gregorian,
             CalendarIdentifiers.Hebrew,
             CalendarIdentifiers.Hijri,
@@ -24,7 +24,7 @@ public sealed partial class CalendarViewPage : Page
             CalendarIdentifiers.Taiwan,
             CalendarIdentifiers.Thai,
             CalendarIdentifiers.UmAlQura,
-        };
+        ];
 
         calendarIdentifier.ItemsSource = calendarIdentifiers;
         calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;

@@ -96,7 +96,7 @@ public sealed partial class RichEditBoxPage : Page
         };
 
         // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+        savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
 
         // Default file name if the user does not type one in or select a file to replace
         savePicker.SuggestedFileName = "New Document";

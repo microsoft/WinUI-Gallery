@@ -30,7 +30,7 @@ public sealed partial class AnnotatedScrollBarPage : Page
     private const int ItemHeight = 90;
 
     // ItemsRepeater's ItemsSource.
-    public ObservableCollection<SolidColorBrush> ColorCollection = new();
+    public ObservableCollection<SolidColorBrush> ColorCollection = [];
 
     public AnnotatedScrollBarPage()
     {

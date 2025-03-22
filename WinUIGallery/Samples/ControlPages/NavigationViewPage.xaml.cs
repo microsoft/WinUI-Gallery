@@ -32,7 +32,7 @@ public sealed partial class NavigationViewPage : Page
         nvSample8.SelectedItem = nvSample8.MenuItems.OfType<NavigationViewItem>().First();
         nvSample9.SelectedItem = nvSample9.MenuItems.OfType<NavigationViewItem>().First();
 
-        Categories = new ObservableCollection<CategoryBase>();
+        Categories = [];
         Category firstCategory = new() { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
         Categories.Add(firstCategory);
         Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });

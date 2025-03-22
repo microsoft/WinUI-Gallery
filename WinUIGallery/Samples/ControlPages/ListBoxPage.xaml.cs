@@ -17,14 +17,14 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListBoxPage : Page
 {
-    private List<Tuple<string, FontFamily>> _fonts = new()
-    {
+    private List<Tuple<string, FontFamily>> _fonts =
+    [
         new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
         new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
         new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
         new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
         new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
-    };
+    ];
 
     public List<Tuple<string, FontFamily>> Fonts
     {

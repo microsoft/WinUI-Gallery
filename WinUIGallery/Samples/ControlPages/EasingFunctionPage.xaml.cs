@@ -29,8 +29,8 @@ public class NamedEasingFunction
 
 public sealed partial class EasingFunctionPage : Page
 {
-    private List<NamedEasingFunction> EasingFunctions { get; } = new List<NamedEasingFunction>()
-        {
+    private List<NamedEasingFunction> EasingFunctions { get; } =
+        [
         new("BackEase", new BackEase()),
         new("BounceEase", new BounceEase()),
         new("CircleEase", new CircleEase()),
@@ -42,7 +42,7 @@ public sealed partial class EasingFunctionPage : Page
         new("QuarticEase", new QuarticEase()),
         new("QuinticEase", new QuinticEase()),
         new("SineEase", new SineEase())
-        };
+        ];
 
     public EasingFunctionPage()
     {

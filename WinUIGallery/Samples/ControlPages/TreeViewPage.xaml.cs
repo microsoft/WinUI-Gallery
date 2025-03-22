@@ -40,8 +40,8 @@ public sealed partial class TreeViewPage : Page
         sampleTreeView.RootNodes.Add(personalFolder);
     }
 
-    private ObservableCollection<ExplorerItem> GetData() => new ObservableCollection<ExplorerItem>
-        {
+    private ObservableCollection<ExplorerItem> GetData() =>
+    [
             new() {
                 Name = "Documents",
                 Type = ExplorerItem.ExplorerItemType.Folder,
@@ -59,7 +59,7 @@ public sealed partial class TreeViewPage : Page
                     new ExplorerItem { Name = "Project Plan", Type = ExplorerItem.ExplorerItemType.File }
                 }
             }
-        };
+    ];
 }
 
 public class ExplorerItem
@@ -72,7 +72,7 @@ public class ExplorerItem
 
     public string Name { get; set; }
     public ExplorerItemType Type { get; set; }
-    public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
+    public ObservableCollection<ExplorerItem> Children { get; set; } = [];
 }
 
 class ExplorerItemTemplateSelector : DataTemplateSelector

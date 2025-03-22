@@ -173,7 +173,7 @@ public sealed partial class ControlExample : UserControl
     public ControlExample()
     {
         InitializeComponent();
-        Substitutions = new List<ControlExampleSubstitution>();
+        Substitutions = [];
         Loaded += ControlExample_Loaded;
     }
 

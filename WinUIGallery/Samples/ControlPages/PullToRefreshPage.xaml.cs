@@ -19,8 +19,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PullToRefreshPage : Page
 {
-    private ObservableCollection<string> items1 = new();
-    private ObservableCollection<string> items2 = new();
+    private ObservableCollection<string> items1 = [];
+    private ObservableCollection<string> items2 = [];
     private DispatcherTimer timer1 = new();
     private DispatcherTimer timer2 = new();
     private Visual visualizerContentVisual;

@@ -89,7 +89,7 @@ public class CustomDataObject
 
         Random rand = new();
         int numberOfLocations = includeAllItems ? 13 : 8;
-        List<CustomDataObject> objects = new();
+        List<CustomDataObject> objects = [];
         for (int i = 0; i < numberOfLocations; i++)
         {
             objects.Add(new CustomDataObject()

@@ -23,13 +23,13 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class IconographyPage : Page
 {
-    public List<double> FontSizes { get; } = new()
-        {
+    public List<double> FontSizes { get; } =
+        [
             16,
             24,
             32,
             48
-        };
+        ];
 
     private string currentSearch = null;
 

@@ -19,7 +19,7 @@ public class ListItemData
 
 public sealed partial class StandardUICommandPage : Page
 {
-    ObservableCollection<ListItemData> collection = new();
+    ObservableCollection<ListItemData> collection = [];
 
     public StandardUICommandPage()
     {

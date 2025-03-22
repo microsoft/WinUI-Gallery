@@ -260,7 +260,7 @@ public sealed partial class FilePickerPage : Page
         // Set options for your file picker
         savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
         // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+        savePicker.FileTypeChoices.Add("Plain Text", [".txt"]);
         // Default file name if the user does not type one in or select a file to replace
         var enteredFileName = ((sender as Button).Parent as StackPanel)
         .FindName("FileNameTextBox") as TextBox;

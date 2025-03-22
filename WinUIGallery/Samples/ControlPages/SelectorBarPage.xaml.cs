@@ -21,9 +21,9 @@ public sealed partial class SelectorBarPage : Page
 {
     int previousSelectedIndex = 0;
 
-    public ObservableCollection<SolidColorBrush> PinkColorCollection = new();
-    public ObservableCollection<SolidColorBrush> PlumColorCollection = new();
-    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = new();
+    public ObservableCollection<SolidColorBrush> PinkColorCollection = [];
+    public ObservableCollection<SolidColorBrush> PlumColorCollection = [];
+    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = [];
 
     public SelectorBarPage()
     {

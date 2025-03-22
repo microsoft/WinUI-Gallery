@@ -18,7 +18,7 @@ class LanguageList
     {
         if (_languages == null)
         {
-            _languages = new List<Language>();
+            _languages = [];
         }
 
         _languages.Add(new Language("English", "en"));

@@ -31,7 +31,7 @@ public sealed partial class SwipeControlPage : Page
         lv.ItemsSource = items;
     }
 
-    ObservableCollection<object> items = new();
+    ObservableCollection<object> items = [];
 
     private void DeleteOne_ItemInvoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
     {

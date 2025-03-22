@@ -41,7 +41,7 @@ public sealed partial class HomePage : ItemsPageBase
                     orderby g.Key
                     select new GroupInfoList(g) { Key = g.Key };
 
-        ObservableCollection<GroupInfoList> groupList = new(query);
+        ObservableCollection<GroupInfoList> groupList = [.. query];
 
         //Move Preview samples to the back of the list
         var previewGroup = groupList.ElementAt(1);

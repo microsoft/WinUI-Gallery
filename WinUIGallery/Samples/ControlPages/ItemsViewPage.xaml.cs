@@ -50,7 +50,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
         // Get data objects and place them into an ObservableCollection
         List<CustomDataObject> tempList = CustomDataObject.GetDataObjects(includeAllItems: true);
-        ObservableCollection<CustomDataObject> Items = new(tempList);
+        ObservableCollection<CustomDataObject> Items = [.. tempList];
 
         if (BasicItemsView != null)
         {
