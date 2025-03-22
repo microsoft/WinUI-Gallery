@@ -73,10 +73,8 @@ public sealed partial class HomePage : ItemsPageBase
     protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }
 
-public class GroupInfoList : List<object>
+public class GroupInfoList(IEnumerable<object> items) : List<object>(items)
 {
-    public GroupInfoList(IEnumerable<object> items) : base(items) { }
-
     public object Key { get; set; }
 
     public string Title { get; set; }
