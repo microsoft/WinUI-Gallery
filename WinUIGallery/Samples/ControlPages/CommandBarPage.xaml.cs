@@ -62,9 +62,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
         if (PrimaryCommandBar.SecondaryCommands.Count == 1)
         {
-            var newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.Add);
-            newButton.Label = "Button 1";
+            var newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.Add),
+                Label = "Button 1"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.N,
@@ -84,9 +86,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
             });
             PrimaryCommandBar.SecondaryCommands.Add(new AppBarSeparator());
 
-            newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.FontDecrease);
-            newButton.Label = "Button 3";
+            newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.FontDecrease),
+                Label = "Button 3"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.Subtract,
@@ -94,9 +98,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
             });
             PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-            newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.FontIncrease);
-            newButton.Label = "Button 4";
+            newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.FontIncrease),
+                Label = "Button 4"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.Add,

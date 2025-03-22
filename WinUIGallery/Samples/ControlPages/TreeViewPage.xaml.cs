@@ -20,20 +20,29 @@ public sealed partial class TreeViewPage : Page
 
     private void InitializeSampleTreeView(TreeView sampleTreeView)
     {
-        TreeViewNode workFolder = new() { Content = "Work Documents" };
-        workFolder.IsExpanded = true;
+        TreeViewNode workFolder = new()
+        {
+            Content = "Work Documents",
+            IsExpanded = true
+        };
 
         workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
         workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
 
-        TreeViewNode remodelFolder = new() { Content = "Home Remodel" };
-        remodelFolder.IsExpanded = true;
+        TreeViewNode remodelFolder = new()
+        {
+            Content = "Home Remodel",
+            IsExpanded = true
+        };
 
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
 
-        TreeViewNode personalFolder = new() { Content = "Personal Documents" };
-        personalFolder.IsExpanded = true;
+        TreeViewNode personalFolder = new()
+        {
+            Content = "Personal Documents",
+            IsExpanded = true
+        };
         personalFolder.Children.Add(remodelFolder);
 
         sampleTreeView.RootNodes.Add(workFolder);

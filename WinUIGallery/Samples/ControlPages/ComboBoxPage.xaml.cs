@@ -104,11 +104,13 @@ public sealed partial class ComboBoxPage : Page
             // If the item is invalid, reject it and revert the text. 
             sender.Text = sender.SelectedValue.ToString();
 
-            var dialog = new ContentDialog();
-            dialog.Content = "The font size must be a number between 8 and 100.";
-            dialog.CloseButtonText = "Close";
-            dialog.DefaultButton = ContentDialogButton.Close;
-            dialog.XamlRoot = sender.XamlRoot;
+            var dialog = new ContentDialog
+            {
+                Content = "The font size must be a number between 8 and 100.",
+                CloseButtonText = "Close",
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = sender.XamlRoot
+            };
             _ = dialog.ShowAsync();
         }
 

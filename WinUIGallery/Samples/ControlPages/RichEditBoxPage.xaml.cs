@@ -64,8 +64,10 @@ public sealed partial class RichEditBoxPage : Page
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
     {
         // Open a text file.
-        FileOpenPicker open = new();
-        open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+        FileOpenPicker open = new()
+        {
+            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+        };
         open.FileTypeFilter.Add(".rtf");
 
         // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.

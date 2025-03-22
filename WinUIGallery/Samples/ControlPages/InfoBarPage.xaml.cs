@@ -70,8 +70,10 @@ public sealed partial class InfoBarPage : Page
         }
         else if (ActionButtonComboBox.SelectedIndex == 1) // button
         {
-            var button = new Button();
-            button.Content = "Action";
+            var button = new Button
+            {
+                Content = "Action"
+            };
             TestInfoBar2.ActionButton = button;
             DisplayButton.Value = @"<InfoBar.ActionButton>
             <Button Content=""Action"" Click=""InfoBarButton_Click"" />
@@ -80,9 +82,11 @@ public sealed partial class InfoBarPage : Page
         }
         else if (ActionButtonComboBox.SelectedIndex == 2) // hyperlink
         {
-            var link = new HyperlinkButton();
-            link.NavigateUri = new Uri("http://www.microsoft.com/");
-            link.Content = "Informational link";
+            var link = new HyperlinkButton
+            {
+                NavigateUri = new Uri("http://www.microsoft.com/"),
+                Content = "Informational link"
+            };
             TestInfoBar2.ActionButton = link;
             DisplayButton.Value = @"<InfoBar.ActionButton>
             <HyperlinkButton Content=""Informational link"" NavigateUri=""https://www.example.com"" />

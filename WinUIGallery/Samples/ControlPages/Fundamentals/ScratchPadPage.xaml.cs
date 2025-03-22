@@ -92,13 +92,15 @@ public sealed partial class ScratchPadPage : Page
 
     private async void ResetToDefaultClick(object sender, RoutedEventArgs e)
     {
-        ContentDialog dialog = new();
-        dialog.XamlRoot = XamlRoot;
-        dialog.Title = "Are you sure you want to reset?";
-        dialog.Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?";
-        dialog.PrimaryButtonText = "Reset";
-        dialog.CloseButtonText = "Cancel";
-        dialog.DefaultButton = ContentDialogButton.Primary;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = XamlRoot,
+            Title = "Are you sure you want to reset?",
+            Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?",
+            PrimaryButtonText = "Reset",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary
+        };
 
         var result = await dialog.ShowAsync();
         if (result == ContentDialogResult.Primary)

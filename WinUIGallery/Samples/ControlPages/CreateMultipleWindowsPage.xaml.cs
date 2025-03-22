@@ -24,8 +24,10 @@ public sealed partial class CreateMultipleWindowsPage : Page
     private void createNewWindow_Click(object sender, RoutedEventArgs e)
     {
         var newWindow = WindowHelper.CreateWindow();
-        var rootPage = new NavigationRootPage();
-        rootPage.RequestedTheme = ThemeHelper.RootTheme;
+        var rootPage = new NavigationRootPage
+        {
+            RequestedTheme = ThemeHelper.RootTheme
+        };
         newWindow.Content = rootPage;
         newWindow.Activate();
 

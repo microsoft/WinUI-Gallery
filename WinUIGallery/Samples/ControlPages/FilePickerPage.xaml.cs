@@ -54,13 +54,17 @@ public sealed partial class FilePickerPage : Page
         {
             // Creating the text for the Texblock
             Span span = new();
-            Run run1 = new();
-            run1.Text = "Picked file: ";
+            Run run1 = new()
+            {
+                Text = "Picked file: "
+            };
 
             // Adding the name of the picked file in bold
-            Run run2 = new();
-            run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
-            run2.Text = file.Name;
+            Run run2 = new()
+            {
+                FontWeight = Microsoft.UI.Text.FontWeights.Bold,
+                Text = file.Name
+            };
 
             span.Inlines.Add(run1);
             span.Inlines.Add(run2);
@@ -107,13 +111,17 @@ public sealed partial class FilePickerPage : Page
         {
             // Creating the text for the Texblock
             Span span = new();
-            Run run1 = new();
-            run1.Text = "Picked photo: ";
+            Run run1 = new()
+            {
+                Text = "Picked photo: "
+            };
 
             // Adding the name of the picked file in bold
-            Run run2 = new();
-            run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
-            run2.Text = file.Name;
+            Run run2 = new()
+            {
+                FontWeight = Microsoft.UI.Text.FontWeights.Bold,
+                Text = file.Name
+            };
 
             span.Inlines.Add(run1);
             span.Inlines.Add(run2);
@@ -159,16 +167,20 @@ public sealed partial class FilePickerPage : Page
         {
             // Creating the text for the Texblock
             Span span = new();
-            Run run1 = new();
-            run1.Text = "Picked files:\n";
+            Run run1 = new()
+            {
+                Text = "Picked files:\n"
+            };
             span.Inlines.Add(run1);
 
             // Adding the names of the picked files in bold
             foreach (StorageFile file in files)
             {
-                Run runTemp = new();
-                runTemp.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
-                runTemp.Text = file.Name + "\n";
+                Run runTemp = new()
+                {
+                    FontWeight = Microsoft.UI.Text.FontWeights.Bold,
+                    Text = file.Name + "\n"
+                };
 
                 span.Inlines.Add(runTemp);
             }
@@ -216,13 +228,17 @@ public sealed partial class FilePickerPage : Page
 
             // Creating the text for the Texblock
             Span span = new();
-            Run run1 = new();
-            run1.Text = "Picked folder: ";
+            Run run1 = new()
+            {
+                Text = "Picked folder: "
+            };
 
             // Adding the name of the picked file in bold
-            Run run2 = new();
-            run2.FontWeight = Microsoft.UI.Text.FontWeights.Bold;
-            run2.Text = folder.Name;
+            Run run2 = new()
+            {
+                FontWeight = Microsoft.UI.Text.FontWeights.Bold,
+                Text = folder.Name
+            };
 
             span.Inlines.Add(run1);
             span.Inlines.Add(run2);
