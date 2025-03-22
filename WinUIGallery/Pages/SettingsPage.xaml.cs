@@ -95,8 +95,7 @@ public sealed partial class SettingsPage : Page
                 color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
             }
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
-                                                                            "ThemeChangedNotificationActivityId");
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}", "ThemeChangedNotificationActivityId");
         }
     }
 

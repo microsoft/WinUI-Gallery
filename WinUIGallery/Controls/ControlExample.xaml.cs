@@ -61,9 +61,9 @@ public sealed class ControlExampleSubstitution : DependencyObject
         object value = Value;
 
         // For solid color brushes, use the underlying color.
-        if (value is SolidColorBrush)
+        if (value is SolidColorBrush brush)
         {
-            value = ((SolidColorBrush)value).Color;
+            value = brush.Color;
         }
 
         return value == null ? string.Empty : value.ToString();

@@ -240,9 +240,7 @@ public sealed partial class ScrollViewPage : Page
 
     private void UpdateExample3Content()
     {
-        string sampleCodeFileName = null;
-
-        sampleCodeFileName = cmbVerticalAnimation.SelectedIndex switch
+        string sampleCodeFileName = cmbVerticalAnimation.SelectedIndex switch
         {
             0 => "ScrollViewSample3_DefaultAnimation_cs",
             1 => "ScrollViewSample3_AccordionAnimation_cs",
