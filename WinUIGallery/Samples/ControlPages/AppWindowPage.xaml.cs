@@ -14,7 +14,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 window = new(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
+        SampleWindow1 window = new(WindowTitle.Text, (int)WindowWidth.Value, (int)WindowHeight.Value, (int)XPoint.Value, (int)YPoint.Value);
         window.Activate();
     }
 

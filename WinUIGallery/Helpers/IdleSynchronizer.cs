@@ -419,12 +419,12 @@ internal static class NativeMethods
     public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
 
     [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+    public static extern uint WaitForSingleObject(IntPtr hHandle, uint dwMilliseconds);
 
-    public const UInt32 INFINITE = 0xFFFFFFFF;
-    public const UInt32 WAIT_ABANDONED = 0x00000080;
-    public const UInt32 WAIT_OBJECT_0 = 0x00000000;
-    public const UInt32 WAIT_TIMEOUT = 0x00000102;
+    public const uint INFINITE = 0xFFFFFFFF;
+    public const uint WAIT_ABANDONED = 0x00000080;
+    public const uint WAIT_OBJECT_0 = 0x00000000;
+    public const uint WAIT_TIMEOUT = 0x00000102;
 
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool ResetEvent(IntPtr hEvent);

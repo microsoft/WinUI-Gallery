@@ -35,7 +35,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
 
-    public List<String> ColorList =
+    public List<string> ColorList =
     [
             "Blue",
             "BlueViolet",

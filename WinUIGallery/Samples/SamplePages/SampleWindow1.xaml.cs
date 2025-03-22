@@ -15,7 +15,7 @@ public sealed partial class SampleWindow1 : Window
         InitializeComponent();
     }
 
-    public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y)
+    public SampleWindow1(string WindowTitle, int Width, int Height, int X, int Y)
     {
         InitializeComponent();
 
