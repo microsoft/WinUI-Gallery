@@ -200,12 +200,12 @@ public sealed partial class NavigationViewPage : Page
 
     private void headerCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true;
     }
 
     private void settingsCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true;
     }
 
     private void visibleCheck_Click(object sender, RoutedEventArgs e)
@@ -222,7 +222,7 @@ public sealed partial class NavigationViewPage : Page
 
     private void enableCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true;
     }
 
     private void autoSuggestCheck_Click(object sender, RoutedEventArgs e)
@@ -344,6 +344,6 @@ public sealed partial class NavigationViewPage : Page
 
     private void suppressselectionCheck_Checked_Click(object sender, RoutedEventArgs e)
     {
-        SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked == true ? false : true;
+        SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked != true;
     }
 }

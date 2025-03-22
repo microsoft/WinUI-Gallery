@@ -299,7 +299,7 @@ public class RootFrameNavigationHelper
 
     private void UpdateBackButton()
     {
-        CurrentNavView.IsBackEnabled = Frame.CanGoBack ? true : false;
+        CurrentNavView.IsBackEnabled = Frame.CanGoBack;
     }
 }
 
