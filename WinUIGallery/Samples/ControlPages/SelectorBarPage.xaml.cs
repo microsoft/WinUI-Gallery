@@ -35,27 +35,14 @@ public sealed partial class SelectorBarPage : Page
     {
         SelectorBarItem selectedItem = sender.SelectedItem;
         int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
-        System.Type pageType;
-
-        switch (currentSelectedIndex)
+        System.Type pageType = currentSelectedIndex switch
         {
-            case 0:
-                pageType = typeof(SamplePage1);
-                break;
-            case 1:
-                pageType = typeof(SamplePage2);
-                break;
-            case 2:
-                pageType = typeof(SamplePage3);
-                break;
-            case 3:
-                pageType = typeof(SamplePage4);
-                break;
-            default:
-                pageType = typeof(SamplePage5);
-                break;
-        }
-
+            0 => typeof(SamplePage1),
+            1 => typeof(SamplePage2),
+            2 => typeof(SamplePage3),
+            3 => typeof(SamplePage4),
+            _ => typeof(SamplePage5),
+        };
         var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
 
         ContentFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });

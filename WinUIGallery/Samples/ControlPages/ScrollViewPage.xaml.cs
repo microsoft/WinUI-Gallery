@@ -242,22 +242,13 @@ public sealed partial class ScrollViewPage : Page
     {
         string sampleCodeFileName = null;
 
-        switch (cmbVerticalAnimation.SelectedIndex)
+        sampleCodeFileName = cmbVerticalAnimation.SelectedIndex switch
         {
-            case 0:
-                sampleCodeFileName = "ScrollViewSample3_DefaultAnimation_cs";
-                break;
-            case 1:
-                sampleCodeFileName = "ScrollViewSample3_AccordionAnimation_cs";
-                break;
-            case 2:
-                sampleCodeFileName = "ScrollViewSample3_TeleportationAnimation_cs";
-                break;
-            default:
-                sampleCodeFileName = null;
-                break;
-        }
-
+            0 => "ScrollViewSample3_DefaultAnimation_cs",
+            1 => "ScrollViewSample3_AccordionAnimation_cs",
+            2 => "ScrollViewSample3_TeleportationAnimation_cs",
+            _ => null,
+        };
         if (sampleCodeFileName != null)
         {
             Example3.CSharp = GetExample3CodeContent(sampleCodeFileName);

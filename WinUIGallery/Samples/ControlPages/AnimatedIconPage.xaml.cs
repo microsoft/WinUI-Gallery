@@ -18,16 +18,16 @@ public sealed partial class AnimatedIconPage : Page
     public static IAnimatedVisualSource2 GetAnimationSourceFromString(object selection)
     { 
         string name = (string)selection;
-        switch (name)
+        return name switch
         {
-            case "AnimatedBackVisualSource": return new AnimatedBackVisualSource();
-            case "AnimatedChevronDownSmallVisualSource": return new AnimatedChevronDownSmallVisualSource();
-            case "AnimatedChevronRightDownSmallVisualSource": return new AnimatedChevronRightDownSmallVisualSource();
-            case "AnimatedChevronUpDownSmallVisualSource": return new AnimatedChevronUpDownSmallVisualSource();
-            case "AnimatedFindVisualSource": return new AnimatedFindVisualSource();
-            case "AnimatedGlobalNavigationButtonVisualSource": return new AnimatedGlobalNavigationButtonVisualSource();
-            case "AnimatedSettingsVisualSource": return new AnimatedSettingsVisualSource();
-            default: return null;
-        }
+            "AnimatedBackVisualSource" => new AnimatedBackVisualSource(),
+            "AnimatedChevronDownSmallVisualSource" => new AnimatedChevronDownSmallVisualSource(),
+            "AnimatedChevronRightDownSmallVisualSource" => new AnimatedChevronRightDownSmallVisualSource(),
+            "AnimatedChevronUpDownSmallVisualSource" => new AnimatedChevronUpDownSmallVisualSource(),
+            "AnimatedFindVisualSource" => new AnimatedFindVisualSource(),
+            "AnimatedGlobalNavigationButtonVisualSource" => new AnimatedGlobalNavigationButtonVisualSource(),
+            "AnimatedSettingsVisualSource" => new AnimatedSettingsVisualSource(),
+            _ => null,
+        };
     }
 }

@@ -54,24 +54,14 @@ public sealed partial class ComboBoxPage : Page
     private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string colorName = e.AddedItems[0].ToString();
-        Windows.UI.Color color;
-        switch (colorName)
+        var color = colorName switch
         {
-            case "Yellow":
-                color = Colors.Yellow;
-                break;
-            case "Green":
-                color = Colors.Green;
-                break;
-            case "Blue":
-                color = Colors.Blue;
-                break;
-            case "Red":
-                color = Colors.Red;
-                break;
-            default:
-                throw new Exception($"Invalid argument: {colorName}");
-        }
+            "Yellow" => Colors.Yellow,
+            "Green" => Colors.Green,
+            "Blue" => Colors.Blue,
+            "Red" => Colors.Red,
+            _ => throw new Exception($"Invalid argument: {colorName}"),
+        };
         Control1Output.Fill = new SolidColorBrush(color);
     }
 

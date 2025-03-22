@@ -21,14 +21,10 @@ public sealed partial class SliderPage : Page
 
     private void SnapsToRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        switch (SnapsToRadioButtons.SelectedItem)
+        Slider3.SnapsTo = SnapsToRadioButtons.SelectedItem switch
         {
-            case "StepValues":
-                Slider3.SnapsTo = SliderSnapsTo.StepValues;
-                break;
-            default:
-                Slider3.SnapsTo = SliderSnapsTo.Ticks;
-                break;
-        }
+            "StepValues" => SliderSnapsTo.StepValues,
+            _ => SliderSnapsTo.Ticks,
+        };
     }
 }

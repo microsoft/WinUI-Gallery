@@ -100,15 +100,12 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private string GetSampleLanguageVisualState()
     {
-        switch (SampleType)
+        return SampleType switch
         {
-            case SampleCodePresenterType.XAML:
-                return "XAMLSample";
-            case SampleCodePresenterType.CSharp:
-                return "CSharpSample";
-            default:
-                return "InlineSample";
-        }
+            SampleCodePresenterType.XAML => "XAMLSample",
+            SampleCodePresenterType.CSharp => "CSharpSample",
+            _ => "InlineSample",
+        };
     }
 
     private void CodePresenter_Loaded(object sender, RoutedEventArgs e) => GenerateSyntaxHighlightedContent();

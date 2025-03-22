@@ -31,17 +31,13 @@ public sealed partial class ConnectedAnimationPage : Page
         }
         
         var selectedName = (ConfigurationPanel.SelectedItem as RadioButton).Content.ToString();
-        switch (selectedName)
+        return selectedName switch
         {
-            case "Gravity":
-                return new GravityConnectedAnimationConfiguration();
-            case "Direct":
-                return new DirectConnectedAnimationConfiguration();
-            case "Basic":
-                return new BasicConnectedAnimationConfiguration();
-            default:
-                return null;
-        }
+            "Gravity" => new GravityConnectedAnimationConfiguration(),
+            "Direct" => new DirectConnectedAnimationConfiguration(),
+            "Basic" => new BasicConnectedAnimationConfiguration(),
+            _ => null,
+        };
     }
 
     private void NavigateButton_Click(object sender, RoutedEventArgs e)

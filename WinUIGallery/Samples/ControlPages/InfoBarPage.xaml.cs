@@ -21,25 +21,13 @@ public sealed partial class InfoBarPage : Page
     {
         string severityName = e.AddedItems[0].ToString();
 
-        switch (severityName)
+        TestInfoBar1.Severity = severityName switch
         {
-            case "Error":
-                TestInfoBar1.Severity = InfoBarSeverity.Error;
-                break;
-
-            case "Warning":
-                TestInfoBar1.Severity = InfoBarSeverity.Warning;
-                break;
-
-            case "Success":
-                TestInfoBar1.Severity = InfoBarSeverity.Success;
-                break;
-
-            case "Informational":
-            default:
-                TestInfoBar1.Severity = InfoBarSeverity.Informational;
-                break;
-        }
+            "Error" => InfoBarSeverity.Error,
+            "Warning" => InfoBarSeverity.Warning,
+            "Success" => InfoBarSeverity.Success,
+            _ => InfoBarSeverity.Informational,
+        };
     }
 
     private void MessageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

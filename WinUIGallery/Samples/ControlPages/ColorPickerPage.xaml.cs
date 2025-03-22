@@ -11,14 +11,10 @@ public sealed partial class ColorPickerPage : Page
 
     private void ColorSpectrumShapeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        switch(ColorSpectrumShapeRadioButtons.SelectedItem)
+        colorPicker.ColorSpectrumShape = ColorSpectrumShapeRadioButtons.SelectedItem switch
         {
-            case "Box":
-                colorPicker.ColorSpectrumShape = ColorSpectrumShape.Box;
-                break;
-            default:
-                colorPicker.ColorSpectrumShape = ColorSpectrumShape.Ring;
-                break;
-        }
+            "Box" => ColorSpectrumShape.Box,
+            _ => ColorSpectrumShape.Ring,
+        };
     }
 }

@@ -25,58 +25,34 @@ public sealed partial class PipsPagerPage : Page
     {
         string orientation = e.AddedItems[0].ToString();
 
-        switch (orientation)
+        TestPipsPager2.Orientation = orientation switch
         {
-            case "Vertical":
-                TestPipsPager2.Orientation = Orientation.Vertical;
-                break;
-
-            case "Horizontal":
-            default:
-                TestPipsPager2.Orientation = Orientation.Horizontal;
-                break;
-        }
+            "Vertical" => Orientation.Vertical,
+            _ => Orientation.Horizontal,
+        };
     }
 
     private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     { 
         string prevButtonVisibility = e.AddedItems[0].ToString();
 
-        switch (prevButtonVisibility)
+        TestPipsPager2.PreviousButtonVisibility = prevButtonVisibility switch
         {
-            case "Visible":
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Visible;
-                break;
-
-            case "VisibleOnPointerOver":
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
-                break;
-
-            case "Collapsed":
-            default:
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Collapsed;
-                break;
-        }
+            "Visible" => PipsPagerButtonVisibility.Visible,
+            "VisibleOnPointerOver" => PipsPagerButtonVisibility.VisibleOnPointerOver,
+            _ => PipsPagerButtonVisibility.Collapsed,
+        };
     }
 
     private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string nextButtonVisibility = e.AddedItems[0].ToString();
 
-        switch (nextButtonVisibility)
+        TestPipsPager2.NextButtonVisibility = nextButtonVisibility switch
         {
-            case "Visible":
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Visible;
-                break;
-
-            case "VisibleOnPointerOver":
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
-                break;
-
-            case "Collapsed":
-            default:
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Collapsed;
-                break;
-        }
+            "Visible" => PipsPagerButtonVisibility.Visible,
+            "VisibleOnPointerOver" => PipsPagerButtonVisibility.VisibleOnPointerOver,
+            _ => PipsPagerButtonVisibility.Collapsed,
+        };
     }
 }
