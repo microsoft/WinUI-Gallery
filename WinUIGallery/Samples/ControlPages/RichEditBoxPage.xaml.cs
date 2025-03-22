@@ -304,7 +304,7 @@ public sealed partial class RichEditBoxPage : Page
             new("\u03C7", "Chi", "\\chi", "U+03C7"),
             new("\u03C8", "Psi", "\\psi", "U+03C8"),
             new("\u03C9", "Omega", "\\omega", "U+03C9"),
-            new("\u2211", "Summation", "\\Sum", "U+2211"),
+            new("\u2211", "Summation", "\\sum", "U+2211"),
             new("\u222B", "Integral", "\\int", "U+222B"),
             new("\u222E", "Contour Integral", "\\oint", "U+222E"),
             new("\u220F", "Product", "\\prod", "U+220F"),
