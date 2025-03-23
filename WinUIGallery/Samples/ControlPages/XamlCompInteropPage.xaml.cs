@@ -48,7 +48,7 @@ public sealed partial class XamlCompInteropPage : Page
 
     TimeSpan GetPeriod() => TimeSpan.FromMilliseconds(PeriodSlider.Value);
 
-    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation) => (sender as UIElement).StartAnimation(animation);
+    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation) => sender.StartAnimation(animation);
 
     private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
     {

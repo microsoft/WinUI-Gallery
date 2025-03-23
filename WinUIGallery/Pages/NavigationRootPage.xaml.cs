@@ -242,8 +242,8 @@ public sealed partial class NavigationRootPage : Page
     }
 
     private static IconElement GetIcon(string imagePath) => imagePath.ToLowerInvariant().EndsWith(".png") ?
-                    (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
-                    (IconElement)new FontIcon()
+                    new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
+                    new FontIcon()
                     {
                         Glyph = imagePath
                     };

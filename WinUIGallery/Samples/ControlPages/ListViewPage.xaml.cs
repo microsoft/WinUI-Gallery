@@ -308,7 +308,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
     {
-        var textBlock = sender as TextBlock;
+        var textBlock = sender;
         var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
 
         ToolTipService.SetToolTip(textBlock, text);

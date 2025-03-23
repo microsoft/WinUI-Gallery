@@ -325,8 +325,8 @@ public class WrapPanel : Panel
         bool hasFixedHeight = !double.IsNaN(itemHeight);
         double indirectOffset = 0;
         double? directDelta = (o == Orientation.Horizontal) ?
-            (hasFixedWidth ? (double?)itemWidth : null) :
-            (hasFixedHeight ? (double?)itemHeight : null);
+            (hasFixedWidth ? itemWidth : null) :
+            (hasFixedHeight ? itemHeight : null);
 
         // Measure each of the Children.  We will process the elements one
         // line at a time, just like during measure, but we will wait until
