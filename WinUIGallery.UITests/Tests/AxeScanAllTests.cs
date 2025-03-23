@@ -13,7 +13,7 @@ namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class AxeScanAll : TestBase
-{       
+{
     public static readonly string jsonUri = "ControlInfoData.json";
     public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
@@ -37,7 +37,7 @@ public class AxeScanAll : TestBase
     {
         [JsonProperty("UniqueId")]
         public string UniqueId { get; set; }
-      
+
         [JsonProperty("Items")]
         public List<Item> Items { get; set; }
     }
@@ -141,7 +141,7 @@ public class AxeScanAll : TestBase
                 Logger.LogMessage(exc.Message);
                 SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
             }
-           
+
         }
     }
 

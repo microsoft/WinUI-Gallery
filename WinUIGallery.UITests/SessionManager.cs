@@ -114,7 +114,7 @@ public class SessionManager
             Assert.IsNotNull(_session);
             Assert.IsNotNull(_session.SessionId);
             AxeHelper.InitializeAxe();
-            
+
             // Dismiss the disclaimer window that may pop up on the very first application launch
             // If the disclaimer is not found, this throws an exception, so lets catch that
             try
@@ -198,7 +198,7 @@ public class SessionManager
                 message = $"{indent}{root.TagName} [{root.Text}]";
             }
 
-            Logger.LogMessage(message.Replace("{", "{{").Replace("}","}}"));
+            Logger.LogMessage(message.Replace("{", "{{").Replace("}", "}}"));
         }
 
         foreach (WindowsElement child in root.FindElementsByXPath("*/*"))
