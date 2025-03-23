@@ -170,6 +170,13 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(HorizontalContentAlignmentProperty, value); }
     }
 
+    public static readonly DependencyProperty SourceCodeVisibilityProperty = DependencyProperty.Register("SourceCodeVisibility", typeof(Visibility), typeof(ControlExample), new PropertyMetadata(Visibility.Visible));
+    public Visibility SourceCodeVisibility
+    {
+        get { return (Visibility)GetValue(SourceCodeVisibilityProperty); }
+        set { SetValue(SourceCodeVisibilityProperty, value); }
+    }
+
     public ControlExample()
     {
         InitializeComponent();
