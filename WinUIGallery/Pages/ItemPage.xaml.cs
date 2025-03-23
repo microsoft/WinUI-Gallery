@@ -138,7 +138,7 @@ public sealed partial class ItemPage : Page
             {
                 controlExample.RequestedTheme = theme;
             }
-            if(controlExamples.Count() == 0)
+            if(!controlExamples.Any())
             {
                 RequestedTheme = theme;
             }
