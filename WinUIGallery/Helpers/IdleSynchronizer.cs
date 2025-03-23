@@ -87,7 +87,7 @@ public class IdleSynchronizer
 
     private static IdleSynchronizer instance = null;
 
-    public static IdleSynchronizer Instance => instance == null ? throw new Exception("Init() must be called on the UI thread before retrieving Instance.") : instance;
+    public static IdleSynchronizer Instance => instance ?? throw new Exception("Init() must be called on the UI thread before retrieving Instance.");
 
     public string Log { get; set; }
     public int TickCountBegin { get; set; }
