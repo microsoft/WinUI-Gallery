@@ -18,7 +18,7 @@ public class AxeScanAll : TestBase
     public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
     public static string[] ExclusionList =
-    {
+    [
         "WebView2", // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
         "Icons", // https://github.com/CommunityToolkit/Windows/issues/240 External toolkit SettingsExpander does not pass Axe testing
         // https://github.com/microsoft/axe-windows/issues/662
@@ -26,7 +26,7 @@ public class AxeScanAll : TestBase
         "PersonPicture",
         "MapControl",
         "TabView"
-    };
+    ];
 
     public class ControlInfoData
     {
@@ -71,7 +71,7 @@ public class AxeScanAll : TestBase
                 {
                     continue;
                 }
-                testCases.Add(new object[] { sectionName, pageName });
+                testCases.Add([sectionName, pageName]);
             }
         }
 

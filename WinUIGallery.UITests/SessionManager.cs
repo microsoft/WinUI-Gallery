@@ -29,14 +29,14 @@ namespace WinUIGallery.UITests;
 public class SessionManager
 {
     private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-    private static readonly string[] WinUIGalleryAppIDs = new string[]{
+    private static readonly string[] WinUIGalleryAppIDs = [
         // WinUI 3 Gallery apps built in the lab
         "Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
         "Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App",
         // WinUI 3 Gallery apps built locally
         "Microsoft.WinUI3ControlsGallery.Debug_8wekyb3d8bbwe!App",
         "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App"
-    };
+    ];
 
     private static uint appIdIndex = 0;
 
