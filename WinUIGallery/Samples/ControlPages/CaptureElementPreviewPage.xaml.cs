@@ -47,7 +47,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     private MediaFrameSourceGroup mediaFrameSourceGroup;
     private MediaCapture mediaCapture;
 
-    async private void StartCaptureElement()
+    private async void StartCaptureElement()
     {
         var groups = await MediaFrameSourceGroup.FindAllAsync();
         if (groups.Count == 0)
@@ -99,7 +99,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         OnPropertyChanged("MirrorTextReplacement");
     }
 
-    async private void CapturePhoto_Click(object sender, RoutedEventArgs e)
+    private async void CapturePhoto_Click(object sender, RoutedEventArgs e)
     {
         // Capture a photo to a stream
         var imgFormat = ImageEncodingProperties.CreateJpeg();

@@ -359,7 +359,7 @@ public class Contact
     }
 
     #region Public Methods
-    public async static Task<ObservableCollection<Contact>> GetContactsAsync()
+    public static async Task<ObservableCollection<Contact>> GetContactsAsync()
     {
         IList<string> lines = await FileLoader.LoadLines("Assets/SampleMedia/Contacts.txt");
 

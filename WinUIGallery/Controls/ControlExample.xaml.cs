@@ -163,7 +163,7 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(WebViewWidthProperty, value); }
     }
 
-    public new static readonly DependencyProperty HorizontalContentAlignmentProperty = DependencyProperty.Register("HorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ControlExample), new PropertyMetadata(HorizontalAlignment.Left));
+    public static new readonly DependencyProperty HorizontalContentAlignmentProperty = DependencyProperty.Register("HorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ControlExample), new PropertyMetadata(HorizontalAlignment.Left));
     public new HorizontalAlignment HorizontalContentAlignment
     {
         get { return (HorizontalAlignment)GetValue(HorizontalContentAlignmentProperty); }
