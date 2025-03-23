@@ -372,13 +372,9 @@ public sealed partial class ScratchPadPage : Page
     }
 }
 
-public class XamlTextFormatter
+public class XamlTextFormatter(RichEditBox richEditBox)
 {
-    private RichEditBox m_richEditBox;
-    public XamlTextFormatter(RichEditBox richEditBox)
-    {
-        m_richEditBox = richEditBox;
-    }
+    private RichEditBox m_richEditBox = richEditBox;
 
     enum ZoneType
     {

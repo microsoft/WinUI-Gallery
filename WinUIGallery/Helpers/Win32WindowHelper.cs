@@ -4,7 +4,7 @@ using static WinUIGallery.Helpers.Win32;
 
 namespace WinUIGallery.Helpers;
 
-internal class Win32WindowHelper
+internal class Win32WindowHelper(Window window)
 {
     private static WinProc newWndProc = null;
     private static nint oldWndProc = nint.Zero;
@@ -12,12 +12,7 @@ internal class Win32WindowHelper
     private POINT? minWindowSize = null;
     private POINT? maxWindowSize = null;
 
-    private readonly Window window;
-
-    public Win32WindowHelper(Window window)
-    {
-        this.window = window;
-    }
+    private readonly Window window = window;
 
     public void SetWindowMinMaxSize(POINT? minWindowSize = null, POINT? maxWindowSize = null)
     {

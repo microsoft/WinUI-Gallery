@@ -327,36 +327,23 @@ public sealed partial class ListViewPage : ItemsPageBase
     }
 }
 
-public class Message
+public class Message(string text, DateTime dateTime, HorizontalAlignment align)
 {
-    public string MsgText { get; private set; }
-    public DateTime MsgDateTime { get; private set; }
-    public HorizontalAlignment MsgAlignment { get; set; }
-    public Message(string text, DateTime dateTime, HorizontalAlignment align)
-    {
-        MsgText = text;
-        MsgDateTime = dateTime;
-        MsgAlignment = align;
-    }
+    public string MsgText { get; private set; } = text;
+    public DateTime MsgDateTime { get; private set; } = dateTime;
+    public HorizontalAlignment MsgAlignment { get; set; } = align;
 
     public override string ToString() => MsgDateTime.ToString() + " " + MsgText;
 }
 
-public class Contact
+public class Contact(string firstName, string lastName, string company)
 {
     #region Properties
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string Company { get; private set; }
+    public string FirstName { get; private set; } = firstName;
+    public string LastName { get; private set; } = lastName;
+    public string Company { get; private set; } = company;
     public string Name => FirstName + " " + LastName;
     #endregion
-
-    public Contact(string firstName, string lastName, string company)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        Company = company;
-    }
 
     #region Public Methods
     public static async Task<ObservableCollection<Contact>> GetContactsAsync()
@@ -387,11 +374,8 @@ public class Contact
     #endregion
 }
 
-public class GroupInfoList : List<object>
+public class GroupInfoList(IEnumerable<object> items) : List<object>(items)
 {
-    public GroupInfoList(IEnumerable<object> items) : base(items)
-    {
-    }
     public object Key { get; set; }
 
     public override string ToString() => "Group " + Key.ToString();

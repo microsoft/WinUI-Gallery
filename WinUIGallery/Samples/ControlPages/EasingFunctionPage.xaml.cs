@@ -5,15 +5,10 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUIGallery.ControlPages;
 
-public class NamedEasingFunction
+public class NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
 {
-    public string Name { get; private set; }
-    public EasingFunctionBase EasingFunctionBase { get; private set; }
-    public NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
-    {
-        Name = name;
-        EasingFunctionBase = easingFunctionBase;
-    }
+    public string Name { get; private set; } = name;
+    public EasingFunctionBase EasingFunctionBase { get; private set; } = easingFunctionBase;
 }
 
 public sealed partial class EasingFunctionPage : Page

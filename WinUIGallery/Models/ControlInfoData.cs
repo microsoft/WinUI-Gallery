@@ -59,15 +59,10 @@ public class ControlInfoDataItem
     public override string ToString() => Title;
 }
 
-public class ControlInfoDocLink
+public class ControlInfoDocLink(string title, string uri)
 {
-    public ControlInfoDocLink(string title, string uri)
-    {
-        Title = title;
-        Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
-    }
-    public string Title { get; set; }
-    public string Uri { get; set; }
+    public string Title { get; set; } = title;
+    public string Uri { get; set; } = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
 }
 
 

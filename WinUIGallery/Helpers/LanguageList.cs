@@ -100,15 +100,9 @@ class LanguageList
 
     }
 
-    public class Language
+    public class Language(string name, string code)
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-
-        public Language(string name, string code)
-        {
-            Name = name;
-            Code = code;
-        }
+        public string Name { get; set; } = name;
+        public string Code { get; set; } = code;
     }
 }

@@ -405,15 +405,10 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     }
 }
 
-public class NestedCategory
+public class NestedCategory(string catName, ObservableCollection<string> catItems)
 {
-    public string CategoryName { get; set; }
-    public ObservableCollection<string> CategoryItems { get; set; }
-    public NestedCategory(string catName, ObservableCollection<string> catItems)
-    {
-        CategoryName = catName;
-        CategoryItems = catItems;
-    }
+    public string CategoryName { get; set; } = catName;
+    public ObservableCollection<string> CategoryItems { get; set; } = catItems;
 }
 
 
@@ -461,27 +456,16 @@ public class StringOrIntTemplateSelector : DataTemplateSelector
     }
 }
 
-public class Bar
+public class Bar(double length, int max)
 {
-    public Bar(double length, int max)
-    {
-        Length = length;
-        MaxLength = max;
+    public double Length { get; set; } = length;
+    public int MaxLength { get; set; } = max;
 
-        Height = length / 4;
-        MaxHeight = max / 4;
+    public double Height { get; set; } = length / 4;
+    public double MaxHeight { get; set; } = max / 4;
 
-        Diameter = length / 6;
-        MaxDiameter = max / 6;
-    }
-    public double Length { get; set; }
-    public int MaxLength { get; set; }
-
-    public double Height { get; set; }
-    public double MaxHeight { get; set; }
-
-    public double Diameter { get; set; }
-    public double MaxDiameter { get; set; }
+    public double Diameter { get; set; } = length / 6;
+    public double MaxDiameter { get; set; } = max / 6;
 }
 
 public class Recipe

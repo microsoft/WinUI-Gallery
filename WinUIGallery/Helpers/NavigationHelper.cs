@@ -52,21 +52,16 @@ namespace WinUIGallery.Helpers;
 ///     }
 /// </code>
 /// </example>
+/// <remarks>
+/// Initializes a new instance of the <see cref="NavigationHelper"/> class.
+/// </remarks>
+/// <param name="page">A reference to the current page used for navigation.
+/// This reference allows for frame manipulation.</param>
 [WebHostHidden]
-public class NavigationHelper : DependencyObject
+public class NavigationHelper(Page page) : DependencyObject
 {
-    private Page Page { get; set; }
+    private Page Page { get; set; } = page;
     private Frame Frame => Page.Frame;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="NavigationHelper"/> class.
-    /// </summary>
-    /// <param name="page">A reference to the current page used for navigation.
-    /// This reference allows for frame manipulation.</param>
-    public NavigationHelper(Page page)
-    {
-        Page = page;
-    }
 
     #region Process lifetime management
 
@@ -301,54 +296,41 @@ public delegate void SaveStateEventHandler(object sender, SaveStateEventArgs e);
 /// <summary>
 /// Class used to hold the event data required when a page attempts to load state.
 /// </summary>
-public class LoadStateEventArgs : EventArgs
+/// <remarks>
+/// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
+/// </remarks>
+/// <param name="navigationParameter">
+/// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
+/// when this page was initially requested.
+/// </param>
+/// <param name="pageState">
+/// A dictionary of state preserved by this page during an earlier
+/// session.  This will be null the first time a page is visited.
+/// </param>
+public class LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState) : EventArgs()
 {
     /// <summary>
     /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
     /// when this page was initially requested.
     /// </summary>
-    public object NavigationParameter { get; private set; }
+    public object NavigationParameter { get; private set; } = navigationParameter;
     /// <summary>
     /// A dictionary of state preserved by this page during an earlier
     /// session.  This will be null the first time a page is visited.
     /// </summary>
-    public Dictionary<string, object> PageState { get; private set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
-    /// </summary>
-    /// <param name="navigationParameter">
-    /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
-    /// when this page was initially requested.
-    /// </param>
-    /// <param name="pageState">
-    /// A dictionary of state preserved by this page during an earlier
-    /// session.  This will be null the first time a page is visited.
-    /// </param>
-    public LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState)
-        : base()
-    {
-        NavigationParameter = navigationParameter;
-        PageState = pageState;
-    }
+    public Dictionary<string, object> PageState { get; private set; } = pageState;
 }
 /// <summary>
 /// Class used to hold the event data required when a page attempts to save state.
 /// </summary>
-public class SaveStateEventArgs : EventArgs
+/// <remarks>
+/// Initializes a new instance of the <see cref="SaveStateEventArgs"/> class.
+/// </remarks>
+/// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
+public class SaveStateEventArgs(Dictionary<string, object> pageState) : EventArgs()
 {
     /// <summary>
     /// An empty dictionary to be populated with serializable state.
     /// </summary>
-    public Dictionary<string, object> PageState { get; private set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SaveStateEventArgs"/> class.
-    /// </summary>
-    /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
-    public SaveStateEventArgs(Dictionary<string, object> pageState)
-        : base()
-    {
-        PageState = pageState;
-    }
+    public Dictionary<string, object> PageState { get; private set; } = pageState;
 }
