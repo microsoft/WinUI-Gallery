@@ -30,6 +30,7 @@ public sealed partial class RichEditBoxPage : Page
     public static extern IntPtr GetActiveWindow();
     private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
     ObservableCollection<MathSymbol> SymbolsCollection = MathModeHelper.GetSymbolsCollection();
+    ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructureCollection();
     public RichEditBoxPage()
     {
         this.InitializeComponent();
@@ -37,6 +38,7 @@ public sealed partial class RichEditBoxPage : Page
         MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
         MathModeDescription.Text = "Math mode enables users to have input automatically recognized and converted to MathML while being received.\r\nFor example, \"4^2\" is converted to \"4\u00b2\", and \"\\pi\" is converted to \"\u03c0\".\r\nMath mode might change formatting (fonts), context menus, and other aspects of the input.";
         MathSymbolsItems.ItemsSource = SymbolsCollection;
+        MathStructuresItems.ItemsSource = StructuresCollection;
     }
 
     private void Menu_Opening(object sender, object e)
@@ -253,6 +255,116 @@ public sealed partial class RichEditBoxPage : Page
     }
 
     private void InsertSymbolBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button insertionBtn)
+        {
+            if (MathEditor == null) return;
+
+            MathEditor.Focus(FocusState.Programmatic);
+
+            var selection = MathEditor.Document.Selection;
+            if (selection != null)
+            {
+                MathModeHelper.TypeCommand(insertionBtn.Tag.ToString());
+            }
+        }
+    }
+
+    private void SelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+    {
+        if(sender is SelectorBar selectorBar)
+        {
+            if (selectorBar.SelectedItem.Tag.ToString() == "Symbols")
+            {
+                SymbolsTable.Visibility = Visibility.Visible;
+                StructuresTable.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                StructuresTable.Visibility = Visibility.Visible;
+                SymbolsTable.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+
+    private void StructureDataTemplate_Loading(FrameworkElement sender, object args)
+    {
+        if (sender is Grid grid)
+        {
+            int index = MathStructuresItems.GetElementIndex(grid);
+
+            if (index % 2 == 0)
+            {
+                grid.Style = (Style)MathModeExample.Resources["ItemStyle1"];
+            }
+            else
+            {
+                grid.Style = (Style)MathModeExample.Resources["ItemStyle2"];
+            }
+        }
+    }
+
+    private void LightThemeImage_Loaded(object sender, RoutedEventArgs e)
+    {
+        if(sender is Image image)
+        {
+            if(image.ActualTheme == ElementTheme.Light)
+            {
+                image.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                image.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+
+    private void DarkThemeImage_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (sender is Image image)
+        {
+            if (image.ActualTheme == ElementTheme.Dark)
+            {
+                image.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                image.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+
+    private void LightThemeImage_ActualThemeChanged(FrameworkElement sender, object args)
+    {
+        if (sender is Image image)
+        {
+            if (image.ActualTheme == ElementTheme.Light)
+            {
+                image.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                image.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+
+    private void DarkThemeImage_ActualThemeChanged(FrameworkElement sender, object args)
+    {
+        if (sender is Image image)
+        {
+            if (image.ActualTheme == ElementTheme.Dark)
+            {
+                image.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                image.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+
+    private void InsertStructureBtn_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button insertionBtn)
         {
