@@ -56,7 +56,7 @@ namespace WinUIGallery.Helpers;
 public class NavigationHelper : DependencyObject
 {
     private Page Page { get; set; }
-    private Frame Frame { get { return Page.Frame; } }
+    private Frame Frame => Page.Frame;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationHelper"/> class.

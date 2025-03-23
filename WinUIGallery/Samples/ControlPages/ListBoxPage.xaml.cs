@@ -26,10 +26,7 @@ public sealed partial class ListBoxPage : Page
         new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
     ];
 
-    public List<Tuple<string, FontFamily>> Fonts
-    {
-        get { return _fonts; }
-    }
+    public List<Tuple<string, FontFamily>> Fonts => _fonts;
     public ListBoxPage()
     {
         InitializeComponent();

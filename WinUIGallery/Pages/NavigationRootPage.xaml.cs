@@ -44,10 +44,7 @@ public sealed partial class NavigationRootPage : Page
         return window != null ? (NavigationRootPage)window.Content : null;
     }
 
-    public NavigationView NavigationView
-    {
-        get { return NavigationViewControl; }
-    }
+    public NavigationView NavigationView => NavigationViewControl;
 
     public Action NavigationViewLoaded { get; set; }
 

@@ -36,10 +36,7 @@ sealed partial class App : Application
     /// <summary>
     /// Get the initial window created for this app.
     /// </summary>
-    public static Window StartupWindow
-    {
-        get => startupWindow;
-    }
+    public static Window StartupWindow => startupWindow;
 
     /// <summary>
     /// Initializes the singleton Application object. This is the first line of authored code

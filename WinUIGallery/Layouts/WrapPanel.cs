@@ -568,10 +568,7 @@ internal struct OrientedSize
     /// <summary>
     /// Gets the orientation of the structure.
     /// </summary>
-    public Orientation Orientation
-    {
-        get { return _orientation; }
-    }
+    public Orientation Orientation => _orientation;
 
     /// <summary>
     /// The size dimension that grows directly with layout placement.

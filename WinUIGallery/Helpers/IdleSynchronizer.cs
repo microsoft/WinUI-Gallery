@@ -87,13 +87,7 @@ public class IdleSynchronizer
 
     private static IdleSynchronizer instance = null;
 
-    public static IdleSynchronizer Instance
-    {
-        get
-        {
-            return instance == null ? throw new Exception("Init() must be called on the UI thread before retrieving Instance.") : instance;
-        }
-    }
+    public static IdleSynchronizer Instance => instance == null ? throw new Exception("Init() must be called on the UI thread before retrieving Instance.") : instance;
 
     public string Log { get; set; }
     public int TickCountBegin { get; set; }
@@ -375,13 +369,7 @@ internal class Handle
 {
     public IntPtr NativeHandle { get; private set; }
 
-    public bool IsValid
-    {
-        get
-        {
-            return NativeHandle != IntPtr.Zero;
-        }
-    }
+    public bool IsValid => NativeHandle != IntPtr.Zero;
 
     public Handle(IntPtr nativeHandle)
     {

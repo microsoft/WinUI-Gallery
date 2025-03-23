@@ -21,13 +21,7 @@ public sealed class ControlInfoDataSource
 
     private static readonly ControlInfoDataSource _instance;
 
-    public static ControlInfoDataSource Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static ControlInfoDataSource Instance => _instance;
 
     static ControlInfoDataSource()
     {
@@ -39,10 +33,7 @@ public sealed class ControlInfoDataSource
     #endregion
 
     private readonly IList<ControlInfoDataGroup> _groups = [];
-    public IList<ControlInfoDataGroup> Groups
-    {
-        get { return _groups; }
-    }
+    public IList<ControlInfoDataGroup> Groups => _groups;
 
     public async Task<IEnumerable<ControlInfoDataGroup>> GetGroupsAsync()
     {

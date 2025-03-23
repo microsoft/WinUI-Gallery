@@ -494,13 +494,7 @@ public class Recipe
     public List<string> IngList { get; set; }
     public string Name { get; set; }
     public string Color { get; set; }
-    public int NumIngredients
-    {
-        get
-        {
-            return IngList.Count;
-        }
-    }
+    public int NumIngredients => IngList.Count;
 
     public void RandomizeIngredients()
     {

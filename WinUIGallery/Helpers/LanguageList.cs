@@ -5,10 +5,7 @@ namespace WinUIGallery.Helpers;
 class LanguageList
 {
     private List<Language> _languages;
-    public List<Language> Languages
-    {
-        get { return _languages; }
-    }
+    public List<Language> Languages => _languages;
 
     public LanguageList()
     {

@@ -82,7 +82,7 @@ public class WindowHelper
         return 0.0;
     }
 
-    public static List<Window> ActiveWindows { get { return _activeWindows; }}
+    public static List<Window> ActiveWindows => _activeWindows;
 
     private static List<Window> _activeWindows = [];
 

@@ -24,10 +24,7 @@ public sealed partial class SemanticZoomPage : Page
     {
         InitializeComponent();
     }
-    public IEnumerable<ControlInfoDataGroup> Groups
-    {
-        get { return _groups; }
-    }
+    public IEnumerable<ControlInfoDataGroup> Groups => _groups;
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {

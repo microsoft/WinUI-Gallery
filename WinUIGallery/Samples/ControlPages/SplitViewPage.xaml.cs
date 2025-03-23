@@ -16,10 +16,7 @@ public sealed partial class SplitViewPage : Page
         new NavLink() { Label = "Mail", Symbol = Symbol.Mail },
     ];
 
-    public ObservableCollection<NavLink> NavLinks
-    {
-        get { return _navLinks; }
-    }
+    public ObservableCollection<NavLink> NavLinks => _navLinks;
 
     public SplitViewPage()
     {

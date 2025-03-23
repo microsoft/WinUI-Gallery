@@ -31,20 +31,14 @@ internal sealed class SuspensionManager
     /// <see cref="DataContractSerializer"/> and should be as compact as possible.  Strings
     /// and other self-contained data types are strongly recommended.
     /// </summary>
-    public static Dictionary<string, object> SessionState
-    {
-        get { return _sessionState; }
-    }
+    public static Dictionary<string, object> SessionState => _sessionState;
 
     /// <summary>
     /// List of custom types provided to the <see cref="DataContractSerializer"/> when
     /// reading and writing session state.  Initially empty, additional types may be
     /// added to customize the serialization process.
     /// </summary>
-    public static List<Type> KnownTypes
-    {
-        get { return _knownTypes; }
-    }
+    public static List<Type> KnownTypes => _knownTypes;
 
     /// <summary>
     /// Save the current <see cref="SessionState"/>.  Any <see cref="Frame"/> instances

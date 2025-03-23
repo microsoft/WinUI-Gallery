@@ -182,10 +182,7 @@ public sealed class Filter : INotifyPropertyChanged
         set { SetProperty(ref _active, value); }
     }
 
-    public string Description
-    {
-        get { return string.Format("{0} ({1})", _name, _count); }
-    }
+    public string Description => string.Format("{0} ({1})", _name, _count);
 
     /// <summary>
     /// Multicast event for property change notifications.
