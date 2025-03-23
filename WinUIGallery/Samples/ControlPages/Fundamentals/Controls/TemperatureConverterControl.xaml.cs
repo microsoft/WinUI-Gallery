@@ -13,8 +13,7 @@ public sealed partial class TemperatureConverterControl : UserControl
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         string input = InputTextBox.Text;
-        double celsius;
-        bool isNumber = double.TryParse(input, out celsius);
+        bool isNumber = double.TryParse(input, out double celsius);
 
         if (isNumber)
         {

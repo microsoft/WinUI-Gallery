@@ -27,8 +27,7 @@ internal class NativeHelper
         get
         {
             int bufferSize = 0;
-            byte byteBuffer;
-            uint lastError = GetCurrentPackageId(ref bufferSize, out byteBuffer);
+            uint lastError = GetCurrentPackageId(ref bufferSize, out byte byteBuffer);
             bool isPackaged = true;
 
             if (lastError == APPMODEL_ERROR_NO_PACKAGE)

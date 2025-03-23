@@ -132,8 +132,7 @@ public sealed partial class ScratchPadPage : Page
 
     private void LoadContent()
     {
-        string newText;
-        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
         //System.Diagnostics.Debug.WriteLine("new text: " + newText);
 
         SaveScratchPadXAMLinLocalSettings(newText);
@@ -176,8 +175,7 @@ public sealed partial class ScratchPadPage : Page
 
     private string GetTextboxTextPreviousLine()
     {
-        string newText;
-        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
         var selectionIndex = textbox.TextDocument.Selection.StartPosition;
         if (selectionIndex > 0)
         {
@@ -226,8 +224,7 @@ public sealed partial class ScratchPadPage : Page
                 {
                     var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) &
                         (int)Windows.UI.Core.CoreVirtualKeyStates.Down) == (int)Windows.UI.Core.CoreVirtualKeyStates.Down;
-                    string text;
-                    textbox.TextDocument.GetText(TextGetOptions.None, out text);
+                    textbox.TextDocument.GetText(TextGetOptions.None, out string text);
 
                     var selectionStart = textbox.TextDocument.Selection.StartPosition;
                     var selectionEnd = selectionStart + textbox.TextDocument.Selection.Length;
@@ -311,8 +308,7 @@ public sealed partial class ScratchPadPage : Page
                 loadStatus.Opacity = 0.5; // dim the message which is now old
             }
 
-            string newText;
-            textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+            textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
             if (newText.Length == m_oldText.Length + 1)
             {
                 // Added just one character
@@ -394,8 +390,7 @@ public class XamlTextFormatter(RichEditBox richEditBox)
         var doc = m_richEditBox.Document;
         doc.BeginUndoGroup();
 
-        string rebText;
-        doc.GetText(TextGetOptions.None, out rebText);
+        doc.GetText(TextGetOptions.None, out string rebText);
 
         var startIndex = 0;
         var currentZoneType = ZoneType.Unknown;

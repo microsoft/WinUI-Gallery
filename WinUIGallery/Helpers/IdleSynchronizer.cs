@@ -192,8 +192,7 @@ public class IdleSynchronizer
                 hadAnimations = false;
             }
 
-            bool hadDeferredAnimationOperations;
-            errorString = WaitForDeferredAnimationOperationsComplete(out hadDeferredAnimationOperations);
+            errorString = WaitForDeferredAnimationOperationsComplete(out bool hadDeferredAnimationOperations);
             if (errorString.Length > 0) { return errorString; }
             AddLog("After WaitForDeferredAnimationOperationsComplete");
 
