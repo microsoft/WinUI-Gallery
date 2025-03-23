@@ -121,7 +121,6 @@ public static class MathModeHelper
     /// </summary>
     public static void TypeCommand(string text)
     {
-        // Set the application language to English (US).
         ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
         // Load and activate the US English keyboard layout.
