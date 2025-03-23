@@ -88,7 +88,7 @@ public static class MathModeHelper
             new("Structures/StackedFraction_Light.png", "Structures/StackedFraction_Dark.png", "Stacked Fraction", "/"),
             new("Structures/Superscript_Light.png", "Structures/Superscript_Dark.png", "Superscript", "\\begin^\\end "),
             new("Structures/Subscript_Light.png", "Structures/Subscript_Dark.png", "Subscript", "\\begin_\\end "),
-            new("Structures/SuperscriptSubscript_Light.png", "Structures/SuperscriptSubscript_Dark.png", "Superscript and Subscript", "()^_"),
+            new("Structures/SuperscriptSubscript_Light.png", "Structures/SuperscriptSubscript_Dark.png", "Superscript and Subscript", "\\open\\close^_ "),
             new("Structures/SuperscriptSubscriptLeft_Light.png", "Structures/SuperscriptSubscriptLeft_Dark.png", "Left Superscript and Subscript", "(^_)"),
             new("Structures/SquareRoot_Light.png", "Structures/SquareRoot_Dark.png", "Square Root", "\\sqrt "),
             new("Structures/RadicalWithDegree_Light.png", "Structures/RadicalWithDegree_Dark.png", "Radical with Degree", "\\sqrt(&)"),
