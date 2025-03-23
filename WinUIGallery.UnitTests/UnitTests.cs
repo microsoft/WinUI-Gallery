@@ -62,12 +62,14 @@ public class UnitTests
     [UITestMethod]
     public void TestWrapGrid()
     {
-        Layouts.WrapPanel wrapPanel = new Layouts.WrapPanel();
-        wrapPanel.Width = 250;
-        wrapPanel.Height = 250;
+        Layouts.WrapPanel wrapPanel = new()
+        {
+            Width = 250,
+            Height = 250
+        };
         for (int i = 0; i < 4; i++) 
         {
-            Button button = new Button
+            Button button = new()
             {
                 Width = 120,
                 Height = 80,
@@ -79,7 +81,7 @@ public class UnitTests
         UnitTestApp.UnitTestAppWindow.AddToVisualTree(wrapPanel);
         wrapPanel.UpdateLayout();
 
-        List<Rect> expectedLayouts = new List<Rect>
+        List<Rect> expectedLayouts = new()
         {
             new Rect(0,    0, 120,  80),
             new Rect(120,  0, 120,  80),
@@ -99,11 +101,11 @@ public class UnitTests
     public void MultiThreadTest()
     {
         Border border = null;
-        AutoResetEvent borderSizeChanged = new AutoResetEvent(false);
+        AutoResetEvent borderSizeChanged = new(false);
 
         ExecuteOnUIThread(() =>
         {
-            Grid grid = new Grid
+            Grid grid = new()
             {
                 Width = 200,
             };
@@ -147,7 +149,7 @@ public class UnitTests
 
     private void ExecuteOnUIThread(Action action)
     {
-        AutoResetEvent done = new AutoResetEvent(false);
+        AutoResetEvent done = new(false);
         DispatcherQueue dispatcherQueue = UnitTestApp.UnitTestAppWindow.DispatcherQueue;
         if (dispatcherQueue.HasThreadAccess)
         {

@@ -209,7 +209,7 @@ public class SessionManager
 
     private static void TryInitializeSession()
     {
-        AppiumOptions appiumOptions = new AppiumOptions();
+        AppiumOptions appiumOptions = new();
         appiumOptions.AddAdditionalCapability("app", WinUIGalleryAppIDs[appIdIndex]);
         appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
         try
