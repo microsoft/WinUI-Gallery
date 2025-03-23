@@ -98,6 +98,32 @@ public static class MathModeHelper
         return structures;
     }
 
+    public static ObservableCollection<MathStucture> GetIntegralsCollection()
+    {
+        var integrals = new ObservableCollection<MathStucture>
+        {
+            new("Integrals/Integral_Light.png", "Integrals/Integral_Dark.png", "Integral", "\\int4"),
+            new("Integrals/IntegralWithLimits_Light.png", "Integrals/IntegralWithLimits_Dark.png", "Integral with Limits", "\\int24"),
+            new("Integrals/IntegralWithStackedLimits_Light.png", "Integrals/IntegralWithStackedLimits_Dark.png", "Integral with Stacked Limits", "\\int28"),
+            new("Integrals/DoubleIntegral_Light.png", "Integrals/DoubleIntegral_Dark.png", "Double Integral", "\\iint4"),
+            new("Integrals/DoubleIntegralWithLimits_Light.png", "Integrals/DoubleIntegralWithLimits_Dark.png", "Double Integral with Limits", "\\iint24"),
+            new("Integrals/DoubleIntegralWithStackedLimits_Light.png", "Integrals/DoubleIntegralWithStackedLimits_Dark.png", "Double Integral with Stacked Limits", "\\iint28"),
+            new("Integrals/TripleIntegral_Light.png", "Integrals/TripleIntegral_Dark.png", "Triple Integral", "\\iiint4"),
+            new("Integrals/TripleIntegralWithLimits_Light.png", "Integrals/TripleIntegralWithLimits_Dark.png", "Triple Integral with Limits", "\\iiint24"),
+            new("Integrals/TripleIntegralWithStackedLimits_Light.png", "Integrals/TripleIntegralWithStackedLimits_Dark.png", "Triple Integral with Stacked Limits", "\\iiint28"),
+            new("Integrals/ContourIntegral_Light.png", "Integrals/ContourIntegral_Dark.png", "Contour Integral", "\\oint4"),
+            new("Integrals/ContourIntegralWithLimits_Light.png", "Integrals/ContourIntegralWithLimits_Dark.png", "Contour Integral with Limits", "\\oint24"),
+            new("Integrals/ContourIntegralWithStackedLimits_Light.png", "Integrals/ContourIntegralWithStackedLimits_Dark.png", "Contour Integral with Stacked Limits", "\\oint28"),
+            new("Integrals/DoubleContourIntegral_Light.png", "Integrals/DoubleContourIntegral_Dark.png", "Double Contour Integral", "\\oiint4"),
+            new("Integrals/DoubleContourIntegralWithLimits_Light.png", "Integrals/DoubleContourIntegralWithLimits_Dark.png", "Double Contour Integral with Limits", "\\oiint24"),
+            new("Integrals/DoubleContourIntegralWithStackedLimits_Light.png", "Integrals/DoubleContourIntegralWithStackedLimits_Dark.png", "Double Contour Integral with Stacked Limits", "\\oiint28"),
+            new("Integrals/TripleContourIntegral_Light.png", "Integrals/TripleContourIntegral_Dark.png", "Triple Contour Integral", "\\oiiint4"),
+            new("Integrals/TripleContourIntegralWithLimits_Light.png", "Integrals/TripleContourIntegralWithLimits_Dark.png", "Triple Contour Integral with Limits", "\\oiiint24"),
+            new("Integrals/TripleContourIntegralWithStackedLimits_Light.png", "Integrals/TripleContourIntegralWithStackedLimits_Dark.png", "Triple Contour Integral with Stacked Limits", "\\oiiint28"),
+        };
+        return integrals;
+    }
+
     // Import the necessary functions from user32.dll to manipulate keyboard input.
     [DllImport("user32.dll")]
     private static extern IntPtr LoadKeyboardLayout(string pwszKLID, uint Flags);

@@ -238,7 +238,7 @@
                             <SelectorBarItem Text="Symbols"
                                              IsSelected="True"
                                              Tag="Symbols" />
-                            <SelectorBarItem Text="Structures"
+                            <SelectorBarItem Text="Basic Structures"
                                              Tag="Structures" />
                             <SelectorBarItem Text="Integrals"
                                              Tag="Integrals" />
